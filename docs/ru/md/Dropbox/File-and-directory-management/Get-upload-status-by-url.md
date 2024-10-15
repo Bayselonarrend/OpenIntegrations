@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    ИДРаботы = "4SQ3zikww9gAAAAAAAAAAQ";
+    Токен    = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    ИДРаботы = "8VM99l3ckEAAAAAAAAAAAQ";
     Статус   = "in_progress";
 
     Пока Статус = "in_progress" Цикл
@@ -36,14 +36,26 @@ sidebar_position: 6
 
     КонецЦикла;
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --job %job%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "***" \
+              --job "RFGLw9RumQQAAAAAAAAAAQ"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьСтатусЗагрузкиПоURL ^
+              --token "***" ^
+              --job "RFGLw9RumQQAAAAAAAAAAQ"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

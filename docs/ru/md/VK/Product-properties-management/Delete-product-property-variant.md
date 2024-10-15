@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Вариант   = "2601";
+    Вариант   = "2571";
 
     Результат = OPI_VK.УдалитьВариантСвойстваТовара(Вариант, Параметры);
 
@@ -33,14 +33,26 @@ sidebar_position: 7
 
     OPI_Инструменты.Пауза(5);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk УдалитьВариантСвойстваТовара --option %option% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk УдалитьВариантСвойстваТовара --option 2616 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk УдалитьВариантСвойстваТовара ^
+              --option 2616 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

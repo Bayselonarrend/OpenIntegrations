@@ -24,20 +24,34 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Идентификатор = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
-    ИДКомментария = "AAABXOyqKNE";
+    Токен         = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Идентификатор = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
+    ИДКомментария = "AAABW8ZPnAo";
 
     Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive УдалитьКомментарий --token %token% --object %object% --comment %comment%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive УдалитьКомментарий --token "***" \
+              --object "1MfKvl7trDfRoyFRzXV_ZaCEbx6SQWq49" \
+              --comment "AAABRYiX070"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive УдалитьКомментарий ^
+              --token "***" ^
+              --object "1MfKvl7trDfRoyFRzXV_ZaCEbx6SQWq49" ^
+              --comment "AAABRYiX070"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 null

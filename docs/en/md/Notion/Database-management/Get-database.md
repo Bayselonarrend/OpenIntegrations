@@ -24,18 +24,13 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    Base  = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
 
     Result = OPI_Notion.GetDatabase(Token, Base);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion GetDatabase --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "048ba0ce4f474e33900540d24..."
-
-```
 
 ```json title="Result"
 {

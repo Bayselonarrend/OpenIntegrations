@@ -33,14 +33,9 @@ Method at API documentation: [editGeneralForumTopic](https://core.telegram.org/b
   
   Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram EditMainForumTopicName --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
-
-```
 
 ```json title="Result"
 {

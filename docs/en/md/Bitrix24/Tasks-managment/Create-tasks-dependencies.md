@@ -29,31 +29,26 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-    FromID        = "2446";
-    DestinationID = "2448";
+    FromID        = "2416";
+    DestinationID = "2418";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "2448";
-    DestinationID = "2446";
+    FromID        = "2418";
+    DestinationID = "2416";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 CreateTasksDependencies --url "b24-ar17wx.bitrix24.by" --taskfrom "1080" --taskto "1078" --linktype "2" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

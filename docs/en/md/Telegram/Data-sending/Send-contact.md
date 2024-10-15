@@ -41,14 +41,9 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
 
     Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendContact --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --name "John" --surname "Doe" --phone "88005553535" --keyboard %keyboard%
-
-```
 
 ```json title="Result"
 {

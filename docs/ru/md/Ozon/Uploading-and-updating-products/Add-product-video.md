@@ -48,14 +48,9 @@ sidebar_position: 24
 
     OPI_Ozon.ДобавитьВидеоТовара(СтруктураТовара, Видео, "viedo1");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ДобавитьВидеоТовара --item %item% --url %url% --title %title%
 
-```
+
 
 ```json title="Результат"
 {

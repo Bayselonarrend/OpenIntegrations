@@ -29,18 +29,13 @@ Method at API documentation: [pinChatMessage](https://core.telegram.org/bots/api
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "9761";
+    MessageID = "9480";
 
     Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram PinMessage --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "6846"
-
-```
 
 ```json title="Result"
 {

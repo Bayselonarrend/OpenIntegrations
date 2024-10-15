@@ -33,14 +33,9 @@ Method at API documentation: [unbanChatMember](https://core.telegram.org/bots/ap
 
     Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram Unban --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
-
-```
 
 ```json title="Result"
 {

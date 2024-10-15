@@ -27,14 +27,9 @@ Attributes are structures with complex_id, id and values fields. For their quick
 ```bsl title="Code example"
     Result = OPI_Ozon.GetAttributesUpdateStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetAttributesUpdateStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

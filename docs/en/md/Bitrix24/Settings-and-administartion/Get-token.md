@@ -30,14 +30,9 @@ sidebar_position: 2
 
     Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetToken --clientid "local.6667fc928a50a9.70414732" --clientsecret "ZeKyeYIgy2NsHZqsIHY6GfG1V..." --code "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c"
-
-```
 
 ```json title="Result"
 {

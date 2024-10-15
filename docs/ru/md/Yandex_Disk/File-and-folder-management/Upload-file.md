@@ -29,7 +29,7 @@ sidebar_position: 10
     Путь2     = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL
 
     ИВФ      = ПолучитьИмяВременногоФайла("png"); // Путь
     КопироватьФайл(Картинка, ИВФ);
@@ -38,14 +38,30 @@ sidebar_position: 10
 
     Результат = OPI_YandexDisk.ЗагрузитьФайл(Токен, Путь2, ИВФ, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk ЗагрузитьФайл --token "y0_AgAAAABdylaOAA..." --path "/АльпакаИзФайла.png" --file "C:\logo.png" --rewrite %rewrite%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk ЗагрузитьФайл --token "***" \
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" \
+              --file "C:\Users\Administrator\AppData\Local\Temp\w5swc4j5i1g.png" \
+              --rewrite true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ЗагрузитьФайл ^
+              --token "***" ^
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" ^
+              --file "C:\Users\Administrator\AppData\Local\Temp\w5swc4j5i1g.png" ^
+              --rewrite true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {}

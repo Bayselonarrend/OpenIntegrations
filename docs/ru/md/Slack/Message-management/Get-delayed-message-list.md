@@ -29,14 +29,26 @@ sidebar_position: 5
 
     Результат = OPI_Slack.ПолучитьСписокОтложенныхСообщений(Токен, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокОтложенныхСообщений --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьСписокОтложенныхСообщений --token "***" \
+              --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьСписокОтложенныхСообщений ^
+              --token "***" ^
+              --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

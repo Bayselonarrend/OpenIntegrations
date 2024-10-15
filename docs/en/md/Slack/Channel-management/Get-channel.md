@@ -24,18 +24,13 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
 
     Result = OPI_Slack.GetChannel(Token, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetChannel --token %token% --channel "C070VPMKN8J"
-
-```
 
 ```json title="Result"
 {

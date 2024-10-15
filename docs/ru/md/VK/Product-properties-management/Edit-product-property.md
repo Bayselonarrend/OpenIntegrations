@@ -27,18 +27,32 @@ sidebar_position: 3
     Параметры = ПолучитьПараметрыВК();
 
     Название  = "Цвет (изм.)";
-    Свойство  = "878";
+    Свойство  = "863";
 
     Результат = OPI_VK.ИзменитьСвойствоТовара(Название, Свойство, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ИзменитьСвойствоТовара --title %title% --prop %prop% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ИзменитьСвойствоТовара --title "Цвет (изм.)" \
+              --prop "883" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ИзменитьСвойствоТовара ^
+              --title "Цвет (изм.)" ^
+              --prop "883" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

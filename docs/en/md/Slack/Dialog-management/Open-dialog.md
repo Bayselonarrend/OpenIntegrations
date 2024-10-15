@@ -28,14 +28,9 @@ sidebar_position: 1
 
     Result = OPI_Slack.OpenDialog(Token, User);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack OpenDialog --token %token% --users %users%
-
-```
 
 ```json title="Result"
 {

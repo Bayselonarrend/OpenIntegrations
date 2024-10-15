@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Image1    = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary or Path to file
-    Image2    = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary or Path to file
-    Selection = "130";
+    Image1    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary or Path to file
+    Selection = "125";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
@@ -53,14 +53,9 @@ sidebar_position: 4
 
     Result = OPI_VK.AddProduct(ProductDescription, Selection, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk AddProduct --product %product% --sel "125" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

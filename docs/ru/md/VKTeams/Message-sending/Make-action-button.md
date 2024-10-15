@@ -35,14 +35,26 @@ sidebar_position: 12
     Клавиатура.Добавить(МассивСтрокиКнопок);
     Клавиатура.Добавить(МассивСтрокиКнопок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams СформироватьКнопкуДействия --text %text% --data %data% --url %url% --style %style%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams СформироватьКнопкуДействия --text "Кнопка2" \
+              --url "https://openintegrations.dev"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams СформироватьКнопкуДействия ^
+              --text "Кнопка2" ^
+              --url "https://openintegrations.dev"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 [

@@ -23,19 +23,14 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Identifier = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
+    Token      = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Identifier = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
 
     Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive GetCommentList --token %token% --object %object%
-
-```
 
 ```json title="Result"
 {

@@ -50,14 +50,9 @@ sidebar_position: 26
     OPI_Ozon.ДополнитьКомплексныйАтрибут(СтруктураТовара, 5076 , 0, АтрибутКатегории1);
     OPI_Ozon.ДополнитьКомплексныйАтрибут(СтруктураТовара, 9048 , 0, АтрибутКатегории2);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ДополнитьКомплексныйАтрибут --object %object% --attributeid %attributeid% --complexid %complexid% --values %values%
 
-```
+
 
 ```json title="Результат"
 {

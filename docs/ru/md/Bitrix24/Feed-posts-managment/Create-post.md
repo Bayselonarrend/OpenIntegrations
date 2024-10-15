@@ -33,8 +33,8 @@ sidebar_position: 1
 ```bsl title="Пример кода"
     Текст     = "Текст новости";
     Заголовок = "Заголовок новости";
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
 
     Файлы     = Новый Соответствие;
     Файлы.Вставить("1.png", Картинка1);
@@ -45,18 +45,13 @@ sidebar_position: 1
     Результат = OPI_Bitrix24.СоздатьНовость(URL, Текст, , Файлы, Заголовок, Истина);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "21750a67006e9f06006b12e400000001000...";
+    Токен = "49e20867006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.СоздатьНовость(URL, Текст, , Файлы, Заголовок, , Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 СоздатьНовость --url "b24-ar17wx.bitrix24.by" --text %text% --vision %vision% --files %files% --title %title% --important %important% --token "b9df7366006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

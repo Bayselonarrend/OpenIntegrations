@@ -28,19 +28,14 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен  = "7419cd51de4037f7...";
-    Данные = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Данные = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
     Путь   = "testfolder/test_pic.png";
 
     Результат = OPI_Neocities.ЗагрузитьФайл(Токен, Путь, Данные);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities ЗагрузитьФайл --token "7419cd51de4037f7..." --path %path% --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
 
-```
+
 
 ```json title="Результат"
 {

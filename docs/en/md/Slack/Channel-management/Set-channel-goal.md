@@ -25,19 +25,14 @@ sidebar_position: 12
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
     Purpose = "TestGoal";
 
     Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack SetChannelGoal --token %token% --channel "C070VPMKN8J" --purpose "TestGoal"
-
-```
 
 ```json title="Result"
 {

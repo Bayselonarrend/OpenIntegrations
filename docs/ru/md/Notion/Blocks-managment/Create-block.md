@@ -32,14 +32,28 @@ sidebar_position: 1
     ДанныеБлока = OPI_Notion.ВернутьБлок(Токен, Блок);
     Результат   = OPI_Notion.СоздатьБлок(Токен, Родитель, ДанныеБлока);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion СоздатьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --block %block% --prev %prev%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion СоздатьБлок --token "***" \
+              --page "5dd94c34fab04bff986b7511c0779f77" \
+              --block "{'object':'block','parent':{'type':'page_id','page_id':'5dd94c34-fab0-4bff-986b-7511c0779f77'},'in_trash':true,'type':'to_do','to_do':{'rich_text':[{'type':'text','text':{'content':'YoYO','link':null},'annotations':{'bold':false,'italic':false,'strikethrough':false,'underline':false,'code':false,'color':'default'},'plain_text':'YoYO','href':null}],'checked':false,'color':'default'}}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion СоздатьБлок ^
+              --token "***" ^
+              --page "5dd94c34fab04bff986b7511c0779f77" ^
+              --block "{'object':'block','parent':{'type':'page_id','page_id':'5dd94c34-fab0-4bff-986b-7511c0779f77'},'in_trash':true,'type':'to_do','to_do':{'rich_text':[{'type':'text','text':{'content':'YoYO','link':null},'annotations':{'bold':false,'italic':false,'strikethrough':false,'underline':false,'code':false,'color':'default'},'plain_text':'YoYO','href':null}],'checked':false,'color':'default'}}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

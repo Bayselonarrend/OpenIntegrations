@@ -27,19 +27,35 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Параметры  = ПолучитьПараметрыВК();
     Текст      = "Новый комментарий";
-    IDПоста    = "4712";
+    IDПоста    = "4578";
     IDСтены    = Параметры["owner_id"];
 
     Результат  = OPI_VK.НаписатьКомментарий(IDПоста, IDСтены, Текст, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk НаписатьКомментарий --post %post% --wall %wall% --text %text% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk НаписатьКомментарий --post 4756 \
+              --wall "-218861756" \
+              --text "Новый комментарий" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk НаписатьКомментарий ^
+              --post 4756 ^
+              --wall "-218861756" ^
+              --text "Новый комментарий" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

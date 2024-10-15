@@ -44,20 +44,15 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
+    Token  = "49e20867006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, Tag, , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 CreateSystemNotification --url "b24-ar17wx.bitrix24.by" --user "10" --text "Message text" --tag %tag% --blocks %blocks% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

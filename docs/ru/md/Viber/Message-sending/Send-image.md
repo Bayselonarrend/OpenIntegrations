@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Описание = "Тестовое сообщение";
-    URL      = "https://api.athenaeum.digital/test_data/picture.jpg";
+    URL      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";
@@ -41,14 +41,32 @@ sidebar_position: 2
 
     Результат  = OPI_Viber.ОтправитьКартинку(Токен, URL, IDПользователя, ОтправкаВКанал, Описание);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьКартинку --token %token% --picture %picture% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --description %description%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьКартинку --token "***" \
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true \
+              --description "Тестовое сообщение"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьКартинку ^
+              --token "***" ^
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true ^
+              --description "Тестовое сообщение"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,14 +29,26 @@ sidebar_position: 2
 
     Результат = OPI_Notion.ВернутьБлок(Токен, Блок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ВернутьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block% --core %core%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ВернутьБлок --token "***" \
+              --block "d7021bdd15b944ababcb02bd2b1a5f6a"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ВернутьБлок ^
+              --token "***" ^
+              --block "d7021bdd15b944ababcb02bd2b1a5f6a"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

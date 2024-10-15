@@ -39,18 +39,13 @@ sidebar_position: 2
     Результат = OPI_Bitrix24.ПолучитьСписокЗадач(URL, Фильтр);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокЗадач(URL, , Отступ, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьСписокЗадач --url "b24-ar17wx.bitrix24.by" --filter %filter% --offset %offset% --token "b9df7366006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

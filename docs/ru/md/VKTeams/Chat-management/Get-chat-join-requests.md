@@ -33,14 +33,26 @@ sidebar_position: 7
 
     Результат = OPI_VKTeams.ПолучитьЗапросыВступленияЧата(Токен, IDЧата);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПолучитьЗапросыВступленияЧата --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПолучитьЗапросыВступленияЧата --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПолучитьЗапросыВступленияЧата ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

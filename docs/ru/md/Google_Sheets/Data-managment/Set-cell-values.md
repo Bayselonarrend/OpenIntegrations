@@ -26,8 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Книга  = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+    Токен  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Книга  = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
     Лист   = "Лист2";
 
     СоответствиеЗначений = Новый Соответствие;
@@ -42,14 +42,30 @@ sidebar_position: 1
 
     Результат = OPI_GoogleSheets.УстановитьЗначенияЯчеек(Токен, Книга, СоответствиеЗначений, Лист);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gsheets УстановитьЗначенияЯчеек --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --data %data% --sheetname "Лист2" --dim %dim%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gsheets УстановитьЗначенияЯчеек --token "***" \
+              --spreadsheet "1uEI_ZOtSAh0GjXirtipg57MUMetFmf1OUElyN8o-UPg" \
+              --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" \
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets УстановитьЗначенияЯчеек ^
+              --token "***" ^
+              --spreadsheet "1uEI_ZOtSAh0GjXirtipg57MUMetFmf1OUElyN8o-UPg" ^
+              --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" ^
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -25,14 +25,9 @@ sidebar_position: 1
     Parameters = GetVKParameters();
     Result     = OPI_VK.GetPropertyList(Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetPropertyList --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 [

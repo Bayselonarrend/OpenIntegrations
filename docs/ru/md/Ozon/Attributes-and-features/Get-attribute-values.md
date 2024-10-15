@@ -41,14 +41,9 @@ sidebar_position: 3
 
     Результат = OPI_Ozon.ПолучитьЗначенияХарактеристики(IDКлиента, КлючAPI, IDКатегории, IDТипа, IDХарактеристики);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьЗначенияХарактеристики --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --attributeid %attributeid% --start %start% --lang %lang%
 
-```
+
 
 ```json title="Результат"
 {

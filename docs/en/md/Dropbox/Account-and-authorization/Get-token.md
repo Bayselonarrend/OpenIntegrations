@@ -30,14 +30,9 @@ sidebar_position: 2
 
     Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetToken --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
-
-```
 
 ```json title="Result"
 {

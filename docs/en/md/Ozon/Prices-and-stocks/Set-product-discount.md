@@ -36,14 +36,9 @@ Method at API documentation: [post /v1/product/update/discount](https://docs.ozo
 
     Result = OPI_Ozon.SetProductDiscount(ClientID, APIKey, ProductID, Discount);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon SetProductDiscount --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --discount %discount%
-
-```
 
 ```json title="Result"
 {

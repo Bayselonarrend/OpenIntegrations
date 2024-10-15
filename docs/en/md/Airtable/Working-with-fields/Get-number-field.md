@@ -25,14 +25,9 @@ sidebar_position: 4
 ```bsl title="Code example"
     Result = OPI_Airtable.GetNumberField("Number");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetNumberField --title "Number" --precision "0"
-
-```
 
 ```json title="Result"
 {

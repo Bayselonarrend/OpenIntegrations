@@ -31,14 +31,9 @@ sidebar_position: 2
 
     Результат = OPI_Neocities.ПолучитьТокен(Логин, Пароль);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities ПолучитьТокен --login "2athenaeum" --password "Rit..."
 
-```
+
 
 ```json title="Результат"
 {

@@ -26,14 +26,9 @@ sidebar_position: 4
 
     Result = OPI_VK.GetAdvertisingCategoryList(Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetAdvertisingCategoryList --auth %auth%
-
-```
 
 ```json title="Result"
 {

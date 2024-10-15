@@ -31,18 +31,34 @@ sidebar_position: 11
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDЧата      = "461699897";
     IDКанала    = "@testsichee";
-    IDСообщения = "9761";
+    IDСообщения = "9480";
 
     Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ПереслатьСообщение --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ПереслатьСообщение --token "***" \
+              --from "@testsichee" \
+              --to "461699897" \
+              --message "9781"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПереслатьСообщение ^
+              --token "***" ^
+              --from "@testsichee" ^
+              --to "461699897" ^
+              --message "9781"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

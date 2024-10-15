@@ -25,14 +25,24 @@ sidebar_position: 2
     Токен     = "523b58ba82afffaa-7ef3b426...";
     Результат = OPI_Viber.ПолучитьИнформациюОКанале(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ПолучитьИнформациюОКанале --token %token%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ПолучитьИнформациюОКанале --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ПолучитьИнформациюОКанале ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

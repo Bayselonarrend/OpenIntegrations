@@ -27,7 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка);
 
     B64Картинка = ПолучитьBase64СтрокуИзДвоичныхДанных(Картинка);
@@ -51,7 +51,7 @@ sidebar_position: 1
     Результат = OPI_Bitrix24.СоздатьЧат(URL, СтруктураЧата);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
 
     СтруктураЧата = Новый Структура;
     СтруктураЧата.Вставить("TYPE"       , "CHAT");
@@ -60,14 +60,9 @@ sidebar_position: 1
 
     Результат = OPI_Bitrix24.СоздатьЧат(URL, СтруктураЧата, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 СоздатьЧат --url %url% --fields %fields% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

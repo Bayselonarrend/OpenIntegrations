@@ -29,7 +29,7 @@ sidebar_position: 3
     Parameters = GetVKParameters();
 
     Name   = "TestCollection";
-    Image  = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Main   = True;
     Hidden = False;
 
@@ -39,14 +39,9 @@ sidebar_position: 3
         , Hidden
         , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateProductCollection --title "TestCollection" --picture "https://openintegrations.dev/test_data/picture.jpg" --main "True" --hidden "False" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

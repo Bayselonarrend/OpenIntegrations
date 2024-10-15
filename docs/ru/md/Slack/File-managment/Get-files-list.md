@@ -29,14 +29,24 @@ sidebar_position: 1
 
     Результат = OPI_Slack.ПолучитьСписокФайлов(Токен, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокФайлов --token %token% --channel "C123456" --page "1"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьСписокФайлов --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьСписокФайлов ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

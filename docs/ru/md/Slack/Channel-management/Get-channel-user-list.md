@@ -25,18 +25,30 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07R7MSSPDM";
+    Канал = "C07RTRYK673";
 
     Результат = OPI_Slack.ПолучитьСписокПользователейКанала(Токен, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокПользователейКанала --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьСписокПользователейКанала --token "***" \
+              --channel "C07SJFNT9SL"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьСписокПользователейКанала ^
+              --token "***" ^
+              --channel "C07SJFNT9SL"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,26 +29,21 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЧата  = "1006";
+    IDЧата  = "994";
 
-    Картинка = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "21750a67006e9f06006b12e400000001000...";
-    IDЧата         = "1008";
+    Токен          = "49e20867006e9f06006b12e400000001000...";
+    IDЧата         = "996";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ИзменитьКартинкуЧата --url %url% --chat %chat% --picture %picture% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

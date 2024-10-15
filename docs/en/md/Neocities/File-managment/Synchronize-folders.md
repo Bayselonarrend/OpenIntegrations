@@ -36,14 +36,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.SynchronizeFolders(Token, LocalFolder, RemoteFolder);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities SynchronizeFolders --token "7419cd51de4037f7..." --local %local% --remote %remote%
-
-```
 
 ```json title="Result"
 {

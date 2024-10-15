@@ -24,14 +24,9 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Результат = OPI_Bitrix24.ПолучитьСтруктуруФильтраЛидов();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьСтруктуруФильтраЛидов --empty %empty%
 
-```
+
 
 ```json title="Результат"
 {

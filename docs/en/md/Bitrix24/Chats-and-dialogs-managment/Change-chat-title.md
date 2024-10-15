@@ -29,28 +29,23 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "1006";
+    ChatID = "994";
 
     Title = "New chat title";
 
     Result = OPI_Bitrix24.ChangeChatTitle(URL, ChatID, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    ChatID = "1008";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    ChatID = "996";
 
     Title = "Another title";
 
     Result = OPI_Bitrix24.ChangeChatTitle(URL, ChatID, Title, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 ChangeChatTitle --url "b24-ar17wx.bitrix24.by" --chat "452" --title "Another title" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

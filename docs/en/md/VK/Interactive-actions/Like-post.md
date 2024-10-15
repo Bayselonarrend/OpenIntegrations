@@ -25,18 +25,13 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    PostID     = "4712";
+    PostID     = "4578";
 
     Result = OPI_VK.LikePost(PostID, , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk LikePost --post "3356" --wall %wall% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

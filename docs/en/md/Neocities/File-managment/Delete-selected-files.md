@@ -35,14 +35,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.DeleteSelectedFiles(Token, Paths);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities DeleteSelectedFiles --token "7419cd51de4037f7..." --paths %paths%
-
-```
 
 ```json title="Result"
 {

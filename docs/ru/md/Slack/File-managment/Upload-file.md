@@ -28,7 +28,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
     Канал = "C06UFNUTKUL";
-    Файл  = "https://api.athenaeum.digital/test_data/document.docx"; // URL, Двоичные данные или Путь к файлу
+    Файл  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Двоичные данные или Путь к файлу
 
     ИмяФайла     = "megadoc.docx";
     Заголовок    = "Новый файл";
@@ -37,14 +37,32 @@ sidebar_position: 2
 
     Результат = OPI_Slack.ЗагрузитьФайл(Токен, Файл, ИмяФайла, Заголовок, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ЗагрузитьФайл --token %token% --file %file% --filename "megadoc.docx" --title %title% --channel "C123456"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ЗагрузитьФайл --token "***" \
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+              --filename "megadoc.docx" \
+              --title "Новый файл" \
+              --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ЗагрузитьФайл ^
+              --token "***" ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+              --filename "megadoc.docx" ^
+              --title "Новый файл" ^
+              --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

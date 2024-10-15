@@ -28,14 +28,9 @@ sidebar_position: 2
 
     Result = OPI_Notion.GetUserData(Token, User);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion GetUserData --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
-
-```
 
 ```json title="Result"
 {

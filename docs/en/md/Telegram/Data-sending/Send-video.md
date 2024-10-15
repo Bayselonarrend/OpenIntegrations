@@ -34,7 +34,7 @@ Method at API documentation: [sendVideo](https://core.telegram.org/bots/api#send
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Video     = "https://api.athenaeum.digital/test_data/video.mp4";
+    Video     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
 
     VideoPath = GetTempFileName("mp4");
     CopyFile(Video, VideoPath);
@@ -47,14 +47,9 @@ Method at API documentation: [sendVideo](https://core.telegram.org/bots/api#send
 
     Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendVideo --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --video "https://openintegrations.dev/test_data/video.mp4" --keyboard %keyboard% --parsemode %parsemode%
-
-```
 
 ```json title="Result"
 {

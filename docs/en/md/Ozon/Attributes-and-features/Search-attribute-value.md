@@ -46,14 +46,9 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
         , AttributeID
         , Value);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon SearchAttributeValue --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --attributeid %attributeid% --value %value%
-
-```
 
 ```json title="Result"
 {

@@ -28,14 +28,9 @@ sidebar_position: 2
 
     Result = OPI_Slack.CloseDialog(Token, Dialog);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack CloseDialog --token %token% --conv "D06UAKK1C6R"
-
-```
 
 ```json title="Result"
 {

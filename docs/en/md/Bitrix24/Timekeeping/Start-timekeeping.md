@@ -36,21 +36,16 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
     Hour = 3600;
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
+    Token  = "49e20867006e9f06006b12e400000001000...";
     UserID = 1;
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
     Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 StartTimekeeping --url "b24-ar17wx.bitrix24.by" --userid "1" --time %time% --report "Late" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

@@ -30,14 +30,9 @@ sidebar_position: 4
   
   Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk WriteInDiscussion --topic "51798392" --text %text% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

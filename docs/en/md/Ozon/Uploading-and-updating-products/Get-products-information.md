@@ -43,14 +43,9 @@ Specify the minimum price of the product after all promotions have been applied 
 
     Result = OPI_Ozon.GetProductsInformation(ClientID, APIKey, , , Article);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductsInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
-
-```
 
 ```json title="Result"
 {

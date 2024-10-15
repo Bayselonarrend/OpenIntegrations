@@ -33,7 +33,7 @@ Method at API documentation: [crm.lead.list](https://dev.1c-bitrix.ru/rest_help/
     Result = OPI_Bitrix24.GetLeadsList(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Filter = New Structure;
     Filter.Insert("TITLE"    , "MegaClient");
@@ -41,14 +41,9 @@ Method at API documentation: [crm.lead.list](https://dev.1c-bitrix.ru/rest_help/
 
     Result = OPI_Bitrix24.GetLeadsList(URL, Filter, , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetLeadsList --url "b24-ar17wx.bitrix24.by" --filter %filter% --offset %offset% --token "ec4dc366006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

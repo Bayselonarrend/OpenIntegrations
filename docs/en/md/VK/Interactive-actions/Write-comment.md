@@ -27,19 +27,14 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
     Text       = "NewComment";
-    PostID     = "4712";
+    PostID     = "4578";
     WallID     = Parameters["owner_id"];
 
     Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk WriteComment --post "3356" --wall "Parameters[owner_id]" --text %text% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

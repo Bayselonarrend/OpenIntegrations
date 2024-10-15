@@ -29,18 +29,32 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDКанала    = "@testsichee";
-    IDСообщения = "9761";
+    IDСообщения = "9480";
 
     Результат = OPI_Telegram.ОткрепитьСообщение(Токен, IDКанала, IDСообщения);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОткрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОткрепитьСообщение --token "***" \
+              --chat "@testsichee" \
+              --message "9781"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОткрепитьСообщение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --message "9781"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

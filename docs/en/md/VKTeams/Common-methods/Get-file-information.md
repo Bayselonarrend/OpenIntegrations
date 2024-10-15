@@ -27,18 +27,13 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
 
 ```bsl title="Code example"
     Token  = "001.3501506236.091...";
-    FileID = "XG1vEIB5FTX4tJi9IUA6Gg670d55381bd";
+    FileID = "vaFI6GPPHMw21IwjOd8bQ76708d5441bd";
 
     Result = OPI_VKTeams.GetFileInformation(Token, FileID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams GetFileInformation --token "001.3501506236.091..." --fileid "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd"
-
-```
 
 ```json title="Result"
 {

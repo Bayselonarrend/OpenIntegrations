@@ -38,14 +38,9 @@ If dictionary_id has a value of 0, the attribute has no nested directories. If t
 
     Result = OPI_Ozon.GetCategoryAttributes(ClientID, APIKey, CategoryID, TypeID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetCategoryAttributes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --lang %lang%
-
-```
 
 ```json title="Result"
 {

@@ -33,7 +33,7 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен       = "001.3501506236.091...";
     IDЧата      = "689203963@chat.agent";
-    IDСообщения = "7425684917876428136";
+    IDСообщения = "7424418276186262625";
     Текст       = "Новый текст сообщения";
 
     Результат = OPI_VKTeams.ИзменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст);
@@ -43,14 +43,32 @@ sidebar_position: 4
 
     Результат = OPI_VKTeams.ИзменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст, Разметка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ИзменитьТекстСообщения --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ИзменитьТекстСообщения --token "***" \
+              --chatid "689203963@chat.agent" \
+              --messageid "7425884578021117348" \
+              --text "<b>Новый полужирный текст сообщения</b>" \
+              --parsemod "HTML"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ИзменитьТекстСообщения ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --messageid "7425884578021117348" ^
+              --text "<b>Новый полужирный текст сообщения</b>" ^
+              --parsemod "HTML"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

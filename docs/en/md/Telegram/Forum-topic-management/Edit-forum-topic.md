@@ -31,20 +31,15 @@ Method at API documentation: [editForumTopic](https://core.telegram.org/bots/api
 ```bsl title="Code example"
     Token   = "6129457865:AAFyzNYOAFbu...";
     Chat    = "-1001971186208";
-    Topic   = "5543";
+    Topic   = "5429";
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 
     Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram EditForumTopic --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic% --title %title% --icon %icon%
-
-```
 
 ```json title="Result"
 {

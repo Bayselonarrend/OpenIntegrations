@@ -41,14 +41,32 @@ sidebar_position: 4
 
     Результат  = OPI_Viber.ОтправитьКонтакт(Токен, Имя, Телефон, IDПользователя, ОтправкаВКанал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьКонтакт --token %token% --name %name% --phone %phone% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьКонтакт --token "***" \
+              --name "Петр Петров" \
+              --phone "+123456789" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьКонтакт ^
+              --token "***" ^
+              --name "Петр Петров" ^
+              --phone "+123456789" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

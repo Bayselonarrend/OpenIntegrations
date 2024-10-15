@@ -31,14 +31,9 @@ Method at API documentation: [setWebhook](https://core.telegram.org/bots/api#set
 
     Result = OPI_Telegram.SetWebhook(Token, URL);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SetWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
-
-```
 
 ```json title="Result"
 {

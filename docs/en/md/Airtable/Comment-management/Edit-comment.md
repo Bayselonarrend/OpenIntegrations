@@ -28,24 +28,19 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base    = "appESy99HYCLbuWlV";
-    Table   = "tbl5gZLQ8i5xKuVTy";
-    Record  = "recHqUT4ruWn8KnYi";
-    Comment = "comc3oQtvx4mn0pdu";
+    Base    = "appmy5B6qi09E4wrF";
+    Table   = "tblYwj7Cnw6w3FGWh";
+    Record  = "recnOWHAPOyCl0kUj";
+    Comment = "comNQ9mG1pWpJqgif";
 
     Text   = "Test comment (change.)";
     Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);
 
     OPI_TestDataRetrieval.Check_ATText(Result, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable EditComment --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment "comL1oGEDJvIQlMs1" --text "Test comment (change.)"
-
-```
 
 ```json title="Result"
 {

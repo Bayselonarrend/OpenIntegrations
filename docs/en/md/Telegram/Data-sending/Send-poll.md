@@ -44,14 +44,9 @@ Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendp
 
     Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendPoll --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question "What's your favorite color?" --options %options% --anonymous %anonymous%
-
-```
 
 ```json title="Result"
 {

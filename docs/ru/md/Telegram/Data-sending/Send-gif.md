@@ -34,7 +34,7 @@ sidebar_position: 6
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Гифка    = "https://api.athenaeum.digital/test_data/animation.gif";
+    Гифка    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif";
 
     ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
     КопироватьФайл(Гифка, ГифкаПуть);
@@ -47,14 +47,30 @@ sidebar_position: 6
 
     Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьГифку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьГифку --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --gif "C:\Users\Administrator\AppData\Local\Temp\nywpil3l3m4.gif"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьГифку ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --gif "C:\Users\Administrator\AppData\Local\Temp\nywpil3l3m4.gif"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

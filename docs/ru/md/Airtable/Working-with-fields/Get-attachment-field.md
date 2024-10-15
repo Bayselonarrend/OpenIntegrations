@@ -24,14 +24,24 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеВложения("Вложение");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеВложения --title "Вложение"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеВложения --title "Вложение"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеВложения ^
+              --title "Вложение"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

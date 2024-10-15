@@ -28,23 +28,18 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appESy99HYCLbuWlV";
-    Table = "tbl5gZLQ8i5xKuVTy";
-    Field = "fldzPMAQ2obgGcvxG";
+    Base  = "appmy5B6qi09E4wrF";
+    Table = "tblYwj7Cnw6w3FGWh";
+    Field = "fldZ57FyTakwDzWnh";
 
     Name        = String(New UUID) + "(change.)";
     Description = "New description";
 
     Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable ModifyField --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description %description%
-
-```
 
 ```json title="Result"
 {

@@ -26,14 +26,9 @@ sidebar_position: 3
     Token  = "xoxb-6965308400114-696804637...";
     Result = OPI_Slack.GetUserList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetUserList --token %token% --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

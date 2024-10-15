@@ -45,14 +45,9 @@ sidebar_position: 7
 
     Результат = OPI_Ozon.СоздатьТоварыПоOzonID(IDКлиента, КлючAPI, СтруктураТовара);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon СоздатьТоварыПоOzonID --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
 
-```
+
 
 ```json title="Результат"
 {

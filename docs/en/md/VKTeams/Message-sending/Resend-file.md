@@ -31,19 +31,14 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
 ```bsl title="Code example"
     Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "XG1vEIB5FTX4tJi9IUA6Gg670d55381bd";
+    FileID = "vaFI6GPPHMw21IwjOd8bQ76708d5441bd";
     Text   = "File caption";
 
     Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams ResendFile --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --fileid "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd" --text "File caption" --filename %filename% --parsemod %parsemod%
-
-```
 
 ```json title="Result"
 {

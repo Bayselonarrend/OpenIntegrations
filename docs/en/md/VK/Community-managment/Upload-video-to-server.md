@@ -28,20 +28,15 @@ sidebar_position: 10
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Video       = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary Data or Path to file
+    Video       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Binary Data or Path to file
     Name        = "NewVideo";
     Description = "Video description";
 
     Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk UploadVideoToServer --file "https://openintegrations.dev/test_data/video.mp4" --title %title% --description "Video description" --album %album% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

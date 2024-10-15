@@ -25,19 +25,14 @@ sidebar_position: 7
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
     User    = "U06UABH3APP";
 
     Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack InviteUsersToChannel --token %token% --channel "C070VPMKN8J" --users %users%
-
-```
 
 ```json title="Result"
 {

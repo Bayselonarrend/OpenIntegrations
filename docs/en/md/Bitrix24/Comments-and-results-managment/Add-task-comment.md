@@ -29,27 +29,22 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2450";
+    TaskID = "2420";
 
     Text = "Task impossible, let's split up";
 
     Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Text = "Task uninpossible, don't split up";
 
     Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 AddTaskComment --url "b24-ar17wx.bitrix24.by" --task "1082" --text "Task uninpossible, don't split up" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

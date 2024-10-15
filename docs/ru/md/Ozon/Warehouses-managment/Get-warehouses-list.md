@@ -31,14 +31,9 @@ sidebar_position: 1
 
     Результат = OPI_Ozon.ПолучитьСписокСкладов(IDКлиента, КлючAPI);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьСписокСкладов --clientid "2128753" --apikey "7cc90d26-33e4-499b..."
 
-```
+
 
 ```json title="Результат"
 {

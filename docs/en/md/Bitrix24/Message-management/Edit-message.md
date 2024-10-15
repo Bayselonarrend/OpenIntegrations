@@ -30,15 +30,15 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    MessageID = "18126";
+    MessageID = "17908";
 
     Text = "New message text";
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
-    MessageID = "18128";
+    Token     = "49e20867006e9f06006b12e400000001000...";
+    MessageID = "17910";
 
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -49,14 +49,9 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 EditMessage --url "b24-ar17wx.bitrix24.by" --message "8684" --text %text% --blocks %blocks% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

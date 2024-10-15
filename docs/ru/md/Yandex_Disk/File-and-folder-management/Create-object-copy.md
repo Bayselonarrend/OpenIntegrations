@@ -26,19 +26,35 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Оригинал  = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
+    Оригинал  = "/1b790f57-3b63-4ec1-a7c0-307145bba171.png";
     Путь      = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.СоздатьКопиюОбъекта(Токен, Оригинал, Путь, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk СоздатьКопиюОбъекта --token "y0_AgAAAABdylaOAA..." --from "/Альпака.png" --to "/Альпака (копия).png" --rewrite %rewrite%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk СоздатьКопиюОбъекта --token "***" \
+              --from "/a9426fbb-8e40-48c5-ad9f-82b47a8faad1.png" \
+              --to "/b3eb9639-b28a-43ca-ba27-ff756234f627.png" \
+              --rewrite true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk СоздатьКопиюОбъекта ^
+              --token "***" ^
+              --from "/a9426fbb-8e40-48c5-ad9f-82b47a8faad1.png" ^
+              --to "/b3eb9639-b28a-43ca-ba27-ff756234f627.png" ^
+              --rewrite true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

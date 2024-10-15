@@ -34,7 +34,7 @@ sidebar_position: 8
     Токен           = "001.3501506236.091...";
     IDЧата          = "AoLI0egLWBSLR1Ngn2w";
     IDЧатаИсточника = "689203963@chat.agent";
-    IDСообщения     = "7425684917876428136";
+    IDСообщения     = "7424418276186262625";
 
     Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата);
 
@@ -42,14 +42,32 @@ sidebar_position: 8
 
     Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПереслатьСообщение --token %token% --message %message% --fromid %fromid% --chatid %chatid% --text %text%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПереслатьСообщение --token "***" \
+              --messageid "7425884578021117348" \
+              --fromid "689203963@chat.agent" \
+              --chatid "AoLI0egLWBSLR1Ngn2w" \
+              --text "Дополнительный текст"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПереслатьСообщение ^
+              --token "***" ^
+              --messageid "7425884578021117348" ^
+              --fromid "689203963@chat.agent" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w" ^
+              --text "Дополнительный текст"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -25,14 +25,9 @@ sidebar_position: 1
     Token  = "xoxb-6965308400114-696804637...";
     Result = OPI_Slack.GetBotInformation(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetBotInformation --token %token%
-
-```
 
 ```json title="Result"
 {

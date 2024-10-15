@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Расширение = "docx";
-    URL        = "https://api.athenaeum.digital/test_data/document.docx";
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";
@@ -42,14 +42,32 @@ sidebar_position: 3
 
     Результат  = OPI_Viber.ОтправитьФайл(Токен, URL, IDПользователя, ОтправкаВКанал, Расширение);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьФайл --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьФайл --token "***" \
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true \
+              --ext "docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьФайл ^
+              --token "***" ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true ^
+              --ext "docx"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -30,8 +30,8 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЧата      = "1006";
-    Файл        = "https://api.athenaeum.digital/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
+    IDЧата      = "994";
+    Файл        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание    = "Очень важный файл";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата);
@@ -43,8 +43,8 @@ sidebar_position: 5
     Результат = OPI_Bitrix24.ОтправитьФайл(URL, IDЧата, IDФайла, Описание);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "21750a67006e9f06006b12e400000001000...";
-    IDЧата = "1008";
+    Токен  = "49e20867006e9f06006b12e400000001000...";
+    IDЧата = "996";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата, Токен);
     IDКаталога = Каталог["result"]["ID"];
@@ -54,14 +54,9 @@ sidebar_position: 5
 
     Результат = OPI_Bitrix24.ОтправитьФайл(URL, IDЧата, IDФайла, Описание, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ОтправитьФайл --url %url% --chat %chat% --fileid %fileid% --description %description% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

@@ -24,18 +24,13 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/b3327332-137b-454c-be37-06cff128756c.png";
+    Path  = "/13a2ddbe-89a7-4106-a973-f105aa5412fd.png";
 
     Result = OPI_YandexDisk.GetObject(Token, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk GetObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
-
-```
 
 ```json title="Result"
 {

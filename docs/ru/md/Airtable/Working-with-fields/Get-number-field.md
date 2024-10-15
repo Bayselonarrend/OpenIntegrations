@@ -25,14 +25,24 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеНомера("Номер");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеНомера --title "Номер" --precision "0"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеНомера --title "bf234b4a-f391-4950-8fd0-90e8817e19e4"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеНомера ^
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

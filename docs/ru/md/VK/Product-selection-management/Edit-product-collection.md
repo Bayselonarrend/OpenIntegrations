@@ -30,7 +30,7 @@ sidebar_position: 4
     Параметры = ПолучитьПараметрыВК();
 
     Название  = "Измененная подборка";
-    Подборка  = "130";
+    Подборка  = "125";
 
     Результат  = OPI_VK.ИзменитьПодборкуТоваров(Название, Подборка, , , , Параметры);
 
@@ -38,14 +38,28 @@ sidebar_position: 4
 
     OPI_Инструменты.Пауза(5);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ИзменитьПодборкуТоваров --title %title% --sel %sel% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ИзменитьПодборкуТоваров --title "Измененная подборка" \
+              --sel 130 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ИзменитьПодборкуТоваров ^
+              --title "Измененная подборка" ^
+              --sel 130 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

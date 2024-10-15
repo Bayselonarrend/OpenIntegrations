@@ -28,24 +28,19 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 ```bsl title="Code example"
     URL          = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DepartmentID = "614";
+    DepartmentID = "602";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
 
     URL          = "b24-ar17wx.bitrix24.by";
-    Token        = "21750a67006e9f06006b12e400000001000...";
-    DepartmentID = "612";
+    Token        = "49e20867006e9f06006b12e400000001000...";
+    DepartmentID = "600";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 DeleteDepartment --url "b24-ar17wx.bitrix24.by" --depid "68" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

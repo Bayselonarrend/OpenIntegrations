@@ -24,8 +24,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token     = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Image     = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Token     = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Image     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Description = OPI_GoogleDrive.GetFileDescription();
@@ -33,14 +33,9 @@ sidebar_position: 4
 
     Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive UploadFile --token %token% --file %file% --props %props%
-
-```
 
 ```json title="Result"
 {

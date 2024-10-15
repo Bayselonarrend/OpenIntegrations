@@ -27,21 +27,16 @@ sidebar_position: 5
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Product = "9756133";
+    Product = "9733388";
 
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");
 
     Result = OPI_VK.EditProduct(Product, ProductDescription, , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk EditProduct --item "9372711" --product %product% --sel %sel% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

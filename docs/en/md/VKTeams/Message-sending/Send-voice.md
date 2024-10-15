@@ -34,9 +34,9 @@ If you want the client to display this file as a playable voice message, it must
 ```bsl title="Code example"
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7425684917876428136";
+    ReplyID = "7424418276186262625";
 
-    File     = "https://api.athenaeum.digital/test_data/song.m4a" ; // URL
+    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
     CopyFile(File, FilePath);
@@ -49,14 +49,9 @@ If you want the client to display this file as a playable voice message, it must
 
     Result = OPI_VKTeams.SendVoice(Token, ChatID, FileBD);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams SendVoice --token "001.3501506236.091..." --chatid "689203963@chat.agent" --file "https://openintegrations.dev/test_data/song.m4a  // URL" --type %type% --reply "7402287649739767956" --keyboard %keyboard%
-
-```
 
 ```json title="Result"
 {

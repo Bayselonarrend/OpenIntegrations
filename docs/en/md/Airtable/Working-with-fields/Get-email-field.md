@@ -24,14 +24,9 @@ sidebar_position: 8
 ```bsl title="Code example"
     Result = OPI_Airtable.GetEmailField("Email");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetEmailField --title "Email"
-
-```
 
 ```json title="Result"
 {

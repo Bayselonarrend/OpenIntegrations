@@ -35,14 +35,9 @@ Method at API documentation: [closeForumTopic](https://core.telegram.org/bots/ap
   
   Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram CloseForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
-
-```
 
 ```json title="Result"
 {

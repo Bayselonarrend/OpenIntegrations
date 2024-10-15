@@ -24,14 +24,9 @@ sidebar_position: 3
 ```bsl title="Code example"
     Result = OPI_Airtable.GetStringField("String");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetStringField --title "String"
-
-```
 
 ```json title="Result"
 {

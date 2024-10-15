@@ -24,20 +24,15 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
-    Version = "6246a08b887a8bd841553";
-    Token   = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Version = "6242e6c9daae7bd841553";
+    Token   = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Path    = "/New/pic.png";
 
     Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox RestoreObjectToVersion --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path% --rev "61e7b3e423325bd841553"
-
-```
 
 ```json title="Result"
 {

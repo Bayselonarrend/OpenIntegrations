@@ -26,8 +26,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token          = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Calendar       = "2cd4d2b5dc7a898d4f1d65956b5ccca32841aff4a1603b373ff14db442ac9fab@group.calendar.google.com";
+    Token          = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Calendar       = "a3d6595737662df84b35deadee083703bcebd61e5abe13974bda474f6d19a7cd@group.calendar.google.com";
     PrimaryColor   = "#000000";
     SecondaryColor = "#ffd800";
     Hidden         = False;
@@ -38,14 +38,9 @@ sidebar_position: 5
         , SecondaryColor
         , Hidden);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gcalendar EditListCalendar --token %token% --calendar %calendar% --primary %primary% --secondary %secondary% --hidden %hidden%
-
-```
 
 ```json title="Result"
 {

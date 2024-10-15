@@ -24,18 +24,13 @@ sidebar_position: 6
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    AlbumID    = "306093980";
+    AlbumID    = "306073188";
 
     Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeleteAlbum --album "305187504" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

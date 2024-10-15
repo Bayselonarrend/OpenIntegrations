@@ -24,14 +24,24 @@ sidebar_position: 1
 ```bsl title="Пример кода"
     Результат = OPI_GoogleCalendar.ПолучитьОписаниеСобытия();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gcalendar ПолучитьОписаниеСобытия
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gcalendar ПолучитьОписаниеСобытия --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gcalendar ПолучитьОписаниеСобытия ^
+              --empty false
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

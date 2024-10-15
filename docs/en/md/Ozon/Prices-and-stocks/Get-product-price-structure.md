@@ -27,14 +27,9 @@ The description of the filter fields can be found on the documentation page for 
 ```bsl title="Code example"
     Result = OPI_Ozon.GetProductPriceStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductPriceStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

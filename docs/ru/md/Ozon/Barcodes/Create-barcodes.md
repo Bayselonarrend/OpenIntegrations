@@ -33,18 +33,13 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     IDКлиента  = "2128753";
     КлючAPI    = "7cc90d26-33e4-499b...";
-    IDТовара   = "1220696576";
+    IDТовара   = "1218931806";
 
     Результат = OPI_Ozon.СоздатьШтрихкоды(IDКлиента, КлючAPI, IDТовара);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon СоздатьШтрихкоды --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
 
-```
+
 
 ```json title="Результат"
 {

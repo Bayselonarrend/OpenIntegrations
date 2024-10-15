@@ -33,14 +33,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.GetFilesList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities GetFilesList --token "7419cd51de4037f7..." --path %path%
-
-```
 
 ```json title="Result"
 {

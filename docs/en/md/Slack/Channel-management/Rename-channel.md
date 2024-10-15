@@ -25,19 +25,14 @@ sidebar_position: 13
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
     Name    = "testconv" + String(New UUID);
 
     Result = OPI_Slack.RenameChannel(Token, Channel, Name);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack RenameChannel --token %token% --channel "C070VPMKN8J" --title %title%
-
-```
 
 ```json title="Result"
 {

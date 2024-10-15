@@ -29,25 +29,20 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID    = "2450";
-    CommentID = "6054";
+    TaskID    = "2420";
+    CommentID = "5988";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
-    CommentID = "6056";
+    Token     = "49e20867006e9f06006b12e400000001000...";
+    CommentID = "5990";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 DeleteTaskComment --url "b24-ar17wx.bitrix24.by" --task "1082" --comment "2936" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

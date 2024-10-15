@@ -1,9 +1,9 @@
 ﻿    IDКлиента = "2128753";
     КлючAPI   = "7cc90d26-33e4-499b...";
-    IDТовара  = "1220696576";
+    IDТовара  = "1218931806";
 
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     МаркетинговыйЦвет = "GREEN";
 

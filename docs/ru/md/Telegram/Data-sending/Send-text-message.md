@@ -39,14 +39,30 @@ sidebar_position: 1
 
     Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDКанала, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьТекстовоеСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьТекстовоеСообщение --token "***" \
+              --chat "@testsichee" \
+              --text "Текст %%F0%%9F%%A%5%9D и emoji \(10%%\)" \
+              --parsemode "MarkdownV2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьТекстовоеСообщение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Текст %%F0%%9F%%A%5%9D и emoji \(10%%\)" ^
+              --parsemode "MarkdownV2"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -30,14 +30,9 @@ sidebar_position: 3
 
     Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk GetPublishedObjectsList --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset%
-
-```
 
 ```json title="Result"
 {

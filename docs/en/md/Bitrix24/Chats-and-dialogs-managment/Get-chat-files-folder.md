@@ -28,24 +28,19 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "1006";
+    ChatID = "994";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    ChatID = "1008";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    ChatID = "996";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetChatFilesFolder --url "b24-ar17wx.bitrix24.by" --chat "452" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

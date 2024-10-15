@@ -27,14 +27,9 @@ sidebar_position: 5
 
     Result = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk ShortenLink --url %url% --auth %auth%
-
-```
 
 ```json title="Result"
 "https://vk.cc/ctL1sM"

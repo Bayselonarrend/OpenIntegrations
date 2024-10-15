@@ -29,14 +29,9 @@ sidebar_position: 7
   
   Result = OPI_VK.DeleteSelection(Selection, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeleteSelection --sel "125" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

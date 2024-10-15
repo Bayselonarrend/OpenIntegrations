@@ -28,20 +28,36 @@ sidebar_position: 10
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
 
-    Видео        = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные данные или Путь к файлу
+    Видео        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Двоичные данные или Путь к файлу
     Наименование = "Новое видео";
     Описание     = "Описание видео";
 
     Результат = OPI_VK.ЗагрузитьВидеоНаСервер(Видео, Наименование, Описание, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ЗагрузитьВидеоНаСервер --file %file% --title %title% --description %description% --album %album% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ЗагрузитьВидеоНаСервер --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" \
+              --title "Новое видео" \
+              --description "Описание видео" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ЗагрузитьВидеоНаСервер ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" ^
+              --title "Новое видео" ^
+              --description "Описание видео" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

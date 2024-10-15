@@ -28,14 +28,26 @@ sidebar_position: 2
 
     Результат = OPI_Twitter.СоздатьТекстовыйТвит(Текст, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint twitter СоздатьТекстовыйТвит --text %text% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint twitter СоздатьТекстовыйТвит --text "Тестовый твиттba79585d-fd72-4bf5-8c16-32da70569d89" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint twitter СоздатьТекстовыйТвит ^
+              --text "Тестовый твиттba79585d-fd72-4bf5-8c16-32da70569d89" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

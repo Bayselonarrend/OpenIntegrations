@@ -35,14 +35,28 @@ sidebar_position: 4
 
     Результат = OPI_VK.СоздатьОпрос(Вопрос, МассивВариантов, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Зеленый']" --picture %picture% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" \
+              --options "['Красный','Желтый','Зеленый']" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьОпрос ^
+              --question "Какой ваш любимый цвет?" ^
+              --options "['Красный','Желтый','Зеленый']" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,7 +29,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    UserID = "624";
+    UserID = "612";
     Email  = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -41,8 +41,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    UserID = "626";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    UserID = "614";
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
@@ -53,14 +53,9 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateUser --url "b24-ar17wx.bitrix24.by" --userid "80" --fields %fields% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

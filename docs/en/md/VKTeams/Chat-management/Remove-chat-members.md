@@ -33,14 +33,9 @@ Method at API documentation: [GET /chats/members/delete](https://teams.vk.com/bo
 
     Result = OPI_VKTeams.RemoveChatMembers(Token, ChatID, User);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams RemoveChatMembers --token %token% --chatid %chatid% --members %members%
-
-```
 
 ```json title="Result"
 {

@@ -32,14 +32,9 @@ sidebar_position: 1
     BlockData = OPI_Notion.ReturnBlock(Token, Block);
     Result    = OPI_Notion.CreateBlock(Token, Parent, BlockData);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion CreateBlock --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --block %block% --prev %prev%
-
-```
 
 ```json title="Result"
 {

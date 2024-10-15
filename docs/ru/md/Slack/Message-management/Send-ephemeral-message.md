@@ -29,20 +29,38 @@ sidebar_position: 2
     Токен        = "xoxb-6965308400114-696804637...";
     Канал        = "C06UFNUTKUL";
     Пользователь = "U06UABH3APP";
-    Картинка     = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Текст        = "Эфимерное сообщение";
 
     Блок      = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
     Результат = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, Текст, Пользователь, Блок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ОтправитьЭфемерноеСообщение --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ОтправитьЭфемерноеСообщение --token "***" \
+              --channel "C06UFNUTKUL" \
+              --text "Эфимерное сообщение" \
+              --user "U06UABH3APP" \
+              --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Картинка'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ОтправитьЭфемерноеСообщение ^
+              --token "***" ^
+              --channel "C06UFNUTKUL" ^
+              --text "Эфимерное сообщение" ^
+              --user "U06UABH3APP" ^
+              --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Картинка'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

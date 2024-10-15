@@ -29,18 +29,32 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Токен        = "6129457865:AAFyzNYOAFbu...";
     IDЧата       = "@testsichee";
-    IDСообщения  = "9761";
+    IDСообщения  = "9480";
 
     Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram УдалитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "5385"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram УдалитьСообщение --token "***" \
+              --chat "@testsichee" \
+              --message "9781"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram УдалитьСообщение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --message "9781"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -25,19 +25,14 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Тег       = "Важное";
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox УдалитьТег --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --tag %tag%
 
-```
+
 
 ```json title="Результат"
 {}

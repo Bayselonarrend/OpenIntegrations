@@ -27,21 +27,16 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base   = "appESy99HYCLbuWlV";
-    Table  = "tbl5gZLQ8i5xKuVTy";
-    Record = "recHqUT4ruWn8KnYi";
+    Base   = "appmy5B6qi09E4wrF";
+    Table  = "tblYwj7Cnw6w3FGWh";
+    Record = "recnOWHAPOyCl0kUj";
     Text   = "TestComment";
 
     Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable CreateComment --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --text "TestComment"
-
-```
 
 ```json title="Result"
 {

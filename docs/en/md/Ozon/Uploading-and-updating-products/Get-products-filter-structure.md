@@ -29,14 +29,9 @@ Related functions: GetProductList, GetProductsStocks, GetProductsPrices
 ```bsl title="Code example"
     Result = OPI_Ozon.GetProductsFilterStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductsFilterStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

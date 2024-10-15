@@ -24,20 +24,34 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен        = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Книга        = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+    Токен        = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Книга        = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
     Наименование = "Тестовая таблица (изм.)";
 
     Результат    = OPI_GoogleSheets.ИзменитьНаименованиеКниги(Токен, Книга, Наименование);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gsheets ИзменитьНаименованиеКниги --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --title "Тестовая таблица (изм.)"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gsheets ИзменитьНаименованиеКниги --token "***" \
+              --spreadsheet "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" \
+              --title "Тестовая таблица (изм.)"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets ИзменитьНаименованиеКниги ^
+              --token "***" ^
+              --spreadsheet "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" ^
+              --title "Тестовая таблица (изм.)"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

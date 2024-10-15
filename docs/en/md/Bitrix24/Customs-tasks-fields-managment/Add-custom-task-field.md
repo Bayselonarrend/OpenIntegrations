@@ -39,7 +39,7 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Type       = "string";
     Name       = "TEXT_FIELD";
@@ -49,14 +49,9 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 AddCustomTaskField --url "b24-ar17wx.bitrix24.by" --type "string" --fieldname "TEXT_FIELD" --externalid "BITRIX_TEXT_FIELD" --title "Text field" --label %label% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

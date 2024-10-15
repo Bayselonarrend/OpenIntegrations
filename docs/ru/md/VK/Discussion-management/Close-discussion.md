@@ -25,17 +25,31 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = "52595199";
+    ИДОбсуждения = "52583592";
     Результат    = OPI_VK.ЗакрытьОбсуждение(ИДОбсуждения, Ложь, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ЗакрытьОбсуждение --topic %topic% --remove %remove% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ЗакрытьОбсуждение --topic 52605638 \
+              --remove false \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ЗакрытьОбсуждение ^
+              --topic 52605638 ^
+              --remove false ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

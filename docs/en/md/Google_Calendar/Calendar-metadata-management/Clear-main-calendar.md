@@ -22,18 +22,13 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Token = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
 
     Result = OPI_GoogleCalendar.ClearMainCalendar(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gcalendar ClearMainCalendar --token %token%
-
-```
 
 ```json title="Result"
 null

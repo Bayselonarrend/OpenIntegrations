@@ -26,8 +26,8 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Товар1 = "9755489";
-    Товар2 = "9755490";
+    Товар1 = "9733392";
+    Товар2 = "9733393";
 
     МассивТоваров = Новый Массив;
     МассивТоваров.Добавить(Товар1);
@@ -35,14 +35,26 @@ sidebar_position: 7
 
     Результат = OPI_VK.СгруппироватьТовары(МассивТоваров, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СгруппироватьТовары --items %items% --sellgroup %sellgroup% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СгруппироватьТовары --items "[9774866,9774867]" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СгруппироватьТовары ^
+              --items "[9774866,9774867]" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

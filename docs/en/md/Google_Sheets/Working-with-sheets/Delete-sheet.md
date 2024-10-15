@@ -24,20 +24,15 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token       = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Spreadsheet = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
-    Sheet       = "1710472523";
+    Token       = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Spreadsheet = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
+    Sheet       = "501655435";
 
     Result = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gsheets DeleteSheet --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --sheet "1790807910"
-
-```
 
 ```json title="Result"
 {

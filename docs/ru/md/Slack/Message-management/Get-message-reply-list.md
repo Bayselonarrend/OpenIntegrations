@@ -27,18 +27,32 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Токен   = "xoxb-6965308400114-696804637...";
     Канал   = "C06UFNUTKUL";
-    Отметка = "1728823163.597989";
+    Отметка = "1728631618.679149";
 
     Результат = OPI_Slack.ПолучитьСписокОтветовНаСообщение(Токен, Канал, Отметка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокОтветовНаСообщение --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929" --cursor %cursor%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьСписокОтветовНаСообщение --token "***" \
+              --channel "C06UFNUTKUL" \
+              --stamp "1728973059.579729"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьСписокОтветовНаСообщение ^
+              --token "***" ^
+              --channel "C06UFNUTKUL" ^
+              --stamp "1728973059.579729"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -31,19 +31,35 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "XG1vEIB5FTX4tJi9IUA6Gg670d55381bd";
+    IDФайла  = "vaFI6GPPHMw21IwjOd8bQ76708d5441bd";
     Текст    = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПереслатьФайл --token %token% --chatid %chatid% --fileid %fileid% --text %text% --filename %filename% --parsemod %parsemod%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПереслатьФайл --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w" \
+              --fileid "xNjCbcI70PvUmFRTcD3t0c670e0acf1bd" \
+              --text "Подпись к файлу"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПереслатьФайл ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w" ^
+              --fileid "xNjCbcI70PvUmFRTcD3t0c670e0acf1bd" ^
+              --text "Подпись к файлу"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

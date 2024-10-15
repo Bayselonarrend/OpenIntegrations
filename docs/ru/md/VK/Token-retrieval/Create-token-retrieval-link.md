@@ -25,14 +25,24 @@ sidebar_position: 1
     Приложение = "51694790";
     Результат  = OPI_VK.СоздатьСсылкуПолученияТокена(Приложение);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьСсылкуПолученияТокена --app %app%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьСсылкуПолученияТокена --app "51694790"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьСсылкуПолученияТокена ^
+              --app "51694790"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 "https://oauth.vk.com/authorize?client_id=51694790&scope=offline,wall,groups,photos,stats,stories,ads,market,video&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html"

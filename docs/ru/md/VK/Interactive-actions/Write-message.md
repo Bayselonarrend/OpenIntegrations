@@ -39,14 +39,32 @@ sidebar_position: 3
     Клавиатура = OPI_VK.СформироватьКлавиатуру(МассивКнопок);
     Результат  = OPI_VK.НаписатьСообщение(Текст, IDПользователя, Communitytoken, Клавиатура, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk НаписатьСообщение --text %text% --user %user% --ct %ct% --keyboard %keyboard% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk НаписатьСообщение --text "Сообщение из автотеста" \
+              --user "657846756" \
+              --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" \
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk НаписатьСообщение ^
+              --text "Сообщение из автотеста" ^
+              --user "657846756" ^
+              --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" ^
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

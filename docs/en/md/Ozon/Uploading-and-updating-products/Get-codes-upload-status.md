@@ -33,14 +33,9 @@ Method at API documentation: [post /v1/product/upload_digital_codes/info](https:
 
     Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetCodesUploadStatus --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
-
-```
 
 ```json title="Result"
 {

@@ -28,14 +28,24 @@ sidebar_position: 1
 
     Клавиатура = OPI_VK.СформироватьКлавиатуру(МассивКнопок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СформироватьКлавиатуру --buttons %buttons%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СформироватьКлавиатуру --buttons "['Button 1','Button 2']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СформироватьКлавиатуру ^
+              --buttons "['Button 1','Button 2']"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

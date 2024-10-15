@@ -30,14 +30,9 @@ sidebar_position: 1
 
     Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateDiscussion --title "Discussing: Which color is better?" --text %text% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

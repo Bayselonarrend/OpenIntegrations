@@ -33,14 +33,9 @@ sidebar_position: 4
 
     Результат = OPI_Neocities.ПолучитьСписокФайлов(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities ПолучитьСписокФайлов --token "7419cd51de4037f7..." --path %path%
 
-```
+
 
 ```json title="Результат"
 {

@@ -29,20 +29,34 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5543";
+    Тема           = "5429";
 
     Результат = OPI_Telegram.ЗакрытьТемуФорума(Токен, Чат);       // Закрывает главную тему
 
     Результат = OPI_Telegram.ЗакрытьТемуФорума(Токен, Чат, Тема);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ЗакрытьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ЗакрытьТемуФорума --token "***" \
+              --forum "-1001971186208" \
+              --topic "5598"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ЗакрытьТемуФорума ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --topic "5598"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

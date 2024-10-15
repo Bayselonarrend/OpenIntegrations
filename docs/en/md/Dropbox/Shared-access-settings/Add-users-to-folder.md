@@ -25,20 +25,15 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token  = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Email  = "h5bk6ft62s@privaterelay.appleid.com";
-    Folder = "11727195745"; // shared_folder_id
+    Folder = "11705714929"; // shared_folder_id
 
     Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox AddUsersToFolder --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --folder %folder% --emails %emails% --readonly %readonly%
-
-```
 
 ```json title="Result"
 {}

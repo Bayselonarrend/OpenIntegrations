@@ -32,14 +32,9 @@ Method at API documentation: [Client authorization](https://api-docs.cdek.ru/299
 
     Result = OPI_CDEK.GetToken(Account, Password, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint cdek GetToken --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
-
-```
 
 ```json title="Result"
 {

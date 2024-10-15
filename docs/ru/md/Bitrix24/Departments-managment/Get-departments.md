@@ -31,24 +31,19 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     URL             = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDПодразделения = "614";
+    IDПодразделения = "602";
 
     Результат = OPI_Bitrix24.ПолучитьПодразделения(URL, IDПодразделения);
 
     URL             = "b24-ar17wx.bitrix24.by";
-    Токен           = "21750a67006e9f06006b12e400000001000...";
+    Токен           = "49e20867006e9f06006b12e400000001000...";
     IDРуководителя  = 1;
 
     Результат = OPI_Bitrix24.ПолучитьПодразделения(URL, , , , IDРуководителя, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьПодразделения --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

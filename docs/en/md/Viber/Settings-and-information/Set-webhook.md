@@ -28,14 +28,9 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 
     Result = OPI_Viber.SetWebhook(Token, URL);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SetWebhook --token %token% --url %url%
-
-```
 
 ```json title="Result"
 {

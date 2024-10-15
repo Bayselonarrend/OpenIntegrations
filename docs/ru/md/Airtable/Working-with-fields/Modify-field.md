@@ -28,23 +28,43 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appESy99HYCLbuWlV";
-    Таблица = "tbl5gZLQ8i5xKuVTy";
-    Поле    = "fldzPMAQ2obgGcvxG";
+    База    = "appmy5B6qi09E4wrF";
+    Таблица = "tblYwj7Cnw6w3FGWh";
+    Поле    = "fldZ57FyTakwDzWnh";
 
     Имя       = Строка(Новый УникальныйИдентификатор) + "(изм.)";
     Описание  = "Новое описание";
 
     Результат = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Имя, Описание);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ИзменитьПоле --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --field "fld1Zk1Ge9yDx5iAq" \
+              --title "02e54087-9009-41b8-a1cb-02fd47d372ef(изм.)" \
+              --description "Новое описание"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ИзменитьПоле ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --field "fld1Zk1Ge9yDx5iAq" ^
+              --title "02e54087-9009-41b8-a1cb-02fd47d372ef(изм.)" ^
+              --description "Новое описание"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

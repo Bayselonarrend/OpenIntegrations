@@ -28,7 +28,7 @@ sidebar_position: 2
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
-    File    = "https://api.athenaeum.digital/test_data/document.docx"; // URL, Binary Data or Path to file
+    File    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Binary Data or Path to file
 
     FileName = "megadoc.docx";
     Title    = "NewFile";
@@ -37,14 +37,9 @@ sidebar_position: 2
 
     Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack UploadFile --token %token% --file %file% --filename "megadoc.docx" --title %title% --channel "C123456"
-
-```
 
 ```json title="Result"
 {

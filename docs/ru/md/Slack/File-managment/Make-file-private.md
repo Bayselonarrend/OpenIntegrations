@@ -24,18 +24,30 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
-    ИдентификаторФайла = "F07RFKJR7GW";
+    ИдентификаторФайла = "F07R0K712T1";
 
     Результат = OPI_Slack.СделатьФайлПриватным(Токен, ИдентификаторФайла);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack СделатьФайлПриватным --token %token% --fileid %fileid%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack СделатьФайлПриватным --token "***" \
+              --fileid "F07RP3G79F0"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack СделатьФайлПриватным ^
+              --token "***" ^
+              --fileid "F07RP3G79F0"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

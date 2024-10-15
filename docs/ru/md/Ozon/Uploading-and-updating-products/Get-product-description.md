@@ -34,14 +34,9 @@ sidebar_position: 4
 
     Результат = OPI_Ozon.ПолучитьОписаниеТовара(IDКлиента, КлючAPI, , Артикул);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьОписаниеТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --offerid %offerid%
 
-```
+
 
 ```json title="Результат"
 {

@@ -35,14 +35,9 @@ sidebar_position: 1
 
     Результат = OPI_Ozon.ПривязатьШтрихкоды(IDКлиента, КлючAPI, СоответствиеШтрихкодов);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПривязатьШтрихкоды --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --barcodes %barcodes%
 
-```
+
 
 ```json title="Результат"
 {

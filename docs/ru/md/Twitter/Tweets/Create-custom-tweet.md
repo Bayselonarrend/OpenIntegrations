@@ -29,8 +29,8 @@ sidebar_position: 1
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
 
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     МассивКартинок = Новый Массив();
     МассивКартинок.Добавить(Картинка1);
@@ -39,14 +39,28 @@ sidebar_position: 1
     МассивМедиа = OPI_Twitter.ЗагрузитьМассивВложений(МассивКартинок, "tweet_image", Параметры);
     Результат   = OPI_Twitter.СоздатьПроизвольныйТвит(Текст, МассивМедиа, , , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint twitter СоздатьПроизвольныйТвит --text %text% --media %media% --options %options% --dur %dur% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint twitter СоздатьПроизвольныйТвит --text "Тестовый твитт5c0475ff-6640-40da-8f15-f6fc9bfa3703" \
+              --media "['1846066565659197440','1846066584634167296']" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint twitter СоздатьПроизвольныйТвит ^
+              --text "Тестовый твитт5c0475ff-6640-40da-8f15-f6fc9bfa3703" ^
+              --media "['1846066565659197440','1846066584634167296']" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

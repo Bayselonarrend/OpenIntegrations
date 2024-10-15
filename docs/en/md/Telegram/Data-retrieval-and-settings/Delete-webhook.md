@@ -28,14 +28,9 @@ Method at API documentation: [deleteWebhook](https://core.telegram.org/bots/api#
     Token  = "6129457865:AAFyzNYOAFbu...";
     Result = OPI_Telegram.DeleteWebhook(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram DeleteWebhook --token "6129457865:AAFyzNYOAFbu..."
-
-```
 
 ```json title="Result"
 {

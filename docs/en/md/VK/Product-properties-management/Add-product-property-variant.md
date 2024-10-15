@@ -26,7 +26,7 @@ sidebar_position: 5
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Property    = "878";
+    Property    = "863";
     OptionArray = New Array;
     OptionArray.Add("Yellow");
     OptionArray.Add("Blue");
@@ -39,14 +39,9 @@ sidebar_position: 5
         FunctionParameters.Insert(ParameterName, VariantID);
     EndDo;
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk AddProductPropertyVariant --value %value% --prop "648" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

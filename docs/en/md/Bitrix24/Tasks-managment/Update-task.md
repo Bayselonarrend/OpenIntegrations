@@ -36,24 +36,19 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
     TaskData.Insert("PRIORITY"   , "1");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2446";
+    TaskID = "2416";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    TaskID = "2448";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    TaskID = "2418";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateTask --url "b24-ar17wx.bitrix24.by" --task "1080" --fields %fields% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

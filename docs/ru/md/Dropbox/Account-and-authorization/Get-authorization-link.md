@@ -25,14 +25,24 @@ sidebar_position: 1
     КлючПриложения = "oynqxds...";
     Результат      = OPI_Dropbox.ПолучитьСсылкуАвторизации(КлючПриложения);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьСсылкуАвторизации --appkey "oynqxds..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПолучитьСсылкуАвторизации --appkey "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьСсылкуАвторизации ^
+              --appkey "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 "https://www.dropbox.com/oauth2/authorize?client_id=oynqxdsqft8oyky&response_type=code&token_access_type=offline"

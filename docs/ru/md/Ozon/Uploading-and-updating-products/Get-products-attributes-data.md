@@ -40,14 +40,9 @@ sidebar_position: 2
 
     Результат = OPI_Ozon.ПолучитьОписанияХарактеристикТоваров(IDКлиента, КлючAPI, Фильтр);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьОписанияХарактеристикТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
 
-```
+
 
 ```json title="Результат"
 {

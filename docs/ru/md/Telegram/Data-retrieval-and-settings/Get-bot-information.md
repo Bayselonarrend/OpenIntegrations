@@ -28,14 +28,24 @@ sidebar_position: 1
     Токен       = "6129457865:AAFyzNYOAFbu...";
     Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ПолучитьИнформациюБота --token "6129457865:AAFyzNYOAFbu..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ПолучитьИнформациюБота --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПолучитьИнформациюБота ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -25,20 +25,36 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
 
     Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ДобавитьПользователейКФайлу --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --fileid %fileid% --emails %emails% --readonly %readonly%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ДобавитьПользователейКФайлу --token "***" \
+              --fileid "kJU6-a-pT48AAAAAAAAABw" \
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
+              --readonly true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ДобавитьПользователейКФайлу ^
+              --token "***" ^
+              --fileid "kJU6-a-pT48AAAAAAAAABw" ^
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" ^
+              --readonly true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 [

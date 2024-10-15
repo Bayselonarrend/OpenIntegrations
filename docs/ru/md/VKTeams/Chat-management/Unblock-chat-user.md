@@ -35,14 +35,28 @@ sidebar_position: 9
 
     Результат = OPI_VKTeams.РазблокироватьПользователяЧата(Токен, IDЧата, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams РазблокироватьПользователяЧата --token "001.3501506236.091..." --chatid "689203963@chat.agent" --userid %userid%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams РазблокироватьПользователяЧата --token "***" \
+              --chatid "689203963@chat.agent" \
+              --userid 1011987091
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams РазблокироватьПользователяЧата ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --userid 1011987091
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

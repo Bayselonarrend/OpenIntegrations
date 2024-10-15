@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-    Token  = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    WorkID = "4SQ3zikww9gAAAAAAAAAAQ";
+    Token  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    WorkID = "8VM99l3ckEAAAAAAAAAAAQ";
     Status = "in_progress";
 
     WHile Status = "in_progress" Do
@@ -36,14 +36,9 @@ sidebar_position: 6
 
     EndDo;
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetUploadStatusByURL --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --job %job%
-
-```
 
 ```json title="Result"
 {

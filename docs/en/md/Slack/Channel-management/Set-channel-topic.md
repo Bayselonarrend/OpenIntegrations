@@ -25,19 +25,14 @@ sidebar_position: 11
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
     Topic   = "TestTopic";
 
     Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack SetChannelTopic --token %token% --channel "C070VPMKN8J" --theme "TestTopic"
-
-```
 
 ```json title="Result"
 {

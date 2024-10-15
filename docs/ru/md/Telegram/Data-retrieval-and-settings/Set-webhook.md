@@ -31,14 +31,26 @@ sidebar_position: 3
 
     Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram УстановитьWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram УстановитьWebhook --token "***" \
+              --url "https://api.athenaeum.digital/opi/hs/twitter"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram УстановитьWebhook ^
+              --token "***" ^
+              --url "https://api.athenaeum.digital/opi/hs/twitter"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

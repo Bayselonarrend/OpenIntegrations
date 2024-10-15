@@ -38,10 +38,10 @@ sidebar_position: 9
 ```bsl title="Пример кода"
     IDКлиента = "2128753";
     КлючAPI   = "7cc90d26-33e4-499b...";
-    IDТовара  = "1220696576";
+    IDТовара  = "1218931806";
 
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     МаркетинговыйЦвет = "GREEN";
 
@@ -56,14 +56,9 @@ sidebar_position: 9
         ,
         , МаркетинговыйЦвет);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ОбновитьИзображенияТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
 
-```
+
 
 ```json title="Результат"
 {
