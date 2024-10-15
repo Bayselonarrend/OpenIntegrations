@@ -14,7 +14,8 @@
   --ifm-color-primary-lighter: #ffffff;
   --ifm-color-primary-lightest:#ffffff;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: #004943;;
+  --docusaurus-highlighted-code-line-bg: #004943;
+  --ifm-tabs-color-active: #004943;
 }
 
 p{
@@ -232,6 +233,12 @@ li > a.menu__link {
 
 .Other > div > a::before{
   content: url(../../static/img/Categories/other.png);
+}
+
+.theme-code-block, TABLE, .tabs-container{
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 16px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
 }
 
 /* CSS */
