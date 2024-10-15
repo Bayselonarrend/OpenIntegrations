@@ -1,3 +1,4 @@
-oint slack ДобавитьВнешнийФайл --token "***" \
+oint slack ДобавитьВнешнийФайл \
+  --token "***" \
   --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
   --title "Новый файл"

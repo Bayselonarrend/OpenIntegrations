@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданны как путь к файлу .json
+
 oint gdrive ЗагрузитьФайл ^
   --token "***" ^
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^

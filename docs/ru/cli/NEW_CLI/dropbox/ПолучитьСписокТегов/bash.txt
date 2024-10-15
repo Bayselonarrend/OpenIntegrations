@@ -1,2 +1,3 @@
-oint dropbox ПолучитьСписокТегов --token "***" \
+oint dropbox ПолучитьСписокТегов \
+  --token "***" \
   --paths "/New/mydoc.docx"

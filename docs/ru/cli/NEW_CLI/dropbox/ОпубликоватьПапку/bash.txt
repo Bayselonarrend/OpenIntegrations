@@ -1,2 +1,3 @@
-oint dropbox ОпубликоватьПапку --token "***" \
+oint dropbox ОпубликоватьПапку \
+  --token "***" \
   --path "/New"

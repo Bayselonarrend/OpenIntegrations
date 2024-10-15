@@ -1,2 +1,5 @@
-oint vk СоздатьИсторию --picture "C:\Users\Administrator\AppData\Local\Temp\q5rtb2rnv2w.png" \
+# JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СоздатьИсторию \
+  --picture "C:\Users\Administrator\AppData\Local\Temp\jqwvwdtozqs.png" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

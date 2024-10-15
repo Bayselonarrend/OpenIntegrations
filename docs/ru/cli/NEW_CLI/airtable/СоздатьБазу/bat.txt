@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданны как путь к файлу .json
+
 oint airtable СоздатьБазу ^
   --token "***" ^
   --ws "wspdf8yl1yZz3PmWZ" ^

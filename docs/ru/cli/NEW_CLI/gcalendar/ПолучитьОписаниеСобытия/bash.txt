@@ -1,1 +1,2 @@
-oint gcalendar ПолучитьОписаниеСобытия --empty false
+oint gcalendar ПолучитьОписаниеСобытия \
+  --empty false

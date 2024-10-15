@@ -1,4 +1,7 @@
-oint gsheets УстановитьЗначенияЯчеек --token "***" \
-  --spreadsheet "1uEI_ZOtSAh0GjXirtipg57MUMetFmf1OUElyN8o-UPg" \
+# JSON данные также могут быть переданны как путь к файлу .json
+
+oint gsheets УстановитьЗначенияЯчеек \
+  --token "***" \
+  --spreadsheet "16QLw3s_xxaW41Y1xkP44JFu1aJ5OjUNguBBQpVvohlc" \
   --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" \
   --sheetname "Лист2"

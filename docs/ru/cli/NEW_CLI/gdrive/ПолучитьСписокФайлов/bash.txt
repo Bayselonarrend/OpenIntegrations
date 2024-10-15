@@ -1,3 +1,4 @@
-oint gdrive ПолучитьСписокФайлов --token "***" \
+oint gdrive ПолучитьСписокФайлов \
+  --token "***" \
   --querry "data" \
   --catalog "root"

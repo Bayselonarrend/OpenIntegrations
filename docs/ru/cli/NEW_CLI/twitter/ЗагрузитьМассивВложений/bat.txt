@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданны как путь к файлу .json
+
 oint twitter ЗагрузитьМассивВложений ^
   --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" ^
   --type "tweet_image" ^
