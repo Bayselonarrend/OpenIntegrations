@@ -2051,17 +2051,43 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     EndIf;
 
     OptionsArray = New Array;
+    FindJSON        = False;
 
     For Each Option In Options Do
+
+        If TypeOf(Option.Value)  = Type("Structure")
+            Or TypeOf(Option.Value) = Type("Map") Then
+
+                FindJSON = True;
+
+        EndIf;
+
         CurrentOption = FormOption(Option.Value, Option.Key);
         OptionsArray.Add(CurrentOption);
+
     EndDo;
+
+    Start = "oint ";
+
+    If FindJSON Then
+
+        Information = "JSON data can also be passed as a path to a .json file";
+
+        StartBat  = ":: " + Information + Chars.LF + Chars.LF + Start;
+        StartBash = "# " + Information + Chars.LF + Chars.LF + Start;
+
+    Else
+
+        StartBat  = Start;
+        StartBash = Start;
+
+    EndIf;
 
     BatSeparator  = " ^" + Chars.LF + " ";
     BashSeparator = " \" + Chars.LF + " ";
 
-    BatString  = "oint " + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
-    BashString = "oint " + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);
+    BatString  = StartBat + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
+    BashString = StartBash + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);
 
     GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
     GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
