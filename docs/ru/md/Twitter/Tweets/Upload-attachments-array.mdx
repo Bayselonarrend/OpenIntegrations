@@ -23,7 +23,10 @@ import TabItem from '@theme/TabItem';
 
 <br/>
 
-
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
@@ -44,9 +47,9 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданны как путь к файлу .json
+        # JSON данные также могут быть переданны как путь к файлу .json
 
-oint twitter ЗагрузитьМассивВложений \
+            oint twitter ЗагрузитьМассивВложений \
               --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" \
               --type "tweet_image" \
               --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
@@ -55,9 +58,9 @@ oint twitter ЗагрузитьМассивВложений \
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданны как путь к файлу .json
+        :: JSON данные также могут быть переданны как путь к файлу .json
 
-oint twitter ЗагрузитьМассивВложений ^
+            oint twitter ЗагрузитьМассивВложений ^
               --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" ^
               --type "tweet_image" ^
               --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

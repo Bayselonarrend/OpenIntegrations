@@ -24,7 +24,10 @@ import TabItem from '@theme/TabItem';
 
 <br/>
 
-
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
@@ -48,9 +51,9 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданны как путь к файлу .json
+        # JSON данные также могут быть переданны как путь к файлу .json
 
-oint vk СохранитьКартинкуВАльбом \
+            oint vk СохранитьКартинкуВАльбом \
               --album 306119284 \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --description "Картинка автотест" \
@@ -60,9 +63,9 @@ oint vk СохранитьКартинкуВАльбом \
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданны как путь к файлу .json
+        :: JSON данные также могут быть переданны как путь к файлу .json
 
-oint vk СохранитьКартинкуВАльбом ^
+            oint vk СохранитьКартинкуВАльбом ^
               --album 306119284 ^
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
               --description "Картинка автотест" ^
