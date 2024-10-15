@@ -1,0 +1,2 @@
+oint slack АрхивироватьКанал --token "***" \
+  --channel "C07SJFNT9SL"

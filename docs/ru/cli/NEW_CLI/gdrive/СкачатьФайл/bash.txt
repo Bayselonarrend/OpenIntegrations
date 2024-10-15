@@ -1,0 +1,2 @@
+oint gdrive СкачатьФайл --token "***" \
+  --object "10MDksSJHfiN5TdiC9iG66f-BjZRTn_s6"

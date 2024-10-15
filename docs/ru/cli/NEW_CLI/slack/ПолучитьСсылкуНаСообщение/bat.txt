@@ -1,0 +1,4 @@
+oint slack ПолучитьСсылкуНаСообщение ^
+  --token "***" ^
+  --channel "C06UFNUTKUL" ^
+  --stamp "1728973059.579729"

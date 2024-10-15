@@ -1,0 +1,3 @@
+oint telegram Бан --token "***" \
+  --chat "@testsichee" \
+  --user "461699897"

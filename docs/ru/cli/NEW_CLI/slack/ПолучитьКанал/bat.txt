@@ -1,0 +1,3 @@
+oint slack ПолучитьКанал ^
+  --token "***" ^
+  --channel "C07SJFNT9SL"

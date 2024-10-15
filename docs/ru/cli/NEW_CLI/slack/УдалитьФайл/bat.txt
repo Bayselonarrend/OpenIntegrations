@@ -1,0 +1,3 @@
+oint slack УдалитьФайл ^
+  --token "***" ^
+  --fileid "F07RP3G79F0"

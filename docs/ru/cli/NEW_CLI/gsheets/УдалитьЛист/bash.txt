@@ -1,0 +1,3 @@
+oint gsheets УдалитьЛист --token "***" \
+  --spreadsheet "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" \
+  --sheet "616761557"

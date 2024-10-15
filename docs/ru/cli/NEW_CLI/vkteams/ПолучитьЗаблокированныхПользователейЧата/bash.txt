@@ -1,0 +1,2 @@
+oint vkteams ПолучитьЗаблокированныхПользователейЧата --token "***" \
+  --chatid "AoLI0egLWBSLR1Ngn2w"

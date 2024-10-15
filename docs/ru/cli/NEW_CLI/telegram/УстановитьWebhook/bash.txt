@@ -1,0 +1,2 @@
+oint telegram УстановитьWebhook --token "***" \
+  --url "https://api.athenaeum.digital/opi/hs/twitter"

@@ -1,0 +1,6 @@
+oint viber ОтправитьФайл ^
+  --token "***" ^
+  --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+  --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+  --ischannel true ^
+  --ext "docx"

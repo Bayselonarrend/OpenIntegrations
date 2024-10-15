@@ -1,0 +1,2 @@
+oint vkteams ОтклонитьЗаявкуНаВступление --token "***" \
+  --chatid "689203963@chat.agent"

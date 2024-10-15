@@ -1,0 +1,3 @@
+oint slack ПолучитьСписокОтложенныхСообщений ^
+  --token "***" ^
+  --channel "C06UFNUTKUL"

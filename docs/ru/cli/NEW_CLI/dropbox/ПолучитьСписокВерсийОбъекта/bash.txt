@@ -1,0 +1,3 @@
+oint dropbox ПолучитьСписокВерсийОбъекта --token "***" \
+  --path "/New/pic.png" \
+  --amount 1
