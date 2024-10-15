@@ -1,0 +1,104 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Создать базу
+ Создает новую базу данных
+
+
+
+`Функция СоздатьБазу(Знач Токен, Знач РабочееПространство, Знач Наименование, Знач КоллекцияТаблиц) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | РабочееПространство | --ws | Строка | Идентификатор рабочего пространства |
+  | Наименование | --title | Строка | Наименование новой базы |
+  | КоллекцияТаблиц | --tablesdata | Соответствие Из КлючИЗначение | Описание таблиц: Ключ > имя, Значение > массив полей |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен        = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Область      = "wspdf8yl1yZz3PmWZ";
+    Наименование = "Тестовая база";
+
+    МассивПолей = Новый Массив;
+    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));
+    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеСтроковое("Строковое"));
+
+    ИмяТаблицы = "Тестовая таблица";
+
+    СоответствиеТаблиц = Новый Соответствие;
+    СоответствиеТаблиц.Вставить(ИмяТаблицы, МассивПолей);
+
+    Результат = OPI_Airtable.СоздатьБазу(Токен, Область, Наименование, СоответствиеТаблиц);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable СоздатьБазу --token "***" \
+              --ws "wspdf8yl1yZz3PmWZ" \
+              --title "Тестовая база" \
+              --tablesdata "{'Тестовая таблица':[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'}]}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьБазу ^
+              --token "***" ^
+              --ws "wspdf8yl1yZz3PmWZ" ^
+              --title "Тестовая база" ^
+              --tablesdata "{'Тестовая таблица':[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'}]}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "id": "appye5JxQD6CEAVQ7",
+ "tables": [
+  {
+   "id": "tblPK7iM6QVCGbral",
+   "name": "Тестовая таблица",
+   "primaryFieldId": "fldiLeIBGEKLvCGHn",
+   "fields": [
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldiLeIBGEKLvCGHn",
+     "name": "Номер"
+    },
+    {
+     "type": "richText",
+     "id": "flduxcmTlD7hCz9ZS",
+     "name": "Строковое"
+    }
+   ],
+   "views": [
+    {
+     "id": "viw5lk0HjJwqDX1vM",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  }
+ ]
+}
+```

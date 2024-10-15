@@ -1,0 +1,103 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 5
+---
+
+# Get a list of child storage objects
+ Get a list of files and folders, located at the root of the storage
+
+
+
+`Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | StorageID | --storageid | String, Number | Storage ID |
+  | Token | --token | String | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getchildren.php)
+:::
+<br/>
+
+
+```bsl title="Code example"
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    StorageID = 3;
+
+    Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "21750a67006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID, Token);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "result": [
+  {
+   "ID": "12574",
+   "NAME": "Picture2.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "3",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "8664",
+   "SIZE": "2114023",
+   "CREATE_TIME": "2024-10-09T09:20:01+03:00",
+   "UPDATE_TIME": "2024-10-09T09:20:01+03:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=6b2e0667006e9f06006b12e4000000010000072c4914d2a629a27f8e468fd6a8ba64ff&token=disk%7CaWQ9MTI1NzQmXz1MNklnblBHNkpDNTJHM1RLQW5Sc3pnSTBnMU9IbW44NA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USTFOelFtWHoxTU5rbG5ibEJITmtwRE5USkhNMVJMUVc1U2MzcG5TVEJuTVU5SWJXNDROQT09fDZiMmUwNjY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MmM0OTE0ZDJhNjI5YTI3ZjhlNDY4ZmQ2YThiYTY0ZmYi.nYm8hGPR9CQlulZNy11OyTsbPvsviFlF7xqaziDP2rM%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Picture2.jpg"
+  },
+  {
+   "ID": "12576",
+   "NAME": "Picture1.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "3",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "8666",
+   "SIZE": "805189",
+   "CREATE_TIME": "2024-10-09T09:20:02+03:00",
+   "UPDATE_TIME": "2024-10-09T09:20:02+03:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=6b2e0667006e9f06006b12e4000000010000072c4914d2a629a27f8e468fd6a8ba64ff&token=disk%7CaWQ9MTI1NzYmXz1QUENCSFBmZnVXdmxYZ2F4ZkgxeEh2N2taaHFwVjA0eQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USTFOelltWHoxUVVFTkNTRkJtWm5WWGRteFlaMkY0WmtneGVFaDJOMnRhYUhGd1ZqQTBlUT09fDZiMmUwNjY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MmM0OTE0ZDJhNjI5YTI3ZjhlNDY4ZmQ2YThiYTY0ZmYi.ZlQXJpksSrH93BaypbRFzF7a3%2FtWFevKgyL0f%2B1oCg8%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Picture1.jpg"
+  }
+ ],
+ "total": 2,
+ "time": {
+  "start": 1728454802.6587,
+  "finish": 1728454802.69218,
+  "duration": 0.033480167388916,
+  "processing": 0.00767111778259277,
+  "date_start": "2024-10-09T09:20:02+03:00",
+  "date_finish": "2024-10-09T09:20:02+03:00",
+  "operating_reset_at": 1728455402,
+  "operating": 0
+ }
+}
+```

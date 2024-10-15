@@ -1,0 +1,72 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Получить информацию об объекте
+ Получает информацию о файле или каталоге
+
+
+
+`Функция ПолучитьИнформациюОбОбъекте(Знач Токен, Знач Путь, Знач Подробно = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | Путь | --path | Строка | Путь к объекту |
+  | Подробно | --detail | Булево | Добавляет дополнительные поля информации для медиафайлов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Путь      = "/New/pic.png";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+
+    Результат = OPI_Dropbox.ПолучитьИнформациюОбОбъекте(Токен, Путь, Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox ПолучитьИнформациюОбОбъекте --token "***" \
+              --path "/New/pic.png" \
+              --detail true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьИнформациюОбОбъекте ^
+              --token "***" ^
+              --path "/New/pic.png" ^
+              --detail true
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ ".tag": "file",
+ "name": "pic.png",
+ "path_lower": "/new/pic.png",
+ "path_display": "/New/pic.png",
+ "id": "id:kJU6-a-pT48AAAAAAAAcWQ",
+ "client_modified": "2024-10-08T17:44:58Z",
+ "server_modified": "2024-10-08T17:44:59Z",
+ "rev": "623fab23a7559bd841553",
+ "size": 2114023,
+ "is_downloadable": true,
+ "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
+}
+```

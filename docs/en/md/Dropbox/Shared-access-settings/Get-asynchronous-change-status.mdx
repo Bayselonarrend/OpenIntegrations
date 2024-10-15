@@ -1,0 +1,42 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 5
+---
+
+# Get asynchronous change status
+ Get async job status for access changes
+
+
+
+`Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | JobID | --job | String | AsynchronousJobID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    JobID = "dbjid:AACP-Bd0jYrnvlGEezhk65FDN-1sAlXg1FmEfjWibO2qt3sc3Yca2HQhzQuHu7aSqBCdN2pmgpS2ZUd8RkM2Yu8J";
+
+    Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+```
+ 
+
+
+
+```json title="Result"
+{
+ ".tag": "complete"
+}
+```

@@ -1,0 +1,200 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Получить дерево категорий и типов товаров
+ Возвращает категории и типы для товаров в виде дерева
+
+
+
+`Функция ПолучитьДеревоКатегорийИТиповТоваров(Знач IDКлиента, Знач КлючAPI, Знач Язык = "DEFAULT") Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | IDКлиента | --clientid | Строка | Идентификатор клиента |
+  | КлючAPI | --apikey | Строка | API ключ |
+  | Язык | --lang | Строка | Язык ответа: DEFAULT (русский), RU, EN, TR (турецкий), ZH_HANS (китайский) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+
+<br/>
+
+:::tip
+Создание товаров доступно только в категориях последнего уровня, сравните именно их с категориями на своей площадке. Категории не создаются по запросу пользователя
+
+ Внимательно выбирайте категорию для товара: для разных категорий применяется разный размер комиссии.
+
+ Метод в документации API: [post /v1/description-category/tree](https://docs.ozon.ru/api/seller/#operation/DescriptionCategoryAPI_GetTree)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    IDКлиента    = "2128753";
+    КлючAPI      = "7cc90d26-33e4-499b...";
+
+    Результат = OPI_Ozon.ПолучитьДеревоКатегорийИТиповТоваров(IDКлиента, КлючAPI, "EN");
+
+    Результат = OPI_Ozon.ПолучитьДеревоКатегорийИТиповТоваров(IDКлиента, КлючAPI);
+```
+    
+
+
+
+```json title="Результат"
+{
+ "result": [
+  {
+   "description_category_id": 200001506,
+   "category_name": "Товары для курения и аксессуары",
+   "disabled": false,
+   "children": [
+    {
+     "description_category_id": 200001034,
+     "category_name": "Товары для курения",
+     "disabled": false,
+     "children": [
+      {
+       "type_name": "Аксессуар для трубки",
+       "type_id": 971425815,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Аксессуар для сигар",
+       "type_id": 971425003,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Аксессуар для самокрутки",
+       "type_id": 971423253,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Аксессуар для хранения табака",
+       "type_id": 971405141,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Увлажнитель для хьюмидора",
+       "type_id": 971000539,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Подарочный набор для курения",
+       "type_id": 970801168,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Пепельница",
+       "type_id": 91975,
+       "disabled": false,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 200001032,
+     "category_name": "Аксессуары и комплектующие для кальянов",
+     "disabled": false,
+     "children": [
+      {
+       "type_name": "Подсветка для кальяна",
+       "type_id": 970684772,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Столик для кальяна",
+       "type_id": 971079775,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Комплектующие для кальяна",
+       "type_id": 971412757,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Аксессуары для кальяна",
+       "type_id": 971412759,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Уголь для кальяна",
+       "type_id": 970637384,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Подставка для кальяна",
+       "type_id": 970807581,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Корзина для переноски и розжига",
+       "type_id": 970637390,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Розжиг для кальяна",
+       "type_id": 971437043,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Плитка электрическая",
+       "type_id": 970637389,
+       "disabled": false,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 200000977,
+     "category_name": "Курительные принадлежности",
+     "disabled": true,
+     "children": [
+      {
+       "type_name": "Проволока для вейпа",
+       "type_id": 971412762,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Паста для кальяна",
+       "type_id": 970737147,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Комплектующее для бонга",
+       "type_id": 970801167,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Дрипка-бак (RDTA)",
+       "type_id": 96743,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Дрипка (RDA)",
+       "type_id": 96742,
+       "disabled": true,
+...
+```
