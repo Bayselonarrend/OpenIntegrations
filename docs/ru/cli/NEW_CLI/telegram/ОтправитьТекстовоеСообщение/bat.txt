@@ -1,5 +1,5 @@
 oint telegram ОтправитьТекстовоеСообщение ^
   --token "***" ^
   --chat "@testsichee" ^
-  --text "Текст %%F0%%9F%%A%5%9D и emoji \(10%%\)" ^
+  --text "Текст %%F0%%9F%%A5%%9D и emoji \(10%%\)" ^
   --parsemode "MarkdownV2"

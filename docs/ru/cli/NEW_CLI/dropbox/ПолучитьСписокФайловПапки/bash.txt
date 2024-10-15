@@ -1,2 +1,3 @@
-oint dropbox ПолучитьСписокФайловПапки --token "***" \
+oint dropbox ПолучитьСписокФайловПапки \
+  --token "***" \
   --path "/New"

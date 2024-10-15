@@ -1,1 +1,2 @@
-oint gcalendar ОчиститьОсновнойКалендарь --token "***"
+oint gcalendar ОчиститьОсновнойКалендарь \
+  --token "***"

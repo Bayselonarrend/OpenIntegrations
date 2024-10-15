@@ -1,3 +1,4 @@
-oint dropbox ОбновитьТокен --appkey "***" \
+oint dropbox ОбновитьТокен \
+  --appkey "***" \
   --appsecret "***" \
   --refresh "***"

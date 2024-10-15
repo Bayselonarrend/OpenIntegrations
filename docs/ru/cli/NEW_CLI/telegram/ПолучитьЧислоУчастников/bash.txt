@@ -1,2 +1,3 @@
-oint telegram ПолучитьЧислоУчастников --token "***" \
+oint telegram ПолучитьЧислоУчастников \
+  --token "***" \
   --chat "@testsichee"

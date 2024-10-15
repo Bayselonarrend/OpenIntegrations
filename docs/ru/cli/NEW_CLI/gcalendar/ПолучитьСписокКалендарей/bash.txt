@@ -1,1 +1,2 @@
-oint gcalendar ПолучитьСписокКалендарей --token "***"
+oint gcalendar ПолучитьСписокКалендарей \
+  --token "***"

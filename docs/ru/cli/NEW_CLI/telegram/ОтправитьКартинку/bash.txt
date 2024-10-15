@@ -1,4 +1,5 @@
-oint telegram ОтправитьКартинку --token "***" \
+oint telegram ОтправитьКартинку \
+  --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --picture "C:\Users\Administrator\AppData\Local\Temp\soaqlv2nznt.png"
+  --picture "C:\Users\Administrator\AppData\Local\Temp\dhj5dfy5jq0.png"
