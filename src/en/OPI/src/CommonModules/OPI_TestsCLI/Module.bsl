@@ -1542,6 +1542,59 @@ EndProcedure
 
 #EndRegion
 
+#Region Bitrix24
+
+Procedure CLI_B24_TokenManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientSecret", TestParameters);
+
+    CLI_Bitrix24_GetAppAuthLink(TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Code", TestParameters);
+
+    CLI_Bitrix24_GetToken(TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Refresh", TestParameters);
+
+    CLI_Bitrix24_RefreshToken(TestParameters);
+
+EndProcedure
+
+Procedure CLI_B24_ServerTime() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CLI_Bitrix24_ServerTime(TestParameters);
+
+EndProcedure
+
+Procedure CLI_B24_PostsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
+
+    CLI_Bitrix24_CreatePost(TestParameters);
+    CLI_Bitrix24_UpdatePost(TestParameters);
+    CLI_Bitrix24_GetImportantPostViewers(TestParameters);
+    CLI_Bitrix24_GetPosts(TestParameters);
+    CLI_Bitrix24_AddPostComment(TestParameters);
+    CLI_Bitrix24_AddPostRecipients(TestParameters);
+    CLI_Bitrix24_DeletePost(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -9785,6 +9838,347 @@ Procedure CLI_Neocities_SynchronizeFolders(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SynchronizeFolders", "Neocities");
     OPI_TestDataRetrieval.Check_NCSync(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Bitrix24
+
+Procedure CLI_Bitrix24_GetAppAuthLink(FunctionParameters)
+
+    Domain   = FunctionParameters["Bitrix24_Domain"];
+    ClientID = FunctionParameters["Bitrix24_ClientID"];
+
+    Options = New Structure;
+    Options.Insert("domain"  , Domain);
+    Options.Insert("clientid", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);
+
+    Result = GetStringFromBinaryData(Result);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAppAuthLink", "Bitrix24");
+    OPI_TestDataRetrieval.Check_String(Result);
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_AuthURL", Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Bitrix24_ClientID"];
+    ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
+    Code         = FunctionParameters["Bitrix24_Code"];
+
+    Options = New Structure;
+    Options.Insert("clientid"    , ClientID);
+    Options.Insert("clientsecret", ClientSecret);
+    Options.Insert("code"        , Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Bitrix24");
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+        OPI_TestDataRetrieval.WriteParameter("Bitrix24_Token"  , Result["access_token"]);
+        OPI_TestDataRetrieval.WriteParameter("Bitrix24_Refresh", Result["refresh_token"]);
+    EndIf;
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Bitrix24_ClientID"];
+    ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
+    Refresh      = FunctionParameters["Bitrix24_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("clientid"    , ClientID);
+    Options.Insert("clientsecret", ClientSecret);
+    Options.Insert("refresh"     , Refresh);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RefreshToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RefreshToken", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixAuth(Result);
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+        OPI_TestDataRetrieval.WriteParameter("Bitrix24_Token"  , Result["access_token"]);
+        OPI_TestDataRetrieval.WriteParameter("Bitrix24_Refresh", Result["refresh_token"]);
+    EndIf;
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ServerTime(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ServerTime", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ServerTime (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTime(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ServerTime", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ServerTime", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTime(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreatePost(FunctionParameters)
+
+    Text   = "Text of post";
+    Title  = "Post title";
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+
+    Files = New Map;
+    Files.Insert("1.png", Image1);
+    Files.Insert("2.png", Image2);
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("text"     , Text);
+    Options.Insert("files"    , Files);
+    Options.Insert("title"    , Title);
+    Options.Insert("important", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    PostID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookPostID", PostID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookPostID", PostID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("text"  , Text);
+    Options.Insert("files" , Files);
+    Options.Insert("title" , Title);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    PostID = Result["result"];
+
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_PostID", PostID);
+    FunctionParameters.Insert("Bitrix24_PostID", PostID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdatePost(FunctionParameters)
+
+    Text   = "New post text";
+    Title  = "New post title";
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    PostID = FunctionParameters["Bitrix24_PostID"];
+
+    Files = New Map;
+    Files.Insert("1.png", Image1);
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("text"   , Text);
+    Options.Insert("files"  , Files);
+    Options.Insert("title"  , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePost (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    PostID = FunctionParameters["Bitrix24_HookPostID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("text"   , Text);
+    Options.Insert("files"  , Files);
+    Options.Insert("title"  , Title);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePost", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeletePost(FunctionParameters)
+
+    PostID = FunctionParameters["Bitrix24_HookPostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeletePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeletePost (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeletePost", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeletePost", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetImportantPostViewers(FunctionParameters)
+
+    PostID = FunctionParameters["Bitrix24_HookPostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetImportantPostViewers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetImportantPostViewers (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetImportantPostViewers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetImportantPostViewers", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetPosts(FunctionParameters)
+
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPosts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPosts (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObjectsArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPosts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPosts", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObjectsArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddPostComment(FunctionParameters)
+
+    Text   = "Comment for post";
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    Text  = "Another comment";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("text"   , Text);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddPostRecipients(FunctionParameters)
+
+    Visibility = "UA";
+    PostID     = FunctionParameters["Bitrix24_PostID"];
+    URL        = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("vision" , Visibility);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostRecipients", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("postid" , PostID);
+    Options.Insert("vision" , Visibility);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostRecipients", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
 
