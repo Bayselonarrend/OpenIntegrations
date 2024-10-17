@@ -4,13 +4,13 @@
     Image2 = "https://api.athenaeum.digital/test_data/picture.jpg"; // Local path, URL or Binary Data
     Image  = "https://api.athenaeum.digital/test_data/picture2.jpg"; // Local path, URL or Binary Data
 
-    DestinationID = "12882";
+    DestinationID = "13288";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "58fa0f67006e9f06006b12e400000001000...";
+    Token = "b8531167006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
