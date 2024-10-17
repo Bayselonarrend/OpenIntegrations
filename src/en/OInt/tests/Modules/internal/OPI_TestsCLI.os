@@ -1656,6 +1656,86 @@ Procedure CLI_B24_TaskManagment() Export
 
 EndProcedure
 
+Procedure CLI_B24_CommentsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour        = 3600;
+    Day         = 24;
+    Responsible = 1;
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"         , "New task");
+    TaskData.Insert("DESCRIPTION"   , "New task description");
+    TaskData.Insert("PRIORITY"      , "2");
+    TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+
+    URL = TestParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+    TaskID = Result["result"]["task"]["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CommentsTaskID", TaskID);
+    TestParameters.Insert("Bitrix24_CommentsTaskID", TaskID);
+
+    CLI_Bitrix24_AddTaskComment(TestParameters);
+    CLI_Bitrix24_UpdateTaskComment(TestParameters);
+    CLI_Bitrix24_CreateResultFromComment(TestParameters);
+    CLI_Bitrix24_GetResultsList(TestParameters);
+    CLI_Bitrix24_DeleteResultFromComment(TestParameters);
+    CLI_Bitrix24_GetTaskCommentsList(TestParameters);
+    CLI_Bitrix24_GetTaskComment(TestParameters);
+    CLI_Bitrix24_DeleteTaskComment(TestParameters);
+    CLI_Bitrix24_GetCommentStructure(TestParameters);
+
+    OPI_Bitrix24.DeleteTask(URL, TaskID);
+
+EndProcedure
+
+Procedure CLI_B24_WorkingWithDrive() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
+
+    CLI_Bitrix24_GetStoragesList(TestParameters);
+    CLI_Bitrix24_GetAppStorage(TestParameters);
+    CLI_Bitrix24_RenameStorage(TestParameters);
+    CLI_Bitrix24_GetStorage(TestParameters);
+    CLI_Bitrix24_UploadFileToStorage(TestParameters);
+    CLI_Bitrix24_GetStorageObjects(TestParameters);
+    CLI_Bitrix24_GetFileInformation(TestParameters);
+    CLI_Bitrix24_GetFileExternalLink(TestParameters);
+    CLI_Bitrix24_RenameFile(TestParameters);
+    CLI_Bitrix24_MarkFileAsDeleted(TestParameters);
+    CLI_Bitrix24_RestoreFile(TestParameters);
+    CLI_Bitrix24_CreateStorageFolder(TestParameters);
+    CLI_Bitrix24_RenameFolder(TestParameters);
+    CLI_Bitrix24_GetFolderInformation(TestParameters);
+    CLI_Bitrix24_GetFolderExternalLink(TestParameters);
+    CLI_Bitrix24_CreateSubfolder(TestParameters);
+    CLI_Bitrix24_MoveFileToFolder(TestParameters);
+    CLI_Bitrix24_MakeFolderCopy(TestParameters);
+    CLI_Bitrix24_UploadFileToFolder(TestParameters);
+    CLI_Bitrix24_MakeCopyFile(TestParameters);
+    CLI_Bitrix24_DeleteFile(TestParameters);
+    CLI_Bitrix24_GetFolderFilterStructure(TestParameters);
+    CLI_Bitrix24_GetFolderItems(TestParameters);
+    CLI_Bitrix24_MoveFolder(TestParameters);
+    CLI_Bitrix24_MarkFolderAsDeleted(TestParameters);
+    CLI_Bitrix24_RestoreFolder(TestParameters);
+    CLI_Bitrix24_DeleteFolder(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -11358,6 +11438,1147 @@ Procedure CLI_Bitrix24_GetTasksFilterStructure(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTasksFilterStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddTaskComment(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Text = "Task impossible, let's split up";
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("task", TaskID);
+    Options.Insert("text", Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    CommentID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookCommentID", CommentID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookCommentID", CommentID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Text = "Task uninpossible, don't split up";
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("text" , Text);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    CommentID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CommentID", CommentID); // SKIP
+    FunctionParameters.Insert("Bitrix24_CommentID", CommentID); // SKIP
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteTaskComment(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateResultFromComment(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateResultFromComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixResult(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateResultFromComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixResult(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteResultFromComment(FunctionParameters) Export
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteResultFromComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "Delete result from comment)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteResultFromComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteResultFromComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetResultsList(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetResultsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResultsList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixResultsList(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetResultsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResultsList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixResultsList(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTaskCommentsList(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskCommentsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskCommentsList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixCommentsList(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskCommentsList", Options);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskCommentsList", "Bitrix24");
+
+    OPI_TestDataRetrieval.Check_BitrixCommentsList(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTaskComment(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+    TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixComment(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixComment(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateTaskComment(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Text = "The task has been changed, do not split up";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Text = "The task has been changed, let's split up";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+    Options.Insert("text"   , Text);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskComment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCommentStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCommentStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetStoragesList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStoragesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStoragesList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixStorage(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStoragesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStoragesList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixStorage(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetAppStorage(FunctionParameters)
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppSotrage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAppSotrage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    StorageID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_StorageID", StorageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_StorageID", StorageID); // SKIP
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UploadFileToStorage(FunctionParameters)
+
+    Filename2 = "Picture2.jpg";
+    Name      = "Picture1.jpg";
+
+    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
+    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+
+    DestinationID = 3;
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Filename2);
+    Options.Insert("file"     , Image2);
+    Options.Insert("storageid", DestinationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToStorage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FileID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookFileID", FileID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookFileID", FileID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Name);
+    Options.Insert("file"     , Image);
+    Options.Insert("storageid", DestinationID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToStorage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    FileID = Result["result"]["ID"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_FileID", FileID);
+    FunctionParameters.Insert("Bitrix24_FileID", FileID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteFile(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_HookFileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateStorageFolder(FunctionParameters)
+
+    StorageID = 3;
+    Name      = "New catalog";
+    Filename2 = "New folder 2";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("storageid", StorageID);
+    Options.Insert("title"    , Filename2);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateStorageFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateStorageFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    FolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookFolderID", FolderID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookFolderID", FolderID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("storageid", StorageID);
+    Options.Insert("title"    , Name);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateStorageFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateStorageFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    FolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_FolderID", FolderID); // SKIP
+    FunctionParameters.Insert("Bitrix24_FolderID", FolderID); // SKIP
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteFolder(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_HookFolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetStorage(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    StorageID = 3;
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("storageid" , StorageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStorage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("storageid" , StorageID);
+    Options.Insert("token"     , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStorage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetStorageObjects(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    StorageID = 3;
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("storageid" , StorageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorageObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStorageObjects (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("storageid" , StorageID);
+    Options.Insert("token"     , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorageObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStorageObjects", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RenameStorage(FunctionParameters)
+
+    Name      = "New storage name";
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    StorageID = FunctionParameters["Bitrix24_StorageID"];
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("storageid" , StorageID);
+    Options.Insert("title"     , Name);
+    Options.Insert("token"     , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameStorage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameStorage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFolderInformation(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderInformation (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderInformation", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateSubfolder(FunctionParameters)
+
+    FolderID  = FunctionParameters["Bitrix24_FolderID"];
+    Name      = "New subfolder";
+    Filename2 = "New subfolder 2";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("title"    , Filename2);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSubfolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSubfolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    SubfolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookSubfolderID", SubfolderID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookSubfolderID", SubfolderID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("title"    , Name);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSubfolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSubfolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    SubfolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SubfolderID", SubfolderID); // SKIP
+    FunctionParameters.Insert("Bitrix24_SubfolderID", SubfolderID); // SKIP
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MakeFolderCopy(FunctionParameters)
+
+    DestinationID = FunctionParameters["Bitrix24_HookSubfolderID"];
+    FolderID      = FunctionParameters["Bitrix24_SubfolderID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("tagetid"  , DestinationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFolderCopy", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFolderCopy (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    DestinationID = FunctionParameters["Bitrix24_SubfolderID"];
+    FolderID      = FunctionParameters["Bitrix24_HookSubfolderID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("tagetid"  , DestinationID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFolderCopy", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFolderCopy", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFolderExternalLink(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderExternalLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderExternalLink (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixString(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderExternalLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderExternalLink", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixString(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFolderFilterStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderFilterStructure (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFolderItems(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderItems", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderItems (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderItems", Options);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderItems", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MarkFolderAsDeleted(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFolderAsDeleted", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFolderAsDeleted (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFolderAsDeleted", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFolderAsDeleted", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RestoreFolder(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MoveFolder(FunctionParameters)
+
+    DestinationID = FunctionParameters["Bitrix24_HookfolderID"];
+    FolderID      = FunctionParameters["Bitrix24_SubfolderID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("tagetid"  , DestinationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FolderID = FunctionParameters["Bitrix24_HookSubfolderID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("tagetid"  , DestinationID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RenameFolder(FunctionParameters)
+
+    Name      = "New catalog";
+    Filename2 = "New folder 2";
+
+    FolderID2 = FunctionParameters["Bitrix24_HookFolderID"];
+    URL       = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID2);
+    Options.Insert("title"    , Filename2);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("title"    , Name);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UploadFileToFolder(FunctionParameters)
+
+    Filename2 = "Picture2.jpg";
+    Name      = "Picture1.jpg";
+
+    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
+    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+
+    DestinationID = FunctionParameters["Bitrix24_FolderID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Filename2);
+    Options.Insert("file"     , Image2);
+    Options.Insert("folderid" , DestinationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    FileID = Result["result"]["ID"]; // SKIP
+    OPI_Bitrix24.DeleteFile(URL, FileID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Name);
+    Options.Insert("file"     , Image);
+    Options.Insert("folderid" , DestinationID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+    FileID = Result["result"]["ID"];
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MakeCopyFile(FunctionParameters)
+
+    FolderID = FunctionParameters["Bitrix24_HookFolderID"];
+    FileID   = FunctionParameters["Bitrix24_FileID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("fileid"   , FileID);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeCopyFile (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("fileid"   , FileID);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeCopyFile", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFileInformation(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFileExternalLink(FunctionParameters)
+
+    OPI_Tools.Pause(20); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileExternalLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink (wh)", "Bitrix24");
+
+    // OPI_TestDataRetrieval.Check_BitrixString(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileExternalLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink", "Bitrix24");
+
+    // OPI_TestDataRetrieval.Check_BitrixString(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MarkFileAsDeleted(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFileAsDeleted", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFileAsDeleted (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFileAsDeleted", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFileAsDeleted", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RestoreFile(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFile (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFile", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_RenameFile(FunctionParameters)
+
+    Name      = "New file name.jpg";
+    Filename2 = "New file name 2.jpg";
+
+    FileID2 = FunctionParameters["Bitrix24_HookFileID"];
+    URL     = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID2);
+    Options.Insert("title"  , Filename2);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFile (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("title"  , Name);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFile", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MoveFileToFolder(FunctionParameters)
+
+    FolderID = FunctionParameters["Bitrix24_HookSubFolderID"];
+    FileID   = FunctionParameters["Bitrix24_FileID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("fileid"   , FileID);
+    Options.Insert("folderid" , FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFileToFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    FolderID = FunctionParameters["Bitrix24_SubFolderID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("fileid"   , FileID);
+    Options.Insert("folderid" , FolderID);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFileToFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
 
 EndProcedure
 
