@@ -1881,7 +1881,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     ElsIf CurrentType = Type("Date") Then
 
-        Value = XMLString(Value);
+        Value = """" + XMLString(Value) + """";
 
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map")
@@ -1906,7 +1906,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
         Value.Write(TFN);
-        Value = TFN;
+        Value = """" + TFN + """";
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
