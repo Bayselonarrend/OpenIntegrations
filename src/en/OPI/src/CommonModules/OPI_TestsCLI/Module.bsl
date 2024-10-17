@@ -1736,6 +1736,86 @@ Procedure CLI_B24_WorkingWithDrive() Export
 
 EndProcedure
 
+Procedure CLI_B24_Timekeeping() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour        = 3600;
+    Day         = 24;
+    Responsible = 1;
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"         , "New task");
+    TaskData.Insert("DESCRIPTION"   , "New task description");
+    TaskData.Insert("PRIORITY"      , "2");
+    TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+
+    URL = TestParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+    TaskID = Result["result"]["task"]["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ElapsedTaskID", TaskID);
+    TestParameters.Insert("Bitrix24_ElapsedTaskID", TaskID);
+
+    CLI_Bitrix24_AddTaskTimeAccounting(TestParameters);
+    CLI_Bitrix24_GetTaskTimeAccounting(TestParameters);
+    CLI_Bitrix24_GetTaskTimeAccountingList(TestParameters);
+    CLI_Bitrix24_UpdateTaskTimeAccounting(TestParameters);
+    CLI_Bitrix24_DeleteTaskTimeAccounting(TestParameters);
+    CLI_Bitrix24_StartTimekeeping(TestParameters);
+    CLI_Bitrix24_PauseTimekeeping(TestParameters);
+    CLI_Bitrix24_GetTimekeepingStatus(TestParameters);
+    CLI_Bitrix24_StopTimekeeping(TestParameters);
+    CLI_Bitrix24_GetTimekeepingSettings(TestParameters);
+
+    OPI_Bitrix24.DeleteTask(URL, TaskID);
+
+EndProcedure
+
+Procedure CLI_B24_Kanban() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour        = 3600;
+    Day         = 24;
+    Responsible = 1;
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"         , "New task");
+    TaskData.Insert("DESCRIPTION"   , "New task description");
+    TaskData.Insert("PRIORITY"      , "2");
+    TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+
+    URL = TestParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+    TaskID = Result["result"]["task"]["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_KanbanTaskID", TaskID);
+    TestParameters.Insert("Bitrix24_KanbanTaskID", TaskID);
+
+    CLI_Bitrix24_AddKanbanStage(TestParameters);
+    CLI_Bitrix24_GetKanbanStages(TestParameters);
+    CLI_Bitrix24_MoveTaskToKanbanStage(TestParameters);
+    CLI_Bitrix24_UpdateKanbansStage(TestParameters);
+
+    OPI_Bitrix24.DeleteTask(URL, TaskID);
+
+    CLI_Bitrix24_DeleteKanbanStage(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -12579,6 +12659,503 @@ Procedure CLI_Bitrix24_MoveFileToFolder(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddTaskTimeAccounting(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+
+    Time = 3600;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("amount" , Time);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskTimeAccounting (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    SpendingID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookTimeID", SpendingID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookTimeID", SpendingID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Text      = "Time spent on work";
+    UserID    = 10;
+    Time      = 7200;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("amount" , Time);
+    Options.Insert("user"   , UserID);
+    Options.Insert("text"   , Text);
+    Options.Insert("date"   , SetupDate);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskTimeAccounting", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    SpendingID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_TimeID", SpendingID);
+    FunctionParameters.Insert("Bitrix24_TimeID", SpendingID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateTaskTimeAccounting(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+
+    Text = "The text I forgot last time";
+    Time = 4800;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+    Options.Insert("amount" , Time);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskTimeAccounting (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result); // SKIP
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+
+    Text      = "New time record";
+    Time      = 4800;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+    Options.Insert("amount" , Time);
+    Options.Insert("text"   , Text);
+    Options.Insert("date"   , SetupDate);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskTimeAccounting", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteTaskTimeAccounting(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskTimeAccounting (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result); // SKIP
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskTimeAccounting", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixUndefined(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTaskTimeAccounting(FunctionParameters)
+
+    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccounting (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("record" , RecordID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccounting", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccounting", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTaskTimeAccountingList(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccountingList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObjectsArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("task"  , TaskID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccountingList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObjectsArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_StartTimekeeping(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
+
+    Hour = 3600;
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+    Time   = OPI_Tools.GetCurrentDate() - Hour;
+    Report = "Late";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("userid" , UserID);
+    Options.Insert("time"   , Time);
+    Options.Insert("report" , Report);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
+
+    // END
+
+EndProcedure
+
+Procedure CLI_Bitrix24_StopTimekeeping(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopTimekeeping", Options);
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+    Time   = OPI_Tools.GetCurrentDate();
+    Report = "Time off";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("userid" , UserID);
+    Options.Insert("time"   , Time);
+    Options.Insert("report" , Report);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopTimekeeping", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_PauseTimekeeping(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTimekeeping", Options);
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("userid" , UserID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTimekeeping", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTimekeepingStatus(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingStatus", Options);
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("userid" , UserID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingStatus", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetTimekeepingSettings(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingSettings", Options);
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("userid" , UserID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingSettings", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddKanbanStage(FunctionParameters)
+
+    Name  = "New stage";
+    Color = "0026FF";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Name);
+    Options.Insert("color"    , Color);
+    Options.Insert("prevstage", 6);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddKanbanStage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    PrevStageID = Result["result"];
+
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookStageID", PrevStageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookStageID", PrevStageID); // SKIP
+
+    Name  = "New stage 2";
+    Color = "0026FF";
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Name);
+    Options.Insert("color"    , Color);
+    Options.Insert("prevstage", PrevStageID);
+    Options.Insert("admin"    , True);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddKanbanStage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    StageID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_StageID", StageID);
+    FunctionParameters.Insert("Bitrix24_StageID", StageID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteKanbanStage(FunctionParameters)
+
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+    URL     = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("stage" , StageID);
+    Options.Insert("admin" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteKanbanStage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    StageID = FunctionParameters["Bitrix24_StageID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("stage" , StageID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteKanbanStage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetKanbanStages(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("admin" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetKanbanStages", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetKanbanStages (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetKanbanStages", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetKanbanStages", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MoveTaskToKanbanStage(FunctionParameters)
+
+    TaskID  = FunctionParameters["Bitrix24_KanbanTaskID"];
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("stage", StageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveTaskToKanbanStage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    StageID = FunctionParameters["Bitrix24_StageID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("stage", StageID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveTaskToKanbanStage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+    OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, 2, , , Token);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateKanbansStage(FunctionParameters)
+
+    Name    = "New stage name";
+    Color   = "000000";
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("title", Name);
+    Options.Insert("stage", StageID);
+    Options.Insert("color", Color);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateKanbansStage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    Name    = "New stage name 2";
+    Color   = "000000";
+    StageID = FunctionParameters["Bitrix24_StageID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("title"    , Name);
+    Options.Insert("stage"    , StageID);
+    Options.Insert("color"    , Color);
+    Options.Insert("prevstage", 6);
+    Options.Insert("admin"    , True);
+    Options.Insert("token"    , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateKanbansStage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
 
