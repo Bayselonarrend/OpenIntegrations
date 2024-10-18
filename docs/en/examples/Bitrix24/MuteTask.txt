@@ -4,7 +4,7 @@
     Result = OPI_Bitrix24.MuteTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6b671167006e9f06006b12e400000001000...";
+    Token  = "aba21267006e9f06006b12e400000001000...";
     TaskID = "2512";
 
     Result = OPI_Bitrix24.MuteTask(URL, TaskID, Token);

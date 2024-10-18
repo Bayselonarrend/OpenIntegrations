@@ -1816,6 +1816,53 @@ Procedure CLI_B24_Kanban() Export
 
 EndProcedure
 
+Procedure CLI_B24_NotificationsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"       , TestParameters);
+
+    CLI_Bitrix24_CreatePersonalNotification(TestParameters);
+    CLI_Bitrix24_CreateSystemNotification(TestParameters);
+    CLI_Bitrix24_DeleteNotification(TestParameters);
+
+EndProcedure
+
+Procedure CLI_B24_TasksFieldsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"            , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"          , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_HookTaskFieldID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_TaskFieldID"    , TestParameters);
+
+    CLI_Bitrix24_AddCustomTaskField(TestParameters);
+    CLI_Bitrix24_UpdateCustomTaskField(TestParameters);
+    CLI_Bitrix24_GetCustomTaskField(TestParameters);
+    CLI_Bitrix24_GetCustomTaskFieldsList(TestParameters);
+    CLI_Bitrix24_DeleteCustomTaskField(TestParameters);
+
+EndProcedure
+
+Procedure CLI_B24_DepartmentsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CLI_Bitrix24_CreateDepartment(TestParameters);
+    CLI_Bitrix24_GetDepartments(TestParameters);
+    CLI_Bitrix24_UpdateDepartment(TestParameters);
+    CLI_Bitrix24_DeleteDepartment(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -13156,6 +13203,421 @@ Procedure CLI_Bitrix24_UpdateKanbansStage(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateKanbansStage", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreatePersonalNotification(FunctionParameters)
+
+    UserID = 1;
+
+    URL   = FunctionParameters["Bitrix24_URL"];
+    Text  = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("user"  , UserID);
+    Options.Insert("text"  , Text);
+    Options.Insert("blocks", Attachments);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePersonalNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePersonalNotification)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_PersoalHookNotifyID", MessageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_PersoalHookNotifyID", MessageID); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    Tag    = "New";
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("user"  , UserID);
+    Options.Insert("text"  , Text);
+    Options.Insert("tag"   , Tag);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePersonalNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePersonalNotification", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    MessageID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_PersoalNotifyID", MessageID);
+    FunctionParameters.Insert("Bitrix24_PersoalNotifyID", MessageID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateSystemNotification(FunctionParameters)
+
+    UserID = 1;
+
+    URL   = FunctionParameters["Bitrix24_URL"];
+    Text  = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("user"  , UserID);
+    Options.Insert("text"  , Text);
+    Options.Insert("blocks", Attachments);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSystemNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSystemNotification (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SystemHookNotifyID", MessageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_SystemHookNotifyID", MessageID); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    Tag    = "New";
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("user"  , UserID);
+    Options.Insert("text"  , Text);
+    Options.Insert("tag"   , Tag);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSystemNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSystemNotification", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    MessageID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SystemNotifyID", MessageID);
+    FunctionParameters.Insert("Bitrix24_SystemNotifyID", MessageID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteNotification(FunctionParameters)
+
+    URL            = FunctionParameters["Bitrix24_URL"];
+    NotificationID = FunctionParameters["Bitrix24_PersoalHookNotifyID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("notif" , NotificationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL            = FunctionParameters["Bitrix24_Domain"];
+    Token          = FunctionParameters["Bitrix24_Token"];
+    NotificationID = FunctionParameters["Bitrix24_PersoalNotifyID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("notif" , NotificationID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification (app)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixBool(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddCustomTaskField(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Type = "date";
+    Name = "BIRTHDAY_FIELD";
+
+    Options = New Structure;
+    Options.Insert("url"      , URL);
+    Options.Insert("type"     , Type);
+    Options.Insert("fieldname", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddCustomTaskField", Options);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Type       = "string";
+    Name       = "TEXT_FIELD";
+    ExternalID = "BITRIX_TEXT_FIELD";
+    Title      = "Text field";
+    Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("type"      , Type);
+    Options.Insert("fieldname" , Name);
+    Options.Insert("externalid", ExternalID);
+    Options.Insert("title"     , Title);
+    Options.Insert("label"     , Signature);
+    Options.Insert("token"     , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddCustomTaskField", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateCustomTaskField(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+    Title   = "New title";
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("fieldid" , FieldID);
+    Options.Insert("title"   , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCustomTaskField", Options);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    FieldID    = FunctionParameters["Bitrix24_TaskFieldID"];
+    ExternalID = "NEW_TEXT_FIELD";
+    Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
+
+    Options = New Structure;
+    Options.Insert("url"       , URL);
+    Options.Insert("fieldid"   , FieldID);
+    Options.Insert("externalid", ExternalID);
+    Options.Insert("label"     , Signature);
+    Options.Insert("token"     , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddCustomTaskField", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCustomTaskField(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("fieldid" , FieldID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskField", Options);
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("fieldid" , FieldID);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskField", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCustomTaskFieldsList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskFieldsList", Options);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskFieldsList", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteCustomTaskField(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fieldid", FieldID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fieldid", FieldID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateDepartment(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Name     = "Main department";
+    ParentID = 1;
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("title"   , Name);
+    Options.Insert("parentid", ParentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDepartment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    DepartmentID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookDepID", DepartmentID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookDepID", DepartmentID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Name     = "Subordinate department";
+    ParentID = FunctionParameters["Bitrix24_HookDepID"];
+    HeadID   = 1;
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("title"   , Name);
+    Options.Insert("parentid", ParentID);
+    Options.Insert("headid"  , HeadID);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDepartment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    DepartmentID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_DepID", DepartmentID);
+    FunctionParameters.Insert("Bitrix24_DepID", DepartmentID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateDepartment(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+    ParentID     = 7;
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("depid"   , DepartmentID);
+    Options.Insert("parentid", ParentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDepartment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+    Name         = "New department";
+    ParentID     = 1;
+    HeadID       = 10;
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("depid"   , DepartmentID);
+    Options.Insert("title"   , Name);
+    Options.Insert("parentid", ParentID);
+    Options.Insert("headid"  , HeadID);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDepartment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteDepartment(FunctionParameters)
+
+    URL          = FunctionParameters["Bitrix24_URL"];
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("depid" , DepartmentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDepartment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL          = FunctionParameters["Bitrix24_Domain"];
+    Token        = FunctionParameters["Bitrix24_Token"];
+    DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("depid" , DepartmentID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDepartment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDepartment", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDepartments(FunctionParameters)
+
+    URL          = FunctionParameters["Bitrix24_URL"];
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("depid" , DepartmentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments (wh)", "Bitrix24");
+
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    HeadID = 1;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("headid" , HeadID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
 
 EndProcedure
 
