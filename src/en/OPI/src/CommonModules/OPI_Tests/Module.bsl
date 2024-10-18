@@ -10962,7 +10962,7 @@ Procedure Bitrix24_GetCustomTaskField(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
 
-    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
+    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, Token);
 
     // END
 
@@ -10977,7 +10977,7 @@ Procedure Bitrix24_GetCustomTaskFieldsList(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Result = OPI_Bitrix24.GetCustomTaskFieldsList(URL);
+    Result = OPI_Bitrix24.GetCustomTaskFieldsList(URL, Token);
 
     // END
 
