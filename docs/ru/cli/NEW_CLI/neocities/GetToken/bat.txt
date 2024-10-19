@@ -1,0 +1,3 @@
+oint neocities GetToken ^
+ --login "2athenaeum" ^
+ --password "***"

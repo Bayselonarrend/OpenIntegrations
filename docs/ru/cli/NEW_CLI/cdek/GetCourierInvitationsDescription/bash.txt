@@ -1,0 +1,2 @@
+oint cdek GetCourierInvitationsDescription \
+ --empty false
