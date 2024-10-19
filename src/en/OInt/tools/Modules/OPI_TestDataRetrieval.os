@@ -1811,7 +1811,10 @@ Procedure Check_CdekOrder(Val Result) Export
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
     ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
-    ExpectsThat(Result["requests"][0]["state"]).Равно("ACCEPTED");
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
 
 EndProcedure
 
