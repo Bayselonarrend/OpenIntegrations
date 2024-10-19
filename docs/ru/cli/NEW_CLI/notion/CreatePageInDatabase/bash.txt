@@ -2,5 +2,5 @@
 
 oint notion CreatePageInDatabase \
  --token "***" \
- --base "12082aa7-fc4e-81ea-8614-ee179b362d79" \
- --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':1,'Status':'New','CreationDate':'2024-10-15T21:49:32.0678611Z','Image':{'Logo':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'88005553535'}"
+ --base "12482aa7-fc4e-81c7-b505-fb63b36b5617" \
+ --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':1,'Status':'New','CreationDate':'2024-10-19T21:57:27.3160539Z','Image':{'Logo':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'88005553535'}"
