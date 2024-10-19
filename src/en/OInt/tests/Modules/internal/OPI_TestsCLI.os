@@ -1943,6 +1943,70 @@ Procedure CLI_B2_UsersManagment() Export
 
 EndProcedure
 
+Procedure CLI_B24_LeadsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CLI_Bitrix24_GetLeadsList(TestParameters);
+    CLI_Bitrix24_GetLeadFilterStructure(TestParameters);
+    CLI_Bitrix24_GetLeadStructure(TestParameters);
+    CLI_Bitrix24_CreateLead(TestParameters);
+    CLI_Bitrix24_GetLead(TestParameters);
+    CLI_Bitrix24_UpdateLead(TestParameters);
+    CLI_Bitrix24_DeleteLead(TestParameters);
+
+EndProcedure
+
+Procedure CLI_B24_DealsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    CLI_Bitrix24_GetDealsFilterStructure(TestParameters);
+    CLI_Bitrix24_GetDealStructure(TestParameters);
+    CLI_Bitrix24_CreateDeal(TestParameters);
+    CLI_Bitrix24_GetDeal(TestParameters);
+    CLI_Bitrix24_UpdateDeal(TestParameters);
+    CLI_Bitrix24_DeleteDeal(TestParameters);
+    CLI_Bitrix24_GetDealsList(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region CDEK
+
+Procedure CLI_CdekAPI_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Account"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password" , TestParameters);
+
+    CLI_CDEK_GetToken(TestParameters);
+
+EndProcedure
+
+Procedure CLI_CDEKAPI_OrdersManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
+
+    CLI_CDEK_GetOrderDescription(TestParameters);
+    CLI_CDEK_CreateOrder(TestParameters);
+    CLI_CDEK_GetOrder(TestParameters);
+    CLI_CDEK_GetOrderByNumber(TestParameters);
+    CLI_CDEK_UpdateOrder(TestParameters);
+    CLI_CDEK_CreateCustomerRefund(TestParameters);
+    CLI_CDEK_CreateRefusal(TestParameters);
+    CLI_CDEK_DeleteOrder(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -14959,6 +15023,697 @@ Procedure CLI_Bitrix24_GetUserFilterStructure(TestParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetUserFilterStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetLeadFilterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetLeadStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadStructure (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixLead(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixLead(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateLead(FunctionParameters)
+
+    EmailsArray = New Array;
+    EmailsArray.Add(New Structure("VALUE,VALUE_TYPE", "yo@example.com", "HOME"));
+    EmailsArray.Add(New Structure("VALUE,VALUE_TYPE", "hi@example.com", "WORK"));
+
+    PhonesArray = New Array;
+    PhonesArray.Add(New Structure("VALUE,VALUE_TYPE", "88005553535", "WORK"));
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ADDRESS"        , "Pushkin st., b. 10");
+    FieldsStructure.Insert("ADDRESS_COUNTRY", "Russia");
+    FieldsStructure.Insert("EMAIL"          , EmailsArray);
+    FieldsStructure.Insert("NAME"           , "John");
+    FieldsStructure.Insert("LAST_NAME"      , "Doe");
+    FieldsStructure.Insert("PHONE"          , PhonesArray);
+    FieldsStructure.Insert("TITLE"          , "MegaClient");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", FieldsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateLead (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    LeadID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookLeadID", LeadID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookLeadID", LeadID); // SKIP
+
+    FieldsStructure.Insert("NAME"      , "Ivan");
+    FieldsStructure.Insert("LAST_NAME" , "Ivanov");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", FieldsStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateLead", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    LeadID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_LeadID", LeadID);
+    FunctionParameters.Insert("Bitrix24_LeadID", LeadID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateLead(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ADDRESS"        , "Lermontov st., b. 20");
+    FieldsStructure.Insert("ADDRESS_COUNTRY", "Belarus");
+    FieldsStructure.Insert("TITLE"          , "SuperClient");
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("lead"  , LeadID);
+    Options.Insert("fields", FieldsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateLead (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    FieldsStructure.Insert("NAME"      , "Evgeniy");
+    FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("lead"  , LeadID);
+    Options.Insert("fields", FieldsStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateLead", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteLead(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("lead" , LeadID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteLead (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("lead"  , LeadID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteLead", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetLead(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("lead" , LeadID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLead (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixLead(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("lead"  , LeadID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLead", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLead", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixLead(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetLeadsList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadsList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Filter = New Structure;
+    Filter.Insert("TITLE"    , "MegaClient");
+    Filter.Insert("HAS_EMAIL", "Y");
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadsList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDealsFilterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDealStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealStructure (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDeal(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDeal(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateDeal(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("TITLE"         , "Planned sale");
+    FieldsStructure.Insert("TYPE_ID"       , "GOODS");
+    FieldsStructure.Insert("STAGE_ID"      , "NEW");
+    FieldsStructure.Insert("COMPANY_ID"    , 1);
+    FieldsStructure.Insert("CONTACT_ID"    , 3);
+    FieldsStructure.Insert("OPENED"        , "Y");
+    FieldsStructure.Insert("ASSIGNED_BY_ID", 1);
+    FieldsStructure.Insert("PROBABILITY"   , 30);
+    FieldsStructure.Insert("CURRENCY_ID"   , "USD");
+    FieldsStructure.Insert("OPPORTUNITY"   , 5000);
+    FieldsStructure.Insert("CATEGORY_ID"   , 5);
+    FieldsStructure.Insert("BEGINDATE"     , "2024-01-01");
+    FieldsStructure.Insert("CLOSEDATE"     , "2030-01-01");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", FieldsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDeal (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    LeadID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookDealID", LeadID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookDealID", LeadID); // SKIP
+
+    FieldsStructure.Insert("TITLE"    , "Another deal");
+    FieldsStructure.Insert("CLOSEDATE", "2031-01-01");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", FieldsStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDeal", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    LeadID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_DealID", LeadID);
+    FunctionParameters.Insert("Bitrix24_DealID", LeadID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateDeal(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("TITLE"       , "Sale in RUB");
+    FieldsStructure.Insert("CURRENCY_ID" , "RUB");
+    FieldsStructure.Insert("OPPORTUNITY" , 50000);
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("deal"  , DealID);
+    Options.Insert("fields", FieldsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDeal (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    FieldsStructure.Insert("TITLE"    , "Future deal in RUB");
+    FieldsStructure.Insert("BEGINDATE", "2025-01-01");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_DealID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("deal"  , DealID);
+    Options.Insert("fields", FieldsStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDeal", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDeal(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("deal" , DealID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeal (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDeal(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("deal"  , DealID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeal", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDeal(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteDeal(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("deal" , DealID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDeal (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_DealID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("deal"  , DealID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDeal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDeal", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDealsList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Filter = New Structure;
+    Filter.Insert("TITLE"      , "Sale in RUB");
+    Filter.Insert("CURRENCY_ID", "RUB");
+
+    Options.Insert("url"   , URL);
+    Options.Insert("filter", Filter);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region CDEK
+
+Procedure CLI_CDEK_GetToken(FunctionParameters)
+
+    Account  = FunctionParameters["CDEK_Account"];
+    Password = FunctionParameters["CDEK_Password"];
+
+    Options = New Structure;
+    Options.Insert("account", Account);
+    Options.Insert("pass"   , Password);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekToken(Result);
+
+    Token = Result["access_token"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_Token", Token);
+    OPI_Tools.AddField("CDEK_Token", Token, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetOrderDescription(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderDescription", "CDEK");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_CreateOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+
+    OrderDescription = New Structure;
+
+        SendLocation = New Structure;
+        SendLocation.Insert("code"   , "44");
+        SendLocation.Insert("city"   , "Moscow");
+        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+
+        DestLocation = New Structure;
+        DestLocation.Insert("code"   , "270");
+        DestLocation.Insert("city"   , "Novosibirsk");
+        DestLocation.Insert("address", "st. Bluchera, 32");
+
+        Recipient = New Structure;
+
+            Phones = New Array;
+            Phones.Add(New Structure("number", "+79134637228"));
+
+        Recipient.Insert("phones", Phones);
+        Recipient.Insert("name"  , "Ivaniv Ivan");
+
+        Sender = New Structure("name", "Petrov Petr");
+
+        Services = New Array;
+
+            Service = New Structure;
+            Service.Insert("code"     , "SECURE_PACKAGE_A2");
+            Service.Insert("parameter", 10);
+
+        Services.Add(Service);
+
+        Packages = New Array;
+
+            Package = New Structure;
+
+                Items = New Array;
+
+                    Item = New Structure;
+
+                        Payment = New Structure;
+                        Payment.Insert("value", 3000);
+
+                    Item.Insert("payment" , Payment);
+                    Item.Insert("ware_key", "00055");
+                    Item.Insert("name"    , "Product");
+                    Item.Insert("cost"    , 300);
+                    Item.Insert("amount"  , 2);
+                    Item.Insert("weight"  , 700);
+                    Item.Insert("url"     , "www.item.ru");
+
+                Items.Add(Item);
+
+            Package.Insert("items"  , Items);
+            Package.Insert("number" , "bar-001");
+            Package.Insert("comment", "Packaging");
+            Package.Insert("height" , 10);
+            Package.Insert("length" , 10);
+            Package.Insert("weight" , "4000");
+            Package.Insert("width"  , 10);
+
+        Packages.Add(Package);
+
+    OrderDescription.Insert("from_location", SendLocation);
+    OrderDescription.Insert("to_location"  , DestLocation);
+    OrderDescription.Insert("packages"     , Packages);
+    OrderDescription.Insert("recipient"    , Recipient);
+    OrderDescription.Insert("sender"       , Sender);
+    OrderDescription.Insert("services"     , Services);
+
+    OrderDescription.Insert("number"     , String(New UUID));
+    OrderDescription.Insert("comment"    , "New order");
+    OrderDescription.Insert("tariff_code", 139);
+
+    OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
+    OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("order"  , OrderDescription);
+    Options.Insert("ostore" , True);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateOrder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", UUID);
+    OPI_Tools.AddField("CDEK_OrderUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrderNumber(Result);
+
+    IMNumber = Result["entity"]["number"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderIMN", IMNumber);
+    OPI_Tools.AddField("CDEK_OrderIMN", IMNumber, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetOrderByNumber(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+
+    OrderNumber = FunctionParameters["CDEK_OrderIMN"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("number"  , OrderNumber);
+    Options.Insert("internal", True);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderByNumber", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderByNumber", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrderNumber(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_UpdateOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    OrderDescription = New Structure("comment", "NewComment");
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuid"    , UUID);
+    Options.Insert("order"   , OrderDescription);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "UpdateOrder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_DeleteOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuid"    , UUID);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "DeleteOrder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_CreateCustomerRefund(FunctionParameters)
+
+    Token  = FunctionParameters["CDEK_Token"];
+    UUID   = FunctionParameters["CDEK_OrderUUID"];
+    Tariff = 139;
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuid"    , UUID);
+    Options.Insert("tariff"  , Tariff);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCustomerRefund", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCustomerRefund", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_CreateRefusal(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuid"    , UUID);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateRefusal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateRefusal", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
 

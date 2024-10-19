@@ -4373,7 +4373,7 @@ EndFunction
 // Modifies an existing deal
 //
 // Note
-// Method at API documentation: [crm.deal.update](@https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
+// Method at API documentation: [crm.deal.update](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url

@@ -4373,7 +4373,7 @@
 // Изменяет существующую сделку
 //
 // Примечание:
-// Метод в документации API: [crm.deal.update](@https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
+// Метод в документации API: [crm.deal.update](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 //
 // Параметры:
 //  URL            - Строка              - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
