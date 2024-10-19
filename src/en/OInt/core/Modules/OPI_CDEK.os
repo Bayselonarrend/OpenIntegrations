@@ -49,7 +49,7 @@
 // Gets a token based on account ID and password
 //
 // Note
-// Method at API documentation: [Client authorization](@api-docs.cdek.ru/29923918.html)
+// Method at API documentation: [Client authorization](@api-docs.cdek.ru/33828799.html)
 //
 // Parameters:
 // Account - String - Client identifier (Account) - account
@@ -81,7 +81,7 @@ EndFunction
 // Creates an order based on field descriptions
 //
 // Note
-// Method at API documentation: [Order registration](@api-docs.cdek.ru/29923926.html)
+// Method at API documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -111,7 +111,7 @@ EndFunction
 // Changes the field values of the selected order
 //
 // Note
-// Method at API documentation: [Change of order](@api-docs.cdek.ru/36981178.html)
+// Method at API documentation: [Update an order](@api-docs.cdek.ru/36989543.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -140,7 +140,7 @@ EndFunction
 // Deletes order by UUID
 //
 // Note
-// Method at API documentation: [Deleting an order](@api-docs.cdek.ru/29924487.html)
+// Method at API documentation: [Deleting an order](@api-docs.cdek.ru/33828855.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -166,7 +166,7 @@ EndFunction
 // Gets the order by UUID
 //
 // Note
-// Method at API documentation: [Order information](@api-docs.cdek.ru/29923975.html)
+// Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -192,7 +192,7 @@ EndFunction
 // Receives the order by CDEK number or number from customer IB
 //
 // Note
-// Method at API documentation: [Order information](@api-docs.cdek.ru/29923975.html)
+// Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -226,7 +226,7 @@ EndFunction
 // Note
 // This method is used if the direct order was delivered by CDEK and the recipient wants to return it in full
 // If the order was delivered by another service, or you need to return not all items, you must use the CreateOrder method with is_client_return = true
-// Method at API documentation: [Customer returns](@api-docs.cdek.ru/122762174.html)
+// Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -256,7 +256,7 @@ EndFunction
 // Creates an order refusal to return to the online store
 //
 // Note
-// Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327658.html)
+// Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
 // Token - String - Auth token - token
@@ -283,7 +283,7 @@ EndFunction
 //
 // Note
 // Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
-// Field descriptions in the documentation: [Order registration](@api-docs.cdek.ru/29923926.html)
+// Field descriptions in the documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
@@ -388,7 +388,7 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
             SenderStructure.Insert("passport_organization"  , "<Passport issuing authority>");
             SenderStructure.Insert("tin"                    , "<TIN>");
             SenderStructure.Insert("passport_date_of_birth" , "<Birth date>");
-            SenderStructure.Insert("contragent_type"        , "<Sender type: LEGAL_ENTITY, INDIVIDUAL >");
+            SenderStructure.Insert("contragent_type"        , "<Sender type: LEGAL_ENTITY, INDIVIDUAL>");
 
                 PhonesArray    = New Array;
                 PhoneStructure = New Structure;
@@ -408,7 +408,7 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
             AddressStructure.Insert("postal_code" , "<Postal code>");
             AddressStructure.Insert("longitude"   , "<Longitude>");
             AddressStructure.Insert("latitude"    , "<Latitude>");
-            AddressStructure.Insert("country_code", "<Code withтраны in format ISO_3166-1_alpha-2>");
+            AddressStructure.Insert("country_code", "<Country code in format ISO_3166-1_alpha-2>");
             AddressStructure.Insert("region"      , "<Region name, specifying parameter for the city field>");
             AddressStructure.Insert("region_code" , "<CDEK region code, specifying parameter for the city field>");
             AddressStructure.Insert("sub_region"  , "<Name of the region's district, specifying parameter for the region field>");
@@ -471,6 +471,171 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
 
     //@skip-check constructor-function-return-section
     Return OrderStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region CourierInvitationsManagment
+
+// Create courier invitation
+// Creates a new request to call a courier to pick up a shipment
+//
+// Note
+// Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// InvitationDescription - Structure of KeyAndValue - Invitations description. See GetCourierInvitationsDescription - intake
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreateCourierInvitation(Val Token, Val InvitationDescription, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetCollection(InvitationDescription);
+
+    URL     = FormURL("/intakes", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Post(URL, InvitationDescription, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get withourier invitation
+// Gets withourier invitation by UUID
+//
+// Note
+// Method at API documentation: [Details of a courier invitation(@api-docs.cdek.ru/33828865.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - UUID of the invitation - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/intakes/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete courier invitation
+//
+// Note
+// Method at API documentation: [Deleting a courier invitation](@api-docs.cdek.ru/33828880.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - UUID of the invitation for deletion - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function DeleteCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/intakes/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Delete(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get courier invitations description
+// Gets the layout for creating a request for courier call in the CreateCourierInvitation function
+//
+// Note
+// Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
+// Field descriptions in the documentation: [Registration of a courier invitation](@api-docs.cdek.ru/33828859.html)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// RequiredOnly - Boolean - True > only required fields will be in the set - required
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetCourierInvitationsDescription(Val Clear = False, Val RequiredOnly = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(RequiredOnly);
+
+    InvitationStructure = New Structure;
+
+    InvitationStructure.Insert("intake_date"      , "<Courier waiting date>");
+    InvitationStructure.Insert("intake_time_from" , "<Start time of waiting for the courier>");
+    InvitationStructure.Insert("intake_time_to"   , "<End time of waiting for the courier>");
+
+    If Not RequiredOnly Then
+
+        InvitationStructure.Insert("cdek_number"              , "<CDEK order number>");
+        InvitationStructure.Insert("order_uuid"               , "<Order identifier in CDEK system>");
+        InvitationStructure.Insert("lunch_time_from"          , "<Lunch start time>");
+        InvitationStructure.Insert("lunch_time_to"            , "<Lunch finish time>");
+        InvitationStructure.Insert("name"                     , "<Goods description>");
+        InvitationStructure.Insert("weight"                   , "<Total weight (grams)>");
+        InvitationStructure.Insert("length"                   , "<Package Dimensions. Length (cm)>");
+        InvitationStructure.Insert("width"                    , "<Package Dimensions. Width (cm)>");
+        InvitationStructure.Insert("height"                   , "<Package Dimensions. Height (cm)>");
+        InvitationStructure.Insert("comment"                  , "<Comment to the request for courier>");
+        InvitationStructure.Insert("need_call"                , "<Need to call the sender>");
+        InvitationStructure.Insert("courier_power_of_attorney", "<The courier needs a letter of attorney>");
+        InvitationStructure.Insert("courier_identity_card"    , "<The courier needs an identity document>");
+
+            SenderStructure = New Structure;
+            SenderStructure.Insert("company"        , "<Name of senders company>");
+            SenderStructure.Insert("name"           , "<Full name of contact person>");
+            SenderStructure.Insert("contragent_type", "<Sender type: LEGAL_ENTITY, INDIVIDUAL>");
+
+                PhonesArray = New Array;
+
+                PhoneStructure = New Structure;
+                PhoneStructure.Insert("number"    , "<Phone number>");
+                PhoneStructure.Insert("additional", "<Additional information (extension number)>");
+
+                PhonesArray.Add(PhoneStructure);
+
+            SenderStructure.Insert("phones", PhonesArray);
+
+        InvitationStructure.Insert("sender" , SenderStructure);
+
+            SendingAddressStructure = New Structure;
+            SendingAddressStructure.Insert("code"        , "<CDEC locality code>");
+            SendingAddressStructure.Insert("fias_guid"   , "<Unique FIAS identifier>");
+            SendingAddressStructure.Insert("postal_code" , "<Postal code>");
+            SendingAddressStructure.Insert("longitude"   , "<Longitude>");
+            SendingAddressStructure.Insert("latitude"    , "<Latitude>");
+            SendingAddressStructure.Insert("country_code", "<Country code>");
+            SendingAddressStructure.Insert("region"      , "<Region name, specifying parameter for the city field>");
+            SendingAddressStructure.Insert("region_code" , "<CDEK region code, specifying parameter for the city field>");
+            SendingAddressStructure.Insert("sub_region"  , "<Name of the region's district, specifying parameter for the region field>");
+            SendingAddressStructure.Insert("city"        , "<City name, specifying parameter for postal_code>");
+            SendingAddressStructure.Insert("kladr_code"  , "<CLADR code. Deprecated field>");
+            SendingAddressStructure.Insert("address"     , "<Address string>");
+
+        InvitationStructure.Insert("from_location" , SendingAddressStructure);
+
+    EndIf;
+
+    If Clear Then
+        InvitationStructure = OPI_Tools.ClearCollectionRecursively(InvitationStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return InvitationStructure;
 
 EndFunction
 

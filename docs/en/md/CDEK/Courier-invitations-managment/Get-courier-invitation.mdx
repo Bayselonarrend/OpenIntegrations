@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get withourier invitation
+ Gets withourier invitation by UUID
+
+
+
+`Function GetCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUID | --uuid | String | &#x2714; | UUID of the invitation |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Details of a courier invitation(https://api-docs.cdek.ru/33828865.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MjkzNDk4ODAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "72753031-5ef8-4121-8e21-ff039185550b";
+
+    Result = OPI_CDEK.GetCourierInvitation(Token, UUID, True);
+```
+ 
+
+
+
+```json title="Result"
+
+```

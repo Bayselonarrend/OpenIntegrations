@@ -50,6 +50,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ИзменитьКомментарийЗадачи \
+              --url "b24-ar17wx.bitrix24.by" \
+              --task "2540" \
+              --comment 6274 \
+              --text "Задача изменена, расходимся" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ИзменитьКомментарийЗадачи ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --task "2540" ^
+              --comment 6274 ^
+              --text "Задача изменена, расходимся" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
