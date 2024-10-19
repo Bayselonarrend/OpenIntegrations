@@ -1,57 +1,54 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 9
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Create refusal
- Creates an order refusal to return to the online store
+# Get receipt
+ Gets a receipt for the order
 
 
 
-`Function CreateRefusal(Val Token, Val UUID, Val TestAPI = False) Export`
+`Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Auth token |
-  | UUID | --uuid | String | &#x2714; | Order UUID |
+  | UUID | --uuid | String | &#x2714; | UUID of the receipt received during its creation |
+  | GetFile | --getfile | Boolean | &#x2716; | True > PDF file data will be received, False > receives CDEK server response |
   | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
   
-  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+  Returns:  Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
 
 <br/>
 
 :::tip
-Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/55327686.html)
+The receipt must be previously created. See CreateReceipt
+
+ A link to the receipt file for orders is available within 1 hour
+
+ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/36969694.html)
 :::
 <br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MjkzNjkyOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "8d6e540a-cdaf-439b-b64e-683466e73bfe";
+    UUID  = "72753031-b094-44d2-bca1-5216b1aa7738";
 
-    Result = OPI_CDEK.CreateRefusal(Token, UUID, True);
+    Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
+
+    TFN = GetTempFileName("pdf");
+
+    Result = OPI_CDEK.GetReceipt(Token, UUID, True, True); // PDF
+    Result.Write(TFN);
 ```
  
 
 
 
 ```json title="Result"
-{
- "entity": {
-  "uuid": "9aedf214-562a-45a2-982c-897b753a0ebd"
- },
- "requests": [
-  {
-   "request_uuid": "048cf376-c616-405b-9676-1f66f3106ce0",
-   "type": "CREATE_REFUSAL",
-   "date_time": "2024-10-12T19:31:15+03:00",
-   "state": "ACCEPTED"
-  }
- ],
- "related_entities": []
-}
+
 ```

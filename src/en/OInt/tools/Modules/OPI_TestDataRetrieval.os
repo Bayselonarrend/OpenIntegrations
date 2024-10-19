@@ -1818,6 +1818,15 @@ Procedure Check_CdekOrder(Val Result) Export
 
 EndProcedure
 
+Procedure Check_CdekReceipt(Val Result) Export
+
+    URL = Result["entity"]["url"];
+
+    ExpectsThat(URL).Заполнено();
+    ExpectsThat(StrEndsWith(URL, ".pdf")).Равно(True);
+
+EndProcedure
+
 Procedure Check_CdekOrderNumber(Val Result) Export
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
