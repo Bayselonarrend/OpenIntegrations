@@ -1,3 +1,4 @@
-oint dropbox ПереместитьОбъект --token "***" \
+oint dropbox ПереместитьОбъект \
+  --token "***" \
   --from "/pic.png" \
   --to "/New/pic.png"

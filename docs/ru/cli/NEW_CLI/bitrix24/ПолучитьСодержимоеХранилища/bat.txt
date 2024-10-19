@@ -1,0 +1,4 @@
+oint bitrix24 ПолучитьСодержимоеХранилища ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --storageid 3 ^
+  --token "***"

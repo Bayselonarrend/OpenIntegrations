@@ -1,0 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint bitrix24 СоздатьНовость \
+  --url "b24-ar17wx.bitrix24.by" \
+  --text "Текст новости" \
+  --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','2.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'}" \
+  --title "Заголовок новости" \
+  --token "***"
