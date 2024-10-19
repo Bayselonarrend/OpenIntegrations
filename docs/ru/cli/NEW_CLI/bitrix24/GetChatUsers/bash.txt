@@ -1,0 +1,4 @@
+oint bitrix24 GetChatUsers \
+ --url "b24-ar17wx.bitrix24.by" \
+ --chat 1056 \
+ --token "***"
