@@ -1,6 +1,6 @@
-# JSON данные также могут быть переданны как путь к файлу .json
+# JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьПроизвольныйТвит \
-  --text "Тестовый твиттf5e142e6-f969-4ce8-b201-1374e3720433" \
-  --media "['1846117577514164224','1846117597432942592']" \
+  --text "Тестовый твитт040bafea-4b6a-43f9-ae29-81e4141705b2" \
+  --media "['1847608387380326400','1847608405222985728']" \
   --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

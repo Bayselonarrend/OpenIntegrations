@@ -1,0 +1,3 @@
+oint neocities УдалитьВыбранныеФайлы ^
+  --token "***" ^
+  --paths "['/test/pic1.png','/test/gif.gif','/pic2.png']"

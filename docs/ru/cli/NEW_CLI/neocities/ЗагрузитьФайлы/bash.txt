@@ -1,0 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint neocities ЗагрузитьФайлы \
+  --token "***" \
+  --files "{'test/pic1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','test/gif.gif':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg','pic2.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif'}"

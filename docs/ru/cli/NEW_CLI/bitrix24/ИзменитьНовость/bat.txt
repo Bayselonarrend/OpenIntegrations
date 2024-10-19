@@ -1,0 +1,9 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint bitrix24 ИзменитьНовость ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --postid 1000 ^
+  --text "Новый текст новости" ^
+  --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'}" ^
+  --title "Новый заголовок новости" ^
+  --token "***"

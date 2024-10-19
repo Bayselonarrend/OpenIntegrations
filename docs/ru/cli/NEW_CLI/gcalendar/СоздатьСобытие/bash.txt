@@ -1,6 +1,6 @@
-# JSON данные также могут быть переданны как путь к файлу .json
+# JSON данные также могут быть переданы как путь к файлу .json
 
 oint gcalendar СоздатьСобытие \
   --token "***" \
-  --calendar "1301b3d641b42085b7fec8bff23987e67c71d34247beead217f4098ae63fcc67@group.calendar.google.com" \
-  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2024-10-15T12:36:03.2204927Z','ДатаОкончания':'2024-10-15T13:36:03.2204927Z','МассивURLФайловВложений':{'Картинка1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Картинка2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+  --calendar "129029c2fcc14c353cbb94b62e24858fda481a25cd5ac89d76c6a4ebf9949538@group.calendar.google.com" \
+  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2024-10-19T15:20:30.4065841Z','ДатаОкончания':'2024-10-19T16:20:30.4065841Z','МассивURLФайловВложений':{'Картинка1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Картинка2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
