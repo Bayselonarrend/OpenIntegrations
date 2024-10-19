@@ -1999,8 +1999,16 @@ Procedure CLI_CDEKAPI_OrdersManagment() Export
 
     CLI_CDEK_GetOrderDescription(TestParameters);
     CLI_CDEK_CreateOrder(TestParameters);
+
+    OPI_Tools.Pause(25);
+
     CLI_CDEK_GetOrder(TestParameters);
     CLI_CDEK_GetOrderByNumber(TestParameters);
+    CLI_CDEK_CreateReceipt(TestParameters);
+
+    OPI_Tools.Pause(25);
+
+    CLI_CDEK_GetReceipt(TestParameters);
     CLI_CDEK_UpdateOrder(TestParameters);
     CLI_CDEK_CreateCustomerRefund(TestParameters);
     CLI_CDEK_CreateRefusal(TestParameters);
@@ -15848,6 +15856,64 @@ Procedure CLI_CDEK_DeleteCourierInvitation(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_CDEK_CreateReceipt(FunctionParameters)
+
+    Token  = FunctionParameters["CDEK_Token"];
+    UUID   = FunctionParameters["CDEK_OrderUUID"];
+    Type   = "tpl_russia";
+    Copies = 1;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("type"   , Type);
+    Options.Insert("count"  , Copies);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateReceipt", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateReceipt", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_PrintUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrintUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetReceipt(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_PrintUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetReceipt", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
+
+    TFN = GetTempFileName("pdf");
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("getfile", True);
+    Options.Insert("testapi", True);
+    Options.Insert("out"    , TFN);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetReceipt", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt (file)");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 50000);
+    DeleteFiles(TFN);
+
+EndProcedure
 #EndRegion
 
 #EndRegion

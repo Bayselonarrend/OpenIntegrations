@@ -2004,8 +2004,16 @@ Procedure CDEKAPI_OrdersManagment() Export
 
     CDEK_GetOrderDescription(TestParameters);
     CDEK_CreateOrder(TestParameters);
+
+    OPI_Tools.Pause(25);
+
     CDEK_GetOrder(TestParameters);
     CDEK_GetOrderByNumber(TestParameters);
+    CDEK_CreateReceipt(TestParameters);
+
+    OPI_Tools.Pause(25);
+
+    CDEK_GetReceipt(TestParameters);
     CDEK_UpdateOrder(TestParameters);
     CDEK_CreateCustomerRefund(TestParameters);
     CDEK_CreateRefusal(TestParameters);
@@ -13944,6 +13952,49 @@ Procedure CDEK_DeleteCourierInvitation(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteCourierInvitation", "CDEK");
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_CreateReceipt(FunctionParameters)
+
+    Token  = FunctionParameters["CDEK_Token"];
+    UUID   = FunctionParameters["CDEK_OrderUUID"];
+    Type   = "tpl_russia";
+    Copies = 1;
+
+    Result = OPI_CDEK.CreateReceipt(Token, UUID, Type, Copies, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateReceipt", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_PrintUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrintUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetReceipt(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_PrintUUID"];
+
+    Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
+
+    TFN = GetTempFileName("pdf");
+
+    Result = OPI_CDEK.GetReceipt(Token, UUID, True, True); // PDF
+    Result.Write(TFN);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt (file)");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
+    DeleteFiles(TFN);
 
 EndProcedure
 
