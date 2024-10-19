@@ -1,6 +1,6 @@
 oint airtable DeleteComment \
  --token "***" \
- --base "appa0vJ8lY2mmXYaL" \
- --table "tblKyyaqymN5nDicz" \
- --record "recAr77ybisted1eu" \
- --comment "comOtTB6BZRufZaqT"
+ --base "appckLRMDCAqJbwX5" \
+ --table "tblEi4QBppPkXnpBd" \
+ --record "recVdzPJyhsl7xO2C" \
+ --comment "comrMu2cnXkarVm2H"
