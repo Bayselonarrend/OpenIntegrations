@@ -301,6 +301,98 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateReceipt";
+    NewLine.МетодПоиска = "CREATERECEIPT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Generates pdf receipts for orders";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateReceipt";
+    NewLine.МетодПоиска = "CREATERECEIPT";
+    NewLine.Параметр    = "--uuids";
+    NewLine.Описание    = "One or an array of order UUIDs";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateReceipt";
+    NewLine.МетодПоиска = "CREATERECEIPT";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Receipt type (language) (optional, def. val. - tpl_russia)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateReceipt";
+    NewLine.МетодПоиска = "CREATERECEIPT";
+    NewLine.Параметр    = "--count";
+    NewLine.Описание    = "Number of copies of one receipt per sheet (optional, def. val. - 2)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateReceipt";
+    NewLine.МетодПоиска = "CREATERECEIPT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetReceipt";
+    NewLine.МетодПоиска = "GETRECEIPT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Gets a receipt for the order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetReceipt";
+    NewLine.МетодПоиска = "GETRECEIPT";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "UUID of the receipt received during its creation";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetReceipt";
+    NewLine.МетодПоиска = "GETRECEIPT";
+    NewLine.Параметр    = "--getfile";
+    NewLine.Описание    = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetReceipt";
+    NewLine.МетодПоиска = "GETRECEIPT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetOrderDescription";
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--empty";
