@@ -1,7 +1,7 @@
-# JSON данные также могут быть переданны как путь к файлу .json
+# JSON данные также могут быть переданы как путь к файлу .json
 
 oint telegram ОтправитьМедиагруппу \
   --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\h5imli3pyim.docx':'document'}"
+  --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\hq31vf1ytqn.docx':'document'}"

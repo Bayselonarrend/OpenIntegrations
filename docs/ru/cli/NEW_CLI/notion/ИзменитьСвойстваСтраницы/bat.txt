@@ -1,8 +1,8 @@
-:: JSON данные также могут быть переданны как путь к файлу .json
+:: JSON данные также могут быть переданы как путь к файлу .json
 
 oint notion ИзменитьСвойстваСтраницы ^
   --token "***" ^
-  --page "12082aa7-fc4e-8113-94b4-ebf5768c31c5" ^
+  --page "12482aa7-fc4e-81a5-8e7f-c1aa6cd93482" ^
   --data "{'Активен':false,'Почта':'vector@mail.ru'}" ^
   --icon "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
   --cover "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
