@@ -15737,7 +15737,7 @@ Procedure CLI_CDEK_GetCourierInvitationsDescription(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitationsDescription", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCourierInvitationsDescription", "CDEK");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
