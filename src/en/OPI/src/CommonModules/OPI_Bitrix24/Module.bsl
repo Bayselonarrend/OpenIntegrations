@@ -2857,6 +2857,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CreateChat(Val URL, Val ChatStructure, Val Token = "") Export
 
+    OPI_TypeConversion.GetCollection(ChatStructure);
+
     Parameters = NormalizeAuth(URL, Token, "im.chat.add");
 
     For Each Element In ChatStructure Do
