@@ -1,0 +1,4 @@
+oint bitrix24 ОбновитьТокен \
+  --clientid "***" \
+  --clientsecret "***" \
+  --refresh "***"

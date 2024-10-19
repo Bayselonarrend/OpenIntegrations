@@ -1,0 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint bitrix24 СоздатьЗадачу \
+  --url "b24-ar17wx.bitrix24.by" \
+  --fields "{'TITLE':'Новая задача','DESCRIPTION':'Новое описание задачи','PRIORITY':'2','DEADLINE':'2024-10-20T15:32:29.5981872Z','RESPONSIBLE_ID':1}" \
+  --token "***"
