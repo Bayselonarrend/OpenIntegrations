@@ -61,6 +61,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon ОбновитьИзображенияТовара \
+              --clientid "***" \
+              --apikey "***" \
+              --productid 1231546901 \
+              --images "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" \
+              --color "GREEN"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon ОбновитьИзображенияТовара ^
+              --clientid "***" ^
+              --apikey "***" ^
+              --productid 1231546901 ^
+              --images "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" ^
+              --color "GREEN"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

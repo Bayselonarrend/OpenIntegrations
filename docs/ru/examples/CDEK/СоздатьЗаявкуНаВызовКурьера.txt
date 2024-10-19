@@ -1,0 +1,43 @@
+﻿    Токен       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MjkzNDk4ODAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
+
+    ОписаниеЗаявки = Новый Структура;
+    ОписаниеЗаявки.Вставить("intake_date"     , Формат(ТекущаяДата + 60 * 60 * 24, "ДФ=yyyy-MM-dd"));
+    ОписаниеЗаявки.Вставить("intake_time_from", "10:00");
+    ОписаниеЗаявки.Вставить("intake_time_to"  , "17:00");
+    ОписаниеЗаявки.Вставить("name"            , "Консолидированный груз");
+    ОписаниеЗаявки.Вставить("weight"          , 1000);
+    ОписаниеЗаявки.Вставить("length"          , 10);
+    ОписаниеЗаявки.Вставить("width"           , 10);
+    ОписаниеЗаявки.Вставить("height"          , 10);
+    ОписаниеЗаявки.Вставить("comment"         , "Комментарий курьеру");
+    ОписаниеЗаявки.Вставить("need_call"       , Ложь);
+
+        Отправитель = Новый Структура;
+        Отправитель.Вставить("company", "Компания");
+        Отправитель.Вставить("name"   , "Иванов Иван");
+
+            Телефоны = Новый Массив;
+            Телефон  = Новый Структура("number", "+79589441654");
+            Телефоны.Добавить(Телефон);
+
+        Отправитель.Вставить("phones", Телефоны);
+
+    ОписаниеЗаявки.Вставить("sender", Отправитель);
+
+        ТочкаОтправления = Новый Структура;
+        ТочкаОтправления.Вставить("code"        , "44");
+        ТочкаОтправления.Вставить("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        ТочкаОтправления.Вставить("postal_code" , "109004");
+        ТочкаОтправления.Вставить("longitude"   , 37.6204);
+        ТочкаОтправления.Вставить("latitude"    , 55.754);
+        ТочкаОтправления.Вставить("country_code", "RU");
+        ТочкаОтправления.Вставить("region"      , "Москва");
+        ТочкаОтправления.Вставить("sub_region"  , "Москва");
+        ТочкаОтправления.Вставить("city"        , "Москва");
+        ТочкаОтправления.Вставить("kladr_code"  , "7700000000000");
+        ТочкаОтправления.Вставить("address"     , "ул. Блюхера, 32");
+
+    ОписаниеЗаявки.Вставить("from_location", ТочкаОтправления);
+
+    Результат = OPI_CDEK.СоздатьЗаявкуНаВызовКурьера(Токен, ОписаниеЗаявки, Истина);

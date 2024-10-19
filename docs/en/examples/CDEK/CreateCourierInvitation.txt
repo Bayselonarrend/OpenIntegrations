@@ -1,0 +1,43 @@
+﻿    Token       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MjkzNDk4ODAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    InvitationDescription = New Structure;
+    InvitationDescription.Insert("intake_date"     , Format(CurrentDate + 60 * 60 * 24, "DF=yyyy-MM-dd"));
+    InvitationDescription.Insert("intake_time_from", "10:00");
+    InvitationDescription.Insert("intake_time_to"  , "17:00");
+    InvitationDescription.Insert("name"            , "Consolidated cargo");
+    InvitationDescription.Insert("weight"          , 1000);
+    InvitationDescription.Insert("length"          , 10);
+    InvitationDescription.Insert("width"           , 10);
+    InvitationDescription.Insert("height"          , 10);
+    InvitationDescription.Insert("comment"         , "Comment to courier");
+    InvitationDescription.Insert("need_call"       , False);
+
+        Sender = New Structure;
+        Sender.Insert("company", "Company");
+        Sender.Insert("name"   , "Ivaniv Ivan");
+
+            Phones = New Array;
+            Phone  = New Structure("number", "+79589441654");
+            Phones.Add(Phone);
+
+        Sender.Insert("phones", Phones);
+
+    InvitationDescription.Insert("sender", Sender);
+
+        ShippingPoint = New Structure;
+        ShippingPoint.Insert("code"        , "44");
+        ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        ShippingPoint.Insert("postal_code" , "109004");
+        ShippingPoint.Insert("longitude"   , 37.6204);
+        ShippingPoint.Insert("latitude"    , 55.754);
+        ShippingPoint.Insert("country_code", "RU");
+        ShippingPoint.Insert("region"      , "Moscow");
+        ShippingPoint.Insert("sub_region"  , "Moscow");
+        ShippingPoint.Insert("city"        , "Moscow");
+        ShippingPoint.Insert("kladr_code"  , "7700000000000");
+        ShippingPoint.Insert("address"     , "st. Bluchera, 32");
+
+    InvitationDescription.Insert("from_location", ShippingPoint);
+
+    Result = OPI_CDEK.CreateCourierInvitation(Token, InvitationDescription, True);

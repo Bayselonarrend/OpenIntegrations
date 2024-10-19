@@ -65,6 +65,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON данные также могут быть переданы как путь к файлу .json
+
+            oint bitrix24 СоздатьЧат \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'TYPE':'CHAT','TITLE':'Закрытый чат','USERS':[10,1]}" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+            oint bitrix24 СоздатьЧат ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'TYPE':'CHAT','TITLE':'Закрытый чат','USERS':[10,1]}" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

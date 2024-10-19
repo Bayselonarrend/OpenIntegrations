@@ -51,6 +51,26 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ИзменитьПользовательскоеПолеЗадачи \
+              --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" \
+              --fieldid 259 \
+              --title "Новый заголовок"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ИзменитьПользовательскоеПолеЗадачи ^
+              --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" ^
+              --fieldid 259 ^
+              --title "Новый заголовок"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

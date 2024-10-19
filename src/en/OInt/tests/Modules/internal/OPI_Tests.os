@@ -2000,7 +2000,7 @@ EndProcedure
 Procedure CDEKAPI_OrdersManagment() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
 
     CDEK_GetOrderDescription(TestParameters);
     CDEK_CreateOrder(TestParameters);
@@ -2010,6 +2010,18 @@ Procedure CDEKAPI_OrdersManagment() Export
     CDEK_CreateCustomerRefund(TestParameters);
     CDEK_CreateRefusal(TestParameters);
     CDEK_DeleteOrder(TestParameters);
+
+EndProcedure
+
+Procedure CdekAPI_CourierInvitationsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
+
+    CDEK_GetCourierInvitationsDescription(TestParameters);
+    CDEK_CreateCourierInvitation(TestParameters);
+    CDEK_GetCourierInvitation(TestParameters);
+    CDEK_DeleteCourierInvitation(TestParameters);
 
 EndProcedure
 
@@ -13830,6 +13842,107 @@ Procedure CDEK_CreateRefusal(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateRefusal", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_GetCourierInvitationsDescription(FunctionParameters)
+
+    Result = OPI_CDEK.GetCourierInvitationsDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCourierInvitationsDescription", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_CDEK.GetCourierInvitationsDescription(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderDescription (Empty)", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CDEK_CreateCourierInvitation(FunctionParameters)
+
+    Token       = FunctionParameters["CDEK_Token"];
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    InvitationDescription = New Structure;
+    InvitationDescription.Insert("intake_date"     , Format(CurrentDate + 60 * 60 * 24, "DF=yyyy-MM-dd"));
+    InvitationDescription.Insert("intake_time_from", "10:00");
+    InvitationDescription.Insert("intake_time_to"  , "17:00");
+    InvitationDescription.Insert("name"            , "Consolidated cargo");
+    InvitationDescription.Insert("weight"          , 1000);
+    InvitationDescription.Insert("length"          , 10);
+    InvitationDescription.Insert("width"           , 10);
+    InvitationDescription.Insert("height"          , 10);
+    InvitationDescription.Insert("comment"         , "Comment to courier");
+    InvitationDescription.Insert("need_call"       , False);
+
+        Sender = New Structure;
+        Sender.Insert("company", "Company");
+        Sender.Insert("name"   , "Ivaniv Ivan");
+
+            Phones = New Array;
+            Phone  = New Structure("number", "+79589441654");
+            Phones.Add(Phone);
+
+        Sender.Insert("phones", Phones);
+
+    InvitationDescription.Insert("sender", Sender);
+
+        ShippingPoint = New Structure;
+        ShippingPoint.Insert("code"        , "44");
+        ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        ShippingPoint.Insert("postal_code" , "109004");
+        ShippingPoint.Insert("longitude"   , 37.6204);
+        ShippingPoint.Insert("latitude"    , 55.754);
+        ShippingPoint.Insert("country_code", "RU");
+        ShippingPoint.Insert("region"      , "Moscow");
+        ShippingPoint.Insert("sub_region"  , "Moscow");
+        ShippingPoint.Insert("city"        , "Moscow");
+        ShippingPoint.Insert("kladr_code"  , "7700000000000");
+        ShippingPoint.Insert("address"     , "st. Bluchera, 32");
+
+    InvitationDescription.Insert("from_location", ShippingPoint);
+
+    Result = OPI_CDEK.CreateCourierInvitation(Token, InvitationDescription, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCourierInvitation", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_IntakeUUID", UUID);
+    OPI_Tools.AddField("CDEK_IntakeUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetCourierInvitation(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_IntakeUUID"];
+
+    Result = OPI_CDEK.GetCourierInvitation(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCourierInvitation", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_DeleteCourierInvitation(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_IntakeUUID"];
+
+    Result = OPI_CDEK.DeleteCourierInvitation(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCourierInvitation", "CDEK");
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure

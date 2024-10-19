@@ -328,6 +328,119 @@
     NewLine.Описание    = "Flag of including fields in the layout exclusively for online store orders (optional, def. val. - No)";
     NewLine.Область     = "Orders managment";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateCourierInvitation";
+    NewLine.МетодПоиска = "CREATECOURIERINVITATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Courier invitations managment";
+    NewLine.ОписаниеМетода   = "Creates a new request to call a courier to pick up a shipment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateCourierInvitation";
+    NewLine.МетодПоиска = "CREATECOURIERINVITATION";
+    NewLine.Параметр    = "--intake";
+    NewLine.Описание    = "Invitations description. See GetCourierInvitationsDescription";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateCourierInvitation";
+    NewLine.МетодПоиска = "CREATECOURIERINVITATION";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCourierInvitation";
+    NewLine.МетодПоиска = "GETCOURIERINVITATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Courier invitations managment";
+    NewLine.ОписаниеМетода   = "Gets withourier invitation by UUID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCourierInvitation";
+    NewLine.МетодПоиска = "GETCOURIERINVITATION";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "UUID of the invitation";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCourierInvitation";
+    NewLine.МетодПоиска = "GETCOURIERINVITATION";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "DeleteCourierInvitation";
+    NewLine.МетодПоиска = "DELETECOURIERINVITATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "DeleteCourierInvitation";
+    NewLine.МетодПоиска = "DELETECOURIERINVITATION";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "UUID of the invitation for deletion";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "DeleteCourierInvitation";
+    NewLine.МетодПоиска = "DELETECOURIERINVITATION";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Courier invitations managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCourierInvitationsDescription";
+    NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Courier invitations managment";
+    NewLine.ОписаниеМетода   = "Gets the layout for creating a request for courier call in the CreateCourierInvitation function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCourierInvitationsDescription";
+    NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
+    NewLine.Параметр    = "--required";
+    NewLine.Описание    = "True > only required fields will be in the set (optional, def. val. - No)";
+    NewLine.Область     = "Courier invitations managment";
+
     Return CompositionTable;
 EndFunction
 
