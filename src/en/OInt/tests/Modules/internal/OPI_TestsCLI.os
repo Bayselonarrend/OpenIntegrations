@@ -1863,6 +1863,68 @@ Procedure CLI_B24_DepartmentsManagment() Export
 
 EndProcedure
 
+Procedure CLI_B24_ChatManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"       , TestParameters);
+
+    CLI_Bitrix24_GetUserStatus(TestParameters);
+    CLI_Bitrix24_SetUserStatus(TestParameters);
+    CLI_Bitrix24_GetUsers(TestParameters);
+    CLI_Bitrix24_CreateChat(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_GetChatUsers(TestParameters);
+    CLI_Bitrix24_DeleteUserFromChat(TestParameters);
+    CLI_Bitrix24_AddUsersToChat(TestParameters);
+    CLI_Bitrix24_ChangeChatTitle(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_ChangeChatColor(TestParameters);
+    CLI_Bitrix24_ChangeChatPicture(TestParameters);
+    CLI_Bitrix24_DisableChatNotifications(TestParameters);
+    CLI_Bitrix24_EnableChatNotifications(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_GetChatMessagesList(TestParameters);
+    CLI_Bitrix24_MarkMessageAsReaded(TestParameters);
+    CLI_Bitrix24_MarkMessageAsUnreaded(TestParameters);
+    CLI_Bitrix24_GetDialog(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_GetChatMembersList(TestParameters);
+    CLI_Bitrix24_SendWritingNotification(TestParameters);
+    CLI_Bitrix24_SendMessage(TestParameters);
+    CLI_Bitrix24_EditMessage(TestParameters);
+    CLI_Bitrix24_GetPictureBlock(TestParameters);
+    CLI_Bitrix24_GetFileBlock(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_SetMessageReaction(TestParameters);
+    CLI_Bitrix24_DeleteMessage(TestParameters);
+    CLI_Bitrix24_GetChatFilesFolder(TestParameters);
+    CLI_Bitrix24_SendFile(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+    CLI_Bitrix24_ReadAll(TestParameters);
+    CLI_Bitrix24_ChangeChatOwner(TestParameters);
+    CLI_Bitrix24_LeaveChat(TestParameters);
+
+    CLI_Bitrix24_GetChatStructure(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -13618,6 +13680,1007 @@ Procedure CLI_Bitrix24_GetDepartments(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_CreateChat(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    B64Image = GetBase64StringFromBinaryData(Image);
+
+    MembersArray = New Array;
+    MembersArray.Add(10);
+    MembersArray.Add(1);
+
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE"       , "OPEN");
+    ChatStructure.Insert("TITLE"      , "New chat");
+    ChatStructure.Insert("DESCRIPTION", "This is a new chat");
+    ChatStructure.Insert("COLOR"      , "GREEN");
+    ChatStructure.Insert("MESSAGE"    , "Welcome to new chat");
+    ChatStructure.Insert("USERS"      , MembersArray);
+    ChatStructure.Insert("OWNER_ID"   , 1);
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", ChatStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateChat (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    ChatID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookChatID", ChatID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookChatID", ChatID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE"  , "CHAT");
+    ChatStructure.Insert("TITLE" , "Private chat");
+    ChatStructure.Insert("USERS" , MembersArray);
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", ChatStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateChat", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    ChatID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatID", ChatID); // SKIP
+    FunctionParameters.Insert("Bitrix24_ChatID", ChatID); // SKIP
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetChatUsers(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatUsers (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatUsers", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_LeaveChat(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "LeaveChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChat (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "LeaveChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChat", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteUserFromChat(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+    Options.Insert("user" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteUserFromChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteUserFromChat (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("user"  , UserID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteUserFromChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteUserFromChat", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_AddUsersToChat(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    UserID  = 10;
+    UserIDs = New Array;
+    UserIDs.Add(10);
+    UserIDs.Add(12);
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("users" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddUsersToChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToChat (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("users" , UserIDs);
+    Options.Insert("hide"  , True);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddUsersToChat", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToChat", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ChangeChatTitle(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Title = "New chat title";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("title" , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatTitle", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatTitle (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Title = "Another title";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("title" , Title);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatTitle", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatTitle", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ChangeChatColor(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Color = "AZURE";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("color" , Color);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatColor", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    OPI_Tools.Pause(10); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Color = "PURPLE";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("color" , Color);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatColor", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ChangeChatPicture(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Image = FunctionParameters["Picture2"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("picture", Image);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatPicture", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("picture", Image);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatPicture", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DisableChatNotifications(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisableChatNotifications", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableChatNotifications (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisableChatNotifications", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableChatNotifications", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_EnableChatNotifications(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EnableChatNotifications", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnableChatNotifications (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EnableChatNotifications", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnableChatNotifications", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ChangeChatOwner(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+    Options.Insert("user" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatOwner", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatOwner (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("user"  , UserID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatOwner", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatOwner", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetChatMessagesList(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat4";
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMessagesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMessagesList (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMessages(Result); // SKIP
+
+    MessageID = Result["result"]["messages"][0]["id"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatMessageID", MessageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_ChatMessageID", MessageID); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , UserID);
+    Options.Insert("first" , 0);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMessagesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMessagesList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMessages(Result);
+
+    MessageID = Result["result"]["messages"][0]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_UserMessageID", MessageID);
+    FunctionParameters.Insert("Bitrix24_UserMessageID", MessageID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MarkMessageAsReaded(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDialog(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    UserID    = 10;
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , UserID);
+    Options.Insert("message", MessageID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_MarkMessageAsUnreaded(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsUnreaded", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsUnreaded)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    UserID    = 10;
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , UserID);
+    Options.Insert("message", MessageID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsUnreaded", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsUnreaded", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetDialog(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDialog", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDialog (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMessage(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , UserID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDialog", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDialog", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMessage(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetChatMembersList(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMembersList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembersList)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , UserID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMembersList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembersList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SendWritingNotification(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendWritingNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendWritingNotification (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , UserID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendWritingNotification", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendWritingNotification", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_ReadAll(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ReadAll", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadAll (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ReadAll", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadAll", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SendMessage(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+    Text   = "Message text";
+    Image  = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+
+    Options = New Structure;
+    Options.Insert("title" , "Image1");
+    Options.Insert("url"   , Image);
+
+    Attachment1 = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPictureBlock", Options);
+
+    Options = New Structure;
+    Options.Insert("title" , "File1.docx");
+    Options.Insert("url"   , File);
+
+    Attachment2 = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileBlock", Options);
+
+    Attachments.Add(Attachment1);
+    Attachments.Add(Attachment2);
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+    Options.Insert("text" , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatMessageID", MessageID); // SKIP
+    FunctionParameters.Insert("Bitrix24_ChatMessageID", MessageID); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("chat"   , UserID);
+    Options.Insert("text"   , Text);
+    Options.Insert("blocks" , Attachments);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    MessageID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_UserMessageID", MessageID);
+    FunctionParameters.Insert("Bitrix24_UserMessageID", MessageID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_EditMessage(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Text = "New message text";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EditMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+    Options.Insert("text"   , Text);
+    Options.Insert("blocks" , Attachments);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EditMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteMessage(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SetMessageReaction(FunctionParameters)
+
+    URL       = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetMessageReaction (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetMessageReaction", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetChatFilesFolder(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatFilesFolder)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatFilesFolder", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SendFile(FunctionParameters)
+
+    URL         = FunctionParameters["Bitrix24_URL"];
+    ChatID      = FunctionParameters["Bitrix24_HookChatID"];
+    File        = FunctionParameters["Document"]; // Binary Data, URL or path to file
+    Description = "Very important file";
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("chat" , ChatID);
+
+    Directory = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
+    FolderID  = Directory["result"]["ID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("title"   , "Imortant doc.docx");
+    Options.Insert("file"    , File);
+    Options.Insert("folderid", FolderID);
+
+    UploadedFile = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Options = New Structure;
+    Options.Insert("url"        , URL);
+    Options.Insert("chat"       , ChatID);
+    Options.Insert("fileid"     , FileID);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixFileMessage(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
+    FolderID  = Directory["result"]["ID"];
+
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Options = New Structure;
+    Options.Insert("url"        , URL);
+    Options.Insert("chat"       , ChatID);
+    Options.Insert("fileid"     , FileID);
+    Options.Insert("description", Description);
+    Options.Insert("token"      , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixFileMessage(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetUsers(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    UserID       = 10;
+    ArrayOfUsers = New Array;
+
+    ArrayOfUsers.Add(1);
+    ArrayOfUsers.Add(10);
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("users" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUsers (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("users" , ArrayOfUsers);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUsers", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetUserStatus(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserStatus (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixString(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserStatus", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixString(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SetUserStatus(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    Status = "dnd";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("status" , Status);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    Status = "away";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("status" , Status);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetPictureBlock(FunctionParameters)
+
+    Name = "Image";
+    URL  = FunctionParameters["Picture"];
+
+    Options = New Structure;
+    Options.Insert("title", Name);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPictureBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPictureBlock", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetFileBlock(FunctionParameters)
+
+    Name = "Image";
+    URL  = FunctionParameters["Document"];
+
+    Options = New Structure;
+    Options.Insert("title", Name);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileBlock", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetChatStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 
