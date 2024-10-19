@@ -15865,14 +15865,14 @@ Procedure CLI_CDEK_CreateReceipt(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("token"  , Token);
-    Options.Insert("uuid"   , UUID);
+    Options.Insert("uuids"  , UUID);
     Options.Insert("type"   , Type);
     Options.Insert("count"  , Copies);
     Options.Insert("testapi", True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateReceipt", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateReceipt", "CDEK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateReceipt", "CDEK");
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
     UUID = Result["entity"]["uuid"];
@@ -15893,7 +15893,7 @@ Procedure CLI_CDEK_GetReceipt(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetReceipt", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetReceipt", "CDEK"); // SKIP
     OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
 
     TFN = GetTempFileName("pdf");
@@ -15909,7 +15909,7 @@ Procedure CLI_CDEK_GetReceipt(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt (file)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetReceipt (file)");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 50000);
     DeleteFiles(TFN);
 
