@@ -33,15 +33,15 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "1030";
+    ChatID = "1038";
 
     Image = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "25701367006e9f06006b12e400000001000...";
-    ChatID = "1032";
+    Token  = "78821367006e9f06006b12e400000001000...";
+    ChatID = "1040";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```
