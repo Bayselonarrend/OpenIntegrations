@@ -911,6 +911,14 @@ def test_cdek(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek СформироватьКвитанцию --token "test" --uuids "test" --type "test" --count "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьКвитанцию --token "test" --uuid "test" --getfile "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьОписаниеЗаказа --empty "test" --required "test" --ostore "test" --debug --test '
                }
 

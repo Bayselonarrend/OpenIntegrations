@@ -278,6 +278,102 @@ Function CreateRefusal(Val Token, Val UUID, Val TestAPI = False) Export
 
 EndFunction
 
+// Create receipt
+// Generates pdf receipts for orders
+//
+// Note
+// Available receipt types (languages): tpl_china, tpl_armenia, tpl_russia, tpl_english, tpl_italian, tpl_korean, tpl_latvian, tpl_lithuanian, tpl_german, tpl_turkish, tpl_czech, tpl_thailand, tpl_invoice
+// It is recommended to specify at least 2 copies per sheet (parameter CopiesPerSheet): one to be glued on the shipment, the other to be kept by the sender
+// Method at API documentation: [Creating order receipt](@api-docs.cdek.ru/36969649.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
+// Type - String - Receipt type (language) - type
+// CopiesPerSheet - Number - Number of copies of one receipt per sheet - count
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreateReceipt(Val Token
+    , Val UUIDArray
+    , Val Type = "tpl_russia"
+    , Val CopiesPerSheet = 2
+    , Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetArray(UUIDArray);
+
+    URL     = FormURL("/print/orders", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters    = New Structure;
+    ArrayOfOrders = New Array;
+
+    For Each UUID In UUIDArray Do
+
+        OPI_TypeConversion.GetLine(UUID);
+        ArrayOfOrders.Add(New Structure("order_uuid", UUID));
+
+    EndDo;
+
+    OPI_Tools.AddField("orders"    , ArrayOfOrders  , "Array"  , Parameters);
+    OPI_Tools.AddField("copy_count", CopiesPerSheet , "Number" , Parameters);
+    OPI_Tools.AddField("type"      , Type           , "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get receipt
+// Gets a receipt for the order
+//
+// Note
+// The receipt must be previously created. See CreateReceipt
+// A link to the receipt file for orders is available within 1 hour
+// Method at API documentation: [Receiving order receipt](@api-docs.cdek.ru/36969694.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - UUID of the receipt received during its creation - uuid
+// GetFile - Boolean - True > PDF file data will be received, False > receives CDEK server response - getfile
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
+Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+    OPI_TypeConversion.GetBoolean(GetFile);
+
+    URL     = FormURL("/print/orders/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    If GetFile Then
+
+        Entity = Response["entity"];
+
+        If Not ValueIsFilled(Entity) Then
+            Return Response;
+        EndIf;
+
+        URL = Entity["url"];
+
+        If Not ValueIsFilled(URL) Then
+            Return Response;
+        EndIf;
+
+        Response = OPI_Tools.Get(URL, , Headers);
+
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
 // Get order description
 // Gets the layout of order for the CreateOrder function
 //
