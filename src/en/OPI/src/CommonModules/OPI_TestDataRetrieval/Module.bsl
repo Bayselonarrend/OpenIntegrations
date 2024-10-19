@@ -216,6 +216,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "NC_DataRetrieving"                    , "Data retrieving"                 , Neocities);
     NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
     NewTest(TestTable, "CDEKAPI_OrdersManagment"              , "Orders managment"                , Cdek);
+    NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
 
     Return TestTable;
 

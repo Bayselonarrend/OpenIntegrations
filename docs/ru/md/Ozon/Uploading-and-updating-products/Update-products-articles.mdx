@@ -40,6 +40,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON данные также могут быть переданы как путь к файлу .json
+
+            oint ozon ИзменитьАртикулыТоваров \
+              --clientid "***" \
+              --apikey "***" \
+              --offers "{'143210609':'143210612'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+            oint ozon ИзменитьАртикулыТоваров ^
+              --clientid "***" ^
+              --apikey "***" ^
+              --offers "{'143210609':'143210612'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

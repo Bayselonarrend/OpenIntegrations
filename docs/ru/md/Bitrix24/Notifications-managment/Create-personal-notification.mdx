@@ -55,6 +55,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 СоздатьПерсональноеУведомление \
+              --url "b24-ar17wx.bitrix24.by" \
+              --user 10 \
+              --text "Текст сообщения" \
+              --tag "Новый" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 СоздатьПерсональноеУведомление ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --user 10 ^
+              --text "Текст сообщения" ^
+              --tag "Новый" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
