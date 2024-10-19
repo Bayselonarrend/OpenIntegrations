@@ -52,6 +52,28 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ЗагрузитьФайлВКаталог \
+              --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" \
+              --title "Важный документ.docx" \
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+              --folderid 13446
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ЗагрузитьФайлВКаталог ^
+              --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" ^
+              --title "Важный документ.docx" ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+              --folderid 13446
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
