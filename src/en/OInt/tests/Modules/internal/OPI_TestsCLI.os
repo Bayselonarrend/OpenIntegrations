@@ -291,7 +291,7 @@ Procedure CLI_TelegramAPI_GetForumAvatarsList() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
-    CLI_Telegram_GetForumAvatarList(TestParameters);
+    CLI_Telegram_GetAvatarIconList(TestParameters);
 
 EndProcedure
 
@@ -1373,6 +1373,7 @@ Procedure CLI_VKT_MessagesSending() Export
     CLI_VKTeams_DeleteMessage(TestParameters);
     CLI_VKTeams_SendVoice(TestParameters);
     CLI_VKTeams_ResendVoice(TestParameters);
+    CLI_VKTeams_MakeActionButton(TestParameters);
 
 EndProcedure
 
@@ -2688,7 +2689,7 @@ Procedure CLI_Telegram_GetParticipantCount(FunctionParameters)
 
 EndProcedure
 
-Procedure CLI_Telegram_GetForumAvatarList(FunctionParameters)
+Procedure CLI_Telegram_GetAvatarIconList(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("token" , FunctionParameters["Telegram_Token"]);
@@ -9058,6 +9059,18 @@ Procedure CLI_VKTeams_SetChatRules(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_VKTeams_MakeActionButton(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("text"  , "Button1");
+    Options.Insert("data"  , "ButtonEvent1");
+    Options.Insert("style" , "attention");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatRules", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MakeActionButton", "VkTeams");
+
+EndProcedure
 
 #EndRegion
 
