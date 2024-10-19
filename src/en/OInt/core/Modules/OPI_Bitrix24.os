@@ -3960,6 +3960,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function UpdateUser(Val URL, Val UserID, Val FieldsStructure, Val Token = "") Export
 
+    OPI_TypeConversion.GetCollection(FieldsStructure);
+
     Parameters = NormalizeAuth(URL, Token, "user.update");
 
     For Each Field In FieldsStructure Do
@@ -3986,6 +3988,8 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function ChangeUserStatus(Val URL, Val UserID, Val Fire = True, Val Token = "") Export
+
+    OPI_TypeConversion.GetBoolean(Fire);
 
     Active = Not Fire;
 
