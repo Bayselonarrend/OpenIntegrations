@@ -13723,7 +13723,7 @@ Procedure CDEK_CreateOrder(FunctionParameters)
     OrderDescription.Insert("sender"       , Sender);
     OrderDescription.Insert("services"     , Services);
 
-    OrderDescription.Insert("number"     , "ddOererre7450813980068");
+    OrderDescription.Insert("number"     , String(New UUID));
     OrderDescription.Insert("comment"    , "New order");
     OrderDescription.Insert("tariff_code", 139);
 

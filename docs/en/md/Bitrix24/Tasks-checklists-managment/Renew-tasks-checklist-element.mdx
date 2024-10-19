@@ -32,16 +32,16 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID    = "2510";
-    ElementID = "1552";
+    TaskID    = "2526";
+    ElementID = "1560";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "2512";
-    ElementID = "1556";
+    TaskID    = "2528";
+    ElementID = "1564";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "37841367006e9f06006b12e400000001000...";
+    Token = "f69b1367006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
