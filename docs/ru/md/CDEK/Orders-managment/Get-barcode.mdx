@@ -1,21 +1,21 @@
 ﻿---
-sidebar_position: 9
+sidebar_position: 11
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Получить квитанцию
- Получает квитанцию к заказу
+# Получить штрихкод
+ Получает штрихкод места к заказу
 
 
 
-`Функция ПолучитьКвитанцию(Знач Токен, Знач UUID, Знач ПолучитьФайл = Ложь, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция ПолучитьШтрихкод(Знач Токен, Знач UUID, Знач ПолучитьФайл = Ложь, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен авторизации |
-  | UUID | --uuid | Строка | &#x2714; | UUID квитанции, полученный при ее формировании |
+  | UUID | --uuid | Строка | &#x2714; | UUID штрихкода, полученный при его формировании |
   | ПолучитьФайл | --getfile | Булево | &#x2716; | Истина > будут получены сразу данные PDF файла, Ложь > ответ сервера CDEK |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
@@ -25,24 +25,24 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Квитанция должна быть предварительно создана. См. СформироватьКвитанцию
+Штрихкод должен быть предварительно создан. См. СформироватьШтрихкод
 
- Ссылка на файл с квитанцией к заказам доступна в течение 1 часа
+ Ссылка на файл с ШК местом к заказам доступна в течение 1 часа
 
- Метод в документации API: [Получение квитанции к заказу](https://api-docs.cdek.ru/36967287.html)
+ Метод в документации API: [Получение ШК места к заказу](https://api-docs.cdek.ru/36967298.html)
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MTE3OTAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "72753031-48a4-40a9-833f-a2be10872089";
+    UUID  = "72753031-e627-4330-8dea-c42ecf36de44";
 
-    Результат = OPI_CDEK.ПолучитьКвитанцию(Токен, UUID, , Истина); // Ответ сервера с ссылкой
+    Результат = OPI_CDEK.ПолучитьШтрихкод(Токен, UUID, , Истина); // Ответ сервера с ссылкой
 
     ИВФ = ПолучитьИмяВременногоФайла("pdf");
 
-    Результат = OPI_CDEK.ПолучитьКвитанцию(Токен, UUID, Истина, Истина); // PDF
+    Результат = OPI_CDEK.ПолучитьШтрихкод(Токен, UUID, Истина, Истина); // PDF
     Результат.Записать(ИВФ);
 ```
     

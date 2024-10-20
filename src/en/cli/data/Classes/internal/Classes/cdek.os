@@ -393,6 +393,108 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Generates a PDF barcode CP for orders";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--uuids";
+    NewLine.Описание    = "One or an array of order UUIDs";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--count";
+    NewLine.Описание    = "Number of copies (optional, def. val. - 1)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--format";
+    NewLine.Описание    = "Print format: A4, A5, A6, A7 (optional, def. val. - A4)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--lang";
+    NewLine.Описание    = "Barcode language: RUS, ENG (optional, def. val. - RUS)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreateBarcode";
+    NewLine.МетодПоиска = "CREATEBARCODE";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetBarcode";
+    NewLine.МетодПоиска = "GETBARCODE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Gets the barcode CP for the order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetBarcode";
+    NewLine.МетодПоиска = "GETBARCODE";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "The UID of the barcode received when the barcode was created";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetBarcode";
+    NewLine.МетодПоиска = "GETBARCODE";
+    NewLine.Параметр    = "--getfile";
+    NewLine.Описание    = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetBarcode";
+    NewLine.МетодПоиска = "GETBARCODE";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetOrderDescription";
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--empty";
