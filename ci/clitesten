@@ -947,7 +947,19 @@ def test_cdek(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek RegisterDeliveryAppointment --token "test" --appt "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetDeliveryAppointment --token "test" --uuid "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetCourierInvitationsDescription --empty "test" --required "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetAppointmentDescription --empty "test" --required "test" --debug --test '
                }
 
 }

@@ -1,0 +1,69 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Зафиксировать договоренность о доставке
+ Фиксирует оговоренные с клиентом дату, время и адрес доставки
+
+
+
+`Функция ЗафиксироватьДоговоренностьОДоставке(Знач Токен, Знач Договоренность, Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | Договоренность | --appt | Структура Из КлючИЗначение | &#x2714; | Описание договоренности. См. ПолучитьОписаниеДоговоренности |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Регистрация договоренности о доставке](https://api-docs.cdek.ru/36981338.html)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzA3NDAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUIDЗаказа  = "965e2d3d-5d3c-47a1-8cf2-89402e9f40fa";
+    ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
+
+    Договоренность = Новый Структура;
+
+    Договоренность.Вставить("cdek_number", "1106207236");
+    Договоренность.Вставить("order_uuid" , UUIDЗаказа);
+    Договоренность.Вставить("date"       , Формат(ТекущаяДата + 60 * 60 * 24 * 10, "ДФ=yyyy-MM-dd"));
+    Договоренность.Вставить("time_from"  , "10:00");
+    Договоренность.Вставить("time_to"    , "17:00");
+    Договоренность.Вставить("comment"    , "Офис группы компаний");
+
+        МестоДоставки = Новый Структура;
+        МестоДоставки.Вставить("code"        , "270");
+        МестоДоставки.Вставить("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        МестоДоставки.Вставить("postal_code" , "109004");
+        МестоДоставки.Вставить("longitude"   , 37.6204);
+        МестоДоставки.Вставить("latitude"    , 55.754);
+        МестоДоставки.Вставить("country_code", "RU");
+        МестоДоставки.Вставить("region"      , "Новосибирск");
+        МестоДоставки.Вставить("sub_region"  , "Новосибирск");
+        МестоДоставки.Вставить("city"        , "Новосибирск");
+        МестоДоставки.Вставить("kladr_code"  , "7700000000000");
+        МестоДоставки.Вставить("address"     , "ул. Блюхера, 33");
+
+    Договоренность.Вставить("to_location", МестоДоставки);
+
+    Результат = OPI_CDEK.ЗафиксироватьДоговоренностьОДоставке(Токен, Договоренность, Истина);
+```
+    
+
+
+
+```json title="Результат"
+
+```

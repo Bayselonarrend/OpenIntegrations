@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 8
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get appointment description
+ Gets the layout to create about delivery in the RegisterDeliveryAppointment function
+
+
+
+`Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+  | RequiredOnly | --required | Boolean | &#x2716; | True > only required fields will be in the set |
+
+  
+  Returns:  Structure of KeyAndValue - Fields structure
+
+<br/>
+
+:::tip
+Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
+
+ Field descriptions in the documentation: [Registration of delivery appointment](https://api-docs.cdek.ru/36989576.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_CDEK.GetAppointmentDescription();
+```
+ 
+
+
+
+```json title="Result"
+
+```

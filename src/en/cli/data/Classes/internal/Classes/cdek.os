@@ -649,6 +649,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "RegisterDeliveryAppointment";
+    NewLine.МетодПоиска = "REGISTERDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Delivery management";
+    NewLine.ОписаниеМетода   = "Fixes the delivery date, time and address agreed with the customer";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "RegisterDeliveryAppointment";
+    NewLine.МетодПоиска = "REGISTERDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--appt";
+    NewLine.Описание    = "Appointment description. See GetAppointmentDescription";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "RegisterDeliveryAppointment";
+    NewLine.МетодПоиска = "REGISTERDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryAppointment";
+    NewLine.МетодПоиска = "GETDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Delivery management";
+    NewLine.ОписаниеМетода   = "Receives information about the delivery date, time and address agreed with the customer";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryAppointment";
+    NewLine.МетодПоиска = "GETDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "Appointment UUID";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryAppointment";
+    NewLine.МетодПоиска = "GETDELIVERYAPPOINTMENT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetCourierInvitationsDescription";
     NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
     NewLine.Параметр    = "--empty";
@@ -662,6 +724,27 @@
     NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetCourierInvitationsDescription";
     NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
+    NewLine.Параметр    = "--required";
+    NewLine.Описание    = "True > only required fields will be in the set (optional, def. val. - No)";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetAppointmentDescription";
+    NewLine.МетодПоиска = "GETAPPOINTMENTDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Delivery management";
+    NewLine.ОписаниеМетода   = "Gets the layout to create about delivery in the RegisterDeliveryAppointment function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetAppointmentDescription";
+    NewLine.МетодПоиска = "GETAPPOINTMENTDESCRIPTION";
     NewLine.Параметр    = "--required";
     NewLine.Описание    = "True > only required fields will be in the set (optional, def. val. - No)";
     NewLine.Область     = "Delivery management";
