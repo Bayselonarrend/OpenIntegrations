@@ -669,7 +669,34 @@ EndFunction
 
 #EndRegion
 
-#Region CourierInvitationsManagment
+#Region DeliveryManagement
+
+// Get available delivery intervals
+// Gets available delivery intervals for order
+//
+// Note
+// Method at API documentation: [Getting delivery intervals (RU)](@api-docs.cdek.ru/154160502.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetAvailableDeliveryIntervals(Val Token, Val UUID, Val TestAPI = False) Export
+
+    URL     = FormURL("/delivery/intervals", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
 
 // Create courier invitation
 // Creates a new request to call a courier to pick up a shipment

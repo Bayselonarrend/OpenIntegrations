@@ -1834,6 +1834,10 @@ Procedure Check_CdekOrderNumber(Val Result) Export
 
 EndProcedure
 
+Procedure Check_CdekkDeliveryIntervals(Val Result) Export
+    ExpectsThat(Result["date_intervals"]).ИмеетТип("Array");
+EndProcedure
+
 #EndRegion
 
 #EndRegion
