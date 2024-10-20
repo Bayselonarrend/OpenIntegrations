@@ -1026,7 +1026,7 @@ Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export
         , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
 
     If Clear Then
-        OPI_Tools.ClearCollectionRecursively(FilterStructure);
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
     EndIf;
 
     //@skip-check constructor-function-return-section
