@@ -30,8 +30,8 @@ Method at API documentation: [Getting delivery intervals (RU)](https://api-docs.
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzA3NDAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "965e2d3d-5d3c-47a1-8cf2-89402e9f40fa";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzcwOTMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "6f1162ad-7b5c-479b-8e42-8213f29dcf19";
 
     Result = OPI_CDEK.GetAvailableDeliveryIntervals(Token, UUID, True);
 ```
@@ -40,5 +40,134 @@ Method at API documentation: [Getting delivery intervals (RU)](https://api-docs.
 
 
 ```json title="Result"
-
+{
+ "date_intervals": [
+  {
+   "date": "2024-10-23",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2024-10-30",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2024-11-06",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2024-11-13",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2024-11-20",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2024-11-27",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  }
+ ]
+}
 ```

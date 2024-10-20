@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 12
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create prealert
+ Creates a prealert for the order list
+
+
+
+`Function CreatePrealert(Val Token, Val UUIDArray, Val TransferDate, Val Point, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUIDArray | --uuids | String, Array of String | &#x2714; | One or an array of order UUIDs |
+  | TransferDate | --date | Date | &#x2714; | Planned date of transfer of orders to CDEK |
+  | Point | --point | String | &#x2714; | Code of shipment point to which it is planned to transfer orders |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Registration of Prealert document](https://api-docs.cdek.ru/78935159.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzcwOTMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID         = "6f1162ad-7b5c-479b-8e42-8213f29dcf19";
+    Point        = "NSK27";
+    TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
+
+    Result = OPI_CDEK.CreatePrealert(Token, UUID, TransferDate, Point, True);
+```
+ 
+
+
+
+```json title="Result"
+
+```

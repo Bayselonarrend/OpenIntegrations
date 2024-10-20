@@ -495,6 +495,88 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreatePrealert";
+    NewLine.МетодПоиска = "CREATEPREALERT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Creates a prealert for the order list";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreatePrealert";
+    NewLine.МетодПоиска = "CREATEPREALERT";
+    NewLine.Параметр    = "--uuids";
+    NewLine.Описание    = "One or an array of order UUIDs";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreatePrealert";
+    NewLine.МетодПоиска = "CREATEPREALERT";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Planned date of transfer of orders to CDEK";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreatePrealert";
+    NewLine.МетодПоиска = "CREATEPREALERT";
+    NewLine.Параметр    = "--point";
+    NewLine.Описание    = "Code of shipment point to which it is planned to transfer orders";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "CreatePrealert";
+    NewLine.МетодПоиска = "CREATEPREALERT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPrealert";
+    NewLine.МетодПоиска = "GETPREALERT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Gets a previously created prealert";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPrealert";
+    NewLine.МетодПоиска = "GETPREALERT";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "Prealert UUID";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPrealert";
+    NewLine.МетодПоиска = "GETPREALERT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetOrderDescription";
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--empty";
