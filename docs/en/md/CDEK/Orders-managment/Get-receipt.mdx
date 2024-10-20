@@ -35,8 +35,8 @@ The receipt must be previously created. See CreateReceipt
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzA3NDAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "72753031-d85a-4da0-a3d2-4b872903c9ef";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzcwOTMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "72753031-98cd-4554-a4c4-15fee09ad976";
 
     Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
 
@@ -50,5 +50,43 @@ The receipt must be previously created. See CreateReceipt
 
 
 ```json title="Result"
-
+{
+ "entity": {
+  "uuid": "72753031-f901-4b5a-87ad-355e0bbb2711",
+  "orders": [
+   {
+    "order_uuid": "038e9dc5-be71-48c7-a289-de8f12254537"
+   }
+  ],
+  "copy_count": 1,
+  "type": "tpl_russia",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/72753031-f901-4b5a-87ad-355e0bbb2711.pdf",
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-20T17:25:53+03:00"
+   },
+   {
+    "code": "PROCESSING",
+    "name": "Формируется",
+    "date_time": "2024-10-20T17:25:53+03:00"
+   },
+   {
+    "code": "READY",
+    "name": "Сформирован",
+    "date_time": "2024-10-20T17:25:53+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "3b194f9a-6dab-400f-9c8d-4dc70ec79e17",
+   "type": "CREATE",
+   "date_time": "2024-10-20T17:25:53+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
 ```
