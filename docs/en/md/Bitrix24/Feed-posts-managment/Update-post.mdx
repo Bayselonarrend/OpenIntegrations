@@ -54,6 +54,36 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 UpdatePost \
+ --url "b24-ar17wx.bitrix24.by" \
+ --postid 1028 \
+ --text "New post text" \
+ --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'}" \
+ --title "New post title" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 UpdatePost ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --postid 1028 ^
+ --text "New post text" ^
+ --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'}" ^
+ --title "New post title" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

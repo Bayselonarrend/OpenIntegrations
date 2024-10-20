@@ -40,6 +40,28 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gdrive UpdateFile \
+ --token "***" \
+ --object "1Fu0kwcLk70gIwr24mB8rAZTPyg9DuK9k" \
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
+ --title "UpdatedFile.jpg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive UpdateFile ^
+ --token "***" ^
+ --object "1Fu0kwcLk70gIwr24mB8rAZTPyg9DuK9k" ^
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
+ --title "UpdatedFile.jpg"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

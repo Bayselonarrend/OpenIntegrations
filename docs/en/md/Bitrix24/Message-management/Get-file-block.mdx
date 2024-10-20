@@ -36,6 +36,24 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 GetFileBlock \
+ --title "Image" \
+ --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 GetFileBlock ^
+ --title "Image" ^
+ --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

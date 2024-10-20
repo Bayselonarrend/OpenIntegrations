@@ -40,6 +40,30 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint ozon BindBarcodes \
+ --clientid "***" \
+ --apikey "***" \
+ --barcodes "{'1626044001':'112233'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint ozon BindBarcodes ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --barcodes "{'1626044001':'112233'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

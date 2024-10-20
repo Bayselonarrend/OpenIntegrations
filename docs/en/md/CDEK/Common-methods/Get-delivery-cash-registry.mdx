@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get delivery cash registry
+ Receives registers of imposed payments, for which the client was transferred the payment
+
+
+
+`Function GetDeliveryCashRegistry(Val Token, Val ReceivingDate, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | ReceivingDate | --date | Date | &#x2714; | Date for which data should be retrieved |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Cash on delivery registry information](https://api-docs.cdek.ru/107254821.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token         = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0NTUxODMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    ReceivingDate = OPI_Tools.GetCurrentDate();
+
+    Result = OPI_CDEK.GetDeliveryCashRegistry(Token, ReceivingDate, True);
+```
+ 
+
+
+
+```json title="Result"
+
+```

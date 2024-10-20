@@ -47,6 +47,30 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint twitter CreateImageTweet \
+ --text "TestTweetaf2a3ad6-be99-438e-a6e4-214add092a27" \
+ --pictures "C:\Users\Administrator\AppData\Local\Temp\jgjh4rhivwq.tmp" \
+ --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint twitter CreateImageTweet ^
+ --text "TestTweetaf2a3ad6-be99-438e-a6e4-214add092a27" ^
+ --pictures "C:\Users\Administrator\AppData\Local\Temp\jgjh4rhivwq.tmp" ^
+ --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

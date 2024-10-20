@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 14
+sidebar_position: 16
 ---
 
 import Tabs from '@theme/Tabs';
@@ -36,122 +36,24 @@ Required fields may depend on the type of order or nesting. Be sure to read the 
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek GetOrderDescription \
+ --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek GetOrderDescription ^
+ --empty false
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
-{
- "tariff_code": "<Tariff code)>",
- "recipient": {
-  "company": "<Company name>",
-  "name": "<Full name of contact person>",
-  "passport_series": "<Passport series>",
-  "passport_number": "<Passport number>",
-  "passport_date_of_issue": "<Date of issue of passport>",
-  "passport_organization": "<Passport issuing authority>",
-  "tin": "<TIN>",
-  "passport_date_of_birth": "<Birth date>",
-  "email": "<Email as RFC 2822>",
-  "contragent_type": "<Sender type: LEGAL_ENTITY, INDIVIDUAL >",
-  "phones": [
-   {
-    "number": "<Phone number>",
-    "additional": "<Additional information (extension number)>"
-   }
-  ]
- },
- "packages": [
-  {
-   "number": "<Package number>",
-   "weight": "<Total weight (grams)>",
-   "length": "<Package Dimensions. Length (cm)>",
-   "width": "<Package Dimensions. Width (cm)>",
-   "height": "<Package Dimensions. Height (cm)>",
-   "comment": "<Package withommentary>",
-   "items": [
-    {
-     "name": "<Product name>",
-     "ware_key": "<Product ID/article>",
-     "marking": "<Product marking>",
-     "payment": {
-      "value": "<Amount of cash on delivery, including VAT>",
-      "vat_sum": "<VAT amount>",
-      "vat_rate": "<VAT rate (value - 0, 10, 12, 20, null - no VAT)>"
-     },
-     "cost": "<Declared product price>",
-     "weight": "<Weight (per unit, grams)>",
-     "weight_gross": "<Gross weight>",
-     "amount": "<Number of units (pcs)>",
-     "name_i18n": "<Foreign language name>",
-     "brand": "<Brand in a foreign language>",
-     "country_code": "<Country code of the product manufacturer as ISO_3166-1_alpha-2>",
-     "material": "<Material code>",
-     "wifi_gsm": "<Contains wifi or gsm>",
-     "url": "<Link to the website of the online store with the description of the product>"
-    }
-   ]
-  }
- ],
- "additional_order_types": "<Additional order type>",
- "comment": "<Order comment>",
- "developer_key": "<Developer key (for module developers)>",
- "shipment_point": "<Code of CDEK POZ for self carriage by the customer>",
- "delivery_point": "<Code of CDEK office to which the package will be delivered>",
- "date_invoice": "<Invoice date>",
- "shipper_name": "<Shipper>",
- "shipper_address": "<Shippers address>",
- "sender": {
-  "company": "<Company name>",
-  "name": "<Full name of contact person>",
-  "email": "<Email for alerts as RFC 2822>",
-  "passport_series": "<Passport series>",
-  "passport_number": "<Passport number>",
-  "passport_date_of_issue": "<Date of issue of passport>",
-  "passport_organization": "<Passport issuing authority>",
-  "tin": "<TIN>",
-  "passport_date_of_birth": "<Birth date>",
-  "contragent_type": "<Sender type: LEGAL_ENTITY, INDIVIDUAL >",
-  "phones": [
-   {
-    "number": "<Phone number>",
-    "additional": "<Additional information (extension number)>"
-   }
-  ]
- },
- "from_location": {
-  "code": "<CDEC locality code>",
-  "fias_guid": "<Unique FIAS identifier>",
-  "postal_code": "<Postal code>",
-  "longitude": "<Longitude>",
-  "latitude": "<Latitude>",
-  "country_code": "<Code withтраны in format ISO_3166-1_alpha-2>",
-  "region": "<Region name, specifying parameter for the city field>",
-  "region_code": "<CDEK region code, specifying parameter for the city field>",
-  "sub_region": "<Name of the region's district, specifying parameter for the region field>",
-  "city": "<City name, specifying parameter for postal_code>",
-  "kladr_code": "<CLADR code>",
-  "address": "<Address string >"
- },
- "to_location": {
-  "code": "<CDEC locality code>",
-  "fias_guid": "<Unique FIAS identifier>",
-  "postal_code": "<Postal code>",
-  "longitude": "<Longitude>",
-  "latitude": "<Latitude>",
-  "country_code": "<Code withтраны in format ISO_3166-1_alpha-2>",
-  "region": "<Region name, specifying parameter for the city field>",
-  "region_code": "<CDEK region code, specifying parameter for the city field>",
-  "sub_region": "<Name of the region's district, specifying parameter for the region field>",
-  "city": "<City name, specifying parameter for postal_code>",
-  "kladr_code": "<CLADR code>",
-  "address": "<Address string >"
- },
- "services": {
-  "code": "<Type of additional service>",
-  "parameter": "<Additional service parameter>"
- },
- "print": "<Need to generate a document>",
- "is_client_return": "<Customer refund>",
- "accompanying_number": "<Number of the accompanying consignment note>",
- "widget_token": "<Token received from widget.cdek.ru>"
-}
+
 ```

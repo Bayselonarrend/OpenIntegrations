@@ -36,6 +36,28 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint yadisk CreateObjectCopy \
+ --token "***" \
+ --from "/bb02444e-857e-4b0b-a98b-f32be2dfff6a.png" \
+ --to "/413aa6e9-b37d-4c18-9e4a-2f50565b3fcf.png" \
+ --rewrite true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk CreateObjectCopy ^
+ --token "***" ^
+ --from "/bb02444e-857e-4b0b-a98b-f32be2dfff6a.png" ^
+ --to "/413aa6e9-b37d-4c18-9e4a-2f50565b3fcf.png" ^
+ --rewrite true
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

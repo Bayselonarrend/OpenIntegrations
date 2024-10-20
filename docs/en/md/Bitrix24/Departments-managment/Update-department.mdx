@@ -57,6 +57,32 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 UpdateDepartment \
+ --url "b24-ar17wx.bitrix24.by" \
+ --depid 680 \
+ --title "New department" \
+ --parentid 1 \
+ --headid 10 \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 UpdateDepartment ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --depid 680 ^
+ --title "New department" ^
+ --parentid 1 ^
+ --headid 10 ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

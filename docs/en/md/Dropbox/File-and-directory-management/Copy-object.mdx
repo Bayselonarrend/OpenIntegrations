@@ -35,6 +35,26 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox CopyObject \
+ --token "***" \
+ --from "/New/pic.png" \
+ --to "/New/pic_copy.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox CopyObject ^
+ --token "***" ^
+ --from "/New/pic.png" ^
+ --to "/New/pic_copy.png"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

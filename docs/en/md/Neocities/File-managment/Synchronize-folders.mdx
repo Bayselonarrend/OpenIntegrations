@@ -41,6 +41,26 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint neocities SynchronizeFolders \
+ --token "***" \
+ --local "C:\test_site" \
+ --remote "test_sync"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint neocities SynchronizeFolders ^
+ --token "***" ^
+ --local "C:\test_site" ^
+ --remote "test_sync"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
