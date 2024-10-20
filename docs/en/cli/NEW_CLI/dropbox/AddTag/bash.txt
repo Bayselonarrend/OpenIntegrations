@@ -1,0 +1,4 @@
+oint dropbox AddTag \
+ --token "***" \
+ --path "/New/mydoc.docx" \
+ --tag "Important"

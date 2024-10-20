@@ -1,0 +1,5 @@
+oint ozon SetProductDiscount ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --productid 1156646653 ^
+ --discount 10

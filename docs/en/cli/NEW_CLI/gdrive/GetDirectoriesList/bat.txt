@@ -1,0 +1,3 @@
+oint gdrive GetDirectoriesList ^
+ --token "***" ^
+ --querry "TestFolder"

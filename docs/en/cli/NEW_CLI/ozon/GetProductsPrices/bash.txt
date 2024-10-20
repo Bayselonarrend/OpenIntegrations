@@ -1,0 +1,3 @@
+oint ozon GetProductsPrices \
+ --clientid "***" \
+ --apikey "***"
