@@ -381,7 +381,7 @@ def test_bitrix24(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetTasksFilterStructure --empty "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetTasksFilterStructure --empty "test" --map "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

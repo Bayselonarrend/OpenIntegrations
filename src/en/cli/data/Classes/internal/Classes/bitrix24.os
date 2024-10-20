@@ -1331,6 +1331,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksFilterStructure";
+    NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
+    NewLine.Параметр    = "--map";
+    NewLine.Описание    = "True > returns the filter fields as a map (optional, def. val. - No)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetCustomTaskFieldsList";
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
     NewLine.Параметр    = "--url";
