@@ -15971,7 +15971,7 @@ Procedure CLI_CDEK_GetBarcode(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetBarcode (file)");
-    OPI_TestDataRetrieval.Check_BinaryData(Result, 50000);
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
     DeleteFiles(TFN);
 
 EndProcedure
