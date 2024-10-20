@@ -8389,10 +8389,13 @@ EndProcedure
 
 Procedure Bitrix24_GetTasksList(FunctionParameters)
 
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
     // Full filter structure you can find at GetTasksFilterStructure method
-    Filter = New Structure;
-    Filter.Insert("CREATED_BY" , 1);
-    Filter.Insert("RESPONSIBLE_ID", 10);
+    Filter = New Map;
+    Filter.Insert("CREATED_BY" , 1); // Producer with ID 1
+    Filter.Insert("!RESPONSIBLE_ID", 10); // Performers with ID not equal to 10
+    Filter.Insert(">=CREATED_DATE ", CurrentDate - 60 * 60 * 24); // Creation date >= yesterday
 
     Indent = 1;
     URL    = FunctionParameters["Bitrix24_URL"];
@@ -8400,7 +8403,6 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
     Result = OPI_Bitrix24.GetTasksList(URL, Filter);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList (wh)", "Bitrix24");
-
     OPI_TestDataRetrieval.Check_BitrixTasksList(Result); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
@@ -8411,7 +8413,6 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList", "Bitrix24");
-
     OPI_TestDataRetrieval.Check_BitrixTasksList(Result);
 
 EndProcedure
