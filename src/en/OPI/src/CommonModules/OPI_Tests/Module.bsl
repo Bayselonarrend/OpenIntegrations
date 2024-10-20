@@ -2026,8 +2026,10 @@ EndProcedure
 Procedure CdekAPI_CourierInvitationsManagment() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_OrderUUID", TestParameters);
 
+    CDEK_GetAvailableDeliveryIntervals(TestParameters);
     CDEK_GetCourierInvitationsDescription(TestParameters);
     CDEK_CreateCourierInvitation(TestParameters);
     CDEK_GetCourierInvitation(TestParameters);
@@ -14041,6 +14043,20 @@ Procedure CDEK_GetBarcode(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode (file)");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
     DeleteFiles(TFN);
+
+EndProcedure
+
+Procedure CDEK_GetAvailableDeliveryIntervals(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.GetAvailableDeliveryIntervals(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAvailableDeliveryIntervals", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekkDeliveryIntervals(Result);
 
 EndProcedure
 

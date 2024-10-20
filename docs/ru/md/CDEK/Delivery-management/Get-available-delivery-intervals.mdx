@@ -1,16 +1,16 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Создать отказ
- Создает отказ по заказу для возврата в интернет магазин
+# Получить доступные интервалы доставки
+ Получает доступные интервалы доставки для заказа
 
 
 
-`Функция СоздатьОтказ(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция ПолучитьДоступныеИнтервалыДоставки(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [Регистрация отказа](https://api-docs.cdek.ru/55327658.html)
+Метод в документации API: [Получение интервалов доставки](https://api-docs.cdek.ru/154160502.html)
 :::
 <br/>
 
@@ -33,45 +33,12 @@ import TabItem from '@theme/TabItem';
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MTUzMDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
     UUID  = "7464a243-8e8f-4e72-8461-4ce50c52554e";
 
-    Результат = OPI_CDEK.СоздатьОтказ(Токен, UUID, Истина);
+    Результат = OPI_CDEK.ПолучитьДоступныеИнтервалыДоставки(Токен, UUID, Истина);
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            oint cdek СоздатьОтказ \
-              --token "***" \
-              --uuid "44d40fbb-f00b-46e2-8e13-2fa457dde204" \
-              --testapi "***"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            oint cdek СоздатьОтказ ^
-              --token "***" ^
-              --uuid "44d40fbb-f00b-46e2-8e13-2fa457dde204" ^
-              --testapi "***"
-        ```
-    </TabItem>
-</Tabs>
 
 
 ```json title="Результат"
-{
- "entity": {
-  "uuid": "0c6b403d-000a-4d64-a282-798607b5e01f"
- },
- "requests": [
-  {
-   "request_uuid": "c70f239c-26a1-4835-9a21-b52b322671cb",
-   "type": "CREATE_REFUSAL",
-   "date_time": "2024-10-12T17:43:55+03:00",
-   "state": "ACCEPTED"
-  }
- ],
- "related_entities": []
-}
+
 ```

@@ -526,11 +526,42 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetAvailableDeliveryIntervals";
+    NewLine.МетодПоиска = "GETAVAILABLEDELIVERYINTERVALS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Delivery management";
+    NewLine.ОписаниеМетода   = "Gets available delivery intervals for order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetAvailableDeliveryIntervals";
+    NewLine.МетодПоиска = "GETAVAILABLEDELIVERYINTERVALS";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "Order UUID";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetAvailableDeliveryIntervals";
+    NewLine.МетодПоиска = "GETAVAILABLEDELIVERYINTERVALS";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Delivery management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "CreateCourierInvitation";
     NewLine.МетодПоиска = "CREATECOURIERINVITATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
     NewLine.ОписаниеМетода   = "Creates a new request to call a courier to pick up a shipment";
 
 
@@ -541,7 +572,7 @@
     NewLine.МетодПоиска = "CREATECOURIERINVITATION";
     NewLine.Параметр    = "--intake";
     NewLine.Описание    = "Invitations description. See GetCourierInvitationsDescription";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -551,7 +582,7 @@
     NewLine.МетодПоиска = "CREATECOURIERINVITATION";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -561,7 +592,7 @@
     NewLine.МетодПоиска = "GETCOURIERINVITATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
     NewLine.ОписаниеМетода   = "Gets withourier invitation by UUID";
 
 
@@ -572,7 +603,7 @@
     NewLine.МетодПоиска = "GETCOURIERINVITATION";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "UUID of the invitation";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -582,7 +613,7 @@
     NewLine.МетодПоиска = "GETCOURIERINVITATION";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -592,7 +623,7 @@
     NewLine.МетодПоиска = "DELETECOURIERINVITATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -602,7 +633,7 @@
     NewLine.МетодПоиска = "DELETECOURIERINVITATION";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "UUID of the invitation for deletion";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -612,7 +643,7 @@
     NewLine.МетодПоиска = "DELETECOURIERINVITATION";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
 
     NewLine = CompositionTable.Add();
@@ -622,7 +653,7 @@
     NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
     NewLine.ОписаниеМетода   = "Gets the layout for creating a request for courier call in the CreateCourierInvitation function";
 
 
@@ -633,7 +664,7 @@
     NewLine.МетодПоиска = "GETCOURIERINVITATIONSDESCRIPTION";
     NewLine.Параметр    = "--required";
     NewLine.Описание    = "True > only required fields will be in the set (optional, def. val. - No)";
-    NewLine.Область     = "Courier invitations managment";
+    NewLine.Область     = "Delivery management";
 
     Return CompositionTable;
 EndFunction
