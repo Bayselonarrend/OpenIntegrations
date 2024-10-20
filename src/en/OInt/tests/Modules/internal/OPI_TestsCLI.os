@@ -2027,6 +2027,12 @@ Procedure CLI_CdekAPI_CourierInvitationsManagment() Export
     CLI_CDEK_CreateCourierInvitation(TestParameters);
     CLI_CDEK_GetCourierInvitation(TestParameters);
     CLI_CDEK_DeleteCourierInvitation(TestParameters);
+    CLI_CDEK_GetAppointmentDescription(TestParameters);
+    CLI_CDEK_RegisterDeliveryAppointment(TestParameters);
+
+    OPI_Tools.Pause(25);
+
+    CLI_CDEK_GetDeliveryAppointment(TestParameters);
 
 EndProcedure
 
@@ -15976,6 +15982,92 @@ Procedure CLI_CDEK_GetBarcode(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_CDEK_GetAppointmentDescription(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAppointmentDescription", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Options = New Structure;
+    Options.Insert("empty", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAppointmentDescription (empty)", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_RegisterDeliveryAppointment(FunctionParameters)
+
+    Token       = FunctionParameters["CDEK_Token"];
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    Appointment = New Structure;
+
+    Appointment.Insert("cdek_number", "1106207236");
+    Appointment.Insert("order_uuid" , "72753031-df04-44a4-bc60-11e8b5253b1d");
+    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24, "DF=yyyy-MM-dd"));
+    Appointment.Insert("time_from"  , "10:00");
+    Appointment.Insert("time_to"    , "15:00");
+    Appointment.Insert("comment"    , "Group office");
+
+        DeliveryLocation = New Structure;
+        DeliveryLocation.Insert("code"        , "137");
+        DeliveryLocation.Insert("fias_guid"   , "c2deb16a-0330-4f05-821f-1d09c93331e6");
+        DeliveryLocation.Insert("postal_code" , "190000");
+        DeliveryLocation.Insert("longitude"   , "30.3159");
+        DeliveryLocation.Insert("latitude"    , "59.9391");
+        DeliveryLocation.Insert("country_code", "RU");
+        DeliveryLocation.Insert("region"      , "St. Petersburg");
+        DeliveryLocation.Insert("region_code" , "82");
+        DeliveryLocation.Insert("sub_region"  , "St. Petersburg");
+        DeliveryLocation.Insert("city"        , "St. Petersburg");
+        DeliveryLocation.Insert("kladr_code"  , "78");
+        DeliveryLocation.Insert("address"     , "Berdsk Lenina street 16");
+
+    Appointment.Insert("to_location", DeliveryLocation);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("appt"   , Appointment);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "RegisterDeliveryAppointment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RegisterDeliveryAppointment", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_ApptUUID", UUID);
+    OPI_Tools.AddField("CDEK_ApptUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetDeliveryAppointment(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_ApptUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryAppointment", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryAppointment", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
 #EndRegion
 
 #EndRegion
