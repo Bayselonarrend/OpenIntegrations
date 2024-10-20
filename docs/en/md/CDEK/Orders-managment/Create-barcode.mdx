@@ -1,23 +1,24 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Create receipt
- Generates pdf receipts for orders
+# Create barcode
+ Generates a PDF barcode CP for orders
 
 
 
-`Function CreateReceipt(Val Token, Val UUIDArray, Val Type = "tpl_russia", Val CopiesPerSheet = 2, Val TestAPI = False) Export`
+`Function CreateBarcode(Val Token, Val UUIDArray, Val Copies = 1, Val Format = "A4", Val Lang = "RUS", Val TestAPI = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Auth token |
   | UUIDArray | --uuids | String, Array of String | &#x2714; | One or an array of order UUIDs |
-  | Type | --type | String | &#x2716; | Receipt type (language) |
-  | CopiesPerSheet | --count | Number | &#x2716; | Number of copies of one receipt per sheet |
+  | Copies | --count | Number | &#x2716; | Number of copies |
+  | Format | --format | String | &#x2716; | Print format: A4, A5, A6, A7 |
+  | Lang | --lang | String | &#x2716; | Barcode language: RUS, ENG |
   | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
   
@@ -26,11 +27,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Available receipt types (languages): tpl_china, tpl_armenia, tpl_russia, tpl_english, tpl_italian, tpl_korean, tpl_latvian, tpl_lithuanian, tpl_german, tpl_turkish, tpl_czech, tpl_thailand, tpl_invoice
-
- It is recommended to specify at least 2 copies per sheet (parameter CopiesPerSheet): one to be glued on the shipment, the other to be kept by the sender
-
- Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/36969649.html)
+Method at API documentation: [Creating barcode CP for the order](https://api-docs.cdek.ru/36969713.html)
 :::
 <br/>
 
@@ -38,10 +35,10 @@ Available receipt types (languages): tpl_china, tpl_armenia, tpl_russia, tpl_eng
 ```bsl title="1C:Enterprise/OneScript code example"
     Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MTE3OTAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
     UUID   = "e4b02aba-4bd3-4a5e-be55-9513787844f7";
-    Type   = "tpl_russia";
+    Format = "A5";
     Copies = 1;
 
-    Result = OPI_CDEK.CreateReceipt(Token, UUID, Type, Copies, True);
+    Result = OPI_CDEK.CreateBarcode(Token, UUID, Copies, Format, , True);
 ```
  
 

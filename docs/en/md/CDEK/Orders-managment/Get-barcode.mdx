@@ -1,39 +1,49 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 11
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Delete courier invitation
+# Get barcode
+ Gets the barcode CP for the order
 
 
 
-
-`Function DeleteCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export`
+`Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Auth token |
-  | UUID | --uuid | String | &#x2714; | UUID of the invitation for deletion |
+  | UUID | --uuid | String | &#x2714; | The UID of the barcode received when the barcode was created |
+  | GetFile | --getfile | Boolean | &#x2716; | True > PDF file data will be received, False > receives CDEK server response |
   | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
   
-  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+  Returns:  Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
 
 <br/>
 
 :::tip
-Method at API documentation: [Deleting a courier invitation](https://api-docs.cdek.ru/33828880.html)
+The barcode must be previously created. See CreateBarcode
+
+ The link to the file with the barcode CP is available within 1 hour
+
+ Method at API documentation: [Receiving barcode CP for the order](https://api-docs.cdek.ru/36969722.html)
 :::
 <br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MTE3OTAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "72753031-2a04-4e3c-bc4c-3cbe1e1143ed";
+    UUID  = "72753031-e627-4330-8dea-c42ecf36de44";
 
-    Result = OPI_CDEK.DeleteCourierInvitation(Token, UUID, True);
+    Result = OPI_CDEK.GetBarcode(Token, UUID, , True); // Server response with a URL
+
+    TFN = GetTempFileName("pdf");
+
+    Result = OPI_CDEK.GetBarcode(Token, UUID, True, True); // PDF
+    Result.Write(TFN);
 ```
  
 
