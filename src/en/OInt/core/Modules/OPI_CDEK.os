@@ -728,6 +728,7 @@ EndFunction
 // Gets withourier invitation by UUID
 //
 // Note
+// The invitation must be previously created. See CreateCourierInvitation
 // Method at API documentation: [Details of a courier invitation(@api-docs.cdek.ru/33828865.html)
 //
 // Parameters:
@@ -770,6 +771,59 @@ Function DeleteCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Expor
     Headers = CreateRequestHeaders(Token);
 
     Response = OPI_Tools.Delete(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Register delivery appointment
+// Fixes the delivery date, time and address agreed with the customer
+//
+// Note
+// Method at API documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// Appointment - Structure of KeyAndValue - Appointment description. See GetAppointmentDescription - appt
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function RegisterDeliveryAppointment(Val Token, Val Appointment, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetCollection(Appointment);
+
+    URL     = FormURL("/delivery", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Post(URL, Appointment, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get delivery appointment
+// Receives information about the delivery date, time and address agreed with the customer
+//
+// Note
+// The appointment must be previously created. See RegisterDeliveryAppointment
+// Method at API documentation: [Information about delivery appointment](@api-docs.cdek.ru/36989601.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Appointment UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetDeliveryAppointment(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/delivery/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
 
     Return Response;
 
@@ -856,6 +910,64 @@ Function GetCourierInvitationsDescription(Val Clear = False, Val RequiredOnly = 
 
     //@skip-check constructor-function-return-section
     Return InvitationStructure;
+
+EndFunction
+
+// Get appointment description
+// Gets the layout to create about delivery in the RegisterDeliveryAppointment function
+//
+// Note
+// Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
+// Field descriptions in the documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// RequiredOnly - Boolean - True > only required fields will be in the set - required
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(RequiredOnly);
+
+    AppointmentStructure = New Structure;
+
+    AppointmentStructure.Insert("date", "<Delivery date agreed with the recipient>");
+
+    If Not RequiredOnly Then
+
+        AppointmentStructure.Insert("cdek_number"   , "<CDEK order number>");
+        AppointmentStructure.Insert("order_uuid"    , "<Order identifier in CDEK system>");
+        AppointmentStructure.Insert("time_from"     , "<Delivery time FROM agreed with the recipient>");
+        AppointmentStructure.Insert("time_to"       , "<Delivery time TO agreed with the recipient>");
+        AppointmentStructure.Insert("comment"       , "<Comment>");
+        AppointmentStructure.Insert("delivery_point", "<Alphanumeric code of CDEK POZ>");
+
+            DeliveryAddressStruct = New Structure;
+            DeliveryAddressStruct.Insert("code"        , "<CDEC locality code>");
+            DeliveryAddressStruct.Insert("fias_guid"   , "<Unique FIAS identifier>");
+            DeliveryAddressStruct.Insert("postal_code" , "<Postal code>");
+            DeliveryAddressStruct.Insert("longitude"   , "<Longitude>");
+            DeliveryAddressStruct.Insert("latitude"    , "<Latitude>");
+            DeliveryAddressStruct.Insert("country_code", "<Country code in format ISO_3166-1_alpha-2>");
+            DeliveryAddressStruct.Insert("region"      , "<Region name>");
+            DeliveryAddressStruct.Insert("region_code" , "<Region code>");
+            DeliveryAddressStruct.Insert("sub_region"  , "<Name of the area of the region>");
+            DeliveryAddressStruct.Insert("city"        , "<City name>");
+            DeliveryAddressStruct.Insert("kladr_code"  , "<CLADR code>");
+            DeliveryAddressStruct.Insert("address"     , "<Address string>");
+
+        AppointmentStructure.Insert("to_location", DeliveryAddressStruct);
+
+    EndIf;
+
+    If Clear Then
+        AppointmentStructure = OPI_Tools.ClearCollectionRecursively(AppointmentStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return AppointmentStructure;
 
 EndFunction
 
