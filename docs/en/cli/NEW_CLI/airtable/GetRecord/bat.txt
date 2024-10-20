@@ -1,0 +1,5 @@
+oint airtable GetRecord ^
+ --token "***" ^
+ --base "appAQ9g7KfKxZjIqP" ^
+ --table "tbleZAcXuM1Fye5lt" ^
+ --record "rec7du0DwAR34SR4P"

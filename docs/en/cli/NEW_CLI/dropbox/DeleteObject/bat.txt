@@ -1,0 +1,3 @@
+oint dropbox DeleteObject ^
+ --token "***" ^
+ --path "/New catalog"
