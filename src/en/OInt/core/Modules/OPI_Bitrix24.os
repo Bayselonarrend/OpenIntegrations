@@ -973,19 +973,30 @@ EndFunction
 // Get structure of tasks filter
 // Return filter structure for GetTasksList
 //
+// Note
+// Returning fields as a map allows you to specify the filtering type before the filtered field name
+// Types of filtration: !, <, <=, >, >=. For example: !ID:3 (ID not equal to 3)
+//
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns the filter fields as a map - map
 //
 // Returns:
 // Structure of KeyAndValue - Fields structure
-Function GetTasksFilterStructure(Val Clear = False) Export
+Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export
 
     // More
     // https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php
 
     OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(AsMap);
 
-    FilterStructure = New Structure;
+    If AsMap Then
+        FilterStructure = New Map;
+    Else
+        FilterStructure = New Structure;
+    EndIf;
+
     FilterStructure.Insert("ID"               , "<task identifier>");
     FilterStructure.Insert("PARENT_ID"        , "<parent task identifier>");
     FilterStructure.Insert("GROUP_ID"         , "<workgroup identifier>");
@@ -1015,9 +1026,7 @@ Function GetTasksFilterStructure(Val Clear = False) Export
         , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
 
     If Clear Then
-        For Each Filter In FilterStructure Do
-            FilterStructure.Insert(Filter.Key, "");
-        EndDo;
+        OPI_Tools.ClearCollectionRecursively(FilterStructure);
     EndIf;
 
     //@skip-check constructor-function-return-section
