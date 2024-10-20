@@ -2010,10 +2010,12 @@ Procedure CDEKAPI_OrdersManagment() Export
     CDEK_GetOrder(TestParameters);
     CDEK_GetOrderByNumber(TestParameters);
     CDEK_CreateReceipt(TestParameters);
+    CDEK_CreateBarcode(TestParameters);
 
     OPI_Tools.Pause(25);
 
     CDEK_GetReceipt(TestParameters);
+    CDEK_GetBarcode(TestParameters);
     CDEK_UpdateOrder(TestParameters);
     CDEK_CreateCustomerRefund(TestParameters);
     CDEK_CreateRefusal(TestParameters);
@@ -13994,6 +13996,49 @@ Procedure CDEK_GetReceipt(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt (file)");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
+    DeleteFiles(TFN);
+
+EndProcedure
+
+Procedure CDEK_CreateBarcode(FunctionParameters)
+
+    Token  = FunctionParameters["CDEK_Token"];
+    UUID   = FunctionParameters["CDEK_OrderUUID"];
+    Format = "A5";
+    Copies = 1;
+
+    Result = OPI_CDEK.CreateBarcode(Token, UUID, Copies, Format, , True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBarcode", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_BarcodeUUID", UUID);
+    OPI_Tools.AddField("CDEK_BarcodeUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetBarcode(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_BarcodeUUID"];
+
+    Result = OPI_CDEK.GetBarcode(Token, UUID, , True); // Server response with a URL
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
+
+    TFN = GetTempFileName("pdf");
+
+    Result = OPI_CDEK.GetBarcode(Token, UUID, True, True); // PDF
+    Result.Write(TFN);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode (file)");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
     DeleteFiles(TFN);
 
