@@ -45,6 +45,30 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint slack UploadFile \
+ --token "***" \
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+ --filename "megadoc.docx" \
+ --title "NewFile" \
+ --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack UploadFile ^
+ --token "***" ^
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+ --filename "megadoc.docx" ^
+ --title "NewFile" ^
+ --channel "C06UFNUTKUL"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

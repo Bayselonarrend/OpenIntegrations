@@ -42,6 +42,26 @@ You can create barcodes for a maximum of 100 products per request
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon CreateBarcodes \
+ --clientid "***" \
+ --apikey "***" \
+ --productids 1232965469
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon CreateBarcodes ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --productids 1232965469
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

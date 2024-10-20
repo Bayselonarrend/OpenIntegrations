@@ -46,6 +46,30 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 StopTimekeeping \
+ --url "b24-ar17wx.bitrix24.by" \
+ --userid 1 \
+ --time "2024-10-20T22:03:37.5599768" \
+ --report "Time off" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 StopTimekeeping ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --userid 1 ^
+ --time "2024-10-20T22:03:37.5599768" ^
+ --report "Time off" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

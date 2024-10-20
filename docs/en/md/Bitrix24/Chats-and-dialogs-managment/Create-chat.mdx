@@ -65,6 +65,30 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateChat \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':[10,1]}" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateChat ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':[10,1]}" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

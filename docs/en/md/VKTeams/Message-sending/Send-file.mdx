@@ -53,6 +53,30 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams SendFile \
+ --token "***" \
+ --chatid "AoLI0egLWBSLR1Ngn2w" \
+ --file "C:\Users\Administrator\AppData\Local\Temp\sbicmtizk1l.tmp" \
+ --text "File caption" \
+ --filename "ImportantDocument.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams SendFile ^
+ --token "***" ^
+ --chatid "AoLI0egLWBSLR1Ngn2w" ^
+ --file "C:\Users\Administrator\AppData\Local\Temp\sbicmtizk1l.tmp" ^
+ --text "File caption" ^
+ --filename "ImportantDocument.docx"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

@@ -50,6 +50,30 @@ You can change availability for 100 products per request. You can send up to 80 
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint ozon UpdateProductsStocks \
+ --clientid "***" \
+ --apikey "***" \
+ --stocks "{'offer_id':'143210610','product_id':1232965469,'stock':20,'warehouse_id':1}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint ozon UpdateProductsStocks ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --stocks "{'offer_id':'143210610','product_id':1232965469,'stock':20,'warehouse_id':1}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

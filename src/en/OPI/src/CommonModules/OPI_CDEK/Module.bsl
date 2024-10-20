@@ -73,6 +73,87 @@ Function GetToken(Val Account, Val Password, TestAPI = False) Export
 
 EndFunction
 
+// Get cashbox checks by date
+// Gets information about checks for a specified date
+//
+// Note
+// Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// ReceivingDate - Date - Date for which data should be retrieved - date
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetCashboxChecksByDate(Val Token, Val ReceivingDate, Val TestAPI = False) Export
+
+    URL     = FormURL("/check", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get delivery cash registry
+// Receives registers of imposed payments, for which the client was transferred the payment
+//
+// Note
+// Method at API documentation: [Cash on delivery registry information](@api-docs.cdek.ru/107254821.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// ReceivingDate - Date - Date for which data should be retrieved - date
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetDeliveryCashRegistry(Val Token, Val ReceivingDate, Val TestAPI = False) Export
+
+    URL     = FormURL("/registries", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get delivery cash transfers
+// Gets information about orders for which cash on delivery was transferred to the online store
+//
+// Note
+// Method at API documentation: [Cash on delivery transfer information](@api-docs.cdek.ru/71060213.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// ReceivingDate - Date - Date for which data should be retrieved - date
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetDeliveryCashTransfers(Val Token, Val ReceivingDate, Val TestAPI = False) Export
+
+    URL     = FormURL("/payment", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region OrdersManagment
@@ -541,6 +622,62 @@ Function GetPrealert(Val Token, Val UUID, Val TestAPI = False) Export
     Return Response;
 
 EndFunction
+
+// Get passport data status
+// Receives information on passport data processing status for international orders
+//
+// Note
+// Method at API documentation: [Passport data information](@api-docs.cdek.ru/55343134.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetPassportDataStatus(Val Token, Val UUID, Val TestAPI = False) Export
+
+    URL     = FormURL("/passport", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get cashbox check
+// Receives check information on an order
+//
+// Note
+// Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetCashboxCheck(Val Token, Val UUID, Val TestAPI = False) Export
+
+    URL     = FormURL("/check", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+
 
 // Get order description
 // Gets the layout of order for the CreateOrder function

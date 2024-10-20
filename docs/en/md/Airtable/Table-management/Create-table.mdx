@@ -49,6 +49,30 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable CreateTable \
+ --token "***" \
+ --base "appAQ9g7KfKxZjIqP" \
+ --title "TestTable2" \
+ --fieldsdata "[{'name':'Number','type':'number','options':{'precision':0}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" \
+ --description "NewTable"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable CreateTable ^
+ --token "***" ^
+ --base "appAQ9g7KfKxZjIqP" ^
+ --title "TestTable2" ^
+ --fieldsdata "[{'name':'Number','type':'number','options':{'precision':0}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" ^
+ --description "NewTable"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

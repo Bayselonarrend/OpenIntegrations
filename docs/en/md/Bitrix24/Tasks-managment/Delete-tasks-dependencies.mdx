@@ -51,6 +51,30 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 DeleteTasksDependencies \
+ --url "b24-ar17wx.bitrix24.by" \
+ --taskfrom "2612" \
+ --taskto "2610" \
+ --linktype 2 \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 DeleteTasksDependencies ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --taskfrom "2612" ^
+ --taskto "2610" ^
+ --linktype 2 ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
