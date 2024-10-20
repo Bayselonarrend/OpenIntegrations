@@ -1,0 +1,3 @@
+oint dropbox GetTagList \
+ --token "***" \
+ --paths "/New/mydoc.docx"

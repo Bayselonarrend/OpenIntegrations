@@ -1,0 +1,4 @@
+oint slack AddExternalFile \
+ --token "***" \
+ --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+ --title "NewFile"

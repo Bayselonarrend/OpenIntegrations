@@ -1,0 +1,4 @@
+oint vkteams SetChatDescription ^
+ --token "***" ^
+ --chatid "689203963@chat.agent" ^
+ --text "New description"

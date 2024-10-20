@@ -1,0 +1,3 @@
+oint viber GetOnlineUsers ^
+ --token "***" ^
+ --users "tMNGhftyUPrB3r1lD+bT4g=="

@@ -1,0 +1,3 @@
+oint telegram ShowMainForumTopic ^
+ --token "***" ^
+ --forum "-1001971186208"

@@ -1,0 +1,4 @@
+oint ozon GetProductsContentRating \
+ --clientid "***" \
+ --apikey "***" \
+ --sku 1626044001
