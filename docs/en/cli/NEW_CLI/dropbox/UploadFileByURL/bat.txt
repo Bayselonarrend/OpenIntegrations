@@ -1,0 +1,4 @@
+oint dropbox UploadFileByURL ^
+ --token "***" ^
+ --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+ --path "/New/url_doc.docx"

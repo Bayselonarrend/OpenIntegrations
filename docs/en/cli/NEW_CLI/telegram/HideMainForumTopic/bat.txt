@@ -1,0 +1,3 @@
+oint telegram HideMainForumTopic ^
+ --token "***" ^
+ --forum "-1001971186208"

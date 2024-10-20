@@ -1,0 +1,9 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint notion EditPageProperties ^
+ --token "***" ^
+ --page "12582aa7-fc4e-819f-9f54-d709d810b804" ^
+ --data "{'Active':false,'Email':'vector@mail.ru'}" ^
+ --icon "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+ --cover "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
+ --archive false
