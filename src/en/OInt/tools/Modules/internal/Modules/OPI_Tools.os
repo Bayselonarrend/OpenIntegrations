@@ -451,7 +451,7 @@ Function ClearCollectionRecursively(Val Collection) Export
 
     ValeType = TypeOf(Collection);
 
-    If ValeType = Type("Structure") Or ValeType = Type("Map") Then
+    If ValeType = Type("Structure") Then
 
         For Each CollectionItem In Collection Do
 
@@ -460,6 +460,20 @@ Function ClearCollectionRecursively(Val Collection) Export
             Collection[CollectionItem.Key] = ClearField;
 
         EndDo;
+
+    ElsIf ValeType = Type("Map") Then
+
+        Collection_ = New Map;
+
+        For Each CollectionItem In Collection Do
+
+            ClearField = ClearCollectionRecursively(CollectionItem.Value);
+
+            Collection_.Insert(CollectionItem.Key, ClearField);
+
+        EndDo;
+
+        Collection = Collection_;
 
     ElsIf ValeType = Type("Array") Then
 
