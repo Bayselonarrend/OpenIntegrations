@@ -374,6 +374,103 @@ Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
 
 EndFunction
 
+// Create barcode
+// Generates a PDF barcode CP for orders
+//
+// Note
+// Method at API documentation: [Creating barcode CP for the order](@api-docs.cdek.ru/36969713.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
+// Copies - Number - Number of copies - count
+// Format - String - Print format: A4, A5, A6, A7 - format
+// Lang - String - Barcode language: RUS, ENG - lang
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreateBarcode(Val Token
+    , Val UUIDArray
+    , Val Copies = 1
+    , Val Format = "A4"
+    , Val Lang = "RUS"
+    , Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetArray(UUIDArray);
+
+    URL     = FormURL("/print/barcodes", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters    = New Structure;
+    ArrayOfOrders = New Array;
+
+    For Each UUID In UUIDArray Do
+
+        OPI_TypeConversion.GetLine(UUID);
+        ArrayOfOrders.Add(New Structure("order_uuid", UUID));
+
+    EndDo;
+
+    OPI_Tools.AddField("orders"    , ArrayOfOrders, "Array"  , Parameters);
+    OPI_Tools.AddField("copy_count", Copies       , "Number" , Parameters);
+    OPI_Tools.AddField("format"    , Format       , "String" , Parameters);
+    OPI_Tools.AddField("lang"      , Lang         , "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get barcode
+// Gets the barcode CP for the order
+//
+// Note
+// The barcode must be previously created. See CreateBarcode
+// The link to the file with the barcode CP is available within 1 hour
+// Method at API documentation: [Receiving barcode CP for the order](@api-docs.cdek.ru/36969722.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - The UID of the barcode received when the barcode was created - uuid
+// GetFile - Boolean - True > PDF file data will be received, False > receives CDEK server response - getfile
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
+Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+    OPI_TypeConversion.GetBoolean(GetFile);
+
+    URL     = FormURL("/print/barcodes/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    If GetFile Then
+
+        Entity = Response["entity"];
+
+        If Not ValueIsFilled(Entity) Then
+            Return Response;
+        EndIf;
+
+        URL = Entity["url"];
+
+        If Not ValueIsFilled(URL) Then
+            Return Response;
+        EndIf;
+
+        Response = OPI_Tools.Get(URL, , Headers);
+
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
 // Get order description
 // Gets the layout of order for the CreateOrder function
 //
