@@ -931,6 +931,10 @@ def test_cdek(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьДоступныеИнтервалыДоставки --token "test" --uuid "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek СоздатьЗаявкуНаВызовКурьера --token "test" --intake "test" --testapi "test" --debug --test '
                }
 
