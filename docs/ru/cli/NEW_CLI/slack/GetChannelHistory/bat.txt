@@ -1,3 +1,3 @@
 oint slack GetChannelHistory ^
  --token "***" ^
- --channel "C07TBV976TA"
+ --channel "C07SLE53V53"

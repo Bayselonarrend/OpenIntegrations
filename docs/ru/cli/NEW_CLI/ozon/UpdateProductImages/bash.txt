@@ -1,6 +1,6 @@
 oint ozon UpdateProductImages \
  --clientid "***" \
  --apikey "***" \
- --productid 1232394415 \
+ --productid 1232577507 \
  --images "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" \
  --color "GREEN"
