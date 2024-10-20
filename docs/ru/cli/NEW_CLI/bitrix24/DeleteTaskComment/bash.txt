@@ -1,5 +1,5 @@
 oint bitrix24 DeleteTaskComment \
  --url "b24-ar17wx.bitrix24.by" \
- --task "2560" \
- --comment 6318 \
+ --task "2574" \
+ --comment 6356 \
  --token "***"

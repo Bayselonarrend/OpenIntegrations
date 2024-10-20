@@ -1,5 +1,5 @@
 oint bitrix24 AttachFileToTopic \
  --url "b24-ar17wx.bitrix24.by" \
- --task "2558" \
- --fileid 13530 \
+ --task "2572" \
+ --fileid 13592 \
  --token "***"
