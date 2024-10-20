@@ -41,8 +41,45 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek СоздатьПреалерт \
+              --token "***" \
+              --uuids "151e907f-b464-4f18-aab9-ec676a098551" \
+              --date "2024-10-21T18:46:09.8206391" \
+              --p            oint "NSK27" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek СоздатьПреалерт ^
+              --token "***" ^
+              --uuids "151e907f-b464-4f18-aab9-ec676a098551" ^
+              --date "2024-10-21T18:46:09.8206391" ^
+              --p            oint "NSK27" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
-
+{
+ "entity": {
+  "uuid": "72753031-8f7a-4b59-889b-ef48df1771d5"
+ },
+ "requests": [
+  {
+   "request_uuid": "9300aab8-e552-441b-9b4b-d3e6de030ba6",
+   "type": "CREATE",
+   "date_time": "2024-10-20T18:46:11+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```
