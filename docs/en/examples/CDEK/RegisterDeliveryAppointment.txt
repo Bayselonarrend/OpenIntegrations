@@ -1,0 +1,29 @@
+﻿    Token       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzA3NDAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    OrderUUID   = "965e2d3d-5d3c-47a1-8cf2-89402e9f40fa";
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    Appointment = New Structure;
+
+    Appointment.Insert("cdek_number", "1106207236");
+    Appointment.Insert("order_uuid" , OrderUUID);
+    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 10, "DF=yyyy-MM-dd"));
+    Appointment.Insert("time_from"  , "10:00");
+    Appointment.Insert("time_to"    , "17:00");
+    Appointment.Insert("comment"    , "Group office");
+
+        DeliveryLocation = New Structure;
+        DeliveryLocation.Insert("code"        , "270");
+        DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        DeliveryLocation.Insert("postal_code" , "109004");
+        DeliveryLocation.Insert("longitude"   , 37.6204);
+        DeliveryLocation.Insert("latitude"    , 55.754);
+        DeliveryLocation.Insert("country_code", "RU");
+        DeliveryLocation.Insert("region"      , "Novosibirsk");
+        DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
+        DeliveryLocation.Insert("city"        , "Novosibirsk");
+        DeliveryLocation.Insert("kladr_code"  , "7700000000000");
+        DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
+
+    Appointment.Insert("to_location", DeliveryLocation);
+
+    Result = OPI_CDEK.RegisterDeliveryAppointment(Token, Appointment, True);
