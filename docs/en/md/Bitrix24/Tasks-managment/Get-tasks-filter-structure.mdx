@@ -10,18 +10,24 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetTasksFilterStructure(Val Clear = False) Export`
+`Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+  | AsMap | --map | Boolean | &#x2716; | True > returns the filter fields as a map |
 
   
   Returns:  Structure of KeyAndValue - Fields structure
 
 <br/>
 
+:::tip
+Returning fields as a map allows you to specify the filtering type before the filtered field name
 
+ Types of filtration: !, <, <=, >, >=. For example: !ID:3 (ID not equal to 3)
+:::
+<br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
