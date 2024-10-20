@@ -461,6 +461,8 @@ Function ClearCollectionRecursively(Val Collection) Export
 
         EndDo;
 
+        Collection_ = Collection;
+
     ElsIf ValeType = Type("Map") Then
 
         Collection_ = New Map;
@@ -473,8 +475,6 @@ Function ClearCollectionRecursively(Val Collection) Export
 
         EndDo;
 
-        Collection = Collection_;
-
     ElsIf ValeType = Type("Array") Then
 
         Collection_ = New Array;
@@ -486,15 +486,13 @@ Function ClearCollectionRecursively(Val Collection) Export
 
         EndDo;
 
-        Collection = Collection_;
-
     Else
 
-        Collection = "";
+        Collection_ = "";
 
     EndIf;
 
-    Return Collection;
+    Return Collection_;
 
 EndFunction
 
