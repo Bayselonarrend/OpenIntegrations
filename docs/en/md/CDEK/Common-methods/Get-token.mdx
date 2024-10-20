@@ -37,14 +37,28 @@ Method at API documentation: [Client authorization](https://api-docs.cdek.ru/338
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek GetToken \
+ --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" \
+ --pass "***" \
+ --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek GetToken ^
+ --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" ^
+ --pass "***" ^
+ --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
-{
- "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjg2NDk4NDYsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZXNzOmZhbHNlIiwiY29udHJhZ2VudC11dWlkOmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImZ1bGwtbmFtZTrQotC10YHRgtC40YDQvtCy0LDQvdC40LUg0JjQvdGC0LXQs9GA0LDRhtC40Lgg0JjQnCJdLCJqdGkiOiJob3R5QmQtd2xqdzJsd3V6NGp1ZUcxckU1NDAiLCJjbGllbnRfaWQiOiJ3cUd3aVF4MGdnOG1MdGlFS3NVaW5qVlNJQ0NqdFRFUCJ9.IXSw8O68ucBPSFm_sUv-HqRVe9jRi9Iv945fWN2vBKPNiG4CQSTnIKKzpub932vskhDC3MoR3sjIPDhcheOrc9jgpDl4gpLwIfgcz_a5xwikPxph6gpakIU16mrwp110AvkJvJchktNYpty44YjIKOi8UgwgtaJvbsWR-Ztb5A__TfikmtHZuvHZbhCU_QuGD9oloIdgtLueyQO7HsOqWHGy1VpUat_a985FRswUM96Jao66qO5zAeZmUkfzcz7mQPG1IDtMP1eLIV-OeX78W3F1aW5wkIpfjcV-iRe-JZRJH-mjSQI9TWcwy7g3mgxsyfqyHmSzGwIBd0v58_3jzg",
- "token_type": "bearer",
- "expires_in": 3599,
- "scope": "location:all order:all payment:all",
- "jti": "hotyBd-wljw2lwuz4jueG1rE540"
-}
+
 ```

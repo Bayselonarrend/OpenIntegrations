@@ -55,6 +55,30 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateTask \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-10-21T21:59:23.184726Z','RESPONSIBLE_ID':1}" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateTask ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-10-21T21:59:23.184726Z','RESPONSIBLE_ID':1}" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

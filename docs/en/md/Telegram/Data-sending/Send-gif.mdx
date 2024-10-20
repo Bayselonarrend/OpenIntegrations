@@ -53,6 +53,28 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram SendGif \
+ --token "***" \
+ --chat "@testsichee" \
+ --text "Строковое значение" \
+ --gif "C:\Users\Administrator\AppData\Local\Temp\xi44nraduwz.gif"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram SendGif ^
+ --token "***" ^
+ --chat "@testsichee" ^
+ --text "Строковое значение" ^
+ --gif "C:\Users\Administrator\AppData\Local\Temp\xi44nraduwz.gif"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

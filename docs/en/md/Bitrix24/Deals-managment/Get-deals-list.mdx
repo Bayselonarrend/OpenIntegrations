@@ -46,6 +46,30 @@ Method at API documentation: [crm.deal.list](https://dev.1c-bitrix.ru/rest_help/
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 GetDealsList \
+ --url "b24-ar17wx.bitrix24.by" \
+ --filter "{'TITLE':'Sale in RUB','CURRENCY_ID':'RUB'}" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 GetDealsList ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --filter "{'TITLE':'Sale in RUB','CURRENCY_ID':'RUB'}" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

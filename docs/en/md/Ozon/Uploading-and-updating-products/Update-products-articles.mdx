@@ -40,6 +40,30 @@ Method at API documentation: [post /v1/product/update/offer-id](https://docs.ozo
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint ozon UpdateProductsArticles \
+ --clientid "***" \
+ --apikey "***" \
+ --offers "{'143210609':'143210612'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint ozon UpdateProductsArticles ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --offers "{'143210609':'143210612'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

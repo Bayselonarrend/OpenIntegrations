@@ -48,6 +48,30 @@ You can mention a user by appending their userId to the text in the following fo
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams EditMessageText \
+ --token "***" \
+ --chatid "689203963@chat.agent" \
+ --messageid "7427936575956192964" \
+ --text "<b>New bold message text</b>" \
+ --parsemod "HTML"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams EditMessageText ^
+ --token "***" ^
+ --chatid "689203963@chat.agent" ^
+ --messageid "7427936575956192964" ^
+ --text "<b>New bold message text</b>" ^
+ --parsemod "HTML"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

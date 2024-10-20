@@ -49,6 +49,28 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 MoveFolder \
+ --url "b24-ar17wx.bitrix24.by" \
+ --folderid 13844 \
+ --tagetid 13840 \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 MoveFolder ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --folderid 13844 ^
+ --tagetid 13840 ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

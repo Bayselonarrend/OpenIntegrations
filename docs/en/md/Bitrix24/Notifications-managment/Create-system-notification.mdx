@@ -55,6 +55,30 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 CreateSystemNotification \
+ --url "b24-ar17wx.bitrix24.by" \
+ --user 10 \
+ --text "Message text" \
+ --tag "New" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 CreateSystemNotification ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --user 10 ^
+ --text "Message text" ^
+ --tag "New" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

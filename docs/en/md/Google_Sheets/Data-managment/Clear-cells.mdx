@@ -41,6 +41,28 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gsheets ClearCells \
+ --token "***" \
+ --spreadsheet "1bS99ktMRtp1mcx3wF394ZC-DplpfK3RlKsdyr4tBp6w" \
+ --cells "['B2','A3','B4']" \
+ --sheetname "Sheet2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets ClearCells ^
+ --token "***" ^
+ --spreadsheet "1bS99ktMRtp1mcx3wF394ZC-DplpfK3RlKsdyr4tBp6w" ^
+ --cells "['B2','A3','B4']" ^
+ --sheetname "Sheet2"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
