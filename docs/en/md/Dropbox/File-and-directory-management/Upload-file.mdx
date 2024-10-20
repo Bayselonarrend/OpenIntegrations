@@ -42,6 +42,28 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox UploadFile \
+ --token "***" \
+ --file "C:\Users\Administrator\AppData\Local\Temp\fzxehaydpq5.png" \
+ --path "/New/pic.png" \
+ --overwrite true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox UploadFile ^
+ --token "***" ^
+ --file "C:\Users\Administrator\AppData\Local\Temp\fzxehaydpq5.png" ^
+ --path "/New/pic.png" ^
+ --overwrite true
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

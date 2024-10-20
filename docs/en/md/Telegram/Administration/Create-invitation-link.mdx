@@ -45,6 +45,30 @@ Method at API documentation: [createChatInviteLink](https://core.telegram.org/bo
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram CreateInvitationLink \
+ --token "***" \
+ --chat "@testsichee" \
+ --expire "2024-10-21T21:31:08.3139765" \
+ --title "Link 20.10.2024 21:31:08" \
+ --limit 200
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram CreateInvitationLink ^
+ --token "***" ^
+ --chat "@testsichee" ^
+ --expire "2024-10-21T21:31:08.3139765" ^
+ --title "Link 20.10.2024 21:31:08" ^
+ --limit 200
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

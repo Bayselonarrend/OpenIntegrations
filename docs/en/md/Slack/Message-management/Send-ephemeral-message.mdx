@@ -40,6 +40,34 @@ Sends a message that arrives in the channel but is visible only to a specific us
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint slack SendEphemeralMessage \
+ --token "***" \
+ --channel "C06UFNUTKUL" \
+ --text "Ephemeral message" \
+ --user "U06UABH3APP" \
+ --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Image'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint slack SendEphemeralMessage ^
+ --token "***" ^
+ --channel "C06UFNUTKUL" ^
+ --text "Ephemeral message" ^
+ --user "U06UABH3APP" ^
+ --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Image'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

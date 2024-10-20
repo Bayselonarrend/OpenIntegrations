@@ -35,50 +35,24 @@ Required fields may depend on the type of order or nesting. Be sure to read the 
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek GetCourierInvitationsDescription \
+ --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek GetCourierInvitationsDescription ^
+ --empty false
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
-{
- "intake_date": "<Courier waiting date>",
- "intake_time_from": "<Start time of waiting for the courier>",
- "intake_time_to": "<End time of waiting for the courier>",
- "cdek_number": "<CDEK order number>",
- "order_uuid": "<Order identifier in CDEK system>",
- "lunch_time_from": "<Lunch start time>",
- "lunch_time_to": "<Lunch finish time>",
- "name": "<Goods description>",
- "weight": "<Total weight (grams)>",
- "length": "<Package Dimensions. Length (cm)>",
- "width": "<Package Dimensions. Width (cm)>",
- "height": "<Package Dimensions. Height (cm)>",
- "comment": "<Comment to the request for courier>",
- "need_call": "<Need to call the sender>",
- "courier_power_of_attorney": "<The courier needs a letter of attorney>",
- "courier_identity_card": "<The courier needs an identity document>",
- "sender": {
-  "company": "<Name of senders company>",
-  "name": "<Full name of contact person>",
-  "contragent_type": "<Sender type: LEGAL_ENTITY, INDIVIDUAL>",
-  "phones": [
-   {
-    "number": "<Phone number>",
-    "additional": "<Additional information (extension number)>"
-   }
-  ]
- },
- "from_location": {
-  "code": "<CDEC locality code>",
-  "fias_guid": "<Unique FIAS identifier>",
-  "postal_code": "<Postal code>",
-  "longitude": "<Longitude>",
-  "latitude": "<Latitude>",
-  "country_code": "<Country code>",
-  "region": "<Region name, specifying parameter for the city field>",
-  "region_code": "<CDEK region code, specifying parameter for the city field>",
-  "sub_region": "<Name of the region's district, specifying parameter for the region field>",
-  "city": "<City name, specifying parameter for postal_code>",
-  "kladr_code": "<CLADR code. Deprecated field>",
-  "address": "<Address string>"
- }
-}
+
 ```

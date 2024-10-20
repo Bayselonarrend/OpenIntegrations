@@ -35,8 +35,8 @@ The barcode must be previously created. See CreateBarcode
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzcwOTMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "72753031-0c42-40b4-bc08-2d69da322ad9";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0NTUxODMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "72753031-f5a0-4a2a-8ada-7529f9d17b72";
 
     Result = OPI_CDEK.GetBarcode(Token, UUID, , True); // Server response with a URL
 
@@ -47,47 +47,32 @@ The barcode must be previously created. See CreateBarcode
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek GetBarcode \
+ --token "***" \
+ --uuid "72753031-de3a-4c2e-a730-1be97292d2c3" \
+ --getfile true \
+ --testapi "***" \
+ --out "C:\Users\Administrator\AppData\Local\Temp\qyx3gzetb3k.pdf"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek GetBarcode ^
+ --token "***" ^
+ --uuid "72753031-de3a-4c2e-a730-1be97292d2c3" ^
+ --getfile true ^
+ --testapi "***" ^
+ --out "C:\Users\Administrator\AppData\Local\Temp\qyx3gzetb3k.pdf"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
-{
- "entity": {
-  "uuid": "72753031-00b6-409b-ae6d-645611d7c140",
-  "orders": [
-   {
-    "order_uuid": "038e9dc5-be71-48c7-a289-de8f12254537"
-   }
-  ],
-  "copy_count": 1,
-  "format": "A5",
-  "url": "https://api.edu.cdek.ru/v2/print/barcodes/72753031-00b6-409b-ae6d-645611d7c140.pdf",
-  "lang": "RUS",
-  "statuses": [
-   {
-    "code": "ACCEPTED",
-    "name": "Принят",
-    "date_time": "2024-10-20T17:25:53+03:00"
-   },
-   {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2024-10-20T17:25:53+03:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2024-10-20T17:25:53+03:00"
-   }
-  ]
- },
- "requests": [
-  {
-   "request_uuid": "a74afe4e-26e2-4ffc-af3a-0dda24c9ed67",
-   "type": "CREATE",
-   "date_time": "2024-10-20T17:25:53+03:00",
-   "state": "SUCCESSFUL"
-  }
- ],
- "related_entities": []
-}
+
 ```

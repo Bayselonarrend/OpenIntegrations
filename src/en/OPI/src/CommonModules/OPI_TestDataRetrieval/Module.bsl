@@ -515,9 +515,15 @@ Procedure Check_Array(Val Result, Val Count = Undefined) Export
 
 EndProcedure
 
-Procedure Check_Map(Val Result) Export
+Procedure Check_Map(Val Result, Val Filling = True) Export
 
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map");
+
+    If Filling Then
+        ExpectsThat(Result).Заполнено();
+    Else
+        ExpectsThat(Result).НеЗаполнено();
+    EndIf;
 
 EndProcedure
 
@@ -1836,6 +1842,19 @@ EndProcedure
 
 Procedure Check_CdekkDeliveryIntervals(Val Result) Export
     ExpectsThat(Result["date_intervals"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_CdekPassport(Val Result) Export
+
+    ExpectsThat(Result["orders"][0]["passport"][0]["client"]).Равно("SENDER");
+    ExpectsThat(Result["orders"][0]["passport"][1]["client"]).Равно("RECEIVER");
+
+EndProcedure
+
+Procedure Check_CdekCheck(Val Result) Export
+
+    ExpectsThat(Result["check_info"]).ИмеетТип("Array");
+
 EndProcedure
 
 #EndRegion

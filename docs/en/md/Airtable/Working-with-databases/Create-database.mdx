@@ -45,6 +45,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint airtable CreateDatabase \
+ --token "***" \
+ --ws "wspdf8yl1yZz3PmWZ" \
+ --title "TestDatabase" \
+ --tablesdata "{'TestTable':[{'name':'Number','type':'number','options':{'precision':0}},{'name':'String','type':'richText'}]}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint airtable CreateDatabase ^
+ --token "***" ^
+ --ws "wspdf8yl1yZz3PmWZ" ^
+ --title "TestDatabase" ^
+ --tablesdata "{'TestTable':[{'name':'Number','type':'number','options':{'precision':0}},{'name':'String','type':'richText'}]}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

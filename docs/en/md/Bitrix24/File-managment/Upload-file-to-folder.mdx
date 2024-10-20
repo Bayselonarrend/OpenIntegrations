@@ -52,6 +52,28 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 UploadFileToFolder \
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" \
+ --title "Imortant doc.docx" \
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+ --folderid 13868
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 UploadFileToFolder ^
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" ^
+ --title "Imortant doc.docx" ^
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+ --folderid 13868
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

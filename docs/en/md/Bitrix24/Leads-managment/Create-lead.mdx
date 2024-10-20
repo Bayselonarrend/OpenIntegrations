@@ -60,6 +60,30 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateLead \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'ADDRESS':'Pushkin st., b. 10','ADDRESS_COUNTRY':'Russia','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Ivan','LAST_NAME':'Ivanov','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'MegaClient'}" \
+ --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint bitrix24 CreateLead ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --fields "{'ADDRESS':'Pushkin st., b. 10','ADDRESS_COUNTRY':'Russia','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Ivan','LAST_NAME':'Ivanov','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'MegaClient'}" ^
+ --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

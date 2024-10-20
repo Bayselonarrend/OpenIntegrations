@@ -1994,6 +1994,9 @@ Procedure CdekAPI_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password" , TestParameters);
 
     CDEK_GetToken(TestParameters);
+    CDEK_GetCashboxChecksByDate(TestParameters);
+    CDEK_GetDeliveryCashRegistry(TestParameters);
+    CDEK_GetDeliveryCashTransfers(TestParameters);
 
 EndProcedure
 
@@ -2018,6 +2021,8 @@ Procedure CDEKAPI_OrdersManagment() Export
     CDEK_GetReceipt(TestParameters);
     CDEK_GetBarcode(TestParameters);
     CDEK_GetPrealert(TestParameters);
+    CDEK_GetPassportDataStatus(TestParameters);
+    CDEK_GetCashboxCheck(TestParameters);
     CDEK_UpdateOrder(TestParameters);
     CDEK_CreateCustomerRefund(TestParameters);
     CDEK_CreateRefusal(TestParameters);
@@ -14178,6 +14183,76 @@ Procedure CDEK_GetPrealert(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetPrealert", "CDEK");
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_GetPassportDataStatus(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.GetPassportDataStatus(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPassportDataStatus", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekPassport(Result);
+
+EndProcedure
+
+Procedure CDEK_GetCashboxCheck(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.GetCashboxCheck(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCashboxCheck", "CDEK");
+    OPI_TestDataRetrieval.Check_Map(Result, False);
+
+EndProcedure
+
+Procedure CDEK_GetCashboxChecksByDate(FunctionParameters)
+
+    Token         = FunctionParameters["CDEK_Token"];
+    ReceivingDate = OPI_Tools.GetCurrentDate();
+
+    Result = OPI_CDEK.GetCashboxChecksByDate(Token, ReceivingDate, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCashboxChecksByDate", "CDEK");
+    OPI_TestDataRetrieval.Check_Map(Result, False);
+
+EndProcedure
+
+Procedure CDEK_GetDeliveryCashRegistry(FunctionParameters)
+
+    Token         = FunctionParameters["CDEK_Token"];
+    ReceivingDate = OPI_Tools.GetCurrentDate();
+
+    Result = OPI_CDEK.GetDeliveryCashRegistry(Token, ReceivingDate, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryCashRegistry", "CDEK");
+    OPI_TestDataRetrieval.Check_Map(Result, False);
+
+EndProcedure
+
+Procedure CDEK_GetDeliveryCashTransfers(FunctionParameters)
+
+    Token         = FunctionParameters["CDEK_Token"];
+    ReceivingDate = OPI_Tools.GetCurrentDate();
+
+    Result = OPI_CDEK.GetDeliveryCashTransfers(Token, ReceivingDate, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryCashTransfers", "CDEK");
+    OPI_TestDataRetrieval.Check_Map(Result, False);
 
 EndProcedure
 

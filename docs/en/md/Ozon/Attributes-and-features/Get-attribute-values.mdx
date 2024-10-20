@@ -46,6 +46,30 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon GetAttributeValues \
+ --clientid "***" \
+ --apikey "***" \
+ --categoryid 17054869 \
+ --typeid 97311 \
+ --attributeid 85
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon GetAttributeValues ^
+ --clientid "***" ^
+ --apikey "***" ^
+ --categoryid 17054869 ^
+ --typeid 97311 ^
+ --attributeid 85
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

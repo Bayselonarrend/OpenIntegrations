@@ -35,6 +35,26 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox RestoreObjectToVersion \
+ --token "***" \
+ --path "/New/pic.png" \
+ --rev "624ed10709de9bd841553"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox RestoreObjectToVersion ^
+ --token "***" ^
+ --path "/New/pic.png" ^
+ --rev "624ed10709de9bd841553"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

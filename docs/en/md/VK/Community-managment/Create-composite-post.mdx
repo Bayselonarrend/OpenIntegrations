@@ -56,6 +56,34 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint vk CreateCompositePost \
+ --text "Post from autotest" \
+ --objects "['photo657846756_457244746','video-218861756_456239676']" \
+ --ad false \
+ --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint vk CreateCompositePost ^
+ --text "Post from autotest" ^
+ --objects "['photo657846756_457244746','video-218861756_456239676']" ^
+ --ad false ^
+ --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

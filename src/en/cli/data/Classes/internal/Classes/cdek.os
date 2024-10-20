@@ -44,6 +44,99 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxChecksByDate";
+    NewLine.МетодПоиска = "GETCASHBOXCHECKSBYDATE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets information about checks for a specified date";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxChecksByDate";
+    NewLine.МетодПоиска = "GETCASHBOXCHECKSBYDATE";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Date for which data should be retrieved";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxChecksByDate";
+    NewLine.МетодПоиска = "GETCASHBOXCHECKSBYDATE";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashRegistry";
+    NewLine.МетодПоиска = "GETDELIVERYCASHREGISTRY";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Receives registers of imposed payments, for which the client was transferred the payment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashRegistry";
+    NewLine.МетодПоиска = "GETDELIVERYCASHREGISTRY";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Date for which data should be retrieved";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashRegistry";
+    NewLine.МетодПоиска = "GETDELIVERYCASHREGISTRY";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashTransfers";
+    NewLine.МетодПоиска = "GETDELIVERYCASHTRANSFERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets information about orders for which cash on delivery was transferred to the online store";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashTransfers";
+    NewLine.МетодПоиска = "GETDELIVERYCASHTRANSFERS";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Date for which data should be retrieved";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetDeliveryCashTransfers";
+    NewLine.МетодПоиска = "GETDELIVERYCASHTRANSFERS";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "CreateOrder";
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--token";
@@ -569,6 +662,68 @@
     NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetPrealert";
     NewLine.МетодПоиска = "GETPREALERT";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPassportDataStatus";
+    NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Receives information on passport data processing status for international orders";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPassportDataStatus";
+    NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "Order UUID";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetPassportDataStatus";
+    NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxCheck";
+    NewLine.МетодПоиска = "GETCASHBOXCHECK";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Orders managment";
+    NewLine.ОписаниеМетода   = "Receives check information on an order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxCheck";
+    NewLine.МетодПоиска = "GETCASHBOXCHECK";
+    NewLine.Параметр    = "--uuid";
+    NewLine.Описание    = "Order UUID";
+    NewLine.Область     = "Orders managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetCashboxCheck";
+    NewLine.МетодПоиска = "GETCASHBOXCHECK";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
     NewLine.Область     = "Orders managment";

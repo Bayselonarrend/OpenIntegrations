@@ -883,6 +883,18 @@ def test_cdek(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьЧекиНаДату --token "test" --date "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьРеестрыПлатежейНаДату --token "test" --date "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьПереводыПлатежейНаДату --token "test" --date "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek СоздатьЗаказ --token "test" --order "test" --ostore "test" --testapi "test" --debug --test '
                }
 
@@ -932,6 +944,14 @@ def test_cdek(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьПреалерт --token "test" --uuid "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьСтатусПаспортныхДанных --token "test" --uuid "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьЧекЗаказа --token "test" --uuid "test" --testapi "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
