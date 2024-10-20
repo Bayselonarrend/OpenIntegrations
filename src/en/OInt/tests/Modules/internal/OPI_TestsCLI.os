@@ -2006,11 +2006,13 @@ Procedure CLI_CDEKAPI_OrdersManagment() Export
     CLI_CDEK_GetOrderByNumber(TestParameters);
     CLI_CDEK_CreateReceipt(TestParameters);
     CLI_CDEK_CreateBarcode(TestParameters);
+    CLI_CDEK_CreatePrealert(TestParameters);
 
     OPI_Tools.Pause(25);
 
     CLI_CDEK_GetReceipt(TestParameters);
     CLI_CDEK_GetBarcode(TestParameters);
+    CLI_CDEK_GetPrealert(TestParameters);
     CLI_CDEK_UpdateOrder(TestParameters);
     CLI_CDEK_CreateCustomerRefund(TestParameters);
     CLI_CDEK_CreateRefusal(TestParameters);
@@ -16068,6 +16070,49 @@ Procedure CLI_CDEK_GetDeliveryAppointment(FunctionParameters)
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
+
+Procedure CLI_CDEK_CreatePrealert(FunctionParameters)
+
+    Token        = FunctionParameters["CDEK_Token"];
+    UUID         = FunctionParameters["CDEK_OrderUUID"];
+    Point        = "NSK27";
+    TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuids"   , UUID);
+    Options.Insert("date"    , TransferDate);
+    Options.Insert("point"   , Point);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreatePrealert", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePrealert", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_PrealertUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrealertUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetPrealert(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_PrealertUUID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("uuid"    , UUID);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetPrealert", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPrealert", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion

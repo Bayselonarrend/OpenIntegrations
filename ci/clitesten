@@ -927,6 +927,14 @@ def test_cdek(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek CreatePrealert --token "test" --uuids "test" --date "test" --point "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetPrealert --token "test" --uuid "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetOrderDescription --empty "test" --required "test" --ostore "test" --debug --test '
                }
 

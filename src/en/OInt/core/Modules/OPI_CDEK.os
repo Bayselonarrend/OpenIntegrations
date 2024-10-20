@@ -471,6 +471,77 @@ Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
 
 EndFunction
 
+// Create prealert
+// Creates a prealert for the order list
+//
+// Note
+// Method at API documentation: [Registration of Prealert document](@api-docs.cdek.ru/78935159.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
+// TransferDate - Date - Planned date of transfer of orders to CDEK - date
+// Point - String - Code of shipment point to which it is planned to transfer orders - point
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreatePrealert(Val Token, Val UUIDArray, Val TransferDate, Val Point, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetArray(UUIDArray);
+
+    URL     = FormURL("/prealert", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters    = New Structure;
+    ArrayOfOrders = New Array;
+
+    For Each UUID In UUIDArray Do
+
+        OPI_TypeConversion.GetLine(UUID);
+        ArrayOfOrders.Add(New Structure("order_uuid", UUID));
+
+    EndDo;
+
+    OPI_Tools.AddField("orders"        , ArrayOfOrders, "Array"   , Parameters);
+    OPI_Tools.AddField("planned_date"  , TransferDate , "DateISO" , Parameters);
+    OPI_Tools.AddField("shipment_point", Point        , "String"  , Parameters);
+
+    Parameters["planned_date"] = Parameters["planned_date"] + "+0000";
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get prealert
+// Gets a previously created prealert
+//
+// Note
+// The prealert must be previously created. See CreatePrealert
+// Method at API documentation: [Details of prealert document](@api-docs.cdek.ru/78935281.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Prealert UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetPrealert(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/prealert/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get order description
 // Gets the layout of order for the CreateOrder function
 //

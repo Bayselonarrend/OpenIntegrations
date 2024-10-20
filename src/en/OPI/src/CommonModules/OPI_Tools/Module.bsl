@@ -588,6 +588,10 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         OPI_TypeConversion.GetDate(Value);
         Value  = Left(XMLString(Value), 19) + "Z";
 
+    ElsIf Type = "DateWithoutTime" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = Format(Value, "DF=yyyy-MM-dd");
+
     ElsIf Type = "Collection" Then
         OPI_TypeConversion.GetCollection(Value);
 
