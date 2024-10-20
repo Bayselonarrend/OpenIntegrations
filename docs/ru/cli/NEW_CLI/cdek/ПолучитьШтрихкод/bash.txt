@@ -1,0 +1,6 @@
+oint cdek ПолучитьШтрихкод \
+  --token "***" \
+  --uuid "72753031-c8c5-401f-be42-edd09b231304" \
+  --getfile true \
+  --testapi "***" \
+  --out "C:\Users\Administrator\AppData\Local\Temp\2ewthgvme2d.pdf"
