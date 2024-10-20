@@ -32,7 +32,7 @@ The appointment must be previously created. See RegisterDeliveryAppointment
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzA3NDAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0MzcwOTMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
     UUID  = "72753031-8b77-4a13-ba0e-fa088d1451bb";
 
     Result = OPI_CDEK.GetDeliveryAppointment(Token, UUID, True);
@@ -42,5 +42,50 @@ The appointment must be previously created. See RegisterDeliveryAppointment
 
 
 ```json title="Result"
-
+{
+ "entity": {
+  "cdek_number": "1106094628",
+  "order_uuid": "56d3ed74-7574-4fdb-82f5-d604e5751d77",
+  "date": "2024-10-30",
+  "time_from": "10:00",
+  "time_to": "17:00",
+  "comment": "Group office",
+  "to_location": {
+   "code": 270,
+   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
+   "city": "Новосибирск",
+   "kladr_code": "5400000100000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Новосибирская область",
+   "region_code": 23,
+   "sub_region": "городской округ Новосибирск",
+   "longitude": 82.906928,
+   "latitude": 55.028739,
+   "address": "st. Bluchera, 33"
+  },
+  "uuid": "72753031-e5ff-4541-9174-4e944a7027ce",
+  "statuses": [
+   {
+    "code": "REGISTERED",
+    "name": "Зарегистрирована",
+    "date_time": "2024-10-20T17:26:53+03:00"
+   },
+   {
+    "code": "ACCEPTED",
+    "name": "Принята",
+    "date_time": "2024-10-20T17:26:39+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "75db4148-0a10-4829-b20d-659492bb806b",
+   "type": "CREATE",
+   "date_time": "2024-10-20T17:26:39+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
 ```

@@ -2011,11 +2011,13 @@ Procedure CDEKAPI_OrdersManagment() Export
     CDEK_GetOrderByNumber(TestParameters);
     CDEK_CreateReceipt(TestParameters);
     CDEK_CreateBarcode(TestParameters);
+    CDEK_CreatePrealert(TestParameters);
 
     OPI_Tools.Pause(25);
 
     CDEK_GetReceipt(TestParameters);
     CDEK_GetBarcode(TestParameters);
+    CDEK_GetPrealert(TestParameters);
     CDEK_UpdateOrder(TestParameters);
     CDEK_CreateCustomerRefund(TestParameters);
     CDEK_CreateRefusal(TestParameters);
@@ -14140,6 +14142,41 @@ Procedure CDEK_GetDeliveryAppointment(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryAppointment", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_CreatePrealert(FunctionParameters)
+
+    Token        = FunctionParameters["CDEK_Token"];
+    UUID         = FunctionParameters["CDEK_OrderUUID"];
+    Point        = "NSK27";
+    TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
+
+
+    Result = OPI_CDEK.CreatePrealert(Token, UUID, TransferDate, Point, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePrealert", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_PrealertUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrealertUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetPrealert(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_PrealertUUID"];
+
+    Result = OPI_CDEK.GetPrealert(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPrealert", "CDEK");
     OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
