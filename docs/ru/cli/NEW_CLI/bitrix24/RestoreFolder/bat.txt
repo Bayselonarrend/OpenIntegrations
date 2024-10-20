@@ -1,4 +1,4 @@
 oint bitrix24 RestoreFolder ^
  --url "b24-ar17wx.bitrix24.by" ^
- --folderid 13602 ^
+ --folderid 13662 ^
  --token "***"

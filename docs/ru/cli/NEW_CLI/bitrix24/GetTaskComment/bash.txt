@@ -1,5 +1,5 @@
 oint bitrix24 GetTaskComment \
  --url "b24-ar17wx.bitrix24.by" \
- --task "2574" \
- --comment 6356 \
+ --task "2584" \
+ --comment 6378 \
  --token "***"

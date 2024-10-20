@@ -1,0 +1,6 @@
+oint cdek GetBarcode \
+ --token "***" \
+ --uuid "72753031-4e6c-4f0a-a40d-53559d783561" \
+ --getfile true \
+ --testapi "***" \
+ --out "C:\Users\Administrator\AppData\Local\Temp\yary0huaxis.pdf"
