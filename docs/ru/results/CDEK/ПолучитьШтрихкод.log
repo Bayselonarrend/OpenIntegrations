@@ -1,0 +1,40 @@
+﻿    {
+ "entity": {
+  "uuid": "72753031-7ceb-49b9-8925-847f4982ae81",
+  "orders": [
+   {
+    "order_uuid": "eedb40c1-921d-4b9b-80fc-1581a7fbb70c"
+   }
+  ],
+  "copy_count": 1,
+  "format": "A5",
+  "url": "https://api.edu.cdek.ru/v2/print/barcodes/72753031-7ceb-49b9-8925-847f4982ae81.pdf",
+  "lang": "RUS",
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-21T11:12:20+03:00"
+   },
+   {
+    "code": "PROCESSING",
+    "name": "Формируется",
+    "date_time": "2024-10-21T11:12:20+03:00"
+   },
+   {
+    "code": "READY",
+    "name": "Сформирован",
+    "date_time": "2024-10-21T11:12:20+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "2d4dfbf4-e81b-422e-8d3a-6f813b8c0ca7",
+   "type": "CREATE",
+   "date_time": "2024-10-21T11:12:20+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
