@@ -1,7 +1,7 @@
 oint airtable ИзменитьПоле ^
   --token "***" ^
-  --base "appUmokk26bFEVYX5" ^
-  --table "tblm98GJV6WBqs6DD" ^
-  --field "fldGnVDlv2GcVB0PE" ^
-  --title "9961c606-9868-442f-80a8-a8e0b0fbe982(изм.)" ^
+  --base "app0aGtTbnqun4SMi" ^
+  --table "tblZnpJDj47aIr01n" ^
+  --field "fldjnoEupD4bDyFXi" ^
+  --title "7008bc96-736e-41a3-bd8b-738b58d31ea5(изм.)" ^
   --description "Новое описание"

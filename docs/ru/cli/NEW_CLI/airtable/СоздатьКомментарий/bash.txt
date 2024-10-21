@@ -1,6 +1,6 @@
 oint airtable СоздатьКомментарий \
   --token "***" \
-  --base "appUmokk26bFEVYX5" \
-  --table "tblm98GJV6WBqs6DD" \
-  --record "recjUL4eJQkJgTTPW" \
+  --base "app0aGtTbnqun4SMi" \
+  --table "tblZnpJDj47aIr01n" \
+  --record "rechlz79NXfAt9GNE" \
   --text "Тестовый комментарий"
