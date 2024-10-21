@@ -14110,7 +14110,7 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     Appointment.Insert("cdek_number", "1106207236");
     Appointment.Insert("order_uuid" , OrderUUID);
-    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24, "DF=yyyy-MM-dd"));
+    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 2, "DF=yyyy-MM-dd"));
     Appointment.Insert("time_from"  , "10:00");
     Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
@@ -14280,7 +14280,7 @@ EndProcedure
 
 Procedure CDEK_GetOfficeList(FunctionParameters)
 
-    Token     = FunctionParameters["CDEK_Token"];
+    Token  = FunctionParameters["CDEK_Token"];
     Filter = New Structure;
     Filter.Insert("weight_max" , 50);
     Filter.Insert("city_code"  , 270);

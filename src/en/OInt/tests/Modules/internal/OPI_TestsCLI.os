@@ -2032,6 +2032,10 @@ Procedure CLI_CdekAPI_CourierInvitationsManagment() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
 
+    CLI_CDEK_CreateOrder(TestParameters);
+
+    OPI_Tools.Pause(25);
+
     CLI_CDEK_GetCourierInvitationsDescription(TestParameters);
     CLI_CDEK_CreateCourierInvitation(TestParameters);
     CLI_CDEK_GetCourierInvitation(TestParameters);
@@ -2042,6 +2046,7 @@ Procedure CLI_CdekAPI_CourierInvitationsManagment() Export
     OPI_Tools.Pause(25);
 
     CLI_CDEK_GetDeliveryAppointment(TestParameters);
+    CLI_CDEK_DeleteOrder(TestParameters);
 
 EndProcedure
 
@@ -16016,32 +16021,33 @@ EndProcedure
 Procedure CLI_CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     Token       = FunctionParameters["CDEK_Token"];
+    Order       = FunctionParameters["CDEK_OrderUUID"];
     CurrentDate = OPI_Tools.GetCurrentDate();
 
     Appointment = New Structure;
 
     Appointment.Insert("cdek_number", "1106207236");
-    Appointment.Insert("order_uuid" , "72753031-df04-44a4-bc60-11e8b5253b1d");
-    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24, "DF=yyyy-MM-dd"));
+    Appointment.Insert("order_uuid" , Order);
+    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 2, "DF=yyyy-MM-dd"));
     Appointment.Insert("time_from"  , "10:00");
-    Appointment.Insert("time_to"    , "15:00");
+    Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
 
         DeliveryLocation = New Structure;
-        DeliveryLocation.Insert("code"        , "137");
-        DeliveryLocation.Insert("fias_guid"   , "c2deb16a-0330-4f05-821f-1d09c93331e6");
-        DeliveryLocation.Insert("postal_code" , "190000");
-        DeliveryLocation.Insert("longitude"   , "30.3159");
-        DeliveryLocation.Insert("latitude"    , "59.9391");
+        DeliveryLocation.Insert("code"        , "270");
+        DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+        DeliveryLocation.Insert("postal_code" , "109004");
+        DeliveryLocation.Insert("longitude"   , 37.6204);
+        DeliveryLocation.Insert("latitude"    , 55.754);
         DeliveryLocation.Insert("country_code", "RU");
-        DeliveryLocation.Insert("region"      , "St. Petersburg");
-        DeliveryLocation.Insert("region_code" , "82");
-        DeliveryLocation.Insert("sub_region"  , "St. Petersburg");
-        DeliveryLocation.Insert("city"        , "St. Petersburg");
-        DeliveryLocation.Insert("kladr_code"  , "78");
-        DeliveryLocation.Insert("address"     , "Berdsk Lenina street 16");
+        DeliveryLocation.Insert("region"      , "Novosibirsk");
+        DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
+        DeliveryLocation.Insert("city"        , "Novosibirsk");
+        DeliveryLocation.Insert("kladr_code"  , "7700000000000");
+        DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
 
     Appointment.Insert("to_location", DeliveryLocation);
+
 
     Options = New Structure;
     Options.Insert("token"  , Token);
@@ -16152,7 +16158,7 @@ Procedure CLI_CDEK_GetCashboxCheck(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCashboxCheck", "CDEK");
-    OPI_TestDataRetrieval.Check_Map(Result, False);
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 
@@ -16169,7 +16175,7 @@ Procedure CLI_CDEK_GetCashboxChecksByDate(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCashboxChecksByDate", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCashboxChecksByDate", "CDEK");
-    OPI_TestDataRetrieval.Check_Map(Result, False);
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 
@@ -16186,7 +16192,7 @@ Procedure CLI_CDEK_GetDeliveryCashRegistry(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryCashRegistry", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryCashRegistry", "CDEK");
-    OPI_TestDataRetrieval.Check_Map(Result, False);
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 
@@ -16203,7 +16209,7 @@ Procedure CLI_CDEK_GetDeliveryCashTransfers(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryCashTransfers", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryCashTransfers", "CDEK");
-    OPI_TestDataRetrieval.Check_Map(Result, False);
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 
@@ -16215,7 +16221,7 @@ Procedure CLI_CDEK_GetOfficeFilterDescription(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeFilterDescription", "CDEK");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
     Options.Insert("empty", True);
@@ -16223,13 +16229,13 @@ Procedure CLI_CDEK_GetOfficeFilterDescription(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeFilterDescription (empty)", "CDEK");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
 Procedure CLI_CDEK_GetOfficeList(FunctionParameters)
 
-    Token     = FunctionParameters["CDEK_Token"];
+    Token  = FunctionParameters["CDEK_Token"];
     Filter = New Structure;
     Filter.Insert("weight_max" , 50);
     Filter.Insert("city_code"  , 270);
