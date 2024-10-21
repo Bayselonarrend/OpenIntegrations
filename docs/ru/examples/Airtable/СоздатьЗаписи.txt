@@ -1,6 +1,6 @@
 ﻿    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appESy99HYCLbuWlV";
-    Таблица = "tbl5gZLQ8i5xKuVTy";
+    База    = "appeMvjrOQPJciL7O";
+    Таблица = "tblQdiEo3yKV0e1cj";
 
     Номер     = 10;
     Строковое = "Привет";

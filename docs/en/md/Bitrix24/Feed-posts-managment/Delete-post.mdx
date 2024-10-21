@@ -30,14 +30,14 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    PostID = "996";
+    PostID = "1060";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID);
 
-    PostID = "998";
+    PostID = "1062";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "67ac1467006e9f06006b12e400000001000...";
+    Token  = "35c31667006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 DeletePost \
  --url "b24-ar17wx.bitrix24.by" \
- --postid 1042 \
+ --postid 1066 \
  --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 DeletePost ^
  --url "b24-ar17wx.bitrix24.by" ^
- --postid 1042 ^
+ --postid 1066 ^
  --token "***"
         ```
     </TabItem>
