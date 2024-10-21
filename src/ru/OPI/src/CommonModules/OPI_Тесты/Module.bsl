@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -14281,7 +14281,7 @@
 Процедура CDEK_ПолучитьСписокОфисов(ПараметрыФункции)
 
     Токен     = ПараметрыФункции["CDEK_Token"];
-    Фильтр = Новый Структура;
+    Фильтр    = Новый Структура;
     Фильтр.Вставить("weight_max" , 50);
     Фильтр.Вставить("city_code"  , 270);
     Фильтр.Вставить("allowed_cod", Истина);

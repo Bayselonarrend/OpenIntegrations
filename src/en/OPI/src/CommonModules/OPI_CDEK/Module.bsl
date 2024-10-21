@@ -171,7 +171,7 @@ Function GetOfficeList(Val Token, Val Filter = "", Val TestAPI = False) Export
 
     OPI_TypeConversion.GetCollection(Filter);
 
-    URL        = FormURL("/deliverypoints", TestAPI);
+    URL     = FormURL("/deliverypoints", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
     Response = OPI_Tools.Get(URL, Filter, Headers);
