@@ -420,14 +420,16 @@ EndFunction
 // Filter - Structure of KeyAndValue - Structure of task filter (see GetTaskFieldsStructure) - filter
 // Indent - Number, String - Offset of tasks list - offset
 // Token - String - Access token, when app auth method used - token
+// Fields - String, Array of String - A list of task fields in the response. All non calculable by default - select
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export
+Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "", Val Fields = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "tasks.task.list");
-    OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
-    OPI_Tools.AddField("start" , Indent, "String"    , Parameters);
+    OPI_Tools.AddField("filter", Filter , "Collection", Parameters);
+    OPI_Tools.AddField("start" , Indent , "String"    , Parameters);
+    OPI_Tools.AddField("select", Fields , "Array"     , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
