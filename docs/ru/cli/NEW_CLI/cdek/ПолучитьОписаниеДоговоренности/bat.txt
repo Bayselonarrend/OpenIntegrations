@@ -1,2 +1,2 @@
 oint cdek ПолучитьОписаниеДоговоренности ^
-  --empty false
+  --empty true

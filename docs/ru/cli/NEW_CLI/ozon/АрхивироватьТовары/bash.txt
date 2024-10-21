@@ -1,4 +1,4 @@
 oint ozon АрхивироватьТовары \
   --clientid "***" \
   --apikey "***" \
-  --products 1232842632
+  --products 1235178231
