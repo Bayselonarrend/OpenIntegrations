@@ -1,5 +1,5 @@
 oint cdek CreateCustomerRefund \
  --token "***" \
- --uuid "0a26a2dd-8332-4c30-a4ff-c1b70aa14698" \
+ --uuid "531f89d4-ce21-4b3e-adc6-a60b9d51118e" \
  --tariff 139 \
  --testapi "***"
