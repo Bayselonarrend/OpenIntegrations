@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
 
     Договоренность.Вставить("cdek_number", "1106207236");
     Договоренность.Вставить("order_uuid" , UUIDЗаказа);
-    Договоренность.Вставить("date"       , Формат(ТекущаяДата + 60 * 60 * 24 * 15, "ДФ=yyyy-MM-dd"));
+    Договоренность.Вставить("date"       , Формат(ТекущаяДата + 60 * 60 * 24, "ДФ=yyyy-MM-dd"));
     Договоренность.Вставить("time_from"  , "10:00");
     Договоренность.Вставить("time_to"    , "17:00");
     Договоренность.Вставить("comment"    , "Офис группы компаний");
@@ -65,5 +65,18 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-
+{
+ "entity": {
+  "uuid": "72753031-aa98-406d-a43b-b68150e4f19f"
+ },
+ "requests": [
+  {
+   "request_uuid": "d8651337-1cfe-4cc3-96c3-3c9079f48eef",
+   "type": "CREATE",
+   "date_time": "2024-10-21T12:35:18+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```
