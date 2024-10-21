@@ -1,0 +1,14 @@
+﻿    {
+ "entity": {
+  "uuid": "72753031-98fc-460e-880d-6829b7df88a8"
+ },
+ "requests": [
+  {
+   "request_uuid": "d0262fbc-7938-487a-98ea-ad537f6b1ae0",
+   "type": "CREATE",
+   "date_time": "2024-10-21T11:13:07+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
