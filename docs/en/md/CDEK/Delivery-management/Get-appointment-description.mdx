@@ -40,19 +40,41 @@ Required fields may depend on the type of order or nesting. Be sure to read the 
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint cdek GetAppointmentDescription \
- --empty false
+ --empty true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint cdek GetAppointmentDescription ^
- --empty false
+ --empty true
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Result"
-
+{
+ "date": "<Delivery date agreed with the recipient>",
+ "cdek_number": "<CDEK order number>",
+ "order_uuid": "<Order identifier in CDEK system>",
+ "time_from": "<Delivery time FROM agreed with the recipient>",
+ "time_to": "<Delivery time TO agreed with the recipient>",
+ "comment": "<Comment>",
+ "delivery_point": "<Alphanumeric code of CDEK POZ>",
+ "to_location": {
+  "code": "<CDEC locality code>",
+  "fias_guid": "<Unique FIAS identifier>",
+  "postal_code": "<Postal code>",
+  "longitude": "<Longitude>",
+  "latitude": "<Latitude>",
+  "country_code": "<Country code in format ISO_3166-1_alpha-2>",
+  "region": "<Region name>",
+  "region_code": "<Region code>",
+  "sub_region": "<Name of the area of the region>",
+  "city": "<City name>",
+  "kladr_code": "<CLADR code>",
+  "address": "<Address string>"
+ }
+}
 ```
