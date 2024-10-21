@@ -1,2 +1,2 @@
 oint cdek GetAppointmentDescription \
- --empty false
+ --empty true
