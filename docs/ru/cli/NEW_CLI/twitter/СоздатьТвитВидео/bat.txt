@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьТвитВидео ^
-  --text "Тестовый твиттd8122b32-0558-4c17-9fc3-613b1e280753" ^
-  --videos "C:\Users\Administrator\AppData\Local\Temp\mtmrr5mhux5.tmp" ^
+  --text "Тестовый твиттa7eb68e0-ed52-48b5-9f48-e1ee6f4f0b4e" ^
+  --videos "C:\Users\Administrator\AppData\Local\Temp\zuy5vmscdul.tmp" ^
   --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
