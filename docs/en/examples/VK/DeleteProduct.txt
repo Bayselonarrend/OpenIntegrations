@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
 
-    Product = "9815871";
+    Product = "9826131";
 
     Result = OPI_VK.DeleteProduct(Product, Parameters);

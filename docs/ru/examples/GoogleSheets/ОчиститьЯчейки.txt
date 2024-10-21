@@ -1,5 +1,5 @@
-﻿    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Книга  = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+﻿    Токен  = "ya29.a0AcM612wmWdggP-K6tOc3UqW0KxYMjUi60_Uhu-ERltTaavHGbML0nRBXqkuiBcr0GNmR_1gHKowaF1Rd_4Q5Amc9O23DEBZ95sNEGnpR5...";
+    Книга  = "1fktk0k_rOszr4c3t89Z1KXXSsRWPU0fFPgLImiN-MzI";
     Лист   = "Лист2";
 
     МассивЯчеек = Новый Массив;

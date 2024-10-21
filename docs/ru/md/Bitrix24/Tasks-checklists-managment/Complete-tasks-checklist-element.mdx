@@ -32,16 +32,16 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЗадачи   = "2566";
-    IDЭлемента = "1592";
+    IDЗадачи   = "2690";
+    IDЭлемента = "1696";
 
     Результат = OPI_Bitrix24.ВыполнитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента);
 
-    IDЗадачи   = "2568";
-    IDЭлемента = "1596";
+    IDЗадачи   = "2692";
+    IDЭлемента = "1700";
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "67ac1467006e9f06006b12e400000001000...";
+    Токен     = "35c31667006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ВыполнитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента, Токен);
 ```
@@ -53,8 +53,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ВыполнитьЭлементЧеклистаЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "2602" \
-              --element 1628 \
+              --task "2672" \
+              --element 1684 \
               --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ВыполнитьЭлементЧеклистаЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "2602" ^
-              --element 1628 ^
+              --task "2672" ^
+              --element 1684 ^
               --token "***"
         ```
     </TabItem>

@@ -32,20 +32,20 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FromID        = "2566";
-    DestinationID = "2568";
+    FromID        = "2690";
+    DestinationID = "2692";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "2568";
-    DestinationID = "2566";
+    FromID        = "2692";
+    DestinationID = "2690";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "67ac1467006e9f06006b12e400000001000...";
+    Token = "35c31667006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```
@@ -57,8 +57,8 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
         ```bash
             oint bitrix24 DeleteTasksDependencies \
  --url "b24-ar17wx.bitrix24.by" \
- --taskfrom "2642" \
- --taskto "2640" \
+ --taskfrom "2702" \
+ --taskto "2700" \
  --linktype 2 \
  --token "***"
         ```
@@ -68,8 +68,8 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
         ```batch
             oint bitrix24 DeleteTasksDependencies ^
  --url "b24-ar17wx.bitrix24.by" ^
- --taskfrom "2642" ^
- --taskto "2640" ^
+ --taskfrom "2702" ^
+ --taskto "2700" ^
  --linktype 2 ^
  --token "***"
         ```

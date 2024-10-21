@@ -1,4 +1,4 @@
 ﻿    Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница  = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
+    Страница  = "12682aa7-fc4e-8138-9f3e-f9e7e9aecee3";
 
     Результат = OPI_Notion.ПолучитьСтраницу(Токен, Страница);
