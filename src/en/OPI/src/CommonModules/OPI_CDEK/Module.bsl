@@ -154,6 +154,80 @@ Function GetDeliveryCashTransfers(Val Token, Val ReceivingDate, Val TestAPI = Fa
 
 EndFunction
 
+// Get office list
+// Gets a list of offices with or without a filter
+//
+// Note
+// Method at API documentation: [List of pickup points](@api-docs.cdek.ru/36990336.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// Filter - Structure of KeyAndValue - Office filter. See GetOfficeFilterDescription - filter
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetOfficeList(Val Token, Val Filter = "", Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetCollection(Filter);
+
+    URL        = FormURL("/deliverypoints", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, Filter, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get office filter description
+// Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function
+//
+// Note
+// Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
+// Field descriptions in the documentation: [List of pickup points](@api-docs.cdek.ru/36990336.html)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetOfficeFilterDescription(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("postal_code"     , "<Postal code of the city for which the list of offices is required>");
+    FilterStructure.Insert("city_code"       , "<CDEC locality code>");
+    FilterStructure.Insert("type"            , "<Office type: PVZ, POSTAMAT, ALL>");
+    FilterStructure.Insert("country_code"    , "<Country code in ISO_3166-1_alpha-2 format>");
+    FilterStructure.Insert("region_code"     , "<Region code according to CDEK database>");
+    FilterStructure.Insert("have_cashless"   , "<Availability of payment terminal>");
+    FilterStructure.Insert("have_cash"       , "<There is cash intake>");
+    FilterStructure.Insert("allowed_cod"     , "<Cash on delivery allowed>");
+    FilterStructure.Insert("is_dressing_room", "<Availability of fitting room>");
+    FilterStructure.Insert("weight_max"      , "<Maximum weight in kg that the office can accept>");
+    FilterStructure.Insert("weight_min"      , "<Minimum weight in kg that the office accepts>");
+    FilterStructure.Insert("lang"            , "<Localization of the office>");
+    FilterStructure.Insert("take_only"       , "<Is the office only a delivery point>");
+    FilterStructure.Insert("is_handout"      , "<Its a shipping point>");
+    FilterStructure.Insert("is_reception"    , "<Is there an office to take orders>");
+    FilterStructure.Insert("fias_guid"       , "<FIAS city code>");
+    FilterStructure.Insert("code"            , "<POZ code>");
+    FilterStructure.Insert("is_ltl"          , "<Does the office work with LTL>");
+    FilterStructure.Insert("fulfillment"     , "<Does the office work with Fullfilment.Arrival>");
+    FilterStructure.Insert("size"            , "<Limiting the result selection>");
+    FilterStructure.Insert("page"            , "<Result selection page number>");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
+
+EndFunction
+
 #EndRegion
 
 #Region OrdersManagment
@@ -807,7 +881,7 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
             AddressStructure.Insert("postal_code" , "<Postal code>");
             AddressStructure.Insert("longitude"   , "<Longitude>");
             AddressStructure.Insert("latitude"    , "<Latitude>");
-            AddressStructure.Insert("country_code", "<Country code in format ISO_3166-1_alpha-2>");
+            AddressStructure.Insert("country_code", "<Country code in ISO_3166-1_alpha-2 format>");
             AddressStructure.Insert("region"      , "<Region name, specifying parameter for the city field>");
             AddressStructure.Insert("region_code" , "<CDEK region code, specifying parameter for the city field>");
             AddressStructure.Insert("sub_region"  , "<Name of the region's district, specifying parameter for the region field>");
@@ -1156,7 +1230,7 @@ Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) 
             DeliveryAddressStruct.Insert("postal_code" , "<Postal code>");
             DeliveryAddressStruct.Insert("longitude"   , "<Longitude>");
             DeliveryAddressStruct.Insert("latitude"    , "<Latitude>");
-            DeliveryAddressStruct.Insert("country_code", "<Country code in format ISO_3166-1_alpha-2>");
+            DeliveryAddressStruct.Insert("country_code", "<Country code in ISO_3166-1_alpha-2 format>");
             DeliveryAddressStruct.Insert("region"      , "<Region name>");
             DeliveryAddressStruct.Insert("region_code" , "<Region code>");
             DeliveryAddressStruct.Insert("sub_region"  , "<Name of the area of the region>");

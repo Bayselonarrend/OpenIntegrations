@@ -1997,6 +1997,8 @@ Procedure CdekAPI_CommonMethods() Export
     CDEK_GetCashboxChecksByDate(TestParameters);
     CDEK_GetDeliveryCashRegistry(TestParameters);
     CDEK_GetDeliveryCashTransfers(TestParameters);
+    CDEK_GetOfficeFilterDescription(TestParameters);
+    CDEK_GetOfficeList(TestParameters);
 
 EndProcedure
 
@@ -14257,6 +14259,39 @@ Procedure CDEK_GetDeliveryCashTransfers(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryCashTransfers", "CDEK");
     OPI_TestDataRetrieval.Check_Map(Result, False);
+
+EndProcedure
+
+Procedure CDEK_GetOfficeFilterDescription(FunctionParameters)
+
+    Result = OPI_CDEK.GetOfficeFilterDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeFilterDescription", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_CDEK.GetOfficeFilterDescription(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeFilterDescription (empty)", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CDEK_GetOfficeList(FunctionParameters)
+
+    Token     = FunctionParameters["CDEK_Token"];
+    Filter = New Structure;
+    Filter.Insert("weight_max" , 50);
+    Filter.Insert("city_code"  , 270);
+    Filter.Insert("allowed_cod", True);
+
+    Result = OPI_CDEK.GetOfficeList(Token, Filter, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeList", "CDEK");
+    OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
 
