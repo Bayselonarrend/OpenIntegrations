@@ -1,0 +1,23 @@
+﻿ {
+ "postal_code": "<Postal code of the city for which the list of offices is required>",
+ "city_code": "<CDEC locality code>",
+ "type": "<Office type: PVZ, POSTAMAT, ALL>",
+ "country_code": "<Country code in ISO_3166-1_alpha-2 format>",
+ "region_code": "<Region code according to CDEK database>",
+ "have_cashless": "<Availability of payment terminal>",
+ "have_cash": "<There is cash intake>",
+ "allowed_cod": "<Cash on delivery allowed>",
+ "is_dressing_room": "<Availability of fitting room>",
+ "weight_max": "<Maximum weight in kg that the office can accept>",
+ "weight_min": "<Minimum weight in kg that the office accepts>",
+ "lang": "<Localization of the office>",
+ "take_only": "<Is the office only a delivery point>",
+ "is_handout": "<Its a shipping point>",
+ "is_reception": "<Is there an office to take orders>",
+ "fias_guid": "<FIAS city code>",
+ "code": "<POZ code>",
+ "is_ltl": "<Does the office work with LTL>",
+ "fulfillment": "<Does the office work with Fullfilment.Arrival>",
+ "size": "<Limiting the result selection>",
+ "page": "<Result selection page number>"
+}
