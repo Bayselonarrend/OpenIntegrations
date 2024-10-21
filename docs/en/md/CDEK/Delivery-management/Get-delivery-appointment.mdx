@@ -62,5 +62,50 @@ The appointment must be previously created. See RegisterDeliveryAppointment
 
 
 ```json title="Result"
-
+{
+ "entity": {
+  "cdek_number": "1106094898",
+  "order_uuid": "35597722-0c5e-4988-8e2b-57ea3ede7e5f",
+  "date": "2024-10-23",
+  "time_from": "10:00",
+  "time_to": "17:00",
+  "comment": "Group office",
+  "to_location": {
+   "code": 270,
+   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
+   "city": "Новосибирск",
+   "kladr_code": "5400000100000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Новосибирская область",
+   "region_code": 23,
+   "sub_region": "городской округ Новосибирск",
+   "longitude": 82.906928,
+   "latitude": 55.028739,
+   "address": "st. Bluchera, 33"
+  },
+  "uuid": "72753031-4031-40bd-88e4-8e0b920aa014",
+  "statuses": [
+   {
+    "code": "REGISTERED",
+    "name": "Зарегистрирована",
+    "date_time": "2024-10-21T21:28:29+03:00"
+   },
+   {
+    "code": "ACCEPTED",
+    "name": "Принята",
+    "date_time": "2024-10-21T21:28:17+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "b250e29b-f5cb-4054-8f74-998ba95e11d6",
+   "type": "CREATE",
+   "date_time": "2024-10-21T21:28:17+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
 ```
