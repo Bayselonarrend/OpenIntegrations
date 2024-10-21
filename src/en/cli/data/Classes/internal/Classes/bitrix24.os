@@ -516,6 +516,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksList";
+    NewLine.МетодПоиска = "GETTASKSLIST";
+    NewLine.Параметр    = "--select";
+    NewLine.Описание    = "A list of task fields in the response. All non calculable by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateTask";
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--url";

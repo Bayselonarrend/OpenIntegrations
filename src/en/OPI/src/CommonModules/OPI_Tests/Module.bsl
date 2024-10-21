@@ -8419,10 +8419,14 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
     Filter.Insert("!RESPONSIBLE_ID", 10); // Performers with ID not equal to 10
     Filter.Insert(">=CREATED_DATE ", CurrentDate - 60 * 60 * 24); // Creation date >= yesterday
 
+    Fields = New Array;
+    Fields.Add("UF_CRM_TASK");
+    Fields.Add("CREATED_BY");
+
     Indent = 1;
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Result = OPI_Bitrix24.GetTasksList(URL, Filter);
+    Result = OPI_Bitrix24.GetTasksList(URL, Filter, , , Fields);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList (wh)", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTasksList(Result); // SKIP
@@ -14104,7 +14108,7 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     Appointment.Insert("cdek_number", "1106207236");
     Appointment.Insert("order_uuid" , OrderUUID);
-    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 10, "DF=yyyy-MM-dd"));
+    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 15, "DF=yyyy-MM-dd"));
     Appointment.Insert("time_from"  , "10:00");
     Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
