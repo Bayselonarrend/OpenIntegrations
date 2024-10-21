@@ -137,6 +137,48 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetOfficeList";
+    NewLine.МетодПоиска = "GETOFFICELIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets a list of offices with or without a filter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetOfficeList";
+    NewLine.МетодПоиска = "GETOFFICELIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Office filter. See GetOfficeFilterDescription (optional, def. val. - Empty value)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetOfficeList";
+    NewLine.МетодПоиска = "GETOFFICELIST";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetOfficeFilterDescription";
+    NewLine.МетодПоиска = "GETOFFICEFILTERDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "CreateOrder";
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--token";

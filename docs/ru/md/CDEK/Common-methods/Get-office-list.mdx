@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список офисов
+ Получает список офисов с фильтром или без
+
+
+
+`Функция ПолучитьСписокОфисов(Знач Токен, Знач Фильтр = "", Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | Фильтр | --filter | Структура Из КлючИЗначение | &#x2716; | Фильтр офисов. См. ПолучитьОписаниеФильтраОфисов |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Список офисов](https://api-docs.cdek.ru/36982648.html)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен     = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk1MTQ0MjUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Фильтр = Новый Структура;
+    Фильтр.Вставить("weight_max" , 50);
+    Фильтр.Вставить("city_code"  , 270);
+    Фильтр.Вставить("allowed_cod", Истина);
+
+    Результат = OPI_CDEK.ПолучитьСписокОфисов(Токен, Фильтр, Истина);
+```
+    
+
+
+
+```json title="Результат"
+
+```

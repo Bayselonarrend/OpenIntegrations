@@ -30,7 +30,7 @@ Method at API documentation: [Registration of delivery appointment](https://api-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk0NTUxODMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Token       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk1MTQ0MjUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
     OrderUUID   = "bc7bd3f0-5fdd-494d-a531-25cf85f66513";
     CurrentDate = OPI_Tools.GetCurrentDate();
 
@@ -62,8 +62,45 @@ Method at API documentation: [Registration of delivery appointment](https://api-
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+# JSON data can also be passed as a path to a .json file
+
+            oint cdek RegisterDeliveryAppointment \
+ --token "***" \
+ --appt "{'cdek_number':'1106207236','order_uuid':'72753031-df04-44a4-bc60-11e8b5253b1d','date':'2024-10-22','time_from':'10:00','time_to':'15:00','comment':'Group office','to_location':{'code':'137','fias_guid':'c2deb16a-0330-4f05-821f-1d09c93331e6','postal_code':'190000','longitude':'30.3159','latitude':'59.9391','country_code':'RU','region':'St. Petersburg','region_code':'82','sub_region':'St. Petersburg','city':'St. Petersburg','kladr_code':'78','address':'Berdsk Lenina street 16'}}" \
+ --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+:: JSON data can also be passed as a path to a .json file
+
+            oint cdek RegisterDeliveryAppointment ^
+ --token "***" ^
+ --appt "{'cdek_number':'1106207236','order_uuid':'72753031-df04-44a4-bc60-11e8b5253b1d','date':'2024-10-22','time_from':'10:00','time_to':'15:00','comment':'Group office','to_location':{'code':'137','fias_guid':'c2deb16a-0330-4f05-821f-1d09c93331e6','postal_code':'190000','longitude':'30.3159','latitude':'59.9391','country_code':'RU','region':'St. Petersburg','region_code':'82','sub_region':'St. Petersburg','city':'St. Petersburg','kladr_code':'78','address':'Berdsk Lenina street 16'}}" ^
+ --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
-
+{
+ "entity": {
+  "uuid": "72753031-7acc-464e-ba0d-ad2da625006a"
+ },
+ "requests": [
+  {
+   "request_uuid": "595d5c2b-4c42-48e3-b00e-99ae6257ca70",
+   "type": "CREATE",
+   "date_time": "2024-10-21T17:11:27+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```
