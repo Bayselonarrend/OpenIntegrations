@@ -1,0 +1,46 @@
+﻿    {
+ "entity": {
+  "cdek_number": "1106094896",
+  "order_uuid": "db13abf4-e85d-48dd-a26b-dcf0adf0b81f",
+  "date": "2024-10-23",
+  "time_from": "10:00",
+  "time_to": "17:00",
+  "comment": "Офис группы компаний",
+  "to_location": {
+   "code": 270,
+   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
+   "city": "Новосибирск",
+   "kladr_code": "5400000100000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Новосибирская область",
+   "region_code": 23,
+   "sub_region": "городской округ Новосибирск",
+   "longitude": 82.906928,
+   "latitude": 55.028739,
+   "address": "ул. Блюхера, 33"
+  },
+  "uuid": "72753031-6834-4a3e-9dc1-c0e367a9fdf7",
+  "statuses": [
+   {
+    "code": "REGISTERED",
+    "name": "Зарегистрирована",
+    "date_time": "2024-10-21T20:42:44+03:00"
+   },
+   {
+    "code": "ACCEPTED",
+    "name": "Принята",
+    "date_time": "2024-10-21T20:42:32+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "e0e62206-50f4-4f8a-9c2b-a970e9a21189",
+   "type": "CREATE",
+   "date_time": "2024-10-21T20:42:32+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
