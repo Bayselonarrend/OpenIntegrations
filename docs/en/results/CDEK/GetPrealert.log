@@ -1,0 +1,24 @@
+﻿ {
+ "entity": {
+  "uuid": "72753031-af23-4f71-bfc4-f75acb1b4b88",
+  "prealert_number": "PA/1305/16",
+  "planned_date": "2024-10-22T20:10:43+03:00",
+  "shipment_point": "NSK27",
+  "orders": [
+   {
+    "order_uuid": "9fb9d4c4-92c7-486b-a29d-278c4a247f83",
+    "cdek_number": 1106094800,
+    "im_number": "5b8be6bd-51ce-4b60-bf09-400a51957d3a"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "857dabc5-cc11-463c-8ebf-f27f289c1c28",
+   "type": "CREATE",
+   "date_time": "2024-10-21T17:10:45+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
