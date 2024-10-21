@@ -1,4 +1,4 @@
 oint telegram CloseForumThread ^
  --token "***" ^
  --forum "-1001971186208" ^
- --topic "5708"
+ --topic "5741"

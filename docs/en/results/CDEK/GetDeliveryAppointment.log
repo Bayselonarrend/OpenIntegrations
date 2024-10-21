@@ -1,0 +1,52 @@
+﻿ {
+ "entity": {
+  "cdek_number": "1106207236",
+  "order_uuid": "72753031-df04-44a4-bc60-11e8b5253b1d",
+  "date": "2024-10-22",
+  "time_from": "10:00",
+  "time_to": "15:00",
+  "comment": "Group office",
+  "to_location": {
+   "code": 137,
+   "city": "St. Petersburg",
+   "fias_guid": "c2deb16a-0330-4f05-821f-1d09c93331e6",
+   "kladr_code": "78",
+   "country_code": "RU",
+   "region": "St. Petersburg",
+   "region_code": 82,
+   "sub_region": "St. Petersburg",
+   "longitude": 30.3159,
+   "latitude": 59.9391,
+   "address": "Berdsk Lenina street 16",
+   "postal_code": "190000"
+  },
+  "uuid": "72753031-7acc-464e-ba0d-ad2da625006a",
+  "statuses": [
+   {
+    "code": "INVALID",
+    "name": "Некорректна",
+    "date_time": "2024-10-21T17:11:28+03:00"
+   },
+   {
+    "code": "ACCEPTED",
+    "name": "Принята",
+    "date_time": "2024-10-21T17:11:27+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "595d5c2b-4c42-48e3-b00e-99ae6257ca70",
+   "type": "CREATE",
+   "date_time": "2024-10-21T17:11:27+03:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_entity_not_found",
+     "message": "Entity is not found by uuid 72753031-df04-44a4-bc60-11e8b5253b1d"
+    }
+   ]
+  }
+ ],
+ "related_entities": []
+}

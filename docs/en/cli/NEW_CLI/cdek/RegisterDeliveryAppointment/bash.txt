@@ -1,0 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
+oint cdek RegisterDeliveryAppointment \
+ --token "***" \
+ --appt "{'cdek_number':'1106207236','order_uuid':'72753031-df04-44a4-bc60-11e8b5253b1d','date':'2024-10-22','time_from':'10:00','time_to':'15:00','comment':'Group office','to_location':{'code':'137','fias_guid':'c2deb16a-0330-4f05-821f-1d09c93331e6','postal_code':'190000','longitude':'30.3159','latitude':'59.9391','country_code':'RU','region':'St. Petersburg','region_code':'82','sub_region':'St. Petersburg','city':'St. Petersburg','kladr_code':'78','address':'Berdsk Lenina street 16'}}" \
+ --testapi "***"
