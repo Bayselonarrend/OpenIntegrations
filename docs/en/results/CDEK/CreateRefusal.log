@@ -1,0 +1,14 @@
+﻿ {
+ "entity": {
+  "uuid": "a93fd1b1-55b3-4033-a52a-d2df7bb6b469"
+ },
+ "requests": [
+  {
+   "request_uuid": "03eabc69-d543-4094-9fe5-dbff7e89ceb7",
+   "type": "CREATE_REFUSAL",
+   "date_time": "2024-10-21T21:27:53+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
