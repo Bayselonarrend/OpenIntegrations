@@ -677,8 +677,6 @@ Function GetCashboxCheck(Val Token, Val UUID, Val TestAPI = False) Export
 
 EndFunction
 
-
-
 // Get order description
 // Gets the layout of order for the CreateOrder function
 //

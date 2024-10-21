@@ -522,7 +522,7 @@ Procedure Check_Map(Val Result, Val Filling = True) Export
     If Filling Then
         ExpectsThat(Result).Заполнено();
     Else
-        ExpectsThat(Result).НеЗаполнено();
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
 EndProcedure
