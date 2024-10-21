@@ -32,8 +32,8 @@ The appointment must be previously created. See RegisterDeliveryAppointment
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk1MTQ0MjUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "72753031-2d56-4d64-81cb-a99afd93cba0";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjk1MzMwMDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "72753031-e831-4819-abe8-849d4ed8475e";
 
     Result = OPI_CDEK.GetDeliveryAppointment(Token, UUID, True);
 ```
@@ -62,56 +62,5 @@ The appointment must be previously created. See RegisterDeliveryAppointment
 
 
 ```json title="Result"
-{
- "entity": {
-  "cdek_number": "1106207236",
-  "order_uuid": "72753031-df04-44a4-bc60-11e8b5253b1d",
-  "date": "2024-10-22",
-  "time_from": "10:00",
-  "time_to": "15:00",
-  "comment": "Group office",
-  "to_location": {
-   "code": 137,
-   "city": "St. Petersburg",
-   "fias_guid": "c2deb16a-0330-4f05-821f-1d09c93331e6",
-   "kladr_code": "78",
-   "country_code": "RU",
-   "region": "St. Petersburg",
-   "region_code": 82,
-   "sub_region": "St. Petersburg",
-   "longitude": 30.3159,
-   "latitude": 59.9391,
-   "address": "Berdsk Lenina street 16",
-   "postal_code": "190000"
-  },
-  "uuid": "72753031-7acc-464e-ba0d-ad2da625006a",
-  "statuses": [
-   {
-    "code": "INVALID",
-    "name": "Некорректна",
-    "date_time": "2024-10-21T17:11:28+03:00"
-   },
-   {
-    "code": "ACCEPTED",
-    "name": "Принята",
-    "date_time": "2024-10-21T17:11:27+03:00"
-   }
-  ]
- },
- "requests": [
-  {
-   "request_uuid": "595d5c2b-4c42-48e3-b00e-99ae6257ca70",
-   "type": "CREATE",
-   "date_time": "2024-10-21T17:11:27+03:00",
-   "state": "INVALID",
-   "errors": [
-    {
-     "code": "v2_entity_not_found",
-     "message": "Entity is not found by uuid 72753031-df04-44a4-bc60-11e8b5253b1d"
-    }
-   ]
-  }
- ],
- "related_entities": []
-}
+
 ```
