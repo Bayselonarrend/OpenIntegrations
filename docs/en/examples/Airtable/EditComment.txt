@@ -1,8 +1,8 @@
 ﻿    Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base    = "appESy99HYCLbuWlV";
-    Table   = "tbl5gZLQ8i5xKuVTy";
-    Record  = "recHqUT4ruWn8KnYi";
-    Comment = "comc3oQtvx4mn0pdu";
+    Base    = "appeMvjrOQPJciL7O";
+    Table   = "tblQdiEo3yKV0e1cj";
+    Record  = "reclJA9M8WL5gPBg3";
+    Comment = "comD945ArYL8Ysdb7";
 
     Text   = "Test comment (change.)";
     Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);

@@ -32,20 +32,20 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDИсточника = "2566";
-    IDПриемника = "2568";
+    IDИсточника = "2690";
+    IDПриемника = "2692";
     ТипСвязи    = 0;
 
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Результат = OPI_Bitrix24.СоздатьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи);
 
-    IDИсточника = "2568";
-    IDПриемника = "2566";
+    IDИсточника = "2692";
+    IDПриемника = "2690";
     ТипСвязи    = 2;
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "67ac1467006e9f06006b12e400000001000...";
+    Токен     = "35c31667006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.СоздатьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 ```
@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СоздатьЗависимостьЗадач \
               --url "b24-ar17wx.bitrix24.by" \
-              --taskfrom "2602" \
-              --taskto "2600" \
+              --taskfrom "2672" \
+              --taskto "2670" \
               --linktype 2 \
               --token "***"
         ```
@@ -68,8 +68,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СоздатьЗависимостьЗадач ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --taskfrom "2602" ^
-              --taskto "2600" ^
+              --taskfrom "2672" ^
+              --taskto "2670" ^
               --linktype 2 ^
               --token "***"
         ```
