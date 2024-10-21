@@ -1,4 +1,4 @@
 oint slack SetChannelGoal ^
  --token "***" ^
- --channel "C07T2HVC2AV" ^
+ --channel "C07SCT5S26T" ^
  --purpose "TestGoal"
