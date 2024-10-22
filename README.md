@@ -23,12 +23,13 @@
 На сегодняшний день реализован инструментарий для работы со следующими сервисами:
 <br>
   <div>
-  <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="40"></a>  
   <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Bitrix24.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/CDEK.png?6" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VK.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VKTeams/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VKTeams.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/Ozon/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Ozon.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Ozon/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Ozon.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/YandexDisk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="40"></a>
