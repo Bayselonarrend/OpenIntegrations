@@ -19,8 +19,8 @@
 	Сервер            = "AIONIOTISCORE:1742";
 	Кугвин            = "C:\cygwin64\bin\";
 
-	//ПутьКРепозиторию  = "C:\ProgramData\Jenkins\.jenkins\workspace\Release";
-	ПутьКРепозиторию  = "C:\Repos\OPI";
+	ПутьКРепозиторию  = "C:\ProgramData\Jenkins\.jenkins\workspace\Release";
+	//ПутьКРепозиторию  = "C:\Repos\OPI";
 	ПутьВыгрузки      = ПутьКРепозиторию + "\" + Версия + "\";
 
 	//----------------
