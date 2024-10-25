@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<opm-metadata xmlns="http://oscript.io/schemas/opm-metadata/1.0">
+    <name>cmdline</name>
+    <version>1.0.0</version>
+    <depends-on name="logos" />
+</opm-metadata>
