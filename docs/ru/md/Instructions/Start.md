@@ -73,7 +73,8 @@ sidebar_class_name: NachaloRaboty
 
 Пример для CLI:
 
-```
+```bash
+
     oint telegram ОтправитьКартинку \
         --token "6129457865:AAFyzNYOAFbu..." \
         --chat 461699897 \
