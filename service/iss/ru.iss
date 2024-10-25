@@ -1,10 +1,10 @@
 ﻿#define MyAppName "OInt"
-#define MyAppVersion "1.15.0"
+#define MyAppVersion "1.15.1"
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
-#define MyAppExeName "oint.exe"
-#define GDrive "G:"
-#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release"
+#define MyAppExeName "oint.bat"
+#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release\"
+#define OScript "C:\Program Files\OneScript\"
 
 [Setup]
 DisableWelcomePage      = no
@@ -31,8 +31,11 @@ OutputBaseFilename      = oint_{#MyAppVersion}_installer_ru
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
-Source: "{#Repo}\{#MyAppVersion}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
+Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
+
+Source: "{#OScript}\lib\oint\*"; DestDir: "{app}\lib\oint"; Flags: recursesubdirs
+Source: "{#OScript}\lib\oint-cli\*"; DestDir: "{app}\lib\oint-cli"; Flags: recursesubdirs
+
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 
 [Icons]
