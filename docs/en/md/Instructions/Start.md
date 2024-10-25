@@ -74,7 +74,8 @@ The implementation of OpenIntegrations as a CLI application, repeats the functio
 
 CLI example:
 
-```
+```bash
+
     oint telegram SendImage \
         --token "6129457865:AAFyzNYOAFbu..." \
         --chat 461699897 \
