@@ -51,7 +51,51 @@ Regardless of the chosen installation method, the files must be obtained from th
 
 For more details about each release variant, see the section [About Release Variants](/docs/Start/Release-variants)
 
-<br/>
+<hr/>
+
+## Examples of Usage
+
+As an 1C extension and OneScript package, the OpenIntegrations is a set of common modules with export methods - one module for each API. All available methods are functions, i.e. they return values. Typically, these are *Map* describing the JSON of the server response, but can also be *Binary Data* (e.g. in file download methods) or *String* (e.g. in URL retrieval methods). The return value types are described for each method in the current documentation and in the documentation comments in the library code itself
+
+A simple example of using OpenIntegrations is sending a picture to Telegram:
+
+```bsl
+
+    Token    = "6129457865:AAFyzNYOAFbu...";
+    ChatID   = "461699897";
+    Text     = "Cool pic";
+    Picture  = "C:/picture.jpg";  // URL, disk path or Binary data
+
+    Result = OPI_Telegram.SendImage(Token, ChatID, Text, Picture);
+
+```
+
+The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [Working with CLI app](/docs/Start/CLI_version))
+
+CLI example:
+
+```
+    oint telegram SendImage \
+        --token "6129457865:AAFyzNYOAFbu..." \
+        --chat 461699897 \
+        --text "Cool pic" \
+        --picture "picture.jpg"
+
+```
+
+<hr/>
+
+## Working with current documentation
+
+Some features of this documentation that will help you use it more effectively and avoid misunderstandings:
+
+1. **Each method has its own description page**. As a rule, the title of the description page is the same as the name of the method (with spaces added) and is located in the subsection whose name is the same as the name of the program module region. If you can't find the page for a particular function you are interested in, try the built-in full-text search in the top right corner
+
+2. **Parameters of type BinaryData can be defined as file paths or URLs**. Often, for parameters with the *BinaryData* data type, the documentation code examples use URLs or file paths on disk. This is acceptable behavior, because at the beginning of all functions, incoming parameters are converted (if possible) to the required types. In the case of binary data, for example, when passing a string, an attempt will be made to find the file on disk, get it from the Internet, or convert it from Base64
+
+3. **Examples of function results are in JSON format, but in 1C and OS they will be Maps** If the sample result on the function description page is JSON, in 1C and OneScript it will be a *Map* - i.e. the response will be serialized. JSON is returned as a string only in the CLI version
+
+<hr/>
 
 ## Structure of modules
 
