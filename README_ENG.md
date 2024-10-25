@@ -46,7 +46,7 @@ Sending picture to Telegram chat for 1C/OneScript
     Token    = "6129457865:AAFyzNYOAFbu...";
     ChatID   = "461699897";
     Text     = "Cool pic";
-    Picture  = "C:/picture.jpg";  // URL, путь на диске или Двоичные данные
+    Picture  = "C:/picture.jpg";  // URL, disk path or Binary data
 
     Result = OPI_Telegram.SendImage(Token, ChatID, Text, Picture);
 
