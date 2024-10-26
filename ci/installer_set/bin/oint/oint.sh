@@ -1,1 +1,0 @@
-mono /bin/oint/oscript.exe /lib/oint/oint-cli/core/Classes/app.os "$@"
