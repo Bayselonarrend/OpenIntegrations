@@ -52,7 +52,7 @@ Filename: "https://openintegrations.dev/docs/Start/CLI_version"; Flags: shellexe
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
-    ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; \
+    ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\bin"; \
     Check: NeedsAddPath(ExpandConstant('{app}\bin'))
 
 [Code]
