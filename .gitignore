@@ -17,4 +17,4 @@ fakedata.json
 /docs/docusaurus/build
 /docs/docusaurus/docs
 
-!ci/installer_set/share/oint/bin/oscript.exe
+!oscript.exe

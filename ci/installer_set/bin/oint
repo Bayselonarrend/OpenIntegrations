@@ -1,1 +1,1 @@
-mono /usr/share/oint/bin/oscript.exe /usr/share/oint/lib/oint-cli/core/Classes/app.os "$@"
+mono /usr/share/oint/bin/oscript /usr/share/oint/lib/oint-cli/core/Classes/app.os "$@"
