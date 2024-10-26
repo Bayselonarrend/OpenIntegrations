@@ -231,9 +231,6 @@
 	  
 	Сообщить("Start Пакеты");
 
-
-	
-
 	ТекстSh = "--name oint"
 	+ " -s dir"
 	+ " --license mit"
@@ -244,7 +241,7 @@
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
 	+ " --verbose"
-	+ " ../ci/installer_set/=/usr";
+	+ " ../ci/installer_set/=/usr ../service/engine/linux/=/usr/share/oint/bin";
 
 	СоответствиеПакетов = Новый Соответствие();
 	СоответствиеПакетов.Вставить("deb", "oint_" + Версия + "_all_" + Данные["Префикс"] + ".deb");

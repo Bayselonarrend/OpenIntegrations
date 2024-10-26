@@ -28,6 +28,7 @@ OutputBaseFilename      = oint_{#MyAppVersion}_installer_en
 
 [Files]
 Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
+Source: "{#Repo}\service\engine\windows\*"; DestDir: "{app}\share\oint\bin"; Flags: recursesubdirs
 Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 
