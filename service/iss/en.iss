@@ -44,6 +44,9 @@ Name: "{group}\Web-documentation"; Filename: "https://www.en.openintegrations.de
 [Tasks]
 Name: desktopicon; Description: "Create a desktop shortcut"; 
 
+[InstallDelete]
+Type: filesandordirs; Name: "{app}\*"
+
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "https://en.openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall; Description: "Visit documentation en.openintegrations.dev"
