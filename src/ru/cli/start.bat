@@ -1,2 +1,3 @@
 @echo off
-cmd /k "@call share\bin\oint\oscript.exe share\lib\oint\oint-cli\core\Classes\app.os"
+set "oint_main=%~dp0"
+cmd /k "%oint_main%\bin\oint.bat"
