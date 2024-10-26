@@ -2,7 +2,7 @@
 #define MyAppVersion "1.15.1"
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
-#define MyAppExeName "bin\oint.bat"
+#define MyAppExeName "oint.bat"
 #define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release\"
 
 [Setup]
@@ -47,7 +47,7 @@ Name: desktopicon; Description: "Создать ярлык на рабочем �
 Type: filesandordirs; Name: "{app}\*"
 
 [Run]
-Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{cmd}"; Parameters: "/k ""cd ""{app}/bin"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "https://openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить страницу документации openintegrations.dev"
 
 [Registry]
