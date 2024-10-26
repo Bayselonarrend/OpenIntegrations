@@ -433,7 +433,8 @@ EndProcedure
 Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     //Oint = "oint";
-    Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+    //Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+    Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
 
     ResultFile   = GetTempFileName();
     LaunchString = Oint + " " + Library + " " + Method;
