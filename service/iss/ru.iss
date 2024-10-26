@@ -2,9 +2,8 @@
 #define MyAppVersion "1.15.1"
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
-#define MyAppExeName "oint.bat"
+#define MyAppExeName "bin\oint.bat"
 #define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release\"
-#define OScript "C:\Program Files\OneScript\"
 
 [Setup]
 DisableWelcomePage      = no
@@ -32,10 +31,7 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
 Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
-
-Source: "{#OScript}\lib\oint\*"; DestDir: "{app}\lib\oint"; Flags: recursesubdirs; Excludes: "tests"
-Source: "{#OScript}\lib\oint-cli\*"; DestDir: "{app}\lib\oint-cli"; Flags: recursesubdirs
-
+Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 
 [Icons]
@@ -57,7 +53,7 @@ Filename: "https://openintegrations.dev/docs/Start/CLI_version"; Flags: shellexe
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
     ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; \
-    Check: NeedsAddPath(ExpandConstant('{app}'))
+    Check: NeedsAddPath(ExpandConstant('{app}\bin'))
 
 [Code]
 
