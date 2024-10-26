@@ -1,6 +1,6 @@
 oint airtable ModifyTable \
  --token "***" \
- --base "appQnQTfgC32mTaKs" \
- --table "tblRLoGa6TW6M9QXz" \
+ --base "appWnX6HcIZIsnSNK" \
+ --table "tblFmL0wk2oe3UejY" \
  --title "Test table 2 (change.)" \
  --description "New table (change.)"
