@@ -1,4 +1,4 @@
 oint cdek GetOrder \
  --token "***" \
- --uuid "531f89d4-ce21-4b3e-adc6-a60b9d51118e" \
+ --uuid "37533d12-7db6-4d9c-9a13-1279ca2563ea" \
  --testapi "***"
