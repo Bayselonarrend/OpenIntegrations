@@ -1,5 +1,5 @@
 oint vkteams ResendFile \
  --token "***" \
  --chatid "AoLI0egLWBSLR1Ngn2w" \
- --fileid "PZqeWDgllG71xshN3vjClD6716c10e1bd" \
+ --fileid "ZSllSo5uMfiRKWO2hrKXsY671cac811bd" \
  --text "File caption"

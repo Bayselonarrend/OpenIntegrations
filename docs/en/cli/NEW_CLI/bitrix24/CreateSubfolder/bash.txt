@@ -1,5 +1,5 @@
 oint bitrix24 CreateSubfolder \
  --url "b24-ar17wx.bitrix24.by" \
- --folderid 14382 \
+ --folderid 14622 \
  --title "New subfolder" \
  --token "***"
