@@ -1,2 +1,4 @@
-@call "%~dp0/share/bin/oint/oscript.exe" "%~dp0/share/lib/oint/oint-cli/core/Classes/app.os" %*
+@echo off
+set "oint_folder=%~dp0"
+call "%oint_folder%..\share\oint\bin\oscript.exe" "%oint_folder%..\share\oint\lib\oint-cli\core\Classes\app.os" %*
 @exit /b %ERRORLEVEL%
