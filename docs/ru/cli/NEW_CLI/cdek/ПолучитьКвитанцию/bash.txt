@@ -1,6 +1,4 @@
 oint cdek ПолучитьКвитанцию \
   --token "***" \
-  --uuid "72753031-c7f0-408a-a7a0-17f822d4c252" \
-  --getfile true \
-  --testapi "***" \
-  --out "C:\Users\Administrator\AppData\Local\Temp\watjymuz20v.pdf"
+  --uuid "72753031-d4ce-4790-a812-0f2400b3103b" \
+  --testapi "***"
