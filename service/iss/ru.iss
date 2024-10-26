@@ -47,6 +47,9 @@ Name: "{group}\Web-документация"; Filename: "https://www.openintegra
 [Tasks]
 Name: desktopicon; Description: "Создать ярлык на рабочем столе"; 
 
+[InstallDelete]
+Type: filesandordirs; Name: "{app}\*"
+
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "https://openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить страницу документации openintegrations.dev"
