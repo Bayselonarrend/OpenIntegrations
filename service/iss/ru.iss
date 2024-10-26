@@ -33,7 +33,7 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 [Files]
 Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
 
-Source: "{#OScript}\lib\oint\*"; DestDir: "{app}\lib\oint"; Flags: recursesubdirs
+Source: "{#OScript}\lib\oint\*"; DestDir: "{app}\lib\oint"; Flags: recursesubdirs; Excludes: "tests"
 Source: "{#OScript}\lib\oint-cli\*"; DestDir: "{app}\lib\oint-cli"; Flags: recursesubdirs
 
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
