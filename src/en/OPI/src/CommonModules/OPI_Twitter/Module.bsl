@@ -616,8 +616,8 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
         + "&"
         + EncodeString(Parameters["oauth_token_secret"], StringEncodingMethod.URLencoding);
 
-    Signature = OPI_Cryptography.HMAC(GetBinaryDataFromString(Signature)
-        , GetBinaryDataFromString(SignatureString)
+    Signature = OPI_Cryptography.HMAC(ПолучитьДвоичныеДанныеИзСтроки(Signature)
+        , ПолучитьДвоичныеДанныеИзСтроки(SignatureString)
         , HashFunction.SHA1
         , 64);
 

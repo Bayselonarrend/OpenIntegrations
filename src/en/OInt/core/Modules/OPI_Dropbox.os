@@ -157,7 +157,7 @@ Function GetSpaceUsageData(Val Token) Export
     Headers = GetRequestHeaders(Token);
 
     Response = OPI_Tools.PostBinary(URL
-        , GetBinaryDataFromString("null")
+        , ПолучитьДвоичныеДанныеИзСтроки("null")
         , Headers
         ,
         , "text/plain; charset=dropbox-cors-hack");
@@ -782,7 +782,7 @@ Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
 
     If InHeaders Then
         Headers  = GetRequestHeaders(Token, Parameters);
-        Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+        Response = OPI_Tools.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
     Else
         Headers  = GetRequestHeaders(Token);
         Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -908,7 +908,7 @@ Function OpenSession(Val Token)
     URL       = "https://content.dropboxapi.com/2/files/upload_session/start";
     Headers   = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Response = OPI_Tools.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
 
     Return Response[SessionId];
 
@@ -927,7 +927,7 @@ Function CloseSession(Val Token, Val Path, Val Mode, Val TotalSize, Val Session)
     Parameters = New Structure("commit,cursor", Commit, Cursor);
     Headers    = GetRequestHeaders(Token, Parameters);
 
-    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Response = OPI_Tools.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
 
     Return Response;
 
@@ -954,7 +954,7 @@ Function GetOwnAccount(Val Token)
     Headers = GetRequestHeaders(Token);
 
     Response = OPI_Tools.PostBinary(URL
-        , GetBinaryDataFromString("null")
+        , ПолучитьДвоичныеДанныеИзСтроки("null")
         , Headers
         ,
         , "text/plain; charset=dropbox-cors-hack");

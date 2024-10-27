@@ -212,9 +212,9 @@ Function ProcessTMAData(Val DataString, Val Token) Export
 
     KeyString = "WebAppData";
     Hash      = "";
-    BinaryKey = GetBinaryDataFromString(KeyString);
+    BinaryKey = ПолучитьДвоичныеДанныеИзСтроки(KeyString);
 
-    Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
+    Result = OPI_Cryptography.HMACSHA256(BinaryKey, ПолучитьДвоичныеДанныеИзСтроки(Token));
 
     TValue = New ValueTable;
     TValue.Columns.Add("Key");
@@ -245,7 +245,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     EndDo;
 
     DCS       = Left(DCS, StrLen(DCS) - 1);
-    Signature = OPI_Cryptography.HMACSHA256(Result, GetBinaryDataFromString(DCS));
+    Signature = OPI_Cryptography.HMACSHA256(Result, ПолучитьДвоичныеДанныеИзСтроки(DCS));
 
     Final = GetHexStringFromBinaryData(Signature);
 
