@@ -380,7 +380,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Size    = File.Size();
 
     ChunkSize    = Count * Unit * Unit;
-    ArrayReading = SplitBinaryData(File, ChunkSize);
+    ArrayReading = РазделитьДвоичныеДанные(File, ChunkSize);
 
 
     Fields = New Structure;
