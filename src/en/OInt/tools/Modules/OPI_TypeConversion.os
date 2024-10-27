@@ -103,7 +103,7 @@ Procedure GetCollection(Value) Export
         Else
 
             If TypeOf(Value) = Type("BinaryData") Then
-                Value        = GetStringFromBinaryData(Value);
+                Value        = ПолучитьСтрокуИзДвоичныхДанных(Value);
             Else
                 Value        = OPI_Tools.NumberToString(Value);
             EndIf;
@@ -252,7 +252,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
 
         ElsIf TypeOf(Value) = Type("BinaryData") Then
 
-            Value = GetStringFromBinaryData(Value);
+            Value = ПолучитьСтрокуИзДвоичныхДанных(Value);
 
         ElsIf ThisIsCollection(Value) Then
 
