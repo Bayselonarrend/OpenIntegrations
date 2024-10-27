@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint twitter CreatePollTweet ^
- --text "TestTweet9cc322d3-7f35-43f2-a567-bcb213982f71" ^
+ --text "TestTweete12c1bbe-bc12-47a5-af27-4689cfa4906e" ^
  --options "['Option 1','Option 2']" ^
  --duration 60 ^
  --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

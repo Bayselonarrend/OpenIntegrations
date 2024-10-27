@@ -1,4 +1,4 @@
 oint bitrix24 GetFolderItems \
  --url "b24-ar17wx.bitrix24.by" \
- --folderid 14622 \
+ --folderid 14742 \
  --token "***"
