@@ -236,7 +236,6 @@
 	+ " --license mit"
 	+ " --version " + Версия
 	+ " --architecture all"
-	+ " --depends mono-complete"
 	+ " --description """ + Данные["Описание"] + """"
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
