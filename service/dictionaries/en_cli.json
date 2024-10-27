@@ -32,6 +32,7 @@
     "ИнформацияОбОшибке":"ErrorInfo",
     "необяз. по ум.": "optional, def. val.",
     "Структура вызова": "The structure of calls",
-    "JSONСтрокой": "JSONString"
+    "JSONСтрокой": "JSONString",
+    "GetStringFromBinaryData":"ПолучитьСтрокуИзДвоичныхДанных"
 
 }
