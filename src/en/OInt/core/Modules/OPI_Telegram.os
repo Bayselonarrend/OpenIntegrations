@@ -247,7 +247,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     DCS       = Left(DCS, StrLen(DCS) - 1);
     Signature = OPI_Cryptography.HMACSHA256(Result, ПолучитьДвоичныеДанныеИзСтроки(DCS));
 
-    Final = GetHexStringFromBinaryData(Signature);
+    Final = ПолучитьHexСтрокуИзДвоичныхДанных(Signature);
 
     If Final     = Upper(Hash) Then
         Response = True;
