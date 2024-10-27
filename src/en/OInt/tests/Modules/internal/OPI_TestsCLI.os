@@ -2955,7 +2955,7 @@ Procedure CLI_VK_CreateTokenRetrievalLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateTokenRetrievalLink", Options);
 
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTokenRetrievalLink", "VK");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -3416,7 +3416,7 @@ Procedure CLI_VK_ShortenLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "ShortenLink", Options);
 
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ShortenLink", "VK");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -4904,7 +4904,7 @@ Procedure CLI_GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
     Options.Insert("id" , ClientID);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.Check_String(Result);
     OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
@@ -5916,7 +5916,7 @@ Procedure CLI_Twitter_GetAuthorizationLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
 
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Twitter");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -7754,7 +7754,7 @@ Procedure CLI_Dropbox_GetAuthorizationLink(FunctionParameters)
     Options.Insert("appkey", AppKey);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Dropbox");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
@@ -10326,7 +10326,7 @@ Procedure CLI_Bitrix24_GetAppAuthLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);
 
-    Result = GetStringFromBinaryData(Result);
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAppAuthLink", "Bitrix24");
     OPI_TestDataRetrieval.Check_String(Result);
