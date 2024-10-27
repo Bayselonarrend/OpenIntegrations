@@ -2126,8 +2126,8 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     BatString  = StartBat + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
     BashString = StartBash + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);
 
-    GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
-    GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
+    ПолучитьДвоичныеДанныеИзСтроки(BatString).Write(MethodCatalog + "/bat.txt");
+    ПолучитьДвоичныеДанныеИзСтроки(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
 
