@@ -282,7 +282,7 @@ Function JsonToStructure(Val Text) Export
         Return "";
     EndIf;
 
-    Text = ?(TypeOf(Text) = Type("BinaryData"), GetStringFromBinaryData(Text), Text);
+    Text = ?(TypeOf(Text) = Type("BinaryData"), ПолучитьСтрокуИзДвоичныхДанных(Text), Text);
 
     JSONReader = New JSONReader;
     JSONReader.SetString(Text);
@@ -1312,7 +1312,7 @@ Function ZipLFH()
     Buffer.WriteInt32(22, 0); // uncompressed size
     Buffer.WriteInt16(26, 4); // filename legth - "data"
     Buffer.WriteInt16(28, 0); // extra field length
-    Buffer.Write(30, GetBinaryDataBufferFromString("data", "ascii", False));
+    Buffer.Write(30, ПолучитьБуферДвоичныхДанныхИзСтроки("data", "ascii", False));
 
     Return Buffer;
 
@@ -1352,7 +1352,7 @@ Function ZipCDH(CRC32, CompressedDataSize, UncompressedDataSize)
     Buffer.WriteInt16(36, 0); // internal file attributes
     Buffer.WriteInt32(38, 2176057344); // external file attributes
     Buffer.WriteInt32(42, 0); // relative offset of local header
-    Buffer.Write(46, GetBinaryDataBufferFromString("data", "ascii", False));
+    Buffer.Write(46, ПолучитьБуферДвоичныхДанныхИзСтроки("data", "ascii", False));
 
     Return Buffer;
 
