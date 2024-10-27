@@ -69,7 +69,7 @@ Function HMAC(Val Key, Val Data, Type, BlockSize) Export
     EndIf;
 
     If Key.Size() <= BlockSize Then
-        Key        = GetHexStringFromBinaryData(Key);
+        Key        = ПолучитьHexСтрокуИзДвоичныхДанных(Key);
         Key        = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
 
