@@ -95,7 +95,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ozon"           , StandardDependencies);
     Sections.Insert("Neocities"      , StandardDependencies);
     Sections.Insert("CDEK"           , StandardDependencies);
-    
+
     Return Sections;
 
 EndFunction
