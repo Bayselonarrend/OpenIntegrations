@@ -70,7 +70,7 @@
         |      - uses: actions/checkout@v2 
         |      - uses: otymko/setup-onescript@v1.4
         |        with:
-        |          version: 1.9.0 
+        |          version: dev
         |      
         |      - name: Получить тестовые данные из кэша
         |        uses: actions/cache/restore@v3
