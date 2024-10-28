@@ -43,6 +43,7 @@
 
 // Uncomment if OneScript is executed
 // #Use "../../../tools"
+// #Use "../../../core"
 // #Use asserts
 
 #Region Internal
