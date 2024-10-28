@@ -44,7 +44,7 @@
 
 Процедура СформироватьЗапуск(Знач ТаблицаТестов, Знач СписокБиблиотек, Знач Язык, Знач Параметры)
 	
-	МодульТестов    = Параметры["testsModule"];
+	МодульТестов    = Параметры["testsModuleCLI"];
 	СтрокаРаздел    = Параметры["sectionsString"];
 	СтрокаМетод     = Параметры["methodString"];
 	СтрокаСиноним   = Параметры["synonymString"];
@@ -85,9 +85,10 @@
 		|
         |      - name: Установить OInt
         |        run: |
-        |          cd ./src/" + Язык + "/OInt
-        |          opm build
-        |          opm install *.ospx
+		|          TEMP_DEB=""$(mktemp)"" &&
+		|          wget -O ""$TEMP_DEB"" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+		|          sudo dpkg -i ""$TEMP_DEB""
+		|          rm -f ""$TEMP_DEB""
 		|
 	    |";
 
@@ -103,7 +104,7 @@
 			|
 			|      - name: " + Синоним + "
             |        if: ${{ cancelled() }} == false
-            |        run: oscript " + Раннер + " -run " + ФайлТестов + " """ + Метод + """";
+            |        run: oscript " + Раннер + " -run " + ФайлТестов + " ""CLI_" + Метод + """";
 
 		КонецЦикла;
 
@@ -147,26 +148,6 @@
 	|    runs-on: ubuntu-latest
 	|    steps:
 	|      - uses: actions/checkout@v4             
-	|      - uses: otymko/setup-onescript@v1.4
-	|        with:
-	|          version: 1.9.0 
-	|
-	|      - name: Установить asserts и 1testrunner
-	|        run: |
-	|          opm install asserts
-	|          opm install 1testrunner
-	|
-	|      - name: Установить OInt
-	|        run: |
-	|          cd ./src/" + Язык + "/OInt
-	|          opm build
-	|          opm install *.ospx    
-	|
-	|      - name: Записать артефакт
-	|        uses: actions/upload-artifact@v4
-	|        with:
-	|          name: oint
-	|          path: ./src/" + Язык + "/OInt/*.ospx
 	|");
 
 КонецПроцедуры
