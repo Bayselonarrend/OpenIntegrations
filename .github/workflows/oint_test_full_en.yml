@@ -28,26 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4             
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Установить OInt
-        run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx    
-
-      - name: Записать артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: oint
-          path: ./src/en/OInt/*.ospx
 
 
   Testing-Telegram:
@@ -58,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -73,99 +53,100 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Get bot information
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetBotInfo"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_GetBotInfo"
 
       - name: Get updates
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetUpdates"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_GetUpdates"
 
       - name: Set Webhook
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SetWebhook"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SetWebhook"
 
       - name: Send text message
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendTextMessage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendTextMessage"
 
       - name: Send image
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendImage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendImage"
 
       - name: Send video
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendVideo"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendVideo"
 
       - name: Send audio
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendAudio"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendAudio"
 
       - name: Send document
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendDocument"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendDocument"
 
       - name: Send GIF
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendGIF"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendGIF"
 
       - name: Send mediagroup
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendMediaGroup"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendMediaGroup"
 
       - name: Send location
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendLocation"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendLocation"
 
       - name: Send contact
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendContact"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendContact"
 
       - name: Send poll
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendPoll"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_SendPoll"
 
       - name: Forward message
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_ForwardMessage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_ForwardMessage"
 
       - name: Ban/Unban
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_BanUnban"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_BanUnban"
 
       - name: Create invitation link
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_CreateInvitationLink"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_CreateInvitationLink"
 
       - name: Pin/Unpin message
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_PinUnpinMessage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_PinUnpinMessage"
 
       - name: Get participant count
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetMemberCount"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_GetMemberCount"
 
       - name: Get forum avatars list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetForumAvatarsList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_GetForumAvatarsList"
 
       - name: Create/Delete forum topic
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_CreateDeleteForumTopic"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_CreateDeleteForumTopic"
 
       - name: Change main topic name
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_ChangeMainTopicName"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_ChangeMainTopicName"
 
       - name: Hide/Show main topic
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_HideShowMainTopic"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TelegramAPI_HideShowMainTopic"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -183,7 +164,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -198,91 +179,92 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Create token retrieval link
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateTokenLink"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateTokenLink"
 
       - name: Create/Delete post
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateDeletePost"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateDeletePost"
 
       - name: Create/Delete composite post
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateCompositePost"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateCompositePost"
 
       - name: Create poll
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreatePoll"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreatePoll"
 
       - name: Add/Delete image
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_SaveDeleteImage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_SaveDeleteImage"
 
       - name: Create story
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateStory"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateStory"
 
       - name: Actions with discussions
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_DiscussionMethods"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_DiscussionMethods"
 
       - name: Like/Repost/Comment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_LikeRepostComment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_LikeRepostComment"
 
       - name: Get statistics
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetStatistics"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetStatistics"
 
       - name: Get post statistics
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetPostStatistics"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetPostStatistics"
 
       - name: Create advertising campaign
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateAdCampaign"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateAdCampaign"
 
       - name: Send message
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_SendMessage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_SendMessage"
 
       - name: Get product categories
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetProductCategories"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetProductCategories"
 
       - name: Create product and selection
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateProductSelection"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateProductSelection"
 
       - name: Create product with properties
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateProductWithProperties"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_CreateProductWithProperties"
 
       - name: Get product list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetProductList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetProductList"
 
       - name: Get selection list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetSelectionList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetSelectionList"
 
       - name: Get property list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetPropertyList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetPropertyList"
 
       - name: Get order list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetOrderList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_GetOrderList"
 
       - name: Upload video
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_UploadVideo"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKAPI_UploadVideo"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -300,7 +282,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -315,19 +297,20 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Data retrieval
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_DataRetrieval"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Viber_DataRetrieval"
 
       - name: Messages sending
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_MessagesSending"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Viber_MessagesSending"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -345,7 +328,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -360,19 +343,20 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Account data
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TwitterAPI_AccountData"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TwitterAPI_AccountData"
 
       - name: Tweets creation
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TwitterAPI_Tweets"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_TwitterAPI_Tweets"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -398,7 +382,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -413,51 +397,52 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Get disk information
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetDiskInfo"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_GetDiskInfo"
 
       - name: Create folder
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_CreateFolder"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_CreateFolder"
 
       - name: Upload by URL and get
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_UploadByUrlAndGetObject"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_UploadByUrlAndGetObject"
 
       - name: Upload/Delete file
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_UploadDeleteFile"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_UploadDeleteFile"
 
       - name: Create object copy
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_CreateObjectCopy"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_CreateObjectCopy"
 
       - name: Get download link
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetDownloadLink"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_GetDownloadLink"
 
       - name: Get list of files
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetFileList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_GetFileList"
 
       - name: Move object
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_MoveObject"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_MoveObject"
 
       - name: Actions with public objects
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_PublicObjectActions"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_PublicObjectActions"
 
       - name: Get published list
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetPublishedList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YDisk_GetPublishedList"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -475,7 +460,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -490,15 +475,16 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Authorization
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GW_Auth"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GW_Auth"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -524,7 +510,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -539,27 +525,28 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Authorization
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GW_Auth"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GW_Auth"
 
       - name: Get list of calendars
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_GetCalendarList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GC_GetCalendarList"
 
       - name: Create/Delete calendar
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_CreateDeleteCalendar"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GC_CreateDeleteCalendar"
 
       - name: Create/Delete event
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_CreateDeleteEvent"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GC_CreateDeleteEvent"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -577,7 +564,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -592,31 +579,32 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Authorization
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GW_Auth"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GW_Auth"
 
       - name: Get list of directories
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_GetCatalogList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GD_GetCatalogList"
 
       - name: Upload/Delete file
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_UploadDeleteFile"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GD_UploadDeleteFile"
 
       - name: Create/Delete Comment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_CreateDeleteComment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GD_CreateDeleteComment"
 
       - name: Create/Delete catalog
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_CreateCatalog"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GD_CreateCatalog"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -634,7 +622,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -649,23 +637,24 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Authorization
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GW_Auth"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GW_Auth"
 
       - name: Create table
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GT_CreateTable"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GT_CreateTable"
 
       - name: Fill/Clear cells
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GT_FillClearCells"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GT_FillClearCells"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -683,7 +672,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -698,27 +687,28 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Create page
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NotionAPI_CreatePage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NotionAPI_CreatePage"
 
       - name: Create/Edit database
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NotionAPI_CreateUpdateBase"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NotionAPI_CreateUpdateBase"
 
       - name: Create/Delete block
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NotionAPI_CreateDeleteBlock"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NotionAPI_CreateDeleteBlock"
 
       - name: Get users
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NotionAPI_GetUsers"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NotionAPI_GetUsers"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -736,7 +726,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -751,35 +741,36 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Get data
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "SlackGetData"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_SlackGetData"
 
       - name: Send/Delete message
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_SendDeleteMessage"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Slack_SendDeleteMessage"
 
       - name: Create/Archive channel
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_CreateArchiveChannel"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Slack_CreateArchiveChannel"
 
       - name: Open/Close dialog
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_OpenCloseDialog"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Slack_OpenCloseDialog"
 
       - name: Upload/Delete file
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_UploadDeleteFile"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Slack_UploadDeleteFile"
 
       - name: Upload/Delete external file
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_UploadDeleteExternalFile"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_Slack_UploadDeleteExternalFile"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -797,7 +788,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -812,27 +803,28 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Create/Edit database
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateDatabase"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AT_CreateDatabase"
 
       - name: Create/Edit table
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateTable"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AT_CreateTable"
 
       - name: Create/Edit field
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateField"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AT_CreateField"
 
       - name: Create/Delete records
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateDeleteRecords"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AT_CreateDeleteRecords"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -850,7 +842,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -865,43 +857,44 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Get/Update token
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetUpdateToken"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_GetUpdateToken"
 
       - name: Upload file
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_UploadFile"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_UploadFile"
 
       - name: Upload file by URL
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_UploadFileByURL"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_UploadFileByURL"
 
       - name: Create folder
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_CreateFolder"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_CreateFolder"
 
       - name: Create/Delete tag
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_CreateDeleteTag"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_CreateDeleteTag"
 
       - name: Get account data
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetAccount"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_GetAccount"
 
       - name: Access management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_AccessManagement"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_AccessManagement"
 
       - name: Get list of folder files
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetFolderFileList"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_DropboxAPI_GetFolderFileList"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -919,7 +912,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -934,71 +927,72 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Token management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_TokenManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TokenManagment"
 
       - name: Server time
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_ServerTime"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_ServerTime"
 
       - name: Posts managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_PostsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_PostsManagment"
 
       - name: Tasks managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_TaskManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TaskManagment"
 
       - name: Comments managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_CommentsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_CommentsManagment"
 
       - name: Working with drive
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_WorkingWithDrive"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_WorkingWithDrive"
 
       - name: Kanban
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_Kanban"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_Kanban"
 
       - name: Timekeeping
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_Timekeeping"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_Timekeeping"
 
       - name: Chats works
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_ChatManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_ChatManagment"
 
       - name: Notifications managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_NotificationsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_NotificationsManagment"
 
       - name: Working with custom task fields
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_TasksFieldsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TasksFieldsManagment"
 
       - name: Departments managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_DepartmentsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DepartmentsManagment"
 
       - name: Users managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B2_UsersManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B2_UsersManagment"
 
       - name: Leads managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_LeadsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_LeadsManagment"
 
       - name: Deals managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_DealsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DealsManagment"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1016,7 +1010,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -1031,23 +1025,24 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Messages sending
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_MessagesSending"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_MessagesSending"
 
       - name: Common methods
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_CommonMethods"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_CommonMethods"
 
       - name: Chat managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_ChatManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_ChatManagment"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1065,7 +1060,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -1080,35 +1075,36 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Attributes and features
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_AttributesAndFeatures"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_AttributesAndFeatures"
 
       - name: Uploading and updating products
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_UploadingAndUpdatingProducts"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_UploadingAndUpdatingProducts"
 
       - name: Barcodes
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_Barcodes"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_Barcodes"
 
       - name: Prices and stocks
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_PricesAndStocks"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_PricesAndStocks"
 
       - name: Promotions managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_PromotionsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_PromotionsManagment"
 
       - name: Warehouses managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_WarehousesManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_WarehousesManagment"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1126,7 +1122,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -1141,19 +1137,20 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Files managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NC_FilesManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NC_FilesManagment"
 
       - name: Data retrieving
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "NC_DataRetrieving"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NC_DataRetrieving"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1171,7 +1168,7 @@ jobs:
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: dev
       
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
@@ -1186,23 +1183,24 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./src/en/OInt
-          opm build
-          opm install *.ospx
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
 
 
 
       - name: Common methods
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "CdekAPI_CommonMethods"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CdekAPI_CommonMethods"
 
       - name: Orders managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "CDEKAPI_OrdersManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CDEKAPI_OrdersManagment"
 
       - name: Courier invitations managment
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "CdekAPI_CourierInvitationsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CdekAPI_CourierInvitationsManagment"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
