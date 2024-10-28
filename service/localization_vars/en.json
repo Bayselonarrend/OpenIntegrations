@@ -3,6 +3,7 @@
     "synonymString":"Synonym",
     "sectionsString":"Section",
     "testsModule":"OPI_Tests",
+    "testsModuleCLI":"OPI_TestsCLI",
     "testsTableMethod":"OPI_TestDataRetrieval.GetTestTable()",
     "testsSectionsMethod":"OPI_TestDataRetrieval.GetTestingSectionMapping()",
     "testsSectionsMethodGA":"OPI_TestDataRetrieval.GetTestingSectionMappingGA()",
