@@ -429,6 +429,7 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     Try
         Data = OPI_Tools.JSONString(Result);
     Except
+        Message(DetailErrorDescription(ErrorInfo()));
         Data = "Not JSON: " + String(Result);
     EndTry;
 
