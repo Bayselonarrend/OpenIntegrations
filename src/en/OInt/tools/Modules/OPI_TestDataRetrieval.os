@@ -71,6 +71,35 @@ Function GetTestingSectionMapping() Export
 
 EndFunction
 
+Function GetTestingSectionMappingGA() Export
+
+    StandardDependencies = "[Decode, Build]";
+    GoogleDependencies   = "Testing-GoogleWorkspace";
+
+    Sections = New Structure;
+    Sections.Insert("Telegram"       , StandardDependencies);
+    Sections.Insert("VK"             , StandardDependencies);
+    Sections.Insert("Viber"          , StandardDependencies);
+    Sections.Insert("Twitter"        , StandardDependencies);
+    Sections.Insert("YandexDisk"     , StandardDependencies);
+    Sections.Insert("GoogleWorkspace", StandardDependencies);
+    Sections.Insert("GoogleCalendar" , GoogleDependencies);
+    Sections.Insert("GoogleDrive"    , GoogleDependencies);
+    Sections.Insert("GoogleSheets"   , GoogleDependencies);
+    Sections.Insert("Notion"         , StandardDependencies);
+    Sections.Insert("Slack"          , StandardDependencies);
+    Sections.Insert("Airtable"       , StandardDependencies);
+    Sections.Insert("Dropbox"        , StandardDependencies);
+    Sections.Insert("Bitrix24"       , StandardDependencies);
+    Sections.Insert("VkTeams"        , StandardDependencies);
+    Sections.Insert("Ozon"           , StandardDependencies);
+    Sections.Insert("Neocities"      , StandardDependencies);
+    Sections.Insert("CDEK"           , StandardDependencies);
+    
+    Return Sections;
+
+EndFunction
+
 Function GetTestTable() Export
 
     Telegram  = "Telegram";
