@@ -3,6 +3,7 @@
     "synonymString":"Синоним",
     "sectionsString":"Раздел",
     "testsModule":"OPI_Тесты",
+    "testsModuleCLI":"OPI_ТестыCLI",
     "testsTableMethod":"OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()",
     "testsSectionsMethod":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()",
     "testsSectionsMethodGA":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()",
