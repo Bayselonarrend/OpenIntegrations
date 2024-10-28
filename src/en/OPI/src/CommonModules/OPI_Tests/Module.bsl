@@ -44,7 +44,8 @@
 //@skip-check module-unused-local-variable
 
 // Uncomment if OneScript is executed
-// #Use oint
+// #Use "../../../tools"
+// #Use "../../../core"
 // #Use asserts
 
 #Region Internal
