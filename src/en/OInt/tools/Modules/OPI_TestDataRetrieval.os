@@ -468,7 +468,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
         Oint    = """C:/Program Files/OneScript/bin/oint.bat""";
         //Oint  = """C:\Program Files (x86)\OInt\bin\oint.bat""";
     Else
-        Oint = "oint";
+        Oint = "sudo oint";
     EndIf;
 
     ResultFile   = GetTempFileName();
