@@ -5,6 +5,7 @@
     "testsModule":"OPI_Тесты",
     "testsTableMethod":"OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()",
     "testsSectionsMethod":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()",
+    "testsSectionsMethodGA":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()",
     "codeExamplesSrc": "./docs/ru/examples/",
     "testValuesSrc": "./docs/ru/data/",
     "testsModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
