@@ -495,8 +495,6 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
         Result     = ReadJSON(JSONReader, True);
         JSONReader.Close();
 
-        DeleteFiles(ResultFile);
-
     Except
 
         Message(DetailErrorDescription(ErrorInfo()));
@@ -510,6 +508,12 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
     EndTry;
 
     WriteCLICall(Library, Method, Options);
+
+    Try
+        DeleteFiles(ResultFile);
+    Except
+        Message("Failed to delete the temporary file after the test!");
+    EndTry;
 
     Return Result;
 
