@@ -429,7 +429,6 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     Try
         Data = OPI_Tools.JSONString(Result);
     Except
-        Message(DetailErrorDescription(ErrorInfo()));
         Data = "Not JSON: " + String(Result);
     EndTry;
 
@@ -499,6 +498,8 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
         DeleteFiles(ResultFile);
 
     Except
+
+        Message(DetailErrorDescription(ErrorInfo()));
 
         Try
             Result = New BinaryData(ResultFile);
