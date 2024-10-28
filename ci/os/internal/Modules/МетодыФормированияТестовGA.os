@@ -86,7 +86,7 @@
         |      - name: Установить OInt
         |        run: |
 		|          TEMP_DEB=""$(mktemp)"" &&
-		|          wget -O ""$TEMP_DEB"" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_ru.deb' &&
+		|          wget -O ""$TEMP_DEB"" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.15.1/oint_1.15.1_all_" + Язык + ".deb' &&
 		|          sudo dpkg -i ""$TEMP_DEB""
 		|          rm -f ""$TEMP_DEB""
 		|
