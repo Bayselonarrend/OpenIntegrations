@@ -1871,6 +1871,9 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
 
+    Message("Ozon product checkout is unavailable");
+    Return;
+
     Ozon_GetProductStructure(TestParameters);
     Ozon_CreateUpdateProducts(TestParameters);
     Ozon_GetProductCreationStatus(TestParameters);
