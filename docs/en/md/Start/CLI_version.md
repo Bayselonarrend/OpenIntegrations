@@ -33,7 +33,7 @@ When it comes to parameters, most often the data passed there are strings. This 
 
  + Dates are passed as strings in ISO 8601 format
  + Arrays are passed as strings in the form`"['Val1','Val2','Val3']"`
- + JSON is passed as a path to a .json file
+ + JSON is passed as a path to a .json file or a string in JSON format with single quotes
 
 After executing the requested action, the program outputs the result and exits. By default, the output is displayed in the console, but you can redirect it to a file using either the standard method `>` or by using the common parameter `--out`. The difference between these two methods lies in the encoding of the saved file: when using `>`, it will be the encoding of the shell, whereas when using `--out`, it will be UTF-8 (used internally by OInt). Additionally, using `--out` is mandatory for methods returning binary data in the response (such as downloading a file from Google Drive, for example)
 
