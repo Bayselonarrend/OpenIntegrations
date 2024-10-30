@@ -16042,15 +16042,22 @@ EndProcedure
 
 Procedure CLI_CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
-    Token       = FunctionParameters["CDEK_Token"];
-    Order       = FunctionParameters["CDEK_OrderUUID"];
-    CurrentDate = OPI_Tools.GetCurrentDate();
+    Token = FunctionParameters["CDEK_Token"];
+    Order = FunctionParameters["CDEK_OrderUUID"];
+
+    Day          = 60 * 60 * 24;
+    CurrentDate  = BegOfDay(OPI_Tools.GetCurrentDate());
+    DeliveryDate = CurrentDate + Day * 14;
+
+    WHile WeekDay(DeliveryDate) > 5 Do
+        DeliveryDate = DeliveryDate + Day;
+    EndDo;
 
     Appointment = New Structure;
 
     Appointment.Insert("cdek_number", "1106207236");
     Appointment.Insert("order_uuid" , Order);
-    Appointment.Insert("date"       , Format(CurrentDate + 60 * 60 * 24 * 2, "DF=yyyy-MM-dd"));
+    Appointment.Insert("date"       , Format(DeliveryDate, "DF=yyyy-MM-dd"));
     Appointment.Insert("time_from"  , "10:00");
     Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
