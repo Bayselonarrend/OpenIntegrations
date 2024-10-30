@@ -14113,7 +14113,7 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
     CurrentDate  = BegOfDay(OPI_Tools.GetCurrentDate());
     DeliveryDate = CurrentDate + Day * 14;
 
-    WHile WeekDay(DeliveryDate) > 5 Do
+    WHile DayOfWeek(DeliveryDate) > 5 Do
         DeliveryDate = DeliveryDate + Day;
     EndDo;
 
