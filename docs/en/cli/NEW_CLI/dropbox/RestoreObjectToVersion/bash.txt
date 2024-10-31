@@ -1,4 +1,4 @@
 oint dropbox RestoreObjectToVersion \
  --token "***" \
  --path "/New/pic.png" \
- --rev "625786546e1e3bd841553"
+ --rev "625c5c5070d94bd841553"
