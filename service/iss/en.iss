@@ -3,7 +3,7 @@
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.bat"
-#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release\"
+#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release"
 
 [Setup]
 DisableWelcomePage      = no
