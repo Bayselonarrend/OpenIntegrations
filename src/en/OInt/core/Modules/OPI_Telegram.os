@@ -170,7 +170,28 @@ Function DownloadFile(Val Token, Val FileID) Export
     Path = Response[Result]["file_path"];
 
     If Not ValueIsFilled(Path) Then
-        Return Response;
+
+        Ready = False;
+
+        For N = 1 To 5 Do
+
+            OPI_Tools.Pause(N);
+
+            Response = OPI_Tools.Get(URL, Parameters);
+            Path     = Response[Result]["file_path"];
+
+            Ready = ValueIsFilled(Path);
+
+            If Ready Then
+                Break;
+            EndIf;
+
+        EndDo;
+
+        If Not Ready Then
+            Return Response;
+        EndIf;
+
     EndIf;
 
     URL      = "api.telegram.org/file/bot" + Token + "/" + Path;
