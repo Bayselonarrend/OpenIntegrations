@@ -31,11 +31,14 @@ Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
 Source: "{#Repo}\service\engine\windows\*"; DestDir: "{app}\share\oint\bin"; Flags: recursesubdirs
 Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
+Source: "{#Repo}\Media\ex.ico"; DestDir: "{app}\share\oint\icons"
+Source: "{#Repo}\Media\wizard.ico"; DestDir: "{app}\share\oint\icons"
+
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"
-Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"; Tasks: desktopicon
-Name: "{group}\Uninstall OInt"; Filename: "{uninstallexe}"; IconFilename: "{#Repo}\Media\wizard.ico"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"
+Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"; Tasks: desktopicon
+Name: "{group}\Uninstall OInt"; Filename: "{uninstallexe}"; IconFilename: "{app}\share\oint\icons\wizard.ico"
 Name: "{group}\Web-documentation"; Filename: "https://www.en.openintegrations.dev/"  
 
 [Tasks]
