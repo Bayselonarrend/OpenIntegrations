@@ -465,8 +465,8 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
     OperatingSystem = String(SystemInfo.PlatformType);
 
     If StrFind(Lower(OperatingSystem), "windows") > 0 Then
-        //Oint   = """C:/Program Files/OneScript/bin/oint.bat""";
-        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        //Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+        Oint   = """C:\Program Files (x86)\OInt\bin\oint.bat""";
     Else
         Oint   = "sudo oint";
     EndIf;
