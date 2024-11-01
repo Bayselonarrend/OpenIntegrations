@@ -1,9 +1,9 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk CreateAd \
- --campaign 1030772221 \
+ --campaign 1030775027 \
  --limit 150 \
  --category 126 \
- --post 5131 \
+ --post 5176 \
  --cabinet "1607951446" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
