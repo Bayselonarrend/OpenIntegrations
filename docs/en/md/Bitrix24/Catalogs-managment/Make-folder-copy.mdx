@@ -31,18 +31,18 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    DestinationID = "14324";
-    FolderID      = "14326";
+    DestinationID = "15944";
+    FolderID      = "15946";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
 
     Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID);
 
-    DestinationID = "14326";
-    FolderID      = "14324";
+    DestinationID = "15946";
+    FolderID      = "15944";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "35c31667006e9f06006b12e400000001000...";
+    Token = "002d2567006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID, Token);
 
@@ -56,8 +56,8 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
         ```bash
             oint bitrix24 MakeFolderCopy \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 15536 \
-             --tagetid 15538 \
+             --folderid 16182 \
+             --tagetid 16184 \
              --token "***"
         ```
     </TabItem>
@@ -66,8 +66,8 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
         ```batch
             oint bitrix24 MakeFolderCopy ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 15536 ^
-             --tagetid 15538 ^
+             --folderid 16182 ^
+             --tagetid 16184 ^
              --token "***"
         ```
     </TabItem>
