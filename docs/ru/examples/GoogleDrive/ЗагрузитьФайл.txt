@@ -1,6 +1,6 @@
-﻿    Токен    = "ya29.a0AcM612wmWdggP-K6tOc3UqW0KxYMjUi60_Uhu-ERltTaavHGbML0nRBXqkuiBcr0GNmR_1gHKowaF1Rd_4Q5Amc9O23DEBZ95sNEGnpR5...";
+﻿    Токен    = "ya29.a0AeDClZCrm1MZHZ7BZZhmGUkC6-tSjQ017rdAe6NQ77UgRX3csJv_nTfO5w5K1-LtaFFgymMCfbizB9uj7gUW5ozQ9rUqO__ZmRd-q5zyS...";
     Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Каталог  = "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();
     Описание.Вставить("Родитель", Каталог);
