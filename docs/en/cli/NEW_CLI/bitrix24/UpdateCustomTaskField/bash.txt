@@ -1,4 +1,4 @@
 oint bitrix24 UpdateCustomTaskField \
- --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" \
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/yg22op67699ca9jx" \
  --fieldid 259 \
  --title "New title"

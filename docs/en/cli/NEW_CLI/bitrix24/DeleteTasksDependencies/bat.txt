@@ -1,6 +1,6 @@
 oint bitrix24 DeleteTasksDependencies ^
  --url "b24-ar17wx.bitrix24.by" ^
- --taskfrom "2978" ^
- --taskto "2976" ^
+ --taskfrom "3038" ^
+ --taskto "3036" ^
  --linktype 2 ^
  --token "***"
