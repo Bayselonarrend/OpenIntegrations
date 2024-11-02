@@ -32,20 +32,20 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FromID        = "2690";
-    DestinationID = "2692";
+    FromID        = "2996";
+    DestinationID = "2998";
     LinkType      = 0;
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "2692";
-    DestinationID = "2690";
+    FromID        = "2998";
+    DestinationID = "2996";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "35c31667006e9f06006b12e400000001000...";
+    Token = "002d2567006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```
@@ -57,8 +57,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 CreateTasksDependencies \
              --url "b24-ar17wx.bitrix24.by" \
-             --taskfrom "2928" \
-             --taskto "2926" \
+             --taskfrom "3038" \
+             --taskto "3036" \
              --linktype 2 \
              --token "***"
         ```
@@ -68,8 +68,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 CreateTasksDependencies ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --taskfrom "2928" ^
-             --taskto "2926" ^
+             --taskfrom "3038" ^
+             --taskto "3036" ^
              --linktype 2 ^
              --token "***"
         ```
