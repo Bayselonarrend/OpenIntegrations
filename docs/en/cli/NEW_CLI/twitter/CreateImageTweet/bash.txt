@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint twitter CreateImageTweet \
- --text "TestTweetbfbd4f6b-b760-431d-97a6-c125a8cce610" \
- --pictures "C:\Users\Administrator\AppData\Local\Temp\sft0a4hiyoz.tmp" \
+ --text "TestTweetdcaf0cc1-46bc-49dd-a687-f299aa141367" \
+ --pictures "C:\Users\Administrator\AppData\Local\Temp\riioxe53fcm.tmp" \
  --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

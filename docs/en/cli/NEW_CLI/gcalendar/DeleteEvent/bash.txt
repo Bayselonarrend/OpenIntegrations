@@ -1,4 +1,4 @@
 oint gcalendar DeleteEvent \
  --token "***" \
- --calendar "6419397843bcbdf4eb262302cbbbe186ccbb5eafbdf37c2a2d22b38801d673c9@group.calendar.google.com" \
- --event "p5fqq6vojor2skpq976f1ap4a0"
+ --calendar "b7ccbbb67f2f75de15a1ac316d51d42ef92157041947363aed9f41b087aad64b@group.calendar.google.com" \
+ --event "7130bllf1tncjc1tul7htpe14g"
