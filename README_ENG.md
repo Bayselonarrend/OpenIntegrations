@@ -7,7 +7,7 @@
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 
 <br>
-An 1C/OneScript and CLI open-source toolkit for integrating with APIs of popular online services <br>
+A set of tools for integration with popular APIs: console application (Windows/Linux) and library (extension) for 1C:Enterprise/OneScript, consisting of a common set of ready-made functions for working with many well-known cloud services <br>
 
 
 <br>
@@ -83,32 +83,35 @@ You can use the standard `>` redirect or the oint's `--out` option to save the r
 
 <br/><br>
 
-Regardless of the chosen installation method, the files must be obtained from the *Release* section, as the repository files may contain intermediate data and functions that are still in development.
+When using the 1C and OneScript versions, you can also simply copy the code of common modules from the releases into your project by hand. However, regardless of the chosen installation method, you should get the files from Release, because the repository source files themselves contain intermediate data and functions under development.
 
 <br/>
 
-To get started with OneScript, you also need to install the package
++ To start working in 1C it is enough to download the CFE file (or XML upload) of the extension and load it into the extensions list of your configuration <br>
++ To start working in OneScript, you need to install the package
 
-<br/>
+   From the package hub (RU version only):
+   ```powershell
+       opm install oint
+   ```
 
-From Hub (only ru version):
-```powershell
-    opm install oint
-```
-
-From file:
-```powershell
-    opm install -f "./OInt-x.x.x.ospx"
-```
+   Or from a downloaded ospx file:
+   ```powershell
+       opm install -f "./OInt-x.x.x.ospx"
+   ```
 <br>
 
-The CLI version requires **.Net Framework 4.8** or **Mono of the corresponding version**. When installing from rpm or deb packages, it is installed automatically.
++ To get started with the CLI (command line application), you need to download the Windows installer or one of the package variants for Linux from the releases, according to the operating system you are using
+
+   With any installation option, the OInt CLI is started with the `oint` command from the command line (installation from Installer for Windows may require a reboot)
 
 <br/>
  
 >[!WARNING]
->It is not recommended to directly use the methods of service modules (1C and OneScript; OPI_Tools, OPI_Cryptography etc.) in your project (if you plan to update to new versions in the future). To maintain backward compatibility, the number/purpose of parameters and the return types for API methods do not change, but this does not apply to service modules, which may change as needed for optimization and adaptation to new requirements. If you need functionality from the service modules, it is recommended to copy it separately.
+>Also, there is a single exe-file delivery for the CLI application. To run it, .Net Framework 4.8 or the relevant version of Mono is required.
+>This delivery option has performance issues, so we recommend using it only if it is impossible to use other variants on the target system
 <br/>
+
 
 
 ## Documentation ##
