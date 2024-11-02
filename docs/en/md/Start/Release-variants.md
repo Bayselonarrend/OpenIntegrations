@@ -23,19 +23,23 @@ These release options are various forms of distribution for the extension for th
 <br/>
 
 ## CLI
-these release options are various forms of distribution for OInt CLI – a cross-platform terminal/command line application that implements the full functionality of the OpenIntegrations library without being tied to the 1C/OS technology stack. The system requirements for OInt are the system requirements for OneScript: **.Net Framework 4.8 (Windows)** or **a comparable version of Mono (Linux)**
-
-<img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/5.png').default} width="86" align="left"/>
-**oint.exe** - an executable file that, despite its Windows-oriented extension, is cross-platform. It requires .Net Framework 4.8 or a compatible version of Mono to run. In Windows and Debian-based distributions, this application is launched simply through the command line/terminal, while in RHEL-based distributions, it is launched through ```mono oint.exe "$@"```
+these release options are various forms of distribution for OInt CLI – a cross-platform terminal/command line application that implements the full functionality of the OpenIntegrations library without being tied to the 1C/OS technology stack
 
 <img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/6.png').default} width="86" align="left"/>
 **oint_x.x.x_installer.exe** - this is a Windows installer. It is the recommended installation method for Windows OS, as it automatically creates the program directory and sets the PATH (after restarting the computer). This allows the application to be launched from any location by simply typing oint in the command line
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/7.png').default} width="86" align="left"/>
-**oint_x.x.x_all.deb** - this is a DEB package designed for installing OInt on Debian/Ubuntu distributions. When using it, Mono dependencies are installed automatically, so no additional actions are required to start working
+**oint_x.x.x_all.deb** - this is a DEB package designed for installing OInt in Debian/Ubuntu distributions. The package has no dependencies, so no additional downloads are required to get started
 
 <img style={{paddingRight:'20px',marginTop:'16px'}} src={require('./img/8.png').default} width="86" align="left"/>
-**oint-x.x.x-1.el7.x86_64.rpm** - this is an RPM package designed for installing OInt on RHEL/Fedora/CentOS distributions. When using it, Mono dependencies are installed automatically, so no additional actions are required to start working. Also, there is no need to run it through mono, as with the exe.
+**oint-x.x.x-1.el7.x86_64.rpm** - this is an RPM package designed to install OInt in RHEL/Fedora/CentOS distributions. It automatically suggests the install libicu - the internalisation package (ICU) required for the application to work
+
+<img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/5.png').default} width="86" align="left"/>
+**oint.exe** - an executable file that, despite its Windows-oriented extension, is cross-platform. It requires .Net Framework 4.8 or a compatible version of Mono to run. In Windows and Debian-based distributions, this application is launched simply through the command line/terminal, while in RHEL-based distributions, it is launched through ```mono oint.exe "$@"```
+
+:::warning
+The single file delivery is currently *`obsolete`* and is not recommended for use. It has performance issues and depends on the .Net Framework, so it only makes sense for evaluation use in cases where installing from the package/installer is undesirable or impossible for some reason
+:::
 
 <br/>
 
