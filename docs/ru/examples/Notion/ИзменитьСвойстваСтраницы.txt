@@ -1,5 +1,5 @@
 ﻿    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "12682aa7-fc4e-8138-9f3e-f9e7e9aecee3";
+    Страница     = "13182aa7-fc4e-8114-a360-d113e31e67b7";
     Иконка       = "https://api.athenaeum.digital/test_data/picture.jpg";
     Обложка      = "https://api.athenaeum.digital/test_data/picture2.jpg";
     Архивировать = Ложь;

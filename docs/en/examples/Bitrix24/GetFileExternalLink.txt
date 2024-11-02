@@ -1,9 +1,9 @@
-﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FileID = "14316";
+﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    FileID = "15936";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "35c31667006e9f06006b12e400000001000...";
+    Token = "002d2567006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);

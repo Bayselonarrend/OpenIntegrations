@@ -32,14 +32,14 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
 
     Result = OPI_Bitrix24.StartTimekeeping(URL);
 
     Hour = 3600;
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "35c31667006e9f06006b12e400000001000...";
+    Token  = "002d2567006e9f06006b12e400000001000...";
     UserID = 1;
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
@@ -55,7 +55,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
             oint bitrix24 StartTimekeeping \
              --url "b24-ar17wx.bitrix24.by" \
              --userid 1 \
-             --time "2024-10-31T15:36:06.660688" \
+             --time "2024-11-02T18:41:58.6464572" \
              --report "Late" \
              --token "***"
         ```
@@ -66,7 +66,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
             oint bitrix24 StartTimekeeping ^
              --url "b24-ar17wx.bitrix24.by" ^
              --userid 1 ^
-             --time "2024-10-31T15:36:06.660688" ^
+             --time "2024-11-02T18:41:58.6464572" ^
              --report "Late" ^
              --token "***"
         ```
