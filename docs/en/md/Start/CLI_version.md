@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # Working with CLI app
 
-OInt CLI - a command-line application that allows you to use methods of the Open Integration Package independently of 1C and OneScript. It requires .Net Framework 4.8 or a compatible Mono Runtime (automatically installed when using deb and rpm packages) 
+OInt CLI - a command-line application that allows you to use methods of the Open Integration Package independently of 1C and OneScript
 
 ## First start
 
-To get started, you need to call the command `oint` from the command prompt/terminal. If app was installed from packages (Linux) or installer (Windows, after reboot), you can do this from any place without additional actions. When using the portable version (exe executable file), `oint` needs to be run with the full path to the file. In Linux distributions, you may also need to execute `chmod +x <path to file>/oint beforehand` 
+To get started, you need to call the command `oint` from the command prompt/terminal. If app was installed from packages (Linux) or installer (Windows, after reboot), you can do this from any place without additional actions. When using the portable version (single executable file), `oint` needs to be run with the full path to the file. In Linux distributions, you may also need to execute `chmod +x <path to file>/oint beforehand` 
 
 To run the portable version in RHEL/Fedora/CentOS (distributions using rpm packages), use the command <br/>`mono <path to oint>/oint "$@"`
 
