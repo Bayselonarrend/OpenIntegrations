@@ -368,9 +368,13 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         Else
 
+            // BSLLS:UnusedLocalVariable-off
+
             //@skip-check module-unused-local-variable
             DeletingMessage = StrTemplate("Removed %1 unnecessary files", String(ArrayOfDeletions.Count()));
             Message(DeletingMessage);
+
+            // BSLLS:UnusedLocalVariable-on
 
         EndIf;
 
@@ -389,9 +393,13 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         Else
 
+            // BSLLS:UnusedLocalVariable-off
+
             //@skip-check module-unused-local-variable
             Progress = "[" + OPI_Tools.NumberToString(Counter) + "/" + Total + "] ";
             Message(Progress + LocalPath.Key + Chars.LF + Response["message"] + Chars.LF);
+
+            // BSLLS:UnusedLocalVariable-on
 
         EndIf;
 

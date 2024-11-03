@@ -32,6 +32,8 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UnusedParameters-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:UsingHardcodePath-off
+// BSLLS:UnusedLocalVariable-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1432,6 +1434,8 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     Message("Ozon product checkout is unavailable");
     Return;
 
+    // BSLLS:UnreachableCode-off
+
     CLI_Ozon_GetProductStructure(TestParameters);
     CLI_Ozon_CreateUpdateProducts(TestParameters);
     CLI_Ozon_GetProductCreationStatus(TestParameters);
@@ -1458,6 +1462,8 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     CLI_Ozon_GetProductSubscribersCount(TestParameters);
     CLI_Ozon_GetRelatedSKUs(TestParameters);
     CLI_Ozon_DeleteProductsWithoutSKU(TestParameters);
+
+    // BSLLS:UnreachableCode-on
 
 EndProcedure
 

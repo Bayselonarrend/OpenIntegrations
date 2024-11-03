@@ -3665,12 +3665,14 @@ Function CreatePersonalNotification(Val URL
     , Val Attachments = ""
     , Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "im.notify.personal.add");
 
-    OPI_Tools.AddField("USER_ID", UserID      , "String", Parameters);
-    OPI_Tools.AddField("MESSAGE", Text        , "String", Parameters);
-    OPI_Tools.AddField("TAG"    , Tag         , "String", Parameters);
-    OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
+    OPI_Tools.AddField("USER_ID", UserID      , String_, Parameters);
+    OPI_Tools.AddField("MESSAGE", Text        , String_, Parameters);
+    OPI_Tools.AddField("TAG"    , Tag         , String_, Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -3701,12 +3703,14 @@ Function CreateSystemNotification(Val URL
     , Val Attachments = ""
     , Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "im.notify.system.add");
 
-    OPI_Tools.AddField("USER_ID", UserID      , "String", Parameters);
-    OPI_Tools.AddField("MESSAGE", Text        , "String", Parameters);
-    OPI_Tools.AddField("TAG"    , Tag         , "String", Parameters);
-    OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
+    OPI_Tools.AddField("USER_ID", UserID      , String_, Parameters);
+    OPI_Tools.AddField("MESSAGE", Text        , String_, Parameters);
+    OPI_Tools.AddField("TAG"    , Tag         , String_, Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -3764,11 +3768,13 @@ Function CreateDepartment(Val URL
     , Val HeadID = ""
     , Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "department.add");
 
-    OPI_Tools.AddField("NAME"   , Name     , "String", Parameters);
-    OPI_Tools.AddField("PARENT" , ParentID , "String", Parameters);
-    OPI_Tools.AddField("UF_HEAD", HeadID   , "String", Parameters);
+    OPI_Tools.AddField("NAME"   , Name     , String_, Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID , String_, Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID   , String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -3799,12 +3805,14 @@ Function UpdateDepartment(Val URL
     , Val HeadID = ""
     , Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "department.update");
 
-    OPI_Tools.AddField("ID"     , DepartmentID, "String", Parameters);
-    OPI_Tools.AddField("NAME"   , Name        , "String", Parameters);
-    OPI_Tools.AddField("PARENT" , ParentID    , "String", Parameters);
-    OPI_Tools.AddField("UF_HEAD", HeadID      , "String", Parameters);
+    OPI_Tools.AddField("ID"     , DepartmentID, String_, Parameters);
+    OPI_Tools.AddField("NAME"   , Name        , String_, Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID    , String_, Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID      , String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -3835,12 +3843,14 @@ Function GetDepartments(Val URL
     , Val HeadID = ""
     , Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "department.get");
 
-    OPI_Tools.AddField("ID"     , DepartmentID, "String", Parameters);
-    OPI_Tools.AddField("NAME"   , Name        , "String", Parameters);
-    OPI_Tools.AddField("PARENT" , ParentID    , "String", Parameters);
-    OPI_Tools.AddField("UF_HEAD", HeadID      , "String", Parameters);
+    OPI_Tools.AddField("ID"     , DepartmentID, String_, Parameters);
+    OPI_Tools.AddField("NAME"   , Name        , String_, Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID    , String_, Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID      , String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
