@@ -397,7 +397,7 @@
 
     Исключение
 
-        Ответ = Истина
+        Ответ = Истина;
 
     КонецПопытки;
 
@@ -469,10 +469,14 @@
     ОперационнаяСистема = Строка(СистемнаяИнформация.ТипПлатформы);
 
     Если СтрНайти(нРег(ОперационнаяСистема), "windows") > 0 Тогда
-        //Oint    = """C:/Program Files/OneScript/bin/oint.bat""";
-        Oint      = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        
+        // C:/Program Files/OneScript/bin/oint.bat
+        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        
     Иначе
-        Oint      = "sudo oint";
+        
+        Oint = "sudo oint";
+        
     КонецЕсли;
 
     ФайлРезультата = ПолучитьИмяВременногоФайла();
