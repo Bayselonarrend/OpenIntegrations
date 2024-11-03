@@ -32,6 +32,8 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UnusedParameters-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:UsingHardcodePath-off
+// BSLLS:UnusedLocalVariable-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1432,6 +1434,8 @@
     Сообщить("Проверка товаров Ozon недоступна");
     Возврат;
 
+    // BSLLS:UnreachableCode-off
+    
     CLI_Ozon_ПолучитьСтруктуруТовара(ПараметрыТеста);
     CLI_Ozon_СоздатьОбновитьТовары(ПараметрыТеста);
     CLI_Ozon_ПолучитьСтатусДобавленияТовара(ПараметрыТеста);
@@ -1458,6 +1462,8 @@
     CLI_Ozon_ПолучитьКоличествоПодписчиковТоваров(ПараметрыТеста);
     CLI_Ozon_ПолучитьСвязанныеSKU(ПараметрыТеста);
     CLI_Ozon_УдалитьТоварыБезSKU(ПараметрыТеста);
+    
+    // BSLLS:UnreachableCode-on
 
 КонецПроцедуры
 
