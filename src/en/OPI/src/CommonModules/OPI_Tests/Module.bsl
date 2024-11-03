@@ -1874,6 +1874,8 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Message("Ozon product checkout is unavailable");
     Return;
 
+    // BSLLS:UnreachableCode-off
+
     Ozon_GetProductStructure(TestParameters);
     Ozon_CreateUpdateProducts(TestParameters);
     Ozon_GetProductCreationStatus(TestParameters);
@@ -1900,6 +1902,8 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductSubscribersCount(TestParameters);
     Ozon_GetRelatedSKUs(TestParameters);
     Ozon_DeleteProductsWithoutSKU(TestParameters);
+
+    // BSLLS:UnreachableCode-on
 
 EndProcedure
 

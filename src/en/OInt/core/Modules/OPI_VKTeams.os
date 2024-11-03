@@ -147,14 +147,16 @@ Function SendTextMessage(Val Token
     , Val Keyboard = ""
     , Val Markup = "MarkdownV2") Export
 
+    String_ = "String";
+
     URL        = "/messages/sendText";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("chatId"              , ChatID   , "String"    , Parameters);
-    OPI_Tools.AddField("text"                , Text     , "String"    , Parameters);
-    OPI_Tools.AddField("replyMsgId"          , ReplyID  , "String"    , Parameters);
+    OPI_Tools.AddField("chatId"              , ChatID   , String_     , Parameters);
+    OPI_Tools.AddField("text"                , Text     , String_     , Parameters);
+    OPI_Tools.AddField("replyMsgId"          , ReplyID  , String_     , Parameters);
     OPI_Tools.AddField("inlineKeyboardMarkup", Keyboard , "Collection", Parameters);
-    OPI_Tools.AddField("parseMode"           , Markup   , "String"    , Parameters);
+    OPI_Tools.AddField("parseMode"           , Markup   , String_     , Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -185,14 +187,16 @@ Function SendFile(Val Token
     , Val FileName = ""
     , Val Markup = "MarkdownV2") Export
 
+    String_ = "String";
+
     URL        = "/messages/sendFile";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("chatId"    , ChatID , "String" , Parameters);
-    OPI_Tools.AddField("caption"   , Text   , "String" , Parameters);
-    OPI_Tools.AddField("parseMode" , Markup , "String" , Parameters);
+    OPI_Tools.AddField("chatId"   , ChatID , String_, Parameters);
+    OPI_Tools.AddField("caption"  , Text   , String_, Parameters);
+    OPI_Tools.AddField("parseMode", Markup , String_, Parameters);
 
-    If TypeOf(File)   = Type("String") Then
+    If TypeOf(File)   = Type(String_) Then
         FileObject    = New File(File);
         DisplayedName = FileObject.Name;
     Else
@@ -282,13 +286,15 @@ Function EditMessageText(Val Token
     , Val Text
     , Val Markup = "MarkdownV2") Export
 
+    String_ = "String";
+
     URL        = "/messages/editText";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("chatId"   , ChatID    , "String" , Parameters);
-    OPI_Tools.AddField("text"     , Text      , "String" , Parameters);
-    OPI_Tools.AddField("msgId"    , MessageID , "String" , Parameters);
-    OPI_Tools.AddField("parseMode", Markup    , "String" , Parameters);
+    OPI_Tools.AddField("chatId"   , ChatID   , String_, Parameters);
+    OPI_Tools.AddField("text"     , Text     , String_, Parameters);
+    OPI_Tools.AddField("msgId"    , MessageID, String_, Parameters);
+    OPI_Tools.AddField("parseMode", Markup   , String_, Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -344,13 +350,15 @@ Function ResendFile(Val Token
     , Val Text = ""
     , Val Markup = "MarkdownV2") Export
 
+    String_ = "String";
+
     URL        = "/messages/sendFile";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("chatId"    , ChatID , "String", Parameters);
-    OPI_Tools.AddField("caption"   , Text   , "String", Parameters);
-    OPI_Tools.AddField("parseMode" , Markup , "String", Parameters);
-    OPI_Tools.AddField("fileId"    , FileID , "String", Parameters);
+    OPI_Tools.AddField("chatId"    , ChatID , String_, Parameters);
+    OPI_Tools.AddField("caption"   , Text   , String_, Parameters);
+    OPI_Tools.AddField("parseMode" , Markup , String_, Parameters);
+    OPI_Tools.AddField("fileId"    , FileID , String_, Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -403,13 +411,15 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
 
+    String_ = "String";
+
     URL        = "/messages/sendText";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("chatId"       , ChatID    , "String", Parameters);
-    OPI_Tools.AddField("text"         , Text      , "String", Parameters);
-    OPI_Tools.AddField("forwardChatId", FromChatID, "String", Parameters);
-    OPI_Tools.AddField("forwardMsgId" , MessageID , "String", Parameters);
+    OPI_Tools.AddField("chatId"       , ChatID    , String_, Parameters);
+    OPI_Tools.AddField("text"         , Text      , String_, Parameters);
+    OPI_Tools.AddField("forwardChatId", FromChatID, String_, Parameters);
+    OPI_Tools.AddField("forwardMsgId" , MessageID , String_, Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -495,12 +505,14 @@ Function AnswerButtonEvent(Val Token
     , Val URL = ""
     , Val AsAlert = False) Export
 
+    String_ = "String";
+
     URL        = "/messages/answerCallbackQuery";
     Parameters = NormalizeMain(URL, Token);
 
-    OPI_Tools.AddField("queryId"  , EventID , "String" , Parameters);
-    OPI_Tools.AddField("text"     , Text    , "String" , Parameters);
-    OPI_Tools.AddField("url"      , URL     , "String" , Parameters);
+    OPI_Tools.AddField("queryId"  , EventID , String_  , Parameters);
+    OPI_Tools.AddField("text"     , Text    , String_  , Parameters);
+    OPI_Tools.AddField("url"      , URL     , String_  , Parameters);
     OPI_Tools.AddField("showAlert", AsAlert , "Boolean", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
@@ -522,11 +534,13 @@ EndFunction
 // Structure - Button for keyboard
 Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export
 
+    String_ = "String";
+
     ButtonStructure = New Structure;
-    OPI_Tools.AddField("text"        , Text  , "String", ButtonStructure);
-    OPI_Tools.AddField("callbackData", Value , "String", ButtonStructure);
-    OPI_Tools.AddField("url"         , URL   , "String", ButtonStructure);
-    OPI_Tools.AddField("style"       , Style , "String", ButtonStructure);
+    OPI_Tools.AddField("text"        , Text  , String_, ButtonStructure);
+    OPI_Tools.AddField("callbackData", Value , String_, ButtonStructure);
+    OPI_Tools.AddField("url"         , URL   , String_, ButtonStructure);
+    OPI_Tools.AddField("style"       , Style , String_, ButtonStructure);
 
     Return ButtonStructure;
 
