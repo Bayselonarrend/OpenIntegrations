@@ -375,7 +375,7 @@
             Сообщить(СообщениеУдаления);
 
             // BSLLS:UnusedLocalVariable-on
-            
+
         КонецЕсли;
 
     КонецЕсли;
@@ -392,7 +392,7 @@
             МассивОшибок.Добавить(Ответ);
 
         Иначе
-            
+
             // BSLLS:UnusedLocalVariable-off
 
             //@skip-check module-unused-local-variable
@@ -400,7 +400,7 @@
             Сообщить(Прогресс + ЛокальныйПуть.Ключ + Символы.ПС + Ответ["message"] + Символы.ПС);
 
             // BSLLS:UnusedLocalVariable-on
-            
+
         КонецЕсли;
 
 

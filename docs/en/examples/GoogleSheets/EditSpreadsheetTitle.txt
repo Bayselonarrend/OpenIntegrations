@@ -1,5 +1,5 @@
-﻿    Token       = "ya29.a0AeDClZCrm1MZHZ7BZZhmGUkC6-tSjQ017rdAe6NQ77UgRX3csJv_nTfO5w5K1-LtaFFgymMCfbizB9uj7gUW5ozQ9rUqO__ZmRd-q5zyS...";
-    Spreadsheet = "1x2Ws1594AM2-NZzFRuEjAZN4CCtGTzUxhjgpHZG87Cs";
+﻿    Token       = "ya29.a0AeDClZDbtPTdsMASWLXTAmyOPaFlWRnH_95-IQ3_vaFI6ThHieeCjeEC4cheU6_vsdkpr_o-77O-5uS5GSL-tYacOX9nIGeOh5NyANLDR...";
+    Spreadsheet = "1cd2LzzjyRFjKxsgvbRQpRjYN-sillwqTn_cOevnsj8I";
     Name        = "Test table (changed.)";
 
     Result = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name);
