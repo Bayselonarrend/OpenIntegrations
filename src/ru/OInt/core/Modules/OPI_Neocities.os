@@ -368,10 +368,14 @@
 
         Иначе
 
+            // BSLLS:UnusedLocalVariable-off
+
             //@skip-check module-unused-local-variable
             СообщениеУдаления   = СтрШаблон("Удалено %1 лишних файлов", Строка(МассивУдаляемых.Количество()));
             Сообщить(СообщениеУдаления);
 
+            // BSLLS:UnusedLocalVariable-on
+            
         КонецЕсли;
 
     КонецЕсли;
@@ -388,11 +392,15 @@
             МассивОшибок.Добавить(Ответ);
 
         Иначе
+            
+            // BSLLS:UnusedLocalVariable-off
 
             //@skip-check module-unused-local-variable
             Прогресс = "[" + OPI_Инструменты.ЧислоВСтроку(Счетчик) + "/" + Всего + "] ";
             Сообщить(Прогресс + ЛокальныйПуть.Ключ + Символы.ПС + Ответ["message"] + Символы.ПС);
 
+            // BSLLS:UnusedLocalVariable-on
+            
         КонецЕсли;
 
 

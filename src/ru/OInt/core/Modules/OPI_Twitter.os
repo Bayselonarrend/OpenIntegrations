@@ -33,6 +33,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
 
 //@skip-check method-too-many-params
 //@skip-check module-structure-top-region
@@ -403,10 +404,10 @@
     Для Каждого Часть Из МассивЧтения Цикл
 
         Поля = Новый Структура;
-        Поля.Вставить(Command           , "APPEND");
-        Поля.Вставить("media_id"        , IDSИнициализации);
-        Поля.Вставить("segment_index"   , OPI_Инструменты.ЧислоВСтроку(Счетчик));
-        Поля.Вставить("media"           , Часть);
+        Поля.Вставить(Command        , "APPEND");
+        Поля.Вставить(MID            , IDSИнициализации);
+        Поля.Вставить("segment_index", OPI_Инструменты.ЧислоВСтроку(Счетчик));
+        Поля.Вставить("media"        , Часть);
 
         Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры, Новый Структура, ВидЗапроса, URL);
 
@@ -417,8 +418,8 @@
     КонецЦикла;
 
     Поля = Новый Структура;
-    Поля.Вставить(Command   , "FINALIZE");
-    Поля.Вставить("media_id", IDSИнициализации);
+    Поля.Вставить(Command, "FINALIZE");
+    Поля.Вставить(MID    , IDSИнициализации);
 
     СтатусОбработки = ПолучитьСтатусОбработки(Параметры, Поля, URL);
 
