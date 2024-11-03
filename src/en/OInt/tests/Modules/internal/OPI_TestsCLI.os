@@ -34,6 +34,10 @@
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:UsingHardcodePath-off
 // BSLLS:UnusedLocalVariable-off
+// BSLLS:DeprecatedMessage-off
+// BSLLS:LineLength-off
+// BSLLS:MagicNumber-off
+// BSLLS:CommentedCode-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -999,7 +1003,6 @@ Procedure CLI_TwitterAPI_Tweets() Export
     OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
 
-
     CLI_Twitter_CreateTextTweet(TestParameters);
     CLI_Twitter_UploadAttachmentsArray(TestParameters);
     CLI_Twitter_CreateVideoTweet(TestParameters);
@@ -1083,7 +1086,6 @@ Procedure CLI_SlackGetData() Export
 EndProcedure
 
 Procedure CLI_Slack_SendDeleteMessage() Export
-
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
@@ -1645,7 +1647,6 @@ Procedure CLI_B24_TaskManagment() Export
     CLI_Bitrix24_DeleteTasksChecklistElement(TestParameters);
     CLI_Bitrix24_GetDailyPlan(TestParameters);
     CLI_Bitrix24_GetTasksFilterStructure(TestParameters);
-
 
     Name          = "Topic picture.jpg";
     Image         = TestParameters["Picture"];
@@ -2923,7 +2924,6 @@ EndProcedure
 
 Procedure CLI_Telegram_ChangeMainTopicName(FunctionParameters)
 
-
     Options = New Structure;
     Options.Insert("token" , FunctionParameters["Telegram_Token"]);
     Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
@@ -3508,7 +3508,6 @@ Procedure CLI_VK_CreateAd(FunctionParameters)
     CategoryNumber = 126;
     PostID         = FunctionParameters["VK_PostID"];
     AccountID      = FunctionParameters["VK_AdsCabinetID"];
-
 
     Options = New Structure;
     Options.Insert("campaign", CampaignNumber);
@@ -4186,7 +4185,6 @@ Procedure CLI_VK_UploadVideoToServer(FunctionParameters)
     OPI_Tools.Pause(5);
 
 EndProcedure
-
 
 #EndRegion
 
@@ -4935,7 +4933,6 @@ Procedure CLI_GoogleWorkspace_GetTokenByCode(FunctionParameters)
     Options.Insert("code"  , Code);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetTokenByCode", Options);
-
 
     If ValueIsFilled(Result["access_token"])
         And ValueIsFilled(Result["refresh_token"]) Then
@@ -6001,7 +5998,6 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
-
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateImageTweet", "Twitter"); // SKIP
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15); // SKIP
@@ -6592,7 +6588,6 @@ Procedure CLI_Slack_SendMessage(FunctionParameters)
     Timestamp = Result["ts"]; // SKIP
     OPI_TestDataRetrieval.WriteParameter("Slack_MessageTS", Timestamp); // SKIP
     OPI_Tools.AddField("Slack_MessageTS", Timestamp, "String", FunctionParameters); // SKIP
-
 
     // With attachments (picture block in the example)
 
@@ -9269,7 +9264,6 @@ Procedure CLI_Ozon_CreateUpdateProducts(FunctionParameters)
 
     CategoryAttribute5 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
 
-
     Options = New Structure;
     Options.Insert("object"     , ItemStructure);
     Options.Insert("attributeid", 5076);
@@ -11250,7 +11244,6 @@ Procedure CLI_Bitrix24_GetTasksList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksList", Options);
 
-
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTasksList (wh)", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTasksList(Result); // SKIP
 
@@ -11303,7 +11296,6 @@ Procedure CLI_Bitrix24_AddTasksChecklistElement(FunctionParameters)
     Options.Insert("token" , Token);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTasksChecklistElement", Options);
-
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTasksChecklistElement", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixNumber(Result);
@@ -14008,7 +14000,6 @@ Procedure CLI_Bitrix24_AddUsersToChat(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-
     Options = New Structure;
     Options.Insert("url"   , URL);
     Options.Insert("chat"  , ChatID);
@@ -16083,7 +16074,6 @@ Procedure CLI_CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     Appointment.Insert("to_location", DeliveryLocation);
 
-
     Options = New Structure;
     Options.Insert("token"  , Token);
     Options.Insert("appt"   , Appointment);
@@ -16293,5 +16283,3 @@ EndProcedure
 #EndRegion
 
 #EndRegion
-
-

@@ -1,6 +1,6 @@
 ﻿    Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
-    Topic = "6179";
+    Topic = "6212";
 
     Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
 

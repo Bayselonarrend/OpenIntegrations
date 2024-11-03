@@ -383,7 +383,6 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     ChunkSize    = Count * Unit * Unit;
     ArrayReading = РазделитьДвоичныеДанные(File, ChunkSize);
 
-
     Fields = New Structure;
     Fields.Insert(Command         , "INIT");
     Fields.Insert("total_bytes"   , OPI_Tools.NumberToString(Size));
