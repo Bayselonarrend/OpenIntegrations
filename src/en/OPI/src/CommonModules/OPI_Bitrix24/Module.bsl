@@ -3669,10 +3669,10 @@ Function CreatePersonalNotification(Val URL
 
     Parameters = NormalizeAuth(URL, Token, "im.notify.personal.add");
 
-    OPI_Tools.AddField("USER_ID", UserID      , String_, Parameters);
-    OPI_Tools.AddField("MESSAGE", Text        , String_, Parameters);
-    OPI_Tools.AddField("TAG"    , Tag         , String_, Parameters);
-    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
+    OPI_Tools.AddField("USER_ID", UserID      , String_ , Parameters);
+    OPI_Tools.AddField("MESSAGE", Text        , String_ , Parameters);
+    OPI_Tools.AddField("TAG"    , Tag         , String_ , Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -3707,10 +3707,10 @@ Function CreateSystemNotification(Val URL
 
     Parameters = NormalizeAuth(URL, Token, "im.notify.system.add");
 
-    OPI_Tools.AddField("USER_ID", UserID      , String_, Parameters);
-    OPI_Tools.AddField("MESSAGE", Text        , String_, Parameters);
-    OPI_Tools.AddField("TAG"    , Tag         , String_, Parameters);
-    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
+    OPI_Tools.AddField("USER_ID", UserID      , String_ , Parameters);
+    OPI_Tools.AddField("MESSAGE", Text        , String_ , Parameters);
+    OPI_Tools.AddField("TAG"    , Tag         , String_ , Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
