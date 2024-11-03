@@ -34,6 +34,10 @@
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:UsingHardcodePath-off
 // BSLLS:UnusedLocalVariable-off
+// BSLLS:DeprecatedMessage-off
+// BSLLS:LineLength-off
+// BSLLS:MagicNumber-off
+// BSLLS:CommentedCode-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1001,7 +1005,6 @@ Procedure TwitterAPI_Tweets() Export
     OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
 
-
     Twitter_CreateTextTweet(TestParameters);
     Twitter_UploadAttachmentsArray(TestParameters);
     Twitter_CreateVideoTweet(TestParameters);
@@ -1085,7 +1088,6 @@ Procedure SlackGetData() Export
 EndProcedure
 
 Procedure Slack_SendDeleteMessage() Export
-
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
@@ -1434,7 +1436,6 @@ Procedure B24_TaskManagment() Export
     Bitrix24_DeleteTasksChecklistElement(TestParameters);
     Bitrix24_GetDailyPlan(TestParameters);
     Bitrix24_GetTasksFilterStructure(TestParameters);
-
 
     Name          = "Topic picture.jpg";
     Image         = TestParameters["Picture"];
@@ -5602,7 +5603,6 @@ Procedure Slack_SendMessage(FunctionParameters)
     Timestamp = Result["ts"]; // SKIP
     OPI_TestDataRetrieval.WriteParameter("Slack_MessageTS", Timestamp); // SKIP
     OPI_Tools.AddField("Slack_MessageTS", Timestamp, "String", FunctionParameters); // SKIP
-
 
     // With attachments (picture block in the example)
 
@@ -10864,7 +10864,7 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, ,Attachments);
+    Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, , Attachments);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePersonalNotification)", "Bitrix24");
 
@@ -10906,7 +10906,7 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
+    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, , Attachments);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateSystemNotification (wh)", "Bitrix24");
 
@@ -10978,7 +10978,6 @@ Procedure Bitrix24_AddCustomTaskField(FunctionParameters)
     Title      = "Text field";
     Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
 
-
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, Token);
 
     // END
@@ -11013,7 +11012,6 @@ Procedure Bitrix24_GetCustomTaskField(FunctionParameters)
     FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
 
     Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
-
 
     URL     = FunctionParameters["Bitrix24_Domain"];
     Token   = FunctionParameters["Bitrix24_Token"];
@@ -12194,7 +12192,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, , ReplyID);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
 
@@ -12715,7 +12713,6 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
 
     CategoryAttribute5 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
 
-
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 85   , 0, CategoryAttribute2);
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 10096, 0, CategoryAttribute3);
@@ -13232,9 +13229,10 @@ Procedure Ozon_UploadProductActivationCodes(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadProductActivationCodes", "Ozon");
 
-    //OPI_TestDataRetrieval.Check_OzonUploadTask(Result);
+    // OPI_TestDataRetrieval.Check_OzonUploadTask(Result);
 
-    //TaskID = Result["result"]["task_id"];
+    // TaskID = Result["result"]["task_id"];
+
     TaskID = 1;
     OPI_TestDataRetrieval.WriteParameter("Ozon_CodesTaskID", TaskID);
     FunctionParameters.Insert("Ozon_CodesTaskID", TaskID);
@@ -14178,7 +14176,6 @@ Procedure CDEK_CreatePrealert(FunctionParameters)
     UUID         = FunctionParameters["CDEK_OrderUUID"];
     Point        = "NSK27";
     TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
-
 
     Result = OPI_CDEK.CreatePrealert(Token, UUID, TransferDate, Point, True);
 
