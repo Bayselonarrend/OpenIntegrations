@@ -289,18 +289,20 @@ Function GetProductsAttributesData(Val ClientID
     , Val Filter = ""
     , Val LastID = 0) Export
 
+    Filter_ = "filter";
+
     URL = "https://api-seller.ozon.ru/v3/products/info/attributes";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 200;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField(Filter_  , Filter , "Collection", Parameters);
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
-    If Not Parameters.Property("filter") Then
-        Parameters.Insert("filter", New Structure);
+    If Not Parameters.Property(Filter_) Then
+        Parameters.Insert(Filter_, New Structure);
     EndIf;
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -1183,18 +1185,20 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
+    Filter_ = "filter";
+
     URL = "https://api-seller.ozon.ru/v3/product/info/stocks";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 100;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField(Filter_  , Filter , "Collection", Parameters);
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
-    If Not Parameters.Property("filter") Then
-        Parameters.Insert("filter", New Structure);
+    If Not Parameters.Property(Filter_) Then
+        Parameters.Insert(Filter_, New Structure);
     EndIf;
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -1219,18 +1223,20 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
+    Filter_ = "filter";
+
     URL = "https://api-seller.ozon.ru/v4/product/info/prices";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 300;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField(Filter_  , Filter , "Collection", Parameters);
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
-    If Not Parameters.Property("filter") Then
-        Parameters.Insert("filter", New Structure);
+    If Not Parameters.Property(Filter_) Then
+        Parameters.Insert(Filter_, New Structure);
     EndIf;
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -1414,7 +1420,6 @@ Function GetProductPriceStructure(Val Clear = False) Export
     ItemStructure.Insert("price"                 , "<product price with discounts>");
     ItemStructure.Insert("price_strategy_enabled", "<auto application of price strategies: ENABLED or DISABLED>");
     ItemStructure.Insert("product_id"            , "<Product ID>");
-
 
     If Clear Then
         For Each Field In ItemStructure Do
