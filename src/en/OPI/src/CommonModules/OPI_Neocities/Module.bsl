@@ -403,7 +403,6 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         EndIf;
 
-
         Counter = Counter + 1;
 
     EndDo;

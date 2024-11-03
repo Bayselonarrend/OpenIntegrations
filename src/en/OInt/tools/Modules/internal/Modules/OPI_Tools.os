@@ -294,7 +294,10 @@ Function JsonToStructure(Val Text) Export
 
 EndFunction
 
-Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
+Function JSONString(Val Data
+    , Val Escaping     = "None"
+    , Val LineBreaks   = True
+    , Val DoubleQuotes = True) Export
 
     LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
 
