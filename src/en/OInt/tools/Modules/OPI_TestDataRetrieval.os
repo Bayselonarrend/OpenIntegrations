@@ -388,8 +388,12 @@ Function IsOneScript() Export
 
         Response = False;
 
+        // BSLLS:UnusedLocalVariable-off
+
         //@skip-check module-unused-local-variable
         Check = New OpenSSLSecureConnection();
+
+        // BSLLS:UnusedLocalVariable-on
 
     Except
 
@@ -2011,26 +2015,11 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
 
     If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
 
-        Value_ = ?(TypeOf(Value) = Type("Structure"), New Structure, New Map);
-
-        For Each Element In Value Do
-
-            Value_.Insert(Element.Key
-                , FormOption(Element.Value, Element.Key, True));
-
-        EndDo;
-
-        Value = Value_;
+        Value = FormOptionCollection(Value);
 
     ElsIf TypeOf(Value) = Type("Array") Then
 
-        Value_ = New Array;
-
-        For Each Element In Value Do
-            Value_.Add(FormOption(Element, Name, True));
-        EndDo;
-
-        Value = Value_;
+        Value = FormOptionArray(Value, Name);
 
     Else
 
@@ -2049,6 +2038,32 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     EndIf;
 
     Return Value;
+
+EndFunction
+
+Function FormOptionCollection(Val Value)
+
+    Value_ = ?(TypeOf(Value) = Type("Structure"), New Structure, New Map);
+
+    For Each Element In Value Do
+
+        Value_.Insert(Element.Key, FormOption(Element.Value, Element.Key, True));
+
+    EndDo;
+
+    Return Value_;
+
+EndFunction
+
+Function FormOptionArray(Val Value, Val Name)
+
+    Value_ = New Array;
+
+    For Each Element In Value Do
+        Value_.Add(FormOption(Element, Name, True));
+    EndDo;
+
+    Return Value_;
 
 EndFunction
 

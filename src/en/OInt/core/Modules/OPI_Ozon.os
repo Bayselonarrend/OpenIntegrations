@@ -96,14 +96,16 @@ Function GetCategoryAttributes(Val ClientID
     , Val TypeID
     , Val Lang = "DEFAULT") Export
 
+    String_ = "String";
+
     URL = "https://api-seller.ozon.ru/v1/description-category/attribute";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("description_category_id", CategoryID, "String", Parameters);
-    OPI_Tools.AddField("type_id"                , TypeID    , "String", Parameters);
-    OPI_Tools.AddField("language"               , Lang      , "String", Parameters);
+    OPI_Tools.AddField("description_category_id", CategoryID, String_, Parameters);
+    OPI_Tools.AddField("type_id"                , TypeID    , String_, Parameters);
+    OPI_Tools.AddField("language"               , Lang      , String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -137,18 +139,20 @@ Function GetAttributeValues(Val ClientID
     , Val CatalogID = 1
     , Val Lang = "DEFAULT") Export
 
+    String_ = "String";
+
     URL = "https://api-seller.ozon.ru/v1/description-category/attribute/values";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 200;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("description_category_id", CategoryID   , "String", Parameters);
-    OPI_Tools.AddField("type_id"                , TypeID       , "String", Parameters);
-    OPI_Tools.AddField("attribute_id"           , AttributeID  , "String", Parameters);
-    OPI_Tools.AddField("language"               , Lang         , "String", Parameters);
-    OPI_Tools.AddField("limit"                  , Limit        , "String", Parameters);
-    OPI_Tools.AddField("last_value_id"          , CatalogID - 1, "String", Parameters);
+    OPI_Tools.AddField("description_category_id", CategoryID   , String_, Parameters);
+    OPI_Tools.AddField("type_id"                , TypeID       , String_, Parameters);
+    OPI_Tools.AddField("attribute_id"           , AttributeID  , String_, Parameters);
+    OPI_Tools.AddField("language"               , Lang         , String_, Parameters);
+    OPI_Tools.AddField("limit"                  , Limit        , String_, Parameters);
+    OPI_Tools.AddField("last_value_id"          , CatalogID - 1, String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -180,17 +184,19 @@ Function SearchAttributeValue(Val ClientID
     , Val AttributeID
     , Val Value) Export
 
+    String_ = "String";
+
     URL = "https://api-seller.ozon.ru/v1/description-category/attribute/values/search";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 100;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("description_category_id", CategoryID  , "String", Parameters);
-    OPI_Tools.AddField("type_id"                , TypeID      , "String", Parameters);
-    OPI_Tools.AddField("attribute_id"           , AttributeID , "String", Parameters);
-    OPI_Tools.AddField("limit"                  , Limit       , "String", Parameters);
-    OPI_Tools.AddField("value"                  , Value       , "String", Parameters);
+    OPI_Tools.AddField("description_category_id", CategoryID  , String_, Parameters);
+    OPI_Tools.AddField("type_id"                , TypeID      , String_, Parameters);
+    OPI_Tools.AddField("attribute_id"           , AttributeID , String_, Parameters);
+    OPI_Tools.AddField("limit"                  , Limit       , String_, Parameters);
+    OPI_Tools.AddField("value"                  , Value       , String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -242,18 +248,20 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
+    Filter_ = "filter";
+
     URL = "https://api-seller.ozon.ru/v2/product/list";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 200;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField(Filter_  , Filter , "Collection", Parameters);
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
-    If Not Parameters.Property("filter") Then
-        Parameters.Insert("filter", New Structure);
+    If Not Parameters.Property(Filter_) Then
+        Parameters.Insert(Filter_, New Structure);
     EndIf;
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -326,14 +334,16 @@ Function GetProductsInformation(Val ClientID
     , Val SKU = 0
     , Val Articles = "") Export
 
+    Array_ = "Array";
+
     URL = "https://api-seller.ozon.ru/v2/product/info/list";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("offer_id"  , Articles  , "Array" , Parameters);
-    OPI_Tools.AddField("product_id", ProductsID, "Array" , Parameters);
-    OPI_Tools.AddField("sku"       , SKU       , "Array" , Parameters);
+    OPI_Tools.AddField("offer_id"  , Articles  , Array_, Parameters);
+    OPI_Tools.AddField("product_id", ProductsID, Array_, Parameters);
+    OPI_Tools.AddField("sku"       , SKU       , Array_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -984,6 +994,8 @@ EndFunction
 // Structure of KeyAndValue - Structure of product fields with added video
 Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
 
+    Complex_attributes_ = "complex_attributes";
+
     OPI_TypeConversion.GetCollection(ItemStructure);
     OPI_TypeConversion.GetLine(URL);
     OPI_TypeConversion.GetLine(Name);
@@ -995,11 +1007,11 @@ Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
     CompleteComplexAttribute(VideoObject, 21841, 100001, URLStructure);
     CompleteComplexAttribute(VideoObject, 21837, 100001, NameStructure);
 
-    If Not OPI_Tools.CollectionFieldExist(ItemStructure, "complex_attributes") Then
-        ItemStructure.Insert("complex_attributes", New Array);
+    If Not OPI_Tools.CollectionFieldExist(ItemStructure, Complex_attributes_) Then
+        ItemStructure.Insert(Complex_attributes_, New Array);
     EndIf;
 
-    ItemStructure["complex_attributes"].Add(VideoObject);
+    ItemStructure[Complex_attributes_].Add(VideoObject);
 
     //@skip-check constructor-function-return-section
     Return ItemStructure;
@@ -1020,6 +1032,8 @@ EndFunction
 // Structure of KeyAndValue - Structure of product fields with added video
 Function AddProductVideoCover(ItemStructure, Val URL) Export
 
+    Complex_attributes_ = "complex_attributes";
+
     OPI_TypeConversion.GetCollection(ItemStructure);
     OPI_TypeConversion.GetLine(URL);
 
@@ -1028,11 +1042,11 @@ Function AddProductVideoCover(ItemStructure, Val URL) Export
 
     CompleteComplexAttribute(CoverObject, 21845, 100002, URLStructure);
 
-    If Not OPI_Tools.CollectionFieldExist(ItemStructure, "complex_attributes") Then
-        ItemStructure.Insert("complex_attributes", New Array);
+    If Not OPI_Tools.CollectionFieldExist(ItemStructure, Complex_attributes_) Then
+        ItemStructure.Insert(Complex_attributes_, New Array);
     EndIf;
 
-    ItemStructure["complex_attributes"].Add(CoverObject);
+    ItemStructure[Complex_attributes_].Add(CoverObject);
 
     //@skip-check constructor-function-return-section
     Return ItemStructure;
@@ -1055,16 +1069,18 @@ EndFunction
 // Structure - A collection enhanced with a new attribute
 Function CompleteComplexAttribute(Collection, Val AttributeID, Val ComplexID, Val Values) Export
 
+    Attributes_ = "attributes";
+
     OPI_TypeConversion.GetArray(Values);
     OPI_TypeConversion.GetCollection(Collection);
 
     AttributeStructure = New Structure("id,complex_id,values", AttributeID, ComplexID, Values);
 
-    If Not OPI_Tools.CollectionFieldExist(Collection, "attributes") Then
-        Collection.Insert("attributes", New Array);
+    If Not OPI_Tools.CollectionFieldExist(Collection, Attributes_) Then
+        Collection.Insert(Attributes_, New Array);
     EndIf;
 
-    Collection["attributes"].Add(AttributeStructure);
+    Collection[Attributes_].Add(AttributeStructure);
 
     //@skip-check constructor-function-return-section
     Return Collection;
@@ -1455,15 +1471,17 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
 
+    Number_ = "Number";
+
     URL = "https://api-seller.ozon.ru/v1/actions/candidates";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 100;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("action_id", PromoID, "Number", Parameters);
-    OPI_Tools.AddField("limit"    , Limit  , "Number", Parameters);
-    OPI_Tools.AddField("offset"   , Indent , "Number", Parameters);
+    OPI_Tools.AddField("action_id", PromoID, Number_, Parameters);
+    OPI_Tools.AddField("limit"    , Limit  , Number_, Parameters);
+    OPI_Tools.AddField("offset"   , Indent , Number_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -1487,15 +1505,17 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
 
+    Number_ = "Number";
+
     URL = "https://api-seller.ozon.ru/v1/actions/products";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 100;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("action_id", PromoID, "Number", Parameters);
-    OPI_Tools.AddField("limit"    , Limit  , "Number", Parameters);
-    OPI_Tools.AddField("offset"   , Indent , "Number", Parameters);
+    OPI_Tools.AddField("action_id", PromoID, Number_, Parameters);
+    OPI_Tools.AddField("limit"    , Limit  , Number_, Parameters);
+    OPI_Tools.AddField("offset"   , Indent , Number_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 

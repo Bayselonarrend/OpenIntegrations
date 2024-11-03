@@ -339,7 +339,7 @@ Function GetEventDescription(Val Clear = False) Export
             Event_.Insert(Field.Key, "");
         EndDo;
 
-        Event_ = Event_;
+        Event = Event_;
 
     EndIf;
 

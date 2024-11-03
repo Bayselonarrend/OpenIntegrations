@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    DealID = "1208";
+    DealID = "1256";
 
     Result = OPI_Bitrix24.DeleteDeal(URL, DealID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "002d2567006e9f06006b12e400000001000...";
-    DealID = "1210";
+    Token  = "6fa52667006e9f06006b12e400000001000...";
+    DealID = "1258";
 
     Result = OPI_Bitrix24.DeleteDeal(URL, DealID, Token);
