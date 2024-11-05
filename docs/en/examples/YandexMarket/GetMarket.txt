@@ -1,0 +1,4 @@
+﻿    Token      = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    CampaignID = "129112733";
+
+    Result = OPI_YandexMarket.GetMarket(Token, CampaignID);

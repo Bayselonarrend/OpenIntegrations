@@ -111,6 +111,11 @@ pipeline {
                 test_yandex()
              }
           }
+          stage('yamarket'){
+             steps{
+                test_yamarket()
+             }
+          }
    } 
   }    
  }
@@ -2407,6 +2412,36 @@ def test_yandex(){
                }
 
 }
+
+
+def test_yamarket(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetMarketsList --Key) "test" --page "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetMarket --Key) "test" --campaign "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetBusinessSettings --Key) "test" --business "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetCampaignSettings --Key) "test" --campaign "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket AddUpdateProducts --Key) "test" --business "test" --offers "test" --pmedia "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetProductStructure --empty "test" --debug --test '
+               }
+
+}
 pipeline {
    agent any
    stages {
@@ -2438,6 +2473,7 @@ test_vk()
 test_vkteams()
 test_yadisk()
 test_yandex()
+test_yamarket()
 
          }
       }

@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get markets list
+ Gets the list of shops in the cabinet by token
+
+
+
+`Function GetMarketsList(Val Token, Val Page = 1) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | Page | --page | Number | &#x2716; | Issue page number of the list |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [List of users shops](https://yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+
+    Result = OPI_YandexMarket.GetMarketsList(Token);
+```
+ 
+
+
+
+```json title="Result"
+
+```
