@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7c183b97-38f5-4fe6-a19f-c5af2ab85875">
+  <name>OPI_YandexMarket</name>
+  <synonym>
+    <key>ru</key>
+    <value>Yandex Market (ОПИ)</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
