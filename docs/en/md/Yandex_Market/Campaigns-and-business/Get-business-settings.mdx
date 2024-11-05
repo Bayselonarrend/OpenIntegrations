@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get business settings
+ Gets the values of cabinet (business) settings by ID
+
+
+
+`Function GetBusinessSettings(Val Token, Val AccountID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | AccountID | --business | String, Number | &#x2714; | Business ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [Cabinet settings](https://yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    AccountID = "172257075";
+
+    Result = OPI_YandexMarket.GetBusinessSettings(Token, AccountID);
+```
+ 
+
+
+
+```json title="Result"
+
+```

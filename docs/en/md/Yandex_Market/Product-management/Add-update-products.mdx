@@ -1,0 +1,106 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add update products
+ Adds or updates product information in the catalogue
+
+
+
+`Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnImages = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | AccountID | --business | String, Number | &#x2714; | Business ID |
+  | ProductsArray | --offers | Structure, Array of Structure | &#x2714; | Array of product descriptions |
+  | OwnImages | --pmedia | Boolean | &#x2716; | A flag of using only your own product images |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [Adding products to the catalogue and changing information about them](https://yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    AccountID = "172257075";
+    Image     = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Video     = "https://api.athenaeum.digital/test_data/video.mp4";
+
+    UpdatesStructure = New Structure;
+
+        ItemStructure = New Structure;
+        ItemStructure.Insert("offerId"         , "11111");
+        ItemStructure.Insert("name"            , "Makita HP1630 impact drill, 710 W");
+        ItemStructure.Insert("marketCategoryId", 15221861);
+        ItemStructure.Insert("category"        , "Drill");
+
+            ImageArray = New Array;
+            ImageArray.Add(Image);
+
+        ItemStructure.Insert("pictures", ImageArray);
+
+            VideosArray = New Array;
+            VideosArray.Add(Video);
+
+        ItemStructure.Insert("videos", VideosArray);
+        ItemStructure.Insert("vendor", "LEVENHUK");
+
+            BarcodesArray = New Array;
+            BarcodesArray.Add("46012300000000");
+
+        ItemStructure.Insert("barcodes"   , BarcodesArray);
+        ItemStructure.Insert("description", "Description");
+
+            CountriesArray = New Array;
+            CountriesArray.Add("Russia");
+
+        ItemStructure.Insert("manufacturerCountries", CountriesArray);
+
+            SizesStructure = New Structure;
+            SizesStructure.Insert("length", 65.55);
+            SizesStructure.Insert("width" , 50.7);
+            SizesStructure.Insert("height", 20);
+            SizesStructure.Insert("weight", 1.001);
+
+        ItemStructure.Insert("weightDimensions", SizesStructure);
+        ItemStructure.Insert("vendorCode"      , "VNDR-0005A");
+
+            TagsArray = New Array;
+            TagsArray.Add("up to 500 roubles");
+
+        ItemStructure.Insert("tags", TagsArray);
+
+            PeriodStructure = New Structure;
+            PeriodStructure.Insert("timePeriod", 24);
+            PeriodStructure.Insert("timeUnit"  , "HOUR");
+            PeriodStructure.Insert("comment"   , "Comment");
+
+        ItemStructure.Insert("shelfLife"           , PeriodStructure);
+        ItemStructure.Insert("lifeTime"            , PeriodStructure);
+        ItemStructure.Insert("guaranteePeriod"     , PeriodStructure);
+        ItemStructure.Insert("customsCommodityCode", 8517610008);
+        ItemStructure.Insert("type"                , "DEFAULT");
+        ItemStructure.Insert("downloadable"        , False);
+        ItemStructure.Insert("adult"               , False);
+
+    UpdatesStructure.Insert("offer", ItemStructure);
+
+    Result = OPI_YandexMarket.AddUpdateProducts(Token, AccountID, UpdatesStructure);
+```
+ 
+
+
+
+```json title="Result"
+
+```

@@ -1,0 +1,3 @@
+﻿    Токен = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+
+    Результат = OPI_YandexMarket.ПолучитьСписокМагазинов(Токен);

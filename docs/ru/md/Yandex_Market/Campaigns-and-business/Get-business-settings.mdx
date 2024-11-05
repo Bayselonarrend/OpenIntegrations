@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить настройки кабинета
+ Получает значения настроек кабинета по ID
+
+
+
+`Функция ПолучитьНастройкиКабинета(Знач Токен, Знач IDКабинета) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --Key) | Строка | &#x2714; | token |
+  | IDКабинета | --business | Строка, Число | &#x2714; | ID кабинета |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
+
+<br/>
+
+:::tip
+Метод в документации API: [Настройки кабинета](https://yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен      = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    IDКабинета = "172257075";
+
+    Результат = OPI_YandexMarket.ПолучитьНастройкиКабинета(Токен, IDКабинета);
+```
+    
+
+
+
+```json title="Результат"
+
+```
