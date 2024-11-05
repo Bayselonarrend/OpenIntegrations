@@ -66,6 +66,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Ozon"           , 5);
     Sections.Insert("Neocities"      , 5);
     Sections.Insert("CDEK"           , 5);
+    Sections.Insert("YandexMarket"   , 5);
 
     Return Sections;
 
@@ -95,6 +96,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ozon"           , StandardDependencies);
     Sections.Insert("Neocities"      , StandardDependencies);
     Sections.Insert("CDEK"           , StandardDependencies);
+    Sections.Insert("YandexMarket"   , StandardDependencies);
 
     Return Sections;
 
@@ -120,6 +122,7 @@ Function GetTestTable() Export
     Ozon      = "Ozon";
     Neocities = "Neocities";
     Cdek      = "CDEK";
+    YaMarket  = "YandexMarket";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -246,6 +249,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
     NewTest(TestTable, "CDEKAPI_OrdersManagment"              , "Orders managment"                , Cdek);
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
+    NewTest(TestTable, "YaMarket_CampaignsAndBusiness"        , "Campaigns and business"          , YaMarket);
+    NewTest(TestTable, "YaMarket_ProductsManagment"           , "Products managment"              , YaMarket);
 
     Return TestTable;
 
@@ -1904,6 +1909,33 @@ EndProcedure
 Procedure Check_CdekCheck(Val Result) Export
 
     ExpectsThat(Result["check_info"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_YaMarketMarkets(Val Result) Export
+
+    ExpectsThat(Result["campaigns"]).ИмеетТип("Array");
+    ExpectsThat(Result["pager"]).ИмеетТип("Map").Заполнено();
+
+EndProcedure
+
+Procedure Check_YaMarketCampaign(Val Result) Export
+
+    ExpectsThat(Result["campaign"]).ИмеетТип("Map");
+    ExpectsThat(Result["campaign"]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_YaMarketBusiness(Val Result) Export
+
+    ExpectsThat(Result["result"]["settings"]).ИмеетТип("Map").Заполнено();
+
+EndProcedure
+
+Procedure Check_YaMarketOk(Val Result) Export
+
+    ExpectsThat(Result["status"]).Равно("OK");
+    ExpectsThat(Result["results"]).Равно(Undefined);
 
 EndProcedure
 
