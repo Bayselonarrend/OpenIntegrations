@@ -1,12 +1,12 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    ChatID = "1238";
+    ChatID = "1250";
 
     UserID = 10;
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6fa52667006e9f06006b12e400000001000...";
-    ChatID = "1240";
+    Token  = "82d42767006e9f06006b12e400000001000...";
+    ChatID = "1252";
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID, Token);
