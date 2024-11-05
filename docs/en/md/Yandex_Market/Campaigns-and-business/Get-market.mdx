@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get market
+ Gets information about a market (campaign) by ID
+
+
+
+`Function GetMarket(Val Token, Val CampaignID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | CampaignID | --campaign | String, Number | &#x2714; | Market ID (campaignsId) |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [Market information](https://yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaign)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token      = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    CampaignID = "129112733";
+
+    Result = OPI_YandexMarket.GetMarket(Token, CampaignID);
+```
+ 
+
+
+
+```json title="Result"
+
+```

@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get campaign settings
+ Gets market (campaign) settings by ID
+
+
+
+`Function GetCampaignSettings(Val Token, Val CampaignID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | CampaignID | --campaign | String, Number | &#x2714; | Market ID (campaignsId) |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [Market settings](https://yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token      = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    CampaignID = "129112733";
+
+    Result = OPI_YandexMarket.GetCampaignSettings(Token, CampaignID);
+```
+ 
+
+
+
+```json title="Result"
+
+```

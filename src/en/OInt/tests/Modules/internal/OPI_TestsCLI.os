@@ -2064,6 +2064,24 @@ EndProcedure
 
 #EndRegion
 
+#Region YandexMarket
+
+Procedure CLI_YaMarket_CampaignsAndBusiness() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Token"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Campaign", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Business", TestParameters);
+
+    CLI_YandexMarket_GetMarketsList(TestParameters);
+    CLI_YandexMarket_GetMarket(TestParameters);
+    CLI_YandexMarket_GetBusinessSettings(TestParameters);
+    CLI_YandexMarket_GetCampaignSettings(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -16275,6 +16293,65 @@ Procedure CLI_CDEK_GetOfficeList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOfficeList", "CDEK");
     OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region YandexMarket
+
+Procedure CLI_YandexMarket_GetMarketsList(FunctionParameters)
+
+    Token = FunctionParameters["YMarket_Token"];
+
+    Result = OPI_YandexMarket.GetMarketsList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMarketsList", "YandexMarket");
+    OPI_TestDataRetrieval.Check_YaMarketMarkets(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMarket_GetMarket(FunctionParameters)
+
+    Token      = FunctionParameters["YMarket_Token"];
+    CampaignID = FunctionParameters["YMarket_Campaign"];
+
+    Result = OPI_YandexMarket.GetMarket(Token, CampaignID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMarket_GetBusinessSettings(FunctionParameters)
+
+    Token     = FunctionParameters["YMarket_Token"];
+    AccountID = FunctionParameters["YMarket_Business"];
+
+    Result = OPI_YandexMarket.GetBusinessSettings(Token, AccountID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
+    OPI_TestDataRetrieval.Check_YaMarketBusiness(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMarket_GetCampaignSettings(FunctionParameters)
+
+    Token      = FunctionParameters["YMarket_Token"];
+    CampaignID = FunctionParameters["YMarket_Campaign"];
+
+    Result = OPI_YandexMarket.GetCampaignSettings(Token, CampaignID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCampaignSettings", "YandexMarket");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 

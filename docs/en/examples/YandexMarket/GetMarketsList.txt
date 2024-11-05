@@ -1,0 +1,3 @@
+﻿    Token = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+
+    Result = OPI_YandexMarket.GetMarketsList(Token);

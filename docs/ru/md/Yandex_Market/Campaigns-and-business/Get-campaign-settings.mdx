@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить настройки магазина
+ Получает настройки магазина по ID
+
+
+
+`Функция ПолучитьНастройкиМагазина(Знач Токен, Знач IDМагазина) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --Key) | Строка | &#x2714; | token |
+  | IDМагазина | --campaign | Строка, Число | &#x2714; | ID магазина (кампании) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
+
+<br/>
+
+:::tip
+Метод в документации API: [Настройки магазина](https://yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен      = "ACMA:WRvGsjClMPDCqrhwBNOFRO...";
+    IDМагазина = "129112733";
+
+    Результат = OPI_YandexMarket.ПолучитьНастройкиМагазина(Токен, IDМагазина);
+```
+    
+
+
+
+```json title="Результат"
+
+```
