@@ -622,6 +622,21 @@ pipeline {
 			}
 		}
 
+        stage('Testing-YandexMarket') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_YaMarket_CampaignsAndBusiness"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_YaMarket_ProductsManagment"'
+               }
+
+			}
+		}
+
    }
       post{
          always{
