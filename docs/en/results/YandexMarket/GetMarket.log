@@ -1,0 +1,9 @@
+﻿ {
+ "status": "ERROR",
+ "errors": [
+  {
+   "code": "CAMPAIGN_TYPE_NOT_SUPPORTED",
+   "message": "Campaign type is not allowed"
+  }
+ ]
+}
