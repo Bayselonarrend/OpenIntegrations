@@ -30,6 +30,4 @@ import TabItem from '@theme/TabItem';
 @ВызовCLI
 
 
-```json title="Результат"
 @Результат
-```
