@@ -2068,31 +2068,18 @@ EndProcedure
 
 #EndRegion
 
-#Region YandexMarket
+#Region YandexMetrika
 
-Procedure YaMarket_CampaignsAndBusiness() Export
-
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Token"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Campaign", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Business", TestParameters);
-
-    YandexMarket_GetMarketsList(TestParameters);
-    YandexMarket_GetMarket(TestParameters);
-    YandexMarket_GetBusinessSettings(TestParameters);
-    YandexMarket_GetCampaignSettings(TestParameters);
-
-EndProcedure
-
-Procedure YaMarket_ProductsManagment() Export
+Procedure YaMetrika_TagsManagment() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Token"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Business", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"           , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
 
-    YandexMarket_AddUpdateProducts(TestParameters);
+    YandexMetrika_CreateTag(TestParameters);
+    YandexMetrika_GetTagsList(TestParameters);
+    YandexMetrika_UpdateTag(TestParameters);
+    YandexMetrika_GetTag(TestParameters);
+    YandexMetrika_DeleteTag(TestParameters);
 
 EndProcedure
 
@@ -14339,135 +14326,80 @@ EndProcedure
 
 #EndRegion
 
-#Region YandexMarket
+#Region YandexMetrika
 
-Procedure YandexMarket_GetMarketsList(FunctionParameters)
+Procedure YandexMetrika_GetTagsList(FunctionParameters)
 
-    Token = FunctionParameters["YMarket_Token"];
+    Token = FunctionParameters["Metrika_Token"];
 
-    Result = OPI_YandexMarket.GetMarketsList(Token);
+    Result = OPI_YandexMetrika.GetTagsList(Token);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarketsList", "YandexMarket");
-    OPI_TestDataRetrieval.Check_YaMarketMarkets(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTagsList", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTags(Result);
 
 EndProcedure
 
-Procedure YandexMarket_GetMarket(FunctionParameters)
+Procedure YandexMetrika_CreateTag(FunctionParameters)
 
-    Token      = FunctionParameters["YMarket_Token"];
-    CampaignID = FunctionParameters["YMarket_Campaign"];
+    Token = FunctionParameters["Metrika_Token"];
+    Name  = "New tag";
 
-    Result = OPI_YandexMarket.GetMarket(Token, CampaignID);
+    Result = OPI_YandexMetrika.CreateTag(Token, Name);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
-    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
+
+    TagID = Result["label"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Metrika_LabelID", TagID);
+    OPI_Tools.AddField("Metrika_LabelID", TagID, "String", FunctionParameters);
 
 EndProcedure
 
-Procedure YandexMarket_GetBusinessSettings(FunctionParameters)
+Procedure YandexMetrika_DeleteTag(FunctionParameters)
 
-    Token     = FunctionParameters["YMarket_Token"];
-    AccountID = FunctionParameters["YMarket_Business"];
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
 
-    Result = OPI_YandexMarket.GetBusinessSettings(Token, AccountID);
+    Result = OPI_YandexMetrika.DeleteTag(Token, TagID);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
-    OPI_TestDataRetrieval.Check_YaMarketBusiness(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
 
 EndProcedure
 
-Procedure YandexMarket_GetCampaignSettings(FunctionParameters)
+Procedure YandexMetrika_UpdateTag(FunctionParameters)
 
-    Token      = FunctionParameters["YMarket_Token"];
-    CampaignID = FunctionParameters["YMarket_Campaign"];
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
+    Name  = "New tag title";
 
-    Result = OPI_YandexMarket.GetCampaignSettings(Token, CampaignID);
+    Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCampaignSettings", "YandexMarket");
-    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
+
 
 EndProcedure
 
-Procedure YandexMarket_AddUpdateProducts(FunctionParameters)
+Procedure YandexMetrika_GetTag(FunctionParameters)
 
-    Token     = FunctionParameters["YMarket_Token"];
-    AccountID = FunctionParameters["YMarket_Business"];
-    Image     = FunctionParameters["Picture"];
-    Video     = FunctionParameters["Video"];
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
 
-    UpdatesStructure = New Structure;
-
-        ItemStructure = New Structure;
-        ItemStructure.Insert("offerId"         , "11111");
-        ItemStructure.Insert("name"            , "Makita HP1630 impact drill, 710 W");
-        ItemStructure.Insert("marketCategoryId", 15221861);
-        ItemStructure.Insert("category"        , "Drill");
-
-            ImageArray = New Array;
-            ImageArray.Add(Image);
-
-        ItemStructure.Insert("pictures", ImageArray);
-
-            VideosArray = New Array;
-            VideosArray.Add(Video);
-
-        ItemStructure.Insert("videos", VideosArray);
-        ItemStructure.Insert("vendor", "LEVENHUK");
-
-            BarcodesArray = New Array;
-            BarcodesArray.Add("46012300000000");
-
-        ItemStructure.Insert("barcodes"   , BarcodesArray);
-        ItemStructure.Insert("description", "Description");
-
-            CountriesArray = New Array;
-            CountriesArray.Add("Russia");
-
-        ItemStructure.Insert("manufacturerCountries", CountriesArray);
-
-            SizesStructure = New Structure;
-            SizesStructure.Insert("length", 65.55);
-            SizesStructure.Insert("width" , 50.7);
-            SizesStructure.Insert("height", 20);
-            SizesStructure.Insert("weight", 1.001);
-
-        ItemStructure.Insert("weightDimensions", SizesStructure);
-        ItemStructure.Insert("vendorCode"      , "VNDR-0005A");
-
-            TagsArray = New Array;
-            TagsArray.Add("up to 500 roubles");
-
-        ItemStructure.Insert("tags", TagsArray);
-
-            PeriodStructure = New Structure;
-            PeriodStructure.Insert("timePeriod", 24);
-            PeriodStructure.Insert("timeUnit"  , "HOUR");
-            PeriodStructure.Insert("comment"   , "Comment");
-
-        ItemStructure.Insert("shelfLife"           , PeriodStructure);
-        ItemStructure.Insert("lifeTime"            , PeriodStructure);
-        ItemStructure.Insert("guaranteePeriod"     , PeriodStructure);
-        ItemStructure.Insert("customsCommodityCode", 8517610008);
-        ItemStructure.Insert("type"                , "DEFAULT");
-        ItemStructure.Insert("downloadable"        , False);
-        ItemStructure.Insert("adult"               , False);
-
-    UpdatesStructure.Insert("offer", ItemStructure);
-
-    Result = OPI_YandexMarket.AddUpdateProducts(Token, AccountID, UpdatesStructure);
+    Result = OPI_YandexMetrika.GetTag(Token, TagID);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUpdateProducts", "YandexMarket");
-    OPI_TestDataRetrieval.Check_YaMarketOk(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result);
 
 EndProcedure
 

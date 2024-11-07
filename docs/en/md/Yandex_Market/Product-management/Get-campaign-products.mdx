@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get campaign products
+ Gets the list of products of the selected market (campaign)
+
+
+
+`Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val PageToken = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | CampaignID | --business | String, Number | &#x2714; | Campaign ID |
+  | Filters | --filters | Structure of KeyAndValue | &#x2716; | Product filters |
+  | PageToken | --page | String | &#x2716; | Next page token in case of a large selection |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+:::tip
+Method at API documentation: [Information о productх, that размещены in заданbutм магазandnot](https://https:
+yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

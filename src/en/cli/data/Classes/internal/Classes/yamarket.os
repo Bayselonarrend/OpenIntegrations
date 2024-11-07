@@ -138,6 +138,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "yamarket";
     NewLine.Модуль      = "OPI_YandexMarket";
+    NewLine.Метод       = "GetCampaignProducts";
+    NewLine.МетодПоиска = "GETCAMPAIGNPRODUCTS";
+    NewLine.Параметр    = "--Key)";
+    NewLine.Описание    = "token";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Gets the list of products of the selected market (campaign)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "yamarket";
+    NewLine.Модуль      = "OPI_YandexMarket";
+    NewLine.Метод       = "GetCampaignProducts";
+    NewLine.МетодПоиска = "GETCAMPAIGNPRODUCTS";
+    NewLine.Параметр    = "--business";
+    NewLine.Описание    = "Campaign ID";
+    NewLine.Область     = "Product management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "yamarket";
+    NewLine.Модуль      = "OPI_YandexMarket";
+    NewLine.Метод       = "GetCampaignProducts";
+    NewLine.МетодПоиска = "GETCAMPAIGNPRODUCTS";
+    NewLine.Параметр    = "--filters";
+    NewLine.Описание    = "Product filters (optional, def. val. - Empty value)";
+    NewLine.Область     = "Product management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "yamarket";
+    NewLine.Модуль      = "OPI_YandexMarket";
+    NewLine.Метод       = "GetCampaignProducts";
+    NewLine.МетодПоиска = "GETCAMPAIGNPRODUCTS";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Next page token in case of a large selection (optional, def. val. - Empty value)";
+    NewLine.Область     = "Product management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "yamarket";
+    NewLine.Модуль      = "OPI_YandexMarket";
     NewLine.Метод       = "GetProductStructure";
     NewLine.МетодПоиска = "GETPRODUCTSTRUCTURE";
     NewLine.Параметр    = "--empty";
