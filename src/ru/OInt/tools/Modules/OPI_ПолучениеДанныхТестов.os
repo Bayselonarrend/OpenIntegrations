@@ -474,8 +474,8 @@
 
     Если СтрНайти(нРег(ОперационнаяСистема), "windows") > 0 Тогда
 
-        // C:/Program Files/OneScript/bin/oint.bat
-        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+        //"""C:\Program Files (x86)\OInt\bin\oint.bat""";
 
     Иначе
 

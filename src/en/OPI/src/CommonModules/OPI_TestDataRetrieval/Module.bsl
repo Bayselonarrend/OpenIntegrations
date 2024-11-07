@@ -474,8 +474,8 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     If StrFind(Lower(OperatingSystem), "windows") > 0 Then
 
-        // C:/Program Files/OneScript/bin/oint.bat
-        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+        //"""C:\Program Files (x86)\OInt\bin\oint.bat""";
 
     Else
 
