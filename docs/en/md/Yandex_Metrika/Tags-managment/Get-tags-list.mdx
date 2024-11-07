@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get tags list
+ Gets a list of the users tags
+
+
+
+`Function GetTagsList(Val Token) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
+
+<br/>
+
+:::tip
+Method at API documentation: [List of user tags](https://yandex.ru/dev/metrika/en/management/openapi/label/getLabels)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+
+    Result = OPI_YandexMetrika.GetTagsList(Token);
+```
+ 
+
+
+
+

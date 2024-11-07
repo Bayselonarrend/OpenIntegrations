@@ -2064,19 +2064,18 @@ EndProcedure
 
 #EndRegion
 
-#Region YandexMarket
+#Region YandexMetrika
 
-Procedure CLI_YaMarket_CampaignsAndBusiness() Export
+Procedure CLI_YaMetrika_TagsManagment() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Token"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Campaign", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YMarket_Business", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
 
-    CLI_YandexMarket_GetMarketsList(TestParameters);
-    CLI_YandexMarket_GetMarket(TestParameters);
-    CLI_YandexMarket_GetBusinessSettings(TestParameters);
-    CLI_YandexMarket_GetCampaignSettings(TestParameters);
+    CLI_YandexMetrika_CreateTag(TestParameters);
+    CLI_YandexMetrika_GetTagsList(TestParameters);
+    CLI_YandexMetrika_UpdateTag(TestParameters);
+    CLI_YandexMetrika_GetTag(TestParameters);
+    CLI_YandexMetrika_DeleteTag(TestParameters);
 
 EndProcedure
 
@@ -16298,60 +16297,90 @@ EndProcedure
 
 #EndRegion
 
-#Region YandexMarket
+#Region YandexMetrika
 
-Procedure CLI_YandexMarket_GetMarketsList(FunctionParameters)
+Procedure CLI_YandexMetrika_GetTagsList(FunctionParameters)
 
-    Token = FunctionParameters["YMarket_Token"];
+    Token = FunctionParameters["Metrika_Token"];
 
-    Result = OPI_YandexMarket.GetMarketsList(Token);
+    Options = New Structure;
+    Options.Insert("token", Token);
 
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTagsList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarketsList", "YandexMarket");
-    OPI_TestDataRetrieval.Check_YaMarketMarkets(Result);
-
-EndProcedure
-
-Procedure CLI_YandexMarket_GetMarket(FunctionParameters)
-
-    Token      = FunctionParameters["YMarket_Token"];
-    CampaignID = FunctionParameters["YMarket_Campaign"];
-
-    Result = OPI_YandexMarket.GetMarket(Token, CampaignID);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
-    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTagsList", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTags(Result);
 
 EndProcedure
 
-Procedure CLI_YandexMarket_GetBusinessSettings(FunctionParameters)
+Procedure CLI_YandexMetrika_CreateTag(FunctionParameters)
 
-    Token     = FunctionParameters["YMarket_Token"];
-    AccountID = FunctionParameters["YMarket_Business"];
+    Token = FunctionParameters["Metrika_Token"];
+    Name  = "New tag";
 
-    Result = OPI_YandexMarket.GetBusinessSettings(Token, AccountID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("title", Name);
 
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateTag", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMarket", "YandexMarket");
-    OPI_TestDataRetrieval.Check_YaMarketBusiness(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
+
+    TagID = Result["label"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Metrika_LabelID", TagID);
+    OPI_Tools.AddField("Metrika_LabelID", TagID, "String", FunctionParameters);
 
 EndProcedure
 
-Procedure CLI_YandexMarket_GetCampaignSettings(FunctionParameters)
+Procedure CLI_YandexMetrika_DeleteTag(FunctionParameters)
 
-    Token      = FunctionParameters["YMarket_Token"];
-    CampaignID = FunctionParameters["YMarket_Campaign"];
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
 
-    Result = OPI_YandexMarket.GetCampaignSettings(Token, CampaignID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("label", TagID);
 
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteTag", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCampaignSettings", "YandexMarket");
-    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_UpdateTag(FunctionParameters)
+
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
+    Name  = "New tag title";
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("label", TagID);
+    Options.Insert("title", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateTag", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
+
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_GetTag(FunctionParameters)
+
+    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("label", TagID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTag", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTag", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaTag(Result);
 
 EndProcedure
 
