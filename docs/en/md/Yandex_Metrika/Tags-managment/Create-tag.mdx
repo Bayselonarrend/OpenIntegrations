@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create tag
+ Creates a tag with the specified name
+
+
+
+`Function CreateTag(Val Token, Val Name) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | Name | --title | String | &#x2714; | Tag title |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
+
+<br/>
+
+:::tip
+Method at API documentation: [Creating a tag](https://yandex.ru/dev/metrika/en/management/openapi/label/createLabel)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    Name  = "New tag";
+
+    Result = OPI_YandexMetrika.CreateTag(Token, Name);
+```
+ 
+
+
+
+

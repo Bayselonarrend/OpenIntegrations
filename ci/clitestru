@@ -116,6 +116,11 @@ pipeline {
                 test_yamarket()
              }
           }
+          stage('metrika'){
+             steps{
+                test_metrika()
+             }
+          }
    } 
   }    
  }
@@ -2438,7 +2443,37 @@ def test_yamarket(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket ПолучитьТоварыМагазина --Key) "test" --business "test" --filters "test" --page "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe yamarket ПолучитьСтруктуруТовара --empty "test" --debug --test '
+               }
+
+}
+
+
+def test_metrika(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika СоздатьМетку --token "test" --title "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ИзменитьМетку --token "test" --label "test" --title "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьМетку --token "test" --label "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika УдалитьМетку --token "test" --label "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСписокМеток --token "test" --debug --test '
                }
 
 }
@@ -2474,6 +2509,7 @@ test_vkteams()
 test_yadisk()
 test_yandex()
 test_yamarket()
+test_metrika()
 
          }
       }
