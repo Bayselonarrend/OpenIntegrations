@@ -1,0 +1,3 @@
+oint metrika УдалитьМетку ^
+  --token "***" ^
+  --label "313493"
