@@ -187,6 +187,68 @@ Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnI
 
 EndFunction
 
+// Get campaign products
+// Gets the list of products of the selected market (campaign)
+//
+// Note
+// Method at API documentation: [Information о productх, that размещены in заданbutм магазandnot](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
+//
+// Parameters:
+// Token - String - Authorisation token (Api-Key) - token
+// CampaignID - String, Number - Campaign ID - business
+// Filters - Structure of KeyAndValue - Product filters - filters
+// PageToken - String - Next page token in case of a large selection - page
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex Market
+Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val PageToken = "") Export
+
+    OPI_TypeConversion.GetLine(CampaignID);
+    OPI_TypeConversion.GetLine(PageToken);
+
+    URL     = "https://api.partner.market.yandex.ru/campaigns/%1/offers";
+    URL     = StrTemplate(URL, CampaignID);
+    Headers = CreateRequestHeaders(Token);
+
+    If ValueIsFilled(PageToken) Then
+        URL = URL + "?page_token=" + PageToken;
+    EndIf;
+
+    If ValueIsFilled(Filters) Then
+        OPI_TypeConversion.GetCollection(Filters);
+        Response = OPI_Tools.Post(URL, Filters, Headers);
+    Else
+        Response    = OPI_Tools.Post(URL, , Headers);
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
+Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export
+
+    OPI_TypeConversion.GetLine(AccountID);
+    OPI_TypeConversion.GetLine(PageToken);
+
+    URL     = "https://api.partner.market.yandex.ru/businesses/%1/offer-mappings";
+    URL     = StrTemplate(URL, AccountID);
+    Headers = CreateRequestHeaders(Token);
+
+    If ValueIsFilled(PageToken) Then
+        URL = URL + "?page_token=" + PageToken;
+    EndIf;
+
+    If ValueIsFilled(Filters) Then
+        OPI_TypeConversion.GetCollection(Filters);
+        Response = OPI_Tools.Post(URL, Filters, Headers);
+    Else
+        Response    = OPI_Tools.Post(URL, , Headers);
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
 // Get product structure
 // Gets the structure of product standard fields
 //
@@ -250,15 +312,25 @@ Function GetProductStructure(Val Clear = False) Export
 
     ItemStructure.Insert("condition", StateStructure);
 
-    // TODO: Finish
     ItemStructure.Insert("customsCommodityCode", "<commodity code TN VED>");
-    ItemStructure.Insert("description", "<detailed product description>");
-    ItemStructure.Insert("downloadable", "<digital attribute>");
-    ItemStructure.Insert("guaranteePeriod", "<warranty period>");
-    ItemStructure.Insert("lifeTime", "<lifespan>");
+    ItemStructure.Insert("description"         , "<detailed product description>");
+    ItemStructure.Insert("downloadable"        , "<digital attribute>");
+
+        PeriodStructure = New Structure;
+        PeriodStructure.Insert("timePeriod", "<duration value>");
+        PeriodStructure.Insert("timeUnit"  , "<unit>");
+        PeriodStructure.Insert("comment"   , "<comment>");
+
+    ItemStructure.Insert("guaranteePeriod", PeriodStructure);
+    ItemStructure.Insert("lifeTime"       , PeriodStructure);
 
         ManualsArray = New Array;
-        ManualsArray.Add("<manual>");
+
+            ManualStructure = New Structure;
+            ManualStructure.Insert("url"  , "<URL to manual>");
+            ManualStructure.Insert("title", "<manual title>");
+
+        ManualsArray.Add(ManualStructure);
 
     ItemStructure.Insert("manuals", ManualsArray);
 
@@ -270,16 +342,28 @@ Function GetProductStructure(Val Clear = False) Export
     ItemStructure.Insert("name"                 , "<product name>");
 
         AttributesArray = New Array;
-        AttributesArray.Add("<feature>");
+
+            AttributesStructure = New Structure;
+            AttributesStructure.Insert("parameterId", "<attribute ID>");
+            AttributesStructure.Insert("unitId"     , "<unit ID>");
+            AttributesStructure.Insert("value"      , "<value>");
+            AttributesStructure.Insert("valueId"    , "<enum ID>");
+
+        AttributesArray.Add(AttributesStructure);
 
     ItemStructure.Insert("parameterValues", AttributesArray);
 
         ImageArray = New Array;
         ImageArray.Add("<product picture link>");
 
-    ItemStructure.Insert("pictures"     , ImageArray);
-    ItemStructure.Insert("purchasePrice", "<cost price>");
-    ItemStructure.Insert("shelfLife"    , "<expiry date>");
+    ItemStructure.Insert("pictures" , ImageArray);
+
+        PurchasePriceStructure = New Structure;
+        PurchasePriceStructure.Insert("currencyId" , "<Currency code>");
+        PurchasePriceStructure.Insert("value"      , "<price>");
+
+    ItemStructure.Insert("purchasePrice", PurchasePriceStructure);
+    ItemStructure.Insert("shelfLife"    , PeriodStructure);
 
         TagsArray = New Array;
         TagsArray.Add("<tag>");
@@ -292,7 +376,14 @@ Function GetProductStructure(Val Clear = False) Export
         VideosArray = New Array;
         VideosArray.Add("<video URL>");
 
-    ItemStructure.Insert("videos"          , VideosArray);
+    ItemStructure.Insert("videos" , VideosArray);
+
+        SizesStructure = New Structure;
+        SizesStructure.Insert("height", "<height, cm.>");
+        SizesStructure.Insert("length", "<length, cm.>");
+        SizesStructure.Insert("weight", "<weight, kg (gross)>");
+        SizesStructure.Insert("width" , "<width, cm.>");
+
     ItemStructure.Insert("weightDimensions", "<product dimensions and weight>");
 
     If Clear Then

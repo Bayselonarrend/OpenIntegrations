@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить метку
+ Получает метку по ID
+
+
+
+`Функция ПолучитьМетку(Знач Токен, Знач IDМетки) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | IDМетки | --label | Строка | &#x2714; | ID метки |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+:::tip
+Метод в документации API: [Информация о метке](https://yandex.ru/dev/metrika/ru/management/openapi/label/getLabel)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен   = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    IDМетки = "313480";
+
+    Результат = OPI_YandexMetrika.ПолучитьМетку(Токен, IDМетки);
+```
+    
+
+
+
+

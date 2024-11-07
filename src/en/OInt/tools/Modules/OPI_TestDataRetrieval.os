@@ -66,7 +66,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Ozon"           , 5);
     Sections.Insert("Neocities"      , 5);
     Sections.Insert("CDEK"           , 5);
-    Sections.Insert("YandexMarket"   , 5);
+    Sections.Insert("YandexMetrika"  , 5);
 
     Return Sections;
 
@@ -96,7 +96,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ozon"           , StandardDependencies);
     Sections.Insert("Neocities"      , StandardDependencies);
     Sections.Insert("CDEK"           , StandardDependencies);
-    Sections.Insert("YandexMarket"   , StandardDependencies);
+    Sections.Insert("YandexMetrika"  , StandardDependencies);
 
     Return Sections;
 
@@ -122,7 +122,7 @@ Function GetTestTable() Export
     Ozon      = "Ozon";
     Neocities = "Neocities";
     Cdek      = "CDEK";
-    YaMarket  = "YandexMarket";
+    Metrika   = "YandexMetrika";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -249,8 +249,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
     NewTest(TestTable, "CDEKAPI_OrdersManagment"              , "Orders managment"                , Cdek);
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
-    NewTest(TestTable, "YaMarket_CampaignsAndBusiness"        , "Campaigns and business"          , YaMarket);
-    NewTest(TestTable, "YaMarket_ProductsManagment"           , "Products managment"              , YaMarket);
+    NewTest(TestTable, "YaMetrika_TagsManagment"              , "Tags managment"                  , Metrika);
 
     Return TestTable;
 
@@ -1937,6 +1936,25 @@ Procedure Check_YaMarketOk(Val Result) Export
     ExpectsThat(Result["status"]).Равно("OK");
     ExpectsThat(Result["results"]).Равно(Undefined);
 
+EndProcedure
+
+Procedure Check_MetrikaTags(Val Result) Export
+    ExpectsThat(Result["labels"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
+
+    ExpectsThat(Result["label"]).ИмеетТип("Map");
+    ExpectsThat(Result["label"]["id"]).Заполнено();
+
+    If ValueIsFilled(Name) Then
+        ExpectsThat(Result["label"]["name"]).Равно(Name);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_MetrikaSuccess(Val Result) Export
+    ExpectsThat(Result["success"]).Равно(True);
 EndProcedure
 
 #EndRegion

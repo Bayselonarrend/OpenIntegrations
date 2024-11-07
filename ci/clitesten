@@ -116,6 +116,11 @@ pipeline {
                 test_yamarket()
              }
           }
+          stage('metrika'){
+             steps{
+                test_metrika()
+             }
+          }
    } 
   }    
  }
@@ -2438,7 +2443,37 @@ def test_yamarket(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetCampaignProducts --Key) "test" --business "test" --filters "test" --page "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetProductStructure --empty "test" --debug --test '
+               }
+
+}
+
+
+def test_metrika(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika CreateTag --token "test" --title "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika UpdateTag --token "test" --label "test" --title "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika GetTag --token "test" --label "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika DeleteTag --token "test" --label "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika GetTagsList --token "test" --debug --test '
                }
 
 }
@@ -2474,6 +2509,7 @@ test_vkteams()
 test_yadisk()
 test_yandex()
 test_yamarket()
+test_metrika()
 
          }
       }

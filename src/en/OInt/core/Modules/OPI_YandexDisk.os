@@ -53,9 +53,7 @@
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDiskInformation(Val Token) Export
 
-    OPI_TypeConversion.GetLine(Token);
-
-    Headers  = AuthorizationHeader(Token);
+    Headers  = OPI_YandexID.GetAuthorizationHeader(Token);
     Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk", , Headers);
 
     Return Response;
@@ -73,15 +71,12 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function CreateFolder(Val Token, Val Path) Export
 
-    OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Path);
-
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://cloud-api.yandex.net/v1/disk/resources";
     Href    = "href";
 
     Parameters = New Structure;
-    Parameters.Insert("path", Path);
+    OPI_Tools.AddField("path", Path, "String", Parameters);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_Tools.Put(URL + Parameters, , Headers, False);
@@ -109,12 +104,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetObject(Val Token, Val Path) Export
 
-    OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Path);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
-    Headers    = AuthorizationHeader(Token);
     Parameters = New Structure;
-    Parameters.Insert("path", Path);
+    OPI_Tools.AddField("path", Path, "String", Parameters);
 
     Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
 
@@ -134,15 +127,13 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
 
-    OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetBoolean(ToCart);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
-    Parameters.Insert("path"       , Path);
-    Parameters.Insert("permanently", Not ToCart);
+    OPI_Tools.AddField("path"       , Path      , "String" , Parameters);
+    OPI_Tools.AddField("permanently", Not ToCart, "Boolean", Parameters);
 
     Response = OPI_Tools.Delete("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
 
@@ -163,19 +154,14 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
 
-    OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Original);
-    OPI_TypeConversion.GetLine(Path);
-    OPI_TypeConversion.GetBoolean(Overwrite);
-
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://cloud-api.yandex.net/v1/disk/resources/copy";
     Href    = "href";
 
     Parameters = New Structure;
-    Parameters.Insert("from"      , Original);
-    Parameters.Insert("path"      , Path);
-    Parameters.Insert("overwrite" , Overwrite);
+    OPI_Tools.AddField("from"     , Original , "String" , Parameters);
+    OPI_Tools.AddField("path"     , Path     , "String" , Parameters);
+    OPI_Tools.AddField("overwrite", Overwrite, "Boolean", Parameters);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_Tools.Post(URL + Parameters, , Headers, False);
@@ -203,13 +189,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDownloadLink(Val Token, Val Path) Export
 
-    OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Path);
-
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
-    Parameters.Insert("path", Path);
+    OPI_Tools.AddField("path", Path, "String", Parameters);
 
     Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/download", Parameters, Headers);
 
@@ -230,6 +213,7 @@ EndFunction
 Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
 
     OPI_TypeConversion.GetLine(SavePath);
+
     Response = GetDownloadLink(Token, Path);
     URL      = Response["href"];
 
@@ -264,13 +248,12 @@ Function GetFilesList(Val Token
     , Val FilterByType = ""
     , Val SortByDate = False) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
     OPI_TypeConversion.GetLine(FilterByType);
     OPI_TypeConversion.GetBoolean(SortByDate);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
 
@@ -311,12 +294,11 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Original);
     OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetBoolean(Overwrite);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://cloud-api.yandex.net/v1/disk/resources/move";
     Href    = "href";
 
@@ -352,12 +334,11 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetBoolean(Overwrite);
     OPI_TypeConversion.GetBinaryData(File);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     Href    = "href";
     File    = New Structure("file", File);
 
@@ -390,11 +371,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function UploadFileByURL(Val Token, Val Path, Val Address) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetLine(Address);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://cloud-api.yandex.net/v1/disk/resources/upload";
 
     Parameters = New Structure;
@@ -454,11 +434,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
 
@@ -489,12 +468,11 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(URL);
     OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
 
@@ -526,11 +504,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(URL);
     OPI_TypeConversion.GetLine(Path);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
 
@@ -559,12 +536,11 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(URL);
     OPI_TypeConversion.GetLine(From);
     OPI_TypeConversion.GetLine(Target);
 
-    Headers = AuthorizationHeader(Token);
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     Address = "https://cloud-api.yandex.net/v1/disk/public/resources/save-to-disk";
     Href    = "href";
 
@@ -600,22 +576,12 @@ EndFunction
 
 #Region Private
 
-Function AuthorizationHeader(Val Token)
-
-    Headers = New Map;
-    Headers.Insert("Authorization", "OAuth " + Token);
-
-    Return Headers;
-
-EndFunction
-
 Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
 
-    OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetBoolean(PublicAccess);
 
-    Headers     = AuthorizationHeader(Token);
+    Headers     = OPI_YandexID.GetAuthorizationHeader(Token);
     Destination = ?(PublicAccess, "publish", "unpublish");
     Href        = "href";
 
