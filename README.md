@@ -75,7 +75,14 @@
  
 ## Установка и варианты релизов ##
 
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
+ <a href="https://github.com/Bayselonarrend/OpenIntegrations/releases/latest">
+<img src="https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github"  />
+</a>
+
+ <a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/m37g7vw32z94fnhdju9m"  />
+</a>
+
 
 <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
 
