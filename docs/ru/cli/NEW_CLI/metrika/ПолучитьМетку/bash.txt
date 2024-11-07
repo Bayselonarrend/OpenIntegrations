@@ -1,0 +1,3 @@
+oint metrika ПолучитьМетку \
+  --token "***" \
+  --label "313493"
