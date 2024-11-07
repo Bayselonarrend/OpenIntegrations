@@ -218,7 +218,7 @@ Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val Pa
         OPI_TypeConversion.GetCollection(Filters);
         Response = OPI_Tools.Post(URL, Filters, Headers);
     Else
-        Response    = OPI_Tools.Post(URL, , Headers);
+        Response = OPI_Tools.Post(URL,        , Headers);
     EndIf;
 
     Return Response;
@@ -242,7 +242,7 @@ Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val Pag
         OPI_TypeConversion.GetCollection(Filters);
         Response = OPI_Tools.Post(URL, Filters, Headers);
     Else
-        Response    = OPI_Tools.Post(URL, , Headers);
+        Response = OPI_Tools.Post(URL,        , Headers);
     EndIf;
 
     Return Response;
