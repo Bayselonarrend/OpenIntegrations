@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get counter structure
+ Gets the structure of standard fields for counter creation
+
+
+
+`Function GetCounterStructure(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure of KeyAndValue - Counter field structure
+
+<br/>
+
+:::tip
+Description in the API documentation: [Creating a counter](https://yandex.ru/dev/metrika/en/management/openapi/counter/addCounter)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_YandexMetrika.GetCounterStructure();
+```
+ 
+
+
+
+
