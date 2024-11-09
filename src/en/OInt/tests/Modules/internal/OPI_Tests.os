@@ -2083,6 +2083,15 @@ Procedure YaMetrika_TagsManagment() Export
 
 EndProcedure
 
+Procedure YaMetrika_CountersManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
+
+    YandexMetrika_GetCounterStructure(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -14400,6 +14409,17 @@ Procedure YandexMetrika_GetTag(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTag", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaTag(Result);
+
+EndProcedure
+
+Procedure YandexMetrika_GetCounterStructure(FunctionParameters)
+
+    Result = OPI_YandexMetrika.GetCounterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCounterStructure", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 

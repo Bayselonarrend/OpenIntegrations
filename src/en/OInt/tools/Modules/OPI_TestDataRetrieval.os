@@ -250,6 +250,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "CDEKAPI_OrdersManagment"              , "Orders managment"                , Cdek);
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
     NewTest(TestTable, "YaMetrika_TagsManagment"              , "Tags managment"                  , Metrika);
+    NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
 
     Return TestTable;
 

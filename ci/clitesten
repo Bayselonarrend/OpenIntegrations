@@ -2476,6 +2476,10 @@ def test_metrika(){
 					powershell encoding: 'UTF-8', script:'./oint.exe metrika GetTagsList --token "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika GetCounterStructure --empty "test" --debug --test '
+               }
+
 }
 pipeline {
    agent any
