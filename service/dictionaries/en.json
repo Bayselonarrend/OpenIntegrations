@@ -3527,7 +3527,7 @@
 "Получить данные файла": "Get file data",
 "СтруктураОффлайнОпций": "OfflineOptionsStructure",
 "id цели для изменения": "if of goal for updating",
-"СтруктураНастроекКода": "goal id to change",
+"СтруктураНастроекКода": "CodeSettingsStructure",
 "ДобавитьТестовыйНабор": "AddTestSet",
 "Добавить файл в задачу": "Attach file to the topic",
 "Удаляет подборку по ID": "Deletes the selection by ID",
