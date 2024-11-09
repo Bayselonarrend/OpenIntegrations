@@ -38,6 +38,33 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika ИзменитьМетку \
+              --token "***" \
+              --label "313493" \
+              --title "Новое имя метки"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika ИзменитьМетку ^
+              --token "***" ^
+              --label "313493" ^
+              --title "Новое имя метки"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "label": {
+  "id": 313493,
+  "name": "Новое имя метки"
+ }
+}
+```
