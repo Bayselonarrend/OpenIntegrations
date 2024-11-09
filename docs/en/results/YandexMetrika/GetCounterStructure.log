@@ -1,0 +1,113 @@
+﻿ {
+ "autogoals_enabled": "<auto-targeting>",
+ "code_options": {
+  "async": "<asynchronous counter code>",
+  "clickmap": "<collection of statistics for Click Map operation>",
+  "ecommerce": "<e-commerce data collection>",
+  "in_one_line": "<output the counter code in one line>",
+  "track_hash": "<tracking the hash in the browser address bar>",
+  "visor": "<recording and analyzing the behavior of site visitors>",
+  "xml_site": "<for XML-sites>",
+  "ytm": "<use of a tag management system>",
+  "alternative_cdn": "<take into account visits from regions without access to Yandex resources>",
+  "informer": {
+   "color_arrow": "<arrow color on the informer>",
+   "color_end": "<final (bottom) color of the informer in RRGGBBAA format>",
+   "color_start": "<initial (top) color of the informer in RRGGBBAA format>",
+   "color_text": "<informer text color>",
+   "enabled": "<informer display permission>",
+   "indicator": "<informer index>",
+   "size": "<informer size>",
+   "type": "<informer type>"
+  }
+ },
+ "counter_flags": {
+  "collect_first_party_data": "<use advanced tracking settings>",
+  "measurement_enabled": "<enable the Measurement Protocol option>",
+  "use_in_benchmarks": "<access market reports>",
+  "direct_allow_use_goals_without_access": "<allow optimization by goals in advertising campaigns without access to the counter>"
+ },
+ "favorite": "<favorite>",
+ "filter_robots": "<robots filtration>",
+ "filters": [
+  {
+   "action": "<filter type>",
+   "attr": "<type of data to which the filter is applied>",
+   "status": "<filter status>",
+   "type": "<attitude or action for the filter>",
+   "end_ip": "<last IP address of the range>",
+   "id": "<filter identifier to change>",
+   "start_ip": "<first IP address of the range>",
+   "value": "<value>",
+   "with_subdomains": "<subdomain filter>"
+  }
+ ],
+ "gdpr_agreement_accepted": "<consent to the Data Processing Agreement>",
+ "goals": [
+  {
+   "name": "<goal name>",
+   "type": "<goal type>",
+   "default_price": "<goal default price>",
+   "id": "<if of goal for updating>",
+   "is_favorite": "<favorite>"
+  }
+ ],
+ "grants": [
+  {
+   "perm": "<Access level>",
+   "comment": "<arbitrary comment>",
+   "partner_data_access": "<access to report group Monetization>",
+   "user_login": "<login of the user to whom the authorization has been granted>",
+   "user_uid": "<uid of the user to whom the authorization has been granted>"
+  }
+ ],
+ "labels": [
+  {
+   "name": "<lable name>"
+  }
+ ],
+ "measurement_tokens": "<active token list>",
+ "mirrors2": [
+  {
+   "site": "<full site domain>"
+  }
+ ],
+ "name": "<counter name>",
+ "offline_options": {
+  "offline_calls_extended_threshold": "<extended call accounting period>",
+  "offline_conversion_extended_threshold": "<extended accounting period for offline conversions>",
+  "offline_visits_extended_threshold": "<extended accounting period for offline visits>"
+ },
+ "operations": [
+  {
+   "action": "<action type>",
+   "attr": "<filter field>",
+   "status": "<action status>",
+   "id": "<change actions>",
+   "value": "<replacement value>"
+  }
+ ],
+ "owner_login": "<owners login>",
+ "permission": "<counter access level>",
+ "publisher_options": {
+  "enabled": "<content analytics data collection>",
+  "schema": "<markup type used on the site>",
+  "schema_options": "<available markup options>"
+ },
+ "site2": [
+  {
+   "site": "<full site domain>"
+  }
+ ],
+ "source": "<counter type>",
+ "time_zone_name": "<time zone>",
+ "visit_threshold": "<visit timeout in seconds>",
+ "webvisor": {
+  "arch_enabled": "<page saving>",
+  "arch_type": "<page content recording>",
+  "load_player_type": "<page load to player>",
+  "urls": "<save page list>",
+  "wv_forms": "<recording the contents of fields and forms>",
+  "wv_version": "<webvisor version>"
+ }
+}
