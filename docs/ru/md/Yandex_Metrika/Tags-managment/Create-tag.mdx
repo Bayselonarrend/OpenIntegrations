@@ -36,6 +36,35 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika СоздатьМетку \
+              --token "***" \
+              --title "Новая метка"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika СоздатьМетку ^
+              --token "***" ^
+              --title "Новая метка"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "errors": [
+  {
+   "error_type": "unauthorized",
+   "message": "Неавторизованный пользователь"
+  }
+ ],
+ "code": 401,
+ "message": "Неавторизованный пользователь"
+}
+```
