@@ -114,6 +114,17 @@
     NewLine.Область     = "Tags managment";
     NewLine.ОписаниеМетода   = "Gets a list of the users tags";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCounterStructure";
+    NewLine.МетодПоиска = "GETCOUNTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Gets the structure of standard fields for counter creation";
+
     Return CompositionTable;
 EndFunction
 
