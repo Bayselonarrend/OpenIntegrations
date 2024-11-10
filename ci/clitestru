@@ -2497,7 +2497,15 @@ def test_metrika(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСписокСчетчиков --token "test" --filter "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСтруктуруСчетчика --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСтруктуруФильтраСчетчиков --empty "test" --debug --test '
                }
 
 }
