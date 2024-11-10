@@ -2481,6 +2481,14 @@ def test_metrika(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ИзменитьСчетчик --token "test" --counter "test" --fields "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСчетчик --token "test" --counter "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe metrika УдалитьСчетчик --token "test" --counter "test" --debug --test '
                }
 
