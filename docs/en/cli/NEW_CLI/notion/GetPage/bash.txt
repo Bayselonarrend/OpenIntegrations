@@ -1,3 +1,3 @@
 oint notion GetPage \
  --token "***" \
- --page "13282aa7-fc4e-8168-8fc1-d4a3901f63be"
+ --page "13a82aa7-fc4e-8145-8c23-eb7585cf69d1"
