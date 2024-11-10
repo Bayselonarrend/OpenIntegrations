@@ -281,6 +281,32 @@ Function DeleteCounter(Val Token, Val CounterID) Export
 
 EndFunction
 
+// Restore counter
+// Restores a previously deleted counter by ID
+//
+// Note
+// Method at API documentation: [Restoring a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/undeleteCounter)
+//
+// Parameters:
+// Token - String - Auth token - token
+// CounterID - String, Number - Counter ID for restoring - counter
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function RestoreCounter(Val Token, Val CounterID) Export
+
+    OPI_TypeConversion.GetLine(CounterID);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+    URL     = "https://api-metrika.yandex.net/management/v1/counter/%1/undelete";
+    URL     = StrTemplate(URL, CounterID);
+
+    Response = OPI_Tools.Post(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get counter structure
 // Gets the structure of standard fields for counter creation
 //

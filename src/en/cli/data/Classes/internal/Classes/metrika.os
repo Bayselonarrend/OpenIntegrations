@@ -212,6 +212,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "metrika";
     NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "RestoreCounter";
+    NewLine.МетодПоиска = "RESTORECOUNTER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Restores a previously deleted counter by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "RestoreCounter";
+    NewLine.МетодПоиска = "RESTORECOUNTER";
+    NewLine.Параметр    = "--counter";
+    NewLine.Описание    = "Counter ID for restoring";
+    NewLine.Область     = "Counters management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
     NewLine.Метод       = "GetCounterStructure";
     NewLine.МетодПоиска = "GETCOUNTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
