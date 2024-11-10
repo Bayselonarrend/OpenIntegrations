@@ -2090,6 +2090,8 @@ Procedure YaMetrika_CountersManagement() Export
 
     YandexMetrika_GetCounterStructure(TestParameters);
     YandexMetrika_CreateCounter(TestParameters);
+    YandexMetrika_GetCounter(TestParameters);
+    YandexMetrika_UpdateCounter(TestParameters);
     YandexMetrika_DeleteCounter(TestParameters);
 
 EndProcedure
@@ -14499,6 +14501,47 @@ Procedure YandexMetrika_DeleteCounter(FunctionParameters)
 
 EndProcedure
 
+Procedure YandexMetrika_UpdateCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    CounterStructure = New Structure;
+    CounterStructure.Insert("autogoals_enabled", True);
+
+        FlagsStructure = New Structure;
+        FlagsStructure.Insert("collect_first_party_data"             , False);
+        FlagsStructure.Insert("measurement_enabled"                  , False);
+        FlagsStructure.Insert("use_in_benchmarks"                    , False);
+        FlagsStructure.Insert("direct_allow_use_goals_without_access", False);
+
+    CounterStructure.Insert("counter_flags" , FlagsStructure);
+    CounterStructure.Insert("favorite"      , 0);
+    CounterStructure.Insert("filter_robots" , 1);
+
+
+    Result = OPI_YandexMetrika.UpdateCounter(Token, CounterID, CounterStructure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+EndProcedure
+
+Procedure YandexMetrika_GetCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Result = OPI_YandexMetrika.GetCounter(Token, CounterID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+EndProcedure
 
 #EndRegion
 
