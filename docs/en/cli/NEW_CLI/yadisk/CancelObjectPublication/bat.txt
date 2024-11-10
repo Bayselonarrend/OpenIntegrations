@@ -1,3 +1,3 @@
 oint yadisk CancelObjectPublication ^
  --token "***" ^
- --path "/ead95f5c-1ac5-4526-b9dd-fd9e9a985de1.png"
+ --path "/315bb761-d24a-4125-9493-cea882a79958.png"

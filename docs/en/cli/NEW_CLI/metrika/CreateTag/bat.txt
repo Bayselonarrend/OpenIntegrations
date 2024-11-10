@@ -1,0 +1,3 @@
+oint metrika CreateTag ^
+ --token "***" ^
+ --title "New tag"
