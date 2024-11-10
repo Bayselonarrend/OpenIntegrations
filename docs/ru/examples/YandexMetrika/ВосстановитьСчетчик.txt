@@ -1,0 +1,4 @@
+﻿    Токен      = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    IDСчетчика = "98874849";
+
+    Результат = OPI_YandexMetrika.ВосстановитьСчетчик(Токен, IDСчетчика);

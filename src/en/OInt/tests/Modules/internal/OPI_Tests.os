@@ -2093,6 +2093,8 @@ Procedure YaMetrika_CountersManagement() Export
     YandexMetrika_GetCounter(TestParameters);
     YandexMetrika_UpdateCounter(TestParameters);
     YandexMetrika_DeleteCounter(TestParameters);
+    YandexMetrika_RestoreCounter(TestParameters);
+    YandexMetrika_DeleteCounter(TestParameters);
 
 EndProcedure
 
@@ -14540,6 +14542,20 @@ Procedure YandexMetrika_GetCounter(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+EndProcedure
+
+Procedure YandexMetrika_RestoreCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Result = OPI_YandexMetrika.RestoreCounter(Token, CounterID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
 
 EndProcedure
 
