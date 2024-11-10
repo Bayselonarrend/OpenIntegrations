@@ -2089,6 +2089,8 @@ Procedure YaMetrika_CountersManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
 
     YandexMetrika_GetCounterStructure(TestParameters);
+    YandexMetrika_CreateCounter(TestParameters);
+    YandexMetrika_DeleteCounter(TestParameters);
 
 EndProcedure
 
@@ -14422,6 +14424,81 @@ Procedure YandexMetrika_GetCounterStructure(FunctionParameters)
     OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
+
+Procedure YandexMetrika_CreateCounter(FunctionParameters)
+
+    Token = FunctionParameters["Metrika_Token"];
+
+    CounterStructure = New Structure;
+    CounterStructure.Insert("autogoals_enabled", True);
+
+        CodeSettingsStructure = New Structure;
+        CodeSettingsStructure.Insert("async"          , 0);
+        CodeSettingsStructure.Insert("clickmap"       , 1);
+        CodeSettingsStructure.Insert("ecommerce"      , 1);
+        CodeSettingsStructure.Insert("in_one_line"    , 0);
+        CodeSettingsStructure.Insert("track_hash"     , 1);
+        CodeSettingsStructure.Insert("visor"          , 1);
+        CodeSettingsStructure.Insert("xml_site"       , 0);
+        CodeSettingsStructure.Insert("ytm"            , 0);
+        CodeSettingsStructure.Insert("alternative_cdn", 1);
+
+            InformerStructure = New Structure;
+            InformerStructure.Insert("color_arrow", 1);
+            InformerStructure.Insert("color_end"  , "EFEFEFFE");
+            InformerStructure.Insert("color_start", "EEEEEEEE");
+            InformerStructure.Insert("color_text" , 0);
+            InformerStructure.Insert("enabled"    , 1);
+            InformerStructure.Insert("indicator"  , "uniques");
+            InformerStructure.Insert("size"       , 2);
+            InformerStructure.Insert("type"       , "ext");
+
+        CodeSettingsStructure.Insert("informer", InformerStructure);
+
+    CounterStructure.Insert("code_options", CodeSettingsStructure);
+
+        FlagsStructure = New Structure;
+        FlagsStructure.Insert("collect_first_party_data"             , True);
+        FlagsStructure.Insert("measurement_enabled"                  , True);
+        FlagsStructure.Insert("use_in_benchmarks"                    , True);
+        FlagsStructure.Insert("direct_allow_use_goals_without_access", True);
+
+    CounterStructure.Insert("counter_flags"          , FlagsStructure);
+    CounterStructure.Insert("favorite"               , 1);
+    CounterStructure.Insert("filter_robots"          , 2);
+    CounterStructure.Insert("gdpr_agreement_accepted", 1);
+
+        DomainStructure = New Structure("site", "openintegrations.dev");
+
+    CounterStructure.Insert("site2", DomainStructure);
+
+    Result = OPI_YandexMetrika.CreateCounter(Token, CounterStructure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+    CounterID = Result["counter"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Metrika_CounterID", CounterID);
+    OPI_Tools.AddField("Metrika_CounterID", CounterID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure YandexMetrika_DeleteCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Result = OPI_YandexMetrika.DeleteCounter(Token, CounterID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
+
+EndProcedure
+
 
 #EndRegion
 
