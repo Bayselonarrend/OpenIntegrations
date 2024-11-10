@@ -1,5 +1,5 @@
 oint bitrix24 RenameFile \
  --url "b24-ar17wx.bitrix24.by" \
- --fileid 16174 \
+ --fileid 17174 \
  --title "New file name.jpg" \
  --token "***"
