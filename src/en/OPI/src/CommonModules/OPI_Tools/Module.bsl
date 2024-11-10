@@ -227,7 +227,7 @@ EndFunction
 
 #Region Service
 
-Function RequestParametersToString(Val Parameters) Export
+Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False) Export
 
     If Parameters.Count() = 0 Then
         Return "";
@@ -237,13 +237,25 @@ Function RequestParametersToString(Val Parameters) Export
 
     For Each Parameter In Parameters Do
 
-        ParameterValue = ConvertParameterToString(Parameter.Value);
+        CurrentValue = Parameter.Value;
+        CurrentKey   = Parameter.Key;
 
-        ParameterString = ParameterString
-            + Parameter.Key
-            + "="
-            + ParameterValue
-            + "&";
+        If Not TypeOf(CurrentValue) = Type("Array") Or Not SplitArrayParams Then
+
+            ParameterValue = ConvertParameterToString(CurrentValue);
+
+            ParameterString = ParameterString
+                + Parameter.Key
+                + "="
+                + ParameterValue
+                + "&";
+
+        Else
+
+            ParameterValue  = SplitArrayAsURLParameters(CurrentKey, CurrentValue);
+            ParameterString = ParameterString + ParameterValue + "&";
+
+        EndIf;
 
     EndDo;
 
@@ -964,6 +976,26 @@ Function SplitFileKey(Val FileData, Val ContentType)
     ReturnStructure = New Structure("FieldName,FileName", FieldName, FileName);
 
     Return ReturnStructure;
+
+EndFunction
+
+Function SplitArrayAsURLParameters(Val Key, Val Value)
+
+    KeyArray = Key + "=";
+
+    For N = 0 To Value.UBound() Do
+
+        CurrentValue = Value[N];
+
+        OPI_TypeConversion.GetLine(CurrentValue);
+
+        Value.Set(N, KeyArray + CurrentValue);
+
+    EndDo;
+
+    ParameterString = StrConcat(Value, "&");
+
+    Return ParameterString;
 
 EndFunction
 

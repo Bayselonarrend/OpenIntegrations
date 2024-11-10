@@ -233,12 +233,44 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "metrika";
     NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCountersList";
+    NewLine.МетодПоиска = "GETCOUNTERSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Gets a list of available counters with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCountersList";
+    NewLine.МетодПоиска = "GETCOUNTERSLIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "List filter. See GetCounterFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Counters management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
     NewLine.Метод       = "GetCounterStructure";
     NewLine.МетодПоиска = "GETCOUNTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Counters management";
     NewLine.ОписаниеМетода   = "Gets the structure of standard fields for counter creation";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCounterFilterStructure";
+    NewLine.МетодПоиска = "GETCOUNTERFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Gets the structure of filter fields to get the list of counters";
 
     Return CompositionTable;
 EndFunction

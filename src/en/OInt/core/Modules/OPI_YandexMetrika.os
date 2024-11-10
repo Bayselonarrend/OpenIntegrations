@@ -307,6 +307,37 @@ Function RestoreCounter(Val Token, Val CounterID) Export
 
 EndFunction
 
+// Get counters list
+// Gets a list of available counters with or without filtering
+//
+// Note
+// Method at API documentation: [List of available counters](@yandex.ru/dev/metrika/en/management/openapi/counter/counters)
+//
+// Parameters:
+// Token - String - Auth token - token
+// Filter - Structure of KeyAndValue - List filter. See GetCounterFilterStructure - filter
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function GetCountersList(Val Token, Val Filter = Undefined) Export
+
+    OPI_TypeConversion.GetCollection(Filter);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+    URL     = "https://api-metrika.yandex.net/management/v1/counters";
+
+    If TypeOf(Filter) <> Type("Array") And ValueIsFilled(Filter) Then
+
+        URL = URL + OPI_Tools.RequestParametersToString(Filter, True);
+
+    EndIf;
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get counter structure
 // Gets the structure of standard fields for counter creation
 //
@@ -477,6 +508,45 @@ Function GetCounterStructure(Val Clear = False) Export
 
     //@skip-check constructor-function-return-section
     Return CounterStructure;
+
+EndFunction
+
+// Get counter filter structure
+// Gets the structure of filter fields to get the list of counters
+//
+// Note
+// Description in the API documentation: [List of available counters](@yandex.ru/dev/metrika/en/management/openapi/counter/counters)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Counter field structure
+Function GetCounterFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+
+        IDArray = New Array;
+        IDArray.Add("<counter id for selection>");
+
+    FilterStructure.Insert("counter_ids"  , IDArray);
+    FilterStructure.Insert("label_id"     , "<filter by label>");
+    FilterStructure.Insert("offset"       , "<sequence number of the first counter in the list>");
+    FilterStructure.Insert("per_page"     , "<maximum number of counters in the output>");
+    FilterStructure.Insert("permission"   , "<filter by access level>");
+    FilterStructure.Insert("search_string", "<filter by substring content in fields>");
+    FilterStructure.Insert("status"       , "<filter by status>");
+    FilterStructure.Insert("type"         , "<filter by type>");
+    FilterStructure.Insert("sort"         , "<sorting>");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
 EndFunction
 
