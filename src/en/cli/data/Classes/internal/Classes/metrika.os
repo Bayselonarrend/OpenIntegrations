@@ -139,6 +139,58 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "metrika";
     NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "UpdateCounter";
+    NewLine.МетодПоиска = "UPDATECOUNTER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Changes counter field values by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "UpdateCounter";
+    NewLine.МетодПоиска = "UPDATECOUNTER";
+    NewLine.Параметр    = "--counter";
+    NewLine.Описание    = "Counter ID to change";
+    NewLine.Область     = "Counters management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "UpdateCounter";
+    NewLine.МетодПоиска = "UPDATECOUNTER";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Structure of fields to be changed. See GetCounterStructure";
+    NewLine.Область     = "Counters management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCounter";
+    NewLine.МетодПоиска = "GETCOUNTER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Counters management";
+    NewLine.ОписаниеМетода   = "Gets information about the counter by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetCounter";
+    NewLine.МетодПоиска = "GETCOUNTER";
+    NewLine.Параметр    = "--counter";
+    NewLine.Описание    = "Counter ID";
+    NewLine.Область     = "Counters management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
     NewLine.Метод       = "DeleteCounter";
     NewLine.МетодПоиска = "DELETECOUNTER";
     NewLine.Параметр    = "--token";

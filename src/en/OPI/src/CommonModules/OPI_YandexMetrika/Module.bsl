@@ -202,6 +202,60 @@ Function CreateCounter(Val Token, Val CounterStructure) Export
 
 EndFunction
 
+// Update counter
+// Changes counter field values by ID
+//
+// Note
+// Method at API documentation: [Changing a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/editCounter)
+//
+// Parameters:
+// Token - String - Auth token - token
+// CounterID - String, Number - Counter ID to change - counter
+// CounterStructure - Structure of KeyAndValue - Structure of fields to be changed. See GetCounterStructure - fields
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function UpdateCounter(Val Token, Val CounterID, Val CounterStructure) Export
+
+    OPI_TypeConversion.GetLine(CounterID);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+    URL     = "https://api-metrika.yandex.net/management/v1/counter/" + CounterID;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("counter", CounterStructure, "Collection", Parameters);
+
+    Response = OPI_Tools.Put(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get counter
+// Gets information about the counter by ID
+//
+// Note
+// Method at API documentation: [Counter information](@yandex.ru/dev/metrika/en/management/openapi/counter/counter)
+//
+// Parameters:
+// Token - String - Auth token - token
+// CounterID - String, Number - Counter ID - counter
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function GetCounter(Val Token, Val CounterID) Export
+
+    OPI_TypeConversion.GetLine(CounterID);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+    URL     = "https://api-metrika.yandex.net/management/v1/counter/" + CounterID;
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
 // Delete counter
 // Deletes a counter by ID
 //

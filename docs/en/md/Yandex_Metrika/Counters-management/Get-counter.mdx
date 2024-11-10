@@ -1,21 +1,21 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Delete counter
- Deletes a counter by ID
+# Get counter
+ Gets information about the counter by ID
 
 
 
-`Function DeleteCounter(Val Token, Val CounterID) Export`
+`Function GetCounter(Val Token, Val CounterID) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Auth token |
-  | CounterID | --counter | Number, String | &#x2714; | Counter ID for deletion |
+  | CounterID | --counter | String, Number | &#x2714; | Counter ID |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [Deleting a counter](https://yandex.ru/dev/metrika/en/management/openapi/counter/deleteCounter)
+Method at API documentation: [Counter information](https://yandex.ru/dev/metrika/en/management/openapi/counter/counter)
 :::
 <br/>
 
@@ -32,7 +32,7 @@ Method at API documentation: [Deleting a counter](https://yandex.ru/dev/metrika/
     Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     CounterID = "98874380";
 
-    Result = OPI_YandexMetrika.DeleteCounter(Token, CounterID);
+    Result = OPI_YandexMetrika.GetCounter(Token, CounterID);
 ```
  
 
