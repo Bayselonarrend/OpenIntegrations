@@ -1958,6 +1958,10 @@ Procedure Check_MetrikaSuccess(Val Result) Export
     ExpectsThat(Result["success"]).Равно(True);
 EndProcedure
 
+Procedure Check_MetrikaCounter(Val Result) Export
+    ExpectsThat(Result["counter"]).ИмеетТип("Map").Заполнено();
+EndProcedure
+
 #EndRegion
 
 #EndRegion
