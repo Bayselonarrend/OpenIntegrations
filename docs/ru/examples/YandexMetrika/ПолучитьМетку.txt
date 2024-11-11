@@ -1,4 +1,4 @@
 ﻿    Токен   = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    IDМетки = "313561";
+    IDМетки = "313591";
 
     Результат = OPI_YandexMetrika.ПолучитьМетку(Токен, IDМетки);

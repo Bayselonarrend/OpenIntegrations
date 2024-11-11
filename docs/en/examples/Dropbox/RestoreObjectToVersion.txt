@@ -1,5 +1,5 @@
-﻿    Version = "62606a16070c8bd841553";
-    Token   = "sl.CAA7fvu74rYlykq37bYxZ1FdcMkoc31cOuQ4OJGxbuaMQ2ba2MmJBZ2k-Q-B0_3-wwPCWd9UGi...";
+﻿    Version = "626a6f2fcb4f2bd841553";
+    Token   = "sl.CAirrApMP3MmqfxAgYhlitMkH3J7CmcSnaOjCUghRVLtFIhPZ0jzduJbWPea8qBaOeeB-L_PZ6...";
     Path    = "/New/pic.png";
 
     Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);

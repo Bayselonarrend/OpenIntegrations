@@ -32,14 +32,14 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID = "3086";
-    UserID = "866";
+    TaskID = "3216";
+    UserID = "918";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "82d42767006e9f06006b12e400000001000...";
-    TaskID = "3088";
+    Token  = "48573267006e9f06006b12e400000001000...";
+    TaskID = "3218";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);
 ```
@@ -51,8 +51,8 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 DelegateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "3038" \
-             --user 842 \
+             --task "3198" \
+             --user 906 \
              --token "***"
         ```
     </TabItem>
@@ -61,8 +61,8 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 DelegateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "3038" ^
-             --user 842 ^
+             --task "3198" ^
+             --user 906 ^
              --token "***"
         ```
     </TabItem>

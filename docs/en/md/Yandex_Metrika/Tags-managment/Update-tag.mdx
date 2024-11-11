@@ -31,13 +31,33 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    TagID = "313561";
+    TagID = "313591";
     Name  = "New tag title";
 
     Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika UpdateTag \
+             --token "***" \
+             --label "313565" \
+             --title "New tag title"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika UpdateTag ^
+             --token "***" ^
+             --label "313565" ^
+             --title "New tag title"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
