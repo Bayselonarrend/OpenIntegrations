@@ -55,6 +55,7 @@
   <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
+  <commonModules>CommonModule.OPI_S3</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
   <commonModules>CommonModule.OPI_Twitter</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
