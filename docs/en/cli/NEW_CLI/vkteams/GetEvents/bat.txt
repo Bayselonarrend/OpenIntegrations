@@ -1,4 +1,4 @@
 oint vkteams GetEvents ^
  --token "***" ^
- --last 217 ^
+ --last 220 ^
  --timeout 3
