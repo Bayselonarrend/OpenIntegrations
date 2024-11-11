@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    FileID = "16512";
+    FileID = "17292";
 
     Result = OPI_Bitrix24.DeleteFile(URL, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "82d42767006e9f06006b12e400000001000...";
-    FileID = "16514";
+    Token  = "48573267006e9f06006b12e400000001000...";
+    FileID = "17294";
 
     Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);

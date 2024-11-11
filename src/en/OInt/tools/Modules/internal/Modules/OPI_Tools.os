@@ -221,6 +221,108 @@ Function CreateConnection(Val Server, Val User = "", Val Password = "") Export
 
 EndFunction
 
+Function ExecuteRequest(Val Request, Val Connection, Val View, Val ResponseFile = "", Val FullResponse = False) Export
+
+    If ValueIsFilled(ResponseFile) Then
+        Response = Connection.CallHTTPMethod(View, Request, ResponseFile);
+    Else
+        Response = Connection.CallHTTPMethod(View, Request);
+    EndIf;
+
+    If ThisIsRedirection(Response) Then
+
+        URL = Response.Headers["Location"];
+
+        URLStructure = SplitURL(URL);
+        Server       = URLStructure["Server"];
+        Address      = URLStructure["Address"];
+
+        Connection = CreateConnection(Server);
+        Request.ResourceAddress = Address;
+
+        Response = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
+
+    Else
+        ProcessResponse(Response, FullResponse);
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
+Function CreateRequestWithBody(Val Address, Val Parameters, Val AdditionalHeaders, Val JSON) Export
+
+    DataType = ?(JSON, "application/json; charset=utf-8", "application/x-www-form-urlencoded; charset=utf-8");
+    Request = CreateRequest(Address, AdditionalHeaders, DataType);
+
+    SetRequestBody(Request, Parameters, JSON);
+
+    Return Request;
+
+EndFunction
+
+Function CreateMultipartRequest(Val Address
+    , Val Parameters
+    , Val Files
+    , Val AdditionalHeaders
+    , Val FileName
+    , Val ContentType) Export
+
+    Boundary      = StrReplace(String(New UUID), "-", "");
+    LineSeparator = Chars.CR + Chars.LF;
+    DataType = "multipart/form-data; boundary=" + Boundary;
+
+    Request = CreateRequest(Address, AdditionalHeaders, DataType);
+
+    TextRecord = New DataWriter(FileName
+        , TextEncoding.UTF8
+        , ByteOrder.LittleEndian
+        , ""
+        , False
+        , ""
+        , False);
+
+    WriteMultipartParameters(TextRecord, Boundary, Parameters);
+    WriteMultipartFiles(TextRecord, Boundary, ContentType, Files);
+
+    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
+    TextRecord.Close();
+
+    Request.SetBodyFileName(FileName);
+
+    Return Request
+
+EndFunction
+
+Function CreateMultipartRelatedRequest(Val Address, Val Files, Val JSON, Val AdditionalHeaders, Val FileName) Export
+
+    Boundary      = StrReplace(String(New UUID), "-", "");
+    LineSeparator = Chars.CR + Chars.LF;
+    DataType = "multipart/related; boundary=" + Boundary;
+
+    Request    = CreateRequest(Address, AdditionalHeaders, DataType);
+    TextRecord = New DataWriter(FileName
+        , TextEncoding.UTF8
+        , ByteOrder.LittleEndian
+        , ""
+        , False
+        , ""
+        , False);
+
+    WriteJSONMultipart(TextRecord, Boundary, JSON);
+    WriteRelatedFiles(TextRecord, Boundary, Files);
+
+    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
+    TextRecord.Close();
+
+    AddContentLength(Request);
+
+    Request.SetBodyFileName(FileName);
+
+    Return Request;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -660,33 +762,13 @@ Function ExecuteRequestWithBody(Val URL
         Parameters = New Structure;
     EndIf;
 
-    DataType = ?(JSON, "application/json; charset=utf-8", "application/x-www-form-urlencoded; charset=utf-8");
     URLStructure = SplitURL(URL);
     Server       = URLStructure["Server"];
     Address      = URLStructure["Address"];
 
-    Request    = CreateRequest(Address, AdditionalHeaders, DataType);
+    Request    = CreateRequestWithBody(Address, Parameters, AdditionalHeaders, JSON);
     Connection = CreateConnection(Server);
-
-    SetRequestBody(Request, Parameters, JSON);
-
-    If ValueIsFilled(ResponseFile) Then
-        Response = Connection.CallHTTPMethod(View, Request, ResponseFile);
-    Else
-        Response = Connection.CallHTTPMethod(View, Request);
-    EndIf;
-
-    If ThisIsRedirection(Response) Then
-        Response = ExecuteRequestWithBody(Response.Headers["Location"]
-            , View
-            , Parameters
-            , AdditionalHeaders
-            , JSON
-            , FullResponse
-            , ResponseFile);
-    Else
-        ProcessResponse(Response, FullResponse);
-    EndIf;
+    Response   = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
 
     Return Response;
 
@@ -710,18 +792,7 @@ Function ExecuteRequestWithBinaryData(Val URL
         Request.SetBodyFromBinary(Data);
     EndIf;
 
-    Response = Connection.CallHTTPMethod(View, Request);
-
-    If ThisIsRedirection(Response) Then
-        Response = ExecuteRequestWithBinaryData(Response.Headers["Location"]
-            , View
-            , Data
-            , AdditionalHeaders
-            , FullResponse
-            , DataType);
-    Else
-        ProcessResponse(Response, FullResponse);
-    EndIf;
+    Response = ExecuteRequest(Request, Connection, View, , FullResponse);
 
     Return Response;
 
@@ -744,17 +815,7 @@ Function ExecuteRequestWithoutBody(Val URL
     Request    = CreateRequest(Address, AdditionalHeaders);
     Connection = CreateConnection(Server);
 
-    If ValueIsFilled(ResponseFile) Then
-        Response = Connection.CallHTTPMethod(View, Request, ResponseFile);
-    Else
-        Response = Connection.CallHTTPMethod(View, Request);
-    EndIf;
-
-    If ThisIsRedirection(Response) Then
-        Response = ExecuteRequestWithoutBody(Response.Headers["Location"], View, Parameters, AdditionalHeaders, ResponseFile);
-    Else
-        ProcessResponse(Response);
-    EndIf;
+    Response = ExecuteRequest(Request, Connection, View, ResponseFile);
 
     Return Response;
 
@@ -776,54 +837,14 @@ Function ExecuteMultipartRequest(Val URL
         Files = New Map;
     EndIf;
 
-    Redirection   = 300;
-    Error         = 400;
-    Boundary      = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.CR + Chars.LF;
-    DataType = "multipart/form-data; boundary=" + Boundary;
-    URLStructure  = SplitURL(URL);
-    Server        = URLStructure["Server"];
-    Address       = URLStructure["Address"];
+    URLStructure = SplitURL(URL);
+    Server       = URLStructure["Server"];
+    Address      = URLStructure["Address"];
+    RequestBody  = GetTempFileName();
 
-    Request    = CreateRequest(Address, AdditionalHeaders, DataType);
+    Request    = CreateMultipartRequest(Address, Parameters, Files, AdditionalHeaders, RequestBody, ContentType);
     Connection = CreateConnection(Server);
-
-    RequestBody = GetTempFileName();
-    TextRecord  = New DataWriter(RequestBody
-        , TextEncoding.UTF8
-        , ByteOrder.LittleEndian
-        , ""
-        , False
-        , ""
-        , False);
-
-    WriteMultipartParameters(TextRecord, Boundary, Parameters);
-    WriteMultipartFiles(TextRecord, Boundary, ContentType, Files);
-
-    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
-    TextRecord.Close();
-
-    Request.SetBodyFileName(RequestBody);
-
-    If ValueIsFilled(ResponseFile) Then
-        Response = Connection.CallHTTPMethod(View, Request, ResponseFile);
-    Else
-        Response = Connection.CallHTTPMethod(View, Request);
-    EndIf;
-
-    ThisIsRedirection = Response.StatusCode >= Redirection And Response.StatusCode < Error;
-
-    If ThisIsRedirection Then
-        Response = ExecuteMultipartRequest(Response.Headers["Location"]
-            , View
-            , Parameters
-            , Files
-            , ContentType
-            , AdditionalHeaders
-            , ResponseFile);
-    Else
-        ProcessResponse(Response);
-    EndIf;
+    Response   = ExecuteRequest(Request, Connection, View, ResponseFile);
 
     Request    = Undefined;
     TextRecord = Undefined;
@@ -840,55 +861,15 @@ Function ExecuteMultipartRelatedRequest(Val URL
     , Val AdditionalHeaders = ""
     , Val ResponseFile      = Undefined)
 
-    Redirection   = 300;
-    Error         = 400;
-    Boundary      = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.CR + Chars.LF;
-    DataType = "multipart/related; boundary=" + Boundary;
-    URLStructure  = SplitURL(URL);
-    Server        = URLStructure["Server"];
-    Address       = URLStructure["Address"];
+    URLStructure = SplitURL(URL);
+    Server       = URLStructure["Server"];
+    Address      = URLStructure["Address"];
+    RequestBody  = GetTempFileName();
 
-    Request    = CreateRequest(Address, AdditionalHeaders, DataType);
+    Request    = CreateMultipartRelatedRequest(Address, Files, JSON, AdditionalHeaders, RequestBody);
     Connection = CreateConnection(Server);
 
-    RequestBody = GetTempFileName();
-    TextRecord  = New DataWriter(RequestBody
-        , TextEncoding.UTF8
-        , ByteOrder.LittleEndian
-        , ""
-        , False
-        , ""
-        , False);
-
-    WriteJSONMultipart(TextRecord, Boundary, JSON);
-    WriteRelatedFiles(TextRecord, Boundary, Files);
-
-    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
-    TextRecord.Close();
-
-    AddContentLength(Request);
-
-    Request.SetBodyFileName(RequestBody);
-
-    If ValueIsFilled(ResponseFile) Then
-        Response = Connection.CallHTTPMethod(View, Request, ResponseFile);
-    Else
-        Response = Connection.CallHTTPMethod(View, Request);
-    EndIf;
-
-    ThisIsRedirection = Response.StatusCode >= Redirection And Response.StatusCode < Error;
-
-    If ThisIsRedirection Then
-        Response = ExecuteMultipartRelatedRequest(Response.Headers["Location"]
-            , View
-            , JSON
-            , Files
-            , AdditionalHeaders
-            , ResponseFile);
-    Else
-        ProcessResponse(Response);
-    EndIf;
+    Response = ExecuteRequest(Request, Connection, View, ResponseFile);
 
     Request    = Undefined;
     TextRecord = Undefined;

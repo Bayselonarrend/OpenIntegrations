@@ -31,12 +31,12 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    FileID = "16514";
+    FileID = "17294";
 
     Result = OPI_Bitrix24.GetFileInformation(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "82d42767006e9f06006b12e400000001000...";
+    Token = "48573267006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFileInformation(URL, FileID, Token);
 ```
@@ -48,7 +48,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
         ```bash
             oint bitrix24 GetFileInformation \
              --url "b24-ar17wx.bitrix24.by" \
-             --fileid 16174 \
+             --fileid 17174 \
              --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
         ```batch
             oint bitrix24 GetFileInformation ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fileid 16174 ^
+             --fileid 17174 ^
              --token "***"
         ```
     </TabItem>
