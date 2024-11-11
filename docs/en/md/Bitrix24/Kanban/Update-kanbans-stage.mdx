@@ -36,7 +36,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 ```bsl title="1C:Enterprise/OneScript code example"
     Name    = "New stage name";
     Color   = "000000";
-    StageID = "1106";
+    StageID = "1158";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
 
@@ -44,10 +44,10 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 
     Name    = "New stage name 2";
     Color   = "000000";
-    StageID = "1108";
+    StageID = "1160";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "82d42767006e9f06006b12e400000001000...";
+    Token = "48573267006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);
 ```
@@ -60,7 +60,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
             oint bitrix24 UpdateKanbansStage \
              --url "b24-ar17wx.bitrix24.by" \
              --title "New stage name 2" \
-             --stage 1088 \
+             --stage 1152 \
              --color "000000" \
              --prevstage 6 \
              --admin true \
@@ -73,7 +73,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
             oint bitrix24 UpdateKanbansStage ^
              --url "b24-ar17wx.bitrix24.by" ^
              --title "New stage name 2" ^
-             --stage 1088 ^
+             --stage 1152 ^
              --color "000000" ^
              --prevstage 6 ^
              --admin true ^

@@ -1,5 +1,5 @@
 ﻿    Original = "/New/pic.png";
     Copy     = "/New/pic_copy.png";
-    Token    = "sl.CAA7fvu74rYlykq37bYxZ1FdcMkoc31cOuQ4OJGxbuaMQ2ba2MmJBZ2k-Q-B0_3-wwPCWd9UGi...";
+    Token    = "sl.CAirrApMP3MmqfxAgYhlitMkH3J7CmcSnaOjCUghRVLtFIhPZ0jzduJbWPea8qBaOeeB-L_PZ6...";
 
     Result = OPI_Dropbox.CopyObject(Token, Original, Copy);

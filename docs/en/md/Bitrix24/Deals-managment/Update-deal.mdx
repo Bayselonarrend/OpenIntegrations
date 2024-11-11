@@ -37,7 +37,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("OPPORTUNITY" , 50000);
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    DealID = "1280";
+    DealID = "1384";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
@@ -45,8 +45,8 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "82d42767006e9f06006b12e400000001000...";
-    DealID = "1282";
+    Token  = "48573267006e9f06006b12e400000001000...";
+    DealID = "1386";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
 ```
@@ -60,7 +60,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
             
             oint bitrix24 UpdateDeal \
              --url "b24-ar17wx.bitrix24.by" \
-             --deal 1242 \
+             --deal 1370 \
              --fields "{'TITLE':'Future deal in RUB','CURRENCY_ID':'RUB','OPPORTUNITY':50000,'BEGINDATE':'2025-01-01'}" \
              --token "***"
         ```
@@ -72,7 +72,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
             
             oint bitrix24 UpdateDeal ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --deal 1242 ^
+             --deal 1370 ^
              --fields "{'TITLE':'Future deal in RUB','CURRENCY_ID':'RUB','OPPORTUNITY':50000,'BEGINDATE':'2025-01-01'}" ^
              --token "***"
         ```

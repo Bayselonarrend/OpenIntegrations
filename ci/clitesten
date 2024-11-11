@@ -71,6 +71,11 @@ pipeline {
                 test_ozon()
              }
           }
+          stage('s3'){
+             steps{
+                test_s3()
+             }
+          }
           stage('slack'){
              steps{
                 test_slack()
@@ -1603,6 +1608,12 @@ def test_ozon(){
 }
 
 
+def test_s3(){
+					
+
+}
+
+
 def test_slack(){
 					
 
@@ -2532,6 +2543,7 @@ test_google()
 test_neocities()
 test_notion()
 test_ozon()
+test_s3()
 test_slack()
 test_telegram()
 test_twitter()

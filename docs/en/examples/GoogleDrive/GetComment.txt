@@ -1,5 +1,5 @@
-﻿    Token      = "ya29.a0AeDClZCyyq2tOx0JRD_XVIaMyzhn2uw2tXz5q_8IavFpdrB2btMzTnCCZO3k0K-cq5rv7dXqrg2-ddLdFJqrq0HqLeTkWJkeFqI6iaoCX...";
-    Identifier = "1g5oQGNJXwcA4L3f6ug0vuw95AKhI7ZJQ";
-    CommentID  = "AAABX8lGj_k";
+﻿    Token      = "ya29.a0AeDClZCVfxXCE-JAcPJed8p82WT_K0Jtttw0mCwT02IVORX3qB2e7AM-8OQCJa8ImTUNCA5F--f_CULx1mArjs-Se30Fonbdtroe7NaOe...";
+    Identifier = "1tc0u2Kavc465COwYynweCKKFH9-ZaCXX";
+    CommentID  = "AAABYUyRyWk";
 
     Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);

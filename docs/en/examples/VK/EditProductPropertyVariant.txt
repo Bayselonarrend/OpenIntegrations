@@ -1,7 +1,7 @@
 ﻿    Parameters = GetVKParameters();
 
-    Property = "947";
-    Option   = "3057";
+    Property = "977";
+    Option   = "3109";
     Value    = "New variant name";
 
     Result = OPI_VK.EditProductPropertyVariant(Value

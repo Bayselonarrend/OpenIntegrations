@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/2db102e9-4a76-4abc-8f67-e94d3ac9c476.png";
+    Path  = "/cd46bfb0-1a39-4327-b8a6-31cf8f717caa.png";
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
