@@ -1,5 +1,5 @@
 ﻿    Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "I000bX89sYi4BMFi6YK4pg6727c7401bd";
+    FileID = "I000bUV8sweEAf2AhDjFjo673248761bd";
 
     Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
