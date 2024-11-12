@@ -1,0 +1,10 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    Авторизация = OPI_S3.ПолучитьСтруктуруАвторизации(URL, AccessKey, SecretKey, Region);
+
+    Имя = "newbucket2";
+
+    Результат = OPI_S3.СоздатьБакет(Имя, Авторизация);

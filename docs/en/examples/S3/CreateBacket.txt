@@ -1,0 +1,10 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "newbucket2";
+
+    Result = OPI_S3.CreateBacket(Name, Authorization);

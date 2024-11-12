@@ -2101,6 +2101,22 @@ EndProcedure
 
 #EndRegion
 
+#Region S3
+
+Procedure AWS_BucketsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("S3_AccessKey", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("S3_SecretKey", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
+
+    S3_CreateBacket(TestParameters);
+    S3_DeleteBucket(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -14585,6 +14601,50 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList (filter))", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounters(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region S3
+
+Procedure S3_CreateBacket(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "newbucket2";
+
+    Result = OPI_S3.CreateBacket(Name, Authorization);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBacket", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_DeleteBucket(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "newbucket2";
+
+    Result = OPI_S3.DeleteBucket(Name, Authorization);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucket", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 
