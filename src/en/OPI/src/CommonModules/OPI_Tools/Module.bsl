@@ -564,6 +564,25 @@ Function CollectionFieldExists(Val Collection, Val Field) Export
 
 EndFunction
 
+Function FindMissingCollectionFields(Val Collection, Val Fields) Export
+
+    MissingFieldsArray = New Array;
+
+    For Each CollectionItem In Collection Do
+
+        CurrentKey = CollectionItem.Key;
+        Exists     = CollectionFieldExists(Collection, CurrentKey);
+
+        If Not Exists Then
+            MissingFieldsArray.Add(CurrentKey);
+        EndIf;
+
+    EndDo;
+
+    Return MissingFieldsArray;
+
+EndFunction
+
 Function ClearCollectionRecursively(Val Collection) Export
 
     ValeType = TypeOf(Collection);
@@ -612,6 +631,16 @@ Function ClearCollectionRecursively(Val Collection) Export
     EndIf;
 
     Return Collection;
+
+EndFunction
+
+Function ISOTimestamp(Val Date) Export
+
+    Label = Left(XMLString(Date), 19) + "Z";
+    Label = StrReplace(Label, "-", "");
+    Label = StrReplace(Label, ":", "");
+
+    Return Label;
 
 EndFunction
 
