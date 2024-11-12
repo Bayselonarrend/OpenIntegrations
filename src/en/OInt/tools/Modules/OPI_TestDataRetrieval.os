@@ -67,6 +67,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Neocities"      , 5);
     Sections.Insert("CDEK"           , 5);
     Sections.Insert("YandexMetrika"  , 5);
+    Sections.Insert("S3"             , 5);
 
     Return Sections;
 
@@ -97,6 +98,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Neocities"      , StandardDependencies);
     Sections.Insert("CDEK"           , StandardDependencies);
     Sections.Insert("YandexMetrika"  , StandardDependencies);
+    Sections.Insert("S3"             , StandardDependencies);
 
     Return Sections;
 
@@ -123,6 +125,7 @@ Function GetTestTable() Export
     Neocities = "Neocities";
     Cdek      = "CDEK";
     Metrika   = "YandexMetrika";
+    S3_       = "S3";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -251,6 +254,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
     NewTest(TestTable, "YaMetrika_TagsManagment"              , "Tags managment"                  , Metrika);
     NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
+    NewTest(TestTable, "AWS_BucketsManagment"                 , "Buckets managment"               , S3_);
 
     Return TestTable;
 
@@ -1964,6 +1968,13 @@ EndProcedure
 
 Procedure Check_MetrikaCounters(Val Result) Export
     ExpectsThat(Result["counters"]).ИмеетТип("Array").Заполнено();
+EndProcedure
+
+Procedure Check_S3Success(Val Result) Export
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
 EndProcedure
 
 #EndRegion
