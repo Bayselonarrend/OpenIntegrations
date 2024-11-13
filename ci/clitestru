@@ -1611,6 +1611,22 @@ def test_ozon(){
 def test_s3(){
 					
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСтруктуруДанных --url "test" --access "test" --secret "test" --region "test" --service "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросБезТела --method "test" --data "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 СоздатьБакет --name "test" --data "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьБакет --name "test" --data "test" --debug --test '
+               }
+
 }
 
 
