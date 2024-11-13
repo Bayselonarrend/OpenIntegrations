@@ -14615,7 +14615,7 @@ Procedure S3_CreateBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+    Authorization = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Name = "newbucket2";
 
@@ -14635,7 +14635,7 @@ Procedure S3_DeleteBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+    Authorization = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Name = "newbucket2";
 

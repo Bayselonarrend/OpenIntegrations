@@ -3,7 +3,7 @@
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
-    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+    Authorization = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Name = "newbucket2";
 
