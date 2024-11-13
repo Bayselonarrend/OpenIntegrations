@@ -3,7 +3,7 @@
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
-    Авторизация = OPI_S3.ПолучитьСтруктуруАвторизации(URL, AccessKey, SecretKey, Region);
+    Авторизация = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Имя = "newbucket2";
 

@@ -391,29 +391,6 @@ Function GetFilePath(Val Path) Export
 
 EndFunction
 
-Function IsOneScript() Export
-
-    Try
-
-        Response = False;
-
-        // BSLLS:UnusedLocalVariable-off
-
-        //@skip-check module-unused-local-variable
-        Check = New OpenSSLSecureConnection();
-
-        // BSLLS:UnusedLocalVariable-on
-
-    Except
-
-        Response = True;
-
-    EndTry;
-
-    Return Response;
-
-EndFunction
-
 Procedure ParameterToCollection(Parameter, Collection) Export
 
     Value = GetParameter(Parameter);
@@ -2199,7 +2176,7 @@ EndProcedure
 
 Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
-    If Not IsOneScript() Then
+    If Not OPI_Tools.IsOneScript() Then
         Return;
     EndIf;
 
