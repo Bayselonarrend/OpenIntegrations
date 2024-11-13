@@ -2110,7 +2110,7 @@ Procedure AWS_BucketsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("S3_SecretKey", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
 
-    S3_CreateBacket(TestParameters);
+    S3_CreateBucket(TestParameters);
     S3_DeleteBucket(TestParameters);
 
 EndProcedure
@@ -14608,7 +14608,7 @@ EndProcedure
 
 #Region S3
 
-Procedure S3_CreateBacket(FunctionParameters)
+Procedure S3_CreateBucket(FunctionParameters)
 
     URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
@@ -14619,11 +14619,11 @@ Procedure S3_CreateBacket(FunctionParameters)
 
     Name = "newbucket2";
 
-    Result = OPI_S3.CreateBacket(Name, Authorization);
+    Result = OPI_S3.CreateBucket(Name, Authorization);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateBacket", "S3");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure

@@ -1,0 +1,38 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get basic data structure
+ Returns the basic data for request in structured form
+
+
+
+`Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL: domain for common methods or full URL with parameters for methods of direct request sending |
+  | AccessKey | --access | String | &#x2714; | Access key for authorization |
+  | SecretKey | --secret | String | &#x2714; | Secret key for authorization |
+  | Region | --region | String | &#x2714; | Service region |
+  | Service | --service | String | &#x2716; | Type of service, if different from s3 |
+
+  
+  Returns:  Structure of KeyAndValue - Basic request data structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
