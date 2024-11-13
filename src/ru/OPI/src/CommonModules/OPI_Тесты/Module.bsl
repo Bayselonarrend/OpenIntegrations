@@ -14615,7 +14615,7 @@
     SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
-    Авторизация = OPI_S3.ПолучитьСтруктуруАвторизации(URL, AccessKey, SecretKey, Region);
+    Авторизация = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Имя = "newbucket2";
 
@@ -14635,7 +14635,7 @@
     SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
-    Авторизация = OPI_S3.ПолучитьСтруктуруАвторизации(URL, AccessKey, SecretKey, Region);
+    Авторизация = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Имя = "newbucket2";
 
