@@ -215,7 +215,7 @@ Function CreateConnection(Val Server, Val Safe = True, Val User = "", Val Passwo
     If Safe Then
 
         If IsOneScript() Then
-            Connection    = New HTTPConnection(Server, 443, User, Password, , 3000);
+            Connection = New HTTPConnection(Server, 443, User, Password, , 3000);
         Else
             SSL        = New OpenSSLSecureConnection;
             Connection = New HTTPConnection(Server, 443, User, Password, , 3000, SSL);
