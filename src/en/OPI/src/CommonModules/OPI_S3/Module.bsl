@@ -45,7 +45,19 @@
 
 #Region CommonMethods
 
-Function GetAuthStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
+// Get basic data structure
+// Returns the basic data for request in structured form
+//
+// Parameters:
+// URL - String - URL: domain for common methods or full URL with parameters for methods of direct request sending - url
+// AccessKey - String - Access key for authorization - access
+// SecretKey - String - Secret key for authorization - secret
+// Region - String - Service region - region
+// Service - String - Type of service, if different from s3 - service
+//
+// Returns:
+// Structure of KeyAndValue - Basic request data structure
+Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
 
     AuthStructure = New Structure;
     OPI_Tools.AddField("URL"      , URL      , "String", AuthStructure);
@@ -58,16 +70,29 @@ Function GetAuthStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val
 
 EndFunction
 
-Function SendRequestWithoutBody(Val URL, Val Authorization, Val Method) Export
+// Send request without body
+// Sends a simple http request without a body
+//
+// Parameters:
+// Method - String - HTTP method - method
+// BasicData - String - Basic request data (with full URL). See GetBasicDataStructure - data
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function SendRequestWithoutBody(Val Method, Val BasicData) Export
+
+    CheckBasicData(BasicData);
+
+    URL = BasicData["URL"];
 
     URLStructure = OPI_Tools.SplitURL(URL);
-    Server    = URLStructure["Server"];
-    Address   = URLStructure["Address"];
+    Server       = URLStructure["Server"];
+    Address      = URLStructure["Address"];
 
     Request    = OPI_Tools.CreateRequest(Address);
     Connection = OPI_Tools.CreateConnection(Server);
 
-    AuthorizationHeader = CreateAuthorizationHeader(Authorization, Request, Connection, Method);
+    AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
 
     Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
@@ -81,16 +106,34 @@ EndFunction
 
 #Region BucketsManagment
 
-Function CreateBacket(Val Name, Val Authorization) Export
+// Create bucket
+// Creates a new bucket with the specified name
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - String - Basic request data. See GetBasicDataStructure - data
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function CreateBucket(Val Name, Val BasicData) Export
 
-    Response = BucketManagment(Name, Authorization, "PUT");
+    Response = BucketManagment(Name, BasicData, "PUT");
     Return Response;
 
 EndFunction
 
-Function DeleteBucket(Val Name, Val Authorization) Export
+// Delete bucket
+// Deletes the bucket by name
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - String - Basic request data. See GetBasicDataStructure - data
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function DeleteBucket(Val Name, Val BasicData) Export
 
-    Response = BucketManagment(Name, Authorization, "DELETE");
+    Response = BucketManagment(Name, BasicData, "DELETE");
     Return Response;
 
 EndFunction
@@ -104,24 +147,6 @@ EndFunction
 #Region Authorization
 
 Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connection, Val Method)
-
-    OPI_TypeConversion.GetCollection(DataStructure);
-
-    If TypeOf(DataStructure) = Type("Array") Then
-        Raise "Error of obtaining authorization data from the structure";
-    EndIf;
-
-    RequiredFieldsArray = New Array;
-    RequiredFieldsArray.Add("AccessKey");
-    RequiredFieldsArray.Add("SecretKey");
-    RequiredFieldsArray.Add("Region");
-    RequiredFieldsArray.Add("Service");
-
-    MissingFields = OPI_Tools.FindMissingCollectionFields(DataStructure, RequiredFieldsArray);
-
-    If MissingFields.Count() > 0 Then
-        Raise "The required authorization data is missing: " + StrConcat(MissingFields, ", ");
-    EndIf;
 
     AccessKey = DataStructure["AccessKey"];
     SecretKey = DataStructure["SecretKey"];
@@ -151,7 +176,7 @@ EndFunction
 
 Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate)
 
-    SecretKey     = GetBinaryDataFromString("AWS4" + SecretKey);
+    SecretKey  = GetBinaryDataFromString("AWS4" + SecretKey);
     DateData = GetBinaryDataFromString(Format(CurrentDate, "DF=yyyyMMdd;"));
     Region     = GetBinaryDataFromString(Region);
     Service    = GetBinaryDataFromString(Service);
@@ -180,7 +205,7 @@ Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
 
     RequestTemplate = "";
 
-    For N            = 1 To 6 Do
+    For N = 1 To 6 Do
         RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = 6, "", Chars.LF);
     EndDo;
 
@@ -230,11 +255,11 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
     CanonicalRequest = Lower(GetHexStringFromBinaryData(CanonicalRequest));
 
-    For N           = 1 To 4 Do
+    For N = 1 To 4 Do
         StringTemplate = StringTemplate + "%" + String(N) + ?(N = 4, "", Chars.LF);
     EndDo;
 
-    SignatureString    = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
+    SignatureString = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
     SignatureString = GetBinaryDataFromString(SignatureString);
 
     Return SignatureString;
@@ -260,7 +285,7 @@ Function GetParamsString(Val URI)
 
     ParamsStart = StrFind(URI, "?");
 
-    If ParamsStart   = 0 Then
+    If ParamsStart      = 0 Then
         ParameterString = "";
     Else
         URILength       = StrLen(URI);
@@ -369,7 +394,7 @@ Function BucketManagment(Val Name, Val Authorization, Val Method)
     URL = GetServiceURL(Authorization);
     URL = URL + Name;
 
-    Response = SendRequestWithoutBody(URL, Authorization, Method);
+    Response = SendRequestWithoutBody(Method, Authorization);
 
     Return Response;
 
@@ -406,6 +431,29 @@ Function SupportedResponse(Val Response)
         Or TypeOf(Response) = Type("Array");
 
 EndFunction
+
+Procedure CheckBasicData(BasicData)
+
+    OPI_TypeConversion.GetCollection(BasicData);
+
+    If TypeOf(BasicData) = Type("Array") Then
+        Raise "Error of obtaining authorization data from the structure";
+    EndIf;
+
+    RequiredFieldsArray = New Array;
+    RequiredFieldsArray.Add("AccessKey");
+    RequiredFieldsArray.Add("SecretKey");
+    RequiredFieldsArray.Add("Region");
+    RequiredFieldsArray.Add("Service");
+    RequiredFieldsArray.Add("URL");
+
+    MissingFields = OPI_Tools.FindMissingCollectionFields(BasicData, RequiredFieldsArray);
+
+    If MissingFields.Count() > 0 Then
+        Raise "The required authorization data is missing: " + StrConcat(MissingFields, ", ");
+    EndIf;
+
+EndProcedure
 
 #EndRegion
 

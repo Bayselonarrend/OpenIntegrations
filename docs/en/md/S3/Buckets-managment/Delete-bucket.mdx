@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete bucket
+ Deletes the bucket by name
+
+
+
+`Function DeleteBucket(Val Name, Val BasicData) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Bucket name |
+  | BasicData | --data | String | &#x2714; | Basic request data. See GetBasicDataStructure |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    Authorization = OPI_S3.GetAuthStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "newbucket2";
+
+    Result = OPI_S3.DeleteBucket(Name, Authorization);
+```
+ 
+
+
+
+

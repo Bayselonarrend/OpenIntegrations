@@ -1611,6 +1611,22 @@ def test_ozon(){
 def test_s3(){
 					
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetBasicDataStructure --url "test" --access "test" --secret "test" --region "test" --service "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 SendRequestWithoutBody --method "test" --data "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 CreateBucket --name "test" --data "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteBucket --name "test" --data "test" --debug --test '
+               }
+
 }
 
 
