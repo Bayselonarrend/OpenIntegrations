@@ -81,7 +81,7 @@ Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     Address      = URLStructure["Address"];
 
     Request    = OPI_Tools.CreateRequest(Address, , DataType);
-    Connection = OPI_Tools.CreateConnection(Server, AppKey, AppSecret);
+    Connection = OPI_Tools.CreateConnection(Server, True, AppKey, AppSecret);
 
     ParameterString = OPI_Tools.RequestParametersToString(Parameters);
     Data            = Right(ParameterString, StrLen(ParameterString) - 1);

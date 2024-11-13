@@ -88,9 +88,10 @@ Function SendRequestWithoutBody(Val Method, Val BasicData) Export
     URLStructure = OPI_Tools.SplitURL(URL);
     Server       = URLStructure["Server"];
     Address      = URLStructure["Address"];
+    Safe         = URLStructure["Safe"];
 
     Request    = OPI_Tools.CreateRequest(Address);
-    Connection = OPI_Tools.CreateConnection(Server);
+    Connection = OPI_Tools.CreateConnection(Server, Safe);
 
     AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
@@ -362,6 +363,8 @@ Function GetServiceURL(Val Authorization)
 
     URL = Authorization["URL"];
 
+    OPI_TypeConversion.GetLine(URL);
+
     If Not StrEndsWith(URL, "/") Then
         URL = URL + "/";
     EndIf;
@@ -387,14 +390,21 @@ EndFunction
 
 #Region Miscellaneous
 
-Function BucketManagment(Val Name, Val Authorization, Val Method)
+Function BucketManagment(Val Name, Val BasicData, Val Method)
 
     OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetCollection(BasicData);
 
-    URL = GetServiceURL(Authorization);
+    If TypeOf(BasicData) = Type("Array") Then
+        Raise "Error of obtaining authorization data from the structure";
+    EndIf;
+
+    URL = GetServiceURL(BasicData);
     URL = URL + Name;
 
-    Response = SendRequestWithoutBody(Method, Authorization);
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody(Method, BasicData);
 
     Return Response;
 
