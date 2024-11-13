@@ -684,7 +684,51 @@ Function IsOneScript() Export
 
 EndFunction
 
+Function ProcessXML(XML) Export
+
+    XMLInitialProcessing(XML);
+
+    ReturnValue = New Map;
+
+    WHile XML.Read() Do
+
+        NodeType = XML.NodeType;
+        NodeName = XML.Name;
+
+        ExistingValue = ReturnValue.Get(NodeName);
+
+        If NodeType = XMLNodeType.StartElement Then
+
+            If ExistingValue = Undefined Then
+                ReturnValue.Insert(NodeName, ProcessXML(XML));
+            Else
+                ValueToArray(ExistingValue);
+                ExistingValue.Add(ProcessXML(XML));
+                ReturnValue.Insert(NodeName, ExistingValue);
+            EndIf;
+
+        Else
+
+            If Not NodeType = XMLNodeType.EndElement Then
+                ReturnValue = XML.Value;
+                XML.Read();
+            EndIf;
+
+            Break;
+
+        EndIf;
+
+    EndDo;
+
+    Return ReturnValue;
+
+EndFunction
+
 Procedure ValueToArray(Value) Export
+
+    If TypeOf(Value) = Type("Array") Then
+        Return;
+    EndIf;
 
     Value_ = New Array;
     Value_.Add(Value);
@@ -1264,6 +1308,16 @@ Procedure RemoveEmptyArrayItems(Val Collection, OutputCollection)
         EndIf;
 
     EndDo;
+
+EndProcedure
+
+Procedure XMLInitialProcessing(XML)
+
+    If Not TypeOf(XML) = Type("XMLReader") Then
+        XML_           = XML;
+        XML            = New XMLReader;
+        XML.SetString(XML_);
+    EndIf;
 
 EndProcedure
 

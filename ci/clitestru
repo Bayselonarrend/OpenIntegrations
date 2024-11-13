@@ -1616,15 +1616,19 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросБезТела --method "test" --data "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросБезТела --method "test" --data "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 СоздатьБакет --name "test" --data "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 СоздатьБакет --name "test" --data "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьБакет --name "test" --data "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьБакет --name "test" --data "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСписокБакетов --data "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
                }
 
 }
