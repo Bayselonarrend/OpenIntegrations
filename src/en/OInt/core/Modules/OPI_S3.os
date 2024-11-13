@@ -75,11 +75,12 @@ EndFunction
 //
 // Parameters:
 // Method - String - HTTP method - method
-// BasicData - String - Basic request data (with full URL). See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - data
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function SendRequestWithoutBody(Val Method, Val BasicData) Export
+Function SendRequestWithoutBody(Val Method, Val BasicData, Val Headers = Undefined) Export
 
     CheckBasicData(BasicData);
 
@@ -92,6 +93,8 @@ Function SendRequestWithoutBody(Val Method, Val BasicData) Export
 
     Request    = OPI_Tools.CreateRequest(Address);
     Connection = OPI_Tools.CreateConnection(Server, Safe);
+
+    AddAdditionalHeaders(Request, Headers);
 
     AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
@@ -110,15 +113,19 @@ EndFunction
 // Create bucket
 // Creates a new bucket with the specified name
 //
+// Note
+// Method at AWS documentation: [CreateBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+//
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - String - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function CreateBucket(Val Name, Val BasicData) Export
+Function CreateBucket(Val Name, Val BasicData, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, "PUT");
+    Response = BucketManagment(Name, BasicData, "PUT", Headers);
     Return Response;
 
 EndFunction
@@ -126,15 +133,57 @@ EndFunction
 // Delete bucket
 // Deletes the bucket by name
 //
+// Note
+// Method at AWS documentation: [DeleteBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+//
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - String - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function DeleteBucket(Val Name, Val BasicData) Export
+Function DeleteBucket(Val Name, Val BasicData, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, "DELETE");
+    Response = BucketManagment(Name, BasicData, "DELETE", Headers);
+    Return Response;
+
+EndFunction
+
+// Get buckets list
+// Gets a list of buckets. It is possible to use filters if they are provided by your service
+//
+// Note
+// Method at AWS documentation: [ListBuckets](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
+//
+// Parameters:
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Prefix - String - Filtering by the beginning of the name, if necessary - prefix
+// Region - String - Selection by bucket region, if necessary - region
+// PageToken - String - Page token if pagination is used - ctoken
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function GetBucketsList(Val BasicData
+    , Val Prefix = ""
+    , Val Region = ""
+    , Val PageToken = ""
+    , Val Headers = Undefined) Export
+
+    Parameters = New Map;
+    OPI_Tools.AddField("bucket-region"     , Region   , "String", Parameters);
+    OPI_Tools.AddField("continuation-token", PageToken, "String", Parameters);
+    OPI_Tools.AddField("max-buckets"       , 250      , "String", Parameters);
+    OPI_Tools.AddField("prefix"            , Prefix   , "String", Parameters);
+
+    URL = GetServiceURL(BasicData);
+    URL = URL + OPI_Tools.RequestParametersToString(Parameters);
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
     Return Response;
 
 EndFunction
@@ -207,12 +256,14 @@ Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
     RequestTemplate = "";
 
     For N = 1 To 6 Do
+
         RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = 6, "", Chars.LF);
+
     EndDo;
 
     Method          = Upper(Method);
     URIString       = GetURIString(Request);
-    ParameterString = GetParamsString(URIString);
+    ParameterString = GetParamsString(Request);
     HeadersString   = GetHeadersString(Request);
     KeysString      = GetHeadersKeysString(Request);
 
@@ -282,8 +333,9 @@ Function GetURIString(Val Request)
 
 EndFunction
 
-Function GetParamsString(Val URI)
+Function GetParamsString(Val Request)
 
+    URI         = Request.ResourceAddress;
     ParamsStart = StrFind(URI, "?");
 
     If ParamsStart      = 0 Then
@@ -359,9 +411,15 @@ Function GetHeadersKeysString(Val Request)
 
 EndFunction
 
-Function GetServiceURL(Val Authorization)
+Function GetServiceURL(Val BasicData)
 
-    URL = Authorization["URL"];
+    OPI_TypeConversion.GetCollection(BasicData);
+
+    If TypeOf(BasicData) = Type("Array") Then
+        Raise "Error of obtaining authorization data from the structure";
+    EndIf;
+
+    URL = BasicData["URL"];
 
     OPI_TypeConversion.GetLine(URL);
 
@@ -390,46 +448,49 @@ EndFunction
 
 #Region Miscellaneous
 
-Function BucketManagment(Val Name, Val BasicData, Val Method)
+Function BucketManagment(Val Name, Val BasicData, Val Method, Val Headers)
 
     OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetCollection(BasicData);
-
-    If TypeOf(BasicData) = Type("Array") Then
-        Raise "Error of obtaining authorization data from the structure";
-    EndIf;
 
     URL = GetServiceURL(BasicData);
     URL = URL + Name;
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody(Method, BasicData);
+    Response = SendRequestWithoutBody(Method, BasicData, Headers);
 
     Return Response;
 
 EndFunction
 
-Function FormResponse(Val Response)
-
-    ResponseTemplate = New Structure();
+Function FormResponse(Val Response, Val ExpectedBinary = False)
 
     Status = Response.StatusCode;
-    OPI_Tools.ProcessResponse(Response);
 
-    If TypeOf(Response) = Type("BinaryData") Then
-        Response        = ПолучитьСтрокуИзДвоичныхДанных(Response);
-    EndIf;
+    If Not ExpectedBinary Or Status > 299 Then
 
-    If SupportedResponse(Response) Then
-        ResponseTemplate.Insert("message", Response);
+        ResponseBody = Response.GetBodyAsString();
+        ResponseBody = TrimAll(ResponseBody);
+
+        If ValueIsFilled(ResponseBody) Then
+
+            Try
+                ResponseData = OPI_Tools.ProcessXML(ResponseBody);
+            Except
+                ResponseData = New Structure("notXMLMessage", ResponseBody);
+            EndTry;
+
+        Else
+            ResponseData = New Structure;
+        EndIf;
+
+        ResponseData = New Structure("status,response", Status, ResponseData);
+
     Else
-        ResponseTemplate.Insert("message", "Unsupported message");
+        ResponseData = Response.ПолучитьТелоКакДвоичныеДанные();
     EndIf;
 
-    ResponseTemplate.Insert("status", Status);
-
-    Return ResponseTemplate;
+    Return ResponseData;
 
 EndFunction
 
@@ -462,6 +523,24 @@ Procedure CheckBasicData(BasicData)
     If MissingFields.Count() > 0 Then
         Raise "The required authorization data is missing: " + StrConcat(MissingFields, ", ");
     EndIf;
+
+EndProcedure
+
+Procedure AddAdditionalHeaders(Request, Val Headers)
+
+    If Not ValueIsFilled(Headers) Then
+        Return;
+    EndIf;
+
+    OPI_TypeConversion.GetCollection(Headers);
+
+    If TypeOf(Headers) = Type("Array") Then
+        Raise "Error setting additional headers";
+    EndIf;
+
+    For Each Title In Headers Do
+        Request.Headers.Insert(Title.Key, Title.Value);
+    EndDo;
 
 EndProcedure
 

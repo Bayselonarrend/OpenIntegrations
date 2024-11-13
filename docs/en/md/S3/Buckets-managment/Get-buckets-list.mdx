@@ -1,21 +1,23 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Delete bucket
- Deletes the bucket by name
+# Get buckets list
+ Gets a list of buckets. It is possible to use filters if they are provided by your service
 
 
 
-`Function DeleteBucket(Val Name, Val BasicData, Val Headers = Undefined) Export`
+`Function GetBucketsList(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Name | --name | String | &#x2714; | Bucket name |
   | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Prefix | --prefix | String | &#x2716; | Filtering by the beginning of the name, if necessary |
+  | Region | --region | String | &#x2716; | Selection by bucket region, if necessary |
+  | PageToken | --ctoken | String | &#x2716; | Page token if pagination is used |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -24,7 +26,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at AWS documentation: [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+Method at AWS documentation: [ListBuckets](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
 :::
 <br/>
 
@@ -37,9 +39,7 @@ Method at AWS documentation: [DeleteBucket](https://docs.aws.amazon.com/AmazonS3
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "opi-newbucket2";
-
-    Result = OPI_S3.DeleteBucket(Name, BasicData);
+    Result = OPI_S3.GetBucketsList(BasicData);
 ```
  
 

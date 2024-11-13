@@ -2111,6 +2111,7 @@ Procedure AWS_BucketsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
 
     S3_CreateBucket(TestParameters);
+    S3_GetBucketsList(TestParameters);
     S3_DeleteBucket(TestParameters);
 
 EndProcedure
@@ -14615,11 +14616,11 @@ Procedure S3_CreateBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Authorization = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "newbucket2";
+    Name = "opi-newbucket2";
 
-    Result = OPI_S3.CreateBucket(Name, Authorization);
+    Result = OPI_S3.CreateBucket(Name, BasicData);
 
     // END
 
@@ -14635,15 +14636,33 @@ Procedure S3_DeleteBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Authorization = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "newbucket2";
+    Name = "opi-newbucket2";
 
-    Result = OPI_S3.DeleteBucket(Name, Authorization);
+    Result = OPI_S3.DeleteBucket(Name, BasicData);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucket", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_GetBucketsList(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Result = OPI_S3.GetBucketsList(BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketsList", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
