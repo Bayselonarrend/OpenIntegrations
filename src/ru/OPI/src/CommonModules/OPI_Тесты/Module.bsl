@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -14650,14 +14650,14 @@
 КонецПроцедуры
 
 Процедура S3_ПолучитьСписокБакетов(ПараметрыФункции)
-    
+
     URL       = ПараметрыФункции["S3_URL"];
     AccessKey = ПараметрыФункции["S3_AccessKey"];
     SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-    
+
     Результат = OPI_S3.ПолучитьСписокБакетов(ОсновныеДанные);
 
     // END
