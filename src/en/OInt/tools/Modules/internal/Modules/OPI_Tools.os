@@ -726,6 +726,47 @@ Function ProcessXML(XML) Export
 
 EndFunction
 
+Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
+
+    Start = StartFormingXML(Value, XMLWriter);
+
+    ValeType = TypeOf(Value);
+
+    If ValeType = Type("Structure") Or ValeType = Type("Map") Then
+
+        For Each CollectionValue In Value Do
+
+            XMLWriter.WriteStartElement(CollectionValue.Key, TargetNamespace);
+
+            If ValueIsFilled(TargetNamespace) Then
+                XMLWriter.WriteNamespaceMapping("", TargetNamespace);
+            EndIf;
+
+            GetXML(CollectionValue.Value, "", XMLWriter);
+            XMLWriter.WriteEndElement();
+
+        EndDo;
+
+    ElsIf ValeType = Type("Array") Then
+
+        For Each ArrayElement In Value Do
+            GetXML(ArrayElement, "", XMLWriter);
+        EndDo;
+
+    Else
+
+        XMLWriter.RecordText(Value);
+
+    EndIf;
+
+    If Start Then
+        Return XMLWriter.Close();
+    Else
+        Return Undefined;
+    EndIf;
+
+EndFunction
+
 Procedure ValueToArray(Value) Export
 
     If TypeOf(Value) = Type("Array") Then
@@ -1322,6 +1363,27 @@ Procedure XMLInitialProcessing(XML)
     EndIf;
 
 EndProcedure
+
+Function StartFormingXML(Value, XMLWriter)
+
+    Start = False;
+
+    If XMLWriter = Undefined Then
+
+        ErrorText = "Error getting a collection for XML generation";
+        OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
+
+        XMLWriter = New XMLWriter;
+        XMLWriter.SetString();
+        XMLWriter.WriteXMLDeclaration();
+
+        Start = True;
+
+    EndIf;
+
+    Return Start;
+
+EndFunction
 
 #Region GZip
 

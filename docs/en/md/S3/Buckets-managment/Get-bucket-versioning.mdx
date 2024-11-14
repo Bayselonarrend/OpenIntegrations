@@ -1,0 +1,57 @@
+﻿---
+sidebar_position: 11
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get bucket versioning
+ Gets the values of versioning settings of objects in the bucket
+
+
+
+`Function GetBucketVersioning(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Bucket name |
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [GetBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.GetBucketVersioning(Name, BasicData);
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.GetBucketVersioning(Name, BasicData, False);
+```
+ 
+
+
+
+
