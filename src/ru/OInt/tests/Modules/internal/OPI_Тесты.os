@@ -14734,7 +14734,7 @@
     // END
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьШифрованиеБакета", "S3");
-    OPI_ПолучениеДанныхТестов.Проверка_Соответствие(Результат);                 
+    OPI_ПолучениеДанныхТестов.Проверка_Соответствие(Результат);
     OPI_ПолучениеДанныхТестов.ЗаписатьФайлЛога("", "ПолучитьШифрованиеБакета", "S3");
 
 КонецПроцедуры
@@ -14749,8 +14749,8 @@
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Имя = "opi-newbucket2";
-    
-    КонфигурацияXML = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+
+    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
     |    <Rule>
     |        <ApplyServerSideEncryptionByDefault>
     |            <SSEAlgorithm>AES256</SSEAlgorithm>
@@ -14758,7 +14758,7 @@
     |    </Rule>
     |</ServerSideEncryptionConfiguration>";
 
-    Результат = OPI_S3.УстановитьШифрованиеБакета(Имя, ОсновныеДанные, КонфигурацияXML, Ложь);
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Имя, ОсновныеДанные, XMLКонфигурация, Ложь);
 
     // END
 

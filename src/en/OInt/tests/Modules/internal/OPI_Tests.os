@@ -2113,6 +2113,8 @@ Procedure AWS_BucketsManagment() Export
     S3_CreateBucket(TestParameters);
     S3_GetBucketsList(TestParameters);
     S3_CheckBucketAvailability(TestParameters);
+    S3_PutBucketEncryption(TestParameters);
+    S3_GetBucketEncryption(TestParameters);
     S3_DeleteBucket(TestParameters);
 
 EndProcedure
@@ -14621,7 +14623,7 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     // Directory bucket
 
-    Name = "opi-dirbucket1";
+    Name = "opi-dirbucket3";
 
     Result = OPI_S3.CreateBucket(Name, BasicData);
 
@@ -14631,7 +14633,7 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     // General purpose bucket
 
-    Name = "opi-gpbucket1";
+    Name = "opi-gpbucket3";
 
     Result = OPI_S3.CreateBucket(Name, BasicData, False);
 
@@ -14653,16 +14655,17 @@ Procedure S3_DeleteBucket(FunctionParameters)
 
     // Directory bucket
 
-    Name = "opi-dirbucket1";
+    Name = "opi-dirbucket3";
 
     Result = OPI_S3.DeleteBucket(Name, BasicData);
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucket (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
-    Name = "opi-gpbucket1";
+    Name = "opi-gpbucket3";
 
     Result = OPI_S3.DeleteBucket(Name, BasicData, False);
 
@@ -14693,13 +14696,13 @@ EndProcedure
 
 Procedure S3_CheckBucketAvailability(FunctionParameters)
 
-    URL          = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    Name         = "opi-dirbucket1";
+    Name      = "opi-dirbucket3";
 
     Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True);
 
@@ -14712,6 +14715,56 @@ Procedure S3_CheckBucketAvailability(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "CheckBucketAvailability (account)", "S3");
     OPI_TestDataRetrieval.Check_S3NotFound(Result);
+
+EndProcedure
+
+Procedure S3_GetBucketEncryption(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "opi-newbucket2";
+
+    Result = OPI_S3.GetBucketEncryption(Name, BasicData, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketEncryption", "S3");
+    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.WriteLogFile("", "GetBucketEncryption", "S3");
+
+EndProcedure
+
+Procedure S3_PutBucketEncryption(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "opi-newbucket2";
+
+    XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+    | <Rule>
+    | <ApplyServerSideEncryptionByDefault>
+    | <SSEAlgorithm>AES256</SSEAlgorithm>
+    | </ApplyServerSideEncryptionByDefault>
+    | </Rule>
+    |</ServerSideEncryptionConfiguration>";
+
+    Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutBucketEncryption", "S3");
+    OPI_TestDataRetrieval.Check_S3NotImplemented(Result);
+    OPI_TestDataRetrieval.WriteLogFile("", "PutBucketEncryption", "S3");
 
 EndProcedure
 

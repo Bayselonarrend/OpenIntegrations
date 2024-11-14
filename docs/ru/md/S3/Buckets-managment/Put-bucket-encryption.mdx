@@ -1,23 +1,23 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Проверить доступность бакета
- Проверяет доступность бакета для текущего аккаунта или аккаунта по ID
+# Установить шифрование бакета
+ Устанавлиает шифрование бакета по XML конфигурации
 
 
 
-`Функция ПроверитьДоступностьБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Истина, Знач IDАккаунта = "", Знач Заголовки = Неопределено) Экспорт`
+`Функция УстановитьШифрованиеБакета(Знач Наименование, Знач ОсновныеДанные, Знач XMLКонфигурация, Знач Каталог = Истина, Знач Заголовки = Неопределено) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Наименование | --name | Строка | &#x2714; | Наименование бакета |
   | ОсновныеДанные | --data | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | XMLКонфигурация | --conf | Строка | &#x2714; | XML строка или файл конфигурации шифрования |
   | Каталог | --dir | Булево | &#x2716; | Истина > Directory Bucket, Ложь > General Purpose Bucket |
-  | IDАккаунта | --account | Строка | &#x2716; | ID аккаунта для проверки, что бакет принадлежит ему |
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
 
   
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации AWS: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
+Метод в документации AWS: [PutBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
 :::
 <br/>
 
@@ -38,11 +38,18 @@ import TabItem from '@theme/TabItem';
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-    Наименование   = "opi-dirbucket3";
 
-    Результат = OPI_S3.ПроверитьДоступностьБакета(Наименование, ОсновныеДанные, Истина);
+    Имя = "opi-newbucket2";
 
-    Результат = OPI_S3.ПроверитьДоступностьБакета(Наименование, ОсновныеДанные, Истина, "1234");
+    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+    |    <Rule>
+    |        <ApplyServerSideEncryptionByDefault>
+    |            <SSEAlgorithm>AES256</SSEAlgorithm>
+    |        </ApplyServerSideEncryptionByDefault>
+    |    </Rule>
+    |</ServerSideEncryptionConfiguration>";
+
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Имя, ОсновныеДанные, XMLКонфигурация, Ложь);
 ```
     
 
