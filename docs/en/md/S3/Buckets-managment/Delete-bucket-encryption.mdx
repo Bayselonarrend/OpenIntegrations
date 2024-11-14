@@ -1,0 +1,49 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete bucket encryption
+ Deletes the bucket encryption configuration
+
+
+
+`Function DeleteBucketEncryption(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Bucket name |
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "opi-newbucket2";
+
+    Result = OPI_S3.DeleteBucketEncryption(Name, BasicData, False);
+```
+ 
+
+
+
+

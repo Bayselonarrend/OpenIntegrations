@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Head bucket
+ Checks if the bucket is available for the current account or account by ID
+
+
+
+`Function HeadBucket(Val Name, Val BasicData, Val Directory = True, Val AccountID = "", Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Bucket name |
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | AccountID | --account | String | &#x2716; | Account ID to verify that hes the bucket owner |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Name      = "opi-dirbucket3";
+
+    Result = OPI_S3.HeadBucket(Name, BasicData, True);
+
+    Result = OPI_S3.HeadBucket(Name, BasicData, True, "1234");
+```
+ 
+
+
+
+

@@ -2111,10 +2111,16 @@ Procedure AWS_BucketsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
 
     S3_CreateBucket(TestParameters);
-    S3_GetBucketsList(TestParameters);
-    S3_CheckBucketAvailability(TestParameters);
+    S3_ListBuckets(TestParameters);
+    S3_HeadBucket(TestParameters);
+    S3_PutBucketTagging(TestParameters);
+    S3_GetBucketTagging(TestParameters);
+    S3_DeleteBucketTagging(TestParameters);
     S3_PutBucketEncryption(TestParameters);
     S3_GetBucketEncryption(TestParameters);
+    S3_DeleteBucketEncryption(TestParameters);
+    S3_PutBucketVersioning(TestParameters);
+    S3_GetBucketVersioning(TestParameters);
     S3_DeleteBucket(TestParameters);
 
 EndProcedure
@@ -14676,7 +14682,7 @@ Procedure S3_DeleteBucket(FunctionParameters)
 
 EndProcedure
 
-Procedure S3_GetBucketsList(FunctionParameters)
+Procedure S3_ListBuckets(FunctionParameters)
 
     URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
@@ -14685,16 +14691,16 @@ Procedure S3_GetBucketsList(FunctionParameters)
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Result = OPI_S3.GetBucketsList(BasicData);
+    Result = OPI_S3.ListBuckets(BasicData);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketsList", "S3");
+    OPI_TestDataRetrieval.WriteLog(Result, "ListBuckets", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 
-Procedure S3_CheckBucketAvailability(FunctionParameters)
+Procedure S3_HeadBucket(FunctionParameters)
 
     URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
@@ -14704,16 +14710,16 @@ Procedure S3_CheckBucketAvailability(FunctionParameters)
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Name      = "opi-dirbucket3";
 
-    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True);
+    Result = OPI_S3.HeadBucket(Name, BasicData, True);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CheckBucketAvailability", "S3"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "HeadBucket", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
-    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True, "1234");
+    Result = OPI_S3.HeadBucket(Name, BasicData, True, "1234");
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CheckBucketAvailability (account)", "S3");
+    OPI_TestDataRetrieval.WriteLog(Result, "HeadBucket (account)", "S3");
     OPI_TestDataRetrieval.Check_S3NotFound(Result);
 
 EndProcedure
@@ -14736,6 +14742,26 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetBucketEncryption", "S3");
     OPI_TestDataRetrieval.Check_Map(Result);
     OPI_TestDataRetrieval.WriteLogFile("", "GetBucketEncryption", "S3");
+
+EndProcedure
+
+Procedure S3_DeleteBucketEncryption(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name = "opi-newbucket2";
+
+    Result = OPI_S3.DeleteBucketEncryption(Name, BasicData, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucketEncryption", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 
@@ -14765,6 +14791,177 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "PutBucketEncryption", "S3");
     OPI_TestDataRetrieval.Check_S3NotImplemented(Result);
     OPI_TestDataRetrieval.WriteLogFile("", "PutBucketEncryption", "S3");
+
+EndProcedure
+
+Procedure S3_GetBucketTagging(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.GetBucketTagging(Name, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketTagging (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.GetBucketTagging(Name, BasicData, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_PutBucketTagging(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData    = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    TagStructure = New Structure;
+
+    TagStructure.Insert("MyTag1", "SomeValue");
+    TagStructure.Insert("MyTag2", "AnotherOne");
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutBucketTagging (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutBucketTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_DeleteBucketTagging(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.DeleteBucketTagging(Name, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucketTagging (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.DeleteBucketTagging(Name, BasicData, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucketTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    Result = OPI_S3.GetBucketTagging(Name, BasicData, False);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucketTagging)", "S3");
+
+EndProcedure
+
+Procedure S3_GetBucketVersioning(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.GetBucketVersioning(Name, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketVersioning (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.GetBucketVersioning(Name, BasicData, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBucketVersioning", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_PutBucketVersioning(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData    = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    TagStructure = New Structure;
+
+    MFADelete = False;
+    Status    = True;
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutBucketVersioning (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutBucketVersioning", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 

@@ -1,0 +1,18 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    // Directory bucket
+
+    Наименование = "opi-dirbucket3";
+
+    Результат = OPI_S3.ПолучитьНастройкийВерсионированияБакета(Наименование, ОсновныеДанные);
+
+    // General purpose bucket
+
+    Наименование = "opi-gpbucket3";
+
+    Результат = OPI_S3.ПолучитьНастройкийВерсионированияБакета(Наименование, ОсновныеДанные, Ложь);
