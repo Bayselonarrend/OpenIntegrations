@@ -1,0 +1,18 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Имя = "opi-newbucket2";
+
+    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+    |    <Rule>
+    |        <ApplyServerSideEncryptionByDefault>
+    |            <SSEAlgorithm>AES256</SSEAlgorithm>
+    |        </ApplyServerSideEncryptionByDefault>
+    |    </Rule>
+    |</ServerSideEncryptionConfiguration>";
+
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Имя, ОсновныеДанные, XMLКонфигурация, Ложь);
