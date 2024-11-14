@@ -10,12 +10,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CreateBucket(Val Name, Val BasicData, Val Headers = Undefined) Export`
+`Function CreateBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Name | --name | String | &#x2714; | Bucket name |
   | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -37,9 +38,17 @@ Method at AWS documentation: [CreateBucket](https://docs.aws.amazon.com/AmazonS3
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "opi-newbucket2";
+    // Directory bucket
+
+    Name = "opi-dirbucket1";
 
     Result = OPI_S3.CreateBucket(Name, BasicData);
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket1";
+
+    Result = OPI_S3.CreateBucket(Name, BasicData, False);
 ```
  
 

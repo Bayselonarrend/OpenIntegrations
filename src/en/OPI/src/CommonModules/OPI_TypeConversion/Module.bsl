@@ -151,6 +151,16 @@ Procedure GetCollection(Value) Export
 
 EndProcedure
 
+Procedure GetKeyValueCollection(Value, Val ErrorText) Export
+
+    GetCollection(Value);
+
+    If TypeOf(Value) = Type("Array") Then
+        Raise ErrorText;
+    EndIf;
+
+EndProcedure
+
 Procedure GetArray(Value) Export
 
     If TypeOf(Value) = Type("Array") Then

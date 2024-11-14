@@ -2112,6 +2112,7 @@ Procedure AWS_BucketsManagment() Export
 
     S3_CreateBucket(TestParameters);
     S3_GetBucketsList(TestParameters);
+    S3_CheckBucketAvailability(TestParameters);
     S3_DeleteBucket(TestParameters);
 
 EndProcedure
@@ -14618,9 +14619,21 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "opi-newbucket2";
+    // Directory bucket
+
+    Name = "opi-dirbucket1";
 
     Result = OPI_S3.CreateBucket(Name, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket1";
+
+    Result = OPI_S3.CreateBucket(Name, BasicData, False);
 
     // END
 
@@ -14638,9 +14651,20 @@ Procedure S3_DeleteBucket(FunctionParameters)
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name = "opi-newbucket2";
+    // Directory bucket
+
+    Name = "opi-dirbucket1";
 
     Result = OPI_S3.DeleteBucket(Name, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucket (DB)", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket1";
+
+    Result = OPI_S3.DeleteBucket(Name, BasicData, False);
 
     // END
 
@@ -14664,6 +14688,30 @@ Procedure S3_GetBucketsList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetBucketsList", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_CheckBucketAvailability(FunctionParameters)
+
+    URL          = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Name         = "opi-dirbucket1";
+
+    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckBucketAvailability", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+
+    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True, "1234");
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckBucketAvailability (account)", "S3");
+    OPI_TestDataRetrieval.Check_S3NotFound(Result);
 
 EndProcedure
 

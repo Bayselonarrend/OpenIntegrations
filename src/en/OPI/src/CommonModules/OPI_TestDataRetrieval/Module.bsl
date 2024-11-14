@@ -1954,6 +1954,13 @@ Procedure Check_S3Success(Val Result) Export
 
 EndProcedure
 
+Procedure Check_S3NotFound(Val Result) Export
+
+    NotFound = Result["status"] = 404;
+    ExpectsThat(NotFound).Равно(True);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
