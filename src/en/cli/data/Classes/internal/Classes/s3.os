@@ -118,6 +118,16 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "CreateBucket";
     NewLine.МетодПоиска = "CREATEBUCKET";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CreateBucket";
+    NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Buckets managment";
@@ -149,6 +159,67 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteBucket";
     NewLine.МетодПоиска = "DELETEBUCKET";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteBucket";
+    NewLine.МетодПоиска = "DELETEBUCKET";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CheckBucketAvailability";
+    NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Bucket name";
+    NewLine.Область     = "Buckets managment";
+    NewLine.ОписаниеМетода   = "Checks if the bucket is available for the current account or account by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CheckBucketAvailability";
+    NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CheckBucketAvailability";
+    NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CheckBucketAvailability";
+    NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
+    NewLine.Параметр    = "--account";
+    NewLine.Описание    = "Account ID to verify that hes the bucket owner (optional, def. val. - Empty value)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CheckBucketAvailability";
+    NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Buckets managment";

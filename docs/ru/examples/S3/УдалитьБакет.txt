@@ -5,6 +5,14 @@
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
-    Имя = "opi-newbucket2";
+    // Directory bucket
+
+    Имя = "opi-dirbucket1";
 
     Результат = OPI_S3.УдалитьБакет(Имя, ОсновныеДанные);
+
+    // General purpose bucket
+
+    Имя = "opi-gpbucket1";
+
+    Результат = OPI_S3.УдалитьБакет(Имя, ОсновныеДанные, Ложь);
