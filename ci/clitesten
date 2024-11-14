@@ -1620,11 +1620,15 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 CreateBucket --name "test" --data "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 CreateBucket --name "test" --data "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteBucket --name "test" --data "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteBucket --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 CheckBucketAvailability --name "test" --data "test" --dir "test" --account "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

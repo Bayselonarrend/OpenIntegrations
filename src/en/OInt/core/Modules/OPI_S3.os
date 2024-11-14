@@ -119,13 +119,14 @@ EndFunction
 // Parameters:
 // Name - String - Bucket name - name
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function CreateBucket(Val Name, Val BasicData, Val Headers = Undefined) Export
+Function CreateBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, "PUT", Headers);
+    Response = BucketManagment(Name, BasicData, Directory, "PUT", Headers);
     Return Response;
 
 EndFunction
@@ -139,13 +140,48 @@ EndFunction
 // Parameters:
 // Name - String - Bucket name - name
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function DeleteBucket(Val Name, Val BasicData, Val Headers = Undefined) Export
+Function DeleteBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, "DELETE", Headers);
+    Response = BucketManagment(Name, BasicData, Directory, "DELETE", Headers);
+    Return Response;
+
+EndFunction
+
+// Check bucket availability
+// Checks if the bucket is available for the current account or account by ID
+//
+// Note
+// Method at AWS documentation: [HeadBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// AccountID - String - Account ID to verify that hes the bucket owner - account
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function CheckBucketAvailability(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val AccountID = ""
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(AccountID);
+
+    If ValueIsFilled(AccountID) Then
+        AccountHeader = New Map();
+        AccountHeader.Insert("x-amz-expected-bucket-owner", AccountID);
+        AddAdditionalHeaders(Headers, AccountHeader);
+    EndIf;
+
+    Response = BucketManagment(Name, BasicData, Directory, "HEAD", Headers);
     Return Response;
 
 EndFunction
@@ -216,8 +252,7 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
     Signature = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
     Signature = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Signature));
 
-    HeadersKeys = GetHeadersKeysString(Request);
-
+    HeadersKeys         = GetHeadersKeysString(Request);
     AuthorizationHeader = FormAuthorisationHeader(AccessKey, Scope, Signature, HeadersKeys);
 
     Return AuthorizationHeader;
@@ -308,7 +343,9 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     CanonicalRequest = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(CanonicalRequest));
 
     For N = 1 To 4 Do
+
         StringTemplate = StringTemplate + "%" + String(N) + ?(N = 4, "", Chars.LF);
+
     EndDo;
 
     SignatureString = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
@@ -379,8 +416,9 @@ Function GetHeadersString(Val Request)
     HeadersList.SortByValue();
 
     HeadersString = StrConcat(HeadersList.UnloadValues(), Chars.LF);
+    HeadersString = HeadersString + Chars.LF;
 
-    Return HeadersString + Chars.LF;
+    Return HeadersString;
 
 EndFunction
 
@@ -448,12 +486,24 @@ EndFunction
 
 #Region Miscellaneous
 
-Function BucketManagment(Val Name, Val BasicData, Val Method, Val Headers)
+Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
 
     OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetBoolean(Directory);
 
     URL = GetServiceURL(BasicData);
-    URL = URL + Name;
+
+    If Directory Then
+        URL = URL + Name;
+    Else
+
+        If StrFind(URL, "://") Then
+            URL = StrReplace(URL, "://", "://" + Name + ".");
+        Else
+            URL = Name + "." + URL;
+        EndIf;
+
+    EndIf;
 
     BasicData.Insert("URL", URL);
 
@@ -494,22 +544,10 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
 
 EndFunction
 
-Function SupportedResponse(Val Response)
-
-    Return TypeOf(Response) = Type("String")
-        Or TypeOf(Response) = Type("Structure")
-        Or TypeOf(Response) = Type("Map")
-        Or TypeOf(Response) = Type("Array");
-
-EndFunction
-
 Procedure CheckBasicData(BasicData)
 
-    OPI_TypeConversion.GetCollection(BasicData);
-
-    If TypeOf(BasicData) = Type("Array") Then
-        Raise "Error of obtaining authorization data from the structure";
-    EndIf;
+    ErrorText = "Error of obtaining authorization data from the structure";
+    OPI_TypeConversion.GetKeyValueCollection(BasicData, ErrorText);
 
     RequiredFieldsArray = New Array;
     RequiredFieldsArray.Add("AccessKey");
@@ -526,21 +564,35 @@ Procedure CheckBasicData(BasicData)
 
 EndProcedure
 
-Procedure AddAdditionalHeaders(Request, Val Headers)
+Procedure AddAdditionalHeaders(Receiver, Val Headers)
 
     If Not ValueIsFilled(Headers) Then
         Return;
     EndIf;
 
-    OPI_TypeConversion.GetCollection(Headers);
+    ReceiverType = TypeOf(Receiver);
+    ErrorText    = "Error setting additional headers";
+    OPI_TypeConversion.GetKeyValueCollection(Headers, ErrorText);
 
-    If TypeOf(Headers) = Type("Array") Then
-        Raise "Error setting additional headers";
+    If ReceiverType = Type("HTTPRequest") Then
+
+        For Each Title In Headers Do
+            Receiver.Headers.Insert(Title.Key, Title.Value);
+        EndDo;
+
+    Else
+
+        If Not ValueIsFilled(Receiver) Then
+            Receiver = New Map;
+        Else
+            OPI_TypeConversion.GetKeyValueCollection(Headers, ErrorText);
+        EndIf;
+
+        For Each Title In Headers Do
+            Receiver.Insert(Title.Key, Title.Value);
+        EndDo;
+
     EndIf;
-
-    For Each Title In Headers Do
-        Request.Headers.Insert(Title.Key, Title.Value);
-    EndDo;
 
 EndProcedure
 
