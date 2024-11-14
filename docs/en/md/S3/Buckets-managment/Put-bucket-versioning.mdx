@@ -1,0 +1,63 @@
+﻿---
+sidebar_position: 10
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Put bucket versioning
+ Sets the versioning settings for bucket objects
+
+
+
+`Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Val MFADelete = Undefined, Val Directory = True, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Bucket name |
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Status | --status | Boolean | &#x2716; | Enable and disable versioning, if necessary |
+  | MFADelete | --mfad | Boolean | &#x2716; | Enable and disable MFA deletion, if necessary |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [PutBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData    = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    TagStructure = New Structure;
+
+    MFADelete = False;
+    Status    = True;
+
+    // Directory bucket
+
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , False);
+```
+ 
+
+
+
+

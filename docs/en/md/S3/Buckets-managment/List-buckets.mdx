@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 12
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# List buckets
+ Gets a list of buckets. It is possible to use filters if they are provided by your service
+
+
+
+`Function ListBuckets(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Prefix | --prefix | String | &#x2716; | Filtering by the beginning of the name, if necessary |
+  | Region | --region | String | &#x2716; | Selection by bucket region, if necessary |
+  | PageToken | --ctoken | String | &#x2716; | Page token if pagination is used |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [ListBuckets](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Result = OPI_S3.ListBuckets(BasicData);
+```
+ 
+
+
+
+
