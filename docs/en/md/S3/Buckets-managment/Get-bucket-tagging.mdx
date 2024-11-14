@@ -1,23 +1,22 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Check bucket availability
- Checks if the bucket is available for the current account or account by ID
+# Get bucket tagging
+ Gets the bucket tag set
 
 
 
-`Function CheckBucketAvailability(Val Name, Val BasicData, Val Directory = True, Val AccountID = "", Val Headers = Undefined) Export`
+`Function GetBucketTagging(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Name | --name | String | &#x2714; | Bucket name |
   | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
   | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
-  | AccountID | --account | String | &#x2716; | Account ID to verify that hes the bucket owner |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -26,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
+Method at AWS documentation: [GetBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
 :::
 <br/>
 
@@ -38,11 +37,18 @@ Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/l
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    Name      = "opi-dirbucket3";
 
-    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True);
+    // Directory bucket
 
-    Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True, "1234");
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.GetBucketTagging(Name, BasicData);
+
+    // General purpose bucket
+
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.GetBucketTagging(Name, BasicData, False);
 ```
  
 

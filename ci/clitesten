@@ -1632,7 +1632,7 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 CheckBucketAvailability --name "test" --data "test" --dir "test" --account "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 HeadBucket --name "test" --data "test" --dir "test" --account "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1644,7 +1644,31 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetBucketsList --data "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteBucketEncryption --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 PutBucketTagging --name "test" --data "test" --tagset "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetBucketTagging --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteBucketTagging --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 PutBucketVersioning --name "test" --data "test" --status "test" --mfad "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetBucketVersioning --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ListBuckets --data "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
                }
 
 }

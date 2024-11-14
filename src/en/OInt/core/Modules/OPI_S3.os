@@ -151,7 +151,7 @@ Function DeleteBucket(Val Name, Val BasicData, Val Directory = True, Val Headers
 
 EndFunction
 
-// Check bucket availability
+// Head bucket
 // Checks if the bucket is available for the current account or account by ID
 //
 // Note
@@ -166,7 +166,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function CheckBucketAvailability(Val Name
+Function HeadBucket(Val Name
     , Val BasicData
     , Val Directory = True
     , Val AccountID = ""
@@ -242,7 +242,8 @@ Function GetBucketEncryption(Val Name
 
     URL = GetServiceURL(BasicData);
     URL = FormBucketURL(URL, Name, Directory);
-    URL    = URL + "?encryption";
+
+    URL = URL + "?encryption";
 
     BasicData.Insert("URL", URL);
 
@@ -252,7 +253,209 @@ Function GetBucketEncryption(Val Name
 
 EndFunction
 
-// Get buckets list
+// Delete bucket encryption
+// Deletes the bucket encryption configuration
+//
+// Note
+// Method at AWS documentation: [DeleteBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function DeleteBucketEncryption(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+
+    URL = URL + "?encryption";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Put bucket tagging
+// Sets the tag set for the bucket
+//
+// Note
+// Setting up a new set removes all existing bucket tags
+// Method at AWS documentation: [PutBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Tags - Structure of KeyAndValue - Set of tags (key and value) - tagset
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function PutBucketTagging(Val Name
+    , Val BasicData
+    , Val Tags
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    Tags    = FormTagsStructure(Tags);
+    TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
+    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?tagging";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get bucket tagging
+// Gets the bucket tag set
+//
+// Note
+// Method at AWS documentation: [GetBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function GetBucketTagging(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?tagging";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete bucket tagging
+// Deletes the bucket tag set
+//
+// Note
+// Method at AWS documentation: [DeleteBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function DeleteBucketTagging(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?tagging";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Put bucket versioning
+// Sets the versioning settings for bucket objects
+//
+// Note
+// Method at AWS documentation: [PutBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Status - Boolean - Enable and disable versioning, if necessary - status
+// MFADelete - Boolean - Enable and disable MFA deletion, if necessary - mfad
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function PutBucketVersioning(Val Name
+    , Val BasicData
+    , Val Status = Undefined
+    , Val MFADelete = Undefined
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    Tags    = FormVersioningStructure(Status, MFADelete);
+    TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
+    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?versioning";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get bucket versioning
+// Gets the values of versioning settings of objects in the bucket
+//
+// Note
+// Method at AWS documentation: [GetBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function GetBucketVersioning(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?versioning";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// List buckets
 // Gets a list of buckets. It is possible to use filters if they are provided by your service
 //
 // Note
@@ -267,7 +470,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from storage
-Function GetBucketsList(Val BasicData
+Function ListBuckets(Val BasicData
     , Val Prefix = ""
     , Val Region = ""
     , Val PageToken = ""
@@ -607,7 +810,7 @@ EndFunction
 Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
 
     URL = GetServiceURL(BasicData);
-    URL    = FormBucketURL(URL, Name, Directory);
+    URL = FormBucketURL(URL, Name, Directory);
 
     BasicData.Insert("URL", URL);
 
@@ -648,6 +851,82 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
     EndIf;
 
     Return ResponseData;
+
+EndFunction
+
+Function FormBucketURL(Val URL, Val Name, Val Directory)
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetBoolean(Directory);
+
+    If Directory Then
+        URL = URL + Name;
+    Else
+
+        If StrFind(URL, "://") Then
+            URL = StrReplace(URL, "://", "://" + Name + ".");
+        Else
+            URL = Name + "." + URL;
+        EndIf;
+
+    EndIf;
+
+    If Not StrEndsWith(URL, "/") Then
+        URL = URL + "/";
+    EndIf;
+
+    Return URL;
+
+EndFunction
+
+Function FormTagsStructure(Val Tags)
+
+    ErrorText = "Incorrect tags format. Key-value collection is expected";
+    OPI_TypeConversion.GetKeyValueCollection(Tags, ErrorText);
+
+    TagsArray = New Array;
+
+    For Each Tag In Tags Do
+
+        TagStructure = New Structure;
+        TagStructure.Insert("Key"  , String(Tag.Key));
+        TagStructure.Insert("Value", String(Tag.Value));
+
+        TagsArray.Add(New Structure("Tag", TagStructure));
+
+    EndDo;
+
+    FinalStructure = New Structure;
+    TagsSet        = New Structure;
+
+    TagsSet.Insert("TagSet", TagsArray);
+    FinalStructure.Insert("Tagging", TagsSet);
+
+    Return FinalStructure;
+
+EndFunction
+
+Function FormVersioningStructure(Val Status, Val MFADelete)
+
+    SettingsStructure = New Structure;
+
+    If ValueIsFilled(Status) Then
+
+        OPI_TypeConversion.GetBoolean(Status);
+        SettingsStructure.Insert("Status", ?(Status, "Enabled", "Suspended"));
+
+    EndIf;
+
+    If ValueIsFilled(MFADelete) Then
+
+        OPI_TypeConversion.GetBoolean(MFADelete);
+        SettingsStructure.Insert("MfaDelete", ?(MFADelete, "Enabled", "Disabled"));
+
+    EndIf;
+
+    FinalStructure = New Structure("VersioningConfiguration", SettingsStructure);
+
+    Return FinalStructure;
 
 EndFunction
 
@@ -709,31 +988,6 @@ Procedure SetRequestBody(Request, Body)
     Request.SetBodyFromBinary(Body);
 
 EndProcedure
-
-Function FormBucketURL(Val URL, Val Name, Val Directory)
-
-    OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetBoolean(Directory);
-
-    If Directory Then
-        URL = URL + Name;
-    Else
-
-        If StrFind(URL, "://") Then
-            URL = StrReplace(URL, "://", "://" + Name + ".");
-        Else
-            URL = Name + "." + URL;
-        EndIf;
-
-    EndIf;
-
-    If Not StrEndsWith(URL, "/") Then
-        URL = URL + "/";
-    EndIf;
-
-    Return URL;
-
-EndFunction
 
 #EndRegion
 
