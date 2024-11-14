@@ -7,12 +7,12 @@
 
     // Directory bucket
 
-    Name = "opi-dirbucket1";
+    Name = "opi-dirbucket3";
 
     Result = OPI_S3.CreateBucket(Name, BasicData);
 
     // General purpose bucket
 
-    Name = "opi-gpbucket1";
+    Name = "opi-gpbucket3";
 
     Result = OPI_S3.CreateBucket(Name, BasicData, False);

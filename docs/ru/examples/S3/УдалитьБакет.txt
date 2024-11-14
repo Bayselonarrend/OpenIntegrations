@@ -7,12 +7,12 @@
 
     // Directory bucket
 
-    Имя = "opi-dirbucket1";
+    Имя = "opi-dirbucket3";
 
     Результат = OPI_S3.УдалитьБакет(Имя, ОсновныеДанные);
 
     // General purpose bucket
 
-    Имя = "opi-gpbucket1";
+    Имя = "opi-gpbucket3";
 
     Результат = OPI_S3.УдалитьБакет(Имя, ОсновныеДанные, Ложь);

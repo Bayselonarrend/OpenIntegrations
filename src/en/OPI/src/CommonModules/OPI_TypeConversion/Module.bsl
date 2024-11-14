@@ -52,11 +52,18 @@ Procedure GetBinaryData(Value) Export
             File = New File(Value);
 
             If File.Exists() Then
+
                 Value = New BinaryData(Value);
-            ElsIf StrFind(Value, "//") Then
+
+            ElsIf StrStartsWith(TrimL(Value), "http://")
+                Or StrStartsWith(TrimL(Value), "https://") Then
+
                 Value = OPI_Tools.Get(Value);
+
             Else
+
                 Value = Base64Value(Value);
+
             EndIf;
 
         EndIf;
@@ -243,20 +250,15 @@ Procedure GetLine(Value, Val FromSource = False) Export
                 Value      = TextReader.Read();
                 TextReader.Close();
 
-            ElsIf StrStartsWith(Lower(Value), "http") Then
+            ElsIf StrStartsWith(TrimL(Value), "http://")
+                Or StrStartsWith(TrimL(Value), "https://") Then
 
-                TFN = GetTempFileName();
-                FileCopy(Value, TFN);
-
-                TextReader = New TextReader(TFN);
-                Value      = TextReader.Read();
-                TextReader.Close();
-
-                DeleteFiles(TFN);
+                Value = OPI_Tools.Get(Value);
+                GetLine(Value);
 
             Else
 
-                Return;
+                Value = OPI_Tools.NumberToString(Value);
 
             EndIf;
 
@@ -267,6 +269,10 @@ Procedure GetLine(Value, Val FromSource = False) Export
         ElsIf ThisIsCollection(Value) Then
 
             Value = OPI_Tools.JSONString(Value);
+
+        ElsIf TypeOf(Value) = Type("XMLWriter") Then
+
+            Value = Value.Close();
 
         Else
             Return;

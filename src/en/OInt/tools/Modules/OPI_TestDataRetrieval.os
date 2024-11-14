@@ -443,6 +443,40 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
 
 EndProcedure
 
+Procedure WriteLogFile(Val Data, Val Method, Val Library) Export
+
+    Try
+
+        LogPath        = "./docs/en/results";
+        LibraryLogPath = LogPath + "/" + Library;
+
+        LogDirectory = New File(LogPath);
+
+        If Not LogDirectory.Exist() Then
+            CreateDirectory(LogPath);
+        EndIf;
+
+        LibraryLogCatalog = New File(LibraryLogPath);
+
+        If Not LibraryLogCatalog.Exist() Then
+            CreateDirectory(LibraryLogPath);
+        EndIf;
+
+        FilePath = LibraryLogPath + "/" + Method + ".log";
+        LogFile  = New File(FilePath);
+
+        If Not LogFile.Exist() Then
+            LogDocument = New TextDocument;
+            LogDocument.SetText(Data);
+            LogDocument.Write(FilePath);
+        EndIf;
+
+    Except
+        Message("Failed to write log file!: " + ErrorDescription());
+    EndTry;
+
+EndProcedure
+
 Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
 
     WriteLog(Result, Method + " (CLI)");
@@ -1961,6 +1995,13 @@ Procedure Check_S3NotFound(Val Result) Export
 
 EndProcedure
 
+Procedure Check_S3NotImplemented(Val Result) Export
+
+    Success = Result["status"] = 501;
+    ExpectsThat(Success).Равно(True);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -2144,40 +2185,6 @@ Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
     Record.OpenFile(Path, , , JSONWriterSettings);
     WriteJSON(Record, Values);
     Record.Close();
-
-EndProcedure
-
-Procedure WriteLogFile(Val Data, Val Method, Val Library)
-
-    Try
-
-        LogPath        = "./docs/en/results";
-        LibraryLogPath = LogPath + "/" + Library;
-
-        LogDirectory = New File(LogPath);
-
-        If Not LogDirectory.Exist() Then
-            CreateDirectory(LogPath);
-        EndIf;
-
-        LibraryLogCatalog = New File(LibraryLogPath);
-
-        If Not LibraryLogCatalog.Exist() Then
-            CreateDirectory(LibraryLogPath);
-        EndIf;
-
-        FilePath = LibraryLogPath + "/" + Method + ".log";
-        LogFile  = New File(FilePath);
-
-        If Not LogFile.Exist() Then
-            LogDocument = New TextDocument;
-            LogDocument.SetText(Data);
-            LogDocument.Write(FilePath);
-        EndIf;
-
-    Except
-        Message("Failed to write log file!: " + ErrorDescription());
-    EndTry;
 
 EndProcedure
 

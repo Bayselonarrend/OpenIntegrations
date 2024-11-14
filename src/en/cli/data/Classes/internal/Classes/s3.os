@@ -95,6 +95,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "s3";
     NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
+    NewLine.Параметр    = "--method";
+    NewLine.Описание    = "HTTP method";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Send http request with body";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Basic request data (with full URL). See GetBasicDataStructure";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
+    NewLine.Параметр    = "--body";
+    NewLine.Описание    = "Binary data or file of request body data";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "CreateBucket";
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--name";
@@ -220,6 +261,98 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "CheckBucketAvailability";
     NewLine.МетодПоиска = "CHECKBUCKETAVAILABILITY";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutBucketEncryption";
+    NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Bucket name";
+    NewLine.Область     = "Buckets managment";
+    NewLine.ОписаниеМетода   = "Sets bucket encryption by XML configuration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutBucketEncryption";
+    NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutBucketEncryption";
+    NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
+    NewLine.Параметр    = "--conf";
+    NewLine.Описание    = "XML string or file of encryption configuration";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutBucketEncryption";
+    NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutBucketEncryption";
+    NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetBucketEncryption";
+    NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Bucket name";
+    NewLine.Область     = "Buckets managment";
+    NewLine.ОписаниеМетода   = "Gets the previously set bucket encryption configuration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetBucketEncryption";
+    NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetBucketEncryption";
+    NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Область     = "Buckets managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetBucketEncryption";
+    NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Buckets managment";

@@ -1,10 +1,10 @@
-﻿    URL          = "storage-155.s3hoster.by";
+﻿    URL       = "storage-155.s3hoster.by";
     AccessKey = "BRN5RKJE67...";
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    Name         = "opi-dirbucket1";
+    Name      = "opi-dirbucket3";
 
     Result = OPI_S3.CheckBucketAvailability(Name, BasicData, True);
 

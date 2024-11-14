@@ -82,26 +82,25 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from storage
 Function SendRequestWithoutBody(Val Method, Val BasicData, Val Headers = Undefined) Export
 
-    CheckBasicData(BasicData);
+    Response = SendRequest(Method, BasicData, , Headers);
+    Return Response;
 
-    URL = BasicData["URL"];
+EndFunction
 
-    URLStructure = OPI_Tools.SplitURL(URL);
-    Server       = URLStructure["Server"];
-    Address      = URLStructure["Address"];
-    Safe         = URLStructure["Safe"];
+// Send request with body
+// Send http request with body
+//
+// Parameters:
+// Method - String - HTTP method - method
+// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - data
+// Body - String, BinaryData - Binary data or file of request body data - body
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val Headers = Undefined) Export
 
-    Request    = OPI_Tools.CreateRequest(Address);
-    Connection = OPI_Tools.CreateConnection(Server, Safe);
-
-    AddAdditionalHeaders(Request, Headers);
-
-    AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
-    Request.Headers.Insert("Authorization", AuthorizationHeader);
-
-    Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
-    Response = FormResponse(Response);
-
+    Response = SendRequest(Method, BasicData, Body, Headers);
     Return Response;
 
 EndFunction
@@ -182,6 +181,73 @@ Function CheckBucketAvailability(Val Name
     EndIf;
 
     Response = BucketManagment(Name, BasicData, Directory, "HEAD", Headers);
+    Return Response;
+
+EndFunction
+
+// Put bucket encryption
+// Sets bucket encryption by XML configuration
+//
+// Note
+// Method at AWS documentation: [PutBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// XmlConfig - String - XML string or file of encryption configuration - conf
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function PutBucketEncryption(Val Name
+    , Val BasicData
+    , Val XmlConfig
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(XmlConfig, True);
+    XmlConfig = ПолучитьДвоичныеДанныеИзСтроки(XmlConfig);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL = URL + "?encryption";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("PUT", BasicData, XmlConfig, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get bucket encryption
+// Gets the previously set bucket encryption configuration
+//
+// Note
+// Method at AWS documentation: [GetBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html)
+//
+// Parameters:
+// Name - String - Bucket name - name
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from storage
+Function GetBucketEncryption(Val Name
+    , Val BasicData
+    , Val Directory = True
+    , Val Headers = Undefined) Export
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Name, Directory);
+    URL    = URL + "?encryption";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
     Return Response;
 
 EndFunction
@@ -370,25 +436,22 @@ Function GetURIString(Val Request)
 
 EndFunction
 
-Function GetParamsString(Val Request)
+Function GetParamsString(Request)
 
     URI         = Request.ResourceAddress;
     ParamsStart = StrFind(URI, "?");
 
-    If ParamsStart      = 0 Then
+    If ParamsStart = 0 Then
+
         ParameterString = "";
+
     Else
+
         URILength       = StrLen(URI);
         ParameterString = Right(URI, URILength - ParamsStart);
+        ProcessRequestParametersString(ParameterString);
+
     EndIf;
-
-    ParameterArray = StrSplit(ParameterString, "&");
-    ParamsList     = New ValueList();
-    ParamsList.LoadValues(ParameterArray);
-
-    ParamsList.SortByValue();
-
-    ParameterString = StrConcat(ParamsList.UnloadValues(), "&");
 
     Return ParameterString;
 
@@ -482,28 +545,69 @@ Function FormAuthorisationHeader(Val AccessKey, Val Scope, Val Signature, Val He
 
 EndFunction
 
+Procedure ProcessRequestParametersString(ParameterString)
+
+    ParameterArray = StrSplit(ParameterString, "&");
+    ParamsList     = New ValueList();
+    ParamsList.LoadValues(ParameterArray);
+
+    ParamsList.SortByValue();
+    ParameterArray = ParamsList.UnloadValues();
+
+    FinalParamsArray = New Array;
+
+    For N = 0 To ParameterArray.UBound() Do
+
+        QueryParameter = ParameterArray[N];
+
+        If StrFind(QueryParameter, "=") = 0 Then
+            ParameterArray[N] = QueryParameter + "=";
+        EndIf;
+
+    EndDo;
+
+    ParameterString = StrConcat(ParameterArray, "&");
+
+EndProcedure
+
 #EndRegion
 
 #Region Miscellaneous
 
+Function SendRequest(Val Method, Val BasicData, Val Body = Undefined, Val Headers = Undefined)
+
+    CheckBasicData(BasicData);
+
+    URL = BasicData["URL"];
+
+    URLStructure = OPI_Tools.SplitURL(URL);
+    Server       = URLStructure["Server"];
+    Address      = URLStructure["Address"];
+    Safe         = URLStructure["Safe"];
+
+    Request    = OPI_Tools.CreateRequest(Address);
+    Connection = OPI_Tools.CreateConnection(Server, Safe);
+
+    If ValueIsFilled(Body) Then
+        SetRequestBody(Request, Body);
+    EndIf;
+
+    AddAdditionalHeaders(Request, Headers);
+
+    AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
+    Request.Headers.Insert("Authorization", AuthorizationHeader);
+
+    Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
+    Response = FormResponse(Response);
+
+    Return Response;
+
+EndFunction
+
 Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
 
-    OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetBoolean(Directory);
-
     URL = GetServiceURL(BasicData);
-
-    If Directory Then
-        URL = URL + Name;
-    Else
-
-        If StrFind(URL, "://") Then
-            URL = StrReplace(URL, "://", "://" + Name + ".");
-        Else
-            URL = Name + "." + URL;
-        EndIf;
-
-    EndIf;
+    URL    = FormBucketURL(URL, Name, Directory);
 
     BasicData.Insert("URL", URL);
 
@@ -519,22 +623,25 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
 
     If Not ExpectedBinary Or Status > 299 Then
 
+        ResponseData = New Map;
+        BodyData     = New Map;
+
         ResponseBody = Response.GetBodyAsString();
         ResponseBody = TrimAll(ResponseBody);
 
         If ValueIsFilled(ResponseBody) Then
 
             Try
-                ResponseData = OPI_Tools.ProcessXML(ResponseBody);
+                BodyData = OPI_Tools.ProcessXML(ResponseBody);
             Except
-                ResponseData = New Structure("notXMLMessage", ResponseBody);
+                BodyData.Insert("notValidXMLMessage", ResponseBody);
             EndTry;
 
-        Else
-            ResponseData = New Structure;
         EndIf;
 
-        ResponseData = New Structure("status,response", Status, ResponseData);
+        ResponseData = New Map;
+        ResponseData.Insert("status"  , Status);
+        ResponseData.Insert("response", BodyData);
 
     Else
         ResponseData = Response.ПолучитьТелоКакДвоичныеДанные();
@@ -595,6 +702,38 @@ Procedure AddAdditionalHeaders(Receiver, Val Headers)
     EndIf;
 
 EndProcedure
+
+Procedure SetRequestBody(Request, Body)
+
+    OPI_TypeConversion.GetBinaryData(Body);
+    Request.SetBodyFromBinary(Body);
+
+EndProcedure
+
+Function FormBucketURL(Val URL, Val Name, Val Directory)
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetBoolean(Directory);
+
+    If Directory Then
+        URL = URL + Name;
+    Else
+
+        If StrFind(URL, "://") Then
+            URL = StrReplace(URL, "://", "://" + Name + ".");
+        Else
+            URL = Name + "." + URL;
+        EndIf;
+
+    EndIf;
+
+    If Not StrEndsWith(URL, "/") Then
+        URL = URL + "/";
+    EndIf;
+
+    Return URL;
+
+EndFunction
 
 #EndRegion
 
