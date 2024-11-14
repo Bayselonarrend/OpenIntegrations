@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send request with body
+ Send http request with body
+
+
+
+`Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Method | --method | String | &#x2714; | HTTP method |
+  | BasicData | --data | Structure of KeyAndValue | &#x2714; | Basic request data (with full URL). See GetBasicDataStructure |
+  | Body | --body | String, BinaryData | &#x2714; | Binary data or file of request body data |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

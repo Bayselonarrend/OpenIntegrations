@@ -483,6 +483,8 @@ Function RequestParametersToMap(Val ParameterString) Export
 
         If KeyValueArray.Count() = NumberOfParts Then
             ReturnMapping.Insert(KeyValueArray[0], KeyValueArray[1]);
+        Else
+            ReturnMapping.Insert(KeyValueArray[0], Undefined);
         EndIf;
 
     EndDo;
