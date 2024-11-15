@@ -14634,9 +14634,9 @@
 Процедура S3_ПолучитьСтруктуруДанных(ПараметрыФункции)
 
     URL          = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
-    Region    = "BTC";
+    AccessKey    = ПараметрыФункции["S3_AccessKey"];
+    SecretKey    = ПараметрыФункции["S3_SecretKey"];
+    Region       = "BTC";
 
     Результат = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
@@ -14654,7 +14654,7 @@
     Region    = "BTC";
 
     ОсновныеДанные    = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-    Метод          = "GET";
+    Метод             = "GET";
 
     Результат = OPI_S3.ОтправитьЗапросБезТела(Метод, ОсновныеДанные);
 

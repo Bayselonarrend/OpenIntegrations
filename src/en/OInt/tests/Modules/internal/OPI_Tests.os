@@ -14633,7 +14633,7 @@ EndProcedure
 
 Procedure S3_GetBasicDataStructure(FunctionParameters)
 
-    URL          = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
@@ -14654,7 +14654,7 @@ Procedure S3_SendRequestWithoutBody(FunctionParameters)
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    Method = "GET";
+    Method    = "GET";
 
     Result = OPI_S3.SendRequestWithoutBody(Method, BasicData);
 
