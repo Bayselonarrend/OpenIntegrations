@@ -505,7 +505,7 @@ EndFunction
 // Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - title
+// Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
 // Entity - String, BinaryData - File path or binary data of the object - data
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
@@ -541,7 +541,7 @@ EndFunction
 // Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - title
+// Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket in which the object is stored - bucket
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for receiving a specific version of an object - ver
@@ -583,7 +583,7 @@ EndFunction
 // Method at AWS documentation: [DeleteObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - title
+// Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for deleting a specific version of an object - ver
