@@ -1,4 +1,4 @@
 oint cdek ПолучитьКвитанцию \
   --token "***" \
-  --uuid "72753031-de07-4549-aaac-1a75dca6c1c9" \
+  --uuid "72753031-d75f-4d50-b183-1075fbd9caf6" \
   --testapi "***"
