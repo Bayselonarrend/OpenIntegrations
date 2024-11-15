@@ -16464,8 +16464,8 @@ Procedure CLI_S3_SendRequestWithoutBody(FunctionParameters)
     Method = "GET";
 
     Options = New Structure;
-    Options.Insert("metod", Method);
-    Options.Insert("basic", BasicData);
+    Options.Insert("method", Method);
+    Options.Insert("basic" , BasicData);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithoutBody", Options);
 
@@ -16494,9 +16494,9 @@ Procedure CLI_S3_SendRequestWithBody(FunctionParameters)
     Body   = "C:\test_data\document.docx";
 
     Options = New Structure;
-    Options.Insert("metod", Method);
-    Options.Insert("basic", BasicData);
-    Options.Insert("body" , Body);
+    Options.Insert("method", Method);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("body"  , Body);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithBody", Options);
 

@@ -2125,7 +2125,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
 
         For Each SecretKey In SecretsArray Do
 
-            If StrFind(Name, SecretKey) <> 0 Then
+            If StrFind(Lower(Name), SecretKey) <> 0 Then
                 Value = "***";
             EndIf;
 
