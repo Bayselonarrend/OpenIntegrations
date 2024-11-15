@@ -27,7 +27,15 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by" + "/opi-newbucket2";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
 
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Method = "GET";
+
+    Result = OPI_S3.SendRequestWithoutBody(Method, BasicData);
 ```
  
 

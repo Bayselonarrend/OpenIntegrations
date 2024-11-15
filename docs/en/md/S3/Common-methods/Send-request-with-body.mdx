@@ -31,7 +31,17 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
 
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Method = "PUT";
+    Body   = "C:\test_data\document.docx"; // URL, Path or Binary Data
+
+    Result = OPI_S3.SendRequestWithBody(Method, BasicData, Body);
 ```
  
 
