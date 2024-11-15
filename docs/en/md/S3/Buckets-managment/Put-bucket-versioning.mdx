@@ -43,14 +43,12 @@ Method at AWS documentation: [PutBucketVersioning](https://docs.aws.amazon.com/A
 
     // Directory bucket
 
-    Name = "opi-dirbucket3";
-
+    Name   = "opi-dirbucket3";
     Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
 
     // General purpose bucket
 
-    Name = "opi-gpbucket3";
-
+    Name   = "opi-gpbucket3";
     Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , False);
 ```
  
