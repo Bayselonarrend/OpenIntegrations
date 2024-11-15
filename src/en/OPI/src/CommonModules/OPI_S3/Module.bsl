@@ -715,7 +715,7 @@ Function GetHeadersKeysString(Val Request)
 
 EndFunction
 
-Function GetServiceURL(Val BasicData)
+Function GetServiceURL(BasicData)
 
     OPI_TypeConversion.GetCollection(BasicData);
 
