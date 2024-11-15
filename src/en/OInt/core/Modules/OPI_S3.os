@@ -75,7 +75,7 @@ EndFunction
 //
 // Parameters:
 // Method - String - HTTP method - method
-// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -92,7 +92,7 @@ EndFunction
 //
 // Parameters:
 // Method - String - HTTP method - method
-// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
 // Body - String, BinaryData - Binary data or file of request body data - body
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -117,7 +117,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -138,7 +138,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -159,7 +159,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // AccountID - String - Account ID to verify that hes the bucket owner - account
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
@@ -193,7 +193,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // XmlConfig - String - XML string or file of encryption configuration - conf
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
@@ -229,7 +229,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -261,7 +261,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -294,7 +294,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Tags - Structure of KeyAndValue - Set of tags (key and value) - tagset
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
@@ -331,7 +331,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -362,7 +362,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -393,7 +393,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Status - Boolean - Enable and disable versioning, if necessary - status
 // MFADelete - Boolean - Enable and disable MFA deletion, if necessary - mfad
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
@@ -432,7 +432,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -462,7 +462,7 @@ EndFunction
 // Method at AWS documentation: [ListBuckets](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
 //
 // Parameters:
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Prefix - String - Filtering by the beginning of the name, if necessary - prefix
 // Region - String - Selection by bucket region, if necessary - region
 // PageToken - String - Page token if pagination is used - ctoken

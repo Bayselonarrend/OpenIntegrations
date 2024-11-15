@@ -1616,59 +1616,59 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросБезТела --method "test" --data "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросБезТела --method "test" --basic "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросСТелом --method "test" --data "test" --body "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ОтправитьЗапросСТелом --method "test" --basic "test" --body "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 СоздатьБакет --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 СоздатьБакет --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьБакет --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьБакет --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПроверитьДоступностьБакета --name "test" --data "test" --dir "test" --account "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПроверитьДоступностьБакета --name "test" --basic "test" --dir "test" --account "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьШифрованиеБакета --name "test" --data "test" --conf "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьШифрованиеБакета --name "test" --basic "test" --conf "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьШифрованиеБакета --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьШифрованиеБакета --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьШифрованиеБакета --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьШифрованиеБакета --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьТегиБакета --name "test" --data "test" --tagset "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьТегиБакета --name "test" --basic "test" --tagset "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьТегиБакета --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьТегиБакета --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьТегиБакета --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьТегиБакета --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьНастройкиВерсионированияБакета --name "test" --data "test" --status "test" --mfad "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьНастройкиВерсионированияБакета --name "test" --basic "test" --status "test" --mfad "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьНастройкийВерсионированияБакета --name "test" --data "test" --dir "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьНастройкийВерсионированияБакета --name "test" --basic "test" --dir "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСписокБакетов --data "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСписокБакетов --basic "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
                }
 
 }
