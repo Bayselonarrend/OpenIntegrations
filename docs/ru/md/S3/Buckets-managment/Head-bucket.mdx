@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
 
   
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 <br/>
 
@@ -46,11 +46,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПроверитьДоступностьБакета \
+              --name "opi-dirbucket3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --account "1234"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПроверитьДоступностьБакета ^
+              --name "opi-dirbucket3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --account "1234"
+        ```
+    </TabItem>
+</Tabs>
 
 
-```json title="Результат"
-{
- "status": 200,
- "response": {}
-}
-```
+

@@ -256,6 +256,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
     NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
     NewTest(TestTable, "AWS_BucketsManagment"                 , "Buckets managment"               , S3_);
+    NewTest(TestTable, "AWS_ObjectsManagment"                 , "Objects managment"               , S3_);
 
     Return TestTable;
 

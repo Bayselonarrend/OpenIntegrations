@@ -1294,6 +1294,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_AWS_РаботаСБакетами"
 
+      - name: Работа с объектами
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_AWS_РаботаСОбъектами"
+
       - name: Записать логи
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3
