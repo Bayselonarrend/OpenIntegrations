@@ -1,9 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 СоздатьБакет ^
-  --url "storage-155.s3hoster.by" ^
-  --access "BRN5RKJE67YCVDZRRQVI" ^
-  --secret "***" ^
-  --region "BTC" ^
   --name "opi-dirbucket3" ^
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'BRN5RKJE67YCVDZRRQVI','SecretKey':'NNhv+i9PrytpT8Tu0C1NgRK1wEhsypzfLwDt8R++','Region':'BTC','Service':'s3'}"
