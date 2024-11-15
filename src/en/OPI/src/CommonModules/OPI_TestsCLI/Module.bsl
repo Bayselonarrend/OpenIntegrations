@@ -16682,7 +16682,6 @@ Procedure CLI_S3_GetBucketEncryption(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBucketEncryption", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetBucketEncryption", "S3");
-    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 

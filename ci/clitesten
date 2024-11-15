@@ -1671,6 +1671,18 @@ def test_s3(){
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 ListBuckets --basic "test" --prefix "test" --region "test" --ctoken "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 PutObject --title "test" --bucket "test" --data "test" --basic "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 HeadObject --title "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 DeleteObject --title "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+               }
+
 }
 
 

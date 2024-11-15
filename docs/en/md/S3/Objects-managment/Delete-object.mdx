@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete object
+ Removes the object from the bucket
+
+
+
+`Function DeleteObject(Val Name, Val Bucket, Val BasicData, Val Version = Undefined, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --title | String | &#x2714; | Name of the object in the bucket |
+  | Bucket | --bucket | String | &#x2714; | Name of the bucket to put the object |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Version | --ver | String | &#x2716; | Token for deleting a specific version of an object |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.DeleteObject(Name, Bucket, BasicData);
+```
+ 
+
+
+
+
