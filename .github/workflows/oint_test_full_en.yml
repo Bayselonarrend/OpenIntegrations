@@ -1286,6 +1286,10 @@ jobs:
 
 
 
+      - name: Common methods
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_CommonMethods"
+
       - name: Buckets managment
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_BucketsManagment"
