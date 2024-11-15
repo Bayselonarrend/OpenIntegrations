@@ -690,7 +690,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "PutObject";
     NewLine.МетодПоиска = "PUTOBJECT";
-    NewLine.Параметр    = "--title";
+    NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
     NewLine.Область     = "Objects managment";
     NewLine.ОписаниеМетода   = "Uploads the file to the bucket";
@@ -741,7 +741,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "HeadObject";
     NewLine.МетодПоиска = "HEADOBJECT";
-    NewLine.Параметр    = "--title";
+    NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
     NewLine.Область     = "Objects managment";
     NewLine.ОписаниеМетода   = "Receives information about the properties of the object in the baquette";
@@ -792,7 +792,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteObject";
     NewLine.МетодПоиска = "DELETEOBJECT";
-    NewLine.Параметр    = "--title";
+    NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
     NewLine.Область     = "Objects managment";
     NewLine.ОписаниеМетода   = "Removes the object from the bucket";
