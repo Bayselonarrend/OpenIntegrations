@@ -684,6 +684,159 @@
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Buckets managment";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutObject";
+    NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Uploads the file to the bucket";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutObject";
+    NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutObject";
+    NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "File path or binary data of the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutObject";
+    NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "PutObject";
+    NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "HeadObject";
+    NewLine.МетодПоиска = "HEADOBJECT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Receives information about the properties of the object in the baquette";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "HeadObject";
+    NewLine.МетодПоиска = "HEADOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket in which the object is stored";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "HeadObject";
+    NewLine.МетодПоиска = "HEADOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "HeadObject";
+    NewLine.МетодПоиска = "HEADOBJECT";
+    NewLine.Параметр    = "--ver";
+    NewLine.Описание    = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "HeadObject";
+    NewLine.МетодПоиска = "HEADOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Removes the object from the bucket";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--ver";
+    NewLine.Описание    = "Token for deleting a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
     Return CompositionTable;
 EndFunction
 

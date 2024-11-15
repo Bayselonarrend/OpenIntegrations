@@ -37,6 +37,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
+//@skip-check constructor-function-return-section
 
 // Uncomment if OneScript is executed
 #Use "../../tools"
@@ -79,7 +80,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function SendRequestWithoutBody(Val Method, Val BasicData, Val Headers = Undefined) Export
 
     Response = SendRequest(Method, BasicData, , Headers);
@@ -97,7 +98,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val Headers = Undefined) Export
 
     Response = SendRequest(Method, BasicData, Body, Headers);
@@ -122,7 +123,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function CreateBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
 
     Response = BucketManagment(Name, BasicData, Directory, "PUT", Headers);
@@ -143,7 +144,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
 
     Response = BucketManagment(Name, BasicData, Directory, "DELETE", Headers);
@@ -165,7 +166,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function HeadBucket(Val Name
     , Val BasicData
     , Val Directory = True
@@ -199,7 +200,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function PutBucketEncryption(Val Name
     , Val BasicData
     , Val XmlConfig
@@ -234,7 +235,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketEncryption(Val Name
     , Val BasicData
     , Val Directory = True
@@ -266,7 +267,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketEncryption(Val Name
     , Val BasicData
     , Val Directory = True
@@ -300,7 +301,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function PutBucketTagging(Val Name
     , Val BasicData
     , Val Tags
@@ -336,7 +337,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketTagging(Val Name
     , Val BasicData
     , Val Directory = True
@@ -367,7 +368,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketTagging(Val Name
     , Val BasicData
     , Val Directory = True
@@ -400,7 +401,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function PutBucketVersioning(Val Name
     , Val BasicData
     , Val Status = Undefined
@@ -437,7 +438,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketVersioning(Val Name
     , Val BasicData
     , Val Directory = True
@@ -469,7 +470,7 @@ EndFunction
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from storage
+// Structure of KeyAndValue - serialized JSON response from storage
 Function ListBuckets(Val BasicData
     , Val Prefix = ""
     , Val Region = ""
@@ -488,6 +489,130 @@ Function ListBuckets(Val BasicData
     BasicData.Insert("URL", URL);
 
     Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region ObjectsManagment
+
+// Put object
+// Uploads the file to the bucket
+//
+// Note
+// Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - title
+// Bucket - String - Name of the bucket to put the object - bucket
+// Entity - String, BinaryData - File path or binary data of the object - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function PutObject(Val Name
+    , Val Bucket
+    , Val Entity
+    , Val BasicData
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name;
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("PUT", BasicData, Entity, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Head object
+// Receives information about the properties of the object in the baquette
+//
+// Note
+// Object metadata is contained in the headers
+// Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - title
+// Bucket - String - Name of the bucket in which the object is stored - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Version - String - Token for receiving a specific version of an object - ver
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function HeadObject(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Version = Undefined
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name;
+
+    If ValueIsFilled(Version) Then
+
+        OPI_TypeConversion.GetLine(Version);
+        URL = URL + "?versionId=" + Version;
+
+    EndIf;
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("HEAD", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete object
+// Removes the object from the bucket
+//
+// Note
+// Method at AWS documentation: [DeleteObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - title
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Version - String - Token for deleting a specific version of an object - ver
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function DeleteObject(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Version = Undefined
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name;
+
+    If ValueIsFilled(Version) Then
+
+        OPI_TypeConversion.GetLine(Version);
+        URL = URL + "?versionId=" + Version;
+
+    EndIf;
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("DELETE", BasicData, Headers);
 
     Return Response;
 
@@ -822,12 +947,13 @@ EndFunction
 
 Function FormResponse(Val Response, Val ExpectedBinary = False)
 
-    Status = Response.StatusCode;
+    Status  = Response.StatusCode;
+    Headers = Response.Headers;
 
     If Not ExpectedBinary Or Status > 299 Then
 
-        ResponseData = New Map;
-        BodyData     = New Map;
+        ResponseData = New Structure;
+        BodyData     = New Structure;
 
         ResponseBody = Response.GetBodyAsString();
         ResponseBody = TrimAll(ResponseBody);
@@ -842,9 +968,10 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
 
         EndIf;
 
-        ResponseData = New Map;
+        ResponseData = New Structure;
         ResponseData.Insert("status"  , Status);
         ResponseData.Insert("response", BodyData);
+        ResponseData.Insert("headers" , Headers);
 
     Else
         ResponseData = Response.ПолучитьТелоКакДвоичныеДанные();

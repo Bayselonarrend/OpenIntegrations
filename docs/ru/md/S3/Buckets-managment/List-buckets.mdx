@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
 
   
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 <br/>
 
@@ -42,38 +42,26 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокБакетов \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокБакетов ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-```json title="Результат"
-{
- "status": 200,
- "response": {
-  "ListAllMyBucketsResult": {
-   "Owner": {
-    "ID": "02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4",
-    "DisplayName": "minio"
-   },
-   "Buckets": {
-    "Bucket": [
-     {
-      "Name": "newbucket2",
-      "CreationDate": "2024-11-13T18:59:09.139Z"
-     },
-     {
-      "Name": "opi-dirbucket3",
-      "CreationDate": "2024-11-15T11:13:55.166Z"
-     },
-     {
-      "Name": "opi-gpbucket3",
-      "CreationDate": "2024-11-15T11:13:57.731Z"
-     },
-     {
-      "Name": "opi-newbucket2",
-      "CreationDate": "2024-11-14T06:04:12.769Z"
-     }
-    ]
-   }
-  }
- }
-}
-```
+
