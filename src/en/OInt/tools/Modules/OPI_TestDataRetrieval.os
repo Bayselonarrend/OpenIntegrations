@@ -254,6 +254,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagment"  , "Courier invitations managment"   , Cdek);
     NewTest(TestTable, "YaMetrika_TagsManagment"              , "Tags managment"                  , Metrika);
     NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
+    NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
     NewTest(TestTable, "AWS_BucketsManagment"                 , "Buckets managment"               , S3_);
 
     Return TestTable;
@@ -443,7 +444,7 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
 
 EndProcedure
 
-Procedure WriteLogFile(Val Data, Val Method, Val Library) Export
+Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Forced = False) Export
 
     Try
 
@@ -465,7 +466,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library) Export
         FilePath = LibraryLogPath + "/" + Method + ".log";
         LogFile  = New File(FilePath);
 
-        If Not LogFile.Exist() Then
+        If Not LogFile.Exist() Or Forced Then
             LogDocument = New TextDocument;
             LogDocument.SetText(Data);
             LogDocument.Write(FilePath);

@@ -1,0 +1,9 @@
+﻿    URL       = "storage-155.s3hoster.by" + "/opi-newbucket2";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные    = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+    Метод          = "GET";
+
+    Результат = OPI_S3.ОтправитьЗапросБезТела(Метод, ОсновныеДанные);
