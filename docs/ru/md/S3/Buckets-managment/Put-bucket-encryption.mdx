@@ -37,10 +37,8 @@ import TabItem from '@theme/TabItem';
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
-    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-
-    Имя = "opi-newbucket2";
-
+    ОсновныеДанные  = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+    Наименование    = "opi-newbucket2";
     XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
     |    <Rule>
     |        <ApplyServerSideEncryptionByDefault>
@@ -49,7 +47,7 @@ import TabItem from '@theme/TabItem';
     |    </Rule>
     |</ServerSideEncryptionConfiguration>";
 
-    Результат = OPI_S3.УстановитьШифрованиеБакета(Имя, ОсновныеДанные, XMLКонфигурация, Ложь);
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация, Ложь);
 ```
     
 
