@@ -39,6 +39,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ОтправитьЗапросБезТела \
+              --url "storage-155.s3hoster.by/opi-newbucket2" \
+              --access "BRN5RKJE67YCVDZRRQVI" \
+              --secret "***" \
+              --region "BTC" \
+              --metod "GET" \
+              --basic "{'URL':'storage-155.s3hoster.by/opi-newbucket2','AccessKey':'BRN5RKJE67YCVDZRRQVI','SecretKey':'NNhv+i9PrytpT8Tu0C1NgRK1wEhsypzfLwDt8R++','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ОтправитьЗапросБезТела ^
+              --url "storage-155.s3hoster.by/opi-newbucket2" ^
+              --access "BRN5RKJE67YCVDZRRQVI" ^
+              --secret "***" ^
+              --region "BTC" ^
+              --metod "GET" ^
+              --basic "{'URL':'storage-155.s3hoster.by/opi-newbucket2','AccessKey':'BRN5RKJE67YCVDZRRQVI','SecretKey':'NNhv+i9PrytpT8Tu0C1NgRK1wEhsypzfLwDt8R++','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

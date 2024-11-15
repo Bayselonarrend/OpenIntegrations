@@ -16463,6 +16463,7 @@ Procedure CLI_S3_SendRequestWithoutBody(FunctionParameters)
 
     Method = "GET";
 
+    Options = New Structure;
     Options.Insert("metod", Method);
     Options.Insert("basic", BasicData);
 
@@ -16492,6 +16493,7 @@ Procedure CLI_S3_SendRequestWithBody(FunctionParameters)
     Method = "PUT";
     Body   = "C:\test_data\document.docx";
 
+    Options = New Structure;
     Options.Insert("metod", Method);
     Options.Insert("basic", BasicData);
     Options.Insert("body" , Body);
@@ -16521,6 +16523,7 @@ Procedure CLI_S3_CreateBucket(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16534,6 +16537,7 @@ Procedure CLI_S3_CreateBucket(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16564,6 +16568,7 @@ Procedure CLI_S3_DeleteBucket(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16577,6 +16582,7 @@ Procedure CLI_S3_DeleteBucket(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16603,6 +16609,7 @@ Procedure CLI_S3_ListBuckets(FunctionParameters)
 
     BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
+    Options = New Structure;
     Options.Insert("basic", BasicData);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListBuckets", Options);
@@ -16629,6 +16636,7 @@ Procedure CLI_S3_HeadBucket(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16637,6 +16645,7 @@ Procedure CLI_S3_HeadBucket(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "HeadBucket", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
+    Options = New Structure;
     Options.Insert("name"   , Name);
     Options.Insert("basic"  , BasicData);
     Options.Insert("account", "1234");
@@ -16665,6 +16674,7 @@ Procedure CLI_S3_GetBucketEncryption(FunctionParameters)
 
     Name = "opi-newbucket2";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16693,6 +16703,7 @@ Procedure CLI_S3_DeleteBucketEncryption(FunctionParameters)
 
     Name = "opi-newbucket2";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16733,6 +16744,7 @@ Procedure CLI_S3_PutBucketEncryption(FunctionParameters)
     TFN       = GetTempFileName("xml");
     XmlConfig.Write(TFN);
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("conf" , TFN);
@@ -16766,6 +16778,7 @@ Procedure CLI_S3_GetBucketTagging(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16779,6 +16792,7 @@ Procedure CLI_S3_GetBucketTagging(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16816,6 +16830,7 @@ Procedure CLI_S3_PutBucketTagging(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("tagset", TagStructure);
@@ -16830,6 +16845,7 @@ Procedure CLI_S3_PutBucketTagging(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("tagset", TagStructure);
@@ -16861,6 +16877,7 @@ Procedure CLI_S3_DeleteBucketTagging(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16874,6 +16891,7 @@ Procedure CLI_S3_DeleteBucketTagging(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16907,6 +16925,7 @@ Procedure CLI_S3_GetBucketVersioning(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
@@ -16920,6 +16939,7 @@ Procedure CLI_S3_GetBucketVersioning(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
@@ -16951,6 +16971,7 @@ Procedure CLI_S3_PutBucketVersioning(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("status", True);
@@ -16965,6 +16986,7 @@ Procedure CLI_S3_PutBucketVersioning(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("status", True);
