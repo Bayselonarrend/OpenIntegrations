@@ -695,6 +695,11 @@ Function ProcessXML(XML) Export
     WHile XML.Read() Do
 
         NodeType = XML.NodeType;
+
+        If Not RelevantNodeType(NodeType) Then
+            Continue;
+        EndIf;
+
         NodeName = XML.Name;
 
         ExistingValue = ReturnValue.Get(NodeName);
@@ -764,6 +769,14 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
     Else
         Return Undefined;
     EndIf;
+
+EndFunction
+
+Function RelevantNodeType(Val NodeType)
+
+    Return NodeType = XMLNodeType.StartElement
+        Or NodeType = XMLNodeType.EndElement
+        Or NodeType = XMLNodeType.Text;
 
 EndFunction
 
