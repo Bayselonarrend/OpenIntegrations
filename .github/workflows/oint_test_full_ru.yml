@@ -1286,6 +1286,10 @@ jobs:
 
 
 
+      - name: Общие методы
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_AWS_ОбщиеМетоды"
+
       - name: Работа с бакетами
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_AWS_РаботаСБакетами"

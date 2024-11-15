@@ -2103,6 +2103,19 @@ EndProcedure
 
 #Region S3
 
+Procedure AWS_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("S3_AccessKey", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("S3_SecretKey", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
+
+    S3_GetBasicDataStructure(TestParameters);
+    S3_SendRequestWithoutBody(TestParameters);
+    S3_SendRequestWithBody(TestParameters);
+
+EndProcedure
+
 Procedure AWS_BucketsManagment() Export
 
     TestParameters = New Structure;
@@ -14618,6 +14631,61 @@ EndProcedure
 
 #Region S3
 
+Procedure S3_GetBasicDataStructure(FunctionParameters)
+
+    URL          = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Result = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBasicDataStructure", "S3");
+
+EndProcedure
+
+Procedure S3_SendRequestWithoutBody(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"] + "/opi-newbucket2";
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Method = "GET";
+
+    Result = OPI_S3.SendRequestWithoutBody(Method, BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendRequestWithoutBody");
+    OPI_TestDataRetrieval.WriteLogFile("", "SendRequestWithoutBody", "S3", True);
+
+EndProcedure
+
+Procedure S3_SendRequestWithBody(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Method = "PUT";
+    Body   = "C:\test_data\document.docx"; // URL, Path or Binary Data
+
+    Result = OPI_S3.SendRequestWithBody(Method, BasicData, Body);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendRequestWithBody");
+    OPI_TestDataRetrieval.WriteLogFile("", "SendRequestWithBody", "S3", True);
+
+EndProcedure
+
 Procedure S3_CreateBucket(FunctionParameters)
 
     URL       = FunctionParameters["S3_URL"];
@@ -14741,7 +14809,7 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetBucketEncryption", "S3");
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLogFile("", "GetBucketEncryption", "S3");
+    OPI_TestDataRetrieval.WriteLogFile("", "GetBucketEncryption", "S3", True);
 
 EndProcedure
 
@@ -14790,7 +14858,7 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutBucketEncryption", "S3");
     OPI_TestDataRetrieval.Check_S3NotImplemented(Result);
-    OPI_TestDataRetrieval.WriteLogFile("", "PutBucketEncryption", "S3");
+    OPI_TestDataRetrieval.WriteLogFile("", "PutBucketEncryption", "S3", True);
 
 EndProcedure
 
