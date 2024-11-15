@@ -77,7 +77,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "SendRequestWithoutBody";
     NewLine.МетодПоиска = "SENDREQUESTWITHOUTBODY";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data (with full URL). See GetBasicDataStructure";
     NewLine.Область     = "Common methods";
 
@@ -108,7 +108,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "SendRequestWithBody";
     NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data (with full URL). See GetBasicDataStructure";
     NewLine.Область     = "Common methods";
 
@@ -149,7 +149,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "CreateBucket";
     NewLine.МетодПоиска = "CREATEBUCKET";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -190,7 +190,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteBucket";
     NewLine.МетодПоиска = "DELETEBUCKET";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -231,7 +231,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "HeadBucket";
     NewLine.МетодПоиска = "HEADBUCKET";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -282,7 +282,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "PutBucketEncryption";
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -333,7 +333,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "GetBucketEncryption";
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -374,7 +374,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteBucketEncryption";
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -415,7 +415,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "PutBucketTagging";
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -466,7 +466,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "GetBucketTagging";
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -507,7 +507,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteBucketTagging";
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -548,7 +548,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "PutBucketVersioning";
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -609,7 +609,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "GetBucketVersioning";
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
 
@@ -639,7 +639,7 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "ListBuckets";
     NewLine.МетодПоиска = "LISTBUCKETS";
-    NewLine.Параметр    = "--data";
+    NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
     NewLine.Область     = "Buckets managment";
     NewLine.ОписаниеМетода   = "Gets a list of buckets. It is possible to use filters if they are provided by your service";
