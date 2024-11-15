@@ -1,0 +1,8 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "VersioningConfiguration": {
+   "Status": "Enabled"
+  }
+ }
+}

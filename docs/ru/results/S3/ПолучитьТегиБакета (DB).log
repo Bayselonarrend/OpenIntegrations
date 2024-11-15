@@ -1,0 +1,19 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "Tagging": {
+   "TagSet": {
+    "Tag": [
+     {
+      "Key": "MyTag2",
+      "Value": "AnotherOne"
+     },
+     {
+      "Key": "MyTag1",
+      "Value": "SomeValue"
+     }
+    ]
+   }
+  }
+ }
+}
