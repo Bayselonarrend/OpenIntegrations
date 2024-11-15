@@ -16429,7 +16429,7 @@ EndProcedure
 
 Procedure CLI_S3_GetBasicDataStructure(FunctionParameters)
 
-    URL          = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
@@ -16637,7 +16637,7 @@ Procedure CLI_S3_HeadBucket(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "HeadBucket", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"   , Name);
     Options.Insert("basic"  , BasicData);
     Options.Insert("account", "1234");
 
@@ -16816,7 +16816,7 @@ Procedure CLI_S3_PutBucketTagging(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("tagset", TagStructure);
 
@@ -16830,7 +16830,7 @@ Procedure CLI_S3_PutBucketTagging(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("tagset", TagStructure);
     Options.Insert("dir"   , False);
@@ -16951,7 +16951,7 @@ Procedure CLI_S3_PutBucketVersioning(FunctionParameters)
 
     Name = "opi-dirbucket3";
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("status", True);
 
@@ -16965,7 +16965,7 @@ Procedure CLI_S3_PutBucketVersioning(FunctionParameters)
 
     Name = "opi-gpbucket3";
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"  , Name);
     Options.Insert("basic" , BasicData);
     Options.Insert("status", True);
     Options.Insert("dir"   , False);
