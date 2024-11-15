@@ -1672,15 +1672,15 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ЗагрузитьОбъект --title "test" --bucket "test" --data "test" --basic "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ЗагрузитьОбъект --name "test" --bucket "test" --data "test" --basic "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьОписаниеОбъекта --title "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьОписаниеОбъекта --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьОбъект --title "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьОбъект --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
                }
 
 }
