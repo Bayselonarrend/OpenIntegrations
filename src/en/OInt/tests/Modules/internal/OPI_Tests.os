@@ -14642,6 +14642,7 @@ Procedure S3_GetBasicDataStructure(FunctionParameters)
 
     // END
 
+    Result["SecretKey"] = "***";
     OPI_TestDataRetrieval.WriteLog(Result, "GetBasicDataStructure", "S3");
 
 EndProcedure
@@ -15004,10 +15005,7 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    BasicData    = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    TagStructure = New Structure;
-
-    MFADelete = False;
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Status    = True;
 
     // Directory bucket
