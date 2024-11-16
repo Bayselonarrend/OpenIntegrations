@@ -16669,7 +16669,7 @@ Procedure CLI_S3_HeadBucket(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "HeadBucket (account)", "S3");
-    OPI_TestDataRetrieval.Check_S3NotFound(Result);
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 
