@@ -16755,7 +16755,7 @@ Procedure CLI_S3_PutBucketEncryption(FunctionParameters)
     | </Rule>
     |</ServerSideEncryptionConfiguration>";
 
-    XmlConfig = New BinaryData(XmlConfig);
+    XmlConfig = GetBinaryDataFromString(XmlConfig);
     TFN       = GetTempFileName("xml");
     XmlConfig.Write(TFN);
 
