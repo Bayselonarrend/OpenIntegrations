@@ -2,5 +2,5 @@
 
 oint bitrix24 СоздатьЗадачу ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fields "{'TITLE':'Новая задача','DESCRIPTION':'Новое описание задачи','PRIORITY':'2','DEADLINE':'2024-11-17T00:03:15.1483144Z','RESPONSIBLE_ID':1}" ^
+  --fields "{'TITLE':'Новая задача','DESCRIPTION':'Новое описание задачи','PRIORITY':'2','DEADLINE':'2024-11-17T11:30:01.6075124Z','RESPONSIBLE_ID':1}" ^
   --token "***"
