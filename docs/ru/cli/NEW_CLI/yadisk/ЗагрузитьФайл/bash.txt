@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл \
   --token "***" \
-  --path "/45177699-c727-4de3-bc29-cda505a5b7f6.png" \
+  --path "/abc2770d-f17b-4a5d-8109-d144361abb2a.png" \
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
   --rewrite true
