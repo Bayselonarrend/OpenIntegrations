@@ -1,5 +1,5 @@
 oint bitrix24 ДобавитьКомментарийНовости ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --postid 1316 ^
+  --postid 1320 ^
   --text "Другой комментарий к новости" ^
   --token "***"

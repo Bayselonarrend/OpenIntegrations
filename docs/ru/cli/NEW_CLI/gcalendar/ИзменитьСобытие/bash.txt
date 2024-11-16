@@ -2,6 +2,6 @@
 
 oint gcalendar ИзменитьСобытие \
   --token "***" \
-  --calendar "73a355eb3add35bd2c42a97ea9f09c61307bebf686102463fcd0a5e40b7dcfb1@group.calendar.google.com" \
+  --calendar "e5bcc57c2c077e9f94baad6a1a895d0c94d4ccf322e51c68ab6591510bb47223@group.calendar.google.com" \
   --props "{'Описание':'Новое описание события'}" \
-  --event "ca37hl6bfkgdcinr0a6ahpq3gg"
+  --event "khpvjqsjrqopctamvls9jd1eqs"
