@@ -570,7 +570,8 @@ Function HeadObject(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("HEAD", BasicData, Headers);
+    Response             = SendRequestWithBody("HEAD", BasicData, Headers);
+    Response["response"] = New Structure;
 
     Return Response;
 
@@ -955,15 +956,15 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
         ResponseData = New Structure;
         BodyData     = New Structure;
 
-        ResponseBody = Response.GetBodyAsString();
-        ResponseBody = TrimAll(ResponseBody);
+        ResponseBodyInitial    = Response.GetBodyAsString();
+        ResponseBodyProcessing = TrimAll(ResponseBodyInitial);
 
-        If ValueIsFilled(ResponseBody) Then
+        If ValueIsFilled(ResponseBodyProcessing) Then
 
             Try
-                BodyData = OPI_Tools.ProcessXML(ResponseBody);
+                BodyData = OPI_Tools.ProcessXML(ResponseBodyProcessing);
             Except
-                BodyData.Insert("notValidXMLMessage", ResponseBody);
+                BodyData.Insert("notValidXMLMessage", ResponseBodyInitial);
             EndTry;
 
         EndIf;
