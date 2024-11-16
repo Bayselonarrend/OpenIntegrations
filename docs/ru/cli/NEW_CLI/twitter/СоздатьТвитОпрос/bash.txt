@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьТвитОпрос \
-  --text "Тестовый твитт6e1446f6-1c83-4dc2-a056-16cae64126f5" \
+  --text "Тестовый твитт096d338a-f1a8-48e3-9a6d-a5cd22e2a601" \
   --options "['Вариант 1','Вариант 2']" \
   --duration 60 \
   --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

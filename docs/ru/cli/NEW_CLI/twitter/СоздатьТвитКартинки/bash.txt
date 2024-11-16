@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьТвитКартинки \
-  --text "Тестовый твиттa2a1ddd4-c113-425f-a1ab-c4be27ec8b12" \
-  --pictures "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+  --text "Тестовый твиттd24acc4d-7be5-4662-baec-3559e18e9c95" \
+  --pictures "C:\Users\Administrator\AppData\Local\Temp\bvvphhfa2cq.tmp" \
   --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
