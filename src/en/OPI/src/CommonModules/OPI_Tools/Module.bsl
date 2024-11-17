@@ -174,6 +174,10 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
     If TypeOf(Response) = Type("BinaryData") Then
 
+        If Response.Size() = 0 Then
+            Response       = GetBinaryDataFromString("{}");
+        EndIf;
+
         Try
             Response = JsonToStructure(Response);
         Except
