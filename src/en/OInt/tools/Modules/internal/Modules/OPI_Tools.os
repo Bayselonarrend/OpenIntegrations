@@ -174,6 +174,10 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
     If TypeOf(Response) = Type("BinaryData") Then
 
+        If Response.Size() = 0 Then
+            Response       = ПолучитьДвоичныеДанныеИзСтроки("{}");
+        EndIf;
+
         Try
             Response = JsonToStructure(Response);
         Except
@@ -760,7 +764,7 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
     Else
 
-        XMLWriter.RecordText(Value);
+        XMLWriter.WriteText(Value);
 
     EndIf;
 
