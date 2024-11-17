@@ -57,6 +57,32 @@ Setting up a new set removes all existing bucket tags
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint s3 PutBucketTagging \
+             --name "opi-gpbucket3" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}" \
+             --dir false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint s3 PutBucketTagging ^
+             --name "opi-gpbucket3" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}" ^
+             --dir false
+        ```
+    </TabItem>
+</Tabs>
 
 
 
