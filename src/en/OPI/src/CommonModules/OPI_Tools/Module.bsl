@@ -760,7 +760,7 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
     Else
 
-        XMLWriter.RecordText(Value);
+        XMLWriter.WriteText(Value);
 
     EndIf;
 
