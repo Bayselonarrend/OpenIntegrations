@@ -1,6 +1,6 @@
 oint bitrix24 ИзменитьКомментарийЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "3368" \
-  --comment 8102 \
+  --task "3408" \
+  --comment 8196 \
   --text "Задача изменена, расходимся" \
   --token "***"
