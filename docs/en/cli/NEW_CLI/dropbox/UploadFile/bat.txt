@@ -1,5 +1,5 @@
 oint dropbox UploadFile ^
  --token "***" ^
- --file "C:\Users\Administrator\AppData\Local\Temp\fxj4boououh.png" ^
+ --file "C:\Users\Administrator\AppData\Local\Temp\ipn4fkq5sij.png" ^
  --path "/New/pic.png" ^
  --overwrite true

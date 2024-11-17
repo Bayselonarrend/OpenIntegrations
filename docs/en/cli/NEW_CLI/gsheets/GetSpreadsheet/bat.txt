@@ -1,3 +1,3 @@
 oint gsheets GetSpreadsheet ^
  --token "***" ^
- --spreadsheet "1D5IVyC0pSogfG0DTcE8JRKu9ldVW1ai60qWpwUGk5cI"
+ --spreadsheet "1d2cP7XLVNVYbsYC2bdv5ToURhCJJ6D5rZDZmn7spPdY"
