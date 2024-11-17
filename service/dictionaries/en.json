@@ -1855,7 +1855,7 @@
 "Создать заказ": "Create order",
 "Файл картинки": "Image file",
 "Прочитать все": "Read all",
-"ЗаписатьТекст": "RecordText",
+"ЗаписатьТекст": "WriteText",
 "UnixИстечение": "UnixExpiration",
 "МедиаКартинка": "MediaPicture",
 "ПринятьЗадачу": "ApproveTask",
