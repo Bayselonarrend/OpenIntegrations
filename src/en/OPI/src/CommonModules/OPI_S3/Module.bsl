@@ -637,7 +637,7 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
     CurrentDate = CurrentUniversalDate();
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
-    Request.Headers.Insert("Host"      , Connection.Server);
+    Request.Headers.Insert("Host"      , Connection.Host);
 
     SignKey          = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
     CanonicalRequest = CreateCanonicalRequest(Request, Connection, Method);
@@ -910,12 +910,12 @@ Function SendRequest(Val Method, Val BasicData, Val Body = Undefined, Val Header
     URL = BasicData["URL"];
 
     URLStructure = OPI_Tools.SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
 
     Request    = OPI_Tools.CreateRequest(Address);
-    Connection = OPI_Tools.CreateConnection(Server, Safe);
+    Connection = OPI_Tools.CreateConnection(Host, Safe);
 
     If ValueIsFilled(Body) Then
         SetRequestBody(Request, Body);
