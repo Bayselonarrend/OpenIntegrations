@@ -1,4 +1,4 @@
 oint cdek GetReceipt \
  --token "***" \
- --uuid "72753031-aed6-4640-8977-b589ea6f5150" \
+ --uuid "72753031-e9a9-4496-8654-c2406b7f2237" \
  --testapi "***"
