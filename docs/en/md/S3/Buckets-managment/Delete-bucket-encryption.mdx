@@ -43,6 +43,30 @@ Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.co
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint s3 DeleteBucketEncryption \
+             --name "opi-newbucket2" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --dir false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint s3 DeleteBucketEncryption ^
+             --name "opi-newbucket2" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --dir false
+        ```
+    </TabItem>
+</Tabs>
 
 
 
