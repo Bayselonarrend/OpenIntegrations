@@ -1,0 +1,14 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    SourcePath        = "picture.jpg";
+    DestinationBucket = "opi-gpbucket3";
+
+    DestinationPath = "new_picture.jpg";
+    SourceBucket    = "opi-dirbucket3";
+
+    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData);

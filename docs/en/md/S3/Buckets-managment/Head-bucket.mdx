@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function HeadBucket(Val Name, Val BasicData, Val Directory = True, Val AccountID = "", Val Headers = Undefined) Export`
+`Function HeadBucket(Val Name, Val BasicData, Val Directory = False, Val AccountID = "", Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -40,9 +40,9 @@ Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/l
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Name      = "opi-dirbucket3";
 
-    Result = OPI_S3.HeadBucket(Name, BasicData, True);
+    Result = OPI_S3.HeadBucket(Name, BasicData);
 
-    Result = OPI_S3.HeadBucket(Name, BasicData, True, "1234");
+    Result = OPI_S3.HeadBucket(Name, BasicData, , "1234");
 ```
  
 
@@ -72,22 +72,4 @@ Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/l
 </Tabs>
 
 
-```json title="Result"
-{
- "status": 200,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "0",
-  "Content-Type": "application/xml",
-  "Date": "Sun, 17 Nov 2024 19:19:03 GMT",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "1808D7A10D35DDC0",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+

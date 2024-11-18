@@ -9,9 +9,9 @@
     // Directory bucket
 
     Name   = "opi-dirbucket3";
-    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , True);
 
     // General purpose bucket
 
     Name   = "opi-gpbucket3";
-    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , False);
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
