@@ -2153,6 +2153,8 @@ Procedure AWS_ObjectsManagment() Export
     S3_PutObjectTagging(TestParameters);
     S3_GetObjectTagging(TestParameters);
     S3_DeleteObjectTagging(TestParameters);
+    S3_ListObjects(TestParameters);
+    S3_ListObjectVersions(TestParameters);
     S3_DeleteObject(TestParameters);
     S3_DeleteBucket(TestParameters);
 
@@ -15125,7 +15127,7 @@ EndProcedure
 
 Procedure S3_PutObjectTagging(FunctionParameters)
 
-    URL          = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
@@ -15187,6 +15189,45 @@ Procedure S3_DeleteObjectTagging(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteObjectTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_ListObjects(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Bucket = "opi-gpbucket3";
+    Result = OPI_S3.ListObjects(Bucket, BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListObjects", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_ListObjectVersions(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Bucket = "opi-gpbucket3";
+    Prefix = "pic";
+    Result = OPI_S3.ListObjectVersions(Bucket, BasicData, Prefix);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListObjectVersions", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure

@@ -1,0 +1,50 @@
+﻿---
+sidebar_position: 9
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# List object versions
+ Gets a list of all versions of objects in the selected bucket
+
+
+
+`Function ListObjectVersions(Val Bucket, Val BasicData, Val Prefix = "", Val Version = "", Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Bucket | --bucket | String | &#x2714; | Bucket name |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Prefix | --prefix | String | &#x2716; | Filtering by prefix, if necessary |
+  | Version | --ver | String | &#x2716; | Version ID for the beginning of the list |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Bucket = "opi-gpbucket3";
+    Prefix = "pic";
+    Result = OPI_S3.ListObjectVersions(Bucket, BasicData, Prefix);
+```
+ 
+
+
+
+

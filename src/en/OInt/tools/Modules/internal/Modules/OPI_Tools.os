@@ -344,13 +344,13 @@ EndFunction
 
 #Region Service
 
-Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False) Export
+Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False, Val Start = True) Export
 
     If Parameters.Count() = 0 Then
         Return "";
     EndIf;
 
-    ParameterString = "?";
+    ParameterString = ?(Start, "?", "&");
 
     For Each Parameter In Parameters Do
 
