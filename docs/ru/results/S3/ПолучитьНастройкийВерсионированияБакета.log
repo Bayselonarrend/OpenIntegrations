@@ -1,0 +1,21 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "VersioningConfiguration": {
+   "Status": "Enabled"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "123",
+  "Content-Type": "application/xml",
+  "Date": "Mon, 18 Nov 2024 08:05:08 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "1809016F0521C451",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
