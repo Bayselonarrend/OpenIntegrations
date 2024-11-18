@@ -651,7 +651,7 @@
     NewLine.Метод       = "ListBuckets";
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--prefix";
-    NewLine.Описание    = "Filtering by the beginning of the name, if necessary (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -1047,6 +1047,108 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteObjectTagging";
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjects";
+    NewLine.МетодПоиска = "LISTOBJECTS";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Bucket name";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Gets the list of objects in the selected bucket";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjects";
+    NewLine.МетодПоиска = "LISTOBJECTS";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjects";
+    NewLine.МетодПоиска = "LISTOBJECTS";
+    NewLine.Параметр    = "--prefix";
+    NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjects";
+    NewLine.МетодПоиска = "LISTOBJECTS";
+    NewLine.Параметр    = "--ctoken";
+    NewLine.Описание    = "Page token if pagination is used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjects";
+    NewLine.МетодПоиска = "LISTOBJECTS";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjectVersions";
+    NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Bucket name";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Gets a list of all versions of objects in the selected bucket";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjectVersions";
+    NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjectVersions";
+    NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
+    NewLine.Параметр    = "--prefix";
+    NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjectVersions";
+    NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
+    NewLine.Параметр    = "--ver";
+    NewLine.Описание    = "Version ID for the beginning of the list (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "ListObjectVersions";
+    NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects managment";

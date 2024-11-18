@@ -34,7 +34,7 @@ Setting up a new set removes all existing object tags
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL          = "storage-155.s3hoster.by";
+    URL       = "storage-155.s3hoster.by";
     AccessKey = "BRN5RKJE67...";
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
@@ -55,4 +55,22 @@ Setting up a new set removes all existing object tags
 
 
 
-
+```json title="Result"
+{
+ "status": 200,
+ "response": {},
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "0",
+  "Content-Type": "text/plain; charset=utf-8",
+  "Date": "Mon, 18 Nov 2024 10:59:11 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "18090AEE369EC35F",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```
