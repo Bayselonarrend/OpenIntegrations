@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Функция УдалитьТегиБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Истина, Знач Заголовки = Неопределено) Экспорт`
+`Функция УдалитьТегиБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Ложь, Знач Заголовки = Неопределено) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
@@ -41,12 +41,12 @@ import TabItem from '@theme/TabItem';
     // Directory bucket
 
     Наименование = "opi-dirbucket3";
-    Результат    = OPI_S3.УдалитьТегиБакета(Наименование, ОсновныеДанные);
+    Результат    = OPI_S3.УдалитьТегиБакета(Наименование, ОсновныеДанные, Истина);
 
     // General purpose bucket
 
     Наименование = "opi-gpbucket3";
-    Результат    = OPI_S3.УдалитьТегиБакета(Наименование, ОсновныеДанные, Ложь);
+    Результат    = OPI_S3.УдалитьТегиБакета(Наименование, ОсновныеДанные);
 ```
     
 
@@ -76,21 +76,4 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 
-```json title="Результат"
-{
- "status": 204,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Type": "text/plain; charset=utf-8",
-  "Date": "Sat, 16 Nov 2024 07:21:02 GMT",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "180861DD6B240194",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+
