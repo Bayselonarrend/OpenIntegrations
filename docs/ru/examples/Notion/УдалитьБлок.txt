@@ -1,4 +1,4 @@
 ﻿    Токен  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Блок   = "13b82aa7-fc4e-81aa-bbc2-ea2c468b5ee3";
+    Блок   = "14282aa7-fc4e-818d-80a0-d70aed13b0ff";
 
     Результат = OPI_Notion.УдалитьБлок(Токен, Блок);
