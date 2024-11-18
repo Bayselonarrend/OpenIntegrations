@@ -1,0 +1,44 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "ListAllMyBucketsResult": {
+   "Owner": {
+    "ID": "02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4",
+    "DisplayName": "minio"
+   },
+   "Buckets": {
+    "Bucket": [
+     {
+      "Name": "newbucket2",
+      "CreationDate": "2024-11-13T18:59:09.139Z"
+     },
+     {
+      "Name": "opi-dirbucket3",
+      "CreationDate": "2024-11-18T08:04:59.803Z"
+     },
+     {
+      "Name": "opi-gpbucket3",
+      "CreationDate": "2024-11-18T08:05:01.470Z"
+     },
+     {
+      "Name": "opi-newbucket2",
+      "CreationDate": "2024-11-14T06:04:12.769Z"
+     }
+    ]
+   }
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "658",
+  "Content-Type": "application/xml",
+  "Date": "Mon, 18 Nov 2024 08:05:02 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "1809016DCC480AAB",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
