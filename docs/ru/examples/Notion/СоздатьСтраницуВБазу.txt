@@ -1,5 +1,5 @@
 ﻿    Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База      = "13b82aa7-fc4e-814d-8ae6-e88d83acc319";
+    База      = "14282aa7-fc4e-8119-a1b2-f4099b7156b1";
     Картинка_ = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Картинка = Новый Соответствие;

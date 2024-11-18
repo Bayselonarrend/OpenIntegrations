@@ -17352,9 +17352,9 @@
 Процедура CLI_S3_УстановитьТегиОбъекта(ПараметрыФункции)
 
     URL          = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
-    Region    = "BTC";
+    AccessKey    = ПараметрыФункции["S3_AccessKey"];
+    SecretKey    = ПараметрыФункции["S3_SecretKey"];
+    Region       = "BTC";
 
     Опции = Новый Структура;
     Опции.Вставить("url"   , URL);
