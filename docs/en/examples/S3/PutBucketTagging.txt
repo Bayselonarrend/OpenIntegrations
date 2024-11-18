@@ -12,9 +12,9 @@
     // Directory bucket
 
     Name   = "opi-dirbucket3";
-    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure);
+    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure, True);
 
     // General purpose bucket
 
     Name   = "opi-gpbucket3";
-    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure, False);
+    Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure);

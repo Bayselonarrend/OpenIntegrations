@@ -160,7 +160,7 @@
     NewLine.Метод       = "CreateBucket";
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -201,7 +201,7 @@
     NewLine.Метод       = "DeleteBucket";
     NewLine.МетодПоиска = "DELETEBUCKET";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -242,7 +242,7 @@
     NewLine.Метод       = "HeadBucket";
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -303,7 +303,7 @@
     NewLine.Метод       = "PutBucketEncryption";
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -344,7 +344,7 @@
     NewLine.Метод       = "GetBucketEncryption";
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -385,7 +385,7 @@
     NewLine.Метод       = "DeleteBucketEncryption";
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -436,7 +436,7 @@
     NewLine.Метод       = "PutBucketTagging";
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -477,7 +477,7 @@
     NewLine.Метод       = "GetBucketTagging";
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -518,7 +518,7 @@
     NewLine.Метод       = "DeleteBucketTagging";
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -579,7 +579,7 @@
     NewLine.Метод       = "PutBucketVersioning";
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -620,7 +620,7 @@
     NewLine.Метод       = "GetBucketVersioning";
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
     NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
     NewLine.Область     = "Buckets managment";
 
 
@@ -833,6 +833,67 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "DeleteObject";
     NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--sname";
+    NewLine.Описание    = "Path (name) in the source bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Copies an object from one location to another";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--sbucket";
+    NewLine.Описание    = "Source bucket name";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Path (name) in the destination bucket";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Destination bucket name";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects managment";

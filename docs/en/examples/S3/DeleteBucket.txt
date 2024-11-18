@@ -8,9 +8,9 @@
     // Directory bucket
 
     Name   = "opi-dirbucket3";
-    Result = OPI_S3.DeleteBucket(Name, BasicData);
+    Result = OPI_S3.DeleteBucket(Name, BasicData, True);
 
     // General purpose bucket
 
     Name   = "opi-gpbucket3";
-    Result = OPI_S3.DeleteBucket(Name, BasicData, False);
+    Result = OPI_S3.DeleteBucket(Name, BasicData);

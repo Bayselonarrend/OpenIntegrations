@@ -124,7 +124,7 @@ EndFunction
 //
 // Returns:
 // Structure of KeyAndValue - serialized JSON response from storage
-Function CreateBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
+Function CreateBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
     Response = BucketManagment(Name, BasicData, Directory, "PUT", Headers);
     Return Response;
@@ -145,7 +145,7 @@ EndFunction
 //
 // Returns:
 // Structure of KeyAndValue - serialized JSON response from storage
-Function DeleteBucket(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export
+Function DeleteBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
     Response = BucketManagment(Name, BasicData, Directory, "DELETE", Headers);
     Return Response;
@@ -169,7 +169,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function HeadBucket(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val AccountID = ""
     , Val Headers = Undefined) Export
 
@@ -204,7 +204,7 @@ EndFunction
 Function PutBucketEncryption(Val Name
     , Val BasicData
     , Val XmlConfig
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     OPI_TypeConversion.GetLine(XmlConfig, True);
@@ -238,7 +238,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketEncryption(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     URL = GetServiceURL(BasicData);
@@ -270,7 +270,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketEncryption(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     URL = GetServiceURL(BasicData);
@@ -305,7 +305,7 @@ EndFunction
 Function PutBucketTagging(Val Name
     , Val BasicData
     , Val Tags
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     Tags    = FormTagsStructure(Tags);
@@ -340,7 +340,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketTagging(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     URL = GetServiceURL(BasicData);
@@ -371,7 +371,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketTagging(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     URL = GetServiceURL(BasicData);
@@ -406,7 +406,7 @@ Function PutBucketVersioning(Val Name
     , Val BasicData
     , Val Status = Undefined
     , Val MFADelete = Undefined
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     Tags    = FormVersioningStructure(Status, MFADelete);
@@ -441,7 +441,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function GetBucketVersioning(Val Name
     , Val BasicData
-    , Val Directory = True
+    , Val Directory = False
     , Val Headers = Undefined) Export
 
     URL = GetServiceURL(BasicData);
@@ -527,7 +527,7 @@ Function PutObject(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, Entity, Headers);
+    Response = SendRequest("PUT", BasicData, Entity, Headers);
 
     Return Response;
 
@@ -614,6 +614,45 @@ Function DeleteObject(Val Name
     BasicData.Insert("URL", URL);
 
     Response = SendRequestWithBody("DELETE", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Copy object
+// Copies an object from one location to another
+//
+// Note
+// Method at AWS documentation: [CopyObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
+//
+// Parameters:
+// SourcePath - String - Path (name) in the source bucket - sname
+// DestinationBucket - String - Source bucket name - sbucket
+// DestinationPath - String - Path (name) in the destination bucket - name
+// SourceBucket - String - Destination bucket name - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function CopyObject(Val SourcePath
+    , Val DestinationBucket
+    , Val DestinationPath
+    , Val SourceBucket
+    , Val BasicData
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(SourcePath);
+    OPI_TypeConversion.GetLine(DestinationBucket);
+
+    Source = DestinationBucket + "/" + SourcePath;
+    Source = ?(StrStartsWith(Source, "/"), Source, "/" + Source);
+
+    SourceHeader = New Map();
+    SourceHeader.Insert("x-amz-copy-source", Source);
+    AddAdditionalHeaders(Headers, SourceHeader);
+
+    Response = PutObject(DestinationPath, SourceBucket, Undefined, BasicData, Headers);
 
     Return Response;
 

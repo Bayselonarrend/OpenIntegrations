@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function DeleteBucketEncryption(Val Name, Val BasicData, Val Directory = True, Val Headers = Undefined) Export`
+`Function DeleteBucketEncryption(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -39,7 +39,7 @@ Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.co
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Name      = "opi-newbucket2";
 
-    Result = OPI_S3.DeleteBucketEncryption(Name, BasicData, False);
+    Result = OPI_S3.DeleteBucketEncryption(Name, BasicData);
 ```
  
 
@@ -69,21 +69,4 @@ Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.co
 </Tabs>
 
 
-```json title="Result"
-{
- "status": 204,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Type": "text/plain; charset=utf-8",
-  "Date": "Sun, 17 Nov 2024 19:19:07 GMT",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "1808D7A1D8C17D3F",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+
