@@ -2150,6 +2150,9 @@ Procedure AWS_ObjectsManagment() Export
     S3_PutObject(TestParameters);
     S3_HeadObject(TestParameters);
     S3_CopyObject(TestParameters);
+    S3_PutObjectTagging(TestParameters);
+    S3_GetObjectTagging(TestParameters);
+    S3_DeleteObjectTagging(TestParameters);
     S3_DeleteObject(TestParameters);
     S3_DeleteBucket(TestParameters);
 
@@ -15117,6 +15120,74 @@ Procedure S3_CopyObject(FunctionParameters)
 
     BasicData.Insert("URL", FunctionParameters["S3_URL"]);
     OPI_S3.DeleteObject(DestinationPath, SourceBucket, BasicData);
+
+EndProcedure
+
+Procedure S3_PutObjectTagging(FunctionParameters)
+
+    URL          = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    TagStructure = New Structure;
+
+    TagStructure.Insert("MyTag1", "SomeValue");
+    TagStructure.Insert("MyTag2", "AnotherOne");
+
+    Result = OPI_S3.PutObjectTagging(Name, Bucket, BasicData, TagStructure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutObjectTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_GetObjectTagging(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObjectTagging(Name, Bucket, BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_DeleteObjectTagging(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.DeleteObjectTagging(Name, Bucket, BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObjectTagging", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 

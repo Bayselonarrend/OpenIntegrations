@@ -658,6 +658,126 @@ Function CopyObject(Val SourcePath
 
 EndFunction
 
+// Put object tagging
+// Sets the tag set of the object
+//
+// Note
+// Setting up a new set removes all existing object tags
+// Method at AWS documentation: [PutObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
+//
+// Parameters:
+// Name - String - Object name - name
+// Bucket - String - Bucket name - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Tags - Structure of KeyAndValue - Set of tags (key and value) - tagset
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function PutObjectTagging(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Tags
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Tags    = FormTagsStructure(Tags);
+    TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
+    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name + "?tagging";
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get object tagging
+// Gets the tag set of the object
+//
+// Note
+// Method at AWS documentation: [GetObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
+//
+// Parameters:
+// Name - String - Object name - name
+// Bucket - String - Bucket name - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Version - String - Token for retrieving data of a specific version of an object - ver
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function GetObjectTagging(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Version = ""
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Version);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name + "?tagging";
+
+    If ValueIsFilled(Version) Then
+        URL = URL + "&versionId=" + Version;
+    EndIf;
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete object tagging
+// Deletes an objects tag set
+//
+// Note
+// Method at AWS documentation: [DeleteObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html)
+//
+// Parameters:
+// Name - String - Object name - name
+// Bucket - String - Bucket name - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Version - String - Token for deleting data of a specific version of an object - ver
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function DeleteObjectTagging(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Version = ""
+    , Val Headers = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Version);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name + "?tagging";
+
+    If ValueIsFilled(Version) Then
+        URL = URL + "&versionId=" + Version;
+    EndIf;
+
+    BasicData.Insert("URL", URL);
+
+    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion

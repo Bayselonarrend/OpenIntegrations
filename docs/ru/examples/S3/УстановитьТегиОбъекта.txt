@@ -1,0 +1,16 @@
+﻿    URL          = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Наименование  = "picture.jpg";
+    Бакет         = "opi-gpbucket3";
+
+    СтруктураТегов = Новый Структура;
+
+    СтруктураТегов.Вставить("MyTag1", "SomeValue");
+    СтруктураТегов.Вставить("MyTag2", "AnotherOne");
+
+    Результат = OPI_S3.УстановитьТегиОбъекта(Наименование, Бакет, ОсновныеДанные, СтруктураТегов);
