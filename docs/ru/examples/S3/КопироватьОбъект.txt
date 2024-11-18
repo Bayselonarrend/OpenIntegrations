@@ -1,0 +1,14 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    ПутьИсточник  = "picture.jpg";
+    БакетИсточник = "opi-gpbucket3";
+
+    ПутьПриемник  = "new_picture.jpg";
+    БакетПриемник = "opi-dirbucket3";
+
+    Результат = OPI_S3.КопироватьОбъект(ПутьИсточник, БакетИсточник, ПутьПриемник, БакетПриемник, ОсновныеДанные);

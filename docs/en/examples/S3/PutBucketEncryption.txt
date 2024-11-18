@@ -13,4 +13,4 @@
     | </Rule>
     |</ServerSideEncryptionConfiguration>";
 
-    Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig, False);
+    Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig);

@@ -2079,6 +2079,22 @@ Procedure CLI_YaMetrika_TagsManagment() Export
 
 EndProcedure
 
+Procedure CLI_YaMetrika_CountersManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
+
+    CLI_YandexMetrika_GetCounterStructure(TestParameters);
+    CLI_YandexMetrika_CreateCounter(TestParameters);
+    CLI_YandexMetrika_GetCounter(TestParameters);
+    CLI_YandexMetrika_UpdateCounter(TestParameters);
+    CLI_YandexMetrika_DeleteCounter(TestParameters);
+    CLI_YandexMetrika_RestoreCounter(TestParameters);
+    CLI_YandexMetrika_GetCountersList(TestParameters);
+    CLI_YandexMetrika_DeleteCounter(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region S3
@@ -2129,6 +2145,7 @@ Procedure CLI_AWS_ObjectsManagment() Export
     CLI_S3_CreateBucket(TestParameters);
     CLI_S3_PutObject(TestParameters);
     CLI_S3_HeadObject(TestParameters);
+    CLI_S3_CopyObject(TestParameters);
     CLI_S3_DeleteObject(TestParameters);
     CLI_S3_DeleteBucket(TestParameters);
 
@@ -16439,6 +16456,191 @@ Procedure CLI_YandexMetrika_GetTag(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_YandexMetrika_GetCounterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCounterStructure", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_CreateCounter(FunctionParameters)
+
+    Token = FunctionParameters["Metrika_Token"];
+
+    CounterStructure = New Structure;
+    CounterStructure.Insert("autogoals_enabled", True);
+
+        CodeSettingsStructure = New Structure;
+        CodeSettingsStructure.Insert("async"          , 0);
+        CodeSettingsStructure.Insert("clickmap"       , 1);
+        CodeSettingsStructure.Insert("ecommerce"      , 1);
+        CodeSettingsStructure.Insert("in_one_line"    , 0);
+        CodeSettingsStructure.Insert("track_hash"     , 1);
+        CodeSettingsStructure.Insert("visor"          , 1);
+        CodeSettingsStructure.Insert("xml_site"       , 0);
+        CodeSettingsStructure.Insert("ytm"            , 0);
+        CodeSettingsStructure.Insert("alternative_cdn", 1);
+
+            InformerStructure = New Structure;
+            InformerStructure.Insert("color_arrow", 1);
+            InformerStructure.Insert("color_end"  , "EFEFEFFE");
+            InformerStructure.Insert("color_start", "EEEEEEEE");
+            InformerStructure.Insert("color_text" , 0);
+            InformerStructure.Insert("enabled"    , 1);
+            InformerStructure.Insert("indicator"  , "uniques");
+            InformerStructure.Insert("size"       , 2);
+            InformerStructure.Insert("type"       , "ext");
+
+        CodeSettingsStructure.Insert("informer", InformerStructure);
+
+    CounterStructure.Insert("code_options", CodeSettingsStructure);
+
+        FlagsStructure = New Structure;
+        FlagsStructure.Insert("collect_first_party_data"             , True);
+        FlagsStructure.Insert("measurement_enabled"                  , True);
+        FlagsStructure.Insert("use_in_benchmarks"                    , True);
+        FlagsStructure.Insert("direct_allow_use_goals_without_access", True);
+
+    CounterStructure.Insert("counter_flags"          , FlagsStructure);
+    CounterStructure.Insert("favorite"               , 1);
+    CounterStructure.Insert("filter_robots"          , 2);
+    CounterStructure.Insert("gdpr_agreement_accepted", 1);
+
+        DomainStructure = New Structure("site", "openintegrations.dev");
+
+    CounterStructure.Insert("site2", DomainStructure);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("fields", CounterStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateCounter", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+    CounterID = Result["counter"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Metrika_CounterID", CounterID);
+    OPI_Tools.AddField("Metrika_CounterID", CounterID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_DeleteCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteCounter", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_UpdateCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    CounterStructure = New Structure;
+    CounterStructure.Insert("autogoals_enabled", True);
+
+        FlagsStructure = New Structure;
+        FlagsStructure.Insert("collect_first_party_data"             , False);
+        FlagsStructure.Insert("measurement_enabled"                  , False);
+        FlagsStructure.Insert("use_in_benchmarks"                    , False);
+        FlagsStructure.Insert("direct_allow_use_goals_without_access", False);
+
+    CounterStructure.Insert("counter_flags" , FlagsStructure);
+    CounterStructure.Insert("favorite"      , 0);
+    CounterStructure.Insert("filter_robots" , 1);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+    Options.Insert("fields" , CounterStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateCounter", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_GetCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounter", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_RestoreCounter(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "RestoreCounter", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_GetCountersList(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList", "YandexMetrika"); // SKIP
+    OPI_TestDataRetrieval.Check_MetrikaCounters(Result); // SKIP
+
+    // filter by IDs list
+
+    Filter = New Structure;
+
+    CountersArray = New Array;
+    CountersArray.Add(CounterID);
+
+    Filter.Insert("counter_ids", CountersArray);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("filter", Filter);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList (filter))", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaCounters(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region S3
@@ -17103,6 +17305,45 @@ Procedure CLI_S3_HeadObject(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "HeadObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure CLI_S3_CopyObject(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    SourcePath        = "picture.jpg";
+    DestinationBucket = "opi-gpbucket3";
+
+    DestinationPath = "new_picture.jpg";
+    SourceBucket    = "opi-dirbucket3";
+
+    Options = New Structure;
+    Options.Insert("sname"  , SourcePath);
+    Options.Insert("sbucket", DestinationBucket);
+    Options.Insert("name"   , DestinationPath);
+    Options.Insert("bucket" , SourceBucket);
+    Options.Insert("basic"  , BasicData);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CopyObject", Options);
+    Result    = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
+    OPI_S3.DeleteObject(DestinationPath, SourceBucket, BasicData);
 
 EndProcedure
 

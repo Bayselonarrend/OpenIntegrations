@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Val MFADelete = Undefined, Val Directory = True, Val Headers = Undefined) Export`
+`Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Val MFADelete = Undefined, Val Directory = False, Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -44,12 +44,12 @@ Method at AWS documentation: [PutBucketVersioning](https://docs.aws.amazon.com/A
     // Directory bucket
 
     Name   = "opi-dirbucket3";
-    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , True);
 
     // General purpose bucket
 
     Name   = "opi-gpbucket3";
-    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , False);
+    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
 ```
  
 
@@ -81,22 +81,4 @@ Method at AWS documentation: [PutBucketVersioning](https://docs.aws.amazon.com/A
 </Tabs>
 
 
-```json title="Result"
-{
- "status": 200,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "0",
-  "Content-Type": "text/plain; charset=utf-8",
-  "Date": "Sun, 17 Nov 2024 19:19:09 GMT",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "1808D7A221A6A6A4",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+
