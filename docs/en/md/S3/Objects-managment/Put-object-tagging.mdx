@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Put object tagging
+ Sets the tag set of the object
+
+
+
+`Function PutObjectTagging(Val Name, Val Bucket, Val BasicData, Val Tags, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Object name |
+  | Bucket | --bucket | String | &#x2714; | Bucket name |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Tags | --tagset | Structure of KeyAndValue | &#x2714; | Set of tags (key and value) |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Setting up a new set removes all existing object tags
+
+ Method at AWS documentation: [PutObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL          = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    TagStructure = New Structure;
+
+    TagStructure.Insert("MyTag1", "SomeValue");
+    TagStructure.Insert("MyTag2", "AnotherOne");
+
+    Result = OPI_S3.PutObjectTagging(Name, Bucket, BasicData, TagStructure);
+```
+ 
+
+
+
+
