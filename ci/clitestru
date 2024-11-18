@@ -1687,6 +1687,18 @@ def test_s3(){
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 КопироватьОбъект --sname "test" --sbucket "test" --name "test" --bucket "test" --basic "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УстановитьТегиОбъекта --name "test" --bucket "test" --basic "test" --tagset "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьТегиОбъекта --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 УдалитьТегиОбъекта --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+               }
+
 }
 
 
