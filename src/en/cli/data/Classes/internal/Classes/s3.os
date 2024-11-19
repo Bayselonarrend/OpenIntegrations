@@ -843,16 +843,6 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "GetObject";
     NewLine.МетодПоиска = "GETOBJECT";
-    NewLine.Параметр    = "--dir";
-    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket";
-    NewLine.Область     = "Objects managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "s3";
-    NewLine.Модуль      = "OPI_S3";
-    NewLine.Метод       = "GetObject";
-    NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects managment";
