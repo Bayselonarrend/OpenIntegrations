@@ -1308,7 +1308,7 @@ Function GetObjectInChunks(Val BasicData
 
     EndDo;
 
-    If Not ChunkStart = TotalSize Then
+    If ChunkStart < TotalSize Then
 
         Title = "bytes=" + OPI_Tools.NumberToString(ChunkStart) + "-";
 
