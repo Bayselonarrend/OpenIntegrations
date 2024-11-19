@@ -1342,7 +1342,8 @@ Function GetObjectInChunks(Val BasicData
         Return StreamOfFile.CloseAndGetBinaryData();
     Else
         StreamOfFile.Close();
-        Return New Structure("file", SavePath);
+        ResponseFile        = New File(SavePath);
+        Return ResponseFile.FullName;
     EndIf;
 
 EndFunction
@@ -1355,7 +1356,8 @@ Function GetFullObject(Val BasicData
 
     If ValueIsFilled(SavePath) Then
         Response.Write(SavePath);
-        Return New Structure("file", SavePath);
+        ResponseFile = New File(SavePath);
+        Return ResponseFile.FullName;
     Else
         Return Response;
     EndIf;
