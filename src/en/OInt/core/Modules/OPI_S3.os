@@ -216,16 +216,18 @@ Function PutBucketEncryption(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(XmlConfig, True);
     XmlConfig = ПолучитьДвоичныеДанныеИзСтроки(XmlConfig);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?encryption";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, XmlConfig, , Headers);
+    Response = SendRequestWithBody("PUT", BasicData_, XmlConfig, , Headers);
 
     Return Response;
 
@@ -250,14 +252,16 @@ Function GetBucketEncryption(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
 
     URL = URL + "?encryption";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -282,14 +286,16 @@ Function DeleteBucketEncryption(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
 
     URL = URL + "?encryption";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData_, , Headers);
 
     Return Response;
 
@@ -317,17 +323,19 @@ Function PutBucketTagging(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     Tags    = FormTagsStructure(Tags);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
     TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?tagging";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
+    Response = SendRequestWithBody("PUT", BasicData_, TagsXML, , Headers);
 
     Return Response;
 
@@ -352,13 +360,15 @@ Function GetBucketTagging(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?tagging";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -383,13 +393,15 @@ Function DeleteBucketTagging(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?tagging";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData_, , Headers);
 
     Return Response;
 
@@ -418,17 +430,19 @@ Function PutBucketVersioning(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     Tags    = FormVersioningStructure(Status, MFADelete);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
     TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?versioning";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
+    Response = SendRequestWithBody("PUT", BasicData_, TagsXML, , Headers);
 
     Return Response;
 
@@ -453,13 +467,15 @@ Function GetBucketVersioning(Val Name
     , Val Directory = False
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
     URL = URL + "?versioning";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -486,18 +502,20 @@ Function ListBuckets(Val BasicData
     , Val PageToken = ""
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     Parameters = New Map;
     OPI_Tools.AddField("bucket-region"     , Region   , "String", Parameters);
     OPI_Tools.AddField("continuation-token", PageToken, "String", Parameters);
     OPI_Tools.AddField("max-buckets"       , 250      , "String", Parameters);
     OPI_Tools.AddField("prefix"            , Prefix   , "String", Parameters);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = URL + OPI_Tools.RequestParametersToString(Parameters);
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -528,15 +546,17 @@ Function PutObject(Val Name
     , Val BasicData
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(Name);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + Name;
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequest("PUT", BasicData, Entity, , Headers);
+    Response = SendRequest("PUT", BasicData_, Entity, , Headers);
 
     Return Response;
 
@@ -564,22 +584,10 @@ Function HeadObject(Val Name
     , Val Version = Undefined
     , Val Headers = Undefined) Export
 
-    OPI_TypeConversion.GetLine(Name);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+    FillObjectURL(BasicData_, Name, Bucket, Version);
 
-    URL = GetServiceURL(BasicData);
-    URL = FormBucketURL(URL, Bucket, False);
-    URL = URL + Name;
-
-    If ValueIsFilled(Version) Then
-
-        OPI_TypeConversion.GetLine(Version);
-        URL = URL + "?versionId=" + Version;
-
-    EndIf;
-
-    BasicData.Insert("URL", URL);
-
-    Response             = SendRequestWithoutBody("HEAD", BasicData, , Headers);
+    Response             = SendRequestWithoutBody("HEAD", BasicData_, , Headers);
     Response["response"] = New Structure;
 
     Return Response;
@@ -612,28 +620,35 @@ Function GetObject(Val Name
     , Val Headers = Undefined
     , Val SavePath = "") Export
 
-    If OPI_Tools.CollectionFieldExist(BasicData, "ChunkSize") Then
-        MaxSize = BasicData["ChunkSize"];
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+    ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version);
+
+    If OPI_Tools.CollectionFieldExist(BasicData_, "ChunkSize") Then
+        MaxSize = BasicData_["ChunkSize"];
     Else
         MaxSize = 20000000;
     EndIf;
-
-    ObjectInfo = HeadObject(Name, Bucket, BasicData, Version);
 
     If Not OPI_Tools.CollectionFieldExist(ObjectInfo, "headers.Content-Length") Then
         Return ObjectInfo;
     EndIf;
 
     ObjectSize = ObjectInfo["headers"]["Content-Length"];
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     OPI_TypeConversion.GetNumber(MaxSize);
     OPI_TypeConversion.GetNumber(ObjectSize);
+    FillObjectURL(BasicData_, Name, Bucket, Version);
 
     If ObjectSize > MaxSize Then
+
         Sizes    = New Structure("object,chunk", ObjectSize, MaxSize);
-        Response = GetObjectInChunks(BasicData, Headers, SavePath, Sizes);
+        Response = GetObjectInChunks(BasicData_, Headers, SavePath, Sizes);
+
     Else
-        Response = GetFullObject(BasicData, Headers, SavePath);
+
+        Response = GetFullObject(BasicData_, Headers, SavePath);
+
     EndIf;
 
     Return Response;
@@ -661,9 +676,11 @@ Function DeleteObject(Val Name
     , Val Version = Undefined
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(Name);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + Name;
 
@@ -674,9 +691,9 @@ Function DeleteObject(Val Name
 
     EndIf;
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData_, , Headers);
 
     Return Response;
 
@@ -705,6 +722,8 @@ Function CopyObject(Val SourcePath
     , Val BasicData
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(SourcePath);
     OPI_TypeConversion.GetLine(DestinationBucket);
 
@@ -715,7 +734,7 @@ Function CopyObject(Val SourcePath
     SourceHeader.Insert("x-amz-copy-source", Source);
     AddAdditionalHeaders(Headers, SourceHeader);
 
-    Response = PutObject(DestinationPath, SourceBucket, Undefined, BasicData, Headers);
+    Response = PutObject(DestinationPath, SourceBucket, Undefined, BasicData_, Headers);
 
     Return Response;
 
@@ -743,19 +762,21 @@ Function PutObjectTagging(Val Name
     , Val Tags
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(Name);
 
     Tags    = FormTagsStructure(Tags);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
     TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + Name + "?tagging";
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
+    Response = SendRequestWithBody("PUT", BasicData_, TagsXML, , Headers);
 
     Return Response;
 
@@ -782,10 +803,12 @@ Function GetObjectTagging(Val Name
     , Val Version = ""
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetLine(Version);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + Name + "?tagging";
 
@@ -793,9 +816,9 @@ Function GetObjectTagging(Val Name
         URL = URL + "&versionId=" + Version;
     EndIf;
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -822,10 +845,12 @@ Function DeleteObjectTagging(Val Name
     , Val Version = ""
     , Val Headers = Undefined) Export
 
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetLine(Version);
 
-    URL = GetServiceURL(BasicData);
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + Name + "?tagging";
 
@@ -833,9 +858,9 @@ Function DeleteObjectTagging(Val Name
         URL = URL + "&versionId=" + Version;
     EndIf;
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData_, , Headers);
 
     Return Response;
 
@@ -862,7 +887,9 @@ Function ListObjects(Val Bucket
     , Val PageToken = ""
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
 
     Parameters = New Map;
@@ -872,9 +899,9 @@ Function ListObjects(Val Bucket
     OPI_Tools.AddField("prefix"            , Prefix   , "String", Parameters);
 
     URL = URL + OPI_Tools.RequestParametersToString(Parameters);
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -901,7 +928,9 @@ Function ListObjectVersions(Val Bucket
     , Val Version = ""
     , Val Headers = Undefined) Export
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
     URL = URL + "?versions";
 
@@ -911,9 +940,9 @@ Function ListObjectVersions(Val Bucket
     OPI_Tools.AddField("prefix"           , Prefix  , "String", Parameters);
 
     URL = URL + OPI_Tools.RequestParametersToString(Parameters, , False);
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
+    Response = SendRequestWithoutBody("GET", BasicData_, , Headers);
 
     Return Response;
 
@@ -1209,9 +1238,10 @@ Function SendRequest(Val Method
     , Val ExpectedBinary = False
     , Val Headers        = Undefined)
 
-    CheckBasicData(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+    CheckBasicData(BasicData_);
 
-    URL = BasicData["URL"];
+    URL = BasicData_["URL"];
 
     URLStructure = OPI_Tools.SplitURL(URL);
     Host         = URLStructure["Host"];
@@ -1227,7 +1257,7 @@ Function SendRequest(Val Method
 
     AddAdditionalHeaders(Request, Headers);
 
-    AuthorizationHeader = CreateAuthorizationHeader(BasicData, Request, Connection, Method);
+    AuthorizationHeader = CreateAuthorizationHeader(BasicData_, Request, Connection, Method);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
 
     Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
@@ -1239,12 +1269,14 @@ EndFunction
 
 Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
 
-    URL = GetServiceURL(BasicData);
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
 
-    BasicData.Insert("URL", URL);
+    BasicData_.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody(Method, BasicData, , Headers);
+    Response = SendRequestWithoutBody(Method, BasicData_, , Headers);
 
     Return Response;
 
@@ -1532,6 +1564,25 @@ Procedure SetRequestBody(Request, Body)
 
     OPI_TypeConversion.GetBinaryData(Body);
     Request.SetBodyFromBinary(Body);
+
+EndProcedure
+
+Procedure FillObjectURL(BasicData, Name, Bucket, Version)
+
+    OPI_TypeConversion.GetLine(Name);
+
+    URL = GetServiceURL(BasicData);
+    URL = FormBucketURL(URL, Bucket, False);
+    URL = URL + Name;
+
+    If ValueIsFilled(Version) Then
+
+        OPI_TypeConversion.GetLine(Version);
+        URL = URL + "?versionId=" + Version;
+
+    EndIf;
+
+    BasicData.Insert("URL", URL);
 
 EndProcedure
 
