@@ -14726,7 +14726,6 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -14756,7 +14755,6 @@ Procedure S3_DeleteBucket(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucket (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -14801,7 +14799,6 @@ Procedure S3_HeadBucket(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "HeadBucket", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     Result = OPI_S3.HeadBucket(Name, BasicData, , "1234");
 
@@ -14893,7 +14890,6 @@ Procedure S3_GetBucketTagging(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetBucketTagging (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -14927,7 +14923,6 @@ Procedure S3_PutBucketTagging(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutBucketTagging (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -14957,7 +14952,6 @@ Procedure S3_DeleteBucketTagging(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteBucketTagging (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -14990,7 +14984,6 @@ Procedure S3_GetBucketVersioning(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetBucketVersioning (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -15021,7 +15014,6 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutBucketVersioning (DB)", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     // General purpose bucket
 
@@ -15054,14 +15046,12 @@ Procedure S3_PutObject(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
 
     Bucket = "opi-dirbucket3";
     Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutObject (DB)", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
@@ -15131,7 +15121,6 @@ Procedure S3_CopyObject(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
     OPI_S3.DeleteObject(DestinationPath, SourceBucket, BasicData);
 
 EndProcedure
@@ -15263,7 +15252,6 @@ Procedure S3_GetObject(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize); // SKIP
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
 
     TempFile = GetTempFileName();
     BasicData.Insert("ChunkSize", 200000);
@@ -15273,9 +15261,8 @@ Procedure S3_GetObject(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (file)", "S3");
-    ResultFile = New File(Result["file"]);
+    ResultFile = New File(Result);
     OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = RequiredSize);
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
     DeleteFiles(TempFile);
 
     Name   = "bigfile.exe";
@@ -15283,11 +15270,10 @@ Procedure S3_GetObject(FunctionParameters)
 
     BigTempFile = GetTempFileName();
     Result      = OPI_S3.GetObject(Name, Bucket, BasicData, , , BigTempFile);
-    ResultFile  = New File(Result["file"]);
+    ResultFile  = New File(Result);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, file)", "S3");
     OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = 34432400);
-    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
     DeleteFiles(BigTempFile);
 
     Result = OPI_S3.GetObject(Name, Bucket, BasicData);

@@ -752,9 +752,38 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
 EndFunction
 
-Function RelevantNodeType(Val NodeType)
+Function CopyCollection(Val Collection) Export
 
-    Return NodeType = XMLNodeType.StartElement Or NodeType = XMLNodeType.EndElement Or NodeType = XMLNodeType.Text;
+    OPI_TypeConversion.GetCollection(Collection);
+
+    CollectionType = TypeOf(Collection);
+    IsStructure    = CollectionType    = Type("Structure");
+    IsMap          = CollectionType          = Type("Map");
+    IsArray        = CollectionType        = Type("Array");
+
+    If IsStructure Or IsMap Then
+
+        Collection_ = ?(IsStructure, New Structure, New Map);
+
+        For Each CollectionField In Collection Do
+            Collection_.Insert(CollectionField.Key, CollectionField.Value);
+        EndDo;
+
+    ElsIf IsArray Then
+
+        Collection_ = New Array;
+
+        For Each CollectionItem In Collection Do
+            Collection_.Add(CollectionItem);
+        EndDo;
+
+    Else
+
+        Collection_ = Collection;
+
+    EndIf;
+
+    Return Collection_;
 
 EndFunction
 
@@ -1112,6 +1141,33 @@ Function SplitArrayAsURLParameters(Val Key, Val Value)
 
 EndFunction
 
+Function StartFormingXML(Value, XMLWriter)
+
+    Start = False;
+
+    If XMLWriter = Undefined Then
+
+        ErrorText = "Error getting a collection for XML generation";
+        OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
+
+        XMLWriter = New XMLWriter;
+        XMLWriter.SetString();
+        XMLWriter.WriteXMLDeclaration();
+
+        Start = True;
+
+    EndIf;
+
+    Return Start;
+
+EndFunction
+
+Function RelevantNodeType(Val NodeType)
+
+    Return NodeType = XMLNodeType.StartElement Or NodeType = XMLNodeType.EndElement Or NodeType = XMLNodeType.Text;
+
+EndFunction
+
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
 
     Collection   = TypeOf(Parameters)   = Type("Structure") Or TypeOf(Parameters)   = Type("Map") Or TypeOf(Parameters)
@@ -1326,27 +1382,6 @@ Procedure XMLInitialProcessing(XML)
     EndIf;
 
 EndProcedure
-
-Function StartFormingXML(Value, XMLWriter)
-
-    Start = False;
-
-    If XMLWriter = Undefined Then
-
-        ErrorText = "Error getting a collection for XML generation";
-        OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
-
-        XMLWriter = New XMLWriter;
-        XMLWriter.SetString();
-        XMLWriter.WriteXMLDeclaration();
-
-        Start = True;
-
-    EndIf;
-
-    Return Start;
-
-EndFunction
 
 #Region GZip
 
