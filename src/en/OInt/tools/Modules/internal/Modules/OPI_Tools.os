@@ -36,7 +36,6 @@
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
-
 #Region Internal
 
 #Region HTTPMethods
@@ -55,44 +54,29 @@ EndFunction
 
 #Region RequestsWithBody
 
-Function Post(Val URL
-    , Val Parameters        = ""
-    , Val AdditionalHeaders = ""
-    , Val JSON = True
-    , Val FullResponse      = False
-    , Val ResponseFile      = Undefined) Export
+Function Post(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
+    Val ResponseFile = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "POST", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function Patch(Val URL
-    , Val Parameters        = ""
-    , Val AdditionalHeaders = ""
-    , Val JSON = True
-    , Val FullResponse      = False
-    , Val ResponseFile      = Undefined) Export
+Function Patch(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
+    Val ResponseFile = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PATCH", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function Put(Val URL
-    , Val Parameters        = ""
-    , Val AdditionalHeaders = ""
-    , Val JSON = True
-    , Val FullResponse      = False
-    , Val ResponseFile      = Undefined) Export
+Function Put(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
+    Val ResponseFile = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PUT", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function PostBinary(Val URL
-    , Val Body
-    , Val AdditionalHeaders
-    , Val FullResponse = False
-    , Val DataType     = "application/octet-stream") Export
+Function PostBinary(Val URL, Val Body, Val AdditionalHeaders, Val FullResponse = False,
+    Val DataType = "application/octet-stream") Export
 
     Return ExecuteRequestWithBinaryData(URL, "POST", Body, AdditionalHeaders, FullResponse, DataType);
 
@@ -102,43 +86,29 @@ EndFunction
 
 #Region MultipartRequests
 
-Function PostMultipart(Val URL
-    , Val Parameters        = ""
-    , Val Files             = ""
-    , Val ContentType       = "image/jpeg"
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined) Export
+Function PostMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
+    Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "POST", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PutMultipart(Val URL
-    , Val Parameters        = ""
-    , Val Files             = ""
-    , Val ContentType       = "image/jpeg"
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined) Export
+Function PutMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
+    Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "PUT", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PostMultipartRelated(Val URL
-    , Val JSON = ""
-    , Val Files             = ""
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined) Export
+Function PostMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
+    Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "POST", JSON, Files, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PatchMultipartRelated(Val URL
-    , Val JSON = ""
-    , Val Files             = ""
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined) Export
+Function PatchMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
+    Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "PATCH", JSON, Files, AdditionalHeaders, ResponseFile);
 
@@ -157,14 +127,13 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     BodyFile = Response.GetBodyFileName();
 
     If Not BodyFile = Undefined Then
-        Response    = BodyFile;
+        Response       = BodyFile;
         Return;
     EndIf;
 
     GZip = "gzip";
-    NeedsUnpacking =
-        Response.Headers.Get("Content-Encoding")    = GZip
-        Or Response.Headers.Get("content-encoding") = GZip;
+    NeedsUnpacking       = Response.Headers.Get("Content-Encoding")       = GZip Or Response.Headers.Get(
+        "content-encoding") = GZip;
 
     If NeedsUnpacking Then
         Response = UnpackResponse(Response);
@@ -175,7 +144,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     If TypeOf(Response) = Type("BinaryData") Then
 
         If Response.Size() = 0 Then
-            Response       = ПолучитьДвоичныеДанныеИзСтроки("{}");
+            Response          = ПолучитьДвоичныеДанныеИзСтроки("{}");
         EndIf;
 
         Try
@@ -276,12 +245,8 @@ Function CreateRequestWithBody(Val Address, Val Parameters, Val AdditionalHeader
 
 EndFunction
 
-Function CreateMultipartRequest(Val Address
-    , Val Parameters
-    , Val Files
-    , Val AdditionalHeaders
-    , Val FileName
-    , Val ContentType) Export
+Function CreateMultipartRequest(Val Address, Val Parameters, Val Files, Val AdditionalHeaders, Val FileName,
+    Val ContentType) Export
 
     Boundary      = StrReplace(String(New UUID), "-", "");
     LineSeparator = Chars.CR + Chars.LF;
@@ -289,13 +254,7 @@ Function CreateMultipartRequest(Val Address
 
     Request = CreateRequest(Address, AdditionalHeaders, DataType);
 
-    TextRecord = New DataWriter(FileName
-        , TextEncoding.UTF8
-        , ByteOrder.LittleEndian
-        , ""
-        , False
-        , ""
-        , False);
+    TextRecord = New DataWriter(FileName, TextEncoding.UTF8, ByteOrder.LittleEndian, "", False, "", False);
 
     WriteMultipartParameters(TextRecord, Boundary, Parameters);
     WriteMultipartFiles(TextRecord, Boundary, ContentType, Files);
@@ -316,13 +275,7 @@ Function CreateMultipartRelatedRequest(Val Address, Val Files, Val JSON, Val Add
     DataType = "multipart/related; boundary=" + Boundary;
 
     Request    = CreateRequest(Address, AdditionalHeaders, DataType);
-    TextRecord = New DataWriter(FileName
-        , TextEncoding.UTF8
-        , ByteOrder.LittleEndian
-        , ""
-        , False
-        , ""
-        , False);
+    TextRecord = New DataWriter(FileName, TextEncoding.UTF8, ByteOrder.LittleEndian, "", False, "", False);
 
     WriteJSONMultipart(TextRecord, Boundary, JSON);
     WriteRelatedFiles(TextRecord, Boundary, Files);
@@ -361,11 +314,7 @@ Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False,
 
             ParameterValue = ConvertParameterToString(CurrentValue);
 
-            ParameterString = ParameterString
-                + Parameter.Key
-                + "="
-                + ParameterValue
-                + "&";
+            ParameterString = ParameterString + Parameter.Key + "=" + ParameterValue + "&";
 
         Else
 
@@ -391,11 +340,11 @@ Function SplitURL(Val URL) Export
     URL = StrReplace(URL, ":443"    , "");
 
     If StrFind(URL, "/") = 0 Then
-        Address          = "";
-        Host             = URL;
+        Address             = "";
+        Host = URL;
     Else
-        Address          = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
-        Host             = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
+        Address             = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
+        Host = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
     EndIf;
 
     If IsOneScript() And SecureConnection Then
@@ -403,9 +352,9 @@ Function SplitURL(Val URL) Export
     EndIf;
 
     ReturnStructure = New Structure;
-    ReturnStructure.Insert("Host"    , Host);
-    ReturnStructure.Insert("Address" , Address);
-    ReturnStructure.Insert("Safe"    , SecureConnection);
+    ReturnStructure.Insert("Host"   , Host);
+    ReturnStructure.Insert("Address", Address);
+    ReturnStructure.Insert("Safe"   , SecureConnection);
 
     Return ReturnStructure;
 
@@ -429,21 +378,12 @@ Function JsonToStructure(Val Text) Export
 
 EndFunction
 
-Function JSONString(Val Data
-    , Val Escaping     = "None"
-    , Val LineBreaks   = True
-    , Val DoubleQuotes = True) Export
+Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
 
     LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
 
-    JSONParameters = New JSONWriterSettings(LineBreak
-        , " "
-        , DoubleQuotes
-        , JSONCharactersEscapeMode[Escaping]
-        , False
-        , False
-        , False
-        , False);
+    JSONParameters = New JSONWriterSettings(LineBreak, " ", DoubleQuotes, JSONCharactersEscapeMode[Escaping],
+        False, False, False, False);
 
     Try
 
@@ -571,17 +511,40 @@ Function CollectionFieldExist(Val Collection, Val Field) Export
 
     CollectionType = TypeOf(Collection);
 
-    If CollectionType = Type("Structure") Then
+    IsStructure      = CollectionType      = Type("Structure");
+    IsMap            = CollectionType            = Type("Map");
+    ThisIsCollection = IsStructure Or IsMap;
+
+    If StrFind(Field, ".") And ThisIsCollection Then
+
+        FieldParts   = StrSplit(Field, ".");
+        CurrentField = FieldParts[0];
+
+        If Not CollectionFieldExist(Collection, CurrentField) Then
+
+            Return False;
+
+        Else
+
+            FieldParts.Delete(0);
+            NextCollection = Collection[CurrentField];
+            NextField      = StrConcat(FieldParts, ".");
+
+            Return CollectionFieldExist(NextCollection, NextField);
+
+        EndIf;
+
+    ElsIf IsStructure Then
 
         Return Collection.Property(Field);
 
-    ElsIf CollectionType = Type("Map") Then
+    ElsIf IsMap Then
 
         Return Collection[Field] <> Undefined;
 
     Else
 
-        Raise "The specified value is not a valid collection!";
+        Return False;
 
     EndIf;
 
@@ -676,7 +639,7 @@ Function IsOneScript() Export
         // BSLLS:UnusedLocalVariable-off
 
         //@skip-check module-unused-local-variable
-        Check = New OpenSSLSecureConnection();
+        Check = New OpenSSLSecureConnection;
 
         // BSLLS:UnusedLocalVariable-on
 
@@ -721,7 +684,7 @@ Function ProcessXML(XML) Export
         Else
 
             If Not NodeType = XMLNodeType.EndElement Then
-                ReturnValue = XML.Value;
+                ReturnValue    = XML.Value;
                 XML.Read();
             EndIf;
 
@@ -778,9 +741,7 @@ EndFunction
 
 Function RelevantNodeType(Val NodeType)
 
-    Return NodeType = XMLNodeType.StartElement
-        Or NodeType = XMLNodeType.EndElement
-        Or NodeType = XMLNodeType.Text;
+    Return NodeType = XMLNodeType.StartElement Or NodeType = XMLNodeType.EndElement Or NodeType = XMLNodeType.Text;
 
 EndFunction
 
@@ -827,7 +788,7 @@ EndProcedure
 Procedure RemoveEmptyCollectionFields(Collection) Export
 
     CollectionType   = TypeOf(Collection);
-    OutputCollection = New(CollectionType);
+    OutputCollection = New (CollectionType);
 
     If CollectionType = Type("Map") Or CollectionType = Type("Structure") Then
 
@@ -866,17 +827,17 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         Return;
     EndIf;
 
-    If Type   = "Date" Then
+    If Type = "Date" Then
         OPI_TypeConversion.GetDate(Value);
-        Value = UNIXTime(Value);
+        Value  = UNIXTime(Value);
 
     ElsIf Type = "DateISO" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19);
+        Value     = Left(XMLString(Value), 19);
 
     ElsIf Type = "DateISOZ" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19) + "Z";
+        Value     = Left(XMLString(Value), 19) + "Z";
 
     ElsIf Type = "DateWithoutTime" Then
         OPI_TypeConversion.GetDate(Value);
@@ -923,13 +884,8 @@ EndProcedure
 
 #Region Private
 
-Function ExecuteRequestWithBody(Val URL
-    , Val View
-    , Val Parameters        = ""
-    , Val AdditionalHeaders = ""
-    , Val JSON = True
-    , Val FullResponse      = False
-    , Val ResponseFile      = Undefined)
+Function ExecuteRequestWithBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True,
+    Val FullResponse = False, Val ResponseFile = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -948,12 +904,8 @@ Function ExecuteRequestWithBody(Val URL
 
 EndFunction
 
-Function ExecuteRequestWithBinaryData(Val URL
-    , Val View
-    , Val Data
-    , Val AdditionalHeaders
-    , Val FullResponse
-    , Val DataType)
+Function ExecuteRequestWithBinaryData(Val URL, Val View, Val Data, Val AdditionalHeaders, Val FullResponse,
+    Val DataType)
 
     URLStructure = SplitURL(URL);
     Host         = URLStructure["Host"];
@@ -973,11 +925,8 @@ Function ExecuteRequestWithBinaryData(Val URL
 
 EndFunction
 
-Function ExecuteRequestWithoutBody(Val URL
-    , Val View
-    , Val Parameters        = ""
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined)
+Function ExecuteRequestWithoutBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "",
+    Val ResponseFile = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -997,13 +946,8 @@ Function ExecuteRequestWithoutBody(Val URL
 
 EndFunction
 
-Function ExecuteMultipartRequest(Val URL
-    , Val View
-    , Val Parameters        = ""
-    , Val Files             = ""
-    , Val ContentType       = "image/jpeg"
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined)
+Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Files = "",
+    Val ContentType = "image/jpeg", Val AdditionalHeaders = "", Val ResponseFile = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -1032,12 +976,8 @@ Function ExecuteMultipartRequest(Val URL
 
 EndFunction
 
-Function ExecuteMultipartRelatedRequest(Val URL
-    , Val View
-    , Val JSON = ""
-    , Val Files             = ""
-    , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined)
+Function ExecuteMultipartRelatedRequest(Val URL, Val View, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
+    Val ResponseFile = Undefined)
 
     URLStructure = SplitURL(URL);
     Host         = URLStructure["Host"];
@@ -1064,9 +1004,8 @@ Function ThisIsRedirection(Val Response)
     Redirection = 300;
     Error       = 400;
 
-    ThisIsRedirection = Response.StatusCode >= Redirection
-        And Response.StatusCode < Error
-        And ValueIsFilled(Response.Headers["Location"]);
+    ThisIsRedirection = Response.StatusCode >= Redirection And Response.StatusCode < Error And ValueIsFilled(
+        Response.Headers["Location"]);
 
     Return ThisIsRedirection;
 
@@ -1076,7 +1015,7 @@ Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
 
-        For N        = 0 To Value.UBound() Do
+        For N     = 0 To Value.UBound() Do
             Value[N] = ConvertParameterToString(Value[N]);
         EndDo;
 
@@ -1117,8 +1056,8 @@ Function SplitFileKey(Val FileData, Val ContentType)
     NeedParts      = 2;
 
     If NameParts.Count() = NeedParts Then
-        FieldName        = NameParts[0];
-        FileName         = NameParts[1];
+        FieldName           = NameParts[0];
+        FileName            = NameParts[1];
     Else
 
         If ContentType = "image/jpeg" Then
@@ -1162,9 +1101,8 @@ EndFunction
 
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
 
-    Collection = TypeOf(Parameters) = Type("Structure")
-        Or TypeOf(Parameters) = Type("Map")
-        Or TypeOf(Parameters) = Type("Array");
+    Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
+                  = Type("Array");
 
     If JSON Then
 
@@ -1196,8 +1134,7 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
 
     For Each Parameter In Parameters Do
 
-        If Parameter.Value     = Undefined
-            Or Parameter.Value = NULL Then
+        If Parameter.Value = Undefined Or Parameter.Value = Null Then
             Continue;
         EndIf;
 
@@ -1206,8 +1143,7 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
         TextRecord.WriteLine(LineSeparator);
         TextRecord.WriteLine(LineSeparator);
 
-        If TypeOf(Parameter.Value)     = Type("String")
-            Or TypeOf(Parameter.Value) = Type("Number") Then
+        If TypeOf(Parameter.Value) = Type("String") Or TypeOf(Parameter.Value) = Type("Number") Then
 
             ValueAsString = NumberToString(Parameter.Value);
             TextRecord.WriteLine(ValueAsString);
@@ -1241,10 +1177,7 @@ Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Fil
         FileName  = DataStructure["FileName"];
 
         TextRecord.WriteLine("--" + boundary + LineSeparator);
-        TextRecord.WriteLine("Content-Disposition: form-data; name="""
-            + FieldName
-            + """; filename="""
-            + FileName
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + FieldName + """; filename=""" + FileName
             + """");
         TextRecord.WriteLine(LineSeparator);
 
@@ -1351,7 +1284,7 @@ Procedure RemoveEmptyKeyValues(Val Collection, OutputCollection)
 
     For Each CollectionItem In Collection Do
 
-        If Not CollectionItem.Value = Undefined And Not CollectionItem.Value = NULL Then
+        If Not CollectionItem.Value = Undefined And Not CollectionItem.Value = Null Then
             OutputCollection.Insert(CollectionItem.Key, CollectionItem.Value);
         EndIf;
 
@@ -1363,7 +1296,7 @@ Procedure RemoveEmptyArrayItems(Val Collection, OutputCollection)
 
     For Each CollectionItem In Collection Do
 
-        If Not CollectionItem = Undefined And Not CollectionItem = NULL Then
+        If Not CollectionItem = Undefined And Not CollectionItem = Null Then
             OutputCollection.Add(CollectionItem);
         EndIf;
 
@@ -1374,8 +1307,8 @@ EndProcedure
 Procedure XMLInitialProcessing(XML)
 
     If Not TypeOf(XML) = Type("XMLReader") Then
-        XML_           = XML;
-        XML            = New XMLReader;
+        XML_ = XML;
+        XML = New XMLReader;
         XML.SetString(XML_);
     EndIf;
 
@@ -1454,11 +1387,7 @@ Function ReadGZip(CompressedData) Export
     DataReader.Skip(GZipPrefixSize);
     CompressedDataSize = DataReader.SourceStream().Size() - GZipPrefixSize - GZipPostfixSize;
 
-    ZipStream = New MemoryStream(SizeLFH
-       + CompressedDataSize
-       + SizeDD
-       + SizeCDH
-       + SizeESD);
+    ZipStream = New MemoryStream(SizeLFH + CompressedDataSize + SizeDD + SizeCDH + SizeESD);
 
     DataWriter = New DataWriter(ZipStream);
     DataWriter.WriteBinaryDataBuffer(ZipLFH());
@@ -1482,9 +1411,9 @@ EndFunction
 
 Function ReadZip(CompressedData, ErrorText = Undefined)
 
-    Directory     = GetTempFileName();
-    ReadingZip    = New ZipFileReader(CompressedData);
-    FileName      = ReadingZip.Items[0].Name;
+    Directory  = GetTempFileName();
+    ReadingZip = New ZipFileReader(CompressedData);
+    FileName   = ReadingZip.Items[0].Name;
     Try
         ReadingZip.Extract(ReadingZip.Items[0], Directory, ZIPRestoreFilePathsMode.DontRestore);
     Except
