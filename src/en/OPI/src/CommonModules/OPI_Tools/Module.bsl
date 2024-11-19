@@ -127,12 +127,12 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     BodyFile = Response.GetBodyFileName();
 
     If Not BodyFile = Undefined Then
-        Response       = BodyFile;
+        Response    = BodyFile;
         Return;
     EndIf;
 
     GZip = "gzip";
-    NeedsUnpacking       = Response.Headers.Get("Content-Encoding")       = GZip Or Response.Headers.Get(
+    NeedsUnpacking          = Response.Headers.Get("Content-Encoding")          = GZip Or Response.Headers.Get(
         "content-encoding") = GZip;
 
     If NeedsUnpacking Then
@@ -144,7 +144,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     If TypeOf(Response) = Type("BinaryData") Then
 
         If Response.Size() = 0 Then
-            Response          = GetBinaryDataFromString("{}");
+            Response       = GetBinaryDataFromString("{}");
         EndIf;
 
         Try
@@ -340,11 +340,11 @@ Function SplitURL(Val URL) Export
     URL = StrReplace(URL, ":443"    , "");
 
     If StrFind(URL, "/") = 0 Then
-        Address             = "";
-        Host = URL;
+        Address          = "";
+        Host             = URL;
     Else
-        Address             = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
-        Host = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
+        Address          = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
+        Host             = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
     EndIf;
 
     If IsOneScript() And SecureConnection Then
@@ -352,9 +352,9 @@ Function SplitURL(Val URL) Export
     EndIf;
 
     ReturnStructure = New Structure;
-    ReturnStructure.Insert("Host"   , Host);
-    ReturnStructure.Insert("Address", Address);
-    ReturnStructure.Insert("Safe"   , SecureConnection);
+    ReturnStructure.Insert("Host"    , Host);
+    ReturnStructure.Insert("Address" , Address);
+    ReturnStructure.Insert("Safe"    , SecureConnection);
 
     Return ReturnStructure;
 
@@ -684,7 +684,7 @@ Function ProcessXML(XML) Export
         Else
 
             If Not NodeType = XMLNodeType.EndElement Then
-                ReturnValue    = XML.Value;
+                ReturnValue = XML.Value;
                 XML.Read();
             EndIf;
 
@@ -827,17 +827,17 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         Return;
     EndIf;
 
-    If Type = "Date" Then
+    If Type   = "Date" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = UNIXTime(Value);
+        Value = UNIXTime(Value);
 
     ElsIf Type = "DateISO" Then
         OPI_TypeConversion.GetDate(Value);
-        Value     = Left(XMLString(Value), 19);
+        Value  = Left(XMLString(Value), 19);
 
     ElsIf Type = "DateISOZ" Then
         OPI_TypeConversion.GetDate(Value);
-        Value     = Left(XMLString(Value), 19) + "Z";
+        Value  = Left(XMLString(Value), 19) + "Z";
 
     ElsIf Type = "DateWithoutTime" Then
         OPI_TypeConversion.GetDate(Value);
@@ -1015,7 +1015,7 @@ Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
 
-        For N     = 0 To Value.UBound() Do
+        For N        = 0 To Value.UBound() Do
             Value[N] = ConvertParameterToString(Value[N]);
         EndDo;
 
@@ -1056,8 +1056,8 @@ Function SplitFileKey(Val FileData, Val ContentType)
     NeedParts      = 2;
 
     If NameParts.Count() = NeedParts Then
-        FieldName           = NameParts[0];
-        FileName            = NameParts[1];
+        FieldName        = NameParts[0];
+        FileName         = NameParts[1];
     Else
 
         If ContentType = "image/jpeg" Then
@@ -1101,8 +1101,8 @@ EndFunction
 
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
 
-    Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
-                  = Type("Array");
+    Collection   = TypeOf(Parameters)   = Type("Structure") Or TypeOf(Parameters)   = Type("Map") Or TypeOf(Parameters)
+                 = Type("Array");
 
     If JSON Then
 
@@ -1307,8 +1307,8 @@ EndProcedure
 Procedure XMLInitialProcessing(XML)
 
     If Not TypeOf(XML) = Type("XMLReader") Then
-        XML_ = XML;
-        XML = New XMLReader;
+        XML_           = XML;
+        XML            = New XMLReader;
         XML.SetString(XML_);
     EndIf;
 
@@ -1411,9 +1411,9 @@ EndFunction
 
 Function ReadZip(CompressedData, ErrorText = Undefined)
 
-    Directory  = GetTempFileName();
-    ReadingZip = New ZipFileReader(CompressedData);
-    FileName   = ReadingZip.Items[0].Name;
+    Directory     = GetTempFileName();
+    ReadingZip    = New ZipFileReader(CompressedData);
+    FileName      = ReadingZip.Items[0].Name;
     Try
         ReadingZip.Extract(ReadingZip.Items[0], Directory, ZIPRestoreFilePathsMode.DontRestore);
     Except
