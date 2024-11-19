@@ -87,6 +87,16 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "SendRequestWithoutBody";
     NewLine.МетодПоиска = "SENDREQUESTWITHOUTBODY";
+    NewLine.Параметр    = "--binary";
+    NewLine.Описание    = "Disables an attempt to convert the response to JSON (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithoutBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHOUTBODY";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Common methods";
@@ -120,6 +130,16 @@
     NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
     NewLine.Параметр    = "--body";
     NewLine.Описание    = "Binary data or file of request body data";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "SendRequestWithBody";
+    NewLine.МетодПоиска = "SENDREQUESTWITHBODY";
+    NewLine.Параметр    = "--binary";
+    NewLine.Описание    = "Disables an attempt to convert the response to JSON (optional, def. val. - No)";
     NewLine.Область     = "Common methods";
 
 
@@ -784,6 +804,77 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Gets the contents of the object from the bucket";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket in which the object is stored";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--dir";
+    NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--ver";
+    NewLine.Описание    = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObject";
+    NewLine.МетодПоиска = "GETOBJECT";
+    NewLine.Параметр    = "--out";
+    NewLine.Описание    = "Path to directly write a file to disk (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects managment";
 
 
