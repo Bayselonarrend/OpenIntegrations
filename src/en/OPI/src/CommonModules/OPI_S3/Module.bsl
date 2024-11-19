@@ -77,13 +77,17 @@ EndFunction
 // Parameters:
 // Method - String - HTTP method - method
 // BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
+// ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Structure of KeyAndValue - serialized JSON response from storage
-Function SendRequestWithoutBody(Val Method, Val BasicData, Val Headers = Undefined) Export
+Function SendRequestWithoutBody(Val Method
+    , Val BasicData
+    , Val ExpectedBinary = False
+    , Val Headers = Undefined) Export
 
-    Response = SendRequest(Method, BasicData, , Headers);
+    Response = SendRequest(Method, BasicData, , ExpectedBinary, Headers);
     Return Response;
 
 EndFunction
@@ -95,13 +99,18 @@ EndFunction
 // Method - String - HTTP method - method
 // BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
 // Body - String, BinaryData - Binary data or file of request body data - body
+// ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Structure of KeyAndValue - serialized JSON response from storage
-Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val Headers = Undefined) Export
+Function SendRequestWithBody(Val Method
+    , Val BasicData
+    , Val Body
+    , Val ExpectedBinary = False
+    , Val Headers = Undefined) Export
 
-    Response = SendRequest(Method, BasicData, Body, Headers);
+    Response = SendRequest(Method, BasicData, Body, ExpectedBinary, Headers);
     Return Response;
 
 EndFunction
@@ -216,7 +225,7 @@ Function PutBucketEncryption(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, XmlConfig, Headers);
+    Response = SendRequestWithBody("PUT", BasicData, XmlConfig, , Headers);
 
     Return Response;
 
@@ -248,7 +257,7 @@ Function GetBucketEncryption(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -280,7 +289,7 @@ Function DeleteBucketEncryption(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
 
     Return Response;
 
@@ -318,7 +327,7 @@ Function PutBucketTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
 
     Return Response;
 
@@ -349,7 +358,7 @@ Function GetBucketTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -380,7 +389,7 @@ Function DeleteBucketTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
 
     Return Response;
 
@@ -419,7 +428,7 @@ Function PutBucketVersioning(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
 
     Return Response;
 
@@ -450,7 +459,7 @@ Function GetBucketVersioning(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -488,7 +497,7 @@ Function ListBuckets(Val BasicData
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -527,7 +536,7 @@ Function PutObject(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequest("PUT", BasicData, Entity, Headers);
+    Response = SendRequest("PUT", BasicData, Entity, , Headers);
 
     Return Response;
 
@@ -570,8 +579,63 @@ Function HeadObject(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response             = SendRequestWithBody("HEAD", BasicData, Headers);
+    Response             = SendRequestWithoutBody("HEAD", BasicData, , Headers);
     Response["response"] = New Structure;
+
+    Return Response;
+
+EndFunction
+
+// Get object
+// Gets the contents of the object from the bucket
+//
+// Note
+// Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
+// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
+// For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
+// Chunk upload is used for large files. Default ChunkSize - 20000000 bytes (20 MB)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket in which the object is stored - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
+// Version - String - Token for receiving a specific version of an object - ver
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// SavePath - String - Path to directly write a file to disk - out
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function GetObject(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Version = ""
+    , Val Headers = Undefined
+    , Val SavePath = "") Export
+
+    If OPI_Tools.CollectionFieldExists(BasicData, "ChunkSize") Then
+        MaxSize = BasicData["ChunkSize"];
+    Else
+        MaxSize = 20000000;
+    EndIf;
+
+    ObjectInfo = HeadObject(Name, Bucket, BasicData, Version);
+
+    If Not OPI_Tools.CollectionFieldExists(ObjectInfo, "headers.Content-Length") Then
+        Return ObjectInfo;
+    EndIf;
+
+    ObjectSize = ObjectInfo["headers"]["Content-Length"];
+
+    OPI_TypeConversion.GetNumber(MaxSize);
+    OPI_TypeConversion.GetNumber(ObjectSize);
+
+    If ObjectSize > MaxSize Then
+        Sizes    = New Structure("object,chunk", ObjectSize, MaxSize);
+        Response = GetObjectInChunks(BasicData, Headers, SavePath, Sizes);
+    Else
+        Response = GetFullObject(BasicData, Headers, SavePath);
+    EndIf;
 
     Return Response;
 
@@ -613,7 +677,7 @@ Function DeleteObject(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("DELETE", BasicData, Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
 
     Return Response;
 
@@ -692,7 +756,7 @@ Function PutObjectTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithBody("PUT", BasicData, TagsXML, Headers);
+    Response = SendRequestWithBody("PUT", BasicData, TagsXML, , Headers);
 
     Return Response;
 
@@ -732,7 +796,7 @@ Function GetObjectTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -772,7 +836,7 @@ Function DeleteObjectTagging(Val Name
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("DELETE", BasicData, Headers);
+    Response = SendRequestWithoutBody("DELETE", BasicData, , Headers);
 
     Return Response;
 
@@ -811,7 +875,7 @@ Function ListObjects(Val Bucket
     URL = URL + OPI_Tools.RequestParametersToString(Parameters);
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -850,7 +914,7 @@ Function ListObjectVersions(Val Bucket
     URL = URL + OPI_Tools.RequestParametersToString(Parameters, , False);
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody("GET", BasicData, Headers);
+    Response = SendRequestWithoutBody("GET", BasicData, , Headers);
 
     Return Response;
 
@@ -1140,7 +1204,11 @@ EndProcedure
 
 #Region Miscellaneous
 
-Function SendRequest(Val Method, Val BasicData, Val Body = Undefined, Val Headers = Undefined)
+Function SendRequest(Val Method
+    , Val BasicData
+    , Val Body           = Undefined
+    , Val ExpectedBinary = False
+    , Val Headers        = Undefined)
 
     CheckBasicData(BasicData);
 
@@ -1164,7 +1232,7 @@ Function SendRequest(Val Method, Val BasicData, Val Body = Undefined, Val Header
     Request.Headers.Insert("Authorization", AuthorizationHeader);
 
     Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
-    Response = FormResponse(Response);
+    Response = FormResponse(Response, ExpectedBinary);
 
     Return Response;
 
@@ -1177,9 +1245,119 @@ Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val
 
     BasicData.Insert("URL", URL);
 
-    Response = SendRequestWithoutBody(Method, BasicData, Headers);
+    Response = SendRequestWithoutBody(Method, BasicData, , Headers);
 
     Return Response;
+
+EndFunction
+
+Function GetObjectInChunks(Val BasicData
+    , Val Headers
+    , Val SavePath
+    , Val Sizes)
+
+    TotalSize  = Sizes["object"];
+    ChunkSize  = Sizes["chunk"];
+    HeaderTemplate = "bytes=%1-%2";
+    ChunkStart = 0;
+
+    HeadersArray = New Array;
+
+    WHile ChunkStart < TotalSize - ChunkSize Do
+
+        ChunkEnd = ChunkStart + ChunkSize - 1;
+
+        StartStr = OPI_Tools.NumberToString(ChunkStart);
+        EndStr   = OPI_Tools.NumberToString(ChunkEnd);
+
+        Title = StrTemplate(HeaderTemplate, StartStr, EndStr);
+        HeadersArray.Add(New Structure("Header,Position", Title, EndStr));
+
+        ChunkStart = ChunkEnd + 1;
+
+    EndDo;
+
+    If Not ChunkStart = TotalSize Then
+
+        Title = "bytes=" + OPI_Tools.NumberToString(ChunkStart) + "-";
+
+        DataStructure = New Structure("Header,Position", Title, TotalSize);
+        HeadersArray.Add(DataStructure);
+
+    EndIf;
+
+    If ValueIsFilled(SavePath) Then
+        StreamOfFile = New FileStream(SavePath, FileOpenMode.Create);
+    Else
+        StreamOfFile = New MemoryStream();
+    EndIf;
+
+    FileWriter = New DataWriter(StreamOfFile);
+
+    For Each CurrentSet In HeadersArray Do
+
+        For N = 1 To 3 Do
+
+            Try
+
+                ChunkHeader     = CurrentSet["Title"];
+                CurrentPosition = CurrentSet["Item"];
+
+                SourceHeader = New Map();
+                SourceHeader.Insert("Range", ChunkHeader);
+                AddAdditionalHeaders(Headers, SourceHeader);
+
+                InterimResult = GetFullObject(BasicData, SourceHeader);
+                FileWriter.Write(InterimResult);
+
+                // !OInt KB = 1024;
+                // !OInt MB = KB * KB;
+                // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
+
+                // !OInt RunGarbageCollection();
+                // !OInt FreeObject(InterimResult);
+
+                Break;
+
+            Except
+
+                If N = 3 Then
+                    // !OInt Message(ErrorDescription());
+                    Break;
+                Else
+                    // !OInt Message("Chunk upload error " + String(N) + "/3");
+                    Continue;
+                EndIf;
+
+            EndTry;
+
+        EndDo;
+
+    EndDo;
+
+    FileWriter.Close();
+
+    If TypeOf(StreamOfFile) = Type("MemoryStream") Then
+        Return StreamOfFile.CloseAndGetBinaryData();
+    Else
+        StreamOfFile.Close();
+        Return New Structure("file", SavePath);
+    EndIf;
+
+EndFunction
+
+Function GetFullObject(Val BasicData
+    , Val Headers
+    , Val SavePath = "")
+
+    Response = SendRequestWithoutBody("GET", BasicData, True, Headers);
+
+    If ValueIsFilled(SavePath) Then
+        Response.Write(SavePath);
+        Return New Structure("file", SavePath);
+    Else
+        Return Response;
+    EndIf;
 
 EndFunction
 

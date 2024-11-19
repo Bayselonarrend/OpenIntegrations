@@ -10,13 +10,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val Headers = Undefined) Export`
+`Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val ExpectedBinary = False, Val Headers = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Method | --method | String | &#x2714; | HTTP method |
   | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data (with full URL). See GetBasicDataStructure |
   | Body | --body | String, BinaryData | &#x2714; | Binary data or file of request body data |
+  | ExpectedBinary | --binary | Boolean | &#x2716; | Disables an attempt to convert the response to JSON |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   

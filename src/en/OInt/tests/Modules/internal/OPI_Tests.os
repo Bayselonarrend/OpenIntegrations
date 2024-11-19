@@ -2155,6 +2155,7 @@ Procedure AWS_ObjectsManagment() Export
     S3_DeleteObjectTagging(TestParameters);
     S3_ListObjects(TestParameters);
     S3_ListObjectVersions(TestParameters);
+    S3_GetObject(TestParameters);
     S3_DeleteObject(TestParameters);
     S3_DeleteBucket(TestParameters);
 
@@ -15053,6 +15054,16 @@ Procedure S3_PutObject(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
+
+    Bucket = "opi-dirbucket3";
+    Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutObject (DB)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 
@@ -15229,6 +15240,60 @@ Procedure S3_ListObjectVersions(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ListObjectVersions", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_GetObject(FunctionParameters)
+
+    Image        = FunctionParameters["Picture"]; // SKIP
+    OPI_TypeConversion.GetBinaryData(Image); // SKIP
+    RequiredSize = Image.Size(); // SKIP
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "S3"); // SKIP
+    OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize); // SKIP
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]); // SKIP
+
+    TempFile = GetTempFileName();
+    BasicData.Insert("ChunkSize", 200000);
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , TempFile);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (file)", "S3");
+    ResultFile = New File(Result["file"]);
+    OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = RequiredSize);
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
+    DeleteFiles(TempFile);
+
+    Name   = "bigfile.exe";
+    Bucket = "newbucket2";
+
+    BigTempFile = GetTempFileName();
+    Result      = OPI_S3.GetObject(Name, Bucket, BasicData, , , BigTempFile);
+    ResultFile  = New File(Result["file"]);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, file)", "S3");
+    OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = 34432400);
+    BasicData.Insert("URL", FunctionParameters["S3_URL"]);
+    DeleteFiles(BigTempFile);
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, BD)", "S3");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 34432400);
 
 EndProcedure
 
