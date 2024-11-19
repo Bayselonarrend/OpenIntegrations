@@ -2842,7 +2842,7 @@
 "КаталогИсходников": "SourceDirectory",
 "ТелеграмСообщение": "TelegramMessage",
 "Удалить сообщение": "Delete message",
-"Заголовок,Позиция": "Header,Position",
+"Заголовок,Позиция": "Title,Item",
 "Содержимое ссылки": "Link data",
 "ИнформацияОбъекта": "ObjectInfo",
 "СоздатьУдалитьТег": "CreateDeleteTag",
