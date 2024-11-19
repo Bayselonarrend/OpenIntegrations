@@ -599,7 +599,6 @@ EndFunction
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket in which the object is stored - bucket
 // BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Version - String - Token for receiving a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 // SavePath - String - Path to directly write a file to disk - out
