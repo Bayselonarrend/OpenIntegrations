@@ -1271,7 +1271,7 @@ Function GetObjectInChunks(Val BasicData
         EndStr   = OPI_Tools.NumberToString(ChunkEnd);
 
         Title = StrTemplate(HeaderTemplate, StartStr, EndStr);
-        HeadersArray.Add(New Structure("Header,Position", Title, EndStr));
+        HeadersArray.Add(New Structure("Title,Item", Title, EndStr));
 
         ChunkStart = ChunkEnd + 1;
 
@@ -1281,7 +1281,7 @@ Function GetObjectInChunks(Val BasicData
 
         Title = "bytes=" + OPI_Tools.NumberToString(ChunkStart) + "-";
 
-        DataStructure = New Structure("Header,Position", Title, TotalSize);
+        DataStructure = New Structure("Title,Item", Title, TotalSize);
         HeadersArray.Add(DataStructure);
 
     EndIf;
@@ -1310,8 +1310,8 @@ Function GetObjectInChunks(Val BasicData
                 InterimResult = GetFullObject(BasicData, SourceHeader);
                 FileWriter.Write(InterimResult);
 
-                KBytes   = 1024;
-                MByte = KBytes * KBytes;
+                KBytes = 1024;
+                MByte  = KBytes * KBytes;
                 Message(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
 
                 RunGarbageCollection();
@@ -1322,8 +1322,10 @@ Function GetObjectInChunks(Val BasicData
             Except
 
                 If N = 3 Then
+
                     Message(ErrorDescription());
-                    Break;
+                    Raise "Failed to retrieve the file!";
+
                 Else
                     Message("Chunk upload error " + String(N) + "/3");
                     Continue;
