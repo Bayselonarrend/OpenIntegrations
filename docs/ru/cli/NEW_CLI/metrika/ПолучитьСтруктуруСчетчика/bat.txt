@@ -1,0 +1,2 @@
+oint metrika ПолучитьСтруктуруСчетчика ^
+  --empty false
