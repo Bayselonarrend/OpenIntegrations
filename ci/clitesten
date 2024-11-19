@@ -1616,11 +1616,11 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 SendRequestWithoutBody --method "test" --basic "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 SendRequestWithoutBody --method "test" --basic "test" --binary "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe s3 SendRequestWithBody --method "test" --basic "test" --body "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 SendRequestWithBody --method "test" --basic "test" --body "test" --binary "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1677,6 +1677,10 @@ def test_s3(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 HeadObject --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetObject --name "test" --bucket "test" --basic "test" --dir "test" --ver "test" --headers "test" --out "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

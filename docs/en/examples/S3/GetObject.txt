@@ -1,0 +1,16 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData);
+
+    TempFile = GetTempFileName();
+    BasicData.Insert("ChunkSize", 200000);
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , TempFile);

@@ -1,0 +1,64 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get object
+ Gets the contents of the object from the bucket
+
+
+
+`Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Name of the object in the bucket |
+  | Bucket | --bucket | String | &#x2714; | Name of the bucket in which the object is stored |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Directory | --dir | Boolean | &#x2714; | True > Directory Bucket, False > General Purpose Bucket |
+  | Version | --ver | String | &#x2716; | Token for receiving a specific version of an object |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+  | SavePath | --out | String | &#x2716; | Path to directly write a file to disk |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [GetObjectAttributes](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
+
+ You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
+
+ For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
+
+ Chunk upload is used for large files. Default ChunkSize - 20000000 bytes (20 MB)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData);
+
+    TempFile = GetTempFileName();
+    BasicData.Insert("ChunkSize", 200000);
+
+    Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , TempFile);
+```
+ 
+
+
+
+
