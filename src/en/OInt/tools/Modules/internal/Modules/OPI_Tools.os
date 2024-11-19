@@ -127,13 +127,16 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     BodyFile = Response.GetBodyFileName();
 
     If Not BodyFile = Undefined Then
-        Response    = BodyFile;
+
+        Response = BodyFile;
         Return;
+
     EndIf;
 
     GZip = "gzip";
-    NeedsUnpacking          = Response.Headers.Get("Content-Encoding")          = GZip Or Response.Headers.Get(
-        "content-encoding") = GZip;
+
+    NeedsUnpacking = Response.Headers.Get("Content-Encoding") = GZip
+                  Or Response.Headers.Get("content-encoding") = GZip;
 
     If NeedsUnpacking Then
         Response = UnpackResponse(Response);
@@ -144,11 +147,15 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
     If TypeOf(Response) = Type("BinaryData") Then
 
         If Response.Size() = 0 Then
-            Response       = ПолучитьДвоичныеДанныеИзСтроки("{}");
+
+            Response = ПолучитьДвоичныеДанныеИзСтроки("{}");
+
         EndIf;
 
         Try
+
             Response = JsonToStructure(Response);
+
         Except
             Return;
         EndTry;
@@ -382,8 +389,14 @@ Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val 
 
     LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
 
-    JSONParameters = New JSONWriterSettings(LineBreak, " ", DoubleQuotes, JSONCharactersEscapeMode[Escaping],
-        False, False, False, False);
+    JSONParameters = New JSONWriterSettings(LineBreak
+        , " "
+        , DoubleQuotes
+        , JSONCharactersEscapeMode[Escaping]
+        , False
+        , False
+        , False
+        , False);
 
     Try
 
