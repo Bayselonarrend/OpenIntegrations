@@ -26,7 +26,13 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации AWS: [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)<br/>
+Метод в документации AWS: [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+
+ Вы можете использовать поле `ChunkSize` в основных данных для указания минимального размера и величины чанка загрузки по частям
+
+ Например, ChunkSize=X означает, что все файлы, размером больше X (в байтах) будут загружаться по частям, где одна часть будет размером X.
+
+ Загрузка по частям используется для больших файлов. Стандартный размер ChunkSize - 20971520 байт (20 МБайт)<br/>
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
 :::
 <br/>
@@ -76,23 +82,4 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 
-```json title="Результат"
-{
- "status": 200,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "0",
-  "Content-Type": "text/plain; charset=utf-8",
-  "Date": "Mon, 18 Nov 2024 08:05:22 GMT",
-  "Etag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "18090170E183A2F6",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+
