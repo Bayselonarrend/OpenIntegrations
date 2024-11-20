@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
+﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
 
 // MIT License
 
@@ -553,7 +553,7 @@
 
     ИначеЕсли ЭтоСоответствие Тогда
 
-		ЗначениеПоля = Коллекция[Поле];
+        ЗначениеПоля = Коллекция[Поле];
         Возврат ЗначениеПоля <> Неопределено;
 
     Иначе

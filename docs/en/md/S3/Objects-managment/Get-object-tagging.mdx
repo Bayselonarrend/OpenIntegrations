@@ -46,39 +46,38 @@ Method at AWS documentation: [GetObjectTagging](https://docs.aws.amazon.com/Amaz
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint s3 GetObjectTagging \
+             --url "storage-155.s3hoster.by" \
+             --access "BRN5RKJE67YCVDZRRQVI" \
+             --secret "***" \
+             --region "BTC" \
+             --name "picture.jpg" \
+             --bucket "opi-gpbucket3" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint s3 GetObjectTagging ^
+             --url "storage-155.s3hoster.by" ^
+             --access "BRN5RKJE67YCVDZRRQVI" ^
+             --secret "***" ^
+             --region "BTC" ^
+             --name "picture.jpg" ^
+             --bucket "opi-gpbucket3" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-```json title="Result"
-{
- "status": 200,
- "response": {
-  "Tagging": {
-   "TagSet": {
-    "Tag": [
-     {
-      "Key": "MyTag1",
-      "Value": "SomeValue"
-     },
-     {
-      "Key": "MyTag2",
-      "Value": "AnotherOne"
-     }
-    ]
-   }
-  }
- },
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "180",
-  "Content-Type": "application/xml",
-  "Date": "Mon, 18 Nov 2024 10:59:11 GMT",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "18090AEE7A5CC2EA",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+

@@ -451,9 +451,10 @@ EndFunction
 
 Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = False, Filter = "", Page = "")
 
-    URL        = "https://www.googleapis.com/drive/v3/files";
-    Files      = "files";
-    NPT        = "nextPageToken";
+    URL   = "https://www.googleapis.com/drive/v3/files";
+    Files = "files";
+    NPT   = "nextPageToken";
+
     Parameters = New Structure;
     Parameters.Insert("fields", "*");
 
