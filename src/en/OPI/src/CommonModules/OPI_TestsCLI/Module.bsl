@@ -17523,7 +17523,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
     Name   = "picture.jpg";
     Bucket = "opi-gpbucket3";
 
-    Options.Insert("name" , Name);
+    Options.Insert("name"  , Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic" , BasicData);
 
