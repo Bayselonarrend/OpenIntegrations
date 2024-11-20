@@ -2,7 +2,7 @@
 
 oint notion EditPageProperties ^
  --token "***" ^
- --page "14182aa7-fc4e-8179-9828-cd099b780646" ^
+ --page "14482aa7-fc4e-8178-98f5-ed85fc8d8a52" ^
  --data "{'Active':false,'Email':'vector@mail.ru'}" ^
  --icon "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
  --cover "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
