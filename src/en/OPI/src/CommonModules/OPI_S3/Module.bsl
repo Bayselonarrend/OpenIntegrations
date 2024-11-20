@@ -1451,11 +1451,10 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
 
             For N = 1 To 3 Do
 
-                BytesRead   = SourceStream.CurrentPosition();
                 Result      = DataReader.Read(ChunkSize);
                 CurrentData = Result.GetBinaryData();
 
-                If Not ValueIsFilled(CurrentData) Then
+                If CurrentData.Size() = 0 Then
                     Break;
                 EndIf;
 
@@ -1465,6 +1464,7 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
                     Raise "The server returned the status " + String(Response["status"]);
                 EndIf;
 
+                BytesRead = SourceStream.CurrentPosition();
                 TagsArray.Add(Response["headers"]["Etag"]);
 
                 // !OInt KB = 1024;
