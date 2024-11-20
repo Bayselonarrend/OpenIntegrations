@@ -1,0 +1,26 @@
+﻿    {
+ "status": 404,
+ "response": {
+  "Error": {
+   "Code": "NoSuchTagSet",
+   "Message": "The TagSet does not exist",
+   "BucketName": "opi-gpbucket3",
+   "Resource": "/",
+   "RequestId": "1809AD12E54F8EEB",
+   "HostId": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "303",
+  "Content-Type": "application/xml",
+  "Date": "Wed, 20 Nov 2024 12:30:28 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "1809AD12E54F8EEB",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
