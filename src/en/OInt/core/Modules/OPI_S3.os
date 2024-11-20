@@ -1466,6 +1466,14 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
                 EndIf;
 
                 TagsArray.Add(Response["headers"]["Etag"]);
+
+                KBytes = 1024;
+                MByte  = KBytes * KBytes;
+                Message(OPI_Tools.ProgressInformation(BytesRead, TotalSize, "MB", MByte));
+
+                RunGarbageCollection();
+                FreeObject(CurrentData);
+
                 Break;
 
             EndDo;
