@@ -1,4 +1,4 @@
 oint metrika UpdateTag ^
  --token "***" ^
- --label "313712" ^
+ --label "313771" ^
  --title "New tag title"
