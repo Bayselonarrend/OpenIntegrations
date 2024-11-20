@@ -47,4 +47,45 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Результат"
+{
+ "status": 200,
+ "response": {
+  "ListVersionsResult": {
+   "Name": "opi-gpbucket3",
+   "Prefix": "pic",
+   "KeyMarker": {},
+   "NextVersionIdMarker": {},
+   "VersionIdMarker": {},
+   "MaxKeys": "250",
+   "IsTruncated": "false",
+   "Version": {
+    "Key": "picture.jpg",
+    "LastModified": "2024-11-20T17:13:00.442Z",
+    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
+    "Size": "2114023",
+    "Owner": {
+     "ID": "02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4",
+     "DisplayName": "minio"
+    },
+    "StorageClass": "STANDARD",
+    "IsLatest": "true",
+    "VersionId": "null"
+   }
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "707",
+  "Content-Type": "application/xml",
+  "Date": "Wed, 20 Nov 2024 17:13:08 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "1809BC7FB823AFFB",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```

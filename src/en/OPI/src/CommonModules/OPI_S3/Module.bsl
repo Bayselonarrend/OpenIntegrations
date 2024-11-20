@@ -635,7 +635,7 @@ EndFunction
 // SavePath - String - Path to directly write a file to disk - out
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// BinaryData, String - object content or file path, if a save path is specified
 Function GetObject(Val Name
     , Val Bucket
     , Val BasicData
