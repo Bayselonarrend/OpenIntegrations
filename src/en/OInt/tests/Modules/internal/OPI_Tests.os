@@ -2145,6 +2145,7 @@ Procedure AWS_ObjectsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("S3_SecretKey", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Audio"       , TestParameters);
 
     S3_CreateBucket(TestParameters);
     S3_PutObject(TestParameters);
@@ -15051,6 +15052,19 @@ Procedure S3_PutObject(FunctionParameters)
     Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutObject (DB)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+    Name   = "pictureMulti.jpg";
+    Bucket = "opi-gpbucket3";
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+
+    BasicData.Insert("ChunkSize", 5242880);
+
+    Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutObject (parts)", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);

@@ -50,30 +50,34 @@ Method at AWS documentation: [CopyObject](https://docs.aws.amazon.com/AmazonS3/l
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint s3 CopyObject \
+             --sname "picture.jpg" \
+             --sbucket "opi-gpbucket3" \
+             --name "new_picture.jpg" \
+             --bucket "opi-dirbucket3" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint s3 CopyObject ^
+             --sname "picture.jpg" ^
+             --sbucket "opi-gpbucket3" ^
+             --name "new_picture.jpg" ^
+             --bucket "opi-dirbucket3" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-```json title="Result"
-{
- "status": 200,
- "response": {
-  "CopyObjectResult": {
-   "LastModified": "2024-11-18T10:59:09.271Z",
-   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\""
-  }
- },
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "232",
-  "Content-Type": "application/xml",
-  "Date": "Mon, 18 Nov 2024 10:59:09 GMT",
-  "Etag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "18090AEDE0DBCF83",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
-```
+

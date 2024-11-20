@@ -520,7 +520,7 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
 EndFunction
 
-Function CollectionFieldExists(Val Collection, Val Field) Export
+Function CollectionFieldExists(Val Collection, Val Field, FieldValue = Undefined) Export
 
     CollectionType = TypeOf(Collection);
 
@@ -533,7 +533,7 @@ Function CollectionFieldExists(Val Collection, Val Field) Export
         FieldParts   = StrSplit(Field, ".");
         CurrentField = FieldParts[0];
 
-        If Not CollectionFieldExists(Collection, CurrentField) Then
+        If Not CollectionFieldExists(Collection, CurrentField, FieldValue) Then
 
             Return False;
 
@@ -543,17 +543,18 @@ Function CollectionFieldExists(Val Collection, Val Field) Export
             NextCollection = Collection[CurrentField];
             NextField      = StrConcat(FieldParts, ".");
 
-            Return CollectionFieldExists(NextCollection, NextField);
+            Return CollectionFieldExists(NextCollection, NextField, FieldValue);
 
         EndIf;
 
     ElsIf IsStructure Then
 
-        Return Collection.Property(Field);
+        Return Collection.Property(Field, FieldValue);
 
     ElsIf IsMap Then
 
-        Return Collection[Field] <> Undefined;
+        FieldValue = Collection[Field];
+        Return FieldValue <> Undefined;
 
     Else
 
@@ -740,7 +741,7 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
     Else
 
-        XMLWriter.WriteText(Value);
+        XMLWriter.WriteText(NumberToString(Value));
 
     EndIf;
 

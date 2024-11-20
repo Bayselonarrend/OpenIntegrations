@@ -530,6 +530,9 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
+// For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
+// Chunk upload is used for large files. Default ChunkSize - 20971520 bytes (20 MB)
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -548,15 +551,35 @@ Function PutObject(Val Name
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    OPI_TypeConversion.GetLine(Name);
+    FillObjectURL(BasicData_, Name, Bucket);
+    ProcessRequestBody(Entity);
 
-    URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
-    URL = URL + Name;
+    FileSize    = GetContentSize(Entity);
+    MinPartSize = FileSize / 10000;
+    MinPartSize = Max(MinPartSize, 5242880);
 
-    BasicData_.Insert("URL", URL);
+    If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
+        MaxSize = BasicData_["ChunkSize"];
+    Else
+        MaxSize = 20971520;
+    EndIf;
 
-    Response = SendRequest("PUT", BasicData_, Entity, , Headers);
+    If MinPartSize > MaxSize Then
+        Raise "ChunkSize is too small. It is necessary to increase the chunk size (minimum for this file - "
+            + OPI_Tools.NumberToString(Round(MinPartSize + 0,5))
+            + ")";
+    EndIf;
+
+    If FileSize > MaxSize Then
+
+        Sizes    = New Structure("object,chunk", FileSize, MaxSize);
+        Response = UploadObjectInParts(BasicData_, Entity, Headers, Sizes);
+
+    Else
+
+        Response = UploadFullObject(BasicData_, Entity, Headers);
+
+    EndIf;
 
     Return Response;
 
@@ -601,7 +624,7 @@ EndFunction
 // Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
 // You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
 // For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
-// Chunk upload is used for large files. Default ChunkSize - 20000000 bytes (20 MB)
+// Chunk upload is used for large files. Default ChunkSize - 20971520 bytes (20 MB)
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -626,7 +649,7 @@ Function GetObject(Val Name
     If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
     Else
-        MaxSize = 20000000;
+        MaxSize = 20971520;
     EndIf;
 
     If Not OPI_Tools.CollectionFieldExists(ObjectInfo, "headers.Content-Length") Then
@@ -734,7 +757,9 @@ Function CopyObject(Val SourcePath
     SourceHeader.Insert("x-amz-copy-source", Source);
     AddAdditionalHeaders(Headers, SourceHeader);
 
-    Response = PutObject(DestinationPath, SourceBucket, Undefined, BasicData_, Headers);
+    FillObjectURL(BasicData_, DestinationPath, SourceBucket);
+
+    Response = UploadFullObject(BasicData_, Undefined, Headers);
 
     Return Response;
 
@@ -1396,6 +1421,147 @@ Function GetFullObject(Val BasicData
 
 EndFunction
 
+Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
+
+    OPI_TypeConversion.GetBinaryOrStream(Entity);
+
+    UploadStart = InitPartsUpload(BasicData, Headers);
+
+    FieldID    = "response.InitiateMultipartUploadResult.UploadId";
+    UploadID   = Undefined;
+    TotalSize  = Sizes["object"];
+    ChunkSize  = Sizes["chunk"];
+    BytesRead  = 0;
+    PartNumber = 1;
+
+
+    If Not OPI_Tools.CollectionFieldExists(UploadStart, FieldID, UploadID) Then
+        Return UploadStart;
+    EndIf;
+
+    DataReader   = New DataReader(Entity);
+    SourceStream = DataReader.SourceStream();
+    Response     = New Map;
+    TagsArray    = New Array;
+
+
+    WHile BytesRead < TotalSize Do
+
+        Try
+
+            For N = 1 To 3 Do
+
+                BytesRead   = SourceStream.CurrentPosition();
+                Result      = DataReader.Read(ChunkSize);
+                CurrentData = Result.GetBinaryData();
+
+                If Not ValueIsFilled(CurrentData) Then
+                    Break;
+                EndIf;
+
+                Response = UploadObjectPart(BasicData, UploadID, PartNumber, CurrentData);
+
+                If Response["status"] > 299 Then
+                    Raise "The server returned the status " + String(Response["status"]);
+                EndIf;
+
+                TagsArray.Add(Response["headers"]["Etag"]);
+                Break;
+
+            EndDo;
+
+        Except
+
+            If N = 3 Then
+
+                // !OInt Message("Failed to upload part of the file! Aborted upload wiht ID:" + UploadID);
+                // !OInt Message(OPI_Tools.JSONString(Response));
+
+                Raise;
+
+            Else
+
+                // !OInt Message("Chunk upload error " + String(N) + "/3");
+                Continue;
+
+            EndIf;
+
+        EndTry;
+
+        PartNumber = PartNumber + 1;
+
+    EndDo;
+
+    Response = FinishPartsUpload(BasicData, UploadID, TagsArray);
+
+    Return Response;
+
+EndFunction
+
+Function UploadFullObject(Val BasicData, Val Entity, Val Headers)
+
+    Response = SendRequest("PUT", BasicData, Entity, , Headers);
+
+    Return Response;
+
+EndFunction
+
+Function InitPartsUpload(Val BasicData, Val Headers)
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+    BasicData_.Insert("URL", BasicData_["URL"] + "?uploads");
+
+    Response = SendRequestWithoutBody("POST", BasicData_, , Headers);
+
+    Return Response;
+
+EndFunction
+
+Function UploadObjectPart(Val BasicData, Val UploadID, Val PartNumber, Val Data)
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("partNumber", PartNumber, "String", Parameters);
+    OPI_Tools.AddField("uploadId"  , UploadID  , "String", Parameters);
+
+    ParameterString = OPI_Tools.RequestParametersToString(Parameters);
+
+    BasicData_.Insert("URL", BasicData_["URL"] + ParameterString);
+
+    Response = SendRequestWithBody("PUT", BasicData_, Data);
+
+    Return Response;
+
+EndFunction
+
+Function FinishPartsUpload(Val BasicData, Val UploadID, Val TagsArray)
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+    BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
+
+    PartsArray = New Array;
+
+    For N = 1 To TagsArray.Count() Do
+
+        PartStructure = New Structure;
+        PartStructure.Insert("ETag"      , TagsArray[N - 1]);
+        PartStructure.Insert("PartNumber", N);
+
+        PartsArray.Add(New Structure("Part", PartStructure));
+
+    EndDo;
+
+    FinishStructure = New Structure("CompleteMultipartUpload", PartsArray);
+    FinishXML       = OPI_Tools.GetXML(FinishStructure, "http://s3.amazonaws.com/doc/2006-03-01/");
+    FinishXML       = GetBinaryDataFromString(FinishXML);
+
+    Response = SendRequestWithBody("POST", BasicData_, FinishXML);
+
+    Return Response;
+
+EndFunction
+
 Function FormResponse(Val Response, Val ExpectedBinary = False)
 
     Status  = Response.StatusCode;
@@ -1508,6 +1674,37 @@ Function FormVersioningStructure(Val Status, Val MFADelete)
 
 EndFunction
 
+Function GetContentSize(Val Entity)
+
+    If TypeOf(Entity) = Type("String") Then
+
+        ContentFile = New File(Entity);
+        Return ContentFile.Size();
+
+    Else
+
+        Return Entity.Size();
+
+    EndIf;
+
+EndFunction
+
+Procedure ProcessRequestBody(Body)
+
+    If TypeOf(Body) = Type("String") Then
+
+        BodyFile = New File(Body);
+
+        If BodyFile.Exists() Then
+            Return;
+        EndIf;
+
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Body);
+
+EndProcedure
+
 Procedure CheckBasicData(BasicData)
 
     ErrorText = "Error of obtaining authorization data from the structure";
@@ -1562,12 +1759,17 @@ EndProcedure
 
 Procedure SetRequestBody(Request, Body)
 
-    OPI_TypeConversion.GetBinaryData(Body);
-    Request.SetBodyFromBinaryData(Body);
+    ProcessRequestBody(Body);
+
+    If TypeOf(Body) = Type("String") Then
+        Request.SetBodyFileName(Body);
+    Else
+        Request.SetBodyFromBinaryData(Body);
+    EndIf;
 
 EndProcedure
 
-Procedure FillObjectURL(BasicData, Name, Bucket, Version)
+Procedure FillObjectURL(BasicData, Name, Bucket, Version = "")
 
     OPI_TypeConversion.GetLine(Name);
 

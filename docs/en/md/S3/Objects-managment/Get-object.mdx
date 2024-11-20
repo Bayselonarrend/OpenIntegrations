@@ -33,7 +33,7 @@ Method at AWS documentation: [GetObjectAttributes](https://docs.aws.amazon.com/A
 
  For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
 
- Chunk upload is used for large files. Default ChunkSize - 20000000 bytes (20 MB)
+ Chunk upload is used for large files. Default ChunkSize - 20971520 bytes (20 MB)
 :::
 <br/>
 
@@ -58,8 +58,40 @@ Method at AWS documentation: [GetObjectAttributes](https://docs.aws.amazon.com/A
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint s3 GetObject \
+             --url "storage-155.s3hoster.by" \
+             --access "BRN5RKJE67YCVDZRRQVI" \
+             --secret "***" \
+             --region "BTC" \
+             --name "picture.jpg" \
+             --bucket "opi-gpbucket3" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':200000}" \
+             --out "C:\Users\Administrator\AppData\Local\Temp\mpyrjlxaxso.tmp"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint s3 GetObject ^
+             --url "storage-155.s3hoster.by" ^
+             --access "BRN5RKJE67YCVDZRRQVI" ^
+             --secret "***" ^
+             --region "BTC" ^
+             --name "picture.jpg" ^
+             --bucket "opi-gpbucket3" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':200000}" ^
+             --out "C:\Users\Administrator\AppData\Local\Temp\mpyrjlxaxso.tmp"
+        ```
+    </TabItem>
+</Tabs>
 
 
-```json title="Result"
-NOT JSON: FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…
-```
+
