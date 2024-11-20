@@ -454,6 +454,7 @@
     URL       = "https://www.googleapis.com/drive/v3/files";
     Files     = "files";
     NPT       = "nextPageToken";
+    
     Параметры = Новый Структура;
     Параметры.Вставить("fields", "*");
 
