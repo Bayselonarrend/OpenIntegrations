@@ -763,7 +763,7 @@
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Gets a list of files of the bot or channel";
 
 
@@ -774,7 +774,7 @@
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--channel";
     NewLine.Описание    = "Channel for selection (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -784,7 +784,7 @@
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--page";
     NewLine.Описание    = "Page number (optional, def. val. - 1)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -794,7 +794,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Uploads a file to Slack servers";
 
 
@@ -805,7 +805,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "File for upload";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -815,7 +815,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--filename";
     NewLine.Описание    = "File name with extension";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -825,7 +825,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "File name in Slack";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -835,7 +835,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--channel";
     NewLine.Описание    = "Channel ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -845,7 +845,7 @@
     NewLine.МетодПоиска = "GETFILEDATA";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Gets information about the file";
 
 
@@ -856,7 +856,7 @@
     NewLine.МетодПоиска = "GETFILEDATA";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -866,7 +866,7 @@
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Deletes a file on Slack";
 
 
@@ -877,7 +877,7 @@
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -887,7 +887,7 @@
     NewLine.МетодПоиска = "MAKEFILEPUBLIC";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "User token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Creates a public URL for the file. Requires user token";
 
 
@@ -898,7 +898,7 @@
     NewLine.МетодПоиска = "MAKEFILEPUBLIC";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -908,7 +908,7 @@
     NewLine.МетодПоиска = "MAKEFILEPRIVATE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "User token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Removes the public URL from the file. Requires user token";
 
 
@@ -919,7 +919,7 @@
     NewLine.МетодПоиска = "MAKEFILEPRIVATE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();

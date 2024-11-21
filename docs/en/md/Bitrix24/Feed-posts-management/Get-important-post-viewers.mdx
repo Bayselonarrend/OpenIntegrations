@@ -1,0 +1,83 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get list of important post viewers
+ Return list of important post viewers ids
+
+
+
+`Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | PostID | --postid | String, Number | &#x2714; | Id of important post |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    PostID = "1394";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+
+    Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "7afc3e67006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 GetImportantPostViewers \
+             --url "b24-ar17wx.bitrix24.by" \
+             --postid 1406 \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 GetImportantPostViewers ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --postid 1406 ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": [
+  "1"
+ ],
+ "time": {
+  "start": 1728454764.35244,
+  "finish": 1728454764.38658,
+  "duration": 0.0341410636901856,
+  "processing": 0.000212907791137695,
+  "date_start": "2024-10-09T09:19:24+03:00",
+  "date_finish": "2024-10-09T09:19:24+03:00",
+  "operating_reset_at": 1728455364,
+  "operating": 0
+ }
+}
+```
