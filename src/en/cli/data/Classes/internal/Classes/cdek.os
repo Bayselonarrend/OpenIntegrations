@@ -183,7 +183,7 @@
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Creates an order based on field descriptions";
 
 
@@ -194,7 +194,7 @@
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--order";
     NewLine.Описание    = "Set of order fields. See GetOrderDescription";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -204,7 +204,7 @@
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--ostore";
     NewLine.Описание    = "Flag of Online store order type (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -214,7 +214,7 @@
     NewLine.МетодПоиска = "CREATEORDER";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -224,7 +224,7 @@
     NewLine.МетодПоиска = "UPDATEORDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Changes the field values of the selected order";
 
 
@@ -235,7 +235,7 @@
     NewLine.МетодПоиска = "UPDATEORDER";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID for updating";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -245,7 +245,7 @@
     NewLine.МетодПоиска = "UPDATEORDER";
     NewLine.Параметр    = "--order";
     NewLine.Описание    = "Set of changing order fields";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -255,7 +255,7 @@
     NewLine.МетодПоиска = "UPDATEORDER";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -265,7 +265,7 @@
     NewLine.МетодПоиска = "DELETEORDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Deletes order by UUID";
 
 
@@ -276,7 +276,7 @@
     NewLine.МетодПоиска = "DELETEORDER";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID for deletion";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -286,7 +286,7 @@
     NewLine.МетодПоиска = "DELETEORDER";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -296,7 +296,7 @@
     NewLine.МетодПоиска = "GETORDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Gets the order by UUID";
 
 
@@ -307,7 +307,7 @@
     NewLine.МетодПоиска = "GETORDER";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -317,7 +317,7 @@
     NewLine.МетодПоиска = "GETORDER";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -327,7 +327,7 @@
     NewLine.МетодПоиска = "GETORDERBYNUMBER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Receives the order by CDEK number or number from customer IB";
 
 
@@ -338,7 +338,7 @@
     NewLine.МетодПоиска = "GETORDERBYNUMBER";
     NewLine.Параметр    = "--number";
     NewLine.Описание    = "Order number";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -348,7 +348,7 @@
     NewLine.МетодПоиска = "GETORDERBYNUMBER";
     NewLine.Параметр    = "--internal";
     NewLine.Описание    = "Type of order number. True > number in the customer base, False > CDEK number (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -358,7 +358,7 @@
     NewLine.МетодПоиска = "GETORDERBYNUMBER";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -368,7 +368,7 @@
     NewLine.МетодПоиска = "CREATECUSTOMERREFUND";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Processes customer returns for online store orders";
 
 
@@ -379,7 +379,7 @@
     NewLine.МетодПоиска = "CREATECUSTOMERREFUND";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -389,7 +389,7 @@
     NewLine.МетодПоиска = "CREATECUSTOMERREFUND";
     NewLine.Параметр    = "--tariff";
     NewLine.Описание    = "Tariff code (from those available under the contract)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -399,7 +399,7 @@
     NewLine.МетодПоиска = "CREATECUSTOMERREFUND";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -409,7 +409,7 @@
     NewLine.МетодПоиска = "CREATEREFUSAL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Creates an order refusal to return to the online store";
 
 
@@ -420,7 +420,7 @@
     NewLine.МетодПоиска = "CREATEREFUSAL";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -430,7 +430,7 @@
     NewLine.МетодПоиска = "CREATEREFUSAL";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -440,7 +440,7 @@
     NewLine.МетодПоиска = "CREATERECEIPT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Generates pdf receipts for orders";
 
 
@@ -451,7 +451,7 @@
     NewLine.МетодПоиска = "CREATERECEIPT";
     NewLine.Параметр    = "--uuids";
     NewLine.Описание    = "One or an array of order UUIDs";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -461,7 +461,7 @@
     NewLine.МетодПоиска = "CREATERECEIPT";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Receipt type (language) (optional, def. val. - tpl_russia)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -471,7 +471,7 @@
     NewLine.МетодПоиска = "CREATERECEIPT";
     NewLine.Параметр    = "--count";
     NewLine.Описание    = "Number of copies of one receipt per sheet (optional, def. val. - 2)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -481,7 +481,7 @@
     NewLine.МетодПоиска = "CREATERECEIPT";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -491,7 +491,7 @@
     NewLine.МетодПоиска = "GETRECEIPT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Gets a receipt for the order";
 
 
@@ -502,7 +502,7 @@
     NewLine.МетодПоиска = "GETRECEIPT";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "UUID of the receipt received during its creation";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -512,7 +512,7 @@
     NewLine.МетодПоиска = "GETRECEIPT";
     NewLine.Параметр    = "--getfile";
     NewLine.Описание    = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -522,7 +522,7 @@
     NewLine.МетодПоиска = "GETRECEIPT";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -532,7 +532,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Generates a PDF barcode CP for orders";
 
 
@@ -543,7 +543,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--uuids";
     NewLine.Описание    = "One or an array of order UUIDs";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -553,7 +553,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--count";
     NewLine.Описание    = "Number of copies (optional, def. val. - 1)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -563,7 +563,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--format";
     NewLine.Описание    = "Print format: A4, A5, A6, A7 (optional, def. val. - A4)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -573,7 +573,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--lang";
     NewLine.Описание    = "Barcode language: RUS, ENG (optional, def. val. - RUS)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -583,7 +583,7 @@
     NewLine.МетодПоиска = "CREATEBARCODE";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -593,7 +593,7 @@
     NewLine.МетодПоиска = "GETBARCODE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Gets the barcode CP for the order";
 
 
@@ -604,7 +604,7 @@
     NewLine.МетодПоиска = "GETBARCODE";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "The UID of the barcode received when the barcode was created";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -614,7 +614,7 @@
     NewLine.МетодПоиска = "GETBARCODE";
     NewLine.Параметр    = "--getfile";
     NewLine.Описание    = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -624,7 +624,7 @@
     NewLine.МетодПоиска = "GETBARCODE";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -634,7 +634,7 @@
     NewLine.МетодПоиска = "CREATEPREALERT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Creates a prealert for the order list";
 
 
@@ -645,7 +645,7 @@
     NewLine.МетодПоиска = "CREATEPREALERT";
     NewLine.Параметр    = "--uuids";
     NewLine.Описание    = "One or an array of order UUIDs";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -655,7 +655,7 @@
     NewLine.МетодПоиска = "CREATEPREALERT";
     NewLine.Параметр    = "--date";
     NewLine.Описание    = "Planned date of transfer of orders to CDEK";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -665,7 +665,7 @@
     NewLine.МетодПоиска = "CREATEPREALERT";
     NewLine.Параметр    = "--point";
     NewLine.Описание    = "Code of shipment point to which it is planned to transfer orders";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -675,7 +675,7 @@
     NewLine.МетодПоиска = "CREATEPREALERT";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -685,7 +685,7 @@
     NewLine.МетодПоиска = "GETPREALERT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Gets a previously created prealert";
 
 
@@ -696,7 +696,7 @@
     NewLine.МетодПоиска = "GETPREALERT";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Prealert UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -706,7 +706,7 @@
     NewLine.МетодПоиска = "GETPREALERT";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -716,7 +716,7 @@
     NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Receives information on passport data processing status for international orders";
 
 
@@ -727,7 +727,7 @@
     NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -737,7 +737,7 @@
     NewLine.МетодПоиска = "GETPASSPORTDATASTATUS";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -747,7 +747,7 @@
     NewLine.МетодПоиска = "GETCASHBOXCHECK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Receives check information on an order";
 
 
@@ -758,7 +758,7 @@
     NewLine.МетодПоиска = "GETCASHBOXCHECK";
     NewLine.Параметр    = "--uuid";
     NewLine.Описание    = "Order UUID";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -768,7 +768,7 @@
     NewLine.МетодПоиска = "GETCASHBOXCHECK";
     NewLine.Параметр    = "--testapi";
     NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -778,7 +778,7 @@
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
     NewLine.ОписаниеМетода   = "Gets the layout of order for the CreateOrder function";
 
 
@@ -789,7 +789,7 @@
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--required";
     NewLine.Описание    = "True > only required fields will be in the set (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();
@@ -799,7 +799,7 @@
     NewLine.МетодПоиска = "GETORDERDESCRIPTION";
     NewLine.Параметр    = "--ostore";
     NewLine.Описание    = "Flag of including fields in the layout exclusively for online store orders (optional, def. val. - No)";
-    NewLine.Область     = "Orders managment";
+    NewLine.Область     = "Orders management";
 
 
     NewLine = CompositionTable.Add();

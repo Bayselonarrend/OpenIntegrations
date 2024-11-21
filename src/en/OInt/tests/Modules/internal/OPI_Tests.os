@@ -1346,7 +1346,7 @@ EndProcedure
 
 #Region Bitrix24
 
-Procedure B24_TokenManagment() Export
+Procedure B24_TokenManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"      , TestParameters);
@@ -1376,7 +1376,7 @@ Procedure B24_ServerTime() Export
 
 EndProcedure
 
-Procedure B24_PostsManagment() Export
+Procedure B24_PostsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1395,7 +1395,7 @@ Procedure B24_PostsManagment() Export
 
 EndProcedure
 
-Procedure B24_TaskManagment() Export
+Procedure B24_TaskManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1496,7 +1496,7 @@ Procedure B24_WorkingWithDrive() Export
 
 EndProcedure
 
-Procedure B24_CommentsManagment() Export
+Procedure B24_CommentsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1617,7 +1617,7 @@ Procedure B24_Kanban() Export
 
 EndProcedure
 
-Procedure B24_ChatManagment() Export
+Procedure B24_ChatManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1679,7 +1679,7 @@ Procedure B24_ChatManagment() Export
 
 EndProcedure
 
-Procedure B24_NotificationsManagment() Export
+Procedure B24_NotificationsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1695,7 +1695,7 @@ Procedure B24_NotificationsManagment() Export
 
 EndProcedure
 
-Procedure B24_TasksFieldsManagment() Export
+Procedure B24_TasksFieldsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"            , TestParameters);
@@ -1712,7 +1712,7 @@ Procedure B24_TasksFieldsManagment() Export
 
 EndProcedure
 
-Procedure B24_DepartmentsManagment() Export
+Procedure B24_DepartmentsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1726,7 +1726,7 @@ Procedure B24_DepartmentsManagment() Export
 
 EndProcedure
 
-Procedure B2_UsersManagment() Export
+Procedure B2_UsersManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1744,7 +1744,7 @@ Procedure B2_UsersManagment() Export
 
 EndProcedure
 
-Procedure B24_LeadsManagment() Export
+Procedure B24_LeadsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1761,7 +1761,7 @@ Procedure B24_LeadsManagment() Export
 
 EndProcedure
 
-Procedure B24_DealsManagment() Export
+Procedure B24_DealsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
@@ -1821,7 +1821,7 @@ Procedure VKT_MessagesSending() Export
 
 EndProcedure
 
-Procedure VKT_ChatManagment() Export
+Procedure VKT_ChatManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"   , TestParameters);
@@ -1938,7 +1938,7 @@ Procedure OzonAPI_PricesAndStocks() Export
 
 EndProcedure
 
-Procedure OzonAPI_WarehousesManagment() Export
+Procedure OzonAPI_WarehousesManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
@@ -1948,7 +1948,7 @@ Procedure OzonAPI_WarehousesManagment() Export
 
 EndProcedure
 
-Procedure OzonAPI_PromotionsManagment() Export
+Procedure OzonAPI_PromotionsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
@@ -1964,7 +1964,7 @@ EndProcedure
 
 #Region Neocities
 
-Procedure NC_FilesManagment() Export
+Procedure NC_FilesManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("NC_Token" , TestParameters);
@@ -2011,7 +2011,7 @@ Procedure CdekAPI_CommonMethods() Export
 
 EndProcedure
 
-Procedure CDEKAPI_OrdersManagment() Export
+Procedure CDEKAPI_OrdersManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
@@ -2041,7 +2041,7 @@ Procedure CDEKAPI_OrdersManagment() Export
 
 EndProcedure
 
-Procedure CdekAPI_CourierInvitationsManagment() Export
+Procedure CdekAPI_CourierInvitationsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
@@ -2070,7 +2070,7 @@ EndProcedure
 
 #Region YandexMetrika
 
-Procedure YaMetrika_TagsManagment() Export
+Procedure YaMetrika_TagsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
@@ -2116,7 +2116,7 @@ Procedure AWS_CommonMethods() Export
 
 EndProcedure
 
-Procedure AWS_BucketsManagment() Export
+Procedure AWS_BucketsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("S3_AccessKey", TestParameters);
@@ -2138,7 +2138,7 @@ Procedure AWS_BucketsManagment() Export
 
 EndProcedure
 
-Procedure AWS_ObjectsManagment() Export
+Procedure AWS_ObjectsManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("S3_AccessKey", TestParameters);

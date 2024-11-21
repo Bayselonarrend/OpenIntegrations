@@ -1,0 +1,60 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete file
+ Deletes a file on Slack
+
+
+
+`Function DeleteFile(Val Token, Val FileID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | FileID | --fileid | String | &#x2714; | File identifier |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token  = "xoxb-6965308400114-696804637...";
+    FileID = "F081N5E0MM4";
+
+    Result = OPI_Slack.DeleteFile(Token, FileID);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint slack DeleteFile \
+             --token "***" \
+             --fileid "F081VDQRDLM"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack DeleteFile ^
+             --token "***" ^
+             --fileid "F081VDQRDLM"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "ok": true
+}
+```

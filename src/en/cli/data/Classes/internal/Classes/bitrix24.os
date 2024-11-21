@@ -121,7 +121,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Create a new post at news feed";
 
 
@@ -132,7 +132,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Text of post";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -142,7 +142,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--vision";
     NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -152,7 +152,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--files";
     NewLine.Описание    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -162,7 +162,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -172,7 +172,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--important";
     NewLine.Описание    = "Mark post as important (optional, def. val. - No)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -182,7 +182,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -192,7 +192,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Change post data";
 
 
@@ -203,7 +203,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -213,7 +213,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Text of post";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -223,7 +223,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--vision";
     NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -233,7 +233,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--files";
     NewLine.Описание    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -243,7 +243,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -253,7 +253,7 @@
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -263,7 +263,7 @@
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Remove post from a news feed";
 
 
@@ -274,7 +274,7 @@
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Id of post to remove";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -284,7 +284,7 @@
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -294,7 +294,7 @@
     NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Return list of important post viewers ids";
 
 
@@ -305,7 +305,7 @@
     NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Id of important post";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -315,7 +315,7 @@
     NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -325,7 +325,7 @@
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Gen post or array of post with ID or rights selection";
 
 
@@ -336,7 +336,7 @@
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Id of important post (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -346,7 +346,7 @@
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--sel";
     NewLine.Описание    = "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -356,7 +356,7 @@
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -366,7 +366,7 @@
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Adds a comment to the post";
 
 
@@ -377,7 +377,7 @@
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -387,7 +387,7 @@
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -397,7 +397,7 @@
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -407,7 +407,7 @@
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
     NewLine.ОписаниеМетода   = "Adds new groups or users to the recipients";
 
 
@@ -418,7 +418,7 @@
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--postid";
     NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -428,7 +428,7 @@
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--vision";
     NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -438,7 +438,7 @@
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts managment";
+    NewLine.Область     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
@@ -448,7 +448,7 @@
     NewLine.МетодПоиска = "GETTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Get task by ID";
 
 
@@ -459,7 +459,7 @@
     NewLine.МетодПоиска = "GETTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -469,7 +469,7 @@
     NewLine.МетодПоиска = "GETTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -479,7 +479,7 @@
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Get tasks list (50 at one response max))";
 
 
@@ -490,7 +490,7 @@
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Structure of task filter (see GetTaskFieldsStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -500,7 +500,7 @@
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offset of tasks list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -510,7 +510,7 @@
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -520,7 +520,7 @@
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--select";
     NewLine.Описание    = "A list of task fields in the response. All non calculable by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -530,7 +530,7 @@
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Create new task by fields structure (see GetTaskFieldsStructure)";
 
 
@@ -541,7 +541,7 @@
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Task fields structure (see GetTaskFieldsStructure)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -551,7 +551,7 @@
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -561,7 +561,7 @@
     NewLine.МетодПоиска = "UPDATETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Update a task";
 
 
@@ -572,7 +572,7 @@
     NewLine.МетодПоиска = "UPDATETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -582,7 +582,7 @@
     NewLine.МетодПоиска = "UPDATETASK";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Task fields structure";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -592,7 +592,7 @@
     NewLine.МетодПоиска = "UPDATETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -602,7 +602,7 @@
     NewLine.МетодПоиска = "DELETETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Delete task by ID";
 
 
@@ -613,7 +613,7 @@
     NewLine.МетодПоиска = "DELETETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -623,7 +623,7 @@
     NewLine.МетодПоиска = "DELETETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -633,7 +633,7 @@
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Attaches a file to the selected task";
 
 
@@ -644,7 +644,7 @@
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -654,7 +654,7 @@
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -664,7 +664,7 @@
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -674,7 +674,7 @@
     NewLine.МетодПоиска = "APPROVETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Approve task by ID";
 
 
@@ -685,7 +685,7 @@
     NewLine.МетодПоиска = "APPROVETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -695,7 +695,7 @@
     NewLine.МетодПоиска = "APPROVETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -705,7 +705,7 @@
     NewLine.МетодПоиска = "DISAPPROVETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Disapprove task by ID";
 
 
@@ -716,7 +716,7 @@
     NewLine.МетодПоиска = "DISAPPROVETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -726,7 +726,7 @@
     NewLine.МетодПоиска = "DISAPPROVETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -736,7 +736,7 @@
     NewLine.МетодПоиска = "COMPLETETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Complete task by ID";
 
 
@@ -747,7 +747,7 @@
     NewLine.МетодПоиска = "COMPLETETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -757,7 +757,7 @@
     NewLine.МетодПоиска = "COMPLETETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -767,7 +767,7 @@
     NewLine.МетодПоиска = "RENEWTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Returns a task to work by ID";
 
 
@@ -778,7 +778,7 @@
     NewLine.МетодПоиска = "RENEWTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -788,7 +788,7 @@
     NewLine.МетодПоиска = "RENEWTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -798,7 +798,7 @@
     NewLine.МетодПоиска = "DEFERTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Defer task by ID";
 
 
@@ -809,7 +809,7 @@
     NewLine.МетодПоиска = "DEFERTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -819,7 +819,7 @@
     NewLine.МетодПоиска = "DEFERTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -829,7 +829,7 @@
     NewLine.МетодПоиска = "PAUSETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Pause a task by ID";
 
 
@@ -840,7 +840,7 @@
     NewLine.МетодПоиска = "PAUSETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -850,7 +850,7 @@
     NewLine.МетодПоиска = "PAUSETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -860,7 +860,7 @@
     NewLine.МетодПоиска = "STARTTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Start a task by ID";
 
 
@@ -871,7 +871,7 @@
     NewLine.МетодПоиска = "STARTTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -881,7 +881,7 @@
     NewLine.МетодПоиска = "STARTTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -891,7 +891,7 @@
     NewLine.МетодПоиска = "STARTWATCHINGTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Start watching a task by ID";
 
 
@@ -902,7 +902,7 @@
     NewLine.МетодПоиска = "STARTWATCHINGTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -912,7 +912,7 @@
     NewLine.МетодПоиска = "STARTWATCHINGTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -922,7 +922,7 @@
     NewLine.МетодПоиска = "STOPWATCHINGTASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Stop watching a task by ID";
 
 
@@ -933,7 +933,7 @@
     NewLine.МетодПоиска = "STOPWATCHINGTASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -943,7 +943,7 @@
     NewLine.МетодПоиска = "STOPWATCHINGTASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -953,7 +953,7 @@
     NewLine.МетодПоиска = "DELEGATETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Delegate task to another user";
 
 
@@ -964,7 +964,7 @@
     NewLine.МетодПоиска = "DELEGATETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -974,7 +974,7 @@
     NewLine.МетодПоиска = "DELEGATETASK";
     NewLine.Параметр    = "--user";
     NewLine.Описание    = "ID of responsible user";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -984,7 +984,7 @@
     NewLine.МетодПоиска = "DELEGATETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -994,7 +994,7 @@
     NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Add task to favorites list";
 
 
@@ -1005,7 +1005,7 @@
     NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1015,7 +1015,7 @@
     NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1025,7 +1025,7 @@
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Delete task from favorites list";
 
 
@@ -1036,7 +1036,7 @@
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1046,7 +1046,7 @@
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1056,7 +1056,7 @@
     NewLine.МетодПоиска = "GETTASKHISTORY";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Get history of task changing";
 
 
@@ -1067,7 +1067,7 @@
     NewLine.МетодПоиска = "GETTASKHISTORY";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1077,7 +1077,7 @@
     NewLine.МетодПоиска = "GETTASKHISTORY";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1087,7 +1087,7 @@
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Checks the availability of the task for users";
 
 
@@ -1098,7 +1098,7 @@
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1108,7 +1108,7 @@
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--users";
     NewLine.Описание    = "User IDs for access checking (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1118,7 +1118,7 @@
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1128,7 +1128,7 @@
     NewLine.МетодПоиска = "MUTETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Mute task by ID";
 
 
@@ -1139,7 +1139,7 @@
     NewLine.МетодПоиска = "MUTETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1149,7 +1149,7 @@
     NewLine.МетодПоиска = "MUTETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1159,7 +1159,7 @@
     NewLine.МетодПоиска = "UNMUTETASK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Unmute task by ID";
 
 
@@ -1170,7 +1170,7 @@
     NewLine.МетодПоиска = "UNMUTETASK";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1180,7 +1180,7 @@
     NewLine.МетодПоиска = "UNMUTETASK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1190,7 +1190,7 @@
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Creates the dependency of one task to another";
 
 
@@ -1201,7 +1201,7 @@
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--taskfrom";
     NewLine.Описание    = "From task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1211,7 +1211,7 @@
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--taskto";
     NewLine.Описание    = "To task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1221,7 +1221,7 @@
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--linktype";
     NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1231,7 +1231,7 @@
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1241,7 +1241,7 @@
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Removes the dependency of one task to another";
 
 
@@ -1252,7 +1252,7 @@
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--taskfrom";
     NewLine.Описание    = "From task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1262,7 +1262,7 @@
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--taskto";
     NewLine.Описание    = "To task ID";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1272,7 +1272,7 @@
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--linktype";
     NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1282,7 +1282,7 @@
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1292,7 +1292,7 @@
     NewLine.МетодПоиска = "GETDAILYPLAN";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Gets the task plan for the current users day";
 
 
@@ -1303,7 +1303,7 @@
     NewLine.МетодПоиска = "GETDAILYPLAN";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1313,7 +1313,7 @@
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Gets a structure with a description of the fields for creating a task";
 
 
@@ -1324,7 +1324,7 @@
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1334,7 +1334,7 @@
     NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
     NewLine.ОписаниеМетода   = "Return filter structure for GetTasksList";
 
 
@@ -1345,7 +1345,7 @@
     NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
     NewLine.Параметр    = "--map";
     NewLine.Описание    = "True > returns the filter fields as a map (optional, def. val. - No)";
-    NewLine.Область     = "Tasks managment";
+    NewLine.Область     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
@@ -1355,7 +1355,7 @@
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
     NewLine.ОписаниеМетода   = "Gets list of custom task fields";
 
 
@@ -1366,7 +1366,7 @@
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1376,7 +1376,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
     NewLine.ОписаниеМетода   = "Adds a new custom field to be added to the task";
 
 
@@ -1387,7 +1387,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Field type: string, double, date, boolean";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1397,7 +1397,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--fieldname";
     NewLine.Описание    = "Text identifier (name) of the field";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1407,7 +1407,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--externalid";
     NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1417,7 +1417,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1427,7 +1427,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--label";
     NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1437,7 +1437,7 @@
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1447,7 +1447,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
     NewLine.ОписаниеМетода   = "Updates a custom task field data";
 
 
@@ -1458,7 +1458,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--fieldid";
     NewLine.Описание    = "Field ID for updating";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1468,7 +1468,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--externalid";
     NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1478,7 +1478,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1488,7 +1488,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--label";
     NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1498,7 +1498,7 @@
     NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1508,7 +1508,7 @@
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
     NewLine.ОписаниеМетода   = "Get custom task field data";
 
 
@@ -1519,7 +1519,7 @@
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
     NewLine.Параметр    = "--fieldid";
     NewLine.Описание    = "Field ID for retrieval";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1529,7 +1529,7 @@
     NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1539,7 +1539,7 @@
     NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
     NewLine.ОписаниеМетода   = "Deletes a custom task field";
 
 
@@ -1550,7 +1550,7 @@
     NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
     NewLine.Параметр    = "--fieldid";
     NewLine.Описание    = "Field ID for deletion";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1560,7 +1560,7 @@
     NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.Область     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
@@ -1570,7 +1570,7 @@
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Adds new element of tasks checklist";
 
 
@@ -1581,7 +1581,7 @@
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1591,7 +1591,7 @@
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Text (title) of checklist element";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1601,7 +1601,7 @@
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--complete";
     NewLine.Описание    = "Mark as completed (optional, def. val. - No)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1611,7 +1611,7 @@
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1621,7 +1621,7 @@
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Updates text of element of tasks checklist";
 
 
@@ -1632,7 +1632,7 @@
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1642,7 +1642,7 @@
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--element";
     NewLine.Описание    = "Checklist element ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1652,7 +1652,7 @@
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Text (title) of checklist element";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1662,7 +1662,7 @@
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1672,7 +1672,7 @@
     NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Deletes element from tasks checklist";
 
 
@@ -1683,7 +1683,7 @@
     NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1693,7 +1693,7 @@
     NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--element";
     NewLine.Описание    = "ID of deleted element";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1703,7 +1703,7 @@
     NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1713,7 +1713,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Gets the list of elements on the task checklist";
 
 
@@ -1724,7 +1724,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLIST";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1734,7 +1734,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1744,7 +1744,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Gets tasks checklist element by ID";
 
 
@@ -1755,7 +1755,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1765,7 +1765,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--element";
     NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1775,7 +1775,7 @@
     NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1785,7 +1785,7 @@
     NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Mark an element as completed";
 
 
@@ -1796,7 +1796,7 @@
     NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1806,7 +1806,7 @@
     NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--element";
     NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1816,7 +1816,7 @@
     NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1826,7 +1826,7 @@
     NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
     NewLine.ОписаниеМетода   = "Unmark an element as completed";
 
 
@@ -1837,7 +1837,7 @@
     NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1847,7 +1847,7 @@
     NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--element";
     NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1857,7 +1857,7 @@
     NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists managment";
+    NewLine.Область     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
@@ -1867,7 +1867,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Get user comments list for a task";
 
 
@@ -1878,7 +1878,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1888,7 +1888,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1898,7 +1898,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Gets task comment data by ID";
 
 
@@ -1909,7 +1909,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1919,7 +1919,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--comment";
     NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1929,7 +1929,7 @@
     NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1939,7 +1939,7 @@
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Create new comment to the task";
 
 
@@ -1950,7 +1950,7 @@
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1960,7 +1960,7 @@
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1970,7 +1970,7 @@
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -1980,7 +1980,7 @@
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Changes task comment text";
 
 
@@ -1991,7 +1991,7 @@
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2001,7 +2001,7 @@
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--comment";
     NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2011,7 +2011,7 @@
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2021,7 +2021,7 @@
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2031,7 +2031,7 @@
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Delete task comment by ID";
 
 
@@ -2042,7 +2042,7 @@
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2052,7 +2052,7 @@
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--comment";
     NewLine.Описание    = "ID of comment to remove";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2062,7 +2062,7 @@
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2072,7 +2072,7 @@
     NewLine.МетодПоиска = "GETRESULTSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Gets results list for task";
 
 
@@ -2083,7 +2083,7 @@
     NewLine.МетодПоиска = "GETRESULTSLIST";
     NewLine.Параметр    = "--task";
     NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2093,7 +2093,7 @@
     NewLine.МетодПоиска = "GETRESULTSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2103,7 +2103,7 @@
     NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Create task result from comment";
 
 
@@ -2114,7 +2114,7 @@
     NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
     NewLine.Параметр    = "--comment";
     NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2124,7 +2124,7 @@
     NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2134,7 +2134,7 @@
     NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Deletes task result, created from a comment";
 
 
@@ -2145,7 +2145,7 @@
     NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
     NewLine.Параметр    = "--comment";
     NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2155,7 +2155,7 @@
     NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
@@ -2165,7 +2165,7 @@
     NewLine.МетодПоиска = "GETCOMMENTSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Comments and results managment";
+    NewLine.Область     = "Comments and results management";
     NewLine.ОписаниеМетода   = "Get comment fields structure";
 
 
@@ -2911,7 +2911,7 @@
     NewLine.МетодПоиска = "GETSTORAGESLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Get list of available files storages";
 
 
@@ -2922,7 +2922,7 @@
     NewLine.МетодПоиска = "GETSTORAGESLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -2932,7 +2932,7 @@
     NewLine.МетодПоиска = "GETAPPSOTRAGE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Get information about storage with which the application can work to store its data";
 
 
@@ -2943,7 +2943,7 @@
     NewLine.МетодПоиска = "GETAPPSOTRAGE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -2953,7 +2953,7 @@
     NewLine.МетодПоиска = "GETSTORAGE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Get information about storage";
 
 
@@ -2964,7 +2964,7 @@
     NewLine.МетодПоиска = "GETSTORAGE";
     NewLine.Параметр    = "--storageid";
     NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -2974,7 +2974,7 @@
     NewLine.МетодПоиска = "GETSTORAGE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -2984,7 +2984,7 @@
     NewLine.МетодПоиска = "RENAMESTORAGE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Change storage name (for app storage only, see. GetAppStorage)";
 
 
@@ -2995,7 +2995,7 @@
     NewLine.МетодПоиска = "RENAMESTORAGE";
     NewLine.Параметр    = "--storageid";
     NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3005,7 +3005,7 @@
     NewLine.МетодПоиска = "RENAMESTORAGE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New storage name";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3015,7 +3015,7 @@
     NewLine.МетодПоиска = "RENAMESTORAGE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3025,7 +3025,7 @@
     NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Get a list of files and folders, located at the root of the storage";
 
 
@@ -3036,7 +3036,7 @@
     NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
     NewLine.Параметр    = "--storageid";
     NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3046,7 +3046,7 @@
     NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3056,7 +3056,7 @@
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
     NewLine.ОписаниеМетода   = "Create new foldera at the storage";
 
 
@@ -3067,7 +3067,7 @@
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--storageid";
     NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3077,7 +3077,7 @@
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Folder name";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3087,7 +3087,7 @@
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages managment";
+    NewLine.Область     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
@@ -3097,7 +3097,7 @@
     NewLine.МетодПоиска = "GETFOLDERINFORMATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Get folder information";
 
 
@@ -3108,7 +3108,7 @@
     NewLine.МетодПоиска = "GETFOLDERINFORMATION";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3118,7 +3118,7 @@
     NewLine.МетодПоиска = "GETFOLDERINFORMATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3128,7 +3128,7 @@
     NewLine.МетодПоиска = "CREATESUBFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Create new folder inside another folder";
 
 
@@ -3139,7 +3139,7 @@
     NewLine.МетодПоиска = "CREATESUBFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Parent folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3149,7 +3149,7 @@
     NewLine.МетодПоиска = "CREATESUBFOLDER";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Name of new folder";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3159,7 +3159,7 @@
     NewLine.МетодПоиска = "CREATESUBFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3169,7 +3169,7 @@
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Copy one folder to another";
 
 
@@ -3180,7 +3180,7 @@
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3190,7 +3190,7 @@
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
     NewLine.Параметр    = "--tagetid";
     NewLine.Описание    = "ID of target folder";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3200,7 +3200,7 @@
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3210,7 +3210,7 @@
     NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Moves one folder inside another";
 
 
@@ -3221,7 +3221,7 @@
     NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3231,7 +3231,7 @@
     NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--tagetid";
     NewLine.Описание    = "ID of target folder";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3241,7 +3241,7 @@
     NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3251,7 +3251,7 @@
     NewLine.МетодПоиска = "DELETEFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Remove folder with subfolders";
 
 
@@ -3262,7 +3262,7 @@
     NewLine.МетодПоиска = "DELETEFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "ID of folder to be deleted";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3272,7 +3272,7 @@
     NewLine.МетодПоиска = "DELETEFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3282,7 +3282,7 @@
     NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Get external link to folder";
 
 
@@ -3293,7 +3293,7 @@
     NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3303,7 +3303,7 @@
     NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3313,7 +3313,7 @@
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Get folder child elements";
 
 
@@ -3324,7 +3324,7 @@
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3334,7 +3334,7 @@
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Items filter (see GetFolderFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3344,7 +3344,7 @@
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3354,7 +3354,7 @@
     NewLine.МетодПоиска = "MARKFOLDERASDELETED";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Move folder to recycle bin";
 
 
@@ -3365,7 +3365,7 @@
     NewLine.МетодПоиска = "MARKFOLDERASDELETED";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3375,7 +3375,7 @@
     NewLine.МетодПоиска = "MARKFOLDERASDELETED";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3385,7 +3385,7 @@
     NewLine.МетодПоиска = "RESTOREFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Resotre folder form recycle bin";
 
 
@@ -3396,7 +3396,7 @@
     NewLine.МетодПоиска = "RESTOREFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3406,7 +3406,7 @@
     NewLine.МетодПоиска = "RESTOREFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3416,7 +3416,7 @@
     NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Change folder name";
 
 
@@ -3427,7 +3427,7 @@
     NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3437,7 +3437,7 @@
     NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New folders name";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3447,7 +3447,7 @@
     NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3457,7 +3457,7 @@
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
     NewLine.ОписаниеМетода   = "Returns filter structure for child folder items";
 
 
@@ -3468,7 +3468,7 @@
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3478,7 +3478,7 @@
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs managment";
+    NewLine.Область     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3488,7 +3488,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Upload file to storage root";
 
 
@@ -3499,7 +3499,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "File name with extension";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3509,7 +3509,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "File for upload";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3519,7 +3519,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--storageid";
     NewLine.Описание    = "Storage id";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3529,7 +3529,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--rights";
     NewLine.Описание    = "Rights array if required (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3539,7 +3539,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3549,7 +3549,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Upload local file to the folder";
 
 
@@ -3560,7 +3560,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "File name with extension";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3570,7 +3570,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "File for upload";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3580,7 +3580,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3590,7 +3590,7 @@
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3600,7 +3600,7 @@
     NewLine.МетодПоиска = "GETFILEINFORMATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Get information about file by ID";
 
 
@@ -3611,7 +3611,7 @@
     NewLine.МетодПоиска = "GETFILEINFORMATION";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3621,7 +3621,7 @@
     NewLine.МетодПоиска = "GETFILEINFORMATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3631,7 +3631,7 @@
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Delete file by ID";
 
 
@@ -3642,7 +3642,7 @@
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "ID of removing file";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3652,7 +3652,7 @@
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3662,7 +3662,7 @@
     NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Get external link to file";
 
 
@@ -3673,7 +3673,7 @@
     NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3683,7 +3683,7 @@
     NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3693,7 +3693,7 @@
     NewLine.МетодПоиска = "MARKFILEASDELETED";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Move file to recycle bin";
 
 
@@ -3704,7 +3704,7 @@
     NewLine.МетодПоиска = "MARKFILEASDELETED";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3714,7 +3714,7 @@
     NewLine.МетодПоиска = "MARKFILEASDELETED";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3724,7 +3724,7 @@
     NewLine.МетодПоиска = "RESTOREFILE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Restore file from recycle bin";
 
 
@@ -3735,7 +3735,7 @@
     NewLine.МетодПоиска = "RESTOREFILE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3745,7 +3745,7 @@
     NewLine.МетодПоиска = "RESTOREFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3755,7 +3755,7 @@
     NewLine.МетодПоиска = "MAKECOPYFILE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Copy file from one destination to another";
 
 
@@ -3766,7 +3766,7 @@
     NewLine.МетодПоиска = "MAKECOPYFILE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "Original file ID";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3776,7 +3776,7 @@
     NewLine.МетодПоиска = "MAKECOPYFILE";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "ID of copy destination folder";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3786,7 +3786,7 @@
     NewLine.МетодПоиска = "MAKECOPYFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3796,7 +3796,7 @@
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Move file from one destination to another";
 
 
@@ -3807,7 +3807,7 @@
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File ID";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3817,7 +3817,7 @@
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
     NewLine.Параметр    = "--folderid";
     NewLine.Описание    = "ID of new destination folder";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3827,7 +3827,7 @@
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3837,7 +3837,7 @@
     NewLine.МетодПоиска = "RENAMEFILE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Changes the name of an existing file";
 
 
@@ -3848,7 +3848,7 @@
     NewLine.МетодПоиска = "RENAMEFILE";
     NewLine.Параметр    = "--fileid";
     NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3858,7 +3858,7 @@
     NewLine.МетодПоиска = "RENAMEFILE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New folders name";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3868,7 +3868,7 @@
     NewLine.МетодПоиска = "RENAMEFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -3878,7 +3878,7 @@
     NewLine.МетодПоиска = "CREATECHAT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Creates a new chat based on the field structure";
 
 
@@ -3889,7 +3889,7 @@
     NewLine.МетодПоиска = "CREATECHAT";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Chat fields structure. See GetChatStructure";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3899,7 +3899,7 @@
     NewLine.МетодПоиска = "CREATECHAT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3909,7 +3909,7 @@
     NewLine.МетодПоиска = "GETCHATUSERS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Gets the list of chat users by ID";
 
 
@@ -3920,7 +3920,7 @@
     NewLine.МетодПоиска = "GETCHATUSERS";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3930,7 +3930,7 @@
     NewLine.МетодПоиска = "GETCHATUSERS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3940,7 +3940,7 @@
     NewLine.МетодПоиска = "LEAVECHAT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Removes the current user from the chat room";
 
 
@@ -3951,7 +3951,7 @@
     NewLine.МетодПоиска = "LEAVECHAT";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3961,7 +3961,7 @@
     NewLine.МетодПоиска = "LEAVECHAT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3971,7 +3971,7 @@
     NewLine.МетодПоиска = "GETUSERS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Get users information for dialog";
 
 
@@ -3982,7 +3982,7 @@
     NewLine.МетодПоиска = "GETUSERS";
     NewLine.Параметр    = "--users";
     NewLine.Описание    = "Usesr ID or array of users IDs";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -3992,7 +3992,7 @@
     NewLine.МетодПоиска = "GETUSERS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4002,7 +4002,7 @@
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Adds users to the chat by ID array";
 
 
@@ -4013,7 +4013,7 @@
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4023,7 +4023,7 @@
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--users";
     NewLine.Описание    = "New members IDs";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4033,7 +4033,7 @@
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--hide";
     NewLine.Описание    = "Hide old messages from new members (optional, def. val. - No)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4043,7 +4043,7 @@
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4053,7 +4053,7 @@
     NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Deletes user from chat";
 
 
@@ -4064,7 +4064,7 @@
     NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4074,7 +4074,7 @@
     NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
     NewLine.Параметр    = "--user";
     NewLine.Описание    = "User ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4084,7 +4084,7 @@
     NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4094,7 +4094,7 @@
     NewLine.МетодПоиска = "CHANGECHATTITLE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Change text of chat title";
 
 
@@ -4105,7 +4105,7 @@
     NewLine.МетодПоиска = "CHANGECHATTITLE";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4115,7 +4115,7 @@
     NewLine.МетодПоиска = "CHANGECHATTITLE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New title";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4125,7 +4125,7 @@
     NewLine.МетодПоиска = "CHANGECHATTITLE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4135,7 +4135,7 @@
     NewLine.МетодПоиска = "CHANGECHATCOLOR";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Chat chat color for mobile app";
 
 
@@ -4146,7 +4146,7 @@
     NewLine.МетодПоиска = "CHANGECHATCOLOR";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4156,7 +4156,7 @@
     NewLine.МетодПоиска = "CHANGECHATCOLOR";
     NewLine.Параметр    = "--color";
     NewLine.Описание    = "New chat color";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4166,7 +4166,7 @@
     NewLine.МетодПоиска = "CHANGECHATCOLOR";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4176,7 +4176,7 @@
     NewLine.МетодПоиска = "CHANGECHATPICTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Setup new chat picture";
 
 
@@ -4187,7 +4187,7 @@
     NewLine.МетодПоиска = "CHANGECHATPICTURE";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4197,7 +4197,7 @@
     NewLine.МетодПоиска = "CHANGECHATPICTURE";
     NewLine.Параметр    = "--picture";
     NewLine.Описание    = "Picture data";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4207,7 +4207,7 @@
     NewLine.МетодПоиска = "CHANGECHATPICTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4217,7 +4217,7 @@
     NewLine.МетодПоиска = "CHANGECHATOWNER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Change chat owner";
 
 
@@ -4228,7 +4228,7 @@
     NewLine.МетодПоиска = "CHANGECHATOWNER";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4238,7 +4238,7 @@
     NewLine.МетодПоиска = "CHANGECHATOWNER";
     NewLine.Параметр    = "--user";
     NewLine.Описание    = "User ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4248,7 +4248,7 @@
     NewLine.МетодПоиска = "CHANGECHATOWNER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4258,7 +4258,7 @@
     NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Disable chat notifications";
 
 
@@ -4269,7 +4269,7 @@
     NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4279,7 +4279,7 @@
     NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4289,7 +4289,7 @@
     NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Enable chat notifications";
 
 
@@ -4300,7 +4300,7 @@
     NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4310,7 +4310,7 @@
     NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4320,7 +4320,7 @@
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified";
 
 
@@ -4331,7 +4331,7 @@
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4341,7 +4341,7 @@
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
     NewLine.Параметр    = "--last";
     NewLine.Описание    = "Id of last message (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4351,7 +4351,7 @@
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
     NewLine.Параметр    = "--first";
     NewLine.Описание    = "ID of first message (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4361,7 +4361,7 @@
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4371,7 +4371,7 @@
     NewLine.МетодПоиска = "GETDIALOG";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Get chat data by ID";
 
 
@@ -4382,7 +4382,7 @@
     NewLine.МетодПоиска = "GETDIALOG";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4392,7 +4392,7 @@
     NewLine.МетодПоиска = "GETDIALOG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4402,7 +4402,7 @@
     NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Get chat members list";
 
 
@@ -4413,7 +4413,7 @@
     NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4423,7 +4423,7 @@
     NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4433,7 +4433,7 @@
     NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Send Writing... status to dialog...";
 
 
@@ -4444,7 +4444,7 @@
     NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4454,7 +4454,7 @@
     NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4464,7 +4464,7 @@
     NewLine.МетодПоиска = "GETUSERSTATUS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Gets the status (online) of the current user";
 
 
@@ -4475,7 +4475,7 @@
     NewLine.МетодПоиска = "GETUSERSTATUS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4485,7 +4485,7 @@
     NewLine.МетодПоиска = "SETUSERSTATUS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Sets the status (online) of the current user";
 
 
@@ -4496,7 +4496,7 @@
     NewLine.МетодПоиска = "SETUSERSTATUS";
     NewLine.Параметр    = "--status";
     NewLine.Описание    = "Status value: online, dnd, away";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4506,7 +4506,7 @@
     NewLine.МетодПоиска = "SETUSERSTATUS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4516,7 +4516,7 @@
     NewLine.МетодПоиска = "READALL";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Mark all message as readed";
 
 
@@ -4527,7 +4527,7 @@
     NewLine.МетодПоиска = "READALL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4537,7 +4537,7 @@
     NewLine.МетодПоиска = "GETCHATFILESFOLDER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Get information about folder for chat files";
 
 
@@ -4548,7 +4548,7 @@
     NewLine.МетодПоиска = "GETCHATFILESFOLDER";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4558,7 +4558,7 @@
     NewLine.МетодПоиска = "GETCHATFILESFOLDER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
@@ -4568,7 +4568,7 @@
     NewLine.МетодПоиска = "GETCHATSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
-    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.Область     = "Chats and dialogs management";
     NewLine.ОписаниеМетода   = "Get chat fields structure";
 
 
@@ -4918,7 +4918,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
     NewLine.ОписаниеМетода   = "Creates a personal notification to the user";
 
 
@@ -4929,7 +4929,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--user";
     NewLine.Описание    = "User ID for sending the notification";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -4939,7 +4939,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Notification text";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -4949,7 +4949,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--tag";
     NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -4959,7 +4959,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--blocks";
     NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -4969,7 +4969,7 @@
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -4979,7 +4979,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
     NewLine.ОписаниеМетода   = "Creates a system notification to the user";
 
 
@@ -4990,7 +4990,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--user";
     NewLine.Описание    = "User ID for sending the notification";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5000,7 +5000,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Notification text";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5010,7 +5010,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--tag";
     NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5020,7 +5020,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--blocks";
     NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5030,7 +5030,7 @@
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5040,7 +5040,7 @@
     NewLine.МетодПоиска = "DELETENOTIFICATION";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
     NewLine.ОписаниеМетода   = "Delete notification by ID";
 
 
@@ -5051,7 +5051,7 @@
     NewLine.МетодПоиска = "DELETENOTIFICATION";
     NewLine.Параметр    = "--notif";
     NewLine.Описание    = "Notification ID";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5061,7 +5061,7 @@
     NewLine.МетодПоиска = "DELETENOTIFICATION";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications managment";
+    NewLine.Область     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
@@ -5071,7 +5071,7 @@
     NewLine.МетодПоиска = "CREATEDEPARTMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
     NewLine.ОписаниеМетода   = "Creates a new department";
 
 
@@ -5082,7 +5082,7 @@
     NewLine.МетодПоиска = "CREATEDEPARTMENT";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Department name";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5092,7 +5092,7 @@
     NewLine.МетодПоиска = "CREATEDEPARTMENT";
     NewLine.Параметр    = "--parentid";
     NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5102,7 +5102,7 @@
     NewLine.МетодПоиска = "CREATEDEPARTMENT";
     NewLine.Параметр    = "--headid";
     NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5112,7 +5112,7 @@
     NewLine.МетодПоиска = "CREATEDEPARTMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5122,7 +5122,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
     NewLine.ОписаниеМетода   = "Update an existing department";
 
 
@@ -5133,7 +5133,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--depid";
     NewLine.Описание    = "Department ID";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5143,7 +5143,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Department name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5153,7 +5153,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--parentid";
     NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5163,7 +5163,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--headid";
     NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5173,7 +5173,7 @@
     NewLine.МетодПоиска = "UPDATEDEPARTMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5183,7 +5183,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
     NewLine.ОписаниеМетода   = "Gets a list of departments by ID or filter";
 
 
@@ -5194,7 +5194,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--depid";
     NewLine.Описание    = "Selection by department ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5204,7 +5204,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Filter by name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5214,7 +5214,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--parentid";
     NewLine.Описание    = "Filter by parent ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5224,7 +5224,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--headid";
     NewLine.Описание    = "Filter by manager ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5234,7 +5234,7 @@
     NewLine.МетодПоиска = "GETDEPARTMENTS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5244,7 +5244,7 @@
     NewLine.МетодПоиска = "DELETEDEPARTMENT";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
     NewLine.ОписаниеМетода   = "Delets department by ID";
 
 
@@ -5255,7 +5255,7 @@
     NewLine.МетодПоиска = "DELETEDEPARTMENT";
     NewLine.Параметр    = "--depid";
     NewLine.Описание    = "Department ID for deletion";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5265,7 +5265,7 @@
     NewLine.МетодПоиска = "DELETEDEPARTMENT";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments managment";
+    NewLine.Область     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
@@ -5275,7 +5275,7 @@
     NewLine.МетодПоиска = "GETCURRENTUSER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Get current user data";
 
 
@@ -5286,7 +5286,7 @@
     NewLine.МетодПоиска = "GETCURRENTUSER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5296,7 +5296,7 @@
     NewLine.МетодПоиска = "GETUSER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Gets user information by ID";
 
 
@@ -5307,7 +5307,7 @@
     NewLine.МетодПоиска = "GETUSER";
     NewLine.Параметр    = "--userid";
     NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5317,7 +5317,7 @@
     NewLine.МетодПоиска = "GETUSER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5327,7 +5327,7 @@
     NewLine.МетодПоиска = "CREATEUSER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Create new user by fields structure";
 
 
@@ -5338,7 +5338,7 @@
     NewLine.МетодПоиска = "CREATEUSER";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5348,7 +5348,7 @@
     NewLine.МетодПоиска = "CREATEUSER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5358,7 +5358,7 @@
     NewLine.МетодПоиска = "UPDATEUSER";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Updates user data";
 
 
@@ -5369,7 +5369,7 @@
     NewLine.МетодПоиска = "UPDATEUSER";
     NewLine.Параметр    = "--userid";
     NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5379,7 +5379,7 @@
     NewLine.МетодПоиска = "UPDATEUSER";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5389,7 +5389,7 @@
     NewLine.МетодПоиска = "UPDATEUSER";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5399,7 +5399,7 @@
     NewLine.МетодПоиска = "CHANGEUSERSTATUS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Activates or deactivates (fire) the selected user";
 
 
@@ -5410,7 +5410,7 @@
     NewLine.МетодПоиска = "CHANGEUSERSTATUS";
     NewLine.Параметр    = "--userid";
     NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5420,7 +5420,7 @@
     NewLine.МетодПоиска = "CHANGEUSERSTATUS";
     NewLine.Параметр    = "--fire";
     NewLine.Описание    = "True > Deactivation, False > Activation (optional, def. val. - Yes)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5430,7 +5430,7 @@
     NewLine.МетодПоиска = "CHANGEUSERSTATUS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5440,7 +5440,7 @@
     NewLine.МетодПоиска = "FINDUSERS";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Gets the list of users according to the specified filter";
 
 
@@ -5451,7 +5451,7 @@
     NewLine.МетодПоиска = "FINDUSERS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filter. See GetUserFilterStructure";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5461,7 +5461,7 @@
     NewLine.МетодПоиска = "FINDUSERS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5471,7 +5471,7 @@
     NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Gets the field structure for creating or modifying user information";
 
 
@@ -5482,7 +5482,7 @@
     NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -5492,7 +5492,7 @@
     NewLine.МетодПоиска = "GETUSERFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Users managment";
+    NewLine.Область     = "Users management";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering users in the FindUsers method";
 
 
@@ -5503,7 +5503,7 @@
     NewLine.МетодПоиска = "CREATELEAD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Creates a new lead by fields structure (see GetLeadStructure)";
 
 
@@ -5514,7 +5514,7 @@
     NewLine.МетодПоиска = "CREATELEAD";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Lead fields structure (see GetLeadStructure)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5524,7 +5524,7 @@
     NewLine.МетодПоиска = "CREATELEAD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5534,7 +5534,7 @@
     NewLine.МетодПоиска = "DELETELEAD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Deletes a lead by ID";
 
 
@@ -5545,7 +5545,7 @@
     NewLine.МетодПоиска = "DELETELEAD";
     NewLine.Параметр    = "--lead";
     NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5555,7 +5555,7 @@
     NewLine.МетодПоиска = "DELETELEAD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5565,7 +5565,7 @@
     NewLine.МетодПоиска = "GETLEAD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Gets a lead by ID";
 
 
@@ -5576,7 +5576,7 @@
     NewLine.МетодПоиска = "GETLEAD";
     NewLine.Параметр    = "--lead";
     NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5586,7 +5586,7 @@
     NewLine.МетодПоиска = "GETLEAD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5596,7 +5596,7 @@
     NewLine.МетодПоиска = "GETLEADSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)";
 
 
@@ -5607,7 +5607,7 @@
     NewLine.МетодПоиска = "GETLEADSLIST";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Lead filter structure (see GetLeadFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5617,7 +5617,7 @@
     NewLine.МетодПоиска = "GETLEADSLIST";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5627,7 +5627,7 @@
     NewLine.МетодПоиска = "GETLEADSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5637,7 +5637,7 @@
     NewLine.МетодПоиска = "UPDATELEAD";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Modifies an existing lead";
 
 
@@ -5648,7 +5648,7 @@
     NewLine.МетодПоиска = "UPDATELEAD";
     NewLine.Параметр    = "--lead";
     NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5658,7 +5658,7 @@
     NewLine.МетодПоиска = "UPDATELEAD";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Structure of lead fields";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5668,7 +5668,7 @@
     NewLine.МетодПоиска = "UPDATELEAD";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5678,7 +5678,7 @@
     NewLine.МетодПоиска = "GETLEADSTRUCTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a lead";
 
 
@@ -5689,7 +5689,7 @@
     NewLine.МетодПоиска = "GETLEADSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
@@ -5699,7 +5699,7 @@
     NewLine.МетодПоиска = "GETLEADFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Leads managment";
+    NewLine.Область     = "Leads management";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering leads in the GetLeadsList method";
 
 
@@ -5710,7 +5710,7 @@
     NewLine.МетодПоиска = "CREATEDEAL";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Creates a new deal by field structure (see. GetDealStructure)";
 
 
@@ -5721,7 +5721,7 @@
     NewLine.МетодПоиска = "CREATEDEAL";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5731,7 +5731,7 @@
     NewLine.МетодПоиска = "CREATEDEAL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5741,7 +5741,7 @@
     NewLine.МетодПоиска = "DELETEDEAL";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Deletes deal by ID";
 
 
@@ -5752,7 +5752,7 @@
     NewLine.МетодПоиска = "DELETEDEAL";
     NewLine.Параметр    = "--deal";
     NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5762,7 +5762,7 @@
     NewLine.МетодПоиска = "DELETEDEAL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5772,7 +5772,7 @@
     NewLine.МетодПоиска = "GETDEAL";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Gets deal by ID";
 
 
@@ -5783,7 +5783,7 @@
     NewLine.МетодПоиска = "GETDEAL";
     NewLine.Параметр    = "--deal";
     NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5793,7 +5793,7 @@
     NewLine.МетодПоиска = "GETDEAL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5803,7 +5803,7 @@
     NewLine.МетодПоиска = "GETDEALSLIST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)";
 
 
@@ -5814,7 +5814,7 @@
     NewLine.МетодПоиска = "GETDEALSLIST";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Deals filter structure (see. GetDealsFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5824,7 +5824,7 @@
     NewLine.МетодПоиска = "GETDEALSLIST";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5834,7 +5834,7 @@
     NewLine.МетодПоиска = "GETDEALSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5844,7 +5844,7 @@
     NewLine.МетодПоиска = "UPDATEDEAL";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Modifies an existing deal";
 
 
@@ -5855,7 +5855,7 @@
     NewLine.МетодПоиска = "UPDATEDEAL";
     NewLine.Параметр    = "--deal";
     NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5865,7 +5865,7 @@
     NewLine.МетодПоиска = "UPDATEDEAL";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Deal fields structure";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5875,7 +5875,7 @@
     NewLine.МетодПоиска = "UPDATEDEAL";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5885,7 +5885,7 @@
     NewLine.МетодПоиска = "GETDEALSTRUCTURE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a deal";
 
 
@@ -5896,7 +5896,7 @@
     NewLine.МетодПоиска = "GETDEALSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
@@ -5906,7 +5906,7 @@
     NewLine.МетодПоиска = "GETDEALSFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Deals managment";
+    NewLine.Область     = "Deals management";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering deals in the GetDealsList method";
 
     Return CompositionTable;

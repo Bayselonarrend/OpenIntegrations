@@ -1,0 +1,93 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create department
+ Creates a new department
+
+
+
+`Function CreateDepartment(Val URL, Val Name, Val ParentID = "", Val HeadID = "", Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | Name | --title | String | &#x2714; | Department name |
+  | ParentID | --parentid | String, Number | &#x2716; | ID of parent department |
+  | HeadID | --headid | String, Number | &#x2716; | ID of department manager |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help/departments/department_add.php)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+
+    Name     = "Main department";
+    ParentID = 1;
+
+    Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "7afc3e67006e9f06006b12e400000001000...";
+
+    Name     = "Subordinate department";
+    ParentID = "1048";
+    HeadID   = 1;
+
+    Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID, HeadID, Token);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 CreateDepartment \
+             --url "b24-ar17wx.bitrix24.by" \
+             --title "Subordinate department" \
+             --parentid 1060 \
+             --headid 1 \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 CreateDepartment ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --title "Subordinate department" ^
+             --parentid 1060 ^
+             --headid 1 ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": 594,
+ "time": {
+  "start": 1728454927.08955,
+  "finish": 1728454927.30747,
+  "duration": 0.217915773391724,
+  "processing": 0.186015844345093,
+  "date_start": "2024-10-09T09:22:07+03:00",
+  "date_finish": "2024-10-09T09:22:07+03:00",
+  "operating_reset_at": 1728455527,
+  "operating": 0.18598484992981
+ }
+}
+```

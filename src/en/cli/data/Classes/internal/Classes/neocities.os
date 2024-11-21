@@ -59,7 +59,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Upload single file to Neocities";
 
 
@@ -70,7 +70,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--path";
     NewLine.Описание    = "File path on Neocities";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -80,7 +80,7 @@
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "URL, path or file data";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -90,7 +90,7 @@
     NewLine.МетодПоиска = "UPLOADFILES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Uploads multiple files to Neocities";
 
 
@@ -101,7 +101,7 @@
     NewLine.МетодПоиска = "UPLOADFILES";
     NewLine.Параметр    = "--files";
     NewLine.Описание    = "Files: Key > destination path on NC, Value > file";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -111,7 +111,7 @@
     NewLine.МетодПоиска = "UPLOADFILES";
     NewLine.Параметр    = "--singly";
     NewLine.Описание    = "True > sends files in separate requests (optional, def. val. - No)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -121,7 +121,7 @@
     NewLine.МетодПоиска = "DELETESELECTEDFILES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Deletes a file or multiple files from Neocities";
 
 
@@ -132,7 +132,7 @@
     NewLine.МетодПоиска = "DELETESELECTEDFILES";
     NewLine.Параметр    = "--paths";
     NewLine.Описание    = "Path or multiple paths of the files to be deleted";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -142,7 +142,7 @@
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Gets a list of files with or without directory selection";
 
 
@@ -153,7 +153,7 @@
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--path";
     NewLine.Описание    = "Selection of files by catalog. All if not filled in (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -163,7 +163,7 @@
     NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
     NewLine.ОписаниеМетода   = "Creates a copy of the local directory at the selected path on the Neocities server";
 
 
@@ -174,7 +174,7 @@
     NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
     NewLine.Параметр    = "--local";
     NewLine.Описание    = "Local source catalog";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
 
     NewLine = CompositionTable.Add();
@@ -184,7 +184,7 @@
     NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
     NewLine.Параметр    = "--remote";
     NewLine.Описание    = "Remote receiver catalog. Root by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "File managment";
+    NewLine.Область     = "File management";
 
     Return CompositionTable;
 EndFunction

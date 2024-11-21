@@ -1,0 +1,86 @@
+﻿---
+sidebar_position: 10
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create barcode
+ Generates a PDF barcode CP for orders
+
+
+
+`Function CreateBarcode(Val Token, Val UUIDArray, Val Copies = 1, Val Format = "A4", Val Lang = "RUS", Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUIDArray | --uuids | String, Array of String | &#x2714; | One or an array of order UUIDs |
+  | Copies | --count | Number | &#x2716; | Number of copies |
+  | Format | --format | String | &#x2716; | Print format: A4, A5, A6, A7 |
+  | Lang | --lang | String | &#x2716; | Barcode language: RUS, ENG |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Creating barcode CP for the order](https://api-docs.cdek.ru/36969713.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MzIxODEzNzAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID   = "69650666-d64f-497c-b725-a624908ba929";
+    Format = "A5";
+    Copies = 1;
+
+    Result = OPI_CDEK.CreateBarcode(Token, UUID, Copies, Format, , True);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek CreateBarcode \
+             --token "***" \
+             --uuids "2955ffb7-afc4-40ab-bfdd-4b96c8a4d392" \
+             --count 1 \
+             --format "A5" \
+             --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek CreateBarcode ^
+             --token "***" ^
+             --uuids "2955ffb7-afc4-40ab-bfdd-4b96c8a4d392" ^
+             --count 1 ^
+             --format "A5" ^
+             --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "entity": {
+  "uuid": "72753031-9cab-476e-b091-50d4c511afd2"
+ },
+ "requests": [
+  {
+   "request_uuid": "42c93f2b-bfe5-40eb-8927-04dcfb72457d",
+   "type": "CREATE",
+   "date_time": "2024-10-21T21:27:30+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

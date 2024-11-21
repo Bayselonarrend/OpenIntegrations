@@ -117,7 +117,7 @@ EndFunction
 
 #EndRegion
 
-#Region BucketsManagment
+#Region BucketsManagement
 
 // Create bucket
 // Creates a new bucket with the specified name
@@ -135,7 +135,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function CreateBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, Directory, "PUT", Headers);
+    Response = BucketManagement(Name, BasicData, Directory, "PUT", Headers);
     Return Response;
 
 EndFunction
@@ -156,7 +156,7 @@ EndFunction
 // Structure of KeyAndValue - serialized JSON response from storage
 Function DeleteBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
-    Response = BucketManagment(Name, BasicData, Directory, "DELETE", Headers);
+    Response = BucketManagement(Name, BasicData, Directory, "DELETE", Headers);
     Return Response;
 
 EndFunction
@@ -190,7 +190,7 @@ Function HeadBucket(Val Name
         AddAdditionalHeaders(Headers, AccountHeader);
     EndIf;
 
-    Response = BucketManagment(Name, BasicData, Directory, "HEAD", Headers);
+    Response = BucketManagement(Name, BasicData, Directory, "HEAD", Headers);
     Return Response;
 
 EndFunction
@@ -523,7 +523,7 @@ EndFunction
 
 #EndRegion
 
-#Region ObjectsManagment
+#Region ObjectsManagement
 
 // Put object
 // Uploads the file to the bucket
@@ -1448,7 +1448,7 @@ Function SendRequest(Val Method
 
 EndFunction
 
-Function BucketManagment(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
+Function BucketManagement(Val Name, Val BasicData, Val Directory, Val Method, Val Headers)
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 

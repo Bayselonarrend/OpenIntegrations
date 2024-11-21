@@ -318,7 +318,7 @@
     NewLine.МетодПоиска = "CREATEBLOCK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
     NewLine.ОписаниеМетода   = "Creates a new block based on an existing block";
 
 
@@ -329,7 +329,7 @@
     NewLine.МетодПоиска = "CREATEBLOCK";
     NewLine.Параметр    = "--page";
     NewLine.Описание    = "Parent block or page ID";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -339,7 +339,7 @@
     NewLine.МетодПоиска = "CREATEBLOCK";
     NewLine.Параметр    = "--block";
     NewLine.Описание    = "Block ID or block sample itself";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -349,7 +349,7 @@
     NewLine.МетодПоиска = "CREATEBLOCK";
     NewLine.Параметр    = "--prev";
     NewLine.Описание    = "Block ID after which to insert the new one (optional, def. val. - Empty value)";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -359,7 +359,7 @@
     NewLine.МетодПоиска = "RETURNBLOCK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
     NewLine.ОписаниеМетода   = "Returns the block structure by ID";
 
 
@@ -370,7 +370,7 @@
     NewLine.МетодПоиска = "RETURNBLOCK";
     NewLine.Параметр    = "--block";
     NewLine.Описание    = "Block ID";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -380,7 +380,7 @@
     NewLine.МетодПоиска = "RETURNBLOCK";
     NewLine.Параметр    = "--core";
     NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - Yes)";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -390,7 +390,7 @@
     NewLine.МетодПоиска = "RETURNCHILDBLOCKS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
     NewLine.ОписаниеМетода   = "Returns list of child blocks of parent block";
 
 
@@ -401,7 +401,7 @@
     NewLine.МетодПоиска = "RETURNCHILDBLOCKS";
     NewLine.Параметр    = "--block";
     NewLine.Описание    = "Parent block ID";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();
@@ -411,7 +411,7 @@
     NewLine.МетодПоиска = "DELETEBLOCK";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
     NewLine.ОписаниеМетода   = "Deletes block by ID";
 
 
@@ -422,7 +422,7 @@
     NewLine.МетодПоиска = "DELETEBLOCK";
     NewLine.Параметр    = "--block";
     NewLine.Описание    = "Block ID";
-    NewLine.Область     = "Blocks managment";
+    NewLine.Область     = "Blocks management";
 
 
     NewLine = CompositionTable.Add();

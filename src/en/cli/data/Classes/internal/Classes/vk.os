@@ -29,7 +29,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Post text";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Creates a post with images
     |    Data structure for option --auth:
     |    {
@@ -48,7 +48,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--pictures";
     NewLine.Описание    = "Array of images";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -58,7 +58,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--ad";
     NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -68,7 +68,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -78,7 +78,7 @@
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -88,7 +88,7 @@
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Post text";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Creates a post based on an array of object identifiers (images, videos, etc..)
     |    Data structure for option --auth:
     |    {
@@ -107,7 +107,7 @@
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--objects";
     NewLine.Описание    = "Array of identifiers like photo123_123";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -117,7 +117,7 @@
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--ad";
     NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -127,7 +127,7 @@
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -137,7 +137,7 @@
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -147,7 +147,7 @@
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--post";
     NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Deletes a post by ID
     |    Data structure for option --auth:
     |    {
@@ -166,7 +166,7 @@
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -176,7 +176,7 @@
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--question";
     NewLine.Описание    = "Poll question";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Creates a poll with answer options
     |    Data structure for option --auth:
     |    {
@@ -195,7 +195,7 @@
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--options";
     NewLine.Описание    = "Array of answer options";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -205,7 +205,7 @@
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--picture";
     NewLine.Описание    = "Poll image (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -215,7 +215,7 @@
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -225,7 +225,7 @@
     NewLine.МетодПоиска = "CREATEALBUM";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Album name";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Creates an album to store images
     |    Data structure for option --auth:
     |    {
@@ -244,7 +244,7 @@
     NewLine.МетодПоиска = "CREATEALBUM";
     NewLine.Параметр    = "--description";
     NewLine.Описание    = "Album description (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -254,7 +254,7 @@
     NewLine.МетодПоиска = "CREATEALBUM";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -264,7 +264,7 @@
     NewLine.МетодПоиска = "DELETEALBUM";
     NewLine.Параметр    = "--album";
     NewLine.Описание    = "Album ID";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Deletes a previously created album
     |    Data structure for option --auth:
     |    {
@@ -283,7 +283,7 @@
     NewLine.МетодПоиска = "DELETEALBUM";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -293,7 +293,7 @@
     NewLine.МетодПоиска = "CREATESTORY";
     NewLine.Параметр    = "--picture";
     NewLine.Описание    = "Story background";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Creates a story from an image
     |    Data structure for option --auth:
     |    {
@@ -312,7 +312,7 @@
     NewLine.МетодПоиска = "CREATESTORY";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL for button under the story (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -322,7 +322,7 @@
     NewLine.МетодПоиска = "CREATESTORY";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -332,7 +332,7 @@
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--album";
     NewLine.Описание    = "Album ID";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Saves an image to the community album
     |    Data structure for option --auth:
     |    {
@@ -351,7 +351,7 @@
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--picture";
     NewLine.Описание    = "Image file";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -361,7 +361,7 @@
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--description";
     NewLine.Описание    = "Image description (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -371,7 +371,7 @@
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -381,7 +381,7 @@
     NewLine.МетодПоиска = "DELETEIMAGE";
     NewLine.Параметр    = "--pictureid";
     NewLine.Описание    = "Image ID";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Deletes an image from the album
     |    Data structure for option --auth:
     |    {
@@ -400,7 +400,7 @@
     NewLine.МетодПоиска = "DELETEIMAGE";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -410,7 +410,7 @@
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "Video file";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Uploads video to the group for further use
     |    Data structure for option --auth:
     |    {
@@ -429,7 +429,7 @@
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Video name";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -439,7 +439,7 @@
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--description";
     NewLine.Описание    = "Video description (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -449,7 +449,7 @@
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--album";
     NewLine.Описание    = "Album ID, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -459,7 +459,7 @@
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -469,7 +469,7 @@
     NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
     NewLine.Параметр    = "--file";
     NewLine.Описание    = "Image file";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
     NewLine.ОписаниеМетода   = "Uploads photo to server for further use
     |    Data structure for option --auth:
     |    {
@@ -488,7 +488,7 @@
     NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();
@@ -498,7 +498,7 @@
     NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Upload type (Post, Product, Story, Poll, Other) (optional, def. val. - Post)";
-    NewLine.Область     = "Community managment";
+    NewLine.Область     = "Community management";
 
 
     NewLine = CompositionTable.Add();

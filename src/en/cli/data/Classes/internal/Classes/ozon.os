@@ -232,7 +232,7 @@
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
     NewLine.Область     = "Attributes and features";
-    NewLine.ОписаниеМетода   = "Get requests limits for products managment methods";
+    NewLine.ОписаниеМетода   = "Get requests limits for products management methods";
 
 
     NewLine = CompositionTable.Add();
@@ -1368,7 +1368,7 @@
     NewLine.МетодПоиска = "GETPROMOTIONSLIST";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
     NewLine.ОписаниеМетода   = "Gets a list of available promotions";
 
 
@@ -1379,7 +1379,7 @@
     NewLine.МетодПоиска = "GETPROMOTIONSLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1389,7 +1389,7 @@
     NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
     NewLine.ОписаниеМетода   = "Gets the products available in the selected promotion";
 
 
@@ -1400,7 +1400,7 @@
     NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1410,7 +1410,7 @@
     NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
     NewLine.Параметр    = "--actionid";
     NewLine.Описание    = "Promo ID";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1420,7 +1420,7 @@
     NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1430,7 +1430,7 @@
     NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
     NewLine.ОписаниеМетода   = "Gets the products featured in the selected promotion";
 
 
@@ -1441,7 +1441,7 @@
     NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1451,7 +1451,7 @@
     NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
     NewLine.Параметр    = "--actionid";
     NewLine.Описание    = "Promo ID";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1461,7 +1461,7 @@
     NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Promotions managment";
+    NewLine.Область     = "Promotions management";
 
 
     NewLine = CompositionTable.Add();
@@ -1471,7 +1471,7 @@
     NewLine.МетодПоиска = "GETWAREHOUSESLIST";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Warehouses managment";
+    NewLine.Область     = "Warehouses management";
     NewLine.ОписаниеМетода   = "Gets compnay warehouses list";
 
 
@@ -1482,7 +1482,7 @@
     NewLine.МетодПоиска = "GETWAREHOUSESLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Warehouses managment";
+    NewLine.Область     = "Warehouses management";
 
     Return CompositionTable;
 EndFunction

@@ -205,7 +205,7 @@ Function SearchAttributeValue(Val ClientID
 EndFunction
 
 // Get products requests limits
-// Get requests limits for products managment methods
+// Get requests limits for products management methods
 //
 // Note
 // Method at API documentation: [post /v4/product/info/limit](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetUploadQuota)
@@ -1434,7 +1434,7 @@ EndFunction
 
 #EndRegion
 
-#Region PromotionsManagment
+#Region PromotionsManagement
 
 // Get promotions list
 // Gets a list of available promotions
@@ -1530,7 +1530,7 @@ EndFunction
 
 #EndRegion
 
-#Region WarehousesManagment
+#Region WarehousesManagement
 
 // Get warehouses list
 // Gets compnay warehouses list

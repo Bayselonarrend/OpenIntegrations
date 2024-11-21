@@ -1,0 +1,86 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add comment to post
+ Adds a comment to the post
+
+
+
+`Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | PostID | --postid | String, Number | &#x2714; | Post ID |
+  | Text | --text | String | &#x2714; | Comment text |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Text   = "Comment for post";
+    PostID = "1396";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
+
+    Text  = "Another comment";
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "7afc3e67006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 AddPostComment \
+             --url "b24-ar17wx.bitrix24.by" \
+             --postid 1408 \
+             --text "Another comment" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 AddPostComment ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --postid 1408 ^
+             --text "Another comment" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": 876,
+ "time": {
+  "start": 1728454764.93192,
+  "finish": 1728454765.05443,
+  "duration": 0.122506141662598,
+  "processing": 0.0952260494232178,
+  "date_start": "2024-10-09T09:19:24+03:00",
+  "date_finish": "2024-10-09T09:19:25+03:00",
+  "operating_reset_at": 1728455364,
+  "operating": 0
+ }
+}
+```

@@ -17,7 +17,7 @@
     NewLine.МетодПоиска = "CREATETAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Creates a tag with the specified name";
 
 
@@ -28,7 +28,7 @@
     NewLine.МетодПоиска = "CREATETAG";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Tag title";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -38,7 +38,7 @@
     NewLine.МетодПоиска = "UPDATETAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Changes the tag name by ID";
 
 
@@ -49,7 +49,7 @@
     NewLine.МетодПоиска = "UPDATETAG";
     NewLine.Параметр    = "--label";
     NewLine.Описание    = "Tag ID to change";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -59,7 +59,7 @@
     NewLine.МетодПоиска = "UPDATETAG";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New name";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -69,7 +69,7 @@
     NewLine.МетодПоиска = "GETTAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Gets the tag by ID";
 
 
@@ -80,7 +80,7 @@
     NewLine.МетодПоиска = "GETTAG";
     NewLine.Параметр    = "--label";
     NewLine.Описание    = "Tag ID";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -90,7 +90,7 @@
     NewLine.МетодПоиска = "DELETETAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Deletes a tag by ID";
 
 
@@ -101,7 +101,7 @@
     NewLine.МетодПоиска = "DELETETAG";
     NewLine.Параметр    = "--label";
     NewLine.Описание    = "ID of the tag to be deleted";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -111,7 +111,7 @@
     NewLine.МетодПоиска = "GETTAGSLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Auth token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Gets a list of the users tags";
 
 
