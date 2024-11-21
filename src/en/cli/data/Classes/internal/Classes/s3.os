@@ -16,7 +16,7 @@
     NewLine.Метод       = "GetBasicDataStructure";
     NewLine.МетодПоиска = "GETBASICDATASTRUCTURE";
     NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL: domain for common methods or full URL with parameters for methods of direct request sending";
+    NewLine.Описание    = "URL: domain for common methods or full URL with parameters for direct request sending";
     NewLine.Область     = "Common methods";
     NewLine.ОписаниеМетода   = "Returns the basic data for request in structured form";
 
@@ -751,6 +751,230 @@
     NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "PutObject";
     NewLine.МетодПоиска = "PUTOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadFullObject";
+    NewLine.МетодПоиска = "UPLOADFULLOBJECT";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Upload object with single request";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadFullObject";
+    NewLine.МетодПоиска = "UPLOADFULLOBJECT";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadFullObject";
+    NewLine.МетодПоиска = "UPLOADFULLOBJECT";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "File path or binary data of the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadFullObject";
+    NewLine.МетодПоиска = "UPLOADFULLOBJECT";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadFullObject";
+    NewLine.МетодПоиска = "UPLOADFULLOBJECT";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "InitPartsUpload";
+    NewLine.МетодПоиска = "INITPARTSUPLOAD";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Initializes the multipart object uploading";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "InitPartsUpload";
+    NewLine.МетодПоиска = "INITPARTSUPLOAD";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "InitPartsUpload";
+    NewLine.МетодПоиска = "INITPARTSUPLOAD";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "InitPartsUpload";
+    NewLine.МетодПоиска = "INITPARTSUPLOAD";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Uploads a part of an object for multipart uploading";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--upload";
+    NewLine.Описание    = "Upload ID. See InitPartsUpload";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--part";
+    NewLine.Описание    = "Number of the object part from 1 to 10000";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--content";
+    NewLine.Описание    = "Part content for uploading";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "UploadObjectPart";
+    NewLine.МетодПоиска = "UPLOADOBJECTPART";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects managment";
+    NewLine.ОписаниеМетода   = "Confirms the multipart uploading finish";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
+    NewLine.Параметр    = "--upload";
+    NewLine.Описание    = "Upload ID. See InitPartsUpload";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
+    NewLine.Параметр    = "--tags";
+    NewLine.Описание    = "An array of tags (Etag) from the uploads responses of each part";
+    NewLine.Область     = "Objects managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "FinishPartsUpload";
+    NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects managment";
