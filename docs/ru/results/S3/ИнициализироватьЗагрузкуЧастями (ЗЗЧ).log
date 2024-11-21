@@ -1,0 +1,23 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "InitiateMultipartUploadResult": {
+   "Bucket": "opi-gpbucket3",
+   "Key": "fileChunked.mp3",
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmZlZTI2ZWFmLTY3MWYtNGZmMi04NGJjLWYzMjgxNDhkNTljZA"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "325",
+  "Content-Type": "application/xml",
+  "Date": "Thu, 21 Nov 2024 09:09:52 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "1809F0B53DC60E68",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
