@@ -1,5 +1,5 @@
 oint bitrix24 УдалитьТрудозатратыЗадачи ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "3528" ^
-  --record 1266 ^
+  --task "3588" ^
+  --record 1290 ^
   --token "***"
