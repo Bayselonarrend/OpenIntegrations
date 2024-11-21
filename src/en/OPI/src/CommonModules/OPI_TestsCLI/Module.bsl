@@ -17579,8 +17579,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (file)", "S3");
-    ResultFile = New File(Result);
-    OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = RequiredSize);
+    OPI_TestDataRetrieval.ExpectsThat(Result.Size() = RequiredSize);
     DeleteFiles(TempFile);
 
     Name   = "bigfile.exe";
@@ -17595,9 +17594,8 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    ResultFile = New File(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, file)", "S3");
-    OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = 34432400);
+    OPI_TestDataRetrieval.ExpectsThat(Result.Size() = 34432400);
     DeleteFiles(BigTempFile);
 
     Options.Insert("name"  , Name);
