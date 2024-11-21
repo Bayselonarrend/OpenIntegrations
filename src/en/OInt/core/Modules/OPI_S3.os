@@ -529,10 +529,10 @@ EndFunction
 // Uploads the file to the bucket
 //
 // Note
-// Method at AWS documentation (default): [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
-// Method at AWS documentation (multipart): [Multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
-// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
-// For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
+// Method at AWS documentation (default): [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)^
+// Method at AWS documentation (multipart): [Multipart upload](@docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload.^
+// For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.^
 // Chunk upload is used for large files. Default ChunkSize - 20971520 bytes (20 MB)
 //
 // Parameters:
