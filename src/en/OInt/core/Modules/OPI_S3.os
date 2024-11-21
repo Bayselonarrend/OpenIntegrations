@@ -721,6 +721,7 @@ Function FinishPartsUpload(Val Name
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
+    OPI_TypeConversion.GetArray(TagsArray);
     FillObjectURL(BasicData_, Name, Bucket);
 
     BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
@@ -741,7 +742,7 @@ Function FinishPartsUpload(Val Name
     FinishXML       = OPI_Tools.GetXML(FinishStructure, "http://s3.amazonaws.com/doc/2006-03-01/");
     FinishXML       = ПолучитьДвоичныеДанныеИзСтроки(FinishXML);
 
-    Response = SendRequestWithBody("POST", BasicData_, FinishXML);
+    Response = SendRequestWithBody("POST", BasicData_, FinishXML, , Headers);
 
     Return Response;
 
