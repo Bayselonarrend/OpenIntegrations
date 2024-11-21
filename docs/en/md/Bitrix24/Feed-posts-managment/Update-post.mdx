@@ -28,7 +28,8 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
+Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)<br/>
+<br/>
 :::
 <br/>
 
@@ -37,7 +38,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "1260";
+    PostID = "1396";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -47,8 +48,8 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "48573267006e9f06006b12e400000001000...";
-    PostID = "1258";
+    Token  = "7afc3e67006e9f06006b12e400000001000...";
+    PostID = "1394";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

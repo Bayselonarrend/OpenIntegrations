@@ -1,0 +1,98 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Upload object part
+ Uploads a part of an object for multipart uploading
+
+
+
+`Function UploadObjectPart(Val Name, Val Bucket, Val BasicData, Val UploadID, Val PartNumber, Val Data, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Name of the object in the bucket |
+  | Bucket | --bucket | String | &#x2714; | Name of the bucket to put the object |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | UploadID | --upload | String | &#x2714; | Upload ID. See InitPartsUpload |
+  | PartNumber | --part | Number, String | &#x2714; | Number of the object part from 1 to 10000 |
+  | Data | --content | BinaryData, String | &#x2714; | Part content for uploading |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from storage
+
+<br/>
+
+:::tip
+Method at AWS documentation: [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)<br/>
+This is a service method. A `LoadObject` method is intended for the main scenario of files uploading<br/>
+<br/><br/>
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Entity = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Path or Binary Data
+    Entity = OPI_Tools.Get(Entity);
+
+    Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+
+    UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
+    TotalSize  = Entity.Size();
+    ChunkSize  = 5242880;
+    BytesRead  = 0;
+    PartNumber = 1;
+
+    DataReader   = New DataReader(Entity);
+    SourceStream = DataReader.SourceStream();
+    TagsArray    = New Array;
+
+    WHile BytesRead < TotalSize Do
+
+        CurrentReading = DataReader.Read(ChunkSize);
+        CurrentData    = CurrentReading.GetBinaryData();
+
+        If CurrentData.Size() = 0 Then
+            Break;
+        EndIf;
+
+        Result = OPI_S3.UploadObjectPart(Name
+            , Bucket
+            , BasicData
+            , UploadID
+            , PartNumber
+            , CurrentData);
+
+        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        BytesRead = SourceStream.CurrentPosition();
+        TagsArray.Add(Result["headers"]["Etag"]);
+
+        Break;
+
+        PartNumber = PartNumber + 1;
+
+    EndDo;
+
+    Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
+```
+ 
+
+
+
+

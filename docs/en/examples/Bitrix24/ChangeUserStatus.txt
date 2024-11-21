@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    UserID = "916";
+    UserID = "1052";
 
     Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "48573267006e9f06006b12e400000001000...";
-    UserID = "918";
+    Token  = "7afc3e67006e9f06006b12e400000001000...";
+    UserID = "1054";
 
     Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);

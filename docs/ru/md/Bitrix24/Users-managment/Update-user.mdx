@@ -25,14 +25,15 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [user.update](https://dev.1c-bitrix.ru/rest_help/users/user_update.php)
+Метод в документации API: [user.update](https://dev.1c-bitrix.ru/rest_help/users/user_update.php)<br/>
+<br/>
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL            = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDПользователя = "916";
+    IDПользователя = "1052";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     // Полную структуру можно получить функцией ПолучитьСтурктуруПользователя
@@ -44,8 +45,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьПользователя(URL, IDПользователя, СтруктураПользователя);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "48573267006e9f06006b12e400000001000...";
-    IDПользователя = "918";
+    Токен          = "7afc3e67006e9f06006b12e400000001000...";
+    IDПользователя = "1054";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     СтруктураПользователя = Новый Структура;
