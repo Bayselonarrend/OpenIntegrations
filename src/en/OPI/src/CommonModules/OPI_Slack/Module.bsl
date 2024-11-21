@@ -661,7 +661,7 @@ EndFunction
 
 #EndRegion
 
-#Region FileManagment
+#Region FileManagement
 
 // Get list of files
 // Gets a list of files of the bot or channel

@@ -232,7 +232,7 @@ EndFunction
 
 #EndRegion
 
-#Region OrdersManagment
+#Region OrdersManagement
 
 // Create order
 // Creates an order based on field descriptions

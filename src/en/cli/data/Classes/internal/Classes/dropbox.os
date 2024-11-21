@@ -526,7 +526,7 @@
     NewLine.МетодПоиска = "GETTAGLIST";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Gets the list of tags of the selected files";
 
 
@@ -537,7 +537,7 @@
     NewLine.МетодПоиска = "GETTAGLIST";
     NewLine.Параметр    = "--paths";
     NewLine.Описание    = "Path or set of paths to the files";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -547,7 +547,7 @@
     NewLine.МетодПоиска = "ADDTAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Add new tag to file or folder";
 
 
@@ -558,7 +558,7 @@
     NewLine.МетодПоиска = "ADDTAG";
     NewLine.Параметр    = "--path";
     NewLine.Описание    = "Path to the object for which the tag needs to be created";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -568,7 +568,7 @@
     NewLine.МетодПоиска = "ADDTAG";
     NewLine.Параметр    = "--tag";
     NewLine.Описание    = "Tag text";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -578,7 +578,7 @@
     NewLine.МетодПоиска = "DELETETAG";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
     NewLine.ОписаниеМетода   = "Deletes the text tag of a file or directory";
 
 
@@ -589,7 +589,7 @@
     NewLine.МетодПоиска = "DELETETAG";
     NewLine.Параметр    = "--path";
     NewLine.Описание    = "Path to the object whose tag needs to be deleted";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
@@ -599,7 +599,7 @@
     NewLine.МетодПоиска = "DELETETAG";
     NewLine.Параметр    = "--tag";
     NewLine.Описание    = "Tag text";
-    NewLine.Область     = "Tags managment";
+    NewLine.Область     = "Tags management";
 
 
     NewLine = CompositionTable.Add();
