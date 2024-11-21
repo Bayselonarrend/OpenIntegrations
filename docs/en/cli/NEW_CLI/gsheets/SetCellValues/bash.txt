@@ -2,6 +2,6 @@
 
 oint gsheets SetCellValues \
  --token "***" \
- --spreadsheet "11Fs0jXkvUcQ28G3fgaq0tNnXU1li3o6W88QGJ-hFYkg" \
+ --spreadsheet "1KtVH8jsK3lw4_e_W29E1eO1ZBMs6u_8FWG4kA6-IAzc" \
  --data "{'A1':'ThisIsA1','A2':'ThisIsA2','B2':'ThisIsB2','B3':'ThisIsB3','A3':'ThisIsA3','A4':'ThisIsA4','B1':'ThisIsB1','B4':'ThisIsB4'}" \
  --sheetname "Sheet2"
