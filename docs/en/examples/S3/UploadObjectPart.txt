@@ -1,0 +1,53 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Entity = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Path or Binary Data
+    Entity = OPI_Tools.Get(Entity);
+
+    Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+
+    UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
+    TotalSize  = Entity.Size();
+    ChunkSize  = 5242880;
+    BytesRead  = 0;
+    PartNumber = 1;
+
+    DataReader   = New DataReader(Entity);
+    SourceStream = DataReader.SourceStream();
+    TagsArray    = New Array;
+
+    WHile BytesRead < TotalSize Do
+
+        CurrentReading = DataReader.Read(ChunkSize);
+        CurrentData    = CurrentReading.GetBinaryData();
+
+        If CurrentData.Size() = 0 Then
+            Break;
+        EndIf;
+
+        Result = OPI_S3.UploadObjectPart(Name
+            , Bucket
+            , BasicData
+            , UploadID
+            , PartNumber
+            , CurrentData);
+
+        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        BytesRead = SourceStream.CurrentPosition();
+        TagsArray.Add(Result["headers"]["Etag"]);
+
+        Break;
+
+        PartNumber = PartNumber + 1;
+
+    EndDo;
+
+    Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);

@@ -24,20 +24,21 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
+Метод в документации API: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)<br/>
+<br/>
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDЗадачи = "3216";
+    IDЗадачи = "3560";
 
     Результат = OPI_Bitrix24.ДобавитьЗадачуВИзбранное(URL, IDЗадачи);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "48573267006e9f06006b12e400000001000...";
-    IDЗадачи  = "3218";
+    Токен     = "7afc3e67006e9f06006b12e400000001000...";
+    IDЗадачи  = "3562";
 
     Результат = OPI_Bitrix24.ДобавитьЗадачуВИзбранное(URL, IDЗадачи, Токен);
 ```

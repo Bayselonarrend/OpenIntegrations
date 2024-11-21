@@ -1676,6 +1676,22 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ЗагрузитьОбъектЦеликом --name "test" --bucket "test" --data "test" --basic "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ИнициализироватьЗагрузкуЧастями --name "test" --bucket "test" --basic "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ЗагрузитьЧастьОбъекта --name "test" --bucket "test" --basic "test" --upload "test" --part "test" --content "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ЗавершитьЗагрузкуЧастями --name "test" --bucket "test" --basic "test" --upload "test" --tags "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьОписаниеОбъекта --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
                }
 

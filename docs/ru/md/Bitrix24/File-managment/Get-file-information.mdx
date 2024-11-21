@@ -24,19 +24,20 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/disk/file/disk_file_get.php)
+Метод в документации API: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/disk/file/disk_file_get.php)<br/>
+<br/>
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDФайла = "17294";
+    IDФайла = "19272";
 
     Результат  = OPI_Bitrix24.ПолучитьИнформациюОФайле(URL, IDФайла);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "48573267006e9f06006b12e400000001000...";
+    Токен       = "7afc3e67006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьИнформациюОФайле(URL, IDФайла, Токен);
 ```
