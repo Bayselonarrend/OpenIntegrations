@@ -790,27 +790,12 @@ EndFunction
 
 Function GetRequestBody(Val Request) Export
 
-    BFN  = Request.GetBodyFileName();
-    Body = Undefined;
-
-    If ValueIsFilled(BFN) Then
-
-        BodyFile = New File(BFN);
-
-        If Not BodyFile.Exists() Then
-            Raise "A non-existent file is set for the request body";
-        Else
-            Body = New BinaryData(BFN);
-        EndIf;
-
-    Else
-
-        Body = Request.GetBodyAsBinaryData();
-
-    EndIf;
+    Body = Request.GetBodyAsBinaryData();
 
     If Body = Undefined Then
-        Body   = GetBinaryDataFromString("");
+
+        Body = GetBinaryDataFromString("");
+
     EndIf;
 
     Return Body;
