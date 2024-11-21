@@ -39,7 +39,7 @@
 
 #Region Public
 
-#Region SpreadsheetsManagment
+#Region SpreadsheetsManagement
 
 // Create spreadsheet
 // Creates a new spreadsheet
@@ -228,7 +228,7 @@ EndFunction
 
 #EndRegion
 
-#Region DataManagment
+#Region DataManagement
 
 // Set cell values
 // Sets sheet cell values

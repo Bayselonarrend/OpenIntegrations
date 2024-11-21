@@ -1,0 +1,158 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create order
+ Creates an order based on field descriptions
+
+
+
+`Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | OrderDescription | --order | Structure of KeyAndValue | &#x2714; | Set of order fields. See GetOrderDescription |
+  | OnlineStore | --ostore | Boolean | &#x2716; | Flag of Online store order type |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828802.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MzIxODEzNzAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+
+    OrderDescription = New Structure;
+
+        SendLocation = New Structure;
+        SendLocation.Insert("code"   , "44");
+        SendLocation.Insert("city"   , "Moscow");
+        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+
+        DestLocation = New Structure;
+        DestLocation.Insert("code"   , "270");
+        DestLocation.Insert("city"   , "Novosibirsk");
+        DestLocation.Insert("address", "st. Bluchera, 32");
+
+        Recipient = New Structure;
+
+            Phones = New Array;
+            Phones.Add(New Structure("number", "+79134637228"));
+
+        Recipient.Insert("phones", Phones);
+        Recipient.Insert("name"  , "Ivaniv Ivan");
+
+        Sender = New Structure("name", "Petrov Petr");
+
+        Services = New Array;
+
+            Service = New Structure;
+            Service.Insert("code"     , "SECURE_PACKAGE_A2");
+            Service.Insert("parameter", 10);
+
+        Services.Add(Service);
+
+        Packages = New Array;
+
+            Package = New Structure;
+
+                Items = New Array;
+
+                    Item = New Structure;
+
+                        Payment = New Structure;
+                        Payment.Insert("value", 3000);
+
+                    Item.Insert("payment" , Payment);
+                    Item.Insert("ware_key", "00055");
+                    Item.Insert("name"    , "Product");
+                    Item.Insert("cost"    , 300);
+                    Item.Insert("amount"  , 2);
+                    Item.Insert("weight"  , 700);
+                    Item.Insert("url"     , "www.item.ru");
+
+                Items.Add(Item);
+
+            Package.Insert("items"  , Items);
+            Package.Insert("number" , "bar-001");
+            Package.Insert("comment", "Packaging");
+            Package.Insert("height" , 10);
+            Package.Insert("length" , 10);
+            Package.Insert("weight" , "4000");
+            Package.Insert("width"  , 10);
+
+        Packages.Add(Package);
+
+    OrderDescription.Insert("from_location", SendLocation);
+    OrderDescription.Insert("to_location"  , DestLocation);
+    OrderDescription.Insert("packages"     , Packages);
+    OrderDescription.Insert("recipient"    , Recipient);
+    OrderDescription.Insert("sender"       , Sender);
+    OrderDescription.Insert("services"     , Services);
+
+    OrderDescription.Insert("number"     , String(New UUID));
+    OrderDescription.Insert("comment"    , "New order");
+    OrderDescription.Insert("tariff_code", 139);
+
+    OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
+    OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
+
+    Result = OPI_CDEK.CreateOrder(Token, OrderDescription, True, True);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint cdek CreateOrder \
+             --token "***" \
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':3000},'ware_key':'***','name':'Product','cost':300,'amount':2,'weight':700,'url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':10,'length':10,'weight':'4000','width':10}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':10}],'number':'f5fdd36e-2669-4147-b0a4-2a50c67af953','comment':'New order','tariff_code':139,'delivery_recipient_cost':{'value':50},'delivery_recipient_cost_adv':{'sum':3000,'threshold':200}}" \
+             --ostore true \
+             --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint cdek CreateOrder ^
+             --token "***" ^
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':3000},'ware_key':'***','name':'Product','cost':300,'amount':2,'weight':700,'url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':10,'length':10,'weight':'4000','width':10}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':10}],'number':'f5fdd36e-2669-4147-b0a4-2a50c67af953','comment':'New order','tariff_code':139,'delivery_recipient_cost':{'value':50},'delivery_recipient_cost_adv':{'sum':3000,'threshold':200}}" ^
+             --ostore true ^
+             --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "entity": {
+  "uuid": "a93fd1b1-55b3-4033-a52a-d2df7bb6b469"
+ },
+ "requests": [
+  {
+   "request_uuid": "8c00117e-f6f9-462c-8479-b3ad0ec25bfa",
+   "type": "CREATE",
+   "date_time": "2024-10-21T21:27:08+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

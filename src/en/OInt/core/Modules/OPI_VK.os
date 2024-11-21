@@ -70,7 +70,7 @@ EndFunction
 
 #EndRegion
 
-#Region CommunityManagment
+#Region CommunityManagement
 
 // Create post
 // Creates a post with images

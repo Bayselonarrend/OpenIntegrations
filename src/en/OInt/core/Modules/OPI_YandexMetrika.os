@@ -43,7 +43,7 @@
 
 #Region Public
 
-#Region TagsManagment
+#Region TagsManagement
 
 // Create tag
 // Creates a tag with the specified name

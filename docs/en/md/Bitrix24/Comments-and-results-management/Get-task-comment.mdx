@@ -1,0 +1,94 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get task comment
+ Gets task comment data by ID
+
+
+
+`Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | TaskID | --task | Number, String | &#x2714; | Task ID |
+  | CommentID | --comment | Number, String | &#x2714; | CommentID |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/get.php)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    CommentID = "8536";
+    TaskID    = "3564";
+
+    Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID);
+
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "7afc3e67006e9f06006b12e400000001000...";
+    CommentID = "8538";
+
+    Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID, Token);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 GetTaskComment \
+             --url "b24-ar17wx.bitrix24.by" \
+             --task "3594" \
+             --comment 8604 \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 GetTaskComment ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --task "3594" ^
+             --comment 8604 ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": {
+  "POST_MESSAGE_HTML": null,
+  "ID": "5946",
+  "AUTHOR_ID": "1",
+  "AUTHOR_NAME": "Антон Титовец",
+  "AUTHOR_EMAIL": "",
+  "POST_DATE": "2024-10-09T09:19:54+03:00",
+  "POST_MESSAGE": "The task has been changed, let's split up"
+ },
+ "time": {
+  "start": 1728454795.75017,
+  "finish": 1728454795.79802,
+  "duration": 0.0478498935699463,
+  "processing": 0.02128005027771,
+  "date_start": "2024-10-09T09:19:55+03:00",
+  "date_finish": "2024-10-09T09:19:55+03:00",
+  "operating_reset_at": 1728455395,
+  "operating": 0
+ }
+}
+```

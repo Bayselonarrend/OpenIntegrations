@@ -1,0 +1,112 @@
+﻿---
+sidebar_position: 9
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get receipt
+ Gets a receipt for the order
+
+
+
+`Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUID | --uuid | String | &#x2714; | UUID of the receipt received during its creation |
+  | GetFile | --getfile | Boolean | &#x2716; | True > PDF file data will be received, False > receives CDEK server response |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
+
+<br/>
+
+:::tip
+The receipt must be previously created. See CreateReceipt
+
+A link to the receipt file for orders is available within 1 hour
+
+Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/36969694.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MzIxODEzNzAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "72753031-a810-468a-a8b0-21545f35a75b";
+
+    Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
+
+    TFN = GetTempFileName("pdf");
+
+    Result = OPI_CDEK.GetReceipt(Token, UUID, True, True); // PDF
+    Result.Write(TFN);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek GetReceipt \
+             --token "***" \
+             --uuid "72753031-2fb4-43dd-8045-9bec2f5abc9a" \
+             --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek GetReceipt ^
+             --token "***" ^
+             --uuid "72753031-2fb4-43dd-8045-9bec2f5abc9a" ^
+             --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "entity": {
+  "uuid": "72753031-318f-4249-ab65-4c7e08244c6d",
+  "orders": [
+   {
+    "order_uuid": "a93fd1b1-55b3-4033-a52a-d2df7bb6b469"
+   }
+  ],
+  "copy_count": 1,
+  "type": "tpl_russia",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/72753031-318f-4249-ab65-4c7e08244c6d.pdf",
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-21T21:27:30+03:00"
+   },
+   {
+    "code": "PROCESSING",
+    "name": "Формируется",
+    "date_time": "2024-10-21T21:27:30+03:00"
+   },
+   {
+    "code": "READY",
+    "name": "Сформирован",
+    "date_time": "2024-10-21T21:27:31+03:00"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "8f0331c9-6bbc-4ec9-9357-ecc9af47342b",
+   "type": "CREATE",
+   "date_time": "2024-10-21T21:27:30+03:00",
+   "state": "SUCCESSFUL"
+  }
+ ],
+ "related_entities": []
+}
+```

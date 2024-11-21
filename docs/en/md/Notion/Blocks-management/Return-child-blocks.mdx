@@ -1,0 +1,66 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Return child blocks
+ Returns list of child blocks of parent block
+
+
+
+`Function ReturnChildBlocks(Val Token, Val BlockID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | BlockID | --block | String | &#x2714; | Parent block ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Block = "14582aa7-fc4e-81e2-a55e-dcbd27b80d01";
+
+    Result = OPI_Notion.ReturnChildBlocks(Token, Block);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint notion ReturnChildBlocks \
+             --token "***" \
+             --block "14582aa7-fc4e-811c-b67a-f740ff888270"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ReturnChildBlocks ^
+             --token "***" ^
+             --block "14582aa7-fc4e-811c-b67a-f740ff888270"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "object": "list",
+ "results": [],
+ "next_cursor": null,
+ "has_more": false,
+ "type": "block",
+ "block": {},
+ "request_id": "8e767421-eb28-4a76-ab19-60cea883414e"
+}
+```

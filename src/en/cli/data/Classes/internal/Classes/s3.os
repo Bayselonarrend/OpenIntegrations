@@ -160,7 +160,7 @@
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Creates a new bucket with the specified name";
 
 
@@ -171,7 +171,7 @@
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -181,7 +181,7 @@
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -191,7 +191,7 @@
     NewLine.МетодПоиска = "CREATEBUCKET";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -201,7 +201,7 @@
     NewLine.МетодПоиска = "DELETEBUCKET";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Deletes the bucket by name";
 
 
@@ -212,7 +212,7 @@
     NewLine.МетодПоиска = "DELETEBUCKET";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -222,7 +222,7 @@
     NewLine.МетодПоиска = "DELETEBUCKET";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -232,7 +232,7 @@
     NewLine.МетодПоиска = "DELETEBUCKET";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -242,7 +242,7 @@
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Checks if the bucket is available for the current account or account by ID";
 
 
@@ -253,7 +253,7 @@
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -263,7 +263,7 @@
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -273,7 +273,7 @@
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--account";
     NewLine.Описание    = "Account ID to verify that hes the bucket owner (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -283,7 +283,7 @@
     NewLine.МетодПоиска = "HEADBUCKET";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -293,7 +293,7 @@
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Sets bucket encryption by XML configuration";
 
 
@@ -304,7 +304,7 @@
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -314,7 +314,7 @@
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--conf";
     NewLine.Описание    = "XML string or file of encryption configuration";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -324,7 +324,7 @@
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -334,7 +334,7 @@
     NewLine.МетодПоиска = "PUTBUCKETENCRYPTION";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -344,7 +344,7 @@
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Gets the previously set bucket encryption configuration";
 
 
@@ -355,7 +355,7 @@
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -365,7 +365,7 @@
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -375,7 +375,7 @@
     NewLine.МетодПоиска = "GETBUCKETENCRYPTION";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -385,7 +385,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Deletes the bucket encryption configuration";
 
 
@@ -396,7 +396,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -406,7 +406,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -416,7 +416,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETENCRYPTION";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -426,7 +426,7 @@
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Sets the tag set for the bucket";
 
 
@@ -437,7 +437,7 @@
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -447,7 +447,7 @@
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--tagset";
     NewLine.Описание    = "Set of tags (key and value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -457,7 +457,7 @@
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -467,7 +467,7 @@
     NewLine.МетодПоиска = "PUTBUCKETTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -477,7 +477,7 @@
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Gets the bucket tag set";
 
 
@@ -488,7 +488,7 @@
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -498,7 +498,7 @@
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -508,7 +508,7 @@
     NewLine.МетодПоиска = "GETBUCKETTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -518,7 +518,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Deletes the bucket tag set";
 
 
@@ -529,7 +529,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -539,7 +539,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -549,7 +549,7 @@
     NewLine.МетодПоиска = "DELETEBUCKETTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -559,7 +559,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Sets the versioning settings for bucket objects";
 
 
@@ -570,7 +570,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -580,7 +580,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--status";
     NewLine.Описание    = "Enable and disable versioning, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -590,7 +590,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--mfad";
     NewLine.Описание    = "Enable and disable MFA deletion, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -600,7 +600,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -610,7 +610,7 @@
     NewLine.МетодПоиска = "PUTBUCKETVERSIONING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -620,7 +620,7 @@
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Gets the values of versioning settings of objects in the bucket";
 
 
@@ -631,7 +631,7 @@
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -641,7 +641,7 @@
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
     NewLine.Параметр    = "--dir";
     NewLine.Описание    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - No)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -651,7 +651,7 @@
     NewLine.МетодПоиска = "GETBUCKETVERSIONING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -661,7 +661,7 @@
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
     NewLine.ОписаниеМетода   = "Gets a list of buckets. It is possible to use filters if they are provided by your service";
 
 
@@ -672,7 +672,7 @@
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--prefix";
     NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -682,7 +682,7 @@
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--region";
     NewLine.Описание    = "Selection by bucket region, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -692,7 +692,7 @@
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--ctoken";
     NewLine.Описание    = "Page token if pagination is used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -702,7 +702,7 @@
     NewLine.МетодПоиска = "LISTBUCKETS";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Buckets managment";
+    NewLine.Область     = "Buckets management";
 
 
     NewLine = CompositionTable.Add();
@@ -712,7 +712,7 @@
     NewLine.МетодПоиска = "PUTOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Uploads the file to the bucket";
 
 
@@ -723,7 +723,7 @@
     NewLine.МетодПоиска = "PUTOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -733,7 +733,7 @@
     NewLine.МетодПоиска = "PUTOBJECT";
     NewLine.Параметр    = "--data";
     NewLine.Описание    = "File path or binary data of the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -743,7 +743,7 @@
     NewLine.МетодПоиска = "PUTOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -753,7 +753,7 @@
     NewLine.МетодПоиска = "PUTOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -763,7 +763,7 @@
     NewLine.МетодПоиска = "UPLOADFULLOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Upload object with single request";
 
 
@@ -774,7 +774,7 @@
     NewLine.МетодПоиска = "UPLOADFULLOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -784,7 +784,7 @@
     NewLine.МетодПоиска = "UPLOADFULLOBJECT";
     NewLine.Параметр    = "--data";
     NewLine.Описание    = "File path or binary data of the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -794,7 +794,7 @@
     NewLine.МетодПоиска = "UPLOADFULLOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -804,7 +804,7 @@
     NewLine.МетодПоиска = "UPLOADFULLOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -814,7 +814,7 @@
     NewLine.МетодПоиска = "INITPARTSUPLOAD";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Initializes the multipart object uploading";
 
 
@@ -825,7 +825,7 @@
     NewLine.МетодПоиска = "INITPARTSUPLOAD";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -835,7 +835,7 @@
     NewLine.МетодПоиска = "INITPARTSUPLOAD";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -845,7 +845,7 @@
     NewLine.МетодПоиска = "INITPARTSUPLOAD";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -855,7 +855,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Uploads a part of an object for multipart uploading";
 
 
@@ -866,7 +866,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -876,7 +876,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -886,7 +886,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--upload";
     NewLine.Описание    = "Upload ID. See InitPartsUpload";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -896,7 +896,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--part";
     NewLine.Описание    = "Number of the object part from 1 to 10000";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -906,7 +906,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--content";
     NewLine.Описание    = "Part content for uploading";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -916,7 +916,7 @@
     NewLine.МетодПоиска = "UPLOADOBJECTPART";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -926,7 +926,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Confirms the multipart uploading finish";
 
 
@@ -937,7 +937,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -947,7 +947,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -957,7 +957,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--upload";
     NewLine.Описание    = "Upload ID. See InitPartsUpload";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -967,7 +967,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--tags";
     NewLine.Описание    = "An array of tags (Etag) from the uploads responses of each part";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -977,7 +977,7 @@
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -987,7 +987,7 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Receives information about the properties of the object in the baquette";
 
 
@@ -998,7 +998,7 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket in which the object is stored";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1008,7 +1008,7 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1018,7 +1018,7 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1028,7 +1028,7 @@
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1038,7 +1038,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Gets the contents of the object from the bucket";
 
 
@@ -1049,7 +1049,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket in which the object is stored";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1059,7 +1059,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1069,7 +1069,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1079,7 +1079,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1089,7 +1089,7 @@
     NewLine.МетодПоиска = "GETOBJECT";
     NewLine.Параметр    = "--out";
     NewLine.Описание    = "Path to directly write a file to disk (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1099,7 +1099,7 @@
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the object in the bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Removes the object from the bucket";
 
 
@@ -1110,7 +1110,7 @@
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Name of the bucket to put the object";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1120,7 +1120,7 @@
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1130,7 +1130,7 @@
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for deleting a specific version of an object (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1140,7 +1140,7 @@
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1150,7 +1150,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--sname";
     NewLine.Описание    = "Path (name) in the source bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Copies an object from one location to another";
 
 
@@ -1161,7 +1161,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--sbucket";
     NewLine.Описание    = "Source bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1171,7 +1171,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Path (name) in the destination bucket";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1181,7 +1181,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Destination bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1191,7 +1191,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1201,7 +1201,7 @@
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1211,7 +1211,7 @@
     NewLine.МетодПоиска = "PUTOBJECTTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Object name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Sets the tag set of the object";
 
 
@@ -1222,7 +1222,7 @@
     NewLine.МетодПоиска = "PUTOBJECTTAGGING";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1232,7 +1232,7 @@
     NewLine.МетодПоиска = "PUTOBJECTTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1242,7 +1242,7 @@
     NewLine.МетодПоиска = "PUTOBJECTTAGGING";
     NewLine.Параметр    = "--tagset";
     NewLine.Описание    = "Set of tags (key and value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1252,7 +1252,7 @@
     NewLine.МетодПоиска = "PUTOBJECTTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1262,7 +1262,7 @@
     NewLine.МетодПоиска = "GETOBJECTTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Object name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Gets the tag set of the object";
 
 
@@ -1273,7 +1273,7 @@
     NewLine.МетодПоиска = "GETOBJECTTAGGING";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1283,7 +1283,7 @@
     NewLine.МетодПоиска = "GETOBJECTTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1293,7 +1293,7 @@
     NewLine.МетодПоиска = "GETOBJECTTAGGING";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for retrieving data of a specific version of an object (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1303,7 +1303,7 @@
     NewLine.МетодПоиска = "GETOBJECTTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1313,7 +1313,7 @@
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Object name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Deletes an objects tag set";
 
 
@@ -1324,7 +1324,7 @@
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1334,7 +1334,7 @@
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1344,7 +1344,7 @@
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Token for deleting data of a specific version of an object (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1354,7 +1354,7 @@
     NewLine.МетодПоиска = "DELETEOBJECTTAGGING";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1364,7 +1364,7 @@
     NewLine.МетодПоиска = "LISTOBJECTS";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Gets the list of objects in the selected bucket";
 
 
@@ -1375,7 +1375,7 @@
     NewLine.МетодПоиска = "LISTOBJECTS";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1385,7 +1385,7 @@
     NewLine.МетодПоиска = "LISTOBJECTS";
     NewLine.Параметр    = "--prefix";
     NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1395,7 +1395,7 @@
     NewLine.МетодПоиска = "LISTOBJECTS";
     NewLine.Параметр    = "--ctoken";
     NewLine.Описание    = "Page token if pagination is used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1405,7 +1405,7 @@
     NewLine.МетодПоиска = "LISTOBJECTS";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1415,7 +1415,7 @@
     NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--bucket";
     NewLine.Описание    = "Bucket name";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
     NewLine.ОписаниеМетода   = "Gets a list of all versions of objects in the selected bucket";
 
 
@@ -1426,7 +1426,7 @@
     NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--basic";
     NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1436,7 +1436,7 @@
     NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--prefix";
     NewLine.Описание    = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1446,7 +1446,7 @@
     NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--ver";
     NewLine.Описание    = "Version ID for the beginning of the list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
 
     NewLine = CompositionTable.Add();
@@ -1456,7 +1456,7 @@
     NewLine.МетодПоиска = "LISTOBJECTVERSIONS";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects managment";
+    NewLine.Область     = "Objects management";
 
     Return CompositionTable;
 EndFunction

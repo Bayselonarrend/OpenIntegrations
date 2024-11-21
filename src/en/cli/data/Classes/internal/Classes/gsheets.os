@@ -17,7 +17,7 @@
     NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
     NewLine.ОписаниеМетода   = "Creates a new spreadsheet";
 
 
@@ -28,7 +28,7 @@
     NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Name";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
 
 
     NewLine = CompositionTable.Add();
@@ -38,7 +38,7 @@
     NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--sheets";
     NewLine.Описание    = "Array of names to add new sheets to the spreadsheet";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
 
 
     NewLine = CompositionTable.Add();
@@ -48,7 +48,7 @@
     NewLine.МетодПоиска = "GETSPREADSHEET";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
     NewLine.ОписаниеМетода   = "Gets information about the spreadsheet by ID";
 
 
@@ -59,7 +59,7 @@
     NewLine.МетодПоиска = "GETSPREADSHEET";
     NewLine.Параметр    = "--spreadsheet";
     NewLine.Описание    = "Spreadsheet identifier";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
 
 
     NewLine = CompositionTable.Add();
@@ -69,7 +69,7 @@
     NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
     NewLine.ОписаниеМетода   = "Changes the name of the existing spreadsheet";
 
 
@@ -80,7 +80,7 @@
     NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--spreadsheet";
     NewLine.Описание    = "SpreadsheetID";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
 
 
     NewLine = CompositionTable.Add();
@@ -90,7 +90,7 @@
     NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New name";
-    NewLine.Область     = "Spreadsheets managment";
+    NewLine.Область     = "Spreadsheets management";
 
 
     NewLine = CompositionTable.Add();
@@ -203,7 +203,7 @@
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
     NewLine.ОписаниеМетода   = "Sets sheet cell values
     |    Data structure for option --data:
     |    {
@@ -221,7 +221,7 @@
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--spreadsheet";
     NewLine.Описание    = "SpreadsheetID";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -231,7 +231,7 @@
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--data";
     NewLine.Описание    = "Fill data where the key is the cell name like A1";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -241,7 +241,7 @@
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--sheetname";
     NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -251,7 +251,7 @@
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--dim";
     NewLine.Описание    = "Main dimension when filling the array range (optional, def. val. - COLUMNS)";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -261,7 +261,7 @@
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
     NewLine.ОписаниеМетода   = "Clears the value in cells";
 
 
@@ -272,7 +272,7 @@
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--spreadsheet";
     NewLine.Описание    = "SpreadsheetID";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -282,7 +282,7 @@
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--cells";
     NewLine.Описание    = "Array of cells like A1 to be cleared";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -292,7 +292,7 @@
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--sheetname";
     NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -302,7 +302,7 @@
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
     NewLine.ОписаниеМетода   = "Gets cell values of the table";
 
 
@@ -313,7 +313,7 @@
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--spreadsheet";
     NewLine.Описание    = "SpreadsheetID";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -323,7 +323,7 @@
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--cells";
     NewLine.Описание    = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
 
     NewLine = CompositionTable.Add();
@@ -333,7 +333,7 @@
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--sheetname";
     NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data managment";
+    NewLine.Область     = "Data management";
 
     Return CompositionTable;
 EndFunction

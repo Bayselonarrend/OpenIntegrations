@@ -1,0 +1,70 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update tag
+ Changes the tag name by ID
+
+
+
+`Function UpdateTag(Val Token, Val TagID, Val Name) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | TagID | --label | String | &#x2714; | Tag ID to change |
+  | Name | --title | String | &#x2714; | New name |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
+
+<br/>
+
+:::tip
+Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/management/openapi/label/updateLabel)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    TagID = "313798";
+    Name  = "New tag title";
+
+    Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika UpdateTag \
+             --token "***" \
+             --label "313812" \
+             --title "New tag title"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika UpdateTag ^
+             --token "***" ^
+             --label "313812" ^
+             --title "New tag title"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "label": {
+  "id": 313496,
+  "name": "New tag title"
+ }
+}
+```

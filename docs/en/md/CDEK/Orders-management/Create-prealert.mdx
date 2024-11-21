@@ -1,0 +1,85 @@
+﻿---
+sidebar_position: 12
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create prealert
+ Creates a prealert for the order list
+
+
+
+`Function CreatePrealert(Val Token, Val UUIDArray, Val TransferDate, Val Point, Val TestAPI = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUIDArray | --uuids | String, Array of String | &#x2714; | One or an array of order UUIDs |
+  | TransferDate | --date | Date | &#x2714; | Planned date of transfer of orders to CDEK |
+  | Point | --point | String | &#x2714; | Code of shipment point to which it is planned to transfer orders |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
+
+<br/>
+
+:::tip
+Method at API documentation: [Registration of Prealert document](https://api-docs.cdek.ru/78935159.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3MzIxODEzNzAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID         = "69650666-d64f-497c-b725-a624908ba929";
+    Point        = "NSK27";
+    TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
+
+    Result = OPI_CDEK.CreatePrealert(Token, UUID, TransferDate, Point, True);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek CreatePrealert \
+             --token "***" \
+             --uuids "2955ffb7-afc4-40ab-bfdd-4b96c8a4d392" \
+             --date "2024-11-22T22:26:53.0444586" \
+             --point "NSK27" \
+             --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek CreatePrealert ^
+             --token "***" ^
+             --uuids "2955ffb7-afc4-40ab-bfdd-4b96c8a4d392" ^
+             --date "2024-11-22T22:26:53.0444586" ^
+             --point "NSK27" ^
+             --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "entity": {
+  "uuid": "72753031-8222-4d75-9c04-8a14035cbe80"
+ },
+ "requests": [
+  {
+   "request_uuid": "d20f73ba-1277-4933-b559-241c4948e8d0",
+   "type": "CREATE",
+   "date_time": "2024-10-21T21:27:30+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

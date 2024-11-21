@@ -1,0 +1,95 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create composite post
+ Creates a post based on an array of object identifiers (images, videos, etc..)
+
+
+
+`Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Post text |
+  | Objects | --objects | Array of String | &#x2714; | Array of identifiers like photo123_123 |
+  | Advertisement | --ad | Boolean | &#x2716; | Sign ""This is an ad"" |
+  | LinkUnderPost | --url | String | &#x2716; | Link (URL) under the post |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Parameters = GetVKParameters();
+    Text       = "Post from autotest";
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+    Video = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Path or Binary Data
+
+    TFN = GetTempFileName("png");
+    CopyFile(Image, TFN);
+
+    ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
+    VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
+
+    ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);
+    VideoOwner = OPI_Tools.NumberToString(VideoUpload["owner_id"]);
+
+    ImageID = OPI_Tools.NumberToString(ImageUpload["id"]);
+    VideoID = OPI_Tools.NumberToString(VideoUpload["video_id"]);
+
+    AttachmentsArray = New Array;
+    AttachmentsArray.Add("photo" + ImageOwner + "_" + ImageID);
+    AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
+
+    Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint vk CreateCompositePost \
+             --text "Post from autotest" \
+             --objects "['photo657846756_457245404','video-218861756_456239875']" \
+             --ad false \
+             --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint vk CreateCompositePost ^
+             --text "Post from autotest" ^
+             --objects "['photo657846756_457245404','video-218861756_456239875']" ^
+             --ad false ^
+             --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "response": {
+  "post_id": 4555
+ }
+}
+```

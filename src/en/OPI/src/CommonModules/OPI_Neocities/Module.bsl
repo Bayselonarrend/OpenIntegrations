@@ -117,7 +117,7 @@ EndFunction
 
 #EndRegion
 
-#Region FileManagment
+#Region FileManagement
 
 // Upload file
 // Upload single file to Neocities
