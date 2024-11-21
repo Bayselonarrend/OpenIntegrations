@@ -552,7 +552,7 @@ Function PutObject(Val Name
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    ProcessRequestBody(Entity);
+    OPI_TypeConversion.GetBinaryData(Entity);
 
     FileSize    = GetContentSize(Entity);
     MinPartSize = FileSize / 10000;
@@ -1797,22 +1797,6 @@ Function GetContentSize(Val Entity)
 
 EndFunction
 
-Procedure ProcessRequestBody(Body)
-
-    If TypeOf(Body) = Type("String") Then
-
-        BodyFile = New File(Body);
-
-        If BodyFile.Exist() Then
-            Return;
-        EndIf;
-
-    EndIf;
-
-    OPI_TypeConversion.GetBinaryData(Body);
-
-EndProcedure
-
 Procedure CheckBasicData(BasicData)
 
     ErrorText = "Error of obtaining authorization data from the structure";
@@ -1867,13 +1851,8 @@ EndProcedure
 
 Procedure SetRequestBody(Request, Body)
 
-    ProcessRequestBody(Body);
-
-    If TypeOf(Body) = Type("String") Then
-        Request.SetBodyFileName(Body);
-    Else
-        Request.SetBodyFromBinary(Body);
-    EndIf;
+    OPI_TypeConversion.GetBinaryData(Body);
+    Request.SetBodyFromBinary(Body);
 
 EndProcedure
 
