@@ -2149,6 +2149,7 @@ Procedure AWS_ObjectsManagment() Export
 
     S3_CreateBucket(TestParameters);
     S3_PutObject(TestParameters);
+    S3_UploadFullObject(TestParameters);
     S3_InitPartsUpload(TestParameters);
     S3_UploadObjectPart(TestParameters);
     S3_FinishPartsUpload(TestParameters);
@@ -15068,6 +15069,30 @@ Procedure S3_PutObject(FunctionParameters)
     Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
 
     OPI_TestDataRetrieval.WriteLog(Result, "PutObject (DB)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
+Procedure S3_UploadFullObject(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "pictureSmall.jpg";
+    Bucket = "opi-gpbucket3";
+    Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_S3.UploadFullObject(Name, Bucket, Entity, BasicData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFullObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);

@@ -590,7 +590,8 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
-// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the main scenario of files uploading^
+// Using this method for large files may cause errors
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -622,7 +623,8 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [CreateMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
-// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the main scenario of files uploading^
+// Using multipart upload for files < 5 MB or when the size of a single chunk is < 5 MB will result in an error
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -654,7 +656,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [UploadPart](@docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
-// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the main scenario of files uploading
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -698,7 +700,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [CompleteMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
-// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the main scenario of files uploading
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -1186,13 +1188,8 @@ EndFunction
 
 Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
 
-    RequestBody = Request.GetBodyAsBinaryData();
-
-    If Not ValueIsFilled(RequestBody) Then
-        RequestBody = GetBinaryDataFromString("");
-    EndIf;
-
-    HashSum = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
+    RequestBody = OPI_Tools.GetRequestBody(Request);
+    HashSum     = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
     Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
 
     RequestTemplate = "";
