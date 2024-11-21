@@ -2141,9 +2141,12 @@ Procedure CLI_AWS_ObjectsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("S3_SecretKey", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("S3_URL"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Audio"       , TestParameters);
 
     CLI_S3_CreateBucket(TestParameters);
     CLI_S3_PutObject(TestParameters);
+    CLI_S3_UploadFullObject(TestParameters);
+    CLI_S3_InitPartsUpload(TestParameters);
     CLI_S3_HeadObject(TestParameters);
     CLI_S3_CopyObject(TestParameters);
     CLI_S3_PutObjectTagging(TestParameters);
@@ -17254,6 +17257,42 @@ Procedure CLI_S3_PutObject(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_S3_UploadFullObject(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    Name   = "pictureSmall.jpg";
+    Bucket = "opi-gpbucket3";
+    Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("data"  , Entity);
+    Options.Insert("basic" , BasicData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFullObject", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
 Procedure CLI_S3_DeleteObject(FunctionParameters)
 
     URL       = FunctionParameters["S3_URL"];
@@ -17569,6 +17608,98 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, BD)", "S3");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 34432400);
+
+EndProcedure
+
+Procedure CLI_S3_InitPartsUpload(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+    Entity = OPI_Tools.Get(Entity);
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "InitPartsUpload", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
+    TotalSize  = Entity.Size();
+    ChunkSize  = 5242880;
+    BytesRead  = 0;
+    PartNumber = 1;
+
+    DataReader   = New DataReader(Entity);
+    SourceStream = DataReader.SourceStream();
+    TagsArray    = New Array;
+
+    WHile BytesRead < TotalSize Do
+
+        CurrentReading = DataReader.Read(ChunkSize);
+        CurrentData    = CurrentReading.GetBinaryData();
+
+        TFN = GetTempFileName();
+        CurrentData.Write(TFN);
+
+        If CurrentData.Size() = 0 Then
+            Break;
+        EndIf;
+
+        Options = New Structure;
+        Options.Insert("name"   , Name);
+        Options.Insert("bucket" , Bucket);
+        Options.Insert("basic"  , BasicData);
+        Options.Insert("upload" , UploadID);
+        Options.Insert("part"   , PartNumber);
+        Options.Insert("content", TFN);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "UploadObjectPart", Options);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart", "S3");
+         OPI_TestDataRetrieval.Check_S3Success(Result);
+
+        BytesRead = SourceStream.CurrentPosition();
+        TagsArray.Add(Result["headers"]["Etag"]);
+
+        DeleteFiles(TFN);
+        Break;
+
+        PartNumber = PartNumber + 1;
+
+    EndDo;
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("upload", UploadID);
+    Options.Insert("tags"  , TagsArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "FinishPartsUpload", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 

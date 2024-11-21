@@ -788,6 +788,35 @@ Function CopyCollection(Val Collection) Export
 
 EndFunction
 
+Function GetRequestBody(Val Request) Export
+
+    BFN  = Request.GetBodyFileName();
+    Body = Undefined;
+
+    If ValueIsFilled(BFN) Then
+
+        BodyFile = New File(BFN);
+
+        If Not BodyFile.Exist() Then
+            Raise "A non-existent file is set for the request body";
+        Else
+            Body = New BinaryData(BFN);
+        EndIf;
+
+    Else
+
+        Body = Request.ПолучитьТелоКакДвоичныеДанные();
+
+    EndIf;
+
+    If Body = Undefined Then
+        Body   = ПолучитьДвоичныеДанныеИзСтроки("");
+    EndIf;
+
+    Return Body;
+
+EndFunction
+
 Procedure ValueToArray(Value) Export
 
     If TypeOf(Value) = Type("Array") Then
