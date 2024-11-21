@@ -27,9 +27,9 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-If you want the client to display this file as a playable voice message, it must be in aac, ogg, or m4a format
-
- Method at API documentation: [POST /messages/sendVoice](https://teams.vk.com/botapi/#/messages/post_messages_sendVoice)<br/>
+If you want the client to display this file as a playable voice message, it must be in aac, ogg, or m4a format<br/>
+Method at API documentation: [POST /messages/sendVoice](https://teams.vk.com/botapi/#/messages/post_messages_sendVoice)<br/>
+<br/><br/>
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
 <br/>
@@ -38,7 +38,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```bsl title="1C:Enterprise/OneScript code example"
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7436085340097483930";
+    ReplyID = "7439646482166192164";
 
     File     = "https://api.athenaeum.digital/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path

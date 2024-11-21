@@ -10,3 +10,11 @@
     Entity = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
 
     Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+    Entity = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Path or Binary Data
+
+    BasicData.Insert("ChunkSize", 5242880);
+
+    Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData);

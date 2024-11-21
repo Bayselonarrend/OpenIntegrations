@@ -25,7 +25,8 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
+Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)<br/>
+<br/>
 :::
 <br/>
 
@@ -36,13 +37,13 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
     ArrayOfUsers.Add("10");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID = "3216";
+    TaskID = "3560";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "48573267006e9f06006b12e400000001000...";
-    TaskID = "3218";
+    Token  = "7afc3e67006e9f06006b12e400000001000...";
+    TaskID = "3562";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers, Token);
 ```

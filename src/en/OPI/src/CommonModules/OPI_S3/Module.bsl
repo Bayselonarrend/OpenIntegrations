@@ -50,7 +50,7 @@
 // Returns the basic data for request in structured form
 //
 // Parameters:
-// URL - String - URL: domain for common methods or full URL with parameters for methods of direct request sending - url
+// URL - String - URL: domain for common methods or full URL with parameters for direct request sending - url
 // AccessKey - String - Access key for authorization - access
 // SecretKey - String - Secret key for authorization - secret
 // Region - String - Service region - region
@@ -529,7 +529,8 @@ EndFunction
 // Uploads the file to the bucket
 //
 // Note
-// Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+// Method at AWS documentation (default): [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+// Method at AWS documentation (multipart): [Multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 // You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload
 // For example, ChunkSize=X means that all files larger than X (in bytes) will be downloaded in chunks, where one chunk will be of size X.
 // Chunk upload is used for large files. Default ChunkSize - 20971520 bytes (20 MB)
@@ -551,7 +552,6 @@ Function PutObject(Val Name
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    FillObjectURL(BasicData_, Name, Bucket);
     ProcessRequestBody(Entity);
 
     FileSize    = GetContentSize(Entity);
@@ -573,13 +573,173 @@ Function PutObject(Val Name
     If FileSize > MaxSize Then
 
         Sizes    = New Structure("object,chunk", FileSize, MaxSize);
-        Response = UploadObjectInParts(BasicData_, Entity, Headers, Sizes);
+        Response = UploadObjectInParts(Name, Bucket, Entity, BasicData_, Headers, Sizes);
 
     Else
 
-        Response = UploadFullObject(BasicData_, Entity, Headers);
+        Response = UploadFullObject(Name, Bucket, Entity, BasicData_, Headers);
 
     EndIf;
+
+    Return Response;
+
+EndFunction
+
+// Upload full object
+// Upload object with single request
+//
+// Note
+// Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// Entity - String, BinaryData - File path or binary data of the object - data
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function UploadFullObject(Val Name
+    , Val Bucket
+    , Val Entity
+    , Val BasicData
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    Response = SendRequest("PUT", BasicData_, Entity, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Init parts upload
+// Initializes the multipart object uploading
+//
+// Note
+// Method at AWS documentation: [CreateMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function InitPartsUpload(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    BasicData_.Insert("URL", BasicData_["URL"] + "?uploads");
+
+    Response = SendRequestWithoutBody("POST", BasicData_, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Upload object part
+// Uploads a part of an object for multipart uploading
+//
+// Note
+// Method at AWS documentation: [UploadPart](@docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// UploadID - String - Upload ID. See InitPartsUpload - upload
+// PartNumber - Number, String - Number of the object part from 1 to 10000 - part
+// Data - BinaryData, String - Part content for uploading - content
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function UploadObjectPart(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val UploadID
+    , Val PartNumber
+    , Val Data
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("partNumber", PartNumber, "String", Parameters);
+    OPI_Tools.AddField("uploadId"  , UploadID  , "String", Parameters);
+
+    ParameterString = OPI_Tools.RequestParametersToString(Parameters);
+
+    BasicData_.Insert("URL", BasicData_["URL"] + ParameterString);
+
+    Response = SendRequestWithBody("PUT", BasicData_, Data);
+
+    Return Response;
+
+EndFunction
+
+// Finish parts upload
+// Confirms the multipart uploading finish
+//
+// Note
+// Method at AWS documentation: [CompleteMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+// This is a service method. A `LoadObject` method is intended for the main scenario of files uploading
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// UploadID - String - Upload ID. See InitPartsUpload - upload
+// TagsArray - Array Of String - An array of tags (Etag) from the uploads responses of each part - tags
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function FinishPartsUpload(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val UploadID
+    , Val TagsArray
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
+
+    PartsArray = New Array;
+
+    For N = 1 To TagsArray.Count() Do
+
+        PartStructure = New Structure;
+        PartStructure.Insert("ETag"      , TagsArray[N - 1]);
+        PartStructure.Insert("PartNumber", N);
+
+        PartsArray.Add(New Structure("Part", PartStructure));
+
+    EndDo;
+
+    FinishStructure = New Structure("CompleteMultipartUpload", PartsArray);
+    FinishXML       = OPI_Tools.GetXML(FinishStructure, "http://s3.amazonaws.com/doc/2006-03-01/");
+    FinishXML       = GetBinaryDataFromString(FinishXML);
+
+    Response = SendRequestWithBody("POST", BasicData_, FinishXML);
 
     Return Response;
 
@@ -757,9 +917,7 @@ Function CopyObject(Val SourcePath
     SourceHeader.Insert("x-amz-copy-source", Source);
     AddAdditionalHeaders(Headers, SourceHeader);
 
-    FillObjectURL(BasicData_, DestinationPath, SourceBucket);
-
-    Response = UploadFullObject(BasicData_, Undefined, Headers);
+    Response = UploadFullObject(DestinationPath, SourceBucket, Undefined, BasicData_, Headers);
 
     Return Response;
 
@@ -1421,11 +1579,16 @@ Function GetFullObject(Val BasicData
 
 EndFunction
 
-Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
+Function UploadObjectInParts(Val Name
+    , Val Bucket
+    , Val Entity
+    , Val BasicData
+    , Val Headers
+    , Val Sizes)
 
     OPI_TypeConversion.GetBinaryOrStream(Entity);
 
-    UploadStart = InitPartsUpload(BasicData, Headers);
+    UploadStart = InitPartsUpload(Name, Bucket, BasicData, Headers);
 
     FieldID    = "response.InitiateMultipartUploadResult.UploadId";
     UploadID   = Undefined;
@@ -1444,7 +1607,6 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
     Response     = New Map;
     TagsArray    = New Array;
 
-
     WHile BytesRead < TotalSize Do
 
         Try
@@ -1458,7 +1620,12 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
                     Break;
                 EndIf;
 
-                Response = UploadObjectPart(BasicData, UploadID, PartNumber, CurrentData);
+                Response = UploadObjectPart(Name
+                    , Bucket
+                    , BasicData
+                    , UploadID
+                    , PartNumber
+                    , CurrentData);
 
                 If Response["status"] > 299 Then
                     Raise "The server returned the status " + String(Response["status"]);
@@ -1482,8 +1649,8 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
 
             If N = 3 Then
 
-                // !OInt Message("Failed to upload part of the file! Aborted upload wiht ID:" + UploadID);
                 // !OInt Message(OPI_Tools.JSONString(Response));
+                // !OInt Message("Failed to upload part of the file! Aborted upload wiht ID:" + UploadID + "...");
 
                 Raise;
 
@@ -1500,71 +1667,7 @@ Function UploadObjectInParts(Val BasicData, Val Entity, Val Headers, Val Sizes)
 
     EndDo;
 
-    Response = FinishPartsUpload(BasicData, UploadID, TagsArray);
-
-    Return Response;
-
-EndFunction
-
-Function UploadFullObject(Val BasicData, Val Entity, Val Headers)
-
-    Response = SendRequest("PUT", BasicData, Entity, , Headers);
-
-    Return Response;
-
-EndFunction
-
-Function InitPartsUpload(Val BasicData, Val Headers)
-
-    BasicData_ = OPI_Tools.CopyCollection(BasicData);
-    BasicData_.Insert("URL", BasicData_["URL"] + "?uploads");
-
-    Response = SendRequestWithoutBody("POST", BasicData_, , Headers);
-
-    Return Response;
-
-EndFunction
-
-Function UploadObjectPart(Val BasicData, Val UploadID, Val PartNumber, Val Data)
-
-    BasicData_ = OPI_Tools.CopyCollection(BasicData);
-
-    Parameters = New Structure;
-    OPI_Tools.AddField("partNumber", PartNumber, "String", Parameters);
-    OPI_Tools.AddField("uploadId"  , UploadID  , "String", Parameters);
-
-    ParameterString = OPI_Tools.RequestParametersToString(Parameters);
-
-    BasicData_.Insert("URL", BasicData_["URL"] + ParameterString);
-
-    Response = SendRequestWithBody("PUT", BasicData_, Data);
-
-    Return Response;
-
-EndFunction
-
-Function FinishPartsUpload(Val BasicData, Val UploadID, Val TagsArray)
-
-    BasicData_ = OPI_Tools.CopyCollection(BasicData);
-    BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
-
-    PartsArray = New Array;
-
-    For N = 1 To TagsArray.Count() Do
-
-        PartStructure = New Structure;
-        PartStructure.Insert("ETag"      , TagsArray[N - 1]);
-        PartStructure.Insert("PartNumber", N);
-
-        PartsArray.Add(New Structure("Part", PartStructure));
-
-    EndDo;
-
-    FinishStructure = New Structure("CompleteMultipartUpload", PartsArray);
-    FinishXML       = OPI_Tools.GetXML(FinishStructure, "http://s3.amazonaws.com/doc/2006-03-01/");
-    FinishXML       = GetBinaryDataFromString(FinishXML);
-
-    Response = SendRequestWithBody("POST", BasicData_, FinishXML);
+    Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
 
     Return Response;
 

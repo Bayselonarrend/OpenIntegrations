@@ -28,21 +28,22 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [task.elapseditem.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)
+Метод в документации API: [task.elapseditem.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)<br/>
+<br/>
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDЗадачи  = "3224";
+    IDЗадачи  = "3568";
 
     Время     = 3600;
 
     Результат = OPI_Bitrix24.ДобавитьТрудозатратыЗадачи(URL, IDЗадачи, Время);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "48573267006e9f06006b12e400000001000...";
+    Токен     = "7afc3e67006e9f06006b12e400000001000...";
 
     Текст          = "Трудозатраты по обработке";
     IDПользователя = 10;

@@ -27,23 +27,24 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)
+Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)<br/>
+<br/>
 :::
 <br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    TaskID  = "3222";
-    StageID = "1158";
+    TaskID  = "3566";
+    StageID = "1294";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
-    StageID = "1160";
+    StageID = "1296";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "48573267006e9f06006b12e400000001000...";
+    Token = "7afc3e67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
 ```
