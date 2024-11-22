@@ -1663,7 +1663,11 @@ Function UploadObjectInParts(Val Name
                 EndIf;
 
                 BytesRead = SourceStream.CurrentPosition();
-                TagsArray.Add(Response["headers"]["Etag"]);
+
+                ETag = Response["headers"]["Etag"];
+                ETag = ?(ETag = Undefined, Response["headers"]["ETag"], ETag);
+
+                TagsArray.Add(ETag);
 
                 KBytes = 1024;
                 MByte  = KBytes * KBytes;
