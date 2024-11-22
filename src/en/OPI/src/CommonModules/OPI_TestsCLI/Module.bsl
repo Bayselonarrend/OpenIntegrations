@@ -2147,6 +2147,7 @@ Procedure CLI_AWS_ObjectsManagement() Export
     CLI_S3_PutObject(TestParameters);
     CLI_S3_UploadFullObject(TestParameters);
     CLI_S3_InitPartsUpload(TestParameters);
+    CLI_S3_AbortMultipartUpload(TestParameters);
     CLI_S3_HeadObject(TestParameters);
     CLI_S3_CopyObject(TestParameters);
     CLI_S3_PutObjectTagging(TestParameters);
@@ -17698,6 +17699,45 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
+Procedure CLI_S3_AbortMultipartUpload(FunctionParameters)
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+
+    Start    = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
+    UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("upload", UploadID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AbortMultipartUpload", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 

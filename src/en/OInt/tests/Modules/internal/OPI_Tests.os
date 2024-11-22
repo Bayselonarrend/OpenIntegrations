@@ -15468,7 +15468,7 @@ EndProcedure
 
 Procedure S3_UploadObjectPart(FunctionParameters)
 
-    URL    = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
@@ -15535,7 +15535,7 @@ EndProcedure
 
 Procedure S3_AbortMultipartUpload(FunctionParameters)
 
-    URL          = FunctionParameters["S3_URL"];
+    URL       = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";

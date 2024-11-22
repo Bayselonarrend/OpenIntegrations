@@ -15468,7 +15468,7 @@
 
 Процедура S3_ЗагрузитьЧастьОбъекта(ПараметрыФункции)
 
-    URL       = ПараметрыФункции["S3_URL"];
+    URL          = ПараметрыФункции["S3_URL"];
     AccessKey    = ПараметрыФункции["S3_AccessKey"];
     SecretKey    = ПараметрыФункции["S3_SecretKey"];
     Region       = "BTC";
@@ -15536,9 +15536,9 @@
 Процедура S3_ОтменитьЗагрузкуЧастями(ПараметрыФункции)
 
     URL          = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
-    Region    = "BTC";
+    AccessKey    = ПараметрыФункции["S3_AccessKey"];
+    SecretKey    = ПараметрыФункции["S3_SecretKey"];
+    Region       = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
