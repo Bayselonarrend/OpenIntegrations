@@ -1703,7 +1703,7 @@ Function UploadObjectInParts(Val Name
     EndDo;
 
     If Error Then
-        Response    = AbortMultipartUpload(Name, Bucket, BasicData, UploadID);
+        Response = AbortMultipartUpload(Name, Bucket, BasicData, UploadID);
     Else
         Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
     EndIf;
