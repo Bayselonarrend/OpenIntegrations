@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 :::tip
 Method at AWS documentation: [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
 
-This is a service method. A `PutObject` method is intended for the main scenario of files uploading
+This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
@@ -38,7 +38,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = "storage-155.s3hoster.by";
+    URL    = "storage-155.s3hoster.by";
     AccessKey = "BRN5RKJE67...";
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
@@ -72,12 +72,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
