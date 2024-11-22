@@ -983,6 +983,57 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "s3";
     NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "AbortMultipartUpload";
+    NewLine.МетодПоиска = "ABORTMULTIPARTUPLOAD";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects management";
+    NewLine.ОписаниеМетода   = "Aborts the multipart uploading of the object";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "AbortMultipartUpload";
+    NewLine.МетодПоиска = "ABORTMULTIPARTUPLOAD";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "AbortMultipartUpload";
+    NewLine.МетодПоиска = "ABORTMULTIPARTUPLOAD";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "AbortMultipartUpload";
+    NewLine.МетодПоиска = "ABORTMULTIPARTUPLOAD";
+    NewLine.Параметр    = "--upload";
+    NewLine.Описание    = "Upload ID. See InitPartsUpload";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "AbortMultipartUpload";
+    NewLine.МетодПоиска = "ABORTMULTIPARTUPLOAD";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "HeadObject";
     NewLine.МетодПоиска = "HEADOBJECT";
     NewLine.Параметр    = "--name";

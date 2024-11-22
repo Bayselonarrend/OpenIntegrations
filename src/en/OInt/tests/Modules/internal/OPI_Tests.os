@@ -2153,6 +2153,7 @@ Procedure AWS_ObjectsManagement() Export
     S3_InitPartsUpload(TestParameters);
     S3_UploadObjectPart(TestParameters);
     S3_FinishPartsUpload(TestParameters);
+    S3_AbortMultipartUpload(TestParameters);
     S3_HeadObject(TestParameters);
     S3_CopyObject(TestParameters);
     S3_PutObjectTagging(TestParameters);
@@ -15467,7 +15468,7 @@ EndProcedure
 
 Procedure S3_UploadObjectPart(FunctionParameters)
 
-    URL       = FunctionParameters["S3_URL"];
+    URL    = FunctionParameters["S3_URL"];
     AccessKey = FunctionParameters["S3_AccessKey"];
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
@@ -15504,17 +15505,13 @@ Procedure S3_UploadObjectPart(FunctionParameters)
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart", "S3"); // SKIP
-           OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+        OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
@@ -15529,10 +15526,34 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
        // END
 
-       OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload (UOP)", "S3");
-       OPI_TestDataRetrieval.Check_S3Success(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload (UOP)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
-       OPI_S3.DeleteObject(Name, Bucket, BasicData);
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
+Procedure S3_AbortMultipartUpload(FunctionParameters)
+
+    URL          = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+    UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
+
+    Result = OPI_S3.AbortMultipartUpload(Name, Bucket, BasicData, UploadID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AbortMultipartUpload", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
 

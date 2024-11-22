@@ -1692,6 +1692,10 @@ def test_s3(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 AbortMultipartUpload --name "test" --bucket "test" --basic "test" --upload "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 HeadObject --name "test" --bucket "test" --basic "test" --ver "test" --headers "test" --debug --test '
                }
 
