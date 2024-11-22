@@ -1,0 +1,7 @@
+﻿ {
+ "URL": "storage-155.s3hoster.by",
+ "AccessKey": "BRN5RKJE67YCVDZRRQVI",
+ "SecretKey": "***",
+ "Region": "BTC",
+ "Service": "s3"
+}
