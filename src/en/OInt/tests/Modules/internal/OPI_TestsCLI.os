@@ -17256,6 +17256,25 @@ Procedure CLI_S3_PutObject(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "PutObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+
+    BasicData.Insert("ChunkSize", 5242880);
+
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("data"  , Entity);
+    Options.Insert("basic" , BasicData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PutObject (parts)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
 EndProcedure
 
 Procedure CLI_S3_UploadFullObject(FunctionParameters)
