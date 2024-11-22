@@ -86,6 +86,56 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ИнициализироватьЗагрузкуЧастями \
+              --name "fileChunked.mp3" \
+              --bucket "opi-gpbucket3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmNmM2Q2MGRiLTIzNzUtNDJjYy05Zjk0LWMyMjU5MWE0YmRjYw"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ИнициализироватьЗагрузкуЧастями ^
+              --name "fileChunked.mp3" ^
+              --bucket "opi-gpbucket3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmNmM2Q2MGRiLTIzNzUtNDJjYy05Zjk0LWMyMjU5MWE0YmRjYw"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "status": 200,
+ "response": {
+  "InitiateMultipartUploadResult": {
+   "Bucket": "opi-gpbucket3",
+   "Key": "fileChunked.mp3",
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjUyZjlkZDEyLTgxZmEtNDlkMC1iYjExLTUxNzYwNTZlMWM4OA"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "325",
+  "Content-Type": "application/xml",
+  "Date": "Fri, 22 Nov 2024 09:35:07 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "180A40AA6F05DA99",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```
