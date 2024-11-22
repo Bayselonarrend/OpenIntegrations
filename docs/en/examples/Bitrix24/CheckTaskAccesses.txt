@@ -3,12 +3,12 @@
     ArrayOfUsers.Add("10");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID = "3560";
+    TaskID = "3610";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7afc3e67006e9f06006b12e400000001000...";
-    TaskID = "3562";
+    Token  = "2f4e4067006e9f06006b12e400000001000...";
+    TaskID = "3612";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers, Token);

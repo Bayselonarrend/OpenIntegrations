@@ -17680,7 +17680,6 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
         TagsArray.Add(Result["headers"]["Etag"]);
 
         DeleteFiles(TFN);
-        Break;
 
         PartNumber = PartNumber + 1;
 

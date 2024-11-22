@@ -1,5 +1,5 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C081UPF6W0J";
+    Channel = "C08214W5WN6";
     Name    = "testconv" + String(New UUID);
 
     Result = OPI_Slack.RenameChannel(Token, Channel, Name);

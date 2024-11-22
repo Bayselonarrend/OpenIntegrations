@@ -78,8 +78,6 @@ This is a service method. A `PutObject` method is intended for the common scenar
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
 
-        Break;
-
         PartNumber = PartNumber + 1;
 
     EndDo;

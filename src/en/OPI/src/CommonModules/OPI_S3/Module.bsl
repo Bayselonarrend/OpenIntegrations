@@ -1427,8 +1427,6 @@ Procedure ProcessRequestParametersString(ParameterString)
     ParamsList.SortByValue();
     ParameterArray = ParamsList.UnloadValues();
 
-    FinalParamsArray = New Array;
-
     For N = 0 To ParameterArray.UBound() Do
 
         QueryParameter = ParameterArray[N];
