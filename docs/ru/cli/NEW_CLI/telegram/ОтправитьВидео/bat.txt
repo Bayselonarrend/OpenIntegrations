@@ -2,4 +2,4 @@ oint telegram ОтправитьВидео ^
   --token "***" ^
   --chat "@testsichee" ^
   --text "Строковое значение" ^
-  --video "C:\Users\Administrator\AppData\Local\Temp\5jlpelb0kr0.mp4"
+  --video "C:\Users\Administrator\AppData\Local\Temp\gwfjuwttnxa.mp4"
