@@ -1,0 +1,32 @@
+﻿ {
+ "status": 200,
+ "response": {
+  "Tagging": {
+   "TagSet": {
+    "Tag": [
+     {
+      "Key": "MyTag1",
+      "Value": "SomeValue"
+     },
+     {
+      "Key": "MyTag2",
+      "Value": "AnotherOne"
+     }
+    ]
+   }
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "141",
+  "Content-Type": "application/xml",
+  "Date": "Fri, 22 Nov 2024 10:11:57 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
+  "X-Amz-Request-Id": "180A42ACF504A7F3",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
