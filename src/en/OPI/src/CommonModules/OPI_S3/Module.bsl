@@ -590,7 +590,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
-// This is a service method. A `PutObject` method is intended for the main scenario of files uploading^
+// This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 // Using this method for large files may cause errors
 //
 // Parameters:
@@ -623,7 +623,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [CreateMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
-// This is a service method. A `PutObject` method is intended for the main scenario of files uploading^
+// This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 // Using multipart upload for files < 5 MB or when the size of a single chunk is < 5 MB will result in an error
 //
 // Parameters:
@@ -656,7 +656,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [UploadPart](@docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
-// This is a service method. A `PutObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -700,7 +700,7 @@ EndFunction
 //
 // Note
 // Method at AWS documentation: [CompleteMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
-// This is a service method. A `PutObject` method is intended for the main scenario of files uploading
+// This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
 // Parameters:
 // Name - String - Name of the object in the bucket - name
@@ -743,6 +743,40 @@ Function FinishPartsUpload(Val Name
     FinishXML       = GetBinaryDataFromString(FinishXML);
 
     Response = SendRequestWithBody("POST", BasicData_, FinishXML, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Abort multipart upload
+// Aborts the multipart uploading of the object
+//
+// Note
+// Method at AWS documentation: [AbortMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+// This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// UploadID - String - Upload ID. See InitPartsUpload - upload
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Structure of KeyAndValue - serialized JSON response from storage
+Function AbortMultipartUpload(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val UploadID
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
+
+    Response = SendRequestWithoutBody("DELETE", BasicData_, , Headers);
 
     Return Response;
 
@@ -1604,6 +1638,7 @@ Function UploadObjectInParts(Val Name
     SourceStream = DataReader.SourceStream();
     Response     = New Map;
     TagsArray    = New Array;
+    Error        = False;
 
     WHile BytesRead < TotalSize Do
 
@@ -1650,11 +1685,13 @@ Function UploadObjectInParts(Val Name
                 // !OInt Message(OPI_Tools.JSONString(Response));
                 // !OInt Message("Failed to upload part of the file! Aborted upload wiht ID:" + UploadID + "...");
 
-                Raise;
+                Error = True;
+                Break;
 
             Else
 
                 // !OInt Message("Chunk upload error " + String(N) + "/3");
+                // !OInt Message(ErrorDescription());
                 Continue;
 
             EndIf;
@@ -1665,7 +1702,11 @@ Function UploadObjectInParts(Val Name
 
     EndDo;
 
-    Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
+    If Error Then
+        Response    = AbortMultipartUpload(Name, Bucket, BasicData, UploadID);
+    Else
+        Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
+    EndIf;
 
     Return Response;
 
