@@ -1,0 +1,25 @@
+﻿    {
+ "status": 200,
+ "response": {
+  "CompleteMultipartUploadResult": {
+   "Location": "https://opi-gpbucket3.storage-155.s3hoster.by/fileChunked.mp3",
+   "Bucket": "opi-gpbucket3",
+   "Key": "fileChunked.mp3",
+   "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\""
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "345",
+  "Content-Type": "application/xml",
+  "Date": "Fri, 22 Nov 2024 09:35:12 GMT",
+  "Etag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\"",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "180A40AB96378E86",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
