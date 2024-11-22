@@ -1,5 +1,5 @@
 ﻿    Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "I000bUV8sweEAf2AhDjFjo673248761bd";
+    IDФайла  = "I000brYOlobGq76GXoZJwV6740419f1bd";
 
     Результат = OPI_VKTeams.ПереслатьГолосовоеСообщение(Токен, IDЧата, IDФайла);

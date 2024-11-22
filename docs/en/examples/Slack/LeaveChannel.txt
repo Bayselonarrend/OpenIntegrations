@@ -1,4 +1,4 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C081UPF6W0J";
+    Channel = "C08214W5WN6";
 
     Result = OPI_Slack.LeaveChannel(Token, Channel);

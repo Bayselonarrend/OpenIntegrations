@@ -1,11 +1,11 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    CommentID = "8536";
-    TaskID    = "3564";
+    CommentID = "8646";
+    TaskID    = "3614";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "7afc3e67006e9f06006b12e400000001000...";
-    CommentID = "8538";
+    Token     = "2f4e4067006e9f06006b12e400000001000...";
+    CommentID = "8648";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID, Token);
