@@ -936,23 +936,23 @@ jobs:
 
       - name: Token management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TokenManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TokenManagement"
 
       - name: Server time
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_ServerTime"
 
-      - name: Posts managment
+      - name: Posts management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_PostsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_PostsManagement"
 
-      - name: Tasks managment
+      - name: Tasks management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TaskManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TaskManagement"
 
-      - name: Comments managment
+      - name: Comments management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_CommentsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_CommentsManagement"
 
       - name: Working with drive
         if: ${{ cancelled() }} == false
@@ -968,31 +968,31 @@ jobs:
 
       - name: Chats works
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_ChatManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_ChatManagement"
 
-      - name: Notifications managment
+      - name: Notifications management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_NotificationsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_NotificationsManagement"
 
       - name: Working with custom task fields
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TasksFieldsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_TasksFieldsManagement"
 
-      - name: Departments managment
+      - name: Departments management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DepartmentsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DepartmentsManagement"
 
-      - name: Users managment
+      - name: Users management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B2_UsersManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B2_UsersManagement"
 
-      - name: Leads managment
+      - name: Leads management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_LeadsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_LeadsManagement"
 
-      - name: Deals managment
+      - name: Deals management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DealsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_B24_DealsManagement"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1040,9 +1040,9 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_CommonMethods"
 
-      - name: Chat managment
+      - name: Chat management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_ChatManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_VKT_ChatManagement"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1098,13 +1098,13 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_PricesAndStocks"
 
-      - name: Promotions managment
+      - name: Promotions management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_PromotionsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_PromotionsManagement"
 
-      - name: Warehouses managment
+      - name: Warehouses management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_WarehousesManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_OzonAPI_WarehousesManagement"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1144,9 +1144,9 @@ jobs:
 
 
 
-      - name: Files managment
+      - name: Files management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NC_FilesManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_NC_FilesManagement"
 
       - name: Data retrieving
         if: ${{ cancelled() }} == false
@@ -1194,13 +1194,13 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CdekAPI_CommonMethods"
 
-      - name: Orders managment
+      - name: Orders management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CDEKAPI_OrdersManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CDEKAPI_OrdersManagement"
 
-      - name: Courier invitations managment
+      - name: Courier invitations management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CdekAPI_CourierInvitationsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_CdekAPI_CourierInvitationsManagement"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
@@ -1240,9 +1240,9 @@ jobs:
 
 
 
-      - name: Tags managment
+      - name: Tags management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YaMetrika_TagsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_YaMetrika_TagsManagement"
 
       - name: Counters management
         if: ${{ cancelled() }} == false
@@ -1290,13 +1290,13 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_CommonMethods"
 
-      - name: Buckets managment
+      - name: Buckets management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_BucketsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_BucketsManagement"
 
-      - name: Objects managment
+      - name: Objects management
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_ObjectsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_AWS_ObjectsManagement"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
