@@ -15379,8 +15379,6 @@ Procedure S3_InitPartsUpload(FunctionParameters)
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
 
-        Break;
-
         PartNumber = PartNumber + 1;
 
     EndDo;
@@ -15448,8 +15446,6 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
 
-        Break;
-
         PartNumber = PartNumber + 1;
 
     EndDo;
@@ -15515,8 +15511,6 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
-
-        Break;
 
         PartNumber = PartNumber + 1;
 

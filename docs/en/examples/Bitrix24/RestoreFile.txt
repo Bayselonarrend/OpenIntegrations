@@ -1,9 +1,9 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    FileID = "19272";
+    FileID = "19572";
 
     Result = OPI_Bitrix24.RestoreFile(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7afc3e67006e9f06006b12e400000001000...";
+    Token = "2f4e4067006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RestoreFile(URL, FileID, Token);

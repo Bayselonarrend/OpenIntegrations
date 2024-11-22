@@ -1,4 +1,4 @@
-﻿    Токен     = "sl.CBG8hWTAeQUMIDvdg2G2nf_pdX3rktbvuu5E7lmsOmK-0-uELkt5I_IEtTRyVkGJgDwCS1LCL2...";
+﻿    Токен     = "sl.CBL71_21WiKphqlWV34l0tlFn8eGn_YrnPrMexNmHltofj3DkBRsnpQEFY5O5H6i-iRl3bPDBi...";
     Путь      = "/New";
 
     Результат = OPI_Dropbox.ОпубликоватьПапку(Токен, Путь);

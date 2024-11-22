@@ -1,8 +1,8 @@
 ﻿    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "applgRe17fRzFfVPo";
-    Таблица     = "tblnXnQ9P8AcCUO0I";
-    Запись      = "reccmTUyfuQJ1u5N8";
-    Комментарий = "comdbBFGv9yjEPpiz";
+    База        = "appJ6PlCigJQuFxEc";
+    Таблица     = "tblCBnRh5DcAla8wE";
+    Запись      = "recWVPKfLBbqlONIB";
+    Комментарий = "comC1LUMe1OVLB6AP";
 
     Текст     = "Тестовый комментарий (изм.)";
     Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);

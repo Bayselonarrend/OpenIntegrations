@@ -42,8 +42,6 @@
         BytesRead = SourceStream.CurrentPosition();
         TagsArray.Add(Result["headers"]["Etag"]);
 
-        Break;
-
         PartNumber = PartNumber + 1;
 
     EndDo;

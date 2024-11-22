@@ -1,13 +1,13 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID    = "3560";
-    ElementID = "2352";
+    TaskID    = "3610";
+    ElementID = "2392";
 
     Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "3562";
-    ElementID = "2356";
+    TaskID    = "3612";
+    ElementID = "2396";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7afc3e67006e9f06006b12e400000001000...";
+    Token = "2f4e4067006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);
