@@ -1,0 +1,14 @@
+﻿    URL          = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "fileChunked.mp3";
+    Bucket = "opi-gpbucket3";
+
+    Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+    UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
+
+    Result = OPI_S3.AbortMultipartUpload(Name, Bucket, BasicData, UploadID);

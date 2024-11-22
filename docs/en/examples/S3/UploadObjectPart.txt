@@ -1,4 +1,4 @@
-﻿    URL       = "storage-155.s3hoster.by";
+﻿    URL    = "storage-155.s3hoster.by";
     AccessKey = "BRN5RKJE67...";
     SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
@@ -32,12 +32,8 @@
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

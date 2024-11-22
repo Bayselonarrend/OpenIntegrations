@@ -1,0 +1,14 @@
+﻿    URL          = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Наименование  = "fileChunked.mp3";
+    Бакет         = "opi-gpbucket3";
+
+    Начало      = OPI_S3.ИнициализироватьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные);
+    IDЗагрузки  = Начало["response"]["InitiateMultipartUploadResult"]["UploadId"];
+
+    Результат = OPI_S3.ОтменитьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные, IDЗагрузки);
