@@ -1882,7 +1882,7 @@ Procedure AddAdditionalHeaders(Receiver, Val Headers)
         If Not ValueIsFilled(Receiver) Then
             Receiver = New Map;
         Else
-            OPI_TypeConversion.GetKeyValueCollection(Headers, ErrorText);
+            OPI_TypeConversion.GetKeyValueCollection(Receiver, ErrorText);
         EndIf;
 
         For Each Title In Headers Do
