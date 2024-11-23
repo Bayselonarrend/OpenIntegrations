@@ -40,7 +40,11 @@
             , CurrentData);
 
         BytesRead = SourceStream.CurrentPosition();
-        TagsArray.Add(Result["headers"]["Etag"]);
+
+        ETag = Result["headers"]["Etag"];
+        ETag = ?(ETag = Undefined, Result["headers"]["ETag"], ETag);
+
+        TagsArray.Add(ETag);
 
         PartNumber = PartNumber + 1;
 
