@@ -15374,10 +15374,14 @@ Procedure S3_InitPartsUpload(FunctionParameters)
             , CurrentData);
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart (IPU)", "S3"); // SKIP
-           OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+        OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
-        TagsArray.Add(Result["headers"]["Etag"]);
+
+        ETag = Result["headers"]["Etag"];
+        ETag = ?(ETag = Undefined, Result["headers"]["ETag"], ETag);
+
+        TagsArray.Add(ETag);
 
         PartNumber = PartNumber + 1;
 
@@ -15385,12 +15389,12 @@ Procedure S3_InitPartsUpload(FunctionParameters)
 
     Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
 
-       // END
+    // END
 
-       OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload (IPU)", "S3");
-       OPI_TestDataRetrieval.Check_S3Success(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload (IPU)", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
-       OPI_S3.DeleteObject(Name, Bucket, BasicData);
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 
@@ -15441,10 +15445,14 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
             , CurrentData);
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart (FPU)", "S3"); // SKIP
-           OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
+        OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
-        TagsArray.Add(Result["headers"]["Etag"]);
+
+        ETag = Result["headers"]["Etag"];
+        ETag = ?(ETag = Undefined, Result["headers"]["ETag"], ETag);
+
+        TagsArray.Add(ETag);
 
         PartNumber = PartNumber + 1;
 
@@ -15453,12 +15461,12 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
     Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-       // END
+    // END
 
-       OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload", "S3");
-       OPI_TestDataRetrieval.Check_S3Success(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload", "S3");
+    OPI_TestDataRetrieval.Check_S3Success(Result);
 
-       OPI_S3.DeleteObject(Name, Bucket, BasicData);
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 
@@ -15501,8 +15509,12 @@ Procedure S3_UploadObjectPart(FunctionParameters)
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
-            CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name
+            , Bucket
+            , BasicData
+            , UploadID
+            , PartNumber
+            , CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -15510,7 +15522,11 @@ Procedure S3_UploadObjectPart(FunctionParameters)
         OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
-        TagsArray.Add(Result["headers"]["Etag"]);
+
+        ETag = Result["headers"]["Etag"];
+        ETag = ?(ETag = Undefined, Result["headers"]["ETag"], ETag);
+
+        TagsArray.Add(ETag);
 
         PartNumber = PartNumber + 1;
 
@@ -15518,7 +15534,7 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
     Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
 
-       // END
+    // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload (UOP)", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);

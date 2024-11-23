@@ -17693,10 +17693,14 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "UploadObjectPart", Options);
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart", "S3");
-         OPI_TestDataRetrieval.Check_S3Success(Result);
+        OPI_TestDataRetrieval.Check_S3Success(Result);
 
         BytesRead = SourceStream.CurrentPosition();
-        TagsArray.Add(Result["headers"]["Etag"]);
+
+        ETag = Result["headers"]["Etag"];
+        ETag = ?(ETag = Undefined, Result["headers"]["ETag"], ETag);
+
+        TagsArray.Add(ETag);
 
         DeleteFiles(TFN);
 
@@ -17752,7 +17756,7 @@ Procedure CLI_S3_AbortMultipartUpload(FunctionParameters)
     Options.Insert("basic" , BasicData);
     Options.Insert("upload", UploadID);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "AbortMultipartUpload", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AbortMultipartUpload", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
