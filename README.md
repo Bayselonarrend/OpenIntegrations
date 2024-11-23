@@ -9,7 +9,7 @@
 
 # Открытый пакет интеграций
 
-![Версия](https://img.shields.io/badge/Версия_1С-8.3.9-yellow)
+![Версия](https://img.shields.io/badge/Версия_1С-8.3.10-yellow)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 
 <br>
