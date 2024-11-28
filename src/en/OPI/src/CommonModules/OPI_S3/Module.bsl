@@ -1168,6 +1168,39 @@ Function ListObjectVersions(Val Bucket
 
 EndFunction
 
+// Get object download link
+// Get presigned link for object retrieving without authorization
+//
+// Note
+// Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// String - URL for object retrieving
+Function GetObjectDownloadLink(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Expire = 3600
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    CheckBasicData(BasicData_);
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    Signature = CreateURLSignature(BasicData_, Name, "GET", Expire, Headers);
+    URL       = BasicData_["URL"] + Signature;
+
+    Return URL;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -1178,15 +1211,98 @@ EndFunction
 
 Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connection, Val Method)
 
-    AccessKey = DataStructure["AccessKey"];
-    SecretKey = DataStructure["SecretKey"];
-    Region    = DataStructure["Region"];
-    Service   = DataStructure["Service"];
-
+    AccessKey   = DataStructure["AccessKey"];
     CurrentDate = CurrentUniversalDate();
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
     Request.Headers.Insert("Host"      , Connection.Host);
+
+    MainParts = GetMainSignatureParts(DataStructure, Request, Connection, Method, CurrentDate);
+
+    Scope       = MainParts["Scope"];
+    Signature   = MainParts["Signature"];
+    HeadersKeys = MainParts["HeadersKeys"];
+
+    AuthorizationHeader = FormAuthorisationHeader(AccessKey, Scope, Signature, HeadersKeys);
+
+    Return AuthorizationHeader;
+
+EndFunction
+
+Function CreateURLSignature(Val DataStructure, Val Name, Val Method, Val Expire, Val Headers)
+
+    AccessKey = DataStructure["AccessKey"];
+    SecretKey = DataStructure["SecretKey"];
+    Region    = DataStructure["Region"];
+    Service   = DataStructure["Service"];
+    URL       = DataStructure["URL"];
+
+    SplitedURL = OPI_Tools.SplitURL(URL);
+
+    Host    = SplitedURL["Host"];
+    Address = SplitedURL["Address"];
+
+    AdditionalHeaders = New Structure("Host", Host);
+    AddAdditionalHeaders(Headers, AdditionalHeaders);
+
+    CurrentDate = CurrentUniversalDate();
+    SignKey     = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
+    Scope       = CreateScope(Region, Service, CurrentDate);
+    Timestamp   = OPI_Tools.ISOTimestamp(CurrentDate);
+    HeadersKeys = GetHeadersKeysString(Headers);
+    Base        = EncodeString(AccessKey + "/" + Scope, StringEncodingMethod.URLencoding);
+
+    HeadersString = GetHeadersString(Headers);
+    HashString    = "UNSIGNED-PAYLOAD";
+
+    URLParameters = New ValueTable;
+
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Algorithm"    , "AWS4-HMAC-SHA256");
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Credential"   , Base);
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Date"         , Timestamp);
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Expires"      , Expire);
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-SignedHeaders", HeadersKeys);
+
+    ParametersString = OPI_Tools.RequestParametersToString(URLParameters);
+    ParametersString = Right(ParametersString, StrLen(ParametersString) - 1);
+    RequestTemplate  = "";
+
+    For N = 1 To 6 Do
+
+        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = 6, "", Chars.LF);
+
+    EndDo;
+
+    CanonicalRequest = StrTemplate(RequestTemplate
+        , Method
+        , Address
+        , ParametersString
+        , HeadersString
+        , HeadersKeys
+        , HashString);
+
+    StringToSign = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
+    Signature    = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
+    Signature    = Lower(GetHexStringFromBinaryData(Signature));
+
+
+    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Signature", Signature);
+
+    URLSign = OPI_Tools.RequestParametersToString(URLParameters);
+
+    Return URLSign;
+
+EndFunction
+
+Function GetMainSignatureParts(Val DataStructure
+    , Val Request
+    , Val Connection
+    , Val Method
+    , Val CurrentDate)
+
+    SecretKey = DataStructure["SecretKey"];
+    Region    = DataStructure["Region"];
+    Service   = DataStructure["Service"];
 
     SignKey          = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
     CanonicalRequest = CreateCanonicalRequest(Request, Connection, Method);
@@ -1196,10 +1312,15 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
     Signature = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
     Signature = Lower(GetHexStringFromBinaryData(Signature));
 
-    HeadersKeys         = GetHeadersKeysString(Request);
-    AuthorizationHeader = FormAuthorisationHeader(AccessKey, Scope, Signature, HeadersKeys);
+    HeadersKeys = GetHeadersKeysString(Request.Headers);
 
-    Return AuthorizationHeader;
+    PartsStructure = New Structure;
+
+    PartsStructure.Insert("Scope"      , Scope);
+    PartsStructure.Insert("Signature"  , Signature);
+    PartsStructure.Insert("HeadersKeys", HeadersKeys);
+
+    Return PartsStructure;
 
 EndFunction
 
@@ -1223,11 +1344,11 @@ EndFunction
 
 Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
 
-    RequestBody = OPI_Tools.GetRequestBody(Request);
-    HashSum     = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
-    Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
-
     RequestTemplate = "";
+    RequestBody     = OPI_Tools.GetRequestBody(Request);
+    HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
+
+    Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
 
     For N = 1 To 6 Do
 
@@ -1238,8 +1359,8 @@ Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
     Method          = Upper(Method);
     URIString       = GetURIString(Request);
     ParameterString = GetParamsString(Request);
-    HeadersString   = GetHeadersString(Request);
-    KeysString      = GetHeadersKeysString(Request);
+    HeadersString   = GetHeadersString(Request.Headers);
+    KeysString      = GetHeadersKeysString(Request.Headers);
 
     HashString = Lower(GetHexStringFromBinaryData(HashSum));
 
@@ -1330,10 +1451,9 @@ Function GetParamsString(Request)
 
 EndFunction
 
-Function GetHeadersString(Val Request)
+Function GetHeadersString(Val Headers)
 
     HeadersList = New ValueList;
-    Headers     = Request.Headers;
 
     For Each Title In Headers Do
 
@@ -1358,10 +1478,9 @@ Function GetHeadersString(Val Request)
 
 EndFunction
 
-Function GetHeadersKeysString(Val Request)
+Function GetHeadersKeysString(Val Headers)
 
     HeadersList = New ValueList;
-    Headers     = Request.Headers;
 
     For Each Title In Headers Do
 

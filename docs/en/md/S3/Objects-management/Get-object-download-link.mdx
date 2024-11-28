@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 16
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get object download link
+ Get presigned link for object retrieving without authorization
+
+
+
+`Function GetObjectDownloadLink(Val Name, Val Bucket, Val BasicData, Val Expire = 3600, Val Headers = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --name | String | &#x2714; | Name of the object in the bucket |
+  | Bucket | --bucket | String | &#x2714; | Name of the bucket to put the object |
+  | BasicData | --basic | Structure of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
+  | Expire | --expires | String, Number | &#x2716; | Link lifetime in seconds. 604800 max. |
+  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  String - URL for object retrieving
+
+<br/>
+
+:::tip
+Process at AWS documentation: [Download and upload objects with presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObjectDownloadLink(Name, Bucket, BasicData, 7200);
+```
+ 
+
+
+
+
