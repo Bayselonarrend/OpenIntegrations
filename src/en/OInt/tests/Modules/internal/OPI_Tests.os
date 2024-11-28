@@ -2162,6 +2162,7 @@ Procedure AWS_ObjectsManagement() Export
     S3_ListObjects(TestParameters);
     S3_ListObjectVersions(TestParameters);
     S3_GetObject(TestParameters);
+    S3_GetObjectDownloadLink(TestParameters);
     S3_DeleteObject(TestParameters);
     S3_DeleteBucket(TestParameters);
 
@@ -15564,6 +15565,35 @@ Procedure S3_AbortMultipartUpload(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "AbortMultipartUpload", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure S3_GetObjectDownloadLink(FunctionParameters)
+
+    Image        = FunctionParameters["Picture"]; // SKIP
+    OPI_TypeConversion.GetBinaryData(Image); // SKIP
+    RequiredSize = Image.Size(); // SKIP
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Result = OPI_S3.GetObjectDownloadLink(Name, Bucket, BasicData, 7200);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectDownloadLink", "S3");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+    Result = OPI_Tools.Get(Result);
+
+    OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize);
 
 EndProcedure
 

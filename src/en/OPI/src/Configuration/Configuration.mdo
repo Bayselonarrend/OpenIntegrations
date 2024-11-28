@@ -9,7 +9,6 @@
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
     <defaultRunMode>Checked</defaultRunMode>
     <usePurposes>Checked</usePurposes>
-    <interfaceCompatibilityMode>Checked</interfaceCompatibilityMode>
   </extension>
   <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="12689443-2950-4e3b-b313-9a692b6acac7"/>
   <containedObjects classId="9fcd25a0-4822-11d4-9414-008048da11f9" objectId="f6f98fbd-010a-4aba-8f11-01203bbc59c7"/>

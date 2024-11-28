@@ -1731,6 +1731,10 @@ def test_s3(){
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСписокВерсийОбъектов --bucket "test" --basic "test" --prefix "test" --ver "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 ПолучитьСсылкуСкачиванияОбъекта --name "test" --bucket "test" --basic "test" --expires "test" --headers "test" --debug --test '
+               }
+
 }
 
 
