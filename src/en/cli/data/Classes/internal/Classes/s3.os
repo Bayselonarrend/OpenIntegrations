@@ -1509,6 +1509,57 @@
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Objects management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObjectDownloadLink";
+    NewLine.МетодПоиска = "GETOBJECTDOWNLOADLINK";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the object in the bucket";
+    NewLine.Область     = "Objects management";
+    NewLine.ОписаниеМетода   = "Get presigned link for object retrieving without authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObjectDownloadLink";
+    NewLine.МетодПоиска = "GETOBJECTDOWNLOADLINK";
+    NewLine.Параметр    = "--bucket";
+    NewLine.Описание    = "Name of the bucket to put the object";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObjectDownloadLink";
+    NewLine.МетодПоиска = "GETOBJECTDOWNLOADLINK";
+    NewLine.Параметр    = "--basic";
+    NewLine.Описание    = "Basic request data. See GetBasicDataStructure";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObjectDownloadLink";
+    NewLine.МетодПоиска = "GETOBJECTDOWNLOADLINK";
+    NewLine.Параметр    = "--expires";
+    NewLine.Описание    = "Link lifetime in seconds. 604800 max. (optional, def. val. - 3600)";
+    NewLine.Область     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "s3";
+    NewLine.Модуль      = "OPI_S3";
+    NewLine.Метод       = "GetObjectDownloadLink";
+    NewLine.МетодПоиска = "GETOBJECTDOWNLOADLINK";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Objects management";
+
     Return CompositionTable;
 EndFunction
 
