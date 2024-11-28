@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
 
 // MIT License
 
