@@ -1215,7 +1215,7 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
     CurrentDate = CurrentUniversalDate();
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
-    Request.Headers.Insert("Host"      , Connection.Server);
+    Request.Headers.Insert("Host"      , Connection.Host);
 
     MainParts = GetMainSignatureParts(DataStructure, Request, Connection, Method, CurrentDate);
 
@@ -1239,10 +1239,10 @@ Function CreateURLSignature(Val DataStructure, Val Name, Val Method, Val Expire,
 
     SplitedURL = OPI_Tools.SplitURL(URL);
 
-    Host    = SplitedURL["Host"];
+    Domain  = SplitedURL["Domain"];
     Address = SplitedURL["Address"];
 
-    AdditionalHeaders = New Structure("Host", Host);
+    AdditionalHeaders = New Structure("Host", Domain);
     AddAdditionalHeaders(Headers, AdditionalHeaders);
 
     CurrentDate = CurrentUniversalDate();
@@ -1576,12 +1576,12 @@ Function SendRequest(Val Method
     URL = BasicData_["URL"];
 
     URLStructure = OPI_Tools.SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
 
     Request    = OPI_Tools.CreateRequest(Address);
-    Connection = OPI_Tools.CreateConnection(Server, Safe);
+    Connection = OPI_Tools.CreateConnection(Host, Safe);
 
     If ValueIsFilled(Body) Then
         SetRequestBody(Request, Body);
