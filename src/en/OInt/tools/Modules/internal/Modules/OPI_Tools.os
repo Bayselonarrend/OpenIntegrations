@@ -56,28 +56,28 @@ EndFunction
 #Region RequestsWithBody
 
 Function Post(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile = Undefined) Export
+    Val ResponseFile                  = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "POST", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
 Function Patch(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile = Undefined) Export
+    Val ResponseFile                   = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PATCH", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
 Function Put(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile = Undefined) Export
+    Val ResponseFile                 = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PUT", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
 Function PostBinary(Val URL, Val Body, Val AdditionalHeaders, Val FullResponse = False,
-    Val DataType = "application/octet-stream") Export
+    Val DataType                                                               = "application/octet-stream") Export
 
     Return ExecuteRequestWithBinaryData(URL, "POST", Body, AdditionalHeaders, FullResponse, DataType);
 
@@ -88,28 +88,28 @@ EndFunction
 #Region MultipartRequests
 
 Function PostMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
-    Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
+    Val AdditionalHeaders                      = "", Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "POST", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
 Function PutMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
-    Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
+    Val AdditionalHeaders                     = "", Val ResponseFile = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "PUT", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
 Function PostMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
-    Val ResponseFile = Undefined) Export
+    Val ResponseFile                            = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "POST", JSON, Files, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
 Function PatchMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
-    Val ResponseFile = Undefined) Export
+    Val ResponseFile                             = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "PATCH", JSON, Files, AdditionalHeaders, ResponseFile);
 
@@ -136,7 +136,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
     GZip = "gzip";
 
-    NeedsUnpacking = Response.Headers.Get("Content-Encoding") = GZip
+    NeedsUnpacking                                            = Response.Headers.Get("Content-Encoding") = GZip
                   Or Response.Headers.Get("content-encoding") = GZip;
 
     If NeedsUnpacking Then
@@ -234,7 +234,7 @@ Function ExecuteRequest(Val Request, Val Connection, Val View, Val ResponseFile 
         Safe         = URLStructure["Safe"];
         Port         = URLStructure["Port"];
 
-        Connection = CreateConnection(Host, Safe, , , Port);
+        Connection              = CreateConnection(Host, Safe, , , Port);
         Request.ResourceAddress = Address;
 
         Response = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
@@ -547,8 +547,8 @@ Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined)
 
     CollectionType = TypeOf(Collection);
 
-    IsStructure      = CollectionType      = Type("Structure");
-    IsMap            = CollectionType            = Type("Map");
+    IsStructure      = CollectionType = Type("Structure");
+    IsMap            = CollectionType = Type("Map");
     ThisIsCollection = IsStructure Or IsMap;
 
     If StrFind(Field, ".") And ThisIsCollection Then
@@ -781,9 +781,9 @@ Function CopyCollection(Val Collection) Export
     OPI_TypeConversion.GetCollection(Collection);
 
     CollectionType = TypeOf(Collection);
-    IsStructure    = CollectionType    = Type("Structure");
-    IsMap          = CollectionType          = Type("Map");
-    IsArray        = CollectionType        = Type("Array");
+    IsStructure    = CollectionType = Type("Structure");
+    IsMap          = CollectionType = Type("Map");
+    IsArray        = CollectionType = Type("Array");
 
     If IsStructure Or IsMap Then
 
@@ -1000,7 +1000,7 @@ EndProcedure
 #Region Private
 
 Function ExecuteRequestWithBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True,
-    Val FullResponse = False, Val ResponseFile = Undefined)
+    Val FullResponse                                              = False, Val ResponseFile = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -1043,7 +1043,7 @@ Function ExecuteRequestWithBinaryData(Val URL, Val View, Val Data, Val Additiona
 EndFunction
 
 Function ExecuteRequestWithoutBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "",
-    Val ResponseFile = Undefined)
+    Val ResponseFile                                                 = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -1065,7 +1065,7 @@ Function ExecuteRequestWithoutBody(Val URL, Val View, Val Parameters = "", Val A
 EndFunction
 
 Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Files = "",
-    Val ContentType = "image/jpeg", Val AdditionalHeaders = "", Val ResponseFile = Undefined)
+    Val ContentType                                                = "image/jpeg", Val AdditionalHeaders = "", Val ResponseFile = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -1096,7 +1096,7 @@ Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Fil
 EndFunction
 
 Function ExecuteMultipartRelatedRequest(Val URL, Val View, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
-    Val ResponseFile = Undefined)
+    Val ResponseFile                                                = Undefined)
 
     URLStructure = SplitURL(URL);
     Host         = URLStructure["Host"];
@@ -1249,7 +1249,7 @@ EndFunction
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
 
     Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
- = Type("Array");
+               = Type("Array");
 
     If JSON Then
 
@@ -1522,7 +1522,7 @@ Function ReadGZip(CompressedData) Export
     DataWriter.Close();
     DataWriter = New DataWriter(ZipStream);
 
-    CRC32 = DataReader.ReadInt32();
+    CRC32                = DataReader.ReadInt32();
     UncompressedDataSize = DataReader.ReadInt32();
     DataReader.Close();
 
