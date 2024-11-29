@@ -545,8 +545,8 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
     APIVersion          = "1.0";
     SignatureString     = "";
     Signature           = "";
-    OCK = "oauth_consumer_key";
-    OTK = "oauth_token";
+    OCK                 = "oauth_consumer_key";
+    OTK                 = "oauth_token";
     CurrentUNIXDate     = OPI_Tools.UNIXTime(CurrentDate);
     CurrentUNIXDate     = OPI_Tools.NumberToString(CurrentUNIXDate);
     ParametersTable     = New ValueTable;
