@@ -361,9 +361,9 @@ Function SplitURL(Val URL) Export
 
     If StrFind(Host, ":") <> 0 Then
 
-        ServerPort = StrSplit(Host, ":");
-        Host       = ServerPort[0];
-        Port       = ServerPort[1];
+        HostPort = StrSplit(Host, ":");
+        Host     = HostPort[0];
+        Port     = HostPort[1];
 
         OPI_TypeConversion.GetNumber(Port);
 
@@ -375,6 +375,8 @@ Function SplitURL(Val URL) Export
 
     If IsOneScript() And SecureConnection Then
         Host = "https://" + Host;
+    Else
+        Host    = Host;
     EndIf;
 
     ReturnStructure = New Structure;
@@ -382,6 +384,7 @@ Function SplitURL(Val URL) Export
     ReturnStructure.Insert("Address" , Address);
     ReturnStructure.Insert("Safe"    , SecureConnection);
     ReturnStructure.Insert("Port"    , Port);
+    ReturnStructure.Insert("Host"    , Host);
 
     Return ReturnStructure;
 
