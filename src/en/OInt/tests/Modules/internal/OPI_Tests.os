@@ -15305,7 +15305,7 @@ Procedure S3_GetObject(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObject (file)", "S3");
-    ResultFile = New File(Result);
+    ResultFile                                          = New File(Result);
     OPI_TestDataRetrieval.ExpectsThat(ResultFile.Size() = RequiredSize);
     DeleteFiles(TempFile);
 
