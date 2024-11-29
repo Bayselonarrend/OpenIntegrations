@@ -569,7 +569,7 @@ Procedure Check_BinaryData(Val Result, Val Size = Undefined) Export
 
     ExpectsThat(Result).ИмеетТип("BinaryData");
 
-    If Not Size = Undefined Then
+    If Not Size                    = Undefined Then
         ExpectsThat(Result.Size() >= Size).Равно(True);
     Else
         ExpectsThat(Result.Size() > MinimumSize).Равно(True);

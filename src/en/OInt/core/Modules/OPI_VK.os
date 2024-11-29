@@ -1776,10 +1776,10 @@ Function GetImageMap(Val Image, Val Parameters, Val View)
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
         Return Response;
     Else
-        If ResponseArray.Count() = 0 Then
+        If ResponseArray.Count()                                     = 0 Then
             Return Response;
         Else
-            ResponseMap = ResponseArray[0];
+            ResponseMap                                              = ResponseArray[0];
         EndIf;
     EndIf;
 
@@ -1981,7 +1981,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
             EndIf;
 
             If Not Selections.Count() = 0 Then
-                PhotoID = Selections[0]["photo"]["id"];
+                PhotoID               = Selections[0]["photo"]["id"];
                 OPI_TypeConversion.GetLine(PhotoID);
                 Parameters.Insert(PhotoID_, PhotoID);
             EndIf;
