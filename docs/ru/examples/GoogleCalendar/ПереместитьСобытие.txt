@@ -1,5 +1,5 @@
-﻿    Токен     = "ya29.a0AeDClZAIFDKYT5FOSyIwMBervZ5TPcEm5qzDlBwYp92cKUBIDq3ubJss5HD8vEAGTlgmWaVCdgtQ1ecN26ZrdtERlCJCaR2fiiTFGXKs-...";
-    Событие   = "hnn78as8l9l4ra0gmphc8ho9r4";
+﻿    Токен   = "ya29.a0AeDClZAIFDKYT5FOSyIwMBervZ5TPcEm5qzDlBwYp92cKUBIDq3ubJss5HD8vEAGTlgmWaVCdgtQ1ecN26ZrdtERlCJCaR2fiiTFGXKs-...";
+    Событие = "hnn78as8l9l4ra0gmphc8ho9r4";
 
     КалендарьИсточник = "2b27a0d8595a5f3da2e0a28bd781066b5f1e7243e7b902f682cf9b39fd97e257@group.calendar.google.com";
     КалендарьПриемник = "bayselonarrend@gmail.com";
