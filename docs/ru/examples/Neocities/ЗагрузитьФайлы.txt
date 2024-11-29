@@ -1,4 +1,4 @@
-﻿    Токен     = "7419cd51de4037f7...";
+﻿    Токен = "7419cd51de4037f7...";
 
     Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
     Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные

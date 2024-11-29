@@ -1,6 +1,6 @@
-﻿    Токен  = "ya29.a0AeDClZAIFDKYT5FOSyIwMBervZ5TPcEm5qzDlBwYp92cKUBIDq3ubJss5HD8vEAGTlgmWaVCdgtQ1ecN26ZrdtERlCJCaR2fiiTFGXKs-...";
-    Книга  = "1wBLXligr9QOamULxvRSsAqv5NJFIBNT-N1ZUauzghkg";
-    Лист   = "Лист2";
+﻿    Токен = "ya29.a0AeDClZAIFDKYT5FOSyIwMBervZ5TPcEm5qzDlBwYp92cKUBIDq3ubJss5HD8vEAGTlgmWaVCdgtQ1ecN26ZrdtERlCJCaR2fiiTFGXKs-...";
+    Книга = "1wBLXligr9QOamULxvRSsAqv5NJFIBNT-N1ZUauzghkg";
+    Лист  = "Лист2";
 
     МассивЯчеек = Новый Массив;
     МассивЯчеек.Добавить("B2");
