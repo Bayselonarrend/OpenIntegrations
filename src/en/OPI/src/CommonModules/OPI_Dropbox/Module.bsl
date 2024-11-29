@@ -77,11 +77,11 @@ Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     OPI_Tools.AddField("grant_type", "authorization_code", "String", Parameters);
 
     URLStructure = OPI_Tools.SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
 
     Request    = OPI_Tools.CreateRequest(Address, , DataType);
-    Connection = OPI_Tools.CreateConnection(Server, True, AppKey, AppSecret);
+    Connection = OPI_Tools.CreateConnection(Host, True, AppKey, AppSecret);
 
     ParameterString = OPI_Tools.RequestParametersToString(Parameters);
     Data            = Right(ParameterString, StrLen(ParameterString) - 1);

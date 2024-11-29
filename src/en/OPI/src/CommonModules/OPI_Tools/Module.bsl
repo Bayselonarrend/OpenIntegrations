@@ -191,7 +191,7 @@ Function CreateRequest(Val Address, Val AdditionalHeaders = "", Val DataType = "
 
 EndFunction
 
-Function CreateConnection(Val Server, Val Safe = True, Val User = "", Val Password = "", Val Port = "") Export
+Function CreateConnection(Val Host, Val Safe = True, Val User = "", Val Password = "", Val Port = "") Export
 
     If Not ValueIsFilled(Port) Then
         Port = ?(Safe, 443, 80);
@@ -200,15 +200,15 @@ Function CreateConnection(Val Server, Val Safe = True, Val User = "", Val Passwo
     If Safe Then
 
         If IsOneScript() Then
-            Connection = New HTTPConnection(Server, Port, User, Password, , 3000);
+            Connection = New HTTPConnection(Host, Port, User, Password, , 3000);
         Else
             SSL        = New OpenSSLSecureConnection;
-            Connection = New HTTPConnection(Server, Port, User, Password, , 3000, SSL);
+            Connection = New HTTPConnection(Host, Port, User, Password, , 3000, SSL);
         EndIf;
 
     Else
 
-        Connection = New HTTPConnection(Server, Port, User, Password, , 3000);
+        Connection = New HTTPConnection(Host, Port, User, Password, , 3000);
 
     EndIf;
 
@@ -229,12 +229,12 @@ Function ExecuteRequest(Val Request, Val Connection, Val View, Val ResponseFile 
         URL = Response.Headers["Location"];
 
         URLStructure = SplitURL(URL);
-        Server       = URLStructure["Server"];
+        Host         = URLStructure["Host"];
         Address      = URLStructure["Address"];
         Safe         = URLStructure["Safe"];
         Port         = URLStructure["Port"];
 
-        Connection = CreateConnection(Server, Safe, , , Port);
+        Connection = CreateConnection(Host, Safe, , , Port);
         Request.ResourceAddress = Address;
 
         Response = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
@@ -353,16 +353,16 @@ Function SplitURL(Val URL) Export
 
     If StrFind(URL, "/") = 0 Then
         Address          = "";
-        Host             = URL;
+        Domain           = URL;
     Else
         Address          = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
-        Host             = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
+        Domain           = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
     EndIf;
 
-    If StrFind(Host, ":") <> 0 Then
+    If StrFind(Domain, ":") <> 0 Then
 
-        HostPort = StrSplit(Host, ":");
-        Host     = HostPort[0];
+        HostPort = StrSplit(Domain, ":");
+        Domain   = HostPort[0];
         Port     = HostPort[1];
 
         OPI_TypeConversion.GetNumber(Port);
@@ -374,17 +374,17 @@ Function SplitURL(Val URL) Export
     EndIf;
 
     If IsOneScript() And SecureConnection Then
-        Server = "https://" + Host;
+        Host = "https://" + Domain;
     Else
-        Server = Host;
+        Host = Domain;
     EndIf;
 
     ReturnStructure = New Structure;
-    ReturnStructure.Insert("Server"  , Server);
+    ReturnStructure.Insert("Host"    , Host);
     ReturnStructure.Insert("Address" , Address);
     ReturnStructure.Insert("Safe"    , SecureConnection);
     ReturnStructure.Insert("Port"    , Port);
-    ReturnStructure.Insert("Host"    , Host);
+    ReturnStructure.Insert("Domain"  , Domain);
 
     Return ReturnStructure;
 
@@ -1007,13 +1007,13 @@ Function ExecuteRequestWithBody(Val URL, Val View, Val Parameters = "", Val Addi
     EndIf;
 
     URLStructure = SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
     Port         = URLStructure["Port"];
 
     Request    = CreateRequestWithBody(Address, Parameters, AdditionalHeaders, JSON);
-    Connection = CreateConnection(Server, Safe, , , Port);
+    Connection = CreateConnection(Host, Safe, , , Port);
     Response   = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
 
     Return Response;
@@ -1024,13 +1024,13 @@ Function ExecuteRequestWithBinaryData(Val URL, Val View, Val Data, Val Additiona
     Val DataType)
 
     URLStructure = SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
     Port         = URLStructure["Port"];
 
     Request    = CreateRequest(Address, AdditionalHeaders, DataType);
-    Connection = CreateConnection(Server, Safe, , , Port);
+    Connection = CreateConnection(Host, Safe, , , Port);
 
     If Not Data.Size() = 0 Then
         Request.SetBodyFromBinaryData(Data);
@@ -1050,13 +1050,13 @@ Function ExecuteRequestWithoutBody(Val URL, Val View, Val Parameters = "", Val A
     EndIf;
 
     URLStructure = SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"] + RequestParametersToString(Parameters);
     Safe         = URLStructure["Safe"];
     Port         = URLStructure["Port"];
 
     Request    = CreateRequest(Address, AdditionalHeaders);
-    Connection = CreateConnection(Server, Safe, , , Port);
+    Connection = CreateConnection(Host, Safe, , , Port);
 
     Response = ExecuteRequest(Request, Connection, View, ResponseFile);
 
@@ -1076,7 +1076,7 @@ Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Fil
     EndIf;
 
     URLStructure = SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
     Port         = URLStructure["Port"];
@@ -1084,7 +1084,7 @@ Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Fil
     RequestBody = GetTempFileName();
 
     Request    = CreateMultipartRequest(Address, Parameters, Files, AdditionalHeaders, RequestBody, ContentType);
-    Connection = CreateConnection(Server, Safe, , , Port);
+    Connection = CreateConnection(Host, Safe, , , Port);
     Response   = ExecuteRequest(Request, Connection, View, ResponseFile);
 
     Request    = Undefined;
@@ -1099,7 +1099,7 @@ Function ExecuteMultipartRelatedRequest(Val URL, Val View, Val JSON = "", Val Fi
     Val ResponseFile = Undefined)
 
     URLStructure = SplitURL(URL);
-    Server       = URLStructure["Server"];
+    Host         = URLStructure["Host"];
     Address      = URLStructure["Address"];
     Safe         = URLStructure["Safe"];
     Port         = URLStructure["Port"];
@@ -1107,7 +1107,7 @@ Function ExecuteMultipartRelatedRequest(Val URL, Val View, Val JSON = "", Val Fi
     RequestBody = GetTempFileName();
 
     Request    = CreateMultipartRelatedRequest(Address, Files, JSON, AdditionalHeaders, RequestBody);
-    Connection = CreateConnection(Server, Safe, , , Port);
+    Connection = CreateConnection(Host, Safe, , , Port);
 
     Response = ExecuteRequest(Request, Connection, View, ResponseFile);
 
