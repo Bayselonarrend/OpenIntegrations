@@ -1248,8 +1248,8 @@ EndFunction
 
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
 
-    Collection   = TypeOf(Parameters)   = Type("Structure") Or TypeOf(Parameters)   = Type("Map") Or TypeOf(Parameters)
-                 = Type("Array");
+    Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
+ = Type("Array");
 
     If JSON Then
 

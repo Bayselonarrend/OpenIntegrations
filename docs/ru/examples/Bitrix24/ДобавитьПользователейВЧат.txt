@@ -1,5 +1,5 @@
-﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDЧата  = "1458";
+﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    IDЧата = "1458";
 
     IDПользователей = Новый Массив;
     IDПользователей.Добавить(10);

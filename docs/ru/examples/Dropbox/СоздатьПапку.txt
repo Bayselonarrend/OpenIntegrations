@@ -1,4 +1,4 @@
-﻿    Токен     = "sl.CBL71_21WiKphqlWV34l0tlFn8eGn_YrnPrMexNmHltofj3DkBRsnpQEFY5O5H6i-iRl3bPDBi...";
-    Путь      = "/Новый каталог";
+﻿    Токен = "sl.CBL71_21WiKphqlWV34l0tlFn8eGn_YrnPrMexNmHltofj3DkBRsnpQEFY5O5H6i-iRl3bPDBi...";
+    Путь  = "/Новый каталог";
 
     Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);

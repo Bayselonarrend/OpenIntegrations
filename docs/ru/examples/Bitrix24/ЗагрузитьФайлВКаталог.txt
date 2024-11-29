@@ -1,5 +1,5 @@
-﻿    Наименование2  = "Картинка2.jpg";
-    Наименование   = "Картинка1.jpg";
+﻿    Наименование2 = "Картинка2.jpg";
+    Наименование  = "Картинка1.jpg";
 
     Картинка2 = "https://api.athenaeum.digital/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
     Картинка  = "https://api.athenaeum.digital/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
