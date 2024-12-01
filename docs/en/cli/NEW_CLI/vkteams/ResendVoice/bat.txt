@@ -1,4 +1,4 @@
 oint vkteams ResendVoice ^
  --token "***" ^
  --chatid "AoLI0egLWBSLR1Ngn2w" ^
- --fileid "I000bN1voPcPeDTIYxPeN4674071431bd"
+ --fileid "I000bUIJDLPQB3GaGRT1Qe674c6a5e1bd"

@@ -1,3 +1,3 @@
 oint notion DeleteBlock ^
  --token "***" ^
- --block "14682aa7-fc4e-81db-897f-ec2536b538d1"
+ --block "14f82aa7-fc4e-817e-b276-dd7c1e31dfa3"
