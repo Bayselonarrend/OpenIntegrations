@@ -2,4 +2,4 @@ oint telegram SendImage ^
  --token "***" ^
  --chat "@testsichee" ^
  --text "Строковое значение" ^
- --picture "C:\Users\Administrator\AppData\Local\Temp\4s1p5ndzghe.png"
+ --picture "C:\Users\Administrator\AppData\Local\Temp\seik13ch1ks.png"
