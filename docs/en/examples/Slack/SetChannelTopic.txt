@@ -1,5 +1,5 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C08214W5WN6";
+    Channel = "C082YGUAMSS";
     Topic   = "TestTopic";
 
     Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);

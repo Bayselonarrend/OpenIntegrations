@@ -32,7 +32,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    UserID = "1072";
+    UserID = "1148";
     Email  = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -44,8 +44,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "2f4e4067006e9f06006b12e400000001000...";
-    UserID = "1074";
+    Token  = "c7944c67006e9f06006b12e400000001000...";
+    UserID = "1150";
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
@@ -66,8 +66,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
             
             oint bitrix24 UpdateUser \
              --url "b24-ar17wx.bitrix24.by" \
-             --userid 1090 \
-             --fields "{'EMAIL':'35280fd7-8d46-4f98-b0f4-006f7f1bdddf@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" \
+             --userid 1142 \
+             --fields "{'EMAIL':'d2b114df-379e-4aec-ab65-14d7e04113b0@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" \
              --token "***"
         ```
     </TabItem>
@@ -78,8 +78,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
             
             oint bitrix24 UpdateUser ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --userid 1090 ^
-             --fields "{'EMAIL':'35280fd7-8d46-4f98-b0f4-006f7f1bdddf@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" ^
+             --userid 1142 ^
+             --fields "{'EMAIL':'d2b114df-379e-4aec-ab65-14d7e04113b0@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" ^
              --token "***"
         ```
     </TabItem>

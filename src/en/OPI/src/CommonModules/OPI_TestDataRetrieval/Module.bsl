@@ -2070,13 +2070,29 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         Or CurrentType = Type("Map")
         Or CurrentType = Type("Array") Then
 
-        JSONWriter     = New JSONWriter();
-        WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
-        JSONWriter.SetString(WriterSettings);
+        JSONWriter = New JSONWriter();
 
-        WriteJSON(JSONWriter, Value);
+        If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
 
-        Value = """" + JSONWriter.Close() + """";
+            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
+            JSONWriter.SetString(WriterSettings);
+            WriteJSON(JSONWriter, Value);
+            Value          = """" + JSONWriter.Close() + """";
+
+        Else
+
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName("json");
+            Stream = New FileStream(TFN, FileOpenMode.Create);
+
+            JSONWriter.OpenStream(Stream);
+            WriteJSON(JSONWriter, Value);
+            JSONWriter.Close();
+            Stream.Close();
+
+            Value = TFN;
+
+        EndIf;
 
     ElsIf CurrentType = Type("Boolean") Then
 
