@@ -1735,6 +1735,10 @@ def test_s3(){
 					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetObjectDownloadLink --name "test" --bucket "test" --basic "test" --expires "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe s3 GetObjectUploadLink --name "test" --bucket "test" --basic "test" --expires "test" --headers "test" --debug --test '
+               }
+
 }
 
 

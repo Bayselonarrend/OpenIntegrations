@@ -1,0 +1,11 @@
+﻿    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Наименование = "pictureU.jpg";
+    Бакет        = "newbucket2";
+
+    Результат = OPI_S3.ПолучитьСсылкуЗагрузкиОбъекта(Наименование, Бакет, ОсновныеДанные, 7200);

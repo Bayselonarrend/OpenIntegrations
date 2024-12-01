@@ -1172,6 +1172,7 @@ EndFunction
 // Get presigned link for object retrieving without authorization
 //
 // Note
+// In Headers you need to add all x-amz headers that will be used when accessing the received URL
 // Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
 //
 // Parameters:
@@ -1195,6 +1196,40 @@ Function GetObjectDownloadLink(Val Name
     FillObjectURL(BasicData_, Name, Bucket);
 
     Signature = CreateURLSignature(BasicData_, Name, "GET", Expire, Headers);
+    URL       = BasicData_["URL"] + Signature;
+
+    Return URL;
+
+EndFunction
+
+// Get object upload link
+// Gets a direct link to upload (put) an object without additional authorization
+//
+// Note
+// In Headers you need to add all x-amz headers that will be used when accessing the received URL
+// Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
+//
+// Parameters:
+// Name - String - Name of the object in the bucket - name
+// Bucket - String - Name of the bucket to put the object - bucket
+// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
+// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// String - URL for object retrieving
+Function GetObjectUploadLink(Val Name
+    , Val Bucket
+    , Val BasicData
+    , Val Expire = 3600
+    , Val Headers = Undefined) Export
+
+    BasicData_ = OPI_Tools.CopyCollection(BasicData);
+
+    CheckBasicData(BasicData_);
+    FillObjectURL(BasicData_, Name, Bucket);
+
+    Signature = CreateURLSignature(BasicData_, Name, "PUT", Expire, Headers);
     URL       = BasicData_["URL"] + Signature;
 
     Return URL;
