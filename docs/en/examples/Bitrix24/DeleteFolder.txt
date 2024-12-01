@@ -1,10 +1,10 @@
 ﻿    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    FolderID = "19576";
+    FolderID = "20708";
 
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "2f4e4067006e9f06006b12e400000001000...";
-    FolderID = "19578";
+    Token    = "c7944c67006e9f06006b12e400000001000...";
+    FolderID = "20710";
 
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID, Token);
