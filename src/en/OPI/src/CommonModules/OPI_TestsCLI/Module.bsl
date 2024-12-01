@@ -17794,6 +17794,7 @@ Procedure CLI_S3_GetObjectDownloadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectDownloadLink", Options);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectDownloadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -17833,6 +17834,7 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);

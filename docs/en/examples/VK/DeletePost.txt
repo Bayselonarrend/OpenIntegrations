@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    PostID     = "5880";
+    PostID     = "5928";
 
     Result = OPI_VK.DeletePost(PostID, Parameters);
