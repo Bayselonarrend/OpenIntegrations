@@ -1,6 +1,6 @@
 ﻿    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appJ6PlCigJQuFxEc";
-    Table = "tblCBnRh5DcAla8wE";
+    Base  = "app6r78jVYU7ND0LI";
+    Table = "tbl0J6d4dkx6SaA0M";
     Name  = String(New UUID);
 
     Field  = OPI_Airtable.GetNumberField(Name);

@@ -32,14 +32,14 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID   = "3618";
-    RecordID = "1300";
+    TaskID   = "3820";
+    RecordID = "1376";
 
     Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "2f4e4067006e9f06006b12e400000001000...";
-    RecordID = "1302";
+    Token    = "c7944c67006e9f06006b12e400000001000...";
+    RecordID = "1378";
 
     Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID, Token);
 ```
@@ -51,8 +51,8 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 DeleteTaskTimeAccounting \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "3658" \
-             --record 1318 \
+             --task "3788" \
+             --record 1370 \
              --token "***"
         ```
     </TabItem>
@@ -61,8 +61,8 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 DeleteTaskTimeAccounting ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "3658" ^
-             --record 1318 ^
+             --task "3788" ^
+             --record 1370 ^
              --token "***"
         ```
     </TabItem>
