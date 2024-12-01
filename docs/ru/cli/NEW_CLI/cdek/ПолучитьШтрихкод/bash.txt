@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод \
   --token "***" \
-  --uuid "72753031-dd20-445c-a0ae-55b539284b6b" \
+  --uuid "72753031-4d89-4de0-97c7-f54866688ae2" \
   --getfile true \
   --testapi "***" \
-  --out "C:\Users\Administrator\AppData\Local\Temp\zqlsdobremz.pdf"
+  --out "C:\Users\Administrator\AppData\Local\Temp\z0m1xbulepr.pdf"
