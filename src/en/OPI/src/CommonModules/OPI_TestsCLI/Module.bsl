@@ -2156,8 +2156,10 @@ Procedure CLI_AWS_ObjectsManagement() Export
     CLI_S3_ListObjects(TestParameters);
     CLI_S3_ListObjectVersions(TestParameters);
     CLI_S3_GetObject(TestParameters);
+    CLI_S3_GetObjectDownloadLink(TestParameters);
     CLI_S3_DeleteObject(TestParameters);
     CLI_S3_DeleteBucket(TestParameters);
+    CLI_S3_GetObjectUploadLink(TestParameters);
 
 EndProcedure
 
@@ -16473,7 +16475,7 @@ Procedure CLI_YandexMetrika_GetCounterStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCounterStructure", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCounterStructure", "YandexMetrika");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -16531,7 +16533,7 @@ Procedure CLI_YandexMetrika_CreateCounter(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateCounter", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
 
     CounterID = Result["counter"]["id"];
@@ -16551,7 +16553,7 @@ Procedure CLI_YandexMetrika_DeleteCounter(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteCounter", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
 
 EndProcedure
@@ -16581,7 +16583,7 @@ Procedure CLI_YandexMetrika_UpdateCounter(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateCounter", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
 
 EndProcedure
@@ -16597,7 +16599,7 @@ Procedure CLI_YandexMetrika_GetCounter(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounter", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounter(Result);
 
 EndProcedure
@@ -16613,7 +16615,7 @@ Procedure CLI_YandexMetrika_RestoreCounter(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "RestoreCounter", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RestoreCounter", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RestoreCounter", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaSuccess(Result);
 
 EndProcedure
@@ -16628,7 +16630,7 @@ Procedure CLI_YandexMetrika_GetCountersList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList", "YandexMetrika"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCountersList", "YandexMetrika"); // SKIP
     OPI_TestDataRetrieval.Check_MetrikaCounters(Result); // SKIP
 
     // filter by IDs list
@@ -16646,7 +16648,7 @@ Procedure CLI_YandexMetrika_GetCountersList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList (filter))", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCountersList (filter))", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounters(Result);
 
 EndProcedure
@@ -17270,7 +17272,7 @@ Procedure CLI_S3_PutObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PutObject (parts)", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PutObject (parts)", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
@@ -17306,7 +17308,7 @@ Procedure CLI_S3_UploadFullObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFullObject", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFullObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
@@ -17403,7 +17405,7 @@ Procedure CLI_S3_CopyObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CopyObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CopyObject", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     BasicData.Insert("URL", FunctionParameters["S3_URL"]);
@@ -17441,7 +17443,7 @@ Procedure CLI_S3_PutObjectTagging(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObjectTagging", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PutObjectTagging", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PutObjectTagging", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
@@ -17470,7 +17472,7 @@ Procedure CLI_S3_GetObjectTagging(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectTagging", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectTagging", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectTagging", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
@@ -17499,7 +17501,7 @@ Procedure CLI_S3_DeleteObjectTagging(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteObjectTagging", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObjectTagging", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObjectTagging", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
@@ -17526,7 +17528,7 @@ Procedure CLI_S3_ListObjects(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ListObjects", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ListObjects", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
@@ -17555,7 +17557,7 @@ Procedure CLI_S3_ListObjectVersions(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListObjectVersions", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ListObjectVersions", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ListObjectVersions", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
 EndProcedure
@@ -17588,7 +17590,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "S3"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObject", "S3"); // SKIP
     OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize); // SKIP
 
     TempFile = GetTempFileName();
@@ -17598,7 +17600,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
     Options.Insert("out"  , TempFile);
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (file)", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObject (file)", "S3");
     OPI_TestDataRetrieval.ExpectsThat(Result.Size() = RequiredSize);
     DeleteFiles(TempFile);
 
@@ -17614,7 +17616,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, file)", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObject (big, file)", "S3");
     OPI_TestDataRetrieval.ExpectsThat(Result.Size() = 34432400);
     DeleteFiles(BigTempFile);
 
@@ -17624,7 +17626,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject (big, BD)", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObject (big, BD)", "S3");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 34432400);
 
 EndProcedure
@@ -17657,7 +17659,7 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "InitPartsUpload", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "InitPartsUpload", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
@@ -17692,7 +17694,7 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "UploadObjectPart", Options);
 
-        OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart", "S3");
+        OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadObjectPart", "S3");
         OPI_TestDataRetrieval.Check_S3Success(Result);
 
         BytesRead = SourceStream.CurrentPosition();
@@ -17717,7 +17719,7 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "FinishPartsUpload", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "FinishPartsUpload", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "FinishPartsUpload", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
@@ -17758,8 +17760,93 @@ Procedure CLI_S3_AbortMultipartUpload(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "AbortMultipartUpload", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AbortMultipartUpload", "S3");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AbortMultipartUpload", "S3");
     OPI_TestDataRetrieval.Check_S3Success(Result);
+
+EndProcedure
+
+Procedure CLI_S3_GetObjectDownloadLink(FunctionParameters)
+
+    Image        = FunctionParameters["Picture"]; // SKIP
+    OPI_TypeConversion.GetBinaryData(Image); // SKIP
+    RequiredSize = Image.Size(); // SKIP
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    Name   = "picture.jpg";
+    Bucket = "opi-gpbucket3";
+
+    Options = New Structure;
+    Options.Insert("name"   , Name);
+    Options.Insert("bucket" , Bucket);
+    Options.Insert("basic"  , BasicData);
+    Options.Insert("expires", 7200);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectDownloadLink", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectDownloadLink", "S3");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+    Result = OPI_Tools.Get(Result);
+
+    OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize);
+
+EndProcedure
+
+Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
+
+    Image        = FunctionParameters["Picture"]; // SKIP
+    OPI_TypeConversion.GetBinaryData(Image); // SKIP
+    RequiredSize = Image.Size(); // SKIP
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+
+    Name   = "pictureU.jpg";
+    Bucket = "newbucket2";
+
+    Options = New Structure;
+    Options.Insert("name"   , Name);
+    Options.Insert("bucket" , Bucket);
+    Options.Insert("basic"  , BasicData);
+    Options.Insert("expires", 7200);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+    Result = OPI_Tools.Put(Result, Image, , False);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink (PUT)", "S3");
+
+    Check = OPI_S3.HeadObject(Name, Bucket, BasicData);
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "HeadObject (Upload link)", "S3");
+
+    OPI_TestDataRetrieval.ExpectsThat(RequiredSize = Number(Check["headers"]["Content-Length"])).Равно(True);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 

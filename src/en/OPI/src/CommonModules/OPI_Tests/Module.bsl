@@ -2165,6 +2165,7 @@ Procedure AWS_ObjectsManagement() Export
     S3_GetObjectDownloadLink(TestParameters);
     S3_DeleteObject(TestParameters);
     S3_DeleteBucket(TestParameters);
+    S3_GetObjectUploadLink(TestParameters);
 
 EndProcedure
 
@@ -15594,6 +15595,42 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
     Result = OPI_Tools.Get(Result);
 
     OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize);
+
+EndProcedure
+
+Procedure S3_GetObjectUploadLink(FunctionParameters)
+
+    Image        = FunctionParameters["Picture"]; // SKIP
+    OPI_TypeConversion.GetBinaryData(Image); // SKIP
+    RequiredSize = Image.Size(); // SKIP
+
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
+    Region    = "BTC";
+
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+
+    Name   = "pictureU.jpg";
+    Bucket = "newbucket2";
+
+    Result = OPI_S3.GetObjectUploadLink(Name, Bucket, BasicData, 7200);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectUploadLink", "S3");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+    Result = OPI_Tools.Put(Result, Image, , False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectUploadLink (PUT)", "S3");
+
+    Check = OPI_S3.HeadObject(Name, Bucket, BasicData);
+    OPI_TestDataRetrieval.WriteLog(Check, "HeadObject (Upload link)", "S3");
+
+    OPI_TestDataRetrieval.ExpectsThat(RequiredSize = Number(Check["headers"]["Content-Length"])).Равно(True);
+
+    OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
 EndProcedure
 
