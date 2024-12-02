@@ -1,5 +1,5 @@
 oint gcalendar MoveEvent \
  --token "***" \
- --from "a4db808f216af0f8094af332f11550faf2d01f35e9d9cb546da474106b7f0a7c@group.calendar.google.com" \
+ --from "a3acd244ed49482f6f844391f5bc2f49ed5c373f0fbee84eb9e15d75b204ec52@group.calendar.google.com" \
  --to "bayselonarrend@gmail.com" \
- --event "jvvv5a42invf3uaf9m59nro6ps"
+ --event "1djb4veum83go7uhbg29fj9fl0"
