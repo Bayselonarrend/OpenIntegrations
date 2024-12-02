@@ -1,6 +1,6 @@
 oint bitrix24 СоздатьЗависимостьЗадач \
   --url "b24-ar17wx.bitrix24.by" \
-  --taskfrom "3824" \
-  --taskto "3822" \
+  --taskfrom "3854" \
+  --taskto "3852" \
   --linktype 2 \
   --token "***"

@@ -1,4 +1,4 @@
 oint vkteams ОткрепитьСообщение ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --messageid "7443537924399831718"
+  --messageid "7443880160278878956"
