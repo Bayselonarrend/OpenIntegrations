@@ -1,5 +1,5 @@
 oint bitrix24 ВозобновитьЭлементЧеклистаЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "3824" \
-  --element 2556 \
+  --task "3854" \
+  --element 2580 \
   --token "***"

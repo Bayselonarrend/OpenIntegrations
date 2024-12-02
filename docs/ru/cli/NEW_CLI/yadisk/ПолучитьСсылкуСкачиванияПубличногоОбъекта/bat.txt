@@ -1,3 +1,3 @@
 oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта ^
   --token "***" ^
-  --url "https://yadi.sk/i/LlyE9EtSv2VM2w"
+  --url "https://yadi.sk/d/Z7UkqClRnX4N6A"
