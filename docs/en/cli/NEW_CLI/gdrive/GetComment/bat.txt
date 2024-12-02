@@ -1,4 +1,4 @@
 oint gdrive GetComment ^
  --token "***" ^
- --object "1bm0QNhXHUb9vF1OcXrtoPuVXKIHRYDzf" ^
- --comment "AAABSG1c9vA"
+ --object "1_hkCk-h6C_tkPQTNhF6TliDyJT7h7X-o" ^
+ --comment "AAABZP-_ffc"

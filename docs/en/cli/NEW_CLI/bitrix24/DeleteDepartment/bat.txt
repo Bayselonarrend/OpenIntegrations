@@ -1,4 +1,4 @@
 oint bitrix24 DeleteDepartment ^
  --url "b24-ar17wx.bitrix24.by" ^
- --depid 1136 ^
+ --depid 1164 ^
  --token "***"

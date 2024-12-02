@@ -1,3 +1,3 @@
 oint yadisk GetDownloadLink ^
  --token "***" ^
- --path "/00835720-372c-40e8-8489-368b1a4261c3.png"
+ --path "/8ff9f9a9-fc11-4aec-8b9c-6319c5553bc8.png"
