@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    Property    = "1096";
+    Property    = "1098";
     OptionArray = New Array;
     OptionArray.Add("Yellow");
     OptionArray.Add("Blue");
