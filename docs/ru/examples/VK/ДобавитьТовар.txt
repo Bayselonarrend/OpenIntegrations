@@ -2,7 +2,7 @@
 
     Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
     Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
-    Подборка  = "136";
+    Подборка  = "134";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);

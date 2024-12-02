@@ -122,7 +122,9 @@ Procedure GetCollection(Value) Export
 
                 JSONReader.OpenFile(Value);
 
-            ElsIf StrStartsWith(Lower(Value), "http") Then
+            ElsIf StrStartsWith(TrimL(Value), "http://")
+                Or StrStartsWith(TrimL(Value), "https://") Then
+
 
                 TFN = GetTempFileName();
                 FileCopy(Value, TFN);
@@ -143,7 +145,7 @@ Procedure GetCollection(Value) Export
             If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
 
                 Value = InitialValue;
-                GetArray(Value);
+                OPI_Tools.ValueToArray(Value);
 
             EndIf;
 
@@ -152,7 +154,7 @@ Procedure GetCollection(Value) Export
     Except
 
         Value = InitialValue;
-        GetArray(Value);
+        OPI_Tools.ValueToArray(Value);
 
     EndTry;
 
@@ -174,27 +176,7 @@ Procedure GetArray(Value) Export
         Return;
     EndIf;
 
-    If TypeOf(Value) = Type("String") Then
-
-        Value_ = TrimAll(Value);
-
-        If StrStartsWith(Value_, "{") Or StrStartsWith(Value_, "[") Then
-
-            JSONReader = New JSONReader;
-            JSONReader.SetString(Value);
-            Value      = ReadJSON(JSONReader);
-            JSONReader.Close();
-        EndIf;
-
-    Else
-
-        If TypeOf(Value) = Type("Number") Then
-
-            Value = OPI_Tools.NumberToString(Value);
-
-        EndIf;
-
-    EndIf;
+    GetCollection(Value);
 
     If Not TypeOf(Value) = Type("Array") Then
         OPI_Tools.ValueToArray(Value);

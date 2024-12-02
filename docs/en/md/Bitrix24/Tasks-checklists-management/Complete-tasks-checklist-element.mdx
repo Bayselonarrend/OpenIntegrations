@@ -32,16 +32,16 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    TaskID    = "3812";
-    ElementID = "2544";
+    TaskID    = "3832";
+    ElementID = "2560";
 
     Result = OPI_Bitrix24.CompleteTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "3814";
-    ElementID = "2548";
+    TaskID    = "3834";
+    ElementID = "2564";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c7944c67006e9f06006b12e400000001000...";
+    Token = "91b54d67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CompleteTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```

@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL            = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    IDПользователя = "1148";
+    IDПользователя = "1156";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     // Полную структуру можно получить функцией ПолучитьСтурктуруПользователя
@@ -44,8 +44,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьПользователя(URL, IDПользователя, СтруктураПользователя);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "c7944c67006e9f06006b12e400000001000...";
-    IDПользователя = "1150";
+    Токен          = "91b54d67006e9f06006b12e400000001000...";
+    IDПользователя = "1158";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     СтруктураПользователя = Новый Структура;
@@ -66,8 +66,8 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --userid 1086 \
-              --fields "{'EMAIL':'c35cc846-7814-4c3d-b87d-989d1ec20402@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" \
+              --userid 1154 \
+              --fields "{'EMAIL':'0e75386f-d33e-40bc-88e3-78b08d162c80@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" \
               --token "***"
         ```
     </TabItem>
@@ -78,8 +78,8 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --userid 1086 ^
-              --fields "{'EMAIL':'c35cc846-7814-4c3d-b87d-989d1ec20402@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" ^
+              --userid 1154 ^
+              --fields "{'EMAIL':'0e75386f-d33e-40bc-88e3-78b08d162c80@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" ^
               --token "***"
         ```
     </TabItem>
