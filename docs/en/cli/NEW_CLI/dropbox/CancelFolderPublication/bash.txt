@@ -1,3 +1,3 @@
 oint dropbox CancelFolderPublication \
  --token "***" \
- --folder "11210643747"
+ --folder "11223337827"
