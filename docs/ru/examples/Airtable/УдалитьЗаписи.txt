@@ -1,6 +1,6 @@
 ﻿    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "app6r78jVYU7ND0LI";
-    Таблица = "tbl0J6d4dkx6SaA0M";
-    Запись  = "reclEnp8p3LTfrsyb";
+    База    = "appg0JsjPu7GsCRR2";
+    Таблица = "tbltNIWr0Gr9ulL5x";
+    Запись  = "recKVt5FKg0WTa5ik";
 
     Результат = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись);

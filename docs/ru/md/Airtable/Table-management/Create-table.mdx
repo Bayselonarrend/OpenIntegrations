@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "app6r78jVYU7ND0LI";
+    База  = "appg0JsjPu7GsCRR2";
 
     МассивПолей = Новый Массив;
     МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable СоздатьТаблицу \
               --token "***" \
-              --base "app6aKh3UOlbBjnSW" \
+              --base "appwzngt0VXulo8rl" \
               --title "Тестовая таблица 2" \
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" \
               --description "Новая таблица"
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable СоздатьТаблицу ^
               --token "***" ^
-              --base "app6aKh3UOlbBjnSW" ^
+              --base "appwzngt0VXulo8rl" ^
               --title "Тестовая таблица 2" ^
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" ^
               --description "Новая таблица"

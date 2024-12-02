@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
 // Lib: Google Drive
 // CLI: gdrive
 

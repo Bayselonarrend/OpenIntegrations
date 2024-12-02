@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
-    ChatID = "chat" + "1530";
+    ChatID = "chat" + "1538";
 
     Result = OPI_Bitrix24.SendWritingNotification(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c7944c67006e9f06006b12e400000001000...";
+    Token  = "91b54d67006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.SendWritingNotification(URL, UserID, Token);
