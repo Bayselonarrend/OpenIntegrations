@@ -1,0 +1,19 @@
+﻿ {
+ "status": 200,
+ "response": {},
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "2114023",
+  "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+  "Date": "Tue, 03 Dec 2024 10:21:16 GMT",
+  "Etag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
+  "Last-Modified": "Tue, 03 Dec 2024 10:21:15 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "180DA39165F578B2",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
