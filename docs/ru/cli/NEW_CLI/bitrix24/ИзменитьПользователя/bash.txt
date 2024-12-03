@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьПользователя \
   --url "b24-ar17wx.bitrix24.by" \
-  --userid 1166 \
-  --fields "{'EMAIL':'549bb34f-801e-4086-8b78-897e61c10d71@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" \
+  --userid 1174 \
+  --fields "{'EMAIL':'560a5542-cfad-4741-9484-b135885f7a01@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':7}" \
   --token "***"
