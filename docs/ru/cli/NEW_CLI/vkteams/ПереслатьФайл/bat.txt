@@ -1,5 +1,5 @@
 oint vkteams ПереслатьФайл ^
   --token "***" ^
   --chatid "AoLI0egLWBSLR1Ngn2w" ^
-  --fileid "qWVlgvhiFqeVPU7ppNLPCB674df9b41bd" ^
+  --fileid "yUBY6GhWSNhXS3rtwObCj4674ea75f1bd" ^
   --text "Подпись к файлу"

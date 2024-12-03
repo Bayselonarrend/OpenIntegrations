@@ -1,4 +1,4 @@
 oint slack УстановитьТемуКанала \
   --token "***" \
-  --channel "C083A87GHMG" \
+  --channel "C083RN15C9F" \
   --theme "Тестовая тема"
