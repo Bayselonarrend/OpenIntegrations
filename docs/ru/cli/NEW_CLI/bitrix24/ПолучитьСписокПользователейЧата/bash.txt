@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокПользователейЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 1548 \
+  --chat 1556 \
   --token "***"
