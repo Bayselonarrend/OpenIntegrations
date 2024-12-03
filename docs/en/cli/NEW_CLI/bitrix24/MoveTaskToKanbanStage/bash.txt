@@ -1,5 +1,5 @@
 oint bitrix24 MoveTaskToKanbanStage \
  --url "b24-ar17wx.bitrix24.by" \
- --task "3868" \
- --stage 1412 \
+ --task "3888" \
+ --stage 1420 \
  --token "***"

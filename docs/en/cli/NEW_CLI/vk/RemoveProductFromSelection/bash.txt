@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk RemoveProductFromSelection \
- --sel 137 \
- --item 10196237 \
+ --sel 135 \
+ --item 10198614 \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
