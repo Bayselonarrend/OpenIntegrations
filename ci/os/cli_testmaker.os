@@ -45,7 +45,7 @@
 	|   stages {
 	|      stage('Prepare'){
 	|         steps{
-	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.16.0.ospx; del oint-1.16.0.ospx'
+	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.16.1.ospx; del oint-1.16.1.ospx'
 	|            powershell encoding: 'UTF-8', script:'oscript -make ./src/" + Язык + "/cli/core/Classes/app.os oint.exe'          
 	|         }
 	|      }
@@ -78,7 +78,7 @@
 	|   	stages {
 	|          stage('Prepare'){
 	|             steps{
-	|                powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.16.0.ospx; del oint-1.16.0.ospx'
+	|                powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.16.1.ospx; del oint-1.16.1.ospx'
 	|                powershell encoding: 'UTF-8', script:'oscript -make ./src/" + Язык + "/cli/core/Classes/app.os oint.exe'          
 	|             }
 	|          }
