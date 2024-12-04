@@ -32,6 +32,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:ExecuteExternalCodeInCommonModule-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:MagicNumber-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -2046,6 +2047,7 @@ Function GetCommonModule(Val Name)
     Return Module;
 EndFunction
 
+// BSLLS:CognitiveComplexity-off
 Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     CurrentType = TypeOf(Value);
@@ -2081,8 +2083,12 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         Else
 
+            // BSLLS:MissingTemporaryFileDeletion-off
+
             //@skip-check missing-temporary-file-deletion
             TFN = GetTempFileName("json");
+            // BSLLS:MissingTemporaryFileDeletion-on
+
             Stream = New FileStream(TFN, FileOpenMode.Create);
 
             JSONWriter.OpenStream(Stream);
@@ -2118,6 +2124,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
     Return Value;
 
 EndFunction
+// BSLLS:CognitiveComplexity-on
 
 Function FormOption(Val Value, Val Name, Val Embedded = False)
 
