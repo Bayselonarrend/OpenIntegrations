@@ -32,6 +32,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:ExecuteExternalCodeInCommonModule-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:MagicNumber-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -2040,12 +2041,13 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-
+    
     Модуль = Вычислить(Имя);
-
+    
     Возврат Модуль;
 КонецФункции
 
+// BSLLS:CognitiveComplexity-off
 Функция ПолучитьЗначениеДляCLI(Знач Значение, Знач Вложенный = Ложь)
 
     ТекущийТип = ТипЗнч(Значение);
@@ -2081,8 +2083,12 @@
 
         Иначе
 
+			// BSLLS:MissingTemporaryFileDeletion-off
+			
             //@skip-check missing-temporary-file-deletion
             ИВТ   = ПолучитьИмяВременногоФайла("json");
+            // BSLLS:MissingTemporaryFileDeletion-on
+            
             Поток = Новый ФайловыйПоток(ИВТ, РежимОткрытияФайла.Создать);
 
             ЗаписьJSON.ОткрытьПоток(Поток);
@@ -2118,6 +2124,7 @@
     Возврат Значение;
 
 КонецФункции
+// BSLLS:CognitiveComplexity-on
 
 Функция ОформитьОпцию(Знач Значение, Знач Имя, Знач Вложенный = Ложь)
 
