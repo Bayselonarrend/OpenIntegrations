@@ -60,12 +60,14 @@
 // Structure of KeyAndValue - Basic request data structure
 Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
 
+    String_ = "String";
+
     AuthStructure = New Structure;
-    OPI_Tools.AddField("URL"      , URL      , "String", AuthStructure);
-    OPI_Tools.AddField("AccessKey", AccessKey, "String", AuthStructure);
-    OPI_Tools.AddField("SecretKey", SecretKey, "String", AuthStructure);
-    OPI_Tools.AddField("Region"   , Region   , "String", AuthStructure);
-    OPI_Tools.AddField("Service"  , Service  , "String", AuthStructure);
+    OPI_Tools.AddField("URL"      , URL      , String_, AuthStructure);
+    OPI_Tools.AddField("AccessKey", AccessKey, String_, AuthStructure);
+    OPI_Tools.AddField("SecretKey", SecretKey, String_, AuthStructure);
+    OPI_Tools.AddField("Region"   , Region   , String_, AuthStructure);
+    OPI_Tools.AddField("Service"  , Service  , String_, AuthStructure);
 
     Return AuthStructure;
 
@@ -502,13 +504,15 @@ Function ListBuckets(Val BasicData
     , Val PageToken = ""
     , Val Headers = Undefined) Export
 
+    String_ = "String";
+
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     Parameters = New Map;
-    OPI_Tools.AddField("bucket-region"     , Region   , "String", Parameters);
-    OPI_Tools.AddField("continuation-token", PageToken, "String", Parameters);
-    OPI_Tools.AddField("max-buckets"       , 250      , "String", Parameters);
-    OPI_Tools.AddField("prefix"            , Prefix   , "String", Parameters);
+    OPI_Tools.AddField("bucket-region"     , Region   , String_, Parameters);
+    OPI_Tools.AddField("continuation-token", PageToken, String_, Parameters);
+    OPI_Tools.AddField("max-buckets"       , 250      , String_, Parameters);
+    OPI_Tools.AddField("prefix"            , Prefix   , String_, Parameters);
 
     URL = GetServiceURL(BasicData_);
     URL = URL + OPI_Tools.RequestParametersToString(Parameters);
@@ -555,7 +559,8 @@ Function PutObject(Val Name
     OPI_TypeConversion.GetBinaryData(Entity);
 
     FileSize    = GetContentSize(Entity);
-    MinPartSize = FileSize / 10000;
+    Divider     = 10000;
+    MinPartSize = FileSize / Divider;
     MinPartSize = Max(MinPartSize, 5242880);
 
     If OPI_Tools.CollectionFieldExist(BasicData_, "ChunkSize") Then
@@ -1107,16 +1112,18 @@ Function ListObjects(Val Bucket
     , Val PageToken = ""
     , Val Headers = Undefined) Export
 
+    String_ = "String";
+
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
 
     Parameters = New Map;
-    OPI_Tools.AddField("list-type"         , 2        , "String", Parameters);
-    OPI_Tools.AddField("max-keys"          , 250      , "String", Parameters);
-    OPI_Tools.AddField("continuation-token", PageToken, "String", Parameters);
-    OPI_Tools.AddField("prefix"            , Prefix   , "String", Parameters);
+    OPI_Tools.AddField("list-type"         , 2        , String_, Parameters);
+    OPI_Tools.AddField("max-keys"          , 250      , String_, Parameters);
+    OPI_Tools.AddField("continuation-token", PageToken, String_, Parameters);
+    OPI_Tools.AddField("prefix"            , Prefix   , String_, Parameters);
 
     URL = URL + OPI_Tools.RequestParametersToString(Parameters);
     BasicData_.Insert("URL", URL);
@@ -1148,6 +1155,8 @@ Function ListObjectVersions(Val Bucket
     , Val Version = ""
     , Val Headers = Undefined) Export
 
+    String_ = "String";
+
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     URL = GetServiceURL(BasicData_);
@@ -1155,9 +1164,9 @@ Function ListObjectVersions(Val Bucket
     URL = URL + "?versions";
 
     Parameters = New Map;
-    OPI_Tools.AddField("max-keys"         , 250     , "String", Parameters);
-    OPI_Tools.AddField("version-id-marker", Version , "String", Parameters);
-    OPI_Tools.AddField("prefix"           , Prefix  , "String", Parameters);
+    OPI_Tools.AddField("max-keys"         , 250     , String_, Parameters);
+    OPI_Tools.AddField("version-id-marker", Version , String_, Parameters);
+    OPI_Tools.AddField("prefix"           , Prefix  , String_, Parameters);
 
     URL = URL + OPI_Tools.RequestParametersToString(Parameters, , False);
     BasicData_.Insert("URL", URL);
@@ -1301,10 +1310,11 @@ Function CreateURLSignature(Val DataStructure, Val Name, Val Method, Val Expire,
     ParametersString = OPI_Tools.RequestParametersToString(URLParameters);
     ParametersString = Right(ParametersString, StrLen(ParametersString) - 1);
     RequestTemplate  = "";
+    PartsAmount      = 6;
 
-    For N = 1 To 6 Do
+    For N = 1 To PartsAmount Do
 
-        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = 6, "", Chars.LF);
+        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
 
     EndDo;
 
@@ -1382,12 +1392,13 @@ Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
     RequestTemplate = "";
     RequestBody     = OPI_Tools.GetRequestBody(Request);
     HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
+    PartsAmount     = 6;
 
     Request.Headers.Insert("x-amz-content-sha256", Lower(ПолучитьHexСтрокуИзДвоичныхДанных(HashSum)));
 
-    For N = 1 To 6 Do
+    For N = 1 To PartsAmount Do
 
-        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = 6, "", Chars.LF);
+        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
 
     EndDo;
 
@@ -1432,14 +1443,15 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     StringTemplate = "";
     Algorithm      = "AWS4-HMAC-SHA256";
     DateISO        = OPI_Tools.ISOTimestamp(CurrentDate);
+    PartsAmount    = 4;
 
     CanonicalRequest = ПолучитьДвоичныеДанныеИзСтроки(CanonicalRequest);
     CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
     CanonicalRequest = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(CanonicalRequest));
 
-    For N = 1 To 4 Do
+    For N = 1 To PartsAmount Do
 
-        StringTemplate = StringTemplate + "%" + String(N) + ?(N = 4, "", Chars.LF);
+        StringTemplate = StringTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
 
     EndDo;
 
@@ -1658,6 +1670,7 @@ Function GetObjectInChunks(Val BasicData
     ChunkSize  = Sizes["chunk"];
     HeaderTemplate = "bytes=%1-%2";
     ChunkStart = 0;
+    Attempts   = 3;
 
     HeadersArray = New Array;
 
@@ -1684,17 +1697,12 @@ Function GetObjectInChunks(Val BasicData
 
     EndIf;
 
-    If ValueIsFilled(SavePath) Then
-        StreamOfFile = New FileStream(SavePath, FileOpenMode.Create);
-    Else
-        StreamOfFile = New MemoryStream();
-    EndIf;
-
-    FileWriter = New DataWriter(StreamOfFile);
+    StreamOfFile = OPI_Tools.CreateStream(SavePath);
+    FileWriter   = New DataWriter(StreamOfFile);
 
     For Each CurrentSet In HeadersArray Do
 
-        For N = 1 To 3 Do
+        For N = 1 To Attempts Do
 
             Try
 
@@ -1719,13 +1727,13 @@ Function GetObjectInChunks(Val BasicData
 
             Except
 
-                If N = 3 Then
+                If N = Attempts Then
 
                     Message(ErrorDescription());
                     Raise "Failed to retrieve the file!";
 
                 Else
-                    Message("Chunk upload error " + String(N) + "/3");
+                    Message("Chunk upload error " + String(N) + "/" + String(Attempts));
                     Continue;
                 EndIf;
 
@@ -1737,13 +1745,9 @@ Function GetObjectInChunks(Val BasicData
 
     FileWriter.Close();
 
-    If TypeOf(StreamOfFile) = Type("MemoryStream") Then
-        Return StreamOfFile.CloseAndGetBinaryData();
-    Else
-        StreamOfFile.Close();
-        ResponseFile        = New File(SavePath);
-        Return ResponseFile.FullName;
-    EndIf;
+    ReceivedObject = CloseStreamReceiveData(StreamOfFile, SavePath);
+
+    Return ReceivedObject;
 
 EndFunction
 
@@ -1781,7 +1785,6 @@ Function UploadObjectInParts(Val Name
     BytesRead  = 0;
     PartNumber = 1;
 
-
     If Not OPI_Tools.CollectionFieldExist(UploadStart, FieldID, UploadID) Then
         Return UploadStart;
     EndIf;
@@ -1790,13 +1793,16 @@ Function UploadObjectInParts(Val Name
     SourceStream = DataReader.SourceStream();
     Response     = New Map;
     TagsArray    = New Array;
-    Error        = False;
+
+    Error           = False;
+    Attempts        = 3;
+    LastSuccessCode = 299;
 
     WHile BytesRead < TotalSize Do
 
-        Try
+        For N = 1 To Attempts Do
 
-            For N = 1 To 3 Do
+            Try
 
                 Result      = DataReader.Read(ChunkSize);
                 CurrentData = Result.GetBinaryData();
@@ -1812,7 +1818,7 @@ Function UploadObjectInParts(Val Name
                     , PartNumber
                     , CurrentData);
 
-                If Response["status"] > 299 Then
+                If Response["status"] > LastSuccessCode Then
                     Raise "The server returned the status " + String(Response["status"]);
                 EndIf;
 
@@ -1832,27 +1838,27 @@ Function UploadObjectInParts(Val Name
 
                 Break;
 
-            EndDo;
+            Except
 
-        Except
+                If N = Attempts Then
 
-            If N = 3 Then
+                    Message(OPI_Tools.JSONString(Response));
+                    Message("Failed to upload part of the file! Abort upload wiht ID:" + UploadID + "...");
 
-                Message(OPI_Tools.JSONString(Response));
-                Message("Failed to upload part of the file! Abort upload wiht ID:" + UploadID + "...");
+                    Error = True;
+                    Break;
 
-                Error = True;
-                Break;
+                Else
 
-            Else
+                    Message("Chunk upload error " + String(N) + "/" + String(Attempts));
+                    Message(ErrorDescription());
+                    Continue;
 
-                Message("Chunk upload error " + String(N) + "/3");
-                Message(ErrorDescription());
-                Continue;
+                EndIf;
 
-            EndIf;
+            EndTry;
 
-        EndTry;
+        EndDo;
 
         PartNumber = PartNumber + 1;
 
@@ -1870,10 +1876,11 @@ EndFunction
 
 Function FormResponse(Val Response, Val ExpectedBinary = False)
 
-    Status  = Response.StatusCode;
-    Headers = Response.Headers;
+    Status          = Response.StatusCode;
+    Headers         = Response.Headers;
+    LastSuccessCode = 299;
 
-    If Not ExpectedBinary Or Status > 299 Then
+    If Not ExpectedBinary Or Status > LastSuccessCode Then
 
         ResponseData = New Structure;
         BodyData     = New Structure;
@@ -1909,12 +1916,14 @@ Function FormBucketURL(Val URL, Val Name, Val Directory)
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetBoolean(Directory);
 
+    Indication = "://";
+
     If Directory Then
         URL = URL + Name;
     Else
 
-        If StrFind(URL, "://") Then
-            URL = StrReplace(URL, "://", "://" + Name + ".");
+        If StrFind(URL, Indication) Then
+            URL = StrReplace(URL, Indication, Indication + Name + ".");
         Else
             URL = Name + "." + URL;
         EndIf;
@@ -1991,6 +2000,18 @@ Function GetContentSize(Val Entity)
 
         Return Entity.Size();
 
+    EndIf;
+
+EndFunction
+
+Function CloseStreamReceiveData(Val StreamOfFile, Val SavePath)
+
+    If TypeOf(StreamOfFile) = Type("MemoryStream") Then
+        Return StreamOfFile.CloseAndGetBinaryData();
+    Else
+        StreamOfFile.Close();
+        ResponseFile        = New File(SavePath);
+        Return ResponseFile.FullName;
     EndIf;
 
 EndFunction

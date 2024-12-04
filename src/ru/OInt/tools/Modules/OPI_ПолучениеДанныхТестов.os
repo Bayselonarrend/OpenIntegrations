@@ -2041,9 +2041,9 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-    
+
     Модуль = Вычислить(Имя);
-    
+
     Возврат Модуль;
 КонецФункции
 
@@ -2083,12 +2083,12 @@
 
         Иначе
 
-			// BSLLS:MissingTemporaryFileDeletion-off
-			
+            // BSLLS:MissingTemporaryFileDeletion-off
+
             //@skip-check missing-temporary-file-deletion
             ИВТ   = ПолучитьИмяВременногоФайла("json");
             // BSLLS:MissingTemporaryFileDeletion-on
-            
+
             Поток = Новый ФайловыйПоток(ИВТ, РежимОткрытияФайла.Создать);
 
             ЗаписьJSON.ОткрытьПоток(Поток);
