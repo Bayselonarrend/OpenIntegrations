@@ -191,7 +191,11 @@ Function CreateRequest(Val Address, Val AdditionalHeaders = "", Val DataType = "
 
 EndFunction
 
-Function CreateConnection(Val Host, Val Safe = True, Val User = "", Val Password = "", Val Port = "") Export
+Function CreateConnection(Val Host
+    , Val Safe     = True
+    , Val User     = ""
+    , Val Password = ""
+    , Val Port     = "") Export
 
     If Not ValueIsFilled(Port) Then
         Port = ?(Safe, 443, 80);
@@ -408,7 +412,10 @@ Function JsonToStructure(Val Text) Export
 
 EndFunction
 
-Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
+Function JSONString(Val Data
+    , Val Escaping     = "None"
+    , Val LineBreaks   = True
+    , Val DoubleQuotes = True) Export
 
     LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
 
@@ -822,6 +829,18 @@ Function GetRequestBody(Val Request) Export
     EndIf;
 
     Return Body;
+
+EndFunction
+
+Function CreateStream(Val FilePath = Undefined) Export
+
+    If ValueIsFilled(FilePath) Then
+        StreamOfFile = New FileStream(FilePath, FileOpenMode.Create);
+    Else
+        StreamOfFile = New MemoryStream();
+    EndIf;
+
+    Return StreamOfFile;
 
 EndFunction
 
