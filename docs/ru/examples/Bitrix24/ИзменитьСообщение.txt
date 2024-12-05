@@ -6,7 +6,7 @@
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "91b54d67006e9f06006b12e400000001000...";
+    Токен       = "f3925167006e9f06006b12e400000001000...";
     IDСообщения = "27746";
 
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
