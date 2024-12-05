@@ -168,6 +168,57 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "cdek";
     NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetRegionsList";
+    NewLine.МетодПоиска = "GETREGIONSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets the list of available regions";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetRegionsList";
+    NewLine.МетодПоиска = "GETREGIONSLIST";
+    NewLine.Параметр    = "--countries";
+    NewLine.Описание    = "Array of country codes in ISO_31661_alpha2 format for selection (optional, def. val. - Empty value)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetRegionsList";
+    NewLine.МетодПоиска = "GETREGIONSLIST";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Result page (optional, def. val. - Empty value)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetRegionsList";
+    NewLine.МетодПоиска = "GETREGIONSLIST";
+    NewLine.Параметр    = "--lang";
+    NewLine.Описание    = "Language: rus, eng, zho (optional, def. val. - rus)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
+    NewLine.Метод       = "GetRegionsList";
+    NewLine.МетодПоиска = "GETREGIONSLIST";
+    NewLine.Параметр    = "--testapi";
+    NewLine.Описание    = "Flag to use test API for requests (optional, def. val. - No)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "cdek";
+    NewLine.Модуль      = "OPI_CDEK";
     NewLine.Метод       = "GetOfficeFilterDescription";
     NewLine.МетодПоиска = "GETOFFICEFILTERDESCRIPTION";
     NewLine.Параметр    = "--empty";
