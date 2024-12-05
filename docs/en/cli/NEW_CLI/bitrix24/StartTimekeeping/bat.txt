@@ -1,6 +1,6 @@
 oint bitrix24 StartTimekeeping ^
  --url "b24-ar17wx.bitrix24.by" ^
  --userid 1 ^
- --time "2024-12-03T09:40:30.0246159" ^
+ --time "2024-12-05T19:00:09.4890355" ^
  --report "Late" ^
  --token "***"

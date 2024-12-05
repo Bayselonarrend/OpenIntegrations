@@ -2,4 +2,4 @@ oint telegram SendAudio \
  --token "***" \
  --chat "@testsichee" \
  --text "Строковое значение" \
- --audio "C:\Users\Administrator\AppData\Local\Temp\sqsb3n22xyx.mp3"
+ --audio "C:\Users\Administrator\AppData\Local\Temp\hbl2kar5mws.mp3"
