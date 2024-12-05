@@ -1,5 +1,5 @@
 oint gdrive CopyObject \
  --token "***" \
- --object "1xUz0AgAbI6zGLSzhf1sOH_9P8UE5D6_M" \
+ --object "12od7r4UeULa3hKAXOSySDEEeilhKpJWP" \
  --title "CopiedFile.jpeg" \
  --catalog "root"

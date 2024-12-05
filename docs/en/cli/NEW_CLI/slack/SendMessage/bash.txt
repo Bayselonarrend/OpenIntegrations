@@ -2,4 +2,4 @@ oint slack SendMessage \
  --token "***" \
  --channel "C06UFNUTKUL" \
  --text "Sheduled message" \
- --date "2024-12-04T10:27:05.7662265"
+ --date "2024-12-06T19:48:07.6348704"

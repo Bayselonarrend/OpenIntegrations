@@ -1,3 +1,3 @@
 oint slack GetChannelUserList \
  --token "***" \
- --channel "C083ADC7RMK"
+ --channel "C083XGHNADA"
