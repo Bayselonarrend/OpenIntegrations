@@ -4,7 +4,7 @@
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "91b54d67006e9f06006b12e400000001000...";
+    Token  = "f3925167006e9f06006b12e400000001000...";
     TaskID = "3834";
 
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID, Token);

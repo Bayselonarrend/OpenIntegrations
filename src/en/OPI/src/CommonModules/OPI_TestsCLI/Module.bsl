@@ -2005,6 +2005,7 @@ Procedure CLI_CdekAPI_CommonMethods() Export
     CLI_CDEK_GetDeliveryCashTransfers(TestParameters);
     CLI_CDEK_GetOfficeFilterDescription(TestParameters);
     CLI_CDEK_GetOfficeList(TestParameters);
+    CLI_CDEK_GetRegionsList(TestParameters);
 
 EndProcedure
 
@@ -16375,6 +16376,21 @@ Procedure CLI_CDEK_GetOfficeList(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeList", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetOfficeList", "CDEK");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+Procedure CLI_CDEK_GetRegionsList(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("testapi" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetRegionsList", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRegionsList", "CDEK");
     OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure

@@ -182,6 +182,41 @@ Function GetOfficeList(Val Token, Val Filter = "", Val TestAPI = False) Export
 
 EndFunction
 
+// Get regions list
+// Gets the list of available regions
+//
+// Note
+// Method at API documentation: [List of Regions](@api-docs.cdek.ru/33829453.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// Countrues - Array Of String - Array of country codes in ISO_31661_alpha2 format for selection - countries
+// Page - Number - Result page - page
+// Lang - String - Language: rus, eng, zho - lang
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetRegionsList(Val Token
+    , Val Countrues = Undefined
+    , Val Page = 0
+    , Val Lang = "rus"
+    , Val TestAPI = False) Export
+
+    URL        = FormURL("/location/regions", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("country_codes", Countrues , "Array" , Parameters);
+    OPI_Tools.AddField("page"         , Page      , "Number", Parameters);
+    OPI_Tools.AddField("lang"         , Lang      , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get office filter description
 // Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function
 //
@@ -1276,7 +1311,7 @@ Function FormURL(Val Method, Val TestAPI)
     If TestAPI Then
         URL = "https://api.edu.cdek.ru/v2";
     Else
-        URL = "https://api.cdek.ru";
+        URL = "https://api.cdek.ru/v2";
     EndIf;
 
     URL = URL + Method;
