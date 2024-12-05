@@ -203,13 +203,13 @@ Function GetRegionsList(Val Token
     , Val Lang = "rus"
     , Val TestAPI = False) Export
 
-    URL        = FormURL("/location/regions", TestAPI);
+    URL     = FormURL("/location/regions", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("country_codes", Countrues , "Array" , Parameters);
-    OPI_Tools.AddField("page"         , Page      , "Number", Parameters);
-    OPI_Tools.AddField("lang"         , Lang      , "String", Parameters);
+    OPI_Tools.AddField("country_codes", Countrues , "Array"  , Parameters);
+    OPI_Tools.AddField("page"         , Page      , "Number" , Parameters);
+    OPI_Tools.AddField("lang"         , Lang      , "String" , Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters, Headers);
 
