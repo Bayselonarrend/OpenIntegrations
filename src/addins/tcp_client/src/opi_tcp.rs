@@ -1,12 +1,14 @@
 use addin1c::{name, ParamValue, RawAddin, Tm, Variant};
-use std::io::{Read, Write};
+use std::io::{self, Read, Write};
 use std::net::{TcpStream, ToSocketAddrs};
 use std::time::Duration;
+use native_tls::{TlsConnector, TlsStream};
 
 // Свойства объекта
 const PROPS: &[&[u16]] = &[
     name!("Адрес"),
-    name!("Порт")
+    name!("Порт"),
+    name!("SSL")
 
 ];
 
@@ -19,6 +21,7 @@ const METHODS: &[&[u16]] = &[
 pub struct OpiTcp {
     address: String,
     port: i32,
+    ssl: bool
 }
 
 // Конструктор
@@ -27,6 +30,7 @@ impl OpiTcp {
         OpiTcp {
             address: String::from(""),
             port: 0,
+            ssl: false
         }
     }
 }
@@ -62,6 +66,7 @@ impl RawAddin for OpiTcp {
                 return val.set_str(s.as_slice());
             }
             1 => val.set_i32(self.port),
+            2 => val.set_bool(self.ssl),
             _ => return false,
         };
         true
@@ -84,6 +89,13 @@ impl RawAddin for OpiTcp {
                 }
                 _ => false,
             },
+            2 => match val {
+                ParamValue::Bool(x) =>{
+                    self.ssl = *x;
+                    true
+                }
+                _ => false,
+            }
             _ => false,
         }
     }
@@ -96,6 +108,7 @@ impl RawAddin for OpiTcp {
         match num {
             0 => true,
             1 => true,
+            2 => true,
             _ => false,
         }
     }
@@ -131,7 +144,6 @@ impl RawAddin for OpiTcp {
     fn has_ret_val(&mut self, num: usize) -> bool {
         match num {
             0 => true,
-            1 => true,
             _ => false,
         }
     }
@@ -169,67 +181,123 @@ impl RawAddin for OpiTcp {
                 };
 
                 // Вызываем send_message с address, port, извлечённым message и timeout
-                send_message(&self.address, self.port, &message, timeout as u64, ret_value)
+                send_message(&self.address, self.port, &message, timeout as u64, self.ssl, ret_value)
             },
             _ => false,
         }
     }
 }
 
-fn send_message(
+fn to_utf16(input: &str) -> Vec<u16> {
+    input.encode_utf16().collect()
+}
+
+pub fn send_message(
     address: &str,
     port: i32,
-    message: &dyn AsRef<[u8]>, // Используем trait, чтобы поддерживать как строку, так и бинарные данные
+    message: &dyn AsRef<[u8]>,
     timeout_secs: u64,
-    ret_value: &mut Variant
+    use_ssl: bool,
+    ret_value: &mut Variant,
 ) -> bool {
-    let server_addr = format!("{}:{}", address, port);
+    let addr = format!("{}:{}", address, port);
 
-    // Устанавливаем таймауты для подключения и операций чтения/записи
-    let timeout = Duration::new(timeout_secs, 0); // Таймаут в секундах
+    // Устанавливаем таймаут
+    let timeout = Duration::from_secs(timeout_secs);
 
-    // Проверка доступности порта на сервере с таймаутом
-    match TcpStream::connect_timeout(&server_addr.to_socket_addrs().unwrap().next().unwrap(), timeout) {
-        Ok(mut stream) => {
-            // Устанавливаем таймауты на операции с соединением
-            stream.set_read_timeout(Some(timeout)).unwrap();
-            stream.set_write_timeout(Some(timeout)).unwrap();
+    // Создаем TCP соединение
+    let stream = TcpStream::connect_timeout(&addr.to_socket_addrs().unwrap().next().unwrap(), timeout);
+    let stream = match stream {
+        Ok(s) => s,
+        Err(e) => {
+            ret_value.set_str(&to_utf16(&format!("Failed to connect: {}", e)));
+            return true;
+        }
+    };
 
-            // Отправляем сообщение с таймаутом
-            match stream.write_all(message.as_ref()) {
-                Ok(_) => {
-                    let mut buffer = Vec::new();
-                    match stream.read_to_end(&mut buffer) {
-                        Ok(_) => {
-                            // Ответ получен
-                            match String::from_utf8(buffer) {
-                                Ok(response) => {
-                                    ret_value.set_str(response.encode_utf16().collect::<Vec<u16>>().as_slice());
-                                    true
-                                }
-                                Err(_) => {
-                                    ret_value.set_str("Неко UTF-8 response".encode_utf16().collect::<Vec<u16>>().as_slice());
-                                    true
-                                }
-                            }
-                        }
-                        Err(_) => {
-                            // Ошибка чтения ответа (таймаут или другая ошибка)
-                            ret_value.set_str("Server did not respond in time".encode_utf16().collect::<Vec<u16>>().as_slice());
-                            true
-                        }
-                    }
-                }
-                Err(_) => {
-                    ret_value.set_str("Failed to send message".encode_utf16().collect::<Vec<u16>>().as_slice());
-                    true
-                }
+    // Применяем таймауты к потокам чтения и записи
+    if let Err(e) = stream.set_read_timeout(Some(timeout)) {
+        ret_value.set_str(&to_utf16(&format!("Failed to set read timeout: {}", e)));
+        return true;
+    }
+    if let Err(e) = stream.set_write_timeout(Some(timeout)) {
+        ret_value.set_str(&to_utf16(&format!("Failed to set write timeout: {}", e)));
+        return true;
+    }
+
+    // Обрабатываем SSL при необходимости
+    let mut stream = if use_ssl {
+        let connector = match TlsConnector::new() {
+            Ok(c) => c,
+            Err(e) => {
+                ret_value.set_str(&to_utf16(&format!("Failed to create TLS connector: {}", e)));
+                return true;
+            }
+        };
+        match connector.connect(address, stream) {
+            Ok(s) => StreamWrapper::Secure(s),
+            Err(e) => {
+                ret_value.set_str(&to_utf16(&format!("Failed to establish SSL connection: {}", e)));
+                return true;
             }
         }
-        Err(_) => {
-            // Ошибка подключения (таймаут или сервер не доступен)
-            ret_value.set_str("Server is unreachable or connection timeout".encode_utf16().collect::<Vec<u16>>().as_slice());
+    } else {
+        StreamWrapper::Plain(stream)
+    };
+
+    // Отправляем сообщение
+    if let Err(e) = stream.write_all(message.as_ref()) {
+        ret_value.set_str(&to_utf16(&format!("Failed to send message: {}", e)));
+        return true;
+    }
+
+    // Читаем ответ
+    let mut response = Vec::new();
+    match stream.read_to_end(&mut response) {
+        Ok(_) => {
+            match String::from_utf8(response) {
+                Ok(s) => {
+                    let _ = ret_value.set_str(&to_utf16(&s));
+                }
+                Err(e) => {
+                    let _ = ret_value.set_str(&to_utf16(&format!("Failed to decode response: {}", e)));
+                }
+            }
             true
+        }
+        Err(e) => {
+            ret_value.set_str(&to_utf16(&format!("Failed to read response: {}", e)));
+            true
+        }
+    }
+}
+
+enum StreamWrapper {
+    Plain(TcpStream),
+    Secure(TlsStream<TcpStream>),
+}
+
+impl Read for StreamWrapper {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        match self {
+            StreamWrapper::Plain(stream) => stream.read(buf),
+            StreamWrapper::Secure(stream) => stream.read(buf),
+        }
+    }
+}
+
+impl Write for StreamWrapper {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        match self {
+            StreamWrapper::Plain(stream) => stream.write(buf),
+            StreamWrapper::Secure(stream) => stream.write(buf),
+        }
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        match self {
+            StreamWrapper::Plain(stream) => stream.flush(),
+            StreamWrapper::Secure(stream) => stream.flush(),
         }
     }
 }
