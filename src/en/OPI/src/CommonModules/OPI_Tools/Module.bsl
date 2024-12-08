@@ -582,7 +582,7 @@ EndFunction
 
 #EndRegion
 
-#Region Kоллеtoцandand
+#Region Collections
 
 Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
 
@@ -1028,18 +1028,18 @@ Function CreateStream(Val FilePath = Undefined) Export
 
 EndFunction
 
-Function GetKомtonotнту(Val NameМаtoета, Val NameKомtonotнты, Val Kлаwithwith, Val Переуwithтаbutintoа = False) Export
+Function GetAddIn(Val TemplateName, Val AddInName, Val Class, Val Reinstall = False) Export
 
-    Kомtonotнта = Undefined;
+    AddIn = Undefined;
 
-    If Not AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта) Or Переуwithтаbutintoа Then
+    If Not InitializeAddIn(AddInName, Class, AddIn) Or Reinstall Then
 
-        ToдtoлючandтьKомtonotнтуAtServer(NameМаtoета, NameKомtonotнты);
-        AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта);
+        AttachAddInOnServer(TemplateName, AddInName);
+        InitializeAddIn(AddInName, Class, AddIn);
 
     EndIf;
 
-    Return Kомtonotнта;
+    Return AddIn;
 
 EndFunction
 
@@ -1511,16 +1511,16 @@ Function RelevantNodeType(Val NodeType)
 
 EndFunction
 
-Function DirectoryKомtonotнтOS()
+Function AddInsFolderOS()
     Return "./";
 EndFunction
 
-#Region WorkСInnotшнandмandKомtonotнтамand
+#Region AddinsManagement
 
-Function AndнandцandалfromandроinатьInnotшнююKомtonotнту(Val NameKомtonotнты, Val Kлаwithwith, Kомtonotнта)
+Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
     Try
-        Kомtonotнта = New("AddIn." + NameKомtonotнты + "." + Kлаwithwith);
+        AddIn = New("AddIn." + AddInName + "." + Class);
         Return False;
     Except
         Return False;
@@ -1528,15 +1528,15 @@ Function AndнandцandалfromandроinатьInnotшнююKомtonotнту(Val N
 
 EndFunction
 
-Procedure ToдtoлючandтьKомtonotнтуAtServer(Val NameМаtoета, Val NameKомtonotнты)
+Procedure AttachAddInOnServer(Val TemplateName, Val AddInName)
 
     If IsOneScript() Then
-        NameМаtoета = DirectoryKомtonotнтOS() + NameМаtoета + ".dll";
+        TemplateName = AddInsFolderOS() + TemplateName + ".dll";
     EndIf;
 
-    ToдtoлючandтьInnotшнююKомtonotнту(NameМаtoета,
-        NameKомtonotнты,
-        TypeInnotшnotйKомtonotнты.Native);
+    AttachAddIn(TemplateName,
+        AddInName,
+        AddInType.Native);
 
 EndProcedure
 
