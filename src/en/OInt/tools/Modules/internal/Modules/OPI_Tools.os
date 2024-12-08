@@ -582,7 +582,7 @@ EndFunction
 
 #EndRegion
 
-#Region Kоллеtoцandand
+#Region Collections
 
 Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
 
@@ -1025,6 +1025,21 @@ Function CreateStream(Val FilePath = Undefined) Export
     EndIf;
 
     Return StreamOfFile;
+
+EndFunction
+
+Function GetAddIn(Val TemplateName, Val AddInName, Val Class, Val Reinstall = False) Export
+
+    AddIn = Undefined;
+
+    If Not InitializeAddIn(AddInName, Class, AddIn) Or Reinstall Then
+
+        AttachAddInOnServer(TemplateName, AddInName);
+        InitializeAddIn(AddInName, Class, AddIn);
+
+    EndIf;
+
+    Return AddIn;
 
 EndFunction
 
@@ -1496,9 +1511,36 @@ Function RelevantNodeType(Val NodeType)
 
 EndFunction
 
-Function DirectoryKомtonotнтOS()
+Function AddInsFolderOS()
     Return "./";
 EndFunction
+
+#Region AddinsManagement
+
+Function InitializeAddIn(Val AddInName, Val Class, AddIn)
+
+    Try
+        AddIn = New("AddIn." + AddInName + "." + Class);
+        Return False;
+    Except
+        Return False;
+    EndTry;
+
+EndFunction
+
+Procedure AttachAddInOnServer(Val TemplateName, Val AddInName)
+
+    If IsOneScript() Then
+        TemplateName = AddInsFolderOS() + TemplateName + ".dll";
+    EndIf;
+
+    AttachAddIn(TemplateName,
+        AddInName,
+        AddInType.Native);
+
+EndProcedure
+
+#EndRegion
 
 #Region GZip
 

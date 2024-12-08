@@ -3,7 +3,7 @@
     FieldsStructure.Insert("CURRENCY_ID" , "RUB");
     FieldsStructure.Insert("OPPORTUNITY" , 50000);
 
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
     DealID = "1864";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);

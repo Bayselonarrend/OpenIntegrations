@@ -1,4 +1,4 @@
-﻿    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+﻿    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
     ChatID      = "1538";
     File        = "https://api.athenaeum.digital/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";

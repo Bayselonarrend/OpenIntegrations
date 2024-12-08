@@ -1,4 +1,4 @@
-﻿    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+﻿    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
     Email = String(New UUID) + "@exepmple.org";
     // The full structure can be obtained with the function GetUserFieldsStructure
 
