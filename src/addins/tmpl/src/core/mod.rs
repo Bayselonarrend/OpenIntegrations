@@ -19,11 +19,13 @@ fn get_params_amount(num: usize) -> usize {
     }
 }
 
-fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant], ret_value: &mut Variant, ) -> bool {
-    match num {
-        0 => methods::send_message(&obj.field1, ret_value),
-        _ => false,
+fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
+     match num {
+        0 => Box::new(methods::send_message(&obj, &params)),
+        _ => Box::new(false),
     }
+
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -109,7 +111,7 @@ impl RawAddin for AddIn {
     fn get_param_def_value(&mut self, _method_num: usize, _param_num: usize, _value: Variant, ) -> bool { true }
     fn has_ret_val(&mut self, num: usize) -> bool { true }
     fn call_as_proc(&mut self, _num: usize, _params: &mut [Variant]) -> bool { false }
-    fn call_as_func(&mut self, num: usize, params: &mut [Variant], ret_value: &mut Variant, ) -> bool { cal_func(self, num, params, ret_value) }
+    fn call_as_func(&mut self, num: usize, params: &mut [Variant], ret_value: &mut Variant, ) -> bool { cal_func(self, num, params).get_value(ret_value) }
 
 }
 

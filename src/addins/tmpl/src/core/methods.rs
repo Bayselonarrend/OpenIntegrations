@@ -1,11 +1,16 @@
-use addin1c::Variant;
+use addin1c::{Variant, ParamValue};
+use crate::core::AddIn;
 
-pub fn send_message(
-    field1: &str,
-    ret_value: &mut Variant,
-) -> bool {
+pub fn send_message(obj: &AddIn, params: &[Variant]) -> String {
 
-    let utf16_vec: Vec<u16> = field1.encode_utf16().collect();
-    ret_value.set_str(&utf16_vec);
-    true
+    let field1 = &obj.field1;
+
+
+    if let ParamValue::Str(x) = &params[0].get() {
+        let pref = String::from_utf16(*x).unwrap();
+        pref + field1
+    } else {
+        "Param error".to_string()
+    }
+
 }
