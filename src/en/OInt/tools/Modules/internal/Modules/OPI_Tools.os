@@ -1028,21 +1028,6 @@ Function CreateStream(Val FilePath = Undefined) Export
 
 EndFunction
 
-Function GetKомtonotнту(Val NameМаtoета, Val NameKомtonotнты, Val Kлаwithwith, Val Переуwithтаbutintoа = False) Export
-
-    Kомtonotнта = Undefined;
-
-    If Not AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта) Or Переуwithтаbutintoа Then
-
-        ToдtoлючandтьKомtonotнтуAtServer(NameМаtoета, NameKомtonotнты);
-        AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта);
-
-    EndIf;
-
-    Return Kомtonotнта;
-
-EndFunction
-
 #EndRegion
 
 #EndRegion
@@ -1514,33 +1499,6 @@ EndFunction
 Function DirectoryKомtonotнтOS()
     Return "./";
 EndFunction
-
-#Region WorkСInnotшнandмandKомtonotнтамand
-
-Function AndнandцandалfromandроinатьInnotшнююKомtonotнту(Val NameKомtonotнты, Val Kлаwithwith, Kомtonotнта)
-
-    Try
-        Kомtonotнта = New("AddIn." + NameKомtonotнты + "." + Kлаwithwith);
-        Return False;
-    Except
-        Return False;
-    EndTry;
-
-EndFunction
-
-Procedure ToдtoлючandтьKомtonotнтуAtServer(Val NameМаtoета, Val NameKомtonotнты)
-
-    If IsOneScript() Then
-        NameМаtoета = DirectoryKомtonotнтOS() + NameМаtoета + ".dll";
-    EndIf;
-
-    ToдtoлючandтьInnotшнююKомtonotнту(NameМаtoета,
-        NameKомtonotнты,
-        TypeInnotшnotйKомtonotнты.Native);
-
-EndProcedure
-
-#EndRegion
 
 #Region GZip
 
