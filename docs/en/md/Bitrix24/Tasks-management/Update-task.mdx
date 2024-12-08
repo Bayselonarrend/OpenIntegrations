@@ -38,7 +38,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
     TaskData.Insert("DESCRIPTION", "Another task description");
     TaskData.Insert("PRIORITY"   , "1");
 
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
     TaskID = "3832";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
@@ -59,7 +59,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
             
             oint bitrix24 UpdateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "3884" \
+             --task "3944" \
              --fields "{'TITLE':'Another task title','DESCRIPTION':'Another task description','PRIORITY':'1'}" \
              --token "***"
         ```
@@ -71,7 +71,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
             
             oint bitrix24 UpdateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "3884" ^
+             --task "3944" ^
              --fields "{'TITLE':'Another task title','DESCRIPTION':'Another task description','PRIORITY':'1'}" ^
              --token "***"
         ```

@@ -1,7 +1,7 @@
 ﻿    TaskID  = "3838";
     StageID = "1398";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 

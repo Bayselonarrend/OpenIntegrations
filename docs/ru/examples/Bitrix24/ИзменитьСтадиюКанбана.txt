@@ -2,7 +2,7 @@
     Цвет         = "000000";
     IDСтадии     = "1398";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Результат = OPI_Bitrix24.ИзменитьСтадиюКанбана(URL, Наименование, IDСтадии, Цвет);
 
