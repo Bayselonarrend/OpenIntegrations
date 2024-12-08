@@ -44,7 +44,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
     TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
     TaskData.Insert("RESPONSIBLE_ID", Responsible);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/yg2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
@@ -63,7 +63,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
             
             oint bitrix24 CreateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-12-04T10:35:21.7879905Z','RESPONSIBLE_ID':1}" \
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-12-06T19:56:19.2162946Z','RESPONSIBLE_ID':1}" \
              --token "***"
         ```
     </TabItem>
@@ -74,7 +74,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
             
             oint bitrix24 CreateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-12-04T10:35:21.7879905Z','RESPONSIBLE_ID':1}" ^
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'2024-12-06T19:56:19.2162946Z','RESPONSIBLE_ID':1}" ^
              --token "***"
         ```
     </TabItem>
