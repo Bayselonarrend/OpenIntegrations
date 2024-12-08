@@ -308,12 +308,6 @@ Function CreateMultipartRelatedRequest(Val Address, Val Files, Val JSON, Val Add
 
 EndFunction
 
-#EndRegion
-
-#EndRegion
-
-#Region Service
-
 Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False, Val Start = True) Export
 
     If Parameters.Count() = 0 Then
@@ -345,6 +339,28 @@ Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False,
     ParameterString = Left(ParameterString, StrLen(ParameterString) - 1);
 
     Return ParameterString;
+
+EndFunction
+
+Function RequestParametersToMap(Val ParameterString) Export
+
+    ReturnMapping  = New Map;
+    NumberOfParts  = 2;
+    ParameterArray = StrSplit(ParameterString, "&", False);
+
+    For Each Parameter In ParameterArray Do
+
+        KeyValueArray = StrSplit(Parameter, "=");
+
+        If KeyValueArray.Count() = NumberOfParts Then
+            ReturnMapping.Insert(KeyValueArray[0], KeyValueArray[1]);
+        Else
+            ReturnMapping.Insert(KeyValueArray[0], Undefined);
+        EndIf;
+
+    EndDo;
+
+    Return ReturnMapping;
 
 EndFunction
 
@@ -394,6 +410,26 @@ Function SplitURL(Val URL) Export
 
 EndFunction
 
+Function GetRequestBody(Val Request) Export
+
+    Body = Request.ПолучитьТелоКакДвоичныеДанные();
+
+    If Body = Undefined Then
+
+        Body = ПолучитьДвоичныеДанныеИзСтроки("");
+
+    EndIf;
+
+    Return Body;
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region JSON
+
 Function JsonToStructure(Val Text) Export
 
     If Not ValueIsFilled(Text) Then
@@ -442,10 +478,6 @@ Function JSONString(Val Data
 
 EndFunction
 
-Function NumberToString(Val Number) Export
-    Return StrReplace(String(Number), Chars.NBSp, "");
-EndFunction
-
 Function ReadJSONFile(Val Path) Export
 
     JSONReader = New JSONReader;
@@ -458,97 +490,228 @@ Function ReadJSONFile(Val Path) Export
 
 EndFunction
 
-Function RequestParametersToMap(Val ParameterString) Export
+#EndRegion
 
-    ReturnMapping  = New Map;
-    NumberOfParts  = 2;
-    ParameterArray = StrSplit(ParameterString, "&", False);
+#Region XML
 
-    For Each Parameter In ParameterArray Do
+Function ProcessXML(XML) Export
 
-        KeyValueArray = StrSplit(Parameter, "=");
+    XMLInitialProcessing(XML);
 
-        If KeyValueArray.Count() = NumberOfParts Then
-            ReturnMapping.Insert(KeyValueArray[0], KeyValueArray[1]);
+    ReturnValue = New Map;
+
+    WHile XML.Read() Do
+
+        NodeType = XML.NodeType;
+
+        If Not RelevantNodeType(NodeType) Then
+            Continue;
+        EndIf;
+
+        NodeName = XML.Name;
+
+        ExistingValue = ReturnValue.Get(NodeName);
+
+        If NodeType = XMLNodeType.StartElement Then
+
+            If ExistingValue = Undefined Then
+                ReturnValue.Insert(NodeName, ProcessXML(XML));
+            Else
+                ValueToArray(ExistingValue);
+                ExistingValue.Add(ProcessXML(XML));
+                ReturnValue.Insert(NodeName, ExistingValue);
+            EndIf;
+
         Else
-            ReturnMapping.Insert(KeyValueArray[0], Undefined);
+
+            If Not NodeType = XMLNodeType.EndElement Then
+                ReturnValue = XML.Value;
+                XML.Read();
+            EndIf;
+
+            Break;
+
         EndIf;
 
     EndDo;
 
-    Return ReturnMapping;
+    Return ReturnValue;
 
 EndFunction
 
-Function GetCurrentDate() Export
-    Return ToLocalTime(CurrentUniversalDate());
-EndFunction
+Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
-Function UNIXTime(Val Date) Export
+    Start = StartFormingXML(Value, XMLWriter);
 
-    OTD  = New TypeDescription("Date");
-    Date = OTD.AdjustValue(Date);
+    ValeType = TypeOf(Value);
 
-    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "HC=10; HDC=0; HG=0");
-    UNIX = StrReplace(UNIX, ","       , "");
-    UNIX = StrReplace(UNIX, Chars.NBSp, "");
-    UNIX = StrReplace(UNIX, " "       , "");
-    UNIX = Left(UNIX, 10);
+    If ValeType = Type("Structure") Or ValeType = Type("Map") Then
 
-    Return UNIX;
+        For Each CollectionValue In Value Do
 
-EndFunction
+            XMLWriter.WriteStartElement(CollectionValue.Key, TargetNamespace);
 
-Function ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
+            If ValueIsFilled(TargetNamespace) Then
+                XMLWriter.WriteNamespaceMapping("", TargetNamespace);
+            EndIf;
 
-    Whole   = 100;
-    Current = Round(Current / Divider, 2);
-    Total   = Round(Total / Divider, 2);
-    Percent = Int(Current / Total * Whole);
+            GetXML(CollectionValue.Value, "", XMLWriter);
+            XMLWriter.WriteEndElement();
 
-    StrCurrent    = NumberToString(Current);
-    StrTotal      = NumberToString(Total);
-    StrPercentage = NumberToString(Percent);
+        EndDo;
 
-    Information = StrCurrent + "/" + StrTotal + " " + Unit + " ( " + StrPercentage + "% )";
+    ElsIf ValeType = Type("Array") Then
 
-    Return Information;
-
-EndFunction
-
-Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
-
-    Size = 0;
-
-    If TypeOf(Data) = Type("String") Then
-
-        FileOnDisk = New File(Data);
-
-        If FileOnDisk.Exist() Then
-            Size = FileOnDisk.Size();
-        Else
-            OPI_TypeConversion.GetBinaryData(Data);
-            Size = Data.Size();
-        EndIf;
+        For Each ArrayElement In Value Do
+            GetXML(ArrayElement, "", XMLWriter);
+        EndDo;
 
     Else
-        OPI_TypeConversion.GetBinaryData(Data);
-        Size = Data.Size();
+
+        XMLWriter.WriteText(NumberToString(Value));
+
     EndIf;
 
-    If ValueIsFilled(MinimumStreamSize) Then
-        If Size < MinimumStreamSize Then
-            OPI_TypeConversion.GetBinaryData(Data);
-        Else
-            OPI_TypeConversion.GetBinaryOrStream(Data);
-        EndIf;
+    If Start Then
+        Return XMLWriter.Close();
     Else
-        OPI_TypeConversion.GetBinaryOrStream(Data);
+        Return Undefined;
     EndIf;
-
-    Return Size;
 
 EndFunction
+
+#EndRegion
+
+#Region Kоллеtoцandand
+
+Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
+
+    Filled = ValueIsFilled(Value);
+
+    If Not Filled Then
+        Return;
+    EndIf;
+
+    If Type   = "Date" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = UNIXTime(Value);
+
+    ElsIf Type = "DateISO" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value  = Left(XMLString(Value), 19);
+
+    ElsIf Type = "DateISOZ" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value  = Left(XMLString(Value), 19) + "Z";
+
+    ElsIf Type = "DateWithoutTime" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = Format(Value, "DF=yyyy-MM-dd");
+
+    ElsIf Type = "Collection" Then
+        OPI_TypeConversion.GetCollection(Value);
+
+    ElsIf Type = "Boolean" Then
+        OPI_TypeConversion.GetBoolean(Value);
+
+    ElsIf Type = "FileString" Then
+        OPI_TypeConversion.GetLine(Value, True);
+
+    ElsIf Type = "Array" Then
+        OPI_TypeConversion.GetArray(Value);
+
+    ElsIf Type = "BinaryData" Then
+        OPI_TypeConversion.GetBinaryData(Value);
+
+    ElsIf Type = "Number" Then
+        OPI_TypeConversion.GetNumber(Value);
+
+    ElsIf Type = "UUID" Then
+
+        OPI_TypeConversion.GetLine(Value);
+        Value = New UUID(Value);
+
+    Else
+
+        If Not Type = "Current" Then
+            OPI_TypeConversion.GetLine(Value);
+        EndIf;
+
+    EndIf;
+
+    Collection.Insert(Name, Value);
+
+EndProcedure
+
+Procedure AddKeyValue(Table, Val Key, Val Value) Export
+
+    KeyExist   = False;
+    ValueExist = False;
+
+    For Each Coloumn In Table.Columns Do
+
+        If Coloumn.Name = "Key" Then
+
+            KeyExist = True;
+
+        ElsIf Coloumn.Name = "Value" Then
+
+            ValueExist = True;
+
+        Else
+            Continue;
+        EndIf;
+
+    EndDo;
+
+    If Not KeyExist Then
+        Table.Columns.Add("Key");
+    EndIf;
+
+    If Not ValueExist Then
+        Table.Columns.Add("Value");
+    EndIf;
+
+    NewValue       = Table.Add();
+    NewValue.Key   = Key;
+    NewValue.Value = Value;
+
+EndProcedure
+
+Procedure RemoveEmptyCollectionFields(Collection) Export
+
+    CollectionType   = TypeOf(Collection);
+    OutputCollection = New (CollectionType);
+
+    If CollectionType = Type("Map") Or CollectionType = Type("Structure") Then
+
+        RemoveEmptyKeyValues(Collection, OutputCollection);
+
+    ElsIf CollectionType = Type("Array") Then
+
+        RemoveEmptyArrayItems(Collection, OutputCollection);
+
+    Else
+
+        OutputCollection = Collection;
+
+    EndIf;
+
+    Collection = OutputCollection;
+
+EndProcedure
+
+Procedure ValueToArray(Value) Export
+
+    If TypeOf(Value) = Type("Array") Then
+        Return;
+    EndIf;
+
+    Value_ = New Array;
+    Value_.Add(Value);
+    Value  = Value_;
+
+EndProcedure
 
 Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined) Export
 
@@ -664,125 +827,6 @@ Function ClearCollectionRecursively(Val Collection) Export
 
 EndFunction
 
-Function ISOTimestamp(Val Date) Export
-
-    Label = Left(XMLString(Date), 19) + "Z";
-    Label = StrReplace(Label, "-", "");
-    Label = StrReplace(Label, ":", "");
-
-    Return Label;
-
-EndFunction
-
-Function IsOneScript() Export
-
-    Try
-
-        Response = False;
-
-        // BSLLS:UnusedLocalVariable-off
-
-        //@skip-check module-unused-local-variable
-        Check = New OpenSSLSecureConnection;
-
-        // BSLLS:UnusedLocalVariable-on
-
-    Except
-
-        Response = True;
-
-    EndTry;
-
-    Return Response;
-
-EndFunction
-
-Function ProcessXML(XML) Export
-
-    XMLInitialProcessing(XML);
-
-    ReturnValue = New Map;
-
-    WHile XML.Read() Do
-
-        NodeType = XML.NodeType;
-
-        If Not RelevantNodeType(NodeType) Then
-            Continue;
-        EndIf;
-
-        NodeName = XML.Name;
-
-        ExistingValue = ReturnValue.Get(NodeName);
-
-        If NodeType = XMLNodeType.StartElement Then
-
-            If ExistingValue = Undefined Then
-                ReturnValue.Insert(NodeName, ProcessXML(XML));
-            Else
-                ValueToArray(ExistingValue);
-                ExistingValue.Add(ProcessXML(XML));
-                ReturnValue.Insert(NodeName, ExistingValue);
-            EndIf;
-
-        Else
-
-            If Not NodeType = XMLNodeType.EndElement Then
-                ReturnValue = XML.Value;
-                XML.Read();
-            EndIf;
-
-            Break;
-
-        EndIf;
-
-    EndDo;
-
-    Return ReturnValue;
-
-EndFunction
-
-Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
-
-    Start = StartFormingXML(Value, XMLWriter);
-
-    ValeType = TypeOf(Value);
-
-    If ValeType = Type("Structure") Or ValeType = Type("Map") Then
-
-        For Each CollectionValue In Value Do
-
-            XMLWriter.WriteStartElement(CollectionValue.Key, TargetNamespace);
-
-            If ValueIsFilled(TargetNamespace) Then
-                XMLWriter.WriteNamespaceMapping("", TargetNamespace);
-            EndIf;
-
-            GetXML(CollectionValue.Value, "", XMLWriter);
-            XMLWriter.WriteEndElement();
-
-        EndDo;
-
-    ElsIf ValeType = Type("Array") Then
-
-        For Each ArrayElement In Value Do
-            GetXML(ArrayElement, "", XMLWriter);
-        EndDo;
-
-    Else
-
-        XMLWriter.WriteText(NumberToString(Value));
-
-    EndIf;
-
-    If Start Then
-        Return XMLWriter.Close();
-    Else
-        Return Undefined;
-    EndIf;
-
-EndFunction
-
 Function CopyCollection(Val Collection) Export
 
     OPI_TypeConversion.GetCollection(Collection);
@@ -818,43 +862,53 @@ Function CopyCollection(Val Collection) Export
 
 EndFunction
 
-Function GetRequestBody(Val Request) Export
+#EndRegion
 
-    Body = Request.ПолучитьТелоКакДвоичныеДанные();
+#Region OneScript
 
-    If Body = Undefined Then
+Function IsOneScript() Export
 
-        Body = ПолучитьДвоичныеДанныеИзСтроки("");
+    Try
 
-    EndIf;
+        Response = False;
 
-    Return Body;
+        // BSLLS:UnusedLocalVariable-off
+
+        //@skip-check module-unused-local-variable
+        Check = New OpenSSLSecureConnection;
+
+        // BSLLS:UnusedLocalVariable-on
+
+    Except
+
+        Response = True;
+
+    EndTry;
+
+    Return Response;
 
 EndFunction
 
-Function CreateStream(Val FilePath = Undefined) Export
+Function ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
 
-    If ValueIsFilled(FilePath) Then
-        StreamOfFile = New FileStream(FilePath, FileOpenMode.Create);
-    Else
-        StreamOfFile = New MemoryStream();
-    EndIf;
+    Whole   = 100;
+    Current = Round(Current / Divider, 2);
+    Total   = Round(Total / Divider, 2);
+    Percent = Int(Current / Total * Whole);
 
-    Return StreamOfFile;
+    StrCurrent    = NumberToString(Current);
+    StrTotal      = NumberToString(Total);
+    StrPercentage = NumberToString(Percent);
+
+    Information = StrCurrent + "/" + StrTotal + " " + Unit + " ( " + StrPercentage + "% )";
+
+    Return Information;
 
 EndFunction
 
-Procedure ValueToArray(Value) Export
+#EndRegion
 
-    If TypeOf(Value) = Type("Array") Then
-        Return;
-    EndIf;
-
-    Value_ = New Array;
-    Value_.Add(Value);
-    Value  = Value_;
-
-EndProcedure
+#Region Service
 
 Procedure ReplaceSpecialCharacters(Text, Markup = "Markdown") Export
 
@@ -884,29 +938,6 @@ Procedure ReplaceSpecialCharacters(Text, Markup = "Markdown") Export
 
 EndProcedure
 
-Procedure RemoveEmptyCollectionFields(Collection) Export
-
-    CollectionType   = TypeOf(Collection);
-    OutputCollection = New (CollectionType);
-
-    If CollectionType = Type("Map") Or CollectionType = Type("Structure") Then
-
-        RemoveEmptyKeyValues(Collection, OutputCollection);
-
-    ElsIf CollectionType = Type("Array") Then
-
-        RemoveEmptyArrayItems(Collection, OutputCollection);
-
-    Else
-
-        OutputCollection = Collection;
-
-    EndIf;
-
-    Collection = OutputCollection;
-
-EndProcedure
-
 Procedure Pause(Val Seconds) Export
 
     Connection = New HTTPConnection("1C.ru", 11111, , , , Seconds);
@@ -918,105 +949,320 @@ Procedure Pause(Val Seconds) Export
 
 EndProcedure
 
-Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
+Function NumberToString(Val Number) Export
+    Return StrReplace(String(Number), Chars.NBSp, "");
+EndFunction
 
-    Filled = ValueIsFilled(Value);
+Function GetCurrentDate() Export
+    Return ToLocalTime(CurrentUniversalDate());
+EndFunction
 
-    If Not Filled Then
-        Return;
-    EndIf;
+Function UNIXTime(Val Date) Export
 
-    If Type   = "Date" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value = UNIXTime(Value);
+    OTD  = New TypeDescription("Date");
+    Date = OTD.AdjustValue(Date);
 
-    ElsIf Type = "DateISO" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19);
+    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "HC=10; HDC=0; HG=0");
+    UNIX = StrReplace(UNIX, ","       , "");
+    UNIX = StrReplace(UNIX, Chars.NBSp, "");
+    UNIX = StrReplace(UNIX, " "       , "");
+    UNIX = Left(UNIX, 10);
 
-    ElsIf Type = "DateISOZ" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19) + "Z";
+    Return UNIX;
 
-    ElsIf Type = "DateWithoutTime" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value = Format(Value, "DF=yyyy-MM-dd");
+EndFunction
 
-    ElsIf Type = "Collection" Then
-        OPI_TypeConversion.GetCollection(Value);
+Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
-    ElsIf Type = "Boolean" Then
-        OPI_TypeConversion.GetBoolean(Value);
+    Size = 0;
 
-    ElsIf Type = "FileString" Then
-        OPI_TypeConversion.GetLine(Value, True);
+    If TypeOf(Data) = Type("String") Then
 
-    ElsIf Type = "Array" Then
-        OPI_TypeConversion.GetArray(Value);
+        FileOnDisk = New File(Data);
 
-    ElsIf Type = "BinaryData" Then
-        OPI_TypeConversion.GetBinaryData(Value);
-
-    ElsIf Type = "Number" Then
-        OPI_TypeConversion.GetNumber(Value);
-
-    ElsIf Type = "UUID" Then
-
-        OPI_TypeConversion.GetLine(Value);
-        Value = New UUID(Value);
+        If FileOnDisk.Exist() Then
+            Size = FileOnDisk.Size();
+        Else
+            OPI_TypeConversion.GetBinaryData(Data);
+            Size = Data.Size();
+        EndIf;
 
     Else
-
-        If Not Type = "Current" Then
-            OPI_TypeConversion.GetLine(Value);
-        EndIf;
-
+        OPI_TypeConversion.GetBinaryData(Data);
+        Size = Data.Size();
     EndIf;
 
-    Collection.Insert(Name, Value);
-
-EndProcedure
-
-Procedure AddKeyValue(Table, Val Key, Val Value) Export
-
-    KeyExist   = False;
-    ValueExist = False;
-
-    For Each Coloumn In Table.Columns Do
-
-        If Coloumn.Name = "Key" Then
-
-            KeyExist = True;
-
-        ElsIf Coloumn.Name = "Value" Then
-
-            ValueExist = True;
-
+    If ValueIsFilled(MinimumStreamSize) Then
+        If Size < MinimumStreamSize Then
+            OPI_TypeConversion.GetBinaryData(Data);
         Else
-            Continue;
+            OPI_TypeConversion.GetBinaryOrStream(Data);
         EndIf;
-
-    EndDo;
-
-    If Not KeyExist Then
-        Table.Columns.Add("Key");
+    Else
+        OPI_TypeConversion.GetBinaryOrStream(Data);
     EndIf;
 
-    If Not ValueExist Then
-        Table.Columns.Add("Value");
+    Return Size;
+
+EndFunction
+
+Function ISOTimestamp(Val Date) Export
+
+    Label = Left(XMLString(Date), 19) + "Z";
+    Label = StrReplace(Label, "-", "");
+    Label = StrReplace(Label, ":", "");
+
+    Return Label;
+
+EndFunction
+
+Function CreateStream(Val FilePath = Undefined) Export
+
+    If ValueIsFilled(FilePath) Then
+        StreamOfFile = New FileStream(FilePath, FileOpenMode.Create);
+    Else
+        StreamOfFile = New MemoryStream();
     EndIf;
 
-    NewValue       = Table.Add();
-    NewValue.Key   = Key;
-    NewValue.Value = Value;
+    Return StreamOfFile;
 
-EndProcedure
+EndFunction
+
+Function GetKомtonotнту(Val NameМаtoета, Val NameKомtonotнты, Val Kлаwithwith, Val Переуwithтаbutintoа = False) Export
+
+    Kомtonotнта = Undefined;
+
+    If Not AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта) Or Переуwithтаbutintoа Then
+
+        ToдtoлючandтьKомtonotнтуAtServer(NameМаtoета, NameKомtonotнты);
+        AndнandцandалfromandроinатьInnotшнююKомtonotнту(NameKомtonotнты, Kлаwithwith, Kомtonotнта);
+
+    EndIf;
+
+    Return Kомtonotнта;
+
+EndFunction
 
 #EndRegion
 
 #EndRegion
 
 #Region Private
+
+Procedure SetRequestBody(Request, Val Parameters, Val JSON)
+
+    Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
+               = Type("Array");
+
+    If JSON Then
+
+        Data = JSONString(Parameters);
+
+    ElsIf Not Collection Then
+
+        Data = Parameters;
+
+    Else
+
+        ParameterString = RequestParametersToString(Parameters);
+        Data            = Right(ParameterString, StrLen(ParameterString) - 1);
+
+    EndIf;
+
+    If TypeOf(Data) = Type("String") Then
+        Request.SetBodyFromString(Data);
+    Else
+        //@skip-check wrong-type-expression
+        Request.SetBodyFromBinary(Data);
+    EndIf;
+
+EndProcedure
+
+Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
+
+    LineSeparator = Chars.CR + Chars.LF;
+
+    For Each Parameter In Parameters Do
+
+        If Parameter.Value = Undefined Or Parameter.Value = Null Then
+            Continue;
+        EndIf;
+
+        TextRecord.WriteLine("--" + boundary + LineSeparator);
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + Parameter.Key + """");
+        TextRecord.WriteLine(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
+
+        If TypeOf(Parameter.Value) = Type("String") Or TypeOf(Parameter.Value) = Type("Number") Then
+
+            ValueAsString = NumberToString(Parameter.Value);
+            TextRecord.WriteLine(ValueAsString);
+
+        ElsIf TypeOf(Parameter.Value) = Type("Boolean") Then
+
+            TextRecord.WriteLine(?(Parameter.Value, "true", "false"));
+
+        Else
+
+            TextRecord.Write(Parameter.Value);
+
+        EndIf;
+
+        TextRecord.WriteLine(LineSeparator);
+
+    EndDo;
+
+EndProcedure
+
+Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Files)
+
+    ContentType   = TrimAll(ContentType);
+    LineSeparator = Chars.CR + Chars.LF;
+
+    For Each File In Files Do
+
+        DataStructure = SplitFileKey(File.Key, ContentType);
+
+        FieldName = DataStructure["FieldName"];
+        FileName  = DataStructure["FileName"];
+
+        TextRecord.WriteLine("--" + boundary + LineSeparator);
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + FieldName + """; filename=""" + FileName
+            + """");
+        TextRecord.WriteLine(LineSeparator);
+
+        If ValueIsFilled(ContentType) Then
+            TextRecord.WriteLine("Content-Type: " + ContentType);
+        EndIf;
+
+        TextRecord.WriteLine(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
+        WriteBinaryData(TextRecord, File.Value);
+        TextRecord.WriteLine(LineSeparator);
+
+    EndDo;
+
+EndProcedure
+
+Procedure WriteRelatedFiles(TextRecord, Val Boundary, Val Files)
+
+    If Not ValueIsFilled(Files) Then
+        Return;
+    EndIf;
+
+    LineSeparator = Chars.CR + Chars.LF;
+
+    If TypeOf(Files) = Type("Map") Then
+        For Each File In Files Do
+
+            TextRecord.WriteLine("--" + boundary + LineSeparator);
+            TextRecord.WriteLine("Content-Type: " + File.Value);
+            TextRecord.WriteLine(LineSeparator);
+            TextRecord.WriteLine(LineSeparator);
+            WriteBinaryData(TextRecord, File.Key);
+            TextRecord.WriteLine(LineSeparator);
+            TextRecord.WriteLine(LineSeparator);
+
+        EndDo;
+
+    EndIf;
+
+EndProcedure
+
+Procedure WriteBinaryData(DataWriter, Val BinaryData)
+
+    ChunkSize       = 268435456;
+    BytesRead       = 0;
+    CurrentPosition = 0;
+    TotalSize       = BinaryData.Size();
+
+    WHile BytesRead < TotalSize Do
+
+        DataReader  = New DataReader(BinaryData);
+        BytesRead   = DataReader.Skip(CurrentPosition);
+        Result      = DataReader.Read(ChunkSize);
+        CurrentData = Result.GetBinaryData();
+        CurrentSize = CurrentData.Size();
+
+        If Not ValueIsFilled(CurrentData) Then
+            Break;
+        EndIf;
+
+        DataWriter.Write(CurrentData);
+
+        FreeObject(CurrentData);
+        RunGarbageCollection();
+
+        CurrentPosition = CurrentPosition + CurrentSize;
+
+    EndDo;
+
+EndProcedure
+
+Procedure WriteJSONMultipart(TextRecord, Val Boundary, Val JSON)
+
+    If Not ValueIsFilled(JSON) Then
+        Return;
+    EndIf;
+
+    LineSeparator = Chars.CR + Chars.LF;
+
+    TextRecord.WriteLine("--" + boundary + LineSeparator);
+    TextRecord.WriteLine("Content-Type: application/json; charset=UTF-8");
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(JSON);
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(LineSeparator);
+
+EndProcedure
+
+Procedure AddContentLength(Request)
+
+    RequestBody = Request.ПолучитьТелоКакДвоичныеДанные();
+
+    If ValueIsFilled(RequestBody) Then
+
+        Size = RequestBody.Size();
+        Request.Headers.Insert("Content-Length", NumberToString(Size));
+
+    EndIf;
+
+EndProcedure
+
+Procedure RemoveEmptyKeyValues(Val Collection, OutputCollection)
+
+    For Each CollectionItem In Collection Do
+
+        If Not CollectionItem.Value = Undefined And Not CollectionItem.Value = Null Then
+            OutputCollection.Insert(CollectionItem.Key, CollectionItem.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure RemoveEmptyArrayItems(Val Collection, OutputCollection)
+
+    For Each CollectionItem In Collection Do
+
+        If Not CollectionItem = Undefined And Not CollectionItem = Null Then
+            OutputCollection.Add(CollectionItem);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure XMLInitialProcessing(XML)
+
+    If Not TypeOf(XML) = Type("XMLReader") Then
+        XML_           = XML;
+        XML            = New XMLReader;
+        XML.SetString(XML_);
+    EndIf;
+
+EndProcedure
 
 Function ExecuteRequestWithBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True,
     Val FullResponse                                              = False, Val ResponseFile = Undefined)
@@ -1265,220 +1511,36 @@ Function RelevantNodeType(Val NodeType)
 
 EndFunction
 
-Procedure SetRequestBody(Request, Val Parameters, Val JSON)
+Function DirectoryKомtonotнтOS()
+    Return "./";
+EndFunction
 
-    Collection = TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Or TypeOf(Parameters)
-               = Type("Array");
+#Region WorkСInnotшнandмandKомtonotнтамand
 
-    If JSON Then
+Function AndнandцandалfromandроinатьInnotшнююKомtonotнту(Val NameKомtonotнты, Val Kлаwithwith, Kомtonotнта)
 
-        Data = JSONString(Parameters);
+    Try
+        Kомtonotнта = New("AddIn." + NameKомtonotнты + "." + Kлаwithwith);
+        Return False;
+    Except
+        Return False;
+    EndTry;
 
-    ElsIf Not Collection Then
+EndFunction
 
-        Data = Parameters;
+Procedure ToдtoлючandтьKомtonotнтуAtServer(Val NameМаtoета, Val NameKомtonotнты)
 
-    Else
-
-        ParameterString = RequestParametersToString(Parameters);
-        Data            = Right(ParameterString, StrLen(ParameterString) - 1);
-
+    If IsOneScript() Then
+        NameМаtoета = DirectoryKомtonotнтOS() + NameМаtoета + ".dll";
     EndIf;
 
-    If TypeOf(Data) = Type("String") Then
-        Request.SetBodyFromString(Data);
-    Else
-        //@skip-check wrong-type-expression
-        Request.SetBodyFromBinary(Data);
-    EndIf;
+    ToдtoлючandтьInnotшнююKомtonotнту(NameМаtoета,
+        NameKомtonotнты,
+        TypeInnotшnotйKомtonotнты.Native);
 
 EndProcedure
 
-Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
-
-    LineSeparator = Chars.CR + Chars.LF;
-
-    For Each Parameter In Parameters Do
-
-        If Parameter.Value = Undefined Or Parameter.Value = Null Then
-            Continue;
-        EndIf;
-
-        TextRecord.WriteLine("--" + boundary + LineSeparator);
-        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + Parameter.Key + """");
-        TextRecord.WriteLine(LineSeparator);
-        TextRecord.WriteLine(LineSeparator);
-
-        If TypeOf(Parameter.Value) = Type("String") Or TypeOf(Parameter.Value) = Type("Number") Then
-
-            ValueAsString = NumberToString(Parameter.Value);
-            TextRecord.WriteLine(ValueAsString);
-
-        ElsIf TypeOf(Parameter.Value) = Type("Boolean") Then
-
-            TextRecord.WriteLine(?(Parameter.Value, "true", "false"));
-
-        Else
-
-            TextRecord.Write(Parameter.Value);
-
-        EndIf;
-
-        TextRecord.WriteLine(LineSeparator);
-
-    EndDo;
-
-EndProcedure
-
-Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Files)
-
-    ContentType   = TrimAll(ContentType);
-    LineSeparator = Chars.CR + Chars.LF;
-
-    For Each File In Files Do
-
-        DataStructure = SplitFileKey(File.Key, ContentType);
-
-        FieldName = DataStructure["FieldName"];
-        FileName  = DataStructure["FileName"];
-
-        TextRecord.WriteLine("--" + boundary + LineSeparator);
-        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + FieldName + """; filename=""" + FileName
-            + """");
-        TextRecord.WriteLine(LineSeparator);
-
-        If ValueIsFilled(ContentType) Then
-            TextRecord.WriteLine("Content-Type: " + ContentType);
-        EndIf;
-
-        TextRecord.WriteLine(LineSeparator);
-        TextRecord.WriteLine(LineSeparator);
-        WriteBinaryData(TextRecord, File.Value);
-        TextRecord.WriteLine(LineSeparator);
-
-    EndDo;
-
-EndProcedure
-
-Procedure WriteRelatedFiles(TextRecord, Val Boundary, Val Files)
-
-    If Not ValueIsFilled(Files) Then
-        Return;
-    EndIf;
-
-    LineSeparator = Chars.CR + Chars.LF;
-
-    If TypeOf(Files) = Type("Map") Then
-        For Each File In Files Do
-
-            TextRecord.WriteLine("--" + boundary + LineSeparator);
-            TextRecord.WriteLine("Content-Type: " + File.Value);
-            TextRecord.WriteLine(LineSeparator);
-            TextRecord.WriteLine(LineSeparator);
-            WriteBinaryData(TextRecord, File.Key);
-            TextRecord.WriteLine(LineSeparator);
-            TextRecord.WriteLine(LineSeparator);
-
-        EndDo;
-
-    EndIf;
-
-EndProcedure
-
-Procedure WriteBinaryData(DataWriter, Val BinaryData)
-
-    ChunkSize       = 268435456;
-    BytesRead       = 0;
-    CurrentPosition = 0;
-    TotalSize       = BinaryData.Size();
-
-    WHile BytesRead < TotalSize Do
-
-        DataReader  = New DataReader(BinaryData);
-        BytesRead   = DataReader.Skip(CurrentPosition);
-        Result      = DataReader.Read(ChunkSize);
-        CurrentData = Result.GetBinaryData();
-        CurrentSize = CurrentData.Size();
-
-        If Not ValueIsFilled(CurrentData) Then
-            Break;
-        EndIf;
-
-        DataWriter.Write(CurrentData);
-
-        FreeObject(CurrentData);
-        RunGarbageCollection();
-
-        CurrentPosition = CurrentPosition + CurrentSize;
-
-    EndDo;
-
-EndProcedure
-
-Procedure WriteJSONMultipart(TextRecord, Val Boundary, Val JSON)
-
-    If Not ValueIsFilled(JSON) Then
-        Return;
-    EndIf;
-
-    LineSeparator = Chars.CR + Chars.LF;
-
-    TextRecord.WriteLine("--" + boundary + LineSeparator);
-    TextRecord.WriteLine("Content-Type: application/json; charset=UTF-8");
-    TextRecord.WriteLine(LineSeparator);
-    TextRecord.WriteLine(LineSeparator);
-    TextRecord.WriteLine(JSON);
-    TextRecord.WriteLine(LineSeparator);
-    TextRecord.WriteLine(LineSeparator);
-
-EndProcedure
-
-Procedure AddContentLength(Request)
-
-    RequestBody = Request.ПолучитьТелоКакДвоичныеДанные();
-
-    If ValueIsFilled(RequestBody) Then
-
-        Size = RequestBody.Size();
-        Request.Headers.Insert("Content-Length", NumberToString(Size));
-
-    EndIf;
-
-EndProcedure
-
-Procedure RemoveEmptyKeyValues(Val Collection, OutputCollection)
-
-    For Each CollectionItem In Collection Do
-
-        If Not CollectionItem.Value = Undefined And Not CollectionItem.Value = Null Then
-            OutputCollection.Insert(CollectionItem.Key, CollectionItem.Value);
-        EndIf;
-
-    EndDo;
-
-EndProcedure
-
-Procedure RemoveEmptyArrayItems(Val Collection, OutputCollection)
-
-    For Each CollectionItem In Collection Do
-
-        If Not CollectionItem = Undefined And Not CollectionItem = Null Then
-            OutputCollection.Add(CollectionItem);
-        EndIf;
-
-    EndDo;
-
-EndProcedure
-
-Procedure XMLInitialProcessing(XML)
-
-    If Not TypeOf(XML) = Type("XMLReader") Then
-        XML_           = XML;
-        XML            = New XMLReader;
-        XML.SetString(XML_);
-    EndIf;
-
-EndProcedure
+#EndRegion
 
 #Region GZip
 
