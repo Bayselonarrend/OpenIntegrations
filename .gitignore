@@ -17,4 +17,7 @@ fakedata.json
 /docs/docusaurus/build
 /docs/docusaurus/docs
 
+target/
+.idea/
+
 !oscript.exe
