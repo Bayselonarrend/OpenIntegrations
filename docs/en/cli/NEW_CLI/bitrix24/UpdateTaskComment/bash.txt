@@ -1,6 +1,6 @@
 oint bitrix24 UpdateTaskComment \
  --url "b24-ar17wx.bitrix24.by" \
- --task "3946" \
- --comment 9412 \
+ --task "4026" \
+ --comment 9588 \
  --text "The task has been changed, let's split up" \
  --token "***"
