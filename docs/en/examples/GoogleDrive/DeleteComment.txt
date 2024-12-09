@@ -1,5 +1,5 @@
-﻿    Token      = "ya29.a0AeDClZCK27Pm2ZdUtEbN2HBs1Z_Cn1cGHTJoz3WARfMz0a65CdiiYfkOxC4ffw2tmZhzHx8ErHfYMQxHad19rUG-zyvipaCEkZw_DgEOd...";
-    Identifier = "1uSU-CNhDGhiaDPNHervaUxAtayLP-1g9";
-    CommentID  = "AAABZPwD4Lo";
+﻿    Token      = "ya29.a0AeDClZAfxs19DgmwOO8cVD3QKtotHfCNic5iCoPbnD8IzxjvXSUVVyCXTuWw9t0RG7seizlNqpNWBH7sHrQAyS0SeFgQ6chxYmOYUMDNc...";
+    Identifier = "1dRdTz61dXaeZ2x37dkXVGljNBcdhATdH";
+    CommentID  = "AAABZ7-ekXY";
 
     Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);
