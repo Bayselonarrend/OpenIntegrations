@@ -3,7 +3,6 @@ mod methods;
 use addin1c::{name, Variant};
 use crate::core::getset;
 
-
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -27,7 +26,7 @@ pub fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn crat
 
     match num {
         0 => Box::new(methods::send_message(&obj, &params)),
-        1 => Box::new(methods::amount(&obj, &params)),
+        1 => Box::new(methods::amount(&obj, params)),
         _ => Box::new(false),
     }
 
