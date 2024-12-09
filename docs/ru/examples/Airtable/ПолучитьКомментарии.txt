@@ -1,6 +1,6 @@
 ﻿    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appg0JsjPu7GsCRR2";
-    Таблица = "tbltNIWr0Gr9ulL5x";
-    Запись  = "recKVt5FKg0WTa5ik";
+    База    = "appfEcZzwvh5P4Cts";
+    Таблица = "tbllCgEBnUt5pcqrM";
+    Запись  = "recOoi75XlgwXCGcM";
 
     Результат = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись);

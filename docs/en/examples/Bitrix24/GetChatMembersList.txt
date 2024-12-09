@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    ChatID = "chat" + "1538";
+    ChatID = "chat" + "1598";
 
     Result = OPI_Bitrix24.GetChatMembersList(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "f3925167006e9f06006b12e400000001000...";
+    Token  = "a8e65667006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.GetChatMembersList(URL, UserID, Token);
