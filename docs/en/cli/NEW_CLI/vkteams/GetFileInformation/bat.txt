@@ -1,3 +1,3 @@
 oint vkteams GetFileInformation ^
  --token "***" ^
- --fileid "sfxFWSY2Z1A34qUEUmOn836751dd561bd"
+ --fileid "i3eN5y2HhBh6UWhA5Lv1Fz67575aba1bd"
