@@ -1,16 +1,4 @@
-use addin1c::{Variant};
-use crate::component::AddIn;
-use mongodb::{Client, Collection, options::ClientOptions, bson::{doc, Bson, Document}};
-use std::error::Error;
-
-pub fn amount(obj: &AddIn, params: &mut [Variant]) -> i32 {
-
-    let result = params[0].get_i32().unwrap() + params[1].get_i32().unwrap();
-    params[0].set_i32(999);
-
-    result
-
-}
+use mongodb::{Client, Collection, options::ClientOptions, bson::{doc, Document}};
 
 pub struct MongoClient {
     client: Client,
@@ -68,7 +56,7 @@ impl MongoClient {
         }
     }
 
-    // Синхронный метод для проверки наличия документа, возвращающий булевый результат
+    // Синхронный метод для проверки наличия документа, возвращающий булево результат
     pub fn document_exists(&self, db_name: &str, collection_name: &str, query: &str) -> bool {
 
         let collection: Collection<Document> = self.client.database(db_name).collection(collection_name);
