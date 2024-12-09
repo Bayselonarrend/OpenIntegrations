@@ -1,6 +1,7 @@
 mod methods;
 
 use addin1c::{name, Variant};
+use crate::core::getset;
 
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
@@ -57,14 +58,14 @@ impl AddIn {
     }
 
     // Сюда просто нужно еще раз добавить имена полей
-    pub fn get_field_ptr<T>(&self, index: usize) -> *const T {
+    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
-            0 => &self.field1 as *const _,
-            1 => &self.field2 as *const _,
+            0 => &self.field1 as &dyn getset::ValueType as *const _,
+            1 => &self.field2 as &dyn getset::ValueType as *const _,
             _ => panic!("Index out of bounds"),
         }
     }
-    pub fn get_field_ptr_mut<T>(&mut self, index: usize) -> *mut T { self.get_field_ptr(index) as *mut _ }
+    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
 
 // -------------------------------------------------------------------------------------------------

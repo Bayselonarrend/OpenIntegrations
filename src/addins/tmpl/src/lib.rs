@@ -7,7 +7,7 @@ use std::{
     sync::atomic::{AtomicI32, Ordering},
 };
 
-use core::AddIn;
+use component::AddIn;
 use addin1c::{create_component, destroy_component, name, AttachType};
 
 pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
