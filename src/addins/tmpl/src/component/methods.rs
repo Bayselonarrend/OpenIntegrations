@@ -14,3 +14,7 @@ pub fn send_message(obj: &AddIn, params: &[Variant]) -> String {
     }
 
 }
+
+pub fn amount(obj: &AddIn, params: &[Variant]) -> i32 {
+    params[0].get_i32().unwrap() + params[1].get_i32().unwrap()
+}
