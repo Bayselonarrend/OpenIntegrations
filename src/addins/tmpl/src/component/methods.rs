@@ -1,5 +1,5 @@
 use addin1c::{Variant, ParamValue};
-use crate::core::AddIn;
+use crate::component::AddIn;
 
 pub fn send_message(obj: &AddIn, params: &[Variant]) -> String {
 
