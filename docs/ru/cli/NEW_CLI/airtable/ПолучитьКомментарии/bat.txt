@@ -1,5 +1,5 @@
 oint airtable ПолучитьКомментарии ^
   --token "***" ^
-  --base "apphSwVVP5PKW19dH" ^
-  --table "tblH6L0muW77uRmXv" ^
-  --record "reczJXcno26TqzgW3"
+  --base "appNmg0DZknGojmHi" ^
+  --table "tblngy57MDnB7UcPN" ^
+  --record "rec0b178ejsKKAymc"
