@@ -1,86 +1,14 @@
-mod getset;
-mod methods;
+pub mod getset;
 
 use addin1c::{name, ParamValue, RawAddin, Variant};
 use std::ops::{Index, IndexMut};
 
-// МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
+use crate::component::METHODS;
+use crate::component::PROPS;
+use crate::component::get_params_amount;
+use crate::component::cal_func;
+use crate::component::AddIn;
 
-// Русские синонимы
-const METHODS: &[&[u16]] = &[
-    name!("Метод1")
-];
-
-// Число параметров по индексу
-fn get_params_amount(num: usize) -> usize {
-    match num {
-        0 => 1,
-        _ => 0,
-    }
-}
-
-fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-
-     match num {
-        0 => Box::new(methods::send_message(&obj, &params)),
-        _ => Box::new(false),
-    }
-
-}
-
-// -------------------------------------------------------------------------------------------------
-
-// ПОЛЯ КОМПОНЕНТЫ ---------------------------------------------------------------------------------
-
-// Русские синонимы
-const PROPS: &[&[u16]] = &[
-    name!("Свойство1"),
-    name!("Свойство2")
-];
-
-// Имена и типы
-pub struct AddIn {
-    field1: String,
-    field2: i32
-}
-
-// Значения по умолчанию
-impl AddIn {
-    pub fn new() -> AddIn {
-        AddIn {
-            field1: String::from(""),
-            field2: 0
-        }
-    }
-}
-
-// Индекс
-impl Index<usize> for AddIn {
-    type Output = dyn getset::ValueType;
-
-    fn index(&self, index: usize) -> &Self::Output {
-        match index {
-            0 => &self.field1, // Возвращаем ссылку на field1
-            1 => &self.field2, // Возвращаем ссылку на field2
-            _ => panic!("Index out of bounds"),
-        }
-    }
-}
-
-impl IndexMut<usize> for AddIn {
-
-    fn index_mut(&mut self, index: usize) -> &mut Self::Output {
-        match index {
-            0 => &mut self.field1, // Возвращаем изменяемую ссылку на field1
-            1 => &mut self.field2, // Возвращаем изменяемую ссылку на field2
-            _ => panic!("Index out of bounds"),
-        }
-    }
-}
-
-// -------------------------------------------------------------------------------------------------
-
-// ТО, ЧТО ТРОГАТЬ НЕ НУЖНО ------------------------------------------------------------------------
 
 // Обработка удаления объекта
 impl Drop for AddIn {
@@ -113,6 +41,20 @@ impl RawAddin for AddIn {
     fn call_as_proc(&mut self, _num: usize, _params: &mut [Variant]) -> bool { false }
     fn call_as_func(&mut self, num: usize, params: &mut [Variant], ret_value: &mut Variant, ) -> bool { cal_func(self, num, params).get_value(ret_value) }
 
+}
+
+impl std::ops::Index<usize> for AddIn {
+    type Output = dyn getset::ValueType;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        unsafe { &*self.get_field_ptr(index) }
+    }
+}
+
+impl std::ops::IndexMut<usize> for AddIn {
+    fn index_mut(&mut self, index: usize) -> &mut Self::Output {
+        unsafe { &mut *self.get_field_ptr_mut(index) }
+    }
 }
 
 
