@@ -8,13 +8,15 @@ use crate::core::getset;
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Метод1") // 0
+    name!("Метод1"), // 0
+    name!("Сложение") // 1
 ];
 
 // Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 1,
+        1 => 2,
         _ => 0,
     }
 }
@@ -25,6 +27,7 @@ pub fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn crat
 
     match num {
         0 => Box::new(methods::send_message(&obj, &params)),
+        1 => Box::new(methods::amount(&obj, &params)),
         _ => Box::new(false),
     }
 

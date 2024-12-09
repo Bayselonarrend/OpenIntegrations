@@ -4,7 +4,7 @@ use addin1c::{Variant, ParamValue, Tm};
 
 pub trait ValueType {
     fn get_value(&self, val: &mut Variant) -> bool;
-    fn set_value(&mut self, val: &ParamValue);
+    fn set_value(&mut self, val: &Variant);
 }
 
 impl ValueType for i32 {
@@ -13,10 +13,8 @@ impl ValueType for i32 {
         true
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::I32(x) = val {
-            *self = *x;
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_i32().unwrap();
     }
 }
 
@@ -27,10 +25,8 @@ impl ValueType for f64 {
         true
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::F64(x) = val {
-            *self = *x;
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_f64().unwrap();
     }
 }
 
@@ -41,10 +37,8 @@ impl ValueType for bool {
         true
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::Bool(x) = val {
-            *self = *x;
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_bool().unwrap();
     }
 }
 
@@ -55,10 +49,8 @@ impl ValueType for Tm {
         true
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::Date(x) = val {
-            *self = *x;
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_date().unwrap();
     }
 }
 
@@ -66,26 +58,21 @@ impl ValueType for Tm {
 impl ValueType for String {
     fn get_value(&self, val: &mut Variant) -> bool {
         let s: Vec<u16> = self.encode_utf16().collect();
-        val.set_str(s.as_slice())
+        val.set_str1c(s.as_slice()).is_ok()
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::Str(x) = val {
-            *self = String::from_utf16(*x).unwrap();
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_string().unwrap_or("".to_string());
     }
 }
 
 // Реализация для Vec<u8>
 impl ValueType for Vec<u8> {
     fn get_value(&self, val: &mut Variant) -> bool {
-        val.set_blob(self.as_slice())
+        val.set_blob(self.as_slice()).is_ok()
     }
 
-    fn set_value(&mut self, val: &ParamValue) {
-        if let ParamValue::Blob(x) = val {
-            self.clear();
-            self.extend_from_slice(x);
-        }
+    fn set_value(&mut self, val: &Variant) {
+        *self = val.get_blob().unwrap().to_vec()
     }
 }

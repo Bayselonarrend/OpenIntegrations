@@ -13,4 +13,4 @@ panic = "abort"   # Abort on panic
 strip = true      # Automatically strip symbols from the binary.
 
 [dependencies]
-addin1c = "0.1"
+addin1c = "0.2.0"
