@@ -80,7 +80,7 @@ pub fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn crat
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("address")
+    name!("ConnectionString")
 ];
 
 // Имена и типы
