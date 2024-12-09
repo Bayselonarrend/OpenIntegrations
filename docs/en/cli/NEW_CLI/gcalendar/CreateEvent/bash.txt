@@ -2,5 +2,5 @@
 
 oint gcalendar CreateEvent \
  --token "***" \
- --calendar "d2dc57cb33f285656c52d93e198eab177d81c79a82104a62d0fa98ee46c30e99@group.calendar.google.com" \
- --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'2024-12-05T19:43:10.2016363Z','EndDate':'2024-12-05T20:43:10.2016363Z','ArrayOfAttachmentURLs':{'Image1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Image2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'SendNotifications':true}"
+ --calendar "b38a54adc41d155ac5b9dad2584b1df0ec8c4d632c2020894352e2ee9d9c6f3d@group.calendar.google.com" \
+ --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'2024-12-09T23:36:34.8807312Z','EndDate':'2024-12-10T00:36:34.8807312Z','ArrayOfAttachmentURLs':{'Image1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Image2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'SendNotifications':true}"

@@ -1,3 +1,2 @@
 oint slack GetFilesList \
- --token "***" \
- --channel "C06UFNUTKUL"
+ --token "***"
