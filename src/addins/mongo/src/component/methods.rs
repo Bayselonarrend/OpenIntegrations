@@ -1,4 +1,6 @@
-use mongodb::{Client, Collection, options::ClientOptions, bson::{doc, Document}};
+use mongodb::{options::ClientOptions, bson::{doc, Document}};
+use mongodb::sync::{Client, Collection};
+use serde_json::Value;
 
 pub struct MongoClient {
     client: Client,
@@ -19,11 +21,22 @@ impl MongoClient {
 
     // Синхронный метод для вставки данных, возвращающий строку или ошибку
     pub fn insert_data(&self, db_name: &str, collection_name: &str, data: &str) -> String {
-
         let collection: Collection<Document> = self.client.database(db_name).collection(collection_name);
-        let doc = doc! { "name": data };
 
-        match collection.insert_one(doc, None) {
+        // Преобразуем строку JSON в объект
+        let json_value: Value = match serde_json::from_str(data) {
+            Ok(value) => value,
+            Err(err) => return format!("Failed to parse JSON: {}", err),
+        };
+
+        // Преобразуем объект JSON в BSON
+        let bson_document = match bson::to_bson(&json_value) {
+            Ok(bson) => bson,
+            Err(err) => return format!("Failed to convert to BSON: {}", err),
+        };
+
+        // Вставляем BSON документ в коллекцию
+        match collection.insert_one(bson_document.as_document().unwrap(), None) {
             Ok(_) => "Insert successful".to_string(),
             Err(err) => format!("Insert failed: {}", err),
         }
