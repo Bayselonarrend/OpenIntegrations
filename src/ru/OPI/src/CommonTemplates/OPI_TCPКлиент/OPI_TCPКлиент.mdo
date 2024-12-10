@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c61532fa-8d2c-4b20-8609-b1ad7beac4f1">
-  <name>OPI_TCPКлиент</name>
-  <synonym>
-    <key></key>
-    <value>OPI TCPКлиент</value>
-  </synonym>
-  <templateType>BinaryData</templateType>
-</mdclass:CommonTemplate>
