@@ -23,11 +23,22 @@ impl MongoClient {
 
     // Вспомогательная функция для формирования JSON ответа
     fn make_response(ok: bool, data: &str) -> String {
-        json!({
+        // Попробуем распарсить строку как JSON
+        let parsed_data: Result<Value, _> = serde_json::from_str(data);
+
+        // Если удаётся распарсить, вставляем как объект, иначе — как строку
+        let response = match parsed_data {
+            Ok(json_data) => json!({
+            "ok": ok,
+            "data": json_data
+        }),
+            Err(_) => json!({
             "ok": ok,
             "data": data
-        })
-            .to_string()
+        }),
+        };
+
+        response.to_string()
     }
 
     // ОСНОВНЫЕ МЕТОДЫ -----------------------------------------------------------------------------
