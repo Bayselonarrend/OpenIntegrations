@@ -1569,7 +1569,7 @@ Function AttachAddInOnServer(Val AddInName)
     TemplateName = AddInName + Postfix;
 
     If IsOneScript() Then
-        TemplateName = AddInsFolderOS() + AddInName + Extension;
+        TemplateName = AddInsFolderOS() + TemplateName + Extension;
     Else
         TemplateName = "CommonTemplate." + TemplateName;
     EndIf;
