@@ -6451,7 +6451,7 @@
 "Получает список записей о трудозатратах задачи": "Get list of time accounting records for task",
 "Адрес обработки запросов от Telegram (с https:": "Request handling address from Telegram (with https:",
 "Получает список магазинов в кабинете по токену": "Gets the list of shops in the cabinet by token",
-"Каталог = ТекущийСценарий().Каталог + \"\"addins": "Folder = CurrentScript().Path + \"\"addins",
+"Каталог = ТекущийСценарий().Каталог + \"\"addins": "Directory = CurrentScript().Path + \"\"addins",
 "Отправляет текстовое сообщение в чат или канал": "Sends a text message to a chat or channel",
 "Получает информацию о комментарии задачи по ID": "Gets task comment data by ID",
 "Отключает попытку преобразования ответа в JSON": "Disables an attempt to convert the response to JSON",
