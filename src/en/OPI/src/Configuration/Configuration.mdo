@@ -39,7 +39,8 @@
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
-  <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_MongoDB_W</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_MongoDB_L</commonTemplates>
   <commonModules>CommonModule.OPI_Tools</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
@@ -53,6 +54,7 @@
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
   <commonModules>CommonModule.OPI_Ozon</commonModules>
+  <commonModules>CommonModule.OPI_MongoDB</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>

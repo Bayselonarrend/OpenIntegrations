@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get list of bases
+ Gets a list of bases
+
+
+
+`Function GetListOfBases(Val ConnectionString) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ConnectionString | --connect | String | &#x2714; | Connection string to MongoDB server |
+
+  
+  Returns:  Structure of KeyAndValue - serialized JSON response from MongoDB server
+
+<br/>
+
+:::tip
+Method in MongoDB documentation: [listDatabases](https://mongodb.com/docs/manual/reference/command/listDatabases/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ConnectionString = "mongodb://bayselonarrend:12We3456@93.125.42.204:27017";
+
+    Result = OPI_MongoDB.GetListOfBases(ConnectionString);
+```
+ 
+
+
+
+
