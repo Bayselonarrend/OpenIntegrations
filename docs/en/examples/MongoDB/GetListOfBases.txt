@@ -1,0 +1,3 @@
+﻿    ConnectionString = "mongodb://bayselonarrend:12We3456@93.125.42.204:27017";
+
+    Result = OPI_MongoDB.GetListOfBases(ConnectionString);
