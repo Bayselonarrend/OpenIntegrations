@@ -430,7 +430,7 @@ EndFunction
 
 #Region JSON
 
-Function JsonToStructure(Val Text) Export
+Function JsonToStructure(Val Text, Val ToMap = True) Export
 
     If Not ValueIsFilled(Text) Then
         Return "";
@@ -441,7 +441,7 @@ Function JsonToStructure(Val Text) Export
     JSONReader = New JSONReader;
     JSONReader.SetString(Text);
 
-    Data = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
+    Data = ReadJSON(JSONReader, ToMap, Undefined, JSONDateFormat.ISO);
     JSONReader.Close();
 
     Return Data;
@@ -1028,18 +1028,35 @@ Function CreateStream(Val FilePath = Undefined) Export
 
 EndFunction
 
-Function GetAddIn(Val TemplateName, Val AddInName, Val Class, Val Reinstall = False) Export
+Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
-    AddIn = Undefined;
+    AddIn  = Undefined;
+    AddInName = "OPI_" + AddInName;
 
-    If Not InitializeAddIn(AddInName, Class, AddIn) Or Reinstall Then
+    If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
-        AttachAddInOnServer(TemplateName, AddInName);
-        InitializeAddIn(AddInName, Class, AddIn);
+        AttachAddInOnServer(AddInName);
+        Success = InitializeAddIn(AddInName, Class, AddIn);
+
+        If Not Success Then
+            Raise "Failed to initialize AddIn. "
+                + "It may not be compatible with your OS";
+        EndIf;
 
     EndIf;
 
     Return AddIn;
+
+EndFunction
+
+Function IsWindows() Export
+
+    SystemInfo      = New SystemInfo;
+    OperatingSystem = String(SystemInfo.PlatformType);
+
+    Response = StrFind(Lower(OperatingSystem), "windows") > 0;
+
+    Return Response;
 
 EndFunction
 
@@ -1521,24 +1538,36 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
     Try
         AddIn = New("AddIn." + AddInName + "." + Class);
-        Return False;
+        Return True;
     Except
         Return False;
     EndTry;
 
 EndFunction
 
-Procedure AttachAddInOnServer(Val TemplateName, Val AddInName)
+Function AttachAddInOnServer(Val AddInName)
 
-    If IsOneScript() Then
-        TemplateName = AddInsFolderOS() + TemplateName + ".dll";
+    IsWindows = IsWindows();
+
+    If IsWindows() Then
+        Postfix   = "_W";
+        Extension = ".dll";
+    Else
+        Postfix   = "_L";
+        Extension = ".so";
     EndIf;
 
-    AttachAddIn(TemplateName,
-        AddInName,
-        AddInType.Native);
+    TemplateName = AddInName + Postfix;
 
-EndProcedure
+    If IsOneScript() Then
+        TemplateName = AddInsFolderOS() + AddInName + Extension;
+    Else
+        TemplateName       = "CommonTemplate." + TemplateName;
+    EndIf;
+
+    Return AttachAddIn(TemplateName, AddInName, AddInType.Native);
+
+EndFunction
 
 #EndRegion
 
