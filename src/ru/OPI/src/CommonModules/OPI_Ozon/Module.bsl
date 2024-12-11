@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Ozon.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Ozon.os
 // Lib: Ozon
 // CLI: ozon
 
