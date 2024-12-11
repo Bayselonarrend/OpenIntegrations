@@ -2138,6 +2138,9 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
 
+    ReplaceStructure = New Structure;
+    ReplaceStructure.Insert("connect", "mongodb://bayselonarrend:***@127.0.0.1:27017");
+
     If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
 
         Value = FormOptionCollection(Value);
@@ -2152,6 +2155,14 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
 
             If StrFind(Lower(Name), SecretKey) <> 0 Then
                 Value = "***";
+            EndIf;
+
+        EndDo;
+
+        For Each ReplacedKey In ReplaceStructure Do
+
+            If Lower(Name) = ReplacedKey.Key Then
+                Value         = ReplacedKey.Value;
             EndIf;
 
         EndDo;
