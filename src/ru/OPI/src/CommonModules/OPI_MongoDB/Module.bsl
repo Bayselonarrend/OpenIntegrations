@@ -37,6 +37,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
+//@skip-check constructor-function-return-section
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"
@@ -62,7 +63,7 @@
 
     Ответ = Клиент.ListDatabases();
     Ответ = OPI_Инструменты.JsonВСтруктуру(Ответ, Ложь);
-
+ 
     Возврат Ответ;
 
 КонецФункции
