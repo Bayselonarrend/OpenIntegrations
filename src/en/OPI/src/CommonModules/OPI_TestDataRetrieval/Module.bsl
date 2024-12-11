@@ -2162,7 +2162,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
         For Each ReplacedKey In ReplaceStructure Do
 
             If Lower(Name) = ReplacedKey.Key Then
-                Value         = ReplacedKey.Value;
+                Value      = ReplacedKey.Value;
             EndIf;
 
         EndDo;
