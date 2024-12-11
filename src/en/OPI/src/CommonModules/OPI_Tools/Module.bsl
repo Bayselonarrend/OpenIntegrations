@@ -1533,7 +1533,7 @@ Function AddInsFolderOS() Export
     Directory = "";
 
     //@skip-check server-execution-safe-mode
-    Execute("Folder = CurrentScript().Path + ""addins/""");
+    Execute("Directory = CurrentScript().Path + ""addins/""");
 
     Return Directory;
 
