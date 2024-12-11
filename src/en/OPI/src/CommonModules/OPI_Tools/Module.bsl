@@ -1030,7 +1030,7 @@ EndFunction
 
 Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
-    AddIn  = Undefined;
+    AddIn     = Undefined;
     AddInName = "OPI_" + AddInName;
 
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
@@ -1562,7 +1562,7 @@ Function AttachAddInOnServer(Val AddInName)
     If IsOneScript() Then
         TemplateName = AddInsFolderOS() + AddInName + Extension;
     Else
-        TemplateName       = "CommonTemplate." + TemplateName;
+        TemplateName = "CommonTemplate." + TemplateName;
     EndIf;
 
     Return AttachAddIn(TemplateName, AddInName, AddInType.Native);
