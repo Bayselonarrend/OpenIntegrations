@@ -1537,7 +1537,7 @@ Function AddInsFolderOS() Export
 
     AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
 
-    Return ProgramDirectory;
+    Return AddInsFolder;
 
 EndFunction
 
