@@ -69,7 +69,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("CDEK"           , 5);
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
-    Sections.Insert("MongoDB" , 5);
+    Sections.Insert("MongoDB"        , 5);
 
     Return Sections;
 
@@ -101,7 +101,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("CDEK"           , StandardDependencies);
     Sections.Insert("YandexMetrika"  , StandardDependencies);
     Sections.Insert("S3"             , StandardDependencies);
-    Sections.Insert("MongoDB" , StandardDependencies);
+    Sections.Insert("MongoDB"        , StandardDependencies);
 
     Return Sections;
 
@@ -129,7 +129,7 @@ Function GetTestTable() Export
     Cdek      = "CDEK";
     Metrika   = "YandexMetrika";
     S3_       = "S3";
-    Mongo        = "MongoDB";
+    Mongo     = "MongoDB";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -261,7 +261,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
     NewTest(TestTable, "AWS_BucketsManagement"                , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
-    NewTest(TestTable, "Mongo_DatabaseManagement" , "Database management" , Mongo);
+    NewTest(TestTable, "Mongo_DatabaseManagement"             , "Database management"             , Mongo);
 
     Return TestTable;
 
