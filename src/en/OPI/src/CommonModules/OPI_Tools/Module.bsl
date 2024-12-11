@@ -1530,12 +1530,14 @@ EndFunction
 
 Function AddInsFolderOS() Export
 
-    Directory = "";
+    BinDir = StrReplace(BinDir(), "\", "/");
 
-    //@skip-check server-execution-safe-mode
-    Execute("Directory = CurrentScript().Path + ""addins/""");
+    PathParts = StrSplit(BinDir, "/");
+    PathParts.Delete(PathParts.UBound());
 
-    Return Directory;
+    AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
+
+    Return BinDir;
 
 EndFunction
 
