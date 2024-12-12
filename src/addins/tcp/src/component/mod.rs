@@ -6,14 +6,15 @@ use methods::Connection;
 use std::net::TcpStream;
 use native_tls::{TlsConnector};
 use crate::component::methods::disconnect;
+
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"), // 0
+    name!("Connect"),    // 0
     name!("Disconnect"), // 1
-    name!("Read"), // 2
-    name!("Write"), // 3
+    name!("Read"),       // 2
+    name!("Write"),      // 3
 ];
 
 // Число параметров функций компоненты
@@ -22,7 +23,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 0,
         1 => 0,
         2 => 2,
-        3 => 1,
+        3 => 2,
         _ => 0,
     }
 }
@@ -30,14 +31,17 @@ pub fn get_params_amount(num: usize) -> usize {
 // Соответствие функций Rust функциям компоненты
 // Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
     match num {
+
         0 => Box::new(obj.connect()),
         1 => {
             disconnect(obj);
             Box::new(true) // Возвращаем true для обозначения успешного выполнения
         },
         2 => {
-            let size = params[0].get_i32().unwrap_or(0);
+
+            let size    = params[0].get_i32().unwrap_or(0);
             let timeout = params[1].get_i32().unwrap_or(0);
 
             if let Some(ref mut connection) = obj.connection {
@@ -47,10 +51,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             }
         },
         3 => {
+
             let empty_array: [u8; 0] = [];
-            let data = params[0].get_blob().unwrap_or(&empty_array);
+
+            let data   = params[0].get_blob().unwrap_or(&empty_array);
+            let timeout = params[1].get_i32().unwrap_or(0);
+
             if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::send(connection, data.to_vec()))
+                Box::new(methods::send(connection, data.to_vec(), timeout))
             } else {
                 Box::new(false) // Если соединения нет, возвращаем false
             }
