@@ -2172,19 +2172,6 @@ EndProcedure
 
 #EndRegion
 
-#Region MongoDB
-
-Procedure Mongo_DatabaseManagement() Export
-
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("MDB_CString", TestParameters);
-
-    MongoDB_GetListOfBases(TestParameters);
-
-EndProcedure
-
-#EndRegion
-
 #EndRegion
 
 #EndRegion
@@ -15658,22 +15645,6 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(RequiredSize = Number(Check["headers"]["Content-Length"])).Равно(True);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
-
-EndProcedure
-
-#EndRegion
-
-#Region MongoDB
-
-Procedure MongoDB_GetListOfBases(FunctionParameters)
-
-    ConnectionString = FunctionParameters["MDB_CString"];
-
-    Result = OPI_MongoDB.GetListOfBases(ConnectionString);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfBases", "MongoDB");
 
 EndProcedure
 
