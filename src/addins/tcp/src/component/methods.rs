@@ -25,7 +25,17 @@ impl Connection {
 }
 
 /// Отправляет данные
-pub fn send(connection: &mut Connection, data: Vec<u8>) -> bool {
+pub fn send(connection: &mut Connection, data: Vec<u8>, timeout_ms: i32) -> bool {
+
+    match connection {
+        Connection::Tcp(stream) => {
+            stream.set_write_timeout(Some(Duration::from_millis(timeout_ms as u64))).ok();
+        }
+        Connection::Tls(stream) => {
+            stream.get_ref().set_write_timeout(Some(Duration::from_millis(timeout_ms as u64))).ok();
+        }
+    }
+
     match connection.write(&data) {
         Ok(_) => true,
         Err(_) => false, // Ошибка при отправке данных

@@ -21,3 +21,4 @@ target/
 .idea/
 
 !oscript.exe
+addin.zip
