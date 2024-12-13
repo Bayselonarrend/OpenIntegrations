@@ -18,7 +18,7 @@ impl Drop for AddIn {
 impl RawAddin for AddIn {
 
     fn register_extension_as(&mut self) -> &'static [u16] {
-        name!("Test")
+        name!("Main")
     }
     fn get_n_props(&mut self) -> usize {
         PROPS.len()

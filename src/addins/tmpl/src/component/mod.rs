@@ -7,27 +7,26 @@ use crate::core::getset;
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Метод1"), // 0
-    name!("Сложение") // 1
+    name!("Method1"),    // 0
+
 ];
 
 // Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 1,
-        1 => 2,
+        0 => 0,
         _ => 0,
     }
 }
 
 // Соответствие функций Rust функциям компоненты
 // Вызовы должны быть обернуты в Box::new
-pub fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn crate::core::getset::ValueType> {
+pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
     match num {
-        0 => Box::new(methods::send_message(&obj, &params)),
-        1 => Box::new(methods::amount(&obj, params)),
-        _ => Box::new(false),
+
+        0 => Box::new(methods::method1()),
+        _ => Box::new(false), // Неверный номер команды
     }
 
 }
@@ -38,36 +37,27 @@ pub fn cal_func(obj: &AddIn, num: usize, params: &mut [Variant]) -> Box<dyn crat
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("Свойство1"),
-    name!("Свойство2")
+    name!("Prop1")
 ];
 
-// Имена и типы
+
 pub struct AddIn {
-    field1: String,
-    field2: i32
+    pub prop1: String,
 }
 
-// Конструктор
 impl AddIn {
-
-    // Значения по умолчанию
-    pub fn new() -> AddIn {
+    /// Создает новый объект
+    pub fn new() -> Self {
         AddIn {
-            field1: String::from(""),
-            field2: 0
+            prop1: String::new()
         }
     }
-
-    // Сюда просто нужно еще раз добавить имена полей
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
-            0 => &self.field1 as &dyn getset::ValueType as *const _,
-            1 => &self.field2 as &dyn getset::ValueType as *const _,
+            0 => &self.prop1 as &dyn getset::ValueType as *const _,
             _ => panic!("Index out of bounds"),
         }
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
-
 // -------------------------------------------------------------------------------------------------
