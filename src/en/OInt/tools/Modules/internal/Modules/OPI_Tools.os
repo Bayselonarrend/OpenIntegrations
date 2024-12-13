@@ -1549,7 +1549,9 @@ Function AttachAddInOnServer(Val AddInName)
         TemplateName = "CommonTemplate." + AddInName;
     EndIf;
 
-    Return AttachAddIn(TemplateName, AddInName);
+    Success = AttachAddIn(TemplateName, AddInName, AddInType.Native);
+
+    Return Success;
 
 EndFunction
 
