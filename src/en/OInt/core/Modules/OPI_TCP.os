@@ -93,6 +93,7 @@ EndFunction
 // The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
 // When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
 // infinite resetting of attempts when receiving data can lead to hangs
+// If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
 // Connection - Arbitrary - Connection, see. CreateConnection - tcp
@@ -123,6 +124,7 @@ EndFunction
 // The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
 // When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
 // infinite resetting of attempts when receiving data can lead to hangs
+// If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
 // Address - String - Address and port - address
