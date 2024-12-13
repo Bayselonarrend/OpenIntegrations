@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Connect and receive data
+ Establishes a connection and reads data until completion or by limits
+
+
+
+`Function ConnectAndReceiveData(Val Address, Val SSL = False, Val Timeout = 0, Val Size = 0, Val AsString = True, Val Encoding = "UTF-8") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --address | String | &#x2714; | Address and port |
+  | SSL | --ssl | Boolean | &#x2716; | Flag for using a secure connection |
+  | Timeout | --timeout | Number | &#x2716; | Data reading time (sec). 0 > until the end of the message |
+  | Size | --size | Number | &#x2716; | Maximum data size. 0 > no limit |
+  | AsString | --string | Boolean | &#x2716; | True > returns string, False > binary data |
+  | Encoding | --enc | String | &#x2716; | Encoding of received data |
+
+  
+  Returns:  String, BinaryData - Received data
+
+<br/>
+
+:::tip
+When the Timeout and Size parameters are set to 0, reading is performed until the message ends
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
