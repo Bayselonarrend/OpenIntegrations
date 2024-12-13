@@ -37,7 +37,17 @@
     NewLine.Метод       = "ConnectAndReceiveData";
     NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
     NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Data reading time (sec). 0 > until the end of the message (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Interval between data retrieval attempts (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tcp client";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "tcp";
+    NewLine.Модуль      = "OPI_TCP";
+    NewLine.Метод       = "ConnectAndReceiveData";
+    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
+    NewLine.Параметр    = "--attempts";
+    NewLine.Описание    = "Max number of data retrieval attempts (optional, def. val. - 5)";
     NewLine.Область     = "Tcp client";
 
 
