@@ -86,6 +86,11 @@ pipeline {
                 test_slack()
              }
           }
+          stage('tcp'){
+             steps{
+                test_tcp()
+             }
+          }
           stage('telegram'){
              steps{
                 test_telegram()
@@ -1915,6 +1920,16 @@ def test_slack(){
 }
 
 
+def test_tcp(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe tcp ПодключитьсяИПолучитьДанные --address "test" --ssl "test" --timeout "test" --size "test" --string "test" --enc "test" --debug --test '
+               }
+
+}
+
+
 def test_telegram(){
 					
 
@@ -2693,6 +2708,7 @@ test_notion()
 test_ozon()
 test_s3()
 test_slack()
+test_tcp()
 test_telegram()
 test_twitter()
 test_viber()
