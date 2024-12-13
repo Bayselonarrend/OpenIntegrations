@@ -48,7 +48,7 @@ pub fn receive(
     buffer_size: i32,
     timeout_ms: i32,
     max_data_size: i32,
-    max_duration_ms: i32,
+    max_duration_s: f64,
 ) -> Vec<u8> {
 
     let mut result = Vec::new();
@@ -56,7 +56,7 @@ pub fn receive(
     let start_time = Instant::now();
 
     // Если max_duration_ms > 0, устанавливаем таймаут только если он не установлен
-    if max_duration_ms > 0 {
+    if max_duration_s > 0.0 {
         match connection {
             Connection::Tcp(stream) => {
                 stream.set_read_timeout(Some(Duration::from_millis(timeout_ms as u64))).ok();
@@ -70,7 +70,7 @@ pub fn receive(
     loop {
         // Проверяем ограничения, если они заданы
         if (max_data_size > 0 && result.len() >= max_data_size as usize) ||
-            (max_duration_ms > 0 && start_time.elapsed() > Duration::from_millis(max_duration_ms as u64)) {
+            (max_duration_s > 0.0 && start_time.elapsed() > Duration::from_secs_f64(max_duration_s)) {
             break;
         }
 
