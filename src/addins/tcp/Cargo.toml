@@ -1,5 +1,5 @@
 [package]
-name = "opi_tcp"
+name = "OPI_TCPClient"
 version = "0.1.0"
 edition = "2021"
 
