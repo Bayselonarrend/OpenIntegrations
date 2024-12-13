@@ -1528,19 +1528,6 @@ Function RelevantNodeType(Val NodeType)
 
 EndFunction
 
-Function AddInsFolderOS() Export
-
-    BinDir = StrReplace(BinDir(), "\", "/");
-
-    PathParts = StrSplit(BinDir, "/");
-    PathParts.Delete(PathParts.UBound());
-
-    AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
-
-    Return AddInsFolder;
-
-EndFunction
-
 #Region AddinsManagement
 
 Function InitializeAddIn(Val AddInName, Val Class, AddIn)
@@ -1556,25 +1543,26 @@ EndFunction
 
 Function AttachAddInOnServer(Val AddInName)
 
-    IsWindows = IsWindows();
-
-    If IsWindows() Then
-        Postfix   = "_W";
-        Extension = ".dll";
-    Else
-        Postfix   = "_L";
-        Extension = ".so";
-    EndIf;
-
-    TemplateName = AddInName + Postfix;
-
     If IsOneScript() Then
-        TemplateName = AddInsFolderOS() + TemplateName + Extension;
+        TemplateName = AddInsFolderOS() + AddInName + ".zip";
     Else
-        TemplateName = "CommonTemplate." + TemplateName;
+        TemplateName = "CommonTemplate." + AddInName;
     EndIf;
 
-    Return AttachAddIn(TemplateName, AddInName, AddInType.Native);
+    Return AttachAddIn(TemplateName, AddInName);
+
+EndFunction
+
+Function AddInsFolderOS() Export
+
+    BinDir = StrReplace(BinDir(), "\", "/");
+
+    PathParts = StrSplit(BinDir, "/");
+    PathParts.Delete(PathParts.UBound());
+
+    AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
+
+    Return AddInsFolder;
 
 EndFunction
 
