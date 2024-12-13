@@ -45,40 +45,47 @@ pub fn send(connection: &mut Connection, data: Vec<u8>, timeout_ms: i32) -> bool
 /// Считывает данные
 pub fn receive(
     connection: &mut Connection,
-    buffer_size: i32,
     timeout_ms: i32,
+    max_attempts: i32,
     max_data_size: i32,
-    max_duration_s: f64,
 ) -> Vec<u8> {
+    const BUFFER_SIZE: usize = 4096; // Фиксированный размер буфера
 
     let mut result = Vec::new();
-    let mut buffer = vec![0u8; buffer_size as usize];
-    let start_time = Instant::now();
+    let mut buffer = vec![0u8; BUFFER_SIZE];
+    let mut attempts = 0;
 
-    // Если max_duration_ms > 0, устанавливаем таймаут только если он не установлен
-    if max_duration_s > 0.0 {
-        match connection {
-            Connection::Tcp(stream) => {
-                stream.set_read_timeout(Some(Duration::from_millis(timeout_ms as u64))).ok();
-            }
-            Connection::Tls(stream) => {
-                stream.get_ref().set_read_timeout(Some(Duration::from_millis(timeout_ms as u64))).ok();
-            }
+    // Устанавливаем таймаут для чтения
+    let timeout = Duration::from_millis(timeout_ms as u64);
+    match connection {
+        Connection::Tcp(stream) => {
+            stream.set_read_timeout(Some(timeout)).ok();
+        }
+        Connection::Tls(stream) => {
+            stream.get_ref().set_read_timeout(Some(timeout)).ok();
         }
     }
 
     loop {
-        // Проверяем ограничения, если они заданы
-        if (max_data_size > 0 && result.len() >= max_data_size as usize) ||
-            (max_duration_s > 0.0 && start_time.elapsed() > Duration::from_secs_f64(max_duration_s)) {
+        // Завершаем цикл, если превышен лимит данных
+        if max_data_size > 0 && result.len() >= max_data_size as usize {
             break;
         }
 
         match connection.read(&mut buffer) {
-            Ok(0) => break, // EOF - конец данных
-            Ok(size) => result.extend_from_slice(&buffer[..size]),
-            Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => break, // Таймаут
-            Err(_) => break, // Любая другая ошибка
+            Ok(0) => break, // Конец данных (EOF)
+            Ok(size) => {
+                result.extend_from_slice(&buffer[..size]);
+                attempts = 0; // Сбрасываем счетчик попыток при успешном чтении
+            }
+            Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                attempts += 1;
+                if attempts >= max_attempts {
+                    break; // Превышено число попыток ожидания
+                }
+                continue; // Пробуем снова
+            }
+            Err(_) => break // Любая другая ошибка
         }
     }
 
