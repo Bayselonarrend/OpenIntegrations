@@ -89,21 +89,29 @@ EndFunction
 // Reads data from the specified connection
 //
 // Note
-// When the Timeout and Size parameters are set to 0, reading is performed until the message ends
+// The method tries to read the data in intervals, the duration of which is specified in the AttemptDuration parameter.^^
+// The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
+// When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
+// infinite resetting of attempts when receiving data can lead to hangs
 //
 // Parameters:
 // Connection - Arbitrary - Connection, see. CreateConnection - tcp
-// Timeout - Number - Data reading time (sec). 0 > until the end of the message - timeout
-// Size - Number - Maximum data size. 0 > no limit - size
+// AttemptDuration - Number - Interval between data retrieval attempts - timeout
+// Attempts - Number - Max number of data retrieval attempts - attempts
+// MaxSize - Number - Maximum data size. 0 > no limit - size
 //
 // Returns:
 // BinaryData - Received data
-Function ReceiveData(Val Connection, Val Timeout = 0, Val Size = 0) Export
+Function ReceiveData(Val Connection
+    , Val AttemptDuration = 200
+    , Val Attempts = 5
+    , Val MaxSize = 0) Export
 
-    OPI_TypeConversion.GetNumber(Timeout);
-    OPI_TypeConversion.GetNumber(Size);
+    OPI_TypeConversion.GetNumber(AttemptDuration);
+    OPI_TypeConversion.GetNumber(Attempts);
+    OPI_TypeConversion.GetNumber(MaxSize);
 
-    Return Connection.Read(1024, 150, Size, Timeout);
+    Return Connection.Read(AttemptDuration, Attempts, MaxSize);
 
 EndFunction
 
@@ -111,13 +119,17 @@ EndFunction
 // Establishes a connection and reads data until completion or by limits
 //
 // Note
-// When the Timeout and Size parameters are set to 0, reading is performed until the message ends
+// The method tries to read the data in intervals, the duration of which is specified in the AttemptDuration parameter.^^
+// The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
+// When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
+// infinite resetting of attempts when receiving data can lead to hangs
 //
 // Parameters:
 // Address - String - Address and port - address
 // SSL - Boolean - Flag for using a secure connection - ssl
-// Timeout - Number - Data reading time (sec). 0 > until the end of the message - timeout
-// Size - Number - Maximum data size. 0 > no limit - size
+// AttemptDuration - Number - Interval between data retrieval attempts - timeout
+// Attempts - Number - Max number of data retrieval attempts - attempts
+// MaxSize - Number - Maximum data size. 0 > no limit - size
 // AsString - Boolean - True > returns string, False > binary data - string
 // Encoding - String - Encoding of received data - enc
 //
@@ -125,15 +137,14 @@ EndFunction
 // String, BinaryData - Received data
 Function ConnectAndReceiveData(Val Address
     , Val SSL = False
-    , Val Timeout = 0
-    , Val Size = 0
+    , Val AttemptDuration = 0
+    , Val Attempts = 5
+    , Val MaxSize = 0
     , Val AsString = True
     , Val Encoding = "UTF-8") Export
 
     OPI_TypeConversion.GetBoolean(AsString);
     OPI_TypeConversion.GetLine(Encoding);
-    OPI_TypeConversion.GetNumber(Size);
-    OPI_TypeConversion.GetNumber(Timeout);
 
     Connection = CreateConnection(Address, SSL);
 
@@ -141,7 +152,7 @@ Function ConnectAndReceiveData(Val Address
         Raise "Failed to create Connection";
     EndIf;
 
-    Message = ReceiveData(Connection, Timeout, Size);
+    Message = ReceiveData(Connection, AttemptDuration, Attempts, MaxSize);
 
     If AsString Then
         Message = GetStringFromBinaryData(Message);
