@@ -103,6 +103,8 @@ Function ReceiveData(Val Connection, Val Timeout = 0, Val Size = 0) Export
     OPI_TypeConversion.GetNumber(Timeout);
     OPI_TypeConversion.GetNumber(Size);
 
+    Timeout = Timeout * 1000;
+
     Return Connection.Read(1024, 150, Timeout, Size);
 
 EndFunction
