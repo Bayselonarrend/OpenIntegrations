@@ -22,7 +22,7 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
-        2 => 4,
+        2 => 3,
         3 => 2,
         _ => 0,
     }
@@ -41,13 +41,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         2 => {
 
-            let size    = params[0].get_i32().unwrap_or(0);
-            let timeout = params[1].get_i32().unwrap_or(0);
-            let maxsize = params[2].get_i32().unwrap_or(0);
-            let maxduration = params[3].get_f64().unwrap_or(0.0);
+
+            let timeout     = params[0].get_i32().unwrap_or(0);
+            let max_attempts= params[1].get_i32().unwrap_or(0);
+            let maxsize     = params[2].get_i32().unwrap_or(0);
 
             if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::receive(connection, size, timeout, maxsize, maxduration))
+                Box::new(methods::receive(connection, timeout, max_attempts, maxsize))
             } else {
                 Box::new(Vec::<u8>::new()) // Если соединения нет, возвращаем пустой массив
             }
