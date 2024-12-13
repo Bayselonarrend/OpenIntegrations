@@ -60,7 +60,7 @@ Function CreateConnection(Val Address, Val SSL = False) Export
     OPI_TypeConversion.GetLine(Address);
     OPI_TypeConversion.GetBoolean(SSL);
 
-    TCPClient = OPI_Tools.GetAddIn("OPI_TCPClient");
+    TCPClient = OPI_Tools.GetAddIn("TCPClient");
 
     TCPClient.Address = Address;
     TCPClient.SSL     = SSL;
