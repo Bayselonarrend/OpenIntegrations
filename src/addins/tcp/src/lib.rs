@@ -31,7 +31,7 @@ pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
 #[no_mangle]
 pub extern "C" fn GetClassNames() -> *const u16 {
     // small strings for performance
-    name!("Client").as_ptr()
+    name!("Main").as_ptr()
 }
 
 #[allow(non_snake_case)]
