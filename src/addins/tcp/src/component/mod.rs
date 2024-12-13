@@ -22,7 +22,7 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
-        2 => 2,
+        2 => 4,
         3 => 2,
         _ => 0,
     }
@@ -43,9 +43,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             let size    = params[0].get_i32().unwrap_or(0);
             let timeout = params[1].get_i32().unwrap_or(0);
+            let maxsize = params[2].get_i32().unwrap_or(0);
+            let maxduration = params[3].get_i32().unwrap_or(0);
 
             if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::receive(connection, size, timeout))
+                Box::new(methods::receive(connection, size, timeout, maxsize, maxduration))
             } else {
                 Box::new(Vec::<u8>::new()) // Если соединения нет, возвращаем пустой массив
             }
@@ -75,7 +77,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
     name!("Address"),
-    name!("SSL")
+    name!("SSL"),
 ];
 
 

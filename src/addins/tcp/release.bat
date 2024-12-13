@@ -1,7 +1,7 @@
 @echo off
 
 :: Установить переменную
-set LIB_NAME=opi_tcp
+set LIB_NAME=OPI_TCPClient
 set OPENSSL_DIR=C:\msys64\mingw64
 set OPENSSL_LIB_DIR=%OPENSSL_DIR%\lib
 set OPENSSL_INCLUDE_DIR=%OPENSSL_DIR%\include
@@ -47,9 +47,14 @@ copy /y MANIFEST.XML "%OUTPUT_DIR%\MANIFEST.XML"
 if errorlevel 1 goto :error
 
 :: Архивация
-set ZIP_NAME=addin.zip
-powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -DestinationPath '%ZIP_NAME%'"
+powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -DestinationPath '%LIB_NAME%.zip'"
 if errorlevel 1 goto :error
+
+copy /y "%LIB_NAME%.zip" "../../ru/OInt/addins/%LIB_NAME%.zip"
+copy /y "%LIB_NAME%.zip" "../../en/OInt/addins/%LIB_NAME%.zip"
+
+copy /y "%LIB_NAME%.zip" "../../ru/OPI/src/CommonTemplates/%LIB_NAME%/Template.addin"
+copy /y "%LIB_NAME%.zip" "../../en/OPI/src/CommonTemplates/%LIB_NAME%/Template.addin"
 
 if exist "%OUTPUT_DIR%" (
     rmdir /S /Q "%OUTPUT_DIR%"
