@@ -2172,6 +2172,21 @@ EndProcedure
 
 #EndRegion
 
+#Region TCP
+
+Procedure TC_Client() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
+
+    TCP_CreateConnection(TestParameters);
+    TCP_CloseConnection(TestParameters);
+    TCP_ReadBinaryData(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -15645,6 +15660,75 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(RequiredSize = Number(Check["headers"]["Content-Length"])).Равно(True);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
+#EndRegion
+
+#Region TCP
+
+Procedure TCP_CreateConnection(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    Result = String(Connection); // SKIP
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "TCP");
+    OPI_TestDataRetrieval.Check_Filled(Result);
+
+EndProcedure
+
+Procedure TCP_CloseConnection(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    Result = OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "TCP");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure TCP_ReadBinaryData(FunctionParameters) Export
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
 
 EndProcedure
 

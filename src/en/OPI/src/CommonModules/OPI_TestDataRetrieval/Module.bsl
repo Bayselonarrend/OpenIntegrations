@@ -69,6 +69,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("CDEK"           , 5);
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
+    Sections.Insert("TCP" , 5);
 
     Return Sections;
 
@@ -100,6 +101,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("CDEK"           , StandardDependencies);
     Sections.Insert("YandexMetrika"  , StandardDependencies);
     Sections.Insert("S3"             , StandardDependencies);
+    Sections.Insert("TCP" , StandardDependencies);
 
     Return Sections;
 
@@ -127,6 +129,7 @@ Function GetTestTable() Export
     Cdek      = "CDEK";
     Metrika   = "YandexMetrika";
     S3_       = "S3";
+    TCP          = "TCP";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -258,6 +261,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
     NewTest(TestTable, "AWS_BucketsManagement"                , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
+    NewTest(TestTable, "TC_Client" , "TCP Client" , TCP);
 
     Return TestTable;
 
@@ -557,8 +561,14 @@ Procedure Check_Empty(Val Result) Export
 
 EndProcedure
 
-Procedure Check_String(Val Result) Export
+Procedure Check_String(Val Result, Val ComparisonObject = "") Export
+
     ExpectsThat(Result).ИмеетТип("String");
+
+    If ValueIsFilled(ComparisonObject) Then
+        ExpectsThat(Result).Равно(ComparisonObject);
+    EndIf;
+
 EndProcedure
 
 Procedure Check_BinaryData(Val Result, Val Size = Undefined) Export
@@ -600,6 +610,18 @@ EndProcedure
 Procedure Check_Structure(Val Result) Export
 
     ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+EndProcedure
+
+Procedure Check_Filled(Val Result) Export
+
+    ExpectsThat(ValueIsFilled(Result)).Равно(True);
+
+EndProcedure
+
+Procedure Check_True(Val Result) Export
+
+    ExpectsThat(Result).Равно(True);
 
 EndProcedure
 

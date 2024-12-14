@@ -93,16 +93,26 @@ EndFunction
 // Parameters:
 // Connection - Arbitrary - Connection, see. CreateConnection - tcp
 // MaxSize - Number - Maximum data size (bytes). 0 > no limit - size
+// Marker - String, BinaryData - End of message marker. Empty > without marker - marker
 // Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
 //
 // Returns:
 // BinaryData - Received data
-Function ReadBinaryData(Val Connection, Val MaxSize = 0, Val Timeout = 5000) Export
+Function ReadBinaryData(Val Connection
+    , Val MaxSize = 0
+    , Val Marker = ""
+    , Val Timeout = 5000) Export
 
     OPI_TypeConversion.GetNumber(Timeout);
     OPI_TypeConversion.GetNumber(MaxSize);
 
-    Data = Connection.Read(MaxSize, Timeout);
+    If TypeOf(Marker) = Type("String") Then
+        Marker           = GetBinaryDataFromString(Marker);
+    Else
+        OPI_TypeConversion.GetBinaryData(Marker);
+    EndIf;
+
+    Data = Connection.Read(MaxSize, Marker, Timeout);
 
     Return Data;
 
@@ -118,15 +128,19 @@ EndFunction
 // Parameters:
 // Connection - Arbitrary - Connection, see. CreateConnection - tcp
 // Encoding - String - Encoding of data conversion to string - enc
+// Marker - String, BinaryData - End of message marker. Empty > without marker - marker
 // Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
 //
 // Returns:
 // String - Received data as string
-Function ReadLine(Val Connection, Val Encoding = "UTF-8", Val Timeout = 5000) Export
+Function ReadLine(Val Connection
+    , Val Encoding = "UTF-8"
+    , Val Marker = ""
+    , Val Timeout = 5000) Export
 
     OPI_TypeConversion.GetLine(Encoding);
 
-    Data = ReadBinaryData(Connection, , Timeout);
+    Data = ReadBinaryData(Connection, , Marker, Timeout);
     Data = GetStringFromBinaryData(Data, Encoding);
 
     Return Data;
