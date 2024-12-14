@@ -20,7 +20,7 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
-        2 => 2,
+        2 => 3,
         3 => 2,
         _ => 0,
     }
@@ -29,6 +29,8 @@ pub fn get_params_amount(num: usize) -> usize {
 // Соответствие функций Rust функциям компоненты
 // Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
+    let empty_array: [u8; 0] = [];
 
     match num {
 
@@ -39,19 +41,17 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         2 => {
 
-
-            let timeout     = params[0].get_i32().unwrap_or(0);
-            let maxsize     = params[2].get_i32().unwrap_or(0);
+            let maxsize = params[0].get_i32().unwrap_or(0);
+            let marker = params[1].get_blob().unwrap_or(&empty_array);
+            let timeout = params[2].get_i32().unwrap_or(0);
 
             if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::receive(connection, maxsize, timeout))
+                Box::new(methods::receive(connection, maxsize, marker.to_vec(), timeout))
             } else {
-                Box::new(Vec::<u8>::new()) // Если соединения нет, возвращаем пустой массив
+                Box::new("OPI: Connection closed".as_bytes().to_vec())
             }
         },
         3 => {
-
-            let empty_array: [u8; 0] = [];
 
             let data = params[0].get_blob().unwrap_or(&empty_array);
             let timeout = params[1].get_i32().unwrap_or(0);

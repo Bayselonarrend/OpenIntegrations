@@ -5,5 +5,9 @@
     <key>ru</key>
     <value>TCPClient</value>
   </synonym>
+  <synonym>
+    <key></key>
+    <value>OPI TCPClient</value>
+  </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>
