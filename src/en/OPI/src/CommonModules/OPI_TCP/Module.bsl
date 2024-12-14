@@ -47,23 +47,20 @@
 
 // !NOCLI
 // Create Connection
-// Creates a TCP/TLS connection
+// Creates a TCP connection
 //
 // Parameters:
 // Address - String - Address and port - address
-// SSL - Boolean - Flag for using a secure connection - ssl
 //
 // Returns:
 // Undefined, Arbitrary - Returns the TCP client object on successful connection or undefined
-Function CreateConnection(Val Address, Val SSL = False) Export
+Function CreateConnection(Val Address) Export
 
     OPI_TypeConversion.GetLine(Address);
-    OPI_TypeConversion.GetBoolean(SSL);
 
     TCPClient = OPI_Tools.GetAddIn("TCPClient");
 
     TCPClient.Address = Address;
-    TCPClient.SSL     = SSL;
 
     Success = TCPClient.Connect();
 
@@ -85,79 +82,141 @@ Function CloseConnection(Val Connection) Export
 EndFunction
 
 // !NOCLI
-// Receive data
+// Read binary data
 // Reads data from the specified connection
 //
 // Note
-// The method tries to read the data in intervals, the duration of which is specified in the AttemptDuration parameter.^^
-// The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
 // When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
-// infinite resetting of attempts when receiving data can lead to hangs
+// endless data retrieval can cause hang-ups
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
 // Connection - Arbitrary - Connection, see. CreateConnection - tcp
-// AttemptDuration - Number - Interval between data retrieval attempts - timeout
-// Attempts - Number - Max number of data retrieval attempts - attempts
-// MaxSize - Number - Maximum data size. 0 > no limit - size
+// MaxSize - Number - Maximum data size (bytes). 0 > no limit - size
+// Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
 //
 // Returns:
 // BinaryData - Received data
-Function ReceiveData(Val Connection
-    , Val AttemptDuration = 200
-    , Val Attempts = 5
-    , Val MaxSize = 0) Export
+Function ReadBinaryData(Val Connection, Val MaxSize = 0, Val Timeout = 5000) Export
 
-    OPI_TypeConversion.GetNumber(AttemptDuration);
-    OPI_TypeConversion.GetNumber(Attempts);
+    OPI_TypeConversion.GetNumber(Timeout);
     OPI_TypeConversion.GetNumber(MaxSize);
 
-    Return Connection.Read(AttemptDuration, Attempts, MaxSize);
+    Data = Connection.Read(MaxSize, Timeout);
+
+    Return Data;
 
 EndFunction
+
+// !NOCLI
+// Read line
+// Reads data from the specified connection as a string
+//
+// Note
+// If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
+//
+// Parameters:
+// Connection - Arbitrary - Connection, see. CreateConnection - tcp
+// Encoding - String - Encoding of data conversion to string - enc
+// Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
+//
+// Returns:
+// String - Received data as string
+Function ReadLine(Val Connection, Val Encoding = "UTF-8", Val Timeout = 5000) Export
+
+    OPI_TypeConversion.GetLine(Encoding);
+
+    Data = ReadBinaryData(Connection, , Timeout);
+    Data = GetStringFromBinaryData(Data, Encoding);
+
+    Return Data;
+
+EndFunction
+
+// !NOCLI
+// Send binary data
+// Sends binary data over the specified connection
+//
+// Parameters:
+// Connection - Arbitrary - Connection, see. CreateConnection - tcp
+// Data - BinaryData - Sending data - data
+// Timeout - Number - Data reading timeout (ms). 0 > no limit - timeout
+//
+// Returns:
+// Boolean - Flag of successful delivery
+Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
+
+    OPI_TypeConversion.GetBinaryData(Data);
+    OPI_TypeConversion.GetNumber(Timeout);
+
+    Result = Connection.Send(Data, Timeout);
+
+    Return Result;
+
+EndFunction
+
+// !NOCLI
+// Send line
+// Sends data as a string over the specified connection
+//
+// Parameters:
+// Connection - Arbitrary - Connection, see. CreateConnection - tcp
+// Data - String - Data to be sent as a string - data
+// Encoding - String - Encoding for writing the outgoing string to the stream - enc
+// Timeout - Number - Data reading timeout (ms). 0 > no limit - timeout
+//
+// Returns:
+// Boolean - Flag of successful delivery
+Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout = 5000) Export
+
+    OPI_TypeConversion.GetLine(Data);
+    OPI_TypeConversion.GetLine(Encoding);
+
+    DataBD = GetBinaryDataFromString(Data, Encoding);
+
+    Result = SendBinaryData(Connection, DataBD, Timeout);
+
+    Return Result;
+
+EndFunction
+
 
 // Connect and receive data
 // Establishes a connection and reads data until completion or by limits
 //
 // Note
-// The method tries to read the data in intervals, the duration of which is specified in the AttemptDuration parameter.^^
-// The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
 // When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
-// infinite resetting of attempts when receiving data can lead to hangs
+// endless data retrieval can cause hang-ups
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
 // Address - String - Address and port - address
-// SSL - Boolean - Flag for using a secure connection - ssl
-// AttemptDuration - Number - Interval between data retrieval attempts - timeout
-// Attempts - Number - Max number of data retrieval attempts - attempts
 // MaxSize - Number - Maximum data size. 0 > no limit - size
+// Timeout - Number - Data reading timeout - timeout
 // AsString - Boolean - True > returns string, False > binary data - string
 // Encoding - String - Encoding of received data - enc
 //
 // Returns:
 // String, BinaryData - Received data
 Function ConnectAndReceiveData(Val Address
-    , Val SSL = False
-    , Val AttemptDuration = 0
-    , Val Attempts = 5
     , Val MaxSize = 0
+    , Val Timeout = 5000
     , Val AsString = True
     , Val Encoding = "UTF-8") Export
 
     OPI_TypeConversion.GetBoolean(AsString);
     OPI_TypeConversion.GetLine(Encoding);
 
-    Connection = CreateConnection(Address, SSL);
+    Connection = CreateConnection(Address);
 
     If Not ValueIsFilled(Connection) Then
         Raise "Failed to create Connection";
     EndIf;
 
-    Message = ReceiveData(Connection, AttemptDuration, Attempts, MaxSize);
+    Message = ReadBinaryData(Connection, MaxSize, Timeout);
 
     If AsString Then
-        Message = GetStringFromBinaryData(Message);
+        Message = GetStringFromBinaryData(Message, Encoding);
     EndIf;
 
     CloseConnection(Connection);

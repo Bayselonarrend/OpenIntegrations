@@ -1924,7 +1924,7 @@ def test_tcp(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe tcp ConnectAndReceiveData --address "test" --ssl "test" --timeout "test" --attempts "test" --size "test" --string "test" --enc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe tcp ConnectAndReceiveData --address "test" --size "test" --timeout "test" --string "test" --enc "test" --debug --test '
                }
 
 }

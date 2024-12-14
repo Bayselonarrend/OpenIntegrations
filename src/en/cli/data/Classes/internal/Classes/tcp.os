@@ -26,8 +26,8 @@
     NewLine.Модуль      = "OPI_TCP";
     NewLine.Метод       = "ConnectAndReceiveData";
     NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--ssl";
-    NewLine.Описание    = "Flag for using a secure connection (optional, def. val. - No)";
+    NewLine.Параметр    = "--size";
+    NewLine.Описание    = "Maximum data size. 0 > no limit (optional, def. val. - Empty value)";
     NewLine.Область     = "Tcp client";
 
 
@@ -37,27 +37,7 @@
     NewLine.Метод       = "ConnectAndReceiveData";
     NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
     NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Interval between data retrieval attempts (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tcp client";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--attempts";
-    NewLine.Описание    = "Max number of data retrieval attempts (optional, def. val. - 5)";
-    NewLine.Область     = "Tcp client";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--size";
-    NewLine.Описание    = "Maximum data size. 0 > no limit (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Data reading timeout (optional, def. val. - 5000)";
     NewLine.Область     = "Tcp client";
 
 
