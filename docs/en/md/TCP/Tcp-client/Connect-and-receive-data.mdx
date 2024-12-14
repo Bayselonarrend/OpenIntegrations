@@ -10,15 +10,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ConnectAndReceiveData(Val Address, Val SSL = False, Val AttemptDuration = 0, Val Attempts = 5, Val MaxSize = 0, Val AsString = True, Val Encoding = "UTF-8") Export`
+`Function ConnectAndReceiveData(Val Address, Val MaxSize = 0, Val Timeout = 5000, Val AsString = True, Val Encoding = "UTF-8") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | --address | String | &#x2714; | Address and port |
-  | SSL | --ssl | Boolean | &#x2716; | Flag for using a secure connection |
-  | AttemptDuration | --timeout | Number | &#x2716; | Interval between data retrieval attempts |
-  | Attempts | --attempts | Number | &#x2716; | Max number of data retrieval attempts |
   | MaxSize | --size | Number | &#x2716; | Maximum data size. 0 > no limit |
+  | Timeout | --timeout | Number | &#x2716; | Data reading timeout |
   | AsString | --string | Boolean | &#x2716; | True > returns string, False > binary data |
   | Encoding | --enc | String | &#x2716; | Encoding of received data |
 
@@ -28,9 +26,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-The method tries to read the data in intervals, the duration of which is specified in the AttemptDuration parameter. The Attempts parameter is responsible for the maximum number of attempts. If the new data is successfully received, the number of attempts is reset.
-
-When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because infinite resetting of attempts when receiving data can lead to hangs
+When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because endless data retrieval can cause hang-ups
 
 If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 :::
