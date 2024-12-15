@@ -13,51 +13,31 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "tcp";
     NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
+    NewLine.Метод       = "ProcessRequest";
+    NewLine.МетодПоиска = "PROCESSREQUEST";
     NewLine.Параметр    = "--address";
     NewLine.Описание    = "Address and port";
     NewLine.Область     = "Tcp client";
-    NewLine.ОписаниеМетода   = "Establishes a connection and reads data until completion or by limits";
+    NewLine.ОписаниеМетода   = "Sends a single request to a specified address and receives a response using the default settings";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "tcp";
     NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--size";
-    NewLine.Описание    = "Maximum data size. 0 > no limit (optional, def. val. - Empty value)";
+    NewLine.Метод       = "ProcessRequest";
+    NewLine.МетодПоиска = "PROCESSREQUEST";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Data or text to be sent (optional, def. val. - Empty value)";
     NewLine.Область     = "Tcp client";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "tcp";
     NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Data reading timeout (optional, def. val. - 5000)";
-    NewLine.Область     = "Tcp client";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
+    NewLine.Метод       = "ProcessRequest";
+    NewLine.МетодПоиска = "PROCESSREQUEST";
     NewLine.Параметр    = "--string";
-    NewLine.Описание    = "True > returns string, False > binary data (optional, def. val. - Yes)";
-    NewLine.Область     = "Tcp client";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ConnectAndReceiveData";
-    NewLine.МетодПоиска = "CONNECTANDRECEIVEDATA";
-    NewLine.Параметр    = "--enc";
-    NewLine.Описание    = "Encoding of received data (optional, def. val. - UTF-8)";
+    NewLine.Описание    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
     NewLine.Область     = "Tcp client";
 
     Return CompositionTable;
