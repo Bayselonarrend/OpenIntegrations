@@ -501,7 +501,7 @@ Function ProcessXML(XML) Export
 
     ReturnValue = New Map;
 
-    WHile XML.Read() Do
+    While XML.Read() Do
 
         NodeType = XML.NodeType;
 
@@ -915,7 +915,7 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
 
     Indicator = Int(Current / Total * BarLength);
 
-    WHile Counter < BarLength Do
+    While Counter < BarLength Do
         Buffer  = Buffer + ?(Counter < Indicator, "█", " ");
         Counter = Counter + 1;
     EndDo;
@@ -923,6 +923,10 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
     WriteOnCurrentLine(Progress, , True);
     WriteOnCurrentLine(Buffer  , "Green");
     WriteOnCurrentLine(Information);
+
+    If Percent = 100 Then
+        WriteOnCurrentLine("", , True);
+    EndIf;
 
 EndProcedure
 
@@ -1213,7 +1217,7 @@ Procedure WriteBinaryData(DataWriter, Val BinaryData)
     CurrentPosition = 0;
     TotalSize       = BinaryData.Size();
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         DataReader  = New DataReader(BinaryData);
         BytesRead   = DataReader.Skip(CurrentPosition);
@@ -1316,7 +1320,7 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
         Color = ConsoleColor.White;
     EndIf;
 
-    If TypeOf(Color)   = Type("String") Then
+    If TypeOf(Color)      = Type("String") Then
         Console.TextColor = ConsoleColor[Color];
     Else
         Console.TextColor = Color;
