@@ -842,7 +842,7 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
     TotalSize       = File.Size();
     Session         = OpenSession(Token);
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         Indent = CurrentPosition;
         Cursor = New Structure("offset,session_id", Indent, Session);
