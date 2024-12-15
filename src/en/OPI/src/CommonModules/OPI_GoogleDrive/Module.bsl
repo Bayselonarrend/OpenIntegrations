@@ -672,9 +672,9 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
             Return CheckResult;
         EndIf;
 
-        // !OInt KB = 1024;
-        // !OInt MB = KB * KB;
-        // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
+        KBytes = 1024;
+        MByte  = KBytes * KBytes;
+        OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte);
 
         // !OInt RunGarbageCollection();
         // !OInt FreeObject(CurrentData);
