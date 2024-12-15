@@ -5,7 +5,7 @@
     CurrentDate  = BegOfDay(OPI_Tools.GetCurrentDate());
     DeliveryDate = CurrentDate + Day * 14;
 
-    WHile DayOfWeek(DeliveryDate) > 5 Do
+    While DayOfWeek(DeliveryDate) > 5 Do
         DeliveryDate = DeliveryDate + Day;
     EndDo;
 
