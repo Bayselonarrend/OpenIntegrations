@@ -14285,7 +14285,7 @@ Procedure CDEK_GetDeliveryAppointment(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDeliveryAppointment", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
