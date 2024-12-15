@@ -915,7 +915,7 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
 
     Indicator = Int(Current / Total * BarLength);
 
-    WHile Counter < BarLength Loop
+    WHile Counter < BarLength Do
         Buffer  = Buffer + ?(Counter < Indicator, "█", " ");
         Counter = Counter + 1;
     EndDo;
