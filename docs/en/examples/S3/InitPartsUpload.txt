@@ -24,7 +24,7 @@
     SourceStream = DataReader.SourceStream();
     TagsArray    = New Array;
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         CurrentReading = DataReader.Read(ChunkSize);
         CurrentData    = CurrentReading.GetBinaryData();

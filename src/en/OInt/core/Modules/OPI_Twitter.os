@@ -441,7 +441,7 @@ Function WaitForProcessingCompletion(Val ProcessingStatus, Val InitializationID,
     Fields.Insert(Command   , "STATUS");
     Fields.Insert("media_id", InitializationID);
 
-    WHile String(ProcessingStatus) = "pending" Or String(ProcessingStatus) = "in_progress" Do
+    While String(ProcessingStatus) = "pending" Or String(ProcessingStatus) = "in_progress" Do
 
         Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, "GET", URL);
         Response      = OPI_Tools.Get(URL, Fields, Authorization);
