@@ -925,7 +925,7 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
     WriteOnCurrentLine(Information);
 
     If Percent = 100 Then
-        WriteOnCurrentLine("", , True);
+        WriteOnCurrentLine(Chars.LF, , True);
     EndIf;
 
 EndProcedure
