@@ -12,7 +12,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),    // 0
     name!("Disconnect"), // 1
     name!("Read"),       // 2
-    name!("Send"),      // 3
+    name!("Send"),       // 3
+    name!("CloseOutput") // 4
 ];
 
 // Число параметров функций компоненты
@@ -22,6 +23,7 @@ pub fn get_params_amount(num: usize) -> usize {
         1 => 0,
         2 => 3,
         3 => 2,
+        4 => 0,
         _ => 0,
     }
 }
@@ -62,6 +64,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Box::new(false) // Если соединения нет, возвращаем false
             }
         },
+        4 =>{
+            if let Some(ref mut connection) = obj.connection {
+                Box::new(methods::close_output(connection))
+            } else {
+                Box::new(false)
+            }
+        }
         _ => Box::new(false), // Неверный номер команды
     }
 
