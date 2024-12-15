@@ -1,5 +1,5 @@
 use std::io::{Read, Write};
-use std::net::TcpStream;
+use std::net::{Shutdown, TcpStream};
 use std::time::{Duration, Instant};
 
 /// Отправляет данные
@@ -70,4 +70,9 @@ pub fn receive(
 pub fn disconnect(add_in: &mut crate::component::AddIn) -> bool {
     add_in.connection = None;
     true
+}
+
+/// Закрытие потока записи
+pub fn close_output(connection: &mut TcpStream) -> bool {
+    connection.shutdown(Shutdown::Write).is_ok()
 }
