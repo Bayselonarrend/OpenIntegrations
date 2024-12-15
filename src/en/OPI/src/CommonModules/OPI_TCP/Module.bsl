@@ -212,6 +212,7 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) E
     Connection = CreateConnection(Address);
 
     Result = SendBinaryData(Connection, Data);
+    Connection.CloseOutput();
 
     If Result Then
 
