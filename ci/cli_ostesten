@@ -656,6 +656,17 @@ pipeline {
 			}
 		}
 
+        stage('Testing-TCP') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_TC_Client"'
+               }
+
+			}
+		}
+
    }
       post{
          always{

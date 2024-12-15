@@ -107,7 +107,7 @@ Function ReadBinaryData(Val Connection
     OPI_TypeConversion.GetNumber(MaxSize);
 
     If TypeOf(Marker) = Type("String") Then
-        Marker           = GetBinaryDataFromString(Marker);
+        Marker        = GetBinaryDataFromString(Marker);
     Else
         OPI_TypeConversion.GetBinaryData(Marker);
     EndIf;
