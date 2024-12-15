@@ -865,9 +865,9 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
 
         CurrentPosition = NextPosition;
 
-        // !OInt KB = 1024;
-        // !OInt MB = KB * KB;
-        // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
+        KBytes = 1024;
+        MByte  = KBytes * KBytes;
+        OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte);
 
         // !OInt RunGarbageCollection();
         // !OInt FreeObject(CurrentData);
