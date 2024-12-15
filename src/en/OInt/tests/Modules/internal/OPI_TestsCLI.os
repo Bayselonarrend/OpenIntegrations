@@ -8013,7 +8013,7 @@ Procedure CLI_Dropbox_GetUploadStatusByURL(FunctionParameters)
     WorkID = FunctionParameters["Dropbox_Job"];
     Status = "in_progress";
 
-    WHile Status = "in_progress" Do
+    While Status = "in_progress" Do
 
         Options = New Structure;
         Options.Insert("token" , Token);
@@ -8434,7 +8434,7 @@ Procedure CLI_Dropbox_CancelFolderPublication(FunctionParameters)
     CurrentStatus = "in_progress";
     JobID         = Result["async_job_id"];
 
-    WHile CurrentStatus = "in_progress" Do
+    While CurrentStatus = "in_progress" Do
 
         Options = New Structure;
         Options.Insert("token" , Token);
@@ -9509,7 +9509,7 @@ Procedure CLI_Ozon_GetProductCreationStatus(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductCreationStatus", "Ozon");
 
-    WHile Result["result"]["items"][0]["status"] = "pending" Do
+    While Result["result"]["items"][0]["status"] = "pending" Do
 
         OPI_Tools.Pause(30);
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
@@ -9555,7 +9555,7 @@ Procedure CLI_Ozon_CreateProductByOzonID(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
 
-    WHile Result["result"]["items"][0]["status"] = "pending" Do
+    While Result["result"]["items"][0]["status"] = "pending" Do
 
         OPI_Tools.Pause(30);
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
@@ -9623,7 +9623,7 @@ Procedure CLI_Ozon_UpdateProductsAttributes(FunctionParameters)
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
 
-    WHile Result["result"]["items"][0]["status"] = "pending" Do
+    While Result["result"]["items"][0]["status"] = "pending" Do
 
         OPI_Tools.Pause(30);
         Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
@@ -9952,7 +9952,7 @@ Procedure CLI_Ozon_GetCodesUploadStatus(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCodesUploadStatus", "Ozon");
 
     If ValueIsFilled(Result["result"]) Then
-        WHile Result["result"]["status"] = "pending" Do
+        While Result["result"]["status"] = "pending" Do
 
             OPI_Tools.Pause(30);
             Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCodesUploadStatus", Options);
@@ -16148,7 +16148,7 @@ Procedure CLI_CDEK_RegisterDeliveryAppointment(FunctionParameters)
     CurrentDate  = BegOfDay(OPI_Tools.GetCurrentDate());
     DeliveryDate = CurrentDate + Day * 14;
 
-    WHile DayOfWeek(DeliveryDate) > 5 Do
+    While DayOfWeek(DeliveryDate) > 5 Do
         DeliveryDate = DeliveryDate + Day;
     EndDo;
 
@@ -17688,7 +17688,7 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
     SourceStream = DataReader.SourceStream();
     TagsArray    = New Array;
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         CurrentReading = DataReader.Read(ChunkSize);
         CurrentData    = CurrentReading.GetBinaryData();
