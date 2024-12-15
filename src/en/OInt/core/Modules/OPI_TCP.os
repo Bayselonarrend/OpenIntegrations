@@ -194,48 +194,40 @@ Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout 
 
 EndFunction
 
-
-// Connect and receive data
-// Establishes a connection and reads data until completion or by limits
-//
-// Note
-// When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
-// endless data retrieval can cause hang-ups
-// If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
+// ProcessRequest
+// Sends a single request to a specified address and receives a response using the default settings
 //
 // Parameters:
 // Address - String - Address and port - address
-// MaxSize - Number - Maximum data size. 0 > no limit - size
-// Timeout - Number - Data reading timeout - timeout
-// AsString - Boolean - True > returns string, False > binary data - string
-// Encoding - String - Encoding of received data - enc
+// Data - String, BinaryData - Data or text to be sent - data
+// ResponseString - Boolean - An attribute of receiving the response as a string - string
 //
 // Returns:
-// String, BinaryData - Received data
-Function ConnectAndReceiveData(Val Address
-    , Val MaxSize = 0
-    , Val Timeout = 5000
-    , Val AsString = True
-    , Val Encoding = "UTF-8") Export
+// BinaryData, String - Response
+Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export
 
-    OPI_TypeConversion.GetBoolean(AsString);
-    OPI_TypeConversion.GetLine(Encoding);
+    OPI_TypeConversion.GetBinaryData(Data, True);
+    OPI_TypeConversion.GetBoolean(ResponseString);
 
     Connection = CreateConnection(Address);
 
-    If Not ValueIsFilled(Connection) Then
-        Raise "Failed to create Connection";
-    EndIf;
+    Result = SendBinaryData(Connection, Data);
 
-    Message = ReadBinaryData(Connection, MaxSize, Timeout);
+    If Result Then
 
-    If AsString Then
-        Message = ПолучитьСтрокуИзДвоичныхДанных(Message, Encoding);
+        Response = ReadBinaryData(Connection, , Chars.LF);
+        Response = ?(ResponseString, ПолучитьСтрокуИзДвоичныхДанных(Response), Response);
+
+    Else
+
+        Response = "OPI: Failed to send message";
+        Response = ?(ResponseString, Response, ПолучитьДвоичныеДанныеИзСтроки(Response));
+
     EndIf;
 
     CloseConnection(Connection);
 
-    Return Message;
+    Return Response;
 
 EndFunction
 
