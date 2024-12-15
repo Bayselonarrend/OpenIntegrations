@@ -1716,9 +1716,9 @@ Function GetObjectInChunks(Val BasicData
                 InterimResult = GetFullObject(BasicData, SourceHeader);
                 FileWriter.Write(InterimResult);
 
-                // !OInt KB = 1024;
-                // !OInt MB = KB * KB;
-                // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
+                KBytes = 1024;
+                MByte  = KBytes * KBytes;
+                OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte);
 
                 // !OInt RunGarbageCollection();
                 // !OInt FreeObject(InterimResult);
@@ -1829,9 +1829,9 @@ Function UploadObjectInParts(Val Name
 
                 TagsArray.Add(ETag);
 
-                // !OInt KB = 1024;
-                // !OInt MB = KB * KB;
-                // !OInt Message(OPI_Tools.ProgressInfo(BytesRead, TotalSize, "MB", MB));
+                KBytes = 1024;
+                MByte  = KBytes * KBytes;
+                OPI_Tools.ProgressInformation(BytesRead, TotalSize, "MB", MByte);
 
                 // !OInt RunGarbageCollection();
                 // !OInt FreeObject(CurrentData);

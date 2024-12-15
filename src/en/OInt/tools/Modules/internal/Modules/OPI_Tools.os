@@ -36,6 +36,7 @@
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
+//@skip-check use-non-recommended-method
 
 #Region Internal
 
@@ -889,7 +890,11 @@ Function IsOneScript() Export
 
 EndFunction
 
-Function ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
+Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
+
+    If Not IsOneScript() Then
+        Return;
+    EndIf;
 
     Whole   = 100;
     Current = Round(Current / Divider, 2);
@@ -900,11 +905,26 @@ Function ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) 
     StrTotal      = NumberToString(Total);
     StrPercentage = NumberToString(Percent);
 
-    Information = StrCurrent + "/" + StrTotal + " " + Unit + " ( " + StrPercentage + "% )";
+    Progress    = "Progress [" + StrPercentage + "%" + "] ▐";
+    Information = "▌ " + StrCurrent + "/" + StrTotal + " " + Unit;
 
-    Return Information;
+    // Progress bat
+    BarLength = 30;
+    Counter = 0;
+    Buffer = "";
 
-EndFunction
+    Indicator = Int(Current / Total * BarLength);
+
+    WHile Counter < BarLength Loop
+        Buffer  = Buffer + ?(Counter < Indicator, "█", " ");
+        Counter = Counter + 1;
+    EndDo;
+
+    WriteOnCurrentLine(Progress, , True);
+    WriteOnCurrentLine(Buffer  , "Green");
+    WriteOnCurrentLine(Information);
+
+EndProcedure
 
 #EndRegion
 
@@ -1278,6 +1298,36 @@ Procedure XMLInitialProcessing(XML)
         XML            = New XMLReader;
         XML.SetString(XML_);
     EndIf;
+
+EndProcedure
+
+Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export
+
+    If Not IsOneScript() Then
+        Console      = Undefined;
+        ConsoleColor = New Map;
+    EndIf;
+
+    Encoding      = Console.OutputEncoding;
+    OutputStream  = Console.OpenStandardOutput();
+    OutputWriting = New DataWriter(OutputStream, Encoding);
+
+    If Not ValueIsFilled(Color) Then
+        Color = ConsoleColor.White;
+    EndIf;
+
+    If TypeOf(Color)   = Type("String") Then
+        Console.TextColor = ConsoleColor[Color];
+    Else
+        Console.TextColor = Color;
+    EndIf;
+
+    If ToStart Then
+        Escape = Chars.CR;
+        OutputWriting.WriteChars(Escape);
+    EndIf;
+
+    OutputWriting.WriteChars(Text);
 
 EndProcedure
 
