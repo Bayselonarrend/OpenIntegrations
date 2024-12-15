@@ -565,6 +565,7 @@ Function PutObject(Val Name
 
     If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
+        OPI_TypeConversion.GetNumber(MaxSize);
     Else
         MaxSize = 20971520;
     EndIf;
@@ -850,6 +851,7 @@ Function GetObject(Val Name
 
     If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
+        OPI_TypeConversion.GetNumber(MaxSize);
     Else
         MaxSize = 20971520;
     EndIf;
@@ -1674,7 +1676,7 @@ Function GetObjectInChunks(Val BasicData
 
     HeadersArray = New Array;
 
-    WHile ChunkStart < TotalSize - ChunkSize Do
+    While ChunkStart < TotalSize - ChunkSize Do
 
         ChunkEnd = ChunkStart + ChunkSize - 1;
 
@@ -1798,7 +1800,7 @@ Function UploadObjectInParts(Val Name
     Attempts        = 3;
     LastSuccessCode = 299;
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         For N = 1 To Attempts Do
 
