@@ -1084,6 +1084,22 @@ Function IsWindows() Export
 
 EndFunction
 
+Function MergeData(Val Data, Val Addition) Export
+
+    Stream = New MemoryStream();
+    Record = New DataWriter(Stream);
+
+    Record.Write(Data);
+    Record.Write(Addition);
+
+    Record.Close();
+
+    Result = Stream.CloseAndGetBinaryData();
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
