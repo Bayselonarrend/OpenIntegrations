@@ -63,7 +63,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     SourceStream = DataReader.SourceStream();
     TagsArray    = New Array;
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         CurrentReading = DataReader.Read(ChunkSize);
         CurrentData    = CurrentReading.GetBinaryData();
