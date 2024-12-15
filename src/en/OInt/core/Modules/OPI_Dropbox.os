@@ -867,7 +867,7 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
 
         KBytes = 1024;
         MByte  = KBytes * KBytes;
-        Message(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
+        OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte);
 
         RunGarbageCollection();
         FreeObject(CurrentData);
