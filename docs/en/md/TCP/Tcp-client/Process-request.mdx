@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ProcessRequest
+ Sends a single request to a specified address and receives a response using the default settings
+
+
+
+`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --address | String | &#x2714; | Address and port |
+  | Data | --data | String, BinaryData | &#x2716; | Data or text to be sent |
+  | ResponseString | --string | Boolean | &#x2716; | An attribute of receiving the response as a string |
+
+  
+  Returns:  BinaryData, String - Response
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

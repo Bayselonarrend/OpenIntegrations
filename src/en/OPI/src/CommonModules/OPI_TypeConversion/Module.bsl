@@ -37,7 +37,7 @@
 // #Use "./internal"
 #Region Internal
 
-Procedure GetBinaryData(Value) Export
+Procedure GetBinaryData(Value, Val Force = False) Export
 
     If Value = Undefined Then
         Return;
@@ -69,7 +69,14 @@ Procedure GetBinaryData(Value) Export
         EndIf;
 
     Except
-        Raise "Error getting binary data from parameter: " + ErrorDescription();
+
+        If Force Then
+            Value = OPI_Tools.NumberToString(Value);
+            Value = GetBinaryDataFromString(Value);
+        Else
+            Raise "Error getting binary data from parameter: " + ErrorDescription();
+        EndIf;
+
     EndTry;
 
 EndProcedure
