@@ -640,7 +640,7 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
     DataReader      = New DataReader(Binary);
     SourceStream    = DataReader.SourceStream();
 
-    WHile BytesRead < TotalSize Do
+    While BytesRead < TotalSize Do
 
         BytesRead    = SourceStream.CurrentPosition();
         Result       = DataReader.Read(ChunkSize);
