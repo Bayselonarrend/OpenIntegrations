@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Read line Reads data from the specified connection as a string
+
+
+
+`Function ReadLine(Val Connection, Val Encoding = "UTF-8", Val Marker = "", Val Timeout = 5000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --tcp | Arbitrary | &#x2714; | Connection, see. CreateConnection |
+  | Encoding | --enc | String | &#x2716; | Encoding of data conversion to string |
+  | Marker | --marker | String, BinaryData | &#x2716; | End of message marker. Empty > without marker |
+  | Timeout | --timeout | Number | &#x2716; | Data waiting timeout (ms). 0 > no limit |
+
+  
+  Returns:  String - Received data as string
+
+<br/>
+
+:::tip
+If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
