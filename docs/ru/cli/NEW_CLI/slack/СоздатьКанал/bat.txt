@@ -1,4 +1,4 @@
 oint slack СоздатьКанал ^
   --token "***" ^
-  --title "testconve4679139-70c5-41db-b3d5-e410eaf4b4bf" ^
+  --title "testconvbd1383f0-82f0-4545-8f95-446d2703c1ae" ^
   --private false
