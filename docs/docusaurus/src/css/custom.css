@@ -130,7 +130,7 @@ li > a.menu__link {
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
-.VKTeams a::before, .S3 a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, .Other a::before{
+.VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, .Other a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -205,6 +205,10 @@ li > a.menu__link {
 
 .S3 > div > a::before{
   content: url(../../static/img/APIs/small/S3.png);
+}
+
+.TCP > div > a::before{
+  content: url(../../static/img/APIs/small/TCP.png);
 }
 
 .Messenger > div > a::before{
