@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Create Connection Creates a TCP connection
+
+
+
+`Function CreateConnection(Val Address) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --address | String | &#x2714; | Address and port |
+
+  
+  Returns:  Undefined, Arbitrary - Returns the TCP client object on successful connection or undefined
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address    = "45.79.112.203:4242";
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.CloseConnection(Connection);
+```
+ 
+
+
+
+

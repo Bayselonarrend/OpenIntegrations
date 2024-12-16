@@ -8,5 +8,6 @@
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
     Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     OPI_TCP.CloseConnection(Connection);
