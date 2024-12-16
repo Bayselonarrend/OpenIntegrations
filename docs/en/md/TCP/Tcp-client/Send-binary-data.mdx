@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Send binary data Sends binary data over the specified connection
+
+
+
+`Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --tcp | Arbitrary | &#x2714; | Connection, see. CreateConnection |
+  | Data | --data | BinaryData | &#x2714; | Sending data |
+  | Timeout | --timeout | Number | &#x2716; | Data reading timeout (ms). 0 > no limit |
+
+  
+  Returns:  Boolean - Flag of successful delivery
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address    = "45.79.112.203:4242";
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+```
+ 
+
+
+
+

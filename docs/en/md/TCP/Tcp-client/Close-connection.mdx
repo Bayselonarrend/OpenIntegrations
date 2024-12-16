@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Close connection Explicitly closes a previously created connection
+
+
+
+`Function CloseConnection(Val Connection) ExportReturn Connection.Disconnect();EndFunction`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --tcp | Arbitrary | &#x2714; | Connection, see. CreateConnection |
+
+  
+  Returns:  Boolean - always return True
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address    = "45.79.112.203:4242";
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    Result = OPI_TCP.CloseConnection(Connection);
+```
+ 
+
+
+
+

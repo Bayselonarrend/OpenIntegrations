@@ -1,0 +1,34 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Method for insertion into an http service, the address of which is specified in redirect_uri Calls the token acquisition method, as for obtaining a token from the code received on redirect_uri after authorization via the browser is only 30 seconds
+
+
+
+`Function HandleIncomingRequestAfterAuthorization(Request) Export // Service`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Request |  | HTTPServiceRequest | &#x2714; | Request coming to the http service |
+
+  
+  Returns:  HTTPResponse, Arbitrary, BinaryData - Result of reading the JSON response from the server
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
