@@ -973,6 +973,23 @@ Procedure Pause(Val Seconds) Export
 
 EndProcedure
 
+Procedure ReplaceEscapeSequences(Text) Export
+
+    CharacterMapping = New Map;
+    CharacterMapping.Insert("\n", Chars.LF);
+    CharacterMapping.Insert("\r", Chars.CR);
+    CharacterMapping.Insert("\f", Chars.FF);
+    CharacterMapping.Insert("\v", Chars.VTab);
+
+    For Each Symbol In CharacterMapping Do
+
+        Text = StrReplace(Text, Symbol.Key        , Symbol.Value);
+        Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
+
+    EndDo;
+
+EndProcedure
+
 Function NumberToString(Val Number) Export
     Return StrReplace(String(Number), Chars.NBSp, "");
 EndFunction

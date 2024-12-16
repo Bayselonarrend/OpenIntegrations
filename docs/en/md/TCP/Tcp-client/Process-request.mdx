@@ -10,14 +10,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val LineBreak = True) Export`
+`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | --address | String | &#x2714; | Address and port |
   | Data | --data | String, BinaryData | &#x2716; | Data or text to be sent |
   | ResponseString | --string | Boolean | &#x2716; | An attribute of receiving the response as a string |
-  | LineBreak | --nl | Boolean | &#x2716; | End the message with a line break character |
 
   
   Returns:  BinaryData, String - Response

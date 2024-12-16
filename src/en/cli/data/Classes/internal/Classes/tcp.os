@@ -40,16 +40,6 @@
     NewLine.Описание    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
     NewLine.Область     = "Tcp client";
 
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ProcessRequest";
-    NewLine.МетодПоиска = "PROCESSREQUEST";
-    NewLine.Параметр    = "--nl";
-    NewLine.Описание    = "End the message with a line break character (optional, def. val. - Yes)";
-    NewLine.Область     = "Tcp client";
-
     Return CompositionTable;
 EndFunction
 
