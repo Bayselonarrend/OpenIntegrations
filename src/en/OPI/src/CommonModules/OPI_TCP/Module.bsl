@@ -45,8 +45,7 @@
 
 #Region TCPClient
 
-// !NOCLI
-// Create Connection
+// Create Connection !NOCLI
 // Creates a TCP connection
 //
 // Parameters:
@@ -68,8 +67,7 @@ Function CreateConnection(Val Address) Export
 
 EndFunction
 
-// !NOCLI
-// Close connection
+// Close connection !NOCLI
 // Explicitly closes a previously created connection
 //
 // Parameters:
@@ -81,8 +79,7 @@ Function CloseConnection(Val Connection) Export
     Return Connection.Disconnect();
 EndFunction
 
-// !NOCLI
-// Read binary data
+// Read binary data !NOCLI
 // Reads data from the specified connection
 //
 // Note
@@ -118,8 +115,7 @@ Function ReadBinaryData(Val Connection
 
 EndFunction
 
-// !NOCLI
-// Read line
+// Read line !NOCLI
 // Reads data from the specified connection as a string
 //
 // Note
@@ -147,8 +143,7 @@ Function ReadLine(Val Connection
 
 EndFunction
 
-// !NOCLI
-// Send binary data
+// Send binary data !NOCLI
 // Sends binary data over the specified connection
 //
 // Parameters:
@@ -169,8 +164,7 @@ Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
 
 EndFunction
 
-// !NOCLI
-// Send line
+// Send line !NOCLI
 // Sends data as a string over the specified connection
 //
 // Parameters:
