@@ -201,23 +201,16 @@ EndFunction
 // Address - String - Address and port - address
 // Data - String, BinaryData - Data or text to be sent - data
 // ResponseString - Boolean - An attribute of receiving the response as a string - string
-// LineBreak - Boolean - End the message with a line break character - nl
 //
 // Returns:
 // BinaryData, String - Response
-Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val LineBreak = True) Export
+Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export
 
     OPI_TypeConversion.GetBinaryData(Data, True);
     OPI_TypeConversion.GetBoolean(ResponseString);
-    OPI_TypeConversion.GetBoolean(LineBreak);
 
     Connection = CreateConnection(Address);
-
-    If LineBreak Then
-        Data = OPI_Tools.MergeData(Data, ПолучитьДвоичныеДанныеИзСтроки(Chars.LF));
-    EndIf;
-
-    Result = SendBinaryData(Connection, Data);
+    Result     = SendBinaryData(Connection, Data);
 
     If Result Then
 
