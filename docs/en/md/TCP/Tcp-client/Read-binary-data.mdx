@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Read binary data Reads data from the specified connection
+
+
+
+`Function ReadBinaryData(Val Connection, Val MaxSize = 0, Val Marker = "", Val Timeout = 5000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --tcp | Arbitrary | &#x2714; | Connection, see. CreateConnection |
+  | MaxSize | --size | Number | &#x2716; | Maximum data size (bytes). 0 > no limit |
+  | Marker | --marker | String, BinaryData | &#x2716; | End of message marker. Empty > without marker |
+  | Timeout | --timeout | Number | &#x2716; | Data waiting timeout (ms). 0 > no limit |
+
+  
+  Returns:  BinaryData - Received data
+
+<br/>
+
+:::tip
+When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because endless data retrieval can cause hang-ups
+
+If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address    = "45.79.112.203:4242";
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    OPI_TCP.CloseConnection(Connection);
+```
+ 
+
+
+
+
