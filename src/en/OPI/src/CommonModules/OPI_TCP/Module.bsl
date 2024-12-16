@@ -206,7 +206,7 @@ EndFunction
 // BinaryData, String - Response
 Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export
 
-    OPI_TypeConversion.GetBinaryData(Data, True);
+    OPI_TypeConversion.GetBinaryData(Data, True, False);
     OPI_TypeConversion.GetBoolean(ResponseString);
 
     Connection = CreateConnection(Address);
