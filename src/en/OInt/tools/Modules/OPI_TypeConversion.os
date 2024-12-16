@@ -37,7 +37,7 @@
 #Use "./internal"
 #Region Internal
 
-Procedure GetBinaryData(Value, Val Force = False) Export
+Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
 
     If Value = Undefined Then
         Return;
@@ -62,7 +62,11 @@ Procedure GetBinaryData(Value, Val Force = False) Export
 
             Else
 
-                Value = Base64Value(Value);
+                If TryB64 Then
+                    Value = Base64Value(Value);
+                Else
+                    Raise "";
+                EndIf;
 
             EndIf;
 
