@@ -2182,6 +2182,8 @@ Procedure TC_Client() Export
     TCP_CreateConnection(TestParameters);
     TCP_CloseConnection(TestParameters);
     TCP_ReadBinaryData(TestParameters);
+    TCP_SendBinaryData(TestParameters);
+    TCP_ProcessRequest(TestParameters);
 
 EndProcedure
 
@@ -15709,6 +15711,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters) Export
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
     Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -15729,6 +15732,56 @@ Procedure TCP_ReadBinaryData(FunctionParameters) Export
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
+
+EndProcedure
+
+Procedure TCP_SendBinaryData(FunctionParameters) Export
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+
+EndProcedure
+
+Procedure TCP_ProcessRequest(FunctionParameters) Export
+
+    Address = FunctionParameters["TCP_Address"];
+    Data    = "Echo this!" + Chars.LF;
+
+    Result = OPI_TCP.ProcessRequest(Address, Data);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
 
 EndProcedure
 

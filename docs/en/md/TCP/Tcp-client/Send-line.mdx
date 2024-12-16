@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 
+Send line Sends data as a string over the specified connection
+
+
+
+`Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout = 5000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --tcp | Arbitrary | &#x2714; | Connection, see. CreateConnection |
+  | Data | --data | String | &#x2714; | Data to be sent as a string |
+  | Encoding | --enc | String | &#x2716; | Encoding for writing the outgoing string to the stream |
+  | Timeout | --timeout | Number | &#x2716; | Data reading timeout (ms). 0 > no limit |
+
+  
+  Returns:  Boolean - Flag of successful delivery
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
