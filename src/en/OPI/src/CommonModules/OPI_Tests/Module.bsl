@@ -2183,6 +2183,8 @@ Procedure TC_Client() Export
     TCP_CloseConnection(TestParameters);
     TCP_ReadBinaryData(TestParameters);
     TCP_SendBinaryData(TestParameters);
+    TCP_ReadLine(TestParameters);
+    TCP_SendLine(TestParameters);
     TCP_ProcessRequest(TestParameters);
 
 EndProcedure
@@ -15732,7 +15734,6 @@ Procedure TCP_ReadBinaryData(FunctionParameters) Export
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
-
 EndProcedure
 
 Procedure TCP_SendBinaryData(FunctionParameters) Export
@@ -15742,20 +15743,20 @@ Procedure TCP_SendBinaryData(FunctionParameters) Export
     Message    = "Hello server!" + Chars.LF;
     Data       = GetBinaryDataFromString(Message);
 
-    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.SendBinaryData(Connection, Data);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    Response = OPI_TCP.ReadBinaryData(Connection, , Marker);
 
     OPI_TCP.CloseConnection(Connection);
 
     // END
 
-    Result = GetStringFromBinaryData(Result);
+    Response = GetStringFromBinaryData(Response);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData", "TCP");
-    OPI_TestDataRetrieval.Check_String(Result, Message);
+    OPI_TestDataRetrieval.Check_String(Response, Message);
 
     Connection = OPI_TCP.CreateConnection(Address);
 
@@ -15781,6 +15782,70 @@ Procedure TCP_ProcessRequest(FunctionParameters) Export
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_ReadLine(FunctionParameters) Export
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    OPI_TCP.SendLine(Connection, Data);
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadLine(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadLine", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendLine(Connection, Data);
+    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadLine (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_SendLine(FunctionParameters) Export
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    Result = OPI_TCP.SendLine(Connection, Data);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Response = OPI_TCP.ReadLine(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLine", "TCP");
+    OPI_TestDataRetrieval.Check_String(Response, Data);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendLine(Connection, Data);
+    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLine (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Data);
 
 EndProcedure
