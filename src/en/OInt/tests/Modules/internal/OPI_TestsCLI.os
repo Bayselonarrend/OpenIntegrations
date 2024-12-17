@@ -2166,6 +2166,19 @@ EndProcedure
 
 #EndRegion
 
+#Region TCP
+
+Procedure CLI_TC_Client() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
+
+    CLI_TCP_ProcessRequest(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -17865,6 +17878,28 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(RequiredSize = Number(Check["headers"]["Content-Length"])).Равно(True);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
+
+EndProcedure
+
+#EndRegion
+
+#Region TCP
+
+Procedure CLI_TCP_ProcessRequest(FunctionParameters) Export
+
+    Address = FunctionParameters["TCP_Address"];
+    Data    = "Echo this!\n";
+
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("data"   , Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
 
 EndProcedure
 
