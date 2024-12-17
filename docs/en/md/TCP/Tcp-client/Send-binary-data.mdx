@@ -40,12 +40,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Message    = "Hello server!" + Chars.LF;
     Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
 
-    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.SendBinaryData(Connection, Data);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    Response = OPI_TCP.ReadBinaryData(Connection, , Marker);
 
     OPI_TCP.CloseConnection(Connection);
 ```
