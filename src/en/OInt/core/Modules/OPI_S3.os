@@ -562,6 +562,7 @@ Function PutObject(Val Name
     Divider     = 10000;
     MinPartSize = FileSize / Divider;
     MinPartSize = Max(MinPartSize, 5242880);
+    Half        = 0.5;
 
     If OPI_Tools.CollectionFieldExist(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
@@ -572,7 +573,7 @@ Function PutObject(Val Name
 
     If MinPartSize > MaxSize Then
         Raise "ChunkSize is too small. It is necessary to increase the chunk size (minimum for this file - "
-            + OPI_Tools.NumberToString(Round(MinPartSize + 0.5))
+            + OPI_Tools.NumberToString(Round(MinPartSize + Half))
             + ")";
     EndIf;
 
@@ -1261,7 +1262,7 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
     Request.Headers.Insert("Host"      , Connection.Host);
 
-    MainParts = GetMainSignatureParts(DataStructure, Request, Connection, Method, CurrentDate);
+    MainParts = GetMainSignatureParts(DataStructure, Request, Method, CurrentDate);
 
     Scope       = MainParts["Scope"];
     Signature   = MainParts["Signature"];
@@ -1340,7 +1341,6 @@ EndFunction
 
 Function GetMainSignatureParts(Val DataStructure
     , Val Request
-    , Val Connection
     , Val Method
     , Val CurrentDate)
 
