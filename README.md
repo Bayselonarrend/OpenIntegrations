@@ -1,10 +1,10 @@
 
- <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/eng.png?1" align="left" width="32"> *This package is also available in English: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
+ <img src="media/eng.png?1" align="left" width="32"> *This package is also available in English: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
 
 <hr>
 
-![Main](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
-![Main-light](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main-light.gif#gh-light-mode-only)
+![Main](media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
+![Main-light](media/main-light.gif#gh-light-mode-only)
 
 
 # Открытый пакет интеграций
@@ -23,24 +23,24 @@
 На сегодняшний день реализован инструментарий для работы со следующими сервисами:
 <br>
   <div>
-  <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="40"></a>  
-  <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Bitrix24.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/CDEK.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/VK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VK.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/VKTeams/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VKTeams.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Ozon/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Ozon.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/S3/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/S3.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/YandexDisk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/GoogleCalendar/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleCalendar.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/GoogleDrive/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleDrive.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/GoogleSheets/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleSheets.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Slack/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Slack.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Airtable/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Airtable.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Dropbox/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Dropbox.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Neocities.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>  
+  <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/VK/"><img src="media/VK.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/VKTeams/"><img src="media/VKTeams.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Viber/"><img src="media/Viber.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Ozon/"><img src="media/Ozon.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/S3/"><img src="media/S3.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Twitter/"><img src="media/Twitter.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Notion/"><img src="media/Notion.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/YandexDisk/"><img src="media/YandexDisk.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/GoogleCalendar/"><img src="media/GoogleCalendar.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/GoogleDrive/"><img src="media/GoogleDrive.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/GoogleSheets/"><img src="media/GoogleSheets.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Slack/"><img src="media/Slack.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
   
 </div> 
 <br>
@@ -81,7 +81,7 @@
 </a>
 
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
+<img src="media/icons.png" align="right">
 
 <br><br>
 
@@ -134,7 +134,7 @@
 
 У ОПИ есть подробная документация с примерами по адресу [https://openintegrations.dev](https://openintegrations.dev). Там вы можете найти как общие положения о начале работы с каждым конкретным API, так и описания каждого метода с примерами кода, параметров и возвращаемых значений.
 
-![Docs](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/docs.png?4)
+![Docs](media/docs.png?4)
 
 CLI версия ОПИ имеет собственную встроенную справку по всем методам. Показ справки осуществляется при вызове библиотеки без метода, метода без опций или при указании опции `--help`
 
@@ -161,7 +161,7 @@ ___
 >- [Библиотека для работы с Bitrix24: живая лента, задачи, файлы и личные сообщения](https://infostart.ru/1c/articles/2148213/)<br>
 >- [Работа с онлайн сервисами из консоли через OInt CLI](https://infostart.ru/1c/articles/2159665/)<br>
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/heartnstar.png?1" align="right" width="384">
+<img src="media/heartnstar.png?1" align="right" width="384">
 
 <br>
 
