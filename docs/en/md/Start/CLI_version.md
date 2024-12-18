@@ -47,6 +47,8 @@ The standard escape sequences `\n`, `\r`, `\v`, and `\f` may be used in the pass
 + File paths, if a file on that path exists
 + Standard `--out` parameter
 
+In order to avoid esapce sequence conversions where they should not be, it is necessary to escape them with a second character `\` (e.g., `\\n`).
+
 <hr/>
 
 You can find all further information you might need for work in other sections of this documentation, as well as in the built-in help of OInt CLI
