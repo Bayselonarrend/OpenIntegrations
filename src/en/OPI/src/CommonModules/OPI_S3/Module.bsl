@@ -671,7 +671,6 @@ EndFunction
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // PartNumber - Number, String - Number of the object part from 1 to 10000 - part
 // Data - BinaryData, String - Part content for uploading - content
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Structure of KeyAndValue - serialized JSON response from storage
@@ -680,8 +679,7 @@ Function UploadObjectPart(Val Name
     , Val BasicData
     , Val UploadID
     , Val PartNumber
-    , Val Data
-    , Val Headers = Undefined) Export
+    , Val Data) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
@@ -1206,7 +1204,7 @@ Function GetObjectDownloadLink(Val Name
     CheckBasicData(BasicData_);
     FillObjectURL(BasicData_, Name, Bucket);
 
-    Signature = CreateURLSignature(BasicData_, Name, "GET", Expire, Headers);
+    Signature = CreateURLSignature(BasicData_, "GET", Expire, Headers);
     URL       = BasicData_["URL"] + Signature;
 
     Return URL;
@@ -1240,7 +1238,7 @@ Function GetObjectUploadLink(Val Name
     CheckBasicData(BasicData_);
     FillObjectURL(BasicData_, Name, Bucket);
 
-    Signature = CreateURLSignature(BasicData_, Name, "PUT", Expire, Headers);
+    Signature = CreateURLSignature(BasicData_, "PUT", Expire, Headers);
     URL       = BasicData_["URL"] + Signature;
 
     Return URL;
@@ -1275,7 +1273,7 @@ Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connectio
 
 EndFunction
 
-Function CreateURLSignature(Val DataStructure, Val Name, Val Method, Val Expire, Val Headers)
+Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Headers)
 
     AccessKey = DataStructure["AccessKey"];
     SecretKey = DataStructure["SecretKey"];
@@ -1351,7 +1349,7 @@ Function GetMainSignatureParts(Val DataStructure
     Service   = DataStructure["Service"];
 
     SignKey          = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
-    CanonicalRequest = CreateCanonicalRequest(Request, Connection, Method);
+    CanonicalRequest = CreateCanonicalRequest(Request, Method);
     Scope            = CreateScope(Region, Service, CurrentDate);
     StringToSign     = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
 
@@ -1388,7 +1386,7 @@ Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate
 
 EndFunction
 
-Function CreateCanonicalRequest(Val Request, Val Connection, Val Method)
+Function CreateCanonicalRequest(Val Request, Val Method)
 
     RequestTemplate = "";
     RequestBody     = OPI_Tools.GetRequestBody(Request);

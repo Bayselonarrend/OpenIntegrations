@@ -762,13 +762,12 @@ Function FindMissingCollectionFields(Val Collection, Val Fields) Export
 
     MissingFieldsArray = New Array;
 
-    For Each CollectionItem In Collection Do
+    For Each Field In Fields Do
 
-        CurrentKey = CollectionItem.Key;
-        Exist      = CollectionFieldExist(Collection, CurrentKey);
+        Exist = CollectionFieldExist(Collection, Field);
 
         If Not Exist Then
-            MissingFieldsArray.Add(CurrentKey);
+            MissingFieldsArray.Add(Field);
         EndIf;
 
     EndDo;

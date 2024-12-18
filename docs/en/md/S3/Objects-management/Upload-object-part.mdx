@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function UploadObjectPart(Val Name, Val Bucket, Val BasicData, Val UploadID, Val PartNumber, Val Data, Val Headers = Undefined) Export`
+`Function UploadObjectPart(Val Name, Val Bucket, Val BasicData, Val UploadID, Val PartNumber, Val Data) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -20,7 +20,6 @@ import TabItem from '@theme/TabItem';
   | UploadID | --upload | String | &#x2714; | Upload ID. See InitPartsUpload |
   | PartNumber | --part | Number, String | &#x2714; | Number of the object part from 1 to 10000 |
   | Data | --content | BinaryData, String | &#x2714; | Part content for uploading |
-  | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
   Returns:  Structure of KeyAndValue - serialized JSON response from storage
