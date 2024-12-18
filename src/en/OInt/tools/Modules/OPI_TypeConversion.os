@@ -115,7 +115,6 @@ Procedure GetCollection(Value) Export
             ElsIf StrStartsWith(TrimL(Value), "http://")
                 Or StrStartsWith(TrimL(Value), "https://") Then
 
-
                 TFN = GetTempFileName();
                 CopyFile(Value, TFN);
                 JSONReader.OpenFile(TFN);
