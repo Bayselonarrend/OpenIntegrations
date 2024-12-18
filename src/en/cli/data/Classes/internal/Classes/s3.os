@@ -912,16 +912,6 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "s3";
     NewLine.Модуль      = "OPI_S3";
-    NewLine.Метод       = "UploadObjectPart";
-    NewLine.МетодПоиска = "UPLOADOBJECTPART";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Objects management";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "s3";
-    NewLine.Модуль      = "OPI_S3";
     NewLine.Метод       = "FinishPartsUpload";
     NewLine.МетодПоиска = "FINISHPARTSUPLOAD";
     NewLine.Параметр    = "--name";
