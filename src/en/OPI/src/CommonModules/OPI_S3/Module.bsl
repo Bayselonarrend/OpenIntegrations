@@ -572,7 +572,7 @@ Function PutObject(Val Name
 
     If MinPartSize > MaxSize Then
         Raise "ChunkSize is too small. It is necessary to increase the chunk size (minimum for this file - "
-            + OPI_Tools.NumberToString(Round(MinPartSize + 0,5))
+            + OPI_Tools.NumberToString(Round(MinPartSize + 0.5))
             + ")";
     EndIf;
 
@@ -1331,7 +1331,6 @@ Function CreateURLSignature(Val DataStructure, Val Name, Val Method, Val Expire,
     StringToSign = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
     Signature    = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
     Signature    = Lower(GetHexStringFromBinaryData(Signature));
-
 
     OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Signature", Signature);
 
