@@ -1,3 +1,3 @@
 oint slack ArchiveChannel \
  --token "***" \
- --channel "C0848TV1D8V"
+ --channel "C085MGRV5FD"
