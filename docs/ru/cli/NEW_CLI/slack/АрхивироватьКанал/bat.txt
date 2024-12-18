@@ -1,3 +1,3 @@
 oint slack АрхивироватьКанал ^
   --token "***" ^
-  --channel "C085L4PSMD2"
+  --channel "C085LUNPL4B"
