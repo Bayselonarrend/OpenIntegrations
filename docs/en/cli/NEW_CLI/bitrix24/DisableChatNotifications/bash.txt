@@ -1,4 +1,4 @@
 oint bitrix24 DisableChatNotifications \
  --url "b24-ar17wx.bitrix24.by" \
- --chat 1616 \
+ --chat 1672 \
  --token "***"

@@ -1,4 +1,4 @@
 oint telegram UnpinMessage \
  --token "***" \
  --chat "@testsichee" \
- --message "12522"
+ --message "12778"
