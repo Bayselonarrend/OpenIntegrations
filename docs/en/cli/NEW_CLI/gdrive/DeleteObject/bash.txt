@@ -1,3 +1,3 @@
 oint gdrive DeleteObject \
  --token "***" \
- --object "1HvHaC88OPgCLrCLfmOIrDZBZJngNIAgT"
+ --object "1eLczkuYth37tTd1_RaHGKEj5LvPhY3oS"

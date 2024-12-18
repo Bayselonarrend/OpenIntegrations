@@ -1,4 +1,4 @@
 oint airtable GetListOfRecords ^
  --token "***" ^
- --base "appbp2i5a8sDFELPK" ^
- --table "tbluy0AX9Uyzh4VwV"
+ --base "appr3wHHzUnyFqK6z" ^
+ --table "tbl52pjjMFLe60W5O"
