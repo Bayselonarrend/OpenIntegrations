@@ -38,6 +38,24 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tcp ОбработатьЗапрос \
+              --address "45.79.112.203:4242" \
+              --data "Echo this!\n"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tcp ОбработатьЗапрос ^
+              --address "45.79.112.203:4242" ^
+              --data "Echo this!\n"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
