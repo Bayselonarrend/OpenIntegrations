@@ -1344,7 +1344,7 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
         ConsoleColor = New Map;
     EndIf;
 
-    Encoding      = Console.OutputEncoding;
+    Encoding      = Console.КодировкаВыходногоПотока;
     OutputStream  = Console.OpenStandardOutput();
     OutputWriting = New DataWriter(OutputStream, Encoding);
 
