@@ -1,6 +1,6 @@
 oint bitrix24 StopTimekeeping ^
  --url "b24-ar17wx.bitrix24.by" ^
  --userid 1 ^
- --time "2024-12-18T13:27:52.144998" ^
+ --time "2024-12-18T18:13:03.4933519" ^
  --report "Time off" ^
  --token "***"
