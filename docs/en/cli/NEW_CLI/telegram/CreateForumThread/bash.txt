@@ -2,4 +2,4 @@ oint telegram CreateForumThread \
  --token "***" \
  --forum "-1001971186208" \
  --icon "5357419403325481346" \
- --title "TestTopic ff0f1987-601e-48e0-a0e2-656106b303c8"
+ --title "TestTopic f43e3ec6-7aaa-4886-9ab9-8ff4723b0d27"

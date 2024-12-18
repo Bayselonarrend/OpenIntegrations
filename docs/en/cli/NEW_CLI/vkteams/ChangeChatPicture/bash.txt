@@ -1,4 +1,4 @@
 oint vkteams ChangeChatPicture \
  --token "***" \
  --chatid "AoLI0egLWBSLR1Ngn2w" \
- --file "C:\Users\Administrator\AppData\Local\Temp\lvbkv2qdsoq.png"
+ --file "C:\Users\Administrator\AppData\Local\Temp\pdbjhmmnuyo.png"

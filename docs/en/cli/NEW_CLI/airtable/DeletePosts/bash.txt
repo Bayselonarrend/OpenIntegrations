@@ -1,5 +1,5 @@
 oint airtable DeletePosts \
  --token "***" \
- --base "appr3wHHzUnyFqK6z" \
- --table "tbl52pjjMFLe60W5O" \
- --records "rec59QN0kRAIiq3CF"
+ --base "appjFWKCVebeGE473" \
+ --table "tblQruvDLsvmo9wkW" \
+ --records "rectXdkUTimSb8Ihz"
