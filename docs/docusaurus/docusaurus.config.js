@@ -74,6 +74,20 @@ const config = {
         }
       },
 
+      metadata: [
+        {name: 'description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript'},
+        {name: 'keywords', content: '1С, OneScript, библиотеки, расширение, CLI, 1С:Предприятие, обмен, http, сервисы, интеграция, Telegram, Bitrix24, CDEK, VK, VK Teams, Viber, Ozon, S3, Twitter, Notion, Яндекс Диск, Google Drive, Календарь Google, Google Таблицы, Slack, Airtable, Dropbox, Neocities'},
+        {name: 'og:title', content: 'Открытый Пакет Интеграций - библиотека интеграции для 1С и OneScript'},
+        {name: 'og:description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript'},
+        {name: 'og:image', content: 'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/preview.png'}, // Замените на ваше изображение
+        {name: 'og:url', content: 'https://openintegrations.dev/'},
+      ],
+
+      sitemap: {
+        changefreq: 'daily',
+        priority: 0.5,
+      },
+
       customFields: {
       yandexAdsBlock: `
 <div id="yandex_rtb_R-A-12294791-1"></div>
