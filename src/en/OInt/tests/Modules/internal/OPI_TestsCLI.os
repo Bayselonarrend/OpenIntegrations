@@ -16478,7 +16478,6 @@ Procedure CLI_YandexMetrika_UpdateTag(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateTag", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
 
-
 EndProcedure
 
 Procedure CLI_YandexMetrika_GetTag(FunctionParameters)
@@ -17613,6 +17612,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
     Name   = "picture.jpg";
     Bucket = "opi-gpbucket3";
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic" , BasicData);
@@ -17638,6 +17638,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
 
     BigTempFile = GetTempFileName();
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic" , BasicData);
@@ -17649,6 +17650,7 @@ Procedure CLI_S3_GetObject(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(Result.Size() = 34432400);
     DeleteFiles(BigTempFile);
 
+    Options = New Structure;
     Options.Insert("name"  , Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic" , BasicData);

@@ -225,6 +225,17 @@ Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val Pa
 
 EndFunction
 
+// Get business products
+// Gets the list of products of the business
+//
+// Parameters:
+// Token - String - Authorisation token (Api-Key) - token
+// AccountID - String, Number - Business ID - business
+// Filters - Structure of KeyAndValue - Product filters - filters
+// PageToken - String - Next page token in case of a large selection - page
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex Market
 Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export
 
     OPI_TypeConversion.GetLine(AccountID);
@@ -263,6 +274,8 @@ EndFunction
 Function GetProductStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
+
+    // BSLLS:DuplicateStringLiteral-off
 
     ItemStructure = New Structure;
     ItemStructure.Insert("offerId", "<item ID in your system>");
@@ -385,6 +398,8 @@ Function GetProductStructure(Val Clear = False) Export
         SizesStructure.Insert("width" , "<width, cm.>");
 
     ItemStructure.Insert("weightDimensions", "<product dimensions and weight>");
+
+    // BSLLS:DuplicateStringLiteral-on
 
     If Clear Then
         ItemStructure = OPI_Tools.ClearCollectionRecursively(ItemStructure);

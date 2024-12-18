@@ -14505,7 +14505,6 @@ Procedure YandexMetrika_UpdateTag(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateTag", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaTag(Result, Name);
 
-
 EndProcedure
 
 Procedure YandexMetrika_GetTag(FunctionParameters)
@@ -14624,7 +14623,6 @@ Procedure YandexMetrika_UpdateCounter(FunctionParameters)
     CounterStructure.Insert("counter_flags" , FlagsStructure);
     CounterStructure.Insert("favorite"      , 0);
     CounterStructure.Insert("filter_robots" , 1);
-
 
     Result = OPI_YandexMetrika.UpdateCounter(Token, CounterID, CounterStructure);
 
@@ -15768,7 +15766,6 @@ Procedure TCP_SendBinaryData(FunctionParameters) Export
     Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
-
 
 EndProcedure
 

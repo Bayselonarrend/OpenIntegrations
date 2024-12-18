@@ -353,6 +353,8 @@ Function GetCounterStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
 
+    // BSLLS:DuplicateStringLiteral-off
+
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", "<auto-targeting>");
 
@@ -501,6 +503,8 @@ Function GetCounterStructure(Val Clear = False) Export
         WebvisorStructure.Insert("wv_version"      , "<webvisor version>");
 
     CounterStructure.Insert("webvisor", WebvisorStructure);
+
+    // BSLLS:DuplicateStringLiteral-on
 
     If Clear Then
         CounterStructure = OPI_Tools.ClearCollectionRecursively(CounterStructure);

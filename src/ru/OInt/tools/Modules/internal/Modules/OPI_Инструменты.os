@@ -1649,12 +1649,12 @@
     ЭлементыПути = СтрРазделить(КаталогПрограммы, "/");
     ЭлементыПути.Удалить(ЭлементыПути.ВГраница());
 
-	// BSLLS:UsingHardcodePath-off
+    // BSLLS:UsingHardcodePath-off
 
     КаталогКомпонент = СтрСоединить(ЭлементыПути, "/") + "/lib/oint/addins/";
 
-	// BSLLS:UsingHardcodePath-on
-	
+    // BSLLS:UsingHardcodePath-on
+
     Возврат КаталогКомпонент;
 
 КонецФункции
