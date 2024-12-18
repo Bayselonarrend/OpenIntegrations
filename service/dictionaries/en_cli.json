@@ -33,6 +33,7 @@
     "необяз. по ум.": "optional, def. val.",
     "Структура вызова": "The structure of calls",
     "JSONСтрокой": "JSONString",
-    "GetStringFromBinaryData":"ПолучитьСтрокуИзДвоичныхДанных"
+    "GetStringFromBinaryData":"ПолучитьСтрокуИзДвоичныхДанных",
+    "ЗаменитьУправляющиеПоследовательности": "ReplaceEscapeSequences"
 
 }
