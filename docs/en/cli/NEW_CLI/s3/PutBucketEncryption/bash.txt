@@ -3,5 +3,5 @@
 oint s3 PutBucketEncryption \
  --name "opi-newbucket2" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
- --conf "C:\Users\Administrator\AppData\Local\Temp\34qg2tttsho.xml" \
+ --conf "C:\Users\Administrator\AppData\Local\Temp\p0dhraxjwef.xml" \
  --dir false
