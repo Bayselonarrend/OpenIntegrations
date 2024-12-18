@@ -1,7 +1,7 @@
 oint airtable ModifyField ^
  --token "***" ^
- --base "appbp2i5a8sDFELPK" ^
- --table "tbluy0AX9Uyzh4VwV" ^
- --field "fldBMT9KZ1o7v8jcV" ^
- --title "cf4e95d7-718a-401d-a6c8-e00d9b723936(change.)" ^
+ --base "appr3wHHzUnyFqK6z" ^
+ --table "tbl52pjjMFLe60W5O" ^
+ --field "fldCY9EZDPf8evuhG" ^
+ --title "eaf19cf3-e4ac-489e-8134-affae1330e96(change.)" ^
  --description "New description"
