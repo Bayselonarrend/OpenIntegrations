@@ -6623,7 +6623,7 @@
 "Фильтр офисов. См. ПолучитьОписаниеФильтраОфисов": "Office filter. See GetOfficeFilterDescription",
 "Telegram_ОчиститьСписокЗакрепленныхСообщенийТемы": "Telegram_ClearPinnedMessagesList",
 "Забрать токен из параметра URL в адресной строке": "Retrieve the token from the URL parameter in the address bar",
-"ТребуетсяОбработкаУправляющихПоследовательностей": "RequiresProcessingOfControlSequences",
+"ТребуетсяОбработкаУправляющихПоследовательностей": "RequiresProcessingOfEscapeSequences",
 "Вид обработки текста (HTML, Markdown, MarkdownV2": "Text processing type (HTML, Markdown, MarkdownV2",
 "Вы можете передать до 100 идентификаторов за раз": "You can pass up to 100 identifiers at a time",
 "Сформируйте ссылку и перейдите по ней в браузере": "Form a link and click on it in your browser",
