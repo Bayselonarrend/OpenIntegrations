@@ -1,3 +1,3 @@
 oint telegram DownloadFile \
  --token "***" \
- --fileid "CQACAgIAAx0EcNsaZQACMgABZ2LdyYeg3OXgAAEFXcP0O7vWjAxtAAK_WwACnmgYS3-5IdmJ1brcNgQ"
+ --fileid "CQACAgIAAx0EcNsaZQACMhBnYxYytiwtJOU2UZoVK60aYC2ZEAACZ24AAsbJGEuG6BGMtflW-zYE"
