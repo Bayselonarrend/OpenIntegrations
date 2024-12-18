@@ -1,4 +1,4 @@
 oint bitrix24 GetImportantPostViewers ^
  --url "b24-ar17wx.bitrix24.by" ^
- --postid 1630 ^
+ --postid 1634 ^
  --token "***"
