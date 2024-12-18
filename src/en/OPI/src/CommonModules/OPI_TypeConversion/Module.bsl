@@ -48,28 +48,7 @@ Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
         If TypeOf(Value) = Type("BinaryData") Then
             Return;
         Else
-
-            File = New File(Value);
-
-            If File.Exists() Then
-
-                Value = New BinaryData(Value);
-
-            ElsIf StrStartsWith(TrimL(Value), "http://")
-                Or StrStartsWith(TrimL(Value), "https://") Then
-
-                Value = OPI_Tools.Get(Value);
-
-            Else
-
-                If TryB64 Then
-                    Value = Base64Value(Value);
-                Else
-                    Raise "";
-                EndIf;
-
-            EndIf;
-
+            ConvertSourceToValue(Value, TryB64);
         EndIf;
 
     Except
@@ -331,5 +310,30 @@ Function ThisIsSymbolic(Val Value)
         Or TypeOf(Value) = Type("Date");
 
 EndFunction
+
+Procedure ConvertSourceToValue(Value, TryB64)
+
+    File = New File(Value);
+
+    If File.Exists() Then
+
+        Value = New BinaryData(Value);
+
+    ElsIf StrStartsWith(TrimL(Value), "http://")
+        Or StrStartsWith(TrimL(Value), "https://") Then
+
+        Value = OPI_Tools.Get(Value);
+
+    Else
+
+        If TryB64 Then
+            Value = Base64Value(Value);
+        Else
+            Raise "value is not a file path or valid Base64 string";
+        EndIf;
+
+    EndIf;
+
+EndProcedure
 
 #EndRegion

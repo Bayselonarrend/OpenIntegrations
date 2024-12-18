@@ -2620,6 +2620,10 @@ def test_yamarket(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetBusinessProducts --Key) "test" --business "test" --filters "test" --page "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe yamarket GetProductStructure --empty "test" --debug --test '
                }
 

@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get business products
+ Gets the list of products of the business
+
+
+
+`Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --Key) | String | &#x2714; | token |
+  | AccountID | --business | String, Number | &#x2714; | Business ID |
+  | Filters | --filters | Structure of KeyAndValue | &#x2716; | Product filters |
+  | PageToken | --page | String | &#x2716; | Next page token in case of a large selection |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex Market
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

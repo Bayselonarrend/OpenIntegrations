@@ -282,7 +282,7 @@ Function CreateMultipartRequest(Val Address, Val Parameters, Val Files, Val Addi
 
     Request.SetBodyFileName(FileName);
 
-    Return Request
+    Return Request;
 
 EndFunction
 
@@ -924,7 +924,7 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
     WriteOnCurrentLine(Buffer  , "Green");
     WriteOnCurrentLine(Information);
 
-    If Percent = 100 Then
+    If Percent = Whole Then
         WriteOnCurrentLine(Chars.LF, , True);
     EndIf;
 
@@ -1649,7 +1649,11 @@ Function AddInsFolderOS() Export
     PathParts = StrSplit(ProgramDirectory, "/");
     PathParts.Delete(PathParts.UBound());
 
+    // BSLLS:UsingHardcodePath-off
+
     AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
+
+    // BSLLS:UsingHardcodePath-on
 
     Return AddInsFolder;
 

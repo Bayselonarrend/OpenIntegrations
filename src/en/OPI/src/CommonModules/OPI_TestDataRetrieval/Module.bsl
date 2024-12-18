@@ -495,7 +495,6 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
     If OPI_Tools.IsWindows() Then
 
         Oint = """C:/Program Files/OneScript/bin/oint.bat""";
-        //"""C:\Program Files (x86)\OInt\bin\oint.bat""";
 
     Else
 
@@ -1030,7 +1029,6 @@ Procedure Check_YaDiskFilesList(Val Result, Val Count, Val Indent) Export
     ExpectsThat(Result["limit"]).Равно(Count);
     ExpectsThat(Result["offset"]).Равно(Indent);
     ExpectsThat(Result["items"]).ИмеетТип("Array");
-
 
 EndProcedure
 
@@ -2067,6 +2065,7 @@ Function GetCommonModule(Val Name)
 EndFunction
 
 // BSLLS:CognitiveComplexity-off
+
 Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     CurrentType = TypeOf(Value);
@@ -2143,6 +2142,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
     Return Value;
 
 EndFunction
+
 // BSLLS:CognitiveComplexity-on
 
 Function FormOption(Val Value, Val Name, Val Embedded = False)
@@ -2157,7 +2157,6 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     SecretsArray.Add("refresh");
 
     ReplaceStructure = New Structure;
-    ReplaceStructure.Insert("connect", "mongodb://bayselonarrend:***@127.0.0.1:27017");
 
     If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
 
