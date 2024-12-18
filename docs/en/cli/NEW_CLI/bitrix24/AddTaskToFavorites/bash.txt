@@ -1,4 +1,4 @@
 oint bitrix24 AddTaskToFavorites \
  --url "b24-ar17wx.bitrix24.by" \
- --task "4180" \
+ --task "4190" \
  --token "***"
