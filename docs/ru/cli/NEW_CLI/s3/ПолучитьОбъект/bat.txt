@@ -8,4 +8,4 @@ oint s3 ПолучитьОбъект ^
   --name "bigfile.exe" ^
   --bucket "newbucket2" ^
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':200000}" ^
-  --out "C:\Users\Administrator\AppData\Local\Temp\nhxdt0bgjmk.tmp"
+  --out "C:\Users\Administrator\AppData\Local\Temp\13scp42gs41.tmp"
