@@ -1,4 +1,4 @@
 oint yadisk DeleteObject \
  --token "***" \
- --path "/5d38f239-29ed-404f-84fc-4832e120c777.png" \
+ --path "/656f9ec3-0b64-49cb-819e-b508096462dd.png" \
  --can false
