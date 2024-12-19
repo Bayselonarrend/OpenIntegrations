@@ -56,29 +56,44 @@ EndFunction
 
 #Region RequestsWithBody
 
-Function Post(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile                  = Undefined) Export
+Function Post(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val JSON              = True
+    , Val FullResponse      = False
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "POST", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function Patch(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile                   = Undefined) Export
+Function Patch(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val JSON              = True
+    , Val FullResponse      = False
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PATCH", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function Put(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False,
-    Val ResponseFile                 = Undefined) Export
+Function Put(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val JSON              = True
+    , Val FullResponse      = False
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteRequestWithBody(URL, "PUT", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
 
 EndFunction
 
-Function PostBinary(Val URL, Val Body, Val AdditionalHeaders, Val FullResponse = False,
-    Val DataType                                                               = "application/octet-stream") Export
+Function PostBinary(Val URL
+    , Val Body
+    , Val AdditionalHeaders
+    , Val FullResponse = False
+    , Val DataType     = "application/octet-stream") Export
 
     Return ExecuteRequestWithBinaryData(URL, "POST", Body, AdditionalHeaders, FullResponse, DataType);
 
@@ -88,29 +103,43 @@ EndFunction
 
 #Region MultipartRequests
 
-Function PostMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
-    Val AdditionalHeaders                      = "", Val ResponseFile = Undefined) Export
+Function PostMultipart(Val URL
+    , Val Parameters        = ""
+    , Val Files             = ""
+    , Val ContentType       = "image/jpeg"
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "POST", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PutMultipart(Val URL, Val Parameters = "", Val Files = "", Val ContentType = "image/jpeg",
-    Val AdditionalHeaders                     = "", Val ResponseFile = Undefined) Export
+Function PutMultipart(Val URL
+    , Val Parameters        = ""
+    , Val Files             = ""
+    , Val ContentType       = "image/jpeg"
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteMultipartRequest(URL, "PUT", Parameters, Files, ContentType, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PostMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
-    Val ResponseFile                            = Undefined) Export
+Function PostMultipartRelated(Val URL
+    , Val JSON              = ""
+    , Val Files             = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "POST", JSON, Files, AdditionalHeaders, ResponseFile);
 
 EndFunction
 
-Function PatchMultipartRelated(Val URL, Val JSON = "", Val Files = "", Val AdditionalHeaders = "",
-    Val ResponseFile                             = Undefined) Export
+Function PatchMultipartRelated(Val URL
+    , Val JSON              = ""
+    , Val Files             = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined) Export
 
     Return ExecuteMultipartRelatedRequest(URL, "PATCH", JSON, Files, AdditionalHeaders, ResponseFile);
 
@@ -137,8 +166,8 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
     GZip = "gzip";
 
-    NeedsUnpacking                                            = Response.Headers.Get("Content-Encoding") = GZip
-                  Or Response.Headers.Get("content-encoding") = GZip;
+    NeedsUnpacking                               = Response.Headers.Get("Content-Encoding") = GZip
+        Or Response.Headers.Get("content-encoding") = GZip;
 
     If NeedsUnpacking Then
         Response = UnpackResponse(Response);
@@ -1340,8 +1369,8 @@ EndProcedure
 Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export
 
     If Not IsOneScript() Then
-        Консоль      = Undefined;
-        КонсольColor = New Map;
+        Console      = Undefined;
+        ConsoleColor = New Map;
     EndIf;
 
     Encoding      = Консоль.КодировкаВыходногоПотока;
@@ -1349,11 +1378,11 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
     OutputWriting = New DataWriter(OutputStream, Encoding);
 
     If Not ValueIsFilled(Color) Then
-        Color = КонсольColor.White;
+        Color = ConsoleColor.White;
     EndIf;
 
     If TypeOf(Color)      = Type("String") Then
-        Консоль.TextColor = КонсольColor[Color];
+        Консоль.TextColor = ConsoleColor[Color];
     Else
         Консоль.TextColor = Color;
     EndIf;
