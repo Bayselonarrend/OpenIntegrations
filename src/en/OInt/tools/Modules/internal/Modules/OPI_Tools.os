@@ -1340,22 +1340,22 @@ EndProcedure
 Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export
 
     If Not IsOneScript() Then
-        Console      = Undefined;
-        ConsoleColor = New Map;
+        Консоль      = Undefined;
+        КонсольColor = New Map;
     EndIf;
 
-    Encoding      = Console.КодировкаВыходногоПотока;
-    OutputStream  = Console.OpenStandardOutput();
+    Encoding      = Консоль.КодировкаВыходногоПотока;
+    OutputStream  = Консоль.OpenStandardOutput();
     OutputWriting = New DataWriter(OutputStream, Encoding);
 
     If Not ValueIsFilled(Color) Then
-        Color = ConsoleColor.White;
+        Color = КонсольColor.White;
     EndIf;
 
     If TypeOf(Color)      = Type("String") Then
-        Console.TextColor = ConsoleColor[Color];
+        Консоль.TextColor = КонсольColor[Color];
     Else
-        Console.TextColor = Color;
+        Консоль.TextColor = Color;
     EndIf;
 
     If ToStart Then
