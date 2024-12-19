@@ -1,5 +1,5 @@
 oint airtable GetRecord \
  --token "***" \
- --base "appjFWKCVebeGE473" \
- --table "tblQruvDLsvmo9wkW" \
- --record "rectXdkUTimSb8Ihz"
+ --base "appgUKPGRiafAwWcB" \
+ --table "tblMVtSRoV51H6eqd" \
+ --record "rech7EPNWM6zDCFIT"
