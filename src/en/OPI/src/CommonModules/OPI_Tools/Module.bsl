@@ -166,7 +166,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
     GZip = "gzip";
 
-    NeedsUnpacking                               = Response.Headers.Get("Content-Encoding") = GZip
+    NeedsUnpacking                                  = Response.Headers.Get("Content-Encoding") = GZip
         Or Response.Headers.Get("content-encoding") = GZip;
 
     If NeedsUnpacking Then
