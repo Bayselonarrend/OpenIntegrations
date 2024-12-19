@@ -76,7 +76,9 @@ EndFunction
 // Returns:
 // Boolean - always return True
 Function CloseConnection(Val Connection) Export
+
     Return Connection.Disconnect();
+
 EndFunction
 
 // Read binary data !NOCLI
