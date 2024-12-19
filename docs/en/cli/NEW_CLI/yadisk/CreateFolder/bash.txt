@@ -1,3 +1,3 @@
 oint yadisk CreateFolder \
  --token "***" \
- --path "/78d9bd41-399d-4253-92a7-ccedc08a8f6a"
+ --path "/639d4dfa-21c0-4b59-b3d8-d6fd00629fd3"
