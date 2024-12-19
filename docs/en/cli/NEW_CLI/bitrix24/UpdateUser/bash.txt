@@ -2,6 +2,6 @@
 
 oint bitrix24 UpdateUser \
  --url "b24-ar17wx.bitrix24.by" \
- --userid 1298 \
- --fields "{'EMAIL':'69e2eeba-8eae-4b95-8226-91da0703d15e@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" \
+ --userid 1302 \
+ --fields "{'EMAIL':'6b113fe0-abf1-4acc-9926-175377b73c9d@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':7}" \
  --token "***"
