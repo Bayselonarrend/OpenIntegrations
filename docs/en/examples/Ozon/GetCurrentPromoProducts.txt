@@ -1,5 +1,5 @@
-﻿    ClientID = "2128753";
-    APIKey   = "7cc90d26-33e4-499b...";
+﻿    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
     PromoID  = 111111111;
 
     Result = OPI_Ozon.GetCurrentPromoProducts(ClientID, APIKey, PromoID);
