@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="db1c4d3a-787c-4744-b110-653437f7096e">
+  <name>OPI_TCPServer</name>
+  <synonym>
+    <key>en</key>
+    <value>TCPServer</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>
