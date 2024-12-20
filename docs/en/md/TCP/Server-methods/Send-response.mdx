@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send response
+ Sends a message (response) to the selected connection
+
+
+
+`Function SendResponse(Val TCPServer, Val Address, Val Data) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | TCPServer | --server | Arbitrary | &#x2714; | TCP server object |
+  | Address | --address | String | &#x2714; | The address of the active connection. See AwaitConnections |
+  | Data | --data | String, BinaryData | &#x2714; | Response data |
+
+  
+  Returns:  String - Information about the result of sending
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

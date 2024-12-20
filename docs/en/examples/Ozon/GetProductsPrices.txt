@@ -1,4 +1,4 @@
-﻿    ClientID = "2128753";
-    APIKey   = "7cc90d26-33e4-499b...";
+﻿    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
 
     Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey, New Structure);
