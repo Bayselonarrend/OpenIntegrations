@@ -1,5 +1,5 @@
 [package]
-name = "opi_addin"
+name = "OPI_TCPServer"
 version = "0.1.0"
 edition = "2021"
 
