@@ -1,5 +1,5 @@
-﻿    ClientID    = "2128753";
-    APIKey      = "7cc90d26-33e4-499b...";
+﻿    ClientID    = "2479669";
+    APIKey      = "09f65e9f-262d-4aca...";
     CategoryID  = 17054869;
     TypeID      = 97311;
     AttributeID = 85;

@@ -1,5 +1,5 @@
-﻿    ClientID  = "2128753";
-    APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1235184552";
+﻿    ClientID  = "2479669";
+    APIKey    = "09f65e9f-262d-4aca...";
+    ProductID = "1304122335";
 
     Result = OPI_Ozon.CreateBarcodes(ClientID, APIKey, ProductID);

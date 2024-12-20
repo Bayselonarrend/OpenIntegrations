@@ -43,7 +43,7 @@
 
 #Region Public
 
-#Region TCPClient
+#Region ClientMethods
 
 // Create Connection !NOCLI
 // Creates a TCP connection
@@ -223,6 +223,121 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) E
     CloseConnection(Connection);
 
     Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region ServerMethods
+
+// Start server !NOCLI
+// Starts a TCP server on the specified port
+//
+// Parameters:
+// Port - Number, String - Port number - port
+//
+// Returns:
+// String, Arbitrary - Server object or error message
+Function StartServer(Val Port) Export
+
+    OPI_TypeConversion.GetNumber(Port);
+
+    TCPServer = OPI_Tools.GetAddIn("TCPServer");
+
+    TCPServer.Port = Port;
+
+    Message = TCPServer.Start();
+
+    Return ?(Message = "Success", TCPServer, Message);
+
+EndFunction
+
+// Stop server !NOCLI
+// Explicitly terminates the server process
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server object - server
+//
+// Returns:
+// String - Completion message
+Function StopServer(Val TCPServer) Export
+
+    Message = TCPServer.Stop();
+
+    Return Message;
+
+EndFunction
+
+// Await connections !NOCLI
+// Waiting for connection for the specified time
+//
+// Note
+// If withпandwithto toдtoлюченandй not пуwithт, то ожandданandе toонца таймаута not проandwithходandт
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server object - server
+// Timeout - String, Number - Connection timeout - timeout
+//
+// Returns:
+// Array Of String - Array of addresses of active connections
+Function AwaitConnections(Val TCPServer, Val Timeout = 10) Export
+
+    OPI_TypeConversion.GetNumber(Timeout);
+
+    ConnectionsList = TCPServer.Await(Timeout);
+
+    If ValueIsFilled(ConnectionsList) Then
+        ConnectionsArray = OPI_Tools.JsonToStructure(ConnectionsList);
+    Else
+        ConnectionsArray = New Array;
+    EndIf;
+
+    Return ConnectionsArray;
+
+EndFunction
+
+// Receive data !NOCLI
+// Gets the contents of the connection message from the list of active connections
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server object - server
+// Address - String - The address of the active connection. See AwaitConnections - address
+// AsString - Boolean - Flag of converting the received data into a string - string
+//
+// Returns:
+// String, BinaryData - Message data as string or binary data
+Function ReceiveData(Val TCPServer, Val Address, Val AsString = False) Export
+
+    OPI_TypeConversion.GetLine(Address);
+    OPI_TypeConversion.GetBoolean(AsString);
+
+    Data = TCPServer.ReceiveMessage(Address);
+
+    If AsString Then
+        Data = GetStringFromBinaryData(Data);
+    EndIf;
+
+    Return Data;
+
+EndFunction
+
+// Send response
+// Sends a message (response) to the selected connection
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server object - server
+// Address - String - The address of the active connection. See AwaitConnections - address
+// Data - String, BinaryData - Response data - data
+//
+// Returns:
+// String - Information about the result of sending
+Function SendResponse(Val TCPServer, Val Address, Val Data) Export
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
+
+    Result = TCPServer.SendResponse(Address, Data);
+
+    Return Result;
 
 EndFunction
 
