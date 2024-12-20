@@ -40,37 +40,6 @@
     NewLine.Описание    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
     NewLine.Область     = "Client methods";
 
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "SendResponse";
-    NewLine.МетодПоиска = "SENDRESPONSE";
-    NewLine.Параметр    = "--server";
-    NewLine.Описание    = "TCP server object";
-    NewLine.Область     = "Server methods";
-    NewLine.ОписаниеМетода   = "Sends a message (response) to the selected connection";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "SendResponse";
-    NewLine.МетодПоиска = "SENDRESPONSE";
-    NewLine.Параметр    = "--address";
-    NewLine.Описание    = "The address of the active connection. See AwaitConnections";
-    NewLine.Область     = "Server methods";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "SendResponse";
-    NewLine.МетодПоиска = "SENDRESPONSE";
-    NewLine.Параметр    = "--data";
-    NewLine.Описание    = "Response data";
-    NewLine.Область     = "Server methods";
-
     Return CompositionTable;
 EndFunction
 
