@@ -40,7 +40,6 @@
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
-  <commonTemplates>CommonTemplate.OPI_TCPServer</commonTemplates>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
