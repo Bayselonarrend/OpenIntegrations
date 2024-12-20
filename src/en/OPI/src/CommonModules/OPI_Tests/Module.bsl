@@ -1872,11 +1872,6 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
 
-    Message("Ozon product checkout is unavailable");
-    Return;
-
-    // BSLLS:UnreachableCode-off
-
     Ozon_GetProductStructure(TestParameters);
     Ozon_CreateUpdateProducts(TestParameters);
     Ozon_GetProductCreationStatus(TestParameters);
@@ -1903,8 +1898,6 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductSubscribersCount(TestParameters);
     Ozon_GetRelatedSKUs(TestParameters);
     Ozon_DeleteProductsWithoutSKU(TestParameters);
-
-    // BSLLS:UnreachableCode-on
 
 EndProcedure
 
@@ -13104,6 +13097,7 @@ Procedure Ozon_GetProductList(FunctionParameters)
 
     IDArray = New Array;
     IDArray.Add("143210609");
+    IDArray.Add("1432106010");
 
     Filter = New Structure;
     Filter.Insert("visibility" , "ALL");
@@ -13120,6 +13114,10 @@ Procedure Ozon_GetProductList(FunctionParameters)
     ProductID = Result["result"]["items"][0]["product_id"];
     OPI_TestDataRetrieval.WriteParameter("Ozon_ProductID", ProductID);
     FunctionParameters.Insert("Ozon_ProductID", ProductID);
+
+    ProductID = Result["result"]["items"][1]["product_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_ProductID2", ProductID);
+    FunctionParameters.Insert("Ozon_ProductID2", ProductID);
 
 EndProcedure
 
@@ -13292,7 +13290,13 @@ Procedure Ozon_ArchiveProducts(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonTrue(Result);
 
+    ProductID = FunctionParameters["Ozon_ProductID2"];
+
+    Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts (2)", "Ozon");
     OPI_TestDataRetrieval.Check_OzonTrue(Result);
 
 EndProcedure
@@ -13333,6 +13337,12 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU", "Ozon");
+
+    Article = "1432106010";
+
+    Result = OPI_Ozon.DeleteProductsWithoutSKU(ClientID, APIKey, Article);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU (2)", "Ozon");
 
 EndProcedure
 
