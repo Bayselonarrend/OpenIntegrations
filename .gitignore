@@ -22,3 +22,4 @@ target/
 
 !oscript.exe
 addin.zip
+src/addins/tcp_server/OPI_TCPServer.zip
