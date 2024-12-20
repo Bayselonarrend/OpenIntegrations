@@ -23,7 +23,7 @@ impl RawAddin for AddIn {
     fn get_prop_name(&mut self, num: usize, _alias: usize) -> Option<&'static [u16]> { PROPS.get(num).copied() }
     fn get_prop_val(&mut self, num: usize, val: &mut Variant) -> bool {let field: &dyn getset::ValueType = &self[num]; field.get_value(val) }
     fn set_prop_val(&mut self, num: usize, val: &Variant) -> bool {let field: &mut dyn getset::ValueType = &mut self[num]; field.set_value(val); true }
-    fn is_prop_readable(&mut self, _num: usize) -> bool { true }
+    fn is_prop_readable(&mut self, _nm: usize) -> bool { true }
     fn is_prop_writable(&mut self, num: usize) -> bool { true }
     fn get_n_methods(&mut self) -> usize { METHODS.len() }
     fn find_method(&mut self, name: &[u16]) -> Option<usize> { METHODS.iter().position(|&x| x == name) }
