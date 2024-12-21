@@ -1107,7 +1107,7 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
         AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
-        If AddIn = Undefined Then
+        If ValueIsFilled(Error) Then
             Raise "Failed to initialize AddIn. "
                 + "It may not be compatible with your OS. Error: "
                 + Error;
@@ -1666,11 +1666,11 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Val Error)
     EndIf;
 
     Try
-        Success  = AttachAddIn(TemplateName, AddInName, AddInType.Native);
-        AddIn = New("AddIn." + AddInName + "." + Class);
+        Success = AttachAddIn(TemplateName, AddInName, AddInType.Native);
+        AddIn   = New("AddIn." + AddInName + "." + Class);
         Return AddIn;
     Except
-        Error    = DetailErrorDescription(ErrorInfo());
+        Error   = DetailErrorDescription(ErrorInfo());
         Return Undefined;
     EndTry;
 
