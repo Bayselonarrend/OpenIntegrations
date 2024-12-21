@@ -1100,16 +1100,17 @@ EndFunction
 Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     AddIn     = Undefined;
+    Error     = "";
     AddInName = "OPI_" + AddInName;
 
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
-        AttachAddInOnServer(AddInName);
-        Success = InitializeAddIn(AddInName, Class, AddIn);
+        AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
-        If Not Success Then
+        If AddIn = Undefined Then
             Raise "Failed to initialize AddIn. "
-                + "It may not be compatible with your OS";
+                + "It may not be compatible with your OS. Error: "
+                + Error;
         EndIf;
 
     EndIf;
@@ -1656,7 +1657,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName)
+Function AttachAddInOnServer(Val AddInName, Val Class, Val Error)
 
     If IsOneScript() Then
         TemplateName = AddInsFolderOS() + AddInName + ".zip";
@@ -1664,9 +1665,14 @@ Function AttachAddInOnServer(Val AddInName)
         TemplateName = "CommonTemplate." + AddInName;
     EndIf;
 
-    Success = AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    Return Success;
+    Try
+        Success  = AttachAddIn(TemplateName, AddInName, AddInType.Native);
+        AddIn = New("AddIn." + AddInName + "." + Class);
+        Return AddIn;
+    Except
+        Error    = DetailErrorDescription(ErrorInfo());
+        Return Undefined;
+    EndTry;
 
 EndFunction
 
