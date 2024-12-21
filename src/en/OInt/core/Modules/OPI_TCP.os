@@ -57,7 +57,7 @@ Function CreateConnection(Val Address) Export
 
     OPI_TypeConversion.GetLine(Address);
 
-    TCPClient = OPI_Tools.GetAddInObject("OPI_TCPClient");
+    TCPClient = AttachAddInOnServer("OPI_TCPClient");
 
     TCPClient.Address = Address;
 
@@ -206,12 +206,7 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) E
     OPI_TypeConversion.GetBoolean(ResponseString);
 
     Connection = CreateConnection(Address);
-
-    If Connection = Undefined Then
-        Return "OPI: Unable to establish a connection";
-    EndIf;
-
-    Result = SendBinaryData(Connection, Data);
+    Result     = SendBinaryData(Connection, Data);
 
     If Result Then
 
@@ -235,3 +230,21 @@ EndFunction
 
 #EndRegion
 
+#Region Private
+
+Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
+
+    If OPI_Tools.IsOneScript() Then
+        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
+    Else
+        TemplateName = "CommonTemplate." + AddInName;
+    EndIf;
+
+    AttachAddIn(TemplateName, AddInName, AddInType.Native);
+
+    AddIn = New("AddIn." + AddInName + "." + Class);
+    Return AddIn;
+
+EndFunction
+
+#EndRegion
