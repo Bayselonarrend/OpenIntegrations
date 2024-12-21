@@ -14,4 +14,3 @@ strip = true      # Automatically strip symbols from the binary.
 
 [dependencies]
 addin1c = "0.5.0"
-native-tls = "0.2.12"
