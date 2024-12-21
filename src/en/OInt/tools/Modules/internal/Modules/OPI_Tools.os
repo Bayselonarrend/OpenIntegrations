@@ -1146,21 +1146,6 @@ Function MergeData(Val Data, Val Addition) Export
 
 EndFunction
 
-Function GetAddInObject(Val AddInName, Val Class = "Main") Export
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    AddIn = New("AddIn." + AddInName + "." + Class);
-    Return AddIn;
-
-EndFunction
-
 #EndRegion
 
 #EndRegion
