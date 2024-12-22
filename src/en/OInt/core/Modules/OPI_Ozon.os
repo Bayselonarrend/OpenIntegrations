@@ -1558,6 +1558,131 @@ EndFunction
 
 #EndRegion
 
+#Region FBOScheme
+
+// Get clusters list
+// Gets information about clusters and warehouses
+//
+// Note
+// Method at API documentation: [post /v1/cluster/list](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftClusterList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ClusterType - String - Cluster type: CLUSTER_TYPE_OZON (Russia), CLUSTER_TYPE_CIS (CIS) - type
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TYPE_OZON") Export
+
+    URL = "https://api-seller.ozon.ru/v1/cluster/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("cluster_type", ClusterType, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get shipping warehouses list
+// Gets a list of warehouses, sorting centers and delivery points
+//
+// Note
+// Method at API documentation: [post /v1/warehouse/fbo/list](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftGetWarehouseFboList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Search - String - Search by name (4 chars. min). For delivery points enter the full name - search
+// SupplyType - String, Array of String - Supply types: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT - type
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+Function GetShippingWarehousesList(Val ClientID
+    , Val APIKey
+    , Val Search
+    , Val SupplyType = "CREATE_TYPE_DIRECT") Export
+
+    URL = "https://api-seller.ozon.ru/v1/warehouse/fbo/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter_by_supply_type", SupplyType, "Array" , Parameters);
+    OPI_Tools.AddField("search"               , Search    , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Create FBO draft
+// Creates a draft of FBO supply order
+//
+// Note
+// Method at API documentation: [post /v1/draft/create](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftCreate)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Clusters - String, Array of String - Clusters identifiers - clusters
+// Items - Map Of KeyAndValue - Items list: Key > SKU, Value > Amount - items
+// SupplyType - String - Supply type: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT - type
+// ShippingPoint - String - Shipping point identifier for CREATE_TYPE_CROSSDOCK - point
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+Function CreateFBODraft(Val ClientID
+    , Val APIKey
+    , Val Clusters
+    , Val Items
+    , Val SupplyType = "CREATE_TYPE_DIRECT"
+    , Val ShippingPoint = "") Export
+
+    Clusters_ = OPI_Tools.CopyCollection(Clusters);
+    Items_    = OPI_Tools.CopyCollection(Items);
+
+    URL = "https://api-seller.ozon.ru/v1/draft/create";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    ProcessClustersList(Clusters_);
+    ProcessItemsList(Items_);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("cluster_ids"                , Clusters_    , "Array"  , Parameters);
+    OPI_Tools.AddField("drop_off_point_warehouse_id", ShippingPoint, "Number" , Parameters);
+    OPI_Tools.AddField("items"                      , Items_       , "Array"  , Parameters);
+    OPI_Tools.AddField("type"                       , SupplyType   , "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/draft/create/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("operation_id", OperationID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -1585,5 +1710,48 @@ Function SendObjectsDescription(Val ClientID, Val APIKey, Val ArrayOfObjects, Va
     Return Response;
 
 EndFunction
+
+Procedure ProcessClustersList(Clusters)
+
+    OPI_TypeConversion.GetArray(Clusters);
+
+    For N = 0 To Clusters.UBound() Do
+
+        CurrentValue = Clusters[N];
+
+        OPI_TypeConversion.GetNumber(CurrentValue);
+
+        Clusters[N] = CurrentValue;
+
+    EndDo;
+
+EndProcedure
+
+Procedure ProcessItemsList(Items)
+
+    ErrorText = "The list of items has an incorrect format";
+    OPI_TypeConversion.GetKeyValueCollection(Items, ErrorText);
+
+    ProcessedPositions = New Array;
+
+    For Each Item In Items Do
+
+        CurrentKey   = Item.Key;
+        CurrentValue = Item.Value;
+
+        OPI_TypeConversion.GetNumber(CurrentKey);
+        OPI_TypeConversion.GetNumber(CurrentValue);
+
+        If CurrentKey = 0 Or CurrentValue = 0 Then
+            Raise ("Error in position " + String(CurrentKey));
+        EndIf;
+
+        ProcessedPositions.Add(New Structure("quantity,sku", CurrentValue, CurrentKey));
+
+    EndDo;
+
+    Items = ProcessedPositions;
+
+EndProcedure
 
 #EndRegion

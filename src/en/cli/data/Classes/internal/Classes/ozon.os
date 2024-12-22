@@ -1484,6 +1484,139 @@
     NewLine.Описание    = "API key";
     NewLine.Область     = "Warehouses management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetClustersList";
+    NewLine.МетодПоиска = "GETCLUSTERSLIST";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Gets information about clusters and warehouses";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetClustersList";
+    NewLine.МетодПоиска = "GETCLUSTERSLIST";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetClustersList";
+    NewLine.МетодПоиска = "GETCLUSTERSLIST";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Cluster type: CLUSTER_TYPE_OZON (Russia), CLUSTER_TYPE_CIS (CIS) (optional, def. val. - CLUSTER_TYPE_OZON)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShippingWarehousesList";
+    NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Gets a list of warehouses, sorting centers and delivery points";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShippingWarehousesList";
+    NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShippingWarehousesList";
+    NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
+    NewLine.Параметр    = "--search";
+    NewLine.Описание    = "Search by name (4 chars. min). For delivery points enter the full name";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShippingWarehousesList";
+    NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Supply types: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT (optional, def. val. - CREATE_TYPE_DIRECT)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Creates a draft of FBO supply order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--clusters";
+    NewLine.Описание    = "Clusters identifiers";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Items list: Key > SKU, Value > Amount";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Supply type: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT (optional, def. val. - CREATE_TYPE_DIRECT)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateFBODraft";
+    NewLine.МетодПоиска = "CREATEFBODRAFT";
+    NewLine.Параметр    = "--point";
+    NewLine.Описание    = "Shipping point identifier for CREATE_TYPE_CROSSDOCK (optional, def. val. - Empty value)";
+    NewLine.Область     = "Fbo scheme";
+
     Return CompositionTable;
 EndFunction
 

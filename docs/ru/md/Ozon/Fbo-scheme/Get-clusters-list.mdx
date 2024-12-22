@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список кластеров
+ Получает информацию о кластерах и складах
+
+
+
+`Функция ПолучитьСписокКластеров(Знач IDКлиента, Знач КлючAPI, Знач ТипКластера = "CLUSTER_TYPE_OZON") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | IDКлиента | --clientid | Строка | &#x2714; | Идентификатор клиента |
+  | КлючAPI | --apikey | Строка | &#x2714; | API ключ |
+  | ТипКластера | --type | Строка | &#x2716; | Тип кластера: CLUSTER_TYPE_OZON (Россия), CLUSTER_TYPE_CIS (СНГ) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+
+<br/>
+
+:::tip
+Метод в документации API: [post /v1/cluster/list](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftClusterList)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    IDКлиента  = "2479669";
+    КлючAPI = "09f65e9f-262d-4aca...";
+
+    Результат = OPI_Ozon.ПолучитьСписокКластеров(IDКлиента, КлючAPI);
+```
+    
+
+
+
+
