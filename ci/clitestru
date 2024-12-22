@@ -1638,11 +1638,23 @@ def test_ozon(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСписокОтправленийFBO --clientid "test" --apikey "test" --filter "test" --with "test" --offset "test" --trlt "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon СоздатьЧерновикЗаявкиFBO --clientid "test" --apikey "test" --clusters "test" --items "test" --type "test" --point "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьЧерновикЗаявкиFBO --clientid "test" --apikey "test" --draft "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьЧерновикЗаявкиFBO --clientid "test" --apikey "test" --oper "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСтруктуруДопПолейОтправления --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСтруктуруФильтраОтправлений --empty "test" --debug --test '
                }
 
 }

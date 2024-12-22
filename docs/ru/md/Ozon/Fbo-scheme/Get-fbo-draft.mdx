@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';
@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | IDКлиента | --clientid | Строка | &#x2714; | Идентификатор клиента |
   | КлючAPI | --apikey | Строка | &#x2714; | API ключ |
-  | IDОперации | --draft | Строка | &#x2714; | ID черновика (операции) |
+  | IDОперации | --oper | Строка | &#x2714; | ID черновика (операции) |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
@@ -33,9 +33,18 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     IDКлиента  = "2479669";
     КлючAPI    = "09f65e9f-262d-4aca...";
-    IDОперации = "0193ede5-1756-70ba-97fc-4acbf5a5d308";
+    IDОперации = "0193ef10-d4d7-71a7-bab3-8a325cbebfa6";
 
-    Результат = OPI_Ozon.ПолучитьЧерновикЗаявкиFBO(IDКлиента, КлючAPI, IDОперации);
+    Статус = "CALCULATION_STATUS_IN_PROGRESS";
+
+    Пока Статус = "CALCULATION_STATUS_IN_PROGRESS" Цикл
+
+        Результат = OPI_Ozon.ПолучитьЧерновикЗаявкиFBO(IDКлиента, КлючAPI, IDОперации);
+        Статус    = Результат["status"];
+
+        OPI_Инструменты.Пауза(20);
+
+    КонецЦикла;
 ```
     
 

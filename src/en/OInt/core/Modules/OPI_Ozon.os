@@ -1621,6 +1621,46 @@ Function GetShippingWarehousesList(Val ClientID
 
 EndFunction
 
+// Get FBO shipments list
+// Gets a list of active shipments with or without filtering
+//
+// Note
+// Method at API documentation: [post /v2/posting/fbo/list](@docs.ozon.ru/api/seller/#operation/PostingAPI_GetFboPostingList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Shipments filter. See GetShipmentsFilterStructure - filter
+// AddFields - Structure of KeyAndValue - Include additional fields in the response. See GetShipmentAdditionalFields - with
+// Indent - Number - Offset of the result items - offset
+// Traslit - Boolean - If Cyrillic to Latin address transliteration is enabled > True - trlt
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+Function GetFBOShipmentsList(Val ClientID
+    , Val APIKey
+    , Val Filter = Undefined
+    , Val AddFields = Undefined
+    , Val Indent = 0
+    , Val Traslit = False) Export
+
+    URL = "https://api-seller.ozon.ru/v2/posting/fbo/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("limit"   , 1000      , "Number"    , Parameters);
+    OPI_Tools.AddField("offset"  , Indent    , "Number"    , Parameters);
+    OPI_Tools.AddField("translit", Traslit   , "Boolean"   , Parameters);
+    OPI_Tools.AddField("filter"  , Filter    , "Collection", Parameters);
+    OPI_Tools.AddField("with"    , AddFields , "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Create FBO draft
 // Creates a draft of FBO supply order
 //
@@ -1675,7 +1715,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// OperationID - String - Draft (operation) ID) - draft
+// OperationID - String - Draft (operation) ID) - oper
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
@@ -1691,6 +1731,59 @@ Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
     Return Response;
+
+EndFunction
+
+// Get shipment additional fields
+// Returns the structure of inclusion of additional response fields for the GetFBOShipmentsList method
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetShipmentAdditionalFields(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+
+    FieldsStructure.Insert("analytics_data", "<pass True to add analytics data to the response>");
+    FieldsStructure.Insert("financial_data", "<pass True to add financial data to the response>");
+
+    If Clear Then
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
+
+EndFunction
+
+// Get shipments filter structure
+// Returns the filter structure for the GetFBOShipmentsList method
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Filter structure
+Function GetShipmentsFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("since" , "Period start in ISO format");
+    FilterStructure.Insert("status", "Shipment status");
+    FilterStructure.Insert("to"    , "Period end in ISO format");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
 EndFunction
 
