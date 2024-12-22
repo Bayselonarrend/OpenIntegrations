@@ -13675,8 +13675,8 @@ EndProcedure
 
 Procedure Ozon_GetClustersList(FunctionParameters)
 
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey = FunctionParameters["Ozon_ApiKey"];
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     Result = OPI_Ozon.GetClustersList(ClientID, APIKey);
 
@@ -13689,9 +13689,9 @@ EndProcedure
 
 Procedure Ozon_GetShippingWarehousesList(FunctionParameters)
 
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey = FunctionParameters["Ozon_ApiKey"];
-    Search = "Tver";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Search   = "Tver";
 
     Result = OPI_Ozon.GetShippingWarehousesList(ClientID, APIKey, Search);
 
@@ -13704,9 +13704,9 @@ EndProcedure
 
 Procedure Ozon_CreateFBODraft(FunctionParameters)
 
-    ClientID   = FunctionParameters["Ozon_ClientID"];
-    APIKey  = FunctionParameters["Ozon_ApiKey"];
-    Cluster = 1;
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Cluster  = 1;
 
     Items = New Map;
     Items.Insert("1783161863", 5);
@@ -13727,7 +13727,7 @@ EndProcedure
 
 Procedure Ozon_GetFBODraft(FunctionParameters)
 
-    ClientID       = FunctionParameters["Ozon_ClientID"];
+    ClientID    = FunctionParameters["Ozon_ClientID"];
     APIKey      = FunctionParameters["Ozon_ApiKey"];
     OperationID = FunctionParameters["Ozon_FBOOperID"];
 

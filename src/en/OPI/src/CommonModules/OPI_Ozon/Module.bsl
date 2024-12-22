@@ -1666,6 +1666,19 @@ Function CreateFBODraft(Val ClientID
 
 EndFunction
 
+// Get FBO draft
+// Gets FBO draft by ID
+//
+// Note
+// Method at API documentation: [post /v1/draft/create/info](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftCreateInfo)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// OperationID - String - Draft (operation) ID) - draft
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
 
     URL = "https://api-seller.ozon.ru/v1/draft/create/info";
