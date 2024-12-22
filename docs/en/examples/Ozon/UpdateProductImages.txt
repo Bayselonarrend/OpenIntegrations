@@ -1,6 +1,6 @@
 ﻿    ClientID  = "2479669";
     APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "1304122335";
+    ProductID = "1306476585";
 
     Image1 = "https://api.athenaeum.digital/test_data/picture.jpg";
     Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
