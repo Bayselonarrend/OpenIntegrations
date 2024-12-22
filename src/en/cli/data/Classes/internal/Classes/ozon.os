@@ -1560,6 +1560,67 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Gets a list of active shipments with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Shipments filter. See GetShipmentsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--with";
+    NewLine.Описание    = "Include additional fields in the response. See GetShipmentAdditionalFields (optional, def. val. - Empty value)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offset of the result items (optional, def. val. - Empty value)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOShipmentsList";
+    NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
+    NewLine.Параметр    = "--trlt";
+    NewLine.Описание    = "If Cyrillic to Latin address transliteration is enabled > True (optional, def. val. - No)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "CreateFBODraft";
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--clientid";
@@ -1644,9 +1705,31 @@
     NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetFBODraft";
     NewLine.МетодПоиска = "GETFBODRAFT";
-    NewLine.Параметр    = "--draft";
+    NewLine.Параметр    = "--oper";
     NewLine.Описание    = "Draft (operation) ID)";
     NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShipmentAdditionalFields";
+    NewLine.МетодПоиска = "GETSHIPMENTADDITIONALFIELDS";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Returns the structure of inclusion of additional response fields for the GetFBOShipmentsList method";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetShipmentsFilterStructure";
+    NewLine.МетодПоиска = "GETSHIPMENTSFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Returns the filter structure for the GetFBOShipmentsList method";
 
     Return CompositionTable;
 EndFunction
