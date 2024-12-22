@@ -1666,6 +1666,19 @@
 
 КонецФункции
 
+// Получить черновик заявки FBO
+// Получает черновик заявки FBO по ID
+// 
+// Примечание:
+// Метод в документации API: [post /v1/draft/create/info](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftCreateInfo)
+//
+// Параметры:
+//  IDКлиента     - Строка - Идентификатор клиента   - clientid
+//  КлючAPI       - Строка - API ключ                - apikey
+//  IDОперации    - Строка - ID черновика (операции) - draft
+// 
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
 Функция ПолучитьЧерновикЗаявкиFBO(Знач IDКлиента, Знач КлючAPI, Знач IDОперации) Экспорт
 
     URL = "https://api-seller.ozon.ru/v1/draft/create/info";
