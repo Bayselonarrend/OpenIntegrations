@@ -1521,6 +1521,22 @@ Procedure CLI_OzonAPI_PromotionsManagement() Export
 
 EndProcedure
 
+Procedure CLI_OzonAPI_FBOScheme() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    CLI_Ozon_GetClustersList(TestParameters);
+    CLI_Ozon_GetShippingWarehousesList(TestParameters);
+    CLI_Ozon_CreateFBODraft(TestParameters);
+    CLI_Ozon_GetFBODraft(TestParameters);
+    CLI_Ozon_GetShipmentAdditionalFields(TestParameters);
+    CLI_Ozon_GetShipmentsFilterStructure(TestParameters);
+    CLI_Ozon_GetFBOShipmentsList(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region Neocities
@@ -10266,6 +10282,146 @@ Procedure CLI_Ozon_GetProductPriceStructure(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductPriceStructure", "Ozon");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetClustersList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetClustersList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetClustersList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonClusters(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetShippingWarehousesList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Search   = "Tver";
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("search"   , Search);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShippingWarehousesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetShippingWarehousesList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonSearch(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_CreateFBODraft(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Cluster  = 1;
+
+    Items = New Map;
+    Items.Insert("1783161863", 5);
+    Items.Insert("1784654052", 2);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("clusters" , Cluster);
+    Options.Insert("items"    , Items);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateFBODraft", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFBODraft", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonDraft(Result);
+
+    DraftID = Result["operation_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_FBOOperID", DraftID);
+    FunctionParameters.Insert("Ozon_FBOOperID", DraftID);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetFBODraft(FunctionParameters)
+
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    OperationID = FunctionParameters["Ozon_FBOOperID"];
+
+    Status = "CALCULATION_STATUS_IN_PROGRESS";
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("oper"     , OperationID);
+
+    While Status = "CALCULATION_STATUS_IN_PROGRESS" Do
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBODraft", Options);
+        Status = Result["status"];
+
+        OPI_Tools.Pause(20);
+
+    EndDo;
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFBODraft", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonReadyDraft(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetShipmentAdditionalFields(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentAdditionalFields", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentAdditionalFields", "Ozon");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetShipmentsFilterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentsFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentsFilterStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetFBOShipmentsList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    AddFields = New Structure;
+    AddFields.Insert("analytics_data", True);
+    AddFields.Insert("financial_data", True);
+
+    Filter = New Structure;
+    Filter.Insert("since", XMLString('20230101') + "Z");
+    Filter.Insert("to"   , XMLString('20240101') + "Z");
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+    Options.Insert("filter"  , Filter);
+    Options.Insert("with"    , AddFields);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOShipmentsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOShipmentsList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result);
 
 EndProcedure
 

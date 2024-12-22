@@ -1963,6 +1963,9 @@ Procedure OzonAPI_FBOScheme() Export
     Ozon_GetShippingWarehousesList(TestParameters);
     Ozon_CreateFBODraft(TestParameters);
     Ozon_GetFBODraft(TestParameters);
+    Ozon_GetShipmentAdditionalFields(TestParameters);
+    Ozon_GetShipmentsFilterStructure(TestParameters);
+    Ozon_GetFBOShipmentsList(TestParameters);
 
 EndProcedure
 
@@ -13731,11 +13734,67 @@ Procedure Ozon_GetFBODraft(FunctionParameters)
     APIKey      = FunctionParameters["Ozon_ApiKey"];
     OperationID = FunctionParameters["Ozon_FBOOperID"];
 
-    Result = OPI_Ozon.GetFBODraft(ClientID, APIKey, OperationID);
+    Status = "CALCULATION_STATUS_IN_PROGRESS";
+
+    While Status = "CALCULATION_STATUS_IN_PROGRESS" Do
+
+        Result = OPI_Ozon.GetFBODraft(ClientID, APIKey, OperationID);
+        Status = Result["status"];
+
+        OPI_Tools.Pause(20);
+
+    EndDo;
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFBODraft", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonReadyDraft(Result);
+
+EndProcedure
+
+Procedure Ozon_GetShipmentAdditionalFields(FunctionParameters)
+
+    Result = OPI_Ozon.GetShipmentAdditionalFields();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentAdditionalFields", "Ozon");
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_GetShipmentsFilterStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetShipmentsFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentsFilterStructure", "Ozon");
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_GetFBOShipmentsList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    AddFields = New Structure;
+    AddFields.Insert("analytics_data", True);
+    AddFields.Insert("financial_data", True);
+
+    Filter = New Structure;
+    Filter.Insert("since", XMLString('20230101') + "Z");
+    Filter.Insert("to"   , XMLString('20240101') + "Z");
+
+    Result = OPI_Ozon.GetFBOShipmentsList(ClientID, APIKey, Filter, AddFields);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOShipmentsList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result);
 
 EndProcedure
 

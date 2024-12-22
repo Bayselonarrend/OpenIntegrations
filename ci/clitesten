@@ -1638,11 +1638,23 @@ def test_ozon(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetFBOShipmentsList --clientid "test" --apikey "test" --filter "test" --with "test" --offset "test" --trlt "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon CreateFBODraft --clientid "test" --apikey "test" --clusters "test" --items "test" --type "test" --point "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetFBODraft --clientid "test" --apikey "test" --draft "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetFBODraft --clientid "test" --apikey "test" --oper "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetShipmentAdditionalFields --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetShipmentsFilterStructure --empty "test" --debug --test '
                }
 
 }

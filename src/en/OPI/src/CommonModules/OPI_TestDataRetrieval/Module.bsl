@@ -1877,15 +1877,27 @@ Procedure Check_OzonSKU(Val Result) Export
 EndProcedure
 
 Procedure Check_OzonDraft(Val Result) Export
+
      ExpectsThat(Result["operation_id"]).ИмеетТип("String").Заполнено();
+
 EndProcedure
 
 Procedure Check_OzonSearch(Val Result) Export
+
     ExpectsThat(Result["search"]).ИмеетТип("Array").Заполнено();
+
 EndProcedure
 
 Procedure Check_OzonClusters(Val Result) Export
+
     ExpectsThat(Result["clusters"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonReadyDraft(Val Result) Export
+
+    ExpectsThat(Result["status"]).Равно("CALCULATION_STATUS_SUCCESS");
+
 EndProcedure
 
 Procedure Check_NCSuccess(Val Result) Export
