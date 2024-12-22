@@ -1,5 +1,14 @@
 ﻿    ClientID    = "2479669";
     APIKey      = "09f65e9f-262d-4aca...";
-    OperationID = "0193ede5-1756-70ba-97fc-4acbf5a5d308";
+    OperationID = "0193ef10-d4d7-71a7-bab3-8a325cbebfa6";
 
-    Result = OPI_Ozon.GetFBODraft(ClientID, APIKey, OperationID);
+    Status = "CALCULATION_STATUS_IN_PROGRESS";
+
+    While Status = "CALCULATION_STATUS_IN_PROGRESS" Do
+
+        Result = OPI_Ozon.GetFBODraft(ClientID, APIKey, OperationID);
+        Status = Result["status"];
+
+        OPI_Tools.Pause(20);
+
+    EndDo;
