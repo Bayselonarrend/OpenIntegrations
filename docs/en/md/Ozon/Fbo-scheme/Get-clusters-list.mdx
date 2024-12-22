@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get clusters list
+ Gets information about clusters and warehouses
+
+
+
+`Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TYPE_OZON") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | ClusterType | --type | String | &#x2716; | Cluster type: CLUSTER_TYPE_OZON (Russia), CLUSTER_TYPE_CIS (CIS) |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+
+<br/>
+
+:::tip
+Method at API documentation: [post /v1/cluster/list](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftClusterList)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ClientID  = "2479669";
+    APIKey = "09f65e9f-262d-4aca...";
+
+    Result = OPI_Ozon.GetClustersList(ClientID, APIKey);
+```
+ 
+
+
+
+

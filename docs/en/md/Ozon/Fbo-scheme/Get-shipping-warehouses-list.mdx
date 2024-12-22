@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get shipping warehouses list
+ Gets a list of warehouses, sorting centers and delivery points
+
+
+
+`Function GetShippingWarehousesList(Val ClientID, Val APIKey, Val Search, Val SupplyType = "CREATE_TYPE_DIRECT") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | Search | --search | String | &#x2714; | Search by name (4 chars. min). For delivery points enter the full name |
+  | SupplyType | --type | String, Array of String | &#x2716; | Supply types: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+
+<br/>
+
+:::tip
+Method at API documentation: [post /v1/warehouse/fbo/list](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftGetWarehouseFboList)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ClientID  = "2479669";
+    APIKey = "09f65e9f-262d-4aca...";
+    Search = "Tver";
+
+    Result = OPI_Ozon.GetShippingWarehousesList(ClientID, APIKey, Search);
+```
+ 
+
+
+
+
