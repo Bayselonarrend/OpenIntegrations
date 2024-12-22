@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить черновик заявки FBO
+ Получает черновик заявки FBO по ID
+
+
+
+`Функция ПолучитьЧерновикЗаявкиFBO(Знач IDКлиента, Знач КлючAPI, Знач IDОперации) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | IDКлиента | --clientid | Строка | &#x2714; | Идентификатор клиента |
+  | КлючAPI | --apikey | Строка | &#x2714; | API ключ |
+  | IDОперации | --draft | Строка | &#x2714; | ID черновика (операции) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+
+<br/>
+
+:::tip
+Метод в документации API: [post /v1/draft/create/info](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftCreateInfo)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    IDКлиента  = "2479669";
+    КлючAPI    = "09f65e9f-262d-4aca...";
+    IDОперации = "0193ede5-1756-70ba-97fc-4acbf5a5d308";
+
+    Результат = OPI_Ozon.ПолучитьЧерновикЗаявкиFBO(IDКлиента, КлючAPI, IDОперации);
+```
+    
+
+
+
+
