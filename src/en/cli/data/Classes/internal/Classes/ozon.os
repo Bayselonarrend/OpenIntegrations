@@ -1617,6 +1617,37 @@
     NewLine.Описание    = "Shipping point identifier for CREATE_TYPE_CROSSDOCK (optional, def. val. - Empty value)";
     NewLine.Область     = "Fbo scheme";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBODraft";
+    NewLine.МетодПоиска = "GETFBODRAFT";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Gets FBO draft by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBODraft";
+    NewLine.МетодПоиска = "GETFBODRAFT";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBODraft";
+    NewLine.МетодПоиска = "GETFBODRAFT";
+    NewLine.Параметр    = "--draft";
+    NewLine.Описание    = "Draft (operation) ID)";
+    NewLine.Область     = "Fbo scheme";
+
     Return CompositionTable;
 EndFunction
 

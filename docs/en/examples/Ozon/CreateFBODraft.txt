@@ -1,6 +1,6 @@
-﻿    ClientID   = "2479669";
-    APIKey  = "09f65e9f-262d-4aca...";
-    Cluster = 1;
+﻿    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
+    Cluster  = 1;
 
     Items = New Map;
     Items.Insert("1783161863", 5);
