@@ -1,4 +1,4 @@
-﻿    ClientID  = "2479669";
-    APIKey = "09f65e9f-262d-4aca...";
+﻿    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
 
     Result = OPI_Ozon.GetClustersList(ClientID, APIKey);

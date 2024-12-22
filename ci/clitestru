@@ -1641,6 +1641,10 @@ def test_ozon(){
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon СоздатьЧерновикЗаявкиFBO --clientid "test" --apikey "test" --clusters "test" --items "test" --type "test" --point "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьЧерновикЗаявкиFBO --clientid "test" --apikey "test" --draft "test" --debug --test '
+               }
+
 }
 
 
