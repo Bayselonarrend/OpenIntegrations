@@ -251,6 +251,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OzonAPI_PricesAndStocks"              , "Prices and stocks"               , Ozon);
     NewTest(TestTable, "OzonAPI_PromotionsManagement"         , "Promotions management"           , Ozon);
     NewTest(TestTable, "OzonAPI_WarehousesManagement"         , "Warehouses management"           , Ozon);
+    NewTest(TestTable, "OzonAPI_FBOScheme"                    , "FBO scheme"                      , Ozon);
     NewTest(TestTable, "NC_FilesManagement"                   , "Files management"                , Neocities);
     NewTest(TestTable, "NC_DataRetrieving"                    , "Data retrieving"                 , Neocities);
     NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
@@ -1873,6 +1874,18 @@ Procedure Check_OzonSKU(Val Result) Export
     ExpectsThat(Result["items"]).ИмеетТип("Array");
     ExpectsThat(Result["items"][0]["availability"]).Заполнено();
 
+EndProcedure
+
+Procedure Check_OzonDraft(Val Result) Export
+     ExpectsThat(Result["operation_id"]).ИмеетТип("String").Заполнено();
+EndProcedure
+
+Procedure Check_OzonSearch(Val Result) Export
+    ExpectsThat(Result["search"]).ИмеетТип("Array").Заполнено();
+EndProcedure
+
+Procedure Check_OzonClusters(Val Result) Export
+    ExpectsThat(Result["clusters"]).ИмеетТип("Array").Заполнено();
 EndProcedure
 
 Procedure Check_NCSuccess(Val Result) Export
