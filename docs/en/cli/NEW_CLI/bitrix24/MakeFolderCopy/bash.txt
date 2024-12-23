@@ -1,5 +1,5 @@
 oint bitrix24 MakeFolderCopy \
  --url "b24-ar17wx.bitrix24.by" \
- --folderid 23024 \
- --tagetid 23026 \
+ --folderid 23444 \
+ --tagetid 23446 \
  --token "***"

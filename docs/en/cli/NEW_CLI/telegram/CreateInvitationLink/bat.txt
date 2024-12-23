@@ -1,6 +1,6 @@
 oint telegram CreateInvitationLink ^
  --token "***" ^
  --chat "@testsichee" ^
- --expire "2024-12-20T10:40:11.0557884" ^
- --title "Link 19.12.2024 10:40:11" ^
+ --expire "2024-12-24T09:13:22.0161362" ^
+ --title "Link 23.12.2024 9:13:22" ^
  --limit 200
