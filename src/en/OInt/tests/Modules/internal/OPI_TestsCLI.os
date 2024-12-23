@@ -10383,7 +10383,7 @@ Procedure CLI_Ozon_GetShipmentAdditionalFields(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentAdditionalFields", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentAdditionalFields", "Ozon");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -10395,7 +10395,7 @@ Procedure CLI_Ozon_GetShipmentsFilterStructure(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentsFilterStructure", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentsFilterStructure", "Ozon");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
