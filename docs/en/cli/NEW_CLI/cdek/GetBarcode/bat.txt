@@ -1,6 +1,6 @@
 oint cdek GetBarcode ^
  --token "***" ^
- --uuid "72753031-b8fc-40be-883f-f9062235eff5" ^
+ --uuid "72753031-393f-41a0-9ede-bc0a59e82c5e" ^
  --getfile true ^
  --testapi "***" ^
- --out "C:\Users\Administrator\AppData\Local\Temp\1gkmqbnlcu3.pdf"
+ --out "C:\Users\Administrator\AppData\Local\Temp\ojncvvr1cw3.pdf"
