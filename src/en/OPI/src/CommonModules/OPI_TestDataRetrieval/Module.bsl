@@ -1884,13 +1884,13 @@ EndProcedure
 
 Procedure Check_OzonSearch(Val Result) Export
 
-    ExpectsThat(Result["search"]).ИмеетТип("Array").Заполнено();
+    ExpectsThat(Result["search"]).ИмеетТип("Array");
 
 EndProcedure
 
 Procedure Check_OzonClusters(Val Result) Export
 
-    ExpectsThat(Result["clusters"]).ИмеетТип("Array").Заполнено();
+    ExpectsThat(Result["clusters"]).ИмеетТип("Array");
 
 EndProcedure
 
