@@ -1,0 +1,5 @@
+﻿ {
+ "since": "Period start in ISO format",
+ "status": "Shipment status",
+ "to": "Period end in ISO format"
+}

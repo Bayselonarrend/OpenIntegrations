@@ -1,0 +1,3 @@
+oint ozon GetClustersList ^
+ --clientid "***" ^
+ --apikey "***"
