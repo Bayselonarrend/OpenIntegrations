@@ -1650,6 +1650,10 @@ def test_ozon(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetFBOTimeslots --clientid "test" --apikey "test" --from "test" --to "test" --draft "test" --whs "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon GetShipmentAdditionalFields --empty "test" --debug --test '
                }
 

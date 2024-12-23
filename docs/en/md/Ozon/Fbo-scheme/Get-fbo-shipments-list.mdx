@@ -49,6 +49,36 @@ Method at API documentation: [post /v2/posting/fbo/list](https://docs.ozon.ru/ap
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ozon GetFBOShipmentsList \
+             --clientid "***" \
+             --apikey "***" \
+             --filter "{'since':'2023-01-01T00:00:00Z','to':'2024-01-01T00:00:00Z'}" \
+             --with "{'analytics_data':true,'financial_data':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ozon GetFBOShipmentsList ^
+             --clientid "***" ^
+             --apikey "***" ^
+             --filter "{'since':'2023-01-01T00:00:00Z','to':'2024-01-01T00:00:00Z'}" ^
+             --with "{'analytics_data':true,'financial_data':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": []
+}
+```

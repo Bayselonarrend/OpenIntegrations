@@ -1900,6 +1900,12 @@ Procedure Check_OzonReadyDraft(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OzonTimeslots(Val Result) Export
+
+    ExpectsThat(Result["drop_off_warehouse_timeslots"]).ИмеетТип("Array");
+
+EndProcedure
+
 Procedure Check_NCSuccess(Val Result) Export
 
     ExpectsThat(Result["result"]).Равно("success");
