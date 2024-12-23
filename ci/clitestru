@@ -1650,6 +1650,10 @@ def test_ozon(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьТаймслотыFBO --clientid "test" --apikey "test" --from "test" --to "test" --draft "test" --whs "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСтруктуруДопПолейОтправления --empty "test" --debug --test '
                }
 

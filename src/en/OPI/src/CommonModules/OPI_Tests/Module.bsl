@@ -1966,6 +1966,7 @@ Procedure OzonAPI_FBOScheme() Export
     Ozon_GetShipmentAdditionalFields(TestParameters);
     Ozon_GetShipmentsFilterStructure(TestParameters);
     Ozon_GetFBOShipmentsList(TestParameters);
+    Ozon_GetFBOTimeslots(TestParameters);
 
 EndProcedure
 
@@ -13750,6 +13751,14 @@ Procedure Ozon_GetFBODraft(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetFBODraft", "Ozon");
     OPI_TestDataRetrieval.Check_OzonReadyDraft(Result);
 
+    DraftID = Result["draft_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_Draft", DraftID);
+    FunctionParameters.Insert("Ozon_Draft", DraftID);
+
+    WarehouseID = Result["clusters"][0]["warehouses"][0]["supply_warehouse"]["warehouse_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_FBOWarehouse", WarehouseID);
+    FunctionParameters.Insert("Ozon_FBOWarehouse", WarehouseID);
+
 EndProcedure
 
 Procedure Ozon_GetShipmentAdditionalFields(FunctionParameters)
@@ -13795,6 +13804,26 @@ Procedure Ozon_GetFBOShipmentsList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFBOShipmentsList", "Ozon");
     OPI_TestDataRetrieval.Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetFBOTimeslots(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Day      = 86400;
+
+    DateFrom  = OPI_Tools.GetCurrentDate();
+    DateTo    = DateFrom + Day;
+    Draft     = FunctionParameters["Ozon_Draft"];
+    Warehouse = FunctionParameters["Ozon_FBOWarehouse"];
+
+    Result = OPI_Ozon.GetFBOTimeslots(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouse);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOTimeslots", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonTimeslots(Result);
 
 EndProcedure
 
