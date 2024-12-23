@@ -1734,6 +1734,54 @@ Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
 
 EndFunction
 
+// Get FBO timeslots
+// Get available timeslots at the final supply warehouses
+//
+// Note
+// Method at API documentation: [post /v1/draft/timeslot/info](@docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftTimeslotInfo)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// DateFrom - Date - Start date of the required period of available timeslots - from
+// DateTo - Date - The end date of the desired period of available timeslots (28 days from current max.) - to
+// Draft - Number, String - Supply draft identifier - draft
+// Warehouses - Array Of Number - Warehouse or multiple warehouses to receive timeslots - whs
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+Function GetFBOTimeslots(Val ClientID, Val APIKey, Val DateFrom, Val DateTo, Val Draft, Val Warehouses) Export
+
+    OPI_TypeConversion.GetDate(DateFrom);
+    OPI_TypeConversion.GetDate(DateTo);
+    OPI_TypeConversion.GetArray(Warehouses);
+
+    For N = 0 To Warehouses.UBound() Do
+
+        CurrentValue = Warehouses[N];
+
+        OPI_TypeConversion.GetNumber(CurrentValue);
+
+        Warehouses[N] = CurrentValue;
+
+    EndDo;
+
+    URL = "https://api-seller.ozon.ru/v1/draft/timeslot/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("date_from"    , XMLString(DateFrom) + "Z", "String"    , Parameters);
+    OPI_Tools.AddField("date_to"      , XMLString(DateTo) + "Z"  , "String"    , Parameters);
+    OPI_Tools.AddField("draft_id"     , Draft                    , "Number"    , Parameters);
+    OPI_Tools.AddField("warehouse_ids", Warehouses               , "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get shipment additional fields
 // Returns the structure of inclusion of additional response fields for the GetFBOShipmentsList method
 //
