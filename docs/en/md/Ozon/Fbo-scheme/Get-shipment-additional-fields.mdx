@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 import Tabs from '@theme/Tabs';
@@ -29,6 +29,27 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon GetShipmentAdditionalFields \
+             --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon GetShipmentAdditionalFields ^
+             --empty false
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "analytics_data": "<pass True to add analytics data to the response>",
+ "financial_data": "<pass True to add financial data to the response>"
+}
+```

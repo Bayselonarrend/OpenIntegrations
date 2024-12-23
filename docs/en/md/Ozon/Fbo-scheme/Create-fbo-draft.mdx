@@ -46,6 +46,36 @@ Method at API documentation: [post /v1/draft/create](https://docs.ozon.ru/api/se
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ozon CreateFBODraft \
+             --clientid "***" \
+             --apikey "***" \
+             --clusters 1 \
+             --items "{'1783161863':5,'1784654052':2}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ozon CreateFBODraft ^
+             --clientid "***" ^
+             --apikey "***" ^
+             --clusters 1 ^
+             --items "{'1783161863':5,'1784654052':2}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "operation_id": "0193f24f-1222-7663-868c-e5a99cc0a4ac"
+}
+```

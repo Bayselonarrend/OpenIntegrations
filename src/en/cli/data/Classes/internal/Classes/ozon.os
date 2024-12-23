@@ -1713,6 +1713,67 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Fbo scheme";
+    NewLine.ОписаниеМетода   = "Get available timeslots at the final supply warehouses";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--from";
+    NewLine.Описание    = "Start date of the required period of available timeslots";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--to";
+    NewLine.Описание    = "The end date of the desired period of available timeslots (28 days from current max.)";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--draft";
+    NewLine.Описание    = "Supply draft identifier";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetFBOTimeslots";
+    NewLine.МетодПоиска = "GETFBOTIMESLOTS";
+    NewLine.Параметр    = "--whs";
+    NewLine.Описание    = "Warehouse or multiple warehouses to receive timeslots";
+    NewLine.Область     = "Fbo scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetShipmentAdditionalFields";
     NewLine.МетодПоиска = "GETSHIPMENTADDITIONALFIELDS";
     NewLine.Параметр    = "--empty";

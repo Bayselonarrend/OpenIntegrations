@@ -1,0 +1,52 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get FBO timeslots
+ Get available timeslots at the final supply warehouses
+
+
+
+`Function GetFBOTimeslots(Val ClientID, Val APIKey, Val DateFrom, Val DateTo, Val Draft, Val Warehouses) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | DateFrom | --from | Date | &#x2714; | Start date of the required period of available timeslots |
+  | DateTo | --to | Date | &#x2714; | The end date of the desired period of available timeslots (28 days from current max.) |
+  | Draft | --draft | Number, String | &#x2714; | Supply draft identifier |
+  | Warehouses | --whs | Array Of Number | &#x2714; | Warehouse or multiple warehouses to receive timeslots |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
+
+<br/>
+
+:::tip
+Method at API documentation: [post /v1/draft/timeslot/info](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftTimeslotInfo)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
+    Day      = 86400;
+
+    DateFrom  = OPI_Tools.GetCurrentDate();
+    DateTo    = DateFrom + Day;
+    Draft     = "39400602";
+    Warehouse = "1020000759116000";
+
+    Result = OPI_Ozon.GetFBOTimeslots(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouse);
+```
+ 
+
+
+
+
