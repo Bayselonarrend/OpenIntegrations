@@ -1,5 +1,5 @@
 ﻿    OriginalPath = "/New/pic.png";
     TargetPath   = "/pic.png";
-    Token        = "sl.CCRidcEOx5_Sft41hhKNkIVvFAu8ZT1CoP6wh40MOAccwPZhLOI2YXXzbpEypt0YZf_3ZGYM9H...";
+    Token        = "sl.CDM2TsVftn5aH3_nUX4tbw3JdByXhgO0FyL2ev0gBXGOhHv5k_uHgwYs0N_qMH4TQLm-nWvPGq...";
 
     Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);

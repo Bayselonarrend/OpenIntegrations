@@ -33,7 +33,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    UserID = "1216";
+    UserID = "1344";
     Email  = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -45,8 +45,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "a8e65667006e9f06006b12e400000001000...";
-    UserID = "1218";
+    Token  = "70f46a67006e9f06006b12e400000001000...";
+    UserID = "1346";
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
