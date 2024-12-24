@@ -2,7 +2,7 @@
 
 oint notion ИзменитьСвойстваСтраницы \
   --token "***" \
-  --page "16482aa7-fc4e-8180-b8a4-d5b7e11747d9" \
+  --page "16682aa7-fc4e-81b7-b03b-e3b419bf23dd" \
   --data "{'Активен':false,'Почта':'vector@mail.ru'}" \
   --icon "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
   --cover "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
