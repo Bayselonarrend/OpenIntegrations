@@ -49,6 +49,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ozon ПолучитьСписокОтправленийFBO \
+              --clientid "***" \
+              --apikey "***" \
+              --filter "{'since':'2023-01-01T00:00:00Z','to':'2024-01-01T00:00:00Z'}" \
+              --with "{'analytics_data':true,'financial_data':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ozon ПолучитьСписокОтправленийFBO ^
+              --clientid "***" ^
+              --apikey "***" ^
+              --filter "{'since':'2023-01-01T00:00:00Z','to':'2024-01-01T00:00:00Z'}" ^
+              --with "{'analytics_data':true,'financial_data':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "result": []
+}
+```
