@@ -1,5 +1,5 @@
-﻿    Token    = "ya29.a0AeDClZAfxs19DgmwOO8cVD3QKtotHfCNic5iCoPbnD8IzxjvXSUVVyCXTuWw9t0RG7seizlNqpNWBH7sHrQAyS0SeFgQ6chxYmOYUMDNc...";
-    Calendar = "06db13e5cd499d76e185d0b904920e3726060189a2a1d09614ccd8c23550829c@group.calendar.google.com";
-    Event    = "cclabi5q97c1lnnv34lj0r5m80";
+﻿    Token    = "ya29.a0ARW5m77a_UJFBB7n_sa8IAV8ycWLvz55tDaGZ7CsG1xiFYCSMm_kCJknxrGekLItp4p6eF054EBz7apAKFGnuUYhTJMy2lu6N7NTFAvHM...";
+    Calendar = "d5b99f918ddb915db60bfaef45db5e1f403c459fb421f43c87c4e9ad25509814@group.calendar.google.com";
+    Event    = "mjlr6kg0qs3lrr01sv266fa2d8";
 
     Result = OPI_GoogleCalendar.GetEvent(Token, Calendar, Event);
