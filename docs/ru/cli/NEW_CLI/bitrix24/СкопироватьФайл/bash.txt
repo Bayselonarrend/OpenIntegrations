@@ -1,5 +1,5 @@
 oint bitrix24 СкопироватьФайл \
   --url "b24-ar17wx.bitrix24.by" \
-  --fileid 23496 \
-  --folderid 23502 \
+  --fileid 23796 \
+  --folderid 23802 \
   --token "***"
