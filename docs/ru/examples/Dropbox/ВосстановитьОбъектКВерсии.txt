@@ -1,5 +1,5 @@
-﻿    Версия = "628d4df6844aabd841553";
-    Токен  = "sl.CCRidcEOx5_Sft41hhKNkIVvFAu8ZT1CoP6wh40MOAccwPZhLOI2YXXzbpEypt0YZf_3ZGYM9H...";
+﻿    Версия = "62a06df2eca62bd841553";
+    Токен  = "sl.CDM2TsVftn5aH3_nUX4tbw3JdByXhgO0FyL2ev0gBXGOhHv5k_uHgwYs0N_qMH4TQLm-nWvPGq...";
     Путь   = "/New/pic.png";
 
     Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);

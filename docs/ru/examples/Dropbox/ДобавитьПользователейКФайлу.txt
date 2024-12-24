@@ -1,4 +1,4 @@
-﻿    Токен = "sl.CCRidcEOx5_Sft41hhKNkIVvFAu8ZT1CoP6wh40MOAccwPZhLOI2YXXzbpEypt0YZf_3ZGYM9H...";
+﻿    Токен = "sl.CDM2TsVftn5aH3_nUX4tbw3JdByXhgO0FyL2ev0gBXGOhHv5k_uHgwYs0N_qMH4TQLm-nWvPGq...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
 
