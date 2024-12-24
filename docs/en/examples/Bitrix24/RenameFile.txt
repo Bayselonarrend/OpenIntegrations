@@ -1,13 +1,13 @@
 ﻿    Name      = "New file name.jpg";
     Filename2 = "New file name 2.jpg";
 
-    FileID2 = "21694";
+    FileID2 = "23614";
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
 
-    FileID = "21696";
+    FileID = "23616";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "a8e65667006e9f06006b12e400000001000...";
+    Token  = "70f46a67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
