@@ -1,11 +1,11 @@
 ﻿    Text   = "Comment for post";
-    PostID = "1560";
+    PostID = "1688";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
 
     Text  = "Another comment";
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "a8e65667006e9f06006b12e400000001000...";
+    Token = "70f46a67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
