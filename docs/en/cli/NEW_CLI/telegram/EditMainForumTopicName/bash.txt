@@ -1,4 +1,4 @@
 oint telegram EditMainForumTopicName \
  --token "***" \
  --forum "-1001971186208" \
- --title "New main thread name fbe5eb86-8ccf-4a8f-bbce-ca35ffd2e25a"
+ --title "New main thread name 00537dd3-e92e-4109-ba72-08a4cb8188d0"
