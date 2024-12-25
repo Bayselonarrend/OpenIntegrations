@@ -190,7 +190,7 @@ Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout 
 
 EndFunction
 
-// ProcessRequest
+// Process request
 // Sends a single request to a specified address and receives a response using the default settings
 //
 // Parameters:
