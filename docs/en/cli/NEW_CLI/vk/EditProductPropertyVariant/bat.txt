@@ -2,6 +2,6 @@
 
 oint vk EditProductPropertyVariant ^
  --value "New variant name" ^
- --prop "1198" ^
- --option 3611 ^
+ --prop "1223" ^
+ --option 3655 ^
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
