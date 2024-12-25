@@ -1,8 +1,8 @@
 oint bitrix24 UpdateTaskTimeAccounting ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "4292" ^
- --record 1562 ^
+ --task "4362" ^
+ --record 1590 ^
  --amount 4800 ^
  --text "New time record" ^
- --date "2024-11-23T09:48:39.7397913" ^
+ --date "2024-11-25T11:04:05.7291286" ^
  --token "***"
