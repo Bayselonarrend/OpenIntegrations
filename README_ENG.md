@@ -36,6 +36,7 @@ List of currently available APIs:
   <a href="https://en.openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png?6" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
 </div> 
 <br>
 
