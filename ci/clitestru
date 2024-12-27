@@ -2717,6 +2717,10 @@ def test_metrika(){
 					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСтруктуруФильтраСчетчиков --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe metrika ПолучитьСписокОпераций --token "test" --counter "test" --debug --test '
+               }
+
 }
 pipeline {
    agent any
