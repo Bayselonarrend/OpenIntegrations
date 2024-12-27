@@ -259,6 +259,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "CdekAPI_CourierInvitationsManagement" , "Courier invitations management"  , Cdek);
     NewTest(TestTable, "YaMetrika_TagsManagement"             , "Tags management"                 , Metrika);
     NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
+    NewTest(TestTable, "YaMetrika_ActionsManagement"          , "Actions management"              , Metrika);
     NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
     NewTest(TestTable, "AWS_BucketsManagement"                , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
@@ -2030,6 +2031,10 @@ EndProcedure
 
 Procedure Check_MetrikaCounters(Val Result) Export
     ExpectsThat(Result["counters"]).ИмеетТип("Array").Заполнено();
+EndProcedure
+
+Procedure Check_MetrikaActions(Val Result) Export
+    ExpectsThat(Result["operations"]).ИмеетТип("Array");
 EndProcedure
 
 Procedure Check_S3Success(Val Result) Export
