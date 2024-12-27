@@ -272,6 +272,27 @@
     NewLine.Область     = "Counters management";
     NewLine.ОписаниеМетода   = "Gets the structure of filter fields to get the list of counters";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetActionsList";
+    NewLine.МетодПоиска = "GETACTIONSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "Actions management";
+    NewLine.ОписаниеМетода   = "Gets the list of actions of the selected counter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "metrika";
+    NewLine.Модуль      = "OPI_YandexMetrika";
+    NewLine.Метод       = "GetActionsList";
+    NewLine.МетодПоиска = "GETACTIONSLIST";
+    NewLine.Параметр    = "--counter";
+    NewLine.Описание    = "Counter ID";
+    NewLine.Область     = "Actions management";
+
     Return CompositionTable;
 EndFunction
 
