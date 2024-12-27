@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get actions list
+ Gets the list of actions of the selected counter
+
+
+
+`Function GetActionsList(Val Token, Val CounterID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | CounterID | --counter | String, Number | &#x2714; | Counter ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
+
+<br/>
+
+:::tip
+Method at API documentation: [List of actions](https://yandex.ru/dev/metrika/en/management/openapi/operation/operations)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    CounterID = "99328449";
+
+    Result = OPI_YandexMetrika.GetActionsList(Token, CounterID);
+```
+ 
+
+
+
+

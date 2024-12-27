@@ -1534,6 +1534,7 @@ Procedure CLI_OzonAPI_FBOScheme() Export
     CLI_Ozon_GetShipmentAdditionalFields(TestParameters);
     CLI_Ozon_GetShipmentsFilterStructure(TestParameters);
     CLI_Ozon_GetFBOShipmentsList(TestParameters);
+    CLI_Ozon_GetFBOTimeslots(TestParameters);
 
 EndProcedure
 
@@ -2108,6 +2109,17 @@ Procedure CLI_YaMetrika_CountersManagement() Export
     CLI_YandexMetrika_DeleteCounter(TestParameters);
     CLI_YandexMetrika_RestoreCounter(TestParameters);
     CLI_YandexMetrika_GetCountersList(TestParameters);
+    CLI_YandexMetrika_DeleteCounter(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YaMetrika_ActionsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
+
+    CLI_YandexMetrika_CreateCounter(TestParameters);
+    CLI_YandexMetrika_GetActionsList(TestParameters);
     CLI_YandexMetrika_DeleteCounter(TestParameters);
 
 EndProcedure
@@ -10425,6 +10437,32 @@ Procedure CLI_Ozon_GetFBOShipmentsList(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_Ozon_GetFBOTimeslots(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Day      = 86400;
+
+    DateFrom  = OPI_Tools.GetCurrentDate();
+    DateTo    = DateFrom + Day;
+    Draft     = FunctionParameters["Ozon_Draft"];
+    Warehouse = FunctionParameters["Ozon_FBOWarehouse"];
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+    Options.Insert("from"    , DateFrom);
+    Options.Insert("to"      , DateTo);
+    Options.Insert("draft"   , Draft);
+    Options.Insert("whs"     , Warehouse);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOTimeslots", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOTimeslots", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonTimeslots(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region Neocities
@@ -16834,6 +16872,22 @@ Procedure CLI_YandexMetrika_GetCountersList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCountersList (filter))", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounters(Result);
+
+EndProcedure
+
+Procedure CLI_YandexMetrika_GetActionsList(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetActionsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetActionsList", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaActions(Result);
 
 EndProcedure
 

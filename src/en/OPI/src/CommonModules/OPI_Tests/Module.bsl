@@ -2110,6 +2110,17 @@ Procedure YaMetrika_CountersManagement() Export
 
 EndProcedure
 
+Procedure YaMetrika_ActionsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
+
+    YandexMetrika_CreateCounter(TestParameters);
+    YandexMetrika_GetActionsList(TestParameters);
+    YandexMetrika_DeleteCounter(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region S3
@@ -14863,6 +14874,20 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCountersList (filter))", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaCounters(Result);
+
+EndProcedure
+
+Procedure YandexMetrika_GetActionsList(FunctionParameters)
+
+    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
+
+    Result = OPI_YandexMetrika.GetActionsList(Token, CounterID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetActionsList", "YandexMetrika");
+    OPI_TestDataRetrieval.Check_MetrikaActions(Result);
 
 EndProcedure
 

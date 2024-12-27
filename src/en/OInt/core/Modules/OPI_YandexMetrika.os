@@ -556,4 +556,34 @@ EndFunction
 
 #EndRegion
 
+#Region ActionsManagement
+
+// Get actions list
+// Gets the list of actions of the selected counter
+//
+// Note
+// Method at API documentation: [List of actions](@yandex.ru/dev/metrika/en/management/openapi/operation/operations)
+//
+// Parameters:
+// Token - String - Auth token - token
+// CounterID - String, Number - Counter ID - counter
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function GetActionsList(Val Token, Val CounterID) Export
+
+    OPI_TypeConversion.GetLine(CounterID);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+    URL     = "https://api-metrika.yandex.net/management/v1/counter/%1/operations";
+    URL     = StrTemplate(URL, CounterID);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
