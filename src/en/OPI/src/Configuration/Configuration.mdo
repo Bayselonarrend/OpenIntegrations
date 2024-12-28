@@ -40,6 +40,7 @@
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
   <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_SQLite</commonTemplates>
   <commonModules>CommonModule.OPI_Tools</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
