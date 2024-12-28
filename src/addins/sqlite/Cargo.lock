@@ -117,6 +117,7 @@ dependencies = [
  "addin1c",
  "base64",
  "rusqlite",
+ "serde",
  "serde_json",
  "serde_rusqlite",
 ]
