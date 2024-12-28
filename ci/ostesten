@@ -638,6 +638,10 @@ pipeline {
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_CountersManagement"'
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_ActionsManagement"'
+               }
+
 			}
 		}
 
