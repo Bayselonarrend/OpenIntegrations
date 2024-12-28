@@ -4,6 +4,8 @@ use crate::component;
 use serde_rusqlite::{to_params};
 use base64::{engine::general_purpose, Engine as _};
 
+
+
 pub fn execute_query(
     client: &mut component::AddIn,
     query: String,
@@ -16,7 +18,7 @@ pub fn execute_query(
     };
 
     // Парсинг JSON параметров
-    let parsed_params: Value = match serde_json::from_str(&params_json) {
+    let mut parsed_params: Value = match serde_json::from_str(&params_json) {
         Ok(params) => params,
         Err(e) => {
             return format!(
@@ -26,15 +28,19 @@ pub fn execute_query(
         }
     };
 
-    let params_array = match parsed_params.as_array() {
+    let params_array = match parsed_params.as_array_mut() {
         Some(array) => array,
         None => {
             return r#"{"result": false, "error": "Parameters must be a JSON array"}"#.to_string();
         }
     };
 
+    process_blobs(params_array);
 
-    let convert = to_params(params_array).unwrap();
+    let convert = match to_params(params_array){
+        Ok(params) => params,
+        Err(e) => {return format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string())}
+    };
 
     // Определяем тип запроса
     if query.trim_start().to_uppercase().starts_with("SELECT") {
@@ -105,7 +111,7 @@ fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> String {
         }
     }
 
-    json!(json_array).to_string()
+    json!({ "result": json_array }).to_string()
 }
 
 fn from_sql_to_json(value: ValueRef) -> Value {
@@ -123,4 +129,40 @@ fn from_sql_to_json(value: ValueRef) -> Value {
             Value::Object(blob_object)
         },
     }
+}
+
+fn process_blobs(json_array: &mut Vec<Value>) {
+
+    for item in json_array.iter_mut() {
+
+        if let Value::Object(obj) = item {
+
+            // Проверяем, есть ли ключ "blob"
+            if let Some(Value::String(blob_str)) = obj.get("blob") {
+                match general_purpose::STANDARD.decode(blob_str) {
+                    Ok(decoded_blob) => {
+                        let current_blob = decoded_blob
+                            .into_iter()
+                            .map(|b| {
+                                if u64::from(b) > i64::MAX as u64 {
+                                    Value::Number(serde_json::Number::from(i64::MAX))
+                                } else {
+                                    Value::Number(serde_json::Number::from(b as i64))
+                                }
+                            })
+                            .collect::<Vec<Value>>();
+                        *item = Value::Array(current_blob);
+                    }
+                    Err(e) => {
+                        // Обработка ошибок декодирования
+                        *item = Value::String(format!("blob_error: {}", e));
+                    }
+                }
+            }
+        } else if let Value::Array(array) = item {
+            // Рекурсивно обрабатываем вложенные массивы
+            process_blobs(array);
+        }
+    }
+
 }
