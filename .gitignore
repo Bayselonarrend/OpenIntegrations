@@ -23,3 +23,4 @@ target/
 !oscript.exe
 addin.zip
 src/addins/tcp_server/OPI_TCPServer.zip
+src/addins/sqlite/OPI_SQLite.zip
