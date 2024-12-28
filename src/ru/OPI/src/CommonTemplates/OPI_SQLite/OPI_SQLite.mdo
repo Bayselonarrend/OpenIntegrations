@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b732dedd-b9cd-40d8-9482-847467424ab2">
+  <name>OPI_SQLite</name>
+  <synonym>
+    <key>ru</key>
+    <value>SQLite</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>
