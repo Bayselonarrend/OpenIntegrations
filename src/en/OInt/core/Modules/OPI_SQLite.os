@@ -55,7 +55,7 @@
 // Arbitrary - Connector object or structure with error information
 Function CreateConnection(Val Base = "") Export
 
-    If String(TypeOf(Base)) = "AddIn.OPI_SQLite.Main" Then
+    If IsConnector(Base) Then
         Return Base;
     EndIf;
 
@@ -72,6 +72,31 @@ Function CreateConnection(Val Base = "") Export
 
 EndFunction
 
+// Close connection !NOCLI
+// Explicitly closes the passed connection
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with open connection - db
+//
+// Returns:
+// Structure Of KeyAndValue - Result of connection termination
+Function CloseConnection(Val Connection) Export
+
+    If IsConnector(Connection) Then
+
+        Result = Connection.Close();
+        Result = OPI_Tools.JsonToStructure(Result, False);
+
+    Else
+
+        Result = New Structure("result,error", False, "It's not a connection");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 // Execute SQL query
 // Executes an arbitrary SQL query
 //
@@ -84,12 +109,14 @@ EndFunction
 // QueryText - String - Database query text - sql
 // Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
 // ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
-// Connection - String - Existing connection or path to the base. In memory, if not filled - db
+// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
 //
 // Returns:
 // Structure Of KeyAndValue - Result of query execution
-Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False,
-    Val Connection = "") Export
+Function ExecuteSQLQuery(Val QueryText
+    , Val Parameters = ""
+    , Val ForceResult = False
+    , Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(QueryText);
 
@@ -217,6 +244,12 @@ Function ProcessParameters(Val Parameters)
     EndIf;
 
     Return Parameters_;
+
+EndFunction
+
+Function IsConnector(Val Value)
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
 
 EndFunction
 
