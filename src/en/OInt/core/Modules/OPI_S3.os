@@ -57,7 +57,7 @@
 // Service - String - Type of service, if different from s3 - service
 //
 // Returns:
-// Structure of KeyAndValue - Basic request data structure
+// Structure Of KeyAndValue - Basic request data structure
 Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
 
     String_ = "String";
@@ -78,12 +78,12 @@ EndFunction
 //
 // Parameters:
 // Method - String - HTTP method - method
-// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
 // ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function SendRequestWithoutBody(Val Method
     , Val BasicData
     , Val ExpectedBinary = False
@@ -99,13 +99,13 @@ EndFunction
 //
 // Parameters:
 // Method - String - HTTP method - method
-// BasicData - Structure of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
 // Body - String, BinaryData - Binary data or file of request body data - body
 // ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function SendRequestWithBody(Val Method
     , Val BasicData
     , Val Body
@@ -129,12 +129,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function CreateBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
     Response = BucketManagement(Name, BasicData, Directory, "PUT", Headers);
@@ -150,12 +150,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function DeleteBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
 
     Response = BucketManagement(Name, BasicData, Directory, "DELETE", Headers);
@@ -171,13 +171,13 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // AccountID - String - Account ID to verify that hes the bucket owner - account
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function HeadBucket(Val Name
     , Val BasicData
     , Val Directory = False
@@ -205,13 +205,13 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // XmlConfig - String - XML string or file of encryption configuration - conf
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function PutBucketEncryption(Val Name
     , Val BasicData
     , Val XmlConfig
@@ -243,12 +243,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function GetBucketEncryption(Val Name
     , Val BasicData
     , Val Directory = False
@@ -277,12 +277,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketEncryption(Val Name
     , Val BasicData
     , Val Directory = False
@@ -312,13 +312,13 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Tags - Structure of KeyAndValue - Set of tags (key and value) - tagset
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Tags - Structure Of KeyAndValue - Set of tags (key and value) - tagset
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function PutBucketTagging(Val Name
     , Val BasicData
     , Val Tags
@@ -351,12 +351,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function GetBucketTagging(Val Name
     , Val BasicData
     , Val Directory = False
@@ -384,12 +384,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function DeleteBucketTagging(Val Name
     , Val BasicData
     , Val Directory = False
@@ -417,14 +417,14 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Status - Boolean - Enable and disable versioning, if necessary - status
 // MFADelete - Boolean - Enable and disable MFA deletion, if necessary - mfad
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function PutBucketVersioning(Val Name
     , Val BasicData
     , Val Status = Undefined
@@ -458,12 +458,12 @@ EndFunction
 //
 // Parameters:
 // Name - String - Bucket name - name
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function GetBucketVersioning(Val Name
     , Val BasicData
     , Val Directory = False
@@ -490,14 +490,14 @@ EndFunction
 // Method at AWS documentation: [ListBuckets](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
 //
 // Parameters:
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Prefix - String - Filtering by prefix, if necessary - prefix
 // Region - String - Selection by bucket region, if necessary - region
 // PageToken - String - Page token if pagination is used - ctoken
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function ListBuckets(Val BasicData
     , Val Prefix = ""
     , Val Region = ""
@@ -543,11 +543,11 @@ EndFunction
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
 // Entity - String, BinaryData - File path or binary data of the object - data
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function PutObject(Val Name
     , Val Bucket
     , Val Entity
@@ -604,11 +604,11 @@ EndFunction
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
 // Entity - String, BinaryData - File path or binary data of the object - data
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function UploadFullObject(Val Name
     , Val Bucket
     , Val Entity
@@ -636,11 +636,11 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function InitPartsUpload(Val Name
     , Val Bucket
     , Val BasicData
@@ -668,13 +668,13 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // PartNumber - Number, String - Number of the object part from 1 to 10000 - part
 // Data - BinaryData, String - Part content for uploading - content
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function UploadObjectPart(Val Name
     , Val Bucket
     , Val BasicData
@@ -710,13 +710,13 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // TagsArray - Array Of String - An array of tags (Etag) from the uploads responses of each part - tags
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function FinishPartsUpload(Val Name
     , Val Bucket
     , Val BasicData
@@ -763,12 +763,12 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function AbortMultipartUpload(Val Name
     , Val Bucket
     , Val BasicData
@@ -797,12 +797,12 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket in which the object is stored - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for receiving a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function HeadObject(Val Name
     , Val Bucket
     , Val BasicData
@@ -831,7 +831,7 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket in which the object is stored - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for receiving a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 // SavePath - String - Path to directly write a file to disk - out
@@ -890,12 +890,12 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for deleting a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function DeleteObject(Val Name
     , Val Bucket
     , Val BasicData
@@ -936,11 +936,11 @@ EndFunction
 // DestinationBucket - String - Source bucket name - sbucket
 // DestinationPath - String - Path (name) in the destination bucket - name
 // SourceBucket - String - Destination bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function CopyObject(Val SourcePath
     , Val DestinationBucket
     , Val DestinationPath
@@ -976,12 +976,12 @@ EndFunction
 // Parameters:
 // Name - String - Object name - name
 // Bucket - String - Bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Tags - Structure of KeyAndValue - Set of tags (key and value) - tagset
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// Tags - Structure Of KeyAndValue - Set of tags (key and value) - tagset
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function PutObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
@@ -1017,12 +1017,12 @@ EndFunction
 // Parameters:
 // Name - String - Object name - name
 // Bucket - String - Bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for retrieving data of a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function GetObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
@@ -1059,12 +1059,12 @@ EndFunction
 // Parameters:
 // Name - String - Object name - name
 // Bucket - String - Bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for deleting data of a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function DeleteObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
@@ -1100,13 +1100,13 @@ EndFunction
 //
 // Parameters:
 // Bucket - String - Bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Prefix - String - Filtering by prefix, if necessary - prefix
 // PageToken - String - Page token if pagination is used - ctoken
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function ListObjects(Val Bucket
     , Val BasicData
     , Val Prefix = ""
@@ -1143,13 +1143,13 @@ EndFunction
 //
 // Parameters:
 // Bucket - String - Bucket name - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Prefix - String - Filtering by prefix, if necessary - prefix
 // Version - String - Version ID for the beginning of the list - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from storage
+// Structure Of KeyAndValue - serialized JSON response from storage
 Function ListObjectVersions(Val Bucket
     , Val BasicData
     , Val Prefix = ""
@@ -1188,7 +1188,7 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
@@ -1222,7 +1222,7 @@ EndFunction
 // Parameters:
 // Name - String - Name of the object in the bucket - name
 // Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //

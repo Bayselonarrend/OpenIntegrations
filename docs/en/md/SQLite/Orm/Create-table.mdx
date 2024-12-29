@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create table
+ Creates an empty table in the database
+
+
+
+`Function CreateTable(Val Table, Val ColoumnsStruct, Val NotExecute = False, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | ColoumnsStruct | --cols | Structure Of KeyAndValue | &#x2714; | Column structure: Key > Name, Value > Data type |
+  | NotExecute | --noex | Boolean | &#x2716; | True > Does not execute the query, but returns SQL text |
+  | Connection | --db | String | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Structure Of KeyAndValue, String - The result of the execution or SQL query text
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

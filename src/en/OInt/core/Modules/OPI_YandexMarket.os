@@ -196,7 +196,7 @@ EndFunction
 // Parameters:
 // Token - String - Authorisation token (Api-Key) - token
 // CampaignID - String, Number - Campaign ID - business
-// Filters - Structure of KeyAndValue - Product filters - filters
+// Filters - Structure Of KeyAndValue - Product filters - filters
 // PageToken - String - Next page token in case of a large selection - page
 //
 // Returns:
@@ -231,7 +231,7 @@ EndFunction
 // Parameters:
 // Token - String - Authorisation token (Api-Key) - token
 // AccountID - String, Number - Business ID - business
-// Filters - Structure of KeyAndValue - Product filters - filters
+// Filters - Structure Of KeyAndValue - Product filters - filters
 // PageToken - String - Next page token in case of a large selection - page
 //
 // Returns:
@@ -270,7 +270,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Product fields structure
+// Structure Of KeyAndValue - Product fields structure
 Function GetProductStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
