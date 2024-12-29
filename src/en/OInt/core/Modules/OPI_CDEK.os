@@ -164,7 +164,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// Filter - Structure of KeyAndValue - Office filter. See GetOfficeFilterDescription - filter
+// Filter - Structure Of KeyAndValue - Office filter. See GetOfficeFilterDescription - filter
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -228,7 +228,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetOfficeFilterDescription(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -277,7 +277,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// OrderDescription - Structure of KeyAndValue - Set of order fields. See GetOrderDescription - order
+// OrderDescription - Structure Of KeyAndValue - Set of order fields. See GetOrderDescription - order
 // OnlineStore - Boolean - Flag of Online store order type - ostore
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
@@ -308,7 +308,7 @@ EndFunction
 // Parameters:
 // Token - String - Auth token - token
 // UUID - String - Order UUID for updating - uuid
-// OrderDescription - Structure of KeyAndValue - Set of changing order fields - order
+// OrderDescription - Structure Of KeyAndValue - Set of changing order fields - order
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -803,7 +803,7 @@ EndFunction
 // OnlineStore - Boolean - Flag of including fields in the layout exclusively for online store orders - ostore
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val OnlineStore = False) Export
 
     // BSLLS:DuplicateStringLiteral-off
@@ -1029,7 +1029,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// InvitationDescription - Structure of KeyAndValue - Invitations description. See GetCourierInvitationsDescription - intake
+// InvitationDescription - Structure Of KeyAndValue - Invitations description. See GetCourierInvitationsDescription - intake
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -1107,7 +1107,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// Appointment - Structure of KeyAndValue - Appointment description. See GetAppointmentDescription - appt
+// Appointment - Structure Of KeyAndValue - Appointment description. See GetAppointmentDescription - appt
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -1164,7 +1164,7 @@ EndFunction
 // RequiredOnly - Boolean - True > only required fields will be in the set - required
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetCourierInvitationsDescription(Val Clear = False, Val RequiredOnly = False) Export
 
     // BSLLS:DuplicateStringLiteral-off
@@ -1252,7 +1252,7 @@ EndFunction
 // RequiredOnly - Boolean - True > only required fields will be in the set - required
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);

@@ -1146,6 +1146,14 @@ Function MergeData(Val Data, Val Addition) Export
 
 EndFunction
 
+Function IsPrimitiveType(Val Value) Export
+
+    Return TypeOf(Value) = Type("String")
+        Or TypeOf(Value)    = Type("Number")
+        Or TypeOf(Value)    = Type("Boolean")
+
+EndFunction
+
 #EndRegion
 
 #EndRegion

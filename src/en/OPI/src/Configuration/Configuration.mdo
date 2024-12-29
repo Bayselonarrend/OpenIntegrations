@@ -56,6 +56,7 @@
   <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
+  <commonModules>CommonModule.OPI_SQLite</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>
   <commonModules>CommonModule.OPI_TCP</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
@@ -67,6 +68,7 @@
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexMarket</commonModules>
   <commonModules>CommonModule.OPI_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPI_SQLQueries</commonModules>
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
