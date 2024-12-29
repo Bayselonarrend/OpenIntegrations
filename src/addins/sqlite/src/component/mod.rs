@@ -3,12 +3,14 @@ mod methods;
 use addin1c::{name, Variant};
 use crate::core::getset;
 use rusqlite::{Connection};
+use serde_json::json;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
+    name!("Close"),
     name!("Execute"),
 
 ];
@@ -17,7 +19,8 @@ pub const METHODS: &[&[u16]] = &[
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
-        1 => 2,
+        1 => 0,
+        2 => 2,
         _ => 0,
     }
 }
@@ -28,11 +31,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
     match num {
 
-        0 =>{
-            Box::new(obj.initialize())
-        },
-
-        1 => {
+        0 => Box::new(obj.initialize()),
+        1 => Box::new(obj.close_connection()),
+        2 => {
 
             let query = params[0].get_string().unwrap_or("".to_string());
             let params_json = params[1].get_string().unwrap_or("".to_string());
@@ -89,6 +90,23 @@ impl AddIn {
 
     pub fn get_connection(&self) -> Option<&Connection> {
         self.connection.as_ref()
+    }
+
+    pub fn close_connection(&mut self) -> String {
+        if let Some(conn) = self.connection.take() {
+            match conn.close() {
+                Ok(_) => json!({"result": true}).to_string(),
+                Err((_conn, err)) => json!({
+                    "result": false,
+                    "error": err.to_string()
+                }).to_string(),
+            }
+        } else {
+            json!({
+                "result": false,
+                "error": "Connection already closed"
+            }).to_string()
+        }
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
