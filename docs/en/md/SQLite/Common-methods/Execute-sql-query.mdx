@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,14 +10,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False,Val Connection = "") Export`
+`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | QueryText | --sql | String | &#x2714; | Database query text |
   | Parameters | --params | Array Of Arbitrary | &#x2716; | Array of positional parameters of the request |
   | ForceResult | --force | Boolean | &#x2716; | Includes an attempt to retrieve the result, even for nonSELECT queries |
-  | Connection | --db | String | &#x2716; | Existing connection or path to the base. In memory, if not filled |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
 
   
   Returns:  Structure Of KeyAndValue - Result of query execution
