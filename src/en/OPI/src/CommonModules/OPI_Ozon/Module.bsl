@@ -241,7 +241,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// Filter - Structure Of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
@@ -279,7 +279,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// Filter - Structure Of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
@@ -850,7 +850,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Product fields structure
+// Structure Of KeyAndValue - Product fields structure
 Function GetProductStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -891,7 +891,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Product fields structure
+// Structure Of KeyAndValue - Product fields structure
 Function GetSimplifiedProductStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -927,7 +927,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Product fields structure
+// Structure Of KeyAndValue - Product fields structure
 Function GetAttributesUpdateStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -959,7 +959,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Filter fields structure
+// Structure Of KeyAndValue - Filter fields structure
 Function GetProductsFilterStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -993,7 +993,7 @@ EndFunction
 // Name - String - Technical name of the video - title
 //
 // Returns:
-// Structure of KeyAndValue - Structure of product fields with added video
+// Structure Of KeyAndValue - Structure of product fields with added video
 Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
 
     Complex_attributes_ = "complex_attributes";
@@ -1031,7 +1031,7 @@ EndFunction
 // URL - String - URL of the video cover - url
 //
 // Returns:
-// Structure of KeyAndValue - Structure of product fields with added video
+// Structure Of KeyAndValue - Structure of product fields with added video
 Function AddProductVideoCover(ItemStructure, Val URL) Export
 
     Complex_attributes_ = "complex_attributes";
@@ -1178,7 +1178,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// Filter - Structure Of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
@@ -1216,7 +1216,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// Filter - Structure Of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
@@ -1372,7 +1372,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Filter fields structure
+// Structure Of KeyAndValue - Filter fields structure
 Function GetProductStocksStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -1405,7 +1405,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Filter fields structure
+// Structure Of KeyAndValue - Filter fields structure
 Function GetProductPriceStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -1630,8 +1630,8 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// Filter - Structure of KeyAndValue - Shipments filter. See GetShipmentsFilterStructure - filter
-// AddFields - Structure of KeyAndValue - Include additional fields in the response. See GetShipmentAdditionalFields - with
+// Filter - Structure Of KeyAndValue - Shipments filter. See GetShipmentsFilterStructure - filter
+// AddFields - Structure Of KeyAndValue - Include additional fields in the response. See GetShipmentAdditionalFields - with
 // Indent - Number - Offset of the result items - offset
 // Traslit - Boolean - If Cyrillic to Latin address transliteration is enabled > True - trlt
 //
@@ -1789,7 +1789,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetShipmentAdditionalFields(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -1815,7 +1815,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Filter structure
+// Structure Of KeyAndValue - Filter structure
 Function GetShipmentsFilterStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);

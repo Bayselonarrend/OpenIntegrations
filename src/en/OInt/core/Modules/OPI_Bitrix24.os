@@ -445,7 +445,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of KeyAndValue - Task fields structure (see GetTaskFieldsStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Task fields structure (see GetTaskFieldsStructure) - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -470,7 +470,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// FieldsStructure - Structure of KeyAndValue - Task fields structure - fields
+// FieldsStructure - Structure Of KeyAndValue - Task fields structure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -984,7 +984,7 @@ EndFunction
 // AsMap - Boolean - True > returns the filter fields as a map - map
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export
 
     // More
@@ -1074,7 +1074,7 @@ EndFunction
 // Name - String - Text identifier (name) of the field - fieldname
 // ExternalID - String - Text identifier for external integration - externalid
 // Title - String - Field title - title
-// Signature - Structure of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
+// Signature - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -1117,7 +1117,7 @@ EndFunction
 // FieldID - String, Number - Field ID for updating - fieldid
 // ExternalID - String - Text identifier for external integration - externalid
 // Title - String - Field title - title
-// Signature - Structure of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
+// Signature - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -1600,7 +1600,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetCommentStructure(Val Clear = False) Export
 
     // More
@@ -2537,7 +2537,7 @@ EndFunction
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
@@ -2861,7 +2861,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatStructure - Structure of KeyAndValue - Chat fields structure. See GetChatStructure - fields
+// ChatStructure - Structure Of KeyAndValue - Chat fields structure. See GetChatStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -3369,7 +3369,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty values, False > field types at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetChatStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -3944,7 +3944,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
+// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -3974,7 +3974,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // UserID - String, Number - User ID - userid
-// FieldsStructure - Structure of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
+// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4032,7 +4032,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FilterStructure - Structure of KeyAndValue - Filter. See GetUserFilterStructure - filter
+// FilterStructure - Structure Of KeyAndValue - Filter. See GetUserFilterStructure - filter
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4078,7 +4078,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetUserFilterStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -4113,7 +4113,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of KeyAndValue - Lead fields structure (see GetLeadStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Lead fields structure (see GetLeadStructure) - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4206,7 +4206,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // LeadID - Number, String - Lead ID - lead
-// FieldsStructure - Structure of KeyAndValue - Structure of lead fields - fields
+// FieldsStructure - Structure Of KeyAndValue - Structure of lead fields - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4252,7 +4252,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetLeadFilterStructure(Val Clear = False) Export
 
     // More
@@ -4306,7 +4306,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4399,7 +4399,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // DealID - Number, String - Deal ID - deal
-// FieldsStructure - Structure of KeyAndValue - Deal fields structure - fields
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4445,7 +4445,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Structure of KeyAndValue - Fields structure
+// Structure Of KeyAndValue - Fields structure
 Function GetDealsFilterStructure(Val Clear = False) Export
 
     // More

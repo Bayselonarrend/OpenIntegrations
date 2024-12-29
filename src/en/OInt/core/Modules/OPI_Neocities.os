@@ -283,7 +283,7 @@ EndFunction
 // RemoteFolder - String - Remote receiver catalog. Root by default - remote
 //
 // Returns:
-// Structure of KeyAndValue - synchronization error information
+// Structure Of KeyAndValue - synchronization error information
 Function SynchronizeFolders(Val Token, Val LocalFolder, Val RemoteFolder = "") Export
 
     OPI_TypeConversion.GetLine(LocalFolder);
