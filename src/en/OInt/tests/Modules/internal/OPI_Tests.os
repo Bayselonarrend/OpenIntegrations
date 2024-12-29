@@ -2212,6 +2212,18 @@ EndProcedure
 
 #EndRegion
 
+#Region SQLite
+
+Procedure SQLL_CommonMethods() Export
+
+    TestParameters = New Structure;
+
+    SQLite_CreateConnection(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -16046,6 +16058,38 @@ Procedure TCP_SendLine(FunctionParameters) Export
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendLine (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+#EndRegion
+
+#Region SQLite
+
+Procedure SQLite_CreateConnection(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    LocalBase    = OPI_SQLite.CreateConnection(TFN);
+    InMemoryBase = OPI_SQLite.CreateConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(LocalBase, "CreateConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_AddIn(LocalBase, "AddIn.OPI_SQLite.Main");
+
+    OPI_TestDataRetrieval.WriteLog(InMemoryBase, "CreateConnection (im)", "SQLite");
+    OPI_TestDataRetrieval.Check_AddIn(InMemoryBase, "AddIn.OPI_SQLite.Main");
+
+    Closing = OPI_SQLite.CloseConnection(LocalBase);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "CloseConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
+
+    Try
+       DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
 
 EndProcedure
 

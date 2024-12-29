@@ -211,17 +211,33 @@ EndFunction
 
 Function FormTextSelect(Val Scheme)
 
+    TextSQL = "";
+
+    Return TextSQL;
+
 EndFunction
 
 Function FormTextInsert(Val Scheme)
+
+    TextSQL = "";
+
+    Return TextSQL;
 
 EndFunction
 
 Function FormTextUpdate(Val Scheme)
 
+    TextSQL = "";
+
+    Return TextSQL;
+
 EndFunction
 
 Function FormTextDelete(Val Scheme)
+
+    TextSQL = "";
+
+    Return TextSQL;
 
 EndFunction
 
@@ -246,7 +262,9 @@ Function FormTextCreate(Val Scheme)
 
     ColoumnsDescription = StrConcat(ColoumnsDescriptionArray, "," + Chars.LF);
 
-    TextSQL = StrTemplate(SQLTemplate, )
+    TextSQL = StrTemplate(SQLTemplate, Table, ColoumnsDescription);
+
+    Return TextSQL;
 
 EndFunction
 
@@ -255,7 +273,7 @@ EndFunction
 Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
 
     RequiredFieldsArray = StrConcat(Fields, ",");
-    AbsenteesArray      = OPI_Tools.FindMissingCollectionFields(RequiredFieldsArray);
+    AbsenteesArray      = OPI_Tools.FindMissingCollectionFields(Scheme, RequiredFieldsArray);
 
     If ValueIsFilled(AbsenteesArray) Then
         Raise "Required schema fields are missing: " + StrConcat(AbsenteesArray, ", ");
