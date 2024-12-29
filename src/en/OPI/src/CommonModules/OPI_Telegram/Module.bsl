@@ -202,12 +202,12 @@ Function DownloadFile(Val Token, Val FileID) Export
 
 EndFunction
 
-// Process Telegram Mini App data
+// Process Telegram Mini App data !NOCLI
 // Processes Telegram Mini App data and determines its validity
 //
 // Parameters:
-// DataString - String - Query from Telegram.WebApp.initData
-// Token - String - Bot token
+// DataString - String - query from Telegram.WebApp.initData - datastring
+// Token - String - Bot token - token
 //
 // Returns:
 // Map of String - Map of data with the result of verification in the passed field

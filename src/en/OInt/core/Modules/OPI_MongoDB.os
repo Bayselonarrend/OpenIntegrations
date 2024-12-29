@@ -56,7 +56,7 @@
 // ConnectionString - String - Connection string to MongoDB server - connect
 //
 // Returns:
-// Structure of KeyAndValue - serialized JSON response from MongoDB server
+// Structure Of KeyAndValue - serialized JSON response from MongoDB server
 Function GetListOfBases(Val ConnectionString) Export
 
     Client = MongoDBClient(ConnectionString);

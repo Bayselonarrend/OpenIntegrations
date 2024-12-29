@@ -86,6 +86,11 @@ pipeline {
                 test_slack()
              }
           }
+          stage('sqlite'){
+             steps{
+                test_sqlite()
+             }
+          }
           stage('tcp'){
              steps{
                 test_tcp()
@@ -1952,6 +1957,20 @@ def test_slack(){
 }
 
 
+def test_sqlite(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --noex "test" --db "test" --debug --test '
+               }
+
+}
+
+
 def test_tcp(){
 					
 
@@ -2748,6 +2767,7 @@ test_notion()
 test_ozon()
 test_s3()
 test_slack()
+test_sqlite()
 test_tcp()
 test_telegram()
 test_twitter()
