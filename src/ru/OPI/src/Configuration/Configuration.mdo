@@ -68,6 +68,7 @@
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexMarket</commonModules>
   <commonModules>CommonModule.OPI_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPI_ЗапросыSQL</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>

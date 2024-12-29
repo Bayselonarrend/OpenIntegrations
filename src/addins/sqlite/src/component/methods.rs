@@ -1,7 +1,6 @@
-use rusqlite::{types::ValueRef};
+use rusqlite::{types::ValueRef, types::Value as SqlValue, params_from_iter, ParamsFromIter};
 use serde_json::{Value, json, Map};
 use crate::component;
-use serde_rusqlite::{to_params};
 use base64::{engine::general_purpose, Engine as _};
 
 
@@ -10,6 +9,7 @@ pub fn execute_query(
     client: &mut component::AddIn,
     query: String,
     params_json: String,
+    force_result: bool
 ) -> String {
 
     let conn = match client.get_connection() {
@@ -35,15 +35,10 @@ pub fn execute_query(
         }
     };
 
-    process_blobs(params_array);
-
-    let convert = match to_params(params_array){
-        Ok(params) => params,
-        Err(e) => {return format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string())}
-    };
+    let convert = process_blobs(params_array);
 
     // Определяем тип запроса
-    if query.trim_start().to_uppercase().starts_with("SELECT") {
+    if query.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
         // Выполняем SELECT
         match conn.prepare(&query) {
             Ok(mut query_result) => {
@@ -93,10 +88,17 @@ fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> String {
 
                 for i in 0..cols.len() {
 
-                    let val = row.get_ref_unwrap(i);
-                    let jval = from_sql_to_json(val);
+                    let val = match row.get_ref(i) {
+                        Ok(v) => v,
+                        Err(e) => {
+                            current.insert("error".to_string(), Value::String(e.to_string()));
+                            continue;
+                        }
+                    };
 
-                    current.insert(cols[i].to_string(), jval);
+                    let json_val = from_sql_to_json(val);
+
+                    current.insert(cols[i].to_string(), json_val);
                 };
 
                 json_array.push(current);
@@ -131,38 +133,37 @@ fn from_sql_to_json(value: ValueRef) -> Value {
     }
 }
 
-fn process_blobs(json_array: &mut Vec<Value>) {
+fn process_blobs(json_array: &mut Vec<Value>) -> ParamsFromIter<Vec<SqlValue>> {
+
+    let mut result = Vec::new();
 
     for item in json_array.iter_mut() {
-
-        if let Value::Object(obj) = item {
-
-            // Проверяем, есть ли ключ "blob"
-            if let Some(Value::String(blob_str)) = obj.get("blob") {
-                match general_purpose::STANDARD.decode(blob_str) {
-                    Ok(decoded_blob) => {
-                        let current_blob = decoded_blob
-                            .into_iter()
-                            .map(|b| {
-                                if u64::from(b) > i64::MAX as u64 {
-                                    Value::Number(serde_json::Number::from(i64::MAX))
-                                } else {
-                                    Value::Number(serde_json::Number::from(b as i64))
-                                }
-                            })
-                            .collect::<Vec<Value>>();
-                        *item = Value::Array(current_blob);
-                    }
-                    Err(e) => {
-                        // Обработка ошибок декодирования
-                        *item = Value::String(format!("blob_error: {}", e));
-                    }
+        match item {
+            Value::Null => { result.push(SqlValue::Null); },
+            Value::Bool(b) => { result.push(SqlValue::from(*b)); }
+            Value::String(s) => { result.push(SqlValue::from(s.clone())); }
+            Value::Number(num) => {
+                if let Some(int_val) = num.as_i64() {
+                    result.push(SqlValue::from(int_val));
+                } else if let Some(float_val) = num.as_f64() {
+                    result.push(SqlValue::from(float_val));
+                } else {
+                    result.push(SqlValue::from(0));
                 }
             }
-        } else if let Value::Array(array) = item {
-            // Рекурсивно обрабатываем вложенные массивы
-            process_blobs(array);
+            Value::Object(obj) => {
+
+                if let Some(Value::String(blob_str)) = obj.get("blob") {
+
+                    match general_purpose::STANDARD.decode(blob_str) {
+                        Ok(decoded_blob) => result.push(SqlValue::Blob(decoded_blob)),
+                        Err(_) => result.push(SqlValue::Blob([].to_vec()))
+                    }
+                } else { result.push(SqlValue::Blob([].to_vec())) }
+
+            }
+            _ => { result.push(SqlValue::Null) }
         }
     }
-
+   params_from_iter(result)
 }
