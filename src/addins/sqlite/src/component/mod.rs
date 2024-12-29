@@ -9,7 +9,7 @@ use rusqlite::{Connection};
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
-    name!("Execute"),    // 0
+    name!("Execute"),
 
 ];
 
@@ -36,8 +36,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             let query = params[0].get_string().unwrap_or("".to_string());
             let params_json = params[1].get_string().unwrap_or("".to_string());
+            let force_result = params[2].get_bool().unwrap_or(false);
 
-            Box::new(methods::execute_query(obj, query, params_json))
+            Box::new(methods::execute_query(obj, query, params_json, force_result))
         },
         _ => Box::new(false), // Неверный номер команды
     }
