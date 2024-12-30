@@ -239,6 +239,17 @@ pipeline {
 			}
 		}
 
+        stage('Testing-SQLite') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SQLL_CommonMethods"'
+               }
+
+			}
+		}
+
         stage('Testing-YandexDisk') {
 			steps {
 					
