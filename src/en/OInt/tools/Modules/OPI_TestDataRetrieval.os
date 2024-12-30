@@ -2066,6 +2066,10 @@ Procedure Check_AddIn(Val Result, Val TypeName) Export
     ExpectsThat(String(TypeOf(Result))).Равно(TypeName);
 EndProcedure
 
+Procedure Check_Equality(Val Value1, Val Value2) Export
+    ExpectsThat(Value1).Равно(Value2);
+EndProcedure
+
 Procedure Check_SQLiteSuccess(Val Result) Export
     ExpectsThat(Result["result"]).Равно(True);
 EndProcedure
