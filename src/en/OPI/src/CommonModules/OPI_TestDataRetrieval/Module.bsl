@@ -53,7 +53,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
     Sections.Insert("Twitter"        , 4);
-    Sections.Insert("SQLite" , 5);
+    Sections.Insert("SQLite"         , 5);
     Sections.Insert("YandexDisk"     , 5);
     Sections.Insert("GoogleWorkspace", 2);
     Sections.Insert("GoogleCalendar" , 5);
@@ -86,7 +86,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("VK"             , StandardDependencies);
     Sections.Insert("Viber"          , StandardDependencies);
     Sections.Insert("Twitter"        , StandardDependencies);
-    Sections.Insert("SQLite" , StandardDependencies);
+    Sections.Insert("SQLite"         , StandardDependencies);
     Sections.Insert("YandexDisk"     , StandardDependencies);
     Sections.Insert("GoogleWorkspace", StandardDependencies);
     Sections.Insert("GoogleCalendar" , GoogleDependencies);
@@ -132,7 +132,7 @@ Function GetTestTable() Export
     Metrika   = "YandexMetrika";
     S3_       = "S3";
     TCP       = "TCP";
-    SQLite       = "SQLite";
+    SQLite    = "SQLite";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -267,7 +267,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "AWS_BucketsManagement"                , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
-    NewTest(TestTable, "SQLL_CommonMethods" , "Common methods" , SQLite);
+    NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
 
     Return TestTable;
 

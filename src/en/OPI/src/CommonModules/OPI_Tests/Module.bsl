@@ -2219,6 +2219,8 @@ Procedure SQLL_CommonMethods() Export
     TestParameters = New Structure;
 
     SQLite_CreateConnection(TestParameters);
+    SQLite_CloseConnection(TestParameters);
+    SQLite_ExecuteSQLQuery(TestParameters);
 
 EndProcedure
 
@@ -16084,6 +16086,119 @@ Procedure SQLite_CreateConnection(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Closing, "CloseConnection", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
+
+    Try
+       DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
+
+EndProcedure
+
+Procedure SQLite_CloseConnection(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (closing)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_SQLite.Main"); // SKIP
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "CloseConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
+
+    Try
+       DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
+
+EndProcedure
+
+Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (query)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_SQLite.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+    |CREATE TABLE test_table (
+    |id INTEGER PRIMARY KEY,
+    |name TEXT,
+    |age INTEGER,
+    |salary REAL,
+    |is_active BOOLEAN,
+    |created_at DATETIME,
+    |data BLOB
+    |);";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+    |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add("Vitaly"); // TEXT
+    ParameterArray.Add(25); // INTEGER
+    ParameterArray.Add(1000.12); // REAL
+    ParameterArray.Add(True); // BOOL
+    ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
+    ParameterArray.Add(GetBinaryDataFromString("Hello world")); // BLOB
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Select)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // Transaction
+
+    QueryText = "BEGIN TRANSACTION;
+    | CREATE TABLE IF NOT EXISTS users (
+    | id INTEGER PRIMARY KEY AUTOINCREMENT,
+    | name TEXT NOT NULL,
+    | age INTEGER NOT NULL
+    | );
+    | INSERT INTO users (name, age) VALUES ('Alice', 30);
+    | INSERT INTO users (name, age) VALUES ('Bob', 25);
+    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+    | COMMIT;";
+
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Try
        DeleteFiles(TFN);
