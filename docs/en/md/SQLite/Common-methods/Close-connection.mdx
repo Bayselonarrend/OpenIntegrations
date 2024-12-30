@@ -30,7 +30,11 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    TFN = GetTempFileName("sqlite");
 
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
 ```
  
 
