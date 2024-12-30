@@ -36,6 +36,9 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 ```bsl title="1C:Enterprise/OneScript code example"
     TFN = GetTempFileName("sqlite");
 
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
     Connection = OPI_SQLite.CreateConnection(TFN);
 
     // CREATE
@@ -65,7 +68,7 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     ParameterArray.Add(1000.12); // REAL
     ParameterArray.Add(True); // BOOL
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
-    ParameterArray.Add(ПолучитьДвоичныеДанныеИзСтроки("Hello world")); // BLOB
+    ParameterArray.Add(Image); // BLOB
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
