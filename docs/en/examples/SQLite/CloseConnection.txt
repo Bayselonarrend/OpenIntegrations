@@ -1,0 +1,5 @@
+﻿    TFN = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
