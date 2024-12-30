@@ -155,9 +155,11 @@ fn process_blobs(json_array: &mut Vec<Value>) -> ParamsFromIter<Vec<SqlValue>> {
 
                 if let Some(Value::String(blob_str)) = obj.get("blob") {
 
-                    match general_purpose::STANDARD.decode(blob_str) {
+                    let cleaned_base64 = blob_str.replace(&['\n', '\r', ' '][..], "");
+
+                    match general_purpose::STANDARD.decode(cleaned_base64) {
                         Ok(decoded_blob) => result.push(SqlValue::Blob(decoded_blob)),
-                        Err(_) => result.push(SqlValue::Blob([].to_vec()))
+                        Err(e) => result.push(SqlValue::Blob(e.to_string().into_bytes()))
                     }
                 } else { result.push(SqlValue::Blob([].to_vec())) }
 
