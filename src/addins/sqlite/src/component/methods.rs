@@ -113,7 +113,7 @@ fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> String {
         }
     }
 
-    json!({ "result": json_array }).to_string()
+    json!({ "result": true, "data": json_array }).to_string()
 }
 
 fn from_sql_to_json(value: ValueRef) -> Value {

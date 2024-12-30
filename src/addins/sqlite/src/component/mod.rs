@@ -20,7 +20,7 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
-        2 => 2,
+        2 => 3,
         _ => 0,
     }
 }
