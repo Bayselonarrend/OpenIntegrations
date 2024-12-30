@@ -1,10 +1,10 @@
-src/ru/OPI/src/CommonModules/OPI_Тесты/* linguist-vendored
-src/ru/OPI/src/CommonModules/OPI_ТестыCLI/* linguist-vendored
-src/ru/OInt/* linguist-vendored
-src/en/* linguist-vendored
-service/* linguist-vendored
-ci/* linguist-vendored
-media/* linguist-vendored
-docs/* linguist-vendored
+src/ru/OPI/src/CommonModules/OPI_Тесты/** linguist-vendored
+src/ru/OPI/src/CommonModules/OPI_ТестыCLI/** linguist-vendored
+src/ru/OInt/** linguist-vendored
+src/en/** linguist-vendored
+service/** linguist-vendored
+ci/** linguist-vendored
+media/** linguist-vendored
+docs/** linguist-vendored
 
 
