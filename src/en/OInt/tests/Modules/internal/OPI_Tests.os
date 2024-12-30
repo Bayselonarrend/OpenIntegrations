@@ -2217,6 +2217,7 @@ EndProcedure
 Procedure SQLL_CommonMethods() Export
 
     TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     SQLite_CreateConnection(TestParameters);
     SQLite_CloseConnection(TestParameters);
@@ -16123,6 +16124,9 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     TFN = GetTempFileName("sqlite");
 
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
     Connection = OPI_SQLite.CreateConnection(TFN);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (query)", "SQLite"); // SKIP
@@ -16158,7 +16162,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(1000.12); // REAL
     ParameterArray.Add(True); // BOOL
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
-    ParameterArray.Add(ПолучитьДвоичныеДанныеИзСтроки("Hello world")); // BLOB
+    ParameterArray.Add(Image); // BLOB
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
@@ -16173,6 +16177,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Select)", "SQLite"); // SKIP
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size()); // SKIP
 
     // Transaction
 
