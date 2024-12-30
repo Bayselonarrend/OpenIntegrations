@@ -45,7 +45,7 @@
 
 #Region CommonMethods
 
-// Create connection !NOCLI
+// Create Connection !NOCLI
 // Creates a connection to the specified base
 //
 // Parameters:
@@ -119,6 +119,7 @@ Function ExecuteSQLQuery(Val QueryText
     , Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(QueryText);
+    OPI_TypeConversion.GetBoolean(ForceResult);
 
     Parameters_ = ProcessParameters(Parameters);
     Connector   = CreateConnection(Connection);
