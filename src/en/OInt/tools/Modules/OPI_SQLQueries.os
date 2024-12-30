@@ -38,7 +38,7 @@
 //@skip-check constructor-function-return-section
 
 // Uncomment if OneScript is executed
-// #Use "./internal"
+#Use "./internal"
 
 #Region Internal
 
@@ -85,7 +85,7 @@ Function FormSQLText(Val Scheme) Export
 
     SchemeType = "";
 
-    If Not OPI_Tools.CollectionFieldExists(Scheme, "type", SchemeType) Then
+    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
         Raise ErrorText;
     EndIf;
 
