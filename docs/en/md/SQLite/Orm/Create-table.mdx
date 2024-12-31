@@ -28,7 +28,19 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Base  = "";
+    Table = "test";
 
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"        , "INTEGER PRIMARY KEY");
+    ColoumnsStruct.Insert("name"      , "TEXT");
+    ColoumnsStruct.Insert("age"       , "INTEGER");
+    ColoumnsStruct.Insert("salary"    , "REAL");
+    ColoumnsStruct.Insert("is_active" , "BOOLEAN");
+    ColoumnsStruct.Insert("created_at", "DATETIME");
+    ColoumnsStruct.Insert("data"      , "BLOB");
+
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, , Base);
 ```
  
 

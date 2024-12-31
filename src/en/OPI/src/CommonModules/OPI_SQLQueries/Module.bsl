@@ -130,7 +130,10 @@ Procedure AddColoumn(Scheme, Val Name, Val Type) Export
         Return;
     EndIf;
 
-    Scheme["columns"].Add(New Structure(Name, Type));
+    ColoumnMap = New Map;
+    ColoumnMap.Insert(Name, Type);
+
+    Scheme["columns"].Add(ColoumnMap);
 
 EndProcedure
 
@@ -259,7 +262,9 @@ Function FormTextCreate(Val Scheme)
     ColoumnsDescriptionArray = New Array;
 
     For Each Coloumn In Columns Do
-        ColoumnsDescriptionArray.Add(StrTemplate(ColoumTemplate, Coloumn.Key, Coloumn.Value));
+        For Each Element In Coloumn Do
+            ColoumnsDescriptionArray.Add(StrTemplate(ColoumTemplate, Element.Key, Element.Value));
+        EndDo;
     EndDo;
 
     ColoumnsDescription = StrConcat(ColoumnsDescriptionArray, "," + Chars.LF);
@@ -274,7 +279,7 @@ EndFunction
 
 Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
 
-    RequiredFieldsArray = StrConcat(Fields, ",");
+    RequiredFieldsArray = StrSplit(Fields, ",");
     AbsenteesArray      = OPI_Tools.FindMissingCollectionFields(Scheme, RequiredFieldsArray);
 
     If ValueIsFilled(AbsenteesArray) Then
