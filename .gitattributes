@@ -8,5 +8,6 @@ media/** linguist-vendored
 docs/** linguist-vendored
 
 *.iss linguist-vendored
+*.bat linguist-vendored
 
 
