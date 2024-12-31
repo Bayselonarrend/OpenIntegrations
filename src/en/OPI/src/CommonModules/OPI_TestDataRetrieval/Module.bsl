@@ -268,6 +268,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
+    NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
 
     Return TestTable;
 
