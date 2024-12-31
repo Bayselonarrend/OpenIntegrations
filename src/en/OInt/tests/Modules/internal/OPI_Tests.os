@@ -2225,6 +2225,27 @@ Procedure SQLL_CommonMethods() Export
 
 EndProcedure
 
+Procedure SQLL_ORM() Export
+
+    TestParameters = New Structure;
+
+    Base = GetTempFileName("sqlite");
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", Base);
+    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    SQLite_CreateTable(TestParameters);
+
+    Try
+       DeleteFiles(Base);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
+
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -16210,6 +16231,32 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry
+
+EndProcedure
+
+Procedure SQLite_CreateTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"        , "INTEGER PRIMARY KEY");
+    ColoumnsStruct.Insert("name"      , "TEXT");
+    ColoumnsStruct.Insert("age"       , "INTEGER");
+    ColoumnsStruct.Insert("salary"    , "REAL");
+    ColoumnsStruct.Insert("is_active" , "BOOLEAN");
+    ColoumnsStruct.Insert("created_at", "DATETIME");
+    ColoumnsStruct.Insert("data"      , "BLOB");
+
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, , Base);
+
+    // END
+
+    Text = OPI_SQLite.CreateTable(Table, ColoumnsStruct, True, Base);
+    OPI_TestDataRetrieval.WriteLog(Text, "CreateTable (query)", "SQLite");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
 EndProcedure
 
