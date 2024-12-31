@@ -8,6 +8,7 @@ media/** linguist-vendored
 docs/** linguist-vendored
 
 *.iss linguist-vendored
+*.bat linguist-vendored
 media/** filter=lfs diff=lfs merge=lfs -text
 Media/** filter=lfs diff=lfs merge=lfs -text
 media/** !text !filter !merge !diff
