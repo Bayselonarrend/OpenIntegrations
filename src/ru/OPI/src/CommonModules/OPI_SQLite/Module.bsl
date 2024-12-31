@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 
@@ -41,6 +41,7 @@
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"
+
 #Область ПрограммныйИнтерфейс
 
 #Область ОсновныеМетоды
