@@ -8,6 +8,7 @@ use crate::component::get_params_amount;
 use crate::component::cal_func;
 use crate::component::AddIn;
 
+
 // Определение класса
 impl RawAddin for AddIn {
 
