@@ -180,6 +180,95 @@ Function CreateTable(Val Table, Val ColoumnsStruct, Val NotExecute = False, Val 
 
 EndFunction
 
+// Add rows
+// Adds new rows to the table
+//
+// Parameters:
+// Table - String - Table name - table
+// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
+// Connection - String - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - The result of the execution or SQL query text
+Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
+
+    OPI_TypeConversion.GetArray(DataArray);
+    OPI_TypeConversion.GetBoolean(Transaction);
+
+    Connection = CreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    EndIf;
+
+    If Transaction Then
+        Start = ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
+    EndIf;
+
+    If Not Start["result"] Then
+        Return Start;
+    EndIf;
+
+    Counter      = 0;
+    SuccessCount = 0;
+
+    Error           = False;
+    ErrorsArray     = New Array;
+    CollectionError = "Invalid data";
+
+    ResultStrucutre = New Structure;
+
+    For Each Record In DataArray Do
+
+        If Error And Transaction Then
+
+            Rollback = ExecuteSQLQuery("ROLLBACK", , , Connection);
+
+            SuccessCount = 0;
+            ResultStrucutre.Insert("rollback", Rollback);
+            Break;
+
+        EndIf;
+
+        Counter = Counter + 1;
+        Error   = False;
+
+        Try
+            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
+        Except
+            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
+            Error = True;
+            Continue;
+        EndTry;
+
+        Result = AddRow(Table, Record, Connection);
+
+        If Result["result"] Then
+            SuccessCount = SuccessCount + 1;
+        Else
+            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+            Error        = True;
+        EndIf;
+
+    EndDo;
+
+    If Transaction And Not Error Then
+
+        Completion = ExecuteSQLQuery("COMMIT", , , Connection);
+        ResultStrucutre.Insert("commit", Completion);
+
+    EndIf;
+
+    ResultStrucutre         = New Structure("result,rows,errors"
+        , ErrorsArray.Count = 0
+        , SuccessCount
+        , ErrorsArray);
+
+     Return ResultStrucutre;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -256,5 +345,38 @@ Function IsConnector(Val Value)
     Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
 
 EndFunction
+
+Function AddRow(Val Table, Val Record, Val Connection)
+
+    FieldArray  = New Array;
+    ValuesArray = New Array;
+
+    Scheme = OPI_SQLQueries.NewSQLScheme("INSERT");
+    OPI_SQLQueries.SetTableName(Scheme, Table);
+
+    SplitDataCollection(Record, FieldArray, ValuesArray);
+
+    For Each Field In FieldArray Do
+        OPI_SQLQueries.AddField(Scheme, Field);
+    EndDo;
+
+    Request = OPI_SQLQueries.FormSQLText(Scheme);
+
+    Result = ExecuteSQLQuery(Request, ValuesArray, , Connection);
+
+    Return Result;
+
+EndFunction
+
+Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
+
+    For Each Element In Record Do
+
+        FieldArray.Add(Element.Key);
+        ValuesArray.Add(Element.Value);
+
+    EndDo;
+
+EndProcedure
 
 #EndRegion
