@@ -102,9 +102,11 @@ EndFunction
 // Executes an arbitrary SQL query
 //
 // Note
-// Available parameter types: String, Number, Date, Boolean, BinaryData
+// Available parameter types: String, Number, Date, Boolean, BinaryData.^^
+// Binary data can also be passed as a `{'blob':<File path>}` structure. Binary data (BLOB) values are returned^^
+// as `{'blob':<Base64 string>}
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
-// For other queries, result:true or false with error text is returned
+// For other queries, `result:true` or `false` with error text is returned
 //
 // Parameters:
 // QueryText - String - Database query text - sql
