@@ -25,9 +25,9 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Available parameter types: String, Number, Date, Boolean, BinaryData
+Available parameter types: String, Number, Date, Boolean, BinaryData. Binary data can also be passed as a `{'blob':&lt;File path&gt;}` structure. Binary data (BLOB) values are returned as `{'blob':&lt;Base64 string&gt;}
 
-Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, result:true or false with error text is returned
+Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
 :::
 <br/>
 
