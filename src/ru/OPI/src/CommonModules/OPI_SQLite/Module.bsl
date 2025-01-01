@@ -28,7 +28,7 @@
 
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
-// BSLLS:IncorrectLineBreak-off 
+// BSLLS:IncorrectLineBreak-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
