@@ -1433,8 +1433,8 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
 
-    Message("Ozon product checkout is unavailable");
-    Return;
+    // Message("Ozon product checkout is unavailable");
+    // Return;
 
     // BSLLS:UnreachableCode-off
 
@@ -2202,6 +2202,40 @@ Procedure CLI_TC_Client() Export
     OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
 
     CLI_TCP_ProcessRequest(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region SQLite
+
+Procedure CLI_SQLL_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    CLI_SQLite_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
+Procedure CLI_SQLL_ORM() Export
+
+    TestParameters = New Structure;
+
+    Base = GetTempFileName("sqlite");
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", Base);
+    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    CLI_SQLite_CreateTable(TestParameters);
+
+    Try
+       DeleteFiles(Base);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
+
 
 EndProcedure
 
@@ -10308,7 +10342,7 @@ Procedure CLI_Ozon_GetClustersList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetClustersList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetClustersList", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetClustersList", "Ozon");
     OPI_TestDataRetrieval.Check_OzonClusters(Result);
 
 EndProcedure
@@ -10326,7 +10360,7 @@ Procedure CLI_Ozon_GetShippingWarehousesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShippingWarehousesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetShippingWarehousesList", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetShippingWarehousesList", "Ozon");
     OPI_TestDataRetrieval.Check_OzonSearch(Result);
 
 EndProcedure
@@ -10349,7 +10383,7 @@ Procedure CLI_Ozon_CreateFBODraft(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateFBODraft", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFBODraft", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateFBODraft", "Ozon");
     OPI_TestDataRetrieval.Check_OzonDraft(Result);
 
     DraftID = Result["operation_id"];
@@ -10382,7 +10416,7 @@ Procedure CLI_Ozon_GetFBODraft(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFBODraft", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFBODraft", "Ozon");
     OPI_TestDataRetrieval.Check_OzonReadyDraft(Result);
 
 EndProcedure
@@ -10394,7 +10428,7 @@ Procedure CLI_Ozon_GetShipmentAdditionalFields(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentAdditionalFields", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentAdditionalFields", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetShipmentAdditionalFields", "Ozon");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -10406,7 +10440,7 @@ Procedure CLI_Ozon_GetShipmentsFilterStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentsFilterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetShipmentsFilterStructure", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetShipmentsFilterStructure", "Ozon");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -10432,7 +10466,7 @@ Procedure CLI_Ozon_GetFBOShipmentsList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOShipmentsList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOShipmentsList", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFBOShipmentsList", "Ozon");
     OPI_TestDataRetrieval.Check_OzonArray(Result);
 
 EndProcedure
@@ -10458,7 +10492,7 @@ Procedure CLI_Ozon_GetFBOTimeslots(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOTimeslots", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFBOTimeslots", "Ozon");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFBOTimeslots", "Ozon");
     OPI_TestDataRetrieval.Check_OzonTimeslots(Result);
 
 EndProcedure
@@ -16886,7 +16920,7 @@ Procedure CLI_YandexMetrika_GetActionsList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetActionsList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetActionsList", "YandexMetrika");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetActionsList", "YandexMetrika");
     OPI_TestDataRetrieval.Check_MetrikaActions(Result);
 
 EndProcedure
@@ -18110,8 +18144,117 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters) Export
 
     Result = GetStringFromBinaryData(Result);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
+
+EndProcedure
+
+#EndRegion
+
+#Region SQLite
+
+Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    PictureFile = GetTempFileName("png");
+
+    Image = FunctionParameters["Picture"];
+    FileCopy(Image, PictureFile);
+
+    Blob = New Structure("blob", PictureFile);
+
+    QueryText = "
+    |CREATE TABLE test_table (
+    |id INTEGER PRIMARY KEY,
+    |name TEXT,
+    |age INTEGER,
+    |salary REAL,
+    |is_active BOOLEAN,
+    |created_at DATETIME,
+    |data BLOB
+    |);";
+
+    Options = New Structure;
+    Options.Insert("sql", StrReplace(QueryText, Chars.LF, ""));
+    Options.Insert("db" , TFN);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Create)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+    |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add("Vitaly"); // TEXT
+    ParameterArray.Add(25); // INTEGER
+    ParameterArray.Add(1000.12); // REAL
+    ParameterArray.Add(True); // BOOL
+    ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
+    ParameterArray.Add(Blob); // BLOB
+
+    Options = New Structure;
+    Options.Insert("sql"   , StrReplace(QueryText, Chars.LF, ""));
+    Options.Insert("params", ParameterArray);
+    Options.Insert("db"    , TFN);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Insert)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , TFN);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Select, code)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size()); // SKIP
+
+    Try
+       DeleteFiles(TFN);
+       DeleteFiles(PictureFile);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry
+
+EndProcedure
+
+Procedure CLI_SQLite_CreateTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"        , "INTEGER PRIMARY KEY");
+    ColoumnsStruct.Insert("name"      , "TEXT");
+    ColoumnsStruct.Insert("age"       , "INTEGER");
+    ColoumnsStruct.Insert("salary"    , "REAL");
+    ColoumnsStruct.Insert("is_active" , "BOOLEAN");
+    ColoumnsStruct.Insert("created_at", "DATETIME");
+    ColoumnsStruct.Insert("data"      , "BLOB");
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+
+    Options.Insert("noex", True);
+    Text = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Text, "CreateTable (query)", "SQLite");
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
 EndProcedure
 
