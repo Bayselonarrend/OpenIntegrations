@@ -137,6 +137,14 @@ Procedure AddColoumn(Scheme, Val Name, Val Type) Export
 
 EndProcedure
 
+Procedure AddField(Scheme, Val Name) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Scheme["set"].Add(Name);
+
+EndProcedure
+
 Procedure SetTableName(Scheme, Val Name) Export
 
     OPI_TypeConversion.GetLine(Name);
@@ -224,7 +232,23 @@ EndFunction
 
 Function FormTextInsert(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table,set");
+
+    Table  = Scheme["table"];
+    Fields = Scheme["set"];
+
+    SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3)";
+
+    Parameters = New Array;
+
+    For N = 1 To Fields.Count() Do
+        Parameters.Add("?" + OPI_Tools.NumberToString(N));
+    EndDo;
+
+    TextSQL = StrTemplate(SQLTemplate
+        , Table
+        , StrConcat(Fields, ", ")
+        , StrConcat(Parameters, ", "));
 
     Return TextSQL;
 

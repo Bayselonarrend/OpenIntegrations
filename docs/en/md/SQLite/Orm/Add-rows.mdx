@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add rows
+ Adds new rows to the table
+
+
+
+`Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | DataArray | --rows | Array of Structure | &#x2714; | An array of string data structures: Key > field, Value > field value |
+  | Transaction | --trn | Boolean | &#x2716; | True > adding records to transactions with rollback on error |
+  | Connection | --db | String | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Structure Of KeyAndValue, String - The result of the execution or SQL query text
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
