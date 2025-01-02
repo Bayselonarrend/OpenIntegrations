@@ -4,7 +4,7 @@
     ФайлКартинки = ПолучитьИмяВременногоФайла("png");
     Картинка.Записать(ФайлКартинки);                          // ФайлКартинки - Файл на диске
 
-    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_7CE_32.sqlite";
+    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_1E64_48.sqlite";
     Таблица = "test";
 
     МассивДанных = Новый Массив;
