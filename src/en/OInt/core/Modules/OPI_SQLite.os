@@ -490,7 +490,7 @@ Procedure FillSorting(Val Scheme, Val Sort)
         Return;
     EndIf;
 
-    OPI_TypeConversion.GetArray(Sort);
+    OPI_TypeConversion.GetCollection(Sort);
 
     For Each Element In Sort Do
 
