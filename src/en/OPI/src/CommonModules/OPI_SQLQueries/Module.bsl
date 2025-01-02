@@ -180,7 +180,7 @@ Procedure AddSorting(Scheme, Val Field, Val Type) Export
     OPI_TypeConversion.GetLine(Field);
     OPI_TypeConversion.GetLine(Type);
 
-    Scheme["sort"].Add(New Structure("field,type", Field, Type));
+    Scheme["order"].Add(New Structure("field,type", Field, Type));
 
 EndProcedure
 
@@ -286,7 +286,7 @@ Function FormTextSelect(Val Scheme)
 
     OptionsBlock = ForSelectOptionsText(Filters, Sort, Count);
 
-    TextSQL = StrTemplate(SQLTemplate, Table, Fields, OptionsBlock);
+    TextSQL = StrTemplate(SQLTemplate, StrConcat(Fields, ", "), Table, OptionsBlock);
 
     Return TextSQL;
 
@@ -430,7 +430,9 @@ Function FormSortingText(Val Sort)
     SortArray = New Array;
 
     For Each Element In Sort Do
-        SortArray.Add(Element.Key + " " + Element.Value);
+
+        SortArray.Add(Element["field"] + " " + Element["type"]);
+
     EndDo;
 
     SortingText = StrTemplate(SortingText, StrConcat(SortArray, ", "));
