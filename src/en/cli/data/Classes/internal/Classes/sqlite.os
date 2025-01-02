@@ -132,6 +132,78 @@
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Gets records from the selected table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Fields for selection (optional, def. val. - *)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--order";
+    NewLine.Описание    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--limit";
+    NewLine.Описание    = "Limiting the number of received strings (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecords";
+    NewLine.МетодПоиска = "GETRECORDS";
+    NewLine.Параметр    = "--db";
+    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetRecordsFilterStrucutre";
+    NewLine.МетодПоиска = "GETRECORDSFILTERSTRUCUTRE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Gets the template structure for filtering records in ORM queries";
+
     Return CompositionTable;
 EndFunction
 
