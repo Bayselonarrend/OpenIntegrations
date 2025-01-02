@@ -2237,6 +2237,7 @@ Procedure SQLL_ORM() Export
 
     SQLite_CreateTable(TestParameters);
     SQLite_AddRows(TestParameters);
+    SQLite_GetRecords(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -16308,6 +16309,47 @@ Procedure SQLite_AddRows(FunctionParameters)
 
 EndProcedure
 
+Procedure SQLite_GetRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Fields = New Array;
+    Fields.Add("name");
+    Fields.Add("salary");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "name");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Vitaly");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "age");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 30");
+    FilterStructure2.Insert("union", "");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("created_at", "DESC");
+    Count = 1;
+
+    Result = OPI_SQLite.GetRecords(Table, Fields, Filters, Sort, Count, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
 
 #EndRegion
 
