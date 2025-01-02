@@ -1,34 +1,4 @@
-﻿---
-sidebar_position: 2
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-# Add rows
- Adds new rows to the table
-
-
-
-`Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export`
-
-  | Parameter | CLI option | Type | Required | Description |
-  |-|-|-|-|-|
-  | Table | --table | String | &#x2714; | Table name |
-  | DataArray | --rows | Array of Structure | &#x2714; | An array of string data structures: Key > field, Value > field value |
-  | Transaction | --trn | Boolean | &#x2716; | True > adding records to transactions with rollback on error |
-  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
-
-  
-  Returns:  Structure Of KeyAndValue, String - Result of query execution
-
-<br/>
-
-
-
-
-```bsl title="1C:Enterprise/OneScript code example"
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+﻿    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     PictureFile = GetTempFileName("png");
@@ -59,9 +29,3 @@ import TabItem from '@theme/TabItem';
     DataArray.Add(RowStrucutre1);
 
     Result = OPI_SQLite.AddRows(Table, DataArray, , Base);
-```
- 
-
-
-
-
