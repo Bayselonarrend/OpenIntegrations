@@ -1,0 +1,1 @@
+﻿    "CREATE TABLE test (\n id INTEGER PRIMARY KEY,\nname TEXT,\nage INTEGER,\nsalary REAL,\nis_active BOOLEAN,\ncreated_at DATETIME,\ndata BLOB\n )"
