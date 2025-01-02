@@ -145,11 +145,59 @@ Procedure AddField(Scheme, Val Name) Export
 
 EndProcedure
 
+Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Raw) Export
+
+    OPI_TypeConversion.GetLine(Field);
+    OPI_TypeConversion.GetLine(Type);
+    OPI_TypeConversion.GetLine(Grouping);
+    OPI_TypeConversion.GetBoolean(Raw);
+
+    MainStructure = New Structure("field,type,union"
+        , Field
+        , Type
+        , Grouping);
+
+    If Raw Then
+
+        MainStructure.Insert("value", String(Value));
+
+    Else
+
+        Scheme["values"].Add(Value);
+
+        OrderNumber = Scheme["values"].Count();
+        MainStructure.Insert("value", "?" + OPI_Tools.NumberToString(OrderNumber));
+
+    EndIf;
+
+
+    Scheme["filter"].Add(MainStructure);
+
+EndProcedure
+
+Procedure AddSorting(Scheme, Val Field, Val Type) Export
+
+    OPI_TypeConversion.GetLine(Field);
+    OPI_TypeConversion.GetLine(Type);
+
+    Scheme["sort"].Add(New Structure("field,type", Field, Type));
+
+EndProcedure
+
+
 Procedure SetTableName(Scheme, Val Name) Export
 
     OPI_TypeConversion.GetLine(Name);
 
     Scheme.Insert("table", Name);
+
+EndProcedure
+
+Procedure SetLimit(Scheme, Val Count) Export
+
+    OPI_TypeConversion.GetNumber(Count);
+
+    Scheme.Insert("limit", Count);
 
 EndProcedure
 
@@ -163,11 +211,12 @@ Function EmptySchemeSelect()
 
     Scheme = New Structure("type", "SELECT");
 
-    Scheme.Insert("table"   , "");
-    Scheme.Insert("filter"  , New Array);
-    Scheme.Insert("order_by", New Array);
-    Scheme.Insert("limit"   , New Array);
-    Scheme.Insert("fileds"  , New Array);
+    Scheme.Insert("table"  , "");
+    Scheme.Insert("filter" , New Array);
+    Scheme.Insert("order"  , New Array);
+    Scheme.Insert("limit"  , 0);
+    Scheme.Insert("set"    , New Array);
+    Scheme.Insert("values" , New Array);
 
     Return Scheme;
 
@@ -224,7 +273,20 @@ EndFunction
 
 Function FormTextSelect(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table,filter,order,limit,set");
+
+    Table   = Scheme["table"];
+    Fields  = Scheme["set"];
+    Filters = Scheme["filter"];
+    Sort    = Scheme["order"];
+    Count   = Scheme["limit"];
+
+    SQLTemplate = "SELECT %1 FROM %2
+    |%3";
+
+    OptionsBlock = ForSelectOptionsText(Filters, Sort, Count);
+
+    TextSQL = StrTemplate(SQLTemplate, Table, Fields, OptionsBlock);
 
     Return TextSQL;
 
@@ -300,6 +362,95 @@ Function FormTextCreate(Val Scheme)
 EndFunction
 
 #EndRegion
+
+Function ForSelectOptionsText(Val Filters, Val Sort, Val Count)
+
+    BlockTemplate = "%1
+    |%2
+    |%3";
+
+    FilterText  = FormFilterText(Filters);
+    SortingText = FormSortingText(Sort);
+    CountText   = FormCountText(Count);
+
+    BlockText = StrTemplate(BlockTemplate, FilterText, SortingText, CountText);
+
+    Return BlockText;
+
+EndFunction
+
+Function FormFilterText(Val Filters)
+
+    If Not ValueIsFilled(Filters) Then
+        Return "";
+    EndIf;
+
+    FiltersText = "WHERE %1";
+
+    FiltersArray = New Array;
+
+    Counter = 1;
+    Total   = Filters.Count();
+
+    For Each Filter In Filters Do
+
+        CurrentText = "%1 %2 %3 %4";
+
+        Field      = Filter["field"];
+        Type       = Filter["type"];
+        Value      = Filter["value"];
+        Connection = Filter["union"];
+        Connection = ?(ValueIsFilled(Connection), Connection, "AND");
+
+        If Counter     = Total Then
+            Connection = "";
+        EndIf;
+
+        CurrentText = StrTemplate(CurrentText, Field, Type, Value, Connection);
+        FiltersArray.Add(CurrentText);
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    FiltersText = StrTemplate(FiltersText, StrConcat(FiltersArray, " "));
+
+    Return FiltersText;
+
+EndFunction
+
+Function FormSortingText(Val Sort)
+
+    If Not ValueIsFilled(Sort) Then
+        Return "";
+    EndIf;
+
+    SortingText = "ORDER BY %1";
+
+    SortArray = New Array;
+
+    For Each Element In Sort Do
+        SortArray.Add(Element.Key + " " + Element.Value);
+    EndDo;
+
+    SortingText = StrTemplate(SortingText, StrConcat(SortArray, ", "));
+
+    Return SortingText;
+
+EndFunction
+
+Function FormCountText(Val Count)
+
+    If Not ValueIsFilled(Count) Then
+        Return "";
+    EndIf;
+
+    CountText = "LIMIT %1";
+    CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
+
+    Return CountText;
+
+EndFunction
 
 Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
 

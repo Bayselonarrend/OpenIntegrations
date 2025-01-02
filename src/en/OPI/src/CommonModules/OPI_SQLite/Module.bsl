@@ -149,7 +149,7 @@ EndFunction
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
 // NotExecute - Boolean - True > Does not execute the query, but returns SQL text - noex
-// Connection - String - Existing connection or database path - db
+// Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
 // Structure Of KeyAndValue, String - The result of the execution or SQL query text
@@ -187,10 +187,10 @@ EndFunction
 // Table - String - Table name - table
 // DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
 // Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String - Existing connection or database path - db
+// Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - The result of the execution or SQL query text
+// Structure Of KeyAndValue, String - Result of query execution
 Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
     OPI_TypeConversion.GetArray(DataArray);
@@ -260,12 +260,82 @@ Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connectio
 
     EndIf;
 
-    ResultStrucutre         = New Structure("result,rows,errors"
-        , ErrorsArray.Count = 0
+    ResultStrucutre           = New Structure("result,rows,errors"
+        , ErrorsArray.Count() = 0
         , SuccessCount
         , ErrorsArray);
 
      Return ResultStrucutre;
+
+EndFunction
+
+// Get records
+// Gets records from the selected table
+//
+// Parameters:
+// Table - String - Table name - table
+// Fields - Array Of String - Fields for selection - fields
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
+// Count - Number - Limiting the number of received strings - limit
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function GetRecords(Val Table
+    , Val Fields = "*"
+    , Val Filters = ""
+    , Val Sort = ""
+    , Val Count = ""
+    , Val Connection = "") Export
+
+    Scheme = OPI_SQLQueries.NewSQLScheme("SELECT");
+
+    OPI_SQLQueries.SetTableName(Scheme, Table);
+    OPI_SQLQueries.SetLimit(Scheme, Count);
+
+    FillFields(Scheme, Fields);
+    FillFilters(Scheme, Filters);
+    FillSorting(Scheme, Sort);
+
+    Request = OPI_SQLQueries.FormSQLText(Scheme);
+
+    Result = ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+
+    Return Result;
+
+EndFunction
+
+// Get records filter strucutre
+// Gets the template structure for filtering records in ORM queries
+//
+// Note
+// The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`.^^
+// For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 `^^.
+// where `?1 = "10 AND 20,"' which would cause an error.
+// In such a case, you must use `raw:true` to set the condition directly in the query text
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Record filter element
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "<filtering field name>");
+    FilterStructure.Insert("type" , "<comparison type>");
+    FilterStructure.Insert("value", "<comparison value>");
+    FilterStructure.Insert("union", "<connection with the following condition: AND, OR, etc..>");
+    FilterStructure.Insert("raw"  , "<true - the value will be inserted by text as it is, false - through the parameter>");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
 EndFunction
 
@@ -374,6 +444,57 @@ Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
 
         FieldArray.Add(Element.Key);
         ValuesArray.Add(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure FillFields(Scheme, Val Fields)
+
+    If Not ValueIsFilled(Fields) Then
+        Fields = "*";
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Fields);
+
+    For Each Field In Fields Do
+        OPI_SQLQueries.AddField(Scheme, Field);
+    EndDo;
+
+EndProcedure
+
+Procedure FillFilters(Scheme, Val Filters)
+
+    If Not ValueIsFilled(Filters) Then
+        Return;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Filters);
+
+    For Each Filter In Filters Do
+
+        OPI_SQLQueries.AddFilter(Scheme
+            , Filter["field"]
+            , Filter["type"]
+            , Filter["value"]
+            , Filter["union"]
+            , Filter["raw"]);
+
+    EndDo;
+
+EndProcedure
+
+Procedure FillSorting(Val Scheme, Val Sort)
+
+    If Not ValueIsFilled(Sort) Then
+        Return;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Sort);
+
+    For Each Element In Sort Do
+
+        OPI_SQLQueries.AddSorting(Scheme, Element.Key, Element.Value);
 
     EndDo;
 
