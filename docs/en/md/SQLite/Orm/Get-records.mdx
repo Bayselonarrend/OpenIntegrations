@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get records
+ Gets records from the selected table
+
+
+
+`Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Fields | --fields | Array Of String | &#x2716; | Fields for selection |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
+  | Sort | --order | Structure Of KeyAndValue | &#x2716; | Sorting: Key > field name, Value > direction (ASC, DESC) |
+  | Count | --limit | Number | &#x2716; | Limiting the number of received strings |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Structure Of KeyAndValue, String - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

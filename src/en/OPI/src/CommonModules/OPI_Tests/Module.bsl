@@ -2230,12 +2230,13 @@ Procedure SQLL_ORM() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", Base);
+    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
     OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     SQLite_CreateTable(TestParameters);
+    SQLite_AddRows(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -16259,6 +16260,54 @@ Procedure SQLite_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
 EndProcedure
+
+Procedure SQLite_AddRows(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    PictureFile = GetTempFileName("png");
+    Image.Write(PictureFile); // PictureFile - File to disk
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("name"      , "Vitaly"); // TEXT
+    RowStructure2.Insert("age"       , 25); // INTEGER
+    RowStructure2.Insert("salary"    , 1000.12); // REAL
+    RowStructure2.Insert("is_active" , True); // BOOL
+    RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStructure2.Insert("data"      , Image); // BLOB
+
+    RowStrucutre1 = New Structure;
+    RowStrucutre1.Insert("name"      , "Lesha") ; // TEXT
+    RowStrucutre1.Insert("age"       , 20); // INTEGER
+    RowStrucutre1.Insert("salary"    , 200.20) ; // REAL
+    RowStrucutre1.Insert("is_active" , False) ; // BOOL
+    RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStrucutre1);
+
+    Result = OPI_SQLite.AddRows(Table, DataArray, , Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRows", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Try
+       DeleteFiles(PictureFile);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
+    EndTry
+
+EndProcedure
+
 
 #EndRegion
 
