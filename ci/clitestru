@@ -1972,6 +1972,14 @@ def test_sqlite(){
 					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ДобавитьЗаписи --table "test" --rows "test" --trn "test" --db "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьСтруктуруФильтраЗаписей --empty "test" --debug --test '
+               }
+
 }
 
 
