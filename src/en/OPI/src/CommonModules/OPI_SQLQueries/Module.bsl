@@ -160,7 +160,11 @@ Function GetRecords(Val Module
     Scheme = NewSQLScheme("SELECT");
 
     SetTableName(Scheme, Table);
-    SetSelectOptions(Scheme, Fields, Filters, Sort, Count);
+    SetLimit(Scheme, Count);
+
+    FillFields(Scheme, Fields);
+    FillFilters(Scheme, Filters);
+    FillSorting(Scheme, Sort);
 
     Request = FormSQLText(Scheme);
 
@@ -172,13 +176,25 @@ EndFunction
 
 Function UpdateRecords(Val Module
     , Val Table
-    , Val ValuesArray
+    , Val ValueStructure
     , Val Filters    = ""
     , Val Connection = "") Export
 
     Scheme = NewSQLScheme("UPDATE");
 
+    FieldArray  = New Array;
+    ValuesArray = New Array;
+
     SetTableName(Scheme, Table);
+    SplitDataCollection(ValueStructure, FieldArray, ValuesArray);
+
+    Scheme["values"] = ValuesArray;
+
+    For Each Field In FieldArray Do
+        AddField(Scheme, Field);
+    EndDo;
+
+    FillFilters(Scheme, Filters);
 
     Request = FormSQLText(Scheme);
     Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
@@ -324,7 +340,23 @@ EndFunction
 
 Function FormTextUpdate(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table,set,values");
+
+    Table   = Scheme["table"];
+    Fields  = Scheme["set"];
+    Filters = Scheme["filter"];
+
+    SQLTemplate = "UPDATE %1 SET %2 %3";
+
+    FilterText = FormFilterText(Filters);
+
+    For N = 0 To Fields.UBound() Do
+
+        Fields[N] = Fields[N] + " = ?" + OPI_Tools.NumberToString(N + 1);
+
+    EndDo;
+
+    TextSQL = StrTemplate(SQLTemplate, Table, StrConcat(Fields, "," + Chars.LF), FilterText);
 
     Return TextSQL;
 
@@ -565,6 +597,9 @@ EndFunction
 
 Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
 
+    ErrorText = "Incorrect data set for updating";
+    OPI_TypeConversion.GetKeyValueCollection(Record, ErrorText);
+
     For Each Element In Record Do
 
         FieldArray.Add(Element.Key);
@@ -712,16 +747,6 @@ Procedure SetLimit(Scheme, Val Count)
     OPI_TypeConversion.GetNumber(Count);
 
     Scheme.Insert("limit", Count);
-
-EndProcedure
-
-Procedure SetSelectOptions(Scheme, Val Fields, Val Filters, Val Sort, Val Count)
-
-    SetLimit(Scheme, Count);
-
-    FillFields(Scheme, Fields);
-    FillFilters(Scheme, Filters);
-    FillSorting(Scheme, Sort);
 
 EndProcedure
 
