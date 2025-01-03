@@ -3,7 +3,7 @@
   <name>OPI_TCP</name>
   <synonym>
     <key>ru</key>
-    <value>TCP</value>
+    <value>TCP (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
