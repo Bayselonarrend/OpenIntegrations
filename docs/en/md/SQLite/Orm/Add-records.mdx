@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export`
+`Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_1E64_48.sqlite";
+    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_F86A_11.sqlite";
     Table = "test";
 
     DataArray = New Array;
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStrucutre1);
 
-    Result = OPI_SQLite.AddRows(Table, DataArray, , Base);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 ```
  
 

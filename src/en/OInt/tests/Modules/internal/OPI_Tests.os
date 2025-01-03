@@ -2236,7 +2236,7 @@ Procedure SQLL_ORM() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     SQLite_CreateTable(TestParameters);
-    SQLite_AddRows(TestParameters);
+    SQLite_AddRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
 
     Try
@@ -16260,9 +16260,18 @@ Procedure SQLite_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
+    ColoumnsMap = New Map;
+    ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
+    ColoumnsMap.Insert("[An obscure column]", "TEXT");
+
+    Result = OPI_SQLite.CreateTable("test1", ColoumnsMap, , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (obscure column)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
 EndProcedure
 
-Procedure SQLite_AddRows(FunctionParameters)
+Procedure SQLite_AddRecords(FunctionParameters)
 
     Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
@@ -16294,11 +16303,39 @@ Procedure SQLite_AddRows(FunctionParameters)
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStrucutre1);
 
-    Result = OPI_SQLite.AddRows(Table, DataArray, , Base);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddRows", "SQLite");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.AddRecords(Table, DataArray, False, Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (no tr)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    RowStrucutre1.Insert("error", "Lesha") ;
+    DataArray.Add(RowStrucutre1);
+
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    Result = OPI_SQLite.AddRecords(Table, DataArray, False, Base);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error without tr)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteRows(Result, 1);
+
+    Result = OPI_SQLite.AddRecords(Table, "not valid json", , Base);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (json error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    RowMap = New Map;
+    RowMap.Insert("[An obscure column]", "yo");
+
+    Result = OPI_SQLite.AddRecords("test1", RowMap, , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Try
@@ -16333,7 +16370,6 @@ Procedure SQLite_GetRecords(FunctionParameters)
     FilterStructure2.Insert("field", "age");
     FilterStructure2.Insert("type" , "BETWEEN");
     FilterStructure2.Insert("value", "20 AND 30");
-    FilterStructure2.Insert("union", "");
     FilterStructure2.Insert("raw"  , True);
 
     Filters.Add(FilterStructure1);
@@ -16347,6 +16383,24 @@ Procedure SQLite_GetRecords(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.GetRecords(Table, "['name','age','salary','is_active','created_at']", , , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (no params)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    FilterStructure2.Insert("type" , "BEETWEEN");
+    Filters.Add(FilterStructure2);
+
+    Result = OPI_SQLite.GetRecords(Table, "['name','age','salary','is_active','created_at']", Filters, , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    Result = OPI_SQLite.GetRecords("test1", , , , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
 EndProcedure

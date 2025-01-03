@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_1E64_48.sqlite";
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_F86A_11.sqlite";
     Table = "test";
 
     Fields = New Array;
@@ -20,7 +20,6 @@
     FilterStructure2.Insert("field", "age");
     FilterStructure2.Insert("type" , "BETWEEN");
     FilterStructure2.Insert("value", "20 AND 30");
-    FilterStructure2.Insert("union", "");
     FilterStructure2.Insert("raw"  , True);
 
     Filters.Add(FilterStructure1);
