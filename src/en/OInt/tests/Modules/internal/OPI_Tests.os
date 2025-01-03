@@ -2238,6 +2238,7 @@ Procedure SQLL_ORM() Export
     SQLite_CreateTable(TestParameters);
     SQLite_AddRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
+    SQLite_UpdateRecords(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -16399,6 +16400,47 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
+Procedure SQLite_UpdateRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("name"  , "Vitaly A.");
+    FieldsStructure.Insert("salary", "999999");
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.UpdateRecords(Table, FieldsStructure, FilterStructure, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    FilterStructure.Insert("value", "Vitaly A.");
+
+    Filters = New Array;
+    Filters.Add(FilterStructure);
+
+    Check = OPI_SQLite.GetRecords(Table, "['name','salary']", Filters, , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][0], FieldsStructure);
 
 EndProcedure
 
