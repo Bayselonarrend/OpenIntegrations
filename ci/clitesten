@@ -1969,7 +1969,7 @@ def test_sqlite(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite AddRows --table "test" --rows "test" --trn "test" --db "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite AddRecords --table "test" --rows "test" --trn "test" --db "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

@@ -191,7 +191,7 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
-Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
+Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
@@ -203,11 +203,13 @@ Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connectio
     EndIf;
 
     If Transaction Then
-        Start = ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
-    EndIf;
 
-    If Not Start["result"] Then
-        Return Start;
+        Start = ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
+
+        If Not Start["result"] Then
+            Return Start;
+        EndIf;
+
     EndIf;
 
     Counter      = 0;
@@ -245,10 +247,14 @@ Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connectio
         Result = AddRow(Table, Record, Connection);
 
         If Result["result"] Then
+
             SuccessCount = SuccessCount + 1;
+
         Else
+
             ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
-            Error        = True;
+            Error = True;
+
         EndIf;
 
     EndDo;
@@ -260,10 +266,9 @@ Function AddRows(Val Table, Val DataArray, Val Transaction = True, Val Connectio
 
     EndIf;
 
-    ResultStrucutre           = New Structure("result,rows,errors"
-        , ErrorsArray.Count() = 0
-        , SuccessCount
-        , ErrorsArray);
+    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
+    ResultStrucutre.Insert("rows"  , SuccessCount);
+    ResultStrucutre.Insert("errors", ErrorsArray);
 
      Return ResultStrucutre;
 
@@ -475,10 +480,10 @@ Procedure FillFilters(Scheme, Val Filters)
 
         OPI_SQLQueries.AddFilter(Scheme
             , Filter["field"]
-            , Filter["type"]
+            , ?(Filter.Property("type"), Filter["type"], "=")
             , Filter["value"]
-            , Filter["union"]
-            , Filter["raw"]);
+            , ?(Filter.Property("union"), Filter["union"], "AND")
+            , ?(Filter.Property("raw"), Filter["raw"], False));
 
     EndDo;
 
