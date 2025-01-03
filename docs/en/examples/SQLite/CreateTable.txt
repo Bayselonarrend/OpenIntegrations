@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_F86A_11.sqlite";
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_BCCE_11.sqlite";
     Table = "test";
 
     ColoumnsStruct = New Structure;
@@ -10,4 +10,4 @@
     ColoumnsStruct.Insert("created_at", "DATETIME");
     ColoumnsStruct.Insert("data"      , "BLOB");
 
-    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, , Base);
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, Base);
