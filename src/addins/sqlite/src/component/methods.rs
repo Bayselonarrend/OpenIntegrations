@@ -14,25 +14,18 @@ pub fn execute_query(
 
     let conn = match client.get_connection() {
         Some(c) => c,
-        None => return r#"{"result": false, "error": "No connection initialized"}"#.to_string(),
+        None => return format_json_error("No connection initialized"),
     };
 
     // Парсинг JSON параметров
     let mut parsed_params: Value = match serde_json::from_str(&params_json) {
         Ok(params) => params,
-        Err(e) => {
-            return format!(
-                r#"{{"result": false, "error": "Invalid JSON parameters: {}"}}"#,
-                e.to_string()
-            );
-        }
+        Err(e) => return format_json_error(e)
     };
 
     let params_array = match parsed_params.as_array_mut() {
         Some(array) => array,
-        None => {
-            return r#"{"result": false, "error": "Parameters must be a JSON array"}"#.to_string();
-        }
+        None => return format_json_error("Parameters must be a JSON array")
     };
 
     let convert = process_blobs(params_array);
@@ -52,24 +45,18 @@ pub fn execute_query(
                 let res = query_result.query(convert);
 
                 match res{
-                    Ok(mut rows) => {
-                        rows_to_json_array(&mut rows, &cols)
-                    }
-                    Err(e) => {
-                        format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string())
-                    }
+                    Ok(mut rows) =>  rows_to_json_array(&mut rows, &cols),
+                    Err(e) => format_json_error(e)
                 }
 
             }
-            Err(e) => {
-                format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string())
-            }
+            Err(e) => format_json_error(e)
         }
     } else {
 
         match conn.execute(&query, convert) {
             Ok(_) => r#"{"result": true}"#.to_string(),
-            Err(e) => format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string()),
+            Err(e) => format_json_error(e),
         }
     }
 }
@@ -168,4 +155,13 @@ fn process_blobs(json_array: &mut Vec<Value>) -> ParamsFromIter<Vec<SqlValue>> {
         }
     }
    params_from_iter(result)
+}
+
+pub fn format_json_error<E: ToString>(error: E) -> String {
+    let error_message = error.to_string();
+    let json_obj = json!({
+        "result": false,
+        "error": error_message,
+    });
+    json_obj.to_string()
 }
