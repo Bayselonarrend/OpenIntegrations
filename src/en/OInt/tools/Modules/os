@@ -175,16 +175,16 @@ Function UpdateRecords(Val Module
     , Val ValuesArray
     , Val Filters = ""
     , Val Connection = "") Export
-	
+
     Scheme = NewSQLScheme("UPDATE");
-    
+
     SetTableName(Scheme, Table);
-    
+
     Request = FormSQLText(Scheme);
     Result = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
 
     Return Result;
-    
+
 EndFunction
 
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
@@ -244,7 +244,7 @@ Function EmptySchemeUpdate()
 
     Scheme.Insert("table" , "");
     Scheme.Insert("set" , New Array);
-    Scheme.Insert("filter", New Array);
+    Scheme.Insert("filter" , New Array);
     Scheme.Insert("values" , New Array);
 
     Return Scheme;
@@ -722,7 +722,7 @@ Procedure SetSelectOptions(Scheme, Val Fields, Val Filters, Val Sort, Val Count)
     FillFields(Scheme, Fields);
     FillFilters(Scheme, Filters);
     FillSorting(Scheme, Sort);
-        
+
 EndProcedure
 
 #EndRegion
