@@ -3,7 +3,7 @@
   <name>OPI_TCP</name>
   <synonym>
     <key>en</key>
-    <value>TCP</value>
+    <value>TCP (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

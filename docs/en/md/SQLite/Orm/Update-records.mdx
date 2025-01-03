@@ -28,7 +28,26 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_3590_23.sqlite";
+    Table = "test";
 
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("name"  , "Vitaly A.");
+    FieldsStructure.Insert("salary", "999999");
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.UpdateRecords(Table, FieldsStructure, FilterStructure, Base);
 ```
  
 

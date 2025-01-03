@@ -2083,6 +2083,14 @@ Procedure Check_SQLiteRows(Val Result, Val Count) Export
     ExpectsThat(Result["rows"]).Равно(Count);
 EndProcedure
 
+Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
+
+    For Each Value In ValueStructure Do
+        Result[Value.Key] = Value.Value;
+    EndDo;
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
