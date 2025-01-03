@@ -38,7 +38,7 @@
 //@skip-check constructor-function-return-section
 
 // Uncomment if OneScript is executed
-// #Use "./internal"
+#Use "./internal"
 
 #Region Internal
 
@@ -56,7 +56,7 @@ Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection =
     EndDo;
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result = Module.ExecuteSQLQuery(Request, , , Connection);
 
     Return Result;
 
@@ -66,7 +66,7 @@ Function AddRecords(Val Module
     , Val Table
     , Val DataArray
     , Val Transaction = True
-    , Val Connection  = "") Export
+    , Val Connection = "") Export
 
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
@@ -87,11 +87,11 @@ Function AddRecords(Val Module
 
     EndIf;
 
-    Counter      = 0;
+    Counter = 0;
     SuccessCount = 0;
 
-    Error           = False;
-    ErrorsArray     = New Array;
+    Error = False;
+    ErrorsArray = New Array;
     CollectionError = "Invalid data";
 
     ResultStrucutre = New Structure;
@@ -109,7 +109,7 @@ Function AddRecords(Val Module
         EndIf;
 
         Counter = Counter + 1;
-        Error   = False;
+        Error = False;
 
         Try
             OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
@@ -142,7 +142,7 @@ Function AddRecords(Val Module
     EndIf;
 
     ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
-    ResultStrucutre.Insert("rows"  , SuccessCount);
+    ResultStrucutre.Insert("rows" , SuccessCount);
     ResultStrucutre.Insert("errors", ErrorsArray);
 
      Return ResultStrucutre;
@@ -151,10 +151,10 @@ EndFunction
 
 Function GetRecords(Val Module
     , Val Table
-    , Val Fields     = "*"
-    , Val Filters    = ""
-    , Val Sort       = ""
-    , Val Count      = ""
+    , Val Fields = "*"
+    , Val Filters = ""
+    , Val Sort = ""
+    , Val Count = ""
     , Val Connection = "") Export
 
     Scheme = NewSQLScheme("SELECT");
@@ -173,18 +173,18 @@ EndFunction
 Function UpdateRecords(Val Module
     , Val Table
     , Val ValuesArray
-    , Val Filters    = ""
+    , Val Filters = ""
     , Val Connection = "") Export
-
+	
     Scheme = NewSQLScheme("UPDATE");
-
+    
     SetTableName(Scheme, Table);
-
+    
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+    Result = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
 
     Return Result;
-
+    
 EndFunction
 
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
@@ -195,7 +195,7 @@ Function GetRecordsFilterStrucutre(Val Clear = False) Export
     FilterStructure.Insert("type" , "<comparison type>");
     FilterStructure.Insert("value", "<comparison value>");
     FilterStructure.Insert("union", "<connection with the following condition: AND, OR, etc..>");
-    FilterStructure.Insert("raw"  , "<true - the value will be inserted by text as it is, false - through the parameter>");
+    FilterStructure.Insert("raw" , "<true - the value will be inserted by text as it is, false - through the parameter>");
 
     If Clear Then
         FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
@@ -216,11 +216,11 @@ Function EmptySchemeSelect()
 
     Scheme = New Structure("type", "SELECT");
 
-    Scheme.Insert("table"  , "");
+    Scheme.Insert("table" , "");
     Scheme.Insert("filter" , New Array);
-    Scheme.Insert("order"  , New Array);
-    Scheme.Insert("limit"  , 0);
-    Scheme.Insert("set"    , New Array);
+    Scheme.Insert("order" , New Array);
+    Scheme.Insert("limit" , 0);
+    Scheme.Insert("set" , New Array);
     Scheme.Insert("values" , New Array);
 
     Return Scheme;
@@ -232,7 +232,7 @@ Function EmptySchemeInsert()
     Scheme = New Structure("type", "INSERT");
 
     Scheme.Insert("table", "");
-    Scheme.Insert("set"  , New Array);
+    Scheme.Insert("set" , New Array);
 
     Return Scheme;
 
@@ -242,9 +242,9 @@ Function EmptySchemeUpdate()
 
     Scheme = New Structure("type", "UPDATE");
 
-    Scheme.Insert("table"  , "");
-    Scheme.Insert("set"    , New Array);
-    Scheme.Insert("filter" , New Array);
+    Scheme.Insert("table" , "");
+    Scheme.Insert("set" , New Array);
+    Scheme.Insert("filter", New Array);
     Scheme.Insert("values" , New Array);
 
     Return Scheme;
@@ -266,7 +266,7 @@ Function EmptySchemeCreate()
 
     Scheme = New Structure("type", "CREATE");
 
-    Scheme.Insert("table"  , "");
+    Scheme.Insert("table" , "");
     Scheme.Insert("columns", New Array);
 
     Return Scheme;
@@ -281,11 +281,11 @@ Function FormTextSelect(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,filter,order,limit,set");
 
-    Table   = Scheme["table"];
-    Fields  = Scheme["set"];
+    Table = Scheme["table"];
+    Fields = Scheme["set"];
     Filters = Scheme["filter"];
-    Sort    = Scheme["order"];
-    Count   = Scheme["limit"];
+    Sort = Scheme["order"];
+    Count = Scheme["limit"];
 
     SQLTemplate = "SELECT %1 FROM %2
     |%3";
@@ -302,7 +302,7 @@ Function FormTextInsert(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,set");
 
-    Table  = Scheme["table"];
+    Table = Scheme["table"];
     Fields = Scheme["set"];
 
     SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3)";
@@ -342,7 +342,7 @@ Function FormTextCreate(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,columns");
 
-    Table   = Scheme["table"];
+    Table = Scheme["table"];
     Columns = Scheme["columns"];
 
     SQLTemplate = "CREATE TABLE %1 (
@@ -456,9 +456,9 @@ Function ForSelectOptionsText(Val Filters, Val Sort, Val Count)
     |%2
     |%3";
 
-    FilterText  = FormFilterText(Filters);
+    FilterText = FormFilterText(Filters);
     SortingText = FormSortingText(Sort);
-    CountText   = FormCountText(Count);
+    CountText = FormCountText(Count);
 
     BlockText = StrTemplate(BlockTemplate, FilterText, SortingText, CountText);
 
@@ -477,19 +477,19 @@ Function FormFilterText(Val Filters)
     FiltersArray = New Array;
 
     Counter = 1;
-    Total   = Filters.Count();
+    Total = Filters.Count();
 
     For Each Filter In Filters Do
 
         CurrentText = "%1 %2 %3 %4";
 
-        Field      = Filter["field"];
-        Type       = Filter["type"];
-        Value      = Filter["value"];
+        Field = Filter["field"];
+        Type = Filter["type"];
+        Value = Filter["value"];
         Connection = Filter["union"];
         Connection = ?(ValueIsFilled(Connection), Connection, "AND");
 
-        If Counter     = Total Then
+        If Counter = Total Then
             Connection = "";
         EndIf;
 
@@ -543,7 +543,7 @@ EndFunction
 
 Function AddRow(Val Module, Val Table, Val Record, Val Connection)
 
-    FieldArray  = New Array;
+    FieldArray = New Array;
     ValuesArray = New Array;
 
     Scheme = NewSQLScheme("INSERT");
@@ -628,7 +628,7 @@ EndProcedure
 Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
 
     RequiredFieldsArray = StrSplit(Fields, ",");
-    AbsenteesArray      = OPI_Tools.FindMissingCollectionFields(Scheme, RequiredFieldsArray);
+    AbsenteesArray = OPI_Tools.FindMissingCollectionFields(Scheme, RequiredFieldsArray);
 
     If ValueIsFilled(AbsenteesArray) Then
         Raise "Required schema fields are missing: " + StrConcat(AbsenteesArray, ", ");
@@ -722,7 +722,7 @@ Procedure SetSelectOptions(Scheme, Val Fields, Val Filters, Val Sort, Val Count)
     FillFields(Scheme, Fields);
     FillFilters(Scheme, Filters);
     FillSorting(Scheme, Sort);
-
+        
 EndProcedure
 
 #EndRegion

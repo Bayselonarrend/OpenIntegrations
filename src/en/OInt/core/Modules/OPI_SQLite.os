@@ -98,6 +98,20 @@ Function CloseConnection(Val Connection) Export
 
 EndFunction
 
+// Is connector !NOCLI
+// Checks that the value is an object of a SQLite AddIn
+//
+// Parameters:
+// Value - Arbitrary - Value to check - value
+//
+// Returns:
+// Boolean - Is connector
+Function IsConnector(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
+
+EndFunction
+
 // Execute SQL query
 // Executes an arbitrary SQL query
 //
@@ -132,7 +146,7 @@ Function ExecuteSQLQuery(Val QueryText
     EndIf;
 
     Result = Connector.Execute(QueryText, Parameters_, ForceResult);
-    Result = OPI_Tools.JsonToStructure(Result, False);
+    Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
 
@@ -148,34 +162,13 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// NotExecute - Boolean - True > Does not execute the query, but returns SQL text - noex
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
 // Structure Of KeyAndValue, String - The result of the execution or SQL query text
-Function CreateTable(Val Table, Val ColoumnsStruct, Val NotExecute = False, Val Connection = "") Export
+Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
-    OPI_TypeConversion.GetBoolean(NotExecute);
-
-    ErrorText = "The column structure is not a valid key-value structure";
-    OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
-
-    Scheme = OPI_SQLQueries.NewSQLScheme("CREATE");
-
-    OPI_SQLQueries.SetTableName(Scheme, Table);
-
-    For Each Coloumn In ColoumnsStruct Do
-        OPI_SQLQueries.AddColoumn(Scheme, Coloumn.Key, Coloumn.Value);
-    EndDo;
-
-    Request = OPI_SQLQueries.FormSQLText(Scheme);
-
-    If NotExecute Then
-        Result = Request;
-    Else
-        Result = ExecuteSQLQuery(Request, , , Connection);
-    EndIf;
-
+    Result = OPI_SQLQueries.CreateTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
     Return Result;
 
 EndFunction
@@ -193,84 +186,8 @@ EndFunction
 // Structure Of KeyAndValue, String - Result of query execution
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
-    OPI_TypeConversion.GetArray(DataArray);
-    OPI_TypeConversion.GetBoolean(Transaction);
-
-    Connection = CreateConnection(Connection);
-
-    If Not IsConnector(Connection) Then
-        Return Connection;
-    EndIf;
-
-    If Transaction Then
-
-        Start = ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
-
-        If Not Start["result"] Then
-            Return Start;
-        EndIf;
-
-    EndIf;
-
-    Counter      = 0;
-    SuccessCount = 0;
-
-    Error           = False;
-    ErrorsArray     = New Array;
-    CollectionError = "Invalid data";
-
-    ResultStrucutre = New Structure;
-
-    For Each Record In DataArray Do
-
-        If Error And Transaction Then
-
-            Rollback = ExecuteSQLQuery("ROLLBACK", , , Connection);
-
-            SuccessCount = 0;
-            ResultStrucutre.Insert("rollback", Rollback);
-            Break;
-
-        EndIf;
-
-        Counter = Counter + 1;
-        Error   = False;
-
-        Try
-            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
-        Except
-            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
-            Error = True;
-            Continue;
-        EndTry;
-
-        Result = AddRow(Table, Record, Connection);
-
-        If Result["result"] Then
-
-            SuccessCount = SuccessCount + 1;
-
-        Else
-
-            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
-            Error = True;
-
-        EndIf;
-
-    EndDo;
-
-    If Transaction And Not Error Then
-
-        Completion = ExecuteSQLQuery("COMMIT", , , Connection);
-        ResultStrucutre.Insert("commit", Completion);
-
-    EndIf;
-
-    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
-    ResultStrucutre.Insert("rows"  , SuccessCount);
-    ResultStrucutre.Insert("errors", ErrorsArray);
-
-     Return ResultStrucutre;
+    Result = OPI_SQLQueries.AddRecords(OPI_SQLite, Table, DataArray, Transaction, Connection);
+    Return Result;
 
 EndFunction
 
@@ -294,19 +211,25 @@ Function GetRecords(Val Table
     , Val Count = ""
     , Val Connection = "") Export
 
-    Scheme = OPI_SQLQueries.NewSQLScheme("SELECT");
+    Result = OPI_SQLQueries.GetRecords(OPI_SQLite, Table, Fields, Filters, Sort, Count, Connection);
+    Return Result;
 
-    OPI_SQLQueries.SetTableName(Scheme, Table);
-    OPI_SQLQueries.SetLimit(Scheme, Count);
+EndFunction
 
-    FillFields(Scheme, Fields);
-    FillFilters(Scheme, Filters);
-    FillSorting(Scheme, Sort);
+// Update records
+// Updates the value of records by selected criteria
+//
+// Parameters:
+// Table - String - Table name - table
+// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
 
-    Request = OPI_SQLQueries.FormSQLText(Scheme);
-
-    Result = ExecuteSQLQuery(Request, Scheme["values"], , Connection);
-
+    Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
     Return Result;
 
 EndFunction
@@ -327,20 +250,7 @@ EndFunction
 // Structure Of KeyAndValue - Record filter element
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
 
-    FilterStructure = New Structure;
-
-    FilterStructure.Insert("field", "<filtering field name>");
-    FilterStructure.Insert("type" , "<comparison type>");
-    FilterStructure.Insert("value", "<comparison value>");
-    FilterStructure.Insert("union", "<connection with the following condition: AND, OR, etc..>");
-    FilterStructure.Insert("raw"  , "<true - the value will be inserted by text as it is, false - through the parameter>");
-
-    If Clear Then
-        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return FilterStructure;
+    Return OPI_SQLQueries.GetRecordsFilterStrucutre(Clear);
 
 EndFunction
 
@@ -414,95 +324,5 @@ Function ProcessParameters(Val Parameters)
     Return Parameters_;
 
 EndFunction
-
-Function IsConnector(Val Value)
-
-    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
-
-EndFunction
-
-Function AddRow(Val Table, Val Record, Val Connection)
-
-    FieldArray  = New Array;
-    ValuesArray = New Array;
-
-    Scheme = OPI_SQLQueries.NewSQLScheme("INSERT");
-    OPI_SQLQueries.SetTableName(Scheme, Table);
-
-    SplitDataCollection(Record, FieldArray, ValuesArray);
-
-    For Each Field In FieldArray Do
-        OPI_SQLQueries.AddField(Scheme, Field);
-    EndDo;
-
-    Request = OPI_SQLQueries.FormSQLText(Scheme);
-
-    Result = ExecuteSQLQuery(Request, ValuesArray, , Connection);
-
-    Return Result;
-
-EndFunction
-
-Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
-
-    For Each Element In Record Do
-
-        FieldArray.Add(Element.Key);
-        ValuesArray.Add(Element.Value);
-
-    EndDo;
-
-EndProcedure
-
-Procedure FillFields(Scheme, Val Fields)
-
-    If Not ValueIsFilled(Fields) Then
-        Fields = "*";
-    EndIf;
-
-    OPI_TypeConversion.GetArray(Fields);
-
-    For Each Field In Fields Do
-        OPI_SQLQueries.AddField(Scheme, Field);
-    EndDo;
-
-EndProcedure
-
-Procedure FillFilters(Scheme, Val Filters)
-
-    If Not ValueIsFilled(Filters) Then
-        Return;
-    EndIf;
-
-    OPI_TypeConversion.GetArray(Filters);
-
-    For Each Filter In Filters Do
-
-        OPI_SQLQueries.AddFilter(Scheme
-            , Filter["field"]
-            , ?(Filter.Property("type"), Filter["type"], "=")
-            , Filter["value"]
-            , ?(Filter.Property("union"), Filter["union"], "AND")
-            , ?(Filter.Property("raw"), Filter["raw"], False));
-
-    EndDo;
-
-EndProcedure
-
-Procedure FillSorting(Val Scheme, Val Sort)
-
-    If Not ValueIsFilled(Sort) Then
-        Return;
-    EndIf;
-
-    OPI_TypeConversion.GetCollection(Sort);
-
-    For Each Element In Sort Do
-
-        OPI_SQLQueries.AddSorting(Scheme, Element.Key, Element.Value);
-
-    EndDo;
-
-EndProcedure
 
 #EndRegion

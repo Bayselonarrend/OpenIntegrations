@@ -16250,12 +16250,9 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("created_at", "DATETIME");
     ColoumnsStruct.Insert("data"      , "BLOB");
 
-    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, , Base);
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, Base);
 
     // END
-
-    Text = OPI_SQLite.CreateTable(Table, ColoumnsStruct, True, Base);
-    OPI_TestDataRetrieval.WriteLog(Text, "CreateTable (query)", "SQLite");
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -16264,7 +16261,7 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
     ColoumnsMap.Insert("[An obscure column]", "TEXT");
 
-    Result = OPI_SQLite.CreateTable("test1", ColoumnsMap, , Base);
+    Result = OPI_SQLite.CreateTable("test1", ColoumnsMap, Base);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
