@@ -95,8 +95,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRows";
-    NewLine.МетодПоиска = "ADDROWS";
+    NewLine.Метод       = "AddRecords";
+    NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
     NewLine.Область     = "Orm";
@@ -106,8 +106,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRows";
-    NewLine.МетодПоиска = "ADDROWS";
+    NewLine.Метод       = "AddRecords";
+    NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--rows";
     NewLine.Описание    = "An array of string data structures: Key > field, Value > field value";
     NewLine.Область     = "Orm";
@@ -116,8 +116,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRows";
-    NewLine.МетодПоиска = "ADDROWS";
+    NewLine.Метод       = "AddRecords";
+    NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--trn";
     NewLine.Описание    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
     NewLine.Область     = "Orm";
@@ -126,8 +126,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRows";
-    NewLine.МетодПоиска = "ADDROWS";
+    NewLine.Метод       = "AddRecords";
+    NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";

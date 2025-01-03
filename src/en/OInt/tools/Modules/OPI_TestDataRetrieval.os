@@ -2075,6 +2075,14 @@ Procedure Check_SQLiteSuccess(Val Result) Export
     ExpectsThat(Result["result"]).Равно(True);
 EndProcedure
 
+Procedure Check_SQLiteError(Val Result) Export
+    ExpectsThat(Result["result"]).Равно(False);
+EndProcedure
+
+Procedure Check_SQLiteRows(Val Result, Val Count) Export
+    ExpectsThat(Result["rows"]).Равно(Count);
+EndProcedure
+
 #EndRegion
 
 #EndRegion
