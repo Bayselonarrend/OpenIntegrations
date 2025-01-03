@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/os
+﻿// OneScript: ./OInt/tools/Modules/os
 
 // MIT License
 
@@ -38,7 +38,7 @@
 //@skip-check constructor-function-return-section
 
 // Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+#Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 
