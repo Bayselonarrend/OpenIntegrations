@@ -1965,7 +1965,7 @@ def test_sqlite(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --noex "test" --db "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --db "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1974,6 +1974,10 @@ def test_sqlite(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ОбновитьЗаписи --table "test" --values "test" --filter "test" --db "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

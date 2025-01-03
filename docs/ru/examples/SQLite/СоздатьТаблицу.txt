@@ -1,4 +1,4 @@
-﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_F86A_11.sqlite";
+﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_BCCE_11.sqlite";
     Таблица = "test";
 
     СтруктураКолонок = Новый Структура;
@@ -10,4 +10,4 @@
     СтруктураКолонок.Вставить("created_at", "DATETIME");
     СтруктураКолонок.Вставить("data"      , "BLOB");
 
-    Результат = OPI_SQLite.СоздатьТаблицу(Таблица, СтруктураКолонок, , База);
+    Результат = OPI_SQLite.СоздатьТаблицу(Таблица, СтруктураКолонок, База);
