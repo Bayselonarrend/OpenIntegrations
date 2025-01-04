@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_3590_23.sqlite";
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_D671_13.sqlite";
     Table = "test";
 
     ColoumnsStruct = New Structure;

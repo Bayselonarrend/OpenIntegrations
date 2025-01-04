@@ -42,164 +42,200 @@
 
 #Region Internal
 
-Function NewSQLScheme(Val Action) Export
+Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
-    OPI_TypeConversion.GetLine(Action);
+    ErrorText = "The column structure is not a valid key-value structure";
+    OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
 
-    Action = Upper(Action);
+    Scheme = NewSQLScheme("CREATE");
 
-    If Action = "SELECT" Then
+    SetTableName(Scheme, Table);
 
-        Scheme = EmptySchemeSelect();
+    For Each Coloumn In ColoumnsStruct Do
+        AddColoumn(Scheme, Coloumn.Key, Coloumn.Value);
+    EndDo;
 
-    ElsIf Action = "INSERT" Then
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
 
-        Scheme = EmptySchemeInsert();
-
-    ElsIf Action = "UPDATE" Then
-
-        Scheme = EmptySchemeUpdate();
-
-    ElsIf Action = "DELETE" Then
-
-        Scheme = EmptySchemeDelete();
-
-    ElsIf Action = "CREATE" Then
-
-        Scheme = EmptySchemeCreate();
-
-    Else
-
-        Scheme = New Structure;
-
-    EndIf;
-
-    Return Scheme;
+    Return Result;
 
 EndFunction
 
-Function FormSQLText(Val Scheme) Export
+Function AddRecords(Val Module
+    , Val Table
+    , Val DataArray
+    , Val Transaction = True
+    , Val Connection  = "") Export
 
-    ErrorText = "The value passed is not a valid SQL query schema";
-    OPI_TypeConversion.GetKeyValueCollection(Scheme, ErrorText);
+    OPI_TypeConversion.GetArray(DataArray);
+    OPI_TypeConversion.GetBoolean(Transaction);
 
-    SchemeType = "";
+    Connection = Module.CreateConnection(Connection);
 
-    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
-        Raise ErrorText;
+    If Not Module.IsConnector(Connection) Then
+        Return Connection;
     EndIf;
 
-    SchemeType = Upper(SchemeType);
+    If Transaction Then
 
-    If SchemeType = "SELECT" Then
+        Start = Module.ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
 
-        QueryText = FormTextSelect(Scheme);
-
-    ElsIf SchemeType = "INSERT" Then
-
-        QueryText = FormTextInsert(Scheme);
-
-    ElsIf SchemeType = "UPDATE" Then
-
-        QueryText = FormTextUpdate(Scheme);
-
-    ElsIf SchemeType = "DELETE" Then
-
-        QueryText = FormTextDelete(Scheme);
-
-    ElsIf SchemeType = "CREATE" Then
-
-        QueryText = FormTextCreate(Scheme);
-
-    Else
-
-        QueryText = "";
+        If Not Start["result"] Then
+            Return Start;
+        EndIf;
 
     EndIf;
 
-    Return QueryText;
+    Counter      = 0;
+    SuccessCount = 0;
+
+    Error           = False;
+    ErrorsArray     = New Array;
+    CollectionError = "Invalid data";
+
+    ResultStrucutre = New Structure;
+
+    For Each Record In DataArray Do
+
+        If Error And Transaction Then
+
+            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
+
+            SuccessCount = 0;
+            ResultStrucutre.Insert("rollback", Rollback);
+            Break;
+
+        EndIf;
+
+        Counter = Counter + 1;
+        Error   = False;
+
+        Try
+            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
+        Except
+            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
+            Error = True;
+            Continue;
+        EndTry;
+
+        Result = AddRow(Module, Table, Record, Connection);
+
+        If Result["result"] Then
+
+            SuccessCount = SuccessCount + 1;
+
+        Else
+
+            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+            Error = True;
+
+        EndIf;
+
+    EndDo;
+
+    If Transaction And Not Error Then
+
+        Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
+        ResultStrucutre.Insert("commit", Completion);
+
+    EndIf;
+
+    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
+    ResultStrucutre.Insert("rows"  , SuccessCount);
+    ResultStrucutre.Insert("errors", ErrorsArray);
+
+     Return ResultStrucutre;
 
 EndFunction
 
-Procedure AddColoumn(Scheme, Val Name, Val Type) Export
+Function GetRecords(Val Module
+    , Val Table
+    , Val Fields     = "*"
+    , Val Filters    = ""
+    , Val Sort       = ""
+    , Val Count      = ""
+    , Val Connection = "") Export
 
-    OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetLine(Type);
+    Scheme = NewSQLScheme("SELECT");
 
-    If Not Scheme["type"] = "CREATE" Then
-        Return;
+    SetTableName(Scheme, Table);
+    SetLimit(Scheme, Count);
+
+    FillFields(Scheme, Fields);
+    FillFilters(Scheme, Filters);
+    FillSorting(Scheme, Sort);
+
+    Request = FormSQLText(Scheme);
+
+    Result = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+
+    Return Result;
+
+EndFunction
+
+Function UpdateRecords(Val Module
+    , Val Table
+    , Val ValueStructure
+    , Val Filters    = ""
+    , Val Connection = "") Export
+
+    Scheme = NewSQLScheme("UPDATE");
+
+    FieldArray  = New Array;
+    ValuesArray = New Array;
+
+    SetTableName(Scheme, Table);
+    SplitDataCollection(ValueStructure, FieldArray, ValuesArray);
+
+    Scheme["values"] = ValuesArray;
+
+    For Each Field In FieldArray Do
+        AddField(Scheme, Field);
+    EndDo;
+
+    FillFilters(Scheme, Filters);
+
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+
+    Return Result;
+
+EndFunction
+
+Function DeletePosts(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
+
+    Scheme = NewSQLScheme("DELETE");
+
+    SetTableName(Scheme, Table);
+
+    FillFilters(Scheme, Filters);
+
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+
+    Return Result;
+
+EndFunction
+
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "<filtering field name>");
+    FilterStructure.Insert("type" , "<comparison type>");
+    FilterStructure.Insert("value", "<comparison value>");
+    FilterStructure.Insert("union", "<connection with the following condition: AND, OR, etc..>");
+    FilterStructure.Insert("raw"  , "<true - the value will be inserted by text as it is, false - through the parameter>");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
     EndIf;
 
-    ColoumnMap = New Map;
-    ColoumnMap.Insert(Name, Type);
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
-    Scheme["columns"].Add(ColoumnMap);
-
-EndProcedure
-
-Procedure AddField(Scheme, Val Name) Export
-
-    OPI_TypeConversion.GetLine(Name);
-
-    Scheme["set"].Add(Name);
-
-EndProcedure
-
-Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Raw) Export
-
-    OPI_TypeConversion.GetLine(Field);
-    OPI_TypeConversion.GetLine(Type);
-    OPI_TypeConversion.GetLine(Grouping);
-    OPI_TypeConversion.GetBoolean(Raw);
-
-    MainStructure = New Structure("field,type,union"
-        , Field
-        , Type
-        , Grouping);
-
-    If Raw Then
-
-        MainStructure.Insert("value", String(Value));
-
-    Else
-
-        Scheme["values"].Add(Value);
-
-        OrderNumber = Scheme["values"].Count();
-        MainStructure.Insert("value", "?" + OPI_Tools.NumberToString(OrderNumber));
-
-    EndIf;
-
-
-    Scheme["filter"].Add(MainStructure);
-
-EndProcedure
-
-Procedure AddSorting(Scheme, Val Field, Val Type) Export
-
-    OPI_TypeConversion.GetLine(Field);
-    OPI_TypeConversion.GetLine(Type);
-
-    Scheme["order"].Add(New Structure("field,type", Field, Type));
-
-EndProcedure
-
-
-Procedure SetTableName(Scheme, Val Name) Export
-
-    OPI_TypeConversion.GetLine(Name);
-
-    Scheme.Insert("table", Name);
-
-EndProcedure
-
-Procedure SetLimit(Scheme, Val Count) Export
-
-    OPI_TypeConversion.GetNumber(Count);
-
-    Scheme.Insert("limit", Count);
-
-EndProcedure
+EndFunction
 
 #EndRegion
 
@@ -237,9 +273,10 @@ Function EmptySchemeUpdate()
 
     Scheme = New Structure("type", "UPDATE");
 
-    Scheme.Insert("table" , "");
-    Scheme.Insert("set"   , New Array);
-    Scheme.Insert("filter", New Array);
+    Scheme.Insert("table"  , "");
+    Scheme.Insert("set"    , New Array);
+    Scheme.Insert("filter" , New Array);
+    Scheme.Insert("values" , New Array);
 
     Return Scheme;
 
@@ -318,7 +355,23 @@ EndFunction
 
 Function FormTextUpdate(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table,set,values");
+
+    Table   = Scheme["table"];
+    Fields  = Scheme["set"];
+    Filters = Scheme["filter"];
+
+    SQLTemplate = "UPDATE %1 SET %2 %3";
+
+    FilterText = FormFilterText(Filters);
+
+    For N = 0 To Fields.UBound() Do
+
+        Fields[N] = Fields[N] + " = ?" + OPI_Tools.NumberToString(N + 1);
+
+    EndDo;
+
+    TextSQL = StrTemplate(SQLTemplate, Table, StrConcat(Fields, "," + Chars.LF), FilterText);
 
     Return TextSQL;
 
@@ -326,7 +379,16 @@ EndFunction
 
 Function FormTextDelete(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table");
+
+    Table   = Scheme["table"];
+    Filters = Scheme["filter"];
+
+    SQLTemplate = "DELETE FROM %1 %2";
+
+    FilterText = FormFilterText(Filters);
+
+    TextSQL = StrTemplate(SQLTemplate, Table, FilterText);
 
     Return TextSQL;
 
@@ -362,6 +424,87 @@ Function FormTextCreate(Val Scheme)
 EndFunction
 
 #EndRegion
+
+#Region Auxiliary
+
+Function NewSQLScheme(Val Action)
+
+    OPI_TypeConversion.GetLine(Action);
+
+    Action = Upper(Action);
+
+    If Action = "SELECT" Then
+
+        Scheme = EmptySchemeSelect();
+
+    ElsIf Action = "INSERT" Then
+
+        Scheme = EmptySchemeInsert();
+
+    ElsIf Action = "UPDATE" Then
+
+        Scheme = EmptySchemeUpdate();
+
+    ElsIf Action = "DELETE" Then
+
+        Scheme = EmptySchemeDelete();
+
+    ElsIf Action = "CREATE" Then
+
+        Scheme = EmptySchemeCreate();
+
+    Else
+
+        Scheme = New Structure;
+
+    EndIf;
+
+    Return Scheme;
+
+EndFunction
+
+Function FormSQLText(Val Scheme)
+
+    ErrorText = "The value passed is not a valid SQL query schema";
+    OPI_TypeConversion.GetKeyValueCollection(Scheme, ErrorText);
+
+    SchemeType = "";
+
+    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
+        Raise ErrorText;
+    EndIf;
+
+    SchemeType = Upper(SchemeType);
+
+    If SchemeType = "SELECT" Then
+
+        QueryText = FormTextSelect(Scheme);
+
+    ElsIf SchemeType = "INSERT" Then
+
+        QueryText = FormTextInsert(Scheme);
+
+    ElsIf SchemeType = "UPDATE" Then
+
+        QueryText = FormTextUpdate(Scheme);
+
+    ElsIf SchemeType = "DELETE" Then
+
+        QueryText = FormTextDelete(Scheme);
+
+    ElsIf SchemeType = "CREATE" Then
+
+        QueryText = FormTextCreate(Scheme);
+
+    Else
+
+        QueryText = "";
+
+    EndIf;
+
+    Return QueryText;
+
+EndFunction
 
 Function ForSelectOptionsText(Val Filters, Val Sort, Val Count)
 
@@ -454,6 +597,93 @@ Function FormCountText(Val Count)
 
 EndFunction
 
+Function AddRow(Val Module, Val Table, Val Record, Val Connection)
+
+    FieldArray  = New Array;
+    ValuesArray = New Array;
+
+    Scheme = NewSQLScheme("INSERT");
+    SetTableName(Scheme, Table);
+
+    SplitDataCollection(Record, FieldArray, ValuesArray);
+
+    For Each Field In FieldArray Do
+        AddField(Scheme, Field);
+    EndDo;
+
+    Request = FormSQLText(Scheme);
+
+    Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
+
+    Return Result;
+
+EndFunction
+
+Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
+
+    ErrorText = "Incorrect data set for updating";
+    OPI_TypeConversion.GetKeyValueCollection(Record, ErrorText);
+
+    For Each Element In Record Do
+
+        FieldArray.Add(Element.Key);
+        ValuesArray.Add(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure FillFields(Scheme, Val Fields)
+
+    If Not ValueIsFilled(Fields) Then
+        Fields = "*";
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Fields);
+
+    For Each Field In Fields Do
+        AddField(Scheme, Field);
+    EndDo;
+
+EndProcedure
+
+Procedure FillFilters(Scheme, Val Filters)
+
+    If Not ValueIsFilled(Filters) Then
+        Return;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Filters);
+
+    For Each Filter In Filters Do
+
+        AddFilter(Scheme
+            , Filter["field"]
+            , ?(Filter.Property("type"), Filter["type"], "=")
+            , Filter["value"]
+            , ?(Filter.Property("union"), Filter["union"], "AND")
+            , ?(Filter.Property("raw"), Filter["raw"], False));
+
+    EndDo;
+
+EndProcedure
+
+Procedure FillSorting(Val Scheme, Val Sort)
+
+    If Not ValueIsFilled(Sort) Then
+        Return;
+    EndIf;
+
+    OPI_TypeConversion.GetCollection(Sort);
+
+    For Each Element In Sort Do
+
+        AddSorting(Scheme, Element.Key, Element.Value);
+
+    EndDo;
+
+EndProcedure
+
 Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
 
     RequiredFieldsArray = StrSplit(Fields, ",");
@@ -464,5 +694,86 @@ Procedure CheckSchemeRequiredFields(Scheme, Val Fields)
     EndIf;
 
 EndProcedure
+
+Procedure AddColoumn(Scheme, Val Name, Val Type) Export
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Type);
+
+    If Not Scheme["type"] = "CREATE" Then
+        Return;
+    EndIf;
+
+    ColoumnMap = New Map;
+    ColoumnMap.Insert(Name, Type);
+
+    Scheme["columns"].Add(ColoumnMap);
+
+EndProcedure
+
+Procedure AddField(Scheme, Val Name) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Scheme["set"].Add(Name);
+
+EndProcedure
+
+Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Raw)
+
+    OPI_TypeConversion.GetLine(Field);
+    OPI_TypeConversion.GetLine(Type);
+    OPI_TypeConversion.GetLine(Grouping);
+    OPI_TypeConversion.GetBoolean(Raw);
+
+    MainStructure = New Structure("field,type,union"
+        , Field
+        , Type
+        , Grouping);
+
+    If Raw Then
+
+        MainStructure.Insert("value", String(Value));
+
+    Else
+
+        Scheme["values"].Add(Value);
+
+        OrderNumber = Scheme["values"].Count();
+        MainStructure.Insert("value", "?" + OPI_Tools.NumberToString(OrderNumber));
+
+    EndIf;
+
+
+    Scheme["filter"].Add(MainStructure);
+
+EndProcedure
+
+Procedure AddSorting(Scheme, Val Field, Val Type)
+
+    OPI_TypeConversion.GetLine(Field);
+    OPI_TypeConversion.GetLine(Type);
+
+    Scheme["order"].Add(New Structure("field,type", Field, Type));
+
+EndProcedure
+
+Procedure SetTableName(Scheme, Val Name)
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Scheme.Insert("table", Name);
+
+EndProcedure
+
+Procedure SetLimit(Scheme, Val Count)
+
+    OPI_TypeConversion.GetNumber(Count);
+
+    Scheme.Insert("limit", Count);
+
+EndProcedure
+
+#EndRegion
 
 #EndRegion
