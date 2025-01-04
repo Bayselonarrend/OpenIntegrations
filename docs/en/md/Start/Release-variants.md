@@ -35,7 +35,7 @@ these release options are various forms of distribution for OInt CLI – a cross
 **oint-x.x.x-1.el7.x86_64.rpm** - this is an RPM package designed to install OInt in RHEL/Fedora/CentOS and other rpm-based distributions. It automatically suggests the install libicu - the internalisation package for Unicode (ICU) required for the application engine to work
 
 <img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/5.png').default} width="86" align="left"/>
-**oint.exe** - an executable file that, despite its Windows-oriented extension, is cross-platform. It requires .Net Framework 4.8 or a compatible version of Mono to run. In Windows and Debian-based distributions, this application is launched simply through the command line/terminal, while in RHEL-based distributions, it is launched through ```mono oint.exe "$@"```
+**`Deprecated since v. 1.18.0`** **oint.exe** - an executable file that, despite its Windows-oriented extension, is cross-platform. It requires .Net Framework 4.8 or a compatible version of Mono to run. In Windows and Debian-based distributions, this application is launched simply through the command line/terminal, while in RHEL-based distributions, it is launched through ```mono oint.exe "$@"```
 
 :::warning
 The single file delivery is currently *`obsolete`* and is not recommended for use. It has performance issues and depends on the .Net Framework, so it only makes sense for evaluation use in cases where installing from the package/installer is undesirable or impossible for some reason
