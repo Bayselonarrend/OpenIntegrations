@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/os
+﻿// OneScript: ./OInt/tools/Modules/OPI_SQLQueries.os
 
 // MIT License
 
@@ -203,6 +203,21 @@ Function UpdateRecords(Val Module
 
 EndFunction
 
+Function DeletePosts(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
+
+    Scheme = NewSQLScheme("DELETE");
+
+    SetTableName(Scheme, Table);
+
+    FillFilters(Scheme, Filters);
+
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+
+    Return Result;
+
+EndFunction
+
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
 
     FilterStructure = New Structure;
@@ -364,7 +379,16 @@ EndFunction
 
 Function FormTextDelete(Val Scheme)
 
-    TextSQL = "";
+    CheckSchemeRequiredFields(Scheme, "table");
+
+    Table   = Scheme["table"];
+    Filters = Scheme["filter"];
+
+    SQLTemplate = "DELETE FROM %1 %2";
+
+    FilterText = FormFilterText(Filters);
+
+    TextSQL = StrTemplate(SQLTemplate, Table, FilterText);
 
     Return TextSQL;
 
