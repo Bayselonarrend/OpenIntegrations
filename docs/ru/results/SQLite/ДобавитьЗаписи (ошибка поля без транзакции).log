@@ -1,0 +1,14 @@
+﻿    {
+ "result": false,
+ "rows": 1,
+ "errors": [
+  {
+   "row": 2,
+   "error": "table test has no column named error"
+  },
+  {
+   "row": 3,
+   "error": "table test has no column named error"
+  }
+ ]
+}
