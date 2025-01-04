@@ -234,6 +234,23 @@ Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Conn
 
 EndFunction
 
+// Delete records
+// Deletes records from the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, Filters, Connection);
+    Return Result;
+
+EndFunction
+
 // Get records filter strucutre
 // Gets the template structure for filtering records in ORM queries
 //
