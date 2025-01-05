@@ -660,10 +660,10 @@ Procedure FillFilters(Scheme, Val Filters)
 
         AddFilter(Scheme
             , Filter["field"]
-            , ?(Filter.Property("type"), Filter["type"], "=")
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "type"), Filter["type"], "=")
             , Filter["value"]
-            , ?(Filter.Property("union"), Filter["union"], "AND")
-            , ?(Filter.Property("raw"), Filter["raw"], False));
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "union"), Filter["union"], "AND")
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "raw"), Filter["raw"], False));
 
     EndDo;
 
