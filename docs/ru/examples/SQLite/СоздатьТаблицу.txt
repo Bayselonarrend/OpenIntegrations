@@ -1,4 +1,4 @@
-﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_1FD0_29.sqlite";
+﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_1AD2_30.sqlite";
     Таблица = "test";
 
     СтруктураКолонок = Новый Структура;
