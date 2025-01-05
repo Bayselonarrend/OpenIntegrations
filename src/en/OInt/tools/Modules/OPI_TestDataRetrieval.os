@@ -2091,6 +2091,10 @@ Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
 
 EndProcedure
 
+Procedure Check_SQLiteNoRows(Val Result) Export
+    ExpectsThat(Result["data"].Count()).Равно(0);
+EndProcedure
+
 #EndRegion
 
 #EndRegion
