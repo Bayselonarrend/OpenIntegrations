@@ -82,9 +82,10 @@ impl AddIn {
                 self.connection = Some(conn);
                 r#"{"result": true}"#.to_string()
             }
-            Err(e) => {
-                format!(r#"{{"result": false, "error": "{}"}}"#, e.to_string())
-            }
+            Err(e) => json!({
+                    "result": false,
+                    "error": e.to_string()
+            }).to_string()
         }
     }
 
