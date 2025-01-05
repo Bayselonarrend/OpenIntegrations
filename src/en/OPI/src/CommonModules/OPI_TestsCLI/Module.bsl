@@ -18255,6 +18255,20 @@ Procedure CLI_SQLite_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
+    ColoumnsMap = New Map;
+    ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
+    ColoumnsMap.Insert("[An obscure column]", "TEXT");
+
+    Options = New Structure;
+    Options.Insert("table", "test1");
+    Options.Insert("cols" , ColoumnsMap);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (obscure column)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
 EndProcedure
 
 Procedure CLI_SQLite_AddRecords(FunctionParameters)
