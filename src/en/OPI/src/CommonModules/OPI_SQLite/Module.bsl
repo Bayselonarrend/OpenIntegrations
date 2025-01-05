@@ -61,6 +61,7 @@ Function CreateConnection(Val Base = "") Export
     EndIf;
 
     OPI_TypeConversion.GetLine(Base);
+    OPI_Tools.RestoreEscapeSequences(Base);
 
     Connector = AttachAddInOnServer("OPI_SQLite");
 
