@@ -54,6 +54,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetTableInformation";
+    NewLine.МетодПоиска = "GETTABLEINFORMATION";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Gets information about the table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "GetTableInformation";
+    NewLine.МетодПоиска = "GETTABLEINFORMATION";
+    NewLine.Параметр    = "--db";
+    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
     NewLine.Метод       = "CreateTable";
     NewLine.МетодПоиска = "CREATETABLE";
     NewLine.Параметр    = "--table";
