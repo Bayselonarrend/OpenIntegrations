@@ -1,0 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint sqlite СоздатьТаблицу ^
+  --table "test1" ^
+  --cols "{'id':'INTEGER PRIMARY KEY','[Непонятная колонка]':'TEXT'}" ^
+  --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
