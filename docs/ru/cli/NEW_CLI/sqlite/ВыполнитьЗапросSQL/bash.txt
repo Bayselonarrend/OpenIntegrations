@@ -1,0 +1,4 @@
+oint sqlite ВыполнитьЗапросSQL \
+  --sql "INSERT INTO test_table (name, age, salary, is_active, created_at, data)VALUES (?1, ?2, ?3, ?4, ?5, ?6);" \
+  --params "['Vitaly',25,1000.12,true,'2025-01-05T20:31:04.8792581Z',{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\a3gcttci1kv.png'}]" \
+  --db "C:\Users\Administrator\AppData\Local\Temp\e4caqcgjjp3.sqlite"
