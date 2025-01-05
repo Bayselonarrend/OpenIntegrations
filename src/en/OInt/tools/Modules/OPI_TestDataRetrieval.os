@@ -509,7 +509,8 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     EndIf;
 
-    ResultFile   = GetTempFileName();
+    ResultFile = GetTempFileName();
+
     LaunchString = Oint + " " + Library + " " + Method;
 
     For Each Option In Options Do
@@ -525,6 +526,22 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
     EndDo;
 
     RunApp(LaunchString + " --out """ + ResultFile + """", , True);
+
+    Result = ReadCLIResponse(ResultFile);
+
+    WriteCLICall(Library, Method, Options);
+
+    Try
+        DeleteFiles(ResultFile);
+    Except
+        Message("Failed to delete the temporary file after the test!");
+    EndTry;
+
+    Return Result;
+
+EndFunction
+
+Function ReadCLIResponse(Val ResultFile)
 
     Try
 
@@ -543,17 +560,9 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
             Result = null;
         EndTry;
 
-    EndTry;
+     EndTry;
 
-    WriteCLICall(Library, Method, Options);
-
-    Try
-        DeleteFiles(ResultFile);
-    Except
-        Message("Failed to delete the temporary file after the test!");
-    EndTry;
-
-    Return Result;
+     Return Result;
 
 EndFunction
 
