@@ -1,4 +1,4 @@
 oint gcalendar ПолучитьСобытие ^
   --token "***" ^
-  --calendar "98799c5a1e90be1715de39ccb5aaa941bf7a624678fb018d2c386adf0c111cdf@group.calendar.google.com" ^
-  --event "gqfrprtv9n79gvi07sijetsuc8"
+  --calendar "cf3335351d23860cac9fdfebcae101e32fd12fb9b02f1e99962cb026ca062fb1@group.calendar.google.com" ^
+  --event "4o4u8sckdsank2hlrgsvnnfbds"

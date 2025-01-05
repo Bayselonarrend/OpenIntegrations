@@ -1,0 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint sqlite ДобавитьЗаписи ^
+  --table "test1" ^
+  --rows "{'[Непонятная колонка]':'yo'}" ^
+  --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
