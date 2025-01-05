@@ -1003,16 +1003,24 @@ EndProcedure
 
 Procedure ReplaceEscapeSequences(Text) Export
 
-    CharacterMapping = New Map;
-    CharacterMapping.Insert("\n", Chars.LF);
-    CharacterMapping.Insert("\r", Chars.CR);
-    CharacterMapping.Insert("\f", Chars.FF);
-    CharacterMapping.Insert("\v", Chars.VTab);
+    CharacterMapping = GetEscapeSequencesMap();
 
     For Each Symbol In CharacterMapping Do
 
         Text = StrReplace(Text, Symbol.Key        , Symbol.Value);
         Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
+
+    EndDo;
+
+EndProcedure
+
+Procedure RestoreEscapeSequences(Text) Export
+
+    CharacterMapping = GetEscapeSequencesMap();
+
+    For Each Symbol In CharacterMapping Do
+
+        Text = StrReplace(Text, Symbol.Value, Symbol.Key);
 
     EndDo;
 
@@ -1649,6 +1657,19 @@ EndFunction
 Function RelevantNodeType(Val NodeType)
 
     Return NodeType = XMLNodeType.StartElement Or NodeType = XMLNodeType.EndElement Or NodeType = XMLNodeType.Text;
+
+EndFunction
+
+Function GetEscapeSequencesMap()
+
+    CharacterMapping = New Map;
+
+    CharacterMapping.Insert("\n", Chars.LF);
+    CharacterMapping.Insert("\r", Chars.CR);
+    CharacterMapping.Insert("\f", Chars.FF);
+    CharacterMapping.Insert("\v", Chars.VTab);
+
+    Return CharacterMapping;
 
 EndFunction
 

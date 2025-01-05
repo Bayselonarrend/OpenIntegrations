@@ -1,20 +1,16 @@
 ﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_1FD0_29.sqlite";
     Table = "test";
 
-    FieldsStructure = New Structure;
-    FieldsStructure.Insert("name"  , "Vitaly A.");
-    FieldsStructure.Insert("salary", "999999");
-
     Filters = New Array;
 
     FilterStructure = New Structure;
 
     FilterStructure.Insert("field", "name");
     FilterStructure.Insert("type" , "=");
-    FilterStructure.Insert("value", "Vitaly");
+    FilterStructure.Insert("value", "Vitaly A.");
     FilterStructure.Insert("union", "AND");
     FilterStructure.Insert("raw"  , False);
 
     Filters.Add(FilterStructure);
 
-    Result = OPI_SQLite.UpdateRecords(Table, FieldsStructure, FilterStructure, Base);
+    Result = OPI_SQLite.DeletePosts(Table, FilterStructure, Base);

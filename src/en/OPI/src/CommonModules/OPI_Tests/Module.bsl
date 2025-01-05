@@ -2239,13 +2239,13 @@ Procedure SQLL_ORM() Export
     SQLite_AddRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
+    SQLite_DeletePosts(TestParameters);
 
     Try
        DeleteFiles(Base);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry
-
 
 EndProcedure
 
@@ -16441,6 +16441,37 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
     OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][0], FieldsStructure);
+
+EndProcedure
+
+Procedure SQLite_DeletePosts(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly A.");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.DeletePosts(Table, FilterStructure, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Check = OPI_SQLite.GetRecords(Table, "['name','salary']", Filters, , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteNoRows(Check);
 
 EndProcedure
 

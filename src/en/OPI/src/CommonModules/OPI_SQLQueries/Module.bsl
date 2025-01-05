@@ -288,6 +288,7 @@ Function EmptySchemeDelete()
 
     Scheme.Insert("table" , "");
     Scheme.Insert("filter", New Array);
+    Scheme.Insert("values", New Array);
 
     Return Scheme;
 
