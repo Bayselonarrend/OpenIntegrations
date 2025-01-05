@@ -157,6 +157,28 @@ EndFunction
 
 #Region ORM
 
+// Get table information
+// Gets information about the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - The result of the execution or SQL query text
+Function GetTableInformation(Val Table, Val Connection = "") Export
+
+    OPI_TypeConversion.GetLine(Table);
+
+    TextSQL = "PRAGMA table_info('%1')";
+    TextSQL = StrTemplate(TextSQL, Table);
+
+    Result = ExecuteSQLQuery(TextSQL, , True, Connection);
+
+    Return Result;
+
+EndFunction
+
 // Create table
 // Creates an empty table in the database
 //
@@ -177,6 +199,9 @@ EndFunction
 // Add rows
 // Adds new rows to the table
 //
+// Note
+// Binary data can also be transferred as a structure `{'blob':<File path>}`
+//
 // Parameters:
 // Table - String - Table name - table
 // DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
@@ -194,6 +219,9 @@ EndFunction
 
 // Get records
 // Gets records from the selected table
+//
+// Note
+// Values of the Binary data type (BLOB) are returned as `{'blob':<Base64 string>}`
 //
 // Parameters:
 // Table - String - Table name - table

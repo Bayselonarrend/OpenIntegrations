@@ -2240,6 +2240,7 @@ Procedure SQLL_ORM() Export
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeletePosts(TestParameters);
+    SQLite_GetTableInformation(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -16472,6 +16473,20 @@ Procedure SQLite_DeletePosts(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteNoRows(Check);
+
+EndProcedure
+
+Procedure SQLite_GetTableInformation(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
 EndProcedure
 

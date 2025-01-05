@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -24,6 +24,10 @@ import TabItem from '@theme/TabItem';
 
 <br/>
 
+:::tip
+Двоичные данные могут также быть переданы как структура `{'blob':&lt;Путь к файлу&gt;}`
+:::
+<br/>
 
 
 
@@ -34,7 +38,7 @@ import TabItem from '@theme/TabItem';
     ФайлКартинки = ПолучитьИмяВременногоФайла("png");
     Картинка.Записать(ФайлКартинки);                          // ФайлКартинки - Файл на диске
 
-    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_1AD2_9c.sqlite";
+    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_BC85_14.sqlite";
     Таблица = "test";
 
     МассивДанных = Новый Массив;
@@ -62,6 +66,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite ДобавитьЗаписи \
+              --table "test1" \
+              --rows "{'[Непонятная колонка]':'yo'}" \
+              --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite ДобавитьЗаписи ^
+              --table "test1" ^
+              --rows "{'[Непонятная колонка]':'yo'}" ^
+              --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
