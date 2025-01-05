@@ -118,8 +118,8 @@ EndFunction
 //
 // Note
 // Available parameter types: String, Number, Date, Boolean, BinaryData.^^
-// Binary data can also be passed as a `{'blob':<File path>}` structure. Binary data (BLOB) values are returned^^
-// as `{'blob':<Base64 string>}
+// Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned^^
+// as `{'blob':Base64 string}
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
 // For other queries, `result:true` or `false` with error text is returned
 //
@@ -200,7 +200,7 @@ EndFunction
 // Adds new rows to the table
 //
 // Note
-// Binary data can also be transferred as a structure `{'blob':<File path>}`
+// Binary data can also be transferred as a structure `{'blob':File path}`
 //
 // Parameters:
 // Table - String - Table name - table
@@ -221,7 +221,7 @@ EndFunction
 // Gets records from the selected table
 //
 // Note
-// Values of the Binary data type (BLOB) are returned as `{'blob':<Base64 string>}`
+// Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
 //
 // Parameters:
 // Table - String - Table name - table
