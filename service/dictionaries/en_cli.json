@@ -34,6 +34,8 @@
     "Структура вызова": "The structure of calls",
     "JSONСтрокой": "JSONString",
     "GetStringFromBinaryData":"ПолучитьСтрокуИзДвоичныхДанных",
-    "ЗаменитьУправляющиеПоследовательности": "ReplaceEscapeSequences"
+    "ЗаменитьУправляющиеПоследовательности": "ReplaceEscapeSequences",
+    "Сообщение об ошибке сохранено в файл:":"The error message has been saved to a file:",
+    "Не удалось сохранить ошибку в файл вывода:":"Failed to save the error to the output file:"
 
 }
