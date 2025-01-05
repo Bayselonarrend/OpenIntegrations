@@ -1965,6 +1965,10 @@ def test_sqlite(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьИнформациюОТаблице --table "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --db "test" --debug --test '
                }
 
