@@ -75,10 +75,13 @@ Procedure GetBinaryOrStream(Value) Export
         Return;
     EndIf;
 
-    File = New File(Value);
+    ValueES = Value;
+    OPI_Tools.RestoreEscapeSequences(ValueES);
+
+    File = New File(ValueES);
 
     If File.Exists() Then
-        Value = New FileStream(Value, FileOpenMode.Open);
+        Value = New FileStream(ValueES, FileOpenMode.Open);
     Else
         GetBinaryData(Value);
     EndIf;
@@ -105,18 +108,21 @@ Procedure GetCollection(Value) Export
                 Value        = OPI_Tools.NumberToString(Value);
             EndIf;
 
-            File       = New File(Value);
+            ValueES = Value;
+            OPI_Tools.RestoreEscapeSequences(ValueES);
+
+            File       = New File(ValueES);
             JSONReader = New JSONReader;
 
             If File.Exists() Then
 
-                JSONReader.OpenFile(Value);
+                JSONReader.OpenFile(ValueES);
 
-            ElsIf StrStartsWith(TrimL(Value), "http://")
-                Or StrStartsWith(TrimL(Value), "https://") Then
+            ElsIf StrStartsWith(TrimL(ValueES), "http://")
+                Or StrStartsWith(TrimL(ValueES), "https://") Then
 
                 TFN = GetTempFileName();
-                FileCopy(Value, TFN);
+                FileCopy(ValueES, TFN);
                 JSONReader.OpenFile(TFN);
                 JSONReader.Read();
 
@@ -213,18 +219,22 @@ Procedure GetLine(Value, Val FromSource = False) Export
             EndIf;
 
             Value = OPI_Tools.NumberToString(Value);
-            File  = New File(Value);
+
+            ValueES = Value;
+            OPI_Tools.RestoreEscapeSequences(ValueES);
+
+            File = New File(ValueES);
 
             If File.Exists() Then
 
-                TextReader = New TextReader(Value);
+                TextReader = New TextReader(ValueES);
                 Value      = TextReader.Read();
                 TextReader.Close();
 
-            ElsIf StrStartsWith(TrimL(Value), "http://")
-                Or StrStartsWith(TrimL(Value), "https://") Then
+            ElsIf StrStartsWith(TrimL(ValueES), "http://")
+                Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-                Value = OPI_Tools.Get(Value);
+                Value = OPI_Tools.Get(ValueES);
                 GetLine(Value);
 
             Else
@@ -312,16 +322,19 @@ EndFunction
 
 Procedure ConvertSourceToValue(Value, TryB64)
 
-    File = New File(Value);
+    ValueES = Value;
+    OPI_Tools.RestoreEscapeSequences(ValueES);
+
+    File = New File(ValueES);
 
     If File.Exists() Then
 
-        Value = New BinaryData(Value);
+        Value = New BinaryData(ValueES);
 
-    ElsIf StrStartsWith(TrimL(Value), "http://")
-        Or StrStartsWith(TrimL(Value), "https://") Then
+    ElsIf StrStartsWith(TrimL(ValueES), "http://")
+        Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-        Value = OPI_Tools.Get(Value);
+        Value = OPI_Tools.Get(ValueES);
 
     Else
 

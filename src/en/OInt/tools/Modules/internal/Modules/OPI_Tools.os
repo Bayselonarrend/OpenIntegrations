@@ -1003,6 +1003,8 @@ EndProcedure
 
 Procedure ReplaceEscapeSequences(Text) Export
 
+    OPI_TypeConversion.GetLine(Text);
+
     CharacterMapping = GetEscapeSequencesMap();
 
     For Each Symbol In CharacterMapping Do
@@ -1015,6 +1017,8 @@ Procedure ReplaceEscapeSequences(Text) Export
 EndProcedure
 
 Procedure RestoreEscapeSequences(Text) Export
+
+    OPI_TypeConversion.GetLine(Text);
 
     CharacterMapping = GetEscapeSequencesMap();
 
