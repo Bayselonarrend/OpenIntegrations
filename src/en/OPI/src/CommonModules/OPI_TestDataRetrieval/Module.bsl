@@ -525,7 +525,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     EndDo;
 
-    RunApp(LaunchString + " --out """ + ResultFile + """", , True);
+    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
 
     Result = ReadCLIResponse(ResultFile);
 
