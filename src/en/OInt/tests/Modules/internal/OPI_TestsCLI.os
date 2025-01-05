@@ -18220,6 +18220,8 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Select, code)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Image = New BinaryData(PictureFile);
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size()); // SKIP
 
     Try
@@ -18454,7 +18456,7 @@ Procedure CLI_SQLite_GetRecords(FunctionParameters)
     Options.Insert("table" , "test1");
     Options.Insert("db"    , Base);
 
-    Result = OPI_SQLite.GetRecords(, , , , , Base);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18499,10 +18501,10 @@ Procedure CLI_SQLite_UpdateRecords(FunctionParameters)
     Filters.Add(FilterStructure);
 
     Options = New Structure;
-    Options.Insert("table"  , Table);
-    Options.Insert("fields" , "['name','salary']");
-    Options.Insert("filters", Filters);
-    Options.Insert("db"     , Base);
+    Options.Insert("table" , Table);
+    Options.Insert("fields", "['name','salary']");
+    Options.Insert("filter", Filters);
+    Options.Insert("db"    , Base);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
@@ -18540,10 +18542,10 @@ Procedure CLI_SQLite_DeletePosts(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Options = New Structure;
-    Options.Insert("table"  , Table);
-    Options.Insert("fields" , "['name','salary']");
-    Options.Insert("filters", Filters);
-    Options.Insert("db"     , Base);
+    Options.Insert("table" , Table);
+    Options.Insert("fields", "['name','salary']");
+    Options.Insert("filter", Filters);
+    Options.Insert("db"    , Base);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
