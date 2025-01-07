@@ -2222,6 +2222,7 @@ Procedure SQLL_CommonMethods() Export
     SQLite_CreateConnection(TestParameters);
     SQLite_CloseConnection(TestParameters);
     SQLite_ExecuteSQLQuery(TestParameters);
+    SQLite_IsConnector(TestParameters);
 
 EndProcedure
 
@@ -2241,6 +2242,7 @@ Procedure SQLL_ORM() Export
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeletePosts(TestParameters);
     SQLite_GetTableInformation(TestParameters);
+    SQLite_GetRecordsFilterStrucutre(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -16200,7 +16202,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Select)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "SQLite"); // SKIP
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size()); // SKIP
 
@@ -16235,6 +16237,18 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry
+
+EndProcedure
+
+Procedure SQLite_IsConnector(FunctionParameters)
+
+    Connection = OPI_SQLite.CreateConnection();
+    Result     = OPI_SQLite.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "SQLite");
+    OPI_TestDataRetrieval.Check_True(Result);
 
 EndProcedure
 
@@ -16487,6 +16501,26 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
+Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Result = OPI_SQLite.GetRecordsFilterStrucutre();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "SQLite");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "SQLite");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 
