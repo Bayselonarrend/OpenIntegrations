@@ -5,60 +5,60 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Получить список кластеров
- Получает информацию о кластерах и складах
+# Get clusters list
+ Gets information about clusters and warehouses
 
 
 
-`Функция ПолучитьСписокКластеров(Знач IDКлиента, Знач КлючAPI, Знач ТипКластера = "CLUSTER_TYPE_OZON") Экспорт`
+`Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TYPE_OZON") Export`
 
-  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | IDКлиента | --clientid | Строка | &#x2714; | Идентификатор клиента |
-  | КлючAPI | --apikey | Строка | &#x2714; | API ключ |
-  | ТипКластера | --type | Строка | &#x2716; | Тип кластера: CLUSTER_TYPE_OZON (Россия), CLUSTER_TYPE_CIS (СНГ) |
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | ClusterType | --type | String | &#x2716; | Cluster type: CLUSTER_TYPE_OZON (Russia), CLUSTER_TYPE_CIS (CIS) |
 
   
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
 :::tip
-Метод в документации API: [post /v1/cluster/list](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftClusterList)
+Method at API documentation: [post /v1/cluster/list](https://docs.ozon.ru/api/seller/#operation/SupplyDraftAPI_DraftClusterList)
 :::
 <br/>
 
 
 
-```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDКлиента = "2479669";
-    КлючAPI   = "09f65e9f-262d-4aca...";
+```bsl title="1C:Enterprise/OneScript code example"
+    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
 
-    Результат = OPI_Ozon.ПолучитьСписокКластеров(IDКлиента, КлючAPI);
+    Result = OPI_Ozon.GetClustersList(ClientID, APIKey);
 ```
-    
+ 
 
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint ozon ПолучитьСписокКластеров \
-              --clientid "***" \
-              --apikey "***"
+            oint ozon GetClustersList \
+             --clientid "***" \
+             --apikey "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint ozon ПолучитьСписокКластеров ^
-              --clientid "***" ^
-              --apikey "***"
+            oint ozon GetClustersList ^
+             --clientid "***" ^
+             --apikey "***"
         ```
     </TabItem>
 </Tabs>
 
 
-```json title="Результат"
+```json title="Result"
 {
  "clusters": [
   {
