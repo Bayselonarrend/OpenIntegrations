@@ -1,7 +1,7 @@
 ﻿    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appHoWksfa7zimnal";
-    Table = "tblQJewPd43rzDI9q";
-    Field = "fldHQtgv522r2DvOu";
+    Base  = "appAwcuIOmJkBUcul";
+    Table = "tblvHEqIFeDKwWUe9";
+    Field = "fldAuAk3OV5p2J12Y";
 
     Name        = String(New UUID) + "(change.)";
     Description = "New description";
