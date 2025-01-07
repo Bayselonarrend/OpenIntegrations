@@ -497,7 +497,7 @@ Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
 
 EndProcedure
 
-Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
 
     If OPI_Tools.IsWindows() Then
 
@@ -529,7 +529,9 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     Result = ReadCLIResponse(ResultFile);
 
-    WriteCLICall(Library, Method, Options);
+    If Record Then
+        WriteCLICall(Library, Method, Options);
+    EndIf;
 
     Try
         DeleteFiles(ResultFile);
