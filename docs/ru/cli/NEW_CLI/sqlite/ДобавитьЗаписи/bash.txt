@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ДобавитьЗаписи \
-  --table "test1" \
-  --rows "{'[Непонятная колонка]':'yo'}" \
-  --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
+  --table "test" \
+  --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-01-07T20:11:45.5621304Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\elz24cbxbeo.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-01-07T20:11:45.5631304Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\elz24cbxbeo.png'}}]" \
+  --db "C:\Users\Administrator\AppData\Local\Temp\awvkzpuo1hu.sqlite"

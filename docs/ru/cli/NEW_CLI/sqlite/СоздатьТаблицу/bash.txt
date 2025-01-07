@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint sqlite СоздатьТаблицу \
-  --table "test1" \
-  --cols "{'id':'INTEGER PRIMARY KEY','[Непонятная колонка]':'TEXT'}" \
-  --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
+  --table "test" \
+  --cols "{'id':'INTEGER PRIMARY KEY','name':'TEXT','age':'INTEGER','salary':'REAL','is_active':'BOOLEAN','created_at':'DATETIME','data':'BLOB'}" \
+  --db "C:\Users\Administrator\AppData\Local\Temp\awvkzpuo1hu.sqlite"

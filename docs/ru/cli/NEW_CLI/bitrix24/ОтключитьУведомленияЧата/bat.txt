@@ -1,4 +1,4 @@
 oint bitrix24 ОтключитьУведомленияЧата ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --chat 1776 ^
+  --chat 1788 ^
   --token "***"
