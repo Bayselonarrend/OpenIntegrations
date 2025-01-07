@@ -47,7 +47,7 @@ The standard escape sequences `\n`, `\r`, `\v`, and `\f` may be used in the pass
 + File paths, if a file on that path exists
 + Standard `--out` parameter
 
-In order to avoid esapce sequence conversions where they should not be, it is necessary to escape them with a second character `\` (e.g., `\\n`).
+In order to avoid esapce sequence conversions where they should not be, it is necessary to escape them with a second character `\` (e.g., `\n`).
 
 <hr/>
 
