@@ -1,5 +1,5 @@
 ﻿    Path  = "/New/pic.png";
-    Token = "sl.CDM2TsVftn5aH3_nUX4tbw3JdByXhgO0FyL2ev0gBXGOhHv5k_uHgwYs0N_qMH4TQLm-nWvPGq...";
+    Token = "sl.CEDGlKWN_ZDFEtmK9tny8Rxbmib5H8Pe02nRPwYlcKt-wgv_vaOyaasY534_erb80ReU6XyQqt...";
     Image = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");

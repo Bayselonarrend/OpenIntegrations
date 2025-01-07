@@ -1,11 +1,11 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    TaskID    = "4318";
-    CommentID = "10238";
+    TaskID    = "4458";
+    CommentID = "10546";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "70f46a67006e9f06006b12e400000001000...";
-    CommentID = "10240";
+    Token     = "1f4e7c67006e9f06006b12e400000001000...";
+    CommentID = "10548";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);

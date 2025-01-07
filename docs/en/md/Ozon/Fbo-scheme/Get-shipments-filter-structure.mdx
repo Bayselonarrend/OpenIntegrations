@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 8
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get shipments filter structure
+ Returns the filter structure for the GetFBOShipmentsList method
+
+
+
+`Function GetShipmentsFilterStructure(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure Of KeyAndValue - Filter structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_Ozon.GetShipmentsFilterStructure();
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon GetShipmentsFilterStructure \
+             --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon GetShipmentsFilterStructure ^
+             --empty false
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "since": "Period start in ISO format",
+ "status": "Shipment status",
+ "to": "Period end in ISO format"
+}
+```
