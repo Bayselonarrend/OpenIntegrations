@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    ChatID = "1726";
+    ChatID = "1782";
 
     Result = OPI_Bitrix24.DisableChatNotifications(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "70f46a67006e9f06006b12e400000001000...";
-    ChatID = "1728";
+    Token  = "1f4e7c67006e9f06006b12e400000001000...";
+    ChatID = "1784";
 
     Result = OPI_Bitrix24.DisableChatNotifications(URL, ChatID, Token);

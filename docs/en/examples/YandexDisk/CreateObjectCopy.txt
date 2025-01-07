@@ -1,5 +1,5 @@
 ﻿    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Original = "/acb4b279-d885-47a6-b5c8-ef4f0c6709c4.png";
+    Original = "/0af3c199-bc95-4319-8cf4-ba6ad5518719.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);

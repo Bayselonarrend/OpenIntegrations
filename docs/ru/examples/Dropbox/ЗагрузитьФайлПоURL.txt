@@ -1,5 +1,5 @@
 ﻿    Путь  = "/New/url_doc.docx";
-    Токен = "sl.CDM2TsVftn5aH3_nUX4tbw3JdByXhgO0FyL2ev0gBXGOhHv5k_uHgwYs0N_qMH4TQLm-nWvPGq...";
+    Токен = "sl.CEDGlKWN_ZDFEtmK9tny8Rxbmib5H8Pe02nRPwYlcKt-wgv_vaOyaasY534_erb80ReU6XyQqt...";
     URL   = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
