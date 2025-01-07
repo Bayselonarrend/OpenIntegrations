@@ -2233,6 +2233,8 @@ Procedure CLI_SQLL_ORM() Export
     CLI_SQLite_GetRecords(TestParameters);
     CLI_SQLite_UpdateRecords(TestParameters);
     CLI_SQLite_DeletePosts(TestParameters);
+    CLI_SQLite_GetTableInformation(TestParameters);
+    CLI_SQLite_GetRecordsFilterStrucutre(TestParameters);
 
     Try
        DeleteFiles(Base);
@@ -18233,6 +18235,24 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_SQLite_GetTableInformation(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
 Procedure CLI_SQLite_CreateTable(FunctionParameters)
 
     Base  = FunctionParameters["SQLite_DB"];
@@ -18266,7 +18286,7 @@ Procedure CLI_SQLite_CreateTable(FunctionParameters)
     Options.Insert("cols" , ColoumnsMap);
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18323,7 +18343,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
     Options.Insert("trn"  , False);
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (no tr)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18336,7 +18356,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
     Options.Insert("rows" , DataArray);
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteError(Result);
@@ -18347,7 +18367,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
     Options.Insert("trn"  , False);
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error without tr)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteRows(Result, 1);
@@ -18357,7 +18377,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
     Options.Insert("rows" , "not valid json");
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (json error)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteError(Result);
@@ -18370,7 +18390,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
     Options.Insert("rows" , RowMap);
     Options.Insert("db"   , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18433,7 +18453,7 @@ Procedure CLI_SQLite_GetRecords(FunctionParameters)
     Options.Insert("fields", "['name','age','salary','is_active','created_at']");
     Options.Insert("db"    , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (no params)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18447,7 +18467,7 @@ Procedure CLI_SQLite_GetRecords(FunctionParameters)
     Options.Insert("filter", Filters);
     Options.Insert("db"    , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (error)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteError(Result);
@@ -18456,7 +18476,7 @@ Procedure CLI_SQLite_GetRecords(FunctionParameters)
     Options.Insert("table" , "test1");
     Options.Insert("db"    , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (obscure column)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
@@ -18551,6 +18571,29 @@ Procedure CLI_SQLite_DeletePosts(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteNoRows(Check);
+
+EndProcedure
+
+Procedure CLI_SQLite_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "SQLite");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "SQLite");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 

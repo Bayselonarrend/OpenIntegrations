@@ -1,0 +1,2 @@
+﻿    Connection = OPI_SQLite.CreateConnection();
+    Result     = OPI_SQLite.IsConnector(Connection);
