@@ -2,4 +2,4 @@ oint sqlite ПолучитьЗаписи \
   --table "test" \
   --fields "['name','salary']" \
   --filter "[{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}]" \
-  --db "C:\Users\Administrator\AppData\Local\Temp\3bl2iov32uf.sqlite"
+  --db "C:\Users\Administrator\AppData\Local\Temp\awvkzpuo1hu.sqlite"
