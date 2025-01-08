@@ -2242,6 +2242,8 @@ Procedure SQLL_ORM() Export
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeletePosts(TestParameters);
     SQLite_GetTableInformation(TestParameters);
+    SQLite_ClearTable(TestParameters);
+    SQLite_DeleteTable(TestParameters);
     SQLite_GetRecordsFilterStrucutre(TestParameters);
 
     Try
@@ -16521,6 +16523,49 @@ Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure SQLite_DeleteTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Result = OPI_SQLite.DeleteTable(Table, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+Procedure SQLite_ClearTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Result = OPI_SQLite.ClearTable(Table, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 7);
+
+    Check = OPI_SQLite.GetRecords(Table, , , , , Base);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
 
 EndProcedure
 
