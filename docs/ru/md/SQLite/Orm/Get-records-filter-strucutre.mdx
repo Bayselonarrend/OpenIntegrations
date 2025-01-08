@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 9
 ---
 
 import Tabs from '@theme/Tabs';
@@ -33,6 +33,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite ПолучитьСтруктуруФильтраЗаписей \
+              --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite ПолучитьСтруктуруФильтраЗаписей ^
+              --empty false
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "field": "<имя поля для отбора>",
+ "type": "<тип сравнения>",
+ "value": "<значение для сравнения>",
+ "union": "<связь со следующим условием: AND, OR и пр.>",
+ "raw": "<истина - значение будет вставлено текстом, как есть, ложь - через параметр>"
+}
+```

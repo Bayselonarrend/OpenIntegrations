@@ -26,13 +26,93 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_C3DA_ad.sqlite";
+    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_52E1_34.sqlite";
     Таблица = "test";
 
     Результат = OPI_SQLite.ПолучитьИнформациюОТаблице(Таблица, База);
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite ПолучитьИнформациюОТаблице \
+              --table "test" \
+              --db "C:\Users\Administrator\AppData\Local\Temp\awvkzpuo1hu.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite ПолучитьИнформациюОТаблице ^
+              --table "test" ^
+              --db "C:\Users\Administrator\AppData\Local\Temp\awvkzpuo1hu.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "data": [
+  {
+   "cid": 0,
+   "dflt_value": null,
+   "name": "id",
+   "notnull": 0,
+   "pk": 1,
+   "type": "INTEGER"
+  },
+  {
+   "cid": 1,
+   "dflt_value": null,
+   "name": "name",
+   "notnull": 0,
+   "pk": 0,
+   "type": "TEXT"
+  },
+  {
+   "cid": 2,
+   "dflt_value": null,
+   "name": "age",
+   "notnull": 0,
+   "pk": 0,
+   "type": "INTEGER"
+  },
+  {
+   "cid": 3,
+   "dflt_value": null,
+   "name": "salary",
+   "notnull": 0,
+   "pk": 0,
+   "type": "REAL"
+  },
+  {
+   "cid": 4,
+   "dflt_value": null,
+   "name": "is_active",
+   "notnull": 0,
+   "pk": 0,
+   "type": "BOOLEAN"
+  },
+  {
+   "cid": 5,
+   "dflt_value": null,
+   "name": "created_at",
+   "notnull": 0,
+   "pk": 0,
+   "type": "DATETIME"
+  },
+  {
+   "cid": 6,
+   "dflt_value": null,
+   "name": "data",
+   "notnull": 0,
+   "pk": 0,
+   "type": "BLOB"
+  }
+ ],
+ "result": true
+}
+```
