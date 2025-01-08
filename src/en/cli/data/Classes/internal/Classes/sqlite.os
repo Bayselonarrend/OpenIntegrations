@@ -280,6 +280,48 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "DeleteTable";
+    NewLine.МетодПоиска = "DELETETABLE";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Deletes a table from the database";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "DeleteTable";
+    NewLine.МетодПоиска = "DELETETABLE";
+    NewLine.Параметр    = "--db";
+    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "ClearTable";
+    NewLine.МетодПоиска = "CLEARTABLE";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Clears the database table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "ClearTable";
+    NewLine.МетодПоиска = "CLEARTABLE";
+    NewLine.Параметр    = "--db";
+    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
     NewLine.Метод       = "GetRecordsFilterStrucutre";
     NewLine.МетодПоиска = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Параметр    = "--empty";
