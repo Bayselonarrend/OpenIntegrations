@@ -218,6 +218,32 @@ Function DeletePosts(Val Module, Val Table, Val Filters = "", Val Connection = "
 
 EndFunction
 
+Function DeleteTable(Val Module, Val Table, Val Connection = "") Export
+
+    Scheme = NewSQLScheme("DROP");
+
+    SetTableName(Scheme, Table);
+
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+
+    Return Result;
+
+EndFunction
+
+Function ClearTable(Val Module, Val Table, Val Connection = "") Export
+
+    Scheme = NewSQLScheme("TRUNCATE");
+
+    SetTableName(Scheme, Table);
+
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+
+    Return Result;
+
+EndFunction
+
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
 
     FilterStructure = New Structure;
@@ -242,6 +268,49 @@ EndFunction
 #Region Private
 
 #Region Scheme
+
+Function NewSQLScheme(Val Action)
+
+    OPI_TypeConversion.GetLine(Action);
+
+    Action = Upper(Action);
+
+    If Action = "SELECT" Then
+
+        Scheme = EmptySchemeSelect();
+
+    ElsIf Action = "INSERT" Then
+
+        Scheme = EmptySchemeInsert();
+
+    ElsIf Action = "UPDATE" Then
+
+        Scheme = EmptySchemeUpdate();
+
+    ElsIf Action = "DELETE" Then
+
+        Scheme = EmptySchemeDelete();
+
+    ElsIf Action = "CREATE" Then
+
+        Scheme = EmptySchemeCreate();
+
+    ElsIf Action = "DROP" Then
+
+        Scheme = EmptySchemeDrop();
+
+    ElsIf Action = "TRUNCATE" Then
+
+        Scheme = EmptySchemeTruncate();
+    Else
+
+        Scheme = New Structure;
+
+    EndIf;
+
+    Return Scheme;
+
+EndFunction
 
 Function EmptySchemeSelect()
 
@@ -305,9 +374,80 @@ Function EmptySchemeCreate()
 
 EndFunction
 
+Function EmptySchemeDrop()
+
+    Scheme = New Structure("type", "DROP");
+
+    Scheme.Insert("table" , "");
+
+    Return Scheme;
+
+EndFunction
+
+Function EmptySchemeTruncate()
+
+    Scheme = New Structure("type", "TRUNCATE");
+
+    Scheme.Insert("table" , "");
+
+    Return Scheme;
+
+EndFunction
+
 #EndRegion
 
 #Region Processors
+
+Function FormSQLText(Val Scheme)
+
+    ErrorText = "The value passed is not a valid SQL query schema";
+    OPI_TypeConversion.GetKeyValueCollection(Scheme, ErrorText);
+
+    SchemeType = "";
+
+    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
+        Raise ErrorText;
+    EndIf;
+
+    SchemeType = Upper(SchemeType);
+
+    If SchemeType = "SELECT" Then
+
+        QueryText = FormTextSelect(Scheme);
+
+    ElsIf SchemeType = "INSERT" Then
+
+        QueryText = FormTextInsert(Scheme);
+
+    ElsIf SchemeType = "UPDATE" Then
+
+        QueryText = FormTextUpdate(Scheme);
+
+    ElsIf SchemeType = "DELETE" Then
+
+        QueryText = FormTextDelete(Scheme);
+
+    ElsIf SchemeType = "CREATE" Then
+
+        QueryText = FormTextCreate(Scheme);
+
+    ElsIf SchemeType = "DROP" Then
+
+        QueryText = FormTextDrop(Scheme);
+
+    ElsIf SchemeType = "TRUNCATE" Then
+
+        QueryText = FormTextTruncate(Scheme);
+
+    Else
+
+        QueryText = "";
+
+    EndIf;
+
+    Return QueryText;
+
+EndFunction
 
 Function FormTextSelect(Val Scheme)
 
@@ -424,86 +564,57 @@ Function FormTextCreate(Val Scheme)
 
 EndFunction
 
+Function FormTextDrop(Val Scheme)
+
+    CheckSchemeRequiredFields(Scheme, "table");
+
+    Table = Scheme["table"];
+
+    SQLTemplate = "DROP TABLE %1";
+
+    TextSQL = StrTemplate(SQLTemplate, Table);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextTruncate(Val Scheme)
+
+    CheckSchemeRequiredFields(Scheme, "table");
+
+    Table = Scheme["table"];
+
+    SQLTemplate = "TRUNCATE TABLE %1";
+
+    TextSQL = StrTemplate(SQLTemplate, Table);
+
+    Return TextSQL;
+
+EndFunction
+
 #EndRegion
 
 #Region Auxiliary
 
-Function NewSQLScheme(Val Action)
+Function AddRow(Val Module, Val Table, Val Record, Val Connection)
 
-    OPI_TypeConversion.GetLine(Action);
+    FieldArray  = New Array;
+    ValuesArray = New Array;
 
-    Action = Upper(Action);
+    Scheme = NewSQLScheme("INSERT");
+    SetTableName(Scheme, Table);
 
-    If Action = "SELECT" Then
+    SplitDataCollection(Record, FieldArray, ValuesArray);
 
-        Scheme = EmptySchemeSelect();
+    For Each Field In FieldArray Do
+        AddField(Scheme, Field);
+    EndDo;
 
-    ElsIf Action = "INSERT" Then
+    Request = FormSQLText(Scheme);
 
-        Scheme = EmptySchemeInsert();
+    Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
 
-    ElsIf Action = "UPDATE" Then
-
-        Scheme = EmptySchemeUpdate();
-
-    ElsIf Action = "DELETE" Then
-
-        Scheme = EmptySchemeDelete();
-
-    ElsIf Action = "CREATE" Then
-
-        Scheme = EmptySchemeCreate();
-
-    Else
-
-        Scheme = New Structure;
-
-    EndIf;
-
-    Return Scheme;
-
-EndFunction
-
-Function FormSQLText(Val Scheme)
-
-    ErrorText = "The value passed is not a valid SQL query schema";
-    OPI_TypeConversion.GetKeyValueCollection(Scheme, ErrorText);
-
-    SchemeType = "";
-
-    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
-        Raise ErrorText;
-    EndIf;
-
-    SchemeType = Upper(SchemeType);
-
-    If SchemeType = "SELECT" Then
-
-        QueryText = FormTextSelect(Scheme);
-
-    ElsIf SchemeType = "INSERT" Then
-
-        QueryText = FormTextInsert(Scheme);
-
-    ElsIf SchemeType = "UPDATE" Then
-
-        QueryText = FormTextUpdate(Scheme);
-
-    ElsIf SchemeType = "DELETE" Then
-
-        QueryText = FormTextDelete(Scheme);
-
-    ElsIf SchemeType = "CREATE" Then
-
-        QueryText = FormTextCreate(Scheme);
-
-    Else
-
-        QueryText = "";
-
-    EndIf;
-
-    Return QueryText;
+    Return Result;
 
 EndFunction
 
@@ -595,28 +706,6 @@ Function FormCountText(Val Count)
     CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
 
     Return CountText;
-
-EndFunction
-
-Function AddRow(Val Module, Val Table, Val Record, Val Connection)
-
-    FieldArray  = New Array;
-    ValuesArray = New Array;
-
-    Scheme = NewSQLScheme("INSERT");
-    SetTableName(Scheme, Table);
-
-    SplitDataCollection(Record, FieldArray, ValuesArray);
-
-    For Each Field In FieldArray Do
-        AddField(Scheme, Field);
-    EndDo;
-
-    Request = FormSQLText(Scheme);
-
-    Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
-
-    Return Result;
 
 EndFunction
 

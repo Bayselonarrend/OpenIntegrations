@@ -280,6 +280,38 @@ Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
 
 EndFunction
 
+// Delete table
+// Deletes a table from the database
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function DeleteTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
+    Return Result;
+
+EndFunction
+
+// Clear table
+// Clears the database table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function ClearTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, , Connection);
+    Return Result;
+
+EndFunction
+
 // Get records filter strucutre
 // Gets the template structure for filtering records in ORM queries
 //
