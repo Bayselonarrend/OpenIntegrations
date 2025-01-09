@@ -2234,6 +2234,8 @@ Procedure CLI_SQLL_ORM() Export
     CLI_SQLite_UpdateRecords(TestParameters);
     CLI_SQLite_DeletePosts(TestParameters);
     CLI_SQLite_GetTableInformation(TestParameters);
+    CLI_SQLite_ClearTable(TestParameters);
+    CLI_SQLite_DeleteTable(TestParameters);
     CLI_SQLite_GetRecordsFilterStrucutre(TestParameters);
 
     Try
@@ -18594,6 +18596,57 @@ Procedure CLI_SQLite_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure CLI_SQLite_DeleteTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTable", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+Procedure CLI_SQLite_ClearTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ClearTable", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 7);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
 
 EndProcedure
 
