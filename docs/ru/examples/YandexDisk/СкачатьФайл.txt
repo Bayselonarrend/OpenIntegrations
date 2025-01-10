@@ -1,4 +1,4 @@
 ﻿    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/da70064b-fb3d-4ada-8ea4-65075cbb598a.png";
+    Путь  = "/84a55bd2-ecc1-4ac7-875d-d13d196d2caa.png";
 
     Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);

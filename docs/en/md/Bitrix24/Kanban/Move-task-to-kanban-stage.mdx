@@ -34,17 +34,17 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    TaskID  = "4460";
-    StageID = "1642";
+    TaskID  = "4490";
+    StageID = "1654";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
-    StageID = "1644";
+    StageID = "1656";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1f4e7c67006e9f06006b12e400000001000...";
+    Token = "762f8067006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
 ```
@@ -56,8 +56,8 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 MoveTaskToKanbanStage \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "4360" \
-             --stage 1604 \
+             --task "4530" \
+             --stage 1672 \
              --token "***"
         ```
     </TabItem>
@@ -66,8 +66,8 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 MoveTaskToKanbanStage ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "4360" ^
-             --stage 1604 ^
+             --task "4530" ^
+             --stage 1672 ^
              --token "***"
         ```
     </TabItem>
