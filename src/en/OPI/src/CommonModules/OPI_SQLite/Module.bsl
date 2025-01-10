@@ -336,6 +336,14 @@ EndFunction
 
 #EndRegion
 
+#Region Internal
+
+Function ConnectorName() Export
+    Return "OPI_SQLite";
+EndFunction
+
+#EndRegion
+
 #Region Private
 
 Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
