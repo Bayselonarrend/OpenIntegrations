@@ -1,6 +1,6 @@
 oint bitrix24 CreateTasksDependencies \
  --url "b24-ar17wx.bitrix24.by" \
- --taskfrom "4356" \
- --taskto "4354" \
+ --taskfrom "4526" \
+ --taskto "4524" \
  --linktype 2 \
  --token "***"

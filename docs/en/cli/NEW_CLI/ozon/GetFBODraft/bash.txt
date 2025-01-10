@@ -1,4 +1,4 @@
 oint ozon GetFBODraft \
  --clientid "***" \
  --apikey "***" \
- --oper "0193fce0-b0a3-71ab-8cb6-864a77ae3d46"
+ --oper "01944f6c-b0ce-76c7-927a-3750c3e02d5e"
