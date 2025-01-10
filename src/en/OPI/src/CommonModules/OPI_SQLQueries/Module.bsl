@@ -71,9 +71,9 @@ Function AddRecords(Val Module
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
 
-    Connection = Module.CreateConnection(Connection);
+    Connection = CreateConnectionInsideModule(Module.ConnectorName(), Connection);
 
-    If Not Module.IsConnector(Connection) Then
+    If Not IsAddIn(Connection) Then
         Return Connection;
     EndIf;
 
@@ -706,6 +706,48 @@ Function FormCountText(Val Count)
     CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
 
     Return CountText;
+
+EndFunction
+
+Function CreateConnectionInsideModule(Val Connector, Val Base)
+
+    If IsAddIn(Base) Then
+        Return Base;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Base);
+    OPI_Tools.RestoreEscapeSequences(Base);
+
+    Connector = AttachAddInOnServer("OPI_SQLite");
+
+    Connector.Database = Base;
+
+    Result = Connector.Connect();
+    Result = OPI_Tools.JsonToStructure(Result, False);
+
+    Return ?(Result["result"], Connector, Result);
+
+EndFunction
+
+Function IsAddIn(Val Value)
+
+    ValeType = String(TypeOf(Value));
+    Return StrStartsWith(ValeType, "AddIn.");
+
+EndFunction
+
+Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
+
+    If OPI_Tools.IsOneScript() Then
+        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
+    Else
+        TemplateName = "CommonTemplate." + AddInName;
+    EndIf;
+
+    AttachAddIn(TemplateName, AddInName, AddInType.Native);
+
+    AddIn = New ("AddIn." + AddInName + "." + Class);
+    Return AddIn;
 
 EndFunction
 
