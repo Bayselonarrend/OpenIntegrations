@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint vk AddProductToCollection ^
- --sel 134 ^
- --items 10363950 ^
+ --sel 137 ^
+ --items 10420589 ^
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
