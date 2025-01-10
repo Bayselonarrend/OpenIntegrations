@@ -16204,9 +16204,11 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
+    Blob                              = Result["data"][0]["data"]["blob"]; // SKIP
+    Result["data"][0]["data"]["blob"] = "Base64"; // SKIP
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "SQLite"); // SKIP
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
-    OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size()); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
 
     // Transaction
 
