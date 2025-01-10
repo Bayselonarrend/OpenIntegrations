@@ -2,4 +2,4 @@
 
 oint metrika ПолучитьСписокСчетчиков \
   --token "***" \
-  --filter "{'counter_ids':['99475636']}"
+  --filter "{'counter_ids':['99480166']}"
