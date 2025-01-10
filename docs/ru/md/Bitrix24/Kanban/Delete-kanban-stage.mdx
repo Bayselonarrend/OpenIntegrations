@@ -32,16 +32,16 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDСтадии = "1642";
+    IDСтадии = "1654";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
 
     Результат = OPI_Bitrix24.УдалитьСтадиюКанбана(URL, IDСтадии, Истина);
 
-    IDСтадии = "1644";
+    IDСтадии = "1656";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "1f4e7c67006e9f06006b12e400000001000...";
+    Токен = "762f8067006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.УдалитьСтадиюКанбана(URL, IDСтадии, , Токен);
 ```
@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьСтадиюКанбана \
               --url "b24-ar17wx.bitrix24.by" \
-              --stage 1648 \
+              --stage 1668 \
               --token "***"
         ```
     </TabItem>
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьСтадиюКанбана ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --stage 1648 ^
+              --stage 1668 ^
               --token "***"
         ```
     </TabItem>

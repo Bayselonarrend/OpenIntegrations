@@ -33,12 +33,12 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    FolderID = "24462";
+    FolderID = "24642";
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1f4e7c67006e9f06006b12e400000001000...";
+    Token = "762f8067006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, , Token);
 ```
@@ -50,7 +50,7 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 GetFolderItems \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 23862 \
+             --folderid 24882 \
              --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 GetFolderItems ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 23862 ^
+             --folderid 24882 ^
              --token "***"
         ```
     </TabItem>
