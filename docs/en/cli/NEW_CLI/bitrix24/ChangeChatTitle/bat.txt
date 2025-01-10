@@ -1,5 +1,5 @@
 oint bitrix24 ChangeChatTitle ^
  --url "b24-ar17wx.bitrix24.by" ^
- --chat 1744 ^
+ --chat 1812 ^
  --title "Another title" ^
  --token "***"
