@@ -1,4 +1,4 @@
 oint vkteams ПолучитьСобытия \
   --token "***" \
-  --last 347 \
+  --last 351 \
   --timeout 3
