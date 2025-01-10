@@ -1,4 +1,4 @@
-﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_52E1_34.sqlite";
+﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_FC7F_2d3.sqlite";
     Таблица = "test";
 
     Поля = Новый Массив;

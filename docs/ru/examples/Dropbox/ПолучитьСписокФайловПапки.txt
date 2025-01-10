@@ -1,4 +1,4 @@
 ﻿    Путь  = "/New";
-    Токен = "sl.CEDGlKWN_ZDFEtmK9tny8Rxbmib5H8Pe02nRPwYlcKt-wgv_vaOyaasY534_erb80ReU6XyQqt...";
+    Токен = "sl.CENcUg8FL0Q5hfz352and1hxlFT0GdEm_jiyXNVPe-EIyEBBNRZPtN3saJfh5Rihktj7KHVQw3...";
 
     Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
