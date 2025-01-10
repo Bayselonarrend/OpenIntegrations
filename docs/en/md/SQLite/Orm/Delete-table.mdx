@@ -26,13 +26,35 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_52E1_34.sqlite";
+    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_FC7F_2d3.sqlite";
     Table = "test";
 
     Result = OPI_SQLite.DeleteTable(Table, Base);
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite DeleteTable \
+             --table "test" \
+             --db "C:\Users\Administrator\AppData\Local\Temp\3pbdgv5r4nm.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite DeleteTable ^
+             --table "test" ^
+             --db "C:\Users\Administrator\AppData\Local\Temp\3pbdgv5r4nm.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```
