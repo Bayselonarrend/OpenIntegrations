@@ -1,4 +1,4 @@
-﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_FC7F_2d3.sqlite";
+﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_A79F_23.sqlite";
     Таблица = "test";
 
     Результат = OPI_SQLite.ПолучитьИнформациюОТаблице(Таблица, База);
