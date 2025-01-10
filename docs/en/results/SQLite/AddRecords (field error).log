@@ -1,0 +1,13 @@
+﻿ {
+ "rollback": {
+  "result": true
+ },
+ "result": false,
+ "rows": 0,
+ "errors": [
+  {
+   "row": 2,
+   "error": "table test has no column named error"
+  }
+ ]
+}

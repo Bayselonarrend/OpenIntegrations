@@ -1,0 +1,17 @@
+﻿ {
+ "data": [
+  {
+   "name": "Vitaly A.",
+   "salary": 999999
+  },
+  {
+   "name": "Vitaly A.",
+   "salary": 999999
+  },
+  {
+   "name": "Vitaly A.",
+   "salary": 999999
+  }
+ ],
+ "result": true
+}
