@@ -18220,7 +18220,11 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , TFN);
+    Options = New Structure;
+    Options.Insert("sql", StrReplace(QueryText, Chars.LF, ""));
+    Options.Insert("db" , TFN);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Select, code)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
