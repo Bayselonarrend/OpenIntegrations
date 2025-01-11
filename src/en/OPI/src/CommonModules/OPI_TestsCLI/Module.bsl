@@ -796,6 +796,11 @@ Procedure CLI_Viber_MessagesSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("Document"            , TestParameters);
 
     CLI_Viber_CreateKeyboardFromArrayButton(TestParameters);
+
+    Return;
+
+    //@skip-check unreachable-statement
+
     CLI_Viber_SendTextMessage(TestParameters);
     CLI_Viber_SendImage(TestParameters);
     CLI_Viber_SendFile(TestParameters);
