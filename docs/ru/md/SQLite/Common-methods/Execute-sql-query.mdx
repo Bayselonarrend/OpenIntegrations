@@ -102,18 +102,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint sqlite ВыполнитьЗапросSQL \
-              --sql "INSERT INTO test_table (name, age, salary, is_active, created_at, data)VALUES (?1, ?2, ?3, ?4, ?5, ?6);" \
-              --params "['Vitaly',25,1000.12,true,'2025-01-10T16:20:27.7277164Z',{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\2lqf23wuwtz.png'}]" \
-              --db "C:\Users\Administrator\AppData\Local\Temp\hhbzsqzvtsy.sqlite"
+              --sql "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;" \
+              --db "C:\Users\Administrator\AppData\Local\Temp\4h15jqhfsmb.sqlite"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint sqlite ВыполнитьЗапросSQL ^
-              --sql "INSERT INTO test_table (name, age, salary, is_active, created_at, data)VALUES (?1, ?2, ?3, ?4, ?5, ?6);" ^
-              --params "['Vitaly',25,1000.12,true,'2025-01-10T16:20:27.7277164Z',{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\2lqf23wuwtz.png'}]" ^
-              --db "C:\Users\Administrator\AppData\Local\Temp\hhbzsqzvtsy.sqlite"
+              --sql "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;" ^
+              --db "C:\Users\Administrator\AppData\Local\Temp\4h15jqhfsmb.sqlite"
         ```
     </TabItem>
 </Tabs>

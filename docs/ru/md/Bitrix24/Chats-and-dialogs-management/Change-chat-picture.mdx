@@ -35,15 +35,15 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ps5...";
-    IDЧата = "1794";
+    IDЧата = "1846";
 
     Картинка = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "762f8067006e9f06006b12e400000001000...";
-    IDЧата = "1796";
+    Токен  = "14bb8267006e9f06006b12e400000001000...";
+    IDЧата = "1848";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка, Токен);
 ```
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьКартинкуЧата \
               --url "b24-ar17wx.bitrix24.by" \
-              --chat 1824 \
+              --chat 1840 \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
               --token "***"
         ```
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьКартинкуЧата ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --chat 1824 ^
+              --chat 1840 ^
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
               --token "***"
         ```
