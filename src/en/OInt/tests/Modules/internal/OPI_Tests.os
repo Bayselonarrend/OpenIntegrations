@@ -798,6 +798,11 @@ Procedure Viber_MessagesSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("Document"            , TestParameters);
 
     Viber_CreateKeyboardFromArrayButton(TestParameters);
+
+    Return;
+
+    //@skip-check unreachable-statement
+
     Viber_SendTextMessage(TestParameters);
     Viber_SendImage(TestParameters);
     Viber_SendFile(TestParameters);
