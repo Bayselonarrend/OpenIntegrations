@@ -1,4 +1,4 @@
-﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_A79F_23.sqlite";
+﻿    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_56EB_190.sqlite";
     Таблица = "test";
 
     Результат = OPI_SQLite.УдалитьТаблицу(Таблица, База);
