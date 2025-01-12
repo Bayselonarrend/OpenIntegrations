@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_34D_1e.sqlite";
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_E607_1d.sqlite";
     Table = "test";
 
     Result = OPI_SQLite.ClearTable(Table, Base);
