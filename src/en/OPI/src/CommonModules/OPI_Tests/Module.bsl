@@ -2236,10 +2236,24 @@ Procedure SQLL_ORM() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
-    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
+
+    Connection = OPI_SQLite.CreateConnection(Base);
+    TestParameters.Insert("SQLite_DB", Connection);
 
     OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    SQLite_CreateTable(TestParameters);
+    SQLite_AddRecords(TestParameters);
+    SQLite_GetRecords(TestParameters);
+    SQLite_UpdateRecords(TestParameters);
+    SQLite_DeletePosts(TestParameters);
+    SQLite_GetTableInformation(TestParameters);
+    SQLite_ClearTable(TestParameters);
+    SQLite_DeleteTable(TestParameters);
+    SQLite_GetRecordsFilterStrucutre(TestParameters);
+
+    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
+    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
     SQLite_CreateTable(TestParameters);
     SQLite_AddRecords(TestParameters);
@@ -16549,6 +16563,8 @@ Procedure SQLite_DeleteTable(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+    OPI_SQLite.DeleteTable("test1", Base);
 
 EndProcedure
 
