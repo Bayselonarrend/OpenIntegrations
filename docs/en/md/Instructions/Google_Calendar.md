@@ -81,6 +81,10 @@ If you're already using the API to interact with other Google Workspace services
 
 ![BF](../../static/img/Docs/GoogleCalendar/11.png)
 
+:::important
+**The code life time is extremely short.** After receiving it, you need to perform step 3 as quickly as possible. It is best to prepare a data processor with an input field and a button (in 1C), or use the CLI version of OPI for this step. In case of code lifetime expiry before completing step 3, the error `invalid_grant` will occur
+:::
+
 3. Use the obtained code, ClientID, and Client Secret to call the function OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code)
 
 ```json title="Result of the function GetTokenByCode() if converted to JSON"
