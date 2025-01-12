@@ -98,25 +98,22 @@ Function AddRecords(Val Module
 
     For Each Record In DataArray Do
 
-        If Error And Transaction Then
-
-            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
-
-            SuccessCount = 0;
-            ResultStrucutre.Insert("rollback", Rollback);
-            Break;
-
-        EndIf;
-
         Counter = Counter + 1;
         Error   = False;
 
         Try
             OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
         Except
+
             ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
             Error = True;
-            Continue;
+
+            If Transaction Then
+                Break;
+            Else
+                Continue;
+            EndIf;
+
         EndTry;
 
         Result = AddRow(Module, Table, Record, Connection);
@@ -134,10 +131,21 @@ Function AddRecords(Val Module
 
     EndDo;
 
-    If Transaction And Not Error Then
+    If Transaction Then
 
-        Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
-        ResultStrucutre.Insert("commit", Completion);
+        If Error Then
+
+            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
+
+            SuccessCount = 0;
+            ResultStrucutre.Insert("rollback", Rollback);
+
+        Else
+
+            Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
+            ResultStrucutre.Insert("commit", Completion);
+
+        EndIf;
 
     EndIf;
 
