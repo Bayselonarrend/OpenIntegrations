@@ -5791,7 +5791,7 @@
 "ЗагрузитьПоАдресуПолучитьОбъект": "UploadByUrlAndGetObject",
 "Имя бакета для загрузки объекта": "Name of the bucket to put the object",
 "Не удалось записать файл лога!:": "Failed to write log file!:",
-"в виде `{'blob':Base64 строка}`": "as `{'blob':Base64 string}",
+"в виде `{'blob':Base64 строка}`": "as `{'blob':Base64 string}`",
 "Наименование истинного продавца": "Name of the true seller",
 "Телеграм_ИзменитьИмяГлавнойТемы": "TelegramAPI_ChangeMainTopicName",
 "ИнициализироватьЗагрузкуЧастями": "InitPartsUpload",
