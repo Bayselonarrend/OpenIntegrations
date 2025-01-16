@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 15
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Replace message caption
+ Replaces text in a message with media attachments
+
+
+
+`Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Description) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID |
+  | MessageID | --message | String, Number | &#x2714; | ID of message to delete |
+  | Description | --caption | String | &#x2714; | New message description |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [editMessageCaption](https://core.telegram.org/bots/api#editmessagecaption)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    MessageID = "11410";
+
+    Description = "New picture description";
+    Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);
+```
+ 
+
+
+
+

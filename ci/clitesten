@@ -2081,6 +2081,22 @@ def test_telegram(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram DeleteMessage --token "test" --chat "test" --message "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageKeyboard --token "test" --chat "test" --message "test" --keyboard "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageText --token "test" --chat "test" --message "test" --text "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageCaption --token "test" --chat "test" --message "test" --caption "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram FormKeyboardFromButtonArray --buttons "test" --under "test" --column "test" --debug --test '
                }
 
@@ -2106,10 +2122,6 @@ def test_telegram(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram GetParticipantCount --token "test" --chat "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe telegram DeleteMessage --token "test" --chat "test" --message "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
