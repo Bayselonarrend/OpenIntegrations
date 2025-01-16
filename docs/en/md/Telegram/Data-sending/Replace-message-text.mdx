@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 14
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Replace message text
+ Replaces the message text with a new one
+
+
+
+`Function ReplaceMessageText(Val Token, Val ChatID, Val MessageID, Val Text) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID |
+  | MessageID | --message | String, Number | &#x2714; | ID of message to delete |
+  | Text | --text | String | &#x2714; | New message text |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [editMessageText](https://core.telegram.org/bots/api#editmessagetext)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "@testsichee";
+    MessageID = "13750";
+    Text      = "New message text";
+
+    Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);
+```
+ 
+
+
+
+

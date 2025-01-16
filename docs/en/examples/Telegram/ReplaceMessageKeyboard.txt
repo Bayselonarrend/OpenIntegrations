@@ -1,0 +1,12 @@
+﻿    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    MessageID = "11407";
+
+    ButtonArray = New Array;
+    ButtonArray.Add("New button 3");
+    ButtonArray.Add("New button 2");
+    ButtonArray.Add("New button 1");
+
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, False);
+
+    Result = OPI_Telegram.ReplaceMessageKeyboard(Token, ChatID, MessageID, Keyboard);
