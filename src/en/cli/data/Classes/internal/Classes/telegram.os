@@ -756,6 +756,160 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "telegram";
     NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Data sending";
+    NewLine.ОписаниеМетода   = "Delete message from chat or channel";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Target chat ID";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of message to delete";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageKeyboard";
+    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Data sending";
+    NewLine.ОписаниеМетода   = "Replaces the message keyboard with a new one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageKeyboard";
+    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Target chat ID";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageKeyboard";
+    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of message to delete";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageKeyboard";
+    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Параметр    = "--keyboard";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageText";
+    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Data sending";
+    NewLine.ОписаниеМетода   = "Replaces the message text with a new one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageText";
+    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Target chat ID";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageText";
+    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of message to delete";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageText";
+    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "New message text";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageCaption";
+    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Data sending";
+    NewLine.ОписаниеМетода   = "Replaces text in a message with media attachments";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageCaption";
+    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Target chat ID";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageCaption";
+    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of message to delete";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageCaption";
+    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
+    NewLine.Параметр    = "--caption";
+    NewLine.Описание    = "New message description";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
     NewLine.Метод       = "FormKeyboardFromButtonArray";
     NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Параметр    = "--buttons";
@@ -977,37 +1131,6 @@
     NewLine.МетодПоиска = "GETPARTICIPANTCOUNT";
     NewLine.Параметр    = "--chat";
     NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Administration";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Delete message from chat or channel";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Administration";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of message to delete";
     NewLine.Область     = "Administration";
 
 

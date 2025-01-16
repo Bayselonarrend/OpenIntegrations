@@ -824,6 +824,19 @@ Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon) Export
 
 EndProcedure
 
+Procedure Check_TelegramMessageKeyboard(Val Result, Val Keyboard) Export
+
+    MessageKeyboard = Result["result"]["reply_markup"];
+
+    Keyboard_ = OPI_Tools.JsonToStructure(Keyboard);
+    Keyboard_.Delete("rows");
+    Keyboard_ = OPI_Tools.JSONString(Keyboard_);
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(OPI_Tools.JSONString(MessageKeyboard)).Равно(Keyboard_);
+
+EndProcedure
+
 Procedure Check_VKPost(Val Result) Export
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();

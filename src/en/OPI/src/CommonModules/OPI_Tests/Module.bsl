@@ -113,6 +113,8 @@ Procedure TelegramAPI_SendTextMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
 
     Telegram_SendTextMessage(TestParameters);
+    Telegram_ReplaceMessageText(TestParameters);
+    Telegram_ReplaceMessageKeyboard(TestParameters);
     Telegram_FormKeyboardFromButtonArray(TestParameters);
 
 EndProcedure
@@ -127,6 +129,7 @@ Procedure TelegramAPI_SendImage() Export
      OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
 
     Telegram_SendPicture(TestParameters);
+    Telegram_ReplaceMessageCaption(TestParameters);
     Telegram_DownloadFile(TestParameters);
 
 EndProcedure
@@ -2389,29 +2392,36 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     ChannelID = FunctionParameters["Telegram_ChannelID"];
     Text      = FunctionParameters["String"];
 
-    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
+    KeyboardButtonsArray = New Array;
+    KeyboardButtonsArray.Add("Button1");
+    KeyboardButtonsArray.Add("Button2");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Telegram");
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(KeyboardButtonsArray, True);
+    Result   = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Telegram"); // SKIP
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text); // SKIP
+
+    MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]); // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Telegram_MessageID", MessageID); // SKIP
+    OPI_Tools.AddField("Telegram_MessageID", MessageID, "String", FunctionParameters); // SKIP
 
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (channel)");
-
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
 
     MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
     OPI_TestDataRetrieval.WriteParameter("Telegram_ChannelMessageID", MessageID);
+    OPI_Tools.AddField("Telegram_ChannelMessageID", MessageID, "String", FunctionParameters);
 
     Text = "<b>Text html %F0%9F%93%9E 10%</b>";
 
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text, , "HTML");
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (HTML)");
-
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     Text = "%F0%9F%A4%BC";
@@ -2419,7 +2429,6 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (emoji)");
-
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     Text = "Text %F0%9F%A5%9D and emoji \(10%\)";
@@ -2427,7 +2436,12 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text, , "MarkdownV2");
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (text and emoji)");
+    OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
+    Keyboard = OPI_Tools.JsonToStructure(Keyboard, False);
+    Result   = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (keyboard structure)", "Telegram");
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     OPI_Tools.Pause(5);
@@ -2465,9 +2479,12 @@ Procedure Telegram_SendPicture(FunctionParameters)
 
     Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendImage", "Telegram");
-
+    OPI_TestDataRetrieval.WriteLog(Result, "SendImage", "Telegram"); // SKIP
     OPI_TestDataRetrieval.Check_TelegramImage(Result, Text); // SKIP
+
+    MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]); // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Telegram_PicMessageID", MessageID); // SKIP
+    OPI_Tools.AddField("Telegram_PicMessageID", MessageID, "String", FunctionParameters); // SKIP
 
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
 
@@ -3180,6 +3197,60 @@ Procedure Telegram_DeleteMessage(FunctionParameters)
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Telegram_ReplaceMessageText(FunctionParameters)
+
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+    Text      = "New message text";
+
+    Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReplaceMessageText", "Telegram");
+    OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
+
+EndProcedure
+
+Procedure Telegram_ReplaceMessageKeyboard(FunctionParameters)
+
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    MessageID = FunctionParameters["Telegram_MessageID"];
+
+    ButtonArray = New Array;
+    ButtonArray.Add("New button 3");
+    ButtonArray.Add("New button 2");
+    ButtonArray.Add("New button 1");
+
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, False);
+
+    Result = OPI_Telegram.ReplaceMessageKeyboard(Token, ChatID, MessageID, Keyboard);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReplaceMessageKeyboard", "Telegram");
+    OPI_TestDataRetrieval.Check_TelegramMessageKeyboard(Result, Keyboard);
+
+EndProcedure
+
+Procedure Telegram_ReplaceMessageCaption(FunctionParameters)
+
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    MessageID = FunctionParameters["Telegram_PicMessageID"];
+
+    Description = "New picture description";
+    Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReplaceMessageCaption", "Telegram");
+    OPI_TestDataRetrieval.Check_TelegramImage(Result, Description);
 
 EndProcedure
 

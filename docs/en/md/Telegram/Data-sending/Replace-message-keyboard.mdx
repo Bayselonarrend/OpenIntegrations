@@ -1,0 +1,52 @@
+﻿---
+sidebar_position: 13
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Replace message keyboard
+ Replaces the message keyboard with a new one
+
+
+
+`Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboard) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID |
+  | MessageID | --message | String, Number | &#x2714; | ID of message to delete |
+  | Keyboard | --keyboard | String, Structure Of KeyAndValue | &#x2714; | Keyboard. See FormKeyboardFromButtonArray |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [editMessageReplyMarkup](https://core.telegram.org/bots/api#editmessagereplymarkup)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    MessageID = "11407";
+
+    ButtonArray = New Array;
+    ButtonArray.Add("New button 3");
+    ButtonArray.Add("New button 2");
+    ButtonArray.Add("New button 1");
+
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, False);
+
+    Result = OPI_Telegram.ReplaceMessageKeyboard(Token, ChatID, MessageID, Keyboard);
+```
+ 
+
+
+
+

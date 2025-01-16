@@ -3,6 +3,11 @@
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
 
-    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
+    KeyboardButtonsArray = New Array;
+    KeyboardButtonsArray.Add("Button1");
+    KeyboardButtonsArray.Add("Button2");
+
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(KeyboardButtonsArray, True);
+    Result   = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
 
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
