@@ -1,0 +1,40 @@
+﻿    {
+ "ok": true,
+ "result": {
+  "message_id": 11411,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1737051864,
+  "edit_date": 1737051870,
+  "text": "Строковое значение",
+  "reply_markup": {
+   "inline_keyboard": [
+    [
+     {
+      "text": "Новая кнопка 1",
+      "callback_data": "Новая кнопка 1"
+     },
+     {
+      "text": "Новая кнопка 2",
+      "callback_data": "Новая кнопка 2"
+     },
+     {
+      "text": "Новая кнопка 3",
+      "callback_data": "Новая кнопка 3"
+     }
+    ]
+   ]
+  }
+ }
+}
