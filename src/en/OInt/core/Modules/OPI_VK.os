@@ -140,21 +140,21 @@ Function CreateCompositePost(Val Text
     , Val LinkUnderPost = ""
     , Val Parameters = "") Export
 
-    OPI_TypeConversion.GetLine(Text);
     OPI_TypeConversion.GetLine(LinkUnderPost);
     OPI_TypeConversion.GetBoolean(Advertisement);
     OPI_TypeConversion.GetArray(Objects);
 
-    Parameters        = GetStandardParameters(Parameters);
+    Parameters_       = GetStandardParameters(Parameters);
     AttachmentsString = StrConcat(Objects, ",");
     AttachmentsString = AttachmentsString + LinkUnderPost;
+    AdsNumber         = ?(Advertisement, 1, 0);
 
-    Parameters.Insert("message"       , Text);
-    Parameters.Insert("attachments"   , AttachmentsString);
-    Parameters.Insert("mark_as_ads"   , ?(Advertisement, 1, 0));
-    Parameters.Insert("close_comments", ?(Advertisement, 1, 0));
+    OPI_Tools.AddField("message"       , Text             , "String" , Parameters_);
+    OPI_Tools.AddField("attachments"   , AttachmentsString, "String" , Parameters_);
+    OPI_Tools.AddField("mark_as_ads"   , AdsNumber        , "Number" , Parameters_);
+    OPI_Tools.AddField("close_comments", AdsNumber        , "Number" , Parameters_);
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters_);
 
     Return Response;
 
@@ -171,10 +171,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from VK
 Function DeletePost(Val PostID, Val Parameters = "") Export
 
-    OPI_TypeConversion.GetLine(PostID);
-
     Parameters_ = GetStandardParameters(Parameters);
-    Parameters_.Insert("post_id", PostID);
+    OPI_Tools.AddField("post_id", PostID, "String", Parameters_);
 
     Response = OPI_Tools.Get("api.vk.com/method/wall.delete", Parameters_);
 
