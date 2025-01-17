@@ -391,9 +391,11 @@ Function ProcessParameters(Val Parameters)
 
                 CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
 
-            ElsIf Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+            Else
 
-                OPI_TypeConversion.GetLine(CurrentParameter);
+                If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+                    OPI_TypeConversion.GetLine(CurrentParameter);
+                EndIf;
 
             EndIf;
 

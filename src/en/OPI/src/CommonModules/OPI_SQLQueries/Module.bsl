@@ -70,94 +70,20 @@ Function AddRecords(Val Module
     , Val Transaction = True
     , Val Connection  = "") Export
 
-    Result_ = "result";
-
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
 
-    Connection = CreateConnectionInsideModule(Module.ConnectorName(), Connection);
+    Connection  = CreateConnectionInsideModule(Module.ConnectorName(), Connection);
+    ProblemStep = ProcessRecordsStart(Module, Transaction, Connection);
 
-    If Not IsAddIn(Connection) Then
-        Return Connection;
+    If ValueIsFilled(ProblemStep) Then
+        Return ProblemStep;
     EndIf;
 
-    If Transaction Then
+    ProcessedStructure = ProcessRecords(Module, Table, DataArray, Transaction, Connection);
+    ResultStrucutre    = ProcessRecordsEnd(ProcessedStructure, Module, Transaction, Connection);
 
-        Start = Module.ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
-
-        If Not Start[Result_] Then
-            Return Start;
-        EndIf;
-
-    EndIf;
-
-    Counter      = 0;
-    SuccessCount = 0;
-
-    Error           = False;
-    ErrorsArray     = New Array;
-    CollectionError = "Invalid data";
-
-    ResultStrucutre = New Structure;
-
-    For Each Record In DataArray Do
-
-        Counter = Counter + 1;
-        Error   = False;
-
-        Try
-            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
-        Except
-
-            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
-            Error = True;
-
-            If Transaction Then
-                Break;
-            Else
-                Continue;
-            EndIf;
-
-        EndTry;
-
-        Result = AddRow(Module, Table, Record, Connection);
-
-        If Result[Result_] Then
-
-            SuccessCount = SuccessCount + 1;
-
-        Else
-
-            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
-            Error = True;
-
-        EndIf;
-
-    EndDo;
-
-    If Transaction Then
-
-        If Error Then
-
-            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
-
-            SuccessCount = 0;
-            ResultStrucutre.Insert("rollback", Rollback);
-
-        Else
-
-            Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
-            ResultStrucutre.Insert("commit", Completion);
-
-        EndIf;
-
-    EndIf;
-
-    ResultStrucutre.Insert(Result_ , ErrorsArray.Count() = 0);
-    ResultStrucutre.Insert("rows"  , SuccessCount);
-    ResultStrucutre.Insert("errors", ErrorsArray);
-
-     Return ResultStrucutre;
+    Return ResultStrucutre;
 
 EndFunction
 
@@ -608,6 +534,99 @@ EndFunction
 
 #Region Auxiliary
 
+Function ProcessRecords(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+
+    ErrorsArray     = New Array;
+    CollectionError = "Invalid data";
+    Counter         = 0;
+    SuccessCount    = 0;
+
+    For Each Record In DataArray Do
+
+        Counter = Counter + 1;
+
+        Try
+            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
+        Except
+
+            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
+
+            If Transaction Then
+                Break;
+            Else
+                Continue;
+            EndIf;
+
+        EndTry;
+
+        Result = AddRow(Module, Table, Record, Connection);
+
+        If Result["result"] Then
+
+            SuccessCount = SuccessCount + 1;
+
+        Else
+
+            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+
+        EndIf;
+
+    EndDo;
+
+    Result = New Structure("ErrorsArray,SuccessCount", ErrorsArray, SuccessCount);
+    Return Result;
+
+EndFunction
+
+Function ProcessRecordsStart(Val Module, Val Transaction, Val Connection)
+
+    If Not IsAddIn(Connection) Then
+        Return Connection;
+    EndIf;
+
+    If Transaction Then
+
+        Start = Module.ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
+
+        If Not Start["result"] Then
+            Return Start;
+        EndIf;
+
+    EndIf;
+
+EndFunction
+
+Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, Val Connection)
+
+    ResultStrucutre = New Structure;
+
+    ErrorsArray  = ProcessedStructure["ErrorsArray"];
+    SuccessCount = ProcessedStructure["SuccessCount"];
+
+    If Transaction Then
+
+        If ErrorsArray.Count() > 0 Then
+
+            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
+
+            SuccessCount = 0;
+            ResultStrucutre.Insert("rollback", Rollback);
+
+        Else
+
+            Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
+            ResultStrucutre.Insert("commit", Completion);
+
+        EndIf;
+
+    EndIf;
+
+    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
+    ResultStrucutre.Insert("rows"  , SuccessCount);
+    ResultStrucutre.Insert("errors", ErrorsArray);
+
+EndFunction
+
 Function AddRow(Val Module, Val Table, Val Record, Val Connection)
 
     FieldArray  = New Array;
@@ -887,7 +906,6 @@ Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Ra
         MainStructure.Insert("value", "?" + OPI_Tools.NumberToString(OrderNumber));
 
     EndIf;
-
 
     Scheme["filter"].Add(MainStructure);
 
