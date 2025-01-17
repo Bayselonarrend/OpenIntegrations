@@ -38,6 +38,7 @@
 // BSLLS:LineLength-off
 // BSLLS:MagicNumber-off
 // BSLLS:CommentedCode-off
+// BSLLS:AssignAliasFieldsInQuery-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -800,6 +801,7 @@ Procedure CLI_Viber_MessagesSending() Export
     Return;
 
     //@skip-check unreachable-statement
+    // BSLLS:UnreachableCode-off
 
     CLI_Viber_SendTextMessage(TestParameters);
     CLI_Viber_SendImage(TestParameters);
@@ -807,6 +809,8 @@ Procedure CLI_Viber_MessagesSending() Export
     CLI_Viber_SendContact(TestParameters);
     CLI_Viber_SendLocation(TestParameters);
     CLI_Viber_SendLink(TestParameters);
+
+    // BSLLS:UnreachableCode-on
 
 EndProcedure
 
@@ -2247,8 +2251,7 @@ Procedure CLI_SQLL_ORM() Export
        DeleteFiles(Base);
     Except
         OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
-
+    EndTry;
 
 EndProcedure
 
@@ -18242,7 +18245,7 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
        DeleteFiles(PictureFile);
     Except
         OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
@@ -18410,7 +18413,7 @@ Procedure CLI_SQLite_AddRecords(FunctionParameters)
        DeleteFiles(PictureFile);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
