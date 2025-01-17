@@ -363,55 +363,59 @@ EndFunction
 
 Function ProcessParameters(Val Parameters)
 
-    If ValueIsFilled(Parameters) Then
+    If Not ValueIsFilled(Parameters) Then
+        Return "[]";
+    EndIf;
 
-        Blob_ = "blob";
+    OPI_TypeConversion.GetArray(Parameters);
 
-        OPI_TypeConversion.GetArray(Parameters);
+    For N = 0 To Parameters.UBound() Do
 
-        For N = 0 To Parameters.UBound() Do
+        CurrentParameter = Parameters[N];
 
-            CurrentParameter = Parameters[N];
+        If TypeOf(CurrentParameter) = Type("BinaryData") Then
 
-            If TypeOf(CurrentParameter) = Type("BinaryData") Then
+            CurrentParameter = New Structure("blob", Base64String(CurrentParameter));
 
-                CurrentParameter = New Structure(Blob_, Base64String(CurrentParameter));
+        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "blob") Then
 
-            ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, Blob_) Then
+            CurrentParameter = ProcessBlobStructure(CurrentParameter);
 
-                DataValue = CurrentParameter[Blob_];
-                DataFile  = New File(String(DataValue));
+        ElsIf TypeOf(CurrentParameter) = Type("Date") Then
 
-                If DataFile.Exists() Then
-                    CurrentData      = New BinaryData(String(DataValue));
-                    CurrentParameter = New Structure(Blob_, Base64String(CurrentData));
-                EndIf;
+            CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
 
-            ElsIf TypeOf(CurrentParameter) = Type("Date") Then
+        Else
 
-                CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
-
-            Else
-
-                If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
-                    OPI_TypeConversion.GetLine(CurrentParameter);
-                EndIf;
-
+            If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+                OPI_TypeConversion.GetLine(CurrentParameter);
             EndIf;
 
-            Parameters[N] = CurrentParameter;
+        EndIf;
 
-        EndDo;
+        Parameters[N] = CurrentParameter;
 
-        Parameters_ = OPI_Tools.JSONString(Parameters, , False);
+    EndDo;
 
-    Else
+    Parameters_ = OPI_Tools.JSONString(Parameters, , False);
 
-        Parameters_ = "[]";
+    Return Parameters_;
+
+EndFunction
+
+Function ProcessBlobStructure(Val Value)
+
+    DataValue = Value["blob"];
+    DataFile  = New File(String(DataValue));
+
+    If DataFile.Exists() Then
+
+        CurrentData = New BinaryData(String(DataValue));
+        Value       = New Structure("blob", Base64String(CurrentData));
 
     EndIf;
 
-    Return Parameters_;
+    Return Value;
 
 EndFunction
 
