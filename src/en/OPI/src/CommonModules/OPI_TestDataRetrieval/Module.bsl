@@ -493,7 +493,8 @@ EndProcedure
 
 Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
 
-    WriteLog(Result, Method + " (CLI)");
+    Template = "%1 (CLI, %2)";
+    WriteLog(Result, StrTemplate(Template, Method, Library));
 
 EndProcedure
 
