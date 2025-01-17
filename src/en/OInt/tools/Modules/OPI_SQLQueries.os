@@ -30,6 +30,8 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
+// BSLLS:QueryParseError-off
+// BSLLS:AssignAliasFieldsInQuery-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -68,6 +70,8 @@ Function AddRecords(Val Module
     , Val Transaction = True
     , Val Connection  = "") Export
 
+    Result_ = "result";
+
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
 
@@ -81,7 +85,7 @@ Function AddRecords(Val Module
 
         Start = Module.ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
 
-        If Not Start["result"] Then
+        If Not Start[Result_] Then
             Return Start;
         EndIf;
 
@@ -118,7 +122,7 @@ Function AddRecords(Val Module
 
         Result = AddRow(Module, Table, Record, Connection);
 
-        If Result["result"] Then
+        If Result[Result_] Then
 
             SuccessCount = SuccessCount + 1;
 
@@ -149,7 +153,7 @@ Function AddRecords(Val Module
 
     EndIf;
 
-    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
+    ResultStrucutre.Insert(Result_ , ErrorsArray.Count() = 0);
     ResultStrucutre.Insert("rows"  , SuccessCount);
     ResultStrucutre.Insert("errors", ErrorsArray);
 

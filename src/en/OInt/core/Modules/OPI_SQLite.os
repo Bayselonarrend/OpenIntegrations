@@ -365,6 +365,8 @@ Function ProcessParameters(Val Parameters)
 
     If ValueIsFilled(Parameters) Then
 
+        Blob_ = "blob";
+
         OPI_TypeConversion.GetArray(Parameters);
 
         For N = 0 To Parameters.UBound() Do
@@ -373,16 +375,16 @@ Function ProcessParameters(Val Parameters)
 
             If TypeOf(CurrentParameter) = Type("BinaryData") Then
 
-                CurrentParameter = New Structure("blob", Base64String(CurrentParameter));
+                CurrentParameter = New Structure(Blob_, Base64String(CurrentParameter));
 
-            ElsIf OPI_Tools.CollectionFieldExist(CurrentParameter, "blob") Then
+            ElsIf OPI_Tools.CollectionFieldExist(CurrentParameter, Blob_) Then
 
-                DataValue = CurrentParameter["blob"];
+                DataValue = CurrentParameter[Blob_];
                 DataFile  = New File(String(DataValue));
 
                 If DataFile.Exist() Then
                     CurrentData      = New BinaryData(String(DataValue));
-                    CurrentParameter = New Structure("blob", Base64String(CurrentData));
+                    CurrentParameter = New Structure(Blob_, Base64String(CurrentData));
                 EndIf;
 
             ElsIf TypeOf(CurrentParameter) = Type("Date") Then

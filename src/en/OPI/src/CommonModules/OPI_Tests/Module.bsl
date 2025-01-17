@@ -38,6 +38,7 @@
 // BSLLS:LineLength-off
 // BSLLS:MagicNumber-off
 // BSLLS:CommentedCode-off
+// BSLLS:AssignAliasFieldsInQuery-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -805,6 +806,7 @@ Procedure Viber_MessagesSending() Export
     Return;
 
     //@skip-check unreachable-statement
+    // BSLLS:UnreachableCode-off
 
     Viber_SendTextMessage(TestParameters);
     Viber_SendImage(TestParameters);
@@ -812,6 +814,8 @@ Procedure Viber_MessagesSending() Export
     Viber_SendContact(TestParameters);
     Viber_SendLocation(TestParameters);
     Viber_SendLink(TestParameters);
+
+    // BSLLS:UnreachableCode-on
 
 EndProcedure
 
@@ -2272,7 +2276,7 @@ Procedure SQLL_ORM() Export
        DeleteFiles(Base);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
@@ -16211,7 +16215,7 @@ Procedure SQLite_CreateConnection(FunctionParameters)
        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
@@ -16235,7 +16239,7 @@ Procedure SQLite_CloseConnection(FunctionParameters)
        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
@@ -16313,7 +16317,6 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     | INSERT INTO users (name, age) VALUES ('Charlie', 35);
     | COMMIT;";
 
-
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "SQLite"); // SKIP
@@ -16330,7 +16333,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
@@ -16449,7 +16452,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
        DeleteFiles(PictureFile);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
-    EndTry
+    EndTry;
 
 EndProcedure
 
