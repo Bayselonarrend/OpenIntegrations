@@ -543,31 +543,6 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
 EndFunction
 
-Function ReadCLIResponse(Val ResultFile)
-
-    Try
-
-        JSONReader = New JSONReader();
-        JSONReader.OpenFile(ResultFile);
-        Result     = ReadJSON(JSONReader, True);
-        JSONReader.Close();
-
-    Except
-
-        Message(DetailErrorDescription(ErrorInfo()));
-
-        Try
-            Result = New BinaryData(ResultFile);
-        Except
-            Result = null;
-        EndTry;
-
-     EndTry;
-
-     Return Result;
-
-EndFunction
-
 #Region Checks
 
 Procedure Check_Empty(Val Result) Export
@@ -2314,6 +2289,31 @@ Function FormOptionArray(Val Value, Val Name)
     EndDo;
 
     Return Value_;
+
+EndFunction
+
+Function ReadCLIResponse(Val ResultFile)
+
+    Try
+
+        JSONReader = New JSONReader();
+        JSONReader.OpenFile(ResultFile);
+        Result     = ReadJSON(JSONReader, True);
+        JSONReader.Close();
+
+    Except
+
+        Message(DetailErrorDescription(ErrorInfo()));
+
+        Try
+            Result = New BinaryData(ResultFile);
+        Except
+            Result = null;
+        EndTry;
+
+     EndTry;
+
+     Return Result;
 
 EndFunction
 
