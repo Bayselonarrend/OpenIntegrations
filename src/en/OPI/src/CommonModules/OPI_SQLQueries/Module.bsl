@@ -625,6 +625,8 @@ Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, 
     ResultStrucutre.Insert("rows"  , SuccessCount);
     ResultStrucutre.Insert("errors", ErrorsArray);
 
+    Return ResultStrucutre;
+
 EndFunction
 
 Function AddRow(Val Module, Val Table, Val Record, Val Connection)
