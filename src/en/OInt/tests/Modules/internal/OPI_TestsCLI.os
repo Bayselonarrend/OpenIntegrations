@@ -2454,7 +2454,9 @@ Procedure CLI_Telegram_SendPicture(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendImage", "Telegram");
-    OPI_TestDataRetrieval.Check_TelegramImage(Result, Text); MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
+    OPI_TestDataRetrieval.Check_TelegramImage(Result, Text);
+
+    MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
     OPI_TestDataRetrieval.WriteParameter("Telegram_PicMessageID", MessageID);
     OPI_Tools.AddField("Telegram_PicMessageID", MessageID, "String", FunctionParameters);
 
@@ -3162,7 +3164,9 @@ Procedure CLI_Telegram_ReplaceMessageCaption(FunctionParameters)
     ChatID    = FunctionParameters["Telegram_ChatID"];
     MessageID = FunctionParameters["Telegram_PicMessageID"];
 
-    Description = "New picture description"; Options = New Structure;
+    Description = "New picture description";
+
+    Options = New Structure;
     Options.Insert("token"   , Token);
     Options.Insert("chat"    , ChatID);
     Options.Insert("message" , MessageID);

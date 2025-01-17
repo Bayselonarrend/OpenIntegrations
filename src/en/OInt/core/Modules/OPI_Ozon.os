@@ -843,7 +843,7 @@ EndFunction
 // Gets the structure of product standard fields
 //
 // Note
-// This structure should be supplemented with fields that depend on the product category from GetCategoryAttributes()
+// This structure should be supplemented with fields depending on the product category from the GetCategoryAttributes function()
 // The first image in the image array (images field) will be the main image
 //
 // Parameters:
