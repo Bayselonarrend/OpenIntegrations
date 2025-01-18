@@ -902,6 +902,22 @@ def test_bitrix24(){
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetDealsFilterStructure --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarList --url "test" --owner "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 CreateCalendar --url "test" --fields "test" --token "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 DeleteCalendar --url "test" --calendar "test" --owner "test" --type "test" --token "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarStructure --empty "test" --debug --test '
+               }
+
 }
 
 

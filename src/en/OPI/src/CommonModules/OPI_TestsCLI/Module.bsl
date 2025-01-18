@@ -2018,6 +2018,20 @@ Procedure CLI_B24_DealsManagement() Export
 
 EndProcedure
 
+Procedure CLI_B24_CalendarsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"  , TestParameters);
+
+    CLI_Bitrix24_CreateCalendar(TestParameters);
+    CLI_Bitrix24_GetCalendarList(TestParameters);
+    CLI_Bitrix24_DeleteCalendar(TestParameters);
+    CLI_Bitrix24_GetCalendarStructure(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region CDEK
@@ -15897,6 +15911,153 @@ Procedure CLI_Bitrix24_GetDealsList(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_Bitrix24_CreateCalendar(FunctionParameters);
+
+    UserID = 1;
+
+    CalendarsStructure = New Structure;
+    CalendarsStructure.Insert("type"       , "user");
+    CalendarsStructure.Insert("ownerId"    , UserID);
+    CalendarsStructure.Insert("name"       , "new calendar");
+    CalendarsStructure.Insert("description", "My new calendar");
+    CalendarsStructure.Insert("color"      , "#FFFFFF");
+    CalendarsStructure.Insert("text_color" , "#000000");
+
+        ExportStructure = New Structure;
+        ExportStructure.Insert("ALLOW", "True");
+        ExportStructure.Insert("SET"  , "all");
+
+    CalendarsStructure.Insert("export", ExportStructure);
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", CalendarsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    CalendarID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookCalendarID", CalendarID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookCalendarID", CalendarID); // SKIP
+
+    CalendarsStructure.Insert("name"       , "Another calendar");
+    CalendarsStructure.Insert("description", "My other new calendar");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("fields", CalendarsStructure);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    CalendarID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CalendarID", CalendarID);
+    FunctionParameters.Insert("Bitrix24_CalendarID", CalendarID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_DeleteCalendar(FunctionParameters)
+
+    URL        = FunctionParameters["Bitrix24_URL"];
+    CalendarID = FunctionParameters["Bitrix24_HookCalendarID"];
+    OwnerID    = 1;
+    Type       = "user";
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("calendar", CalendarID);
+    Options.Insert("owner"   , OwnerID);
+    Options.Insert("type"    , Type);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDeal (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL        = FunctionParameters["Bitrix24_Domain"];
+    Token      = FunctionParameters["Bitrix24_Token"];
+    CalendarID = FunctionParameters["Bitrix24_CalendarID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("calendar", CalendarID);
+    Options.Insert("owner"   , OwnerID);
+    Options.Insert("type"    , Type);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendar", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCalendarStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+    Options.Insert("empty" , True);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetCalendarStructure", Options);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarStructure (empty)", "Bitrix24");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCalendarList(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    OwnerID = 1;
+    Type    = "user";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("owner" , OwnerID);
+    Options.Insert("type"  , Type);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("owner" , OwnerID);
+    Options.Insert("type"  , Type);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region CDEK
@@ -18588,7 +18749,8 @@ Procedure CLI_SQLite_GetRecordsFilterStrucutre(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecordsFilterStrucutre", "SQLite");
     OPI_TestDataRetrieval.Check_Map(Result);
 
-    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
+    Options.Insert("empty" , True);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecordsFilterStrucutre (empty)", "SQLite");
 
     For Each Element In Result Do
@@ -18645,6 +18807,7 @@ Procedure CLI_SQLite_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
 
 EndProcedure
+
 
 #EndRegion
 

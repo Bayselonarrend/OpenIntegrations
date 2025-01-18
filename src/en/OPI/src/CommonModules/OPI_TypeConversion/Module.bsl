@@ -155,7 +155,8 @@ Procedure GetCollection(Value) Export
 
 EndProcedure
 
-Procedure GetKeyValueCollection(Value, Val ErrorText) Export
+Procedure GetKeyValueCollection(Value
+    , Val ErrorText = "The specified value is not a valid collection!") Export
 
     GetCollection(Value);
 

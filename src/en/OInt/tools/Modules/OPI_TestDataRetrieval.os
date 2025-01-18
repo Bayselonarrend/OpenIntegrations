@@ -245,6 +245,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "B2_UsersManagement"                   , "Users management"                , Bitrix);
     NewTest(TestTable, "B24_LeadsManagement"                  , "Leads management"                , Bitrix);
     NewTest(TestTable, "B24_DealsManagement"                  , "Deals management"                , Bitrix);
+    NewTest(TestTable, "B24_CalendarsManagement"              , "Calendars management"            , Bitrix);
     NewTest(TestTable, "VKT_MessagesSending"                  , "Messages sending"                , VKT);
     NewTest(TestTable, "VKT_CommonMethods"                    , "Common methods"                  , VKT);
     NewTest(TestTable, "VKT_ChatManagement"                   , "Chat management"                 , VKT);
