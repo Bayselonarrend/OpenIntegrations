@@ -550,6 +550,10 @@ pipeline {
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_B24_DealsManagement"'
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_B24_CalendarsManagement"'
+               }
+
 			}
 		}
 
