@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Edit calendar
+ Changes the calendar settings
+
+
+
+`Function UpdateCalendar(Val URL, Val CalendarID, Val FieldsStructure, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | CalendarID | --calendar | String, Number | &#x2714; | Calendar ID |
+  | FieldsStructure | --fields | Structure Of KeyAndValue | &#x2714; | Deal fields structure (see. GetDealStructure) |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-section-update.html)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    UserID = 1;
+
+    CalendarsStructure = New Structure;
+    CalendarsStructure.Insert("type"       , "user");
+    CalendarsStructure.Insert("ownerId"    , UserID);
+    CalendarsStructure.Insert("name"       , "New calendar name");
+    CalendarsStructure.Insert("description", "This calendar has been changed");
+
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    CalendarID = "44";
+
+    Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure);
+
+    URL        = "b24-ar17wx.bitrix24.by";
+    Token      = "4ed18b67006e9f06006b12e400000001000...";
+    CalendarID = "46";
+
+    Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure, Token);
+```
+ 
+
+
+
+

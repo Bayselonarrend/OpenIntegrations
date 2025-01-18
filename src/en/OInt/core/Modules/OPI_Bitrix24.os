@@ -4530,7 +4530,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Calendar fields structure (see GetCalendarStructure) - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4540,6 +4540,38 @@ Function CreateCalendar(Val URL, Val FieldsStructure, Val Token = "") Export
     OPI_TypeConversion.GetKeyValueCollection(FieldsStructure);
 
     Parameters = NormalizeAuth(URL, Token, "calendar.section.add");
+
+    For Each Field In FieldsStructure Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Edit calendar
+// Changes the calendar settings
+//
+// Note
+// Method at API documentation: [calendar.section.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-update.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// CalendarID - String, Number - Calendar ID - calendar
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateCalendar(Val URL, Val CalendarID, Val FieldsStructure, Val Token = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(FieldsStructure);
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.section.update");
+
+    OPI_Tools.AddField("id", CalendarID, "String", Parameters);
 
     For Each Field In FieldsStructure Do
         Parameters.Insert(Field.Key, Field.Value);
@@ -4575,6 +4607,27 @@ Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Toke
     OPI_Tools.AddField("id"     , CalendarID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get calendar settings structure
+// Gets the structure of the default calendar settings
+//
+// Note
+// Method at API documentation: [calendar.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-settings-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCalendarSettingsStructure(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.settings.get");
+    Response   = OPI_Tools.Get(URL, Parameters);
 
     Return Response;
 

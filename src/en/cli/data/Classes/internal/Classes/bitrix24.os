@@ -5948,7 +5948,7 @@
     NewLine.Метод       = "CreateCalendar";
     NewLine.МетодПоиска = "CREATECALENDAR";
     NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Описание    = "Calendar fields structure (see GetCalendarStructure)";
     NewLine.Область     = "Calendars management";
 
 
@@ -5957,6 +5957,47 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateCalendar";
     NewLine.МетодПоиска = "CREATECALENDAR";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendar";
+    NewLine.МетодПоиска = "UPDATECALENDAR";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendars management";
+    NewLine.ОписаниеМетода   = "Changes the calendar settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendar";
+    NewLine.МетодПоиска = "UPDATECALENDAR";
+    NewLine.Параметр    = "--calendar";
+    NewLine.Описание    = "Calendar ID";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendar";
+    NewLine.МетодПоиска = "UPDATECALENDAR";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendar";
+    NewLine.МетодПоиска = "UPDATECALENDAR";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Calendars management";
@@ -6008,6 +6049,27 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteCalendar";
     NewLine.МетодПоиска = "DELETECALENDAR";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarSettingsStructure";
+    NewLine.МетодПоиска = "GETCALENDARSETTINGSSTRUCTURE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendars management";
+    NewLine.ОписаниеМетода   = "Gets the structure of the default calendar settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarSettingsStructure";
+    NewLine.МетодПоиска = "GETCALENDARSETTINGSSTRUCTURE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Calendars management";
