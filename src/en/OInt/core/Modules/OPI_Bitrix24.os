@@ -404,7 +404,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.get", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.get", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -502,7 +502,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.delete", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.delete", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -548,7 +548,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function ApproveTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.approve", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.approve", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -568,7 +568,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DisapproveTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.disapprove", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.disapprove", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -588,7 +588,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CompleteTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.complete", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.complete", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -608,7 +608,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RenewTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.renew", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.renew", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -628,7 +628,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeferTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.defer", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.defer", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -648,7 +648,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function PauseTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.pause", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.pause", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -668,7 +668,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function StartTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.start", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.start", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -688,7 +688,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function StartWatchingTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.startwatch", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.startwatch", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -708,7 +708,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function StopWatchingTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.stopwatch", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.stopwatch", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -754,7 +754,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function AddTaskToFavorites(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.favorite.add", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.favorite.add", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -774,7 +774,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RemoveTaskFromFavorites(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.favorite.remove", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.favorite.remove", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -794,7 +794,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.history.list", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.history.list", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -840,7 +840,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function MuteTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.mute", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.mute", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -860,7 +860,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function UnmuteTask(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.unmute", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.unmute", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -1403,7 +1403,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetTaskCommentsList(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "task.commentitem.getlist", Token);
+    Response = PrimaryControlAction(URL, TaskID, "task.commentitem.getlist", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -1540,7 +1540,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetResultsList(Val URL, Val TaskID, Val Token = "") Export
 
-    Response = ManageTask(URL, TaskID, "tasks.task.result.list", Token);
+    Response = PrimaryControlAction(URL, TaskID, "tasks.task.result.list", Token, "taskId");
     Return Response;
 
 EndFunction
@@ -2200,7 +2200,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetStorage(Val URL, Val StorageID, Val Token = "") Export
 
-    Response = FileManagement(URL, StorageID, "disk.storage.get", Token);
+    Response = PrimaryControlAction(URL, StorageID, "disk.storage.get", Token);
     Return Response;
 
 EndFunction
@@ -2247,7 +2247,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export
 
-    Response = FileManagement(URL, StorageID, "disk.storage.getchildren", Token);
+    Response = PrimaryControlAction(URL, StorageID, "disk.storage.getchildren", Token);
     Return Response;
 
 EndFunction
@@ -2302,7 +2302,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export
 
-    Response = FileManagement(URL, FolderID, "disk.folder.get", Token);
+    Response = PrimaryControlAction(URL, FolderID, "disk.folder.get", Token);
     Return Response;
 
 EndFunction
@@ -2407,7 +2407,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export
 
-    Response = FileManagement(URL, FolderID, "disk.folder.deletetree", Token);
+    Response = PrimaryControlAction(URL, FolderID, "disk.folder.deletetree", Token);
     Return Response;
 
 EndFunction
@@ -2427,7 +2427,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export
 
-    Response = FileManagement(URL, FolderID, "disk.folder.getExternalLink", Token);
+    Response = PrimaryControlAction(URL, FolderID, "disk.folder.getExternalLink", Token);
     Return Response;
 
 EndFunction
@@ -2473,7 +2473,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export
 
-    Response = FileManagement(URL, FolderID, "disk.folder.markdeleted", Token);
+    Response = PrimaryControlAction(URL, FolderID, "disk.folder.markdeleted", Token);
     Return Response;
 
 EndFunction
@@ -2493,7 +2493,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export
 
-    Response = FileManagement(URL, FolderID, "disk.folder.restore", Token);
+    Response = PrimaryControlAction(URL, FolderID, "disk.folder.restore", Token);
     Return Response;
 
 EndFunction
@@ -2682,7 +2682,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetFileInformation(Val URL, Val FileID, Val Token = "") Export
 
-    Response = FileManagement(URL, FileID, "disk.file.get", Token);
+    Response = PrimaryControlAction(URL, FileID, "disk.file.get", Token);
     Return Response;
 
 EndFunction
@@ -2702,7 +2702,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteFile(Val URL, Val FileID, Val Token = "") Export
 
-    Response = FileManagement(URL, FileID, "disk.file.delete", Token);
+    Response = PrimaryControlAction(URL, FileID, "disk.file.delete", Token);
     Return Response;
 
 EndFunction
@@ -2723,7 +2723,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetFileExternalLink(Val URL, Val FileID, Val Token = "") Export
 
-    Response = FileManagement(URL, FileID, "disk.file.getExternalLink", Token);
+    Response = PrimaryControlAction(URL, FileID, "disk.file.getExternalLink", Token);
     Return Response;
 
 EndFunction
@@ -2743,7 +2743,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function MarkFileAsDeleted(Val URL, Val FileID, Val Token = "") Export
 
-    Response = FileManagement(URL, FileID, "disk.file.markdeleted", Token);
+    Response = PrimaryControlAction(URL, FileID, "disk.file.markdeleted", Token);
     Return Response;
 
 EndFunction
@@ -2763,7 +2763,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RestoreFile(Val URL, Val FileID, Val Token = "") Export
 
-    Response = FileManagement(URL, FileID, "disk.file.restore", Token);
+    Response = PrimaryControlAction(URL, FileID, "disk.file.restore", Token);
     Return Response;
 
 EndFunction
@@ -2897,7 +2897,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetChatUsers(Val URL, Val ChatID, Val Token = "") Export
 
-    Response = ChatManagement(URL, ChatID, "im.chat.user.list", Token);
+    Response = PrimaryControlAction(URL, ChatID, "im.chat.user.list", Token, "CHAT_ID");
     Return Response;
 
 EndFunction
@@ -2917,7 +2917,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function LeaveChat(Val URL, Val ChatID, Val Token = "") Export
 
-    Response = ChatManagement(URL, ChatID, "im.chat.leave", Token);
+    Response = PrimaryControlAction(URL, ChatID, "im.chat.leave", Token, "CHAT_ID");
     Return Response;
 
 EndFunction
@@ -3357,7 +3357,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetChatFilesFolder(Val URL, Val ChatID, Val Token = "") Export
 
-    Response = ChatManagement(URL, ChatID, "im.disk.folder.get", Token);
+    Response = PrimaryControlAction(URL, ChatID, "im.disk.folder.get", Token, "CHAT_ID");
     Return Response;
 
 EndFunction
@@ -4145,7 +4145,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteLead(Val URL, Val LeadID, Val Token = "") Export
 
-    Response = ManageLead(URL, LeadID, "crm.lead.delete", Token);
+    Response = PrimaryControlAction(URL, LeadID, "crm.lead.delete", Token);
     Return Response;
 
 EndFunction
@@ -4165,7 +4165,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetLead(Val URL, Val LeadID, Val Token = "") Export
 
-    Response = ManageLead(URL, LeadID, "crm.lead.get", Token);
+    Response = PrimaryControlAction(URL, LeadID, "crm.lead.get", Token);
     Return Response;
 
 EndFunction
@@ -4338,7 +4338,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteDeal(Val URL, Val DealID, Val Token = "") Export
 
-    Response = ManageDeal(URL, DealID, "crm.deal.delete", Token);
+    Response = PrimaryControlAction(URL, DealID, "crm.deal.delete", Token);
     Return Response;
 
 EndFunction
@@ -4358,7 +4358,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetDeal(Val URL, Val DealID, Val Token = "") Export
 
-    Response = ManageDeal(URL, DealID, "crm.deal.get", Token);
+    Response = PrimaryControlAction(URL, DealID, "crm.deal.get", Token);
     Return Response;
 
 EndFunction
@@ -4493,6 +4493,129 @@ EndFunction
 
 #EndRegion
 
+#Region CalendarsManagement
+
+// Get list of calendars
+// Gets a list of calendars of the specified owner
+//
+// Note
+// Method at API documentation: [calendar.section.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// OwnerID - String, Number - Calendar owner ID - owner
+// Type - String - Calendar type: user, group, company_calendar, location, etc/. - type
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCalendarList(Val URL, Val OwnerID, Val Type, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.section.get");
+
+    OPI_Tools.AddField("type"   , Type   , "String", Parameters);
+    OPI_Tools.AddField("ownerId", OwnerID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Create calendar
+// Creates a new calendar
+//
+// Note
+// Method at API documentation: [calendar.section.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-add.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateCalendar(Val URL, Val FieldsStructure, Val Token = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(FieldsStructure);
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.section.add");
+
+    For Each Field In FieldsStructure Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete calendar
+// Deletes an existing calendar
+//
+// Note
+// Method at API documentation: [calendar.section.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-delete.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// CalendarID - String, Number - Calendar ID - calendar
+// OwnerID - String, Number - Calendar owner ID - owner
+// Type - String - Calendar type: user, group - type
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.section.delete");
+
+    OPI_Tools.AddField("type"   , Type      , "String", Parameters);
+    OPI_Tools.AddField("ownerId", OwnerID   , "String", Parameters);
+    OPI_Tools.AddField("id"     , CalendarID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get calendar structure
+// Returns the structure of the calendar description fields
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetCalendarStructure(Val Clear = False) Export
+
+    CalendarsStructure = New Structure;
+
+    CalendarsStructure.Insert("type"       , "<calendar type: user, group)>");
+    CalendarsStructure.Insert("ownerId"    , "<owner identifier>");
+    CalendarsStructure.Insert("name"       , "<calendars name>");
+    CalendarsStructure.Insert("description", "<calendar description>");
+    CalendarsStructure.Insert("color"      , "<calendar color>");
+    CalendarsStructure.Insert("text_color" , "<calendar text color>");
+
+        ExportStructure = New Structure;
+        ExportStructure.Insert("ALLOW", "<calendar export permission (bool)>");
+        ExportStructure.Insert("SET"  , "<export period: all, 3_9 (example: 3 months before and 9 after)>");
+
+    CalendarsStructure.Insert("export", ExportStructure);
+
+    If Clear Then
+        CalendarsStructure = OPI_Tools.ClearCollectionRecursively(CalendarsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return CalendarsStructure;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -4573,21 +4696,10 @@ Function NormalizeFiles(Val Files)
 
 EndFunction
 
-Function ManageTask(Val URL, Val TaskID, Val Method, Val Token = "")
+Function PrimaryControlAction(Val URL, Val ObjectID, Val Method, Val Token = "", Val FieldID = "id")
 
     Parameters = NormalizeAuth(URL, Token, Method);
-    OPI_Tools.AddField("taskId", TaskID, "String", Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters);
-
-    Return Response;
-
-EndFunction
-
-Function FileManagement(Val URL, Val FileID, Val Method, Val Token = "")
-
-    Parameters = NormalizeAuth(URL, Token, Method);
-    OPI_Tools.AddField("id", FileID, "String", Parameters);
+    OPI_Tools.AddField(FieldID, ObjectID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -4608,17 +4720,6 @@ Function ChecklistElementManagement(Val URL, Val TaskID, Val ElementID, Val Meth
 
 EndFunction
 
-Function ChatManagement(Val URL, Val ChatID, Val Method, Val Token = "")
-
-    Parameters = NormalizeAuth(URL, Token, Method);
-    OPI_Tools.AddField("CHAT_ID", ChatID, "String", Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters);
-
-    Return Response;
-
-EndFunction
-
 Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 
     MakeBoolean(Off);
@@ -4627,28 +4728,6 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("MUTE"   , Off    , "String", Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters);
-
-    Return Response;
-
-EndFunction
-
-Function ManageLead(Val URL, Val LeadID, Val Method, Val Token = "")
-
-    Parameters = NormalizeAuth(URL, Token, Method);
-    OPI_Tools.AddField("id", LeadID, "String", Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters);
-
-    Return Response;
-
-EndFunction
-
-Function ManageDeal(Val URL, Val DealID, Val Method, Val Token = "")
-
-    Parameters = NormalizeAuth(URL, Token, Method);
-    OPI_Tools.AddField("id", DealID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
