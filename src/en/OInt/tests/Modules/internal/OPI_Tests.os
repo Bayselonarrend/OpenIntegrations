@@ -1801,8 +1801,11 @@ Procedure B24_CalendarsManagement() Export
     Bitrix24_UpdateCalendar(TestParameters);
     Bitrix24_GetCalendarList(TestParameters);
     Bitrix24_DeleteCalendar(TestParameters);
+    Bitrix24_GetCustomCalendarSettings(TestParameters);
+    Bitrix24_SetCustomCalendarSettings(TestParameters);
     Bitrix24_GetCalendarStructure(TestParameters);
     Bitrix24_GetCalendarSettingsStructure(TestParameters);
+    Bitrix24_GetCalednarCustomSettingsStructure(TestParameters);
 
 EndProcedure
 
@@ -12346,7 +12349,7 @@ Procedure Bitrix24_GetCalendarStructure(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
-    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
+    Result = OPI_Bitrix24.GetCalendarStructure(True);
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarStructure (empty)", "Bitrix24");
 
     For Each Element In Result Do
@@ -12400,6 +12403,76 @@ Procedure Bitrix24_GetCalendarSettingsStructure(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarSettingsStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCalednarCustomSettingsStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetCalednarCustomSettingsStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Bitrix24.GetCalednarCustomSettingsStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure)", "Bitrix24");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure Bitrix24_GetCustomCalendarSettings(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetCustomCalendarSettings(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomCalendarSettings (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetCustomCalendarSettings(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomCalendarSettings", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure Bitrix24_SetCustomCalendarSettings(FunctionParameters)
+
+    CalendarsStructure = New Structure;
+    CalendarsStructure.Insert("view"              , "month");
+    CalendarsStructure.Insert("showDeclined"      , "Y");
+    CalendarsStructure.Insert("collapseOffHours"  , "N");
+    CalendarsStructure.Insert("showCompletedTasks", "N");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.SetCustomCalendarSettings(URL, CalendarsStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCustomCalendarSettings (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.SetCustomCalendarSettings(URL, CalendarsStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCustomCalendarSettings", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
 

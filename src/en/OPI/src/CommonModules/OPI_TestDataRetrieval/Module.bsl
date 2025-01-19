@@ -2347,7 +2347,7 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         Return;
     EndIf;
 
-    CatalogExample = "./docs/en/cli/" + Library;
+    CatalogExample = "./docs/ru/cli/" + Library;
     FileExample    = New File(CatalogExample);
 
     If Not FileExample.Exists() Then
