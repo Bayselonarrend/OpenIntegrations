@@ -15926,7 +15926,7 @@ Procedure CLI_Bitrix24_GetDealsList(FunctionParameters)
 
 EndProcedure
 
-Procedure CLI_Bitrix24_CreateCalendar(FunctionParameters);
+Procedure CLI_Bitrix24_CreateCalendar(FunctionParameters)
 
     UserID = 1;
 
@@ -15981,7 +15981,7 @@ Procedure CLI_Bitrix24_CreateCalendar(FunctionParameters);
 
 EndProcedure
 
-Procedure CLI_Bitrix24_UpdateCalendar(FunctionParameters);
+Procedure CLI_Bitrix24_UpdateCalendar(FunctionParameters)
 
     UserID = 1;
 
@@ -18974,7 +18974,6 @@ Procedure CLI_SQLite_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
 
 EndProcedure
-
 
 #EndRegion
 

@@ -4600,11 +4600,13 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Token = "") Export
 
+    String_ = "String";
+
     Parameters = NormalizeAuth(URL, Token, "calendar.section.delete");
 
-    OPI_Tools.AddField("type"   , Type      , "String", Parameters);
-    OPI_Tools.AddField("ownerId", OwnerID   , "String", Parameters);
-    OPI_Tools.AddField("id"     , CalendarID, "String", Parameters);
+    OPI_Tools.AddField("type"   , Type      , String_, Parameters);
+    OPI_Tools.AddField("ownerId", OwnerID   , String_, Parameters);
+    OPI_Tools.AddField("id"     , CalendarID, String_, Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
