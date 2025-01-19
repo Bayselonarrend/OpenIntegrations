@@ -12236,7 +12236,7 @@ Procedure Bitrix24_GetUserFilterStructure(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix24_CreateCalendar(FunctionParameters);
+Procedure Bitrix24_CreateCalendar(FunctionParameters)
 
     UserID = 1;
 
@@ -12284,7 +12284,7 @@ Procedure Bitrix24_CreateCalendar(FunctionParameters);
 
 EndProcedure
 
-Procedure Bitrix24_UpdateCalendar(FunctionParameters);
+Procedure Bitrix24_UpdateCalendar(FunctionParameters)
 
     UserID = 1;
 
