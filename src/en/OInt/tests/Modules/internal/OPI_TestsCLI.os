@@ -2026,9 +2026,11 @@ Procedure CLI_B24_CalendarsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"  , TestParameters);
 
     CLI_Bitrix24_CreateCalendar(TestParameters);
+    CLI_Bitrix24_UpdateCalendar(TestParameters);
     CLI_Bitrix24_GetCalendarList(TestParameters);
     CLI_Bitrix24_DeleteCalendar(TestParameters);
     CLI_Bitrix24_GetCalendarStructure(TestParameters);
+    CLI_Bitrix24_GetCalendarSettingsStructure(TestParameters);
 
 EndProcedure
 
@@ -15966,6 +15968,46 @@ Procedure CLI_Bitrix24_CreateCalendar(FunctionParameters);
 
 EndProcedure
 
+Procedure CLI_Bitrix24_UpdateCalendar(FunctionParameters);
+
+    UserID = 1;
+
+    CalendarsStructure = New Structure;
+    CalendarsStructure.Insert("type"       , "user");
+    CalendarsStructure.Insert("ownerId"    , UserID);
+    CalendarsStructure.Insert("name"       , "New calendar name");
+    CalendarsStructure.Insert("description", "This calendar has been changed");
+
+    URL        = FunctionParameters["Bitrix24_URL"];
+    CalendarID = FunctionParameters["Bitrix24_HookCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("calendar", CalendarID);
+    Options.Insert("fields"  , CalendarsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendar (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    URL        = FunctionParameters["Bitrix24_Domain"];
+    Token      = FunctionParameters["Bitrix24_Token"];
+    CalendarID = FunctionParameters["Bitrix24_CalendarID"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("calendar", CalendarID);
+    Options.Insert("fields"  , CalendarsStructure);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendar", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+EndProcedure
+
 Procedure CLI_Bitrix24_DeleteCalendar(FunctionParameters)
 
     URL        = FunctionParameters["Bitrix24_URL"];
@@ -16055,6 +16097,34 @@ Procedure CLI_Bitrix24_GetCalendarList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCalendarSettingsStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarSettingsStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarSettingsStructure (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarSettingsStructure", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarSettingsStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
 
 EndProcedure
 
