@@ -1,1 +1,0 @@
-﻿oint cdek ПолучитьТокен --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%

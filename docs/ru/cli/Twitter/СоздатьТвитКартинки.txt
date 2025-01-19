@@ -1,1 +1,0 @@
-﻿oint twitter СоздатьТвитКартинки --text %text% --pictures %pictures% --auth %auth%

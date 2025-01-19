@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьПланЗадачНаДень --url %url% --token %token%

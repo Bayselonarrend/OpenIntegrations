@@ -1,1 +1,0 @@
-﻿oint gdrive ПолучитьСписокКаталогов --token %token% --querry %querry% --depth %depth%

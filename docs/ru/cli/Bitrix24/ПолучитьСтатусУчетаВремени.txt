@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьСтатусУчетаВремени --url %url% --userid %userid% --token %token%

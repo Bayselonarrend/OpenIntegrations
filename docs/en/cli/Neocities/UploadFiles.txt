@@ -1,1 +1,0 @@
-﻿oint neocities UploadFiles --token "7419cd51de4037f7..." --files %files% --singly %singly%

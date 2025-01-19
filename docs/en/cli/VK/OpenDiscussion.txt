@@ -1,1 +1,0 @@
-﻿oint vk OpenDiscussion --topic "51798392" --auth "GetVKParameters()"

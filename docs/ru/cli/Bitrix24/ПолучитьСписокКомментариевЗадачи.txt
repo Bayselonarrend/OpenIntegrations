@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьСписокКомментариевЗадачи --url %url% --task %task% --filter %filter% --token %token%

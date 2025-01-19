@@ -1,1 +1,0 @@
-﻿oint bitrix24 ОтправитьСообщение --url %url% --chat %chat% --text %text% --blocks %blocks% --token %token%

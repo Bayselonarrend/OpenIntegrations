@@ -1,1 +1,0 @@
-﻿oint gdrive CreateFolder --token %token% --title "TestFolder" --catalog %catalog%

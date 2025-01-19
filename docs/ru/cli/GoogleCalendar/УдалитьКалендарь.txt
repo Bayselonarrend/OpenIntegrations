@@ -1,1 +1,0 @@
-﻿oint gcalendar УдалитьКалендарь --token %token% --calendar %calendar%

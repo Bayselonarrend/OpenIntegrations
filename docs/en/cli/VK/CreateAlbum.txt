@@ -1,1 +1,0 @@
-﻿oint vk CreateAlbum --title "AlbumFromAutoTest" --description %description% --auth "GetVKParameters()"

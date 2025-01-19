@@ -1,1 +1,0 @@
-﻿oint bitrix24 НайтиПользователей --url %url% --filter %filter% --token %token%

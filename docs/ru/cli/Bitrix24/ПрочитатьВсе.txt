@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПрочитатьВсе --url %url% --token %token%

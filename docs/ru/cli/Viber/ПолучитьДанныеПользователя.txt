@@ -1,1 +1,0 @@
-﻿oint viber ПолучитьДанныеПользователя --token %token% --user %user%

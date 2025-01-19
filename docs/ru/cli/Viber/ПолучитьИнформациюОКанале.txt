@@ -1,1 +1,0 @@
-﻿oint viber ПолучитьИнформациюОКанале --token %token%
