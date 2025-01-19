@@ -834,7 +834,7 @@ Function FormKeyboardFromButtonArray(Val ButtonArray
         ParameterStructure = New Structure("keyboard,resize_keyboard", Strings, True);
     EndIf;
 
-    Keyboard = OPI_Tools.JSONString(ParameterStructure);
+    Keyboard = OPI_Tools.JSONString(ParameterStructure, , False);
 
     Return Keyboard;
 
