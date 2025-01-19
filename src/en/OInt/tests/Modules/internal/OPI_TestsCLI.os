@@ -10468,6 +10468,14 @@ Procedure CLI_Ozon_GetFBODraft(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFBODraft", "Ozon");
     OPI_TestDataRetrieval.Check_OzonReadyDraft(Result);
 
+    DraftID = Result["draft_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_Draft", DraftID);
+    FunctionParameters.Insert("Ozon_Draft", DraftID);
+
+    WarehouseID = Result["clusters"][0]["warehouses"][0]["supply_warehouse"]["warehouse_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_FBOWarehouse", WarehouseID);
+    FunctionParameters.Insert("Ozon_FBOWarehouse", WarehouseID);
+
 EndProcedure
 
 Procedure CLI_Ozon_GetShipmentAdditionalFields(FunctionParameters)
