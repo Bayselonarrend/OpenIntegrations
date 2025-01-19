@@ -2393,13 +2393,13 @@ Procedure CLI_Telegram_SendTextMessage(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage", "Telegram");
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
 
-    Options.Insert("chat", FunctionParameters["Telegram_ChannelID"]);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
-
     MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
     OPI_TestDataRetrieval.WriteParameter("Telegram_MessageID", MessageID);
     OPI_Tools.AddField("Telegram_MessageID", MessageID, "String", FunctionParameters);
+
+    Options.Insert("chat", FunctionParameters["Telegram_ChannelID"]);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage (channel)");
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
