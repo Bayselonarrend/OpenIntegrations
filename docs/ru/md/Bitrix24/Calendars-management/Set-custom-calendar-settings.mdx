@@ -48,6 +48,44 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
+              --url "b24-ar17wx.bitrix24.by" \
+              --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "result": true,
+ "time": {
+  "start": 1737292093.87407,
+  "finish": 1737292093.90548,
+  "duration": 0.0314080715179443,
+  "processing": 0.0064549446105957,
+  "date_start": "2025-01-19T16:08:13+03:00",
+  "date_finish": "2025-01-19T16:08:13+03:00",
+  "operating_reset_at": 1737292693,
+  "operating": 0
+ }
+}
+```

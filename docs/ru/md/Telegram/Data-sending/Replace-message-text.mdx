@@ -34,13 +34,35 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDЧата      = "@testsichee";
-    IDСообщения = "13750";
+    IDСообщения = "13906";
     Текст       = "Новый текст сообщения";
 
     Результат = OPI_Telegram.ЗаменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст);
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ЗаменитьТекстСообщения \
+              --token "***" \
+              --chat "@testsichee" \
+              --message "13842" \
+              --text "Новый текст сообщения"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ЗаменитьТекстСообщения ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --message "13842" ^
+              --text "Новый текст сообщения"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

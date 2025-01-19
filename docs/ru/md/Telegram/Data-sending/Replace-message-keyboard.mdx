@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDЧата      = "461699897";
-    IDСообщения = "11407";
+    IDСообщения = "11504";
 
     МассивКнопок = Новый Массив;
     МассивКнопок.Добавить("Новая кнопка 1");
@@ -47,6 +47,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint telegram ЗаменитьКлавиатуруСообщения \
+              --token "***" \
+              --chat "461699897" \
+              --message "13842" \
+              --keyboard "{'inline_keyboard':[[{'text':'Новая кнопка 1','callback_data':'Новая кнопка 1'},{'text':'Новая кнопка 2','callback_data':'Новая кнопка 2'},{'text':'Новая кнопка 3','callback_data':'Новая кнопка 3'}]],'rows':1}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint telegram ЗаменитьКлавиатуруСообщения ^
+              --token "***" ^
+              --chat "461699897" ^
+              --message "13842" ^
+              --keyboard "{'inline_keyboard':[[{'text':'Новая кнопка 1','callback_data':'Новая кнопка 1'},{'text':'Новая кнопка 2','callback_data':'Новая кнопка 2'},{'text':'Новая кнопка 3','callback_data':'Новая кнопка 3'}]],'rows':1}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

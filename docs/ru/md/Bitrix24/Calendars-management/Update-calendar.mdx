@@ -53,6 +53,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 ИзменитьКалендарь \
+              --url "b24-ar17wx.bitrix24.by" \
+              --calendar 72 \
+              --fields "{'type':'user','ownerId':1,'name':'Новое имя календаря','description':'Этот календарь был изменен'}" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 ИзменитьКалендарь ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --calendar 72 ^
+              --fields "{'type':'user','ownerId':1,'name':'Новое имя календаря','description':'Этот календарь был изменен'}" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
