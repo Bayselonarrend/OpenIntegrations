@@ -1,5 +1,5 @@
 oint cdek ОформитьКлиентскийВозврат ^
   --token "***" ^
-  --uuid "9448cf90-cec2-4b46-b885-d3419816c69b" ^
+  --uuid "9ea5a84e-43a3-4946-92c8-9cac3d9c226e" ^
   --tariff 139 ^
   --testapi "***"
