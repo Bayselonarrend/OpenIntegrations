@@ -1,1 +1,0 @@
-﻿oint telegram DeleteWebhook --token "6129457865:AAFyzNYOAFbu..."

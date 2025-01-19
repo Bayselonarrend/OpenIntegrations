@@ -1,1 +1,0 @@
-﻿oint dropbox GetAsynchronousChangeStatus --token %token% --job %job%

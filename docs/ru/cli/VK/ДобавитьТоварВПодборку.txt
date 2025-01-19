@@ -1,1 +1,0 @@
-﻿oint vk ДобавитьТоварВПодборку --items %items% --sel %sel% --auth %auth%

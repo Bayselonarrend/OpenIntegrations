@@ -1,1 +1,0 @@
-﻿oint vkteams ПереслатьСообщение --token %token% --message %message% --fromid %fromid% --chatid %chatid% --text %text%

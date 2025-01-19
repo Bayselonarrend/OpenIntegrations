@@ -1,1 +1,0 @@
-﻿oint twitter ЗагрузитьМассивВложений --files %files% --type %type% --auth %auth%

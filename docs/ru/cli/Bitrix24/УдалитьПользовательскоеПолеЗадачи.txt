@@ -1,1 +1,0 @@
-﻿oint bitrix24 УдалитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --token %token%

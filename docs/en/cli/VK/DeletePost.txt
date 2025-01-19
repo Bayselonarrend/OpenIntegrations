@@ -1,1 +1,0 @@
-﻿oint vk DeletePost --post "3356" --auth "GetVKParameters()"

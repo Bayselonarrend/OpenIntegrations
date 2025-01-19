@@ -1,1 +1,0 @@
-﻿oint vk ОткрытьОбсуждение --topic %topic% --auth %auth%

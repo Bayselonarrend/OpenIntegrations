@@ -1,1 +1,0 @@
-﻿oint dropbox GetAuthorizationLink --appkey "oynqxds..."

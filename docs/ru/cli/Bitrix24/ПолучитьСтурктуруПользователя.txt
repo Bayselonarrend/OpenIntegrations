@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьСтурктуруПользователя --url %url% --token %token%

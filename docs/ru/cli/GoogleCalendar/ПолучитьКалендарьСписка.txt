@@ -1,1 +1,0 @@
-﻿oint gcalendar ПолучитьКалендарьСписка --token %token% --calendar %calendar%

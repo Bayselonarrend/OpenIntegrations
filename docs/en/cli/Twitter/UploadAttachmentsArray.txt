@@ -1,1 +1,0 @@
-﻿oint twitter UploadAttachmentsArray --files %files% --type %type% --auth %auth%

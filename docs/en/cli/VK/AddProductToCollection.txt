@@ -1,1 +1,0 @@
-﻿oint vk AddProductToCollection --items %items% --sel "125" --auth "GetVKParameters()"

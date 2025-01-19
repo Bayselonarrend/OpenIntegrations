@@ -1,1 +1,0 @@
-﻿oint gdrive GetComment --token %token% --object %object% --comment "AAABI3NNNAY"

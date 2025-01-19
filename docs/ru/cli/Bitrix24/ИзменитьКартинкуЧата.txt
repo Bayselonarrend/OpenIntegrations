@@ -1,1 +1,0 @@
-﻿oint bitrix24 ИзменитьКартинкуЧата --url %url% --chat %chat% --picture %picture% --token %token%

@@ -1,1 +1,0 @@
-﻿oint vkteams ИзменитьТекстСообщения --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%

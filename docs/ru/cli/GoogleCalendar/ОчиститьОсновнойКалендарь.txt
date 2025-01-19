@@ -1,1 +1,0 @@
-﻿oint gcalendar ОчиститьОсновнойКалендарь --token %token%

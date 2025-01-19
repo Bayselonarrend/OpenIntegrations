@@ -1,1 +1,0 @@
-﻿oint slack DeleteFile --token %token% --fileid "F070VL6FQFM"

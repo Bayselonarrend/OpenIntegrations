@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьЧеклистЗадачи --url %url% --task %task% --token %token%

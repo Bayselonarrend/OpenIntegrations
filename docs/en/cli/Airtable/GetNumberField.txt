@@ -1,1 +1,0 @@
-﻿oint airtable GetNumberField --title "Number" --precision "0"

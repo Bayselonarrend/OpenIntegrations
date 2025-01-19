@@ -1,1 +1,0 @@
-﻿oint slack GetWorkspaceList --token %token% --cursor %cursor%

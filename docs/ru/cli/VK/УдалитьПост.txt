@@ -1,1 +1,0 @@
-﻿oint vk УдалитьПост --post %post% --auth %auth%

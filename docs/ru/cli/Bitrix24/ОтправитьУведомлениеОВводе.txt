@@ -1,1 +1,0 @@
-﻿oint bitrix24 ОтправитьУведомлениеОВводе --url %url% --chat %chat% --token %token%

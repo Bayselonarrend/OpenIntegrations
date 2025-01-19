@@ -1,1 +1,0 @@
-﻿oint bitrix24 GetPictureBlock --title %title% --url %url%

@@ -1,1 +1,0 @@
-﻿oint gdrive DeleteComment --token %token% --object %object% --comment %comment%

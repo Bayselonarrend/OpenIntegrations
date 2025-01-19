@@ -1,1 +1,0 @@
-﻿oint ozon AddProductVideoCover --item %item% --url %url%

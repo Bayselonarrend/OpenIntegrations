@@ -1,1 +1,0 @@
-﻿oint vk WriteInDiscussion --topic "51798392" --text %text% --auth "GetVKParameters()"

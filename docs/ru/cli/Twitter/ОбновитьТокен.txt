@@ -1,1 +1,0 @@
-﻿oint twitter ОбновитьТокен --auth %auth%

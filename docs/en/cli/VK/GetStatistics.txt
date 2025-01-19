@@ -1,1 +1,0 @@
-﻿oint vk GetStatistics --datefrom "BegOfDay(CurrentDate)" --dateto "EndOfDay(StartDate)" --auth "GetVKParameters()"

@@ -1,1 +1,0 @@
-﻿oint bitrix24 DeleteTasksDependencies --url %url% --taskfrom %taskfrom% --taskto %taskto% --linktype %linktype% --token %token%
