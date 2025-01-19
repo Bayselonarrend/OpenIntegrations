@@ -1,1 +1,0 @@
-﻿oint neocities СинхронизироватьКаталоги --token "7419cd51de4037f7..." --local %local% --remote %remote%

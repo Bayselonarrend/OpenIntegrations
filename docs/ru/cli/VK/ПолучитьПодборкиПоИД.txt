@@ -1,1 +1,0 @@
-﻿oint vk ПолучитьПодборкиПоИД --sels %sels% --auth %auth%

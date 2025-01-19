@@ -1,1 +1,0 @@
-﻿oint cdek ПолучитьОписаниеЗаказа --empty %empty% --required %required% --ostore %ostore%

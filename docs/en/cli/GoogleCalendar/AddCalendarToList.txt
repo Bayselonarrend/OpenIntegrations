@@ -1,1 +1,0 @@
-﻿oint gcalendar AddCalendarToList --token %token% --calendar %calendar%

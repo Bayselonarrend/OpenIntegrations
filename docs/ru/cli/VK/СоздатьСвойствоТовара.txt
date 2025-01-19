@@ -1,1 +1,0 @@
-﻿oint vk СоздатьСвойствоТовара --title %title% --auth %auth%

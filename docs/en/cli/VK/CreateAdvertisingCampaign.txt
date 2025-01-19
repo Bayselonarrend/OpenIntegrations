@@ -1,1 +1,0 @@
-﻿oint vk CreateAdvertisingCampaign --cabinet "1607951446" --title %title% --auth "GetVKParameters()"

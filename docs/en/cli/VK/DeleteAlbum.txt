@@ -1,1 +1,0 @@
-﻿oint vk DeleteAlbum --album "305187504" --auth "GetVKParameters()"

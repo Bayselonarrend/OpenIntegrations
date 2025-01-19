@@ -1,1 +1,0 @@
-﻿oint gcalendar GetListCalendar --token %token% --calendar %calendar%

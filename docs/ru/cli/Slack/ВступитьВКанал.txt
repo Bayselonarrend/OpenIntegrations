@@ -1,1 +1,0 @@
-﻿oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"

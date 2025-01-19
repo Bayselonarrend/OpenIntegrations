@@ -1,1 +1,0 @@
-﻿oint viber GetOnlineUsers --token %token% --users %users%

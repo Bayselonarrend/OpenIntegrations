@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьБлокФайла --title %title% --url %url%

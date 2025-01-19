@@ -1,1 +1,0 @@
-﻿oint ozon ДополнитьКомплексныйАтрибут --object %object% --attributeid %attributeid% --complexid %complexid% --values %values%

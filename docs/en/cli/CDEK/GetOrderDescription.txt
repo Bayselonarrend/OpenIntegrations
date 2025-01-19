@@ -1,1 +1,0 @@
-﻿oint cdek GetOrderDescription --empty %empty% --required %required% --ostore %ostore%

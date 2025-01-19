@@ -1,1 +1,0 @@
-﻿oint neocities DeleteSelectedFiles --token "7419cd51de4037f7..." --paths %paths%

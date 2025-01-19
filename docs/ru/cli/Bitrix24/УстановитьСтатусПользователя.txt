@@ -1,1 +1,0 @@
-﻿oint bitrix24 УстановитьСтатусПользователя --url %url% --status %status% --token %token%

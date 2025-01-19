@@ -1,1 +1,0 @@
-﻿oint twitter CreatePollTweet --text %text% --options %options% --duration %duration% --auth %auth%

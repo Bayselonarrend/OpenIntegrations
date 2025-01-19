@@ -1,1 +1,0 @@
-﻿oint vk GetPostStatistics --posts %posts% --auth "GetVKParameters()"

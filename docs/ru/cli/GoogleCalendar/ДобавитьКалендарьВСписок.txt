@@ -1,1 +1,0 @@
-﻿oint gcalendar ДобавитьКалендарьВСписок --token %token% --calendar %calendar%

@@ -1,1 +1,0 @@
-﻿oint bitrix24 ВыполнитьЭлементЧеклистаЗадачи --url %url% --task %task% --element %element% --token %token%

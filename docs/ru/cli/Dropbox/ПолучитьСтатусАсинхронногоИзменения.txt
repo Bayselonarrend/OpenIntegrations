@@ -1,1 +1,0 @@
-﻿oint dropbox ПолучитьСтатусАсинхронногоИзменения --token %token% --job %job%

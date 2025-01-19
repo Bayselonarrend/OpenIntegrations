@@ -1,1 +1,0 @@
-﻿oint bitrix24 ИзменитьСтадиюКанбана --url %url% --title %title% --stage %stage% --color %color% --prevstage %prevstage% --admin %admin% --token %token%

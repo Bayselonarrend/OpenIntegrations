@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьСписокПользователейЧата --url %url% --chat %chat% --token %token%

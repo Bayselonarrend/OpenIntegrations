@@ -1,1 +1,0 @@
-﻿oint gsheets CreateSpreadsheet --token %token% --title "TestTable" --sheets %sheets%

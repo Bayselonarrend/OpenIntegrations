@@ -1,1 +1,0 @@
-﻿oint gdrive GetCommentList --token %token% --object %object%

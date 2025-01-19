@@ -1,1 +1,0 @@
-﻿oint viber УстановитьWebhook --token %token% --url %url%

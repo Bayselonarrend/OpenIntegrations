@@ -1,1 +1,0 @@
-﻿oint viber CreateKeyboardFromArrayButton --buttons %buttons% --color %color%

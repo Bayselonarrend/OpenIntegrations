@@ -1,1 +1,0 @@
-﻿oint slack CreateChannel --token %token% --title %title% --private %private%

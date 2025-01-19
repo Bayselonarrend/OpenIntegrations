@@ -1,1 +1,0 @@
-﻿oint neocities GetSiteData --token "7419cd51de4037f7..." --sitename %sitename%
