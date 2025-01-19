@@ -4612,6 +4612,52 @@ Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Toke
 
 EndFunction
 
+// Get custom calendar settings
+// Gets the current users custom calendar settings
+//
+// Note
+// Method at API documentation: [calendar.user.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCustomCalendarSettings(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.user.settings.get");
+    Response   = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set custom calendar settings
+// Sets new custom calendar settings
+//
+// Note
+// Method at API documentation: [calendar.user.settings.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-set.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// SettingsStructure - Structure Of KeyAndValue - Settings structure (see GetCalednarCustomSettingsStructure) - settings
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SetCustomCalendarSettings(Val URL, Val SettingsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.user.settings.set");
+
+    OPI_Tools.AddField("settings", SettingsStructure, "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get calendar settings structure
 // Gets the structure of the default calendar settings
 //
@@ -4630,6 +4676,56 @@ Function GetCalendarSettingsStructure(Val URL, Val Token = "") Export
     Response   = OPI_Tools.Get(URL, Parameters);
 
     Return Response;
+
+EndFunction
+
+// Get calednar custom settings structure
+// Gets an empty structure for setting custom calendar settings
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetCalednarCustomSettingsStructure(Val Clear = False) Export
+
+    SettingsStructure = New Structure;
+
+    SettingsStructure.Insert("view"              , "<standard presentation: day, week, month, list>");
+    SettingsStructure.Insert("meetSection"       , "<invitation calendar>");
+    SettingsStructure.Insert("crmSection"        , "<calendar for CRM>");
+    SettingsStructure.Insert("showDeclined"      , "<show rejected events>");
+    SettingsStructure.Insert("denyBusyInvitation", "<disallow invitations to an event if the time is full>");
+    SettingsStructure.Insert("collapseOffHours"  , "<hide off hours: Y,N>");
+    SettingsStructure.Insert("showWeekNumbers"   , "<show week number: Y,N>");
+    SettingsStructure.Insert("showTasks"         , "<display tasks: Y,N>");
+    SettingsStructure.Insert("syncTasks"         , "<synchronise the task calendar: Y,N>");
+    SettingsStructure.Insert("showCompletedTasks", "<display completed tasks: Y,N>");
+    SettingsStructure.Insert("lastUsedSection"   , "<default event calendar>");
+    SettingsStructure.Insert("sendFromEmail"     , "<E-mail for sending invitations>");
+    SettingsStructure.Insert("defaultSections"   , "<preset calendar settings>");
+    SettingsStructure.Insert("syncPeriodPast"    , "<number of months to synchronise in the past period>");
+    SettingsStructure.Insert("syncPeriodFuture"  , "<number of months to synchronise in the future period>");
+
+        RemindersStructure = New Structure;
+
+            ReminderSettingsArray = New Array;
+                ReminderSetting   = New Structure;
+                ReminderSetting.Insert("type" , "<reminder time type: min, hour, day>");
+                ReminderSetting.Insert("count", "<numeric value of the time interval>");
+            ReminderSettingsArray.Add(ReminderSetting);
+
+        RemindersStructure.Insert("fullDay" , ReminderSettingsArray);
+        RemindersStructure.Insert("withTime", ReminderSettingsArray);
+
+    SettingsStructure.Insert("defaultReminders", RemindersStructure);
+
+    If Clear Then
+        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
 
 EndFunction
 
