@@ -1,1 +1,0 @@
-﻿oint vk EditProductProperty --title "Color (change.)" --prop "648" --auth "GetVKParameters()"

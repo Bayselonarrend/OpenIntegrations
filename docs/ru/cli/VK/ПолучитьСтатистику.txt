@@ -1,1 +1,0 @@
-﻿oint vk ПолучитьСтатистику --datefrom %datefrom% --dateto %dateto% --auth %auth%

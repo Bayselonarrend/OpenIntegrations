@@ -1,1 +1,0 @@
-﻿oint slack ПолучитьСписокРабочихОбластей --token %token% --cursor %cursor%

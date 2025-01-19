@@ -1,1 +1,0 @@
-﻿oint viber GetUserData --token %token% --user %user%

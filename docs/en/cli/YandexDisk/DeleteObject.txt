@@ -1,1 +1,0 @@
-﻿oint yadisk DeleteObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --can %can%

@@ -1,1 +1,0 @@
-﻿oint vkteams ИсключитьПользователейЧата --token %token% --chatid %chatid% --members %members%

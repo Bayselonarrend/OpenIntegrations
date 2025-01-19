@@ -1,1 +1,0 @@
-﻿oint gcalendar EditEvent --token %token% --calendar %calendar% --props %props% --event %event%

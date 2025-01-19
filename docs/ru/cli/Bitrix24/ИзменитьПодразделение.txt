@@ -1,1 +1,0 @@
-﻿oint bitrix24 ИзменитьПодразделение --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%

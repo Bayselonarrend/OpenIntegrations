@@ -1,1 +1,0 @@
-﻿oint bitrix24 УдалитьУведомление --url %url% --notif %notif% --token %token%

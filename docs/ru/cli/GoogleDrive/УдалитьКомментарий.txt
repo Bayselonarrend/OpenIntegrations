@@ -1,1 +1,0 @@
-﻿oint gdrive УдалитьКомментарий --token %token% --object %object% --comment %comment%

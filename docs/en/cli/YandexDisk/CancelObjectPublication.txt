@@ -1,1 +1,0 @@
-﻿oint yadisk CancelObjectPublication --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"

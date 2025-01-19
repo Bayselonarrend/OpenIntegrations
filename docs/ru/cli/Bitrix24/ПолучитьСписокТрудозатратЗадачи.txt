@@ -1,1 +1,0 @@
-﻿oint bitrix24 ПолучитьСписокТрудозатратЗадачи --url %url% --task %task% --token %token%

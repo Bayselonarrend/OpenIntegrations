@@ -1,1 +1,0 @@
-﻿oint vk СоздатьОбсуждение --title %title% --text %text% --auth %auth%

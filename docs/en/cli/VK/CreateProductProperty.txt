@@ -1,1 +1,0 @@
-﻿oint vk CreateProductProperty --title "Color" --auth "GetVKParameters()"

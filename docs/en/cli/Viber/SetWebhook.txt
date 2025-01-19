@@ -1,1 +1,0 @@
-﻿oint viber SetWebhook --token %token% --url %url%

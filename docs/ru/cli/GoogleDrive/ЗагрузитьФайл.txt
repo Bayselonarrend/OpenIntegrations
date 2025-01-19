@@ -1,1 +1,0 @@
-﻿oint gdrive ЗагрузитьФайл --token %token% --file %file% --props %props%

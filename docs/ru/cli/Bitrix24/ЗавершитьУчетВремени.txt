@@ -1,1 +1,0 @@
-﻿oint bitrix24 ЗавершитьУчетВремени --url %url% --userid %userid% --time %time% --report %report% --token %token%

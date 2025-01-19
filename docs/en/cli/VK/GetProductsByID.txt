@@ -1,1 +1,0 @@
-﻿oint vk GetProductsByID --items %items% --auth "GetVKParameters()"

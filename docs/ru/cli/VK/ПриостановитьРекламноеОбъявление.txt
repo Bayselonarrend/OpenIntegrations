@@ -1,1 +1,0 @@
-﻿oint vk ПриостановитьРекламноеОбъявление --cabinet %cabinet% --adv %adv% --auth %auth%
