@@ -3153,9 +3153,9 @@ Procedure CLI_Telegram_ReplaceMessageKeyboard(FunctionParameters)
     MessageID = FunctionParameters["Telegram_MessageID"];
 
     ButtonArray = New Array;
-    ButtonArray.Add("New button 3");
-    ButtonArray.Add("New button 2");
-    ButtonArray.Add("New button 1");
+    ButtonArray.Add("1");
+    ButtonArray.Add("2");
+    ButtonArray.Add("3");
 
     Options = New Structure;
     Options.Insert("buttons", ButtonArray);
@@ -3171,6 +3171,8 @@ Procedure CLI_Telegram_ReplaceMessageKeyboard(FunctionParameters)
     Options.Insert("keyboard", Keyboard);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageKeyboard", Options);
+
+    Keyboard = OPI_Tools.JSONString(Keyboard);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ReplaceMessageKeyboard", "Telegram");
     OPI_TestDataRetrieval.Check_TelegramMessageKeyboard(Result, Keyboard);

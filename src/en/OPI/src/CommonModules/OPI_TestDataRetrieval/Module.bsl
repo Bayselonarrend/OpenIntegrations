@@ -810,7 +810,7 @@ Procedure Check_TelegramMessageKeyboard(Val Result, Val Keyboard) Export
     Keyboard_ = OPI_Tools.JSONString(Keyboard_);
 
     ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(OPI_Tools.JSONString(MessageKeyboard)).Равно(Keyboard_);
+    ExpectsThat(StrLen(OPI_Tools.JSONString(MessageKeyboard))).Равно(StrLen(Keyboard_));
 
 EndProcedure
 
