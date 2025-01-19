@@ -2029,8 +2029,11 @@ Procedure CLI_B24_CalendarsManagement() Export
     CLI_Bitrix24_UpdateCalendar(TestParameters);
     CLI_Bitrix24_GetCalendarList(TestParameters);
     CLI_Bitrix24_DeleteCalendar(TestParameters);
+    CLI_Bitrix24_GetCustomCalendarSettings(TestParameters);
+    CLI_Bitrix24_SetCustomCalendarSettings(TestParameters);
     CLI_Bitrix24_GetCalendarStructure(TestParameters);
     CLI_Bitrix24_GetCalendarSettingsStructure(TestParameters);
+    CLI_Bitrix24_GetCalednarCustomSettingsStructure(TestParameters);
 
 EndProcedure
 
@@ -16055,7 +16058,7 @@ Procedure CLI_Bitrix24_GetCalendarStructure(FunctionParameters)
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options.Insert("empty" , True);
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetCalendarStructure", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarStructure", Options);
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarStructure (empty)", "Bitrix24");
 
     For Each Element In Result Do
@@ -16125,6 +16128,90 @@ Procedure CLI_Bitrix24_GetCalendarSettingsStructure(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarSettingsStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCalednarCustomSettingsStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalednarCustomSettingsStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+    Options.Insert("empty" , True);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalednarCustomSettingsStructure", Options);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure)", "Bitrix24");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetCustomCalendarSettings(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomCalendarSettings", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomCalendarSettings (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomCalendarSettings", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomCalendarSettings", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SetCustomCalendarSettings(FunctionParameters)
+
+    CalendarsStructure = New Structure;
+    CalendarsStructure.Insert("view"              , "month");
+    CalendarsStructure.Insert("showDeclined"      , "Y");
+    CalendarsStructure.Insert("collapseOffHours"  , "N");
+    CalendarsStructure.Insert("showCompletedTasks", "N");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("settings", CalendarsStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetCustomCalendarSettings", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCustomCalendarSettings (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("settings", CalendarsStructure);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetCustomCalendarSettings", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCustomCalendarSettings", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
 
