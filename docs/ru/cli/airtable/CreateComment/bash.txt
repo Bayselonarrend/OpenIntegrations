@@ -1,6 +1,6 @@
 oint airtable CreateComment \
  --token "***" \
- --base "appDBeB8n80EwtBIX" \
- --table "tblfyi4KX4DzNqIom" \
- --record "recRlsXIOo1Tn5Ya8" \
+ --base "appQJvhyPf6wsMLGd" \
+ --table "tbl2y2JCiK1G12Wvn" \
+ --record "recyTdmrhhFBE9qWM" \
  --text "TestComment"

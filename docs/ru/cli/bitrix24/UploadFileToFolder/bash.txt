@@ -1,5 +1,5 @@
 oint bitrix24 UploadFileToFolder \
- --url "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11" \
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/ps56vdxg63nq8fek" \
  --title "Imortant doc.docx" \
  --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
- --folderid 13688
+ --folderid 26166

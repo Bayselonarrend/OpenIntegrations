@@ -1,6 +1,6 @@
 oint cdek GetReceipt \
  --token "***" \
- --uuid "72753031-be91-4e83-a486-090a26c490b1" \
+ --uuid "72753031-0f0c-447d-a2b3-bfd0af8da527" \
  --getfile true \
  --testapi "***" \
- --out "C:\Users\Administrator\AppData\Local\Temp\paku2j04ltf.pdf"
+ --out "C:\Users\Administrator\AppData\Local\Temp\cfnwyb3ncl5.pdf"
