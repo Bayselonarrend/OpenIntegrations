@@ -1,4 +1,4 @@
 oint ozon CreateBarcodes ^
  --clientid "***" ^
  --apikey "***" ^
- --productids 1232577507
+ --productids 1364375364

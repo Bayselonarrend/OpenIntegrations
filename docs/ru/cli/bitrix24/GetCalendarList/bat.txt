@@ -1,0 +1,4 @@
+oint bitrix24 GetCalendarList ^
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/ps56vdxg63nq8fek" ^
+ --owner 1 ^
+ --type "user"

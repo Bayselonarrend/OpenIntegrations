@@ -1,0 +1,3 @@
+oint sqlite GetTableInformation \
+ --table "test" \
+ --db "C:\Users\Administrator\AppData\Local\Temp\zhyergud3gg.sqlite"
