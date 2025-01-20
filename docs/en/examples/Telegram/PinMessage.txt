@@ -1,5 +1,5 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "13918";
+    MessageID = "13954";
 
     Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
