@@ -2,7 +2,7 @@
 
 oint airtable CreateField ^
  --token "***" ^
- --base "appDBeB8n80EwtBIX" ^
- --table "tblfyi4KX4DzNqIom" ^
- --title "f913643c-3231-46a6-8917-97c09471932f" ^
- --fielddata "{'name':'f913643c-3231-46a6-8917-97c09471932f','type':'number','options':{'precision':0}}"
+ --base "appQJvhyPf6wsMLGd" ^
+ --table "tbl2y2JCiK1G12Wvn" ^
+ --title "8b5c2519-9c68-4ef7-99c4-6a689bc5599b" ^
+ --fielddata "{'name':'8b5c2519-9c68-4ef7-99c4-6a689bc5599b','type':'number','options':{'precision':0}}"

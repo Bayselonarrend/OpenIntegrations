@@ -1,4 +1,4 @@
 oint ozon ArchiveProducts ^
  --clientid "***" ^
  --apikey "***" ^
- --products 1232577507
+ --products 1364375364
