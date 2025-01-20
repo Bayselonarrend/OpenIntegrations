@@ -319,10 +319,10 @@ Function SendTextMessage(Val Token
     Text = DecodeString(Text, StringEncodingMethod.URLInURLEncoding);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode"         , Markup   , String_     , Parameters);
-    OPI_Tools.AddField("text"               , Text     , String_     , Parameters);
-    OPI_Tools.AddField("reply_markup"       , Keyboard , "FileString", Parameters);
-    OPI_Tools.AddField("reply_to_message_id", RepliedID, String_     , Parameters);
+    OPI_Tools.AddField("parse_mode"         , Markup   , String_      , Parameters);
+    OPI_Tools.AddField("text"               , Text     , String_      , Parameters);
+    OPI_Tools.AddField("reply_markup"       , Keyboard , "Collection" , Parameters);
+    OPI_Tools.AddField("reply_to_message_id", RepliedID, String_      , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -513,10 +513,10 @@ Function SendMediaGroup(Val Token
     AddChatIdentifier(ChatID, Parameters);
     ConvertFilesToMedia(FileMapping, Text, Media);
 
-    OPI_Tools.AddField("parse_mode"  , Markup  , String_     , Parameters);
-    OPI_Tools.AddField("caption"     , Text    , String_     , Parameters);
-    OPI_Tools.AddField("media"       , Media   , String_     , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
+    OPI_Tools.AddField("parse_mode"  , Markup  , String_      , Parameters);
+    OPI_Tools.AddField("caption"     , Text    , String_      , Parameters);
+    OPI_Tools.AddField("media"       , Media   , String_      , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "Collection" , Parameters);
 
     Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
@@ -551,7 +551,7 @@ Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Ke
     OPI_Tools.AddField("parse_mode"  , "Markdown" , String_     , Parameters);
     OPI_Tools.AddField("latitude"    , Latitude   , String_     , Parameters);
     OPI_Tools.AddField("longitude"   , Longitude  , String_     , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard   , "FileString", Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard   , "Collection", Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -590,7 +590,7 @@ Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, V
     OPI_Tools.AddField("first_name"  , Name      , String_     , Parameters);
     OPI_Tools.AddField("last_name"   , LastName  , String_     , Parameters);
     OPI_Tools.AddField("phone_number", Phone     , String_     , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard  , "FileString", Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard  , "Collection", Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -628,7 +628,7 @@ Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Ano
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode", "Markdown"  , "String"    , Parameters);
     OPI_Tools.AddField("question"  , Question    , "String"    , Parameters);
-    OPI_Tools.AddField("options"   , AnswersArray, "FileString", Parameters);
+    OPI_Tools.AddField("options"   , AnswersArray, "Collection", Parameters);
 
     Parameters.Insert("is_anonymous", ?(Anonymous, 1, 0));
     AddChatIdentifier(ChatID, Parameters);
@@ -724,7 +724,7 @@ Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboa
 
     Parameters = New Structure;
     OPI_Tools.AddField("message_id"  , MessageID, String_     , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard , "FileString", Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard , "Collection", Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -834,9 +834,7 @@ Function FormKeyboardFromButtonArray(Val ButtonArray
         ParameterStructure = New Structure("keyboard,resize_keyboard", Strings, True);
     EndIf;
 
-    Keyboard = OPI_Tools.JSONString(ParameterStructure, , False);
-
-    Return Keyboard;
+    Return ParameterStructure;
 
 EndFunction
 
@@ -1310,7 +1308,7 @@ Function SendFile(Val Token
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode"  , Markup  , "String"    , Parameters);
     OPI_Tools.AddField("caption"     , Text    , "String"    , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "Collection", Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
