@@ -4,4 +4,4 @@ oint telegram ОтправитьМедиагруппу ^
   --token "***" ^
   --chat "@testsichee" ^
   --text "Строковое значение" ^
-  --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\4opodo1sbwn.docx':'document'}"
+  --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\ilqy4zhlle2.docx':'document'}"
