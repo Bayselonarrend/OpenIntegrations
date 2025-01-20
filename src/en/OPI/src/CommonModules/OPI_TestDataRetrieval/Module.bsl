@@ -2166,7 +2166,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         JSONWriter = New JSONWriter();
 
-        If Not OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
+        If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
 
             WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
             JSONWriter.SetString(WriterSettings);
