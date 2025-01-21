@@ -272,7 +272,7 @@ EndFunction
 // Structure Of KeyAndValue - Structure with information about the startup success
 Function StartServer(Val TCPServer) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -296,15 +296,17 @@ EndFunction
 // Structure Of KeyAndValue - Structure with new connection ID or error information
 Function AwaitingConnection(Val TCPServer, Val Timeout = 0) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
     OPI_TypeConversion.GetNumber(Timeout);
 
-    NewConnection = TCPServer.Wait(Timeout);
+    Result = TCPServer.Wait(Timeout);
 
-    Return NewConnection;
+    ProcessResult(Result);
+
+    Return Result;
 
 EndFunction
 
@@ -320,7 +322,7 @@ EndFunction
 // Structure Of KeyAndValue, BinaryData - Binary data on success or structure with error description
 Function ReceiveData(Val TCPServer, Val ConnectionID, Val MaxSize = 0) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -357,7 +359,7 @@ EndFunction
 // Structure Of KeyAndValue - Execution information
 Function SendData(Val TCPServer, Val ConnectionID, Val Data) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -383,7 +385,7 @@ EndFunction
 // Structure Of KeyAndValue - Execution information
 Function StopServer(Val TCPServer) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -407,7 +409,7 @@ EndFunction
 // Structure Of KeyAndValue - Execution information
 Function CloseIncomingConnection(Val TCPServer, Val ConnectionID) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -436,7 +438,7 @@ EndFunction
 // Structure Of KeyAndValue - Execution information
 Function GetIncomingConnections(Val TCPServer) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
@@ -459,7 +461,7 @@ EndFunction
 // Structure Of KeyAndValue - Execution information
 Function ActualiseIncomingConnections(Val TCPServer) Export
 
-    If Not OPI_Tools.IsServer(TCPServer) Then
+    If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
