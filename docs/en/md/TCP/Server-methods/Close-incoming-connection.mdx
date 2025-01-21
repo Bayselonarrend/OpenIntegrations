@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 7
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Close incoming connection 
+ Closes an existing connection by identifier
+
+
+
+`Function CloseIncomingConnection(Val TCPServer, Val ConnectionID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | TCPServer | - | Arbitrary | &#x2714; | TCP server. See CreateServer |
+  | ConnectionID | - | String, Number | &#x2714; | Active connection ID. See AwaitingConnection |
+
+  
+  Returns:  Structure Of KeyAndValue - Execution information
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

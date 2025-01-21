@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send data 
+ Sends data to the client by connection ID
+
+
+
+`Function SendData(Val TCPServer, Val ConnectionID, Val Data) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | TCPServer | - | Arbitrary | &#x2714; | TCP server. See CreateServer |
+  | ConnectionID | - | String, Number | &#x2714; | Active connection ID. See AwaitingConnection |
+  | Data | - | BinaryData | &#x2714; | Sending data |
+
+  
+  Returns:  Structure Of KeyAndValue - Execution information
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
