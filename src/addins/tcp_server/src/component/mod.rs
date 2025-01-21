@@ -16,6 +16,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("Close"),             // 4
     name!("ListConnections"),   // 5
     name!("UpdateConnections"), // 6
+    name!("Stop")               // 7
 
 ];
 
@@ -29,6 +30,7 @@ pub fn get_params_amount(num: usize) -> usize {
         4 => 1,
         5 => 0,
         6 => 0,
+        7 => 0,
         _ => 0,
     }
 }
@@ -66,6 +68,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
         5 => Box::new(methods::list_connections(obj)),
         6 => Box::new(methods::remove_inactive_connections(obj)),
+        7 => Box::new(methods::stop_server(obj)),
         _ => Box::new(false), // Неверный номер команды
     }
 
