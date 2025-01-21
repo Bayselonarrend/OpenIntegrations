@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Awaiting connection 
+ Blocks programm execution until a new connection is established
+
+
+
+`Function AwaitingConnection(Val TCPServer, Val Timeout = 0) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | TCPServer | - | Arbitrary | &#x2714; | TCP server. See CreateServer |
+  | Timeout | - | Number | &#x2716; | Maximum waiting time for connections. 0 > unlimited |
+
+  
+  Returns:  Structure Of KeyAndValue - Structure with new connection ID or error information
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
