@@ -1,8 +1,8 @@
 @echo off
 
 :: Установить переменную
-set CARGO_NAME=opi_addin
-set LIB_NAME=OPI_AddIn
+set CARGO_NAME=opi_tcpserver
+set LIB_NAME=OPI_TCPServer
 set OPENSSL_DIR=C:\msys64\mingw64
 set OPENSSL_LIB_DIR=%OPENSSL_DIR%\lib
 set OPENSSL_INCLUDE_DIR=%OPENSSL_DIR%\include
