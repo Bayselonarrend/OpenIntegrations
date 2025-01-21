@@ -3,7 +3,6 @@ mod methods;
 use addin1c::{name, Variant};
 use crate::core::getset;
 use std::collections::HashMap;
-use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
