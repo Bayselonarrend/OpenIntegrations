@@ -2241,6 +2241,14 @@ Procedure TC_Client() Export
 
 EndProcedure
 
+Procedure TC_Server() Export
+
+    TestParameters = New Structure;
+
+    TCP_AwaitingConnection(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region SQLite
@@ -16443,6 +16451,27 @@ Procedure TCP_SendLine(FunctionParameters) Export
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendLine (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_AwaitingConnection(FunctionParameters) Export
+
+    TCPServer = OPI_TCP.CreateServer(7788, True);
+
+    For N = 1 To 5 Do
+
+        NewConnection = OPI_TCP.AwaitingConnection(TCPServer, 20);
+
+        If NewConnection["result"] Then
+            Connection = NewConnection["connection"];
+        Else
+            Continue;
+        EndIf;
+
+        Response = OPI_TCP.SendData(TCPServer, Connection, GetBinaryDataFromString("Yo"));
+        Closing  = OPI_TCP.CloseIncomingConnection(TCPServer, Connection);
+
+    EndDo;
 
 EndProcedure
 

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_TCP.os
+﻿// OneScript: ./OInt/core/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
 
@@ -304,7 +304,7 @@
 
     Результат = TCPСервер.Wait(Таймаут);
 
-	ОбработатьРезультат(Результат);
+    ОбработатьРезультат(Результат);
 
     Возврат Результат;
 
