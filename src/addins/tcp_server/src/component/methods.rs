@@ -28,10 +28,23 @@ pub fn wait_for_connection(tcp: &mut AddIn, timeout: i32) -> String {
         while start_time.elapsed() < Duration::from_secs(timeout as u64) || timeout == 0 {
             match listener.accept() {
                 Ok((stream, _)) => {
+
                     let id = tcp.next_id.to_string();
+
+                    let addr = match stream.peer_addr(){
+                        Ok(addr) => addr.to_string(),
+                        Err(e) => e.to_string()
+                    };
+
                     tcp.next_id += 1;
                     tcp.connections.insert(id.clone(), stream);
-                    return json!({ "result": true, "connection": id }).to_string();
+                    return json!({
+                        "result": true,
+                        "connection": {
+                            "id": id,
+                            "addr": addr,
+                        }
+                    }).to_string();
                 }
                 Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => {
                     std::thread::sleep(Duration::from_millis(100));
@@ -148,6 +161,21 @@ pub fn remove_inactive_connections(tcp: &mut AddIn) -> String {
     }
 
     json!({ "result": true, "removed_connections": inactive_ids }).to_string()
+}
+
+pub fn stop_server(tcp: &mut AddIn) -> String {
+
+    if let Some(listener) = tcp.listener.take() {
+        drop(listener); // Освобождаем ресурс TcpListener
+    } else {
+        return create_error("Listener not initialized");
+    }
+
+    // Закрываем все активные соединения
+    tcp.connections.clear();
+
+    // Возвращаем успешный результат
+    create_success()
 }
 
 fn create_error(message: &str) -> String {
