@@ -143,8 +143,8 @@ pub fn remove_inactive_connections(tcp: &mut AddIn) -> String {
         }
     }
 
-    for id in inactive_ids {
-        tcp.connections.remove(&id);
+    for id in &inactive_ids {
+        tcp.connections.remove(id);
     }
 
     json!({ "result": true, "removed_connections": inactive_ids }).to_string()
