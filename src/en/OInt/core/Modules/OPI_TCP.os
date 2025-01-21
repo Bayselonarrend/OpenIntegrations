@@ -228,6 +228,266 @@ EndFunction
 
 #EndRegion
 
+#Region ServerMethods
+
+// Create server !NOCLI
+// Creates a new TCP server and sets the port
+//
+// Parameters:
+// Port - Number - Available port number for the server - port
+// Start - Boolean - True > immediately starts the created server - start
+//
+// Returns:
+// Arbitrary - Returns a running TCP server object on successful creation or a structure with an error description
+Function CreateServer(Val Port, Start = False) Export
+
+    OPI_TypeConversion.GetNumber(Port);
+    OPI_TypeConversion.GetBoolean(Start);
+
+    TCPServer      = AttachAddInOnServer("OPI_TCPServer");
+    TCPServer.Port = Port;
+
+    If Start Then
+        Result = StartServer(TCPServer);
+
+        Success   = Undefined;
+        FlagExist = OPI_Tools.CollectionFieldExist(Result, "result", Success);
+        Success   = ?(FlagExist, Success, False);
+
+        Return ?(Success, TCPServer, Result);
+
+    Else
+        Return TCPServer;
+    EndIf;
+
+EndFunction
+
+// Start server !NOCLI
+// Starts a previously created server
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+//
+// Returns:
+// Structure Of KeyAndValue - Structure with information about the startup success
+Function StartServer(Val TCPServer) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    Result = TCPServer.Start();
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Awaiting connection !NOCLI
+// Blocks programm execution until a new connection is established
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+// Timeout - Number - Maximum waiting time for connections. 0 > unlimited - timeout
+//
+// Returns:
+// Structure Of KeyAndValue - Structure with new connection ID or error information
+Function AwaitingConnection(Val TCPServer, Val Timeout = 0) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(Timeout);
+
+    NewConnection = TCPServer.Wait(Timeout);
+
+    Return NewConnection;
+
+EndFunction
+
+// Receive data !NOCLI
+// Gets data from the flow stream of an existing connection
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// MaxSize - Number - Max data size. 0 > to the end of the stream - maxsize
+//
+// Returns:
+// Structure Of KeyAndValue, BinaryData - Binary data on success or structure with error description
+Function ReceiveData(Val TCPServer, Val ConnectionID, Val MaxSize = 0) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+    OPI_TypeConversion.GetNumber(MaxSize);
+
+    Data = TCPServer.Receive(ConnectionID, MaxSize);
+
+    If TypeOf(Data) = Type("String") Then
+        Try
+            Result  = OPI_Tools.JsonToStructure(Data, False);
+        Except
+            Result  = New Structure("result,error", False, Data);
+        EndTry;
+
+    Else
+        Result = Data;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Send data !NOCLI
+// Sends data to the client by connection ID
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// Data - BinaryData - Sending data - data
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function SendData(Val TCPServer, Val ConnectionID, Val Data) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+    OPI_TypeConversion.GetBinaryData(Data);
+
+    Result = TCPServer.Send(ConnectionID, Data);
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Stop server !NOCLI
+// Stops a running server
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function StopServer(Val TCPServer) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    Result = TCPServer.Stop();
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Close incoming connection !NOCLI
+// Closes an existing connection by identifier
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function CloseIncomingConnection(Val TCPServer, Val ConnectionID) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = TCPServer.Close(ConnectionID);
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Get incoming connections !NOCLI
+// Gets the list of connections in the pool
+//
+// Note
+// The presence of a connection in the pool does not guarantee that it is active.^^
+// The ActualiseIncomingConnections function is used to clear the pool of inactive connections
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function GetIncomingConnections(Val TCPServer) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    Result = TCPServer.ListConnections();
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Actualise incoming connections
+// Removes inactive connections from the pool
+//
+// Parameters:
+// TCPServer - Arbitrary - TCP server. See CreateServer - srv
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function ActualiseIncomingConnections(Val TCPServer) Export
+
+    If Not OPI_Tools.IsServer(TCPServer) Then
+        Raise "The passed value is not a TCP server!";
+    EndIf;
+
+    Result = TCPServer.UpdateConnections();
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Is server !NOCLI
+// Specifies if the value passed is a TCP server object
+//
+// Parameters:
+// Value - Arbitrary - arbitrary value to check - value
+//
+// Returns:
+// Boolean - Is server
+Function IsServer(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -246,5 +506,15 @@ Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
     Return AddIn;
 
 EndFunction
+
+Procedure ProcessResult(Result)
+
+    Try
+        Result = OPI_Tools.JsonToStructure(Result, False);
+    Except
+        Result = New Structure("result,error", False, Result);
+    EndTry;
+
+EndProcedure
 
 #EndRegion
