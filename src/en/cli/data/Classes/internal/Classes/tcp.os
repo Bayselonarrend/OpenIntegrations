@@ -40,6 +40,17 @@
     NewLine.Описание    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
     NewLine.Область     = "Client methods";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "tcp";
+    NewLine.Модуль      = "OPI_TCP";
+    NewLine.Метод       = "ActualiseIncomingConnections";
+    NewLine.МетодПоиска = "ACTUALISEINCOMINGCONNECTIONS";
+    NewLine.Параметр    = "--srv";
+    NewLine.Описание    = "TCP server. See CreateServer";
+    NewLine.Область     = "Server methods";
+    NewLine.ОписаниеМетода   = "Removes inactive connections from the pool";
+
     Return CompositionTable;
 EndFunction
 
