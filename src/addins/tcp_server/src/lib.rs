@@ -1,5 +1,6 @@
-pub mod component;
-mod core;
+pub mod server;
+pub mod handler;
+pub mod commons;
 
 
 use std::{
@@ -7,18 +8,25 @@ use std::{
     sync::atomic::{AtomicI32, Ordering},
 };
 
-use component::AddIn;
 use addin1c::{create_component, destroy_component, name, AttachType};
 
 pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
+pub unsafe extern "C" fn GetClassObject(name: *const u16, component: *mut *mut c_void) -> c_long {
 
-    let addin = AddIn::new();
-    create_component(component, addin)
-
+    match *name as u8 {
+        b'1' => {
+            let addin = server::AddIn::new();
+            create_component(component, addin)
+        }
+        b'2' => {
+            let addin = handler::AddIn::new();
+            create_component(component, addin)
+        }
+        _ => 0,
+    }
 }
 
 #[allow(non_snake_case)]
@@ -30,7 +38,7 @@ pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
 #[allow(non_snake_case)]
 #[no_mangle]
 pub extern "C" fn GetClassNames() -> *const u16 {
-    name!("Main").as_ptr()
+    name!("Server|Handler").as_ptr()
 }
 
 #[allow(non_snake_case)]

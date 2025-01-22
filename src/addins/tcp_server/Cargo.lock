@@ -96,6 +96,7 @@ version = "0.1.0"
 dependencies = [
  "addin1c",
  "dashmap",
+ "once_cell",
  "serde_json",
 ]
 
