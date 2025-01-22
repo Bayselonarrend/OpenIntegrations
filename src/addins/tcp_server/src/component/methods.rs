@@ -1,9 +1,11 @@
 use std::io::{Read, Write};
-use std::net::{TcpListener};
+use std::net::{TcpListener, TcpStream};
 use std::time::{Duration, Instant};
-use crate::component::AddIn;
 use serde_json::{json};
+use std::sync::{Arc, Mutex};
+
 use crate::core::getset::ValueType;
+use crate::component::AddIn;
 
 /// Запускает сервер на указанном порту
 pub fn start(tcp: &mut AddIn) -> String {
@@ -29,15 +31,24 @@ pub fn wait_for_connection(tcp: &mut AddIn, timeout: i32) -> String {
             match listener.accept() {
                 Ok((stream, _)) => {
 
+                    // Получаем id соединения
                     let id = tcp.next_id.to_string();
 
-                    let addr = match stream.peer_addr(){
+                    // Получаем адрес клиента
+                    let addr = match stream.peer_addr() {
                         Ok(addr) => addr.to_string(),
-                        Err(e) => e.to_string()
+                        Err(e) => e.to_string(),
                     };
 
+                    // Обновляем id
                     tcp.next_id += 1;
-                    tcp.connections.insert(id.clone(), stream);
+
+                    let connection = Arc::new(Mutex::new(stream));
+
+                    // Вставляем соединение
+                    tcp.connections.insert(id.clone(), connection);
+
+                    // Возвращаем успешный ответ
                     return json!({
                         "result": true,
                         "connection": {
@@ -47,6 +58,7 @@ pub fn wait_for_connection(tcp: &mut AddIn, timeout: i32) -> String {
                     }).to_string();
                 }
                 Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                    // Если нет соединений, ожидаем немного и пробуем снова
                     std::thread::sleep(Duration::from_millis(100));
                 }
                 Err(e) => {
@@ -60,65 +72,65 @@ pub fn wait_for_connection(tcp: &mut AddIn, timeout: i32) -> String {
     }
 }
 
-
 /// Получает данные из соединения по указанному УИД
 pub fn receive_data(tcp: &mut AddIn, connection_id: String, max_size: usize) -> Box<dyn ValueType> {
 
-    if let Some(stream) = tcp.connections.get_mut(&connection_id) {
+    let mut stream = match get_stream(tcp, connection_id){
+        Ok(s) => s,
+        Err(e) => return Box::new(create_error(&e))
+    };
 
-        let mut buffer = Vec::new();
-        let mut temp_buffer = vec![0; 1024]; // Буфер для чтения данных
-        let mut total_read = 0; // Счетчик прочитанных байт
+    let mut buffer = Vec::new();
+    let mut temp_buffer = vec![0; 1024]; // Буфер для чтения данных
+    let mut total_read = 0; // Счетчик прочитанных байт
 
-        loop {
+    loop {
+        let remaining = if max_size > 0 {
+            max_size.saturating_sub(total_read) // Оставшееся место до max_size
+        } else {
+            usize::MAX // Без ограничения по размеру
+        };
 
-            let remaining = if max_size > 0 {
-                max_size.saturating_sub(total_read) // Оставшееся место до max_size
-            } else {
-                usize::MAX // Без ограничения по размеру
-            };
-
-            if remaining == 0 {
-                break;
-            }
-
-            let to_read = remaining.min(temp_buffer.len());
-
-            match stream.read(&mut temp_buffer[..to_read]) {
-                Ok(0) => {
-                    break;
-                }
-
-                Ok(size) => {
-                    total_read += size;
-                    buffer.extend_from_slice(&temp_buffer[..size]);
-
-                    if total_read >= max_size && max_size > 0 {
-                        break;
-                    }
-                }
-                Err(e) => {
-                    return Box::new(create_error(&e.to_string()));
-                }
-            }
+        if remaining == 0 {
+            break;
         }
 
-        Box::new(buffer)
-    } else {
-        Box::new(create_error("Connection not found"))
+        let to_read = remaining.min(temp_buffer.len());
+
+        match stream.read(&mut temp_buffer[..to_read]) {
+            Ok(0) => {
+                break;
+            }
+            Ok(size) => {
+                total_read += size;
+                buffer.extend_from_slice(&temp_buffer[..size]);
+
+                if total_read >= max_size && max_size > 0 {
+                    break;
+                }
+            }
+            Err(e) => {
+                return Box::new(create_error(&format!("Error reading from stream: {}", e)));
+            }
+        }
     }
+
+    Box::new(buffer)
 }
+
 
 /// Отправляет данные в соединение по указанному УИД
 pub fn send_data(tcp: &mut AddIn, connection_id: String, data: Vec<u8>) -> String {
 
-    if let Some(stream) = tcp.connections.get_mut(&connection_id) {
-        match stream.write_all(&data) {
-            Ok(_) => create_success(),
-            Err(e) => create_error(&e.to_string())
-        }
-    } else {
-        create_error("Connection not found")
+    let mut stream = match get_stream(tcp, connection_id){
+        Ok(s) => s,
+        Err(e) => return create_error(&e)
+    };
+
+    // Пытаемся отправить данные в поток
+    match stream.write_all(&data) {
+        Ok(_) => create_success(),
+        Err(e) => create_error(&format!("Error writing to stream: {}", e)),
     }
 }
 
@@ -133,7 +145,8 @@ pub fn close_connection(tcp: &mut AddIn, connection_id: String) -> String {
 }
 
 pub fn list_connections(tcp: &AddIn) -> String {
-    let ids: Vec<String> = tcp.connections.keys().cloned().collect();
+
+    let ids: Vec<String> = tcp.connections.iter().map(|entry| entry.key().clone()).collect();
     json!({ "result": true, "connections": ids }).to_string()
 }
 
@@ -141,23 +154,28 @@ pub fn remove_inactive_connections(tcp: &mut AddIn) -> String {
 
     let mut inactive_ids = Vec::new();
 
-    for (id, stream) in tcp.connections.iter_mut() {
+    for element in tcp.connections.iter() {
+
+        let id = element.key();
+        let stream = element.value();
 
         let mut temp_buffer = vec![0; 1];
 
-        match stream.read(&mut temp_buffer) {
-            Ok(size) if size > 0 => {
-                let _ = stream.write_all(&temp_buffer[0..size]);
-                continue;
-            }
-            Ok(_) => continue,
-            Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => continue,
-            Err(_) => inactive_ids.push(id.clone())
+        match stream.lock() {
+            Ok(locked_stream) => match locked_stream.peek(&mut temp_buffer) {
+                Err(e) if e.kind() != std::io::ErrorKind::WouldBlock=> inactive_ids.push(id.clone()),
+                _ => continue
+            },
+            Err(e) => return create_error(&format!("Failed to lock stream: {}", e)),
         }
     }
 
+    // Удаляем неактивные соединения
     for id in &inactive_ids {
-        tcp.connections.remove(id);
+        match tcp.connections.remove(id) {
+            Some(_) => {}, // Успешное удаление
+            None => return create_error(&format!("Failed to remove connection with id: {}", id)),
+        }
     }
 
     json!({ "result": true, "removed_connections": inactive_ids }).to_string()
@@ -171,11 +189,27 @@ pub fn stop_server(tcp: &mut AddIn) -> String {
         return create_error("Listener not initialized");
     }
 
-    // Закрываем все активные соединения
     tcp.connections.clear();
 
-    // Возвращаем успешный результат
     create_success()
+}
+
+fn get_stream(tcp: &mut AddIn, connection_id: String) -> Result<TcpStream, String> {
+
+    // Найти соединение по идентификатору
+    let stream = tcp.connections.get(&connection_id)
+        .ok_or_else(|| format!("Connection '{}' not found", connection_id))?;
+
+    // Заблокировать доступ к потоку и клонировать его
+    let stream = stream.lock().map_err(|e| e.to_string())?;
+    match stream.try_clone().map_err(|e| e.to_string()) {
+        Ok(stream) => {
+            stream.set_read_timeout(Some(Duration::from_secs(30))).ok();
+            stream.set_write_timeout(Some(Duration::from_secs(30))).ok();
+            Ok(stream)
+        },
+        Err(e) => Err(e.to_string())
+    }
 }
 
 fn create_error(message: &str) -> String {
