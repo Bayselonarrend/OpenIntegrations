@@ -1,10 +1,10 @@
 mod methods;
 
 use addin1c::{name, Variant};
-use crate::core::getset;
-use std::net::{TcpListener, TcpStream};
-use std::sync::{Arc, Mutex};
-use dashmap::DashMap;
+use std::net::{TcpListener};
+
+pub use crate::commons::{getset, CONNECTIONS};
+use crate::commons;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -52,23 +52,23 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let connection_id = params[0].get_string().unwrap_or("".to_string());
             let max_size = params[1].get_i32().unwrap_or(0);
 
-            methods::receive_data(obj, connection_id, max_size as usize)
+            commons::receive_data(connection_id, max_size as usize)
         },
         3 => {
 
             let connection_id = params[0].get_string().unwrap_or("".to_string());
             let data = params[1].get_blob().unwrap_or(&[]).to_vec();
 
-            Box::new(methods::send_data(obj, connection_id, data))
+            Box::new(commons::send_data(connection_id, data))
 
         },
         4 => {
             let connection_id = params[0].get_string().unwrap_or("".to_string());
-            Box::new(methods::close_connection(obj, connection_id))
+            Box::new(commons::close_connection(connection_id))
         }
 
-        5 => Box::new(methods::list_connections(obj)),
-        6 => Box::new(methods::remove_inactive_connections(obj)),
+        5 => Box::new(methods::list_connections()),
+        6 => Box::new(methods::remove_inactive_connections()),
         7 => Box::new(methods::stop_server(obj)),
         _ => Box::new(false), // Неверный номер команды
     }
@@ -87,7 +87,6 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     port: i32,
-    connections: Arc<DashMap<String, Arc<Mutex<TcpStream>>>>,
     next_id: i32,
     listener: Option<TcpListener>,
 }
@@ -97,7 +96,6 @@ impl AddIn {
     pub fn new() -> Self {
         AddIn {
             port: 0,
-            connections: Arc::new(DashMap::new()),
             next_id: 1,
             listener: None,
         }
