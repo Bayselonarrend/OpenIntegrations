@@ -2,8 +2,9 @@ mod methods;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
-use std::collections::HashMap;
 use std::net::{TcpListener, TcpStream};
+use std::sync::{Arc, Mutex};
+use dashmap::DashMap;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -86,7 +87,7 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     port: i32,
-    connections: HashMap<String, TcpStream>,
+    connections: Arc<DashMap<String, Arc<Mutex<TcpStream>>>>,
     next_id: i32,
     listener: Option<TcpListener>,
 }
@@ -96,7 +97,7 @@ impl AddIn {
     pub fn new() -> Self {
         AddIn {
             port: 0,
-            connections: HashMap::new(),
+            connections: Arc::new(DashMap::new()),
             next_id: 1,
             listener: None,
         }
