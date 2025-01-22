@@ -114,5 +114,7 @@ impl AddIn {
 
 // Обработка удаления объекта
 impl Drop for AddIn {
-    fn drop(&mut self) {}
+    fn drop(&mut self) {
+        let _ = methods::stop_server(self);
+    }
 }
