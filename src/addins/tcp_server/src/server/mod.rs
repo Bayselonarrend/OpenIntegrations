@@ -1,19 +1,21 @@
-pub mod getset;
+pub mod component;
 
 use addin1c::{name, RawAddin, Variant};
 
-use crate::component::METHODS;
-use crate::component::PROPS;
-use crate::component::get_params_amount;
-use crate::component::cal_func;
-use crate::component::AddIn;
+pub use component::AddIn;
+
+use component::METHODS;
+use component::PROPS;
+use component::get_params_amount;
+use component::cal_func;
+use crate::commons::getset;
 
 
 // Определение класса
 impl RawAddin for AddIn {
 
     fn register_extension_as(&mut self) -> &'static [u16] {
-        name!("Main")
+        name!("Server")
     }
     fn get_n_props(&mut self) -> usize {
         PROPS.len()
