@@ -7,6 +7,8 @@ use std::{
     ffi::{c_int, c_long, c_void},
     sync::atomic::{AtomicI32, Ordering},
 };
+use widestring::U16CStr;
+
 
 use addin1c::{create_component, destroy_component, name, AttachType};
 
@@ -16,17 +18,22 @@ pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
 #[no_mangle]
 pub unsafe extern "C" fn GetClassObject(name: *const u16, component: *mut *mut c_void) -> c_long {
 
-    match *name as u8 {
-        b'1' => {
+    let u16_name = U16CStr::from_ptr_str(name);
+    let rust_name = u16_name.to_string().expect("Invalid UTF-16 string");
+
+
+    match rust_name.as_str() {
+        "Server" => {
             let addin = server::AddIn::new();
             create_component(component, addin)
-        }
-        b'2' => {
+        },
+        "Handler" => {
             let addin = handler::AddIn::new();
             create_component(component, addin)
-        }
+        },
         _ => 0,
     }
+
 }
 
 #[allow(non_snake_case)]

@@ -28,14 +28,14 @@ pub fn cal_func(_obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn
 
     match num {
 
-        1 => {
+        0 => {
 
             let connection_id = params[0].get_string().unwrap_or("".to_string());
             let max_size = params[1].get_i32().unwrap_or(0);
 
             commons::receive_data(connection_id, max_size as usize)
         },
-        2 => {
+        1 => {
 
             let connection_id = params[0].get_string().unwrap_or("".to_string());
             let data = params[1].get_blob().unwrap_or(&[]).to_vec();
@@ -43,7 +43,7 @@ pub fn cal_func(_obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn
             Box::new(commons::send_data(connection_id, data))
 
         },
-        3 => {
+        2 => {
             let connection_id = params[0].get_string().unwrap_or("".to_string());
             Box::new(commons::close_connection(connection_id))
         }
