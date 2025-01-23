@@ -1,0 +1,7 @@
+﻿    // Connection - String: "1:7788"
+
+    RequestBinary = OPI_TCP.GetRequest(Connection);
+    RequestText   = ПолучитьСтрокуИзДвоичныхДанных(RequestBinary);
+
+    ResponseSending    = OPI_TCP.SendResponse(Connection, ПолучитьДвоичныеДанныеИзСтроки("Yo"));
+    ConnectionShutdown = OPI_TCP.CloseIncomingConnection(Connection);

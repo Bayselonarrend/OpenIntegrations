@@ -105,6 +105,10 @@ Function ReadBinaryData(Val Connection
     OPI_TypeConversion.GetNumber(Timeout);
     OPI_TypeConversion.GetNumber(MaxSize);
 
+    If TypeOf(Connection) = Type("String") Then
+        Connection           = CreateConnection(Connection);
+    EndIf;
+
     If TypeOf(Marker) = Type("String") Then
         Marker        = GetBinaryDataFromString(Marker);
     Else
@@ -156,6 +160,10 @@ EndFunction
 // Returns:
 // Boolean - Flag of successful delivery
 Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
+
+    If TypeOf(Connection) = Type("String") Then
+        Connection           = CreateConnection(Connection);
+    EndIf;
 
     OPI_TypeConversion.GetBinaryData(Data);
     OPI_TypeConversion.GetNumber(Timeout);
@@ -244,7 +252,7 @@ Function CreateServer(Val Port, Start = False) Export
     OPI_TypeConversion.GetNumber(Port);
     OPI_TypeConversion.GetBoolean(Start);
 
-    TCPServer      = AttachAddInOnServer("OPI_TCPServer");
+    TCPServer      = AttachAddInOnServer("OPI_TCPServer", "Server");
     TCPServer.Port = Port;
 
     If Start Then
@@ -285,96 +293,6 @@ Function StartServer(Val TCPServer) Export
 
 EndFunction
 
-// Awaiting connection !NOCLI
-// Blocks programm execution until a new connection is established
-//
-// Parameters:
-// TCPServer - Arbitrary - TCP server. See CreateServer - srv
-// Timeout - Number - Maximum waiting time for connections. 0 > unlimited - timeout
-//
-// Returns:
-// Structure Of KeyAndValue - Structure with new connection ID or error information
-Function AwaitingConnection(Val TCPServer, Val Timeout = 0) Export
-
-    If Not IsServer(TCPServer) Then
-        Raise "The passed value is not a TCP server!";
-    EndIf;
-
-    OPI_TypeConversion.GetNumber(Timeout);
-
-    Result = TCPServer.Wait(Timeout);
-
-    ProcessResult(Result);
-
-    Return Result;
-
-EndFunction
-
-// Receive data !NOCLI
-// Gets data from the flow stream of an existing connection
-//
-// Parameters:
-// TCPServer - Arbitrary - TCP server. See CreateServer - srv
-// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
-// MaxSize - Number - Max data size. 0 > to the end of the stream - maxsize
-//
-// Returns:
-// Structure Of KeyAndValue, BinaryData - Binary data on success or structure with error description
-Function ReceiveData(Val TCPServer, Val ConnectionID, Val MaxSize = 0) Export
-
-    If Not IsServer(TCPServer) Then
-        Raise "The passed value is not a TCP server!";
-    EndIf;
-
-    OPI_TypeConversion.GetLine(ConnectionID);
-    OPI_TypeConversion.GetNumber(MaxSize);
-
-    Data = TCPServer.Receive(ConnectionID, MaxSize);
-
-    If TypeOf(Data) = Type("String") Then
-        Try
-            Result  = OPI_Tools.JsonToStructure(Data, False);
-        Except
-            Result  = New Structure("result,error", False, Data);
-        EndTry;
-
-    Else
-        Result = Data;
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return Result;
-
-EndFunction
-
-// Send data !NOCLI
-// Sends data to the client by connection ID
-//
-// Parameters:
-// TCPServer - Arbitrary - TCP server. See CreateServer - srv
-// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
-// Data - BinaryData - Sending data - data
-//
-// Returns:
-// Structure Of KeyAndValue - Execution information
-Function SendData(Val TCPServer, Val ConnectionID, Val Data) Export
-
-    If Not IsServer(TCPServer) Then
-        Raise "The passed value is not a TCP server!";
-    EndIf;
-
-    OPI_TypeConversion.GetLine(ConnectionID);
-    OPI_TypeConversion.GetBinaryData(Data);
-
-    Result = TCPServer.Send(ConnectionID, Data);
-
-    ProcessResult(Result);
-
-    //@skip-check constructor-function-return-section
-    Return Result;
-
-EndFunction
-
 // Stop server !NOCLI
 // Stops a running server
 //
@@ -398,28 +316,27 @@ Function StopServer(Val TCPServer) Export
 
 EndFunction
 
-// Close incoming connection !NOCLI
-// Closes an existing connection by identifier
+// Wait incoming connections !NOCLI
+// Blocks programm execution until a new connection is established
 //
 // Parameters:
 // TCPServer - Arbitrary - TCP server. See CreateServer - srv
-// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// Timeout - Number - Maximum waiting time for connections. 0 > unlimited - timeout
 //
 // Returns:
-// Structure Of KeyAndValue - Execution information
-Function CloseIncomingConnection(Val TCPServer, Val ConnectionID) Export
+// Structure Of KeyAndValue - Structure with new connection ID or error information
+Function WaitIncomingConnections(Val TCPServer, Val Timeout = 0) Export
 
     If Not IsServer(TCPServer) Then
         Raise "The passed value is not a TCP server!";
     EndIf;
 
-    OPI_TypeConversion.GetLine(ConnectionID);
+    OPI_TypeConversion.GetNumber(Timeout);
 
-    Result = TCPServer.Close(ConnectionID);
+    Result = TCPServer.Wait(Timeout);
 
     ProcessResult(Result);
 
-    //@skip-check constructor-function-return-section
     Return Result;
 
 EndFunction
@@ -451,7 +368,7 @@ Function GetIncomingConnections(Val TCPServer) Export
 
 EndFunction
 
-// Actualise incoming connections
+// ActualiseIncomingConnections
 // Removes inactive connections from the pool
 //
 // Parameters:
@@ -484,7 +401,102 @@ EndFunction
 // Boolean - Is server
 Function IsServer(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Server";
+
+EndFunction
+
+#EndRegion
+
+#Region ConnectionHandlingMethods
+
+// GetRequest !NOCLI
+// Gets data from the flow stream of an existing connection
+//
+// Parameters:
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// MaxSize - Number - Max data size. 0 > to the end of the stream - maxsize
+// TCPHandler - Arbitrary - TCP server or empty value for standalone processing - hnd
+//
+// Returns:
+// Structure Of KeyAndValue, BinaryData - Binary data on success or structure with error description
+Function GetRequest(Val ConnectionID, Val MaxSize = 0, Val TCPHandler = "") Export
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+    OPI_TypeConversion.GetNumber(MaxSize);
+
+    If Not IsServerOrHandler(TCPHandler) Then
+        TCPHandler = AttachAddInOnServer("OPI_TCPServer", "Handler");
+    EndIf;
+
+    Data = TCPHandler.Receive(ConnectionID, MaxSize);
+
+    If TypeOf(Data) = Type("String") Then
+        Try
+            Result  = OPI_Tools.JsonToStructure(Data, False);
+        Except
+            Result  = New Structure("result,error", False, Data);
+        EndTry;
+
+    Else
+        Result = Data;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// SendResponse !NOCLI
+// Sends data to the client by connection ID
+//
+// Parameters:
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// Data - BinaryData - Sending data - data
+// TCPHandler - Arbitrary - TCP server or empty value for standalone processing - hnd
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function SendResponse(Val ConnectionID, Val Data, Val TCPHandler = "") Export
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+    OPI_TypeConversion.GetBinaryData(Data);
+
+    If Not IsServerOrHandler(TCPHandler) Then
+        TCPHandler = AttachAddInOnServer("OPI_TCPServer", "Handler");
+    EndIf;
+
+    Result = TCPHandler.Send(ConnectionID, Data);
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Close incoming connection !NOCLI
+// Closes an existing connection by identifier
+//
+// Parameters:
+// ConnectionID - String, Number - Active connection ID. See AwaitingConnection - conn
+// TCPHandler - Arbitrary - TCP server or empty value for standalone processing - hnd
+//
+// Returns:
+// Structure Of KeyAndValue - Execution information
+Function CloseIncomingConnection(Val ConnectionID, Val TCPHandler = "") Export
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    If Not IsServerOrHandler(TCPHandler) Then
+        TCPHandler = AttachAddInOnServer("OPI_TCPServer", "Handler");
+    EndIf;
+
+    Result = TCPHandler.Close(ConnectionID);
+
+    ProcessResult(Result);
+
+    //@skip-check constructor-function-return-section
+    Return Result;
 
 EndFunction
 
@@ -506,6 +518,13 @@ Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
 
     AddIn = New("AddIn." + AddInName + "." + Class);
     Return AddIn;
+
+EndFunction
+
+Function IsServerOrHandler(Val Value)
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Server"
+        Or String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Handler";
 
 EndFunction
 
