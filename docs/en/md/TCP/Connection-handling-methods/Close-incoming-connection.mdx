@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,12 +10,12 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CloseIncomingConnection(Val TCPServer, Val ConnectionID) Export`
+`Function CloseIncomingConnection(Val ConnectionID, Val TCPHandler = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | TCPServer | - | Arbitrary | &#x2714; | TCP server. See CreateServer |
   | ConnectionID | - | String, Number | &#x2714; | Active connection ID. See AwaitingConnection |
+  | TCPHandler | - | Arbitrary | &#x2716; | TCP server or empty value for standalone processing |
 
   
   Returns:  Structure Of KeyAndValue - Execution information
