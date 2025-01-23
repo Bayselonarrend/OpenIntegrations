@@ -2245,7 +2245,7 @@ Procedure TC_Server() Export
 
     TestParameters = New Structure;
 
-    TCP_AwaitingConnection(TestParameters);
+    TCP_WaitIncomingConnections(TestParameters);
 
 EndProcedure
 
@@ -16454,24 +16454,90 @@ Procedure TCP_SendLine(FunctionParameters) Export
 
 EndProcedure
 
-Procedure TCP_AwaitingConnection(FunctionParameters) Export
+Procedure TCP_WaitIncomingConnections(FunctionParameters) Export
+
+    // -- Test request for server
+
+    ClientKey = New UUID;
+    Message   = "Test data sending to the server";
+
+    ClientParams = New Array;
+    ClientParams.Add("127.0.0.1:7788"); // Our server
+    ClientParams.Add(Message); // Test string
+    ClientParams.Add("UTF-8"); // Encoding
+    ClientParams.Add("20000"); // Timeout, for make it in time launch server
+
+    // Sending a test request via TCP client methods
+    ClientBackground = BackgroundJobs.Execute("OPI_TCP.SendLine", ClientParams, ClientKey);
+
+    // --
 
     TCPServer = OPI_TCP.CreateServer(7788, True);
 
-    For N = 1 To 5 Do
+    NewConnection = OPI_TCP.WaitIncomingConnections(TCPServer, 20);
 
-        NewConnection = OPI_TCP.AwaitingConnection(TCPServer, 20);
+    If NewConnection["result"] Then
 
-        If NewConnection["result"] Then
-            Connection = NewConnection["connection"];
-        Else
-            Continue;
-        EndIf;
+        Connection = NewConnection["connection"]["id"];
 
-        Response = OPI_TCP.SendData(TCPServer, Connection, ПолучитьДвоичныеДанныеИзСтроки("Yo"));
-        Closing  = OPI_TCP.CloseIncomingConnection(TCPServer, Connection);
+        ProcessingParameterArray = New Array;
+        ProcessingParameterArray.Add(Connection); // String: "1:7788"
 
-    EndDo;
+        BackgroundProcessing = BackgroundJobs.Execute("OPI_Tests.TCP_ProcessConnection", ProcessingParameterArray);
+
+        TCP_ProcessConnection(Connection);
+
+    EndIf;
+
+    Shutdown = OPI_TCP.StopServer(TCPServer);
+
+    // END
+
+    ClientTask     = ClientBackground.WaitForExecutionCompletion();
+    ProcessingTask = BackgroundProcessing.WaitForExecutionCompletion();
+
+
+    OPI_TestDataRetrieval.WriteLog(TCPServer, "WaitIncomingConnections (server)", "TCP");
+    OPI_TestDataRetrieval.Check_AddIn(TCPServer, "AddIn.OPI_TCPServer.Server");
+
+    OPI_TestDataRetrieval.WriteLog(NewConnection, "WaitIncomingConnections", "TCP");
+    OPI_TestDataRetrieval.Check_ResultTrue(NewConnection);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "WaitIncomingConnections (connection)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Connection, "7788:1");
+
+    OPI_TestDataRetrieval.WriteLog(Shutdown, "WaitIncomingConnections (disconnect)", "TCP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Shutdown);
+
+    State = String(ClientTask.State);
+
+    OPI_TestDataRetrieval.WriteLog(State, "WaitIncomingConnections (bgj)", "TCP");
+    OPI_TestDataRetrieval.Check_String(State, "Job Completed");
+
+EndProcedure
+
+Procedure TCP_ProcessConnection(Connection) Export
+
+    // Connection - String: "1:7788"
+
+    RequestBinary = OPI_TCP.GetRequest(Connection);
+    RequestText   = ПолучитьСтрокуИзДвоичныхДанных(RequestBinary);
+
+    ResponseSending    = OPI_TCP.SendResponse(Connection, ПолучитьДвоичныеДанныеИзСтроки("Yo"));
+    ConnectionShutdown = OPI_TCP.CloseIncomingConnection(Connection);
+
+    // END
+
+    Message = "Test data sending to the server";
+
+    OPI_TestDataRetrieval.WriteLog(Message, "WaitIncomingConnections (message)", "TCP");
+    OPI_TestDataRetrieval.Check_String(RequestText, Message);
+
+    OPI_TestDataRetrieval.WriteLog(ResponseSending, "WaitIncomingConnections (response)", "TCP");
+    OPI_TestDataRetrieval.Check_ResultTrue(ResponseSending);
+
+    OPI_TestDataRetrieval.WriteLog(ConnectionShutdown, "WaitIncomingConnections (shutdown)", "TCP");
+    OPI_TestDataRetrieval.Check_ResultTrue(ConnectionShutdown);
 
 EndProcedure
 
