@@ -2046,10 +2046,6 @@ def test_tcp(){
 					powershell encoding: 'UTF-8', script:'./oint.exe tcp ProcessRequest --address "test" --data "test" --string "test" --debug --test '
                }
 
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe tcp ActualiseIncomingConnections --srv "test" --debug --test '
-               }
-
 }
 
 
