@@ -337,16 +337,26 @@ Function GetDeletedFiles(RemoteFiles, LocalPaths, LocalSubfolders)
 
     For Each RemoteFile In RemoteFiles["files"] Do
 
-        PathOfRemote = RemoteFile["path"];
+        PathOfRemotePrimary   = RemoteFile["path"];
+        PathOfRemoteSecondary = "/" + RemoteFile["path"];
 
         If RemoteFile["is_directory"] Then
-            ExistingRemote = LocalSubfolders[PathOfRemote];
+
+            ExistingRemote = LocalSubfolders[PathOfRemotePrimary];
+            ExistingRemote = ?(ValueIsFilled(ExistingRemote)
+                , ExistingRemote
+                , LocalSubfolders[PathOfRemoteSecondary]);
+
         Else
-            ExistingRemote = LocalPaths[PathOfRemote];
+            ExistingRemote = LocalPaths[PathOfRemotePrimary];
+            ExistingRemote = ?(ValueIsFilled(ExistingRemote)
+                , ExistingRemote
+                , LocalPaths[PathOfRemoteSecondary]);
+
         EndIf;
 
         If ExistingRemote = Undefined Then
-            ArrayOfDeletions.Add(PathOfRemote);
+            ArrayOfDeletions.Add(PathOfRemotePrimary);
         EndIf;
 
     EndDo;
