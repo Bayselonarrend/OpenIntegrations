@@ -1,5 +1,5 @@
 oint telegram ЗаменитьТекстСообщения ^
   --token "***" ^
   --chat "@testsichee" ^
-  --message "13922" ^
+  --message "14081" ^
   --text "Новый текст сообщения"
