@@ -1,3 +1,3 @@
 oint gcalendar ДобавитьКалендарьВСписок \
   --token "***" \
-  --calendar "e2c4e655c2a8142f6261f399217f4fed3c802434d46326e7c02f0f1dda9b5414@group.calendar.google.com"
+  --calendar "b3d0271d64c4e8263ad834452324fd94b86b8219dacfaeb94418c36d04a13690@group.calendar.google.com"
