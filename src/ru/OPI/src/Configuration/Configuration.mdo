@@ -50,8 +50,8 @@
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
-  <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
+  <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
   <commonModules>CommonModule.OPI_SQLite</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>
