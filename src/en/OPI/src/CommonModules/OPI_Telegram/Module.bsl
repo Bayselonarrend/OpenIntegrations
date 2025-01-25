@@ -639,7 +639,7 @@ Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Ano
     Parameters.Insert("is_anonymous", ?(Anonymous, 1, 0));
     AddChatIdentifier(ChatID, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
 
@@ -839,6 +839,8 @@ Function FormKeyboardFromButtonArray(Val ButtonArray
     Else
         ParameterStructure = New Structure("keyboard,resize_keyboard", Strings, True);
     EndIf;
+
+    ParameterStructure = OPI_Tools.JSONString(ParameterStructure, , False, False);
 
     Return ParameterStructure;
 
