@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Telegram.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Telegram.os
 // Lib: Telegram
 // CLI: telegram
 
@@ -840,8 +840,8 @@
         СтруктураПараметра = Новый Структура("keyboard,resize_keyboard", Строки, Истина);
     КонецЕсли;
 
-	СтруктураПараметра = OPI_Инструменты.JSONСтрокой(СтруктураПараметра, , Ложь, Ложь);
-	
+    СтруктураПараметра = OPI_Инструменты.JSONСтрокой(СтруктураПараметра, , Ложь, Ложь);
+
     Возврат СтруктураПараметра;
 
 КонецФункции
