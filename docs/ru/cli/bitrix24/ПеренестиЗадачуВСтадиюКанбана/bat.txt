@@ -1,5 +1,5 @@
 oint bitrix24 ПеренестиЗадачуВСтадиюКанбана ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "4730" ^
-  --stage 1752 ^
+  --task "4758" ^
+  --stage 1762 ^
   --token "***"
