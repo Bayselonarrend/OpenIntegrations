@@ -1800,6 +1800,9 @@ Procedure B24_CalendarsManagement() Export
     Bitrix24_CreateCalendar(TestParameters);
     Bitrix24_UpdateCalendar(TestParameters);
     Bitrix24_GetCalendarList(TestParameters);
+    Bitrix24_CreateCalendarEvent(TestParameters);
+    Bitrix24_GetUserBusy(TestParameters);
+    Bitrix24_DeleteCalendarEvent(TestParameters);
     Bitrix24_DeleteCalendar(TestParameters);
     Bitrix24_GetCustomCalendarSettings(TestParameters);
     Bitrix24_SetCustomCalendarSettings(TestParameters);
@@ -12472,6 +12475,150 @@ Procedure Bitrix24_SetCustomCalendarSettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetCustomCalendarSettings", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetUserBusy(FunctionParameters)
+
+    URL        = FunctionParameters["Bitrix24_URL"];
+    CalendarID = FunctionParameters["Bitrix24_HookCalendarID"];
+
+    User = 1;
+
+    Week        = 604800;
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    StartDate = CurrentDate;
+    EndDate   = CurrentDate + Week;
+
+    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserBusy (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL        = FunctionParameters["Bitrix24_Domain"];
+    Token      = FunctionParameters["Bitrix24_Token"];
+    CalendarID = FunctionParameters["Bitrix24_CalendarID"];
+
+    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserBusy", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
+
+    URL        = FunctionParameters["Bitrix24_URL"];
+    CalendarID = FunctionParameters["Bitrix24_HookCalendarID"];
+
+    Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
+    Hour     = 3600;
+
+    EventStucture = New Structure;
+
+    EventStucture.Insert("type"         , "user");
+    EventStucture.Insert("ownerId"      , 1);
+    EventStucture.Insert("from"         , XMLString(Tomorrow));
+    EventStucture.Insert("to"           , XMLString(Tomorrow + Hour));
+    EventStucture.Insert("section"      , CalendarID);
+    EventStucture.Insert("name"         , "New event");
+    EventStucture.Insert("skip_time"    , "N");
+    EventStucture.Insert("timezone_from", "Europe/Minsk");
+    EventStucture.Insert("timezone_to"  , "Europe/Minsk");
+    EventStucture.Insert("description"  , "Event description");
+    EventStucture.Insert("color"        , "%23000000>");
+    EventStucture.Insert("text_color"   , "%23FFFFFF");
+    EventStucture.Insert("accessibility", "busy");
+    EventStucture.Insert("importance"   , "high");
+    EventStucture.Insert("private_event", "N");
+
+        RepeatabilityStructure = New Structure;
+        RepeatabilityStructure.Insert("FREQ"    , "DAILY");
+        RepeatabilityStructure.Insert("COUNT"   , 3);
+        RepeatabilityStructure.Insert("INTERVAL", 10);
+
+            DaysArray = New Array;
+            DaysArray.Add("SA");
+            DaysArray.Add("MO");
+
+        RepeatabilityStructure.Insert("BYDAY" , DaysArray);
+        RepeatabilityStructure.Insert("UNTIL" , XMLString(Tomorrow + Hour * 24 * 10));
+
+    EventStucture.Insert("rrule"     , RepeatabilityStructure);
+    EventStucture.Insert("is_meeting", "Y");
+    EventStucture.Insert("location"  , "Office");
+
+        RemindersArray = New Array;
+
+            ReminderStructure = New Structure;
+            ReminderStructure.Insert("type" , "day");
+            ReminderStructure.Insert("count", 1);
+
+        RemindersArray.Add(ReminderStructure);
+
+    EventStucture.Insert("remind"   , RemindersArray);
+    EventStucture.Insert("attendees", StrSplit("1,10", ","));
+    EventStucture.Insert("host"     , 1);
+
+        MeetingStructure = New Structure;
+        MeetingStructure.Insert("notify"      , "Y");
+        MeetingStructure.Insert("reinvite"    , "Y");
+        MeetingStructure.Insert("allow_invite", "N");
+        MeetingStructure.Insert("hide_guests" , "N");
+
+    EventStucture.Insert("meeting", MeetingStructure);
+
+    Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendarEvent (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    EventID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookCEventID", EventID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookCEventID", EventID); // SKIP
+
+    URL        = FunctionParameters["Bitrix24_Domain"];
+    Token      = FunctionParameters["Bitrix24_Token"];
+    CalendarID = FunctionParameters["Bitrix24_CalendarID"];
+
+    EventStucture.Insert("section", CalendarID);
+
+    Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendarEvent", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    EventID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CEventID", EventID);
+    FunctionParameters.Insert("Bitrix24_CEventID", EventID);
+
+EndProcedure
+
+Procedure Bitrix24_DeleteCalendarEvent(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    EventID = FunctionParameters["Bitrix24_HookCEventID"];
+
+    Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarEvent (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    EventID = FunctionParameters["Bitrix24_CEventID"];
+
+    Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarEvent", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
