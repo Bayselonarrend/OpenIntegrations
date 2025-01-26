@@ -1,0 +1,108 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create calendar event
+ Creates a new calendar event
+
+
+
+`Function CreateCalendarEvent(Val URL, Val EventDescription, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | EventDescription | --fields | Structure Of KeyAndValue | &#x2714; | Event description. See GetCalendarEventsStructure |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-add.html)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    CalendarID = "110";
+
+    Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
+    Hour     = 3600;
+
+    EventStucture = New Structure;
+
+    EventStucture.Insert("type"         , "user");
+    EventStucture.Insert("ownerId"      , 1);
+    EventStucture.Insert("from"         , XMLString(Tomorrow));
+    EventStucture.Insert("to"           , XMLString(Tomorrow + Hour));
+    EventStucture.Insert("section"      , CalendarID);
+    EventStucture.Insert("name"         , "New event");
+    EventStucture.Insert("skip_time"    , "N");
+    EventStucture.Insert("timezone_from", "Europe/Minsk");
+    EventStucture.Insert("timezone_to"  , "Europe/Minsk");
+    EventStucture.Insert("description"  , "Event description");
+    EventStucture.Insert("color"        , "%23000000>");
+    EventStucture.Insert("text_color"   , "%23FFFFFF");
+    EventStucture.Insert("accessibility", "busy");
+    EventStucture.Insert("importance"   , "high");
+    EventStucture.Insert("private_event", "N");
+
+        RepeatabilityStructure = New Structure;
+        RepeatabilityStructure.Insert("FREQ"    , "DAILY");
+        RepeatabilityStructure.Insert("COUNT"   , 3);
+        RepeatabilityStructure.Insert("INTERVAL", 10);
+
+            DaysArray = New Array;
+            DaysArray.Add("SA");
+            DaysArray.Add("MO");
+
+        RepeatabilityStructure.Insert("BYDAY" , DaysArray);
+        RepeatabilityStructure.Insert("UNTIL" , XMLString(Tomorrow + Hour * 24 * 10));
+
+    EventStucture.Insert("rrule"     , RepeatabilityStructure);
+    EventStucture.Insert("is_meeting", "Y");
+    EventStucture.Insert("location"  , "Office");
+
+        RemindersArray = New Array;
+
+            ReminderStructure = New Structure;
+            ReminderStructure.Insert("type" , "day");
+            ReminderStructure.Insert("count", 1);
+
+        RemindersArray.Add(ReminderStructure);
+
+    EventStucture.Insert("remind"   , RemindersArray);
+    EventStucture.Insert("attendees", StrSplit("1,10", ","));
+    EventStucture.Insert("host"     , 1);
+
+        MeetingStructure = New Structure;
+        MeetingStructure.Insert("notify"      , "Y");
+        MeetingStructure.Insert("reinvite"    , "Y");
+        MeetingStructure.Insert("allow_invite", "N");
+        MeetingStructure.Insert("hide_guests" , "N");
+
+    EventStucture.Insert("meeting", MeetingStructure);
+
+    Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
+
+    URL        = "b24-ar17wx.bitrix24.by";
+    Token      = "e0159667006e9f06006b12e400000001000...";
+    CalendarID = "112";
+
+    EventStucture.Insert("section", CalendarID);
+
+    Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture, Token);
+```
+ 
+
+
+
+
