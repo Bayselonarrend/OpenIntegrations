@@ -1,0 +1,59 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get user busy
+ Gets an array of user events in the specified interval
+
+
+
+`Function GetUserBusy(Val URL, Val Users, Val StartDate, Val EndDate, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | Users | --users | Number, Array Of Number | &#x2714; | IDs of users or a single user |
+  | StartDate | --from | Date | &#x2714; | Start date of the period |
+  | EndDate | --to | Date | &#x2714; | End date of the period |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-accessibility-get.html)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    CalendarID = "110";
+
+    User = 1;
+
+    Week        = 604800;
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    StartDate = CurrentDate;
+    EndDate   = CurrentDate + Week;
+
+    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
+
+    URL        = "b24-ar17wx.bitrix24.by";
+    Token      = "e0159667006e9f06006b12e400000001000...";
+    CalendarID = "112";
+
+    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);
+```
+ 
+
+
+
+

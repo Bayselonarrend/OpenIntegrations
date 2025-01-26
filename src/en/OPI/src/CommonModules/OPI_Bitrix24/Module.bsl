@@ -4614,6 +4614,37 @@ Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Toke
 
 EndFunction
 
+// Get user busy
+// Gets an array of user events in the specified interval
+//
+// Note
+// Method at API documentation: [calendar.accessibility.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-accessibility-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Users - Number, Array Of Number - IDs of users or a single user - users
+// StartDate - Date - Start date of the period - from
+// EndDate - Date - End date of the period - to
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUserBusy(Val URL, Val Users, Val StartDate, Val EndDate, Val Token = "") Export
+
+    String_ = "String";
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.accessibility.get");
+
+    OPI_Tools.AddField("users", Users            , "Array"         , Parameters);
+    OPI_Tools.AddField("from" , Format(StartDate , "DF=yyyy-MM-dd"), String_ , Parameters);
+    OPI_Tools.AddField("to"   , Format(EndDate   , "DF=yyyy-MM-dd"), String_ , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get custom calendar settings
 // Gets the current users custom calendar settings
 //
@@ -4762,6 +4793,138 @@ Function GetCalendarStructure(Val Clear = False) Export
 
     //@skip-check constructor-function-return-section
     Return CalendarsStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region CalendarEventsManagement
+
+// Create calendar event
+// Creates a new calendar event
+//
+// Note
+// Method at API documentation: [calendar.event.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-add.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateCalendarEvent(Val URL, Val EventDescription, Val Token = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(EventDescription);
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.event.add");
+
+    For Each Field In EventDescription Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete calendar event
+// Deletes an event from the calendar
+//
+// Note
+// Method at API documentation: [calendar.event.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-delete.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - ID of the event to be deleted - event
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteCalendarEvent(Val URL, Val EventID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.event.delete");
+
+    OPI_Tools.AddField("id", EventID, "Number", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get calendar events structure
+// Returns the structure of the calendar event fields
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetCalendarEventsStructure(Val Clear = False) Export
+
+    EventStucture = New Structure;
+
+    EventStucture.Insert("type"         , "<calendar type: user, group, company_calendar>");
+    EventStucture.Insert("ownerId"      , "<calendar owner identifier>");
+    EventStucture.Insert("from"         , "<event start date and time (as string)>");
+    EventStucture.Insert("to"           , "<event end date (as string)>");
+    EventStucture.Insert("from_ts"      , "<date and time in timestamp format (instead of from)>");
+    EventStucture.Insert("to_ts"        , "<date and time in timestamp format (instead of to)>");
+    EventStucture.Insert("section"      , "<calendar identifier>");
+    EventStucture.Insert("name"         , "<event name>");
+    EventStucture.Insert("skip_time"    , "<pass date value without time in from and to parameters: Y,N>");
+    EventStucture.Insert("timezone_from", "<start time zone (default - t.z. of the user)>");
+    EventStucture.Insert("timezone_to"  , "<end time zone (default - t.z. of the user)>");
+    EventStucture.Insert("description"  , "<event description>");
+    EventStucture.Insert("color"        , "<event background colour. Symbol # - in unicode format as %23>");
+    EventStucture.Insert("text_color"   , "<the colour of the event text. Symbol # - in unicode format as %23>");
+    EventStucture.Insert("accessibility", "<availability at the time of the event: busy, absent, quest, free>");
+    EventStucture.Insert("importance"   , "<importance: high, normal, low>");
+    EventStucture.Insert("private_event", "<private event: Y,N>");
+
+        RepeatabilityStructure = New Structure;
+        RepeatabilityStructure.Insert("FREQ"    , "<repetition rate: DAILY, WEEKLY, MONTHLY, YEARLY>");
+        RepeatabilityStructure.Insert("COUNT"   , "<number of repetitions>");
+        RepeatabilityStructure.Insert("INTERVAL", "<repetition interval>");
+
+            DaysArray = New Array;
+            DaysArray.Add("<days of the week: SU, MO, TU, WE, TH, FR, SA>");
+
+        RepeatabilityStructure.Insert("BYDAY" , DaysArray);
+        RepeatabilityStructure.Insert("UNTIL" , "<repetition end date>");
+
+    EventStucture.Insert("rrule"     , RepeatabilityStructure);
+    EventStucture.Insert("is_meeting", "<flag of meeting with participants: Y,N>");
+    EventStucture.Insert("location"  , "<venue>");
+
+        RemindersArray = New Array;
+
+            ReminderStructure = New Structure;
+            ReminderStructure.Insert("type" , "<time type: min, hour, day>");
+            ReminderStructure.Insert("count", "<numeric value of the time interval>");
+
+        RemindersArray.Add(ReminderStructure);
+
+    EventStucture.Insert("remind"   , RemindersArray);
+    EventStucture.Insert("attendees", "<array of event participant IDs. If is_meeting = Y>");
+    EventStucture.Insert("host"     , "<The identifier of the event organiser. If is_meeting = Y>");
+
+        MeetingStructure = New Structure;
+        MeetingStructure.Insert("notify"      , "<flag for notification of confirmation or cancellation of participants>");
+        MeetingStructure.Insert("reinvite"    , "<flag for requesting re-confirmation of participation when editing an event>");
+        MeetingStructure.Insert("allow_invite", "<flag to allow participants to invite others to the event>");
+        MeetingStructure.Insert("hide_guests" , "<flag to hide the list of participants>");
+
+    EventStucture.Insert("meeting", MeetingStructure);
+
+    If Clear Then
+        EventStucture = OPI_Tools.ClearCollectionRecursively(EventStucture);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return EventStucture;
 
 EndFunction
 
