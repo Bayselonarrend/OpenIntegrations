@@ -6234,6 +6234,88 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvent";
+    NewLine.МетодПоиска = "GETCALENDAREVENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Gets a calendar event by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvent";
+    NewLine.МетодПоиска = "GETCALENDAREVENT";
+    NewLine.Параметр    = "--event";
+    NewLine.Описание    = "Event ID to retrieve";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvent";
+    NewLine.МетодПоиска = "GETCALENDAREVENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvents";
+    NewLine.МетодПоиска = "GETCALENDAREVENTS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Gets events of calendars with or without filters";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvents";
+    NewLine.МетодПоиска = "GETCALENDAREVENTS";
+    NewLine.Параметр    = "--owner";
+    NewLine.Описание    = "Calendar owner ID";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvents";
+    NewLine.МетодПоиска = "GETCALENDAREVENTS";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Calendar type: user, group, company_calendar";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvents";
+    NewLine.МетодПоиска = "GETCALENDAREVENTS";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Events filter. See GetCalendarEventsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEvents";
+    NewLine.МетодПоиска = "GETCALENDAREVENTS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteCalendarEvent";
     NewLine.МетодПоиска = "DELETECALENDAREVENT";
     NewLine.Параметр    = "--url";
@@ -6271,6 +6353,17 @@
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Calendar events management";
     NewLine.ОписаниеМетода   = "Returns the structure of the calendar event fields";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarEventsFilterStructure";
+    NewLine.МетодПоиска = "GETCALENDAREVENTSFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Gets the filter structure for the function GetCalendarEvents";
 
     Return CompositionTable;
 EndFunction

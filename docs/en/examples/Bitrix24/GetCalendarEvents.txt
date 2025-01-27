@@ -1,0 +1,25 @@
+﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    OwnerID = 1;
+    Type    = "user";
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type);
+
+    URL         = "b24-ar17wx.bitrix24.by";
+    Token       = "b4c59767006e9f06006b12e400000001000...";
+    EventID     = "54";
+    CalendarID1 = "128";
+    CalendarID2 = "130";
+
+    Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
+    NextDay  = Tomorrow + 86400;
+
+    ArrayOfCalendars = New Array;
+    ArrayOfCalendars.Add(CalendarID1);
+    ArrayOfCalendars.Add(CalendarID2);
+
+    Filter = New Structure;
+    Filter.Insert("from"   , Tomorrow);
+    Filter.Insert("to"     , NextDay);
+    Filter.Insert("section", ArrayOfCalendars);
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type, Filter, Token);
