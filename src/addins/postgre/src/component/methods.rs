@@ -1,8 +1,6 @@
 use postgres::types::{ToSql};
 use serde_json::{Value, json, Map};
-use serde_postgres::from_row;
 use base64::{engine::general_purpose, Engine as _};
-use serde_json::Value::Null;
 use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
@@ -15,7 +13,7 @@ pub fn execute_query(
     force_result: bool,
 ) -> String {
 
-    let mut client = match add_in.get_connection() {
+    let client = match add_in.get_connection() {
         Some(c) => c,
         None => return format_json_error("No connection initialized"),
     };
@@ -27,27 +25,21 @@ pub fn execute_query(
     };
 
     let params_ref = match process_params(&params){
-        Ok(params) => params.iter().map(|param| param.as_ref()).collect::<Vec<&(dyn ToSql + Sync)>>(),
+        Ok(params) => params,
         Err(e) => return format_json_error(&e.to_string()),
     };
 
+    let params_unboxed = params_ref.as_slice().iter().map(|boxed| boxed.as_ref()).collect::<Vec<_>>();
+
     if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
-        match client.query(&query, &params_ref) {
+        match client.query(&query, &params_unboxed) {
             Ok(rows) => {
-                let mut result = Vec::new();
-                for row in rows {
-                    let row_json = match from_row(&row){
-                        Ok(row_json) => row_json,
-                        Err(e) => return format_json_error(&e.to_string()),
-                    };
-                    result.push(row_json);
-                }
-                json!({"result": true, "rows": result}).to_string()
+                rows_to_json(rows)
             }
             Err(e) => format_json_error(&e.to_string()),
         }
     } else {
-        match client.execute(&query, &params_ref) {
+        match client.execute(&query, &params_unboxed) {
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(&e.to_string()),
         }
@@ -165,6 +157,24 @@ fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, Str
         result.push(processed);
     }
     Ok(result)
+}
+
+fn rows_to_json(rows: Vec<postgres::Row>) -> String{
+
+    for row in rows {
+        for coloumn in row.columns() {
+
+            let ctype = coloumn.type_().name().to_string();
+            let cname = coloumn.name();
+
+            let val = match ctype.as_str() {
+                _ => Value::String("".to_string())
+            };
+
+        }
+    }
+
+    "".to_string()
 }
 
 fn format_json_error(error: &str) -> String {

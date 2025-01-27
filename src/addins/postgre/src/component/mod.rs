@@ -84,8 +84,8 @@ impl AddIn {
         }
     }
 
-    pub fn get_connection(&self) -> Option<&Client> {
-        self.client.as_ref()
+    pub fn get_connection(&mut self) -> Option<&mut Client> {
+        self.client.as_mut()
     }
 
     pub fn close_connection(&mut self) -> String {
