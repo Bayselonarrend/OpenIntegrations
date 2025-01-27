@@ -4635,7 +4635,8 @@ Function GetUserBusy(Val URL, Val Users, Val StartDate, Val EndDate, Val Token =
 
     Parameters = NormalizeAuth(URL, Token, "calendar.accessibility.get");
 
-    OPI_Tools.AddField("users", Users            , "Array"         , Parameters);
+    OPI_Tools.AddField("users", Users, "Array", Parameters);
+
     OPI_Tools.AddField("from" , Format(StartDate , "DF=yyyy-MM-dd"), String_ , Parameters);
     OPI_Tools.AddField("to"   , Format(EndDate   , "DF=yyyy-MM-dd"), String_ , Parameters);
 
@@ -4829,6 +4830,84 @@ Function CreateCalendarEvent(Val URL, Val EventDescription, Val Token = "") Expo
 
 EndFunction
 
+// Get calendar event
+// Gets a calendar event by ID
+//
+// Note
+// Method at API documentation: [calendar.event.getbyid](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get-by-id.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Event ID to retrieve - event
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCalendarEvent(Val URL, Val EventID, Val Token = "") Export
+
+    Response = PrimaryControlAction(URL, EventID, "calendar.event.getbyid", Token);
+    Return Response;
+
+EndFunction
+
+// Get calendar events
+// Gets events of calendars with or without filters
+//
+// Note
+// Method at API documentation: [calendar.event.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// OwnerID - String, Number - Calendar owner ID - owner
+// Type - String - Calendar type: user, group, company_calendar - type
+// Filter - Structure Of KeyAndValue - Events filter. See GetCalendarEventsFilterStructure - filter
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCalendarEvents(Val URL, Val OwnerID, Val Type, Val Filter = "", Val Token = "") Export
+
+    String_ = "String";
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.event.get");
+
+    OPI_Tools.AddField("type"   , Type   , String_, Parameters);
+    OPI_Tools.AddField("ownerId", OwnerID, String_, Parameters);
+
+    If ValueIsFilled(Filter) Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Filter);
+
+        For Each Element In Filter Do
+
+            Key   = String(Element.Key);
+            Value = Element.Value;
+
+            If Key = "section" Then
+
+                OPI_TypeConversion.GetArray(Value);
+
+            ElsIf Key = "from" Or Key = "to" Then
+
+                OPI_TypeConversion.GetDate(Value);
+                Value = Format(Value, "DF=yyyy-MM-dd");
+
+            Else
+                Continue;
+            EndIf;
+
+            Parameters.Insert(Key, Value);
+
+        EndDo;
+
+    EndIf;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Delete calendar event
 // Deletes an event from the calendar
 //
@@ -4844,12 +4923,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteCalendarEvent(Val URL, Val EventID, Val Token = "") Export
 
-    Parameters = NormalizeAuth(URL, Token, "calendar.event.delete");
-
-    OPI_Tools.AddField("id", EventID, "Number", Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters);
-
+    Response = PrimaryControlAction(URL, EventID, "calendar.event.delete", Token);
     Return Response;
 
 EndFunction
@@ -4925,6 +4999,31 @@ Function GetCalendarEventsStructure(Val Clear = False) Export
 
     //@skip-check constructor-function-return-section
     Return EventStucture;
+
+EndFunction
+
+// Get calendar events filter structure
+// Gets the filter structure for the function GetCalendarEvents
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetCalendarEventsFilterStructure(Val Clear = False) Export
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("from"   , "<selection start date. 3 months before the current default>");
+    FilterStructure.Insert("to"     , "<selection end date. 3 months after the current default>");
+    FilterStructure.Insert("section", "<array of calendar identifiers>");
+
+    If Clear Then
+        FilterStructure = OPI_Tools.ClearCollectionRecursively(FilterStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
 EndFunction
 

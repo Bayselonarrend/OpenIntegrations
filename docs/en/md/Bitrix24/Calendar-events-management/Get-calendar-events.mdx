@@ -1,0 +1,66 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get calendar events
+ Gets events of calendars with or without filters
+
+
+
+`Function GetCalendarEvents(Val URL, Val OwnerID, Val Type, Val Filter = "", Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | OwnerID | --owner | String, Number | &#x2714; | Calendar owner ID |
+  | Type | --type | String | &#x2714; | Calendar type: user, group, company_calendar |
+  | Filter | --filter | Structure Of KeyAndValue | &#x2716; | Events filter. See GetCalendarEventsFilterStructure |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get.html)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    OwnerID = 1;
+    Type    = "user";
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type);
+
+    URL         = "b24-ar17wx.bitrix24.by";
+    Token       = "b4c59767006e9f06006b12e400000001000...";
+    EventID     = "54";
+    CalendarID1 = "128";
+    CalendarID2 = "130";
+
+    Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
+    NextDay  = Tomorrow + 86400;
+
+    ArrayOfCalendars = New Array;
+    ArrayOfCalendars.Add(CalendarID1);
+    ArrayOfCalendars.Add(CalendarID2);
+
+    Filter = New Structure;
+    Filter.Insert("from"   , Tomorrow);
+    Filter.Insert("to"     , NextDay);
+    Filter.Insert("section", ArrayOfCalendars);
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type, Filter, Token);
+```
+ 
+
+
+
+
