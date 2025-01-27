@@ -1801,6 +1801,8 @@ Procedure B24_CalendarsManagement() Export
     Bitrix24_UpdateCalendar(TestParameters);
     Bitrix24_GetCalendarList(TestParameters);
     Bitrix24_CreateCalendarEvent(TestParameters);
+    Bitrix24_GetCalendarEvent(TestParameters);
+    Bitrix24_GetCalendarEvents(TestParameters);
     Bitrix24_GetUserBusy(TestParameters);
     Bitrix24_DeleteCalendarEvent(TestParameters);
     Bitrix24_DeleteCalendar(TestParameters);
@@ -12620,6 +12622,67 @@ Procedure Bitrix24_DeleteCalendarEvent(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarEvent", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCalendarEvent(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    EventID = FunctionParameters["Bitrix24_HookCEventID"];
+
+    Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEvent (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    EventID = FunctionParameters["Bitrix24_CEventID"];
+
+    Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEvent", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCalendarEvents(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    OwnerID = 1;
+    Type    = "user";
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEvents (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    URL         = FunctionParameters["Bitrix24_Domain"];
+    Token       = FunctionParameters["Bitrix24_Token"];
+    EventID     = FunctionParameters["Bitrix24_CEventID"];
+    CalendarID1 = FunctionParameters["Bitrix24_HookCalendarID"];
+    CalendarID2 = FunctionParameters["Bitrix24_CalendarID"];
+
+    Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
+    NextDay  = Tomorrow + 86400;
+
+    ArrayOfCalendars = New Array;
+    ArrayOfCalendars.Add(CalendarID1);
+    ArrayOfCalendars.Add(CalendarID2);
+
+    Filter = New Structure;
+    Filter.Insert("from"   , Tomorrow);
+    Filter.Insert("to"     , NextDay);
+    Filter.Insert("section", ArrayOfCalendars);
+
+    Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type, Filter, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEvents", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
 
 EndProcedure
 
