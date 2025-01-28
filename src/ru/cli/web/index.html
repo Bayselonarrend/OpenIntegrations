@@ -39,19 +39,14 @@
     </style>
 </head>
 <body>
-    <!-- Боковое меню -->
     <div class="sidebar">
         <ul id="menu" hx-get="/api/menu" hx-trigger="load">
-            <!-- Пункты меню будут загружены сюда -->
         </ul>
     </div>
 
-    <!-- Основная область -->
     <div class="main-content" id="content">
-        <!-- Рабочая область будет обновляться здесь -->
     </div>
 
-    <!-- Шаблон для пунктов меню -->
     <template id="menu-item-template">
         <li hx-get="/api/content/{id}" hx-target="#content">{name}</li>
     </template>
