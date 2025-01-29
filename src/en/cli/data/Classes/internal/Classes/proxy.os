@@ -17,7 +17,7 @@
     NewLine.МетодПоиска = "CREATEPROJECT";
     NewLine.Параметр    = "--path";
     NewLine.Описание    = "Project filepath";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
     NewLine.ОписаниеМетода   = "Creates a project file at the selected path";
 
 
@@ -28,7 +28,7 @@
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--proj";
     NewLine.Описание    = "Project filepath";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
     NewLine.ОписаниеМетода   = "Adds a new handler to the project";
 
 
@@ -39,7 +39,7 @@
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--name";
     NewLine.Описание    = "Name of the new handler";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
 
 
     NewLine = CompositionTable.Add();
@@ -49,7 +49,7 @@
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--secret";
     NewLine.Описание    = "Secret key for URL handler";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
 
 
     NewLine = CompositionTable.Add();
@@ -59,7 +59,7 @@
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--method";
     NewLine.Описание    = "HTTP method that will process the handler: GET, POST, MULTIPART (optional, def. val. - GET)";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
 
 
     NewLine = CompositionTable.Add();
@@ -69,7 +69,7 @@
     NewLine.МетодПоиска = "START";
     NewLine.Параметр    = "--port";
     NewLine.Описание    = "Servers port";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
     NewLine.ОписаниеМетода   = "Launches integration proxy server";
 
 
@@ -80,7 +80,7 @@
     NewLine.МетодПоиска = "START";
     NewLine.Параметр    = "--proj";
     NewLine.Описание    = "Project filepath";
-    NewLine.Область     = "Proxy settings";
+    NewLine.Область     = "Project setup";
 
     Return CompositionTable;
 EndFunction
