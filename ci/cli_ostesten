@@ -694,6 +694,17 @@ pipeline {
 			}
 		}
 
+        stage('Testing-Proxy') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_Proxy_ProjectSetup"'
+               }
+
+			}
+		}
+
    }
       post{
          always{

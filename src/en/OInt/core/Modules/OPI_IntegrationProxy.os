@@ -53,7 +53,7 @@
 // Path - String - Project filepath - path
 //
 // Returns:
-// Structure Of KeyAndValue - creation result
+// Structure Of KeyAndValue - Creation result
 Function CreateProject(Val Path) Export
 
     Return NormalizeProject(Path);
@@ -65,16 +65,14 @@ EndFunction
 //
 // Parameters:
 // Project - String - Project filepath - proj
-// Name - String - Name of the new handler - name
-// SecretKey - String - Secret key for URL handler - secret
+// OintFunction - String - OpenIntegrations function name - func
 // Method - String - HTTP method that will process the handler: GET, POST, MULTIPART - method
 //
 // Returns:
-// Structure Of KeyAndValue - result of adding a handler
-Function AddRequestsHandler(Val Project, Val Name, Val SecretKey, Val Method = "GET") Export
+// Structure Of KeyAndValue - Result of handler creation
+Function AddRequestsHandler(Val Project, Val OintFunction, Val Method = "GET") Export
 
-    OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetLine(SecretKey);
+    OPI_TypeConversion.GetLine(OintFunction);
     OPI_TypeConversion.GetLine(Method);
 
     Result = CheckProjectExistence(Project);
@@ -85,11 +83,77 @@ Function AddRequestsHandler(Val Project, Val Name, Val SecretKey, Val Method = "
         Project = Result["path"];
     EndIf;
 
-    DataArray = New Array;
-    DataArray.Add(New Structure("name,secret,method", Name, SecretKey, Method));
+    SecretKey = GetHandlerUniqueKey(Project);
+
+    If TypeOf(SecretKey) = Type("Structure") Then
+        SecretKey.Insert("message", "Failed to generate a handler UID. Try again");
+        Return SecretKey;
+    EndIf;
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("function", OintFunction);
+    RecordStructure.Insert("id"      , SecretKey);
+    RecordStructure.Insert("method"  , Method);
+    RecordStructure.Insert("active"  , True);
 
     HandlersTableName = ConstantValue("HandlersTable");
-    Result            = OPI_SQLite.AddRecords(HandlersTableName, DataArray, , Project);
+    Result            = OPI_SQLite.AddRecords(HandlersTableName, RecordStructure, False, Project);
+
+    If Result["result"] Then
+
+          Result = New Structure;
+          Result.Insert("result"     , True);
+          Result.Insert("key"        , SecretKey);
+          Result.Insert("url_example", "localhost:port/" + SecretKey);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get the list of request handlers
+// Gets the list of handlers in the project
+//
+// Parameters:
+// Project - String - Project filepath - proj
+//
+// Returns:
+// Structure Of KeyAndValue - Handlers list
+Function GetRequestHandlersList(Val Project) Export
+
+    OPI_TypeConversion.GetLine(Project);
+
+    Table  = ConstantValue("HandlersTable");
+    Result = OPI_SQLite.GetRecords(Table, , , , , Project);
+
+    Return Result;
+
+EndFunction
+
+// Delete request handler
+// Removes the request handler from the project
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+//
+// Returns:
+// Structure Of KeyAndValue - Deletion result
+Function DeleteRequestHandler(Val Project, Val HandlerKey) Export
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+
+    Table = ConstantValue("HandlersTable");
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", HandlerKey);
+    FilterStructure.Insert("raw"  , False);
+
+    Result = OPI_SQLite.DeletePosts(Table, FilterStructure, Project);
 
     Return Result;
 
@@ -102,7 +166,7 @@ EndFunction
 // Port - Number - Servers port - port
 // Project - String - Project filepath - proj
 // Returns:
-// Structure Of KeyAndValue - server shutdown result
+// Structure Of KeyAndValue - Result of server shutdown
 Function Start(Val Port, Val Project) Export
 
     OPI_TypeConversion.GetNumber(Port);
@@ -228,6 +292,7 @@ Function CreateNewProject(Path)
 
     If Not Result["result"] Then
         DeleteFiles(Path);
+        Return Result;
     EndIf;
 
     Return Result;
@@ -237,16 +302,55 @@ EndFunction
 Function CreateHandlersTable(Path)
 
     TableStructure = New Structure();
-    TableStructure.Insert("id"    , "INTEGER PRIMARY KEY");
-    TableStructure.Insert("name"  , "TEXT");
-    TableStructure.Insert("secret", "TEXT");
-    TableStructure.Insert("method", "TEXT");
+    TableStructure.Insert("id"      , "TEXT PRIMARY KEY NOT NULL UNIQUE");
+    TableStructure.Insert("function", "TEXT");
+    TableStructure.Insert("method"  , "TEXT");
+    TableStructure.Insert("active"  , "BOOLEAN");
 
     HandlersTableName = ConstantValue("HandlersTable");
     Result            = OPI_SQLite.CreateTable(HandlersTableName, TableStructure, Path);
 
     Return Result;
 
+EndFunction
+
+Function GetHandlerUniqueKey(Path)
+
+    SecretKey = GetUUID(9);
+    Table     = ConstantValue("HandlersTable");
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", SecretKey);
+    FilterStructure.Insert("raw"  , False);
+
+    Result = OPI_SQLite.GetRecords(Table, , FilterStructure, , , Path);
+
+    If Not Result["result"] Then
+        Return Result;
+    EndIf;
+
+    While Result["data"].Count() > 0 Do
+
+        SecretKey                = GetUUID(9);
+        FilterStructure["value"] = SecretKey;
+
+        Result = OPI_SQLite.GetRecords(Table, , FilterStructure, , , Path);
+
+        If Not Result["result"] Then
+            Return Result;
+        EndIf;
+
+    EndDo;
+
+    Return SecretKey;
+
+EndFunction
+
+Function GetUUID(Val Length)
+    Return Left(StrReplace(String(New UUID), "-", ""), Length);
 EndFunction
 
 #EndRegion
