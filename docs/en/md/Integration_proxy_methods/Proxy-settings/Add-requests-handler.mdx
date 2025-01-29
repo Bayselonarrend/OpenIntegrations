@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add requests handler
+ Adds a new handler to the project
+
+
+
+`Function AddRequestsHandler(Val Project, Val Name, Val SecretKey, Val Method = "GET") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | Name | --name | String | &#x2714; | Name of the new handler |
+  | SecretKey | --secret | String | &#x2714; | Secret key for URL handler |
+  | Method | --method | String | &#x2716; | HTTP method that will process the handler: GET, POST, MULTIPART |
+
+  
+  Returns:  Structure Of KeyAndValue - result of adding a handler
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

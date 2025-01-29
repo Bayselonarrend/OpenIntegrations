@@ -72,4 +72,5 @@
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
+  <commonModules>CommonModule.OPI_IntegrationProxy</commonModules>
 </mdclass:Configuration>
