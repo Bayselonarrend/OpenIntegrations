@@ -71,6 +71,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
+    Sections.Insert("Proxy"          , 5);
 
     Return Sections;
 
@@ -104,6 +105,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("YandexMetrika"  , StandardDependencies);
     Sections.Insert("S3"             , StandardDependencies);
     Sections.Insert("TCP"            , StandardDependencies);
+    Sections.Insert("Proxy"          , StandardDependencies);
 
     Return Sections;
 
@@ -133,6 +135,7 @@ Function GetTestTable() Export
     S3_       = "S3";
     TCP       = "TCP";
     SQLite    = "SQLite";
+    Proxy     = "Proxy";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -270,6 +273,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
+    NewTest(TestTable, "Proxy_ProjectSetup"                   , "Project setup"                   , Proxy);
 
     Return TestTable;
 
@@ -2099,6 +2103,13 @@ EndProcedure
 Procedure Check_ResultTrue(Val Result) Export
 
     ExpectsThat(Result["result"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_FileExist(Val Result) Export
+
+    ResultFile = New File(Result);
+    ExpectsThat(ResultFile.Exist()).Равно(True);
 
 EndProcedure
 

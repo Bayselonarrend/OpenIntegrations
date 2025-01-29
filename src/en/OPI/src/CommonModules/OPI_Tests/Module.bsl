@@ -2306,6 +2306,28 @@ EndProcedure
 
 #EndRegion
 
+#Region Proxy
+
+Procedure Proxy_ProjectSetup() Export
+
+    TestParameters = New Structure;
+
+    FilePath = GetTempFileName(".oint");
+    OPI_TestDataRetrieval.WriteParameter("Proxy_ProjectPath", FilePath);
+    OPI_Tools.AddField("Proxy_ProjectPath", FilePath, "String", TestParameters);
+
+    CatalogPath = TempFilesDir();
+    OPI_TestDataRetrieval.WriteParameter("Proxy_FolderPath", CatalogPath);
+    OPI_Tools.AddField("Proxy_FolderPath", CatalogPath, "String", TestParameters);
+
+    IntegrationProxy_CreateProject(TestParameters);
+
+    DeleteFiles(FilePath);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -17132,6 +17154,33 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+#EndRegion
+
+#Region IntegrationProxy
+
+Procedure IntegrationProxy_CreateProject(FunctionParameters)
+
+    Path = FunctionParameters["Proxy_ProjectPath"];
+
+    Result = OPI_IntegrationProxy.CreateProject(Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProject", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_FileExists(Path);
+
+    Path = FunctionParameters["Proxy_FolderPath"];
+
+    Result      = OPI_IntegrationProxy.CreateProject(Path);
+    ProjectPath = Result["path"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProject (catalog)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_FileExists(ProjectPath);
+
+    DeleteFiles(ProjectPath);
 
 EndProcedure
 
