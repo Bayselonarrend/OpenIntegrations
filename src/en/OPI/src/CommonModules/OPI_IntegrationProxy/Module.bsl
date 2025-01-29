@@ -44,7 +44,7 @@
 
 #Region Public
 
-#Region ProxySettings
+#Region ProjectSetup
 
 // Create project
 // Creates a project file at the selected path
@@ -114,7 +114,7 @@ Function Start(Val Port, Val Project) Export
 
     WebServer = New(ServerType, ServerParams);
 
-    WebServer.AddRequestsHandler(ThisObject, "MainHandler");
+    WebServer.AddRequestsHandler(OPI_IntegrationProxy, "MainHandler");
     WebServer.Start();
 
     Return FormResponse(True, "Stopped");
@@ -202,7 +202,7 @@ EndFunction
 
 Function FormResponse(Val Result, Val Text, Val Path = "")
 
-    Response = New Structure("result,message", False, Text);
+    Response = New Structure("result,message", Result, Text);
 
     If ValueIsFilled(Path) Then
         Response.Insert("path", Path);
@@ -228,8 +228,9 @@ Function CreateNewProject(Path)
 
     If Not Result["result"] Then
         DeleteFiles(Path);
-        Return Result;
     EndIf;
+
+    Return Result;
 
 EndFunction
 
