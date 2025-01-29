@@ -11,6 +11,11 @@ pipeline {
           stage('Run Tests') {
              parallel {
 
+          stage('proxy'){
+             steps{
+                test_proxy()
+             }
+          }
           stage('tools'){
              steps{
                 test_tools()
@@ -144,6 +149,16 @@ pipeline {
    } 
   }    
  }
+}
+
+
+def test_proxy(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy Start --port "test" --proj "test" --pass "test" --debug --test '
+               }
+
 }
 
 
@@ -2860,6 +2875,7 @@ pipeline {
       }
       stage('Run'){
          steps{
+test_proxy()
 test_tools()
 test_airtable()
 test_bitrix24()
