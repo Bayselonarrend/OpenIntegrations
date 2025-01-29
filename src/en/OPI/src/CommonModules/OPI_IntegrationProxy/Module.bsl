@@ -226,7 +226,7 @@ Function CreateNewProject(Path)
 
     Result = CreateHandlersTable(Path);
 
-    If Not Result["reuslt"] Then
+    If Not Result["result"] Then
         DeleteFiles(Path);
         Return Result;
     EndIf;
