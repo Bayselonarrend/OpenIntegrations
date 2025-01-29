@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1; /* Чтобы рычаг был поверх других элементов */
+    transition: width 0.3s ease; /* Добавляем анимацию изменения ширины */
+}
+.resizer {
+    width: 5px;
+    background-color: #ccc;
+    cursor: col-resize;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2; /* Чтобы рычаг был поверх других элементов */
+}
+.content {
+    padding: 20px;
+    flex-grow: 1;
+}
+.button-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.menu {
+    flex-grow: 1;
+}
