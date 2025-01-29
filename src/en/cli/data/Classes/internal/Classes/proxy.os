@@ -37,18 +37,8 @@
     NewLine.Модуль      = "OPI_IntegrationProxy";
     NewLine.Метод       = "AddRequestsHandler";
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Name of the new handler";
-    NewLine.Область     = "Project setup";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "proxy";
-    NewLine.Модуль      = "OPI_IntegrationProxy";
-    NewLine.Метод       = "AddRequestsHandler";
-    NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
-    NewLine.Параметр    = "--secret";
-    NewLine.Описание    = "Secret key for URL handler";
+    NewLine.Параметр    = "--func";
+    NewLine.Описание    = "OpenIntegrations function name";
     NewLine.Область     = "Project setup";
 
 
@@ -59,6 +49,38 @@
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--method";
     NewLine.Описание    = "HTTP method that will process the handler: GET, POST, MULTIPART (optional, def. val. - GET)";
+    NewLine.Область     = "Project setup";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "GetRequestHandlersList";
+    NewLine.МетодПоиска = "GETREQUESTHANDLERSLIST";
+    NewLine.Параметр    = "--proj";
+    NewLine.Описание    = "Project filepath";
+    NewLine.Область     = "Project setup";
+    NewLine.ОписаниеМетода   = "Gets the list of handlers in the project";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "DeleteRequestHandler";
+    NewLine.МетодПоиска = "DELETEREQUESTHANDLER";
+    NewLine.Параметр    = "--proj";
+    NewLine.Описание    = "Project filepath";
+    NewLine.Область     = "Project setup";
+    NewLine.ОписаниеМетода   = "Removes the request handler from the project";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "DeleteRequestHandler";
+    NewLine.МетодПоиска = "DELETEREQUESTHANDLER";
+    NewLine.Параметр    = "--handler";
+    NewLine.Описание    = "Handler key";
     NewLine.Область     = "Project setup";
 
 
