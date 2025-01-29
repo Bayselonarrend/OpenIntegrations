@@ -11,11 +11,6 @@ pipeline {
           stage('Run Tests') {
              parallel {
 
-          stage('proxy'){
-             steps{
-                test_proxy()
-             }
-          }
           stage('tools'){
              steps{
                 test_tools()
@@ -146,19 +141,14 @@ pipeline {
                 test_metrika()
              }
           }
+          stage('proxy'){
+             steps{
+                test_proxy()
+             }
+          }
    } 
   }    
  }
-}
-
-
-def test_proxy(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy Запустить --port "test" --proj "test" --pass "test" --debug --test '
-               }
-
 }
 
 
@@ -2864,6 +2854,24 @@ def test_metrika(){
                }
 
 }
+
+
+def test_proxy(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy СоздатьПроект --path "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ДобавитьОбработчикЗапросов --proj "test" --name "test" --secret "test" --method "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy Запустить --port "test" --proj "test" --debug --test '
+               }
+
+}
 pipeline {
    agent any
    stages {
@@ -2875,7 +2883,6 @@ pipeline {
       }
       stage('Run'){
          steps{
-test_proxy()
 test_tools()
 test_airtable()
 test_bitrix24()
@@ -2902,6 +2909,7 @@ test_yadisk()
 test_yandex()
 test_yamarket()
 test_metrika()
+test_proxy()
 
          }
       }

@@ -11,11 +11,6 @@ pipeline {
           stage('Run Tests') {
              parallel {
 
-          stage('proxy'){
-             steps{
-                test_proxy()
-             }
-          }
           stage('tools'){
              steps{
                 test_tools()
@@ -59,6 +54,11 @@ pipeline {
           stage('google'){
              steps{
                 test_google()
+             }
+          }
+          stage('proxy'){
+             steps{
+                test_proxy()
              }
           }
           stage('mongodb'){
@@ -149,16 +149,6 @@ pipeline {
    } 
   }    
  }
-}
-
-
-def test_proxy(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy Start --port "test" --proj "test" --pass "test" --debug --test '
-               }
-
 }
 
 
@@ -1423,6 +1413,24 @@ def test_google(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe google RefreshToken --id "test" --secret "test" --refresh "test" --debug --test '
+               }
+
+}
+
+
+def test_proxy(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy CreateProject --path "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy AddRequestsHandler --proj "test" --name "test" --secret "test" --method "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy Start --port "test" --proj "test" --debug --test '
                }
 
 }
@@ -2875,7 +2883,6 @@ pipeline {
       }
       stage('Run'){
          steps{
-test_proxy()
 test_tools()
 test_airtable()
 test_bitrix24()
@@ -2885,6 +2892,7 @@ test_gcalendar()
 test_gdrive()
 test_gsheets()
 test_google()
+test_proxy()
 test_mongodb()
 test_neocities()
 test_notion()
