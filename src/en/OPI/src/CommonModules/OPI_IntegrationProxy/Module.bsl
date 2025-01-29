@@ -132,6 +132,7 @@ EndFunction
 Function CheckProjectExistence(Path)
 
     OPI_TypeConversion.GetLine(Path);
+    OPI_Tools.RestoreEscapeSequences(Path);
 
     ProjectFile = New File(Path);
     Text        = "The project file already exists!";
@@ -156,17 +157,18 @@ EndFunction
 Function NormalizeProject(Path)
 
     OPI_TypeConversion.GetLine(Path);
+    OPI_Tools.RestoreEscapeSequences(Path);
 
     DBFile = New File(Path);
 
-    If DBFile.IsDirectory() Then
+    If DBFile.Exists() And DBFile.IsDirectory() Then
 
-        Counter = 1;
+        Counter = 0;
 
         While DBFile.Exists() Do
 
-            Path   = Path + "/new_project_" + String(Counter) + ".oint";
-            DBFile = New File(Path);
+            NewPath = Path + "/new_project_" + String(Counter) + ".oint";
+            DBFile  = New File(NewPath);
 
             Counter = Counter + 1;
 
