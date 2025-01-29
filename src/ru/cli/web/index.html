@@ -4,51 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Actions Interface with HTMX</title>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #f4f4f4;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin: 15px 0;
-            cursor: pointer;
-            color: #0366d6;
-        }
-        .sidebar ul li:hover {
-            text-decoration: underline;
-        }
-        .main-content {
-            flex-grow: 1;
-            padding: 20px;
-            background-color: #fff;
-        }
-    </style>
+    <script src="/web/htmx.min.js"></script>
+    <script src="/web/script.js"></script>
+    <link rel="stylesheet" href="/web/bulma.min.css">
+    <link rel="stylesheet" href="/web/style.css">
 </head>
 <body>
-    <div class="sidebar">
-        <ul id="menu" hx-get="/api/menu" hx-trigger="load">
-        </ul>
+    <div class="columns is-mobile is-fullheight">
+
+        <div class="column is-3-desktop is-12-mobile sidebar" hx-get="/ui/menu" hx-trigger="load" hx-swap="innerHTML">
+        </div>
+
+        <main class="column is-9-desktop is-12-mobile content" id="main-content">
+            <h1 class="title">Добро пожаловать в панель управления</h1>
+            <p>Здесь будет основной контент вашей панели управления.</p>
+        </main>
     </div>
 
-    <div class="main-content" id="content">
-    </div>
-
-    <template id="menu-item-template">
-        <li hx-get="/api/content/{id}" hx-target="#content">{name}</li>
-    </template>
 </body>
 </html>
