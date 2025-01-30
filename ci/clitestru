@@ -2872,6 +2872,10 @@ def test_proxy(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ПолучитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe proxy УдалитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
                }
 
