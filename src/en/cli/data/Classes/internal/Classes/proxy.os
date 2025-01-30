@@ -37,6 +37,16 @@
     NewLine.Модуль      = "OPI_IntegrationProxy";
     NewLine.Метод       = "AddRequestsHandler";
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
+    NewLine.Параметр    = "--lib";
+    NewLine.Описание    = "Library name in CLI command format";
+    NewLine.Область     = "Project setup";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "AddRequestsHandler";
+    NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--func";
     NewLine.Описание    = "OpenIntegrations function name";
     NewLine.Область     = "Project setup";

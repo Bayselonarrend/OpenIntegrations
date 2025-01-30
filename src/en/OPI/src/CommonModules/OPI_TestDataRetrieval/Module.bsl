@@ -2106,6 +2106,12 @@ Procedure Check_ResultTrue(Val Result) Export
 
 EndProcedure
 
+Procedure Check_ResultFalse(Val Result) Export
+
+    ExpectsThat(Result["result"]).Равно(False);
+
+EndProcedure
+
 Procedure Check_FileExists(Val Result) Export
 
     ResultFile = New File(Result);

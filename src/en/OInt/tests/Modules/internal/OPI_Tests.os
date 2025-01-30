@@ -2321,6 +2321,10 @@ Procedure Proxy_ProjectSetup() Export
     OPI_Tools.AddField("Proxy_FolderPath", CatalogPath, "String", TestParameters);
 
     IntegrationProxy_CreateProject(TestParameters);
+    IntegrationProxy_AddRequestsHandler(TestParameters);
+    IntegrationProxy_GetRequestsHandler(TestParameters);
+    IntegrationProxy_GetRequestHandlersList(TestParameters);
+    IntegrationProxy_DeleteRequestHandler(TestParameters);
 
     DeleteFiles(FilePath);
 
@@ -17181,6 +17185,76 @@ Procedure IntegrationProxy_CreateProject(FunctionParameters)
     OPI_TestDataRetrieval.Check_FileExist(ProjectPath);
 
     DeleteFiles(ProjectPath);
+
+EndProcedure
+
+Procedure IntegrationProxy_AddRequestsHandler(FunctionParameters)
+
+    Project      = FunctionParameters["Proxy_ProjectPath"];
+    OintLibrary  = "telegram";
+    OintFunction = "SendTextMessage";
+
+    Result = OPI_IntegrationProxy.AddRequestsHandler(Project, OintLibrary, OintFunction);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRequestsHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Key = Result["key"];
+    OPI_TestDataRetrieval.WriteParameter("Proxy_HandlerKey", Key);
+    OPI_Tools.AddField("Proxy_HandlerKey", Key, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure IntegrationProxy_GetRequestsHandler(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRequestsHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure IntegrationProxy_DeleteRequestHandler(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+
+    Result = OPI_IntegrationProxy.DeleteRequestHandler(Project, HandlerKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRequestHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRequestHandler (check)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Result = OPI_IntegrationProxy.GetRequestHandlersList(Project);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRequestHandler (list)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure IntegrationProxy_GetRequestHandlersList(FunctionParameters)
+
+    Project = FunctionParameters["Proxy_ProjectPath"];
+
+    Result = OPI_IntegrationProxy.GetRequestHandlersList(Project);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRequestHandlersList", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
 
 EndProcedure
 
