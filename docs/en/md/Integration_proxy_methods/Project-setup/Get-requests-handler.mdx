@@ -1,24 +1,24 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Start
- Launches integration proxy server
+# Get requests handler
+ Gets information about the handler by ID
 
 
 
-`Function Start(Val Port, Val Project) Export`
+`Function GetRequestsHandler(Val Project, Val HandlerKey) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Port | --port | Number | &#x2714; | Servers port |
   | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlerKey | --handler | String | &#x2714; | Handler key |
 
   
-  Returns:  Structure Of KeyAndValue - Result of server shutdown
+  Returns:  Structure Of KeyAndValue - Information about the handler
 
 <br/>
 
