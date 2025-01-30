@@ -66,6 +66,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "proxy";
     NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "GetRequestsHandler";
+    NewLine.МетодПоиска = "GETREQUESTSHANDLER";
+    NewLine.Параметр    = "--proj";
+    NewLine.Описание    = "Project filepath";
+    NewLine.Область     = "Project setup";
+    NewLine.ОписаниеМетода   = "Gets information about the handler by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "GetRequestsHandler";
+    NewLine.МетодПоиска = "GETREQUESTSHANDLER";
+    NewLine.Параметр    = "--handler";
+    NewLine.Описание    = "Handler key";
+    NewLine.Область     = "Project setup";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
     NewLine.Метод       = "DeleteRequestHandler";
     NewLine.МетодПоиска = "DELETEREQUESTHANDLER";
     NewLine.Параметр    = "--proj";
