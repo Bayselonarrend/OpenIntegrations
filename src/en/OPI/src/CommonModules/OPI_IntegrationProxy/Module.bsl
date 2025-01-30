@@ -122,10 +122,70 @@ EndFunction
 // Structure Of KeyAndValue - Handlers list
 Function GetRequestHandlersList(Val Project) Export
 
-    OPI_TypeConversion.GetLine(Project);
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
 
     Table  = ConstantValue("HandlersTable");
     Result = OPI_SQLite.GetRecords(Table, , , , , Project);
+
+    Return Result;
+
+EndFunction
+
+// Get requests handler
+// Gets information about the handler by ID
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+//
+// Returns:
+// Structure Of KeyAndValue - Information about the handler
+Function GetRequestsHandler(Val Project, Val HandlerKey) Export
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    Table = ConstantValue("HandlersTable");
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", HandlerKey);
+    FilterStructure.Insert("raw"  , False);
+
+    Result = OPI_SQLite.GetRecords(Table, , FilterStructure, , , Project);
+
+    If Result["result"] Then
+
+        RecordsCount = Result["data"].Count();
+
+        If RecordsCount = 1 Then
+
+            Result["data"] = Result["data"][0];
+
+        Else
+
+            If RecordsCount = 0 Then
+                Result      = FormResponse(False, "Handler not found!");
+             EndIf;
+
+        EndIf;
+
+    EndIf;
 
     Return Result;
 
@@ -143,6 +203,14 @@ EndFunction
 Function DeleteRequestHandler(Val Project, Val HandlerKey) Export
 
     OPI_TypeConversion.GetLine(HandlerKey);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
 
     Table = ConstantValue("HandlersTable");
 
@@ -170,6 +238,14 @@ EndFunction
 Function Start(Val Port, Val Project) Export
 
     OPI_TypeConversion.GetNumber(Port);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
 
     ServerType = Type("WebServer");
 
