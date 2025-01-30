@@ -1,0 +1,4 @@
+﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_8CEA_26.oint";
+    HandlerKey = "78fe...";
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
