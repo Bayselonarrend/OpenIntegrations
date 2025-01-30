@@ -10,11 +10,12 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function AddRequestsHandler(Val Project, Val OintFunction, Val Method = "GET") Export`
+`Function AddRequestsHandler(Val Project, Val OintLibrary, Val OintFunction, Val Method = "GET") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Project | --proj | String | &#x2714; | Project filepath |
+  | OintLibrary | --lib | String | &#x2714; | Library name in CLI command format |
   | OintFunction | --func | String | &#x2714; | OpenIntegrations function name |
   | Method | --method | String | &#x2716; | HTTP method that will process the handler: GET, POST, MULTIPART |
 
@@ -27,7 +28,11 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Project      = "C:\Users\Administrator\AppData\Local\Temp\v8_8CEA_26.oint";
+    OintLibrary  = "telegram";
+    OintFunction = "SendTextMessage";
 
+    Result = OPI_IntegrationProxy.AddRequestsHandler(Project, OintLibrary, OintFunction);
 ```
  
 

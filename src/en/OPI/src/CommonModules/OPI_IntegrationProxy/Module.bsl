@@ -65,13 +65,15 @@ EndFunction
 //
 // Parameters:
 // Project - String - Project filepath - proj
+// OintLibrary - String - Library name in CLI command format - lib
 // OintFunction - String - OpenIntegrations function name - func
 // Method - String - HTTP method that will process the handler: GET, POST, MULTIPART - method
 //
 // Returns:
 // Structure Of KeyAndValue - Result of handler creation
-Function AddRequestsHandler(Val Project, Val OintFunction, Val Method = "GET") Export
+Function AddRequestsHandler(Val Project, Val OintLibrary, Val OintFunction, Val Method = "GET") Export
 
+    OPI_TypeConversion.GetLine(OintLibrary);
     OPI_TypeConversion.GetLine(OintFunction);
     OPI_TypeConversion.GetLine(Method);
 
@@ -85,14 +87,15 @@ Function AddRequestsHandler(Val Project, Val OintFunction, Val Method = "GET") E
 
     SecretKey = GetHandlerUniqueKey(Project);
 
-    If TypeOf(SecretKey) = Type("Structure") Then
+    If TypeOf(SecretKey) = Type("Map") Then
         SecretKey.Insert("message", "Failed to generate a handler UID. Try again");
         Return SecretKey;
     EndIf;
 
     RecordStructure = New Structure;
+    RecordStructure.Insert("library" , OintLibrary);
     RecordStructure.Insert("function", OintFunction);
-    RecordStructure.Insert("id"      , SecretKey);
+    RecordStructure.Insert("key"     , SecretKey);
     RecordStructure.Insert("method"  , Method);
     RecordStructure.Insert("active"  , True);
 
@@ -162,7 +165,7 @@ Function GetRequestsHandler(Val Project, Val HandlerKey) Export
 
     FilterStructure = New Structure;
 
-    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("field", "key");
     FilterStructure.Insert("type" , "=");
     FilterStructure.Insert("value", HandlerKey);
     FilterStructure.Insert("raw"  , False);
@@ -216,7 +219,7 @@ Function DeleteRequestHandler(Val Project, Val HandlerKey) Export
 
     FilterStructure = New Structure;
 
-    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("field", "key");
     FilterStructure.Insert("type" , "=");
     FilterStructure.Insert("value", HandlerKey);
     FilterStructure.Insert("raw"  , False);
@@ -378,7 +381,8 @@ EndFunction
 Function CreateHandlersTable(Path)
 
     TableStructure = New Structure();
-    TableStructure.Insert("id"      , "TEXT PRIMARY KEY NOT NULL UNIQUE");
+    TableStructure.Insert("key"     , "TEXT PRIMARY KEY NOT NULL UNIQUE");
+    TableStructure.Insert("library" , "TEXT");
     TableStructure.Insert("function", "TEXT");
     TableStructure.Insert("method"  , "TEXT");
     TableStructure.Insert("active"  , "BOOLEAN");
@@ -397,7 +401,7 @@ Function GetHandlerUniqueKey(Path)
 
     FilterStructure = New Structure;
 
-    FilterStructure.Insert("field", "id");
+    FilterStructure.Insert("field", "key");
     FilterStructure.Insert("type" , "=");
     FilterStructure.Insert("value", SecretKey);
     FilterStructure.Insert("raw"  , False);
