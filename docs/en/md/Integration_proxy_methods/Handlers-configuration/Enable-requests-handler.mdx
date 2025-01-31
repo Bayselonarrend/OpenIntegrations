@@ -1,0 +1,38 @@
+﻿---
+sidebar_position: 7
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Enable requests handler
+ Enables the handler by key
+
+
+
+`Function EnableRequestsHandler(Val Project, Val HandlerKey) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlerKey | --handler | String | &#x2714; | Handler key |
+
+  
+  Returns:  Structure Of KeyAndValue - Switching result
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
+    HandlerKey = "3F56...";
+
+    Result = OPI_IntegrationProxy.EnableRequestsHandler(Project, HandlerKey);
+```
+ 
+
+
+
+

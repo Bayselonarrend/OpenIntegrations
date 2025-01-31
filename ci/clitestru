@@ -2864,6 +2864,10 @@ def test_proxy(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ЗапуститьПроект --port "test" --proj "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe proxy ДобавитьОбработчикЗапросов --proj "test" --lib "test" --func "test" --method "test" --debug --test '
                }
 
@@ -2880,7 +2884,23 @@ def test_proxy(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy Запустить --port "test" --proj "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ИзменитьОбработчикЗапросов --proj "test" --handler "test" --lib "test" --func "test" --method "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ОтключитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ВключитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy УстановитьАргументОбработчика --proj "test" --handler "test" --arg "test" --value "test" --strict "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe proxy ПолучитьАргументыОбработчика --proj "test" --handler "test" --debug --test '
                }
 
 }
