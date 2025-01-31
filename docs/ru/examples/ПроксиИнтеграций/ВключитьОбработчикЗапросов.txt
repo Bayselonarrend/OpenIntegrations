@@ -1,4 +1,4 @@
-﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
-    КлючОбработчика = "3F56...";
+﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_85A2_1a.oint";
+    КлючОбработчика = "E4D4...";
 
     Результат = OPI_ПроксиИнтеграций.ВключитьОбработчикЗапросов(Проект, КлючОбработчика);
