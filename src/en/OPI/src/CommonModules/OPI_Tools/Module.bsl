@@ -1030,14 +1030,6 @@ Procedure RestoreEscapeSequences(Text) Export
 
 EndProcedure
 
-Procedure RemoveLastSlash(Text) Export
-
-    Text = ?(StrEndsWith(Text, "\")
-        , Left(Text, StrLen(Text) - 1)
-        , Text);
-
-EndProcedure
-
 Function NumberToString(Val Number) Export
     Return StrReplace(String(Number), Chars.NBSp, "");
 EndFunction
