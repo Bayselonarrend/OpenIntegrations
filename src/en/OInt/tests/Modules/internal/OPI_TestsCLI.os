@@ -2295,6 +2295,11 @@ Procedure CLI_Proxy_ProjectSetup() Export
     OPI_Tools.AddField("Proxy_ProjectPath", FilePath, "String", TestParameters);
 
     CatalogPath = TempFilesDir();
+
+    CatalogPath = ?(StrEndsWith(CatalogPath, "\")
+        , Left(CatalogPath, StrLen(CatalogPath) - 1)
+        , CatalogPath);
+
     OPI_TestDataRetrieval.WriteParameter("Proxy_FolderPath", CatalogPath);
     OPI_Tools.AddField("Proxy_FolderPath", CatalogPath, "String", TestParameters);
 

@@ -1,3 +1,3 @@
-﻿    Путь = "C:\Users\Administrator\AppData\Local\Temp\v8_80F8_17.oint";
+﻿    Путь = "C:\Users\Administrator\AppData\Local\Temp\v8_80F8_31.oint";
 
     Результат = OPI_ПроксиИнтеграций.СоздатьПроект(Путь);
