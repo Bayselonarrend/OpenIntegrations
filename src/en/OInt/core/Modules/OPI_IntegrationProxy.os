@@ -517,8 +517,6 @@ Function NormalizeProject(Path)
     OPI_TypeConversion.GetLine(Path);
     OPI_Tools.RestoreEscapeSequences(Path);
 
-    OPI_Tools.RemoveLastSlash(Path);
-
     DBFile = New File(Path);
 
     If DBFile.Exist() And DBFile.IsDirectory() Then
