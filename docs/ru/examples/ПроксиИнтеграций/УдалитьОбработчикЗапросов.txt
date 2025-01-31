@@ -1,4 +1,4 @@
-﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_85A2_1a.oint";
+﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_8DF3_13.oint";
     КлючОбработчика = "E4D4...";
 
     Результат = OPI_ПроксиИнтеграций.УдалитьОбработчикЗапросов(Проект, КлючОбработчика);
