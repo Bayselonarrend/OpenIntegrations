@@ -1,4 +1,4 @@
-﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_8DF3_13.oint";
-    HandlerKey = "E4D4...";
+﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_80F8_17.oint";
+    HandlerKey = "9DD3...";
 
     Result = OPI_IntegrationProxy.DisableRequestsHandler(Project, HandlerKey);
