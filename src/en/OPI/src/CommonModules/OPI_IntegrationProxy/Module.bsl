@@ -60,6 +60,44 @@ Function CreateProject(Val Path) Export
 
 EndFunction
 
+// Launch project
+// Launches integration proxy server
+//
+// Parameters:
+// Port - Number - Servers port - port
+// Project - String - Project filepath - proj
+// Returns:
+// Structure Of KeyAndValue - Result of server shutdown
+Function LaunchProject(Val Port, Val Project) Export
+
+    OPI_TypeConversion.GetNumber(Port);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    ServerType = Type("WebServer");
+
+    ServerParams    = New Array(1);
+    ServerParams[0] = Port;
+
+    WebServer = New(ServerType, ServerParams);
+
+    WebServer.AddRequestsHandler(OPI_IntegrationProxy, "MainHandler");
+    WebServer.Start();
+
+    Return FormResponse(True, "Stopped");
+
+EndFunction
+
+#EndRegion
+
+#Region HandlersConfiguration
+
 // Add requests handler
 // Adds a new handler to the project
 //
@@ -141,7 +179,7 @@ Function GetRequestHandlersList(Val Project) Export
 EndFunction
 
 // Get requests handler
-// Gets information about the handler by ID
+// Gets information about the handler by key
 //
 // Parameters:
 // Project - String - Project filepath - proj
@@ -174,6 +212,10 @@ Function GetRequestsHandler(Val Project, Val HandlerKey) Export
 
     If Result["result"] Then
 
+        For Each Element In Result["data"] Do
+            Element.Insert("args", GetHandlerArguments(Project, HandlerKey));
+        EndDo;
+
         RecordsCount = Result["data"].Count();
 
         If RecordsCount = 1 Then
@@ -183,7 +225,7 @@ Function GetRequestsHandler(Val Project, Val HandlerKey) Export
         Else
 
             If RecordsCount = 0 Then
-                Result      = FormResponse(False, "Handler not found!");
+                Result      = FormResponse(False, "Handler not found");
              EndIf;
 
         EndIf;
@@ -224,23 +266,47 @@ Function DeleteRequestHandler(Val Project, Val HandlerKey) Export
     FilterStructure.Insert("value", HandlerKey);
     FilterStructure.Insert("raw"  , False);
 
-    Result = OPI_SQLite.DeletePosts(Table, FilterStructure, Project);
+    Results = New Map;
+    Success = True;
 
-    Return Result;
+    For Each Table In TableNamesConstants() Do
+
+        TableName      = ConstantValue(Table);
+        Result         = OPI_SQLite.DeletePosts(TableName, FilterStructure, Project);
+        CurrentSuccess = Result["result"];
+
+        Results.Insert(TableName, CurrentSuccess);
+
+        Success = ?(Not CurrentSuccess, CurrentSuccess, Success);
+
+    EndDo;
+
+    Return New Structure("result,tables", Success, Results);
 
 EndFunction
 
-// Start
-// Launches integration proxy server
+// Update requests handler
+// Changes the values of the request handler fields
 //
 // Parameters:
-// Port - Number - Servers port - port
 // Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+// OintLibrary - String - Library name in CLI command format - lib
+// OintFunction - String - OpenIntegrations function name - func
+// Method - String - HTTP method that will process the handler: GET, POST, MULTIPART - method
+//
 // Returns:
-// Structure Of KeyAndValue - Result of server shutdown
-Function Start(Val Port, Val Project) Export
+// Structure Of KeyAndValue - Result of handler modification
+Function UpdateRequestsHandler(Val Project
+    , Val HandlerKey
+    , Val OintLibrary = ""
+    , Val OintFunction = ""
+    , Val Method = "") Export
 
-    OPI_TypeConversion.GetNumber(Port);
+    OPI_TypeConversion.GetLine(OintLibrary);
+    OPI_TypeConversion.GetLine(OintFunction);
+    OPI_TypeConversion.GetLine(Method);
+    OPI_TypeConversion.GetLine(HandlerKey);
 
     Result = CheckProjectExistence(Project);
 
@@ -250,17 +316,166 @@ Function Start(Val Port, Val Project) Export
         Project = Result["path"];
     EndIf;
 
-    ServerType = Type("WebServer");
+    RecordStructure = New Structure;
 
-    ServerParams    = New Array(1);
-    ServerParams[0] = Port;
+    If ValueIsFilled(OintLibrary) Then
+        RecordStructure.Insert("library" , OintLibrary);
+    EndIf;
 
-    WebServer = New(ServerType, ServerParams);
+    If ValueIsFilled(OintFunction) Then
+        RecordStructure.Insert("function", OintFunction);
+    EndIf;
 
-    WebServer.AddRequestsHandler(OPI_IntegrationProxy, "MainHandler");
-    WebServer.Start();
+    If ValueIsFilled(Method) Then
+        RecordStructure.Insert("method" , Method);
+    EndIf;
 
-    Return FormResponse(True, "Stopped");
+    Result = UpdateHandlerFields(Project, HandlerKey, RecordStructure);
+
+    Return Result;
+
+EndFunction
+
+// Disable requests handler
+// Disables the handler by key
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+//
+// Returns:
+// Structure Of KeyAndValue - Switching result
+Function DisableRequestsHandler(Val Project, Val HandlerKey) Export
+
+    Return SwitchRequestHandler(Project, HandlerKey, False);
+
+EndFunction
+
+// Enable requests handler
+// Enables the handler by key
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+//
+// Returns:
+// Structure Of KeyAndValue - Switching result
+Function EnableRequestsHandler(Val Project, Val HandlerKey) Export
+
+    Return SwitchRequestHandler(Project, HandlerKey, True);
+
+EndFunction
+
+#EndRegion
+
+#Region ArgumentSetting
+
+// Set handler arguments
+// Sets the argument to the function, allowing it to be unspecified when the handler is called
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+// Argument - String - CLI argument (option) for the handler function - arg
+// Value - String - String argument value - value
+// Strict - Boolean - True > argument cannot be overwritten by a request data - strict
+//
+// Returns:
+// Structure Of KeyAndValue - Setting result
+Function SetHandlerArguments(Val Project
+    , Val HandlerKey
+    , Val Argument
+    , Val Value
+    , Val Strict = True) Export
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+    OPI_TypeConversion.GetLine(Argument);
+    OPI_TypeConversion.GetLine(Value);
+    OPI_TypeConversion.GetBoolean(Strict);
+
+    FiltersArray = New Array;
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("field", "key");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", HandlerKey);
+    FilterStructure.Insert("raw"  , False);
+    FiltersArray.Add(FilterStructure);
+
+    FilterStructure.Insert("field", "arg");
+    FilterStructure.Insert("value", Argument);
+    FiltersArray.Add(FilterStructure);
+
+    Table  = ConstantValue("ArgumentsTable");
+    Result = OPI_SQLite.GetRecords(Table, , FiltersArray, , , Project);
+
+    If Result["result"] Then
+
+        RecordsCount = Result["data"].Count();
+
+        RecordStructure = New Structure("value,strict", Value, Strict);
+
+        If RecordsCount <> 0 Then
+            Result = OPI_SQLite.UpdateRecords(Table, RecordStructure, FiltersArray, Project);
+        Else
+
+            RecordStructure.Insert("key", HandlerKey);
+            RecordStructure.Insert("arg", Argument);
+            Result = OPI_SQLite.AddRecords(Table, RecordStructure, False, Project);
+
+        EndIf;
+
+        If Result["result"] Then
+            Result = GetRequestsHandler(Project, HandlerKey);
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get handler arguments
+// Gets the list of defined handler arguments
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+//
+// Returns:
+// Structure Of KeyAndValue - Handlers list
+Function GetHandlerArguments(Val Project, Val HandlerKey) Export
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("field", "key");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", HandlerKey);
+    FilterStructure.Insert("raw"  , False);
+
+    Table      = ConstantValue("ArgumentsTable");
+    FieldArray = StrSplit("arg,value,strict", ",");
+
+    Result = OPI_SQLite.GetRecords(Table, FieldArray, FilterStructure, , , Project);
+
+    Return Result;
 
 EndFunction
 
@@ -278,16 +493,16 @@ Function CheckProjectExistence(Path)
     OPI_Tools.RestoreEscapeSequences(Path);
 
     ProjectFile = New File(Path);
-    Text        = "The project file already exists!";
+    Text        = "The project file exists";
     Result      = True;
 
     If Not ProjectFile.Exists() Then
-        Text   = "Project file not found at the specified path!";
+        Text   = "Project file not found at the specified path";
         Result = False;
     EndIf;
 
     If ProjectFile.IsDirectory() Then
-        Text   = "The directory path is passed, not the project file!";
+        Text   = "A directory path was passed, not a project file";
         Result = False;
     EndIf;
 
@@ -326,7 +541,7 @@ Function NormalizeProject(Path)
         Result = CreateNewProject(FullPath);
 
         If Result["result"] Then
-            Text     = "The project file has been successfully created!";
+            Text     = "The project file was created successfully";
             Response = FormResponse(True, Text, FullPath);
         Else
             Response = Result;
@@ -334,7 +549,7 @@ Function NormalizeProject(Path)
 
     Else
 
-        Text     = "The project file at the given path already exists!";
+        Text     = "The project file at the specified path already exists";
         Response = FormResponse(False, Text, FullPath);
 
     EndIf;
@@ -357,8 +572,20 @@ EndFunction
 
 Function ConstantValue(Val Key)
 
-    If Key = "HandlersTable" Then Return "handlers"
+    If Key    = "HandlersTable" Then Return "handlers"
+    ElsIf Key = "ArgumentsTable" Then Return "arguments"
+
     Else Return "" EndIf;
+
+EndFunction
+
+Function TableNamesConstants(Val HandlersOnly = True)
+
+    ArrayOfNames = New Array;
+    ArrayOfNames.Add("HandlersTable");
+    ArrayOfNames.Add("ArgumentsTable");
+
+    Return ArrayOfNames;
 
 EndFunction
 
@@ -368,6 +595,13 @@ Function CreateNewProject(Path)
     EmptyFile.Write(Path);
 
     Result = CreateHandlersTable(Path);
+
+    If Not Result["result"] Then
+        DeleteFiles(Path);
+        Return Result;
+    EndIf;
+
+    Result = CreateArgumentsTable(Path);
 
     If Not Result["result"] Then
         DeleteFiles(Path);
@@ -389,6 +623,21 @@ Function CreateHandlersTable(Path)
 
     HandlersTableName = ConstantValue("HandlersTable");
     Result            = OPI_SQLite.CreateTable(HandlersTableName, TableStructure, Path);
+
+    Return Result;
+
+EndFunction
+
+Function CreateArgumentsTable(Path)
+
+    TableStructure = New Map();
+    TableStructure.Insert("key"    , "TEXT");
+    TableStructure.Insert("arg"    , "TEXT");
+    TableStructure.Insert("value"  , "TEXT");
+    TableStructure.Insert("strict" , "BOOLEAN");
+
+    ArgumentsTableName = ConstantValue("ArgumentsTable");
+    Result             = OPI_SQLite.CreateTable(ArgumentsTableName, TableStructure, Path);
 
     Return Result;
 
@@ -430,7 +679,53 @@ Function GetHandlerUniqueKey(Path)
 EndFunction
 
 Function GetUUID(Val Length)
-    Return Left(StrReplace(String(New UUID), "-", ""), Length);
+    Return Upper(Left(StrReplace(String(New UUID), "-", ""), Length));
+EndFunction
+
+Function UpdateHandlerFields(Val Project, Val HandlerKey, Val RecordStructure)
+
+    If RecordStructure.Count() > 0 Then
+
+        FilterStructure = New Structure;
+
+        FilterStructure.Insert("field", "key");
+        FilterStructure.Insert("type" , "=");
+        FilterStructure.Insert("value", HandlerKey);
+        FilterStructure.Insert("raw"  , False);
+
+        HandlersTableName = ConstantValue("HandlersTable");
+
+        Result = OPI_SQLite.UpdateRecords(HandlersTableName
+            , RecordStructure
+            , FilterStructure
+            , Project);
+
+    Else
+        Result = FormResponse(False, "Nothing to change");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function SwitchRequestHandler(Val Project, Val HandlerKey, Val Activity)
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+    OPI_TypeConversion.GetBoolean(Activity);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    RecordStructure = New Structure("active", Activity);
+    Result          = UpdateHandlerFields(Project, HandlerKey, RecordStructure);
+
+    Return Result;
+
 EndFunction
 
 #EndRegion

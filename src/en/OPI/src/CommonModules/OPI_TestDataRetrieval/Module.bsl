@@ -2119,6 +2119,20 @@ Procedure Check_FileExists(Val Result) Export
 
 EndProcedure
 
+Procedure Check_ProxyHandler(Val Result, Val OintLibrary, Val OintFunction) Export
+
+    ExpectsThat(Result["data"]["library"]).Равно(OintLibrary);
+    ExpectsThat(Result["data"]["function"]).Равно(OintFunction);
+
+EndProcedure
+
+Procedure Check_ProxySwitch(Val Result, Val Active) Export
+
+    Active = ?(Active, 1, 0);
+    ExpectsThat(Result["data"]["active"]).Равно(Active);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion

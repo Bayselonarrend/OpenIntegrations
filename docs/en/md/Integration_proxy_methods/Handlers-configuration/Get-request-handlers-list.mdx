@@ -1,0 +1,36 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get the list of request handlers
+ Gets the list of handlers in the project
+
+
+
+`Function GetRequestHandlersList(Val Project) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+
+  
+  Returns:  Structure Of KeyAndValue - Handlers list
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Project = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
+
+    Result = OPI_IntegrationProxy.GetRequestHandlersList(Project);
+```
+ 
+
+
+
+
