@@ -1,4 +1,4 @@
-﻿    Project      = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
+﻿    Project      = "C:\Users\Administrator\AppData\Local\Temp\v8_85A2_1a.oint";
     OintLibrary  = "telegram";
     OintFunction = "SendTextMessage";
 

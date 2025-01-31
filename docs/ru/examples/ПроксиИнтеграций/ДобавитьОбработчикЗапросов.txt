@@ -1,4 +1,4 @@
-﻿    Проект        = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
+﻿    Проект        = "C:\Users\Administrator\AppData\Local\Temp\v8_85A2_1a.oint";
     БиблиотекаОПИ = "telegram";
     ФункцияОПИ    = "ОтправитьТекстовоеСообщение";
 
