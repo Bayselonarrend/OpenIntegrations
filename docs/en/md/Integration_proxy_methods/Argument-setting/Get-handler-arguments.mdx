@@ -1,20 +1,21 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Get the list of request handlers
- Gets the list of handlers in the project
+# Get handler arguments
+ Gets the list of defined handler arguments
 
 
 
-`Function GetRequestHandlersList(Val Project) Export`
+`Function GetHandlerArguments(Val Project, Val HandlerKey) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlerKey | --handler | String | &#x2714; | Handler key |
 
   
   Returns:  Structure Of KeyAndValue - Handlers list
@@ -25,9 +26,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Project = "C:\Users\Administrator\AppData\Local\Temp\v8_8CEA_26.oint";
 
-    Result = OPI_IntegrationProxy.GetRequestHandlersList(Project);
 ```
  
 

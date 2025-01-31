@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update requests handler
+ Changes the values of the request handler fields
+
+
+
+`Function UpdateRequestsHandler(Val Project, Val HandlerKey, Val OintLibrary = "", Val OintFunction = "", Val Method = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlerKey | --handler | String | &#x2714; | Handler key |
+  | OintLibrary | --lib | String | &#x2716; | Library name in CLI command format |
+  | OintFunction | --func | String | &#x2716; | OpenIntegrations function name |
+  | Method | --method | String | &#x2716; | HTTP method that will process the handler: GET, POST, MULTIPART |
+
+  
+  Returns:  Structure Of KeyAndValue - Result of handler modification
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Project      = "C:\Users\Administrator\AppData\Local\Temp\v8_250E_27.oint";
+    HandlerKey   = "3F56...";
+    OintLibrary  = "dropbox";
+    OintFunction = "CreateFolder";
+
+    Result = OPI_IntegrationProxy.UpdateRequestsHandler(Project, HandlerKey, OintLibrary, OintFunction);
+```
+ 
+
+
+
+

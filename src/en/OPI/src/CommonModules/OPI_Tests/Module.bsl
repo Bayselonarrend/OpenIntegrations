@@ -47,6 +47,7 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 //@skip-check module-unused-local-variable
+//@skip-check use-non-recommended-method
 
 // Uncomment if OneScript is executed
 // #Use "../../../tools"
@@ -2324,9 +2325,16 @@ Procedure Proxy_ProjectSetup() Export
     IntegrationProxy_AddRequestsHandler(TestParameters);
     IntegrationProxy_GetRequestsHandler(TestParameters);
     IntegrationProxy_GetRequestHandlersList(TestParameters);
+    IntegrationProxy_UpdateRequestsHandler(TestParameters);
+    IntegrationProxy_DisableRequestsHandler(TestParameters);
+    IntegrationProxy_EnableRequestsHandler(TestParameters);
     IntegrationProxy_DeleteRequestHandler(TestParameters);
 
-    DeleteFiles(FilePath);
+    Try
+        DeleteFiles(FilePath);
+    Except
+        Message("Failed to delete a temporary file");
+    EndTry;
 
 EndProcedure
 
@@ -17184,7 +17192,11 @@ Procedure IntegrationProxy_CreateProject(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateProject (catalog)", "IntegrationProxy");
     OPI_TestDataRetrieval.Check_FileExists(ProjectPath);
 
-    DeleteFiles(ProjectPath);
+    Try
+        DeleteFiles(ProjectPath);
+    Except
+        Message("Failed to delete a temporary file");
+    EndTry;
 
 EndProcedure
 
@@ -17255,6 +17267,65 @@ Procedure IntegrationProxy_GetRequestHandlersList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRequestHandlersList", "IntegrationProxy");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+
+EndProcedure
+
+Procedure IntegrationProxy_UpdateRequestsHandler(FunctionParameters)
+
+    Project      = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey   = FunctionParameters["Proxy_HandlerKey"];
+    OintLibrary  = "dropbox";
+    OintFunction = "CreateFolder";
+
+    Result = OPI_IntegrationProxy.UpdateRequestsHandler(Project, HandlerKey, OintLibrary, OintFunction);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRequestsHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRequestsHandler (check)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ProxyHandler(Result, OintLibrary, OintFunction);
+
+EndProcedure
+
+Procedure IntegrationProxy_DisableRequestsHandler(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+
+    Result = OPI_IntegrationProxy.DisableRequestsHandler(Project, HandlerKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableRequestsHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableRequestsHandler (check)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ProxySwitch(Result, False);
+
+EndProcedure
+
+Procedure IntegrationProxy_EnableRequestsHandler(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+
+    Result = OPI_IntegrationProxy.EnableRequestsHandler(Project, HandlerKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnableRequestsHandler", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnableRequestsHandler (check)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ProxySwitch(Result, True);
 
 EndProcedure
 
