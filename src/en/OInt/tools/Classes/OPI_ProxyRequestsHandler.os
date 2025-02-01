@@ -59,7 +59,7 @@ Procedure MainHandler(Context, NexHandler) Export
         Error = ErrorDescription();
 
         Context.Response.StatusCode = 500;
-        Context.Response.Write(Error);
+        Context.Response.WriteAsJson(New Structure("result,error", False, Error));
 
     EndTry
 
@@ -69,13 +69,55 @@ Procedure ProcessRequest(Context)
 
     Path = Context.Request.Path;
 
-    Path = ?(StrStartsWith(Path, "/") , Right(Path, StrLen(Path - 1)) , Path);
-    Path = ?(StrEndsWith(Path  , "/") , Left(Path , StrLen(Path - 1)) , Path);
+    Path = ?(StrStartsWith(Path , "/") , Right(Path, StrLen(Path) - 1) , Path);
+    Path = ?(StrEndsWith(Path   , "/") , Left(Path , StrLen(Path) - 1) , Path);
 
     HandlerDescription = ProxyModule.GetRequestsHandler(ProjectPath, Path);
 
-    Context.Response.StatusCode = 200;
-    Context.Response.Write("Hello world!");
+    If HandlerDescription["result"] Then
+
+        Handler = HandlerDescription["data"];
+        Handler = ?(TypeOf(Handler) = Type("Array"), Handler[0], Handler);
+
+        ExecuteProcessing(Context, Handler);
+
+    Else
+        ProcessingError(Context, 404, "Handler not found!");
+    EndIf;
+
+EndProcedure
+
+#EndRegion
+
+#Region Private
+
+Procedure ExecuteProcessing(Context, Handler)
+
+    Method = Upper(Context.Request.Method);
+
+    If Not Method = Upper(Handler["method"]) Then
+        ProcessingError(Context, 405, "Method not allowed for this handler");
+        Return;
+    EndIf;
+
+    If Method = "GET" Then
+        ExecuteProcessingGet(Context, Handler);
+    Else
+        ProcessingError(Context, 405, "Method not allowed for this handler");
+    EndIf;
+
+EndProcedure
+
+Procedure ExecuteProcessingGet(Context, Handler)
+
+    Context.Response.WriteAsJson(Handler);
+
+EndProcedure
+
+Procedure ProcessingError(Context, Code, Text)
+
+    Context.Response.StatusCode = Code;
+    Context.Response.WriteAsJson(New Structure("result,error", False, Text));
 
 EndProcedure
 
