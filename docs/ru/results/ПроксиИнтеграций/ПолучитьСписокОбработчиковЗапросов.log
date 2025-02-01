@@ -1,0 +1,12 @@
+﻿    {
+ "data": [
+  {
+   "active": 1,
+   "function": "ОтправитьТекстовоеСообщение",
+   "key": "3409DC7BF",
+   "library": "telegram",
+   "method": "GET"
+  }
+ ],
+ "result": true
+}

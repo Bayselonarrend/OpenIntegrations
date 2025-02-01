@@ -1,0 +1,2 @@
+oint proxy ПолучитьСписокОбработчиковЗапросов ^
+  --proj "C:\Users\Administrator\AppData\Local\Temp\ipsghchsdnr.oint"

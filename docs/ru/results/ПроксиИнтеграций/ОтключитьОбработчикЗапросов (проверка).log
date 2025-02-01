@@ -1,0 +1,14 @@
+﻿    {
+ "data": {
+  "active": 0,
+  "function": "СоздатьПапку",
+  "key": "3409DC7BF",
+  "library": "dropbox",
+  "method": "POST",
+  "args": {
+   "data": [],
+   "result": true
+  }
+ },
+ "result": true
+}
