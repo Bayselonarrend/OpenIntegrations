@@ -1,4 +1,5 @@
 oint bitrix24 ДобавитьКомментарийЗадачи ^
-  --url "https://b24-ar17wx.bitrix24.by/rest/1/ps56vdxg63nq8fek" ^
-  --task "4792" ^
-  --text "Задача невыполнима, расходимся"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --task "4802" ^
+  --text "Задача выполнима, не расходимся" ^
+  --token "***"

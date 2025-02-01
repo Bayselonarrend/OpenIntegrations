@@ -1,6 +1,6 @@
 oint ozon ОбновитьИзображенияТовара \
   --clientid "***" \
   --apikey "***" \
-  --productid 1373401874 \
+  --productid 1378913257 \
   --images "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" \
   --color "GREEN"
