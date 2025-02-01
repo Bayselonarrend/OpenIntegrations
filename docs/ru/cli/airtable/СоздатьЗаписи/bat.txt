@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint airtable СоздатьЗаписи ^
   --token "***" ^
-  --base "appnzv5QrmVfJa6ap" ^
-  --table "tbl2LxwDj6AHtpt6r" ^
-  --data "{'Номер':10,'Строковое':'Привет'}"
+  --base "appMEFdY2qAdUtVVb" ^
+  --table "tblHpdRY49P83j9fU" ^
+  --data "[{'Номер':10,'Строковое':'Привет'},{'Номер':10,'Строковое':'Привет'}]"

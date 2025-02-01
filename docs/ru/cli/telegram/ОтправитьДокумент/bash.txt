@@ -1,6 +1,5 @@
 oint telegram ОтправитьДокумент \
   --token "***" \
-  --chat "@testsichee" \
+  --chat "461699897" \
   --text "Строковое значение" \
-  --doc "C:\Users\Administrator\AppData\Local\Temp\g52xykeobfe.docx" \
-  --filename "custom.docx"
+  --doc "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"

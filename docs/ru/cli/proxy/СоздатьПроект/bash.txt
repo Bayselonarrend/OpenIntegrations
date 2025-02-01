@@ -1,0 +1,2 @@
+oint proxy СоздатьПроект \
+  --path "C:\Users\Administrator\AppData\Local\Temp\v11tlzhoa1j.oint"
