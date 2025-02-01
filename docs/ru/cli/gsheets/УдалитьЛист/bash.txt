@@ -1,4 +1,4 @@
 oint gsheets УдалитьЛист \
   --token "***" \
-  --spreadsheet "1ynrIObgP1HObCSa9IpudTqI4N984_UGDZyGx_DIrnGA" \
-  --sheet "1566937401"
+  --spreadsheet "132R-blenw_TMrFkpgarpR96AAq9vQSjNEKMfp9hiZK8" \
+  --sheet "3241972"

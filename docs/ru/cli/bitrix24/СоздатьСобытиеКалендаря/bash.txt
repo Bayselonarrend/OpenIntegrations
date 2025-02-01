@@ -1,0 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint bitrix24 СоздатьСобытиеКалендаря \
+  --url "b24-ar17wx.bitrix24.by" \
+  --fields "{'type':'user','ownerId':1,'from':'2025-02-02T18:48:37.1737939','to':'2025-02-02T19:48:37.1737939','section':142,'name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-02-12T18:48:37.1737939'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+  --token "***"
