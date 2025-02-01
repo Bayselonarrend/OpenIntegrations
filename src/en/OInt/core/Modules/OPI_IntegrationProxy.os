@@ -221,7 +221,12 @@ Function GetRequestsHandler(Val Project, Val HandlerKey) Export
     If Result["result"] Then
 
         For Each Element In Result["data"] Do
-            Element.Insert("args", GetHandlerArguments(Project, HandlerKey));
+
+            Arguments = GetHandlerArguments(Project, HandlerKey);
+            Arguments = ?(Arguments["result"], Arguments["data"], Arguments);
+
+            Element.Insert("args", Arguments);
+
         EndDo;
 
         RecordsCount = Result["data"].Count();
@@ -687,7 +692,7 @@ Function GetHandlerUniqueKey(Path)
 EndFunction
 
 Function GetUUID(Val Length)
-    Return Upper(Left(StrReplace(String(New UUID), "-", ""), Length));
+    Return Left(StrReplace(String(New UUID), "-", ""), Length);
 EndFunction
 
 Function UpdateHandlerFields(Val Project, Val HandlerKey, Val RecordStructure)
