@@ -73,4 +73,5 @@
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPI_ПроксиИнтеграций</commonModules>
+  <dataProcessors>DataProcessor.OPI_ОбработчикЗапросовПрокси</dataProcessors>
 </mdclass:Configuration>
