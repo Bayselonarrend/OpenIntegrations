@@ -16451,7 +16451,7 @@ Procedure CLI_Bitrix24_GetCalendarEvent(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvent", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEvent (wh)", "Bitrix24"); // SKIP
-    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixMap(Result); // SKIP
 
     URL     = FunctionParameters["Bitrix24_Domain"];
     Token   = FunctionParameters["Bitrix24_Token"];
@@ -16465,7 +16465,7 @@ Procedure CLI_Bitrix24_GetCalendarEvent(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvent", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEvent", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+    OPI_TestDataRetrieval.Check_BitrixMap(Result);
 
 EndProcedure
 
