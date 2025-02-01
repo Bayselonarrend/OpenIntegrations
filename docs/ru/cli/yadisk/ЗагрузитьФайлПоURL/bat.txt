@@ -1,4 +1,4 @@
 oint yadisk ЗагрузитьФайлПоURL ^
   --token "***" ^
-  --path "/be9520be-65f5-4f4a-854c-193d00bc8c1f.png" ^
+  --path "/efac0231-a4a1-4a51-a347-248984059c55.png" ^
   --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"

@@ -1,0 +1,3 @@
+oint proxy ПолучитьОбработчикЗапросов \
+  --proj "C:\Users\Administrator\AppData\Local\Temp\ipsghchsdnr.oint" \
+  --handler "3409DC7BF"

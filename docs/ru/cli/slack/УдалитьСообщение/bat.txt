@@ -1,4 +1,4 @@
 oint slack УдалитьСообщение ^
   --token "***" ^
   --channel "C06UFNUTKUL" ^
-  --stamp "1737835828.902989"
+  --stamp "1738420935.932339"
