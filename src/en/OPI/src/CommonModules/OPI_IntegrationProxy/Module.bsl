@@ -70,6 +70,10 @@ EndFunction
 // Structure Of KeyAndValue - Result of server shutdown
 Function LaunchProject(Val Port, Val Project) Export
 
+    If Not OPI_Tools.IsOneScript() Then
+        Raise "This function is only available for calling in OneScript!";
+    EndIf;
+
     OPI_TypeConversion.GetNumber(Port);
 
     Result = CheckProjectExistence(Project);
@@ -86,8 +90,12 @@ Function LaunchProject(Val Port, Val Project) Export
     ServerParams[0] = Port;
 
     WebServer = New(ServerType, ServerParams);
+    Handler   = New("OPI_ProxyRequestsHandler");
 
-    WebServer.AddRequestsHandler(OPI_IntegrationProxy, "MainHandler");
+    Handler.ProjectPath = Project;
+    Handler.ProxyModule = ThisObject;
+
+    WebServer.AddRequestsHandler(Handler, "MainHandler");
     WebServer.Start();
 
     Return FormResponse(True, "Stopped");
@@ -727,34 +735,6 @@ Function SwitchRequestHandler(Val Project, Val HandlerKey, Val Activity)
     Return Result;
 
 EndFunction
-
-#EndRegion
-
-#Region Handlers
-
-Procedure MainHandler(Context, NexHandler) Export
-
-    Try
-        ProcessRequest(Context);
-    Except
-
-        Error = ErrorDescription();
-
-        Context.Response.StatusCode = 500;
-        Context.Response.Write(Error);
-
-    EndTry
-
-EndProcedure
-
-Procedure ProcessRequest(Context)
-
-    // Path = Context.Request.Path;
-
-    Context.Response.StatusCode = 200;
-    Context.Response.Write("Hello world!");
-
-EndProcedure
 
 #EndRegion
 
