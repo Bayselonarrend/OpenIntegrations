@@ -45,6 +45,7 @@
 
 Var ProjectPath Export;
 Var ProxyModule Export;
+Var OPIObject Export;
 
 #EndRegion
 
@@ -112,8 +113,54 @@ Procedure ExecuteProcessingGet(Context, Handler)
 
     Request    = Context.Request;
     Parameters = Request.Parameters;
+    Arguments  = Handler["args"];
 
-    Context.Response.WriteAsJson(Handler);
+    StrictArguments    = New Map;
+    NonStrictArguments = New Map;
+
+    For Each Argument In Arguments Do
+
+        If Argument["strict"] = 1 Then
+            StrictArguments.Insert(Argument["arg"], Argument["value"]);
+        Else
+            NonStrictArguments.Insert(Argument["arg"], Argument["value"]);
+        EndIf;
+
+    EndDo;
+
+    ParametersBoiler = NonStrictArguments;
+
+    For Each Parameter In Parameters Do
+        ParametersBoiler.Insert(Parameter.Key, Parameter.Value);
+    EndDo;
+
+    For Each Argument In StrictArguments Do
+        ParametersBoiler.Insert(Argument.Key, Argument.Value);
+    EndDo;
+
+    ExecuteUniversalProcessing(Context
+        , Handler["library"]
+        , Handler["function"]
+        , ParametersBoiler);
+
+EndProcedure
+
+Procedure ExecuteUniversalProcessing(Context, Command, Method, Parameters)
+
+    ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
+
+    If ExecutionStructure["Error"] Then
+        Response = New Structure("result,error", False, "Error in a handler command or method");
+    Else
+
+        ExecutionText = ExecutionStructure["Result"];
+
+        Execute(ExecutionText);
+
+
+    EndIf;
+
+    Context.Response.WriteAsJson(Response);
 
 EndProcedure
 

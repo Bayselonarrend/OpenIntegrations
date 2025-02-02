@@ -41,6 +41,7 @@
 
 // Uncomment if OneScript is executed
 // #Use "../../tools"
+// #Use "../../../cli/data"
 
 #Region Public
 
@@ -89,11 +90,13 @@ Function LaunchProject(Val Port, Val Project) Export
     ServerParams    = New Array(1);
     ServerParams[0] = Port;
 
-    WebServer = New(ServerType, ServerParams);
-    Handler   = New("OPI_ProxyRequestsHandler");
+    WebServer       = New(ServerType, ServerParams);
+    Handler         = New("OPI_ProxyRequestsHandler");
+    OintComposition = New("LibraryComposition");
 
     Handler.ProjectPath = Project;
     Handler.ProxyModule = ThisObject;
+    Handler.OPIObject   = OintComposition;
 
     WebServer.AddRequestsHandler(Handler, "MainHandler");
     WebServer.Start();
