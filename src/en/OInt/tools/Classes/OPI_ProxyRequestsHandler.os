@@ -42,7 +42,6 @@
 
 #Region Variables
 
-
 Var ProjectPath Export;
 Var ProxyModule Export;
 Var OPIObject Export;
@@ -57,10 +56,10 @@ Procedure MainHandler(Context, NexHandler) Export
         ProcessRequest(Context);
     Except
 
-        Error = BriefErrorDescription(ErrorInfo());
+        Error = ErrorDescription();
 
         Context.Response.StatusCode = 500;
-        Context.Response.WriteAsJson(New Structure("result,error", False, Error));
+        Context.Response.WriteAsJson(New Structure("result,error", False, "OneScript exception: " + Error));
 
     EndTry
 
@@ -120,7 +119,7 @@ Procedure ExecuteProcessingGet(Context, Handler)
 
     For Each Argument In Arguments Do
 
-        Key   = Argument["arg"];
+        Key   = "--" + Argument["arg"];
         Value = Argument["value"];
         Value = ?(StrStartsWith(Value , """"), Right(Value, StrLen(Value) - 1), Value);
         Value = ?(StrEndsWith(Value   , """"), Left(Value , StrLen(Value) - 1), Value);
@@ -136,7 +135,13 @@ Procedure ExecuteProcessingGet(Context, Handler)
     ParametersBoiler = NonStrictArguments;
 
     For Each Parameter In Parameters Do
-        ParametersBoiler.Insert(Parameter.Key, Parameter.Value);
+
+        Value = Parameter.Value;
+        Value = ?(StrStartsWith(Value , """"), Right(Value, StrLen(Value) - 1), Value);
+        Value = ?(StrEndsWith(Value   , """"), Left(Value , StrLen(Value) - 1), Value);
+
+        ParametersBoiler.Insert("--" + Parameter.Key, Value);
+
     EndDo;
 
     For Each Argument In StrictArguments Do
