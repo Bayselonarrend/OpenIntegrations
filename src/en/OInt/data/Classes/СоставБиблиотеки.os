@@ -13,6 +13,7 @@
 СоответствиеКоманд.Вставить("gdrive", "OPI_GoogleDrive");
 СоответствиеКоманд.Вставить("gsheets", "OPI_GoogleSheets");
 СоответствиеКоманд.Вставить("google", "OPI_GoogleWorkspace");
+СоответствиеКоманд.Вставить("proxy", "OPI_IntegrationProxy");
 СоответствиеКоманд.Вставить("mongodb", "OPI_MongoDB");
 СоответствиеКоманд.Вставить("neocities", "OPI_Neocities");
 СоответствиеКоманд.Вставить("notion", "OPI_Notion");
@@ -30,7 +31,6 @@
 СоответствиеКоманд.Вставить("yandex", "OPI_YandexID");
 СоответствиеКоманд.Вставить("yamarket", "OPI_YandexMarket");
 СоответствиеКоманд.Вставить("metrika", "OPI_YandexMetrika");
-СоответствиеКоманд.Вставить("proxy", "OPI_ПроксиИнтеграций");
 КонецПроцедуры
 
 Функция ПолучитьВерсию() Экспорт
