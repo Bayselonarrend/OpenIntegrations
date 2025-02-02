@@ -1,4 +1,4 @@
 oint cdek ПолучитьДоступныеИнтервалыДоставки ^
   --token "***" ^
-  --uuid "b6ccc272-ead0-42d0-9710-e394b30bbec1" ^
+  --uuid "6f18cec0-eb8e-44db-b367-f5b8baf3c2d1" ^
   --testapi "***"
