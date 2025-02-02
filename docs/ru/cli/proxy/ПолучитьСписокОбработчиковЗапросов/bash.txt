@@ -1,2 +1,2 @@
 oint proxy ПолучитьСписокОбработчиковЗапросов \
-  --proj "C:\Users\Administrator\AppData\Local\Temp\ipsghchsdnr.oint"
+  --proj "C:\Users\Administrator\AppData\Local\Temp\52ocywjxz54.oint"
