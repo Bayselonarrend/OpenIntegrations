@@ -57,7 +57,7 @@ Procedure MainHandler(Context, NexHandler) Export
         ProcessRequest(Context);
     Except
 
-        Error = BriefErrorRepresentation(ErrorInfo());
+        Error = BriefErrorDescription(ErrorInfo());
 
         Context.Response.StatusCode = 500;
         Context.Response.WriteAsJson(New Structure("result,error", False, Error));
