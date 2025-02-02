@@ -57,7 +57,7 @@ Procedure MainHandler(Context, NexHandler) Export
         ProcessRequest(Context);
     Except
 
-        Error = ErrorDescription();
+        Error = BriefErrorRepresentation(ErrorInfo());
 
         Context.Response.StatusCode = 500;
         Context.Response.WriteAsJson(New Structure("result,error", False, Error));
@@ -122,8 +122,8 @@ Procedure ExecuteProcessingGet(Context, Handler)
 
         Key   = Argument["arg"];
         Value = Argument["value"];
-        Value = ?(StrStartsWith(Value, """"), Right(Value, StrLen(Value) - 1), Value);
-        Value = ?(StrEndsWith(Value  , """"), Left(Value , StrLen(Value) - 1), Value);
+        Value = ?(StrStartsWith(Value , """"), Right(Value, StrLen(Value) - 1), Value);
+        Value = ?(StrEndsWith(Value   , """"), Left(Value , StrLen(Value) - 1), Value);
 
         If Argument["strict"] = 1 Then
             StrictArguments.Insert(Key, Value);
