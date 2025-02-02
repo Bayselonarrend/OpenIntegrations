@@ -120,10 +120,15 @@ Procedure ExecuteProcessingGet(Context, Handler)
 
     For Each Argument In Arguments Do
 
+        Key   = Argument["arg"];
+        Value = Argument["value"];
+        Value = ?(StrStartsWith(Value, """"), Right(Value, StrLen(Value) - 1), Value);
+        Value = ?(StrEndsWith(Value  , """"), Left(Value , StrLen(Value) - 1), Value);
+
         If Argument["strict"] = 1 Then
-            StrictArguments.Insert(Argument["arg"], Argument["value"]);
+            StrictArguments.Insert(Key, Value);
         Else
-            NonStrictArguments.Insert(Argument["arg"], Argument["value"]);
+            NonStrictArguments.Insert(Key, Value);
         EndIf;
 
     EndDo;
@@ -149,6 +154,8 @@ Procedure ExecuteUniversalProcessing(Context, Command, Method, Parameters)
 
     ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
 
+    Response = Undefined;
+
     If ExecutionStructure["Error"] Then
         Response = New Structure("result,error", False, "Error in a handler command or method");
     Else
@@ -157,6 +164,8 @@ Procedure ExecuteUniversalProcessing(Context, Command, Method, Parameters)
 
         Execute(ExecutionText);
 
+
+        Response = New Structure("result,data", True, Response);
 
     EndIf;
 
