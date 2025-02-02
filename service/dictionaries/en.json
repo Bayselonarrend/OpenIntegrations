@@ -5216,7 +5216,7 @@
 "ЗаполнитьПоляЗапросаТовара": "FillProductRequestFields",
 "ПолучитьЗначенияРекурсивно": "GetValuesRecursively",
 "ВключитьОбработчикЗапросов": "EnableRequestsHandler",
-"КраткоеПредставлениеОшибки": "BriefErrorRepresentation",
+"КраткоеПредставлениеОшибки": "BriefErrorDescription",
 "ДропБокс_СоздатьУдалитьТег": "DropboxAPI_CreateDeleteTag",
 "ДобавитьОбработчикЗапросов": "AddRequestsHandler",
 "Неопределено, Произвольный": "Undefined, Arbitrary",
