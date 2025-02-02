@@ -110,6 +110,9 @@ EndProcedure
 
 Procedure ExecuteProcessingGet(Context, Handler)
 
+    Request    = Context.Request;
+    Parameters = Request.Parameters;
+
     Context.Response.WriteAsJson(Handler);
 
 EndProcedure
