@@ -53,19 +53,25 @@ Var OPIObject Export;
 Procedure MainHandler(Context, NexHandler) Export
 
     Try
-        ProcessRequest(Context);
+        Result = ProcessRequest(Context);
     Except
 
-        Error = ErrorDescription();
+        Error = BriefErrorDescription(ErrorInfo());
 
         Context.Response.StatusCode = 500;
-        Context.Response.WriteAsJson(New Structure("result,error", False, "OneScript exception: " + Error));
 
-    EndTry
+        Result = New Structure("result,error", False, "OneScript exception: " + Error);
+
+    EndTry;
+
+    JSON = OPI_Tools.JSONString(Result);
+
+    Context.Response.ContentType = "application/json;charset=UTF8";
+    Context.Response.Write(JSON);
 
 EndProcedure
 
-Procedure ProcessRequest(Context)
+Function ProcessRequest(Context)
 
     Path = Context.Request.Path;
 
@@ -79,36 +85,39 @@ Procedure ProcessRequest(Context)
         Handler = HandlerDescription["data"];
         Handler = ?(TypeOf(Handler) = Type("Array"), Handler[0], Handler);
 
-        ExecuteProcessing(Context, Handler);
+        Result = ExecuteProcessing(Context, Handler);
 
     Else
-        ProcessingError(Context, 404, "Handler not found!");
+        Result = ProcessingError(Context, 404, "Handler not found!");
     EndIf;
 
-EndProcedure
+    Return Result;
+
+EndFunction
 
 #EndRegion
 
 #Region Private
 
-Procedure ExecuteProcessing(Context, Handler)
+Function ExecuteProcessing(Context, Handler)
 
     Method = Upper(Context.Request.Method);
 
     If Not Method = Upper(Handler["method"]) Then
-        ProcessingError(Context, 405, "Method not allowed for this handler");
-        Return;
+        Return ProcessingError(Context, 405, "Method not allowed for this handler");
     EndIf;
 
-    If Method = "GET" Then
-        ExecuteProcessingGet(Context, Handler);
+    If Method  = "GET" Then
+        Result = ExecuteProcessingGet(Context, Handler);
     Else
-        ProcessingError(Context, 405, "Method not allowed for this handler");
+        Result = ProcessingError(Context, 405, "Method not allowed for this handler");
     EndIf;
 
-EndProcedure
+    Return Result;
 
-Procedure ExecuteProcessingGet(Context, Handler)
+EndFunction
+
+Function ExecuteProcessingGet(Context, Handler)
 
     Request    = Context.Request;
     Parameters = Request.Parameters;
@@ -148,14 +157,14 @@ Procedure ExecuteProcessingGet(Context, Handler)
         ParametersBoiler.Insert(Argument.Key, Argument.Value);
     EndDo;
 
-    ExecuteUniversalProcessing(Context
+    Return ExecuteUniversalProcessing(Context
         , Handler["library"]
         , Handler["function"]
         , ParametersBoiler);
 
-EndProcedure
+EndFunction
 
-Procedure ExecuteUniversalProcessing(Context, Command, Method, Parameters)
+Function ExecuteUniversalProcessing(Context, Command, Method, Parameters)
 
     ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
 
@@ -174,15 +183,16 @@ Procedure ExecuteUniversalProcessing(Context, Command, Method, Parameters)
 
     EndIf;
 
-    Context.Response.WriteAsJson(Response);
+    Return Response;
 
-EndProcedure
+EndFunction
 
-Procedure ProcessingError(Context, Code, Text)
+Function ProcessingError(Context, Code, Text)
 
     Context.Response.StatusCode = Code;
-    Context.Response.WriteAsJson(New Structure("result,error", False, Text));
 
-EndProcedure
+    Return New Structure("result,error", False, Text);
+
+EndFunction
 
 #EndRegion
