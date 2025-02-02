@@ -6052,7 +6052,6 @@
 "ПолучитьСписокПользователейЧата": "GetChatUsers",
 "ПолучитьХарактеристикиКатегории": "GetCategoryAttributes",
 "ID первого справочника в ответе": "ID of the first catalog in the response",
-"Использовать \"../../../cli/data": "Use \"../../../cli/data",
 "Функция вернула пустое значение": "Function Returned Empty Value",
 "Получить ссылку для авторизации": "Get authorization link",
 "ПолучитьСтруктуруФильтраТоваров": "GetProductsFilterStructure",
