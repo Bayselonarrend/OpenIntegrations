@@ -41,7 +41,8 @@
 
 // Uncomment if OneScript is executed
 // #Use "../../tools"
-// #Use "../../../cli/data"
+// #Use "../../data"
+// #Use "."
 
 #Region Public
 
