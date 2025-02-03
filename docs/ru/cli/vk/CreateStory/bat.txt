@@ -1,5 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint vk CreateStory ^
- --picture "C:\Users\Administrator\AppData\Local\Temp\vorqvz10aqn.png" ^
+ --picture "C:\Users\Administrator\AppData\Local\Temp\xq4h1wuffrv.tmp" ^
+ --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

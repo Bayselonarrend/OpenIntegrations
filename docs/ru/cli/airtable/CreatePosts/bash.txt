@@ -1,7 +1,5 @@
-# JSON data can also be passed as a path to a .json file
-
 oint airtable CreatePosts \
  --token "***" \
- --base "appQJvhyPf6wsMLGd" \
- --table "tbl2y2JCiK1G12Wvn" \
- --data "{'Number':10,'String':'Hello'}"
+ --base "appCCG0gKDROyducY" \
+ --table "tblWR7E22PIGCoAWU" \
+ --data "[{'Number':10,'String':'Hello'},{'Number':10,'String':'Hello'}]"

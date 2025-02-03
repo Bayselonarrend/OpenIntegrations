@@ -1,3 +1,2 @@
 oint dropbox GetAccountInformation ^
- --token "***" ^
- --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
+ --token "***"
