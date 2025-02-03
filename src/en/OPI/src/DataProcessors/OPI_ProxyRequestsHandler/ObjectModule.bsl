@@ -52,6 +52,8 @@ Var OPIObject Export;
 
 Procedure MainHandler(Context, NexHandler) Export
 
+    #If Host Or ThickClientOrdinaryApplication Or ExternalConnection Then
+
     Try
         Result = ProcessRequest(Context);
     Except
@@ -60,7 +62,7 @@ Procedure MainHandler(Context, NexHandler) Export
 
         Context.Response.StatusCode = 500;
 
-        Result = New Structure("result,error", False, "OneScript exception: " + Error);
+        Result = New Structure("result,error", False, "OneScript exception " + Error);
 
     EndTry;
 
@@ -68,6 +70,10 @@ Procedure MainHandler(Context, NexHandler) Export
 
     Context.Response.ContentType = "application/json;charset=UTF8";
     Context.Response.Write(JSON);
+
+    #Else
+    Raise "The method is not available on the client!";
+    #EndIf
 
 EndProcedure
 
@@ -101,16 +107,20 @@ EndFunction
 
 Function ExecuteProcessing(Context, Handler)
 
-    Method = Upper(Context.Request.Method);
+    Method         = Upper(Context.Request.Method);
+    HandlerMethod  = Upper(Handler["method"]);
+    MethodForCheck = ?(HandlerMethod = "MULTIPART", "POST", HandlerMethod);
 
-    If Not Method = Upper(Handler["method"]) Then
-        Return ProcessingError(Context, 405, "Method not allowed for this handler");
+    If Not Method = MethodForCheck Then
+        Return ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
     EndIf;
 
-    If Method  = "GET" Then
-        Result = ExecuteProcessingGet(Context, Handler);
+    If HandlerMethod    = "GET" Then
+        Result          = ExecuteProcessingGet(Context, Handler);
+    ElsIf HandlerMethod = "POST" Then
+        Result          = ExecuteProcessinPost(Context, Handler);
     Else
-        Result = ProcessingError(Context, 405, "Method not allowed for this handler");
+        Result          = ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
     EndIf;
 
     Return Result;
@@ -122,6 +132,61 @@ Function ExecuteProcessingGet(Context, Handler)
     Request    = Context.Request;
     Parameters = Request.Parameters;
     Arguments  = Handler["args"];
+
+    ParametersBoiler = FormParametersBoiler(Arguments, Parameters);
+
+    Return ExecuteUniversalProcessing(Context
+        , Handler["library"]
+        , Handler["function"]
+        , ParametersBoiler);
+
+EndFunction
+
+Function ExecuteProcessinPost(Context, Handler)
+
+    Request   = Context.Request;
+    Arguments = Handler["args"];
+
+    Body       = Request.Body;
+    JSONReader = New JSONReader();
+    JSONReader.OpenStream(Body);
+
+    Parameters = ReadJSON(JSONReader, True);
+    JSONReader.Close();
+
+    ParametersBoiler = FormParametersBoiler(Arguments, Parameters);
+
+    Return ExecuteUniversalProcessing(Context
+        , Handler["library"]
+        , Handler["function"]
+        , ParametersBoiler);
+
+EndFunction
+
+Function ExecuteUniversalProcessing(Context, Command, Method, Parameters)
+
+    ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
+
+    Response = Undefined;
+
+    If ExecutionStructure["Error"] Then
+        Response = New Structure("result,error", False, "Error in the name of a command or handler function!");
+    Else
+
+        ExecutionText = ExecutionStructure["Result"];
+        SetSafeMode(True);
+        Execute(ExecutionText);
+        SetSafeMode(False);
+
+        Response = New Structure("result,data", True, Response);
+
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
+Function FormParametersBoiler(Arguments, Parameters)
 
     StrictArguments    = New Map;
     NonStrictArguments = New Map;
@@ -157,33 +222,7 @@ Function ExecuteProcessingGet(Context, Handler)
         ParametersBoiler.Insert(Argument.Key, Argument.Value);
     EndDo;
 
-    Return ExecuteUniversalProcessing(Context
-        , Handler["library"]
-        , Handler["function"]
-        , ParametersBoiler);
-
-EndFunction
-
-Function ExecuteUniversalProcessing(Context, Command, Method, Parameters)
-
-    ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
-
-    Response = Undefined;
-
-    If ExecutionStructure["Error"] Then
-        Response = New Structure("result,error", False, "Error in a handler command or method");
-    Else
-
-        ExecutionText = ExecutionStructure["Result"];
-        SetSafeMode(True);
-        Execute(ExecutionText);
-        SetSafeMode(False);
-
-        Response = New Structure("result,data", True, Response);
-
-    EndIf;
-
-    Return Response;
+    Return ParametersBoiler;
 
 EndFunction
 
