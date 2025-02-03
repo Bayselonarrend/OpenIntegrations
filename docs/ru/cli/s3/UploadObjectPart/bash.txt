@@ -4,6 +4,6 @@ oint s3 UploadObjectPart \
  --name "fileChunked.mp3" \
  --bucket "opi-gpbucket3" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
- --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmM1NTJjNDQ5LTNjMWItNDgzYS04MTM3LTZiNDc5N2EyZDJlYg" \
+ --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjM1NWU0MmJjLTQwNGUtNDgwMC1hMDMzLTA4ZDdmZTBkNmQ2OQ" \
  --part 2 \
- --content "C:\Users\Administrator\AppData\Local\Temp\kwas3yjjscf.tmp"
+ --content "C:\Users\Administrator\AppData\Local\Temp\4qdbe51ribp.tmp"
