@@ -1239,7 +1239,7 @@ EndFunction
 Function GetMultipartMessageSeparator(Headers)
 
     ExceptionText = "For Multipart requests correct Content-Type with boundary is required!";
-    ContentType      = Headers.Get("Content-Type");
+    ContentType   = Headers.Get("Content-Type");
 
     If Not ValueIsFilled(ContentType) Then
         Raise ExceptionText;
@@ -1273,7 +1273,7 @@ EndFunction
 Function GetMessageName(Headers)
 
     ExceptionText = "Content-Disposition of one of the parts is not found or has invalid format!";
-    Description      = Headers.Get("Content-Disposition");
+    Description   = Headers.Get("Content-Disposition");
 
     If Not ValueIsFilled(Description) Then
         Raise ExceptionText;
