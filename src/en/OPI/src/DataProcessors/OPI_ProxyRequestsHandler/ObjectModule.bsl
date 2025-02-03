@@ -115,12 +115,18 @@ Function ExecuteProcessing(Context, Handler)
         Return ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
     EndIf;
 
-    If HandlerMethod    = "GET" Then
-        Result          = ExecuteProcessingGet(Context, Handler);
+    If HandlerMethod = "GET" Then
+
+        Result = ExecuteProcessingGet(Context, Handler);
+
     ElsIf HandlerMethod = "POST" Then
-        Result          = ExecuteProcessinPost(Context, Handler);
+
+        Result = ExecuteProcessinPost(Context, Handler);
+
     Else
-        Result          = ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
+
+        Result = ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
+
     EndIf;
 
     Return Result;
@@ -131,21 +137,14 @@ Function ExecuteProcessingGet(Context, Handler)
 
     Request    = Context.Request;
     Parameters = Request.Parameters;
-    Arguments  = Handler["args"];
 
-    ParametersBoiler = FormParametersBoiler(Arguments, Parameters);
-
-    Return ExecuteUniversalProcessing(Context
-        , Handler["library"]
-        , Handler["function"]
-        , ParametersBoiler);
+    Return ExecuteUniversalProcessing(Context, Handler, Parameters);
 
 EndFunction
 
 Function ExecuteProcessinPost(Context, Handler)
 
-    Request   = Context.Request;
-    Arguments = Handler["args"];
+    Request = Context.Request;
 
     Body       = Request.Body;
     JSONReader = New JSONReader();
@@ -154,18 +153,18 @@ Function ExecuteProcessinPost(Context, Handler)
     Parameters = ReadJSON(JSONReader, True);
     JSONReader.Close();
 
-    ParametersBoiler = FormParametersBoiler(Arguments, Parameters);
-
-    Return ExecuteUniversalProcessing(Context
-        , Handler["library"]
-        , Handler["function"]
-        , ParametersBoiler);
+    Return ExecuteUniversalProcessing(Context, Handler, Parameters);
 
 EndFunction
 
-Function ExecuteUniversalProcessing(Context, Command, Method, Parameters)
+Function ExecuteUniversalProcessing(Context, Handler, Parameters)
 
-    ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
+    Arguments = Handler["args"];
+    Command   = Handler["library"];
+    Method    = Handler["function"];
+
+    ParametersBoiler   = FormParametersBoiler(Arguments, Parameters);
+    ExecutionStructure = OPIObject.FormMethodCallString(ParametersBoiler, Command, Method);
 
     Response = Undefined;
 

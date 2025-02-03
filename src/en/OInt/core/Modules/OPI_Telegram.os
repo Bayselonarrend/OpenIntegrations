@@ -283,9 +283,9 @@ Function ProcessTMAData(Val DataString, Val Token) Export
 
     Return ReturnMapping;
 
-
+    #Else
     Return Undefined;
-
+    #EndIf
 
 EndFunction
 
