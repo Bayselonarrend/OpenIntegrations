@@ -2,6 +2,6 @@
 
 oint cdek UpdateOrder ^
  --token "***" ^
- --uuid "5987c98b-9d09-43d5-a2ce-b074e2941edd" ^
+ --uuid "8e3098dd-4ea4-4372-8aa6-0dfd956a27b6" ^
  --order "{'comment':'NewComment'}" ^
  --testapi "***"

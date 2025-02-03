@@ -1,2 +1,2 @@
 oint proxy CreateProject ^
- --path "C:\Users\Administrator\AppData\Local\Temp\owm21kivdhe.oint"
+ --path "C:\Users\Administrator\AppData\Local\Temp"
