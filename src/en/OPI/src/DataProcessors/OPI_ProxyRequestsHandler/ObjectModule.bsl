@@ -164,7 +164,7 @@ Function ExecuteUniversalProcessing(Context, Handler, Parameters)
     Method    = Handler["function"];
 
     ParametersBoiler   = FormParametersBoiler(Arguments, Parameters);
-    ExecutionStructure = OPIObject.FormMethodCallString(ParametersBoiler, Command, Method);
+    ExecutionStructure = OPIObject.СформироватьСтрокуВызоваМетода(ParametersBoiler, Command, Method);
 
     Response = Undefined;
 
