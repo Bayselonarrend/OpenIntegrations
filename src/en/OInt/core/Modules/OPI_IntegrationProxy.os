@@ -95,7 +95,7 @@ Function LaunchProject(Val Port, Val Project) Export
     OintComposition = New("LibraryComposition");
 
     Handler.ProjectPath = Project;
-    Handler.ProxyModule = ThisObject;
+    Handler.ProxyModule = OPI_IntegrationProxy;
     Handler.OPIObject   = OintComposition;
 
     WebServer.AddRequestsHandler(Handler, "MainHandler");
