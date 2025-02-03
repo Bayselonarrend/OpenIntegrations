@@ -1,3 +1,2 @@
 oint neocities GetSiteData \
- --token "***" \
- --sitename "2athenaeum"
+ --token "***"
