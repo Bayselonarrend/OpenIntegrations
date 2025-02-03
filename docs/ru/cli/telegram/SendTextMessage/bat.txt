@@ -1,5 +1,4 @@
 oint telegram SendTextMessage ^
  --token "***" ^
- --chat "@testsichee" ^
- --text "Text %%F0%%9F%%A5%%9D and emoji \(10%%\)" ^
- --parsemode "MarkdownV2"
+ --chat "461699897" ^
+ --text "Строковое значение"
