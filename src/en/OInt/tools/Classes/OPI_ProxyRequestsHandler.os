@@ -40,8 +40,6 @@
 //@skip-check module-accessibility-at-client
 //@skip-check object-module-export-variable
 
-#If Not Client Then
-
 #Region Variables
 
 Var ProjectPath Export;
@@ -54,6 +52,9 @@ Var OPIObject Export;
 
 Procedure MainHandler(Context, NexHandler) Export
 
+    #If Client Then
+        Raise "The method is not available on the client!";
+    #Else
 
     Try
         Result = ProcessRequest(Context);
@@ -72,6 +73,7 @@ Procedure MainHandler(Context, NexHandler) Export
     Context.Response.ContentType = "application/json;charset=UTF8";
     Context.Response.Write(JSON);
 
+    #EndIf
 EndProcedure
 
 Function ProcessRequest(Context)
@@ -160,6 +162,10 @@ EndFunction
 
 Function ExecuteProcessinMultipart(Context, Handler)
 
+    #If Client Then
+        Raise "The method is not available on the client!";
+    #Else
+
     Request = Context.Request;
 
     Body    = Request.Body;
@@ -169,9 +175,15 @@ Function ExecuteProcessinMultipart(Context, Handler)
 
     Return ExecuteUniversalProcessing(Context, Handler, Parameters);
 
+    #EndIf
+
 EndFunction
 
 Function ExecuteUniversalProcessing(Context, Handler, Parameters)
+
+    #If Client Then
+        Raise "The method is not available on the client!";
+    #Else
 
     Arguments = Handler["args"];
     Command   = Handler["library"];
@@ -231,6 +243,8 @@ Function ExecuteUniversalProcessing(Context, Handler, Parameters)
 
     Return Response;
 
+    #EndIf
+
 EndFunction
 
 Function FormParametersBoiler(Arguments, Parameters)
@@ -286,6 +300,3 @@ EndFunction
 
 #EndRegion
 
-#Else
-Raise "The object is not available on the client!";
-#EndIf
