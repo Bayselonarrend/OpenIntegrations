@@ -1197,8 +1197,16 @@ Function ParseMultipart(Val Headers, Val Body) Export
         PartReading = New DataReader(Stream);
 
         PartHeaders = ReadHeaders(PartReading);
-        PartName    = GetMessageName(PartHeaders);
+        PartData    = GetMessageName(PartHeaders);
+
+        PartName = PartData["name"];
+        FileName = PartData["filename"];
+
         CurrentData = PartReading.Read().GetBinaryData();
+
+        If Not ValueIsFilled(FileName) Then
+            CurrentData = GetStringFromBinaryData(CurrentData);
+        EndIf;
 
         DataMap.Insert(PartName, CurrentData);
 
@@ -1272,8 +1280,9 @@ EndFunction
 
 Function GetMessageName(Headers)
 
-    ExceptionText = "Content-Disposition of one of the parts is not found or has invalid format!";
-    Description   = Headers.Get("Content-Disposition");
+    ExceptionText   = "Content-Disposition of one of the parts is not found or has invalid format!";
+    Description     = Headers.Get("Content-Disposition");
+    ReturnStructure = New Structure("name,filename");
 
     If Not ValueIsFilled(Description) Then
         Raise ExceptionText;
@@ -1286,20 +1295,26 @@ Function GetMessageName(Headers)
 
         Parts = StrSplit(Property, "=", False);
         PropertyName = TrimAll(Parts[0]);
+        PropertyName = Lower(PropertyName);
 
-        If PropertyName <> "name" And PropertyName <> "Name" Then
+        If PropertyName = "name" Then
+
+            ReturnStructure["name"] = TrimAll(Parts[1]);
+
+        ElsIf PropertyName = "filename"Then
+
+            ReturnStructure["filename"] = TrimAll(Parts[1]);
+
+        Else
             Continue;
         EndIf;
 
-        Name = TrimAll(Parts[1]);
-        Break;
-
     EndDo;
 
-    If Not ValueIsFilled(Name) Then
+    If Not ValueIsFilled(ReturnStructure["name"]) Then
        Raise ExceptionText;
     Else
-       Return Name;
+       Return ReturnStructure;
     EndIf;
 
 EndFunction
