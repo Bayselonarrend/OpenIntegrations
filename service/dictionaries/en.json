@@ -7646,7 +7646,7 @@
 "Получает массив событий пользователей в заданном интервале": "Gets an array of user events in the specified interval",
 "OPI_ПолучениеДанныхТестов.Проверка_БитриксСтрока(Результат": "OPI_TestDataRetrieval.Check_BitrixString(Result",
 "Отправляет данные в виде строки через указанное соединение": "Sends data as a string over the specified connection",
-"Тип календаря: user, group, company_calendar, location и др": "Calendar type: user, group, company_calendar, location, etc/",
+"Тип календаря: user, group, company_calendar, location и др": "Calendar type: user, group, company_calendar, location, etc",
 "Для начала работы необходимо получить токен доступа к диску": "To start working, you need to obtain an access token for the disk",
 "Двоичные данные при успехе или структура с описанием ошибки": "Binary data on success or structure with error description",
 "дата окончания выборки. 3 месяца после текущей по умолчанию": "selection end date. 3 months after the current default",
