@@ -40,9 +40,7 @@
 //@skip-check module-accessibility-at-client
 //@skip-check object-module-export-variable
 
-#If Client Then
-    Raise "The object is not available on the client!";
-#Else
+#If Not Client Then
 
 #Region Variables
 
@@ -288,4 +286,6 @@ EndFunction
 
 #EndRegion
 
+#Else
+Raise "The object is not available on the client!";
 #EndIf
