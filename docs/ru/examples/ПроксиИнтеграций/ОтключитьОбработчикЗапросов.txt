@@ -1,4 +1,4 @@
-﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_80F8_31.oint";
-    КлючОбработчика = "71A3...";
+﻿    Проект          = "C:\Users\Administrator\AppData\Local\Temp\v8_BDED_4b.oint";
+    КлючОбработчика = "10ba...";
 
     Результат = OPI_ПроксиИнтеграций.ОтключитьОбработчикЗапросов(Проект, КлючОбработчика);

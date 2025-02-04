@@ -1,21 +1,22 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Get requests handler
- Gets information about the handler by key
+# Update handler key
+ Replaces the handler key with a new one
 
 
 
-`Function GetRequestsHandler(Val Project, Val HandlerKey) Export`
+`Function UpdateHandlerKey(Val Project, Val HandlerKey, Val NewKey = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Project | --proj | String | &#x2714; | Project filepath |
   | HandlerKey | --handler | String | &#x2714; | Handler key |
+  | NewKey | --key | String | &#x2716; | Custom key, if necessary. New standard UUID by default |
 
   
   Returns:  Structure Of KeyAndValue - Information about the handler
@@ -28,8 +29,15 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_BDED_4b.oint";
     HandlerKey = "10ba...";
+    NewKey     = "mykey";
 
-    Result = OPI_IntegrationProxy.GetRequestsHandler(Project, HandlerKey);
+    // Custom key
+
+    Result = OPI_IntegrationProxy.UpdateHandlerKey(Project, HandlerKey, NewKey);
+
+    // New random key
+
+    Result = OPI_IntegrationProxy.UpdateHandlerKey(Project, NewKey);
 ```
  
 

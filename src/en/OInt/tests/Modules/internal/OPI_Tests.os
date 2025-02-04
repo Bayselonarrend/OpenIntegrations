@@ -2328,6 +2328,9 @@ Procedure Proxy_ProjectSetup() Export
     IntegrationProxy_UpdateRequestsHandler(TestParameters);
     IntegrationProxy_DisableRequestsHandler(TestParameters);
     IntegrationProxy_EnableRequestsHandler(TestParameters);
+    IntegrationProxy_UpdateHandlerKey(TestParameters);
+    IntegrationProxy_SetHandlerArguments(TestParameters);
+    IntegrationProxy_GetHandlerArguments(TestParameters);
     IntegrationProxy_DeleteRequestHandler(TestParameters);
 
     Try
@@ -17326,6 +17329,79 @@ Procedure IntegrationProxy_EnableRequestsHandler(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "EnableRequestsHandler (check)", "IntegrationProxy");
     OPI_TestDataRetrieval.Check_ProxySwitch(Result, True);
+
+EndProcedure
+
+Procedure IntegrationProxy_UpdateHandlerKey(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+    NewKey     = "mykey";
+
+    // Custom key
+
+    Result = OPI_IntegrationProxy.UpdateHandlerKey(Project, HandlerKey, NewKey);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateHandlerKey", "IntegrationProxy"); // SKIP
+    OPI_TestDataRetrieval.Check_ProxyKey(Result, NewKey, True); // SKIP
+
+    // New random key
+
+    Result = OPI_IntegrationProxy.UpdateHandlerKey(Project, NewKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateHandlerKey (random)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_ProxyKey(Result, NewKey, False);
+
+    Key = Result["data"]["key"];
+    OPI_TestDataRetrieval.WriteParameter("Proxy_HandlerKey", Key);
+    OPI_Tools.AddField("Proxy_HandlerKey", Key, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure IntegrationProxy_SetHandlerArguments(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+    Argument   = "token";
+    Value      = "12345";
+
+    Result = OPI_IntegrationProxy.SetHandlerArguments(Project
+        , HandlerKey
+        , Argument
+        , Value);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetHandlerArguments", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_Array(Result["data"]["args"], 1);
+    OPI_TestDataRetrieval.Check_True(Result["data"]["args"][0]["strict"]);
+
+    Result = OPI_IntegrationProxy.SetHandlerArguments(Project
+        , HandlerKey
+        , "another"
+        , Value
+        , False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetHandlerArguments (non strict)", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_Array(Result["data"]["args"], 2);
+    OPI_TestDataRetrieval.Check_False(Result["data"]["args"][1]["strict"]);
+
+
+EndProcedure
+
+Procedure IntegrationProxy_GetHandlerArguments(FunctionParameters)
+
+    Project    = FunctionParameters["Proxy_ProjectPath"];
+    HandlerKey = FunctionParameters["Proxy_HandlerKey"];
+
+    Result = OPI_IntegrationProxy.GetHandlerArguments(Project, HandlerKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetHandlerArguments", "IntegrationProxy");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 2);
 
 EndProcedure
 
