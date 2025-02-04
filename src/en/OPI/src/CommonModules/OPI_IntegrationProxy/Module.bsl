@@ -387,6 +387,44 @@ Function EnableRequestsHandler(Val Project, Val HandlerKey) Export
 
 EndFunction
 
+// Update handler key
+// Replaces the handler key with a new one
+//
+// Parameters:
+// Project - String - Project filepath - proj
+// HandlerKey - String - Handler key - handler
+// NewKey - String - Custom key, if necessary. New standard UUID by default - key
+//
+// Returns:
+// Structure Of KeyAndValue - Information about the handler
+Function UpdateHandlerKey(Val Project, Val HandlerKey, Val NewKey = "") Export
+
+    OPI_TypeConversion.GetLine(HandlerKey);
+    OPI_TypeConversion.GetLine(NewKey);
+
+    Result = CheckProjectExistence(Project);
+
+    If Not Result["result"] Then
+        Return Result;
+    Else
+        Project = Result["path"];
+    EndIf;
+
+    NewKey = ?(ValueIsFilled(NewKey), NewKey, GetUUID(9));
+
+    RecordStructure = New Structure("key", NewKey);
+    Result          = UpdateHandlerFields(Project, HandlerKey, RecordStructure);
+
+    If Not Result["result"] Then
+        Return Result;
+    EndIf;
+
+    Result = GetRequestsHandler(Project, NewKey);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ArgumentSetting
@@ -595,6 +633,7 @@ Function ConstantValue(Val Key)
 
     If Key    = "HandlersTable" Then Return "handlers"
     ElsIf Key = "ArgumentsTable" Then Return "arguments"
+    ElsIf Key = "SettingsTable" Then Return "settings"
 
     Else Return "" EndIf;
 
@@ -605,6 +644,10 @@ Function TableNamesConstants(Val HandlersOnly = True)
     ArrayOfNames = New Array;
     ArrayOfNames.Add("HandlersTable");
     ArrayOfNames.Add("ArgumentsTable");
+
+    If Not HandlersOnly Then
+        ArrayOfNames.Add("SettingsTable");
+    EndIf;
 
     Return ArrayOfNames;
 
@@ -623,6 +666,13 @@ Function CreateNewProject(Path)
     EndIf;
 
     Result = CreateArgumentsTable(Path);
+
+    If Not Result["result"] Then
+        DeleteFiles(Path);
+        Return Result;
+    EndIf;
+
+    Result = CreateOptionsTable(Path);
 
     If Not Result["result"] Then
         DeleteFiles(Path);
@@ -658,6 +708,19 @@ Function CreateArgumentsTable(Path)
     TableStructure.Insert("strict" , "BOOLEAN");
 
     ArgumentsTableName = ConstantValue("ArgumentsTable");
+    Result             = OPI_SQLite.CreateTable(ArgumentsTableName, TableStructure, Path);
+
+    Return Result;
+
+EndFunction
+
+Function CreateOptionsTable(Path)
+
+    TableStructure = New Map();
+    TableStructure.Insert("name"  , "TEXT PRIMARY KEY NOT NULL UNIQUE");
+    TableStructure.Insert("value" , "TEXT");
+
+    ArgumentsTableName = ConstantValue("SettingsTable");
     Result             = OPI_SQLite.CreateTable(ArgumentsTableName, TableStructure, Path);
 
     Return Result;

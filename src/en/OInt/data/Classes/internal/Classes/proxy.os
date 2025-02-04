@@ -232,6 +232,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "proxy";
     NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "UpdateHandlerKey";
+    NewLine.МетодПоиска = "UPDATEHANDLERKEY";
+    NewLine.Параметр    = "--proj";
+    NewLine.Описание    = "Project filepath";
+    NewLine.Область     = "Handlers configuration";
+    NewLine.ОписаниеМетода   = "Replaces the handler key with a new one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "UpdateHandlerKey";
+    NewLine.МетодПоиска = "UPDATEHANDLERKEY";
+    NewLine.Параметр    = "--handler";
+    NewLine.Описание    = "Handler key";
+    NewLine.Область     = "Handlers configuration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
+    NewLine.Метод       = "UpdateHandlerKey";
+    NewLine.МетодПоиска = "UPDATEHANDLERKEY";
+    NewLine.Параметр    = "--key";
+    NewLine.Описание    = "Custom key, if necessary. New standard UUID by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Handlers configuration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "proxy";
+    NewLine.Модуль      = "OPI_IntegrationProxy";
     NewLine.Метод       = "SetHandlerArguments";
     NewLine.МетодПоиска = "SETHANDLERARGUMENTS";
     NewLine.Параметр    = "--proj";
