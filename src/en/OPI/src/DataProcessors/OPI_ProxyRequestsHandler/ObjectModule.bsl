@@ -40,6 +40,8 @@
 //@skip-check module-accessibility-at-client
 //@skip-check object-module-export-variable
 
+#If Host Or ThickClientOrdinaryApplication Or ExternalConnection Then
+
 #Region Variables
 
 Var ProjectPath Export;
@@ -52,7 +54,6 @@ Var OPIObject Export;
 
 Procedure MainHandler(Context, NexHandler) Export
 
-    #If Host Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
     Try
         Result = ProcessRequest(Context);
@@ -70,10 +71,6 @@ Procedure MainHandler(Context, NexHandler) Export
 
     Context.Response.ContentType = "application/json;charset=UTF8";
     Context.Response.Write(JSON);
-
-    #Else
-    Raise "The method is not available on the client!";
-    #EndIf
 
 EndProcedure
 
@@ -123,6 +120,10 @@ Function ExecuteProcessing(Context, Handler)
 
         Result = ExecuteProcessinPost(Context, Handler);
 
+    ElsIf HandlerMethod = "MULTIPART" Then
+
+        Result = ExecuteProcessinMultipart(Context, Handler);
+
     Else
 
         Result = ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
@@ -157,13 +158,50 @@ Function ExecuteProcessinPost(Context, Handler)
 
 EndFunction
 
+Function ExecuteProcessinMultipart(Context, Handler)
+
+    Request = Context.Request;
+
+    Body    = Request.Body;
+    Headers = Request.Headers;
+
+    Parameters = OPI_Tools.ParseMultipart(Body, Headers);
+
+    Return ExecuteUniversalProcessing(Context, Handler, Parameters);
+
+EndFunction
+
 Function ExecuteUniversalProcessing(Context, Handler, Parameters)
 
     Arguments = Handler["args"];
     Command   = Handler["library"];
     Method    = Handler["function"];
 
-    ParametersBoiler   = FormParametersBoiler(Arguments, Parameters);
+    TFArray          = New Array;
+    ParametersBoiler = FormParametersBoiler(Arguments, Parameters);
+
+    For Each Parameter In ParametersBoiler Do
+
+        CurrentValue = Parameter.Value;
+        CurrentKey   = Parameter.Key;
+
+        If TypeOf(CurrentValue) = Type("BinaryData") Then
+
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName();
+            CurrentValue.Write(TFN);
+
+            TFArray.Add(TFN);
+
+            ParametersBoiler.Insert(CurrentKey, TFN);
+
+        Else
+            OPI_TypeConversion.GetLine(CurrentValue);
+            ParametersBoiler.Insert(CurrentValue, TFN);
+        EndIf;
+
+    EndDo;
+
     ExecutionStructure = OPIObject.СформироватьСтрокуВызоваМетода(ParametersBoiler, Command, Method);
 
     Response = Undefined;
@@ -180,6 +218,16 @@ Function ExecuteUniversalProcessing(Context, Handler, Parameters)
         Response = New Structure("result,data", True, Response);
 
     EndIf;
+
+    Try
+
+        For Each TempFile In TFArray Do
+            DeleteFiles(TempFile);
+        EndDo;
+
+    Except
+        Message("Failed to delete temporary files!");
+    EndTry;
 
     Return Response;
 
@@ -210,8 +258,11 @@ Function FormParametersBoiler(Arguments, Parameters)
     For Each Parameter In Parameters Do
 
         Value = Parameter.Value;
-        Value = ?(StrStartsWith(Value , """"), Right(Value, StrLen(Value) - 1), Value);
-        Value = ?(StrEndsWith(Value   , """"), Left(Value , StrLen(Value) - 1), Value);
+
+        If TypeOf(Value) = Type("String") Then
+            Value        = ?(StrStartsWith(Value , """"), Right(Value, StrLen(Value) - 1), Value);
+            Value        = ?(StrEndsWith(Value   , """"), Left(Value , StrLen(Value) - 1), Value);
+        EndIf;
 
         ParametersBoiler.Insert("--" + Parameter.Key, Value);
 
@@ -234,3 +285,7 @@ Function ProcessingError(Context, Code, Text)
 EndFunction
 
 #EndRegion
+
+#Else
+Raise "The object is not available on the client!";
+#EndIf
