@@ -60,11 +60,23 @@ Procedure MainHandler(Context, NexHandler) Export
         Result = ProcessRequest(Context);
     Except
 
-        Error = BriefErrorDescription(ErrorInfo());
+        Information = ErrorInfo();
+        Result      = New Structure("result,error", False, Information.Description);
+
+        If StrFind(Information.SourceLine, "Raise") = 0 Then
+
+            ModuleFile = New File(Information.ModuleName);
+
+            ExceptionStructure = New Structure;
+            ExceptionStructure.Insert("module", ModuleFile.Name);
+            ExceptionStructure.Insert("row"   , Information.LineNumber);
+            ExceptionStructure.Insert("code"  , TrimAll(Information.SourceLine));
+
+            Result.Insert("exception", ExceptionStructure);
+
+        EndIf;
 
         Context.Response.StatusCode = 500;
-
-        Result = New Structure("result,error", False, "OneScript exception " + Error);
 
     EndTry;
 
@@ -74,6 +86,7 @@ Procedure MainHandler(Context, NexHandler) Export
     Context.Response.Write(JSON);
 
     #EndIf
+
 EndProcedure
 
 Function ProcessRequest(Context)
@@ -108,7 +121,7 @@ Function ExecuteProcessing(Context, Handler)
 
     Method         = Upper(Context.Request.Method);
     HandlerMethod  = Upper(Handler["method"]);
-    MethodForCheck = ?(HandlerMethod = "MULTIPART", "POST", HandlerMethod);
+    MethodForCheck = ?(HandlerMethod = "FORM", "POST", HandlerMethod);
 
     If Not Method = MethodForCheck Then
         Return ProcessingError(Context, 405, "Method " + Method + " is not available for this handler!");
@@ -122,9 +135,9 @@ Function ExecuteProcessing(Context, Handler)
 
         Result = ExecuteProcessinPost(Context, Handler);
 
-    ElsIf HandlerMethod = "MULTIPART" Then
+    ElsIf HandlerMethod = "FORM" Then
 
-        Result = ExecuteProcessinMultipart(Context, Handler);
+        Result = ExecuteProcessingFormData(Context, Handler);
 
     Else
 
@@ -160,7 +173,7 @@ Function ExecuteProcessinPost(Context, Handler)
 
 EndFunction
 
-Function ExecuteProcessinMultipart(Context, Handler)
+Function ExecuteProcessingFormData(Context, Handler)
 
     #If Client Then
         Raise "The method is not available on the client!";
@@ -168,10 +181,11 @@ Function ExecuteProcessinMultipart(Context, Handler)
 
     Request = Context.Request;
 
-    Body    = Request.Body;
-    Headers = Request.Headers;
+    If Not ValueIsFilled(Request.Form) Then
+        Raise "No form data found!";
+    EndIf;
 
-    Parameters = OPI_Tools.ParseMultipart(Body, Headers);
+    Parameters = OPI_Tools.ParseFormData(Request.Form);
 
     Return ExecuteUniversalProcessing(Context, Handler, Parameters);
 
@@ -207,9 +221,26 @@ Function ExecuteUniversalProcessing(Context, Handler, Parameters)
 
             ParametersBoiler.Insert(CurrentKey, TFN);
 
+        ElsIf TypeOf(CurrentValue) = Type("FormFile") Then
+
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName();
+
+            StreamOfFile  = CurrentValue.OpenReadStream();
+            WritingStream = New FileStream(TFN, FileOpenMode.OpenOrCreate);
+
+            StreamOfFile.CopyTo(WritingStream);
+
+            StreamOfFile.Close();
+            WritingStream.Close();
+
+            TFArray.Add(TFN);
+
+            ParametersBoiler.Insert(CurrentKey, TFN);
+
         Else
             OPI_TypeConversion.GetLine(CurrentValue);
-            ParametersBoiler.Insert(CurrentValue, TFN);
+            ParametersBoiler.Insert(CurrentKey, CurrentValue);
         EndIf;
 
     EndDo;
