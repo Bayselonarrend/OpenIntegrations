@@ -619,7 +619,15 @@ EndProcedure
 
 Procedure Check_True(Val Result) Export
 
+    OPI_TypeConversion.GetBoolean(Result);
     ExpectsThat(Result).Равно(True);
+
+EndProcedure
+
+Procedure Check_False(Val Result) Export
+
+    OPI_TypeConversion.GetBoolean(Result);
+    ExpectsThat(Result).Равно(False);
 
 EndProcedure
 
@@ -2130,6 +2138,15 @@ Procedure Check_ProxySwitch(Val Result, Val Active) Export
 
     Active = ?(Active, 1, 0);
     ExpectsThat(Result["data"]["active"]).Равно(Active);
+
+EndProcedure
+
+Procedure Check_ProxyKey(Val Result, Val Key, Val Equal) Export
+
+    CurrentKey = Result["data"]["key"];
+    Equality   = CurrentKey = Key;
+
+    ExpectsThat(Equality).Равно(Equal);
 
 EndProcedure
 
