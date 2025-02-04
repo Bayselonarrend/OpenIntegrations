@@ -79,7 +79,7 @@
     NewLine.Метод       = "AddRequestsHandler";
     NewLine.МетодПоиска = "ADDREQUESTSHANDLER";
     NewLine.Параметр    = "--method";
-    NewLine.Описание    = "HTTP method that will process the handler: GET, POST, MULTIPART (optional, def. val. - GET)";
+    NewLine.Описание    = "HTTP method that will process the handler: GET, POST, FORM (optional, def. val. - GET)";
     NewLine.Область     = "Handlers configuration";
 
 
@@ -183,7 +183,7 @@
     NewLine.Метод       = "UpdateRequestsHandler";
     NewLine.МетодПоиска = "UPDATEREQUESTSHANDLER";
     NewLine.Параметр    = "--method";
-    NewLine.Описание    = "HTTP method that will process the handler: GET, POST, MULTIPART (optional, def. val. - Empty value)";
+    NewLine.Описание    = "HTTP method that will process the handler: GET, POST, FORM (optional, def. val. - Empty value)";
     NewLine.Область     = "Handlers configuration";
 
 
