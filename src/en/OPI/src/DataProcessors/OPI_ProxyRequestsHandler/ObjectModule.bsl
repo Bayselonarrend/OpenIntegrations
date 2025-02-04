@@ -40,7 +40,9 @@
 //@skip-check module-accessibility-at-client
 //@skip-check object-module-export-variable
 
-#If Host Or ThickClientOrdinaryApplication Or ExternalConnection Then
+#If Client Then
+    Raise "The object is not available on the client!";
+#Else
 
 #Region Variables
 
@@ -286,6 +288,4 @@ EndFunction
 
 #EndRegion
 
-#Else
-Raise "The object is not available on the client!";
 #EndIf
