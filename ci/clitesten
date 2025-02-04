@@ -908,7 +908,7 @@ def test_bitrix24(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarList --url "test" --owner "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarList --url "test" --owner "test" --type "test" --token "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

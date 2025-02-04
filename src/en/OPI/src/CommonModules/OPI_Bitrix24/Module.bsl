@@ -4504,7 +4504,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // OwnerID - String, Number - Calendar owner ID - owner
-// Type - String - Calendar type: user, group, company_calendar, location, etc/. - type
+// Type - String - Calendar type: user, group, company_calendar, location, etc. - type
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
