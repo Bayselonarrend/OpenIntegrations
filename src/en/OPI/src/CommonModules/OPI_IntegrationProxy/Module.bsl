@@ -116,7 +116,7 @@ EndFunction
 // Project - String - Project filepath - proj
 // OintLibrary - String - Library name in CLI command format - lib
 // OintFunction - String - OpenIntegrations function name - func
-// Method - String - HTTP method that will process the handler: GET, POST, MULTIPART - method
+// Method - String - HTTP method that will process the handler: GET, POST, FORM - method
 //
 // Returns:
 // Structure Of KeyAndValue - Result of handler creation
@@ -126,6 +126,7 @@ Function AddRequestsHandler(Val Project, Val OintLibrary, Val OintFunction, Val 
     OPI_TypeConversion.GetLine(OintFunction);
     OPI_TypeConversion.GetLine(Method);
 
+    Method = Upper(Method);
     Result = CheckProjectExistence(Project);
 
     If Not Result["result"] Then
@@ -134,10 +135,14 @@ Function AddRequestsHandler(Val Project, Val OintLibrary, Val OintFunction, Val 
         Project = Result["path"];
     EndIf;
 
+    If Not Method = "GET" And Not Method = "POST" And Not Method = "FORM" Then
+        Return FormResponse(False, StrTemplate("Unsupported method %1!", Method));
+    EndIf;
+
     SecretKey = GetHandlerUniqueKey(Project);
 
     If TypeOf(SecretKey) = Type("Map") Then
-        SecretKey.Insert("message", "Failed to generate a handler UID. Try again");
+        SecretKey.Insert("message", "Failed to generate a handler UID. Try again!");
         Return SecretKey;
     EndIf;
 
@@ -241,7 +246,7 @@ Function GetRequestsHandler(Val Project, Val HandlerKey) Export
         Else
 
             If RecordsCount = 0 Then
-                Result      = FormResponse(False, "Handler not found");
+                Result      = FormResponse(False, "Handler not found!");
              EndIf;
 
         EndIf;
@@ -309,7 +314,7 @@ EndFunction
 // HandlerKey - String - Handler key - handler
 // OintLibrary - String - Library name in CLI command format - lib
 // OintFunction - String - OpenIntegrations function name - func
-// Method - String - HTTP method that will process the handler: GET, POST, MULTIPART - method
+// Method - String - HTTP method that will process the handler: GET, POST, FORM - method
 //
 // Returns:
 // Structure Of KeyAndValue - Result of handler modification
@@ -509,16 +514,16 @@ Function CheckProjectExistence(Path)
     OPI_Tools.RestoreEscapeSequences(Path);
 
     ProjectFile = New File(Path);
-    Text        = "The project file exists";
+    Text        = "The project file already exists!";
     Result      = True;
 
     If Not ProjectFile.Exists() Then
-        Text   = "Project file not found at the specified path";
+        Text   = "Project file not found at the specified path!";
         Result = False;
     EndIf;
 
     If ProjectFile.IsDirectory() Then
-        Text   = "A directory path was passed, not a project file";
+        Text   = "A directory path was passed, not a project file!";
         Result = False;
     EndIf;
 
@@ -557,7 +562,7 @@ Function NormalizeProject(Path)
         Result = CreateNewProject(FullPath);
 
         If Result["result"] Then
-            Text     = "The project file was created successfully";
+            Text     = "The project file has been successfully created!";
             Response = FormResponse(True, Text, FullPath);
         Else
             Response = Result;
@@ -565,7 +570,7 @@ Function NormalizeProject(Path)
 
     Else
 
-        Text     = "The project file at the specified path already exists";
+        Text     = "The project file at the specified path already exists!";
         Response = FormResponse(False, Text, FullPath);
 
     EndIf;
@@ -717,7 +722,7 @@ Function UpdateHandlerFields(Val Project, Val HandlerKey, Val RecordStructure)
             , Project);
 
     Else
-        Result = FormResponse(False, "Nothing to change");
+        Result = FormResponse(False, "Nothing to change!");
     EndIf;
 
     Return Result;

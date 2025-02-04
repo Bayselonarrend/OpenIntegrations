@@ -1166,156 +1166,24 @@ Function IsPrimitiveType(Val Value) Export
 
 EndFunction
 
-#EndRegion
+Function ParseFormData(Val Form) Export
 
-#Region Multipart
+    DataMap = New Map;
+    Files   = Form.Files;
 
-// by Vitaly Cherkasov (cherkasovvitalik)
-// https://infostart.ru/1c/articles/1522786/
+    For Each Field In Form Do
 
-Function ParseMultipart(Val Headers, Val Body) Export
+        DataMap.Insert(Field.Key, Field.Value);
 
-    DataMap   = New Map;
-    Delimiter = GetMultipartMessageSeparator(Headers);
+    EndDo;
 
-    Markers = New Array();
-    Markers.Add(ПолучитьБуферДвоичныхДанныхИзСтроки("==" + Delimiter));
-    Markers.Add(ПолучитьБуферДвоичныхДанныхИзСтроки("==" + Delimiter + Chars.LF));
-    Markers.Add(ПолучитьБуферДвоичныхДанныхИзСтроки("==" + Delimiter + Chars.CR));
-    Markers.Add(ПолучитьБуферДвоичныхДанныхИзСтроки("==" + Delimiter + Chars.CR + Chars.LF));
-    Markers.Add(ПолучитьБуферДвоичныхДанныхИзСтроки("==" + Delimiter + "=="));
+    For Each File In Files Do
 
-    DataReader = New DataReader(Body);
-    DataReader.SkipTo(Markers);
-
-    CommonBinaryDataBuffer = DataReader.ReadIntoBinaryDataBuffer();
-    BinaryBuffers          = CommonBinaryDataBuffer.Split(Markers);
-
-    For Each Buffer In BinaryBuffers Do
-
-        Stream      = New MemoryStream(Buffer);
-        PartReading = New DataReader(Stream);
-
-        PartHeaders = ReadHeaders(PartReading);
-        PartData    = GetMessageName(PartHeaders);
-
-        PartName = PartData["name"];
-        FileName = PartData["filename"];
-
-        CurrentData = PartReading.Read().GetBinaryData();
-
-        If Not ValueIsFilled(FileName) Then
-            CurrentData = ПолучитьСтрокуИзДвоичныхДанных(CurrentData);
-        EndIf;
-
-        DataMap.Insert(PartName, CurrentData);
-
-        PartReading.Close();
-        Stream.Close();
+        DataMap.Insert(File.Name, File);
 
     EndDo;
 
     Return DataMap;
-
-EndFunction
-
-Function ReadHeaders(Reading)
-
-    Headers = New Map;
-
-    While True Do
-
-        CurrentRow = Reading.ReadLine();
-
-        If CurrentRow = "" Then
-            Break;
-        EndIf;
-
-        Parts = StrSplit(CurrentRow, ":");
-
-        HeaderName = TrimAll(Parts[0]);
-        Value      = TrimAll(Parts[1]);
-
-        Headers.Insert(HeaderName, Value);
-
-    EndDo;
-
-    Return Headers;
-
-EndFunction
-
-Function GetMultipartMessageSeparator(Headers)
-
-    ExceptionText = "For Multipart requests correct Content-Type with boundary is required!";
-    ContentType   = Headers.Get("Content-Type");
-
-    If Not ValueIsFilled(ContentType) Then
-        Raise ExceptionText;
-    EndIf;
-
-    Properties = StrSplit(ContentType, ";", False);
-    Border     = Undefined;
-
-    For Each Property In Properties Do
-
-        Parts = StrSplit(Property, "=", False);
-        PropertyName = TrimAll(Parts[0]);
-
-        If PropertyName <> "boundary" Then
-            Continue;
-        EndIf;
-
-        Border = TrimAll(Parts[1]);
-        Break;
-
-    EndDo;
-
-    If Not ValueIsFilled(Border) Then
-       Raise ExceptionText;
-    Else
-       Return Border;
-    EndIf;
-
-EndFunction
-
-Function GetMessageName(Headers)
-
-    ExceptionText   = "Content-Disposition of one of the parts is not found or has invalid format!";
-    Description     = Headers.Get("Content-Disposition");
-    ReturnStructure = New Structure("name,filename");
-
-    If Not ValueIsFilled(Description) Then
-        Raise ExceptionText;
-    EndIf;
-
-    Properties = StrSplit(Description, ";", False);
-    Name       = Undefined;
-
-    For Each Property In Properties Do
-
-        Parts = StrSplit(Property, "=", False);
-        PropertyName = TrimAll(Parts[0]);
-        PropertyName = Lower(PropertyName);
-
-        If PropertyName = "name" Then
-
-            ReturnStructure["name"] = TrimAll(Parts[1]);
-
-        ElsIf PropertyName = "filename"Then
-
-            ReturnStructure["filename"] = TrimAll(Parts[1]);
-
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    If Not ValueIsFilled(ReturnStructure["name"]) Then
-       Raise ExceptionText;
-    Else
-       Return ReturnStructure;
-    EndIf;
 
 EndFunction
 
