@@ -1,5 +1,5 @@
-﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_BDED_4b.oint";
-    HandlerKey = "10ba...";
+﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_9B5_45.oint";
+    HandlerKey = "e52f...";
     NewKey     = "mykey";
 
     // Custom key
