@@ -111,1946 +111,1946 @@
 		}
 	],
 	"paths": {
-		"/key_for_airtable_GetListOfBases": {
-			"$ref": "./paths/airtable/GetListOfBases.json"
+		"/key_for_airtable_ПолучитьСписокБаз": {
+			"$ref": "./paths/airtable/ПолучитьСписокБаз.json"
 		},
-		"/key_for_airtable_GetDatabaseTables": {
-			"$ref": "./paths/airtable/GetDatabaseTables.json"
+		"/key_for_airtable_ПолучитьТаблицыБазы": {
+			"$ref": "./paths/airtable/ПолучитьТаблицыБазы.json"
 		},
-		"/key_for_airtable_CreateDatabase": {
-			"$ref": "./paths/airtable/CreateDatabase.json"
+		"/key_for_airtable_СоздатьБазу": {
+			"$ref": "./paths/airtable/СоздатьБазу.json"
 		},
-		"/key_for_airtable_CreateTable": {
-			"$ref": "./paths/airtable/CreateTable.json"
+		"/key_for_airtable_СоздатьТаблицу": {
+			"$ref": "./paths/airtable/СоздатьТаблицу.json"
 		},
-		"/key_for_airtable_ModifyTable": {
-			"$ref": "./paths/airtable/ModifyTable.json"
+		"/key_for_airtable_ИзменитьТаблицу": {
+			"$ref": "./paths/airtable/ИзменитьТаблицу.json"
 		},
-		"/key_for_airtable_CreateField": {
-			"$ref": "./paths/airtable/CreateField.json"
+		"/key_for_airtable_СоздатьПоле": {
+			"$ref": "./paths/airtable/СоздатьПоле.json"
 		},
-		"/key_for_airtable_ModifyField": {
-			"$ref": "./paths/airtable/ModifyField.json"
+		"/key_for_airtable_ИзменитьПоле": {
+			"$ref": "./paths/airtable/ИзменитьПоле.json"
 		},
-		"/key_for_airtable_GetStringField": {
-			"$ref": "./paths/airtable/GetStringField.json"
+		"/key_for_airtable_ПолучитьПолеСтроковое": {
+			"$ref": "./paths/airtable/ПолучитьПолеСтроковое.json"
 		},
-		"/key_for_airtable_GetNumberField": {
-			"$ref": "./paths/airtable/GetNumberField.json"
+		"/key_for_airtable_ПолучитьПолеНомера": {
+			"$ref": "./paths/airtable/ПолучитьПолеНомера.json"
 		},
-		"/key_for_airtable_GetAttachmentField": {
-			"$ref": "./paths/airtable/GetAttachmentField.json"
+		"/key_for_airtable_ПолучитьПолеВложения": {
+			"$ref": "./paths/airtable/ПолучитьПолеВложения.json"
 		},
-		"/key_for_airtable_GetCheckboxField": {
-			"$ref": "./paths/airtable/GetCheckboxField.json"
+		"/key_for_airtable_ПолучитьПолеФлажка": {
+			"$ref": "./paths/airtable/ПолучитьПолеФлажка.json"
 		},
-		"/key_for_airtable_GetDateField": {
-			"$ref": "./paths/airtable/GetDateField.json"
+		"/key_for_airtable_ПолучитьПолеДаты": {
+			"$ref": "./paths/airtable/ПолучитьПолеДаты.json"
 		},
-		"/key_for_airtable_GetEmailField": {
-			"$ref": "./paths/airtable/GetEmailField.json"
+		"/key_for_airtable_ПолучитьПолеПочты": {
+			"$ref": "./paths/airtable/ПолучитьПолеПочты.json"
 		},
-		"/key_for_airtable_GetPhoneField": {
-			"$ref": "./paths/airtable/GetPhoneField.json"
+		"/key_for_airtable_ПолучитьПолеТелефона": {
+			"$ref": "./paths/airtable/ПолучитьПолеТелефона.json"
 		},
-		"/key_for_airtable_GetLinkField": {
-			"$ref": "./paths/airtable/GetLinkField.json"
+		"/key_for_airtable_ПолучитьПолеСсылки": {
+			"$ref": "./paths/airtable/ПолучитьПолеСсылки.json"
 		},
-		"/key_for_airtable_GetListOfRecords": {
-			"$ref": "./paths/airtable/GetListOfRecords.json"
+		"/key_for_airtable_ПолучитьСписокЗаписей": {
+			"$ref": "./paths/airtable/ПолучитьСписокЗаписей.json"
 		},
-		"/key_for_airtable_GetRecord": {
-			"$ref": "./paths/airtable/GetRecord.json"
+		"/key_for_airtable_ПолучитьЗапись": {
+			"$ref": "./paths/airtable/ПолучитьЗапись.json"
 		},
-		"/key_for_airtable_CreatePosts": {
-			"$ref": "./paths/airtable/CreatePosts.json"
+		"/key_for_airtable_СоздатьЗаписи": {
+			"$ref": "./paths/airtable/СоздатьЗаписи.json"
 		},
-		"/key_for_airtable_DeletePosts": {
-			"$ref": "./paths/airtable/DeletePosts.json"
+		"/key_for_airtable_УдалитьЗаписи": {
+			"$ref": "./paths/airtable/УдалитьЗаписи.json"
 		},
-		"/key_for_airtable_GetComments": {
-			"$ref": "./paths/airtable/GetComments.json"
+		"/key_for_airtable_ПолучитьКомментарии": {
+			"$ref": "./paths/airtable/ПолучитьКомментарии.json"
 		},
-		"/key_for_airtable_CreateComment": {
-			"$ref": "./paths/airtable/CreateComment.json"
+		"/key_for_airtable_СоздатьКомментарий": {
+			"$ref": "./paths/airtable/СоздатьКомментарий.json"
 		},
-		"/key_for_airtable_EditComment": {
-			"$ref": "./paths/airtable/EditComment.json"
+		"/key_for_airtable_ИзменитьКомментарий": {
+			"$ref": "./paths/airtable/ИзменитьКомментарий.json"
 		},
-		"/key_for_airtable_DeleteComment": {
-			"$ref": "./paths/airtable/DeleteComment.json"
+		"/key_for_airtable_УдалитьКомментарий": {
+			"$ref": "./paths/airtable/УдалитьКомментарий.json"
 		},
-		"/key_for_bitrix24_GetAppAuthLink": {
-			"$ref": "./paths/bitrix24/GetAppAuthLink.json"
+		"/key_for_bitrix24_ПолучитьСсылкуАвторизацииПриложения": {
+			"$ref": "./paths/bitrix24/ПолучитьСсылкуАвторизацииПриложения.json"
 		},
-		"/key_for_bitrix24_GetToken": {
-			"$ref": "./paths/bitrix24/GetToken.json"
+		"/key_for_bitrix24_ПолучитьТокен": {
+			"$ref": "./paths/bitrix24/ПолучитьТокен.json"
 		},
-		"/key_for_bitrix24_RefreshToken": {
-			"$ref": "./paths/bitrix24/RefreshToken.json"
+		"/key_for_bitrix24_ОбновитьТокен": {
+			"$ref": "./paths/bitrix24/ОбновитьТокен.json"
 		},
-		"/key_for_bitrix24_ServerTime": {
-			"$ref": "./paths/bitrix24/ServerTime.json"
+		"/key_for_bitrix24_СерверноеВремя": {
+			"$ref": "./paths/bitrix24/СерверноеВремя.json"
 		},
-		"/key_for_bitrix24_CreatePost": {
-			"$ref": "./paths/bitrix24/CreatePost.json"
+		"/key_for_bitrix24_СоздатьНовость": {
+			"$ref": "./paths/bitrix24/СоздатьНовость.json"
 		},
-		"/key_for_bitrix24_UpdatePost": {
-			"$ref": "./paths/bitrix24/UpdatePost.json"
+		"/key_for_bitrix24_ИзменитьНовость": {
+			"$ref": "./paths/bitrix24/ИзменитьНовость.json"
 		},
-		"/key_for_bitrix24_DeletePost": {
-			"$ref": "./paths/bitrix24/DeletePost.json"
+		"/key_for_bitrix24_УдалитьНовость": {
+			"$ref": "./paths/bitrix24/УдалитьНовость.json"
 		},
-		"/key_for_bitrix24_GetImportantPostViewers": {
-			"$ref": "./paths/bitrix24/GetImportantPostViewers.json"
+		"/key_for_bitrix24_ПолучитьСписокПросмотревшихВажное": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокПросмотревшихВажное.json"
 		},
-		"/key_for_bitrix24_GetPosts": {
-			"$ref": "./paths/bitrix24/GetPosts.json"
+		"/key_for_bitrix24_ПолучитьНовости": {
+			"$ref": "./paths/bitrix24/ПолучитьНовости.json"
 		},
-		"/key_for_bitrix24_AddPostComment": {
-			"$ref": "./paths/bitrix24/AddPostComment.json"
+		"/key_for_bitrix24_ДобавитьКомментарийНовости": {
+			"$ref": "./paths/bitrix24/ДобавитьКомментарийНовости.json"
 		},
-		"/key_for_bitrix24_AddPostRecipients": {
-			"$ref": "./paths/bitrix24/AddPostRecipients.json"
+		"/key_for_bitrix24_ДобавитьПолучателейКНовости": {
+			"$ref": "./paths/bitrix24/ДобавитьПолучателейКНовости.json"
 		},
-		"/key_for_bitrix24_GetTask": {
-			"$ref": "./paths/bitrix24/GetTask.json"
+		"/key_for_bitrix24_ПолучитьЗадачу": {
+			"$ref": "./paths/bitrix24/ПолучитьЗадачу.json"
 		},
-		"/key_for_bitrix24_GetTasksList": {
-			"$ref": "./paths/bitrix24/GetTasksList.json"
+		"/key_for_bitrix24_ПолучитьСписокЗадач": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокЗадач.json"
 		},
-		"/key_for_bitrix24_CreateTask": {
-			"$ref": "./paths/bitrix24/CreateTask.json"
+		"/key_for_bitrix24_СоздатьЗадачу": {
+			"$ref": "./paths/bitrix24/СоздатьЗадачу.json"
 		},
-		"/key_for_bitrix24_UpdateTask": {
-			"$ref": "./paths/bitrix24/UpdateTask.json"
+		"/key_for_bitrix24_ИзменитьЗадачу": {
+			"$ref": "./paths/bitrix24/ИзменитьЗадачу.json"
 		},
-		"/key_for_bitrix24_DeleteTask": {
-			"$ref": "./paths/bitrix24/DeleteTask.json"
+		"/key_for_bitrix24_УдалитьЗадачу": {
+			"$ref": "./paths/bitrix24/УдалитьЗадачу.json"
 		},
-		"/key_for_bitrix24_AttachFileToTopic": {
-			"$ref": "./paths/bitrix24/AttachFileToTopic.json"
+		"/key_for_bitrix24_ДобавитьФайлВЗадачу": {
+			"$ref": "./paths/bitrix24/ДобавитьФайлВЗадачу.json"
 		},
-		"/key_for_bitrix24_ApproveTask": {
-			"$ref": "./paths/bitrix24/ApproveTask.json"
+		"/key_for_bitrix24_ПринятьЗадачу": {
+			"$ref": "./paths/bitrix24/ПринятьЗадачу.json"
 		},
-		"/key_for_bitrix24_DisapproveTask": {
-			"$ref": "./paths/bitrix24/DisapproveTask.json"
+		"/key_for_bitrix24_ОтклонитьЗадачу": {
+			"$ref": "./paths/bitrix24/ОтклонитьЗадачу.json"
 		},
-		"/key_for_bitrix24_CompleteTask": {
-			"$ref": "./paths/bitrix24/CompleteTask.json"
+		"/key_for_bitrix24_ЗавершитьЗадачу": {
+			"$ref": "./paths/bitrix24/ЗавершитьЗадачу.json"
 		},
-		"/key_for_bitrix24_RenewTask": {
-			"$ref": "./paths/bitrix24/RenewTask.json"
+		"/key_for_bitrix24_ВозобновитьЗадачу": {
+			"$ref": "./paths/bitrix24/ВозобновитьЗадачу.json"
 		},
-		"/key_for_bitrix24_DeferTask": {
-			"$ref": "./paths/bitrix24/DeferTask.json"
+		"/key_for_bitrix24_ОтложитьЗадачу": {
+			"$ref": "./paths/bitrix24/ОтложитьЗадачу.json"
 		},
-		"/key_for_bitrix24_PauseTask": {
-			"$ref": "./paths/bitrix24/PauseTask.json"
+		"/key_for_bitrix24_ПриостановитьЗадачу": {
+			"$ref": "./paths/bitrix24/ПриостановитьЗадачу.json"
 		},
-		"/key_for_bitrix24_StartTask": {
-			"$ref": "./paths/bitrix24/StartTask.json"
+		"/key_for_bitrix24_НачатьВыполнениеЗадачи": {
+			"$ref": "./paths/bitrix24/НачатьВыполнениеЗадачи.json"
 		},
-		"/key_for_bitrix24_StartWatchingTask": {
-			"$ref": "./paths/bitrix24/StartWatchingTask.json"
+		"/key_for_bitrix24_НачатьНаблюдатьЗаЗадачей": {
+			"$ref": "./paths/bitrix24/НачатьНаблюдатьЗаЗадачей.json"
 		},
-		"/key_for_bitrix24_StopWatchingTask": {
-			"$ref": "./paths/bitrix24/StopWatchingTask.json"
+		"/key_for_bitrix24_ПрекратитьНаблюдатьЗаЗадачей": {
+			"$ref": "./paths/bitrix24/ПрекратитьНаблюдатьЗаЗадачей.json"
 		},
-		"/key_for_bitrix24_DelegateTask": {
-			"$ref": "./paths/bitrix24/DelegateTask.json"
+		"/key_for_bitrix24_ДелегироватьЗадачу": {
+			"$ref": "./paths/bitrix24/ДелегироватьЗадачу.json"
 		},
-		"/key_for_bitrix24_AddTaskToFavorites": {
-			"$ref": "./paths/bitrix24/AddTaskToFavorites.json"
+		"/key_for_bitrix24_ДобавитьЗадачуВИзбранное": {
+			"$ref": "./paths/bitrix24/ДобавитьЗадачуВИзбранное.json"
 		},
-		"/key_for_bitrix24_RemoveTaskFromFavorites": {
-			"$ref": "./paths/bitrix24/RemoveTaskFromFavorites.json"
+		"/key_for_bitrix24_УбратьЗадачуИзИзбранного": {
+			"$ref": "./paths/bitrix24/УбратьЗадачуИзИзбранного.json"
 		},
-		"/key_for_bitrix24_GetTaskHistory": {
-			"$ref": "./paths/bitrix24/GetTaskHistory.json"
+		"/key_for_bitrix24_ПолучитьИсториюЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьИсториюЗадачи.json"
 		},
-		"/key_for_bitrix24_CheckTaskAccesses": {
-			"$ref": "./paths/bitrix24/CheckTaskAccesses.json"
+		"/key_for_bitrix24_ПроверитьДоступКЗадаче": {
+			"$ref": "./paths/bitrix24/ПроверитьДоступКЗадаче.json"
 		},
-		"/key_for_bitrix24_MuteTask": {
-			"$ref": "./paths/bitrix24/MuteTask.json"
+		"/key_for_bitrix24_ОтключитьЗвукЗадачи": {
+			"$ref": "./paths/bitrix24/ОтключитьЗвукЗадачи.json"
 		},
-		"/key_for_bitrix24_UnmuteTask": {
-			"$ref": "./paths/bitrix24/UnmuteTask.json"
+		"/key_for_bitrix24_ВключитьЗвукЗадачи": {
+			"$ref": "./paths/bitrix24/ВключитьЗвукЗадачи.json"
 		},
-		"/key_for_bitrix24_CreateTasksDependencies": {
-			"$ref": "./paths/bitrix24/CreateTasksDependencies.json"
+		"/key_for_bitrix24_СоздатьЗависимостьЗадач": {
+			"$ref": "./paths/bitrix24/СоздатьЗависимостьЗадач.json"
 		},
-		"/key_for_bitrix24_DeleteTasksDependencies": {
-			"$ref": "./paths/bitrix24/DeleteTasksDependencies.json"
+		"/key_for_bitrix24_УдалитьЗависимостьЗадач": {
+			"$ref": "./paths/bitrix24/УдалитьЗависимостьЗадач.json"
 		},
-		"/key_for_bitrix24_GetDailyPlan": {
-			"$ref": "./paths/bitrix24/GetDailyPlan.json"
+		"/key_for_bitrix24_ПолучитьПланЗадачНаДень": {
+			"$ref": "./paths/bitrix24/ПолучитьПланЗадачНаДень.json"
 		},
-		"/key_for_bitrix24_GetTaskFieldsStructure": {
-			"$ref": "./paths/bitrix24/GetTaskFieldsStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTasksFilterStructure": {
-			"$ref": "./paths/bitrix24/GetTasksFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраЗадач": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраЗадач.json"
 		},
-		"/key_for_bitrix24_GetCustomTaskFieldsList": {
-			"$ref": "./paths/bitrix24/GetCustomTaskFieldsList.json"
+		"/key_for_bitrix24_ПолучитьСписокПользовательскихПолейЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокПользовательскихПолейЗадачи.json"
 		},
-		"/key_for_bitrix24_AddCustomTaskField": {
-			"$ref": "./paths/bitrix24/AddCustomTaskField.json"
+		"/key_for_bitrix24_ДобавитьПользовательскоеПолеЗадачи": {
+			"$ref": "./paths/bitrix24/ДобавитьПользовательскоеПолеЗадачи.json"
 		},
-		"/key_for_bitrix24_UpdateCustomTaskField": {
-			"$ref": "./paths/bitrix24/UpdateCustomTaskField.json"
+		"/key_for_bitrix24_ИзменитьПользовательскоеПолеЗадачи": {
+			"$ref": "./paths/bitrix24/ИзменитьПользовательскоеПолеЗадачи.json"
 		},
-		"/key_for_bitrix24_GetCustomTaskField": {
-			"$ref": "./paths/bitrix24/GetCustomTaskField.json"
+		"/key_for_bitrix24_ПолучитьПользовательскоеПолеЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьПользовательскоеПолеЗадачи.json"
 		},
-		"/key_for_bitrix24_DeleteCustomTaskField": {
-			"$ref": "./paths/bitrix24/DeleteCustomTaskField.json"
+		"/key_for_bitrix24_УдалитьПользовательскоеПолеЗадачи": {
+			"$ref": "./paths/bitrix24/УдалитьПользовательскоеПолеЗадачи.json"
 		},
-		"/key_for_bitrix24_AddTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/AddTasksChecklistElement.json"
+		"/key_for_bitrix24_ДобавитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/ДобавитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_UpdateTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/UpdateTasksChecklistElement.json"
+		"/key_for_bitrix24_ИзменитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/ИзменитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_DeleteTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/DeleteTasksChecklistElement.json"
+		"/key_for_bitrix24_УдалитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/УдалитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTasksChecklist": {
-			"$ref": "./paths/bitrix24/GetTasksChecklist.json"
+		"/key_for_bitrix24_ПолучитьЧеклистЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьЧеклистЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/GetTasksChecklistElement.json"
+		"/key_for_bitrix24_ПолучитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_CompleteTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/CompleteTasksChecklistElement.json"
+		"/key_for_bitrix24_ВыполнитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/ВыполнитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_RenewTasksChecklistElement": {
-			"$ref": "./paths/bitrix24/RenewTasksChecklistElement.json"
+		"/key_for_bitrix24_ВозобновитьЭлементЧеклистаЗадачи": {
+			"$ref": "./paths/bitrix24/ВозобновитьЭлементЧеклистаЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTaskCommentsList": {
-			"$ref": "./paths/bitrix24/GetTaskCommentsList.json"
+		"/key_for_bitrix24_ПолучитьСписокКомментариевЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокКомментариевЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTaskComment": {
-			"$ref": "./paths/bitrix24/GetTaskComment.json"
+		"/key_for_bitrix24_ПолучитьКомменатрийЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьКомменатрийЗадачи.json"
 		},
-		"/key_for_bitrix24_AddTaskComment": {
-			"$ref": "./paths/bitrix24/AddTaskComment.json"
+		"/key_for_bitrix24_ДобавитьКомментарийЗадачи": {
+			"$ref": "./paths/bitrix24/ДобавитьКомментарийЗадачи.json"
 		},
-		"/key_for_bitrix24_UpdateTaskComment": {
-			"$ref": "./paths/bitrix24/UpdateTaskComment.json"
+		"/key_for_bitrix24_ИзменитьКомментарийЗадачи": {
+			"$ref": "./paths/bitrix24/ИзменитьКомментарийЗадачи.json"
 		},
-		"/key_for_bitrix24_DeleteTaskComment": {
-			"$ref": "./paths/bitrix24/DeleteTaskComment.json"
+		"/key_for_bitrix24_УдалитьКомментарийЗадачи": {
+			"$ref": "./paths/bitrix24/УдалитьКомментарийЗадачи.json"
 		},
-		"/key_for_bitrix24_GetResultsList": {
-			"$ref": "./paths/bitrix24/GetResultsList.json"
+		"/key_for_bitrix24_ПолучитьСписокРезультатов": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокРезультатов.json"
 		},
-		"/key_for_bitrix24_CreateResultFromComment": {
-			"$ref": "./paths/bitrix24/CreateResultFromComment.json"
+		"/key_for_bitrix24_СоздатьРезультатИзКомментария": {
+			"$ref": "./paths/bitrix24/СоздатьРезультатИзКомментария.json"
 		},
-		"/key_for_bitrix24_DeleteResultFromComment": {
-			"$ref": "./paths/bitrix24/DeleteResultFromComment.json"
+		"/key_for_bitrix24_УдалитьРезультатИзКомментария": {
+			"$ref": "./paths/bitrix24/УдалитьРезультатИзКомментария.json"
 		},
-		"/key_for_bitrix24_GetCommentStructure": {
-			"$ref": "./paths/bitrix24/GetCommentStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруКомментария": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруКомментария.json"
 		},
-		"/key_for_bitrix24_AddKanbanStage": {
-			"$ref": "./paths/bitrix24/AddKanbanStage.json"
+		"/key_for_bitrix24_ДобавитьСтадиюКанбана": {
+			"$ref": "./paths/bitrix24/ДобавитьСтадиюКанбана.json"
 		},
-		"/key_for_bitrix24_UpdateKanbansStage": {
-			"$ref": "./paths/bitrix24/UpdateKanbansStage.json"
+		"/key_for_bitrix24_ИзменитьСтадиюКанбана": {
+			"$ref": "./paths/bitrix24/ИзменитьСтадиюКанбана.json"
 		},
-		"/key_for_bitrix24_DeleteKanbanStage": {
-			"$ref": "./paths/bitrix24/DeleteKanbanStage.json"
+		"/key_for_bitrix24_УдалитьСтадиюКанбана": {
+			"$ref": "./paths/bitrix24/УдалитьСтадиюКанбана.json"
 		},
-		"/key_for_bitrix24_GetKanbanStages": {
-			"$ref": "./paths/bitrix24/GetKanbanStages.json"
+		"/key_for_bitrix24_ПолучитьСтадииКанбана": {
+			"$ref": "./paths/bitrix24/ПолучитьСтадииКанбана.json"
 		},
-		"/key_for_bitrix24_MoveTaskToKanbanStage": {
-			"$ref": "./paths/bitrix24/MoveTaskToKanbanStage.json"
+		"/key_for_bitrix24_ПеренестиЗадачуВСтадиюКанбана": {
+			"$ref": "./paths/bitrix24/ПеренестиЗадачуВСтадиюКанбана.json"
 		},
-		"/key_for_bitrix24_AddTaskTimeAccounting": {
-			"$ref": "./paths/bitrix24/AddTaskTimeAccounting.json"
+		"/key_for_bitrix24_ДобавитьТрудозатратыЗадачи": {
+			"$ref": "./paths/bitrix24/ДобавитьТрудозатратыЗадачи.json"
 		},
-		"/key_for_bitrix24_DeleteTaskTimeAccounting": {
-			"$ref": "./paths/bitrix24/DeleteTaskTimeAccounting.json"
+		"/key_for_bitrix24_УдалитьТрудозатратыЗадачи": {
+			"$ref": "./paths/bitrix24/УдалитьТрудозатратыЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTaskTimeAccountingList": {
-			"$ref": "./paths/bitrix24/GetTaskTimeAccountingList.json"
+		"/key_for_bitrix24_ПолучитьСписокТрудозатратЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокТрудозатратЗадачи.json"
 		},
-		"/key_for_bitrix24_GetTaskTimeAccounting": {
-			"$ref": "./paths/bitrix24/GetTaskTimeAccounting.json"
+		"/key_for_bitrix24_ПолучитьТрудозатратыЗадачи": {
+			"$ref": "./paths/bitrix24/ПолучитьТрудозатратыЗадачи.json"
 		},
-		"/key_for_bitrix24_UpdateTaskTimeAccounting": {
-			"$ref": "./paths/bitrix24/UpdateTaskTimeAccounting.json"
+		"/key_for_bitrix24_ИзменитьТрудозатратыЗадачи": {
+			"$ref": "./paths/bitrix24/ИзменитьТрудозатратыЗадачи.json"
 		},
-		"/key_for_bitrix24_StartTimekeeping": {
-			"$ref": "./paths/bitrix24/StartTimekeeping.json"
+		"/key_for_bitrix24_НачатьУчетВремени": {
+			"$ref": "./paths/bitrix24/НачатьУчетВремени.json"
 		},
-		"/key_for_bitrix24_StopTimekeeping": {
-			"$ref": "./paths/bitrix24/StopTimekeeping.json"
+		"/key_for_bitrix24_ЗавершитьУчетВремени": {
+			"$ref": "./paths/bitrix24/ЗавершитьУчетВремени.json"
 		},
-		"/key_for_bitrix24_PauseTimekeeping": {
-			"$ref": "./paths/bitrix24/PauseTimekeeping.json"
+		"/key_for_bitrix24_ПриостановитьУчетВремени": {
+			"$ref": "./paths/bitrix24/ПриостановитьУчетВремени.json"
 		},
-		"/key_for_bitrix24_GetTimekeepingStatus": {
-			"$ref": "./paths/bitrix24/GetTimekeepingStatus.json"
+		"/key_for_bitrix24_ПолучитьСтатусУчетаВремени": {
+			"$ref": "./paths/bitrix24/ПолучитьСтатусУчетаВремени.json"
 		},
-		"/key_for_bitrix24_GetTimekeepingSettings": {
-			"$ref": "./paths/bitrix24/GetTimekeepingSettings.json"
+		"/key_for_bitrix24_ПолучитьНастройкиУчетаВремени": {
+			"$ref": "./paths/bitrix24/ПолучитьНастройкиУчетаВремени.json"
 		},
-		"/key_for_bitrix24_GetStoragesList": {
-			"$ref": "./paths/bitrix24/GetStoragesList.json"
+		"/key_for_bitrix24_ПолучитьСписокХранилищ": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокХранилищ.json"
 		},
-		"/key_for_bitrix24_GetAppSotrage": {
-			"$ref": "./paths/bitrix24/GetAppSotrage.json"
+		"/key_for_bitrix24_ПолучитьХранилищеПриложения": {
+			"$ref": "./paths/bitrix24/ПолучитьХранилищеПриложения.json"
 		},
-		"/key_for_bitrix24_GetStorage": {
-			"$ref": "./paths/bitrix24/GetStorage.json"
+		"/key_for_bitrix24_ПолучитьХранилище": {
+			"$ref": "./paths/bitrix24/ПолучитьХранилище.json"
 		},
-		"/key_for_bitrix24_RenameStorage": {
-			"$ref": "./paths/bitrix24/RenameStorage.json"
+		"/key_for_bitrix24_ПереименоватьХранилище": {
+			"$ref": "./paths/bitrix24/ПереименоватьХранилище.json"
 		},
-		"/key_for_bitrix24_GetStorageObjects": {
-			"$ref": "./paths/bitrix24/GetStorageObjects.json"
+		"/key_for_bitrix24_ПолучитьСодержимоеХранилища": {
+			"$ref": "./paths/bitrix24/ПолучитьСодержимоеХранилища.json"
 		},
-		"/key_for_bitrix24_CreateStorageFolder": {
-			"$ref": "./paths/bitrix24/CreateStorageFolder.json"
+		"/key_for_bitrix24_СоздатьКаталогВХранилище": {
+			"$ref": "./paths/bitrix24/СоздатьКаталогВХранилище.json"
 		},
-		"/key_for_bitrix24_GetFolderInformation": {
-			"$ref": "./paths/bitrix24/GetFolderInformation.json"
+		"/key_for_bitrix24_ПолучитьИнформациюОКаталоге": {
+			"$ref": "./paths/bitrix24/ПолучитьИнформациюОКаталоге.json"
 		},
-		"/key_for_bitrix24_CreateSubfolder": {
-			"$ref": "./paths/bitrix24/CreateSubfolder.json"
+		"/key_for_bitrix24_СоздатьПодкаталог": {
+			"$ref": "./paths/bitrix24/СоздатьПодкаталог.json"
 		},
-		"/key_for_bitrix24_MakeFolderCopy": {
-			"$ref": "./paths/bitrix24/MakeFolderCopy.json"
+		"/key_for_bitrix24_СкопироватьКаталог": {
+			"$ref": "./paths/bitrix24/СкопироватьКаталог.json"
 		},
-		"/key_for_bitrix24_MoveFolder": {
-			"$ref": "./paths/bitrix24/MoveFolder.json"
+		"/key_for_bitrix24_ПереместитьКаталог": {
+			"$ref": "./paths/bitrix24/ПереместитьКаталог.json"
 		},
-		"/key_for_bitrix24_DeleteFolder": {
-			"$ref": "./paths/bitrix24/DeleteFolder.json"
+		"/key_for_bitrix24_УдалитьКаталог": {
+			"$ref": "./paths/bitrix24/УдалитьКаталог.json"
 		},
-		"/key_for_bitrix24_GetFolderExternalLink": {
-			"$ref": "./paths/bitrix24/GetFolderExternalLink.json"
+		"/key_for_bitrix24_ПолучитьВнешнююСсылкуКаталога": {
+			"$ref": "./paths/bitrix24/ПолучитьВнешнююСсылкуКаталога.json"
 		},
-		"/key_for_bitrix24_GetFolderItems": {
-			"$ref": "./paths/bitrix24/GetFolderItems.json"
+		"/key_for_bitrix24_ПолучитьДочерниеЭлементыКаталога": {
+			"$ref": "./paths/bitrix24/ПолучитьДочерниеЭлементыКаталога.json"
 		},
-		"/key_for_bitrix24_MarkFolderAsDeleted": {
-			"$ref": "./paths/bitrix24/MarkFolderAsDeleted.json"
+		"/key_for_bitrix24_ПоместитьКаталогВКорзину": {
+			"$ref": "./paths/bitrix24/ПоместитьКаталогВКорзину.json"
 		},
-		"/key_for_bitrix24_RestoreFolder": {
-			"$ref": "./paths/bitrix24/RestoreFolder.json"
+		"/key_for_bitrix24_ВосстановитьКаталог": {
+			"$ref": "./paths/bitrix24/ВосстановитьКаталог.json"
 		},
-		"/key_for_bitrix24_RenameFolder": {
-			"$ref": "./paths/bitrix24/RenameFolder.json"
+		"/key_for_bitrix24_ПереименоватьКаталог": {
+			"$ref": "./paths/bitrix24/ПереименоватьКаталог.json"
 		},
-		"/key_for_bitrix24_GetFolderFilterStructure": {
-			"$ref": "./paths/bitrix24/GetFolderFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраКаталога": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраКаталога.json"
 		},
-		"/key_for_bitrix24_UploadFileToStorage": {
-			"$ref": "./paths/bitrix24/UploadFileToStorage.json"
+		"/key_for_bitrix24_ЗагрузитьФайлВХранилище": {
+			"$ref": "./paths/bitrix24/ЗагрузитьФайлВХранилище.json"
 		},
-		"/key_for_bitrix24_UploadFileToFolder": {
-			"$ref": "./paths/bitrix24/UploadFileToFolder.json"
+		"/key_for_bitrix24_ЗагрузитьФайлВКаталог": {
+			"$ref": "./paths/bitrix24/ЗагрузитьФайлВКаталог.json"
 		},
-		"/key_for_bitrix24_GetFileInformation": {
-			"$ref": "./paths/bitrix24/GetFileInformation.json"
+		"/key_for_bitrix24_ПолучитьИнформациюОФайле": {
+			"$ref": "./paths/bitrix24/ПолучитьИнформациюОФайле.json"
 		},
-		"/key_for_bitrix24_DeleteFile": {
-			"$ref": "./paths/bitrix24/DeleteFile.json"
+		"/key_for_bitrix24_УдалитьФайл": {
+			"$ref": "./paths/bitrix24/УдалитьФайл.json"
 		},
-		"/key_for_bitrix24_GetFileExternalLink": {
-			"$ref": "./paths/bitrix24/GetFileExternalLink.json"
+		"/key_for_bitrix24_ПолучитьВнешнююСсылкуФайла": {
+			"$ref": "./paths/bitrix24/ПолучитьВнешнююСсылкуФайла.json"
 		},
-		"/key_for_bitrix24_MarkFileAsDeleted": {
-			"$ref": "./paths/bitrix24/MarkFileAsDeleted.json"
+		"/key_for_bitrix24_ПоместитьФайлВКорзину": {
+			"$ref": "./paths/bitrix24/ПоместитьФайлВКорзину.json"
 		},
-		"/key_for_bitrix24_RestoreFile": {
-			"$ref": "./paths/bitrix24/RestoreFile.json"
+		"/key_for_bitrix24_ВосстановитьФайл": {
+			"$ref": "./paths/bitrix24/ВосстановитьФайл.json"
 		},
-		"/key_for_bitrix24_MakeCopyFile": {
-			"$ref": "./paths/bitrix24/MakeCopyFile.json"
+		"/key_for_bitrix24_СкопироватьФайл": {
+			"$ref": "./paths/bitrix24/СкопироватьФайл.json"
 		},
-		"/key_for_bitrix24_MoveFileToFolder": {
-			"$ref": "./paths/bitrix24/MoveFileToFolder.json"
+		"/key_for_bitrix24_ПереместитьФайлВКаталог": {
+			"$ref": "./paths/bitrix24/ПереместитьФайлВКаталог.json"
 		},
-		"/key_for_bitrix24_RenameFile": {
-			"$ref": "./paths/bitrix24/RenameFile.json"
+		"/key_for_bitrix24_ПереименоватьФайл": {
+			"$ref": "./paths/bitrix24/ПереименоватьФайл.json"
 		},
-		"/key_for_bitrix24_CreateChat": {
-			"$ref": "./paths/bitrix24/CreateChat.json"
+		"/key_for_bitrix24_СоздатьЧат": {
+			"$ref": "./paths/bitrix24/СоздатьЧат.json"
 		},
-		"/key_for_bitrix24_GetChatUsers": {
-			"$ref": "./paths/bitrix24/GetChatUsers.json"
+		"/key_for_bitrix24_ПолучитьСписокПользователейЧата": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокПользователейЧата.json"
 		},
-		"/key_for_bitrix24_LeaveChat": {
-			"$ref": "./paths/bitrix24/LeaveChat.json"
+		"/key_for_bitrix24_ПокинутьЧат": {
+			"$ref": "./paths/bitrix24/ПокинутьЧат.json"
 		},
-		"/key_for_bitrix24_GetUsers": {
-			"$ref": "./paths/bitrix24/GetUsers.json"
+		"/key_for_bitrix24_ПолучитьПользователей": {
+			"$ref": "./paths/bitrix24/ПолучитьПользователей.json"
 		},
-		"/key_for_bitrix24_AddUsersToChat": {
-			"$ref": "./paths/bitrix24/AddUsersToChat.json"
+		"/key_for_bitrix24_ДобавитьПользователейВЧат": {
+			"$ref": "./paths/bitrix24/ДобавитьПользователейВЧат.json"
 		},
-		"/key_for_bitrix24_DeleteUserFromChat": {
-			"$ref": "./paths/bitrix24/DeleteUserFromChat.json"
+		"/key_for_bitrix24_ИсключитьПользователяИзЧата": {
+			"$ref": "./paths/bitrix24/ИсключитьПользователяИзЧата.json"
 		},
-		"/key_for_bitrix24_ChangeChatTitle": {
-			"$ref": "./paths/bitrix24/ChangeChatTitle.json"
+		"/key_for_bitrix24_ИзменитьЗаголовокЧата": {
+			"$ref": "./paths/bitrix24/ИзменитьЗаголовокЧата.json"
 		},
-		"/key_for_bitrix24_ChangeChatColor": {
-			"$ref": "./paths/bitrix24/ChangeChatColor.json"
+		"/key_for_bitrix24_ИзменитьЦветЧата": {
+			"$ref": "./paths/bitrix24/ИзменитьЦветЧата.json"
 		},
-		"/key_for_bitrix24_ChangeChatPicture": {
-			"$ref": "./paths/bitrix24/ChangeChatPicture.json"
+		"/key_for_bitrix24_ИзменитьКартинкуЧата": {
+			"$ref": "./paths/bitrix24/ИзменитьКартинкуЧата.json"
 		},
-		"/key_for_bitrix24_ChangeChatOwner": {
-			"$ref": "./paths/bitrix24/ChangeChatOwner.json"
+		"/key_for_bitrix24_СменитьВладельцаЧата": {
+			"$ref": "./paths/bitrix24/СменитьВладельцаЧата.json"
 		},
-		"/key_for_bitrix24_DisableChatNotifications": {
-			"$ref": "./paths/bitrix24/DisableChatNotifications.json"
+		"/key_for_bitrix24_ОтключитьУведомленияЧата": {
+			"$ref": "./paths/bitrix24/ОтключитьУведомленияЧата.json"
 		},
-		"/key_for_bitrix24_EnableChatNotifications": {
-			"$ref": "./paths/bitrix24/EnableChatNotifications.json"
+		"/key_for_bitrix24_ВключитьУведомленияЧата": {
+			"$ref": "./paths/bitrix24/ВключитьУведомленияЧата.json"
 		},
-		"/key_for_bitrix24_GetChatMessagesList": {
-			"$ref": "./paths/bitrix24/GetChatMessagesList.json"
+		"/key_for_bitrix24_ПолучитьСписокСообщенийЧата": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокСообщенийЧата.json"
 		},
-		"/key_for_bitrix24_GetDialog": {
-			"$ref": "./paths/bitrix24/GetDialog.json"
+		"/key_for_bitrix24_ПолучитьДиалог": {
+			"$ref": "./paths/bitrix24/ПолучитьДиалог.json"
 		},
-		"/key_for_bitrix24_GetChatMembersList": {
-			"$ref": "./paths/bitrix24/GetChatMembersList.json"
+		"/key_for_bitrix24_ПолучитьСписокПользователейДиалога": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокПользователейДиалога.json"
 		},
-		"/key_for_bitrix24_SendWritingNotification": {
-			"$ref": "./paths/bitrix24/SendWritingNotification.json"
+		"/key_for_bitrix24_ОтправитьУведомлениеОВводе": {
+			"$ref": "./paths/bitrix24/ОтправитьУведомлениеОВводе.json"
 		},
-		"/key_for_bitrix24_GetUserStatus": {
-			"$ref": "./paths/bitrix24/GetUserStatus.json"
+		"/key_for_bitrix24_ПолучитьСтатусПользователя": {
+			"$ref": "./paths/bitrix24/ПолучитьСтатусПользователя.json"
 		},
-		"/key_for_bitrix24_SetUserStatus": {
-			"$ref": "./paths/bitrix24/SetUserStatus.json"
+		"/key_for_bitrix24_УстановитьСтатусПользователя": {
+			"$ref": "./paths/bitrix24/УстановитьСтатусПользователя.json"
 		},
-		"/key_for_bitrix24_ReadAll": {
-			"$ref": "./paths/bitrix24/ReadAll.json"
+		"/key_for_bitrix24_ПрочитатьВсе": {
+			"$ref": "./paths/bitrix24/ПрочитатьВсе.json"
 		},
-		"/key_for_bitrix24_GetChatFilesFolder": {
-			"$ref": "./paths/bitrix24/GetChatFilesFolder.json"
+		"/key_for_bitrix24_ПолучитьКаталогФайловЧата": {
+			"$ref": "./paths/bitrix24/ПолучитьКаталогФайловЧата.json"
 		},
-		"/key_for_bitrix24_GetChatStructure": {
-			"$ref": "./paths/bitrix24/GetChatStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруЧата": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруЧата.json"
 		},
-		"/key_for_bitrix24_SendMessage": {
-			"$ref": "./paths/bitrix24/SendMessage.json"
+		"/key_for_bitrix24_ОтправитьСообщение": {
+			"$ref": "./paths/bitrix24/ОтправитьСообщение.json"
 		},
-		"/key_for_bitrix24_EditMessage": {
-			"$ref": "./paths/bitrix24/EditMessage.json"
+		"/key_for_bitrix24_ИзменитьСообщение": {
+			"$ref": "./paths/bitrix24/ИзменитьСообщение.json"
 		},
-		"/key_for_bitrix24_SetMessageReaction": {
-			"$ref": "./paths/bitrix24/SetMessageReaction.json"
+		"/key_for_bitrix24_УстановитьРеакциюНаСообщение": {
+			"$ref": "./paths/bitrix24/УстановитьРеакциюНаСообщение.json"
 		},
-		"/key_for_bitrix24_DeleteMessage": {
-			"$ref": "./paths/bitrix24/DeleteMessage.json"
+		"/key_for_bitrix24_УдалитьСообщение": {
+			"$ref": "./paths/bitrix24/УдалитьСообщение.json"
 		},
-		"/key_for_bitrix24_SendFile": {
-			"$ref": "./paths/bitrix24/SendFile.json"
+		"/key_for_bitrix24_ОтправитьФайл": {
+			"$ref": "./paths/bitrix24/ОтправитьФайл.json"
 		},
-		"/key_for_bitrix24_MarkMessageAsReaded": {
-			"$ref": "./paths/bitrix24/MarkMessageAsReaded.json"
+		"/key_for_bitrix24_ОтметитьСообщениеКакПрочитанное": {
+			"$ref": "./paths/bitrix24/ОтметитьСообщениеКакПрочитанное.json"
 		},
-		"/key_for_bitrix24_MarkMessageAsUnreaded": {
-			"$ref": "./paths/bitrix24/MarkMessageAsUnreaded.json"
+		"/key_for_bitrix24_ОтметитьСообщениеКакНепрочитанное": {
+			"$ref": "./paths/bitrix24/ОтметитьСообщениеКакНепрочитанное.json"
 		},
-		"/key_for_bitrix24_GetPictureBlock": {
-			"$ref": "./paths/bitrix24/GetPictureBlock.json"
+		"/key_for_bitrix24_ПолучитьБлокКартинки": {
+			"$ref": "./paths/bitrix24/ПолучитьБлокКартинки.json"
 		},
-		"/key_for_bitrix24_GetFileBlock": {
-			"$ref": "./paths/bitrix24/GetFileBlock.json"
+		"/key_for_bitrix24_ПолучитьБлокФайла": {
+			"$ref": "./paths/bitrix24/ПолучитьБлокФайла.json"
 		},
-		"/key_for_bitrix24_CreatePersonalNotification": {
-			"$ref": "./paths/bitrix24/CreatePersonalNotification.json"
+		"/key_for_bitrix24_СоздатьПерсональноеУведомление": {
+			"$ref": "./paths/bitrix24/СоздатьПерсональноеУведомление.json"
 		},
-		"/key_for_bitrix24_CreateSystemNotification": {
-			"$ref": "./paths/bitrix24/CreateSystemNotification.json"
+		"/key_for_bitrix24_СоздатьСистемноеУведомление": {
+			"$ref": "./paths/bitrix24/СоздатьСистемноеУведомление.json"
 		},
-		"/key_for_bitrix24_DeleteNotification": {
-			"$ref": "./paths/bitrix24/DeleteNotification.json"
+		"/key_for_bitrix24_УдалитьУведомление": {
+			"$ref": "./paths/bitrix24/УдалитьУведомление.json"
 		},
-		"/key_for_bitrix24_CreateDepartment": {
-			"$ref": "./paths/bitrix24/CreateDepartment.json"
+		"/key_for_bitrix24_СоздатьПодразделение": {
+			"$ref": "./paths/bitrix24/СоздатьПодразделение.json"
 		},
-		"/key_for_bitrix24_UpdateDepartment": {
-			"$ref": "./paths/bitrix24/UpdateDepartment.json"
+		"/key_for_bitrix24_ИзменитьПодразделение": {
+			"$ref": "./paths/bitrix24/ИзменитьПодразделение.json"
 		},
-		"/key_for_bitrix24_GetDepartments": {
-			"$ref": "./paths/bitrix24/GetDepartments.json"
+		"/key_for_bitrix24_ПолучитьПодразделения": {
+			"$ref": "./paths/bitrix24/ПолучитьПодразделения.json"
 		},
-		"/key_for_bitrix24_DeleteDepartment": {
-			"$ref": "./paths/bitrix24/DeleteDepartment.json"
+		"/key_for_bitrix24_УдалитьПодразделение": {
+			"$ref": "./paths/bitrix24/УдалитьПодразделение.json"
 		},
-		"/key_for_bitrix24_GetCurrentUser": {
-			"$ref": "./paths/bitrix24/GetCurrentUser.json"
+		"/key_for_bitrix24_ПолучитьТекущегоПользователя": {
+			"$ref": "./paths/bitrix24/ПолучитьТекущегоПользователя.json"
 		},
-		"/key_for_bitrix24_GetUser": {
-			"$ref": "./paths/bitrix24/GetUser.json"
+		"/key_for_bitrix24_ПолучитьПользователя": {
+			"$ref": "./paths/bitrix24/ПолучитьПользователя.json"
 		},
-		"/key_for_bitrix24_CreateUser": {
-			"$ref": "./paths/bitrix24/CreateUser.json"
+		"/key_for_bitrix24_СоздатьПользователя": {
+			"$ref": "./paths/bitrix24/СоздатьПользователя.json"
 		},
-		"/key_for_bitrix24_UpdateUser": {
-			"$ref": "./paths/bitrix24/UpdateUser.json"
+		"/key_for_bitrix24_ИзменитьПользователя": {
+			"$ref": "./paths/bitrix24/ИзменитьПользователя.json"
 		},
-		"/key_for_bitrix24_ChangeUserStatus": {
-			"$ref": "./paths/bitrix24/ChangeUserStatus.json"
+		"/key_for_bitrix24_ИзменитьСтатусПользователя": {
+			"$ref": "./paths/bitrix24/ИзменитьСтатусПользователя.json"
 		},
-		"/key_for_bitrix24_FindUsers": {
-			"$ref": "./paths/bitrix24/FindUsers.json"
+		"/key_for_bitrix24_НайтиПользователей": {
+			"$ref": "./paths/bitrix24/НайтиПользователей.json"
 		},
-		"/key_for_bitrix24_GetUserFieldsStructure": {
-			"$ref": "./paths/bitrix24/GetUserFieldsStructure.json"
+		"/key_for_bitrix24_ПолучитьСтурктуруПользователя": {
+			"$ref": "./paths/bitrix24/ПолучитьСтурктуруПользователя.json"
 		},
-		"/key_for_bitrix24_GetUserFilterStructure": {
-			"$ref": "./paths/bitrix24/GetUserFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраПользователей": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраПользователей.json"
 		},
-		"/key_for_bitrix24_CreateLead": {
-			"$ref": "./paths/bitrix24/CreateLead.json"
+		"/key_for_bitrix24_СоздатьЛид": {
+			"$ref": "./paths/bitrix24/СоздатьЛид.json"
 		},
-		"/key_for_bitrix24_DeleteLead": {
-			"$ref": "./paths/bitrix24/DeleteLead.json"
+		"/key_for_bitrix24_УдалитьЛид": {
+			"$ref": "./paths/bitrix24/УдалитьЛид.json"
 		},
-		"/key_for_bitrix24_GetLead": {
-			"$ref": "./paths/bitrix24/GetLead.json"
+		"/key_for_bitrix24_ПолучитьЛид": {
+			"$ref": "./paths/bitrix24/ПолучитьЛид.json"
 		},
-		"/key_for_bitrix24_GetLeadsList": {
-			"$ref": "./paths/bitrix24/GetLeadsList.json"
+		"/key_for_bitrix24_ПолучитьСписокЛидов": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокЛидов.json"
 		},
-		"/key_for_bitrix24_UpdateLead": {
-			"$ref": "./paths/bitrix24/UpdateLead.json"
+		"/key_for_bitrix24_ИзменитьЛид": {
+			"$ref": "./paths/bitrix24/ИзменитьЛид.json"
 		},
-		"/key_for_bitrix24_GetLeadStructure": {
-			"$ref": "./paths/bitrix24/GetLeadStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруЛида": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруЛида.json"
 		},
-		"/key_for_bitrix24_GetLeadFilterStructure": {
-			"$ref": "./paths/bitrix24/GetLeadFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраЛидов": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраЛидов.json"
 		},
-		"/key_for_bitrix24_CreateDeal": {
-			"$ref": "./paths/bitrix24/CreateDeal.json"
+		"/key_for_bitrix24_СоздатьСделку": {
+			"$ref": "./paths/bitrix24/СоздатьСделку.json"
 		},
-		"/key_for_bitrix24_DeleteDeal": {
-			"$ref": "./paths/bitrix24/DeleteDeal.json"
+		"/key_for_bitrix24_УдалитьСделку": {
+			"$ref": "./paths/bitrix24/УдалитьСделку.json"
 		},
-		"/key_for_bitrix24_GetDeal": {
-			"$ref": "./paths/bitrix24/GetDeal.json"
+		"/key_for_bitrix24_ПолучитьСделку": {
+			"$ref": "./paths/bitrix24/ПолучитьСделку.json"
 		},
-		"/key_for_bitrix24_GetDealsList": {
-			"$ref": "./paths/bitrix24/GetDealsList.json"
+		"/key_for_bitrix24_ПолучитьСписокСделок": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокСделок.json"
 		},
-		"/key_for_bitrix24_UpdateDeal": {
-			"$ref": "./paths/bitrix24/UpdateDeal.json"
+		"/key_for_bitrix24_ИзменитьСделку": {
+			"$ref": "./paths/bitrix24/ИзменитьСделку.json"
 		},
-		"/key_for_bitrix24_GetDealStructure": {
-			"$ref": "./paths/bitrix24/GetDealStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруСделки": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруСделки.json"
 		},
-		"/key_for_bitrix24_GetDealsFilterStructure": {
-			"$ref": "./paths/bitrix24/GetDealsFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраСделок": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраСделок.json"
 		},
-		"/key_for_bitrix24_GetCalendarList": {
-			"$ref": "./paths/bitrix24/GetCalendarList.json"
+		"/key_for_bitrix24_ПолучитьСписокКалендарей": {
+			"$ref": "./paths/bitrix24/ПолучитьСписокКалендарей.json"
 		},
-		"/key_for_bitrix24_CreateCalendar": {
-			"$ref": "./paths/bitrix24/CreateCalendar.json"
+		"/key_for_bitrix24_СоздатьКалендарь": {
+			"$ref": "./paths/bitrix24/СоздатьКалендарь.json"
 		},
-		"/key_for_bitrix24_UpdateCalendar": {
-			"$ref": "./paths/bitrix24/UpdateCalendar.json"
+		"/key_for_bitrix24_ИзменитьКалендарь": {
+			"$ref": "./paths/bitrix24/ИзменитьКалендарь.json"
 		},
-		"/key_for_bitrix24_DeleteCalendar": {
-			"$ref": "./paths/bitrix24/DeleteCalendar.json"
+		"/key_for_bitrix24_УдалитьКалендарь": {
+			"$ref": "./paths/bitrix24/УдалитьКалендарь.json"
 		},
-		"/key_for_bitrix24_GetUserBusy": {
-			"$ref": "./paths/bitrix24/GetUserBusy.json"
+		"/key_for_bitrix24_ПолучитьЗанятостьПользователей": {
+			"$ref": "./paths/bitrix24/ПолучитьЗанятостьПользователей.json"
 		},
-		"/key_for_bitrix24_GetCustomCalendarSettings": {
-			"$ref": "./paths/bitrix24/GetCustomCalendarSettings.json"
+		"/key_for_bitrix24_ПолучитьПользовательскиеНастройкиКалендаря": {
+			"$ref": "./paths/bitrix24/ПолучитьПользовательскиеНастройкиКалендаря.json"
 		},
-		"/key_for_bitrix24_SetCustomCalendarSettings": {
-			"$ref": "./paths/bitrix24/SetCustomCalendarSettings.json"
+		"/key_for_bitrix24_УстановитьПользовательскиеНастройкиКалендаря": {
+			"$ref": "./paths/bitrix24/УстановитьПользовательскиеНастройкиКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarSettingsStructure": {
-			"$ref": "./paths/bitrix24/GetCalendarSettingsStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруНастроекКалендаря": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруНастроекКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalednarCustomSettingsStructure": {
-			"$ref": "./paths/bitrix24/GetCalednarCustomSettingsStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруПользовательскихНастроекКаледнаря": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруПользовательскихНастроекКаледнаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarStructure": {
-			"$ref": "./paths/bitrix24/GetCalendarStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруКалендаря": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруКалендаря.json"
 		},
-		"/key_for_bitrix24_CreateCalendarEvent": {
-			"$ref": "./paths/bitrix24/CreateCalendarEvent.json"
+		"/key_for_bitrix24_СоздатьСобытиеКалендаря": {
+			"$ref": "./paths/bitrix24/СоздатьСобытиеКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarEvent": {
-			"$ref": "./paths/bitrix24/GetCalendarEvent.json"
+		"/key_for_bitrix24_ПолучитьСобытиеКалендаря": {
+			"$ref": "./paths/bitrix24/ПолучитьСобытиеКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarEvents": {
-			"$ref": "./paths/bitrix24/GetCalendarEvents.json"
+		"/key_for_bitrix24_ПолучитьСобытияКалендарей": {
+			"$ref": "./paths/bitrix24/ПолучитьСобытияКалендарей.json"
 		},
-		"/key_for_bitrix24_DeleteCalendarEvent": {
-			"$ref": "./paths/bitrix24/DeleteCalendarEvent.json"
+		"/key_for_bitrix24_УдалитьСобытиеКалендаря": {
+			"$ref": "./paths/bitrix24/УдалитьСобытиеКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarEventsStructure": {
-			"$ref": "./paths/bitrix24/GetCalendarEventsStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруСобытияКалендаря": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруСобытияКалендаря.json"
 		},
-		"/key_for_bitrix24_GetCalendarEventsFilterStructure": {
-			"$ref": "./paths/bitrix24/GetCalendarEventsFilterStructure.json"
+		"/key_for_bitrix24_ПолучитьСтруктуруФильтраСобытийКалендарей": {
+			"$ref": "./paths/bitrix24/ПолучитьСтруктуруФильтраСобытийКалендарей.json"
 		},
-		"/key_for_cdek_GetToken": {
-			"$ref": "./paths/cdek/GetToken.json"
+		"/key_for_cdek_ПолучитьТокен": {
+			"$ref": "./paths/cdek/ПолучитьТокен.json"
 		},
-		"/key_for_cdek_GetCashboxChecksByDate": {
-			"$ref": "./paths/cdek/GetCashboxChecksByDate.json"
+		"/key_for_cdek_ПолучитьЧекиНаДату": {
+			"$ref": "./paths/cdek/ПолучитьЧекиНаДату.json"
 		},
-		"/key_for_cdek_GetDeliveryCashRegistry": {
-			"$ref": "./paths/cdek/GetDeliveryCashRegistry.json"
+		"/key_for_cdek_ПолучитьРеестрыПлатежейНаДату": {
+			"$ref": "./paths/cdek/ПолучитьРеестрыПлатежейНаДату.json"
 		},
-		"/key_for_cdek_GetDeliveryCashTransfers": {
-			"$ref": "./paths/cdek/GetDeliveryCashTransfers.json"
+		"/key_for_cdek_ПолучитьПереводыПлатежейНаДату": {
+			"$ref": "./paths/cdek/ПолучитьПереводыПлатежейНаДату.json"
 		},
-		"/key_for_cdek_GetOfficeList": {
-			"$ref": "./paths/cdek/GetOfficeList.json"
+		"/key_for_cdek_ПолучитьСписокОфисов": {
+			"$ref": "./paths/cdek/ПолучитьСписокОфисов.json"
 		},
-		"/key_for_cdek_GetRegionsList": {
-			"$ref": "./paths/cdek/GetRegionsList.json"
+		"/key_for_cdek_ПолучитьСписокРегионов": {
+			"$ref": "./paths/cdek/ПолучитьСписокРегионов.json"
 		},
-		"/key_for_cdek_GetOfficeFilterDescription": {
-			"$ref": "./paths/cdek/GetOfficeFilterDescription.json"
+		"/key_for_cdek_ПолучитьОписаниеФильтраОфисов": {
+			"$ref": "./paths/cdek/ПолучитьОписаниеФильтраОфисов.json"
 		},
-		"/key_for_cdek_CreateOrder": {
-			"$ref": "./paths/cdek/CreateOrder.json"
+		"/key_for_cdek_СоздатьЗаказ": {
+			"$ref": "./paths/cdek/СоздатьЗаказ.json"
 		},
-		"/key_for_cdek_UpdateOrder": {
-			"$ref": "./paths/cdek/UpdateOrder.json"
+		"/key_for_cdek_ИзменитьЗаказ": {
+			"$ref": "./paths/cdek/ИзменитьЗаказ.json"
 		},
-		"/key_for_cdek_DeleteOrder": {
-			"$ref": "./paths/cdek/DeleteOrder.json"
+		"/key_for_cdek_УдалитьЗаказ": {
+			"$ref": "./paths/cdek/УдалитьЗаказ.json"
 		},
-		"/key_for_cdek_GetOrder": {
-			"$ref": "./paths/cdek/GetOrder.json"
+		"/key_for_cdek_ПолучитьЗаказ": {
+			"$ref": "./paths/cdek/ПолучитьЗаказ.json"
 		},
-		"/key_for_cdek_GetOrderByNumber": {
-			"$ref": "./paths/cdek/GetOrderByNumber.json"
+		"/key_for_cdek_ПолучитьЗаказПоНомеру": {
+			"$ref": "./paths/cdek/ПолучитьЗаказПоНомеру.json"
 		},
-		"/key_for_cdek_CreateCustomerRefund": {
-			"$ref": "./paths/cdek/CreateCustomerRefund.json"
+		"/key_for_cdek_ОформитьКлиентскийВозврат": {
+			"$ref": "./paths/cdek/ОформитьКлиентскийВозврат.json"
 		},
-		"/key_for_cdek_CreateRefusal": {
-			"$ref": "./paths/cdek/CreateRefusal.json"
+		"/key_for_cdek_СоздатьОтказ": {
+			"$ref": "./paths/cdek/СоздатьОтказ.json"
 		},
-		"/key_for_cdek_CreateReceipt": {
-			"$ref": "./paths/cdek/CreateReceipt.json"
+		"/key_for_cdek_СформироватьКвитанцию": {
+			"$ref": "./paths/cdek/СформироватьКвитанцию.json"
 		},
-		"/key_for_cdek_GetReceipt": {
-			"$ref": "./paths/cdek/GetReceipt.json"
+		"/key_for_cdek_ПолучитьКвитанцию": {
+			"$ref": "./paths/cdek/ПолучитьКвитанцию.json"
 		},
-		"/key_for_cdek_CreateBarcode": {
-			"$ref": "./paths/cdek/CreateBarcode.json"
+		"/key_for_cdek_СформироватьШтрихкод": {
+			"$ref": "./paths/cdek/СформироватьШтрихкод.json"
 		},
-		"/key_for_cdek_GetBarcode": {
-			"$ref": "./paths/cdek/GetBarcode.json"
+		"/key_for_cdek_ПолучитьШтрихкод": {
+			"$ref": "./paths/cdek/ПолучитьШтрихкод.json"
 		},
-		"/key_for_cdek_CreatePrealert": {
-			"$ref": "./paths/cdek/CreatePrealert.json"
+		"/key_for_cdek_СоздатьПреалерт": {
+			"$ref": "./paths/cdek/СоздатьПреалерт.json"
 		},
-		"/key_for_cdek_GetPrealert": {
-			"$ref": "./paths/cdek/GetPrealert.json"
+		"/key_for_cdek_ПолучитьПреалерт": {
+			"$ref": "./paths/cdek/ПолучитьПреалерт.json"
 		},
-		"/key_for_cdek_GetPassportDataStatus": {
-			"$ref": "./paths/cdek/GetPassportDataStatus.json"
+		"/key_for_cdek_ПолучитьСтатусПаспортныхДанных": {
+			"$ref": "./paths/cdek/ПолучитьСтатусПаспортныхДанных.json"
 		},
-		"/key_for_cdek_GetCashboxCheck": {
-			"$ref": "./paths/cdek/GetCashboxCheck.json"
+		"/key_for_cdek_ПолучитьЧекЗаказа": {
+			"$ref": "./paths/cdek/ПолучитьЧекЗаказа.json"
 		},
-		"/key_for_cdek_GetOrderDescription": {
-			"$ref": "./paths/cdek/GetOrderDescription.json"
+		"/key_for_cdek_ПолучитьОписаниеЗаказа": {
+			"$ref": "./paths/cdek/ПолучитьОписаниеЗаказа.json"
 		},
-		"/key_for_cdek_GetAvailableDeliveryIntervals": {
-			"$ref": "./paths/cdek/GetAvailableDeliveryIntervals.json"
+		"/key_for_cdek_ПолучитьДоступныеИнтервалыДоставки": {
+			"$ref": "./paths/cdek/ПолучитьДоступныеИнтервалыДоставки.json"
 		},
-		"/key_for_cdek_CreateCourierInvitation": {
-			"$ref": "./paths/cdek/CreateCourierInvitation.json"
+		"/key_for_cdek_СоздатьЗаявкуНаВызовКурьера": {
+			"$ref": "./paths/cdek/СоздатьЗаявкуНаВызовКурьера.json"
 		},
-		"/key_for_cdek_GetCourierInvitation": {
-			"$ref": "./paths/cdek/GetCourierInvitation.json"
+		"/key_for_cdek_ПолучитьЗаявкуНаВызовКурьера": {
+			"$ref": "./paths/cdek/ПолучитьЗаявкуНаВызовКурьера.json"
 		},
-		"/key_for_cdek_DeleteCourierInvitation": {
-			"$ref": "./paths/cdek/DeleteCourierInvitation.json"
+		"/key_for_cdek_УдалитьЗаявкуНаВызовКурьера": {
+			"$ref": "./paths/cdek/УдалитьЗаявкуНаВызовКурьера.json"
 		},
-		"/key_for_cdek_RegisterDeliveryAppointment": {
-			"$ref": "./paths/cdek/RegisterDeliveryAppointment.json"
+		"/key_for_cdek_ЗафиксироватьДоговоренностьОДоставке": {
+			"$ref": "./paths/cdek/ЗафиксироватьДоговоренностьОДоставке.json"
 		},
-		"/key_for_cdek_GetDeliveryAppointment": {
-			"$ref": "./paths/cdek/GetDeliveryAppointment.json"
+		"/key_for_cdek_ПолучитьДоговоренностьОДоставке": {
+			"$ref": "./paths/cdek/ПолучитьДоговоренностьОДоставке.json"
 		},
-		"/key_for_cdek_GetCourierInvitationsDescription": {
-			"$ref": "./paths/cdek/GetCourierInvitationsDescription.json"
+		"/key_for_cdek_ПолучитьОписаниеЗаявкиКурьера": {
+			"$ref": "./paths/cdek/ПолучитьОписаниеЗаявкиКурьера.json"
 		},
-		"/key_for_cdek_GetAppointmentDescription": {
-			"$ref": "./paths/cdek/GetAppointmentDescription.json"
+		"/key_for_cdek_ПолучитьОписаниеДоговоренности": {
+			"$ref": "./paths/cdek/ПолучитьОписаниеДоговоренности.json"
 		},
-		"/key_for_dropbox_GetAuthorizationLink": {
-			"$ref": "./paths/dropbox/GetAuthorizationLink.json"
+		"/key_for_dropbox_ПолучитьСсылкуАвторизации": {
+			"$ref": "./paths/dropbox/ПолучитьСсылкуАвторизации.json"
 		},
-		"/key_for_dropbox_GetToken": {
-			"$ref": "./paths/dropbox/GetToken.json"
+		"/key_for_dropbox_ПолучитьТокен": {
+			"$ref": "./paths/dropbox/ПолучитьТокен.json"
 		},
-		"/key_for_dropbox_RefreshToken": {
-			"$ref": "./paths/dropbox/RefreshToken.json"
+		"/key_for_dropbox_ОбновитьТокен": {
+			"$ref": "./paths/dropbox/ОбновитьТокен.json"
 		},
-		"/key_for_dropbox_GetAccountInformation": {
-			"$ref": "./paths/dropbox/GetAccountInformation.json"
+		"/key_for_dropbox_ПолучитьИнформациюОбАккаунте": {
+			"$ref": "./paths/dropbox/ПолучитьИнформациюОбАккаунте.json"
 		},
-		"/key_for_dropbox_GetSpaceUsageData": {
-			"$ref": "./paths/dropbox/GetSpaceUsageData.json"
+		"/key_for_dropbox_ПолучитьДанныеИспользованияПространства": {
+			"$ref": "./paths/dropbox/ПолучитьДанныеИспользованияПространства.json"
 		},
-		"/key_for_dropbox_GetObjectInformation": {
-			"$ref": "./paths/dropbox/GetObjectInformation.json"
+		"/key_for_dropbox_ПолучитьИнформациюОбОбъекте": {
+			"$ref": "./paths/dropbox/ПолучитьИнформациюОбОбъекте.json"
 		},
-		"/key_for_dropbox_GetListOfFolderFiles": {
-			"$ref": "./paths/dropbox/GetListOfFolderFiles.json"
+		"/key_for_dropbox_ПолучитьСписокФайловПапки": {
+			"$ref": "./paths/dropbox/ПолучитьСписокФайловПапки.json"
 		},
-		"/key_for_dropbox_GetPreview": {
-			"$ref": "./paths/dropbox/GetPreview.json"
+		"/key_for_dropbox_ПолучитьПревью": {
+			"$ref": "./paths/dropbox/ПолучитьПревью.json"
 		},
-		"/key_for_dropbox_UploadFile": {
-			"$ref": "./paths/dropbox/UploadFile.json"
+		"/key_for_dropbox_ЗагрузитьФайл": {
+			"$ref": "./paths/dropbox/ЗагрузитьФайл.json"
 		},
-		"/key_for_dropbox_UploadFileByURL": {
-			"$ref": "./paths/dropbox/UploadFileByURL.json"
+		"/key_for_dropbox_ЗагрузитьФайлПоURL": {
+			"$ref": "./paths/dropbox/ЗагрузитьФайлПоURL.json"
 		},
-		"/key_for_dropbox_GetUploadStatusByURL": {
-			"$ref": "./paths/dropbox/GetUploadStatusByURL.json"
+		"/key_for_dropbox_ПолучитьСтатусЗагрузкиПоURL": {
+			"$ref": "./paths/dropbox/ПолучитьСтатусЗагрузкиПоURL.json"
 		},
-		"/key_for_dropbox_DeleteObject": {
-			"$ref": "./paths/dropbox/DeleteObject.json"
+		"/key_for_dropbox_УдалитьОбъект": {
+			"$ref": "./paths/dropbox/УдалитьОбъект.json"
 		},
-		"/key_for_dropbox_CopyObject": {
-			"$ref": "./paths/dropbox/CopyObject.json"
+		"/key_for_dropbox_КопироватьОбъект": {
+			"$ref": "./paths/dropbox/КопироватьОбъект.json"
 		},
-		"/key_for_dropbox_MoveObject": {
-			"$ref": "./paths/dropbox/MoveObject.json"
+		"/key_for_dropbox_ПереместитьОбъект": {
+			"$ref": "./paths/dropbox/ПереместитьОбъект.json"
 		},
-		"/key_for_dropbox_CreateFolder": {
-			"$ref": "./paths/dropbox/CreateFolder.json"
+		"/key_for_dropbox_СоздатьПапку": {
+			"$ref": "./paths/dropbox/СоздатьПапку.json"
 		},
-		"/key_for_dropbox_DownloadFile": {
-			"$ref": "./paths/dropbox/DownloadFile.json"
+		"/key_for_dropbox_СкачатьФайл": {
+			"$ref": "./paths/dropbox/СкачатьФайл.json"
 		},
-		"/key_for_dropbox_DownloadFolder": {
-			"$ref": "./paths/dropbox/DownloadFolder.json"
+		"/key_for_dropbox_СкачатьПапку": {
+			"$ref": "./paths/dropbox/СкачатьПапку.json"
 		},
-		"/key_for_dropbox_GetObjectVersionList": {
-			"$ref": "./paths/dropbox/GetObjectVersionList.json"
+		"/key_for_dropbox_ПолучитьСписокВерсийОбъекта": {
+			"$ref": "./paths/dropbox/ПолучитьСписокВерсийОбъекта.json"
 		},
-		"/key_for_dropbox_RestoreObjectToVersion": {
-			"$ref": "./paths/dropbox/RestoreObjectToVersion.json"
+		"/key_for_dropbox_ВосстановитьОбъектКВерсии": {
+			"$ref": "./paths/dropbox/ВосстановитьОбъектКВерсии.json"
 		},
-		"/key_for_dropbox_GetTagList": {
-			"$ref": "./paths/dropbox/GetTagList.json"
+		"/key_for_dropbox_ПолучитьСписокТегов": {
+			"$ref": "./paths/dropbox/ПолучитьСписокТегов.json"
 		},
-		"/key_for_dropbox_AddTag": {
-			"$ref": "./paths/dropbox/AddTag.json"
+		"/key_for_dropbox_ДобавитьТег": {
+			"$ref": "./paths/dropbox/ДобавитьТег.json"
 		},
-		"/key_for_dropbox_DeleteTag": {
-			"$ref": "./paths/dropbox/DeleteTag.json"
+		"/key_for_dropbox_УдалитьТег": {
+			"$ref": "./paths/dropbox/УдалитьТег.json"
 		},
-		"/key_for_dropbox_PublishFolder": {
-			"$ref": "./paths/dropbox/PublishFolder.json"
+		"/key_for_dropbox_ОпубликоватьПапку": {
+			"$ref": "./paths/dropbox/ОпубликоватьПапку.json"
 		},
-		"/key_for_dropbox_CancelFolderPublication": {
-			"$ref": "./paths/dropbox/CancelFolderPublication.json"
+		"/key_for_dropbox_ОтменитьПубликациюПапки": {
+			"$ref": "./paths/dropbox/ОтменитьПубликациюПапки.json"
 		},
-		"/key_for_dropbox_AddUsersToFile": {
-			"$ref": "./paths/dropbox/AddUsersToFile.json"
+		"/key_for_dropbox_ДобавитьПользователейКФайлу": {
+			"$ref": "./paths/dropbox/ДобавитьПользователейКФайлу.json"
 		},
-		"/key_for_dropbox_AddUsersToFolder": {
-			"$ref": "./paths/dropbox/AddUsersToFolder.json"
+		"/key_for_dropbox_ДобавитьПользователейКПапке": {
+			"$ref": "./paths/dropbox/ДобавитьПользователейКПапке.json"
 		},
-		"/key_for_dropbox_GetAsynchronousChangeStatus": {
-			"$ref": "./paths/dropbox/GetAsynchronousChangeStatus.json"
+		"/key_for_dropbox_ПолучитьСтатусАсинхронногоИзменения": {
+			"$ref": "./paths/dropbox/ПолучитьСтатусАсинхронногоИзменения.json"
 		},
-		"/key_for_dropbox_CancelFilePublication": {
-			"$ref": "./paths/dropbox/CancelFilePublication.json"
+		"/key_for_dropbox_ОтменитьПубликациюФайла": {
+			"$ref": "./paths/dropbox/ОтменитьПубликациюФайла.json"
 		},
-		"/key_for_gcalendar_CreateCalendar": {
-			"$ref": "./paths/gcalendar/CreateCalendar.json"
+		"/key_for_gcalendar_СоздатьКалендарь": {
+			"$ref": "./paths/gcalendar/СоздатьКалендарь.json"
 		},
-		"/key_for_gcalendar_GetCalendarMetadata": {
-			"$ref": "./paths/gcalendar/GetCalendarMetadata.json"
+		"/key_for_gcalendar_ПолучитьМетаданныеКалендаря": {
+			"$ref": "./paths/gcalendar/ПолучитьМетаданныеКалендаря.json"
 		},
-		"/key_for_gcalendar_EditCalendarMetadata": {
-			"$ref": "./paths/gcalendar/EditCalendarMetadata.json"
+		"/key_for_gcalendar_ИзменитьМетаданныеКалендаря": {
+			"$ref": "./paths/gcalendar/ИзменитьМетаданныеКалендаря.json"
 		},
-		"/key_for_gcalendar_ClearMainCalendar": {
-			"$ref": "./paths/gcalendar/ClearMainCalendar.json"
+		"/key_for_gcalendar_ОчиститьОсновнойКалендарь": {
+			"$ref": "./paths/gcalendar/ОчиститьОсновнойКалендарь.json"
 		},
-		"/key_for_gcalendar_DeleteCalendar": {
-			"$ref": "./paths/gcalendar/DeleteCalendar.json"
+		"/key_for_gcalendar_УдалитьКалендарь": {
+			"$ref": "./paths/gcalendar/УдалитьКалендарь.json"
 		},
-		"/key_for_gcalendar_GetCalendarList": {
-			"$ref": "./paths/gcalendar/GetCalendarList.json"
+		"/key_for_gcalendar_ПолучитьСписокКалендарей": {
+			"$ref": "./paths/gcalendar/ПолучитьСписокКалендарей.json"
 		},
-		"/key_for_gcalendar_AddCalendarToList": {
-			"$ref": "./paths/gcalendar/AddCalendarToList.json"
+		"/key_for_gcalendar_ДобавитьКалендарьВСписок": {
+			"$ref": "./paths/gcalendar/ДобавитьКалендарьВСписок.json"
 		},
-		"/key_for_gcalendar_GetListCalendar": {
-			"$ref": "./paths/gcalendar/GetListCalendar.json"
+		"/key_for_gcalendar_ПолучитьКалендарьСписка": {
+			"$ref": "./paths/gcalendar/ПолучитьКалендарьСписка.json"
 		},
-		"/key_for_gcalendar_DeleteCalendarFromList": {
-			"$ref": "./paths/gcalendar/DeleteCalendarFromList.json"
+		"/key_for_gcalendar_УдалитьКалендарьИзСписка": {
+			"$ref": "./paths/gcalendar/УдалитьКалендарьИзСписка.json"
 		},
-		"/key_for_gcalendar_EditListCalendar": {
-			"$ref": "./paths/gcalendar/EditListCalendar.json"
+		"/key_for_gcalendar_ИзменитьКалендарьСписка": {
+			"$ref": "./paths/gcalendar/ИзменитьКалендарьСписка.json"
 		},
-		"/key_for_gcalendar_GetEventDescription": {
-			"$ref": "./paths/gcalendar/GetEventDescription.json"
+		"/key_for_gcalendar_ПолучитьОписаниеСобытия": {
+			"$ref": "./paths/gcalendar/ПолучитьОписаниеСобытия.json"
 		},
-		"/key_for_gcalendar_GetEventList": {
-			"$ref": "./paths/gcalendar/GetEventList.json"
+		"/key_for_gcalendar_ПолучитьСписокСобытий": {
+			"$ref": "./paths/gcalendar/ПолучитьСписокСобытий.json"
 		},
-		"/key_for_gcalendar_GetEvent": {
-			"$ref": "./paths/gcalendar/GetEvent.json"
+		"/key_for_gcalendar_ПолучитьСобытие": {
+			"$ref": "./paths/gcalendar/ПолучитьСобытие.json"
 		},
-		"/key_for_gcalendar_CreateEvent": {
-			"$ref": "./paths/gcalendar/CreateEvent.json"
+		"/key_for_gcalendar_СоздатьСобытие": {
+			"$ref": "./paths/gcalendar/СоздатьСобытие.json"
 		},
-		"/key_for_gcalendar_MoveEvent": {
-			"$ref": "./paths/gcalendar/MoveEvent.json"
+		"/key_for_gcalendar_ПереместитьСобытие": {
+			"$ref": "./paths/gcalendar/ПереместитьСобытие.json"
 		},
-		"/key_for_gcalendar_EditEvent": {
-			"$ref": "./paths/gcalendar/EditEvent.json"
+		"/key_for_gcalendar_ИзменитьСобытие": {
+			"$ref": "./paths/gcalendar/ИзменитьСобытие.json"
 		},
-		"/key_for_gcalendar_DeleteEvent": {
-			"$ref": "./paths/gcalendar/DeleteEvent.json"
+		"/key_for_gcalendar_УдалитьСобытие": {
+			"$ref": "./paths/gcalendar/УдалитьСобытие.json"
 		},
-		"/key_for_gdrive_GetObjectInformation": {
-			"$ref": "./paths/gdrive/GetObjectInformation.json"
+		"/key_for_gdrive_ПолучитьИнформациюОбОбъекте": {
+			"$ref": "./paths/gdrive/ПолучитьИнформациюОбОбъекте.json"
 		},
-		"/key_for_gdrive_GetDirectoriesList": {
-			"$ref": "./paths/gdrive/GetDirectoriesList.json"
+		"/key_for_gdrive_ПолучитьСписокКаталогов": {
+			"$ref": "./paths/gdrive/ПолучитьСписокКаталогов.json"
 		},
-		"/key_for_gdrive_GetFilesList": {
-			"$ref": "./paths/gdrive/GetFilesList.json"
+		"/key_for_gdrive_ПолучитьСписокФайлов": {
+			"$ref": "./paths/gdrive/ПолучитьСписокФайлов.json"
 		},
-		"/key_for_gdrive_UploadFile": {
-			"$ref": "./paths/gdrive/UploadFile.json"
+		"/key_for_gdrive_ЗагрузитьФайл": {
+			"$ref": "./paths/gdrive/ЗагрузитьФайл.json"
 		},
-		"/key_for_gdrive_CreateFolder": {
-			"$ref": "./paths/gdrive/CreateFolder.json"
+		"/key_for_gdrive_СоздатьПапку": {
+			"$ref": "./paths/gdrive/СоздатьПапку.json"
 		},
-		"/key_for_gdrive_DownloadFile": {
-			"$ref": "./paths/gdrive/DownloadFile.json"
+		"/key_for_gdrive_СкачатьФайл": {
+			"$ref": "./paths/gdrive/СкачатьФайл.json"
 		},
-		"/key_for_gdrive_CopyObject": {
-			"$ref": "./paths/gdrive/CopyObject.json"
+		"/key_for_gdrive_СкопироватьОбъект": {
+			"$ref": "./paths/gdrive/СкопироватьОбъект.json"
 		},
-		"/key_for_gdrive_UpdateFile": {
-			"$ref": "./paths/gdrive/UpdateFile.json"
+		"/key_for_gdrive_ОбновитьФайл": {
+			"$ref": "./paths/gdrive/ОбновитьФайл.json"
 		},
-		"/key_for_gdrive_DeleteObject": {
-			"$ref": "./paths/gdrive/DeleteObject.json"
+		"/key_for_gdrive_УдалитьОбъект": {
+			"$ref": "./paths/gdrive/УдалитьОбъект.json"
 		},
-		"/key_for_gdrive_GetFileDescription": {
-			"$ref": "./paths/gdrive/GetFileDescription.json"
+		"/key_for_gdrive_ПолучитьОписаниеФайла": {
+			"$ref": "./paths/gdrive/ПолучитьОписаниеФайла.json"
 		},
-		"/key_for_gdrive_CreateComment": {
-			"$ref": "./paths/gdrive/CreateComment.json"
+		"/key_for_gdrive_СоздатьКомментарий": {
+			"$ref": "./paths/gdrive/СоздатьКомментарий.json"
 		},
-		"/key_for_gdrive_GetComment": {
-			"$ref": "./paths/gdrive/GetComment.json"
+		"/key_for_gdrive_ПолучитьКомментарий": {
+			"$ref": "./paths/gdrive/ПолучитьКомментарий.json"
 		},
-		"/key_for_gdrive_GetCommentList": {
-			"$ref": "./paths/gdrive/GetCommentList.json"
+		"/key_for_gdrive_ПолучитьСписокКомментариев": {
+			"$ref": "./paths/gdrive/ПолучитьСписокКомментариев.json"
 		},
-		"/key_for_gdrive_DeleteComment": {
-			"$ref": "./paths/gdrive/DeleteComment.json"
+		"/key_for_gdrive_УдалитьКомментарий": {
+			"$ref": "./paths/gdrive/УдалитьКомментарий.json"
 		},
-		"/key_for_gsheets_CreateSpreadsheet": {
-			"$ref": "./paths/gsheets/CreateSpreadsheet.json"
+		"/key_for_gsheets_СоздатьКнигу": {
+			"$ref": "./paths/gsheets/СоздатьКнигу.json"
 		},
-		"/key_for_gsheets_GetSpreadsheet": {
-			"$ref": "./paths/gsheets/GetSpreadsheet.json"
+		"/key_for_gsheets_ПолучитьКнигу": {
+			"$ref": "./paths/gsheets/ПолучитьКнигу.json"
 		},
-		"/key_for_gsheets_EditSpreadsheetTitle": {
-			"$ref": "./paths/gsheets/EditSpreadsheetTitle.json"
+		"/key_for_gsheets_ИзменитьНаименованиеКниги": {
+			"$ref": "./paths/gsheets/ИзменитьНаименованиеКниги.json"
 		},
-		"/key_for_gsheets_AddSheet": {
-			"$ref": "./paths/gsheets/AddSheet.json"
+		"/key_for_gsheets_ДобавитьЛист": {
+			"$ref": "./paths/gsheets/ДобавитьЛист.json"
 		},
-		"/key_for_gsheets_DeleteSheet": {
-			"$ref": "./paths/gsheets/DeleteSheet.json"
+		"/key_for_gsheets_УдалитьЛист": {
+			"$ref": "./paths/gsheets/УдалитьЛист.json"
 		},
-		"/key_for_gsheets_CopySheet": {
-			"$ref": "./paths/gsheets/CopySheet.json"
+		"/key_for_gsheets_КопироватьЛист": {
+			"$ref": "./paths/gsheets/КопироватьЛист.json"
 		},
-		"/key_for_gsheets_SetCellValues": {
-			"$ref": "./paths/gsheets/SetCellValues.json"
+		"/key_for_gsheets_УстановитьЗначенияЯчеек": {
+			"$ref": "./paths/gsheets/УстановитьЗначенияЯчеек.json"
 		},
-		"/key_for_gsheets_ClearCells": {
-			"$ref": "./paths/gsheets/ClearCells.json"
+		"/key_for_gsheets_ОчиститьЯчейки": {
+			"$ref": "./paths/gsheets/ОчиститьЯчейки.json"
 		},
-		"/key_for_gsheets_GetCellValues": {
-			"$ref": "./paths/gsheets/GetCellValues.json"
+		"/key_for_gsheets_ПолучитьЗначенияЯчеек": {
+			"$ref": "./paths/gsheets/ПолучитьЗначенияЯчеек.json"
 		},
-		"/key_for_google_FormCodeRetrievalLink": {
-			"$ref": "./paths/google/FormCodeRetrievalLink.json"
+		"/key_for_google_СформироватьСсылкуПолученияКода": {
+			"$ref": "./paths/google/СформироватьСсылкуПолученияКода.json"
 		},
-		"/key_for_google_GetTokenByCode": {
-			"$ref": "./paths/google/GetTokenByCode.json"
+		"/key_for_google_ПолучитьТокенПоКоду": {
+			"$ref": "./paths/google/ПолучитьТокенПоКоду.json"
 		},
-		"/key_for_google_RefreshToken": {
-			"$ref": "./paths/google/RefreshToken.json"
+		"/key_for_google_ОбновитьТокен": {
+			"$ref": "./paths/google/ОбновитьТокен.json"
 		},
-		"/key_for_mongodb_GetListOfBases": {
-			"$ref": "./paths/mongodb/GetListOfBases.json"
+		"/key_for_mongodb_ПолучитьСписокБаз": {
+			"$ref": "./paths/mongodb/ПолучитьСписокБаз.json"
 		},
-		"/key_for_neocities_GetSiteData": {
-			"$ref": "./paths/neocities/GetSiteData.json"
+		"/key_for_neocities_ПолучитьДанныеОСайте": {
+			"$ref": "./paths/neocities/ПолучитьДанныеОСайте.json"
 		},
-		"/key_for_neocities_GetToken": {
-			"$ref": "./paths/neocities/GetToken.json"
+		"/key_for_neocities_ПолучитьТокен": {
+			"$ref": "./paths/neocities/ПолучитьТокен.json"
 		},
-		"/key_for_neocities_UploadFile": {
-			"$ref": "./paths/neocities/UploadFile.json"
+		"/key_for_neocities_ЗагрузитьФайл": {
+			"$ref": "./paths/neocities/ЗагрузитьФайл.json"
 		},
-		"/key_for_neocities_UploadFiles": {
-			"$ref": "./paths/neocities/UploadFiles.json"
+		"/key_for_neocities_ЗагрузитьФайлы": {
+			"$ref": "./paths/neocities/ЗагрузитьФайлы.json"
 		},
-		"/key_for_neocities_DeleteSelectedFiles": {
-			"$ref": "./paths/neocities/DeleteSelectedFiles.json"
+		"/key_for_neocities_УдалитьВыбранныеФайлы": {
+			"$ref": "./paths/neocities/УдалитьВыбранныеФайлы.json"
 		},
-		"/key_for_neocities_GetFilesList": {
-			"$ref": "./paths/neocities/GetFilesList.json"
+		"/key_for_neocities_ПолучитьСписокФайлов": {
+			"$ref": "./paths/neocities/ПолучитьСписокФайлов.json"
 		},
-		"/key_for_neocities_SynchronizeFolders": {
-			"$ref": "./paths/neocities/SynchronizeFolders.json"
+		"/key_for_neocities_СинхронизироватьКаталоги": {
+			"$ref": "./paths/neocities/СинхронизироватьКаталоги.json"
 		},
-		"/key_for_notion_CreatePage": {
-			"$ref": "./paths/notion/CreatePage.json"
+		"/key_for_notion_СоздатьСтраницу": {
+			"$ref": "./paths/notion/СоздатьСтраницу.json"
 		},
-		"/key_for_notion_CreatePageInDatabase": {
-			"$ref": "./paths/notion/CreatePageInDatabase.json"
+		"/key_for_notion_СоздатьСтраницуВБазу": {
+			"$ref": "./paths/notion/СоздатьСтраницуВБазу.json"
 		},
-		"/key_for_notion_GetPage": {
-			"$ref": "./paths/notion/GetPage.json"
+		"/key_for_notion_ПолучитьСтраницу": {
+			"$ref": "./paths/notion/ПолучитьСтраницу.json"
 		},
-		"/key_for_notion_EditPageProperties": {
-			"$ref": "./paths/notion/EditPageProperties.json"
+		"/key_for_notion_ИзменитьСвойстваСтраницы": {
+			"$ref": "./paths/notion/ИзменитьСвойстваСтраницы.json"
 		},
-		"/key_for_notion_CreateDatabase": {
-			"$ref": "./paths/notion/CreateDatabase.json"
+		"/key_for_notion_СоздатьБазуДанных": {
+			"$ref": "./paths/notion/СоздатьБазуДанных.json"
 		},
-		"/key_for_notion_GetDatabase": {
-			"$ref": "./paths/notion/GetDatabase.json"
+		"/key_for_notion_ПолучитьБазуДанных": {
+			"$ref": "./paths/notion/ПолучитьБазуДанных.json"
 		},
-		"/key_for_notion_EditDatabaseProperties": {
-			"$ref": "./paths/notion/EditDatabaseProperties.json"
+		"/key_for_notion_ИзменитьСвойстваБазы": {
+			"$ref": "./paths/notion/ИзменитьСвойстваБазы.json"
 		},
-		"/key_for_notion_CreateBlock": {
-			"$ref": "./paths/notion/CreateBlock.json"
+		"/key_for_notion_СоздатьБлок": {
+			"$ref": "./paths/notion/СоздатьБлок.json"
 		},
-		"/key_for_notion_ReturnBlock": {
-			"$ref": "./paths/notion/ReturnBlock.json"
+		"/key_for_notion_ВернутьБлок": {
+			"$ref": "./paths/notion/ВернутьБлок.json"
 		},
-		"/key_for_notion_ReturnChildBlocks": {
-			"$ref": "./paths/notion/ReturnChildBlocks.json"
+		"/key_for_notion_ВернутьДочерниеБлоки": {
+			"$ref": "./paths/notion/ВернутьДочерниеБлоки.json"
 		},
-		"/key_for_notion_DeleteBlock": {
-			"$ref": "./paths/notion/DeleteBlock.json"
+		"/key_for_notion_УдалитьБлок": {
+			"$ref": "./paths/notion/УдалитьБлок.json"
 		},
-		"/key_for_notion_UserList": {
-			"$ref": "./paths/notion/UserList.json"
+		"/key_for_notion_СписокПользователей": {
+			"$ref": "./paths/notion/СписокПользователей.json"
 		},
-		"/key_for_notion_GetUserData": {
-			"$ref": "./paths/notion/GetUserData.json"
+		"/key_for_notion_ПолучитьДанныеПользователя": {
+			"$ref": "./paths/notion/ПолучитьДанныеПользователя.json"
 		},
-		"/key_for_ozon_GetCategoriesAndProductTypesTree": {
-			"$ref": "./paths/ozon/GetCategoriesAndProductTypesTree.json"
+		"/key_for_ozon_ПолучитьДеревоКатегорийИТиповТоваров": {
+			"$ref": "./paths/ozon/ПолучитьДеревоКатегорийИТиповТоваров.json"
 		},
-		"/key_for_ozon_GetCategoryAttributes": {
-			"$ref": "./paths/ozon/GetCategoryAttributes.json"
+		"/key_for_ozon_ПолучитьХарактеристикиКатегории": {
+			"$ref": "./paths/ozon/ПолучитьХарактеристикиКатегории.json"
 		},
-		"/key_for_ozon_GetAttributeValues": {
-			"$ref": "./paths/ozon/GetAttributeValues.json"
+		"/key_for_ozon_ПолучитьЗначенияХарактеристики": {
+			"$ref": "./paths/ozon/ПолучитьЗначенияХарактеристики.json"
 		},
-		"/key_for_ozon_SearchAttributeValue": {
-			"$ref": "./paths/ozon/SearchAttributeValue.json"
+		"/key_for_ozon_НайтиЗначенияХарактеристики": {
+			"$ref": "./paths/ozon/НайтиЗначенияХарактеристики.json"
 		},
-		"/key_for_ozon_GetProductsRequestsLimits": {
-			"$ref": "./paths/ozon/GetProductsRequestsLimits.json"
+		"/key_for_ozon_ПолучитьЛимитыРаботыСТоварами": {
+			"$ref": "./paths/ozon/ПолучитьЛимитыРаботыСТоварами.json"
 		},
-		"/key_for_ozon_GetProductList": {
-			"$ref": "./paths/ozon/GetProductList.json"
+		"/key_for_ozon_ПолучитьСписокТоваров": {
+			"$ref": "./paths/ozon/ПолучитьСписокТоваров.json"
 		},
-		"/key_for_ozon_GetProductsAttributesData": {
-			"$ref": "./paths/ozon/GetProductsAttributesData.json"
+		"/key_for_ozon_ПолучитьОписанияХарактеристикТоваров": {
+			"$ref": "./paths/ozon/ПолучитьОписанияХарактеристикТоваров.json"
 		},
-		"/key_for_ozon_GetProductsInformation": {
-			"$ref": "./paths/ozon/GetProductsInformation.json"
+		"/key_for_ozon_ПолучитьИнформациюОТоварах": {
+			"$ref": "./paths/ozon/ПолучитьИнформациюОТоварах.json"
 		},
-		"/key_for_ozon_GetProductDescription": {
-			"$ref": "./paths/ozon/GetProductDescription.json"
+		"/key_for_ozon_ПолучитьОписаниеТовара": {
+			"$ref": "./paths/ozon/ПолучитьОписаниеТовара.json"
 		},
-		"/key_for_ozon_GetProductsContentRating": {
-			"$ref": "./paths/ozon/GetProductsContentRating.json"
+		"/key_for_ozon_ПолучитьКонтентРейтингТоваров": {
+			"$ref": "./paths/ozon/ПолучитьКонтентРейтингТоваров.json"
 		},
-		"/key_for_ozon_CreateUpdateProducts": {
-			"$ref": "./paths/ozon/CreateUpdateProducts.json"
+		"/key_for_ozon_СоздатьОбновитьТовары": {
+			"$ref": "./paths/ozon/СоздатьОбновитьТовары.json"
 		},
-		"/key_for_ozon_CreateProductByOzonID": {
-			"$ref": "./paths/ozon/CreateProductByOzonID.json"
+		"/key_for_ozon_СоздатьТоварыПоOzonID": {
+			"$ref": "./paths/ozon/СоздатьТоварыПоOzonID.json"
 		},
-		"/key_for_ozon_UpdateProductsAttributes": {
-			"$ref": "./paths/ozon/UpdateProductsAttributes.json"
+		"/key_for_ozon_ОбновитьХарактеристикиТоваров": {
+			"$ref": "./paths/ozon/ОбновитьХарактеристикиТоваров.json"
 		},
-		"/key_for_ozon_UpdateProductImages": {
-			"$ref": "./paths/ozon/UpdateProductImages.json"
+		"/key_for_ozon_ОбновитьИзображенияТовара": {
+			"$ref": "./paths/ozon/ОбновитьИзображенияТовара.json"
 		},
-		"/key_for_ozon_CheckProductsImagesUpload": {
-			"$ref": "./paths/ozon/CheckProductsImagesUpload.json"
+		"/key_for_ozon_ПроверитьЗагрузкуИзображенийТоваров": {
+			"$ref": "./paths/ozon/ПроверитьЗагрузкуИзображенийТоваров.json"
 		},
-		"/key_for_ozon_UpdateProductsArticles": {
-			"$ref": "./paths/ozon/UpdateProductsArticles.json"
+		"/key_for_ozon_ИзменитьАртикулыТоваров": {
+			"$ref": "./paths/ozon/ИзменитьАртикулыТоваров.json"
 		},
-		"/key_for_ozon_ArchiveProducts": {
-			"$ref": "./paths/ozon/ArchiveProducts.json"
+		"/key_for_ozon_АрхивироватьТовары": {
+			"$ref": "./paths/ozon/АрхивироватьТовары.json"
 		},
-		"/key_for_ozon_UnarchiveProducts": {
-			"$ref": "./paths/ozon/UnarchiveProducts.json"
+		"/key_for_ozon_РазархивироватьТовары": {
+			"$ref": "./paths/ozon/РазархивироватьТовары.json"
 		},
-		"/key_for_ozon_DeleteProductsWithoutSKU": {
-			"$ref": "./paths/ozon/DeleteProductsWithoutSKU.json"
+		"/key_for_ozon_УдалитьТоварыБезSKU": {
+			"$ref": "./paths/ozon/УдалитьТоварыБезSKU.json"
 		},
-		"/key_for_ozon_UploadProductActivationCodes": {
-			"$ref": "./paths/ozon/UploadProductActivationCodes.json"
+		"/key_for_ozon_ЗагрузитьКодыАктивацииТовара": {
+			"$ref": "./paths/ozon/ЗагрузитьКодыАктивацииТовара.json"
 		},
-		"/key_for_ozon_GetProductSubscribersCount": {
-			"$ref": "./paths/ozon/GetProductSubscribersCount.json"
+		"/key_for_ozon_ПолучитьКоличествоПодписчиковТоваров": {
+			"$ref": "./paths/ozon/ПолучитьКоличествоПодписчиковТоваров.json"
 		},
-		"/key_for_ozon_GetRelatedSKUs": {
-			"$ref": "./paths/ozon/GetRelatedSKUs.json"
+		"/key_for_ozon_ПолучитьСвязанныеSKU": {
+			"$ref": "./paths/ozon/ПолучитьСвязанныеSKU.json"
 		},
-		"/key_for_ozon_GetProductCreationStatus": {
-			"$ref": "./paths/ozon/GetProductCreationStatus.json"
+		"/key_for_ozon_ПолучитьСтатусДобавленияТовара": {
+			"$ref": "./paths/ozon/ПолучитьСтатусДобавленияТовара.json"
 		},
-		"/key_for_ozon_GetCodesUploadStatus": {
-			"$ref": "./paths/ozon/GetCodesUploadStatus.json"
+		"/key_for_ozon_ПолучитьСтатусДобавленияКодов": {
+			"$ref": "./paths/ozon/ПолучитьСтатусДобавленияКодов.json"
 		},
-		"/key_for_ozon_GetProductStructure": {
-			"$ref": "./paths/ozon/GetProductStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруТовара": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруТовара.json"
 		},
-		"/key_for_ozon_GetSimplifiedProductStructure": {
-			"$ref": "./paths/ozon/GetSimplifiedProductStructure.json"
+		"/key_for_ozon_ПолучитьСокращеннуюСтруктуруТовара": {
+			"$ref": "./paths/ozon/ПолучитьСокращеннуюСтруктуруТовара.json"
 		},
-		"/key_for_ozon_GetAttributesUpdateStructure": {
-			"$ref": "./paths/ozon/GetAttributesUpdateStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруОбновленияХарактеристик": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруОбновленияХарактеристик.json"
 		},
-		"/key_for_ozon_GetProductsFilterStructure": {
-			"$ref": "./paths/ozon/GetProductsFilterStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруФильтраТоваров": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруФильтраТоваров.json"
 		},
-		"/key_for_ozon_AddProductVideo": {
-			"$ref": "./paths/ozon/AddProductVideo.json"
+		"/key_for_ozon_ДобавитьВидеоТовара": {
+			"$ref": "./paths/ozon/ДобавитьВидеоТовара.json"
 		},
-		"/key_for_ozon_AddProductVideoCover": {
-			"$ref": "./paths/ozon/AddProductVideoCover.json"
+		"/key_for_ozon_ДобавитьВидеообложкуТовара": {
+			"$ref": "./paths/ozon/ДобавитьВидеообложкуТовара.json"
 		},
-		"/key_for_ozon_CompleteComplexAttribute": {
-			"$ref": "./paths/ozon/CompleteComplexAttribute.json"
+		"/key_for_ozon_ДополнитьКомплексныйАтрибут": {
+			"$ref": "./paths/ozon/ДополнитьКомплексныйАтрибут.json"
 		},
-		"/key_for_ozon_BindBarcodes": {
-			"$ref": "./paths/ozon/BindBarcodes.json"
+		"/key_for_ozon_ПривязатьШтрихкоды": {
+			"$ref": "./paths/ozon/ПривязатьШтрихкоды.json"
 		},
-		"/key_for_ozon_CreateBarcodes": {
-			"$ref": "./paths/ozon/CreateBarcodes.json"
+		"/key_for_ozon_СоздатьШтрихкоды": {
+			"$ref": "./paths/ozon/СоздатьШтрихкоды.json"
 		},
-		"/key_for_ozon_GetProductsStocks": {
-			"$ref": "./paths/ozon/GetProductsStocks.json"
+		"/key_for_ozon_ПолучитьКоличествоТоваров": {
+			"$ref": "./paths/ozon/ПолучитьКоличествоТоваров.json"
 		},
-		"/key_for_ozon_GetProductsPrices": {
-			"$ref": "./paths/ozon/GetProductsPrices.json"
+		"/key_for_ozon_ПолучитьЦеныТоваров": {
+			"$ref": "./paths/ozon/ПолучитьЦеныТоваров.json"
 		},
-		"/key_for_ozon_GetDiscountInformation": {
-			"$ref": "./paths/ozon/GetDiscountInformation.json"
+		"/key_for_ozon_ПолучитьИнформациюОбУценке": {
+			"$ref": "./paths/ozon/ПолучитьИнформациюОбУценке.json"
 		},
-		"/key_for_ozon_UpdateProductsStocks": {
-			"$ref": "./paths/ozon/UpdateProductsStocks.json"
+		"/key_for_ozon_ОбновитьКоличествоТоваров": {
+			"$ref": "./paths/ozon/ОбновитьКоличествоТоваров.json"
 		},
-		"/key_for_ozon_UpdateProductsPrices": {
-			"$ref": "./paths/ozon/UpdateProductsPrices.json"
+		"/key_for_ozon_ОбновитьЦеныТоваров": {
+			"$ref": "./paths/ozon/ОбновитьЦеныТоваров.json"
 		},
-		"/key_for_ozon_SetProductDiscount": {
-			"$ref": "./paths/ozon/SetProductDiscount.json"
+		"/key_for_ozon_УстановитьСкидкуНаУцененныйТовар": {
+			"$ref": "./paths/ozon/УстановитьСкидкуНаУцененныйТовар.json"
 		},
-		"/key_for_ozon_GetProductStocksStructure": {
-			"$ref": "./paths/ozon/GetProductStocksStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруОстатковТовара": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруОстатковТовара.json"
 		},
-		"/key_for_ozon_GetProductPriceStructure": {
-			"$ref": "./paths/ozon/GetProductPriceStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруЦеныТовара": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруЦеныТовара.json"
 		},
-		"/key_for_ozon_GetPromotionsList": {
-			"$ref": "./paths/ozon/GetPromotionsList.json"
+		"/key_for_ozon_ПолучитьСписокАкций": {
+			"$ref": "./paths/ozon/ПолучитьСписокАкций.json"
 		},
-		"/key_for_ozon_GetAvailablePromoProducts": {
-			"$ref": "./paths/ozon/GetAvailablePromoProducts.json"
+		"/key_for_ozon_ПолучитьДоступныеТоварыАкции": {
+			"$ref": "./paths/ozon/ПолучитьДоступныеТоварыАкции.json"
 		},
-		"/key_for_ozon_GetCurrentPromoProducts": {
-			"$ref": "./paths/ozon/GetCurrentPromoProducts.json"
+		"/key_for_ozon_ПолучитьУчаствующиеТоварыАкции": {
+			"$ref": "./paths/ozon/ПолучитьУчаствующиеТоварыАкции.json"
 		},
-		"/key_for_ozon_GetWarehousesList": {
-			"$ref": "./paths/ozon/GetWarehousesList.json"
+		"/key_for_ozon_ПолучитьСписокСкладов": {
+			"$ref": "./paths/ozon/ПолучитьСписокСкладов.json"
 		},
-		"/key_for_ozon_GetClustersList": {
-			"$ref": "./paths/ozon/GetClustersList.json"
+		"/key_for_ozon_ПолучитьСписокКластеров": {
+			"$ref": "./paths/ozon/ПолучитьСписокКластеров.json"
 		},
-		"/key_for_ozon_GetShippingWarehousesList": {
-			"$ref": "./paths/ozon/GetShippingWarehousesList.json"
+		"/key_for_ozon_ПолучитьСписокСкладовОтгрузки": {
+			"$ref": "./paths/ozon/ПолучитьСписокСкладовОтгрузки.json"
 		},
-		"/key_for_ozon_GetFBOShipmentsList": {
-			"$ref": "./paths/ozon/GetFBOShipmentsList.json"
+		"/key_for_ozon_ПолучитьСписокОтправленийFBO": {
+			"$ref": "./paths/ozon/ПолучитьСписокОтправленийFBO.json"
 		},
-		"/key_for_ozon_CreateFBODraft": {
-			"$ref": "./paths/ozon/CreateFBODraft.json"
+		"/key_for_ozon_СоздатьЧерновикЗаявкиFBO": {
+			"$ref": "./paths/ozon/СоздатьЧерновикЗаявкиFBO.json"
 		},
-		"/key_for_ozon_GetFBODraft": {
-			"$ref": "./paths/ozon/GetFBODraft.json"
+		"/key_for_ozon_ПолучитьЧерновикЗаявкиFBO": {
+			"$ref": "./paths/ozon/ПолучитьЧерновикЗаявкиFBO.json"
 		},
-		"/key_for_ozon_GetFBOTimeslots": {
-			"$ref": "./paths/ozon/GetFBOTimeslots.json"
+		"/key_for_ozon_ПолучитьТаймслотыFBO": {
+			"$ref": "./paths/ozon/ПолучитьТаймслотыFBO.json"
 		},
-		"/key_for_ozon_GetShipmentAdditionalFields": {
-			"$ref": "./paths/ozon/GetShipmentAdditionalFields.json"
+		"/key_for_ozon_ПолучитьСтруктуруДопПолейОтправления": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруДопПолейОтправления.json"
 		},
-		"/key_for_ozon_GetShipmentsFilterStructure": {
-			"$ref": "./paths/ozon/GetShipmentsFilterStructure.json"
+		"/key_for_ozon_ПолучитьСтруктуруФильтраОтправлений": {
+			"$ref": "./paths/ozon/ПолучитьСтруктуруФильтраОтправлений.json"
 		},
-		"/key_for_s3_GetBasicDataStructure": {
-			"$ref": "./paths/s3/GetBasicDataStructure.json"
+		"/key_for_s3_ПолучитьСтруктуруДанных": {
+			"$ref": "./paths/s3/ПолучитьСтруктуруДанных.json"
 		},
-		"/key_for_s3_SendRequestWithoutBody": {
-			"$ref": "./paths/s3/SendRequestWithoutBody.json"
+		"/key_for_s3_ОтправитьЗапросБезТела": {
+			"$ref": "./paths/s3/ОтправитьЗапросБезТела.json"
 		},
-		"/key_for_s3_SendRequestWithBody": {
-			"$ref": "./paths/s3/SendRequestWithBody.json"
+		"/key_for_s3_ОтправитьЗапросСТелом": {
+			"$ref": "./paths/s3/ОтправитьЗапросСТелом.json"
 		},
-		"/key_for_s3_CreateBucket": {
-			"$ref": "./paths/s3/CreateBucket.json"
+		"/key_for_s3_СоздатьБакет": {
+			"$ref": "./paths/s3/СоздатьБакет.json"
 		},
-		"/key_for_s3_DeleteBucket": {
-			"$ref": "./paths/s3/DeleteBucket.json"
+		"/key_for_s3_УдалитьБакет": {
+			"$ref": "./paths/s3/УдалитьБакет.json"
 		},
-		"/key_for_s3_HeadBucket": {
-			"$ref": "./paths/s3/HeadBucket.json"
+		"/key_for_s3_ПроверитьДоступностьБакета": {
+			"$ref": "./paths/s3/ПроверитьДоступностьБакета.json"
 		},
-		"/key_for_s3_PutBucketEncryption": {
-			"$ref": "./paths/s3/PutBucketEncryption.json"
+		"/key_for_s3_УстановитьШифрованиеБакета": {
+			"$ref": "./paths/s3/УстановитьШифрованиеБакета.json"
 		},
-		"/key_for_s3_GetBucketEncryption": {
-			"$ref": "./paths/s3/GetBucketEncryption.json"
+		"/key_for_s3_ПолучитьШифрованиеБакета": {
+			"$ref": "./paths/s3/ПолучитьШифрованиеБакета.json"
 		},
-		"/key_for_s3_DeleteBucketEncryption": {
-			"$ref": "./paths/s3/DeleteBucketEncryption.json"
+		"/key_for_s3_УдалитьШифрованиеБакета": {
+			"$ref": "./paths/s3/УдалитьШифрованиеБакета.json"
 		},
-		"/key_for_s3_PutBucketTagging": {
-			"$ref": "./paths/s3/PutBucketTagging.json"
+		"/key_for_s3_УстановитьТегиБакета": {
+			"$ref": "./paths/s3/УстановитьТегиБакета.json"
 		},
-		"/key_for_s3_GetBucketTagging": {
-			"$ref": "./paths/s3/GetBucketTagging.json"
+		"/key_for_s3_ПолучитьТегиБакета": {
+			"$ref": "./paths/s3/ПолучитьТегиБакета.json"
 		},
-		"/key_for_s3_DeleteBucketTagging": {
-			"$ref": "./paths/s3/DeleteBucketTagging.json"
+		"/key_for_s3_УдалитьТегиБакета": {
+			"$ref": "./paths/s3/УдалитьТегиБакета.json"
 		},
-		"/key_for_s3_PutBucketVersioning": {
-			"$ref": "./paths/s3/PutBucketVersioning.json"
+		"/key_for_s3_УстановитьНастройкиВерсионированияБакета": {
+			"$ref": "./paths/s3/УстановитьНастройкиВерсионированияБакета.json"
 		},
-		"/key_for_s3_GetBucketVersioning": {
-			"$ref": "./paths/s3/GetBucketVersioning.json"
+		"/key_for_s3_ПолучитьНастройкийВерсионированияБакета": {
+			"$ref": "./paths/s3/ПолучитьНастройкийВерсионированияБакета.json"
 		},
-		"/key_for_s3_ListBuckets": {
-			"$ref": "./paths/s3/ListBuckets.json"
+		"/key_for_s3_ПолучитьСписокБакетов": {
+			"$ref": "./paths/s3/ПолучитьСписокБакетов.json"
 		},
-		"/key_for_s3_PutObject": {
-			"$ref": "./paths/s3/PutObject.json"
+		"/key_for_s3_ЗагрузитьОбъект": {
+			"$ref": "./paths/s3/ЗагрузитьОбъект.json"
 		},
-		"/key_for_s3_UploadFullObject": {
-			"$ref": "./paths/s3/UploadFullObject.json"
+		"/key_for_s3_ЗагрузитьОбъектЦеликом": {
+			"$ref": "./paths/s3/ЗагрузитьОбъектЦеликом.json"
 		},
-		"/key_for_s3_InitPartsUpload": {
-			"$ref": "./paths/s3/InitPartsUpload.json"
+		"/key_for_s3_ИнициализироватьЗагрузкуЧастями": {
+			"$ref": "./paths/s3/ИнициализироватьЗагрузкуЧастями.json"
 		},
-		"/key_for_s3_UploadObjectPart": {
-			"$ref": "./paths/s3/UploadObjectPart.json"
+		"/key_for_s3_ЗагрузитьЧастьОбъекта": {
+			"$ref": "./paths/s3/ЗагрузитьЧастьОбъекта.json"
 		},
-		"/key_for_s3_FinishPartsUpload": {
-			"$ref": "./paths/s3/FinishPartsUpload.json"
+		"/key_for_s3_ЗавершитьЗагрузкуЧастями": {
+			"$ref": "./paths/s3/ЗавершитьЗагрузкуЧастями.json"
 		},
-		"/key_for_s3_AbortMultipartUpload": {
-			"$ref": "./paths/s3/AbortMultipartUpload.json"
+		"/key_for_s3_ОтменитьЗагрузкуЧастями": {
+			"$ref": "./paths/s3/ОтменитьЗагрузкуЧастями.json"
 		},
-		"/key_for_s3_HeadObject": {
-			"$ref": "./paths/s3/HeadObject.json"
+		"/key_for_s3_ПолучитьОписаниеОбъекта": {
+			"$ref": "./paths/s3/ПолучитьОписаниеОбъекта.json"
 		},
-		"/key_for_s3_GetObject": {
-			"$ref": "./paths/s3/GetObject.json"
+		"/key_for_s3_ПолучитьОбъект": {
+			"$ref": "./paths/s3/ПолучитьОбъект.json"
 		},
-		"/key_for_s3_DeleteObject": {
-			"$ref": "./paths/s3/DeleteObject.json"
+		"/key_for_s3_УдалитьОбъект": {
+			"$ref": "./paths/s3/УдалитьОбъект.json"
 		},
-		"/key_for_s3_CopyObject": {
-			"$ref": "./paths/s3/CopyObject.json"
+		"/key_for_s3_КопироватьОбъект": {
+			"$ref": "./paths/s3/КопироватьОбъект.json"
 		},
-		"/key_for_s3_PutObjectTagging": {
-			"$ref": "./paths/s3/PutObjectTagging.json"
+		"/key_for_s3_УстановитьТегиОбъекта": {
+			"$ref": "./paths/s3/УстановитьТегиОбъекта.json"
 		},
-		"/key_for_s3_GetObjectTagging": {
-			"$ref": "./paths/s3/GetObjectTagging.json"
+		"/key_for_s3_ПолучитьТегиОбъекта": {
+			"$ref": "./paths/s3/ПолучитьТегиОбъекта.json"
 		},
-		"/key_for_s3_DeleteObjectTagging": {
-			"$ref": "./paths/s3/DeleteObjectTagging.json"
+		"/key_for_s3_УдалитьТегиОбъекта": {
+			"$ref": "./paths/s3/УдалитьТегиОбъекта.json"
 		},
-		"/key_for_s3_ListObjects": {
-			"$ref": "./paths/s3/ListObjects.json"
+		"/key_for_s3_ПолучитьСписокОбъектов": {
+			"$ref": "./paths/s3/ПолучитьСписокОбъектов.json"
 		},
-		"/key_for_s3_ListObjectVersions": {
-			"$ref": "./paths/s3/ListObjectVersions.json"
+		"/key_for_s3_ПолучитьСписокВерсийОбъектов": {
+			"$ref": "./paths/s3/ПолучитьСписокВерсийОбъектов.json"
 		},
-		"/key_for_s3_GetObjectDownloadLink": {
-			"$ref": "./paths/s3/GetObjectDownloadLink.json"
+		"/key_for_s3_ПолучитьСсылкуСкачиванияОбъекта": {
+			"$ref": "./paths/s3/ПолучитьСсылкуСкачиванияОбъекта.json"
 		},
-		"/key_for_s3_GetObjectUploadLink": {
-			"$ref": "./paths/s3/GetObjectUploadLink.json"
+		"/key_for_s3_ПолучитьСсылкуЗагрузкиОбъекта": {
+			"$ref": "./paths/s3/ПолучитьСсылкуЗагрузкиОбъекта.json"
 		},
-		"/key_for_slack_GetBotInformation": {
-			"$ref": "./paths/slack/GetBotInformation.json"
+		"/key_for_slack_ПолучитьИнформациюОБоте": {
+			"$ref": "./paths/slack/ПолучитьИнформациюОБоте.json"
 		},
-		"/key_for_slack_GetWorkspaceList": {
-			"$ref": "./paths/slack/GetWorkspaceList.json"
+		"/key_for_slack_ПолучитьСписокРабочихОбластей": {
+			"$ref": "./paths/slack/ПолучитьСписокРабочихОбластей.json"
 		},
-		"/key_for_slack_GetUserList": {
-			"$ref": "./paths/slack/GetUserList.json"
+		"/key_for_slack_ПолучитьСписокПользователей": {
+			"$ref": "./paths/slack/ПолучитьСписокПользователей.json"
 		},
-		"/key_for_slack_SendMessage": {
-			"$ref": "./paths/slack/SendMessage.json"
+		"/key_for_slack_ОтправитьСообщение": {
+			"$ref": "./paths/slack/ОтправитьСообщение.json"
 		},
-		"/key_for_slack_SendEphemeralMessage": {
-			"$ref": "./paths/slack/SendEphemeralMessage.json"
+		"/key_for_slack_ОтправитьЭфемерноеСообщение": {
+			"$ref": "./paths/slack/ОтправитьЭфемерноеСообщение.json"
 		},
-		"/key_for_slack_EditMessage": {
-			"$ref": "./paths/slack/EditMessage.json"
+		"/key_for_slack_ИзменитьСообщение": {
+			"$ref": "./paths/slack/ИзменитьСообщение.json"
 		},
-		"/key_for_slack_DeleteMessage": {
-			"$ref": "./paths/slack/DeleteMessage.json"
+		"/key_for_slack_УдалитьСообщение": {
+			"$ref": "./paths/slack/УдалитьСообщение.json"
 		},
-		"/key_for_slack_GetDelayedMessageList": {
-			"$ref": "./paths/slack/GetDelayedMessageList.json"
+		"/key_for_slack_ПолучитьСписокОтложенныхСообщений": {
+			"$ref": "./paths/slack/ПолучитьСписокОтложенныхСообщений.json"
 		},
-		"/key_for_slack_GetMessageLink": {
-			"$ref": "./paths/slack/GetMessageLink.json"
+		"/key_for_slack_ПолучитьСсылкуНаСообщение": {
+			"$ref": "./paths/slack/ПолучитьСсылкуНаСообщение.json"
 		},
-		"/key_for_slack_GetMessageReplyList": {
-			"$ref": "./paths/slack/GetMessageReplyList.json"
+		"/key_for_slack_ПолучитьСписокОтветовНаСообщение": {
+			"$ref": "./paths/slack/ПолучитьСписокОтветовНаСообщение.json"
 		},
-		"/key_for_slack_GetChannelList": {
-			"$ref": "./paths/slack/GetChannelList.json"
+		"/key_for_slack_ПолучитьСписокКаналов": {
+			"$ref": "./paths/slack/ПолучитьСписокКаналов.json"
 		},
-		"/key_for_slack_GetChannelUserList": {
-			"$ref": "./paths/slack/GetChannelUserList.json"
+		"/key_for_slack_ПолучитьСписокПользователейКанала": {
+			"$ref": "./paths/slack/ПолучитьСписокПользователейКанала.json"
 		},
-		"/key_for_slack_CreateChannel": {
-			"$ref": "./paths/slack/CreateChannel.json"
+		"/key_for_slack_СоздатьКанал": {
+			"$ref": "./paths/slack/СоздатьКанал.json"
 		},
-		"/key_for_slack_ArchiveChannel": {
-			"$ref": "./paths/slack/ArchiveChannel.json"
+		"/key_for_slack_АрхивироватьКанал": {
+			"$ref": "./paths/slack/АрхивироватьКанал.json"
 		},
-		"/key_for_slack_GetChannel": {
-			"$ref": "./paths/slack/GetChannel.json"
+		"/key_for_slack_ПолучитьКанал": {
+			"$ref": "./paths/slack/ПолучитьКанал.json"
 		},
-		"/key_for_slack_GetChannelHistory": {
-			"$ref": "./paths/slack/GetChannelHistory.json"
+		"/key_for_slack_ПолучитьИсториюКанала": {
+			"$ref": "./paths/slack/ПолучитьИсториюКанала.json"
 		},
-		"/key_for_slack_InviteUsersToChannel": {
-			"$ref": "./paths/slack/InviteUsersToChannel.json"
+		"/key_for_slack_ПригласитьПользователейВКанал": {
+			"$ref": "./paths/slack/ПригласитьПользователейВКанал.json"
 		},
-		"/key_for_slack_KickUserFromChannel": {
-			"$ref": "./paths/slack/KickUserFromChannel.json"
+		"/key_for_slack_ВыгнатьПользователяИзКанала": {
+			"$ref": "./paths/slack/ВыгнатьПользователяИзКанала.json"
 		},
-		"/key_for_slack_JoinChannel": {
-			"$ref": "./paths/slack/JoinChannel.json"
+		"/key_for_slack_ВступитьВКанал": {
+			"$ref": "./paths/slack/ВступитьВКанал.json"
 		},
-		"/key_for_slack_LeaveChannel": {
-			"$ref": "./paths/slack/LeaveChannel.json"
+		"/key_for_slack_ПокинутьКанал": {
+			"$ref": "./paths/slack/ПокинутьКанал.json"
 		},
-		"/key_for_slack_SetChannelTopic": {
-			"$ref": "./paths/slack/SetChannelTopic.json"
+		"/key_for_slack_УстановитьТемуКанала": {
+			"$ref": "./paths/slack/УстановитьТемуКанала.json"
 		},
-		"/key_for_slack_SetChannelGoal": {
-			"$ref": "./paths/slack/SetChannelGoal.json"
+		"/key_for_slack_УстановитьЦельКанала": {
+			"$ref": "./paths/slack/УстановитьЦельКанала.json"
 		},
-		"/key_for_slack_RenameChannel": {
-			"$ref": "./paths/slack/RenameChannel.json"
+		"/key_for_slack_ПереименоватьКанал": {
+			"$ref": "./paths/slack/ПереименоватьКанал.json"
 		},
-		"/key_for_slack_OpenDialog": {
-			"$ref": "./paths/slack/OpenDialog.json"
+		"/key_for_slack_ОткрытьДиалог": {
+			"$ref": "./paths/slack/ОткрытьДиалог.json"
 		},
-		"/key_for_slack_CloseDialog": {
-			"$ref": "./paths/slack/CloseDialog.json"
+		"/key_for_slack_ЗакрытьДиалог": {
+			"$ref": "./paths/slack/ЗакрытьДиалог.json"
 		},
-		"/key_for_slack_GetFilesList": {
-			"$ref": "./paths/slack/GetFilesList.json"
+		"/key_for_slack_ПолучитьСписокФайлов": {
+			"$ref": "./paths/slack/ПолучитьСписокФайлов.json"
 		},
-		"/key_for_slack_UploadFile": {
-			"$ref": "./paths/slack/UploadFile.json"
+		"/key_for_slack_ЗагрузитьФайл": {
+			"$ref": "./paths/slack/ЗагрузитьФайл.json"
 		},
-		"/key_for_slack_GetFileData": {
-			"$ref": "./paths/slack/GetFileData.json"
+		"/key_for_slack_ПолучитьДанныеФайла": {
+			"$ref": "./paths/slack/ПолучитьДанныеФайла.json"
 		},
-		"/key_for_slack_DeleteFile": {
-			"$ref": "./paths/slack/DeleteFile.json"
+		"/key_for_slack_УдалитьФайл": {
+			"$ref": "./paths/slack/УдалитьФайл.json"
 		},
-		"/key_for_slack_MakeFilePublic": {
-			"$ref": "./paths/slack/MakeFilePublic.json"
+		"/key_for_slack_СделатьФайлПубличным": {
+			"$ref": "./paths/slack/СделатьФайлПубличным.json"
 		},
-		"/key_for_slack_MakeFilePrivate": {
-			"$ref": "./paths/slack/MakeFilePrivate.json"
+		"/key_for_slack_СделатьФайлПриватным": {
+			"$ref": "./paths/slack/СделатьФайлПриватным.json"
 		},
-		"/key_for_slack_GetExternalFileList": {
-			"$ref": "./paths/slack/GetExternalFileList.json"
+		"/key_for_slack_ПолучитьСписокВнешнихФайлов": {
+			"$ref": "./paths/slack/ПолучитьСписокВнешнихФайлов.json"
 		},
-		"/key_for_slack_GetExternalFile": {
-			"$ref": "./paths/slack/GetExternalFile.json"
+		"/key_for_slack_ПолучитьВнешнийФайл": {
+			"$ref": "./paths/slack/ПолучитьВнешнийФайл.json"
 		},
-		"/key_for_slack_AddExternalFile": {
-			"$ref": "./paths/slack/AddExternalFile.json"
+		"/key_for_slack_ДобавитьВнешнийФайл": {
+			"$ref": "./paths/slack/ДобавитьВнешнийФайл.json"
 		},
-		"/key_for_slack_SendExternalFile": {
-			"$ref": "./paths/slack/SendExternalFile.json"
+		"/key_for_slack_ОтправитьВнешнийФайл": {
+			"$ref": "./paths/slack/ОтправитьВнешнийФайл.json"
 		},
-		"/key_for_slack_DeleteExternalFile": {
-			"$ref": "./paths/slack/DeleteExternalFile.json"
+		"/key_for_slack_УдалитьВнешнийФайл": {
+			"$ref": "./paths/slack/УдалитьВнешнийФайл.json"
 		},
-		"/key_for_slack_GenerateImageBlock": {
-			"$ref": "./paths/slack/GenerateImageBlock.json"
+		"/key_for_slack_СформироватьБлокКартинку": {
+			"$ref": "./paths/slack/СформироватьБлокКартинку.json"
 		},
-		"/key_for_sqlite_ExecuteSQLQuery": {
-			"$ref": "./paths/sqlite/ExecuteSQLQuery.json"
+		"/key_for_sqlite_ВыполнитьЗапросSQL": {
+			"$ref": "./paths/sqlite/ВыполнитьЗапросSQL.json"
 		},
-		"/key_for_sqlite_GetTableInformation": {
-			"$ref": "./paths/sqlite/GetTableInformation.json"
+		"/key_for_sqlite_ПолучитьИнформациюОТаблице": {
+			"$ref": "./paths/sqlite/ПолучитьИнформациюОТаблице.json"
 		},
-		"/key_for_sqlite_CreateTable": {
-			"$ref": "./paths/sqlite/CreateTable.json"
+		"/key_for_sqlite_СоздатьТаблицу": {
+			"$ref": "./paths/sqlite/СоздатьТаблицу.json"
 		},
-		"/key_for_sqlite_AddRecords": {
-			"$ref": "./paths/sqlite/AddRecords.json"
+		"/key_for_sqlite_ДобавитьЗаписи": {
+			"$ref": "./paths/sqlite/ДобавитьЗаписи.json"
 		},
-		"/key_for_sqlite_GetRecords": {
-			"$ref": "./paths/sqlite/GetRecords.json"
+		"/key_for_sqlite_ПолучитьЗаписи": {
+			"$ref": "./paths/sqlite/ПолучитьЗаписи.json"
 		},
-		"/key_for_sqlite_UpdateRecords": {
-			"$ref": "./paths/sqlite/UpdateRecords.json"
+		"/key_for_sqlite_ОбновитьЗаписи": {
+			"$ref": "./paths/sqlite/ОбновитьЗаписи.json"
 		},
-		"/key_for_sqlite_DeletePosts": {
-			"$ref": "./paths/sqlite/DeletePosts.json"
+		"/key_for_sqlite_УдалитьЗаписи": {
+			"$ref": "./paths/sqlite/УдалитьЗаписи.json"
 		},
-		"/key_for_sqlite_DeleteTable": {
-			"$ref": "./paths/sqlite/DeleteTable.json"
+		"/key_for_sqlite_УдалитьТаблицу": {
+			"$ref": "./paths/sqlite/УдалитьТаблицу.json"
 		},
-		"/key_for_sqlite_ClearTable": {
-			"$ref": "./paths/sqlite/ClearTable.json"
+		"/key_for_sqlite_ОчиститьТаблицу": {
+			"$ref": "./paths/sqlite/ОчиститьТаблицу.json"
 		},
-		"/key_for_sqlite_GetRecordsFilterStrucutre": {
-			"$ref": "./paths/sqlite/GetRecordsFilterStrucutre.json"
+		"/key_for_sqlite_ПолучитьСтруктуруФильтраЗаписей": {
+			"$ref": "./paths/sqlite/ПолучитьСтруктуруФильтраЗаписей.json"
 		},
-		"/key_for_tcp_ProcessRequest": {
-			"$ref": "./paths/tcp/ProcessRequest.json"
+		"/key_for_tcp_ОбработатьЗапрос": {
+			"$ref": "./paths/tcp/ОбработатьЗапрос.json"
 		},
-		"/key_for_telegram_GetBotInformation": {
-			"$ref": "./paths/telegram/GetBotInformation.json"
+		"/key_for_telegram_ПолучитьИнформациюБота": {
+			"$ref": "./paths/telegram/ПолучитьИнформациюБота.json"
 		},
-		"/key_for_telegram_GetUpdates": {
-			"$ref": "./paths/telegram/GetUpdates.json"
+		"/key_for_telegram_ПолучитьОбновления": {
+			"$ref": "./paths/telegram/ПолучитьОбновления.json"
 		},
-		"/key_for_telegram_SetWebhook": {
-			"$ref": "./paths/telegram/SetWebhook.json"
+		"/key_for_telegram_УстановитьWebhook": {
+			"$ref": "./paths/telegram/УстановитьWebhook.json"
 		},
-		"/key_for_telegram_DeleteWebhook": {
-			"$ref": "./paths/telegram/DeleteWebhook.json"
+		"/key_for_telegram_УдалитьWebhook": {
+			"$ref": "./paths/telegram/УдалитьWebhook.json"
 		},
-		"/key_for_telegram_DownloadFile": {
-			"$ref": "./paths/telegram/DownloadFile.json"
+		"/key_for_telegram_СкачатьФайл": {
+			"$ref": "./paths/telegram/СкачатьФайл.json"
 		},
-		"/key_for_telegram_SendTextMessage": {
-			"$ref": "./paths/telegram/SendTextMessage.json"
+		"/key_for_telegram_ОтправитьТекстовоеСообщение": {
+			"$ref": "./paths/telegram/ОтправитьТекстовоеСообщение.json"
 		},
-		"/key_for_telegram_SendImage": {
-			"$ref": "./paths/telegram/SendImage.json"
+		"/key_for_telegram_ОтправитьКартинку": {
+			"$ref": "./paths/telegram/ОтправитьКартинку.json"
 		},
-		"/key_for_telegram_SendVideo": {
-			"$ref": "./paths/telegram/SendVideo.json"
+		"/key_for_telegram_ОтправитьВидео": {
+			"$ref": "./paths/telegram/ОтправитьВидео.json"
 		},
-		"/key_for_telegram_SendAudio": {
-			"$ref": "./paths/telegram/SendAudio.json"
+		"/key_for_telegram_ОтправитьАудио": {
+			"$ref": "./paths/telegram/ОтправитьАудио.json"
 		},
-		"/key_for_telegram_SendDocument": {
-			"$ref": "./paths/telegram/SendDocument.json"
+		"/key_for_telegram_ОтправитьДокумент": {
+			"$ref": "./paths/telegram/ОтправитьДокумент.json"
 		},
-		"/key_for_telegram_SendGif": {
-			"$ref": "./paths/telegram/SendGif.json"
+		"/key_for_telegram_ОтправитьГифку": {
+			"$ref": "./paths/telegram/ОтправитьГифку.json"
 		},
-		"/key_for_telegram_SendMediaGroup": {
-			"$ref": "./paths/telegram/SendMediaGroup.json"
+		"/key_for_telegram_ОтправитьМедиагруппу": {
+			"$ref": "./paths/telegram/ОтправитьМедиагруппу.json"
 		},
-		"/key_for_telegram_SendLocation": {
-			"$ref": "./paths/telegram/SendLocation.json"
+		"/key_for_telegram_ОтправитьМестоположение": {
+			"$ref": "./paths/telegram/ОтправитьМестоположение.json"
 		},
-		"/key_for_telegram_SendContact": {
-			"$ref": "./paths/telegram/SendContact.json"
+		"/key_for_telegram_ОтправитьКонтакт": {
+			"$ref": "./paths/telegram/ОтправитьКонтакт.json"
 		},
-		"/key_for_telegram_SendPoll": {
-			"$ref": "./paths/telegram/SendPoll.json"
+		"/key_for_telegram_ОтправитьОпрос": {
+			"$ref": "./paths/telegram/ОтправитьОпрос.json"
 		},
-		"/key_for_telegram_ForwardMessage": {
-			"$ref": "./paths/telegram/ForwardMessage.json"
+		"/key_for_telegram_ПереслатьСообщение": {
+			"$ref": "./paths/telegram/ПереслатьСообщение.json"
 		},
-		"/key_for_telegram_DeleteMessage": {
-			"$ref": "./paths/telegram/DeleteMessage.json"
+		"/key_for_telegram_УдалитьСообщение": {
+			"$ref": "./paths/telegram/УдалитьСообщение.json"
 		},
-		"/key_for_telegram_ReplaceMessageKeyboard": {
-			"$ref": "./paths/telegram/ReplaceMessageKeyboard.json"
+		"/key_for_telegram_ЗаменитьКлавиатуруСообщения": {
+			"$ref": "./paths/telegram/ЗаменитьКлавиатуруСообщения.json"
 		},
-		"/key_for_telegram_ReplaceMessageText": {
-			"$ref": "./paths/telegram/ReplaceMessageText.json"
+		"/key_for_telegram_ЗаменитьТекстСообщения": {
+			"$ref": "./paths/telegram/ЗаменитьТекстСообщения.json"
 		},
-		"/key_for_telegram_ReplaceMessageCaption": {
-			"$ref": "./paths/telegram/ReplaceMessageCaption.json"
+		"/key_for_telegram_ЗаменитьОписаниеСообщения": {
+			"$ref": "./paths/telegram/ЗаменитьОписаниеСообщения.json"
 		},
-		"/key_for_telegram_FormKeyboardFromButtonArray": {
-			"$ref": "./paths/telegram/FormKeyboardFromButtonArray.json"
+		"/key_for_telegram_СформироватьКлавиатуруПоМассивуКнопок": {
+			"$ref": "./paths/telegram/СформироватьКлавиатуруПоМассивуКнопок.json"
 		},
-		"/key_for_telegram_Ban": {
-			"$ref": "./paths/telegram/Ban.json"
+		"/key_for_telegram_Бан": {
+			"$ref": "./paths/telegram/Бан.json"
 		},
-		"/key_for_telegram_Unban": {
-			"$ref": "./paths/telegram/Unban.json"
+		"/key_for_telegram_Разбан": {
+			"$ref": "./paths/telegram/Разбан.json"
 		},
-		"/key_for_telegram_CreateInvitationLink": {
-			"$ref": "./paths/telegram/CreateInvitationLink.json"
+		"/key_for_telegram_СоздатьСсылкуПриглашение": {
+			"$ref": "./paths/telegram/СоздатьСсылкуПриглашение.json"
 		},
-		"/key_for_telegram_PinMessage": {
-			"$ref": "./paths/telegram/PinMessage.json"
+		"/key_for_telegram_ЗакрепитьСообщение": {
+			"$ref": "./paths/telegram/ЗакрепитьСообщение.json"
 		},
-		"/key_for_telegram_UnpinMessage": {
-			"$ref": "./paths/telegram/UnpinMessage.json"
+		"/key_for_telegram_ОткрепитьСообщение": {
+			"$ref": "./paths/telegram/ОткрепитьСообщение.json"
 		},
-		"/key_for_telegram_GetParticipantCount": {
-			"$ref": "./paths/telegram/GetParticipantCount.json"
+		"/key_for_telegram_ПолучитьЧислоУчастников": {
+			"$ref": "./paths/telegram/ПолучитьЧислоУчастников.json"
 		},
-		"/key_for_telegram_GetAvatarIconList": {
-			"$ref": "./paths/telegram/GetAvatarIconList.json"
+		"/key_for_telegram_ПолучитьСписокИконокАватаров": {
+			"$ref": "./paths/telegram/ПолучитьСписокИконокАватаров.json"
 		},
-		"/key_for_telegram_CreateForumThread": {
-			"$ref": "./paths/telegram/CreateForumThread.json"
+		"/key_for_telegram_СоздатьТемуФорума": {
+			"$ref": "./paths/telegram/СоздатьТемуФорума.json"
 		},
-		"/key_for_telegram_EditForumTopic": {
-			"$ref": "./paths/telegram/EditForumTopic.json"
+		"/key_for_telegram_ИзменитьТемуФорума": {
+			"$ref": "./paths/telegram/ИзменитьТемуФорума.json"
 		},
-		"/key_for_telegram_CloseForumThread": {
-			"$ref": "./paths/telegram/CloseForumThread.json"
+		"/key_for_telegram_ЗакрытьТемуФорума": {
+			"$ref": "./paths/telegram/ЗакрытьТемуФорума.json"
 		},
-		"/key_for_telegram_OpenForumThread": {
-			"$ref": "./paths/telegram/OpenForumThread.json"
+		"/key_for_telegram_ОткрытьТемуФорума": {
+			"$ref": "./paths/telegram/ОткрытьТемуФорума.json"
 		},
-		"/key_for_telegram_DeleteForumTopic": {
-			"$ref": "./paths/telegram/DeleteForumTopic.json"
+		"/key_for_telegram_УдалитьТемуФорума": {
+			"$ref": "./paths/telegram/УдалитьТемуФорума.json"
 		},
-		"/key_for_telegram_HideMainForumTopic": {
-			"$ref": "./paths/telegram/HideMainForumTopic.json"
+		"/key_for_telegram_СкрытьГлавнуюТемуФорума": {
+			"$ref": "./paths/telegram/СкрытьГлавнуюТемуФорума.json"
 		},
-		"/key_for_telegram_ShowMainForumTopic": {
-			"$ref": "./paths/telegram/ShowMainForumTopic.json"
+		"/key_for_telegram_ПоказатьГлавнуюТемуФорума": {
+			"$ref": "./paths/telegram/ПоказатьГлавнуюТемуФорума.json"
 		},
-		"/key_for_telegram_EditMainForumTopicName": {
-			"$ref": "./paths/telegram/EditMainForumTopicName.json"
+		"/key_for_telegram_ИзменитьИмяГлавнойТемыФорума": {
+			"$ref": "./paths/telegram/ИзменитьИмяГлавнойТемыФорума.json"
 		},
-		"/key_for_telegram_ClearThreadPinnedMessagesList": {
-			"$ref": "./paths/telegram/ClearThreadPinnedMessagesList.json"
+		"/key_for_telegram_ОчиститьСписокЗакрепленныхСообщенийТемы": {
+			"$ref": "./paths/telegram/ОчиститьСписокЗакрепленныхСообщенийТемы.json"
 		},
-		"/key_for_twitter_GetAuthorizationLink": {
-			"$ref": "./paths/twitter/GetAuthorizationLink.json"
+		"/key_for_twitter_ПолучитьСсылкуАвторизации": {
+			"$ref": "./paths/twitter/ПолучитьСсылкуАвторизации.json"
 		},
-		"/key_for_twitter_GetToken": {
-			"$ref": "./paths/twitter/GetToken.json"
+		"/key_for_twitter_ПолучитьТокен": {
+			"$ref": "./paths/twitter/ПолучитьТокен.json"
 		},
-		"/key_for_twitter_RefreshToken": {
-			"$ref": "./paths/twitter/RefreshToken.json"
+		"/key_for_twitter_ОбновитьТокен": {
+			"$ref": "./paths/twitter/ОбновитьТокен.json"
 		},
-		"/key_for_twitter_CreateCustomTweet": {
-			"$ref": "./paths/twitter/CreateCustomTweet.json"
+		"/key_for_twitter_СоздатьПроизвольныйТвит": {
+			"$ref": "./paths/twitter/СоздатьПроизвольныйТвит.json"
 		},
-		"/key_for_twitter_CreateTextTweet": {
-			"$ref": "./paths/twitter/CreateTextTweet.json"
+		"/key_for_twitter_СоздатьТекстовыйТвит": {
+			"$ref": "./paths/twitter/СоздатьТекстовыйТвит.json"
 		},
-		"/key_for_twitter_CreateImageTweet": {
-			"$ref": "./paths/twitter/CreateImageTweet.json"
+		"/key_for_twitter_СоздатьТвитКартинки": {
+			"$ref": "./paths/twitter/СоздатьТвитКартинки.json"
 		},
-		"/key_for_twitter_CreateGifTweet": {
-			"$ref": "./paths/twitter/CreateGifTweet.json"
+		"/key_for_twitter_СоздатьТвитГифки": {
+			"$ref": "./paths/twitter/СоздатьТвитГифки.json"
 		},
-		"/key_for_twitter_CreateVideoTweet": {
-			"$ref": "./paths/twitter/CreateVideoTweet.json"
+		"/key_for_twitter_СоздатьТвитВидео": {
+			"$ref": "./paths/twitter/СоздатьТвитВидео.json"
 		},
-		"/key_for_twitter_CreatePollTweet": {
-			"$ref": "./paths/twitter/CreatePollTweet.json"
+		"/key_for_twitter_СоздатьТвитОпрос": {
+			"$ref": "./paths/twitter/СоздатьТвитОпрос.json"
 		},
-		"/key_for_twitter_UploadAttachmentsArray": {
-			"$ref": "./paths/twitter/UploadAttachmentsArray.json"
+		"/key_for_twitter_ЗагрузитьМассивВложений": {
+			"$ref": "./paths/twitter/ЗагрузитьМассивВложений.json"
 		},
-		"/key_for_viber_SetWebhook": {
-			"$ref": "./paths/viber/SetWebhook.json"
+		"/key_for_viber_УстановитьWebhook": {
+			"$ref": "./paths/viber/УстановитьWebhook.json"
 		},
-		"/key_for_viber_GetChannelInformation": {
-			"$ref": "./paths/viber/GetChannelInformation.json"
+		"/key_for_viber_ПолучитьИнформациюОКанале": {
+			"$ref": "./paths/viber/ПолучитьИнформациюОКанале.json"
 		},
-		"/key_for_viber_GetUserData": {
-			"$ref": "./paths/viber/GetUserData.json"
+		"/key_for_viber_ПолучитьДанныеПользователя": {
+			"$ref": "./paths/viber/ПолучитьДанныеПользователя.json"
 		},
-		"/key_for_viber_GetOnlineUsers": {
-			"$ref": "./paths/viber/GetOnlineUsers.json"
+		"/key_for_viber_ПолучитьОнлайнПользователей": {
+			"$ref": "./paths/viber/ПолучитьОнлайнПользователей.json"
 		},
-		"/key_for_viber_SendTextMessage": {
-			"$ref": "./paths/viber/SendTextMessage.json"
+		"/key_for_viber_ОтправитьТекстовоеСообщение": {
+			"$ref": "./paths/viber/ОтправитьТекстовоеСообщение.json"
 		},
-		"/key_for_viber_SendImage": {
-			"$ref": "./paths/viber/SendImage.json"
+		"/key_for_viber_ОтправитьКартинку": {
+			"$ref": "./paths/viber/ОтправитьКартинку.json"
 		},
-		"/key_for_viber_SendFile": {
-			"$ref": "./paths/viber/SendFile.json"
+		"/key_for_viber_ОтправитьФайл": {
+			"$ref": "./paths/viber/ОтправитьФайл.json"
 		},
-		"/key_for_viber_SendContact": {
-			"$ref": "./paths/viber/SendContact.json"
+		"/key_for_viber_ОтправитьКонтакт": {
+			"$ref": "./paths/viber/ОтправитьКонтакт.json"
 		},
-		"/key_for_viber_SendLocation": {
-			"$ref": "./paths/viber/SendLocation.json"
+		"/key_for_viber_ОтправитьЛокацию": {
+			"$ref": "./paths/viber/ОтправитьЛокацию.json"
 		},
-		"/key_for_viber_SendLink": {
-			"$ref": "./paths/viber/SendLink.json"
+		"/key_for_viber_ОтправитьСсылку": {
+			"$ref": "./paths/viber/ОтправитьСсылку.json"
 		},
-		"/key_for_viber_CreateKeyboardFromArrayButton": {
-			"$ref": "./paths/viber/CreateKeyboardFromArrayButton.json"
+		"/key_for_viber_СформироватьКлавиатуруИзМассиваКнопок": {
+			"$ref": "./paths/viber/СформироватьКлавиатуруИзМассиваКнопок.json"
 		},
-		"/key_for_vk_CreateTokenRetrievalLink": {
-			"$ref": "./paths/vk/CreateTokenRetrievalLink.json"
+		"/key_for_vk_СоздатьСсылкуПолученияТокена": {
+			"$ref": "./paths/vk/СоздатьСсылкуПолученияТокена.json"
 		},
-		"/key_for_vk_CreatePost": {
-			"$ref": "./paths/vk/CreatePost.json"
+		"/key_for_vk_СоздатьПост": {
+			"$ref": "./paths/vk/СоздатьПост.json"
 		},
-		"/key_for_vk_CreateCompositePost": {
-			"$ref": "./paths/vk/CreateCompositePost.json"
+		"/key_for_vk_СоздатьСоставнойПост": {
+			"$ref": "./paths/vk/СоздатьСоставнойПост.json"
 		},
-		"/key_for_vk_DeletePost": {
-			"$ref": "./paths/vk/DeletePost.json"
+		"/key_for_vk_УдалитьПост": {
+			"$ref": "./paths/vk/УдалитьПост.json"
 		},
-		"/key_for_vk_CreatePoll": {
-			"$ref": "./paths/vk/CreatePoll.json"
+		"/key_for_vk_СоздатьОпрос": {
+			"$ref": "./paths/vk/СоздатьОпрос.json"
 		},
-		"/key_for_vk_CreateAlbum": {
-			"$ref": "./paths/vk/CreateAlbum.json"
+		"/key_for_vk_СоздатьАльбом": {
+			"$ref": "./paths/vk/СоздатьАльбом.json"
 		},
-		"/key_for_vk_DeleteAlbum": {
-			"$ref": "./paths/vk/DeleteAlbum.json"
+		"/key_for_vk_УдалитьАльбом": {
+			"$ref": "./paths/vk/УдалитьАльбом.json"
 		},
-		"/key_for_vk_CreateStory": {
-			"$ref": "./paths/vk/CreateStory.json"
+		"/key_for_vk_СоздатьИсторию": {
+			"$ref": "./paths/vk/СоздатьИсторию.json"
 		},
-		"/key_for_vk_SaveImageToAlbum": {
-			"$ref": "./paths/vk/SaveImageToAlbum.json"
+		"/key_for_vk_СохранитьКартинкуВАльбом": {
+			"$ref": "./paths/vk/СохранитьКартинкуВАльбом.json"
 		},
-		"/key_for_vk_DeleteImage": {
-			"$ref": "./paths/vk/DeleteImage.json"
+		"/key_for_vk_УдалитьКартинку": {
+			"$ref": "./paths/vk/УдалитьКартинку.json"
 		},
-		"/key_for_vk_UploadVideoToServer": {
-			"$ref": "./paths/vk/UploadVideoToServer.json"
+		"/key_for_vk_ЗагрузитьВидеоНаСервер": {
+			"$ref": "./paths/vk/ЗагрузитьВидеоНаСервер.json"
 		},
-		"/key_for_vk_UploadPhotoToServer": {
-			"$ref": "./paths/vk/UploadPhotoToServer.json"
+		"/key_for_vk_ЗагрузитьФотоНаСервер": {
+			"$ref": "./paths/vk/ЗагрузитьФотоНаСервер.json"
 		},
-		"/key_for_vk_CreateDiscussion": {
-			"$ref": "./paths/vk/CreateDiscussion.json"
+		"/key_for_vk_СоздатьОбсуждение": {
+			"$ref": "./paths/vk/СоздатьОбсуждение.json"
 		},
-		"/key_for_vk_CloseDiscussion": {
-			"$ref": "./paths/vk/CloseDiscussion.json"
+		"/key_for_vk_ЗакрытьОбсуждение": {
+			"$ref": "./paths/vk/ЗакрытьОбсуждение.json"
 		},
-		"/key_for_vk_OpenDiscussion": {
-			"$ref": "./paths/vk/OpenDiscussion.json"
+		"/key_for_vk_ОткрытьОбсуждение": {
+			"$ref": "./paths/vk/ОткрытьОбсуждение.json"
 		},
-		"/key_for_vk_WriteInDiscussion": {
-			"$ref": "./paths/vk/WriteInDiscussion.json"
+		"/key_for_vk_НаписатьВОбсуждение": {
+			"$ref": "./paths/vk/НаписатьВОбсуждение.json"
 		},
-		"/key_for_vk_LikePost": {
-			"$ref": "./paths/vk/LikePost.json"
+		"/key_for_vk_ПоставитьЛайк": {
+			"$ref": "./paths/vk/ПоставитьЛайк.json"
 		},
-		"/key_for_vk_MakeRepost": {
-			"$ref": "./paths/vk/MakeRepost.json"
+		"/key_for_vk_СделатьРепост": {
+			"$ref": "./paths/vk/СделатьРепост.json"
 		},
-		"/key_for_vk_WriteMessage": {
-			"$ref": "./paths/vk/WriteMessage.json"
+		"/key_for_vk_НаписатьСообщение": {
+			"$ref": "./paths/vk/НаписатьСообщение.json"
 		},
-		"/key_for_vk_WriteComment": {
-			"$ref": "./paths/vk/WriteComment.json"
+		"/key_for_vk_НаписатьКомментарий": {
+			"$ref": "./paths/vk/НаписатьКомментарий.json"
 		},
-		"/key_for_vk_ShortenLink": {
-			"$ref": "./paths/vk/ShortenLink.json"
+		"/key_for_vk_СократитьСсылку": {
+			"$ref": "./paths/vk/СократитьСсылку.json"
 		},
-		"/key_for_vk_GetStatistics": {
-			"$ref": "./paths/vk/GetStatistics.json"
+		"/key_for_vk_ПолучитьСтатистику": {
+			"$ref": "./paths/vk/ПолучитьСтатистику.json"
 		},
-		"/key_for_vk_GetPostStatistics": {
-			"$ref": "./paths/vk/GetPostStatistics.json"
+		"/key_for_vk_ПолучитьСтатистикуПостов": {
+			"$ref": "./paths/vk/ПолучитьСтатистикуПостов.json"
 		},
-		"/key_for_vk_CreateAdvertisingCampaign": {
-			"$ref": "./paths/vk/CreateAdvertisingCampaign.json"
+		"/key_for_vk_СоздатьРекламнуюКампанию": {
+			"$ref": "./paths/vk/СоздатьРекламнуюКампанию.json"
 		},
-		"/key_for_vk_CreateAd": {
-			"$ref": "./paths/vk/CreateAd.json"
+		"/key_for_vk_СоздатьРекламноеОбъявление": {
+			"$ref": "./paths/vk/СоздатьРекламноеОбъявление.json"
 		},
-		"/key_for_vk_PauseAdvertising": {
-			"$ref": "./paths/vk/PauseAdvertising.json"
+		"/key_for_vk_ПриостановитьРекламноеОбъявление": {
+			"$ref": "./paths/vk/ПриостановитьРекламноеОбъявление.json"
 		},
-		"/key_for_vk_GetAdvertisingCategoryList": {
-			"$ref": "./paths/vk/GetAdvertisingCategoryList.json"
+		"/key_for_vk_ПолучитьСписокРекламныхКатегорий": {
+			"$ref": "./paths/vk/ПолучитьСписокРекламныхКатегорий.json"
 		},
-		"/key_for_vk_GetProductCategoryList": {
-			"$ref": "./paths/vk/GetProductCategoryList.json"
+		"/key_for_vk_ПолучитьСписокКатегорийТоваров": {
+			"$ref": "./paths/vk/ПолучитьСписокКатегорийТоваров.json"
 		},
-		"/key_for_vk_GetProductList": {
-			"$ref": "./paths/vk/GetProductList.json"
+		"/key_for_vk_ПолучитьСписокТоваров": {
+			"$ref": "./paths/vk/ПолучитьСписокТоваров.json"
 		},
-		"/key_for_vk_GetProductsByID": {
-			"$ref": "./paths/vk/GetProductsByID.json"
+		"/key_for_vk_ПолучитьТоварыПоИД": {
+			"$ref": "./paths/vk/ПолучитьТоварыПоИД.json"
 		},
-		"/key_for_vk_AddProduct": {
-			"$ref": "./paths/vk/AddProduct.json"
+		"/key_for_vk_ДобавитьТовар": {
+			"$ref": "./paths/vk/ДобавитьТовар.json"
 		},
-		"/key_for_vk_EditProduct": {
-			"$ref": "./paths/vk/EditProduct.json"
+		"/key_for_vk_ИзменитьТовар": {
+			"$ref": "./paths/vk/ИзменитьТовар.json"
 		},
-		"/key_for_vk_DeleteProduct": {
-			"$ref": "./paths/vk/DeleteProduct.json"
+		"/key_for_vk_УдалитьТовар": {
+			"$ref": "./paths/vk/УдалитьТовар.json"
 		},
-		"/key_for_vk_GroupProducts": {
-			"$ref": "./paths/vk/GroupProducts.json"
+		"/key_for_vk_СгруппироватьТовары": {
+			"$ref": "./paths/vk/СгруппироватьТовары.json"
 		},
-		"/key_for_vk_GetProductDescription": {
-			"$ref": "./paths/vk/GetProductDescription.json"
+		"/key_for_vk_ПолучитьОписаниеТовара": {
+			"$ref": "./paths/vk/ПолучитьОписаниеТовара.json"
 		},
-		"/key_for_vk_GetSelectionList": {
-			"$ref": "./paths/vk/GetSelectionList.json"
+		"/key_for_vk_ПолучитьСписокПодборок": {
+			"$ref": "./paths/vk/ПолучитьСписокПодборок.json"
 		},
-		"/key_for_vk_GetSelectionsByID": {
-			"$ref": "./paths/vk/GetSelectionsByID.json"
+		"/key_for_vk_ПолучитьПодборкиПоИД": {
+			"$ref": "./paths/vk/ПолучитьПодборкиПоИД.json"
 		},
-		"/key_for_vk_CreateProductCollection": {
-			"$ref": "./paths/vk/CreateProductCollection.json"
+		"/key_for_vk_СоздатьПодборкуТоваров": {
+			"$ref": "./paths/vk/СоздатьПодборкуТоваров.json"
 		},
-		"/key_for_vk_EditProductCollection": {
-			"$ref": "./paths/vk/EditProductCollection.json"
+		"/key_for_vk_ИзменитьПодборкуТоваров": {
+			"$ref": "./paths/vk/ИзменитьПодборкуТоваров.json"
 		},
-		"/key_for_vk_AddProductToCollection": {
-			"$ref": "./paths/vk/AddProductToCollection.json"
+		"/key_for_vk_ДобавитьТоварВПодборку": {
+			"$ref": "./paths/vk/ДобавитьТоварВПодборку.json"
 		},
-		"/key_for_vk_RemoveProductFromSelection": {
-			"$ref": "./paths/vk/RemoveProductFromSelection.json"
+		"/key_for_vk_УдалитьТоварИзПодборки": {
+			"$ref": "./paths/vk/УдалитьТоварИзПодборки.json"
 		},
-		"/key_for_vk_DeleteSelection": {
-			"$ref": "./paths/vk/DeleteSelection.json"
+		"/key_for_vk_УдалитьПодборку": {
+			"$ref": "./paths/vk/УдалитьПодборку.json"
 		},
-		"/key_for_vk_GetPropertyList": {
-			"$ref": "./paths/vk/GetPropertyList.json"
+		"/key_for_vk_ПолучитьСписокСвойств": {
+			"$ref": "./paths/vk/ПолучитьСписокСвойств.json"
 		},
-		"/key_for_vk_CreateProductProperty": {
-			"$ref": "./paths/vk/CreateProductProperty.json"
+		"/key_for_vk_СоздатьСвойствоТовара": {
+			"$ref": "./paths/vk/СоздатьСвойствоТовара.json"
 		},
-		"/key_for_vk_EditProductProperty": {
-			"$ref": "./paths/vk/EditProductProperty.json"
+		"/key_for_vk_ИзменитьСвойствоТовара": {
+			"$ref": "./paths/vk/ИзменитьСвойствоТовара.json"
 		},
-		"/key_for_vk_DeleteProductProperty": {
-			"$ref": "./paths/vk/DeleteProductProperty.json"
+		"/key_for_vk_УдалитьСвойствоТовара": {
+			"$ref": "./paths/vk/УдалитьСвойствоТовара.json"
 		},
-		"/key_for_vk_AddProductPropertyVariant": {
-			"$ref": "./paths/vk/AddProductPropertyVariant.json"
+		"/key_for_vk_ДобавитьВариантСвойстваТовара": {
+			"$ref": "./paths/vk/ДобавитьВариантСвойстваТовара.json"
 		},
-		"/key_for_vk_EditProductPropertyVariant": {
-			"$ref": "./paths/vk/EditProductPropertyVariant.json"
+		"/key_for_vk_ИзменитьВариантСвойстваТовара": {
+			"$ref": "./paths/vk/ИзменитьВариантСвойстваТовара.json"
 		},
-		"/key_for_vk_DeleteProductPropertyVariant": {
-			"$ref": "./paths/vk/DeleteProductPropertyVariant.json"
+		"/key_for_vk_УдалитьВариантСвойстваТовара": {
+			"$ref": "./paths/vk/УдалитьВариантСвойстваТовара.json"
 		},
-		"/key_for_vk_GetOrderList": {
-			"$ref": "./paths/vk/GetOrderList.json"
+		"/key_for_vk_ПолучитьСписокЗаказов": {
+			"$ref": "./paths/vk/ПолучитьСписокЗаказов.json"
 		},
-		"/key_for_vk_FormKeyboard": {
-			"$ref": "./paths/vk/FormKeyboard.json"
+		"/key_for_vk_СформироватьКлавиатуру": {
+			"$ref": "./paths/vk/СформироватьКлавиатуру.json"
 		},
-		"/key_for_vkteams_CheckToken": {
-			"$ref": "./paths/vkteams/CheckToken.json"
+		"/key_for_vkteams_ПроверитьТокен": {
+			"$ref": "./paths/vkteams/ПроверитьТокен.json"
 		},
-		"/key_for_vkteams_GetEvents": {
-			"$ref": "./paths/vkteams/GetEvents.json"
+		"/key_for_vkteams_ПолучитьСобытия": {
+			"$ref": "./paths/vkteams/ПолучитьСобытия.json"
 		},
-		"/key_for_vkteams_GetFileInformation": {
-			"$ref": "./paths/vkteams/GetFileInformation.json"
+		"/key_for_vkteams_ПолучитьИнформациюОФайле": {
+			"$ref": "./paths/vkteams/ПолучитьИнформациюОФайле.json"
 		},
-		"/key_for_vkteams_SendTextMessage": {
-			"$ref": "./paths/vkteams/SendTextMessage.json"
+		"/key_for_vkteams_ОтправитьТекстовоеСообщение": {
+			"$ref": "./paths/vkteams/ОтправитьТекстовоеСообщение.json"
 		},
-		"/key_for_vkteams_SendFile": {
-			"$ref": "./paths/vkteams/SendFile.json"
+		"/key_for_vkteams_ОтправитьФайл": {
+			"$ref": "./paths/vkteams/ОтправитьФайл.json"
 		},
-		"/key_for_vkteams_SendVoice": {
-			"$ref": "./paths/vkteams/SendVoice.json"
+		"/key_for_vkteams_ОтправитьГолосовоеСообщение": {
+			"$ref": "./paths/vkteams/ОтправитьГолосовоеСообщение.json"
 		},
-		"/key_for_vkteams_EditMessageText": {
-			"$ref": "./paths/vkteams/EditMessageText.json"
+		"/key_for_vkteams_ИзменитьТекстСообщения": {
+			"$ref": "./paths/vkteams/ИзменитьТекстСообщения.json"
 		},
-		"/key_for_vkteams_DeleteMessage": {
-			"$ref": "./paths/vkteams/DeleteMessage.json"
+		"/key_for_vkteams_УдалитьСообщение": {
+			"$ref": "./paths/vkteams/УдалитьСообщение.json"
 		},
-		"/key_for_vkteams_ResendFile": {
-			"$ref": "./paths/vkteams/ResendFile.json"
+		"/key_for_vkteams_ПереслатьФайл": {
+			"$ref": "./paths/vkteams/ПереслатьФайл.json"
 		},
-		"/key_for_vkteams_ResendVoice": {
-			"$ref": "./paths/vkteams/ResendVoice.json"
+		"/key_for_vkteams_ПереслатьГолосовоеСообщение": {
+			"$ref": "./paths/vkteams/ПереслатьГолосовоеСообщение.json"
 		},
-		"/key_for_vkteams_ForwardMessage": {
-			"$ref": "./paths/vkteams/ForwardMessage.json"
+		"/key_for_vkteams_ПереслатьСообщение": {
+			"$ref": "./paths/vkteams/ПереслатьСообщение.json"
 		},
-		"/key_for_vkteams_PinMessage": {
-			"$ref": "./paths/vkteams/PinMessage.json"
+		"/key_for_vkteams_ЗакрепитьСообщение": {
+			"$ref": "./paths/vkteams/ЗакрепитьСообщение.json"
 		},
-		"/key_for_vkteams_UnpinMessage": {
-			"$ref": "./paths/vkteams/UnpinMessage.json"
+		"/key_for_vkteams_ОткрепитьСообщение": {
+			"$ref": "./paths/vkteams/ОткрепитьСообщение.json"
 		},
-		"/key_for_vkteams_AnswerButtonEvent": {
-			"$ref": "./paths/vkteams/AnswerButtonEvent.json"
+		"/key_for_vkteams_ОтветитьНаСобытиеКлавиатуры": {
+			"$ref": "./paths/vkteams/ОтветитьНаСобытиеКлавиатуры.json"
 		},
-		"/key_for_vkteams_MakeActionButton": {
-			"$ref": "./paths/vkteams/MakeActionButton.json"
+		"/key_for_vkteams_СформироватьКнопкуДействия": {
+			"$ref": "./paths/vkteams/СформироватьКнопкуДействия.json"
 		},
-		"/key_for_vkteams_RemoveChatMembers": {
-			"$ref": "./paths/vkteams/RemoveChatMembers.json"
+		"/key_for_vkteams_ИсключитьПользователейЧата": {
+			"$ref": "./paths/vkteams/ИсключитьПользователейЧата.json"
 		},
-		"/key_for_vkteams_ChangeChatPicture": {
-			"$ref": "./paths/vkteams/ChangeChatPicture.json"
+		"/key_for_vkteams_ИзменитьАватарЧата": {
+			"$ref": "./paths/vkteams/ИзменитьАватарЧата.json"
 		},
-		"/key_for_vkteams_GetChatInfo": {
-			"$ref": "./paths/vkteams/GetChatInfo.json"
+		"/key_for_vkteams_ПолучитьИнформациюОЧате": {
+			"$ref": "./paths/vkteams/ПолучитьИнформациюОЧате.json"
 		},
-		"/key_for_vkteams_GetChatAdmins": {
-			"$ref": "./paths/vkteams/GetChatAdmins.json"
+		"/key_for_vkteams_ПолучитьАдминистраторовЧата": {
+			"$ref": "./paths/vkteams/ПолучитьАдминистраторовЧата.json"
 		},
-		"/key_for_vkteams_GetChatMembers": {
-			"$ref": "./paths/vkteams/GetChatMembers.json"
+		"/key_for_vkteams_ПолучитьПользователейЧата": {
+			"$ref": "./paths/vkteams/ПолучитьПользователейЧата.json"
 		},
-		"/key_for_vkteams_GetChatBlockedUsers": {
-			"$ref": "./paths/vkteams/GetChatBlockedUsers.json"
+		"/key_for_vkteams_ПолучитьЗаблокированныхПользователейЧата": {
+			"$ref": "./paths/vkteams/ПолучитьЗаблокированныхПользователейЧата.json"
 		},
-		"/key_for_vkteams_GetChatJoinRequests": {
-			"$ref": "./paths/vkteams/GetChatJoinRequests.json"
+		"/key_for_vkteams_ПолучитьЗапросыВступленияЧата": {
+			"$ref": "./paths/vkteams/ПолучитьЗапросыВступленияЧата.json"
 		},
-		"/key_for_vkteams_BlockChatUser": {
-			"$ref": "./paths/vkteams/BlockChatUser.json"
+		"/key_for_vkteams_ЗаблокироватьПользователяЧата": {
+			"$ref": "./paths/vkteams/ЗаблокироватьПользователяЧата.json"
 		},
-		"/key_for_vkteams_UnblockChatUser": {
-			"$ref": "./paths/vkteams/UnblockChatUser.json"
+		"/key_for_vkteams_РазблокироватьПользователяЧата": {
+			"$ref": "./paths/vkteams/РазблокироватьПользователяЧата.json"
 		},
-		"/key_for_vkteams_ApprovePending": {
-			"$ref": "./paths/vkteams/ApprovePending.json"
+		"/key_for_vkteams_ОдобритьЗаявкуНаВступление": {
+			"$ref": "./paths/vkteams/ОдобритьЗаявкуНаВступление.json"
 		},
-		"/key_for_vkteams_DisapprovePending": {
-			"$ref": "./paths/vkteams/DisapprovePending.json"
+		"/key_for_vkteams_ОтклонитьЗаявкуНаВступление": {
+			"$ref": "./paths/vkteams/ОтклонитьЗаявкуНаВступление.json"
 		},
-		"/key_for_vkteams_SetChatTitle": {
-			"$ref": "./paths/vkteams/SetChatTitle.json"
+		"/key_for_vkteams_УстановитьЗаголовокЧата": {
+			"$ref": "./paths/vkteams/УстановитьЗаголовокЧата.json"
 		},
-		"/key_for_vkteams_SetChatDescription": {
-			"$ref": "./paths/vkteams/SetChatDescription.json"
+		"/key_for_vkteams_УстановитьОписаниеЧата": {
+			"$ref": "./paths/vkteams/УстановитьОписаниеЧата.json"
 		},
-		"/key_for_vkteams_SetChatRules": {
-			"$ref": "./paths/vkteams/SetChatRules.json"
+		"/key_for_vkteams_УстановитьПравилаЧата": {
+			"$ref": "./paths/vkteams/УстановитьПравилаЧата.json"
 		},
-		"/key_for_yadisk_GetDiskInformation": {
-			"$ref": "./paths/yadisk/GetDiskInformation.json"
+		"/key_for_yadisk_ПолучитьИнформациюОДиске": {
+			"$ref": "./paths/yadisk/ПолучитьИнформациюОДиске.json"
 		},
-		"/key_for_yadisk_CreateFolder": {
-			"$ref": "./paths/yadisk/CreateFolder.json"
+		"/key_for_yadisk_СоздатьПапку": {
+			"$ref": "./paths/yadisk/СоздатьПапку.json"
 		},
-		"/key_for_yadisk_GetObject": {
-			"$ref": "./paths/yadisk/GetObject.json"
+		"/key_for_yadisk_ПолучитьОбъект": {
+			"$ref": "./paths/yadisk/ПолучитьОбъект.json"
 		},
-		"/key_for_yadisk_DeleteObject": {
-			"$ref": "./paths/yadisk/DeleteObject.json"
+		"/key_for_yadisk_УдалитьОбъект": {
+			"$ref": "./paths/yadisk/УдалитьОбъект.json"
 		},
-		"/key_for_yadisk_CreateObjectCopy": {
-			"$ref": "./paths/yadisk/CreateObjectCopy.json"
+		"/key_for_yadisk_СоздатьКопиюОбъекта": {
+			"$ref": "./paths/yadisk/СоздатьКопиюОбъекта.json"
 		},
-		"/key_for_yadisk_GetDownloadLink": {
-			"$ref": "./paths/yadisk/GetDownloadLink.json"
+		"/key_for_yadisk_ПолучитьСсылкуДляСкачивания": {
+			"$ref": "./paths/yadisk/ПолучитьСсылкуДляСкачивания.json"
 		},
-		"/key_for_yadisk_DownloadFile": {
-			"$ref": "./paths/yadisk/DownloadFile.json"
+		"/key_for_yadisk_СкачатьФайл": {
+			"$ref": "./paths/yadisk/СкачатьФайл.json"
 		},
-		"/key_for_yadisk_GetFilesList": {
-			"$ref": "./paths/yadisk/GetFilesList.json"
+		"/key_for_yadisk_ПолучитьСписокФайлов": {
+			"$ref": "./paths/yadisk/ПолучитьСписокФайлов.json"
 		},
-		"/key_for_yadisk_MoveObject": {
-			"$ref": "./paths/yadisk/MoveObject.json"
+		"/key_for_yadisk_ПереместитьОбъект": {
+			"$ref": "./paths/yadisk/ПереместитьОбъект.json"
 		},
-		"/key_for_yadisk_UploadFile": {
-			"$ref": "./paths/yadisk/UploadFile.json"
+		"/key_for_yadisk_ЗагрузитьФайл": {
+			"$ref": "./paths/yadisk/ЗагрузитьФайл.json"
 		},
-		"/key_for_yadisk_UploadFileByURL": {
-			"$ref": "./paths/yadisk/UploadFileByURL.json"
+		"/key_for_yadisk_ЗагрузитьФайлПоURL": {
+			"$ref": "./paths/yadisk/ЗагрузитьФайлПоURL.json"
 		},
-		"/key_for_yadisk_PublishObject": {
-			"$ref": "./paths/yadisk/PublishObject.json"
+		"/key_for_yadisk_ОпубликоватьОбъект": {
+			"$ref": "./paths/yadisk/ОпубликоватьОбъект.json"
 		},
-		"/key_for_yadisk_CancelObjectPublication": {
-			"$ref": "./paths/yadisk/CancelObjectPublication.json"
+		"/key_for_yadisk_ОтменитьПубликациюОбъекта": {
+			"$ref": "./paths/yadisk/ОтменитьПубликациюОбъекта.json"
 		},
-		"/key_for_yadisk_GetPublishedObjectsList": {
-			"$ref": "./paths/yadisk/GetPublishedObjectsList.json"
+		"/key_for_yadisk_ПолучитьСписокОпубликованныхОбъектов": {
+			"$ref": "./paths/yadisk/ПолучитьСписокОпубликованныхОбъектов.json"
 		},
-		"/key_for_yadisk_GetPublicObject": {
-			"$ref": "./paths/yadisk/GetPublicObject.json"
+		"/key_for_yadisk_ПолучитьПубличныйОбъект": {
+			"$ref": "./paths/yadisk/ПолучитьПубличныйОбъект.json"
 		},
-		"/key_for_yadisk_GetDownloadLinkForPublicObject": {
-			"$ref": "./paths/yadisk/GetDownloadLinkForPublicObject.json"
+		"/key_for_yadisk_ПолучитьСсылкуСкачиванияПубличногоОбъекта": {
+			"$ref": "./paths/yadisk/ПолучитьСсылкуСкачиванияПубличногоОбъекта.json"
 		},
-		"/key_for_yadisk_SavePublicObjectToDisk": {
-			"$ref": "./paths/yadisk/SavePublicObjectToDisk.json"
+		"/key_for_yadisk_СохранитьПубличныйОбъектНаДиск": {
+			"$ref": "./paths/yadisk/СохранитьПубличныйОбъектНаДиск.json"
 		},
-		"/key_for_yandex_GetConfirmationCode": {
-			"$ref": "./paths/yandex/GetConfirmationCode.json"
+		"/key_for_yandex_ПолучитьКодПодтверждения": {
+			"$ref": "./paths/yandex/ПолучитьКодПодтверждения.json"
 		},
-		"/key_for_yandex_ConvertCodeToToken": {
-			"$ref": "./paths/yandex/ConvertCodeToToken.json"
+		"/key_for_yandex_ПреобразоватьКодВТокен": {
+			"$ref": "./paths/yandex/ПреобразоватьКодВТокен.json"
 		},
-		"/key_for_yandex_RefreshToken": {
-			"$ref": "./paths/yandex/RefreshToken.json"
+		"/key_for_yandex_ОбновитьТокен": {
+			"$ref": "./paths/yandex/ОбновитьТокен.json"
 		},
-		"/key_for_yamarket_GetMarketsList": {
-			"$ref": "./paths/yamarket/GetMarketsList.json"
+		"/key_for_yamarket_ПолучитьСписокМагазинов": {
+			"$ref": "./paths/yamarket/ПолучитьСписокМагазинов.json"
 		},
-		"/key_for_yamarket_GetMarket": {
-			"$ref": "./paths/yamarket/GetMarket.json"
+		"/key_for_yamarket_ПолучитьМагазин": {
+			"$ref": "./paths/yamarket/ПолучитьМагазин.json"
 		},
-		"/key_for_yamarket_GetBusinessSettings": {
-			"$ref": "./paths/yamarket/GetBusinessSettings.json"
+		"/key_for_yamarket_ПолучитьНастройкиКабинета": {
+			"$ref": "./paths/yamarket/ПолучитьНастройкиКабинета.json"
 		},
-		"/key_for_yamarket_GetCampaignSettings": {
-			"$ref": "./paths/yamarket/GetCampaignSettings.json"
+		"/key_for_yamarket_ПолучитьНастройкиМагазина": {
+			"$ref": "./paths/yamarket/ПолучитьНастройкиМагазина.json"
 		},
-		"/key_for_yamarket_AddUpdateProducts": {
-			"$ref": "./paths/yamarket/AddUpdateProducts.json"
+		"/key_for_yamarket_ДобавитьОбновитьТовары": {
+			"$ref": "./paths/yamarket/ДобавитьОбновитьТовары.json"
 		},
-		"/key_for_yamarket_GetCampaignProducts": {
-			"$ref": "./paths/yamarket/GetCampaignProducts.json"
+		"/key_for_yamarket_ПолучитьТоварыМагазина": {
+			"$ref": "./paths/yamarket/ПолучитьТоварыМагазина.json"
 		},
-		"/key_for_yamarket_GetBusinessProducts": {
-			"$ref": "./paths/yamarket/GetBusinessProducts.json"
+		"/key_for_yamarket_ПолучитьТоварыКабинета": {
+			"$ref": "./paths/yamarket/ПолучитьТоварыКабинета.json"
 		},
-		"/key_for_yamarket_GetProductStructure": {
-			"$ref": "./paths/yamarket/GetProductStructure.json"
+		"/key_for_yamarket_ПолучитьСтруктуруТовара": {
+			"$ref": "./paths/yamarket/ПолучитьСтруктуруТовара.json"
 		},
-		"/key_for_metrika_CreateTag": {
-			"$ref": "./paths/metrika/CreateTag.json"
+		"/key_for_metrika_СоздатьМетку": {
+			"$ref": "./paths/metrika/СоздатьМетку.json"
 		},
-		"/key_for_metrika_UpdateTag": {
-			"$ref": "./paths/metrika/UpdateTag.json"
+		"/key_for_metrika_ИзменитьМетку": {
+			"$ref": "./paths/metrika/ИзменитьМетку.json"
 		},
-		"/key_for_metrika_GetTag": {
-			"$ref": "./paths/metrika/GetTag.json"
+		"/key_for_metrika_ПолучитьМетку": {
+			"$ref": "./paths/metrika/ПолучитьМетку.json"
 		},
-		"/key_for_metrika_DeleteTag": {
-			"$ref": "./paths/metrika/DeleteTag.json"
+		"/key_for_metrika_УдалитьМетку": {
+			"$ref": "./paths/metrika/УдалитьМетку.json"
 		},
-		"/key_for_metrika_GetTagsList": {
-			"$ref": "./paths/metrika/GetTagsList.json"
+		"/key_for_metrika_ПолучитьСписокМеток": {
+			"$ref": "./paths/metrika/ПолучитьСписокМеток.json"
 		},
-		"/key_for_metrika_CreateCounter": {
-			"$ref": "./paths/metrika/CreateCounter.json"
+		"/key_for_metrika_СоздатьСчетчик": {
+			"$ref": "./paths/metrika/СоздатьСчетчик.json"
 		},
-		"/key_for_metrika_UpdateCounter": {
-			"$ref": "./paths/metrika/UpdateCounter.json"
+		"/key_for_metrika_ИзменитьСчетчик": {
+			"$ref": "./paths/metrika/ИзменитьСчетчик.json"
 		},
-		"/key_for_metrika_GetCounter": {
-			"$ref": "./paths/metrika/GetCounter.json"
+		"/key_for_metrika_ПолучитьСчетчик": {
+			"$ref": "./paths/metrika/ПолучитьСчетчик.json"
 		},
-		"/key_for_metrika_DeleteCounter": {
-			"$ref": "./paths/metrika/DeleteCounter.json"
+		"/key_for_metrika_УдалитьСчетчик": {
+			"$ref": "./paths/metrika/УдалитьСчетчик.json"
 		},
-		"/key_for_metrika_RestoreCounter": {
-			"$ref": "./paths/metrika/RestoreCounter.json"
+		"/key_for_metrika_ВосстановитьСчетчик": {
+			"$ref": "./paths/metrika/ВосстановитьСчетчик.json"
 		},
-		"/key_for_metrika_GetCountersList": {
-			"$ref": "./paths/metrika/GetCountersList.json"
+		"/key_for_metrika_ПолучитьСписокСчетчиков": {
+			"$ref": "./paths/metrika/ПолучитьСписокСчетчиков.json"
 		},
-		"/key_for_metrika_GetCounterStructure": {
-			"$ref": "./paths/metrika/GetCounterStructure.json"
+		"/key_for_metrika_ПолучитьСтруктуруСчетчика": {
+			"$ref": "./paths/metrika/ПолучитьСтруктуруСчетчика.json"
 		},
-		"/key_for_metrika_GetCounterFilterStructure": {
-			"$ref": "./paths/metrika/GetCounterFilterStructure.json"
+		"/key_for_metrika_ПолучитьСтруктуруФильтраСчетчиков": {
+			"$ref": "./paths/metrika/ПолучитьСтруктуруФильтраСчетчиков.json"
 		},
-		"/key_for_metrika_GetActionsList": {
-			"$ref": "./paths/metrika/GetActionsList.json"
+		"/key_for_metrika_ПолучитьСписокОпераций": {
+			"$ref": "./paths/metrika/ПолучитьСписокОпераций.json"
 		},
-		"/key_for_proxy_CreateProject": {
-			"$ref": "./paths/proxy/CreateProject.json"
+		"/key_for_proxy_СоздатьПроект": {
+			"$ref": "./paths/proxy/СоздатьПроект.json"
 		},
-		"/key_for_proxy_LaunchProject": {
-			"$ref": "./paths/proxy/LaunchProject.json"
+		"/key_for_proxy_ЗапуститьПроект": {
+			"$ref": "./paths/proxy/ЗапуститьПроект.json"
 		},
-		"/key_for_proxy_AddRequestsHandler": {
-			"$ref": "./paths/proxy/AddRequestsHandler.json"
+		"/key_for_proxy_ДобавитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/ДобавитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_GetRequestHandlersList": {
-			"$ref": "./paths/proxy/GetRequestHandlersList.json"
+		"/key_for_proxy_ПолучитьСписокОбработчиковЗапросов": {
+			"$ref": "./paths/proxy/ПолучитьСписокОбработчиковЗапросов.json"
 		},
-		"/key_for_proxy_GetRequestsHandler": {
-			"$ref": "./paths/proxy/GetRequestsHandler.json"
+		"/key_for_proxy_ПолучитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/ПолучитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_DeleteRequestHandler": {
-			"$ref": "./paths/proxy/DeleteRequestHandler.json"
+		"/key_for_proxy_УдалитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/УдалитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_UpdateRequestsHandler": {
-			"$ref": "./paths/proxy/UpdateRequestsHandler.json"
+		"/key_for_proxy_ИзменитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/ИзменитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_DisableRequestsHandler": {
-			"$ref": "./paths/proxy/DisableRequestsHandler.json"
+		"/key_for_proxy_ОтключитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/ОтключитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_EnableRequestsHandler": {
-			"$ref": "./paths/proxy/EnableRequestsHandler.json"
+		"/key_for_proxy_ВключитьОбработчикЗапросов": {
+			"$ref": "./paths/proxy/ВключитьОбработчикЗапросов.json"
 		},
-		"/key_for_proxy_UpdateHandlerKey": {
-			"$ref": "./paths/proxy/UpdateHandlerKey.json"
+		"/key_for_proxy_ОбновитьКлючОбработчика": {
+			"$ref": "./paths/proxy/ОбновитьКлючОбработчика.json"
 		},
-		"/key_for_proxy_SetHandlerArguments": {
-			"$ref": "./paths/proxy/SetHandlerArguments.json"
+		"/key_for_proxy_УстановитьАргументОбработчика": {
+			"$ref": "./paths/proxy/УстановитьАргументОбработчика.json"
 		},
-		"/key_for_proxy_GetHandlerArguments": {
-			"$ref": "./paths/proxy/GetHandlerArguments.json"
+		"/key_for_proxy_ПолучитьАргументыОбработчика": {
+			"$ref": "./paths/proxy/ПолучитьАргументыОбработчика.json"
 		}
 	}
 }

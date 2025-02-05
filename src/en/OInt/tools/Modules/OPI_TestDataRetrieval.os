@@ -42,6 +42,7 @@
 
 // Uncomment if OneScript is executed
 #Use "./internal"
+#Use "../../data"
 #Use asserts
 
 #Region Internal
@@ -537,6 +538,12 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     If Record Then
         WriteCLICall(Library, Method, Options);
+
+        Try
+            WriteSwaggerPage(Library, Method, Options);
+        Except
+            Message("Swagger: " + ErrorDescription());
+        EndTry;
     EndIf;
 
     Try
@@ -2478,13 +2485,218 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
         Return;
     EndIf;
 
-    PagesCatalog = SwaggerCatalog();
+    PagesCatalog   = SwaggerCatalog();
+    LibraryCatalog = PagesCatalog + Library + "/";
+    MethodFile     = LibraryCatalog + Method + ".json";
 
+    SimplestMethod     = DefineSimplestHttpMethod(Options);
+    OintComposition    = New("LibraryComposition");
+    LibraryComposition = OintComposition.GetComposition(Library);
+    MethodContent      = LibraryComposition.FindRows(New Structure("Method", Method));
+
+    OptionsTable = New ValueTable;
+    OptionsTable.Columns.Add("Key");
+    OptionsTable.Columns.Add("Value");
+    OptionsTable.Columns.Add("Description");
+
+    For Each ContentString In MethodContent Do
+
+        NewLine             = OptionsTable.Add();
+        NewLine.Key         = StrReplace(ContentString.Parameter, "--", "");
+        NewLine.Description = ContentString.Description;
+
+        OPI_Tools.CollectionFieldExist(Options, NewLine.Option, NewLine.Value);
+
+    EndDo;
+
+    DescriptionStructure = New Structure;
+
+    If SimplestMethod = "GET" Then
+        DescriptionStructure.Insert("get", MakeDescriptionGet(OptionsTable));
+    EndIf;
+
+    NeedJSONVariant = SimplestMethod = "GET" Or SimplestMethod = "POST";
+
+    DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant));
+
+
+    OPI_Tools.WriteJSONFile(DescriptionStructure, MethodFile);
 
 EndProcedure
 
+Function DefineSimplestHttpMethod(Val Options)
+
+    BinaryExist = False;
+    FindJSON    = False;
+
+    For Each Option In Options Do
+
+        Value = Option.Value;
+        Key   = Option.Key;
+
+        If Key = "out" Then
+            Continue;
+        EndIf;
+
+        If TypeOf(Value) = Type("BinaryData") Then
+
+            BinaryExist = True;
+            Break;
+
+        ElsIf TypeOf(Value) = Type("String") Then
+
+            ValueFile = New File(Value);
+
+            If ValueFile.Exist() And ValueFile.IsFile() Then
+
+                BinaryExist = True;
+                Break;
+
+            Else
+
+                OPI_TypeConversion.GetCollection(Value);
+
+            EndIf;
+
+        EndIf;
+
+        CurrentType = TypeOf(Value);
+
+        If CurrentType = Type("Map") Or CurrentType = Type("Structure") Then
+            FindJSON   = True;
+        EndIf;
+
+    EndDo;
+
+
+    If Not BinaryExist And Not FindJSON Then
+        Method = "GET";
+    ElsIf Not BinaryExist Then
+        Method = "POST";
+    Else
+        Method = "FORM";
+    EndIf;
+
+    Return Method;
+
+EndFunction
+
+Function MakeDescriptionGet(Val OptionsTable)
+
+    DescriptionStructure = New Structure;
+    DescriptionStructure.Insert("summary", "Execution via GET method");
+
+    ParameterArray = New Array;
+    TypesMap       = SwaggerTypesMap();
+
+    For Each Option In OptionsTable Do
+
+        Key         = Option.Key;
+        Value       = Option.Value;
+        Description = Option.Description;
+
+        ParameterStructure = New Structure;
+        ParameterStructure.Insert("name", Key);
+        ParameterStructure.Insert("in"  , "query");
+
+        SwaggerType = TypesMap.Get(TypeOf(Value));
+        SwaggerType = ?(ValueIsFilled(SwaggerType), SwaggerType, TypesMap.Get(Type("String")));
+
+        ParameterStructure.Insert("schema"     , SwaggerType);
+        ParameterStructure.Insert("description", Description);
+
+        ParameterArray.Add(ParameterStructure);
+
+    EndDo;
+
+    DescriptionStructure.Insert("parameters", ParameterArray);
+
+    Return DescriptionStructure;
+
+EndFunction
+
+Function MakeDescriptionPost(Val OptionsTable, Val NeedJSONVariant)
+
+    Description = "Execution via POST method (%1)";
+    Description = StrTemplate(Description, ?(NeedJSONVariant, "JSON or form-data", "form-data"));
+
+    DescriptionStructure = New Structure;
+    DescriptionStructure.Insert("summary", Description);
+
+    BodyStructure = New Structure;
+    BodyStructure.Insert("required", True);
+
+    BodyVariantsMap = MakeBodyVariants(OptionsTable, NeedJSONVariant);
+
+    BodyStructure.Insert("content", BodyVariantsMap);
+
+    DescriptionStructure.Insert("requestBody", BodyStructure);
+
+    Return DescriptionStructure;
+
+EndFunction
+
+Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
+
+    TypesMap      = SwaggerTypesMap();
+    BodyStructure = New Structure;
+
+    SchemeStructure = New Structure;
+    SchemeStructure.Insert("type", "object");
+
+    PropertiesStructure = New Structure;
+
+    For Each Option In OptionsTable Do
+
+        Key         = Option.Key;
+        Value       = Option.Value;
+        Description = Option.Description;
+
+        PropertyStructure = New Structure;
+
+        SwaggerType = TypesMap.Get(TypeOf(Value));
+        SwaggerType = ?(ValueIsFilled(SwaggerType), SwaggerType, TypesMap.Get(Type("String")));
+
+        PropertyStructure.Insert("type"       , SwaggerType);
+        PropertyStructure.Insert("description", Description);
+
+        PropertiesStructure.Insert(Key, PropertyStructure);
+
+    EndDo;
+
+    SchemeStructure.Insert("properties", PropertiesStructure);
+    BodyStructure.Insert("schema", SchemeStructure);
+
+    VariantsMap = New Map;
+    VariantsMap.Insert("multipart/form-data", BodyStructure);
+
+    If NeedJSONVariant Then
+        VariantsMap.Insert("application/json", BodyStructure);
+    EndIf;
+
+    Return VariantsMap;
+
+EndFunction
+
+Function SwaggerTypesMap()
+
+    TypesMap = New Map;
+
+    TypesMap.Insert(Type("String")    , New Structure("type"       , "string"));
+    TypesMap.Insert(Type("Date")      , New Structure("type,format", "string", "date-time"));
+    TypesMap.Insert(Type("Number")    , New Structure("type"       , "number"));
+    TypesMap.Insert(Type("Boolean")   , New Structure("type"       , "boolean"));
+    TypesMap.Insert(Type("Array")     , New Structure("type,items" , "array" , New Structure("type","string")));
+    TypesMap.Insert(Type("Structure") , New Structure("type"       , "object"));
+    TypesMap.Insert(Type("Map")       , New Structure("type"       , "object"));
+    TypesMap.Insert(Type("BinaryData"), New Structure("type"       , "file"));
+
+    Return TypesMap;
+
+EndFunction
+
 Function SwaggerCatalog()
-    Return "./docs/ru/openapi/"
+    Return "./docs/ru/openapi/";
 EndFunction
 
 #EndRegion
