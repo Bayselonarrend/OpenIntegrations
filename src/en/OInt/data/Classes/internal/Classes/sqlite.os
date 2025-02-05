@@ -58,7 +58,7 @@
     NewLine.МетодПоиска = "GETTABLEINFORMATION";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Gets information about the table";
 
 
@@ -69,7 +69,7 @@
     NewLine.МетодПоиска = "GETTABLEINFORMATION";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -79,7 +79,7 @@
     NewLine.МетодПоиска = "CREATETABLE";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Creates an empty table in the database";
 
 
@@ -90,7 +90,7 @@
     NewLine.МетодПоиска = "CREATETABLE";
     NewLine.Параметр    = "--cols";
     NewLine.Описание    = "Column structure: Key > Name, Value > Data type";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -100,7 +100,7 @@
     NewLine.МетодПоиска = "CREATETABLE";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -110,7 +110,7 @@
     NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Adds new rows to the table";
 
 
@@ -121,7 +121,7 @@
     NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--rows";
     NewLine.Описание    = "An array of string data structures: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -131,7 +131,7 @@
     NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--trn";
     NewLine.Описание    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -141,7 +141,7 @@
     NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -151,7 +151,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Gets records from the selected table";
 
 
@@ -162,7 +162,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--fields";
     NewLine.Описание    = "Fields for selection (optional, def. val. - *)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -172,7 +172,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -182,7 +182,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--order";
     NewLine.Описание    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -192,7 +192,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--limit";
     NewLine.Описание    = "Limiting the number of received strings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -202,7 +202,7 @@
     NewLine.МетодПоиска = "GETRECORDS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -212,7 +212,7 @@
     NewLine.МетодПоиска = "UPDATERECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Updates the value of records by selected criteria";
 
 
@@ -223,7 +223,7 @@
     NewLine.МетодПоиска = "UPDATERECORDS";
     NewLine.Параметр    = "--values";
     NewLine.Описание    = "Values structure: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -233,7 +233,7 @@
     NewLine.МетодПоиска = "UPDATERECORDS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -243,7 +243,7 @@
     NewLine.МетодПоиска = "UPDATERECORDS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -253,7 +253,7 @@
     NewLine.МетодПоиска = "DELETEPOSTS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Deletes records from the table";
 
 
@@ -264,7 +264,7 @@
     NewLine.МетодПоиска = "DELETEPOSTS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -274,7 +274,7 @@
     NewLine.МетодПоиска = "DELETEPOSTS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -284,7 +284,7 @@
     NewLine.МетодПоиска = "DELETETABLE";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Deletes a table from the database";
 
 
@@ -295,7 +295,7 @@
     NewLine.МетодПоиска = "DELETETABLE";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -305,7 +305,7 @@
     NewLine.МетодПоиска = "CLEARTABLE";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Clears the database table";
 
 
@@ -316,7 +316,7 @@
     NewLine.МетодПоиска = "CLEARTABLE";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
 
 
     NewLine = CompositionTable.Add();
@@ -326,7 +326,7 @@
     NewLine.МетодПоиска = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Orm";
+    NewLine.Область     = "ORM";
     NewLine.ОписаниеМетода   = "Gets the template structure for filtering records in ORM queries";
 
     Return CompositionTable;
