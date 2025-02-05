@@ -1,0 +1,15 @@
+﻿    {
+ "data": [
+  {
+   "arg": "token",
+   "strict": 1,
+   "value": "12345"
+  },
+  {
+   "arg": "another",
+   "strict": 0,
+   "value": "12345"
+  }
+ ],
+ "result": true
+}
