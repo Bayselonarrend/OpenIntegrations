@@ -2518,7 +2518,7 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
     NeedJSONVariant = SimplestMethod = "GET" Or SimplestMethod = "POST";
     DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant));
 
-    ResponsesStructure = CreateResponseScheme();
+    ResponseMap = CreateResponseScheme();
 
     AugmentedDescription = New Structure;
 
@@ -2527,7 +2527,7 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
         Key   = Description.Key;
         Value = Description.Value;
 
-        Value.Insert("responses", ResponsesStructure);
+        Value.Insert("responses", ResponseMap);
         AugmentedDescription.Insert(Key, Value);
 
     EndDo;
@@ -2670,7 +2670,7 @@ Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
 
         PropertyStructure.Insert("description", Description);
 
-        PropertiesStructure.Insert(Key, PropertyStructure);
+        PropertiesStructure.Insert(Key, OPI_Tools.CopyCollection(PropertyStructure));
 
         If StrFind(Description, "(optional, def. val.") = 0 Then
             MandatoryArray.Add(Key);
@@ -2696,7 +2696,7 @@ EndFunction
 
 Function CreateResponseScheme()
 
-    ResponsesScheme = New Structure;
+    ResponsesScheme = New Map;
 
     ResponsesScheme.Insert("200", CreateResponseScheme200());
 
