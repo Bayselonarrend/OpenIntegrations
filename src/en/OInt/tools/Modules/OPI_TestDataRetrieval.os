@@ -2156,6 +2156,8 @@ EndProcedure
 
 #Region Private
 
+#Region Common
+
 Function GetValueFromFile(Parameter, Path)
 
     Values = OPI_Tools.ReadJSONFile(Path);
@@ -2187,10 +2189,39 @@ EndFunction
 
 Function GetCommonModule(Val Name)
 
+
     Module = Eval(Name);
 
+
     Return Module;
+
 EndFunction
+
+Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
+
+    NewTest         = ValueTable.Add();
+    NewTest.Method  = Method;
+    NewTest.Synonym = Synonym;
+    NewTest.Section = Section;
+
+EndProcedure
+
+Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
+
+    Values = OPI_Tools.ReadJSONFile(Path);
+    Values.Insert(Parameter, Value);
+
+    Record             = New JSONWriter;
+    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
+    Record.OpenFile(Path, , , JSONWriterSettings);
+    WriteJSON(Record, Values);
+    Record.Close();
+
+EndProcedure
+
+#EndRegion
+
+#Region CLI
 
 // BSLLS:CognitiveComplexity-off
 
@@ -2373,28 +2404,6 @@ Function ReadCLIResponse(Val ResultFile)
 
 EndFunction
 
-Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
-
-    NewTest         = ValueTable.Add();
-    NewTest.Method  = Method;
-    NewTest.Synonym = Synonym;
-    NewTest.Section = Section;
-
-EndProcedure
-
-Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
-
-    Values = OPI_Tools.ReadJSONFile(Path);
-    Values.Insert(Parameter, Value);
-
-    Record             = New JSONWriter;
-    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
-    Record.OpenFile(Path, , , JSONWriterSettings);
-    WriteJSON(Record, Values);
-    Record.Close();
-
-EndProcedure
-
 Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     If Not OPI_Tools.IsOneScript() Then
@@ -2458,5 +2467,26 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     ПолучитьДвоичныеДанныеИзСтроки(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
+
+#EndRegion
+
+#Region OpenAPI
+
+Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
+
+    If Not OPI_Tools.IsOneScript() Then
+        Return;
+    EndIf;
+
+    PagesCatalog = SwaggerCatalog();
+
+
+EndProcedure
+
+Function SwaggerCatalog()
+    Return "./docs/ru/openapi/"
+EndFunction
+
+#EndRegion
 
 #EndRegion
