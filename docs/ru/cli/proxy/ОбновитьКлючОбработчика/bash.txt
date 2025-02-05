@@ -1,0 +1,3 @@
+oint proxy ОбновитьКлючОбработчика \
+  --proj "C:\Users\Administrator\AppData\Local\Temp\1m0eln2xdl3.oint" \
+  --handler "mykey"

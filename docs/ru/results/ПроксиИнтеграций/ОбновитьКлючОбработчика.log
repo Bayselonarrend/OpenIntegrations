@@ -1,0 +1,11 @@
+﻿    {
+ "data": {
+  "active": 1,
+  "function": "СоздатьПапку",
+  "key": "mykey",
+  "library": "dropbox",
+  "method": "POST",
+  "args": []
+ },
+ "result": true
+}

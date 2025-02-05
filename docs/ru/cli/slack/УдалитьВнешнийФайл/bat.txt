@@ -1,3 +1,3 @@
 oint slack УдалитьВнешнийФайл ^
   --token "***" ^
-  --fileid "F08BFFMUJMA"
+  --fileid "F08BV98MLM9"
