@@ -1,0 +1,3 @@
+oint proxy ПолучитьАргументыОбработчика ^
+  --proj "C:\Users\Administrator\AppData\Local\Temp\1m0eln2xdl3.oint" ^
+  --handler "c9458c5c7"
