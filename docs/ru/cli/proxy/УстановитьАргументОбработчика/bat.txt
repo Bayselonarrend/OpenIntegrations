@@ -1,6 +1,6 @@
 oint proxy УстановитьАргументОбработчика ^
-  --proj "C:\Users\Administrator\AppData\Local\Temp\1m0eln2xdl3.oint" ^
-  --handler "c9458c5c7" ^
+  --proj "C:\Users\Administrator\AppData\Local\Temp\uqidpehdadl.oint" ^
+  --handler "a704fc67c" ^
   --arg "another" ^
   --value "12345" ^
   --strict false

@@ -1,4 +1,4 @@
 oint yadisk УдалитьОбъект ^
   --token "***" ^
-  --path "/d21f343f-5578-483c-8d93-ca3b66c8415d.png" ^
+  --path "/602bc4a1-c186-486c-9049-684c87a905cc.png" ^
   --can false
