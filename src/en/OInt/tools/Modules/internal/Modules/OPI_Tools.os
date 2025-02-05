@@ -520,6 +520,16 @@ Function ReadJSONFile(Val Path) Export
 
 EndFunction
 
+Procedure WriteJSONFile(Data, Path) Export
+
+    JSONWriter = New JSONWriter;
+    JSONWriter.OpenFile(Path, , , New JSONWriterSettings(, Chars.Tab));
+
+    WriteJSON(JSONWriter, Data);
+    JSONWriter.Close();
+
+EndProcedure
+
 #EndRegion
 
 #Region XML
