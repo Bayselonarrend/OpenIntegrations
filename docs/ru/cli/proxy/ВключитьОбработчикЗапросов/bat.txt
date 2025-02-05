@@ -1,3 +1,3 @@
 oint proxy ВключитьОбработчикЗапросов ^
-  --proj "C:\Users\Administrator\AppData\Local\Temp\1m0eln2xdl3.oint" ^
-  --handler "45721acf2"
+  --proj "C:\Users\Administrator\AppData\Local\Temp\uqidpehdadl.oint" ^
+  --handler "907e6a004"
