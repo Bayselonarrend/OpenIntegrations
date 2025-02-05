@@ -2485,7 +2485,7 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
         Return;
     EndIf;
 
-    PagesCatalog   = SwaggerCatalog();
+    PagesCatalog   = SwaggerCatalog() + "paths/";
     LibraryCatalog = PagesCatalog + Library + "/";
     MethodFile     = LibraryCatalog + Method + ".json";
 
@@ -2505,7 +2505,7 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
         NewLine.Key         = StrReplace(ContentString.Parameter, "--", "");
         NewLine.Description = ContentString.Description;
 
-        OPI_Tools.CollectionFieldExists(Options, NewLine.Option, NewLine.Value);
+        OPI_Tools.CollectionFieldExists(Options, NewLine.Key, NewLine.Value);
 
     EndDo;
 
@@ -2516,11 +2516,23 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
     EndIf;
 
     NeedJSONVariant = SimplestMethod = "GET" Or SimplestMethod = "POST";
-
     DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant));
 
+    ResponsesStructure = CreateResponseScheme();
 
-    OPI_Tools.WriteJSONFile(DescriptionStructure, MethodFile);
+    AugmentedDescription = New Structure;
+
+    For Each Description In DescriptionStructure Do
+
+        Key   = Description.Key;
+        Value = Description.Value;
+
+        Value.Insert("responses", ResponsesStructure);
+        AugmentedDescription.Insert(Key, Value);
+
+    EndDo;
+
+    OPI_Tools.WriteJSONFile(AugmentedDescription, MethodFile);
 
 EndProcedure
 
@@ -2645,6 +2657,7 @@ Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
     SchemeStructure.Insert("type", "object");
 
     PropertiesStructure = New Structure;
+    MandatoryArray      = New Array;
 
     For Each Option In OptionsTable Do
 
@@ -2652,19 +2665,22 @@ Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
         Value       = Option.Value;
         Description = Option.Description;
 
-        PropertyStructure = New Structure;
+        PropertyStructure = TypesMap.Get(TypeOf(Value));
+        PropertyStructure = ?(ValueIsFilled(PropertyStructure), PropertyStructure, TypesMap.Get(Type("String")));
 
-        SwaggerType = TypesMap.Get(TypeOf(Value));
-        SwaggerType = ?(ValueIsFilled(SwaggerType), SwaggerType, TypesMap.Get(Type("String")));
-
-        PropertyStructure.Insert("type"       , SwaggerType);
         PropertyStructure.Insert("description", Description);
 
         PropertiesStructure.Insert(Key, PropertyStructure);
 
+        If StrFind(Description, "(optional, def. val.") = 0 Then
+            MandatoryArray.Add(Key);
+        EndIf;
+
     EndDo;
 
     SchemeStructure.Insert("properties", PropertiesStructure);
+    SchemeStructure.Insert("required"  , MandatoryArray);
+
     BodyStructure.Insert("schema", SchemeStructure);
 
     VariantsMap = New Map;
@@ -2675,6 +2691,43 @@ Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
     EndIf;
 
     Return VariantsMap;
+
+EndFunction
+
+Function CreateResponseScheme()
+
+    ResponsesScheme = New Structure;
+
+    ResponsesScheme.Insert("200", CreateResponseScheme200());
+
+    Return ResponsesScheme;
+
+EndFunction
+
+Function CreateResponseScheme200()
+
+    ResponseScheme = New Structure;
+    ResponseScheme.Insert("description", "Successful response");
+
+    ContentMap      = New Map;
+    JSONStructure   = New Structure;
+    SchemeStructure = New Structure;
+
+    SchemeStructure.Insert("type", "object");
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("result", New Structure("type,description", "boolean", "Success flag"));
+    FieldsStructure.Insert("data"  , New Structure("type,description", "object" , "Result data"));
+
+    SchemeStructure.Insert("properties", FieldsStructure);
+
+    JSONStructure.Insert("schema", SchemeStructure);
+
+    ContentMap.Insert("application/json", JSONStructure);
+
+    ResponseScheme.Insert("content", ContentMap);
+
+    Return ResponseScheme;
 
 EndFunction
 

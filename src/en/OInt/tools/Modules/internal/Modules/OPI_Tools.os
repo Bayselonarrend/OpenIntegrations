@@ -523,7 +523,7 @@ EndFunction
 Procedure WriteJSONFile(Data, Path) Export
 
     JSONWriter = New JSONWriter;
-    JSONWriter.OpenFile(Path, , , New JSONWriterSettings(, Chars.Tab));
+    JSONWriter.OpenFile(Path, , , New JSONWriterSettings(Chars.LF, Chars.Tab));
 
     WriteJSON(JSONWriter, Data);
     JSONWriter.Close();
