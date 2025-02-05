@@ -1492,7 +1492,7 @@
     NewLine.МетодПоиска = "GETCLUSTERSLIST";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Gets information about clusters and warehouses";
 
 
@@ -1503,7 +1503,7 @@
     NewLine.МетодПоиска = "GETCLUSTERSLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1513,7 +1513,7 @@
     NewLine.МетодПоиска = "GETCLUSTERSLIST";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Cluster type: CLUSTER_TYPE_OZON (Russia), CLUSTER_TYPE_CIS (CIS) (optional, def. val. - CLUSTER_TYPE_OZON)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1523,7 +1523,7 @@
     NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Gets a list of warehouses, sorting centers and delivery points";
 
 
@@ -1534,7 +1534,7 @@
     NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1544,7 +1544,7 @@
     NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
     NewLine.Параметр    = "--search";
     NewLine.Описание    = "Search by name (4 chars. min). For delivery points enter the full name";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1554,7 +1554,7 @@
     NewLine.МетодПоиска = "GETSHIPPINGWAREHOUSESLIST";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Supply types: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT (optional, def. val. - CREATE_TYPE_DIRECT)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1564,7 +1564,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Gets a list of active shipments with or without filtering";
 
 
@@ -1575,7 +1575,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1585,7 +1585,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Shipments filter. See GetShipmentsFilterStructure (optional, def. val. - Empty value)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1595,7 +1595,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--with";
     NewLine.Описание    = "Include additional fields in the response. See GetShipmentAdditionalFields (optional, def. val. - Empty value)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1605,7 +1605,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--offset";
     NewLine.Описание    = "Offset of the result items (optional, def. val. - Empty value)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1615,7 +1615,7 @@
     NewLine.МетодПоиска = "GETFBOSHIPMENTSLIST";
     NewLine.Параметр    = "--trlt";
     NewLine.Описание    = "If Cyrillic to Latin address transliteration is enabled > True (optional, def. val. - No)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1625,7 +1625,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Creates a draft of FBO supply order";
 
 
@@ -1636,7 +1636,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1646,7 +1646,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--clusters";
     NewLine.Описание    = "Clusters identifiers";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1656,7 +1656,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--items";
     NewLine.Описание    = "Items list: Key > SKU, Value > Amount";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1666,7 +1666,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--type";
     NewLine.Описание    = "Supply type: CREATE_TYPE_CROSSDOCK, CREATE_TYPE_DIRECT (optional, def. val. - CREATE_TYPE_DIRECT)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1676,7 +1676,7 @@
     NewLine.МетодПоиска = "CREATEFBODRAFT";
     NewLine.Параметр    = "--point";
     NewLine.Описание    = "Shipping point identifier for CREATE_TYPE_CROSSDOCK (optional, def. val. - Empty value)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1686,7 +1686,7 @@
     NewLine.МетодПоиска = "GETFBODRAFT";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Gets FBO draft by ID";
 
 
@@ -1697,7 +1697,7 @@
     NewLine.МетодПоиска = "GETFBODRAFT";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1707,7 +1707,7 @@
     NewLine.МетодПоиска = "GETFBODRAFT";
     NewLine.Параметр    = "--oper";
     NewLine.Описание    = "Draft (operation) ID)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1717,7 +1717,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Get available timeslots at the final supply warehouses";
 
 
@@ -1728,7 +1728,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1738,7 +1738,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--from";
     NewLine.Описание    = "Start date of the required period of available timeslots";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1748,7 +1748,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--to";
     NewLine.Описание    = "The end date of the desired period of available timeslots (28 days from current max.)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1758,7 +1758,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--draft";
     NewLine.Описание    = "Supply draft identifier";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1768,7 +1768,7 @@
     NewLine.МетодПоиска = "GETFBOTIMESLOTS";
     NewLine.Параметр    = "--whs";
     NewLine.Описание    = "Warehouse or multiple warehouses to receive timeslots";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
 
 
     NewLine = CompositionTable.Add();
@@ -1778,7 +1778,7 @@
     NewLine.МетодПоиска = "GETSHIPMENTADDITIONALFIELDS";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Returns the structure of inclusion of additional response fields for the GetFBOShipmentsList method";
 
 
@@ -1789,7 +1789,7 @@
     NewLine.МетодПоиска = "GETSHIPMENTSFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Fbo scheme";
+    NewLine.Область     = "FBO scheme";
     NewLine.ОписаниеМетода   = "Returns the filter structure for the GetFBOShipmentsList method";
 
     Return CompositionTable;
