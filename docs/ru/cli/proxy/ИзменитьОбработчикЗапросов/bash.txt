@@ -1,6 +1,6 @@
 oint proxy ИзменитьОбработчикЗапросов \
-  --proj "C:\Users\Administrator\AppData\Local\Temp\fuywgfu1iaj.oint" \
-  --handler "32c8c5316" \
+  --proj "C:\Users\Administrator\AppData\Local\Temp\llb5n0lej0i.oint" \
+  --handler "e098054ee" \
   --lib "dropbox" \
   --func "СоздатьПапку" \
   --method "POST"
