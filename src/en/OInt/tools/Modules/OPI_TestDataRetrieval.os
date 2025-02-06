@@ -2514,11 +2514,11 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
     DescriptionStructure = New Structure;
 
     If SimplestMethod = "GET" Then
-        DescriptionStructure.Insert("get", MakeDescriptionGet(OptionsTable));
+        DescriptionStructure.Insert("get", MakeDescriptionGet(OptionsTable, Method));
     EndIf;
 
     NeedJSONVariant = SimplestMethod = "GET" Or SimplestMethod = "POST";
-    DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant));
+    DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant, Method));
 
     ResponseMap = CreateResponseScheme();
 
@@ -2597,10 +2597,10 @@ Function DefineSimplestHttpMethod(Val Options)
 
 EndFunction
 
-Function MakeDescriptionGet(Val OptionsTable)
+Function MakeDescriptionGet(Val OptionsTable, Val Method)
 
     DescriptionStructure = New Structure;
-    DescriptionStructure.Insert("summary", "Execution via GET method");
+    DescriptionStructure.Insert("summary", OPI_Tools.Synonymiser(Method) + " (query)");
 
     ParameterArray = New Array;
     TypesMap       = SwaggerTypesMap();
@@ -2631,10 +2631,10 @@ Function MakeDescriptionGet(Val OptionsTable)
 
 EndFunction
 
-Function MakeDescriptionPost(Val OptionsTable, Val NeedJSONVariant)
+Function MakeDescriptionPost(Val OptionsTable, Val NeedJSONVariant, Val Method)
 
-    Description = "Execution via POST method (%1)";
-    Description = StrTemplate(Description, ?(NeedJSONVariant, "JSON or form-data", "form-data"));
+    Description = OPI_Tools.Synonymiser(Method) + " (%1)";
+    Description = StrTemplate(Description, ?(NeedJSONVariant, "JSON/form-data", "form-data"));
 
     DescriptionStructure = New Structure;
     DescriptionStructure.Insert("summary", Description);
