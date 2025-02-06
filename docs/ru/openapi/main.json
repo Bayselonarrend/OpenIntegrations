@@ -6,108 +6,108 @@
 	},
 	"tags": [
 		{
-			"name": "Airtable",
-			"description": "Методы Airtable"
+			"name": "airtable",
+			"description": "Методы OPI_Airtable"
 		},
 		{
-			"name": "Bitrix24",
-			"description": "Методы Bitrix24"
+			"name": "bitrix24",
+			"description": "Методы OPI_Bitrix24"
 		},
 		{
-			"name": "CDEK",
-			"description": "Методы CDEK"
+			"name": "cdek",
+			"description": "Методы OPI_CDEK"
 		},
 		{
-			"name": "Dropbox",
-			"description": "Методы Dropbox"
+			"name": "dropbox",
+			"description": "Методы OPI_Dropbox"
 		},
 		{
-			"name": "GoogleCalendar",
-			"description": "Методы GoogleCalendar"
+			"name": "gcalendar",
+			"description": "Методы OPI_GoogleCalendar"
 		},
 		{
-			"name": "GoogleDrive",
-			"description": "Методы GoogleDrive"
+			"name": "gdrive",
+			"description": "Методы OPI_GoogleDrive"
 		},
 		{
-			"name": "GoogleSheets",
-			"description": "Методы GoogleSheets"
+			"name": "gsheets",
+			"description": "Методы OPI_GoogleSheets"
 		},
 		{
-			"name": "GoogleWorkspace",
-			"description": "Методы GoogleWorkspace"
+			"name": "google",
+			"description": "Методы OPI_GoogleWorkspace"
 		},
 		{
-			"name": "MongoDB",
-			"description": "Методы MongoDB"
+			"name": "mongodb",
+			"description": "Методы OPI_MongoDB"
 		},
 		{
-			"name": "Neocities",
-			"description": "Методы Neocities"
+			"name": "neocities",
+			"description": "Методы OPI_Neocities"
 		},
 		{
-			"name": "Notion",
-			"description": "Методы Notion"
+			"name": "notion",
+			"description": "Методы OPI_Notion"
 		},
 		{
-			"name": "Ozon",
-			"description": "Методы Ozon"
+			"name": "ozon",
+			"description": "Методы OPI_Ozon"
 		},
 		{
-			"name": "S3",
-			"description": "Методы S3"
+			"name": "s3",
+			"description": "Методы OPI_S3"
 		},
 		{
-			"name": "Slack",
-			"description": "Методы Slack"
+			"name": "slack",
+			"description": "Методы OPI_Slack"
 		},
 		{
-			"name": "SQLite",
-			"description": "Методы SQLite"
+			"name": "sqlite",
+			"description": "Методы OPI_SQLite"
 		},
 		{
-			"name": "TCP",
-			"description": "Методы TCP"
+			"name": "tcp",
+			"description": "Методы OPI_TCP"
 		},
 		{
-			"name": "Telegram",
-			"description": "Методы Telegram"
+			"name": "telegram",
+			"description": "Методы OPI_Telegram"
 		},
 		{
-			"name": "Twitter",
-			"description": "Методы Twitter"
+			"name": "twitter",
+			"description": "Методы OPI_Twitter"
 		},
 		{
-			"name": "Viber",
-			"description": "Методы Viber"
+			"name": "viber",
+			"description": "Методы OPI_Viber"
 		},
 		{
-			"name": "VK",
-			"description": "Методы VK"
+			"name": "vk",
+			"description": "Методы OPI_VK"
 		},
 		{
-			"name": "VKTeams",
-			"description": "Методы VKTeams"
+			"name": "vkteams",
+			"description": "Методы OPI_VKTeams"
 		},
 		{
-			"name": "YandexDisk",
-			"description": "Методы YandexDisk"
+			"name": "yadisk",
+			"description": "Методы OPI_YandexDisk"
 		},
 		{
-			"name": "YandexID",
-			"description": "Методы YandexID"
+			"name": "yandex",
+			"description": "Методы OPI_YandexID"
 		},
 		{
-			"name": "YandexMarket",
-			"description": "Методы YandexMarket"
+			"name": "yamarket",
+			"description": "Методы OPI_YandexMarket"
 		},
 		{
-			"name": "YandexMetrika",
-			"description": "Методы YandexMetrika"
+			"name": "metrika",
+			"description": "Методы OPI_YandexMetrika"
 		},
 		{
-			"name": "ПроксиИнтеграций",
-			"description": "Методы ПроксиИнтеграций"
+			"name": "proxy",
+			"description": "Методы OPI_ПроксиИнтеграций"
 		}
 	],
 	"paths": {
