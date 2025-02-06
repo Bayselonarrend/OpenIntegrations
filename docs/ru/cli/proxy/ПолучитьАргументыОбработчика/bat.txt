@@ -1,3 +1,0 @@
-oint proxy ПолучитьАргументыОбработчика ^
-  --proj "C:\Users\Administrator\AppData\Local\Temp\n0jrr4jwlak.oint" ^
-  --handler "b3c4617bd"

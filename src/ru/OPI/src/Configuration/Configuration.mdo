@@ -68,10 +68,8 @@
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_ЗапросыSQL</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
-  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
-  <commonModules>CommonModule.OPI_ПроксиИнтеграций</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
-  <dataProcessors>DataProcessor.OPI_ОбработчикЗапросовПрокси</dataProcessors>
+  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>

@@ -1,3 +1,3 @@
 oint dropbox ПолучитьСтатусЗагрузкиПоURL ^
   --token "***" ^
-  --job "WnZ4DxL5TGIAAAAAAAAAAQ"
+  --job "Knx0KsS8e7YAAAAAAAAAAQ"

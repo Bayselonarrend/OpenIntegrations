@@ -56,11 +56,6 @@ pipeline {
                 test_google()
              }
           }
-          stage('proxy'){
-             steps{
-                test_proxy()
-             }
-          }
           stage('mongodb'){
              steps{
                 test_mongodb()
@@ -908,7 +903,7 @@ def test_bitrix24(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarList --url "test" --owner "test" --type "test" --token "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetCalendarList --url "test" --owner "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1413,60 +1408,6 @@ def test_google(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe google RefreshToken --id "test" --secret "test" --refresh "test" --debug --test '
-               }
-
-}
-
-
-def test_proxy(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy CreateProject --path "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy LaunchProject --port "test" --proj "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy AddRequestsHandler --proj "test" --lib "test" --func "test" --method "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy GetRequestHandlersList --proj "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy GetRequestsHandler --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy DeleteRequestHandler --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy UpdateRequestsHandler --proj "test" --handler "test" --lib "test" --func "test" --method "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy DisableRequestsHandler --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy EnableRequestsHandler --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy UpdateHandlerKey --proj "test" --handler "test" --key "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy SetHandlerArguments --proj "test" --handler "test" --arg "test" --value "test" --strict "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy GetHandlerArguments --proj "test" --handler "test" --debug --test '
                }
 
 }
@@ -2928,7 +2869,6 @@ test_gcalendar()
 test_gdrive()
 test_gsheets()
 test_google()
-test_proxy()
 test_mongodb()
 test_neocities()
 test_notion()

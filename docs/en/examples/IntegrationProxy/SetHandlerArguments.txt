@@ -1,9 +1,0 @@
-﻿    Project    = "C:\Users\Administrator\AppData\Local\Temp\v8_9B5_45.oint";
-    HandlerKey = "e52f...";
-    Argument   = "token";
-    Value      = "12345";
-
-    Result = OPI_IntegrationProxy.SetHandlerArguments(Project
-        , HandlerKey
-        , Argument
-        , Value);
