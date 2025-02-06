@@ -2493,6 +2493,8 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
     OintComposition    = New("LibraryComposition");
     LibraryComposition = OintComposition.GetComposition(Library);
     MethodContent      = LibraryComposition.FindRows(New Structure("Method", Method));
+    CommandArray       = New Array;
+    CommandArray.Add(Library);
 
     OptionsTable = New ValueTable;
     OptionsTable.Columns.Add("Key");
@@ -2528,6 +2530,8 @@ Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
         Value = Description.Value;
 
         Value.Insert("responses", ResponseMap);
+        Value.Insert("tags"     , CommandArray);
+
         AugmentedDescription.Insert(Key, Value);
 
     EndDo;
