@@ -520,16 +520,6 @@ Function ReadJSONFile(Val Path) Export
 
 EndFunction
 
-Procedure WriteJSONFile(Data, Path) Export
-
-    JSONWriter = New JSONWriter;
-    JSONWriter.OpenFile(Path, , , New JSONWriterSettings(Chars.LF, Chars.Tab));
-
-    WriteJSON(JSONWriter, Data);
-    JSONWriter.Close();
-
-EndProcedure
-
 #EndRegion
 
 #Region XML
@@ -1176,85 +1166,6 @@ Function IsPrimitiveType(Val Value) Export
 
 EndFunction
 
-Function ParseFormData(Val Form) Export
-
-    DataMap = New Map;
-    Files   = Form.Files;
-
-    For Each Field In Form Do
-
-        DataMap.Insert(Field.Key, Field.Value);
-
-    EndDo;
-
-    For Each File In Files Do
-
-        DataMap.Insert(File.Name, File);
-
-    EndDo;
-
-    Return DataMap;
-
-EndFunction
-
-Function Synonymiser(FieldName) Export
-
-    Var Synonym, Counter, Symbol, SymbolBefore, SymbolAfter, Uppercase, UppercaseBefore, UppercaseAfter, StringLength;
-
-    Synonym      = Upper(Mid(FieldName, 1, 1));
-    StringLength = StrLen(FieldName);
-
-    For Counter = 2 To StringLength Do
-
-        Symbol       = Mid(FieldName, Counter, 1);
-        SymbolBefore = Mid(FieldName, Counter - 1, 1);
-        SymbolAfter  = Mid(FieldName, Counter + 1, 1);
-
-        Uppercase       = Symbol = Upper(Symbol);
-        UppercaseBefore = SymbolBefore = Upper(SymbolBefore);
-        UppercaseAfter  = SymbolAfter = Upper(SymbolAfter);
-
-        If Not UppercaseBefore And Uppercase Then
-            Synonym = Synonym + " " + Symbol;
-        ElsIf Uppercase And Not UppercaseAfter Then
-            Synonym = Synonym + " " + Symbol;
-        Else
-            Synonym = Synonym + Symbol;
-        EndIf;
-
-    EndDo;
-
-    WordsArray = StrSplit(Synonym, " ");
-
-    For Counter = 1 To WordsArray.UBound() Do
-
-        CurrentWord = WordsArray[Counter];
-
-        If StrLen(CurrentWord)  = 1 Then
-            WordsArray[Counter] = Lower(CurrentWord);
-            Continue;
-        Else
-
-            SecondSymbol = Mid(CurrentWord, 2, 1);
-
-            If SecondSymbol         = Lower(SecondSymbol) Then
-                WordsArray[Counter] = Lower(CurrentWord);
-            Else
-                WordsArray[Counter] = Upper(CurrentWord);
-            EndIf;
-
-        EndIf;
-
-    EndDo;
-
-    Synonym = StrConcat(WordsArray, " ");
-
-    ChangeNamesRegistry(Synonym);
-
-    Return Synonym;
-
-EndFunction
-
 #EndRegion
 
 #EndRegion
@@ -1503,17 +1414,6 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
     EndIf;
 
     OutputWriting.WriteChars(Text);
-
-EndProcedure
-
-Procedure ChangeNamesRegistry(Synonym)
-
-    NamesMap = New Map();
-    NamesMap.Insert("ozon", "Ozon");
-
-    For Each Name In NamesMap Do
-        Synonym = StrReplace(Synonym, Name.Key, Name.Value);
-    EndDo;
 
 EndProcedure
 

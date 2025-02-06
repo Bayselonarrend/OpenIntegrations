@@ -1,6 +1,6 @@
 oint cdek GetBarcode \
  --token "***" \
- --uuid "72753031-171b-433b-a971-7e0eac96bd97" \
+ --uuid "72753031-a2a1-48e4-afac-3bdd8285dfa3" \
  --getfile true \
  --testapi "***" \
- --out "C:\Users\Administrator\AppData\Local\Temp\qg1rdtvtccv.pdf"
+ --out "C:\Users\Administrator\AppData\Local\Temp\pvhox2bcdvd.pdf"

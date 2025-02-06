@@ -1,4 +1,0 @@
-oint proxy AddRequestsHandler ^
- --proj "C:\Users\Administrator\AppData\Local\Temp\lyu1taflfa3.oint" ^
- --lib "telegram" ^
- --func "SendTextMessage"
