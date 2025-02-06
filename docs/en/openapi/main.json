@@ -7,107 +7,107 @@
 	"tags": [
 		{
 			"name": "airtable",
-			"description": "Методы OPI_Airtable"
+			"description": "Методы для работы с библиотекой Airtable"
 		},
 		{
 			"name": "bitrix24",
-			"description": "Методы OPI_Bitrix24"
+			"description": "Методы для работы с библиотекой Bitrix24"
 		},
 		{
 			"name": "cdek",
-			"description": "Методы OPI_CDEK"
+			"description": "Методы для работы с библиотекой CDEK"
 		},
 		{
 			"name": "dropbox",
-			"description": "Методы OPI_Dropbox"
+			"description": "Методы для работы с библиотекой Dropbox"
 		},
 		{
 			"name": "gcalendar",
-			"description": "Методы OPI_GoogleCalendar"
+			"description": "Методы для работы с библиотекой GoogleCalendar"
 		},
 		{
 			"name": "gdrive",
-			"description": "Методы OPI_GoogleDrive"
+			"description": "Методы для работы с библиотекой GoogleDrive"
 		},
 		{
 			"name": "gsheets",
-			"description": "Методы OPI_GoogleSheets"
+			"description": "Методы для работы с библиотекой GoogleSheets"
 		},
 		{
 			"name": "google",
-			"description": "Методы OPI_GoogleWorkspace"
+			"description": "Методы для работы с библиотекой GoogleWorkspace"
 		},
 		{
 			"name": "proxy",
-			"description": "Методы OPI_IntegrationProxy"
+			"description": "Методы для работы с библиотекой IntegrationProxy"
 		},
 		{
 			"name": "mongodb",
-			"description": "Методы OPI_MongoDB"
+			"description": "Методы для работы с библиотекой MongoDB"
 		},
 		{
 			"name": "neocities",
-			"description": "Методы OPI_Neocities"
+			"description": "Методы для работы с библиотекой Neocities"
 		},
 		{
 			"name": "notion",
-			"description": "Методы OPI_Notion"
+			"description": "Методы для работы с библиотекой Notion"
 		},
 		{
 			"name": "ozon",
-			"description": "Методы OPI_Ozon"
+			"description": "Методы для работы с библиотекой Ozon"
 		},
 		{
 			"name": "s3",
-			"description": "Методы OPI_S3"
+			"description": "Методы для работы с библиотекой S3"
 		},
 		{
 			"name": "slack",
-			"description": "Методы OPI_Slack"
+			"description": "Методы для работы с библиотекой Slack"
 		},
 		{
 			"name": "sqlite",
-			"description": "Методы OPI_SQLite"
+			"description": "Методы для работы с библиотекой SQLite"
 		},
 		{
 			"name": "tcp",
-			"description": "Методы OPI_TCP"
+			"description": "Методы для работы с библиотекой TCP"
 		},
 		{
 			"name": "telegram",
-			"description": "Методы OPI_Telegram"
+			"description": "Методы для работы с библиотекой Telegram"
 		},
 		{
 			"name": "twitter",
-			"description": "Методы OPI_Twitter"
+			"description": "Методы для работы с библиотекой Twitter"
 		},
 		{
 			"name": "viber",
-			"description": "Методы OPI_Viber"
+			"description": "Методы для работы с библиотекой Viber"
 		},
 		{
 			"name": "vk",
-			"description": "Методы OPI_VK"
+			"description": "Методы для работы с библиотекой VK"
 		},
 		{
 			"name": "vkteams",
-			"description": "Методы OPI_VKTeams"
+			"description": "Методы для работы с библиотекой VKTeams"
 		},
 		{
 			"name": "yadisk",
-			"description": "Методы OPI_YandexDisk"
+			"description": "Методы для работы с библиотекой YandexDisk"
 		},
 		{
 			"name": "yandex",
-			"description": "Методы OPI_YandexID"
+			"description": "Методы для работы с библиотекой YandexID"
 		},
 		{
 			"name": "yamarket",
-			"description": "Методы OPI_YandexMarket"
+			"description": "Методы для работы с библиотекой YandexMarket"
 		},
 		{
 			"name": "metrika",
-			"description": "Методы OPI_YandexMetrika"
+			"description": "Методы для работы с библиотекой YandexMetrika"
 		}
 	],
 	"paths": {
