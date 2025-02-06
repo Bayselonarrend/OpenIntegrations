@@ -2380,6 +2380,16 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         EndIf;
 
         CurrentOption = FormOption(Option.Value, Option.Key);
+
+        If Library         = "bitrix24"
+            And Option.Key = "url" Then
+
+            CurrentOption = ?(StrFind(CurrentOption, "rest") > 0
+                , "https://b24-ar17wx.bitrix24.by/rest/1/***"
+                , CurrentOption);
+
+        EndIf;
+
         OptionsArray.Add(CurrentOption);
 
     EndDo;
