@@ -1,3 +1,0 @@
-﻿    Path = "C:\Users\Administrator\AppData\Local\Temp\v8_9B5_45.oint";
-
-    Result = OPI_IntegrationProxy.CreateProject(Path);

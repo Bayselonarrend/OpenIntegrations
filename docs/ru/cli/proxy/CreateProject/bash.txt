@@ -1,2 +1,0 @@
-oint proxy CreateProject \
- --path "C:\Users\Administrator\AppData\Local\Temp"

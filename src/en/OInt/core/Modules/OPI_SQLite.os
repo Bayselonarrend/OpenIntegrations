@@ -165,7 +165,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue, String - The result of the execution or SQL query text
 Function GetTableInformation(Val Table, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Table);
@@ -188,7 +188,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue, String - The result of the execution or SQL query text
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateTable(OPI_SQLite, Table, ColoumnsStruct, Connection);

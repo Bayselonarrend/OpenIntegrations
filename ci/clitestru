@@ -141,11 +141,6 @@ pipeline {
                 test_metrika()
              }
           }
-          stage('proxy'){
-             steps{
-                test_proxy()
-             }
-          }
    } 
   }    
  }
@@ -2854,60 +2849,6 @@ def test_metrika(){
                }
 
 }
-
-
-def test_proxy(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy СоздатьПроект --path "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ЗапуститьПроект --port "test" --proj "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ДобавитьОбработчикЗапросов --proj "test" --lib "test" --func "test" --method "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ПолучитьСписокОбработчиковЗапросов --proj "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ПолучитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy УдалитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ИзменитьОбработчикЗапросов --proj "test" --handler "test" --lib "test" --func "test" --method "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ОтключитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ВключитьОбработчикЗапросов --proj "test" --handler "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ОбновитьКлючОбработчика --proj "test" --handler "test" --key "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy УстановитьАргументОбработчика --proj "test" --handler "test" --arg "test" --value "test" --strict "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe proxy ПолучитьАргументыОбработчика --proj "test" --handler "test" --debug --test '
-               }
-
-}
 pipeline {
    agent any
    stages {
@@ -2945,7 +2886,6 @@ test_yadisk()
 test_yandex()
 test_yamarket()
 test_metrika()
-test_proxy()
 
          }
       }

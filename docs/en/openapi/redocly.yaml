@@ -1,8 +1,0 @@
-redoc:
-  title: "Моя API документация"
-  lazyRendering: true
-  hideHostname: true
-  expandResponses: "200,201"
-  theme:
-    colors:
-      primary: "#3498db"

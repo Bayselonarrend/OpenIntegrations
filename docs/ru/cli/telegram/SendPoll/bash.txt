@@ -1,5 +1,5 @@
 oint telegram SendPoll \
  --token "***" \
- --chat "@testsichee" \
+ --chat "461699897" \
  --question "What's your favorite color?" \
  --options "['Red','Yellow','Green','Blue']"

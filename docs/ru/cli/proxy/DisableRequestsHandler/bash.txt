@@ -1,3 +1,0 @@
-oint proxy DisableRequestsHandler \
- --proj "C:\Users\Administrator\AppData\Local\Temp\lyu1taflfa3.oint" \
- --handler "3e23d9587"

@@ -1,2 +1,0 @@
-oint proxy GetRequestHandlersList \
- --proj "C:\Users\Administrator\AppData\Local\Temp\lyu1taflfa3.oint"
