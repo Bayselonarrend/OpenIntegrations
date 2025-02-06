@@ -1,4 +1,4 @@
 oint proxy ДобавитьОбработчикЗапросов \
-  --proj "C:\Users\Administrator\AppData\Local\Temp\uqidpehdadl.oint" \
+  --proj "C:\Users\Administrator\AppData\Local\Temp\fuywgfu1iaj.oint" \
   --lib "telegram" \
   --func "ОтправитьТекстовоеСообщение"
