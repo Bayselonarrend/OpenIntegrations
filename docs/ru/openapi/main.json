@@ -6,107 +6,107 @@
 	},
 	"tags": [
 		{
-			"name": "airtable",
+			"name": "Airtable",
 			"description": "Методы для работы с библиотекой Airtable"
 		},
 		{
-			"name": "bitrix24",
+			"name": "Bitrix24",
 			"description": "Методы для работы с библиотекой Bitrix24"
 		},
 		{
-			"name": "cdek",
+			"name": "Cdek",
 			"description": "Методы для работы с библиотекой CDEK"
 		},
 		{
-			"name": "dropbox",
+			"name": "Dropbox",
 			"description": "Методы для работы с библиотекой Dropbox"
 		},
 		{
-			"name": "gcalendar",
+			"name": "Gcalendar",
 			"description": "Методы для работы с библиотекой GoogleCalendar"
 		},
 		{
-			"name": "gdrive",
+			"name": "Gdrive",
 			"description": "Методы для работы с библиотекой GoogleDrive"
 		},
 		{
-			"name": "gsheets",
+			"name": "Gsheets",
 			"description": "Методы для работы с библиотекой GoogleSheets"
 		},
 		{
-			"name": "google",
+			"name": "Google",
 			"description": "Методы для работы с библиотекой GoogleWorkspace"
 		},
 		{
-			"name": "mongodb",
+			"name": "Mongodb",
 			"description": "Методы для работы с библиотекой MongoDB"
 		},
 		{
-			"name": "neocities",
+			"name": "Neocities",
 			"description": "Методы для работы с библиотекой Neocities"
 		},
 		{
-			"name": "notion",
+			"name": "Notion",
 			"description": "Методы для работы с библиотекой Notion"
 		},
 		{
-			"name": "ozon",
+			"name": "Ozon",
 			"description": "Методы для работы с библиотекой Ozon"
 		},
 		{
-			"name": "s3",
+			"name": "S3",
 			"description": "Методы для работы с библиотекой S3"
 		},
 		{
-			"name": "slack",
+			"name": "Slack",
 			"description": "Методы для работы с библиотекой Slack"
 		},
 		{
-			"name": "sqlite",
+			"name": "Sqlite",
 			"description": "Методы для работы с библиотекой SQLite"
 		},
 		{
-			"name": "tcp",
+			"name": "Tcp",
 			"description": "Методы для работы с библиотекой TCP"
 		},
 		{
-			"name": "telegram",
+			"name": "Telegram",
 			"description": "Методы для работы с библиотекой Telegram"
 		},
 		{
-			"name": "twitter",
+			"name": "Twitter",
 			"description": "Методы для работы с библиотекой Twitter"
 		},
 		{
-			"name": "viber",
+			"name": "Viber",
 			"description": "Методы для работы с библиотекой Viber"
 		},
 		{
-			"name": "vk",
+			"name": "Vk",
 			"description": "Методы для работы с библиотекой VK"
 		},
 		{
-			"name": "vkteams",
+			"name": "Vkteams",
 			"description": "Методы для работы с библиотекой VKTeams"
 		},
 		{
-			"name": "yadisk",
+			"name": "Yadisk",
 			"description": "Методы для работы с библиотекой YandexDisk"
 		},
 		{
-			"name": "yandex",
+			"name": "Yandex",
 			"description": "Методы для работы с библиотекой YandexID"
 		},
 		{
-			"name": "yamarket",
+			"name": "Yamarket",
 			"description": "Методы для работы с библиотекой YandexMarket"
 		},
 		{
-			"name": "metrika",
+			"name": "Metrika",
 			"description": "Методы для работы с библиотекой YandexMetrika"
 		},
 		{
-			"name": "proxy",
+			"name": "Proxy",
 			"description": "Методы для работы с библиотекой ПроксиИнтеграций"
 		}
 	],
