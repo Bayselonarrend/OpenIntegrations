@@ -1,3 +1,3 @@
 oint gsheets ПолучитьКнигу ^
   --token "***" ^
-  --spreadsheet "1n9cOKIYJdoX1sriGX-2gUE5YsmrEkKqn7hlP7hTDw3o"
+  --spreadsheet "1YSWUjz8q8uAGZ3AeSsNzH4-4W_xwnQUhWsgERTA85JE"

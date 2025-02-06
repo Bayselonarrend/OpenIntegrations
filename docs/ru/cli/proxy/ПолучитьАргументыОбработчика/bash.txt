@@ -1,3 +1,3 @@
 oint proxy ПолучитьАргументыОбработчика \
-  --proj "C:\Users\Administrator\AppData\Local\Temp\uqidpehdadl.oint" \
-  --handler "a704fc67c"
+  --proj "C:\Users\Administrator\AppData\Local\Temp\fuywgfu1iaj.oint" \
+  --handler "060fc59c4"
