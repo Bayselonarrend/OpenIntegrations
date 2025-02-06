@@ -42,7 +42,6 @@
 
 // Uncomment if OneScript is executed
 #Use "./internal"
-#Use "../../data"
 #Use asserts
 
 #Region Internal
@@ -72,7 +71,6 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
-    Sections.Insert("Proxy"          , 5);
 
     Return Sections;
 
@@ -106,7 +104,6 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("YandexMetrika"  , StandardDependencies);
     Sections.Insert("S3"             , StandardDependencies);
     Sections.Insert("TCP"            , StandardDependencies);
-    Sections.Insert("Proxy"          , StandardDependencies);
 
     Return Sections;
 
@@ -136,7 +133,6 @@ Function GetTestTable() Export
     S3_       = "S3";
     TCP       = "TCP";
     SQLite    = "SQLite";
-    Proxy     = "Proxy";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -274,7 +270,6 @@ Function GetTestTable() Export
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
-    NewTest(TestTable, "Proxy_ProjectSetup"                   , "Project setup"                   , Proxy);
 
     Return TestTable;
 
@@ -538,12 +533,6 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     If Record Then
         WriteCLICall(Library, Method, Options);
-
-        Try
-            WriteSwaggerPage(Library, Method, Options);
-        Except
-            Message("Swagger: " + ErrorDescription());
-        EndTry;
     EndIf;
 
     Try
@@ -626,15 +615,7 @@ EndProcedure
 
 Procedure Check_True(Val Result) Export
 
-    OPI_TypeConversion.GetBoolean(Result);
     ExpectsThat(Result).Равно(True);
-
-EndProcedure
-
-Procedure Check_False(Val Result) Export
-
-    OPI_TypeConversion.GetBoolean(Result);
-    ExpectsThat(Result).Равно(False);
 
 EndProcedure
 
@@ -2121,49 +2102,11 @@ Procedure Check_ResultTrue(Val Result) Export
 
 EndProcedure
 
-Procedure Check_ResultFalse(Val Result) Export
-
-    ExpectsThat(Result["result"]).Равно(False);
-
-EndProcedure
-
-Procedure Check_FileExist(Val Result) Export
-
-    ResultFile = New File(Result);
-    ExpectsThat(ResultFile.Exist()).Равно(True);
-
-EndProcedure
-
-Procedure Check_ProxyHandler(Val Result, Val OintLibrary, Val OintFunction) Export
-
-    ExpectsThat(Result["data"]["library"]).Равно(OintLibrary);
-    ExpectsThat(Result["data"]["function"]).Равно(OintFunction);
-
-EndProcedure
-
-Procedure Check_ProxySwitch(Val Result, Val Active) Export
-
-    Active = ?(Active, 1, 0);
-    ExpectsThat(Result["data"]["active"]).Равно(Active);
-
-EndProcedure
-
-Procedure Check_ProxyKey(Val Result, Val Key, Val Equal) Export
-
-    CurrentKey = Result["data"]["key"];
-    Equality   = CurrentKey = Key;
-
-    ExpectsThat(Equality).Равно(Equal);
-
-EndProcedure
-
 #EndRegion
 
 #EndRegion
 
 #Region Private
-
-#Region Common
 
 Function GetValueFromFile(Parameter, Path)
 
@@ -2196,39 +2139,10 @@ EndFunction
 
 Function GetCommonModule(Val Name)
 
-
     Module = Eval(Name);
 
-
     Return Module;
-
 EndFunction
-
-Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
-
-    NewTest         = ValueTable.Add();
-    NewTest.Method  = Method;
-    NewTest.Synonym = Synonym;
-    NewTest.Section = Section;
-
-EndProcedure
-
-Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
-
-    Values = OPI_Tools.ReadJSONFile(Path);
-    Values.Insert(Parameter, Value);
-
-    Record             = New JSONWriter;
-    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
-    Record.OpenFile(Path, , , JSONWriterSettings);
-    WriteJSON(Record, Values);
-    Record.Close();
-
-EndProcedure
-
-#EndRegion
-
-#Region CLI
 
 // BSLLS:CognitiveComplexity-off
 
@@ -2411,6 +2325,28 @@ Function ReadCLIResponse(Val ResultFile)
 
 EndFunction
 
+Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
+
+    NewTest         = ValueTable.Add();
+    NewTest.Method  = Method;
+    NewTest.Synonym = Synonym;
+    NewTest.Section = Section;
+
+EndProcedure
+
+Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
+
+    Values = OPI_Tools.ReadJSONFile(Path);
+    Values.Insert(Parameter, Value);
+
+    Record             = New JSONWriter;
+    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
+    Record.OpenFile(Path, , , JSONWriterSettings);
+    WriteJSON(Record, Values);
+    Record.Close();
+
+EndProcedure
+
 Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     If Not OPI_Tools.IsOneScript() Then
@@ -2444,16 +2380,6 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         EndIf;
 
         CurrentOption = FormOption(Option.Value, Option.Key);
-
-        If Library         = "bitrix24"
-            And Option.Key = "url" Then
-
-            CurrentOption = ?(StrFind(CurrentOption, "rest") > 0
-                , "https://b24-ar17wx.bitrix24.by/rest/1/***"
-                , CurrentOption);
-
-        EndIf;
-
         OptionsArray.Add(CurrentOption);
 
     EndDo;
@@ -2484,288 +2410,5 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     ПолучитьДвоичныеДанныеИзСтроки(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
-
-#EndRegion
-
-#Region OpenAPI
-
-Procedure WriteSwaggerPage(Val Library, Val Method, Val Options)
-
-    If Not OPI_Tools.IsOneScript() Then
-        Return;
-    EndIf;
-
-    PagesCatalog   = SwaggerCatalog() + "paths/";
-    LibraryCatalog = PagesCatalog + Library + "/";
-    MethodFile     = LibraryCatalog + Method + ".json";
-
-    SimplestMethod     = DefineSimplestHttpMethod(Options);
-    OintComposition    = New("LibraryComposition");
-    LibraryComposition = OintComposition.GetComposition(Library);
-    MethodContent      = LibraryComposition.FindRows(New Structure("Method", Method));
-    CommandArray       = New Array;
-    CommandArray.Add(Library);
-
-    OptionsTable = New ValueTable;
-    OptionsTable.Columns.Add("Key");
-    OptionsTable.Columns.Add("Value");
-    OptionsTable.Columns.Add("Description");
-
-    For Each ContentString In MethodContent Do
-
-        NewLine             = OptionsTable.Add();
-        NewLine.Key         = StrReplace(ContentString.Parameter, "--", "");
-        NewLine.Description = ContentString.Description;
-
-        OPI_Tools.CollectionFieldExist(Options, NewLine.Key, NewLine.Value);
-
-    EndDo;
-
-    DescriptionStructure = New Structure;
-
-    If SimplestMethod = "GET" Then
-        DescriptionStructure.Insert("get", MakeDescriptionGet(OptionsTable, Method));
-    EndIf;
-
-    NeedJSONVariant = SimplestMethod = "GET" Or SimplestMethod = "POST";
-    DescriptionStructure.Insert("post", MakeDescriptionPost(OptionsTable, NeedJSONVariant, Method));
-
-    ResponseMap = CreateResponseScheme();
-
-    AugmentedDescription = New Structure;
-
-    For Each Description In DescriptionStructure Do
-
-        Key   = Description.Key;
-        Value = Description.Value;
-
-        Value.Insert("responses", ResponseMap);
-        Value.Insert("tags"     , CommandArray);
-
-        AugmentedDescription.Insert(Key, Value);
-
-    EndDo;
-
-    OPI_Tools.WriteJSONFile(AugmentedDescription, MethodFile);
-
-EndProcedure
-
-Function DefineSimplestHttpMethod(Val Options)
-
-    BinaryExist = False;
-    FindJSON    = False;
-
-    For Each Option In Options Do
-
-        Value = Option.Value;
-        Key   = Option.Key;
-
-        If Key = "out" Then
-            Continue;
-        EndIf;
-
-        If TypeOf(Value) = Type("BinaryData") Then
-
-            BinaryExist = True;
-            Break;
-
-        ElsIf TypeOf(Value) = Type("String") Then
-
-            ValueFile = New File(Value);
-
-            If ValueFile.Exist() And ValueFile.IsFile() Then
-
-                BinaryExist = True;
-                Break;
-
-            Else
-
-                OPI_TypeConversion.GetCollection(Value);
-
-            EndIf;
-
-        EndIf;
-
-        CurrentType = TypeOf(Value);
-
-        If CurrentType = Type("Map") Or CurrentType = Type("Structure") Then
-            FindJSON   = True;
-        EndIf;
-
-    EndDo;
-
-
-    If Not BinaryExist And Not FindJSON Then
-        Method = "GET";
-    ElsIf Not BinaryExist Then
-        Method = "POST";
-    Else
-        Method = "FORM";
-    EndIf;
-
-    Return Method;
-
-EndFunction
-
-Function MakeDescriptionGet(Val OptionsTable, Val Method)
-
-    DescriptionStructure = New Structure;
-    DescriptionStructure.Insert("summary", OPI_Tools.Synonymiser(Method) + " (query)");
-
-    ParameterArray = New Array;
-    TypesMap       = SwaggerTypesMap();
-
-    For Each Option In OptionsTable Do
-
-        Key         = Option.Key;
-        Value       = Option.Value;
-        Description = Option.Description;
-
-        ParameterStructure = New Structure;
-        ParameterStructure.Insert("name", Key);
-        ParameterStructure.Insert("in"  , "query");
-
-        SwaggerType = TypesMap.Get(TypeOf(Value));
-        SwaggerType = ?(ValueIsFilled(SwaggerType), SwaggerType, TypesMap.Get(Type("String")));
-
-        ParameterStructure.Insert("schema"     , SwaggerType);
-        ParameterStructure.Insert("description", Description);
-
-        ParameterArray.Add(ParameterStructure);
-
-    EndDo;
-
-    DescriptionStructure.Insert("parameters", ParameterArray);
-
-    Return DescriptionStructure;
-
-EndFunction
-
-Function MakeDescriptionPost(Val OptionsTable, Val NeedJSONVariant, Val Method)
-
-    Description = OPI_Tools.Synonymiser(Method) + " (%1)";
-    Description = StrTemplate(Description, ?(NeedJSONVariant, "JSON/form-data", "form-data"));
-
-    DescriptionStructure = New Structure;
-    DescriptionStructure.Insert("summary", Description);
-
-    BodyStructure = New Structure;
-    BodyStructure.Insert("required", True);
-
-    BodyVariantsMap = MakeBodyVariants(OptionsTable, NeedJSONVariant);
-
-    BodyStructure.Insert("content", BodyVariantsMap);
-
-    DescriptionStructure.Insert("requestBody", BodyStructure);
-
-    Return DescriptionStructure;
-
-EndFunction
-
-Function MakeBodyVariants(Val OptionsTable, Val NeedJSONVariant)
-
-    TypesMap      = SwaggerTypesMap();
-    BodyStructure = New Structure;
-
-    SchemeStructure = New Structure;
-    SchemeStructure.Insert("type", "object");
-
-    PropertiesStructure = New Structure;
-    MandatoryArray      = New Array;
-
-    For Each Option In OptionsTable Do
-
-        Key         = Option.Key;
-        Value       = Option.Value;
-        Description = Option.Description;
-
-        PropertyStructure = TypesMap.Get(TypeOf(Value));
-        PropertyStructure = ?(ValueIsFilled(PropertyStructure), PropertyStructure, TypesMap.Get(Type("String")));
-
-        PropertyStructure.Insert("description", Description);
-
-        PropertiesStructure.Insert(Key, OPI_Tools.CopyCollection(PropertyStructure));
-
-        If StrFind(Description, "(optional, def. val.") = 0 Then
-            MandatoryArray.Add(Key);
-        EndIf;
-
-    EndDo;
-
-    SchemeStructure.Insert("properties", PropertiesStructure);
-    SchemeStructure.Insert("required"  , MandatoryArray);
-
-    BodyStructure.Insert("schema", SchemeStructure);
-
-    VariantsMap = New Map;
-    VariantsMap.Insert("multipart/form-data", BodyStructure);
-
-    If NeedJSONVariant Then
-        VariantsMap.Insert("application/json", BodyStructure);
-    EndIf;
-
-    Return VariantsMap;
-
-EndFunction
-
-Function CreateResponseScheme()
-
-    ResponsesScheme = New Map;
-
-    ResponsesScheme.Insert("200", CreateResponseScheme200());
-
-    Return ResponsesScheme;
-
-EndFunction
-
-Function CreateResponseScheme200()
-
-    ResponseScheme = New Structure;
-    ResponseScheme.Insert("description", "Successful response");
-
-    ContentMap      = New Map;
-    JSONStructure   = New Structure;
-    SchemeStructure = New Structure;
-
-    SchemeStructure.Insert("type", "object");
-
-    FieldsStructure = New Structure;
-    FieldsStructure.Insert("result", New Structure("type,description", "boolean", "Success flag"));
-    FieldsStructure.Insert("data"  , New Structure("type,description", "object" , "Result data"));
-
-    SchemeStructure.Insert("properties", FieldsStructure);
-
-    JSONStructure.Insert("schema", SchemeStructure);
-
-    ContentMap.Insert("application/json", JSONStructure);
-
-    ResponseScheme.Insert("content", ContentMap);
-
-    Return ResponseScheme;
-
-EndFunction
-
-Function SwaggerTypesMap()
-
-    TypesMap = New Map;
-
-    TypesMap.Insert(Type("String")    , New Structure("type"       , "string"));
-    TypesMap.Insert(Type("Date")      , New Structure("type,format", "string", "date-time"));
-    TypesMap.Insert(Type("Number")    , New Structure("type"       , "number"));
-    TypesMap.Insert(Type("Boolean")   , New Structure("type"       , "boolean"));
-    TypesMap.Insert(Type("Array")     , New Structure("type,items" , "array" , New Structure("type","string")));
-    TypesMap.Insert(Type("Structure") , New Structure("type"       , "object"));
-    TypesMap.Insert(Type("Map")       , New Structure("type"       , "object"));
-    TypesMap.Insert(Type("BinaryData"), New Structure("type"       , "file"));
-
-    Return TypesMap;
-
-EndFunction
-
-Function SwaggerCatalog()
-    Return "./docs/ru/openapi/";
-EndFunction
-
-#EndRegion
 
 #EndRegion

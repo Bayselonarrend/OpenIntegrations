@@ -1,6 +1,0 @@
-﻿    Project      = "C:\Users\Administrator\AppData\Local\Temp\v8_9B5_45.oint";
-    HandlerKey   = "e52f...";
-    OintLibrary  = "dropbox";
-    OintFunction = "CreateFolder";
-
-    Result = OPI_IntegrationProxy.UpdateRequestsHandler(Project, HandlerKey, OintLibrary, OintFunction);
