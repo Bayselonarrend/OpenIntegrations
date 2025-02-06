@@ -1,3 +1,3 @@
 oint sqlite ВыполнитьЗапросSQL ^
   --sql "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;" ^
-  --db "C:\Users\Administrator\AppData\Local\Temp\uclpomq34sp.sqlite"
+  --db "C:\Users\Administrator\AppData\Local\Temp\pcu4w0dvwxf.sqlite"
