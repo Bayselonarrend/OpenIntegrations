@@ -1540,8 +1540,14 @@ Procedure Check_BitrixBool(Val Result) Export
    ExpectsThat(Result["result"]).ИмеетТип("Boolean");
 EndProcedure
 
-Procedure Check_BitrixString(Val Result) Export
-   ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+Procedure Check_BitrixString(Val Result, Val Value = "") Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+
+    If ValueIsFilled(Value) Then
+        ExpectsThat(Result["result"]).Равно(Value);
+    EndIf;
+
 EndProcedure
 
 Procedure Check_BitrixArray(Val Result) Export
