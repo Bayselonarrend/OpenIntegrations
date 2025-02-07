@@ -4959,6 +4959,53 @@ Function DeleteCalendarEvent(Val URL, Val EventID, Val Token = "") Export
 
 EndFunction
 
+// Get user participation status
+// Gets the event participation status of the current user
+//
+// Note
+// Method at API documentation: [calendar.meeting.status.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-get.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Calednar event ID - event
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUserParticipationStatus(Val URL, Val EventID, Val Token = "") Export
+
+    Response = PrimaryControlAction(URL, EventID, "calendar.meeting.status.get", Token, "eventId");
+    Return Response;
+
+EndFunction
+
+// Set user participation status
+// Sets the event participation status for the current user
+//
+// Note
+// Method at API documentation: [calendar.meeting.status.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-set.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Calednar event ID - event
+// Status - String - Participation status: Y (agreed), N (refused), Q (did not answer) - status
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SetUserParticipationStatus(Val URL, Val EventID, Val Status, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.meeting.status.set");
+
+    OPI_Tools.AddField("eventId", EventID, "String", Parameters);
+    OPI_Tools.AddField("status" , Status , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get calendar events structure
 // Returns the structure of the calendar event fields
 //

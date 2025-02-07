@@ -6388,6 +6388,78 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserParticipationStatus";
+    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Gets the event participation status of the current user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserParticipationStatus";
+    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--event";
+    NewLine.Описание    = "Calednar event ID";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserParticipationStatus";
+    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserParticipationStatus";
+    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Sets the event participation status for the current user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserParticipationStatus";
+    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--event";
+    NewLine.Описание    = "Calednar event ID";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserParticipationStatus";
+    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--status";
+    NewLine.Описание    = "Participation status: Y (agreed), N (refused), Q (did not answer)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserParticipationStatus";
+    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetCalendarEventsStructure";
     NewLine.МетодПоиска = "GETCALENDAREVENTSSTRUCTURE";
     NewLine.Параметр    = "--empty";

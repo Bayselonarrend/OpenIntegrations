@@ -5,6 +5,6 @@
 
     PostID = "1808";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1ed6a567006e9f06006b12e400000001000...";
+    Token  = "fe52a667006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID, Token);
