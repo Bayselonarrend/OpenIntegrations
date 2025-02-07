@@ -1,0 +1,60 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update calendar event
+ Modifies calendar event data
+
+
+
+`Function UpdateCalendarEvent(Val URL, Val EventID, Val EventDescription, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | EventID | --event | Number | &#x2714; | Calednar event ID |
+  | EventDescription | --fields | Structure Of KeyAndValue | &#x2714; | Event description. See GetCalendarEventsStructure |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+<br/>
+
+:::tip
+Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-update.html)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    EventID = "170";
+
+    EventStucture = New Structure;
+
+    EventStucture.Insert("ownerId"      , 1);
+    EventStucture.Insert("type"         , "user");
+    EventStucture.Insert("name"         , "Modified event");
+    EventStucture.Insert("description"  , "New event description");
+    EventStucture.Insert("importance"   , "low");
+    EventStucture.Insert("private_event", "Y");
+
+    Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
+
+    URL        = "b24-ar17wx.bitrix24.by";
+    Token      = "1ed6a567006e9f06006b12e400000001000...";
+    EventID    = "174";
+    CalendarID = "196";
+
+    Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
+```
+ 
+
+
+
+

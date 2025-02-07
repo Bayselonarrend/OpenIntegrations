@@ -6234,6 +6234,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendarEvent";
+    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Calendar events management";
+    NewLine.ОписаниеМетода   = "Modifies calendar event data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendarEvent";
+    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
+    NewLine.Параметр    = "--event";
+    NewLine.Описание    = "Calednar event ID";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendarEvent";
+    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Event description. See GetCalendarEventsStructure";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCalendarEvent";
+    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendar events management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetCalendarEvent";
     NewLine.МетодПоиска = "GETCALENDAREVENT";
     NewLine.Параметр    = "--url";
