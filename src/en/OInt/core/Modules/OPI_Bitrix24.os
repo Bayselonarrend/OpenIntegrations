@@ -4830,6 +4830,37 @@ Function CreateCalendarEvent(Val URL, Val EventDescription, Val Token = "") Expo
 
 EndFunction
 
+// Update calendar event
+// Modifies calendar event data
+//
+// Note
+// Method at API documentation: [calendar.event.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-update.html)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Calednar event ID - event
+// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateCalendarEvent(Val URL, Val EventID, Val EventDescription, Val Token = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(EventDescription);
+
+    Parameters = NormalizeAuth(URL, Token, "calendar.event.update");
+    OPI_Tools.AddField("id", EventID, "String", Parameters);
+
+    For Each Field In EventDescription Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get calendar event
 // Gets a calendar event by ID
 //

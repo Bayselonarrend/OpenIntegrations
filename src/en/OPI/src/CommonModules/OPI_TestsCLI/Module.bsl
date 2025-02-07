@@ -2031,6 +2031,7 @@ Procedure CLI_B24_CalendarsManagement() Export
     CLI_Bitrix24_CreateCalendarEvent(TestParameters);
     CLI_Bitrix24_GetCalendarEvent(TestParameters);
     CLI_Bitrix24_GetCalendarEvents(TestParameters);
+    CLI_Bitrix24_UpdateCalendarEvent(TestParameters);
     CLI_Bitrix24_GetUserBusy(TestParameters);
     CLI_Bitrix24_DeleteCalendarEvent(TestParameters);
     CLI_Bitrix24_DeleteCalendar(TestParameters);
@@ -16476,6 +16477,56 @@ Procedure CLI_Bitrix24_GetCalendarEvents(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEvents", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_UpdateCalendarEvent(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    EventID = FunctionParameters["Bitrix24_HookCEventID"];
+
+    EventStucture = New Structure;
+
+    EventStucture.Insert("ownerId"      , 1);
+    EventStucture.Insert("type"         , "user");
+    EventStucture.Insert("name"         , "Modified event");
+    EventStucture.Insert("description"  , "New event description");
+    EventStucture.Insert("importance"   , "low");
+    EventStucture.Insert("private_event", "Y");
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("fields", EventStucture);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendarEvent (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
+
+    EventID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookCEventID", EventID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookCEventID", EventID); // SKIP
+
+    URL        = FunctionParameters["Bitrix24_Domain"];
+    Token      = FunctionParameters["Bitrix24_Token"];
+    EventID    = FunctionParameters["Bitrix24_CEventID"];
+    CalendarID = FunctionParameters["Bitrix24_CalendarID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("fields", EventStucture);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendarEvent", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixNumber(Result);
+
+    EventID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CEventID", EventID);
+    FunctionParameters.Insert("Bitrix24_CEventID", EventID);
 
 EndProcedure
 
