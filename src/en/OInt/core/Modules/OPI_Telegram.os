@@ -213,8 +213,6 @@ EndFunction
 // Map of String - Map of data with the result of verification in the passed field
 Function ProcessTMAData(Val DataString, Val Token) Export
 
-    #If Host Then
-
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(DataString);
 
@@ -282,10 +280,6 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     ReturnMapping.Insert("passed", Response);
 
     Return ReturnMapping;
-
-    #Else
-    Return Undefined;
-    #EndIf
 
 EndFunction
 
