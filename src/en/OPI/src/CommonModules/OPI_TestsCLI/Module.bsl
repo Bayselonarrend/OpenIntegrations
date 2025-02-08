@@ -2029,6 +2029,8 @@ Procedure CLI_B24_CalendarsManagement() Export
     CLI_Bitrix24_UpdateCalendar(TestParameters);
     CLI_Bitrix24_GetCalendarList(TestParameters);
     CLI_Bitrix24_CreateCalendarEvent(TestParameters);
+    CLI_Bitrix24_SetUserParticipationStatus(TestParameters);
+    CLI_Bitrix24_GetUserParticipationStatus(TestParameters);
     CLI_Bitrix24_GetCalendarEvent(TestParameters);
     CLI_Bitrix24_GetCalendarEvents(TestParameters);
     CLI_Bitrix24_UpdateCalendarEvent(TestParameters);
@@ -16527,6 +16529,69 @@ Procedure CLI_Bitrix24_UpdateCalendarEvent(FunctionParameters)
     EventID = Result["result"];
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_CEventID", EventID);
     FunctionParameters.Insert("Bitrix24_CEventID", EventID);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_SetUserParticipationStatus(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    EventID = FunctionParameters["Bitrix24_HookCEventID"];
+    Status  = "Y";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("status", Status);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    EventID = FunctionParameters["Bitrix24_CEventID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("status", Status);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserParticipationStatus", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Bitrix24_GetUserParticipationStatus(FunctionParameters)
+
+    URL     = FunctionParameters["Bitrix24_URL"];
+    EventID = FunctionParameters["Bitrix24_HookCEventID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixString(Result); // SKIP
+
+    URL     = FunctionParameters["Bitrix24_Domain"];
+    Token   = FunctionParameters["Bitrix24_Token"];
+    EventID = FunctionParameters["Bitrix24_CEventID"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixString(Result);
 
 EndProcedure
 
