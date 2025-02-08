@@ -1814,6 +1814,8 @@ Procedure B24_CalendarsManagement() Export
     Bitrix24_GetCalendarStructure(TestParameters);
     Bitrix24_GetCalendarSettingsStructure(TestParameters);
     Bitrix24_GetCalednarCustomSettingsStructure(TestParameters);
+    Bitrix24_GetCalendarEventsStructure(TestParameters);
+    Bitrix24_GetCalendarEventsFilterStructure(TestParameters);
 
 EndProcedure
 
@@ -12777,6 +12779,49 @@ Procedure Bitrix24_GetUserParticipationStatus(FunctionParameters)
 
 EndProcedure
 
+Procedure Bitrix24_GetCalendarEventsStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetCalendarEventsStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Bitrix24.GetCalendarEventsStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsStructure (empty)", "Bitrix24");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure Bitrix24_GetCalendarEventsFilterStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetCalendarEventsFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Bitrix24.GetCalendarEventsFilterStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsFilterStructure (empty)", "Bitrix24");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
 
 #EndRegion
 
