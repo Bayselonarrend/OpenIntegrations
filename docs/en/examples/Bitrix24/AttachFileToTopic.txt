@@ -1,11 +1,11 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "4614";
-    FileID = "25412";
+    TaskID = "4904";
+    FileID = "27088";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "9d50a767006e9f06006b12e400000001000...";
-    TaskID = "4616";
+    Token  = "67c7a767006e9f06006b12e400000001000...";
+    TaskID = "4906";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);
