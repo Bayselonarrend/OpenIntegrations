@@ -1,5 +1,5 @@
 oint bitrix24 ЗагрузитьФайлВКаталог ^
-  --url "https://b24-ar17wx.bitrix24.by/rest/1/ps56vdxg63nq8fek" ^
+  https://b24-ar17wx.bitrix24.by/rest/1/*** ^
   --title "Важный документ.docx" ^
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
-  --folderid 26284
+  --folderid 27064
