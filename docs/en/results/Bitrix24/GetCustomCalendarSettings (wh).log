@@ -1,0 +1,45 @@
+﻿ {
+ "result": {
+  "view": "month",
+  "CalendarSelCont": false,
+  "SPCalendarSelCont": false,
+  "meetSection": "14",
+  "crmSection": false,
+  "showDeclined": true,
+  "denyBusyInvitation": false,
+  "collapseOffHours": "N",
+  "showWeekNumbers": "N",
+  "showTasks": "Y",
+  "syncTasks": "N",
+  "showCompletedTasks": "N",
+  "lastUsedSection": false,
+  "sendFromEmail": false,
+  "defaultSections": [],
+  "syncPeriodPast": 3,
+  "syncPeriodFuture": 12,
+  "defaultReminders": {
+   "fullDay": {
+    "type": "daybefore",
+    "before": 0,
+    "time": 480
+   },
+   "withTime": {
+    "type": "min",
+    "count": 15
+   }
+  },
+  "timezoneName": "Europe/Moscow",
+  "timezoneOffsetUTC": 10800,
+  "timezoneDefaultName": ""
+ },
+ "time": {
+  "start": 1739051130.05088,
+  "finish": 1739051130.08241,
+  "duration": 0.031531810760498,
+  "processing": 0.0047919750213623,
+  "date_start": "2025-02-09T00:45:30+03:00",
+  "date_finish": "2025-02-09T00:45:30+03:00",
+  "operating_reset_at": 1739051730,
+  "operating": 0
+ }
+}
