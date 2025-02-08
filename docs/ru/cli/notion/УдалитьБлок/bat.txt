@@ -1,3 +1,3 @@
 oint notion УдалитьБлок ^
   --token "***" ^
-  --block "18682aa7-fc4e-81ad-9d92-d0e6f73a9789"
+  --block "19482aa7-fc4e-8111-81cb-eb9a40ba708e"

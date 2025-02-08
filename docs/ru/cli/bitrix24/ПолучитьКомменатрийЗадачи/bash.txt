@@ -1,5 +1,5 @@
 oint bitrix24 ПолучитьКомменатрийЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "4756" \
-  --comment 11210 \
+  --task "4898" \
+  --comment 11532 \
   --token "***"
