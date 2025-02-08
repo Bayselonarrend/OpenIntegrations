@@ -1,12 +1,12 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID    = "chat" + "1846";
-    MessageID = "33328";
+    ChatID    = "chat" + "1956";
+    MessageID = "35918";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "9d50a767006e9f06006b12e400000001000...";
+    Token     = "67c7a767006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "33330";
+    MessageID = "35920";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);

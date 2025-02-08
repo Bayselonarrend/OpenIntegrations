@@ -1,6 +1,6 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = "307247978";
+    AlbumID          = "307623792";
 
     Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
