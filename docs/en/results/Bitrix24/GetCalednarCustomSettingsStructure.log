@@ -1,0 +1,31 @@
+﻿ {
+ "view": "<standard presentation: day, week, month, list>",
+ "meetSection": "<invitation calendar>",
+ "crmSection": "<calendar for CRM>",
+ "showDeclined": "<show rejected events>",
+ "denyBusyInvitation": "<disallow invitations to an event if the time is full>",
+ "collapseOffHours": "<hide off hours: Y,N>",
+ "showWeekNumbers": "<show week number: Y,N>",
+ "showTasks": "<display tasks: Y,N>",
+ "syncTasks": "<synchronise the task calendar: Y,N>",
+ "showCompletedTasks": "<display completed tasks: Y,N>",
+ "lastUsedSection": "<default event calendar>",
+ "sendFromEmail": "<E-mail for sending invitations>",
+ "defaultSections": "<preset calendar settings>",
+ "syncPeriodPast": "<number of months to synchronise in the past period>",
+ "syncPeriodFuture": "<number of months to synchronise in the future period>",
+ "defaultReminders": {
+  "fullDay": [
+   {
+    "type": "<reminder time type: min, hour, day>",
+    "count": "<numeric value of the time interval>"
+   }
+  ],
+  "withTime": [
+   {
+    "type": "<reminder time type: min, hour, day>",
+    "count": "<numeric value of the time interval>"
+   }
+  ]
+ }
+}

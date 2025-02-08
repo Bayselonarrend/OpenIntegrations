@@ -1,0 +1,12 @@
+﻿ {
+ "type": "<calendar type: user, group)>",
+ "ownerId": "<owner identifier>",
+ "name": "<calendars name>",
+ "description": "<calendar description>",
+ "color": "<calendar color>",
+ "text_color": "<calendar text color>",
+ "export": {
+  "ALLOW": "<calendar export permission (bool)>",
+  "SET": "<export period: all, 3_9 (example: 3 months before and 9 after)>"
+ }
+}
