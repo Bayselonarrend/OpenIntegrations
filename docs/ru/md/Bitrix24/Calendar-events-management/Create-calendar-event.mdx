@@ -103,6 +103,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 СоздатьСобытиеКалендаря \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'type':'user','ownerId':1,'from':'2025-02-09T19:27:24.9568664','to':'2025-02-09T20:27:24.9568664','section':256,'name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-02-19T19:27:24.9568664'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint bitrix24 СоздатьСобытиеКалендаря ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'type':'user','ownerId':1,'from':'2025-02-09T19:27:24.9568664','to':'2025-02-09T20:27:24.9568664','section':256,'name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-02-19T19:27:24.9568664'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
