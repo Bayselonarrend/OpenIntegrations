@@ -4911,23 +4911,23 @@ Function GetCalendarEvents(Val URL, Val OwnerID, Val Type, Val Filter = "", Val 
 
         For Each Element In Filter Do
 
-            Key   = String(Element.Key);
-            Value = Element.Value;
+            CurrentKey   = String(Element.Key);
+            CurrentValue = Element.Value;
 
-            If Key = "section" Then
+            If CurrentKey = "section" Then
 
-                OPI_TypeConversion.GetArray(Value);
+                OPI_TypeConversion.GetArray(CurrentValue);
 
-            ElsIf Key = "from" Or Key = "to" Then
+            ElsIf CurrentKey = "from" Or CurrentKey = "to" Then
 
-                OPI_TypeConversion.GetDate(Value);
-                Value = Format(Value, "DF=yyyy-MM-dd");
+                OPI_TypeConversion.GetDate(CurrentValue);
+                CurrentValue = Format(CurrentValue, "DF=yyyy-MM-dd");
 
             Else
                 Continue;
             EndIf;
 
-            Parameters.Insert(Key, Value);
+            Parameters.Insert(CurrentKey, CurrentValue);
 
         EndDo;
 
