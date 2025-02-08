@@ -1,0 +1,12 @@
+﻿ {
+ "type": "",
+ "ownerId": "",
+ "name": "",
+ "description": "",
+ "color": "",
+ "text_color": "",
+ "export": {
+  "ALLOW": "",
+  "SET": ""
+ }
+}

@@ -1,0 +1,43 @@
+﻿ {
+ "result": {
+  "work_time_start": "9",
+  "work_time_end": "19",
+  "year_holidays": "1.01,2.01,7.01,23.02,8.03,1.05,9.05,12.06,4.11",
+  "year_workdays": "31.12",
+  "week_holidays": [
+   "SA",
+   "SU"
+  ],
+  "week_start": "MO",
+  "user_name_template": "#NAME# #LAST_NAME#",
+  "sync_by_push": "",
+  "user_show_login": "1",
+  "path_to_user": "/company/personal/user/#user_id#/",
+  "path_to_user_calendar": "/company/personal/user/#user_id#/calendar/",
+  "path_to_group": "/workgroups/group/#group_id#/",
+  "path_to_group_calendar": "/workgroups/group/#group_id#/calendar/",
+  "path_to_vr": "",
+  "path_to_rm": "",
+  "rm_iblock_type": "",
+  "rm_iblock_id": "",
+  "dep_manager_sub": "1",
+  "denied_superpose_types": [],
+  "pathes_for_sites": "",
+  "pathes": [],
+  "forum_id": "1",
+  "rm_for_sites": "1",
+  "path_to_type_company_calendar": "/calendar/",
+  "path_to_type_events": "",
+  "path_to_type_location": ""
+ },
+ "time": {
+  "start": 1739051130.47399,
+  "finish": 1739051130.50146,
+  "duration": 0.0274679660797119,
+  "processing": 0.0031890869140625,
+  "date_start": "2025-02-09T00:45:30+03:00",
+  "date_finish": "2025-02-09T00:45:30+03:00",
+  "operating_reset_at": 1739051730,
+  "operating": 0
+ }
+}
