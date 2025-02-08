@@ -1,0 +1,44 @@
+﻿    {
+ "type": "",
+ "ownerId": "",
+ "from": "",
+ "to": "",
+ "from_ts": "",
+ "to_ts": "",
+ "section": "",
+ "name": "",
+ "skip_time": "",
+ "timezone_from": "",
+ "timezone_to": "",
+ "description": "",
+ "color": "",
+ "text_color": "",
+ "accessibility": "",
+ "importance": "",
+ "private_event": "",
+ "rrule": {
+  "FREQ": "",
+  "COUNT": "",
+  "INTERVAL": "",
+  "BYDAY": [
+   ""
+  ],
+  "UNTIL": ""
+ },
+ "is_meeting": "",
+ "location": "",
+ "remind": [
+  {
+   "type": "",
+   "count": ""
+  }
+ ],
+ "attendees": "",
+ "host": "",
+ "meeting": {
+  "notify": "",
+  "reinvite": "",
+  "allow_invite": "",
+  "hide_guests": ""
+ }
+}
