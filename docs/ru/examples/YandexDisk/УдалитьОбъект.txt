@@ -1,4 +1,4 @@
 ﻿    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/36716f2d-b0bf-49c1-8af2-3cc62c0cc53a.png";
+    Путь  = "/f5a57687-718c-4550-8d42-ff0d9a6277e8.png";
 
     Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);

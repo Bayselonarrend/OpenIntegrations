@@ -1,10 +1,10 @@
 ﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "294";
+    EventID = "318";
 
     Result = OPI_Bitrix24.GetUserParticipationStatus(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "67c7a767006e9f06006b12e400000001000...";
-    EventID = "298";
+    Token   = "afd0a867006e9f06006b12e400000001000...";
+    EventID = "322";
 
     Result = OPI_Bitrix24.GetUserParticipationStatus(URL, EventID, Token);

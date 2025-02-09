@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    Property    = "2022";
+    Property    = "2028";
     OptionArray = New Array;
     OptionArray.Add("Yellow");
     OptionArray.Add("Blue");

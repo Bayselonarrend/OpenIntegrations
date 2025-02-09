@@ -31,4 +31,49 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Result"
+{
+ "type": "<calendar type: user, group, company_calendar>",
+ "ownerId": "<calendar owner identifier>",
+ "from": "<event start date and time (as string)>",
+ "to": "<event end date (as string)>",
+ "from_ts": "<date and time in timestamp format (instead of from)>",
+ "to_ts": "<date and time in timestamp format (instead of to)>",
+ "section": "<calendar identifier>",
+ "name": "<event name>",
+ "skip_time": "<pass date value without time in from and to parameters: Y,N>",
+ "timezone_from": "<start time zone (default - t.z. of the user)>",
+ "timezone_to": "<end time zone (default - t.z. of the user)>",
+ "description": "<event description>",
+ "color": "<event background colour. Symbol # - in unicode format as %23>",
+ "text_color": "<the colour of the event text. Symbol # - in unicode format as %23>",
+ "accessibility": "<availability at the time of the event: busy, absent, quest, free>",
+ "importance": "<importance: high, normal, low>",
+ "private_event": "<private event: Y,N>",
+ "rrule": {
+  "FREQ": "<repetition rate: DAILY, WEEKLY, MONTHLY, YEARLY>",
+  "COUNT": "<number of repetitions>",
+  "INTERVAL": "<repetition interval>",
+  "BYDAY": [
+   "<days of the week: SU, MO, TU, WE, TH, FR, SA>"
+  ],
+  "UNTIL": "<repetition end date>"
+ },
+ "is_meeting": "<flag of meeting with participants: Y,N>",
+ "location": "<venue>",
+ "remind": [
+  {
+   "type": "<time type: min, hour, day>",
+   "count": "<numeric value of the time interval>"
+  }
+ ],
+ "attendees": "<array of event participant IDs. If is_meeting = Y>",
+ "host": "<The identifier of the event organiser. If is_meeting = Y>",
+ "meeting": {
+  "notify": "<flag for notification of confirmation or cancellation of participants>",
+  "reinvite": "<flag for requesting re-confirmation of participation when editing an event>",
+  "allow_invite": "<flag to allow participants to invite others to the event>",
+  "hide_guests": "<flag to hide the list of participants>"
+ }
+}
+```
