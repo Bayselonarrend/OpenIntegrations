@@ -3,4 +3,4 @@
 oint sqlite DeletePosts \
  --table "test" \
  --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
- --db "C:\Users\Administrator\AppData\Local\Temp\zhyergud3gg.sqlite"
+ --db "C:\Users\Administrator\AppData\Local\Temp\3rku0pmquxc.sqlite"
