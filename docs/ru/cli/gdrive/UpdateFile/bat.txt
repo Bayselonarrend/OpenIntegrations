@@ -1,5 +1,5 @@
 oint gdrive UpdateFile ^
  --token "***" ^
- --object "15lIHt591y_bhtBs6TgvTltHq9-nf-Mc7" ^
+ --object "1h5inE30sL4wRd86x4sChpW_YQdyaYgW0" ^
  --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
  --title "UpdatedFile.jpg"

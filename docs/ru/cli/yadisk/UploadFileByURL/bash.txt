@@ -1,4 +1,4 @@
 oint yadisk UploadFileByURL \
  --token "***" \
- --path "/71f00dad-bb5e-4740-8767-e663bfacd650.png" \
+ --path "/78892d54-ee04-4ab8-a8bd-7a11ca242fac.png" \
  --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
