@@ -7475,7 +7475,7 @@
 "Фильтр отправлений. См. ПолучитьСтруктуруФильтраОтправлений": "Shipments filter. See GetShipmentsFilterStructure",
 "Возвращает основные данные запроса в структурированном виде": "Returns the basic data for request in structured form",
 "Структура отбора сделок (см. ПолучитьСтруктуруФильтраСделок": "Deals filter structure (see. GetDealsFilterStructure",
-"Тип календаря: user, group, company_calendar, location и др": "Calendar type: user, group, company_calendar, location, etc/",
+"Тип календаря: user, group, company_calendar, location и др": "Calendar type: user, group, company_calendar, location, etc",
 "Для начала работы необходимо получить токен доступа к диску": "To start working, you need to obtain an access token for the disk",
 "Перейдите **[в раздел интеграций портала для разработчиков]": "Go to the **[section of integrations of the developer portal]",
 "Загружает объект на сервер не используюя загрузку по частям": "Upload object with single request",
