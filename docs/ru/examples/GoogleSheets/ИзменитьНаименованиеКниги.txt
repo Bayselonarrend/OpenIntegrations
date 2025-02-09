@@ -1,5 +1,5 @@
-﻿    Токен        = "ya29.a0ARW5m7702-Ib_bOq69krqD5iUx89SC2lxGPxRJoBjqvSBqE7uKghOyAjwrL7ebNf6xqPzwD4wQfZlFvBrb7QsWlw5PGW_SvkFr57Y8Js...";
-    Книга        = "1DoHoA-PGU3xsThA9Uh_rb_oHNpCXhKH0DkirmHTIo9I";
+﻿    Токен        = "ya29.a0AXeO80Qz2NkSHo3Esq-3Dkvxlvhh01u6oDPv7m6vJvN5MUeluZlh2FsDbmMjoXx3N_bStbQrfvky5LWOPkgGfh8kmAQnvGb4Tc84o0wzy...";
+    Книга        = "1e0x_xfBZnRHoqpvjiy5r-H9Cw5nWk8HdrXv3BXc2JKQ";
     Наименование = "Тестовая таблица (изм.)";
 
     Результат = OPI_GoogleSheets.ИзменитьНаименованиеКниги(Токен, Книга, Наименование);

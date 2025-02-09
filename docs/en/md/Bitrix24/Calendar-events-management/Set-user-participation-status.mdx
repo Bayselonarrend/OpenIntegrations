@@ -33,14 +33,14 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "294";
+    EventID = "318";
     Status  = "Y";
 
     Result = OPI_Bitrix24.SetUserParticipationStatus(URL, EventID, Status);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "67c7a767006e9f06006b12e400000001000...";
-    EventID = "298";
+    Token   = "afd0a867006e9f06006b12e400000001000...";
+    EventID = "322";
 
     Result = OPI_Bitrix24.SetUserParticipationStatus(URL, EventID, Status, Token);
 ```
@@ -48,4 +48,18 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
 
 
 
-
+```json title="Result"
+{
+ "result": true,
+ "time": {
+  "start": 1739051124.54554,
+  "finish": 1739051124.63199,
+  "duration": 0.0864500999450684,
+  "processing": 0.060575008392334,
+  "date_start": "2025-02-09T00:45:24+03:00",
+  "date_finish": "2025-02-09T00:45:24+03:00",
+  "operating_reset_at": 1739051724,
+  "operating": 0
+ }
+}
+```
