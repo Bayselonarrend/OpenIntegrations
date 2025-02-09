@@ -1,5 +1,5 @@
-﻿    Токен         = "ya29.a0ARW5m7702-Ib_bOq69krqD5iUx89SC2lxGPxRJoBjqvSBqE7uKghOyAjwrL7ebNf6xqPzwD4wQfZlFvBrb7QsWlw5PGW_SvkFr57Y8Js...";
-    Идентификатор = "1Mjgg8XiYqU2gw4yjMU9d4RHfHsNENWDs";
+﻿    Токен         = "ya29.a0AXeO80Qz2NkSHo3Esq-3Dkvxlvhh01u6oDPv7m6vJvN5MUeluZlh2FsDbmMjoXx3N_bStbQrfvky5LWOPkgGfh8kmAQnvGb4Tc84o0wzy...";
+    Идентификатор = "1QcKowOztpqRehZo3KcTjF96uq8Tb4RNw";
     НовоеИмя      = "Скопированный файл.jpeg";
     НовыйРодитель = "root";
 

@@ -1,5 +1,5 @@
 ﻿    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Original = "/3bfff5a7-2200-4ec0-8788-1bd396e95bbe.png";
+    Original = "/4af76b9b-58ab-4ec0-aaea-99e62d532509.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);

@@ -5934,6 +5934,26 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarList";
+    NewLine.МетодПоиска = "GETCALENDARLIST";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Calendar type: user, group, company_calendar, location, etc.";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCalendarList";
+    NewLine.МетодПоиска = "GETCALENDARLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Calendars management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateCalendar";
     NewLine.МетодПоиска = "CREATECALENDAR";
     NewLine.Параметр    = "--url";

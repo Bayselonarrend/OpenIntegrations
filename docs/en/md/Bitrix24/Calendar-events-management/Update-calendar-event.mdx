@@ -33,7 +33,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "294";
+    EventID = "318";
 
     EventStucture = New Structure;
 
@@ -47,9 +47,9 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "67c7a767006e9f06006b12e400000001000...";
-    EventID    = "298";
-    CalendarID = "260";
+    Token      = "afd0a867006e9f06006b12e400000001000...";
+    EventID    = "322";
+    CalendarID = "292";
 
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
 ```
@@ -57,4 +57,18 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 
 
-
+```json title="Result"
+{
+ "result": 306,
+ "time": {
+  "start": 1739051128.82104,
+  "finish": 1739051129.01364,
+  "duration": 0.192593812942505,
+  "processing": 0.169087171554565,
+  "date_start": "2025-02-09T00:45:28+03:00",
+  "date_finish": "2025-02-09T00:45:29+03:00",
+  "operating_reset_at": 1739051728,
+  "operating": 0.169070959091187
+ }
+}
+```

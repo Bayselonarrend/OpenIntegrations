@@ -34,7 +34,7 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "258";
+    CalendarID = "290";
 
     User = 1;
 
@@ -47,8 +47,8 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "67c7a767006e9f06006b12e400000001000...";
-    CalendarID = "260";
+    Token      = "afd0a867006e9f06006b12e400000001000...";
+    CalendarID = "292";
 
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);
 ```
@@ -56,4 +56,156 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
 
 
 
-
+```json title="Result"
+{
+ "result": {
+  "1": [
+   {
+    "ID": "14",
+    "NAME": "Новое событие",
+    "DATE_FROM": "16.02.2025 13:01:00",
+    "DATE_TO": "16.02.2025 14:01:00",
+    "DATE_FROM_TS_UTC": "1737961252",
+    "DATE_TO_TS_UTC": "1740567660",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "74",
+    "NAME": "Новое событие",
+    "DATE_FROM": "12.02.2025 18:49:00",
+    "DATE_TO": "12.02.2025 19:49:00",
+    "DATE_FROM_TS_UTC": "1738500517",
+    "DATE_TO_TS_UTC": "1741106940",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "78",
+    "NAME": "Новое событие",
+    "DATE_FROM": "12.02.2025 18:49:00",
+    "DATE_TO": "12.02.2025 19:49:00",
+    "DATE_FROM_TS_UTC": "1738500517",
+    "DATE_TO_TS_UTC": "1741106940",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "130",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:38:00",
+    "DATE_TO": "08.02.2025 10:38:00",
+    "DATE_FROM_TS_UTC": "1738985853",
+    "DATE_TO_TS_UTC": "1741592280",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "134",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:38:00",
+    "DATE_TO": "08.02.2025 10:38:00",
+    "DATE_FROM_TS_UTC": "1738985853",
+    "DATE_TO_TS_UTC": "1741592280",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "138",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:40:00",
+    "DATE_TO": "08.02.2025 10:40:00",
+    "DATE_FROM_TS_UTC": "1738986021",
+    "DATE_TO_TS_UTC": "1741592400",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "142",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:40:00",
+    "DATE_TO": "08.02.2025 10:40:00",
+    "DATE_FROM_TS_UTC": "1738986021",
+    "DATE_TO_TS_UTC": "1741592400",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "146",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:48:00",
+    "DATE_TO": "08.02.2025 10:48:00",
+    "DATE_FROM_TS_UTC": "1738986498",
+    "DATE_TO_TS_UTC": "1741592880",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "150",
+    "NAME": "Новое событие",
+    "DATE_FROM": "08.02.2025 09:48:00",
+    "DATE_TO": "08.02.2025 10:48:00",
+    "DATE_FROM_TS_UTC": "1738986498",
+    "DATE_TO_TS_UTC": "1741592880",
+    "~USER_OFFSET_FROM": 0,
+    "~USER_OFFSET_TO": 0,
+    "DT_SKIP_TIME": "N",
+    "TZ_FROM": "Europe/Minsk",
+    "TZ_TO": "Europe/Minsk",
+    "ACCESSIBILITY": "busy",
+    "IMPORTANCE": "high",
+    "EVENT_TYPE": null
+   },
+   {
+    "ID": "158",
+    "NAME": "Новое событие",
+...
+```
