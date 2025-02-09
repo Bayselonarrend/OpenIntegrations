@@ -1,3 +1,3 @@
 oint sqlite ExecuteSQLQuery \
  --sql "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;" \
- --db "C:\Users\Administrator\AppData\Local\Temp\0u4crb3ohbf.sqlite"
+ --db "C:\Users\Administrator\AppData\Local\Temp\t0gnlj3q2fj.sqlite"
