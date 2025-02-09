@@ -5,6 +5,7 @@ use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
 use std::time::{SystemTime, UNIX_EPOCH};
+use serde_json::Serializer;
 
 pub fn execute_query(
     add_in: &mut AddIn,
@@ -159,22 +160,88 @@ fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, Str
     Ok(result)
 }
 
-fn rows_to_json(rows: Vec<postgres::Row>) -> String{
+fn rows_to_json(rows: Vec<postgres::Row>) -> String {
+    let mut result = Vec::new();
 
     for row in rows {
-        for coloumn in row.columns() {
+        let mut row_map = Map::new();
 
-            let ctype = coloumn.type_().name().to_string();
-            let cname = coloumn.name();
+        for column in row.columns() {
+            let column_name = column.name(); // Получаем &str вместо String
+            let column_type = column.type_().name();
 
-            let val = match ctype.as_str() {
-                _ => Value::String("".to_string())
+            let value = match column_type {
+                "bool" | "BOOL" => {
+                    let val: bool = row.get(column_name);
+                    Value::Bool(val)
+                }
+                "\"char\"" => {
+                    let val: i8 = row.get(column_name);
+                    Value::Number(val.into())
+                }
+                "int2" | "SMALLINT" | "SMALLSERIAL" => {
+                    let val: i16 = row.get(column_name);
+                    Value::Number(val.into())
+                }
+                "int4" | "INT" | "SERIAL" => {
+                    let val: i32 = row.get(column_name);
+                    Value::Number(val.into())
+                }
+                "oid" | "OID" => {
+                    let val: u32 = row.get(column_name);
+                    Value::Number(val.into())
+                }
+                "int8" | "BIGINT" | "BIGSERIAL" => {
+                    let val: i64 = row.get(column_name);
+                    Value::Number(val.into())
+                }
+                "float4" | "REAL" => {
+                    let val: f32 = row.get(column_name);
+                    Value::Number(serde_json::Number::from_f64(val as f64).unwrap_or_else(|| serde_json::Number::from(0)))
+                }
+                "float8" | "DOUBLE PRECISION" => {
+                    let val: f64 = row.get(column_name);
+                    Value::Number(serde_json::Number::from_f64(val).unwrap_or_else(|| serde_json::Number::from(0)))
+                }
+                "varchar" | "text" | "char" | "citext" | "name" | "unknown" | "VARCHAR" | "CHAR(n)" | "TEXT" | "CITEXT" | "NAME" | "UNKNOWN" => {
+                    let val: String = row.get(column_name);
+                    Value::String(val)
+                }
+                "ltree" | "lquery" | "ltxtquery" | "LTREE" | "LQUERY" | "LTXTQUERY" => {
+                    let val: String = row.get(column_name);
+                    Value::String(val)
+                }
+                "bytea" | "BYTEA" => {
+                    let val: Vec<u8> = row.get(column_name);
+                    Value::String(general_purpose::STANDARD.encode(val))
+                }
+                "hstore" | "HSTORE" => {
+                    let val: HashMap<String, Option<String>> = row.get(column_name);
+                    let mut map = Map::new();
+                    for (k, v) in val {
+                        map.insert(k, v.map(Value::String).unwrap_or(Value::Null));
+                    }
+                    Value::Object(map)
+                }
+                "timestamp" | "timestamptz" | "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" => {
+                    let val: SystemTime = row.get(column_name);
+                    let duration = val.duration_since(SystemTime::UNIX_EPOCH).unwrap();
+                    Value::Number(duration.as_secs().into())
+                }
+                "inet" | "INET" => {
+                    let val: IpAddr = row.get(column_name);
+                    Value::String(val.to_string())
+                }
+                _ => Value::Null, // Неизвестный тип
             };
 
+            row_map.insert(column_name.to_string(), value); // Вставляем в Map с ключом String
         }
+
+        result.push(Value::Object(row_map));
     }
 
-    "".to_string()
+    json!(result).to_string()
 }
 
 fn format_json_error(error: &str) -> String {
