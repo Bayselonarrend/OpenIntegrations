@@ -32,13 +32,13 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "294";
+    EventID = "318";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "67c7a767006e9f06006b12e400000001000...";
-    EventID = "298";
+    Token   = "afd0a867006e9f06006b12e400000001000...";
+    EventID = "322";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID, Token);
 ```
@@ -46,4 +46,119 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
 
 
 
-
+```json title="Result"
+{
+ "result": {
+  "ID": "306",
+  "PARENT_ID": "306",
+  "DELETED": "N",
+  "CAL_TYPE": "user",
+  "OWNER_ID": "1",
+  "NAME": "New event",
+  "DATE_FROM": "10.02.2025 00:45:00",
+  "DATE_TO": "10.02.2025 01:45:00",
+  "ORIGINAL_DATE_FROM": null,
+  "TZ_FROM": "Europe/Minsk",
+  "TZ_TO": "Europe/Minsk",
+  "TZ_OFFSET_FROM": "10800",
+  "TZ_OFFSET_TO": "10800",
+  "DATE_FROM_TS_UTC": "1739126723",
+  "DATE_TO_TS_UTC": "1741733100",
+  "DT_SKIP_TIME": "N",
+  "DT_LENGTH": 3600,
+  "EVENT_TYPE": null,
+  "CREATED_BY": "1",
+  "DATE_CREATE": "09.02.2025 00:45:24",
+  "TIMESTAMP_X": "09.02.2025 00:45:24",
+  "DESCRIPTION": "Event description",
+  "PRIVATE_EVENT": "1",
+  "ACCESSIBILITY": "quest",
+  "IMPORTANCE": "normal",
+  "IS_MEETING": true,
+  "MEETING_STATUS": "H",
+  "MEETING_HOST": "1",
+  "MEETING": {
+   "HOST_NAME": "Антон Титовец",
+   "TEXT": null,
+   "OPEN": false,
+   "NOTIFY": true,
+   "REINVITE": false,
+   "MAIL_FROM": false
+  },
+  "LOCATION": "Office",
+  "REMIND": [
+   {
+    "type": "day",
+    "count": 1
+   }
+  ],
+  "COLOR": "#230000",
+  "RRULE": {
+   "FREQ": "DAILY",
+   "COUNT": 3,
+   "INTERVAL": 10,
+   "UNTIL": "01.01.2038",
+   "~UNTIL": "",
+   "UNTIL_TS": 2145916800
+  },
+  "EXDATE": "",
+  "DAV_XML_ID": "20250209T214500Z-69659e41a2916cea5b67582b8ef79e15@b24-ar17wx.bitrix24.by",
+  "G_EVENT_ID": "",
+  "DAV_EXCH_LABEL": "",
+  "CAL_DAV_LABEL": "",
+  "VERSION": "1",
+  "ATTENDEES_CODES": [
+   "U1",
+   "U10"
+  ],
+  "RECURRENCE_ID": null,
+  "RELATIONS": "",
+  "SECTION_ID": "264",
+  "SYNC_STATUS": null,
+  "UF_CRM_CAL_EVENT": false,
+  "UF_WEBDAV_CAL_EVENT": false,
+  "SECTION_DAV_XML_ID": null,
+  "DATE_FROM_FORMATTED": "Mon Feb 10 2025 00:45:00",
+  "DATE_TO_FORMATTED": "Mon Feb 10 2025 01:45:00",
+  "SECT_ID": "264",
+  "OPTIONS": null,
+  "ATTENDEE_LIST": [
+   {
+    "id": 1,
+    "entryId": "306",
+    "status": "H"
+   },
+   {
+    "id": 10,
+    "entryId": "308",
+    "status": "Q"
+   }
+  ],
+  "COLLAB_ID": null,
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 10.02.2025, 3 раз(а)",
+  "attendeesEntityList": [
+   {
+    "entityId": "user",
+    "id": 1
+   },
+   {
+    "entityId": "user",
+    "id": 10
+   }
+  ],
+  "~DESCRIPTION": "Event description",
+  "~USER_OFFSET_FROM": 0,
+  "~USER_OFFSET_TO": 0
+ },
+ "time": {
+  "start": 1739051124.97282,
+  "finish": 1739051125.02319,
+  "duration": 0.0503709316253662,
+  "processing": 0.0219850540161133,
+  "date_start": "2025-02-09T00:45:24+03:00",
+  "date_finish": "2025-02-09T00:45:25+03:00",
+  "operating_reset_at": 1739051725,
+  "operating": 0
+ }
+}
+```

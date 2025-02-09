@@ -33,20 +33,20 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FromID        = "4904";
-    DestinationID = "4906";
+    FromID        = "4934";
+    DestinationID = "4936";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "4906";
-    DestinationID = "4904";
+    FromID        = "4936";
+    DestinationID = "4934";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "67c7a767006e9f06006b12e400000001000...";
+    Token = "afd0a867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```

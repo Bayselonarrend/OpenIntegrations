@@ -34,7 +34,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 ```bsl title="1C:Enterprise/OneScript code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "14393";
+    MessageID = "14453";
     Text      = "New message text";
 
     Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);
@@ -43,4 +43,26 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 
 
 
-
+```json title="Result"
+{
+ "ok": true,
+ "result": {
+  "message_id": 14413,
+  "sender_chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "date": 1739049492,
+  "edit_date": 1739049498,
+  "text": "New message text"
+ }
+}
+```

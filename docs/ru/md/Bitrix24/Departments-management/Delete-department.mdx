@@ -32,13 +32,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL             = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDПодразделения = "1570";
+    IDПодразделения = "1582";
 
     Результат = OPI_Bitrix24.УдалитьПодразделение(URL, IDПодразделения);
 
     URL             = "b24-ar17wx.bitrix24.by";
-    Токен           = "67c7a767006e9f06006b12e400000001000...";
-    IDПодразделения = "1568";
+    Токен           = "afd0a867006e9f06006b12e400000001000...";
+    IDПодразделения = "1580";
 
     Результат = OPI_Bitrix24.УдалитьПодразделение(URL, IDПодразделения, Токен);
 ```
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьПодразделение \
               --url "b24-ar17wx.bitrix24.by" \
-              --depid 1564 \
+              --depid 1592 \
               --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьПодразделение ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --depid 1564 ^
+              --depid 1592 ^
               --token "***"
         ```
     </TabItem>

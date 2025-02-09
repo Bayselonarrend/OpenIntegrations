@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
   | OwnerID | --owner | String, Number | &#x2714; | Calendar owner ID |
-  | Type | --type | String | &#x2714; | Calendar type: user, group, company_calendar, location, etc/. |
+  | Type | --type | String | &#x2714; | Calendar type: user, group, company_calendar, location, etc. |
   | Token | --token | String | &#x2716; | Access token, when app auth method used |
 
   
@@ -39,7 +39,7 @@ Method at API documentation: [calendar.section.get](https://apidocs.bitrix24.ru/
     Result = OPI_Bitrix24.GetCalendarList(URL, OwnerID, Type);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "67c7a767006e9f06006b12e400000001000...";
+    Token = "afd0a867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetCalendarList(URL, OwnerID, Type, Token);
 ```
@@ -47,4 +47,156 @@ Method at API documentation: [calendar.section.get](https://apidocs.bitrix24.ru/
 
 
 
-
+```json title="Result"
+{
+ "result": [
+  {
+   "ID": "14",
+   "NAME": "Новый календарь",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Мой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=14&sign=0340726e9becd635c244fe6b70681010&bx_hit_hash=2WWi7bjQ9bin1IgiayYGE09H5tOGUsvK"
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2025-01-18 14:11:00",
+   "TIMESTAMP_X": "2025-01-18 14:11:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": null,
+   "PAGE_TOKEN": null,
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "16",
+   "NAME": "Новый календарь",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Мой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=16&sign=11c87d77756ee426d52a887c1f0e9451&bx_hit_hash=2WWi7bjQ9bin1IgiayYGE09H5tOGUsvK"
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2025-01-18 16:06:00",
+   "TIMESTAMP_X": "2025-01-18 16:06:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": null,
+   "PAGE_TOKEN": null,
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "26",
+   "NAME": "Новый календарь",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Мой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=26&sign=db0466517eac35c3a5834f513aea8336&bx_hit_hash=2WWi7bjQ9bin1IgiayYGE09H5tOGUsvK"
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2025-01-18 18:05:00",
+   "TIMESTAMP_X": "2025-01-18 18:05:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": null,
+   "PAGE_TOKEN": null,
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "28",
+   "NAME": "Новый календарь",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Мой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=28&sign=c82932e1cd2ef5da6c427850617091f9&bx_hit_hash=2WWi7bjQ9bin1IgiayYGE09H5tOGUsvK"
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2025-01-18 18:06:00",
+   "TIMESTAMP_X": "2025-01-18 18:06:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": null,
+   "PAGE_TOKEN": null,
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "30",
+   "NAME": "Другой календарь",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Мой другой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+...
+```
