@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="80f0750a-d9c2-4a1d-9973-92d05b68264f">
+  <name>OPI_PostgreSQL</name>
+  <synonym>
+    <key>ru</key>
+    <value>Postgre SQL</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

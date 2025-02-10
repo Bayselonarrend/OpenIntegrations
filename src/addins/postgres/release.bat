@@ -1,8 +1,8 @@
 @echo off
 
 :: Установить переменную
-set CARGO_NAME=opi_sqlite
-set LIB_NAME=OPI_SQLite
+set CARGO_NAME=opi_postgres
+set LIB_NAME=OPI_PostgreSQL
 set OPENSSL_DIR=C:\msys64\mingw64
 set OPENSSL_LIB_DIR=%OPENSSL_DIR%\lib
 set OPENSSL_INCLUDE_DIR=%OPENSSL_DIR%\include
