@@ -61,6 +61,30 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 CreateCalendar \
+             --url "b24-ar17wx.bitrix24.by" \
+             --fields "{'type':'user','ownerId':1,'name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 CreateCalendar ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --fields "{'type':'user','ownerId':1,'name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

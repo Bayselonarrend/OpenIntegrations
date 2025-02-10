@@ -61,6 +61,34 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 GetCalendarEvents \
+             --url "b24-ar17wx.bitrix24.by" \
+             --owner 1 \
+             --type "user" \
+             --filter "{'from':'2025-02-11T12:12:30.8119643Z','to':'2025-02-12T12:12:30.8119643Z','section':[302,304]}" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 GetCalendarEvents ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --owner 1 ^
+             --type "user" ^
+             --filter "{'from':'2025-02-11T12:12:30.8119643Z','to':'2025-02-12T12:12:30.8119643Z','section':[302,304]}" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
