@@ -47,6 +47,32 @@ Method at API documentation: [post /v1/draft/timeslot/info](https://docs.ozon.ru
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ozon GetFBOTimeslots \
+             --clientid "***" \
+             --apikey "***" \
+             --from "2025-02-10T12:19:34.4874135" \
+             --to "2025-02-11T12:19:34.4874135" \
+             --draft 42518199 \
+             --whs 1020000759116000
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ozon GetFBOTimeslots ^
+             --clientid "***" ^
+             --apikey "***" ^
+             --from "2025-02-10T12:19:34.4874135" ^
+             --to "2025-02-11T12:19:34.4874135" ^
+             --draft 42518199 ^
+             --whs 1020000759116000
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
