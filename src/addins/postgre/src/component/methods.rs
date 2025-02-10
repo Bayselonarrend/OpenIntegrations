@@ -5,7 +5,6 @@ use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
 use std::time::{SystemTime, UNIX_EPOCH};
-use serde_json::Serializer;
 
 pub fn execute_query(
     add_in: &mut AddIn,

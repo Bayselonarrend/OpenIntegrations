@@ -4150,7 +4150,7 @@
 "ОбработатьНачалоЗаписи": "ProcessRecordsStart",
 "ПолучитьДвоичныеДанные": "GetBinaryData",
 "цена цели по умолчанию": "goal default price",
-"./docs/ru/cli/NEW_CLI/": "./docs/en/cli/NEW_CLI/",
+"./docs/ru/cli/": "./docs/en/cli/",
 "Получить токен по коду": "Get token by code",
 "Получает событие по ID": "Gets an event by ID",
 "Получить пользователей": "Get users",
