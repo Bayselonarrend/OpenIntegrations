@@ -29,7 +29,7 @@ pub fn execute_query(
         Err(e) => return format_json_error(&e.to_string()),
     };
 
-    let params_unboxed = params_ref.as_slice().iter().map(|boxed| boxed.as_ref()).collect::<Vec<_>>();
+    let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
 
     if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
         match client.query(&query, &params_unboxed) {
@@ -46,18 +46,47 @@ pub fn execute_query(
     }
 }
 
+/// Конвертирует JSON-параметры в Postgres-совместимые типы
+fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, String> {
+    let mut result = Vec::new();
+    for param in params {
+        let processed: Box<dyn ToSql + Sync> = match param {
+            Value::Null => Box::new(Option::<i32>::None),
+            Value::Bool(b) => Box::new(*b),
+            Value::Number(n) => {
+                if let Some(i) = n.as_i64() {
+                    Box::new(i)
+                } else if let Some(f) = n.as_f64() {
+                    Box::new(f)
+                } else {
+                    return Err("Invalid number".to_string());
+                }
+            }
+            Value::String(s) => Box::new(s.clone()),
+            Value::Object(obj) => process_object(obj)?,
+            _ => return Err("Unsupported parameter type".to_string()),
+        };
+        result.push(processed);
+    }
+    Ok(result)
+}
+
 fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, String> {
     if object.len() != 1 {
         return Err("Object must have exactly one key-value pair specifying the type and value".to_string());
     }
 
-    let (key, value) = object.iter().next().unwrap();
-    match key.as_str() {
+    let (key, value) = object.iter().next()
+        .ok_or_else(|| "Empty object: expected one key-value pair".to_string())?;
+
+    let key_upper = key.as_str().to_uppercase();
+
+    match key_upper.as_str() {
         "BOOL" => value
             .as_bool()
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for BOOL".to_string()),
-        "\"char\"" => value
+        "\"CHAR\"" => value
             .as_i64()
             .and_then(|v| i8::try_from(v).ok())
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
@@ -120,7 +149,7 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
         "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" => value
             .as_i64()
             .map(|v| {
-                let duration = UNIX_EPOCH + std::time::Duration::from_secs(v as u64);
+                let duration = UNIX_EPOCH + std::time::Duration::from_millis(v as u64 * 1000);
                 let system_time = SystemTime::from(duration);
                 Box::new(system_time) as Box<dyn ToSql + Sync>
             })
@@ -134,31 +163,6 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
     }
 }
 
-/// Конвертирует JSON-параметры в Postgres-совместимые типы
-fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, String> {
-    let mut result = Vec::new();
-    for param in params {
-        let processed: Box<dyn ToSql + Sync> = match param {
-            Value::Null => Box::new(Option::<i32>::None),
-            Value::Bool(b) => Box::new(*b),
-            Value::Number(n) => {
-                if let Some(i) = n.as_i64() {
-                    Box::new(i)
-                } else if let Some(f) = n.as_f64() {
-                    Box::new(f)
-                } else {
-                    return Err("Invalid number".to_string());
-                }
-            }
-            Value::String(s) => Box::new(s.clone()),
-            Value::Object(obj) => process_object(obj)?,
-            _ => return Err("Unsupported parameter type".to_string()),
-        };
-        result.push(processed);
-    }
-    Ok(result)
-}
-
 fn rows_to_json(rows: Vec<postgres::Row>) -> String {
     let mut result = Vec::new();
 
@@ -166,75 +170,62 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
         let mut row_map = Map::new();
 
         for column in row.columns() {
-            let column_name = column.name(); // Получаем &str вместо String
+            let column_name = column.name();
             let column_type = column.type_().name();
 
-            let value = match column_type {
-                "bool" | "BOOL" => {
-                    let val: bool = row.get(column_name);
-                    Value::Bool(val)
-                }
-                "\"char\"" => {
-                    let val: i8 = row.get(column_name);
-                    Value::Number(val.into())
-                }
-                "int2" | "SMALLINT" | "SMALLSERIAL" => {
-                    let val: i16 = row.get(column_name);
-                    Value::Number(val.into())
-                }
-                "int4" | "INT" | "SERIAL" => {
-                    let val: i32 = row.get(column_name);
-                    Value::Number(val.into())
-                }
-                "oid" | "OID" => {
-                    let val: u32 = row.get(column_name);
-                    Value::Number(val.into())
-                }
-                "int8" | "BIGINT" | "BIGSERIAL" => {
-                    let val: i64 = row.get(column_name);
-                    Value::Number(val.into())
-                }
-                "float4" | "REAL" => {
-                    let val: f32 = row.get(column_name);
-                    Value::Number(serde_json::Number::from_f64(val as f64).unwrap_or_else(|| serde_json::Number::from(0)))
-                }
-                "float8" | "DOUBLE PRECISION" => {
-                    let val: f64 = row.get(column_name);
-                    Value::Number(serde_json::Number::from_f64(val).unwrap_or_else(|| serde_json::Number::from(0)))
-                }
-                "varchar" | "text" | "char" | "citext" | "name" | "unknown" | "VARCHAR" | "CHAR(n)" | "TEXT" | "CITEXT" | "NAME" | "UNKNOWN" => {
-                    let val: String = row.get(column_name);
-                    Value::String(val)
-                }
-                "ltree" | "lquery" | "ltxtquery" | "LTREE" | "LQUERY" | "LTXTQUERY" => {
-                    let val: String = row.get(column_name);
-                    Value::String(val)
-                }
-                "bytea" | "BYTEA" => {
-                    let val: Vec<u8> = row.get(column_name);
-                    Value::String(general_purpose::STANDARD.encode(val))
-                }
-                "hstore" | "HSTORE" => {
-                    let val: HashMap<String, Option<String>> = row.get(column_name);
-                    let mut map = Map::new();
-                    for (k, v) in val {
-                        map.insert(k, v.map(Value::String).unwrap_or(Value::Null));
-                    }
-                    Value::Object(map)
-                }
-                "timestamp" | "timestamptz" | "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" => {
-                    let val: SystemTime = row.get(column_name);
-                    let duration = val.duration_since(SystemTime::UNIX_EPOCH).unwrap();
-                    Value::Number(duration.as_secs().into())
-                }
-                "inet" | "INET" => {
-                    let val: IpAddr = row.get(column_name);
-                    Value::String(val.to_string())
-                }
-                _ => Value::Null, // Неизвестный тип
+            let value = match column_type.to_lowercase().as_str() {
+                "bool" => row.get::<_, Option<bool>>(column_name).map(Value::Bool).unwrap_or(Value::Null),
+                "int2" | "smallint" | "smallserial" => row.get::<_, Option<i16>>(column_name)
+                    .map(|v| Value::Number(v.into()))
+                    .unwrap_or(Value::Null),
+                "int4" | "int" | "serial" => row.get::<_, Option<i32>>(column_name)
+                    .map(|v| Value::Number(v.into()))
+                    .unwrap_or(Value::Null),
+                "oid" => row.get::<_, Option<u32>>(column_name)
+                    .map(|v| Value::Number(v.into()))
+                    .unwrap_or(Value::Null),
+                "int8" | "bigint" | "bigserial" => row.get::<_, Option<i64>>(column_name)
+                    .map(|v| Value::Number(v.into()))
+                    .unwrap_or(Value::Null),
+                "float4" | "real" => row.get::<_, Option<f32>>(column_name)
+                    .map(|v| serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null))
+                    .unwrap_or(Value::Null),
+                "float8" | "double precision" => row.get::<_, Option<f64>>(column_name)
+                    .map(|v| serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null))
+                    .unwrap_or(Value::Null),
+                "varchar" | "text" | "char" | "citext" | "name" | "unknown" => row.get::<_, Option<String>>(column_name)
+                    .map(Value::String)
+                    .unwrap_or(Value::Null),
+                "bytea" => row.get::<_, Option<Vec<u8>>>(column_name)
+                    .map(|v| Value::String(general_purpose::STANDARD.encode(v)))
+                    .unwrap_or(Value::Null),
+                "hstore" => row.get::<_, Option<HashMap<String, Option<String>>>>(column_name)
+                    .map(|hstore| {
+                        let mut map = Map::new();
+                        for (k, v) in hstore {
+                            map.insert(k, v.map(Value::String).unwrap_or(Value::Null));
+                        }
+                        Value::Object(map)
+                    })
+                    .unwrap_or(Value::Null),
+                "timestamp" | "timestamptz" => row.get::<_, Option<SystemTime>>(column_name)
+                    .map(|time| {
+                        match time.duration_since(SystemTime::UNIX_EPOCH) {
+                            Ok(d) => Value::Number(d.as_secs().into()),
+                            Err(_) => match SystemTime::UNIX_EPOCH.duration_since(time) {
+                                Ok(d) => Value::Number(-(d.as_secs() as i64).into()), // Отрицательное значение для даты до UNIX_EPOCH
+                                Err(_) => Value::Null, // Это вообще не должно произойти
+                            },
+                        }
+                    })
+                    .unwrap_or(Value::Null),
+                "inet" => row.get::<_, Option<IpAddr>>(column_name)
+                    .map(|ip| Value::String(ip.to_string()))
+                    .unwrap_or(Value::Null),
+                _ => Value::Null,
             };
 
-            row_map.insert(column_name.to_string(), value); // Вставляем в Map с ключом String
+            row_map.insert(column_name.to_string(), value);
         }
 
         result.push(Value::Object(row_map));
