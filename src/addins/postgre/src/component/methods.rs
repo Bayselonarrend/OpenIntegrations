@@ -188,10 +188,18 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                     .map(|v| Value::Number(v.into()))
                     .unwrap_or(Value::Null),
                 "float4" | "real" => row.get::<_, Option<f32>>(column_name)
-                    .map(|v| serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null))
+                    .map(|v| match v {
+                        v if v.is_nan() => Value::String("NaN".to_string()),
+                        v if v.is_infinite() => Value::String("Infinity".to_string()),
+                        _ => serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null),
+                    })
                     .unwrap_or(Value::Null),
                 "float8" | "double precision" => row.get::<_, Option<f64>>(column_name)
-                    .map(|v| serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null))
+                    .map(|v| match v {
+                        v if v.is_nan() => Value::String("NaN".to_string()),
+                        v if v.is_infinite() => Value::String("Infinity".to_string()),
+                        _ => serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null),
+                    })
                     .unwrap_or(Value::Null),
                 "varchar" | "text" | "char" | "citext" | "name" | "unknown" => row.get::<_, Option<String>>(column_name)
                     .map(Value::String)
@@ -211,12 +219,13 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                 "timestamp" | "timestamptz" => row.get::<_, Option<SystemTime>>(column_name)
                     .map(|time| {
                         match time.duration_since(SystemTime::UNIX_EPOCH) {
-                            Ok(d) => Value::Number(d.as_secs().into()),
+                            Ok(d) => Value::Number(d.as_secs().into()), // Положительное значение для времени после UNIX_EPOCH
                             Err(_) => match SystemTime::UNIX_EPOCH.duration_since(time) {
-                                Ok(d) => Value::Number(-(d.as_secs() as i64).into()), // Отрицательное значение для даты до UNIX_EPOCH
+                                Ok(d) => Value::Number((-(d.as_secs() as i64)).into()), // Отрицательное значение для даты до UNIX_EPOCH
                                 Err(_) => Value::Null, // Это вообще не должно произойти
                             },
                         }
+
                     })
                     .unwrap_or(Value::Null),
                 "inet" => row.get::<_, Option<IpAddr>>(column_name)
