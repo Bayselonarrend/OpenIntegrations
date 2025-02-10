@@ -54,6 +54,30 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 GetUserBusy \
+             --url "b24-ar17wx.bitrix24.by" \
+             --users 1 \
+             --from "2025-02-10T12:12:35.8589434" \
+             --to "2025-02-17T12:12:35.8589434" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 GetUserBusy ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --users 1 ^
+             --from "2025-02-10T12:12:35.8589434" ^
+             --to "2025-02-17T12:12:35.8589434" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
