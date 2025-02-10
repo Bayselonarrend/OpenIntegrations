@@ -52,7 +52,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("Database")
+    name!("ConnectionString")
 ];
 
 
