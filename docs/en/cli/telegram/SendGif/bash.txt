@@ -2,4 +2,4 @@ oint telegram SendGif \
  --token "***" \
  --chat "@testsichee" \
  --text "Строковое значение" \
- --gif "C:\Users\Administrator\AppData\Local\Temp\tq54wmxtl3q.gif"
+ --gif "C:\Users\Administrator\AppData\Local\Temp\bvqkfvualfw.gif"

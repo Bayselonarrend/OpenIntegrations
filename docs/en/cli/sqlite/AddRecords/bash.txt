@@ -1,4 +1,4 @@
 oint sqlite AddRecords \
  --table "test" \
- --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-01-10T11:19:16.0388392Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\u3k1xzfoorg.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-01-10T11:19:16.0398417Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\u3k1xzfoorg.png'}}]" \
- --db "C:\Users\Administrator\AppData\Local\Temp\3pbdgv5r4nm.sqlite"
+ --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-02-10T11:41:58.8112687Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\ux3xujo4qln.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-02-10T11:41:58.8122651Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\ux3xujo4qln.png'}}]" \
+ --db "C:\Users\Administrator\AppData\Local\Temp\cfyaxf0knp1.sqlite"
