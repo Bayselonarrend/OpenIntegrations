@@ -46,6 +46,28 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 SetUserParticipationStatus \
+             --url "b24-ar17wx.bitrix24.by" \
+             --event 370 \
+             --status "Y" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 SetUserParticipationStatus ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --event 370 ^
+             --status "Y" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

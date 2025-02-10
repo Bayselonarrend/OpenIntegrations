@@ -53,6 +53,32 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 UpdateCalendar \
+             --url "b24-ar17wx.bitrix24.by" \
+             --calendar 304 \
+             --fields "{'type':'user','ownerId':1,'name':'New calendar name','description':'This calendar has been changed'}" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 UpdateCalendar ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --calendar 304 ^
+             --fields "{'type':'user','ownerId':1,'name':'New calendar name','description':'This calendar has been changed'}" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

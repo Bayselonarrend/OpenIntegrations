@@ -48,6 +48,30 @@ Method at API documentation: [calendar.user.settings.set](https://apidocs.bitrix
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 SetCustomCalendarSettings \
+             --url "b24-ar17wx.bitrix24.by" \
+             --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 SetCustomCalendarSettings ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

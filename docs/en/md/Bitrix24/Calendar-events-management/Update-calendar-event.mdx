@@ -55,6 +55,32 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 UpdateCalendarEvent \
+             --url "b24-ar17wx.bitrix24.by" \
+             --event 370 \
+             --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint bitrix24 UpdateCalendarEvent ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --event 370 ^
+             --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
