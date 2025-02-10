@@ -39,7 +39,7 @@ pub fn execute_query(
             Err(e) => format_json_error(&e.to_string()),
         }
     } else {
-        match client.execute(&query, &params_unboxed) {
+        match client.execute(&query, &params_unboxed.as_slice()) {
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(&e.to_string()),
         }
@@ -86,7 +86,7 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .as_bool()
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for BOOL".to_string()),
-        "\"CHAR\"" => value
+        "\"CHAR\"" | "OLDCHAR" => value
             .as_i64()
             .and_then(|v| i8::try_from(v).ok())
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
@@ -115,7 +115,7 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .map(|v| v as f32) // Преобразование f64 в f32
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for REAL".to_string()),
-        "DOUBLE PRECISION" => value
+        "DOUBLE PRECISION" | "DOUBLE_PRECISION" => value
             .as_f64()
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for DOUBLE PRECISION".to_string()),
@@ -204,9 +204,16 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                 "varchar" | "text" | "char" | "citext" | "name" | "unknown" => row.get::<_, Option<String>>(column_name)
                     .map(Value::String)
                     .unwrap_or(Value::Null),
-                "bytea" => row.get::<_, Option<Vec<u8>>>(column_name)
-                    .map(|v| Value::String(general_purpose::STANDARD.encode(v)))
-                    .unwrap_or(Value::Null),
+                "bytea" => {
+
+                    let base64_string = row.get::<_, Option<Vec<u8>>>(column_name)
+                        .map(|v| general_purpose::STANDARD.encode(v))
+                        .unwrap_or("Unable to make Base64 string".to_string());
+
+                    let mut blob_object = serde_json::Map::new();
+                    blob_object.insert("BYTEA".to_string(), Value::String(base64_string)); // Оборачиваем в объект
+                    Value::Object(blob_object)
+                },
                 "hstore" => row.get::<_, Option<HashMap<String, Option<String>>>>(column_name)
                     .map(|hstore| {
                         let mut map = Map::new();
