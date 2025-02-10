@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk GroupProducts \
- --items "[10420598,10420602]" \
+ --items "[10610170,10610171]" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
