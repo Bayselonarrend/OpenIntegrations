@@ -76,6 +76,11 @@ pipeline {
                 test_ozon()
              }
           }
+          stage('sqlite'){
+             steps{
+                test_sqlite()
+             }
+          }
           stage('s3'){
              steps{
                 test_s3()
@@ -84,11 +89,6 @@ pipeline {
           stage('slack'){
              steps{
                 test_slack()
-             }
-          }
-          stage('sqlite'){
-             steps{
-                test_sqlite()
              }
           }
           stage('tcp'){
@@ -1745,6 +1745,52 @@ def test_ozon(){
 }
 
 
+def test_sqlite(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьИнформациюОТаблице --table "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ДобавитьЗаписи --table "test" --rows "test" --trn "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ОбновитьЗаписи --table "test" --values "test" --filter "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite УдалитьЗаписи --table "test" --filter "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite УдалитьТаблицу --table "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ОчиститьТаблицу --table "test" --db "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьСтруктуруФильтраЗаписей --empty "test" --debug --test '
+               }
+
+}
+
+
 def test_s3(){
 					
 
@@ -2028,52 +2074,6 @@ def test_slack(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe slack СформироватьБлокКартинку --picture "test" --alt "test" --debug --test '
-               }
-
-}
-
-
-def test_sqlite(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьИнформациюОТаблице --table "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite СоздатьТаблицу --table "test" --cols "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ДобавитьЗаписи --table "test" --rows "test" --trn "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ОбновитьЗаписи --table "test" --values "test" --filter "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite УдалитьЗаписи --table "test" --filter "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite УдалитьТаблицу --table "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ОчиститьТаблицу --table "test" --db "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ПолучитьСтруктуруФильтраЗаписей --empty "test" --debug --test '
                }
 
 }
@@ -2885,9 +2885,9 @@ test_mongodb()
 test_neocities()
 test_notion()
 test_ozon()
+test_sqlite()
 test_s3()
 test_slack()
-test_sqlite()
 test_tcp()
 test_telegram()
 test_twitter()

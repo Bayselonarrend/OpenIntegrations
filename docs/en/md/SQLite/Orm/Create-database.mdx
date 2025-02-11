@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create database
+ Creates a database with the specified name
+
+
+
+`Function CreateDatabase(Val Base, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Base | --base | String | &#x2714; | Database name |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+
+  
+  Returns:  Structure Of KeyAndValue, String - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "93.125.42.204";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    Result = OPI_PostgreSQL.CreateDatabase(Base, ConnectionString);
+```
+ 
+
+
+
+

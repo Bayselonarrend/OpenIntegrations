@@ -342,6 +342,16 @@ Function ConnectorName() Export
     Return "OPI_SQLite";
 EndFunction
 
+Function GetFeatures() Export
+
+    Features = New Structure;
+    Features.Insert("ParameterNumeration", True);
+    Features.Insert("ParameterMarker"    , "?");
+
+    Return Features;
+
+EndFunction
+
 #EndRegion
 
 #Region Private

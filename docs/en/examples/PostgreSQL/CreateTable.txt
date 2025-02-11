@@ -1,0 +1,24 @@
+﻿    Address  = "93.125.42.204";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("bool_field"    , "BOOL");
+    ColoumnsStruct.Insert("char_field"    , """char""");
+    ColoumnsStruct.Insert("smallint_field", "SMALLINT");
+    ColoumnsStruct.Insert("int_field"     , "INT");
+    ColoumnsStruct.Insert("oid_field"     , "OID");
+    ColoumnsStruct.Insert("bigint_field"  , "BIGINT");
+    ColoumnsStruct.Insert("real_field"    , "REAL");
+    ColoumnsStruct.Insert("dp_field"      , "DOUBLE PRECISION");
+    ColoumnsStruct.Insert("text_field"    , "TEXT");
+    ColoumnsStruct.Insert("bytea_field"   , "BYTEA");
+    ColoumnsStruct.Insert("ts_field"      , "TIMESTAMP");
+    ColoumnsStruct.Insert("ip_field"      , "INET");
+
+    Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
