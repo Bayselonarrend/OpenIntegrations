@@ -218,12 +218,12 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                         _ => serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null),
                     })
                     .unwrap_or(Value::Null),
-                "\"CHAR\"" => {
+                "CHAR" => {
                     row.get::<_, Option<i8>>(column_name)
                         .map(|v| Value::Number(v.into()))
                         .unwrap_or(Value::Null)
                 },
-                "VARCHAR" | "TEXT" | "CHAR" | "CITEXT" | "NAME" | "LTREE" | "LQUERY" | "LTXTQUERY" | "UNKNOWN" => row.get::<_, Option<String>>(column_name)
+                "VARCHAR" | "TEXT" | "BPCHAR" | "CITEXT" | "NAME" | "LTREE" | "LQUERY" | "LTXTQUERY" | "UNKNOWN" => row.get::<_, Option<String>>(column_name)
                     .map(Value::String)
                     .unwrap_or(Value::Null),
                 "BYTEA" => {
