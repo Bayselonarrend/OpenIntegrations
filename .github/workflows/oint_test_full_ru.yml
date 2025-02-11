@@ -374,6 +374,48 @@ jobs:
           path: ./data.json
 
 
+  Testing-PostgreSQL:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.1
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          TEMP_DEB="$(mktemp)" &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.18.1/oint_1.18.1_all_ru.deb' &&
+          sudo dpkg -i "$TEMP_DEB"
+          rm -f "$TEMP_DEB"
+
+
+
+      - name: ORM
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_Postgres_ORM"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-PostgreSQL
+          path: ./docs/ru/results/PostgreSQL
+
+
   Testing-SQLite:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -1407,7 +1449,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [Testing-Telegram,Testing-VK,Testing-Viber,Testing-Twitter,Testing-SQLite,Testing-YandexDisk,Testing-GoogleWorkspace,Testing-GoogleCalendar,Testing-GoogleDrive,Testing-GoogleSheets,Testing-Notion,Testing-Slack,Testing-Airtable,Testing-Dropbox,Testing-Bitrix24,Testing-VkTeams,Testing-Ozon,Testing-Neocities,Testing-CDEK,Testing-YandexMetrika,Testing-S3,Testing-TCP]
+    needs: [Testing-Telegram,Testing-VK,Testing-Viber,Testing-Twitter,Testing-PostgreSQL,Testing-SQLite,Testing-YandexDisk,Testing-GoogleWorkspace,Testing-GoogleCalendar,Testing-GoogleDrive,Testing-GoogleSheets,Testing-Notion,Testing-Slack,Testing-Airtable,Testing-Dropbox,Testing-Bitrix24,Testing-VkTeams,Testing-Ozon,Testing-Neocities,Testing-CDEK,Testing-YandexMetrika,Testing-S3,Testing-TCP]
     if: ${{ always() }}
     permissions:
       contents: write
@@ -1498,6 +1540,22 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Twitter"
+
+      - name: Получить логи PostgreSQL
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-PostgreSQL
+          path: ./docs/ru/results/PostgreSQL
+
+
+      - name: Очистка логов PostgreSQL
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-PostgreSQL"
 
       - name: Получить логи SQLite
         uses: actions/cache/restore@v3
@@ -1799,7 +1857,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-SQLite, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Testing-Airtable, Testing-Dropbox, Testing-Bitrix24, Testing-VkTeams, Testing-Ozon, Testing-Neocities, Testing-CDEK, Testing-YandexMetrika, Testing-S3, Testing-TCP, Encode]
+    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-PostgreSQL, Testing-SQLite, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Testing-Airtable, Testing-Dropbox, Testing-Bitrix24, Testing-VkTeams, Testing-Ozon, Testing-Neocities, Testing-CDEK, Testing-YandexMetrika, Testing-S3, Testing-TCP, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша
