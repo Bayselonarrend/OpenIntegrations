@@ -12,7 +12,7 @@
 
     RecordStructure = New Structure;
     RecordStructure.Insert("bool_field"    , New Structure("BOOL"            , True));
-    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , "A"));
+    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , 1));
     RecordStructure.Insert("smallint_field", New Structure("SMALLINT"        , 5));
     RecordStructure.Insert("int_field"     , New Structure("INT"             , 100));
     RecordStructure.Insert("oid_field"     , New Structure("OID"             , 24576));

@@ -165,7 +165,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function GetTableInformation(Val Table, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Table);
@@ -188,7 +188,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
@@ -209,7 +209,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
     Result = OPI_SQLQueries.AddRecords(OPI_SQLite, Table, DataArray, Transaction, Connection);
@@ -232,7 +232,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function GetRecords(Val Table
     , Val Fields = "*"
     , Val Filters = ""
@@ -255,7 +255,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
@@ -272,7 +272,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, Filters, Connection);
@@ -288,7 +288,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DeleteTable(Val Table, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
@@ -304,7 +304,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function ClearTable(Val Table, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, , Connection);
