@@ -44,6 +44,32 @@
 
 #Region Internal
 
+Function CreateDatabase(Val Module, Val Base, Val Connection = "") Export
+
+    Scheme = NewSQLScheme("CREATEDATABASE");
+
+    SetBaseName(Scheme, Base);
+
+    Request   = FormSQLText(Scheme);
+    Result = Module.ExecuteSQLQuery(Request, , , Connection);
+
+    Return Result;
+
+EndFunction
+
+Function DropDatabase(Val Module, Val Base, Val Connection = "") Export
+
+    Scheme = NewSQLScheme("DROPDATABASE");
+
+    SetBaseName(Scheme, Base);
+
+    Request   = FormSQLText(Scheme);
+    Result = Module.ExecuteSQLQuery(Request, , , Connection);
+
+    Return Result;
+
+EndFunction
+
 Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     ErrorText = "The column structure is not a valid key-value structure";
@@ -207,7 +233,7 @@ EndFunction
 
 #Region Scheme
 
-Function NewSQLScheme(Val Action)
+Function NewSQLScheme(Val Action, Val Features = Undefined)
 
     OPI_TypeConversion.GetLine(Action);
 
@@ -219,7 +245,7 @@ Function NewSQLScheme(Val Action)
 
     ElsIf Action = "INSERT" Then
 
-        Scheme = EmptySchemeInsert();
+        Scheme = EmptySchemeInsert(Features);
 
     ElsIf Action = "UPDATE" Then
 
@@ -240,6 +266,15 @@ Function NewSQLScheme(Val Action)
     ElsIf Action = "TRUNCATE" Then
 
         Scheme = EmptySchemeTruncate();
+
+    ElsIf Action = "CREATEDATABASE" Then
+
+        Scheme = EmptySchemeCreateDatabase();
+
+    ElsIf Action = "DROPDATABASE" Then
+
+        Scheme = EmptySchemeDropDatabase();
+
     Else
 
         Scheme = New Structure;
@@ -265,12 +300,17 @@ Function EmptySchemeSelect()
 
 EndFunction
 
-Function EmptySchemeInsert()
+Function EmptySchemeInsert(Val Features)
 
     Scheme = New Structure("type", "INSERT");
 
+    ParameterNumeration = ?(ValueIsFilled(Features), Features["ParameterNumeration"], False);
+    ParameterMarker     = ?(ValueIsFilled(Features), Features["ParameterMarker"] , "?");
+
     Scheme.Insert("table", "");
     Scheme.Insert("set"  , New Array);
+    Scheme.Insert("nump" , ParameterNumeration);
+    Scheme.Insert("markp", ParameterMarker);
 
     Return Scheme;
 
@@ -332,6 +372,26 @@ Function EmptySchemeTruncate()
 
 EndFunction
 
+Function EmptySchemeCreateDatabase();
+
+    Scheme = New Structure("type", "CREATEDATABASE");
+
+    Scheme.Insert("database" , "");
+
+    Return Scheme;
+
+EndFunction
+
+Function EmptySchemeDropDatabase();
+
+    Scheme = New Structure("type", "DROPDATABASE");
+
+    Scheme.Insert("database" , "");
+
+    Return Scheme;
+
+EndFunction
+
 #EndRegion
 
 #Region Processors
@@ -377,6 +437,13 @@ Function FormSQLText(Val Scheme)
 
         QueryText = FormTextTruncate(Scheme);
 
+    ElsIf SchemeType = "CREATEDATABASE" Then
+
+        QueryText = FormTextCreateDatabase(Scheme);
+
+    ElsIf SchemeType = "DROPDATABASE" Then
+
+        QueryText = FormTextDropDatabase(Scheme);
     Else
 
         QueryText = "";
@@ -412,15 +479,25 @@ Function FormTextInsert(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,set");
 
-    Table  = Scheme["table"];
-    Fields = Scheme["set"];
+    Table   = Scheme["table"];
+    Fields  = Scheme["set"];
+    Numeration = Scheme["nump"];
+    Marker     = Scheme["markp"];
 
     SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3)";
 
     Parameters = New Array;
 
     For N = 1 To Fields.Count() Do
-        Parameters.Add("?" + OPI_Tools.NumberToString(N));
+
+        CurrentMarker = Marker;
+
+        If Numeration Then
+            CurrentMarker = CurrentMarker + OPI_Tools.NumberToString(N);
+        EndIf;
+
+        Parameters.Add(CurrentMarker);
+
     EndDo;
 
     TextSQL = StrTemplate(SQLTemplate
@@ -530,6 +607,34 @@ Function FormTextTruncate(Val Scheme)
 
 EndFunction
 
+Function FormTextCreateDatabase(Val Scheme)
+
+    CheckSchemeRequiredFields(Scheme, "database");
+
+    Base = Scheme["database"];
+
+    SQLTemplate = "CREATE DATABASE %1";
+
+    TextSQL = StrTemplate(SQLTemplate, Base);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextDropDatabase(Val Scheme)
+
+    CheckSchemeRequiredFields(Scheme, "database");
+
+    Base = Scheme["database"];
+
+    SQLTemplate = "DROP DATABASE %1";
+
+    TextSQL = StrTemplate(SQLTemplate, Base);
+
+    Return TextSQL;
+
+EndFunction
+
 #EndRegion
 
 #Region Auxiliary
@@ -634,7 +739,9 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection)
     FieldArray  = New Array;
     ValuesArray = New Array;
 
-    Scheme = NewSQLScheme("INSERT");
+    Features = Module.GetFeatures();
+
+    Scheme = NewSQLScheme("INSERT", Features);
     SetTableName(Scheme, Table);
 
     SplitDataCollection(Record, FieldArray, ValuesArray);
@@ -751,9 +858,10 @@ Function CreateConnectionInsideModule(Val Connector, Val Base)
     OPI_TypeConversion.GetLine(Base);
     OPI_Tools.RestoreEscapeSequences(Base);
 
-    Connector = AttachAddInOnServer("OPI_SQLite");
+    FieldName    = GetPrimaryFieldName(Connector);
+    Connector = AttachAddInOnServer(Connector);
 
-    Connector.Database = Base;
+    Connector[FieldName] = Base;
 
     Result = Connector.Connect();
     Result = OPI_Tools.JsonToStructure(Result, False);
@@ -781,6 +889,16 @@ Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
 
     AddIn = New ("AddIn." + AddInName + "." + Class);
     Return AddIn;
+
+EndFunction
+
+Function GetPrimaryFieldName(Val Connector)
+
+    If Connector = "OPI_SQLite" Then
+        Return "Database";
+    Else
+        Return "ConnectionString";
+    EndIf;
 
 EndFunction
 
@@ -927,6 +1045,14 @@ Procedure SetTableName(Scheme, Val Name)
     OPI_TypeConversion.GetLine(Name);
 
     Scheme.Insert("table", Name);
+
+EndProcedure
+
+Procedure SetBaseName(Scheme, Val Name)
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Scheme.Insert("database", Name);
 
 EndProcedure
 

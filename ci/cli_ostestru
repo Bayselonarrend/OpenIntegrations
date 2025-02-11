@@ -239,6 +239,17 @@ pipeline {
 			}
 		}
 
+        stage('Testing-PostgreSQL') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_Postgres_ORM"'
+               }
+
+			}
+		}
+
         stage('Testing-SQLite') {
 			steps {
 					

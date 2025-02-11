@@ -2311,6 +2311,24 @@ EndProcedure
 
 #EndRegion
 
+#Region PostgreSQL
+
+Procedure Postgres_ORM() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+
+    PostgreSQL_CreateDatabase(TestParameters);
+    PostgreSQL_CreateTable(TestParameters);
+    PostgreSQL_AddRecords(TestParameters);
+    PostgreSQL_DropDatabase(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -17269,6 +17287,129 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+#EndRegion
+
+#Region PostgreSQL
+
+Procedure PostgreSQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    OPI_PostgreSQL.DropDatabase(Base, ConnectionString); // SKIP
+
+    Result = OPI_PostgreSQL.CreateDatabase(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_DropDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    Result = OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_CreateTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("bool_field"    , "BOOL");
+    ColoumnsStruct.Insert("char_field"    , """char""");
+    ColoumnsStruct.Insert("smallint_field", "SMALLINT");
+    ColoumnsStruct.Insert("int_field"     , "INT");
+    ColoumnsStruct.Insert("oid_field"     , "OID");
+    ColoumnsStruct.Insert("bigint_field"  , "BIGINT");
+    ColoumnsStruct.Insert("real_field"    , "REAL");
+    ColoumnsStruct.Insert("dp_field"      , "DOUBLE PRECISION");
+    ColoumnsStruct.Insert("text_field"    , "TEXT");
+    ColoumnsStruct.Insert("bytea_field"   , "BYTEA");
+    ColoumnsStruct.Insert("ts_field"      , "TIMESTAMP");
+    ColoumnsStruct.Insert("ip_field"      , "INET");
+
+    Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_AddRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Char = New Map;
+    Char.Insert("""char""", 1);
+
+    DP = New Map;
+    DP.Insert("DOUBLE PRECISION", 1.0000000000000002);
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("bool_field"    , New Structure("BOOL"     , True));
+    RecordStructure.Insert("char_field"    , Char);
+    RecordStructure.Insert("smallint_field", New Structure("SMALLINT" , 5));
+    RecordStructure.Insert("int_field"     , New Structure("INT"      , 100));
+    RecordStructure.Insert("oid_field"     , New Structure("OID"      , 24576));
+    RecordStructure.Insert("bigint_field"  , New Structure("BIGINT"   , 9999999));
+    RecordStructure.Insert("real_field"    , New Structure("REAL"     , 15.2));
+    RecordStructure.Insert("dp_field"      , DP);
+    RecordStructure.Insert("text_field"    , New Structure("TEXT"     , "Some text"));
+    RecordStructure.Insert("bytea_field"   , New Structure("BYTEA"    , Image));
+    RecordStructure.Insert("ts_field"      , New Structure("TIMESTAMP", 1739207915));
+    RecordStructure.Insert("ip_field"      , New Structure("INET"     , "127.0.0.1"));
+
+    Result = OPI_PostgreSQL.AddRecords(Table, RecordStructure, False, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 

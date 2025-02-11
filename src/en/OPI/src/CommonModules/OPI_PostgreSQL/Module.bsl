@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+﻿// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
 // Lib: SQLite
 // CLI: sqlite
 
@@ -50,22 +50,22 @@
 // Creates a connection to the specified base
 //
 // Parameters:
-// Base - String - Path to database. In memory, if not filled - db
+// ConnectionString - String - Connection string. See GenerateConnectionString - sting
 //
 // Returns:
 // Arbitrary - Connector object or structure with error information
-Function CreateConnection(Val Base = "") Export
+Function CreateConnection(Val ConnectionString = "") Export
 
-    If IsConnector(Base) Then
-        Return Base;
+    If IsConnector(ConnectionString) Then
+        Return ConnectionString;
     EndIf;
 
-    OPI_TypeConversion.GetLine(Base);
-    OPI_Tools.RestoreEscapeSequences(Base);
+    OPI_TypeConversion.GetLine(ConnectionString);
+    OPI_Tools.RestoreEscapeSequences(ConnectionString);
 
-    Connector = AttachAddInOnServer("OPI_SQLite");
+    Connector = AttachAddInOnServer("OPI_PostgreSQL");
 
-    Connector.Database = Base;
+    Connector.ConnectionString = ConnectionString;
 
     Result = Connector.Connect();
     Result = OPI_Tools.JsonToStructure(Result, False);
@@ -78,7 +78,7 @@ EndFunction
 // Explicitly closes the passed connection
 //
 // Parameters:
-// Connection - Arbitrary - AddIn object with open connection - db
+// Connection - Arbitrary - AddIn object with open connection - dbc
 //
 // Returns:
 // Structure Of KeyAndValue - Result of connection termination
@@ -109,7 +109,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_PostgreSQL.Main";
 
 EndFunction
 
@@ -127,7 +127,7 @@ EndFunction
 // QueryText - String - Database query text - sql
 // Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
 // ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
-// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue - Result of query execution
@@ -142,7 +142,7 @@ Function ExecuteSQLQuery(Val QueryText
     Parameters_ = ProcessParameters(Parameters);
     Connector   = CreateConnection(Connection);
 
-    If TypeOf(Connector) <> Type("AddIn.OPI_SQLite.Main") Then
+    If TypeOf(Connector) <> Type("AddIn.OPI_PostgreSQL.Main") Then
         Return Connector;
     EndIf;
 
@@ -153,28 +153,68 @@ Function ExecuteSQLQuery(Val QueryText
 
 EndFunction
 
+// Generate connection string
+// Forms a connection string from the passed data
+//
+// Parameters:
+// Address - String - IP address or domain name of the server - addr
+// Base - String - Name of the database to connect - db
+// Login - String - Postgres user login - login
+// Password - String - Postgres user password - pass
+// Port - String - Connection port - port
+//
+// Returns:
+// String - PostgreSQL database connection string
+Function GenerateConnectionString(Val Address, Val Base, Val Login, Val Password = "", Val Port = "5432") Export
+
+    OPI_TypeConversion.GetLine(Address);
+    OPI_TypeConversion.GetLine(Login);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Port);
+    OPI_TypeConversion.GetLine(Password);
+
+    Port     = ?(ValueIsFilled(Port), ":" + Port, Port);
+    Password = ?(ValueIsFilled(Password), ":" + Password, Password);
+
+    StringTemplate   = "postgresql://%1%2@%3%4/%5";
+    ConnectionString = StrTemplate(StringTemplate, Login, Password, Address, Port, Base);
+
+    Return ConnectionString;
+
+EndFunction
+
 #EndRegion
 
 #Region ORM
 
-// Get table information
-// Gets information about the table
+// Create database
+// Creates a database with the specified name
 //
 // Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Base - String - Database name - base
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - The result of the execution or SQL query text
-Function GetTableInformation(Val Table, Val Connection = "") Export
+// Structure Of KeyAndValue, String - Result of query execution
+Function CreateDatabase(Val Base, Val Connection = "") Export
 
-    OPI_TypeConversion.GetLine(Table);
+    Result = OPI_SQLQueries.CreateDatabase(OPI_PostgreSQL, Base, Connection);
+    Return Result;
 
-    TextSQL = "PRAGMA table_info('%1')";
-    TextSQL = StrTemplate(TextSQL, Table);
+EndFunction
 
-    Result = ExecuteSQLQuery(TextSQL, , True, Connection);
+// Drop database
+// Deletes the database
+//
+// Parameters:
+// Base - String - Database name - base
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function DropDatabase(Val Base, Val Connection = "") Export
 
+    Result = OPI_SQLQueries.DropDatabase(OPI_PostgreSQL, Base, Connection);
     Return Result;
 
 EndFunction
@@ -185,13 +225,13 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - The result of the execution or SQL query text
+// Structure Of KeyAndValue, String - Result of query execution
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.CreateTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
+    Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection);
     Return Result;
 
 EndFunction
@@ -206,13 +246,13 @@ EndFunction
 // Table - String - Table name - table
 // DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
 // Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.AddRecords(OPI_SQLite, Table, DataArray, Transaction, Connection);
+    Result = OPI_SQLQueries.AddRecords(OPI_PostgreSQL, Table, DataArray, Transaction, Connection);
     Return Result;
 
 EndFunction
@@ -229,7 +269,7 @@ EndFunction
 // Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
 // Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
 // Count - Number - Limiting the number of received strings - limit
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
@@ -240,7 +280,7 @@ Function GetRecords(Val Table
     , Val Count = ""
     , Val Connection = "") Export
 
-    Result = OPI_SQLQueries.GetRecords(OPI_SQLite, Table, Fields, Filters, Sort, Count, Connection);
+    Result = OPI_SQLQueries.GetRecords(OPI_PostgreSQL, Table, Fields, Filters, Sort, Count, Connection);
     Return Result;
 
 EndFunction
@@ -252,13 +292,13 @@ EndFunction
 // Table - String - Table name - table
 // ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
 // Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
 Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
 
-    Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
+    Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection);
     Return Result;
 
 EndFunction
@@ -269,13 +309,13 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
 Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, Filters, Connection);
+    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, Filters, Connection);
     Return Result;
 
 EndFunction
@@ -285,13 +325,13 @@ EndFunction
 //
 // Parameters:
 // Table - String - Table name - table
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
 Function DeleteTable(Val Table, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
+    Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection);
     Return Result;
 
 EndFunction
@@ -301,13 +341,13 @@ EndFunction
 //
 // Parameters:
 // Table - String - Table name - table
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
 Function ClearTable(Val Table, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, , Connection);
+    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, , Connection);
     Return Result;
 
 EndFunction
@@ -339,14 +379,14 @@ EndFunction
 #Region Internal
 
 Function ConnectorName() Export
-    Return "OPI_SQLite";
+    Return "OPI_PostgreSQL";
 EndFunction
 
 Function GetFeatures() Export
 
     Features = New Structure;
     Features.Insert("ParameterNumeration", True);
-    Features.Insert("ParameterMarker"    , "?");
+    Features.Insert("ParameterMarker"    , "$");
 
     Return Features;
 
@@ -385,15 +425,19 @@ Function ProcessParameters(Val Parameters)
 
         If TypeOf(CurrentParameter) = Type("BinaryData") Then
 
-            CurrentParameter = New Structure("blob", Base64String(CurrentParameter));
+            CurrentParameter = New Structure("BYTEA", Base64String(CurrentParameter));
 
-        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "blob") Then
+        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
 
             CurrentParameter = ProcessBlobStructure(CurrentParameter);
 
         ElsIf TypeOf(CurrentParameter) = Type("Date") Then
 
             CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
+
+        ElsIf TypeOf(CurrentParameter) = Type("Structure") Or TypeOf(CurrentParameter) = Type("Map") Then
+
+            Continue;
 
         Else
 
@@ -415,13 +459,20 @@ EndFunction
 
 Function ProcessBlobStructure(Val Value)
 
-    DataValue = Value["blob"];
-    DataFile  = New File(String(DataValue));
+    DataValue = Value["BYTEA"];
 
-    If DataFile.Exists() Then
+    If TypeOf(DataValue) = Type("BinaryData") Then
+        Value               = New Structure("BYTEA", Base64String(DataValue));
+    Else
 
-        CurrentData = New BinaryData(String(DataValue));
-        Value       = New Structure("blob", Base64String(CurrentData));
+        DataFile = New File(String(DataValue));
+
+        If DataFile.Exists() Then
+
+            CurrentData = New BinaryData(String(DataValue));
+            Value       = New Structure("BYTEA", Base64String(CurrentData));
+
+        EndIf;
 
     EndIf;
 
