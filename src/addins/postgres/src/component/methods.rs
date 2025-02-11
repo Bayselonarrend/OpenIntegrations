@@ -159,6 +159,15 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .and_then(|s| s.parse::<IpAddr>().ok())
             .map(|ip| Box::new(ip) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for INET".to_string()),
+        "JSON" | "JSONB" => {
+            if value.is_object() || value.is_array() {
+                Ok(Box::new(value.to_string()) as Box<dyn ToSql + Sync>)
+            } else if value.is_string() {
+                Ok(Box::new(value.as_str().unwrap().to_string()) as Box<dyn ToSql + Sync>)
+            } else {
+                Err("Invalid value for JSON/JSONB: must be an object, array, or string".to_string())
+            }
+        }
         _ => Err(format!("Unsupported type: {}", key)),
     }
 }
@@ -238,6 +247,11 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                 "inet" => row.get::<_, Option<IpAddr>>(column_name)
                     .map(|ip| Value::String(ip.to_string()))
                     .unwrap_or(Value::Null),
+                "json" | "jsonb" => {
+                    row.get::<_, Option<String>>(column_name)
+                        .and_then(|s| serde_json::from_str(&s).ok())
+                        .unwrap_or(Value::Null)
+                },
                 _ => Value::Null,
             };
 
