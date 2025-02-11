@@ -2322,6 +2322,7 @@ Procedure Postgres_ORM() Export
 
     PostgreSQL_CreateDatabase(TestParameters);
     PostgreSQL_CreateTable(TestParameters);
+    PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_DropDatabase(TestParameters);
 
@@ -17370,6 +17371,26 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
 
 EndProcedure
 
+Procedure PostgreSQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
 Procedure PostgreSQL_AddRecords(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
@@ -17384,25 +17405,19 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    Char = New Map;
-    Char.Insert("""char""", 1);
-
-    DP = New Map;
-    DP.Insert("DOUBLE PRECISION", 1.0000000000000002);
-
     RecordStructure = New Structure;
-    RecordStructure.Insert("bool_field"    , New Structure("BOOL"     , True));
-    RecordStructure.Insert("char_field"    , Char);
-    RecordStructure.Insert("smallint_field", New Structure("SMALLINT" , 5));
-    RecordStructure.Insert("int_field"     , New Structure("INT"      , 100));
-    RecordStructure.Insert("oid_field"     , New Structure("OID"      , 24576));
-    RecordStructure.Insert("bigint_field"  , New Structure("BIGINT"   , 9999999));
-    RecordStructure.Insert("real_field"    , New Structure("REAL"     , 15.2));
-    RecordStructure.Insert("dp_field"      , DP);
-    RecordStructure.Insert("text_field"    , New Structure("TEXT"     , "Some text"));
-    RecordStructure.Insert("bytea_field"   , New Structure("BYTEA"    , Image));
-    RecordStructure.Insert("ts_field"      , New Structure("TIMESTAMP", 1739207915));
-    RecordStructure.Insert("ip_field"      , New Structure("INET"     , "127.0.0.1"));
+    RecordStructure.Insert("bool_field"    , New Structure("BOOL"            , True));
+    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , "A"));
+    RecordStructure.Insert("smallint_field", New Structure("SMALLINT"        , 5));
+    RecordStructure.Insert("int_field"     , New Structure("INT"             , 100));
+    RecordStructure.Insert("oid_field"     , New Structure("OID"             , 24576));
+    RecordStructure.Insert("bigint_field"  , New Structure("BIGINT"          , 9999999));
+    RecordStructure.Insert("real_field"    , New Structure("REAL"            , 15.2));
+    RecordStructure.Insert("dp_field"      , New Structure("DOUBLE_PRECISION", 1.0000000000000002));
+    RecordStructure.Insert("text_field"    , New Structure("TEXT"            , "Some text"));
+    RecordStructure.Insert("bytea_field"   , New Structure("BYTEA"           , Image));
+    RecordStructure.Insert("ts_field"      , New Structure("TIMESTAMP"       , 1739207915));
+    RecordStructure.Insert("ip_field"      , New Structure("INET"            , "127.0.0.1"));
 
     Result = OPI_PostgreSQL.AddRecords(Table, RecordStructure, False, ConnectionString);
 
