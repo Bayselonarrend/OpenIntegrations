@@ -1,0 +1,38 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Generate connection string
+ Forms a connection string from the passed data
+
+
+
+`Function GenerateConnectionString(Val Address, Val Base, Val Login, Val Password = "", Val Port = "5432") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --addr | String | &#x2714; | IP address or domain name of the server |
+  | Base | --db | String | &#x2714; | Name of the database to connect |
+  | Login | --login | String | &#x2714; | Postgres user login |
+  | Password | --pass | String | &#x2716; | Postgres user password |
+  | Port | --port | String | &#x2716; | Connection port |
+
+  
+  Returns:  String - PostgreSQL database connection string
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

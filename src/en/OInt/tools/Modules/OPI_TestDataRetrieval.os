@@ -53,6 +53,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
     Sections.Insert("Twitter"        , 4);
+    Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("SQLite"         , 5);
     Sections.Insert("YandexDisk"     , 5);
     Sections.Insert("GoogleWorkspace", 2);
@@ -86,6 +87,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("VK"             , StandardDependencies);
     Sections.Insert("Viber"          , StandardDependencies);
     Sections.Insert("Twitter"        , StandardDependencies);
+    Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("SQLite"         , StandardDependencies);
     Sections.Insert("YandexDisk"     , StandardDependencies);
     Sections.Insert("GoogleWorkspace", StandardDependencies);
@@ -133,6 +135,7 @@ Function GetTestTable() Export
     S3_       = "S3";
     TCP       = "TCP";
     SQLite    = "SQLite";
+    Postgres  = "PostgreSQL";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -270,6 +273,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
+    NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
 
     Return TestTable;
 
@@ -2386,15 +2390,7 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         EndIf;
 
         CurrentOption = FormOption(Option.Value, Option.Key);
-
-        If Library         = "bitrix24"
-            And Option.Key = "url" Then
-
-            CurrentOption = ?(StrFind(CurrentOption, "rest") > 0
-                , "https://b24-ar17wx.bitrix24.by/rest/1/***"
-                , CurrentOption);
-
-        EndIf;
+        ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
 
         OptionsArray.Add(CurrentOption);
 
@@ -2424,6 +2420,28 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     ПолучитьДвоичныеДанныеИзСтроки(BatString).Write(MethodCatalog + "/bat.txt");
     ПолучитьДвоичныеДанныеИзСтроки(BashString).Write(MethodCatalog + "/bash.txt");
+
+EndProcedure
+
+Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
+
+    If Library     = "bitrix24"
+        And Option = "url" Then
+
+        Value = ?(StrFind(Value, "rest") > 0
+            , "https://b24-ar17wx.bitrix24.by/rest/1/***"
+            , Value);
+
+        Return;
+
+    EndIf;
+
+    If Library  = "postgres"
+        And Option = "conn" Then
+
+        Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
+
+    EndIf;
 
 EndProcedure
 
