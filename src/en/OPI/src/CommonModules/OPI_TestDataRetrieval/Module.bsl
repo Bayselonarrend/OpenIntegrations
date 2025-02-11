@@ -2436,7 +2436,7 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
     EndIf;
 
-    If Library  = "postgres"
+    If Library     = "postgres"
         And Option = "conn" Then
 
         Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";

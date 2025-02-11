@@ -50,8 +50,8 @@ Function CreateDatabase(Val Module, Val Base, Val Connection = "") Export
 
     SetBaseName(Scheme, Base);
 
-    Request   = FormSQLText(Scheme);
-    Result = Module.ExecuteSQLQuery(Request, , , Connection);
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
 
     Return Result;
 
@@ -63,8 +63,8 @@ Function DropDatabase(Val Module, Val Base, Val Connection = "") Export
 
     SetBaseName(Scheme, Base);
 
-    Request   = FormSQLText(Scheme);
-    Result = Module.ExecuteSQLQuery(Request, , , Connection);
+    Request = FormSQLText(Scheme);
+    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
 
     Return Result;
 
@@ -479,8 +479,8 @@ Function FormTextInsert(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,set");
 
-    Table   = Scheme["table"];
-    Fields  = Scheme["set"];
+    Table      = Scheme["table"];
+    Fields     = Scheme["set"];
     Numeration = Scheme["nump"];
     Marker     = Scheme["markp"];
 
@@ -858,7 +858,7 @@ Function CreateConnectionInsideModule(Val Connector, Val Base)
     OPI_TypeConversion.GetLine(Base);
     OPI_Tools.RestoreEscapeSequences(Base);
 
-    FieldName    = GetPrimaryFieldName(Connector);
+    FieldName = GetPrimaryFieldName(Connector);
     Connector = AttachAddInOnServer(Connector);
 
     Connector[FieldName] = Base;
