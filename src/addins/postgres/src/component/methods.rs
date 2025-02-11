@@ -245,9 +245,12 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
         }
 
         result.push(Value::Object(row_map));
-    }
+    };
 
-    json!(result).to_string()
+    json!({
+        "result": true,
+        "data": result
+    }).to_string()
 }
 
 fn format_json_error(error: &str) -> String {
