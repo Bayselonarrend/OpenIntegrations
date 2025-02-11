@@ -7,6 +7,9 @@ ci/** linguist-vendored
 media/** linguist-vendored
 docs/** linguist-vendored
 
+src/ru/cli/data/Classes/internal/Classes/** linguist-vendored
+src/en/cli/data/Classes/internal/Classes/** linguist-vendored
+
 *.iss linguist-vendored
 *.bat linguist-vendored
 
