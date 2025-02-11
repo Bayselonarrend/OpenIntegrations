@@ -146,7 +146,7 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
                 Box::new(map) as Box<dyn ToSql + Sync>
             })
             .ok_or_else(|| "Invalid object for HSTORE".to_string()),
-        "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" => value
+        "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMP_WITH_TIME_ZONE" => value
             .as_i64()
             .map(|v| {
                 let duration = UNIX_EPOCH + std::time::Duration::from_millis(v as u64 * 1000);
@@ -247,10 +247,7 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
         result.push(Value::Object(row_map));
     };
 
-    json!({
-        "result": true,
-        "data": result
-    }).to_string()
+    json!({ "result": true, "data": result }).to_string()
 }
 
 fn format_json_error(error: &str) -> String {
