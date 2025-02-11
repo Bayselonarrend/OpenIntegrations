@@ -17386,7 +17386,7 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
@@ -17407,7 +17407,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
 
     RecordStructure = New Structure;
     RecordStructure.Insert("bool_field"    , New Structure("BOOL"            , True));
-    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , "A"));
+    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , 1));
     RecordStructure.Insert("smallint_field", New Structure("SMALLINT"        , 5));
     RecordStructure.Insert("int_field"     , New Structure("INT"             , 100));
     RecordStructure.Insert("oid_field"     , New Structure("OID"             , 24576));

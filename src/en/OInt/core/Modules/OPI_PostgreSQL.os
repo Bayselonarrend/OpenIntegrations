@@ -38,6 +38,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
+//@skip-check doc-comment-collection-item-type
 
 // Uncomment if OneScript is executed
 #Use "../../tools"
@@ -195,7 +196,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue - Result of query execution
 Function CreateDatabase(Val Base, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateDatabase(OPI_PostgreSQL, Base, Connection);
@@ -211,7 +212,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue - Result of query execution
 Function DropDatabase(Val Base, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DropDatabase(OPI_PostgreSQL, Base, Connection);
@@ -227,12 +228,12 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue - Result of query execution
 Function GetTableInformation(Val Table, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Table);
 
-    TextSQL        = "SELECT column_name, data_type, character_maximum_length
+    TextSQL           = "SELECT column_name, data_type, character_maximum_length
     |FROM information_schema.columns
     |WHERE table_name = '%1';";
 
@@ -241,6 +242,44 @@ Function GetTableInformation(Val Table, Val Connection = "") Export
     Result = ExecuteSQLQuery(TextSQL, , , Connection);
 
     Return Result;
+
+EndFunction
+
+// Get table column types
+// Gets an array of table column types
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Array, Map Of KeyAndValue - Array of types or error information
+Function GetTableColumnTypes(Val Table, Val Connection = "") Export
+
+    TableInformation = GetTableInformation(Table, Connection);
+
+    If Not TableInformation["result"] Then
+        Return TableInformation;
+    EndIf;
+
+    TypesArray = New Array;
+
+    For Each Coloumn In TableInformation Do
+
+        CurrentType = Coloumn["data_type"];
+        CurrentType = String(Upper(CurrentType));
+        CurrentType = StrReplace(CurrentType, " "       , "_");
+        CurrentType = StrReplace(CurrentType, """CHAR""", "OLDCHAR");
+
+        If StrStartsWith(CurrentType, "CHAR") Then
+            CurrentType = "CHAR";
+        EndIf;
+
+        TypesArray.Add(CurrentType);
+
+    EndDo;
+
+    Return TypesArray;
 
 EndFunction
 
@@ -253,7 +292,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Structure Of KeyAndValue - Result of query execution
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection);
@@ -374,6 +413,49 @@ Function ClearTable(Val Table, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, , Connection);
     Return Result;
+
+EndFunction
+
+// Normalise parameter set
+// Converts an array of parameter values into an array of description structures to be passed to the query
+//
+// Parameters:
+// ValuesArray - Array Of Arbitrary - Array of query parameter values - values
+// TypesArray - Array Of String - Array of column types. See GetTableColumnTypes - types
+//
+// Returns:
+// Array Of Map - Normalised set of parameters for a query
+Function NormaliseParameterSet(Val ValuesArray, Val TypesArray) Export
+
+    OPI_TypeConversion.GetArray(ValuesArray);
+    OPI_TypeConversion.GetArray(TypesArray);
+
+    TypesMap       = GetTypesMap();
+    ResultingArray = New Array;
+    TypesBound     = TypesArray.UBound();
+
+    For N = 0 To ValuesArray.UBound() Do
+
+        If N > TypesBound Then
+            Break;
+        EndIf;
+
+        CurrentType     = Upper(TypesArray[N]);
+        CurrentValue    = ValuesArray[N];
+        TypeDescription = TypesMap.Get(CurrentType);
+
+        If TypeDescription <> Undefined Then
+            CurrentValue = TypeDescription.AdjustValue(CurrentValue);
+        EndIf;
+
+        CurrentDescription = New Map;
+        CurrentDescription.Insert(CurrentType, CurrentValue);
+
+        ResultingArray.Add(CurrentDescription);
+
+    EndDo;
+
+    Return ResultingArray;
 
 EndFunction
 
@@ -502,6 +584,46 @@ Function ProcessBlobStructure(Val Value)
     EndIf;
 
     Return Value;
+
+EndFunction
+
+Function GetTypesMap()
+
+    DescriptionBool    = New TypeDescription("Boolean");
+    DescriptionOldchar = New TypeDescription("Number", , , New NumberQualifiers(1, 0, AllowedSign.Nonnegative));
+    DescriptionI       = New TypeDescription("Number", , , New NumberQualifiers(, 0, AllowedSign.Any));
+    DescriptionU       = New TypeDescription("Number", , , New NumberQualifiers(, 0, AllowedSign.Nonnegative));
+    DescriptionF       = New TypeDescription("Number", , , New NumberQualifiers(, , AllowedSign.Any));
+    DescriptionString  = New TypeDescription("String");
+
+    TypesMap = New Map();
+    TypesMap.Insert("BOOL"                    , DescriptionBool);
+    TypesMap.Insert("""CHAR"""                , DescriptionOldchar);
+    TypesMap.Insert("OLDCHAR"                 , DescriptionOldchar);
+    TypesMap.Insert("SMALLINT"                , DescriptionI);
+    TypesMap.Insert("SMALLSERIAL"             , DescriptionI);
+    TypesMap.Insert("INT"                     , DescriptionI);
+    TypesMap.Insert("SERIAL"                  , DescriptionI);
+    TypesMap.Insert("BIGINT"                  , DescriptionI);
+    TypesMap.Insert("BIGSERIAL"               , DescriptionI);
+    TypesMap.Insert("TIMESTAMP"               , DescriptionI);
+    TypesMap.Insert("TIMESTAMP WITH TIME ZONE", DescriptionI);
+    TypesMap.Insert("TIMESTAMP_WITH_TIME_ZONE", DescriptionI);
+    TypesMap.Insert("OID"                     , DescriptionU);
+    TypesMap.Insert("REAL"                    , DescriptionF);
+    TypesMap.Insert("DOUBLE PRECISION"        , DescriptionF);
+    TypesMap.Insert("DOUBLE_PRECISION"        , DescriptionF);
+    TypesMap.Insert("VARCHAR"                 , DescriptionString);
+    TypesMap.Insert("TEXT"                    , DescriptionString);
+    TypesMap.Insert("CHAR"                    , DescriptionString);
+    TypesMap.Insert("CITEXT"                  , DescriptionString);
+    TypesMap.Insert("NAME"                    , DescriptionString);
+    TypesMap.Insert("LTREE"                   , DescriptionString);
+    TypesMap.Insert("LQUERY"                  , DescriptionString);
+    TypesMap.Insert("LTXTQUERY"               , DescriptionString);
+    TypesMap.Insert("INET"                    , DescriptionString);
+
+    Return TypesMap;
 
 EndFunction
 
