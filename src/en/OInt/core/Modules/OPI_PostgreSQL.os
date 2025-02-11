@@ -219,6 +219,31 @@ Function DropDatabase(Val Base, Val Connection = "") Export
 
 EndFunction
 
+// Get table information
+// Gets information about the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function GetTableInformation(Val Table, Val Connection = "") Export
+
+    OPI_TypeConversion.GetLine(Table);
+
+    TextSQL        = "SELECT column_name, data_type, character_maximum_length
+    |FROM information_schema.columns
+    |WHERE table_name = '%1';";
+
+    TextSQL = StrTemplate(TextSQL, Table);
+
+    Result = ExecuteSQLQuery(TextSQL, , , Connection);
+
+    Return Result;
+
+EndFunction
+
 // Create table
 // Creates an empty table in the database
 //
@@ -462,7 +487,7 @@ Function ProcessBlobStructure(Val Value)
     DataValue = Value["BYTEA"];
 
     If TypeOf(DataValue) = Type("BinaryData") Then
-        Value               = New Structure("BYTEA", Base64String(DataValue));
+        Value            = New Structure("BYTEA", Base64String(DataValue));
     Else
 
         DataFile = New File(String(DataValue));
