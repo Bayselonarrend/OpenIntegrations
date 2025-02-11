@@ -86,11 +86,6 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .as_bool()
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for BOOL".to_string()),
-        "\"CHAR\"" | "OLDCHAR" => value
-            .as_i64()
-            .and_then(|v| i8::try_from(v).ok())
-            .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
-            .ok_or_else(|| "Invalid value for \"char\"".to_string()),
         "SMALLINT" | "SMALLSERIAL" => value
             .as_i64()
             .and_then(|v| i16::try_from(v).ok())
@@ -123,6 +118,11 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .as_str()
             .map(|v| Box::new(v.to_string()) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| format!("Invalid value for {}", key)),
+        "\"CHAR\"" | "OLDCHAR" => value
+            .as_i64()
+            .and_then(|v| i8::try_from(v).ok())
+            .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
+            .ok_or_else(|| "Invalid value for \"char\"".to_string()),
         "BYTEA" => value
             .as_str()
             .map(|blob_str| {
@@ -160,12 +160,18 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .map(|ip| Box::new(ip) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for INET".to_string()),
         "JSON" | "JSONB" => {
+            // Если значение уже является объектом или массивом, передаем его как есть
             if value.is_object() || value.is_array() {
-                Ok(Box::new(value.to_string()) as Box<dyn ToSql + Sync>)
+                Ok(Box::new(value.clone()) as Box<dyn ToSql + Sync>)
             } else if value.is_string() {
-                Ok(Box::new(value.as_str().unwrap().to_string()) as Box<dyn ToSql + Sync>)
+
+                let json_str = value.as_str().ok_or("Expected a string value for JSON/JSONB")?;
+                match serde_json::from_str::<Value>(json_str) {
+                    Ok(parsed_value) => Ok(Box::new(parsed_value) as Box<dyn ToSql + Sync>),
+                    Err(e) => Err(format!("Invalid JSON string: {}", e)),
+                }
             } else {
-                Err("Invalid value for JSON/JSONB: must be an object, array, or string".to_string())
+                Err("Invalid value for JSON/JSONB: must be an object, array, or valid JSON string".to_string())
             }
         }
         _ => Err(format!("Unsupported type: {}", key)),
@@ -182,39 +188,45 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
             let column_name = column.name();
             let column_type = column.type_().name();
 
-            let value = match column_type.to_lowercase().as_str() {
-                "bool" => row.get::<_, Option<bool>>(column_name).map(Value::Bool).unwrap_or(Value::Null),
-                "int2" | "smallint" | "smallserial" => row.get::<_, Option<i16>>(column_name)
+            let value = match column_type.to_uppercase().as_str() {
+                "BOOL" => row.get::<_, Option<bool>>(column_name)
+                    .map(Value::Bool)
+                    .unwrap_or(Value::Null),
+                "INT2" | "SMALLINT" | "SMALLSERIAL" => row.get::<_, Option<i16>>(column_name)
                     .map(|v| Value::Number(v.into()))
                     .unwrap_or(Value::Null),
-                "int4" | "int" | "serial" => row.get::<_, Option<i32>>(column_name)
+                "INT4" | "INT" | "SERIAL" => row.get::<_, Option<i32>>(column_name)
                     .map(|v| Value::Number(v.into()))
                     .unwrap_or(Value::Null),
-                "oid" => row.get::<_, Option<u32>>(column_name)
+                "OID" => row.get::<_, Option<u32>>(column_name)
                     .map(|v| Value::Number(v.into()))
                     .unwrap_or(Value::Null),
-                "int8" | "bigint" | "bigserial" => row.get::<_, Option<i64>>(column_name)
+                "INT8" | "BIGINT" | "BIGSERIAL" => row.get::<_, Option<i64>>(column_name)
                     .map(|v| Value::Number(v.into()))
                     .unwrap_or(Value::Null),
-                "float4" | "real" => row.get::<_, Option<f32>>(column_name)
+                "FLOAT4" | "REAL" => row.get::<_, Option<f32>>(column_name)
                     .map(|v| match v {
                         v if v.is_nan() => Value::String("NaN".to_string()),
                         v if v.is_infinite() => Value::String("Infinity".to_string()),
                         _ => serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null),
                     })
                     .unwrap_or(Value::Null),
-                "float8" | "double precision" => row.get::<_, Option<f64>>(column_name)
+                "FLOAT8" | "DOUBLE PRECISION" => row.get::<_, Option<f64>>(column_name)
                     .map(|v| match v {
                         v if v.is_nan() => Value::String("NaN".to_string()),
                         v if v.is_infinite() => Value::String("Infinity".to_string()),
                         _ => serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null),
                     })
                     .unwrap_or(Value::Null),
-                "varchar" | "text" | "char" | "citext" | "name" | "unknown" => row.get::<_, Option<String>>(column_name)
+                "\"CHAR\"" => {
+                    row.get::<_, Option<i8>>(column_name)
+                        .map(|v| Value::Number(v.into()))
+                        .unwrap_or(Value::Null)
+                },
+                "VARCHAR" | "TEXT" | "CHAR" | "CITEXT" | "NAME" | "LTREE" | "LQUERY" | "LTXTQUERY" | "UNKNOWN" => row.get::<_, Option<String>>(column_name)
                     .map(Value::String)
                     .unwrap_or(Value::Null),
-                "bytea" => {
-
+                "BYTEA" => {
                     let base64_string = row.get::<_, Option<Vec<u8>>>(column_name)
                         .map(|v| general_purpose::STANDARD.encode(v))
                         .unwrap_or("Unable to make Base64 string".to_string());
@@ -223,7 +235,7 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                     blob_object.insert("BYTEA".to_string(), Value::String(base64_string)); // Оборачиваем в объект
                     Value::Object(blob_object)
                 },
-                "hstore" => row.get::<_, Option<HashMap<String, Option<String>>>>(column_name)
+                "HSTORE" => row.get::<_, Option<HashMap<String, Option<String>>>>(column_name)
                     .map(|hstore| {
                         let mut map = Map::new();
                         for (k, v) in hstore {
@@ -232,7 +244,7 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                         Value::Object(map)
                     })
                     .unwrap_or(Value::Null),
-                "timestamp" | "timestamptz" => row.get::<_, Option<SystemTime>>(column_name)
+                "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.get::<_, Option<SystemTime>>(column_name)
                     .map(|time| {
                         match time.duration_since(SystemTime::UNIX_EPOCH) {
                             Ok(d) => Value::Number(d.as_secs().into()), // Положительное значение для времени после UNIX_EPOCH
@@ -241,18 +253,16 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
                                 Err(_) => Value::Null, // Это вообще не должно произойти
                             },
                         }
-
                     })
                     .unwrap_or(Value::Null),
-                "inet" => row.get::<_, Option<IpAddr>>(column_name)
+                "INET" => row.get::<_, Option<IpAddr>>(column_name)
                     .map(|ip| Value::String(ip.to_string()))
                     .unwrap_or(Value::Null),
-                "json" | "jsonb" => {
-                    row.get::<_, Option<String>>(column_name)
-                        .and_then(|s| serde_json::from_str(&s).ok())
+                "JSON" | "JSONB" => {
+                    row.get::<_, Option<Value>>(column_name)
                         .unwrap_or(Value::Null)
                 },
-                _ => Value::Null,
+                current_type => Value::String(format!("Unsupported type: {}", current_type)),
             };
 
             row_map.insert(column_name.to_string(), value);
