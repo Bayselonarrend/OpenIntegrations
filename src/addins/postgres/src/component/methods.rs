@@ -5,6 +5,8 @@ use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
 use std::time::{SystemTime, UNIX_EPOCH};
+use chrono::{NaiveDate, NaiveTime, Utc};
+use uuid::Uuid;
 
 pub fn execute_query(
     add_in: &mut AddIn,
@@ -173,6 +175,27 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             } else {
                 Err("Invalid value for JSON/JSONB: must be an object, array, or valid JSON string".to_string())
             }
+        },
+        "DATE" => {
+            let value_str = value.as_str().ok_or("Invalid value for DATE")?;
+            match parse_date(&value_str){
+                Ok(date) => Ok(Box::new(date.date()) as Box<dyn ToSql + Sync>),
+                Err(_) => Err("Invalid value for DATA".to_string()),
+            }
+        },
+        "TIME" => {
+            let value_str = value.as_str().ok_or("Invalid value for DATE")?;
+            match parse_date(&value_str){
+                Ok(date) => Ok(Box::new(date.time()) as Box<dyn ToSql + Sync>),
+                Err(_) => Err("Invalid value for TIME".to_string()),
+            }
+        }
+        "UUID" => {
+            value
+                .as_str()
+                .and_then(|s| s.parse::<Uuid>().ok())
+                .map(|uuid| Box::new(uuid) as Box<dyn ToSql + Sync>)
+                .ok_or_else(|| "Invalid value for UUID".to_string())
         }
         _ => Err(format!("Unsupported type: {}", key)),
     }
@@ -188,82 +211,8 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
             let column_name = column.name();
             let column_type = column.type_().name();
 
-            let value = match column_type.to_uppercase().as_str() {
-                "BOOL" => row.get::<_, Option<bool>>(column_name)
-                    .map(Value::Bool)
-                    .unwrap_or(Value::Null),
-                "INT2" | "SMALLINT" | "SMALLSERIAL" => row.get::<_, Option<i16>>(column_name)
-                    .map(|v| Value::Number(v.into()))
-                    .unwrap_or(Value::Null),
-                "INT4" | "INT" | "SERIAL" => row.get::<_, Option<i32>>(column_name)
-                    .map(|v| Value::Number(v.into()))
-                    .unwrap_or(Value::Null),
-                "OID" => row.get::<_, Option<u32>>(column_name)
-                    .map(|v| Value::Number(v.into()))
-                    .unwrap_or(Value::Null),
-                "INT8" | "BIGINT" | "BIGSERIAL" => row.get::<_, Option<i64>>(column_name)
-                    .map(|v| Value::Number(v.into()))
-                    .unwrap_or(Value::Null),
-                "FLOAT4" | "REAL" => row.get::<_, Option<f32>>(column_name)
-                    .map(|v| match v {
-                        v if v.is_nan() => Value::String("NaN".to_string()),
-                        v if v.is_infinite() => Value::String("Infinity".to_string()),
-                        _ => serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null),
-                    })
-                    .unwrap_or(Value::Null),
-                "FLOAT8" | "DOUBLE PRECISION" => row.get::<_, Option<f64>>(column_name)
-                    .map(|v| match v {
-                        v if v.is_nan() => Value::String("NaN".to_string()),
-                        v if v.is_infinite() => Value::String("Infinity".to_string()),
-                        _ => serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null),
-                    })
-                    .unwrap_or(Value::Null),
-                "CHAR" => {
-                    row.get::<_, Option<i8>>(column_name)
-                        .map(|v| Value::Number(v.into()))
-                        .unwrap_or(Value::Null)
-                },
-                "VARCHAR" | "TEXT" | "BPCHAR" | "CITEXT" | "NAME" | "LTREE" | "LQUERY" | "LTXTQUERY" | "UNKNOWN" => row.get::<_, Option<String>>(column_name)
-                    .map(Value::String)
-                    .unwrap_or(Value::Null),
-                "BYTEA" => {
-                    let base64_string = row.get::<_, Option<Vec<u8>>>(column_name)
-                        .map(|v| general_purpose::STANDARD.encode(v))
-                        .unwrap_or("Unable to make Base64 string".to_string());
-
-                    let mut blob_object = serde_json::Map::new();
-                    blob_object.insert("BYTEA".to_string(), Value::String(base64_string)); // Оборачиваем в объект
-                    Value::Object(blob_object)
-                },
-                "HSTORE" => row.get::<_, Option<HashMap<String, Option<String>>>>(column_name)
-                    .map(|hstore| {
-                        let mut map = Map::new();
-                        for (k, v) in hstore {
-                            map.insert(k, v.map(Value::String).unwrap_or(Value::Null));
-                        }
-                        Value::Object(map)
-                    })
-                    .unwrap_or(Value::Null),
-                "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.get::<_, Option<SystemTime>>(column_name)
-                    .map(|time| {
-                        match time.duration_since(SystemTime::UNIX_EPOCH) {
-                            Ok(d) => Value::Number(d.as_secs().into()), // Положительное значение для времени после UNIX_EPOCH
-                            Err(_) => match SystemTime::UNIX_EPOCH.duration_since(time) {
-                                Ok(d) => Value::Number((-(d.as_secs() as i64)).into()), // Отрицательное значение для даты до UNIX_EPOCH
-                                Err(_) => Value::Null, // Это вообще не должно произойти
-                            },
-                        }
-                    })
-                    .unwrap_or(Value::Null),
-                "INET" => row.get::<_, Option<IpAddr>>(column_name)
-                    .map(|ip| Value::String(ip.to_string()))
-                    .unwrap_or(Value::Null),
-                "JSON" | "JSONB" => {
-                    row.get::<_, Option<Value>>(column_name)
-                        .unwrap_or(Value::Null)
-                },
-                current_type => Value::String(format!("Unsupported type: {}", current_type)),
-            };
+            let value = process_sql_value(&column_name, &column_type, &row)
+                .unwrap_or_else(|e| Value::String(e.to_string()));
 
             row_map.insert(column_name.to_string(), value);
         }
@@ -274,10 +223,126 @@ fn rows_to_json(rows: Vec<postgres::Row>) -> String {
     json!({ "result": true, "data": result }).to_string()
 }
 
+fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) -> Result<Value, postgres::Error> {
+
+    let value = match column_type.to_uppercase().as_str() {
+        "BOOL" => row.try_get::<_, Option<bool>>(column_name)?
+            .map(Value::Bool)
+            .unwrap_or(Value::Null),
+        "INT2" | "SMALLINT" | "SMALLSERIAL" => row.try_get::<_, Option<i16>>(column_name)?
+            .map(|v| Value::Number(v.into()))
+            .unwrap_or(Value::Null),
+        "INT4" | "INT" | "SERIAL" => row.try_get::<_, Option<i32>>(column_name)?
+            .map(|v| Value::Number(v.into()))
+            .unwrap_or(Value::Null),
+        "OID" => row.try_get::<_, Option<u32>>(column_name)?
+            .map(|v| Value::Number(v.into()))
+            .unwrap_or(Value::Null),
+        "INT8" | "BIGINT" | "BIGSERIAL" => row.try_get::<_, Option<i64>>(column_name)?
+            .map(|v| Value::Number(v.into()))
+            .unwrap_or(Value::Null),
+        "FLOAT4" | "REAL" => row.try_get::<_, Option<f32>>(column_name)?
+            .map(|v| match v {
+                v if v.is_nan() => Value::String("NaN".to_string()),
+                v if v.is_infinite() => Value::String("Infinity".to_string()),
+                _ => serde_json::Number::from_f64(v as f64).map(Value::Number).unwrap_or(Value::Null),
+            })
+            .unwrap_or(Value::Null),
+        "FLOAT8" | "DOUBLE PRECISION" => row.try_get::<_, Option<f64>>(column_name)?
+            .map(|v| match v {
+                v if v.is_nan() => Value::String("NaN".to_string()),
+                v if v.is_infinite() => Value::String("Infinity".to_string()),
+                _ => serde_json::Number::from_f64(v).map(Value::Number).unwrap_or(Value::Null),
+            })
+            .unwrap_or(Value::Null),
+        "CHAR" => {
+            row.try_get::<_, Option<i8>>(column_name)?
+                .map(|v| Value::Number(v.into()))
+                .unwrap_or(Value::Null)
+        },
+        "VARCHAR" | "TEXT" | "BPCHAR" | "CITEXT" | "NAME" | "LTREE" | "LQUERY" | "LTXTQUERY" | "UNKNOWN" => row.try_get::<_, Option<String>>(column_name)?
+            .map(Value::String)
+            .unwrap_or(Value::Null),
+        "BYTEA" => {
+            let base64_string = row.try_get::<_, Option<Vec<u8>>>(column_name)?
+                .map(|v| general_purpose::STANDARD.encode(v))
+                .unwrap_or("Unable to make Base64 string".to_string());
+
+            let mut blob_object = serde_json::Map::new();
+            blob_object.insert("BYTEA".to_string(), Value::String(base64_string)); // Оборачиваем в объект
+            Value::Object(blob_object)
+        },
+        "HSTORE" => row.try_get::<_, Option<HashMap<String, Option<String>>>>(column_name)?
+            .map(|hstore| {
+                let mut map = Map::new();
+                for (k, v) in hstore {
+                    map.insert(k, v.map(Value::String).unwrap_or(Value::Null));
+                }
+                Value::Object(map)
+            })
+            .unwrap_or(Value::Null),
+        "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<SystemTime>>(column_name)?
+            .map(|time| {
+                match time.duration_since(SystemTime::UNIX_EPOCH) {
+                    Ok(d) => Value::Number(d.as_secs().into()), // Положительное значение для времени после UNIX_EPOCH
+                    Err(_) => match SystemTime::UNIX_EPOCH.duration_since(time) {
+                        Ok(d) => Value::Number((-(d.as_secs() as i64)).into()), // Отрицательное значение для даты до UNIX_EPOCH
+                        Err(_) => Value::Null, // Это вообще не должно произойти
+                    },
+                }
+            })
+            .unwrap_or(Value::Null),
+        "INET" => row.try_get::<_, Option<IpAddr>>(column_name)?
+            .map(|ip| Value::String(ip.to_string()))
+            .unwrap_or(Value::Null),
+        "DATE" => row.try_get::<_, Option<NaiveDate>>(column_name)?
+            .map(|date| Value::String(date.to_string()))
+            .unwrap_or(Value::Null),
+        "TIME" => row.try_get::<_, Option<NaiveTime>>(column_name)?
+            .map(|date| Value::String(date.to_string()))
+            .unwrap_or(Value::Null),
+        "JSON" | "JSONB" => {
+            row.try_get::<_, Option<Value>>(column_name)?
+                .unwrap_or(Value::Null)
+        },
+        "UUID" => {
+            row.try_get::<_, Option<Uuid>>(column_name)?
+                .map(|uuid| Value::String(uuid.to_string()))
+                .unwrap_or(Value::Null)
+        }
+        current_type => {
+            match row.try_get::<_, Option<String>>(column_name){
+                Ok(v) => v.map(Value::String).unwrap_or(Value::Null),
+                Err(_) => Value::String(format!("Unsupported type: {}", current_type)),
+            }
+        },
+    };
+    Ok(value)
+}
+
 fn format_json_error(error: &str) -> String {
     json!({
         "result": false,
         "error": error
     })
         .to_string()
+}
+
+fn parse_date(input: &str) -> Result<chrono::NaiveDateTime, String> {
+    // Попробуем спарсить полный формат с датой, временем и часовым поясом
+    if let Ok(datetime) = chrono::DateTime::parse_from_rfc3339(input) {
+        return Ok(datetime.with_timezone(&Utc).naive_local());
+    }
+
+    // Если не получилось, попробуем спарсить только дату и время без часового пояса
+    if let Ok(naive_datetime) = chrono::NaiveDateTime::parse_from_str(input, "%Y-%m-%dT%H:%M:%S") {
+        return Ok(naive_datetime);
+    }
+
+    // Если не получилось, попробуем спарсить только дату
+    if let Ok(naive_date) = chrono::NaiveDateTime::parse_from_str(input, "%Y-%m-%d") {
+        Ok(naive_date)
+    }else{
+        Err("Invalid ISO 8601 format".to_string())
+    }
 }
