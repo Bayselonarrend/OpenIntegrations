@@ -17364,7 +17364,8 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("dp_field"         , "DOUBLE PRECISION");
     ColoumnsStruct.Insert("text_field"       , "TEXT");
     ColoumnsStruct.Insert("varchar_field"    , "VARCHAR");
-    ColoumnsStruct.Insert("char_field"       , "CHAR(1)");
+    ColoumnsStruct.Insert("charn_field"      , "CHAR(3)");
+    ColoumnsStruct.Insert("char_field"       , "CHAR");
     ColoumnsStruct.Insert("name_field"       , "NAME");
     ColoumnsStruct.Insert("bytea_field"      , "BYTEA");
     ColoumnsStruct.Insert("ts_field"         , "TIMESTAMP");
@@ -17437,6 +17438,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0000000000000002)); // or DOUBLE PRECISION
     RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
     RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
+    RecordStructure.Insert("charn_field"      , New Structure("CHAR"                    , "AAA"));
     RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
     RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
     RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
@@ -17485,6 +17487,7 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Fields.Add("dp_field");
     Fields.Add("text_field");
     Fields.Add("varchar_field");
+    Fields.Add("charn_field");
     Fields.Add("char_field");
     Fields.Add("name_field");
     Fields.Add("bytea_field");

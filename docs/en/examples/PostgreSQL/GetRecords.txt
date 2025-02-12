@@ -21,6 +21,7 @@
     Fields.Add("dp_field");
     Fields.Add("text_field");
     Fields.Add("varchar_field");
+    Fields.Add("charn_field");
     Fields.Add("char_field");
     Fields.Add("name_field");
     Fields.Add("bytea_field");
