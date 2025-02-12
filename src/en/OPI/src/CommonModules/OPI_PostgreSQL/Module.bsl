@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
-// Lib: SQLite
-// CLI: sqlite
+// Lib: PostgreSQL
+// CLI: postgres
 
 // MIT License
 
@@ -485,15 +485,15 @@ Function ProcessParameter(CurrentParameter, Embedded = False)
 
         CurrentParameter = ProcessBlobStructure(CurrentParameter);
 
-    ElsIf CurrentType = Type("Structure")
-        Or CurrentType   = Type("Map") Then
+    ElsIf CurrentType  = Type("Structure")
+        Or CurrentType = Type("Map") Then
 
         For Each ParamElement In CurrentParameter Do
 
             CurrentKey   = Upper(ParamElement.Key);
             CurrentValue = ParamElement.Value;
 
-            If CurrentKey  = "JSONB"
+            If CurrentKey     = "JSONB"
                 Or CurrentKey = "JSON"
                 Or CurrentKey = "HSTORE" Then
                 Continue;
