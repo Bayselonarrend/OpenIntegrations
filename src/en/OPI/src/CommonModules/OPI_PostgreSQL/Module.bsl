@@ -245,44 +245,6 @@ Function GetTableInformation(Val Table, Val Connection = "") Export
 
 EndFunction
 
-// Get table column types
-// Gets an array of table column types
-//
-// Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-//
-// Returns:
-// Array, Map Of KeyAndValue - Array of types or error information
-Function GetTableColumnTypes(Val Table, Val Connection = "") Export
-
-    TableInformation = GetTableInformation(Table, Connection);
-
-    If Not TableInformation["result"] Then
-        Return TableInformation;
-    EndIf;
-
-    TypesArray = New Array;
-
-    For Each Coloumn In TableInformation Do
-
-        CurrentType = Coloumn["data_type"];
-        CurrentType = String(Upper(CurrentType));
-        CurrentType = StrReplace(CurrentType, " "       , "_");
-        CurrentType = StrReplace(CurrentType, """CHAR""", "OLDCHAR");
-
-        If StrStartsWith(CurrentType, "CHAR") Then
-            CurrentType = "CHAR";
-        EndIf;
-
-        TypesArray.Add(CurrentType);
-
-    EndDo;
-
-    Return TypesArray;
-
-EndFunction
-
 // Create table
 // Creates an empty table in the database
 //
@@ -416,49 +378,6 @@ Function ClearTable(Val Table, Val Connection = "") Export
 
 EndFunction
 
-// Normalise parameter set
-// Converts an array of parameter values into an array of description structures to be passed to the query
-//
-// Parameters:
-// ValuesArray - Array Of Arbitrary - Array of query parameter values - values
-// TypesArray - Array Of String - Array of column types. See GetTableColumnTypes - types
-//
-// Returns:
-// Array Of Map - Normalised set of parameters for a query
-Function NormaliseParameterSet(Val ValuesArray, Val TypesArray) Export
-
-    OPI_TypeConversion.GetArray(ValuesArray);
-    OPI_TypeConversion.GetArray(TypesArray);
-
-    TypesMap       = GetTypesMap();
-    ResultingArray = New Array;
-    TypesBound     = TypesArray.UBound();
-
-    For N = 0 To ValuesArray.UBound() Do
-
-        If N > TypesBound Then
-            Break;
-        EndIf;
-
-        CurrentType     = Upper(TypesArray[N]);
-        CurrentValue    = ValuesArray[N];
-        TypeDescription = TypesMap.Get(CurrentType);
-
-        If TypeDescription <> Undefined Then
-            CurrentValue = TypeDescription.AdjustValue(CurrentValue);
-        EndIf;
-
-        CurrentDescription = New Map;
-        CurrentDescription.Insert(CurrentType, CurrentValue);
-
-        ResultingArray.Add(CurrentDescription);
-
-    EndDo;
-
-    Return ResultingArray;
-
-EndFunction
-
 // Get records filter strucutre
 // Gets the template structure for filtering records in ORM queries
 //
@@ -530,29 +449,7 @@ Function ProcessParameters(Val Parameters)
 
         CurrentParameter = Parameters[N];
 
-        If TypeOf(CurrentParameter) = Type("BinaryData") Then
-
-            CurrentParameter = New Structure("BYTEA", Base64String(CurrentParameter));
-
-        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
-
-            CurrentParameter = ProcessBlobStructure(CurrentParameter);
-
-        ElsIf TypeOf(CurrentParameter) = Type("Date") Then
-
-            CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
-
-        ElsIf TypeOf(CurrentParameter) = Type("Structure") Or TypeOf(CurrentParameter) = Type("Map") Then
-
-            Continue;
-
-        Else
-
-            If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
-                OPI_TypeConversion.GetLine(CurrentParameter);
-            EndIf;
-
-        EndIf;
+        CurrentParameter = ProcessParameter(CurrentParameter);
 
         Parameters[N] = CurrentParameter;
 
@@ -560,7 +457,61 @@ Function ProcessParameters(Val Parameters)
 
     Parameters_ = OPI_Tools.JSONString(Parameters, , False);
 
+    If StrStartsWith(Parameters_, "NOT JSON") Then
+        Raise "JSON parameter array validation error!";
+    EndIf;
+
     Return Parameters_;
+
+EndFunction
+
+Function ProcessParameter(CurrentParameter, Embedded = False)
+
+    CurrentType = TypeOf(CurrentParameter);
+
+    If CurrentType = Type("BinaryData") Then
+
+        CurrentParameter = New Structure("BYTEA", Base64String(CurrentParameter));
+
+    ElsIf CurrentType = Type("UUID") Then
+
+        CurrentParameter = String(CurrentParameter);
+
+    ElsIf CurrentType = Type("Date") Then
+
+        CurrentParameter = XMLString(CurrentParameter);
+
+    ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
+
+        CurrentParameter = ProcessBlobStructure(CurrentParameter);
+
+    ElsIf CurrentType = Type("Structure")
+        Or CurrentType   = Type("Map") Then
+
+        For Each ParamElement In CurrentParameter Do
+
+            CurrentKey   = Upper(ParamElement.Key);
+            CurrentValue = ParamElement.Value;
+
+            If CurrentKey  = "JSONB"
+                Or CurrentKey = "JSON"
+                Or CurrentKey = "HSTORE" Then
+                Continue;
+            EndIf;
+
+            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue, True);
+
+        EndDo;
+
+    Else
+
+        If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+            OPI_TypeConversion.GetLine(CurrentParameter);
+        EndIf;
+
+    EndIf;
+
+    Return CurrentParameter;
 
 EndFunction
 
@@ -622,6 +573,7 @@ Function GetTypesMap()
     TypesMap.Insert("LQUERY"                  , DescriptionString);
     TypesMap.Insert("LTXTQUERY"               , DescriptionString);
     TypesMap.Insert("INET"                    , DescriptionString);
+    TypesMap.Insert("UUID"                    , DescriptionString);
 
     Return TypesMap;
 

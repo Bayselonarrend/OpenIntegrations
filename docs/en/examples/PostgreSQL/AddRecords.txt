@@ -5,23 +5,41 @@
 
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
-    Table = "testtable";
+    Table        = "testtable";
+    RecordsArray = New Array;
 
     Image = "https://api.athenaeum.digital/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    RecordStructure = New Structure;
-    RecordStructure.Insert("bool_field"    , New Structure("BOOL"            , True));
-    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , 1));
-    RecordStructure.Insert("smallint_field", New Structure("SMALLINT"        , 5));
-    RecordStructure.Insert("int_field"     , New Structure("INT"             , 100));
-    RecordStructure.Insert("oid_field"     , New Structure("OID"             , 24576));
-    RecordStructure.Insert("bigint_field"  , New Structure("BIGINT"          , 9999999));
-    RecordStructure.Insert("real_field"    , New Structure("REAL"            , 15.2));
-    RecordStructure.Insert("dp_field"      , New Structure("DOUBLE_PRECISION", 1.0000000000000002));
-    RecordStructure.Insert("text_field"    , New Structure("TEXT"            , "Some text"));
-    RecordStructure.Insert("bytea_field"   , New Structure("BYTEA"           , Image));
-    RecordStructure.Insert("ts_field"      , New Structure("TIMESTAMP"       , 1739207915));
-    RecordStructure.Insert("ip_field"      , New Structure("INET"            , "127.0.0.1"));
+    CasualStructure = New Structure("key,value", "ItsKey", 10);
+    CurrentDate     = OPI_Tools.GetCurrentDate();
 
-    Result = OPI_PostgreSQL.AddRecords(Table, RecordStructure, False, ConnectionString);
+    RecordStructure = New Structure;
+    RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
+    RecordStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"                 , 1)); // or "char"
+    RecordStructure.Insert("smallint_field"   , New Structure("SMALLINT"                , 5));
+    RecordStructure.Insert("smallserial_field", New Structure("SMALLSERIAL"             , 6));
+    RecordStructure.Insert("int_field"        , New Structure("INT"                     , 100));
+    RecordStructure.Insert("serial_field"     , New Structure("SERIAL"                  , 100));
+    RecordStructure.Insert("oid_field"        , New Structure("OID"                     , 24576));
+    RecordStructure.Insert("bigint_field"     , New Structure("BIGINT"                  , 9999999));
+    RecordStructure.Insert("bigserial_field"  , New Structure("BIGSERIAL"               , 9999999));
+    RecordStructure.Insert("real_field"       , New Structure("REAL"                    , 15.2));
+    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0000000000000002)); // or DOUBLE PRECISION
+    RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
+    RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
+    RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
+    RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
+    RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , 1739207915));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", 1739207915)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
+    RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
+    RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
+    RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
+    RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
+    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID()));
+
+    RecordsArray.Add(RecordStructure);
+
+    Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, ConnectionString);
