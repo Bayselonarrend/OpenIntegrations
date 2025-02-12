@@ -137,7 +137,7 @@ Function ExecuteSQLQuery(Val QueryText
     , Val ForceResult = False
     , Val Connection = "") Export
 
-    OPI_TypeConversion.GetLine(QueryText);
+    OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
 
     Parameters_ = ProcessParameters(Parameters);
