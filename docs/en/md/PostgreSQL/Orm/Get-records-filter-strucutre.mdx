@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 11
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get records filter strucutre
+ Gets the template structure for filtering records in ORM queries
+
+
+
+`Function GetRecordsFilterStrucutre(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure Of KeyAndValue - Record filter element
+
+<br/>
+
+:::tip
+The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`. For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 ` where `?1 = "10 AND 20,"' which would cause an error.
+
+In such a case, you must use `raw:true` to set the condition directly in the query text
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

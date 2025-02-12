@@ -21,6 +21,7 @@
     Поля.Добавить("dp_field");
     Поля.Добавить("text_field");
     Поля.Добавить("varchar_field");
+    Поля.Добавить("charn_field");
     Поля.Добавить("char_field");
     Поля.Добавить("name_field");
     Поля.Добавить("bytea_field");
