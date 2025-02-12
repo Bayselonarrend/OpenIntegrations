@@ -1,4 +1,33 @@
-﻿    Address  = "93.125.42.204";
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create table
+ Creates an empty table in the database
+
+
+
+`Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | ColoumnsStruct | --cols | Structure Of KeyAndValue | &#x2714; | Column structure: Key > Name, Value > Data type |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+
+  
+  Returns:  Structure Of KeyAndValue - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "93.125.42.204";
     Login    = "bayselonarrend";
     Password = "12we...";
     Base     = "testbase1";
@@ -35,3 +64,9 @@
     ColoumnsStruct.Insert("uuid_field"       , "UUID");
 
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+```
+ 
+
+
+
+

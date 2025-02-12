@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 7
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update records
+ Updates the value of records by selected criteria
+
+
+
+`Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | ValueStructure | --values | Structure Of KeyAndValue | &#x2714; | Values structure: Key > field, Value > field value |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+
+  
+  Returns:  Structure Of KeyAndValue, String - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

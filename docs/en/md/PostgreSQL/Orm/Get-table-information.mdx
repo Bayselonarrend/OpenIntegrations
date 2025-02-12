@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get table information
+ Gets information about the table
+
+
+
+`Function GetTableInformation(Val Table, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+
+  
+  Returns:  Structure Of KeyAndValue - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "93.125.42.204";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+```
+ 
+
+
+
+
