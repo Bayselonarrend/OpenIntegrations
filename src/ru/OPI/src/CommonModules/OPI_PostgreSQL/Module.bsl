@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
-// Lib: SQLite
-// CLI: sqlite
+// Lib: PostgreSQL
+// CLI: postgres
 
 // MIT License
 
