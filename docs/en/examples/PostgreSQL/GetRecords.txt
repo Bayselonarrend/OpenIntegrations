@@ -1,0 +1,36 @@
+﻿    Address  = "93.125.42.204";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Fields = New Array;
+    Fields.Add("bool_field");
+    Fields.Add("oldchar_field");
+    Fields.Add("smallint_field");
+    Fields.Add("smallserial_field");
+    Fields.Add("int_field");
+    Fields.Add("serial_field");
+    Fields.Add("oid_field");
+    Fields.Add("bigint_field");
+    Fields.Add("bigserial_field");
+    Fields.Add("real_field");
+    Fields.Add("dp_field");
+    Fields.Add("text_field");
+    Fields.Add("varchar_field");
+    Fields.Add("char_field");
+    Fields.Add("name_field");
+    Fields.Add("bytea_field");
+    Fields.Add("ts_field");
+    Fields.Add("tswtz_field");
+    Fields.Add("ip_field");
+    Fields.Add("json_field");
+    Fields.Add("jsonb_field");
+    Fields.Add("date_field");
+    Fields.Add("time_field");
+    Fields.Add("uuid_field");
+
+    Result = OPI_PostgreSQL.GetRecords(Table, Fields, , , , ConnectionString);

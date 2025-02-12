@@ -2324,7 +2324,8 @@ Procedure Postgres_ORM() Export
     PostgreSQL_CreateTable(TestParameters);
     PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
-    PostgreSQL_DropDatabase(TestParameters);
+    PostgreSQL_GetRecords(TestParameters);
+    //PostgreSQL_DropDatabase(TestParameters);
 
 EndProcedure
 
@@ -17306,7 +17307,8 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Base = "testbase1";
 
-    OPI_PostgreSQL.DropDatabase(Base, ConnectionString); // SKIP
+    Deletion = OPI_PostgreSQL.DropDatabase(Base, ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
 
     Result = OPI_PostgreSQL.CreateDatabase(Base, ConnectionString);
 
@@ -17349,18 +17351,30 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     Table = "testtable";
 
     ColoumnsStruct = New Structure;
-    ColoumnsStruct.Insert("bool_field"    , "BOOL");
-    ColoumnsStruct.Insert("char_field"    , """char""");
-    ColoumnsStruct.Insert("smallint_field", "SMALLINT");
-    ColoumnsStruct.Insert("int_field"     , "INT");
-    ColoumnsStruct.Insert("oid_field"     , "OID");
-    ColoumnsStruct.Insert("bigint_field"  , "BIGINT");
-    ColoumnsStruct.Insert("real_field"    , "REAL");
-    ColoumnsStruct.Insert("dp_field"      , "DOUBLE PRECISION");
-    ColoumnsStruct.Insert("text_field"    , "TEXT");
-    ColoumnsStruct.Insert("bytea_field"   , "BYTEA");
-    ColoumnsStruct.Insert("ts_field"      , "TIMESTAMP");
-    ColoumnsStruct.Insert("ip_field"      , "INET");
+    ColoumnsStruct.Insert("bool_field"       , "BOOL");
+    ColoumnsStruct.Insert("oldchar_field"    , """char""");
+    ColoumnsStruct.Insert("smallint_field"   , "SMALLINT");
+    ColoumnsStruct.Insert("smallserial_field", "SMALLSERIAL");
+    ColoumnsStruct.Insert("int_field"        , "INT");
+    ColoumnsStruct.Insert("serial_field"     , "SERIAL");
+    ColoumnsStruct.Insert("oid_field"        , "OID");
+    ColoumnsStruct.Insert("bigint_field"     , "BIGINT");
+    ColoumnsStruct.Insert("bigserial_field"  , "BIGSERIAL");
+    ColoumnsStruct.Insert("real_field"       , "REAL");
+    ColoumnsStruct.Insert("dp_field"         , "DOUBLE PRECISION");
+    ColoumnsStruct.Insert("text_field"       , "TEXT");
+    ColoumnsStruct.Insert("varchar_field"    , "VARCHAR");
+    ColoumnsStruct.Insert("char_field"       , "CHAR(1)");
+    ColoumnsStruct.Insert("name_field"       , "NAME");
+    ColoumnsStruct.Insert("bytea_field"      , "BYTEA");
+    ColoumnsStruct.Insert("ts_field"         , "TIMESTAMP");
+    ColoumnsStruct.Insert("tswtz_field"      , "TIMESTAMP WITH TIME ZONE");
+    ColoumnsStruct.Insert("ip_field"         , "INET");
+    ColoumnsStruct.Insert("json_field"       , "JSON");
+    ColoumnsStruct.Insert("jsonb_field"      , "JSONB");
+    ColoumnsStruct.Insert("date_field"       , "DATE");
+    ColoumnsStruct.Insert("time_field"       , "TIME");
+    ColoumnsStruct.Insert("uuid_field"       , "UUID");
 
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
 
@@ -17400,28 +17414,96 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
 
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
-    Table = "testtable";
+    Table        = "testtable";
+    RecordsArray = New Array;
 
     Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    RecordStructure = New Structure;
-    RecordStructure.Insert("bool_field"    , New Structure("BOOL"            , True));
-    RecordStructure.Insert("char_field"    , New Structure("OLDCHAR"         , 1));
-    RecordStructure.Insert("smallint_field", New Structure("SMALLINT"        , 5));
-    RecordStructure.Insert("int_field"     , New Structure("INT"             , 100));
-    RecordStructure.Insert("oid_field"     , New Structure("OID"             , 24576));
-    RecordStructure.Insert("bigint_field"  , New Structure("BIGINT"          , 9999999));
-    RecordStructure.Insert("real_field"    , New Structure("REAL"            , 15.2));
-    RecordStructure.Insert("dp_field"      , New Structure("DOUBLE_PRECISION", 1.0000000000000002));
-    RecordStructure.Insert("text_field"    , New Structure("TEXT"            , "Some text"));
-    RecordStructure.Insert("bytea_field"   , New Structure("BYTEA"           , Image));
-    RecordStructure.Insert("ts_field"      , New Structure("TIMESTAMP"       , 1739207915));
-    RecordStructure.Insert("ip_field"      , New Structure("INET"            , "127.0.0.1"));
+    CasualStructure = New Structure("key,value", "ItsKey", 10);
+    CurrentDate     = OPI_Tools.GetCurrentDate();
 
-    Result = OPI_PostgreSQL.AddRecords(Table, RecordStructure, False, ConnectionString);
+    RecordStructure = New Structure;
+    RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
+    RecordStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"                 , 1)); // or "char"
+    RecordStructure.Insert("smallint_field"   , New Structure("SMALLINT"                , 5));
+    RecordStructure.Insert("smallserial_field", New Structure("SMALLSERIAL"             , 6));
+    RecordStructure.Insert("int_field"        , New Structure("INT"                     , 100));
+    RecordStructure.Insert("serial_field"     , New Structure("SERIAL"                  , 100));
+    RecordStructure.Insert("oid_field"        , New Structure("OID"                     , 24576));
+    RecordStructure.Insert("bigint_field"     , New Structure("BIGINT"                  , 9999999));
+    RecordStructure.Insert("bigserial_field"  , New Structure("BIGSERIAL"               , 9999999));
+    RecordStructure.Insert("real_field"       , New Structure("REAL"                    , 15.2));
+    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0000000000000002)); // or DOUBLE PRECISION
+    RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
+    RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
+    RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
+    RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
+    RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , 1739207915));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", 1739207915)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
+    RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
+    RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
+    RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
+    RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
+    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID()));
+
+    RecordsArray.Add(RecordStructure);
+
+    Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, ConnectionString);
 
     // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_GetRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Fields = New Array;
+    Fields.Add("bool_field");
+    Fields.Add("oldchar_field");
+    Fields.Add("smallint_field");
+    Fields.Add("smallserial_field");
+    Fields.Add("int_field");
+    Fields.Add("serial_field");
+    Fields.Add("oid_field");
+    Fields.Add("bigint_field");
+    Fields.Add("bigserial_field");
+    Fields.Add("real_field");
+    Fields.Add("dp_field");
+    Fields.Add("text_field");
+    Fields.Add("varchar_field");
+    Fields.Add("char_field");
+    Fields.Add("name_field");
+    Fields.Add("bytea_field");
+    Fields.Add("ts_field");
+    Fields.Add("tswtz_field");
+    Fields.Add("ip_field");
+    Fields.Add("json_field");
+    Fields.Add("jsonb_field");
+    Fields.Add("date_field");
+    Fields.Add("time_field");
+    Fields.Add("uuid_field");
+
+    Result = OPI_PostgreSQL.GetRecords(Table, Fields, , , , ConnectionString);
+
+    // END
+
+    If ValueIsFilled(Result["data"]) Then
+        Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
+    EndIf;
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
