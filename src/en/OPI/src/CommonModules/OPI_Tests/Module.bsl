@@ -2325,7 +2325,7 @@ Procedure Postgres_ORM() Export
     PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
-    //PostgreSQL_DropDatabase(TestParameters);
+    PostgreSQL_DropDatabase(TestParameters);
 
 EndProcedure
 
