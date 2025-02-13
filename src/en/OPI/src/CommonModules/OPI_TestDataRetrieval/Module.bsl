@@ -273,6 +273,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
+    NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
 
     Return TestTable;
@@ -2109,6 +2110,12 @@ EndProcedure
 Procedure Check_ResultTrue(Val Result) Export
 
     ExpectsThat(Result["result"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_ResultFalse(Val Result) Export
+
+    ExpectsThat(Result["result"]).Равно(False);
 
 EndProcedure
 
