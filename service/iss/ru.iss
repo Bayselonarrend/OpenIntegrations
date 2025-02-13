@@ -36,13 +36,14 @@ Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 Source: "{#Repo}\Media\icons\ex.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\wizard.ico"; DestDir: "{app}\share\oint\icons"
+Source: "{#Repo}\Media\icons\doc.ico"; DestDir: "{app}\share\oint\icons"
 
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"; Tasks: desktopicon
 Name: "{group}\Удалить OInt"; Filename: "{uninstallexe}"; IconFilename: "{app}\share\oint\icons\wizard.ico"
-Name: "{group}\Web-документация"; Filename: "https://www.openintegrations.dev/"  
+Name: "{group}\Web-документация"; Filename: "https://www.openintegrations.dev/"; IconFilename: "{app}\share\oint\icons\doc.ico"  
 
 [Tasks]
 Name: desktopicon; Description: "Создать ярлык на рабочем столе"; 
