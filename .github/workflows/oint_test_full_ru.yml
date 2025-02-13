@@ -404,6 +404,10 @@ jobs:
 
 
 
+      - name: Основные методы
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_Postgres_ОсновныеМетоды"
+
       - name: ORM
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_Postgres_ORM"

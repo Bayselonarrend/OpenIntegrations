@@ -2313,6 +2313,21 @@ EndProcedure
 
 #Region PostgreSQL
 
+Procedure Postgres_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+
+    PostgreSQL_GenerateConnectionString(TestParameters);
+    PostgreSQL_CreateConnection(TestParameters);
+    PostgreSQL_CloseConnection(TestParameters);
+    PostgreSQL_IsConnector(TestParameters);
+    PostgreSQL_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
 Procedure Postgres_ORM() Export
 
     TestParameters = New Structure;
@@ -2325,6 +2340,7 @@ Procedure Postgres_ORM() Export
     PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
+    PostgreSQL_DeleteTable(TestParameters);
     PostgreSQL_DropDatabase(TestParameters);
 
 EndProcedure
@@ -16924,7 +16940,8 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
-    Blob                              = Result["data"][0]["data"]["blob"]; // SKIP
+    Blob = Result["data"][0]["data"]["blob"]; // SKIP
+
     Result["data"][0]["data"]["blob"] = "Base64"; // SKIP
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "SQLite"); // SKIP
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
@@ -17296,6 +17313,178 @@ EndProcedure
 
 #Region PostgreSQL
 
+Procedure PostgreSQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Result = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // END
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_CreateConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result           = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
+
+EndProcedure
+
+Procedure PostgreSQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    Result           = OPI_PostgreSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    Result     = OPI_PostgreSQL.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_PostgreSQL.DeleteTable("users", Connection); // SKIP
+    Deletion = OPI_PostgreSQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting)", "PostgreSQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+    |CREATE TABLE test_table (
+    |id SERIAL PRIMARY KEY,
+    |name NAME,
+    |age INT,
+    |salary REAL,
+    |is_active BOOL,
+    |created_at DATE,
+    |data BYTEA
+    |);";
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+    |VALUES ($1, $2, $3, $4, $5, $6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("NAME" , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"  , 25));
+    ParameterArray.Add(New Structure("REAL" , 1000.12));
+    ParameterArray.Add(New Structure("BOOL" , True));
+    ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTEA", Image));
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    Blob = Result["data"][0]["data"]["BYTEA"]; // SKIP
+
+    Result["data"][0]["data"]["BYTEA"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    // DO + Transaction
+
+    QueryText = "DO $$
+    |BEGIN
+    | CREATE TABLE users (
+    | id SMALLSERIAL,
+    | name TEXT NOT NULL,
+    | age INT NOT NULL
+    | );
+    | INSERT INTO users (name, age) VALUES ('Alice', 30);
+    | INSERT INTO users (name, age) VALUES ('Bob', 25);
+    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+    | COMMIT;
+    |END $$ LANGUAGE plpgsql;";
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
 Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
@@ -17303,6 +17492,10 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "postgres";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Base = "testbase1";
@@ -17317,25 +17510,23 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-EndProcedure
+    Base = "testbase2";
+    OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
 
-Procedure PostgreSQL_DropDatabase(FunctionParameters)
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
-    Address  = FunctionParameters["PG_IP"];
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
-    Base     = "postgres";
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateDatabase (open)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result = OPI_PostgreSQL.CreateDatabase(Base, Connection);
 
-    Base = "testbase1";
-
-    Result = OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (connect)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.CreateDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure
 
@@ -17346,6 +17537,10 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
@@ -17384,6 +17579,21 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
+    Table = "ABC DEF";
+
+    Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (name error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Table = "somename";
+    ColoumnsStruct.Insert("wtf_field" , "WTF");
+
+    Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (type error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
 EndProcedure
 
 Procedure PostgreSQL_GetTableInformation(FunctionParameters)
@@ -17393,6 +17603,10 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
@@ -17403,6 +17617,13 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Table = "heyho";
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
 EndProcedure
 
@@ -17508,8 +17729,83 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
         Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
     EndIf;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_DeleteTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Result = OPI_PostgreSQL.DeleteTable(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_DropDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    Result = OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "DropDatabase (open)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
+
+    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "DropDatabase (close)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Closing);
+
+    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure
 

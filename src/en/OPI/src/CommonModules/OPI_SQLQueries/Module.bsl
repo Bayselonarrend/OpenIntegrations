@@ -465,7 +465,7 @@ Function FormTextSelect(Val Scheme)
     Count   = Scheme["limit"];
 
     SQLTemplate = "SELECT %1 FROM %2
-    |%3";
+    |%3;";
 
     OptionsBlock = ForSelectOptionsText(Filters, Sort, Count);
 
@@ -484,7 +484,7 @@ Function FormTextInsert(Val Scheme)
     Numeration = Scheme["nump"];
     Marker     = Scheme["markp"];
 
-    SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3)";
+    SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3);";
 
     Parameters = New Array;
 
@@ -517,7 +517,7 @@ Function FormTextUpdate(Val Scheme)
     Fields  = Scheme["set"];
     Filters = Scheme["filter"];
 
-    SQLTemplate = "UPDATE %1 SET %2 %3";
+    SQLTemplate = "UPDATE %1 SET %2 %3;";
 
     FilterText = FormFilterText(Filters);
 
@@ -540,7 +540,7 @@ Function FormTextDelete(Val Scheme)
     Table   = Scheme["table"];
     Filters = Scheme["filter"];
 
-    SQLTemplate = "DELETE FROM %1 %2";
+    SQLTemplate = "DELETE FROM %1 %2;";
 
     FilterText = FormFilterText(Filters);
 
@@ -559,7 +559,7 @@ Function FormTextCreate(Val Scheme)
 
     SQLTemplate = "CREATE TABLE %1 (
     | %2
-    | )";
+    | );";
 
     ColoumTemplate = "%1 %2";
 
@@ -585,7 +585,7 @@ Function FormTextDrop(Val Scheme)
 
     Table = Scheme["table"];
 
-    SQLTemplate = "DROP TABLE %1";
+    SQLTemplate = "DROP TABLE %1;";
 
     TextSQL = StrTemplate(SQLTemplate, Table);
 
@@ -599,7 +599,7 @@ Function FormTextTruncate(Val Scheme)
 
     Table = Scheme["table"];
 
-    SQLTemplate = "TRUNCATE TABLE %1";
+    SQLTemplate = "TRUNCATE TABLE %1;";
 
     TextSQL = StrTemplate(SQLTemplate, Table);
 
@@ -613,7 +613,7 @@ Function FormTextCreateDatabase(Val Scheme)
 
     Base = Scheme["database"];
 
-    SQLTemplate = "CREATE DATABASE %1";
+    SQLTemplate = "CREATE DATABASE %1;";
 
     TextSQL = StrTemplate(SQLTemplate, Base);
 
@@ -627,7 +627,7 @@ Function FormTextDropDatabase(Val Scheme)
 
     Base = Scheme["database"];
 
-    SQLTemplate = "DROP DATABASE %1";
+    SQLTemplate = "DROP DATABASE %1;";
 
     TextSQL = StrTemplate(SQLTemplate, Base);
 
@@ -691,7 +691,7 @@ Function ProcessRecordsStart(Val Module, Val Transaction, Val Connection)
 
     If Transaction Then
 
-        Start = Module.ExecuteSQLQuery("BEGIN TRANSACTION", , , Connection);
+        Start = Module.ExecuteSQLQuery("BEGIN", , , Connection);
 
         If Not Start["result"] Then
             Return Start;
@@ -712,14 +712,14 @@ Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, 
 
         If ErrorsArray.Count() > 0 Then
 
-            Rollback = Module.ExecuteSQLQuery("ROLLBACK", , , Connection);
+            Rollback = Module.ExecuteSQLQuery("ROLLBACK;", , , Connection);
 
             SuccessCount = 0;
             ResultStrucutre.Insert("rollback", Rollback);
 
         Else
 
-            Completion = Module.ExecuteSQLQuery("COMMIT", , , Connection);
+            Completion = Module.ExecuteSQLQuery("COMMIT;", , , Connection);
             ResultStrucutre.Insert("commit", Completion);
 
         EndIf;

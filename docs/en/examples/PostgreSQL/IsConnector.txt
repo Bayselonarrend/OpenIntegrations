@@ -1,0 +1,9 @@
+﻿    Address  = "93.125.42.204";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "postgres";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    Result     = OPI_PostgreSQL.IsConnector(Connection);
