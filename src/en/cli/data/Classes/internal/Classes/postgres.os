@@ -147,6 +147,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "DisableAllDatabaseConnections";
+    NewLine.МетодПоиска = "DISABLEALLDATABASECONNECTIONS";
+    NewLine.Параметр    = "--base";
+    NewLine.Описание    = "Database name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Terminates all connections to the database except the current one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "DisableAllDatabaseConnections";
+    NewLine.МетодПоиска = "DISABLEALLDATABASECONNECTIONS";
+    NewLine.Параметр    = "--dbc";
+    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
     NewLine.Метод       = "GetTableInformation";
     NewLine.МетодПоиска = "GETTABLEINFORMATION";
     NewLine.Параметр    = "--table";
@@ -191,6 +212,48 @@
     NewLine.Модуль      = "OPI_PostgreSQL";
     NewLine.Метод       = "CreateTable";
     NewLine.МетодПоиска = "CREATETABLE";
+    NewLine.Параметр    = "--dbc";
+    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "ClearTable";
+    NewLine.МетодПоиска = "CLEARTABLE";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Clears the database table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "ClearTable";
+    NewLine.МетодПоиска = "CLEARTABLE";
+    NewLine.Параметр    = "--dbc";
+    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "DeleteTable";
+    NewLine.МетодПоиска = "DELETETABLE";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Deletes a table from the database";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "postgres";
+    NewLine.Модуль      = "OPI_PostgreSQL";
+    NewLine.Метод       = "DeleteTable";
+    NewLine.МетодПоиска = "DELETETABLE";
     NewLine.Параметр    = "--dbc";
     NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
@@ -365,48 +428,6 @@
     NewLine.Модуль      = "OPI_PostgreSQL";
     NewLine.Метод       = "DeletePosts";
     NewLine.МетодПоиска = "DELETEPOSTS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes a table from the database";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Clears the database table";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
     NewLine.Параметр    = "--dbc";
     NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";

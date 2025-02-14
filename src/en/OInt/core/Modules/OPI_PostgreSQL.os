@@ -232,6 +232,31 @@ Function DropDatabase(Val Base, Val Connection = "") Export
 
 EndFunction
 
+// Disable all database connections
+// Terminates all connections to the database except the current one
+//
+// Parameters:
+// Base - String - Database name - base
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Structure Of KeyAndValue - Result of query execution
+Function DisableAllDatabaseConnections(Val Base, Val Connection = "") Export
+
+    OPI_TypeConversion.GetLine(Base);
+
+    TextSQL     = "SELECT pg_terminate_backend(pid)
+    |FROM pg_stat_activity
+    |WHERE datname = '%1' AND pid <> pg_backend_pid();";
+
+    TextSQL = StrTemplate(TextSQL, Base);
+
+    Result = ExecuteSQLQuery(TextSQL, , , Connection);
+
+    Return Result;
+
+EndFunction
+
 // Get table information
 // Gets information about the table
 //
@@ -270,6 +295,38 @@ EndFunction
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection);
+    Return Result;
+
+EndFunction
+
+// Clear table
+// Clears the database table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function ClearTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, , Connection);
+    Return Result;
+
+EndFunction
+
+// Delete table
+// Deletes a table from the database
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Structure Of KeyAndValue, String - Result of query execution
+Function DeleteTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection);
     Return Result;
 
 EndFunction
@@ -354,38 +411,6 @@ EndFunction
 Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, Filters, Connection);
-    Return Result;
-
-EndFunction
-
-// Delete table
-// Deletes a table from the database
-//
-// Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-//
-// Returns:
-// Structure Of KeyAndValue, String - Result of query execution
-Function DeleteTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection);
-    Return Result;
-
-EndFunction
-
-// Clear table
-// Clears the database table
-//
-// Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-//
-// Returns:
-// Structure Of KeyAndValue, String - Result of query execution
-Function ClearTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, , Connection);
     Return Result;
 
 EndFunction
