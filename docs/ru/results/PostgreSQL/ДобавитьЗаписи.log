@@ -1,0 +1,13 @@
+﻿    {
+ "rollback": {
+  "result": true
+ },
+ "result": false,
+ "rows": 0,
+ "errors": [
+  {
+   "row": 1,
+   "error": "Invalid value for DATA"
+  }
+ ]
+}
