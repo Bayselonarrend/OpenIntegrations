@@ -146,8 +146,8 @@ Function ExecuteSQLQuery(Val QueryText
         CloseConnection = False;
         Connector       = Connection;
     Else
-        CloseConnection    = True;
-        Connector          = CreateConnection(Connection);
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection);
     EndIf;
 
     If Not IsConnector(Connector) Then
@@ -422,7 +422,7 @@ EndFunction
 
 Function GetFeatures() Export
 
-    Features = New Structure;
+    Features = New Map;
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "$");
 

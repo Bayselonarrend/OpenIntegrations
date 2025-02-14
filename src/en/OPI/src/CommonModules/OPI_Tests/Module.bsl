@@ -2340,6 +2340,7 @@ Procedure Postgres_ORM() Export
     PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
+    PostgreSQL_ClearTable(TestParameters);
     PostgreSQL_DeleteTable(TestParameters);
     PostgreSQL_DropDatabase(TestParameters);
 
@@ -17696,47 +17697,66 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
-    Table = "testtable";
+    // All records without filters
+
+    Table     = "testtable";
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+
+    If ValueIsFilled(Result["data"]) Then // SKIP
+        Result["data"][0]["bytea_field"]["BYTEA"] // SKIP
+            = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
+    EndIf; // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);                     // SKIP
+
+    // Filter, selected fields, limit and sorting
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "test_data", Login, Password);
+
+    Table = "test_data";
 
     Fields = New Array;
-    Fields.Add("bool_field");
-    Fields.Add("oldchar_field");
-    Fields.Add("smallint_field");
-    Fields.Add("smallserial_field");
-    Fields.Add("int_field");
-    Fields.Add("serial_field");
-    Fields.Add("oid_field");
-    Fields.Add("bigint_field");
-    Fields.Add("bigserial_field");
-    Fields.Add("real_field");
-    Fields.Add("dp_field");
-    Fields.Add("text_field");
-    Fields.Add("varchar_field");
-    Fields.Add("charn_field");
-    Fields.Add("char_field");
-    Fields.Add("name_field");
-    Fields.Add("bytea_field");
-    Fields.Add("ts_field");
-    Fields.Add("tswtz_field");
-    Fields.Add("ip_field");
-    Fields.Add("json_field");
-    Fields.Add("jsonb_field");
-    Fields.Add("date_field");
-    Fields.Add("time_field");
-    Fields.Add("uuid_field");
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
 
-    Result = OPI_PostgreSQL.GetRecords(Table, Fields, , , , ConnectionString);
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Result = OPI_PostgreSQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString);
 
     // END
 
-    If ValueIsFilled(Result["data"]) Then
-        Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
-    EndIf;
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (filters)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
 
 EndProcedure
 
@@ -17812,6 +17832,36 @@ Procedure PostgreSQL_DropDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect error)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    Result = OPI_PostgreSQL.ClearTable(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
 EndProcedure
 
