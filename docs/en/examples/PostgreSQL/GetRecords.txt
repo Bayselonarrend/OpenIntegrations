@@ -11,7 +11,7 @@
 
     // All records without filters
 
-    Table     = "testtable";
+    Table  = "testtable";
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
 
     // Filter, selected fields, limit and sorting
