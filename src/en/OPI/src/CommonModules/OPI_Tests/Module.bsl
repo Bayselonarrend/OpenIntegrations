@@ -17705,16 +17705,16 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
 
     // All records without filters
 
-    Table     = "testtable";
+    Table  = "testtable";
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
 
     If ValueIsFilled(Result["data"]) Then // SKIP
         Result["data"][0]["bytea_field"]["BYTEA"] // SKIP
-            = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
+ = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
     EndIf; // SKIP
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "PostgreSQL"); // SKIP
-    OPI_TestDataRetrieval.Check_ResultTrue(Result);                     // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // Filter, selected fields, limit and sorting
 
