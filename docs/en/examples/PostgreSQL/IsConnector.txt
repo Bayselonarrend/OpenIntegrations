@@ -7,3 +7,5 @@
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
     Result     = OPI_PostgreSQL.IsConnector(Connection);
+
+    OPI_PostgreSQL.CloseConnection(Result);
