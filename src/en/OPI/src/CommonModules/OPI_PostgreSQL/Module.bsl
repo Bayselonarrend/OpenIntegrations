@@ -501,7 +501,8 @@ Function ProcessParameter(CurrentParameter, Embedded = False)
 
     Else
 
-        If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+        If Not OPI_Tools.IsPrimitiveType(CurrentParameter)
+            And Not CurrentType = Type("Date") Then
             OPI_TypeConversion.GetLine(CurrentParameter);
         EndIf;
 
