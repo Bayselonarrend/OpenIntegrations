@@ -2340,9 +2340,12 @@ Procedure Postgres_ORM() Export
     PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
+    PostgreSQL_UpdateRecords(TestParameters);
     PostgreSQL_ClearTable(TestParameters);
     PostgreSQL_DeleteTable(TestParameters);
+    PostgreSQL_DisableAllDatabaseConnections(TestParameters);
     PostgreSQL_DropDatabase(TestParameters);
+    PostgreSQL_GetRecordsFilterStrucutre(TestParameters);
 
 EndProcedure
 
@@ -17641,6 +17644,10 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table        = "testtable";
@@ -17760,6 +17767,57 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
 
 EndProcedure
 
+Procedure PostgreSQL_UpdateRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("bool_field"       , New Structure("BOOL"        , False));
+    FieldsStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"     , 2));
+    FieldsStructure.Insert("smallint_field"   , New Structure("SMALLINT"    , 10));
+    FieldsStructure.Insert("smallserial_field", New Structure("SMALLSERIAL" , 10));
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "oid_field");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("OID", 24576));
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Check = OPI_PostgreSQl.GetRecords(Table
+        , "['bool_field'
+        |,'smallserial_field'
+        |, 'smallint_field']"
+        , Filters, , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "UpdateRecords (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][0], FieldsStructure);
+
+EndProcedure
+
 Procedure PostgreSQL_DeleteTable(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
@@ -17813,6 +17871,11 @@ Procedure PostgreSQL_DropDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Connection, "DropDatabase (open)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
 
+    Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (Shutdown)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
     Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
 
     OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect)", "PostgreSQL");
@@ -17862,6 +17925,48 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
+
+    Address     = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableAllDatabaseConnections", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "PostgreSQL");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 

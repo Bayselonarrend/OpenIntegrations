@@ -1770,11 +1770,23 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОтключитьВсеСоединенияБазыДанных --base "test" --dbc "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьИнформациюОТаблице --table "test" --dbc "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe postgres СоздатьТаблицу --table "test" --cols "test" --dbc "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОчиститьТаблицу --table "test" --dbc "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьТаблицу --table "test" --dbc "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1791,14 +1803,6 @@ def test_postgres(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьЗаписи --table "test" --filter "test" --dbc "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьТаблицу --table "test" --dbc "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОчиститьТаблицу --table "test" --dbc "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
