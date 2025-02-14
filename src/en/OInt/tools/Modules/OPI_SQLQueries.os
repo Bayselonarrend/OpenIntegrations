@@ -46,7 +46,7 @@
 
 Function CreateDatabase(Val Module, Val Base, Val Connection = "") Export
 
-    Scheme = NewSQLScheme("CREATEDATABASE");
+    Scheme = NewSQLScheme("CREATEDATABASE", Module);
 
     SetBaseName(Scheme, Base);
 
@@ -59,7 +59,7 @@ EndFunction
 
 Function DropDatabase(Val Module, Val Base, Val Connection = "") Export
 
-    Scheme = NewSQLScheme("DROPDATABASE");
+    Scheme = NewSQLScheme("DROPDATABASE", Module);
 
     SetBaseName(Scheme, Base);
 
@@ -75,7 +75,7 @@ Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection =
     ErrorText = "The column structure is not a valid key-value structure";
     OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
 
-    Scheme = NewSQLScheme("CREATE");
+    Scheme = NewSQLScheme("CREATE", Module);
 
     SetTableName(Scheme, Table);
 
@@ -121,7 +121,7 @@ Function GetRecords(Val Module
     , Val Count      = ""
     , Val Connection = "") Export
 
-    Scheme = NewSQLScheme("SELECT");
+    Scheme = NewSQLScheme("SELECT", Module);
 
     SetTableName(Scheme, Table);
     SetLimit(Scheme, Count);
@@ -144,7 +144,7 @@ Function UpdateRecords(Val Module
     , Val Filters    = ""
     , Val Connection = "") Export
 
-    Scheme = NewSQLScheme("UPDATE");
+    Scheme = NewSQLScheme("UPDATE", Module);
 
     FieldArray  = New Array;
     ValuesArray = New Array;
@@ -169,7 +169,7 @@ EndFunction
 
 Function DeletePosts(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
 
-    Scheme = NewSQLScheme("DELETE");
+    Scheme = NewSQLScheme("DELETE", Module);
 
     SetTableName(Scheme, Table);
 
@@ -184,7 +184,7 @@ EndFunction
 
 Function DeleteTable(Val Module, Val Table, Val Connection = "") Export
 
-    Scheme = NewSQLScheme("DROP");
+    Scheme = NewSQLScheme("DROP", Module);
 
     SetTableName(Scheme, Table);
 
@@ -197,7 +197,7 @@ EndFunction
 
 Function ClearTable(Val Module, Val Table, Val Connection = "") Export
 
-    Scheme = NewSQLScheme("TRUNCATE");
+    Scheme = NewSQLScheme("TRUNCATE", Module);
 
     SetTableName(Scheme, Table);
 
@@ -233,7 +233,7 @@ EndFunction
 
 #Region Scheme
 
-Function NewSQLScheme(Val Action, Val Features = Undefined)
+Function NewSQLScheme(Val Action, Val Module = Undefined)
 
     OPI_TypeConversion.GetLine(Action);
 
@@ -245,7 +245,7 @@ Function NewSQLScheme(Val Action, Val Features = Undefined)
 
     ElsIf Action = "INSERT" Then
 
-        Scheme = EmptySchemeInsert(Features);
+        Scheme = EmptySchemeInsert();
 
     ElsIf Action = "UPDATE" Then
 
@@ -281,6 +281,13 @@ Function NewSQLScheme(Val Action, Val Features = Undefined)
 
     EndIf;
 
+    Features = Module.GetFeatures();
+
+    ReplaceDefaultFeatures(Features);
+
+    Scheme.Insert("nump" , Features["ParameterNumeration"]);
+    Scheme.Insert("markp", Features["ParameterMarker"]);
+
     Return Scheme;
 
 EndFunction
@@ -300,17 +307,12 @@ Function EmptySchemeSelect()
 
 EndFunction
 
-Function EmptySchemeInsert(Val Features)
+Function EmptySchemeInsert()
 
     Scheme = New Structure("type", "INSERT");
 
-    ParameterNumeration = ?(ValueIsFilled(Features), Features["ParameterNumeration"], False);
-    ParameterMarker     = ?(ValueIsFilled(Features), Features["ParameterMarker"] , "?");
-
     Scheme.Insert("table", "");
     Scheme.Insert("set"  , New Array);
-    Scheme.Insert("nump" , ParameterNumeration);
-    Scheme.Insert("markp", ParameterMarker);
 
     Return Scheme;
 
@@ -513,9 +515,11 @@ Function FormTextUpdate(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,set,values");
 
-    Table   = Scheme["table"];
-    Fields  = Scheme["set"];
-    Filters = Scheme["filter"];
+    Table      = Scheme["table"];
+    Fields     = Scheme["set"];
+    Filters    = Scheme["filter"];
+    Numeration = Scheme["nump"];
+    Marker     = Scheme["markp"];
 
     SQLTemplate = "UPDATE %1 SET %2 %3;";
 
@@ -523,7 +527,13 @@ Function FormTextUpdate(Val Scheme)
 
     For N = 0 To Fields.UBound() Do
 
-        Fields[N] = Fields[N] + " = ?" + OPI_Tools.NumberToString(N + 1);
+        CurrentMarker = Marker;
+
+        If Numeration Then
+            CurrentMarker = CurrentMarker + OPI_Tools.NumberToString(N + 1);
+        EndIf;
+
+        Fields[N] = Fields[N] + " = " + CurrentMarker;
 
     EndDo;
 
@@ -741,7 +751,7 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection)
 
     Features = Module.GetFeatures();
 
-    Scheme = NewSQLScheme("INSERT", Features);
+    Scheme = NewSQLScheme("INSERT", Module);
     SetTableName(Scheme, Table);
 
     SplitDataCollection(Record, FieldArray, ValuesArray);
@@ -1002,12 +1012,20 @@ Procedure AddField(Scheme, Val Name) Export
 
 EndProcedure
 
-Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Raw)
+Procedure AddFilter(Scheme
+    , Val Field
+    , Val Type
+    , Val Value
+    , Val Grouping
+    , Val Raw)
 
     OPI_TypeConversion.GetLine(Field);
     OPI_TypeConversion.GetLine(Type);
     OPI_TypeConversion.GetLine(Grouping);
     OPI_TypeConversion.GetBoolean(Raw);
+
+    Numeration = Scheme["nump"];
+    Marker     = Scheme["markp"];
 
     MainStructure = New Structure("field,type,union"
         , Field
@@ -1022,8 +1040,14 @@ Procedure AddFilter(Scheme, Val Field, Val Type, Val Value, Val Grouping, Val Ra
 
         Scheme["values"].Add(Value);
 
-        OrderNumber = Scheme["values"].Count();
-        MainStructure.Insert("value", "?" + OPI_Tools.NumberToString(OrderNumber));
+        CurrentMarker = Marker;
+
+        If Numeration Then
+            OrderNumber   = Scheme["values"].Count();
+            CurrentMarker = CurrentMarker + + OPI_Tools.NumberToString(OrderNumber);
+        EndIf;
+
+        MainStructure.Insert("value", CurrentMarker);
 
     EndIf;
 
@@ -1061,6 +1085,20 @@ Procedure SetLimit(Scheme, Val Count)
     OPI_TypeConversion.GetNumber(Count);
 
     Scheme.Insert("limit", Count);
+
+EndProcedure
+
+Procedure ReplaceDefaultFeatures(Features)
+
+    DefaultFeatures = New Map;
+    DefaultFeatures.Insert("ParameterNumeration", True); // nump
+    DefaultFeatures.Insert("ParameterMarker"    , "?"); // markp
+
+    For Each Feature In Features Do
+        DefaultFeatures.Insert(Feature.Key, Feature.Value);
+    EndDo;
+
+    Features = DefaultFeatures;
 
 EndProcedure
 

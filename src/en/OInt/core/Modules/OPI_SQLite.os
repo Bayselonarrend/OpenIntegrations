@@ -344,7 +344,7 @@ EndFunction
 
 Function GetFeatures() Export
 
-    Features = New Structure;
+    Features = New Map;
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "?");
 
