@@ -477,10 +477,6 @@ Function ProcessParameter(CurrentParameter, Embedded = False)
 
         CurrentParameter = String(CurrentParameter);
 
-    ElsIf CurrentType = Type("Date") Then
-
-        CurrentParameter = XMLString(CurrentParameter);
-
     ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
 
         CurrentParameter = ProcessBlobStructure(CurrentParameter);
