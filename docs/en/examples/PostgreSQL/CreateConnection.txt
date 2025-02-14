@@ -5,3 +5,5 @@
 
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
     Result           = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_PostgreSQL.CloseConnection(Result);

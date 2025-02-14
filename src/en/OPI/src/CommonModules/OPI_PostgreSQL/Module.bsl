@@ -141,13 +141,25 @@ Function ExecuteSQLQuery(Val QueryText
     OPI_TypeConversion.GetBoolean(ForceResult);
 
     Parameters_ = ProcessParameters(Parameters);
-    Connector   = CreateConnection(Connection);
 
-    If TypeOf(Connector) <> Type("AddIn.OPI_PostgreSQL.Main") Then
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection    = True;
+        Connector          = CreateConnection(Connection);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
         Return Connector;
     EndIf;
 
     Result = Connector.Execute(QueryText, Parameters_, ForceResult);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
+
     Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
