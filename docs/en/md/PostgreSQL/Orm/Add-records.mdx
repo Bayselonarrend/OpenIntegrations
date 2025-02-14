@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
@@ -37,6 +37,10 @@ Binary data can also be transferred as a structure `{'blob':File path}`
     Password = "12we...";
     Base     = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table        = "testtable";
