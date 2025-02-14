@@ -17342,6 +17342,8 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
     Result           = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
+    OPI_PostgreSQL.CloseConnection(Result);
+
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "PostgreSQL");
@@ -17378,6 +17380,8 @@ Procedure PostgreSQL_IsConnector(FunctionParameters)
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
     Result     = OPI_PostgreSQL.IsConnector(Connection);
+
+    OPI_PostgreSQL.CloseConnection(Result);
 
     // END
 
@@ -17527,6 +17531,8 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_PostgreSQL.CloseConnection(Connection);
 
 EndProcedure
 
