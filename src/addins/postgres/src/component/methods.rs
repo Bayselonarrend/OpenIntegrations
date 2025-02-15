@@ -4,8 +4,7 @@ use base64::{engine::general_purpose, Engine as _};
 use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
-use std::time::{SystemTime, UNIX_EPOCH};
-use chrono::{NaiveDate, NaiveTime, Utc};
+use chrono::{NaiveDate, NaiveTime, Utc, FixedOffset};
 use uuid::Uuid;
 
 pub fn execute_query(
@@ -148,14 +147,20 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
                 Box::new(map) as Box<dyn ToSql + Sync>
             })
             .ok_or_else(|| "Invalid object for HSTORE".to_string()),
-        "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMP_WITH_TIME_ZONE" => value
-            .as_i64()
-            .map(|v| {
-                let duration = UNIX_EPOCH + std::time::Duration::from_millis(v as u64 * 1000);
-                let system_time = SystemTime::from(duration);
-                Box::new(system_time) as Box<dyn ToSql + Sync>
-            })
-            .ok_or_else(|| "Invalid value for TIMESTAMP".to_string()),
+        "TIMESTAMP"  => {
+            let value_str = value.as_str().ok_or("Invalid value for TIMESTAMP")?;
+            match parse_date(&value_str){
+                Ok(date) => Ok(Box::new(date) as Box<dyn ToSql + Sync>),
+                Err(_) => Err("Invalid value for TIMESTAMP".to_string()),
+            }
+        },
+        "TIMESTAMP WITH TIME ZONE" | "TIMESTAMP_WITH_TIME_ZONE"  => {
+            let value_str = value.as_str().ok_or("Invalid value for TIMESTAMP")?;
+            match parse_date_tz(&value_str){
+                Ok(date) => Ok(Box::new(date) as Box<dyn ToSql + Sync>),
+                Err(_) => Err("Invalid value for TIMESTAMP".to_string()),
+            }
+        },
         "INET" => value
             .as_str()
             .and_then(|s| s.parse::<IpAddr>().ok())
@@ -184,7 +189,7 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             }
         },
         "TIME" => {
-            let value_str = value.as_str().ok_or("Invalid value for DATE")?;
+            let value_str = value.as_str().ok_or("Invalid value for TIME")?;
             match parse_date(&value_str){
                 Ok(date) => Ok(Box::new(date.time()) as Box<dyn ToSql + Sync>),
                 Err(_) => Err("Invalid value for TIME".to_string()),
@@ -281,16 +286,11 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
                 Value::Object(map)
             })
             .unwrap_or(Value::Null),
-        "TIMESTAMP" | "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<SystemTime>>(column_name)?
-            .map(|time| {
-                match time.duration_since(SystemTime::UNIX_EPOCH) {
-                    Ok(d) => Value::Number(d.as_secs().into()), // Положительное значение для времени после UNIX_EPOCH
-                    Err(_) => match SystemTime::UNIX_EPOCH.duration_since(time) {
-                        Ok(d) => Value::Number((-(d.as_secs() as i64)).into()), // Отрицательное значение для даты до UNIX_EPOCH
-                        Err(_) => Value::Null, // Это вообще не должно произойти
-                    },
-                }
-            })
+        "TIMESTAMP" => row.try_get::<_, Option<chrono::NaiveDateTime>>(column_name)?
+            .map(|timestamp| Value::String(timestamp.to_string()))
+            .unwrap_or(Value::Null),
+        "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<chrono::DateTime<FixedOffset>>>(column_name)?
+            .map(|timestamp| Value::String(timestamp.to_string()))
             .unwrap_or(Value::Null),
         "INET" => row.try_get::<_, Option<IpAddr>>(column_name)?
             .map(|ip| Value::String(ip.to_string()))
@@ -343,6 +343,26 @@ fn parse_date(input: &str) -> Result<chrono::NaiveDateTime, String> {
     if let Ok(naive_date) = chrono::NaiveDateTime::parse_from_str(input, "%Y-%m-%d") {
         Ok(naive_date)
     }else{
-        Err("Invalid ISO 8601 format".to_string())
+        Err("Invalid rfc3339 format".to_string())
     }
+}
+
+fn parse_date_tz(input: &str) -> Result<chrono::DateTime<FixedOffset>, String> {
+
+    if let Ok(datetime) = chrono::DateTime::parse_from_rfc3339(input) {
+        return Ok(datetime);
+    }
+
+    // Если не получилось, попробуем спарсить только дату и время без часового пояса
+    if let Ok(naive_datetime) = chrono::NaiveDateTime::parse_from_str(input, "%Y-%m-%dT%H:%M:%S") {
+        return Ok(naive_datetime.and_utc().fixed_offset());
+    }
+
+    // Если не получилось, попробуем спарсить только дату
+    if let Ok(naive_date) = chrono::NaiveDateTime::parse_from_str(input, "%Y-%m-%d") {
+        Ok(naive_date.and_utc().fixed_offset())
+    }else{
+        Err("Invalid rfc3339 format".to_string())
+    }
+
 }
