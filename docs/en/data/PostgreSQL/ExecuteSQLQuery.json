@@ -1,5 +1,6 @@
 {
 "Image": "https://api.athenaeum.digital/test_data/picture.jpg",
 "Address": "93.125.42.204",
-"Password": "12we..."
+"Password": "12we...",
+"SQLFile": "https://api.athenaeum.digital/test_data/TEST_DATA.sql"
 }
