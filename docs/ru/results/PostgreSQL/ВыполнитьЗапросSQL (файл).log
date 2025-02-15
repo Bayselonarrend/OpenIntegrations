@@ -1,0 +1,4 @@
+﻿    {
+ "error": "db error: ERROR: cannot insert multiple commands into a prepared statement",
+ "result": false
+}
