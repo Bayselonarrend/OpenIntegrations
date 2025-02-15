@@ -118,9 +118,8 @@ EndFunction
 // Executes an arbitrary SQL query
 //
 // Note
-// Available parameter types: String, Number, Date, Boolean, BinaryData.^^
-// Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned^^
-// as `{'blob':Base64 string}`
+// Query parameters are specified as an array of structures of the following type: `{'Type': 'Value'}`.^^
+// The list of available types is described on the initial page of the PostgreSQL library documentation
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
 // For other queries, `result:true` or `false` with error text is returned
 //
@@ -285,6 +284,9 @@ EndFunction
 // Create table
 // Creates an empty table in the database
 //
+// Note
+// The list of available types is described on the initial page of the PostgreSQL library documentation
+//
 // Parameters:
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
@@ -335,7 +337,15 @@ EndFunction
 // Adds new rows to the table
 //
 // Note
-// Binary data can also be transferred as a structure `{'blob':File path}`
+// Record data is specified as an array of structures of the following type:^
+// ```json^
+// {^
+//     'Field name 1': {'Type': 'Value'},^
+//     'Field name 2': {'Type': 'Value'},^
+//     ...^
+// }`^
+// ```
+// The list of available types is described on the initial page of the PostgreSQL library documentation
 //
 // Parameters:
 // Table - String - Table name - table
@@ -354,9 +364,6 @@ EndFunction
 
 // Get records
 // Gets records from the selected table
-//
-// Note
-// Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
 //
 // Parameters:
 // Table - String - Table name - table
@@ -382,6 +389,17 @@ EndFunction
 
 // Update records
 // Updates the value of records by selected criteria
+//
+// Note
+// Record data is specified as an array of structures of the following type:^
+// ```json^
+// {^
+//     'Field name 1': {'Type': 'Value'},^
+//     'Field name 2': {'Type': 'Value'},^
+//     ...^
+// }`^
+// ```
+// The list of available types is described on the initial page of the PostgreSQL library documentation
 //
 // Parameters:
 // Table - String - Table name - table

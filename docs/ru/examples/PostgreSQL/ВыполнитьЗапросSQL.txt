@@ -59,3 +59,14 @@
     |    INSERT INTO users (name, age) VALUES ('Bob', 25);
     |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
     |    COMMIT;
+    |END $$ LANGUAGE plpgsql;";
+
+    Результат = OPI_PostgreSQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);
+
+    // SQL запрос из файла
+
+    ФайлSQL = "https://api.athenaeum.digital/test_data/TEST_DATA.sql"; // Двоичные данные, URL или путь к файлу
+
+    Результат = OPI_PostgreSQL.ВыполнитьЗапросSQL(ФайлSQL, , , Соединение);
+
+    Закрытие = OPI_PostgreSQL.ЗакрытьСоединение(Соединение);
