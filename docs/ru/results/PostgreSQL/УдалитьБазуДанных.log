@@ -1,4 +1,3 @@
 ﻿    {
- "error": "db error: ERROR: database \"testbase1\" is being accessed by other users\nDETAIL: There are 8 other sessions using the database.",
- "result": false
+ "result": true
 }
