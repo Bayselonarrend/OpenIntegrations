@@ -127,7 +127,7 @@
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
     NewLine.Метод       = "DeleteDatabase";
-    NewLine.МетодПоиска = "DeleteDatabase";
+    NewLine.МетодПоиска = "DELETEDATABASE";
     NewLine.Параметр    = "--base";
     NewLine.Описание    = "Database name";
     NewLine.Область     = "Orm";
@@ -138,7 +138,7 @@
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
     NewLine.Метод       = "DeleteDatabase";
-    NewLine.МетодПоиска = "DeleteDatabase";
+    NewLine.МетодПоиска = "DELETEDATABASE";
     NewLine.Параметр    = "--dbc";
     NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
@@ -405,8 +405,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
     NewLine.Область     = "Orm";
@@ -416,8 +416,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
@@ -426,8 +426,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--dbc";
     NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";

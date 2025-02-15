@@ -1,21 +1,20 @@
 ﻿---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Update records
- Updates the value of records by selected criteria
+# Delete records
+ Deletes records from the table
 
 
 
-`Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export`
+`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Table | --table | String | &#x2714; | Table name |
-  | ValueStructure | --values | Structure Of KeyAndValue | &#x2714; | Values structure: Key > field, Value > field value |
   | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
   | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
 
@@ -41,9 +40,6 @@ import TabItem from '@theme/TabItem';
 
     Table = "test_data";
 
-    FieldsStructure = New Structure;
-    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
-
     Filters = New Array;
 
     FilterStructure = New Structure;
@@ -52,10 +48,18 @@ import TabItem from '@theme/TabItem';
     FilterStructure.Insert("type" , "=");
     FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
     FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
 
     Filters.Add(FilterStructure);
 
-    Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Result    = OPI_PostgreSQL.DeleteRecords(Table, Filters, ConnectionString);
 ```
  
 

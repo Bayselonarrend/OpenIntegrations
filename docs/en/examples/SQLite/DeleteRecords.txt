@@ -1,0 +1,16 @@
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_80B2_2a.sqlite";
+    Table = "test";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly A.");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);

@@ -167,7 +167,7 @@ Function UpdateRecords(Val Module
 
 EndFunction
 
-Function DeletePosts(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
+Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
 
     Scheme = NewSQLScheme("DELETE", Module);
 

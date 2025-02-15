@@ -242,7 +242,7 @@ def test_airtable(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe airtable DeletePosts --token "test" --base "test" --table "test" --records "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe airtable DeleteRecords --token "test" --base "test" --table "test" --records "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1802,7 +1802,7 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeletePosts --table "test" --filter "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteRecords --table "test" --filter "test" --dbc "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2128,7 +2128,7 @@ def test_sqlite(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite DeletePosts --table "test" --filter "test" --db "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite DeleteRecords --table "test" --filter "test" --db "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
