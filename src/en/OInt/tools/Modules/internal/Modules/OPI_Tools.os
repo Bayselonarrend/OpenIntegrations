@@ -1053,6 +1053,15 @@ Function UNIXTime(Val Date) Export
 
 EndFunction
 
+Function DateRFC3339(Val Date, Val Offset = "Z") Export
+
+    OPI_TypeConversion.GetDate(Date);
+    OPI_TypeConversion.GetLine(Offset);
+
+    Return XMLString(Date) + Offset;
+
+EndFunction
+
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;

@@ -17512,10 +17512,6 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "postgres";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Base = "testbase1";
@@ -17523,6 +17519,10 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString); // SKIP
     OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.CreateDatabase(Base, ConnectionString);
 
     // END
@@ -17559,10 +17559,6 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
@@ -17594,6 +17590,10 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("time_field"       , "TIME");
     ColoumnsStruct.Insert("uuid_field"       , "UUID");
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
 
     // END
@@ -17625,14 +17625,14 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
 
     // END
@@ -17656,10 +17656,6 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table        = "testtable";
@@ -17669,7 +17665,9 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     CasualStructure = New Structure("key,value", "ItsKey", 10);
-    CurrentDate     = OPI_Tools.GetCurrentDate();
+
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+    CurrentDateTZ = OPI_Tools.DateRFC3339(CurrentDate, "+05:00");
 
     RecordStructure = New Structure;
     RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
@@ -17689,8 +17687,8 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
     RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
     RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
-    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , 1739207915));
-    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", 1739207915)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , CurrentDate));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", CurrentDateTZ)); // or TIMESTAMP WITH TIME ZONE
     RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
     RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
     RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
@@ -17700,6 +17698,10 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
 
     RecordsArray.Add(RecordStructure);
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, ConnectionString);
 
     // END
@@ -17716,15 +17718,16 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     // All records without filters
 
-    Table  = "testtable";
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
 
     If ValueIsFilled(Result["data"]) Then // SKIP
@@ -17786,10 +17789,6 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "test_data";
@@ -17812,6 +17811,10 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Count, "UpdateRecords (amount)", "PostgreSQL"); // SKIP
     Count = Count["data"].Count(); // SKIP
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
 
     // END
@@ -17840,10 +17843,6 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "test_data";
@@ -17868,7 +17867,12 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     FilterStructure.Insert("raw"  , False);
 
     Obtaining = OPI_PostgreSQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
-    Result    = OPI_PostgreSQL.DeleteRecords(Table, Filters, ConnectionString);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_PostgreSQL.DeleteRecords(Table, Filters, ConnectionString);
 
     // END
 
@@ -17896,14 +17900,14 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.DeleteTable(Table, ConnectionString);
 
     // END
@@ -17929,14 +17933,14 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "postgres";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Base = "testbase1";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);
 
     // END
@@ -17985,14 +17989,14 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "testtable";
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.ClearTable(Table, ConnectionString);
 
     // END
@@ -18015,12 +18019,12 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
-
     Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, ConnectionString);
 
     // END
