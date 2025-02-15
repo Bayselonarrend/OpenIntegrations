@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Available parameter types: String, Number, Date, Boolean, BinaryData. Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned as `{'blob':Base64 string}`
+Query parameters are specified as an array of structures of the following type: `{'Type': 'Value'}`. The list of available types is described on the initial page of the PostgreSQL library documentation
 
 Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
 :::
@@ -95,6 +95,17 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     | INSERT INTO users (name, age) VALUES ('Bob', 25);
     | INSERT INTO users (name, age) VALUES ('Charlie', 35);
     | COMMIT;
+    |END $$ LANGUAGE plpgsql;";
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // SQL query from file
+
+    SQLFile = "https://api.athenaeum.digital/test_data/TEST_DATA.sql"; // Binary Data, URL or path to file
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
 ```
  
 
