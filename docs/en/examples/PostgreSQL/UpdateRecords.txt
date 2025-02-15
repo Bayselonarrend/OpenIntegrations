@@ -3,10 +3,6 @@
     Password = "12we...";
     Base     = "test_data";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "test_data";
@@ -25,4 +21,8 @@
 
     Filters.Add(FilterStructure);
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
