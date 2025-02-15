@@ -2344,7 +2344,7 @@ Procedure Postgres_ORM() Export
     PostgreSQL_ClearTable(TestParameters);
     PostgreSQL_DeleteTable(TestParameters);
     PostgreSQL_DisableAllDatabaseConnections(TestParameters);
-    PostgreSQL_DropDatabase(TestParameters);
+    PostgreSQL_DeleteDatabase(TestParameters);
     PostgreSQL_GetRecordsFilterStrucutre(TestParameters);
 
 EndProcedure
@@ -17508,7 +17508,7 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Base = "testbase1";
 
-    Deletion = OPI_PostgreSQL.DropDatabase(Base, ConnectionString); // SKIP
+    Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString); // SKIP
     OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
 
     Result = OPI_PostgreSQL.CreateDatabase(Base, ConnectionString);
@@ -17519,7 +17519,7 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Base = "testbase2";
-    OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
+    OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
@@ -17842,7 +17842,7 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
 
 EndProcedure
 
-Procedure PostgreSQL_DropDatabase(FunctionParameters)
+Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
@@ -17857,43 +17857,43 @@ Procedure PostgreSQL_DropDatabase(FunctionParameters)
 
     Base = "testbase1";
 
-    Result = OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Base = "testbase2";
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
-    OPI_TestDataRetrieval.WriteLog(Connection, "DropDatabase (open)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Connection, "DeleteDatabase (open)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
 
     Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (Shutdown)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (Shutdown)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (error)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Closing, "DropDatabase (close)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Closing, "DeleteDatabase (close)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Closing);
 
-    Result = OPI_PostgreSQL.DropDatabase(Base, Connection);
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, Connection);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DropDatabase (connect error)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure

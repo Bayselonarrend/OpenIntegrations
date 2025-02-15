@@ -225,9 +225,9 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Result of query execution
-Function DropDatabase(Val Base, Val Connection = "") Export
+Function DeleteDatabase(Val Base, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DropDatabase(OPI_PostgreSQL, Base, Connection);
+    Result = OPI_SQLQueries.DeleteDatabase(OPI_PostgreSQL, Base, Connection);
     Return Result;
 
 EndFunction

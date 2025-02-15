@@ -57,9 +57,9 @@ Function CreateDatabase(Val Module, Val Base, Val Connection = "") Export
 
 EndFunction
 
-Function DropDatabase(Val Module, Val Base, Val Connection = "") Export
+Function DeleteDatabase(Val Module, Val Base, Val Connection = "") Export
 
-    Scheme = NewSQLScheme("DROPDATABASE", Module);
+    Scheme = NewSQLScheme("DeleteDatabase", Module);
 
     SetBaseName(Scheme, Base);
 
@@ -271,9 +271,9 @@ Function NewSQLScheme(Val Action, Val Module = Undefined)
 
         Scheme = EmptySchemeCreateDatabase();
 
-    ElsIf Action = "DROPDATABASE" Then
+    ElsIf Action = "DeleteDatabase" Then
 
-        Scheme = EmptySchemeDropDatabase();
+        Scheme = EmptySchemeDeleteDatabase();
 
     Else
 
@@ -384,9 +384,9 @@ Function EmptySchemeCreateDatabase();
 
 EndFunction
 
-Function EmptySchemeDropDatabase();
+Function EmptySchemeDeleteDatabase();
 
-    Scheme = New Structure("type", "DROPDATABASE");
+    Scheme = New Structure("type", "DeleteDatabase");
 
     Scheme.Insert("database" , "");
 
@@ -443,9 +443,9 @@ Function FormSQLText(Val Scheme)
 
         QueryText = FormTextCreateDatabase(Scheme);
 
-    ElsIf SchemeType = "DROPDATABASE" Then
+    ElsIf SchemeType = "DeleteDatabase" Then
 
-        QueryText = FormTextDropDatabase(Scheme);
+        QueryText = FormTextDeleteDatabase(Scheme);
     Else
 
         QueryText = "";
@@ -631,7 +631,7 @@ Function FormTextCreateDatabase(Val Scheme)
 
 EndFunction
 
-Function FormTextDropDatabase(Val Scheme)
+Function FormTextDeleteDatabase(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "database");
 

@@ -11,4 +11,4 @@
 
     Base = "testbase1";
 
-    Result = OPI_PostgreSQL.DropDatabase(Base, ConnectionString);
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);

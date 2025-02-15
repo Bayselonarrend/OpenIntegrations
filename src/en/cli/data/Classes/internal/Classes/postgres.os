@@ -126,8 +126,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DropDatabase";
-    NewLine.МетодПоиска = "DROPDATABASE";
+    NewLine.Метод       = "DeleteDatabase";
+    NewLine.МетодПоиска = "DeleteDatabase";
     NewLine.Параметр    = "--base";
     NewLine.Описание    = "Database name";
     NewLine.Область     = "Orm";
@@ -137,8 +137,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "postgres";
     NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DropDatabase";
-    NewLine.МетодПоиска = "DROPDATABASE";
+    NewLine.Метод       = "DeleteDatabase";
+    NewLine.МетодПоиска = "DeleteDatabase";
     NewLine.Параметр    = "--dbc";
     NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
