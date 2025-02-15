@@ -1243,7 +1243,7 @@ Procedure AT_CreateDeleteRecords() Export
     Airtable_GetComments(TestParameters);
     Airtable_DeleteComment(TestParameters);
     Airtable_GetListOfRecords(TestParameters);
-    Airtable_DeletePosts(TestParameters);
+    Airtable_DeleteRecords(TestParameters);
 
 EndProcedure
 
@@ -2282,7 +2282,7 @@ Procedure SQLL_ORM() Export
     SQLite_AddRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
-    SQLite_DeletePosts(TestParameters);
+    SQLite_DeleteRecords(TestParameters);
     SQLite_GetTableInformation(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
@@ -2295,7 +2295,7 @@ Procedure SQLL_ORM() Export
     SQLite_AddRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
-    SQLite_DeletePosts(TestParameters);
+    SQLite_DeleteRecords(TestParameters);
     SQLite_GetTableInformation(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
@@ -2319,6 +2319,7 @@ Procedure Postgres_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL"        , TestParameters);
 
     PostgreSQL_GenerateConnectionString(TestParameters);
     PostgreSQL_CreateConnection(TestParameters);
@@ -2341,6 +2342,7 @@ Procedure Postgres_ORM() Export
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
     PostgreSQL_UpdateRecords(TestParameters);
+    PostgreSQL_DeleteRecords(TestParameters);
     PostgreSQL_ClearTable(TestParameters);
     PostgreSQL_DeleteTable(TestParameters);
     PostgreSQL_DisableAllDatabaseConnections(TestParameters);
@@ -6780,7 +6782,7 @@ Procedure Airtable_CreatePosts(FunctionParameters)
 
     EndDo;
 
-    OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
+    OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
 
     // Single
 
@@ -6896,18 +6898,18 @@ Procedure Airtable_GetListOfRecords(FunctionParameters)
 
 EndProcedure
 
-Procedure Airtable_DeletePosts(FunctionParameters)
+Procedure Airtable_DeleteRecords(FunctionParameters)
 
     Token  = FunctionParameters["Airtable_Token"];
     Base   = FunctionParameters["Airtable_Base"];
     Table  = FunctionParameters["Airtable_Table"];
     Record = FunctionParameters["Airtable_Record"];
 
-    Result = OPI_Airtable.DeletePosts(Token, Base, Table, Record);
+    Result = OPI_Airtable.DeleteRecords(Token, Base, Table, Record);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "Airtable");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
 
 EndProcedure
@@ -17203,7 +17205,7 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
 
 EndProcedure
 
-Procedure SQLite_DeletePosts(FunctionParameters)
+Procedure SQLite_DeleteRecords(FunctionParameters)
 
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
@@ -17220,11 +17222,11 @@ Procedure SQLite_DeletePosts(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Result = OPI_SQLite.DeletePosts(Table, FilterStructure, Base);
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "SQLite");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Check = OPI_SQLite.GetRecords(Table, "['name','salary']", Filters, , , Base);
@@ -17407,9 +17409,10 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
     Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
-    OPI_PostgreSQL.DeleteTable("users", Connection); // SKIP
+    OPI_PostgreSQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_PostgreSQL.DeleteTable("test_data", Connection); // SKIP
     Deletion = OPI_PostgreSQL.DeleteTable("test_table", Connection); // SKIP
-    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "PostgreSQL"); // SKIP
 
     OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main"); // SKIP
@@ -17482,6 +17485,15 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
@@ -17772,7 +17784,7 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
-    Base     = "testbase1";
+    Base     = "test_data";
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
@@ -17780,24 +17792,25 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
-    Table = "testtable";
+    Table = "test_data";
 
     FieldsStructure = New Structure;
-    FieldsStructure.Insert("bool_field"       , New Structure("BOOL"        , False));
-    FieldsStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"     , 2));
-    FieldsStructure.Insert("smallint_field"   , New Structure("SMALLINT"    , 10));
-    FieldsStructure.Insert("smallserial_field", New Structure("SMALLSERIAL" , 10));
+    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
 
     Filters = New Array;
 
     FilterStructure = New Structure;
 
-    FilterStructure.Insert("field", "oid_field");
+    FilterStructure.Insert("field", "gender");
     FilterStructure.Insert("type" , "=");
-    FilterStructure.Insert("value", New Structure("OID", 24576));
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
     FilterStructure.Insert("raw"  , False);
 
     Filters.Add(FilterStructure);
+
+    Count = OPI_PostgreSQl.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Count, "UpdateRecords (amount)", "PostgreSQL"); // SKIP
+    Count = Count["data"].Count(); // SKIP
 
     Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
 
@@ -17807,14 +17820,72 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Check = OPI_PostgreSQl.GetRecords(Table
-        , "['bool_field'
-        |,'smallserial_field'
-        |, 'smallint_field']"
+        , "['ip_address']"
         , Filters, , , ConnectionString);
 
     OPI_TestDataRetrieval.WriteLog(Check, "UpdateRecords (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][0], FieldsStructure);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], Count);
+
+    For N = 0 To Check["data"].UBound() Do
+        OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
+    EndDo;
+
+EndProcedure
+
+Procedure PostgreSQL_DeleteRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
+
+    Filters.Add(FilterStructure);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Obtaining = OPI_PostgreSQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    Result    = OPI_PostgreSQL.DeleteRecords(Table, Filters, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Obtaining, "DeleteRecords (get)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Count   = Obtaining["data"].Count();
+    Residue = 100 - Count;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
 EndProcedure
 
@@ -17838,6 +17909,15 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base  = "test_data";
+    Table = "test_data";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result           = OPI_PostgreSQL.DeleteTable(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable (test)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
@@ -17930,7 +18010,7 @@ EndProcedure
 
 Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
-    Address     = FunctionParameters["PG_IP"];
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";

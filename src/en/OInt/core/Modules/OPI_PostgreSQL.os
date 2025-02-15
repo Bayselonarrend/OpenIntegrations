@@ -245,7 +245,7 @@ Function DisableAllDatabaseConnections(Val Base, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Base);
 
-    TextSQL     = "SELECT pg_terminate_backend(pid)
+    TextSQL        = "SELECT pg_terminate_backend(pid)
     |FROM pg_stat_activity
     |WHERE datname = '%1' AND pid <> pg_backend_pid();";
 
@@ -310,7 +310,7 @@ EndFunction
 // Structure Of KeyAndValue, String - Result of query execution
 Function ClearTable(Val Table, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, , Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, , Connection);
     Return Result;
 
 EndFunction
@@ -408,9 +408,9 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue, String - Result of query execution
-Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
+Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_PostgreSQL, Table, Filters, Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, Filters, Connection);
     Return Result;
 
 EndFunction

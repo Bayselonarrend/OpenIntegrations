@@ -484,7 +484,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
-Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export
+Function DeleteRecords(Val Token, Val Base, Val Table, Val Records) Export
 
     OPI_TypeConversion.GetLine(Base);
     OPI_TypeConversion.GetLine(Table);
