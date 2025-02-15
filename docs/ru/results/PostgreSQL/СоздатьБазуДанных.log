@@ -1,4 +1,3 @@
 ﻿    {
- "error": "db error: FATAL: no pg_hba.conf entry for host \"fdfd::1a4b:e3\", user \"bayselonarrend\", database \"postgres\", no encryption",
- "result": false
+ "result": true
 }
