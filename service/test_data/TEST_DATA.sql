@@ -1,3 +1,5 @@
+DO $$
+BEGIN
 create table TEST_DATA (
 	id INT,
 	first_name VARCHAR(50),
@@ -106,3 +108,4 @@ insert into TEST_DATA (id, first_name, last_name, email, gender, ip_address) val
 insert into TEST_DATA (id, first_name, last_name, email, gender, ip_address) values (98, 'Joel', 'Trowler', 'jtrowler2p@a8.net', 'Male', '219.141.184.215');
 insert into TEST_DATA (id, first_name, last_name, email, gender, ip_address) values (99, 'Linus', 'Stelfox', 'lstelfox2q@engadget.com', 'Male', '135.241.172.30');
 insert into TEST_DATA (id, first_name, last_name, email, gender, ip_address) values (100, 'Nessie', 'Hayzer', 'nhayzer2r@wp.com', 'Female', '215.25.37.240');
+END $$ LANGUAGE plpgsql;
