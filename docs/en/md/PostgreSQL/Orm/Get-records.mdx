@@ -35,15 +35,16 @@ import TabItem from '@theme/TabItem';
     Password = "12we...";
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     // All records without filters
 
-    Table  = "testtable";
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
 
     // Filter, selected fields, limit and sorting

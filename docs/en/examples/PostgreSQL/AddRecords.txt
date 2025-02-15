@@ -3,10 +3,6 @@
     Password = "12we...";
     Base     = "testbase1";
 
-    // When using the connection string, a new connection is initialised,
-    // which will be closed after the function is executed.
-    // If several operations are performed, it is desirable to use one connection,
-    // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table        = "testtable";
@@ -16,7 +12,9 @@
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     CasualStructure = New Structure("key,value", "ItsKey", 10);
-    CurrentDate     = OPI_Tools.GetCurrentDate();
+
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+    CurrentDateTZ = OPI_Tools.DateRFC3339(CurrentDate, "+05:00");
 
     RecordStructure = New Structure;
     RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
@@ -36,8 +34,8 @@
     RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
     RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
     RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
-    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , 1739207915));
-    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", 1739207915)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , CurrentDate));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", CurrentDateTZ)); // or TIMESTAMP WITH TIME ZONE
     RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
     RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
     RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
@@ -47,4 +45,8 @@
 
     RecordsArray.Add(RecordStructure);
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, ConnectionString);

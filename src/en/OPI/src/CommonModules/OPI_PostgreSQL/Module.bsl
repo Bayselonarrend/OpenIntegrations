@@ -101,7 +101,7 @@ Function CloseConnection(Val Connection) Export
 EndFunction
 
 // Is connector !NOCLI
-// Checks that the value is an object of a SQLite AddIn
+// Checks that the value is an object of a PostgreSQL AddIn
 //
 // Parameters:
 // Value - Arbitrary - Value to check - value
@@ -508,7 +508,7 @@ Function ProcessParameters(Val Parameters)
 
 EndFunction
 
-Function ProcessParameter(CurrentParameter, Embedded = False)
+Function ProcessParameter(CurrentParameter)
 
     CurrentType = TypeOf(CurrentParameter);
 
@@ -519,6 +519,10 @@ Function ProcessParameter(CurrentParameter, Embedded = False)
     ElsIf CurrentType = Type("UUID") Then
 
         CurrentParameter = String(CurrentParameter);
+
+    ElsIf CurrentType = Type("Date") Then
+
+        CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
 
     ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
 
@@ -538,14 +542,13 @@ Function ProcessParameter(CurrentParameter, Embedded = False)
                 Continue;
             EndIf;
 
-            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue, True);
+            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue);
 
         EndDo;
 
     Else
 
-        If Not OPI_Tools.IsPrimitiveType(CurrentParameter)
-            And Not CurrentType = Type("Date") Then
+        If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
             OPI_TypeConversion.GetLine(CurrentParameter);
         EndIf;
 
