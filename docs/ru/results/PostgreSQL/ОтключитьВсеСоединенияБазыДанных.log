@@ -1,0 +1,8 @@
+﻿    {
+ "data": [
+  {
+   "pg_terminate_backend": true
+  }
+ ],
+ "result": true
+}
