@@ -1,7 +1,7 @@
 ﻿    Address  = "93.125.42.204";
     Login    = "bayselonarrend";
     Password = "12we...";
-    Base     = "testbase1";
+    Base     = "postgres";
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
@@ -9,4 +9,6 @@
     // previously created by the CreateConnection function()
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
-    Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, ConnectionString);
+    Base = "testbase1";
+
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);

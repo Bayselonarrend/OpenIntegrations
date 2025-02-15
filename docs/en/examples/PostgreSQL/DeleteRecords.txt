@@ -11,9 +11,6 @@
 
     Table = "test_data";
 
-    FieldsStructure = New Structure;
-    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
-
     Filters = New Array;
 
     FilterStructure = New Structure;
@@ -22,7 +19,15 @@
     FilterStructure.Insert("type" , "=");
     FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
     FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
 
     Filters.Add(FilterStructure);
 
-    Result = OPI_PostgreSQl.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Result    = OPI_PostgreSQL.DeleteRecords(Table, Filters, ConnectionString);
