@@ -550,8 +550,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "airtable";
     NewLine.Модуль      = "OPI_Airtable";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Record management";
@@ -561,8 +561,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "airtable";
     NewLine.Модуль      = "OPI_Airtable";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--base";
     NewLine.Описание    = "Database identifier";
     NewLine.Область     = "Record management";
@@ -571,8 +571,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "airtable";
     NewLine.Модуль      = "OPI_Airtable";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table identifier";
     NewLine.Область     = "Record management";
@@ -581,8 +581,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "airtable";
     NewLine.Модуль      = "OPI_Airtable";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--records";
     NewLine.Описание    = "Identifier or array of record identifiers";
     NewLine.Область     = "Record management";

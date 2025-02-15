@@ -273,9 +273,9 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function DeletePosts(Val Table, Val Filters = "", Val Connection = "") Export
+Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, Filters, Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, Filters, Connection);
     Return Result;
 
 EndFunction
@@ -307,7 +307,7 @@ EndFunction
 // Map Of KeyAndValue - Result of query execution
 Function ClearTable(Val Table, Val Connection = "") Export
 
-    Result = OPI_SQLQueries.DeletePosts(OPI_SQLite, Table, , Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
     Return Result;
 
 EndFunction

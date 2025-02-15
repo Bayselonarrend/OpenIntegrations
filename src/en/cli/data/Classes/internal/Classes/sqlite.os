@@ -249,8 +249,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--table";
     NewLine.Описание    = "Table name";
     NewLine.Область     = "Orm";
@@ -260,8 +260,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--filter";
     NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";
@@ -270,8 +270,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeletePosts";
-    NewLine.МетодПоиска = "DELETEPOSTS";
+    NewLine.Метод       = "DeleteRecords";
+    NewLine.МетодПоиска = "DELETERECORDS";
     NewLine.Параметр    = "--db";
     NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Область     = "Orm";

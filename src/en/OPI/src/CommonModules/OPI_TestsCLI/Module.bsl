@@ -1241,7 +1241,7 @@ Procedure CLI_AT_CreateDeleteRecords() Export
     CLI_Airtable_GetComments(TestParameters);
     CLI_Airtable_DeleteComment(TestParameters);
     CLI_Airtable_GetListOfRecords(TestParameters);
-    CLI_Airtable_DeletePosts(TestParameters);
+    CLI_Airtable_DeleteRecords(TestParameters);
 
 EndProcedure
 
@@ -2273,7 +2273,7 @@ Procedure CLI_SQLL_ORM() Export
     CLI_SQLite_AddRecords(TestParameters);
     CLI_SQLite_GetRecords(TestParameters);
     CLI_SQLite_UpdateRecords(TestParameters);
-    CLI_SQLite_DeletePosts(TestParameters);
+    CLI_SQLite_DeleteRecords(TestParameters);
     CLI_SQLite_GetTableInformation(TestParameters);
     CLI_SQLite_ClearTable(TestParameters);
     CLI_SQLite_DeleteTable(TestParameters);
@@ -7817,7 +7817,7 @@ Procedure CLI_Airtable_CreatePosts(FunctionParameters)
 
     EndDo;
 
-    OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
+    OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
 
     // Single
 
@@ -7969,7 +7969,7 @@ Procedure CLI_Airtable_GetListOfRecords(FunctionParameters)
 
 EndProcedure
 
-Procedure CLI_Airtable_DeletePosts(FunctionParameters)
+Procedure CLI_Airtable_DeleteRecords(FunctionParameters)
 
     Token  = FunctionParameters["Airtable_Token"];
     Base   = FunctionParameters["Airtable_Base"];
@@ -7982,9 +7982,9 @@ Procedure CLI_Airtable_DeletePosts(FunctionParameters)
     Options.Insert("table"  , Table);
     Options.Insert("records", Record);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeletePosts", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteRecords", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeletePosts", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
 
 EndProcedure
@@ -19291,7 +19291,7 @@ Procedure CLI_SQLite_UpdateRecords(FunctionParameters)
 
 EndProcedure
 
-Procedure CLI_SQLite_DeletePosts(FunctionParameters)
+Procedure CLI_SQLite_DeleteRecords(FunctionParameters)
 
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
@@ -19313,9 +19313,9 @@ Procedure CLI_SQLite_DeletePosts(FunctionParameters)
     Options.Insert("filter", FilterStructure);
     Options.Insert("db"    , Base);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeletePosts", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteRecords", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeletePosts", "SQLite");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Options = New Structure;

@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete records
+ Deletes records from the table
+
+
+
+`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_80B2_2a.sqlite";
+    Table = "test";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly A.");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
+```
+ 
+
+
+
+
