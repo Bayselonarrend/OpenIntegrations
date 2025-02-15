@@ -1766,7 +1766,7 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DropDatabase --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteDatabase --base "test" --dbc "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
