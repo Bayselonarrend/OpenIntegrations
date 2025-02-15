@@ -338,13 +338,7 @@ EndFunction
 //
 // Note
 // Record data is specified as an array of structures of the following type:^
-// ```json^
-// {^
-//     'Field name 1': {'Type': 'Value'},^
-//     'Field name 2': {'Type': 'Value'},^
-//     ...^
-// }`^
-// ```
+// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
 // The list of available types is described on the initial page of the PostgreSQL library documentation
 //
 // Parameters:
@@ -392,13 +386,7 @@ EndFunction
 //
 // Note
 // Record data is specified as an array of structures of the following type:^
-// ```json^
-// {^
-//     'Field name 1': {'Type': 'Value'},^
-//     'Field name 2': {'Type': 'Value'},^
-//     ...^
-// }`^
-// ```
+// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
 // The list of available types is described on the initial page of the PostgreSQL library documentation
 //
 // Parameters:
