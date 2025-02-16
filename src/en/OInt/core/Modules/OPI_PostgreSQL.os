@@ -531,7 +531,9 @@ Function ProcessParameter(CurrentParameter)
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map") Then
 
-        For Each ParamElement In CurrentParameter Do
+        CurrentParameter_ = OPI_Tools.CopyCollection(CurrentParameter);
+
+        For Each ParamElement In CurrentParameter_ Do
 
             CurrentKey   = Upper(ParamElement.Key);
             CurrentValue = ParamElement.Value;
