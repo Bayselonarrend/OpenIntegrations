@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЗаголовокЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 1982 \
+  --chat 2042 \
   --title "Другой заголовок чата" \
   --token "***"
