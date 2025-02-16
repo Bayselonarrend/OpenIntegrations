@@ -17638,7 +17638,7 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
-    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
 
     Table = "heyho";
 
@@ -17680,7 +17680,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     RecordStructure.Insert("bigint_field"     , New Structure("BIGINT"                  , 9999999));
     RecordStructure.Insert("bigserial_field"  , New Structure("BIGSERIAL"               , 9999999));
     RecordStructure.Insert("real_field"       , New Structure("REAL"                    , 15.2));
-    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0000000000000002)); // or DOUBLE PRECISION
+    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0002)); // or DOUBLE PRECISION
     RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
     RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
     RecordStructure.Insert("charn_field"      , New Structure("CHAR"                    , "AAA"));

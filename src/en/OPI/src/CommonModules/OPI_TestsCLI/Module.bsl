@@ -2304,6 +2304,28 @@ Procedure CLI_Postgres_CommonMethods() Export
 
 EndProcedure
 
+Procedure CLI_Postgres_ORM() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+
+    CLI_PostgreSQL_CreateDatabase(TestParameters);
+    CLI_PostgreSQL_CreateTable(TestParameters);
+    CLI_PostgreSQL_GetTableInformation(TestParameters);
+    CLI_PostgreSQL_AddRecords(TestParameters);
+    CLI_PostgreSQL_GetRecords(TestParameters);
+    CLI_PostgreSQL_UpdateRecords(TestParameters);
+    CLI_PostgreSQL_DeleteRecords(TestParameters);
+    CLI_PostgreSQL_ClearTable(TestParameters);
+    CLI_PostgreSQL_DeleteTable(TestParameters);
+    CLI_PostgreSQL_DisableAllDatabaseConnections(TestParameters);
+    CLI_PostgreSQL_DeleteDatabase(TestParameters);
+    CLI_PostgreSQL_GetRecordsFilterStrucutre(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -16522,7 +16544,7 @@ Procedure CLI_Bitrix24_UpdateCalendarEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendarEvent (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateCalendarEvent (wh)", "Bitrix24"); // SKIP
     OPI_TestDataRetrieval.Check_BitrixNumber(Result); // SKIP
 
     EventID = Result["result"]; // SKIP
@@ -16542,7 +16564,7 @@ Procedure CLI_Bitrix24_UpdateCalendarEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCalendarEvent", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateCalendarEvent", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixNumber(Result);
 
     EventID = Result["result"];
@@ -16564,7 +16586,7 @@ Procedure CLI_Bitrix24_SetUserParticipationStatus(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
     OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
 
     URL     = FunctionParameters["Bitrix24_Domain"];
@@ -16579,7 +16601,7 @@ Procedure CLI_Bitrix24_SetUserParticipationStatus(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetUserParticipationStatus", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetUserParticipationStatus", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixTrue(Result);
 
 EndProcedure
@@ -16595,7 +16617,7 @@ Procedure CLI_Bitrix24_GetUserParticipationStatus(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserParticipationStatus (wh)", "Bitrix24"); // SKIP
     OPI_TestDataRetrieval.Check_BitrixString(Result); // SKIP
 
     URL     = FunctionParameters["Bitrix24_Domain"];
@@ -16609,7 +16631,7 @@ Procedure CLI_Bitrix24_GetUserParticipationStatus(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserParticipationStatus", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserParticipationStatus", "Bitrix24");
     OPI_TestDataRetrieval.Check_BitrixString(Result);
 
 EndProcedure
@@ -16621,7 +16643,7 @@ Procedure CLI_Bitrix24_GetCalendarEventsStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsStructure", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEventsStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
@@ -16629,7 +16651,7 @@ Procedure CLI_Bitrix24_GetCalendarEventsStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsStructure (empty)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEventsStructure (empty)", "Bitrix24");
 
     For Each Element In Result Do
 
@@ -16648,14 +16670,14 @@ Procedure CLI_Bitrix24_GetCalendarEventsFilterStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsFilterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEventsFilterStructure", "Bitrix24");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
     Options.Insert("empty" , True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsFilterStructure", Options);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarEventsFilterStructure (empty)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarEventsFilterStructure (empty)", "Bitrix24");
 
     For Each Element In Result Do
 
@@ -19440,7 +19462,7 @@ Procedure CLI_PostgreSQL_GenerateConnectionString(FunctionParameters)
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GenerateConnectionString", "PostgreSQL");
     OPI_TestDataRetrieval.Check_String(Result);
     OPI_TestDataRetrieval.Check_True(StrStartsWith(Result, "postgresql"));
 
@@ -19450,7 +19472,8 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Image = FunctionParameters["Picture"];
     TFN   = GetTempFileName();
-    FileCopy(Image, TFN);
+    OPI_TypeConversion.GetBinaryData(Image);
+    Image.Write(TFN);
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
@@ -19490,7 +19513,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Create)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // INSERT with parameters
@@ -19514,7 +19537,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Insert)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // SELECT (The result of this query is shown in the Result block)
@@ -19530,7 +19553,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     Blob = Result["data"][0]["data"]["BYTEA"]; // SKIP
 
     Result["data"][0]["data"]["BYTEA"] = "Base64"; // SKIP
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
 
@@ -19555,7 +19578,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // SQL query from file
@@ -19568,20 +19591,612 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
 
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseConnection (query)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "PostgreSQL");
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Error deleting a picture file", "PostgreSQL");
     EndTry;
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Base = "testbase1";
+
+    Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
+
+    Options = New Structure;
+    Options.Insert("base" , Base);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase (existing)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
+
+    Address     = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("bool_field"       , "BOOL");
+    ColoumnsStruct.Insert("oldchar_field"    , """char""");
+    ColoumnsStruct.Insert("smallint_field"   , "SMALLINT");
+    ColoumnsStruct.Insert("smallserial_field", "SMALLSERIAL");
+    ColoumnsStruct.Insert("int_field"        , "INT");
+    ColoumnsStruct.Insert("serial_field"     , "SERIAL");
+    ColoumnsStruct.Insert("oid_field"        , "OID");
+    ColoumnsStruct.Insert("bigint_field"     , "BIGINT");
+    ColoumnsStruct.Insert("bigserial_field"  , "BIGSERIAL");
+    ColoumnsStruct.Insert("real_field"       , "REAL");
+    ColoumnsStruct.Insert("dp_field"         , "DOUBLE PRECISION");
+    ColoumnsStruct.Insert("text_field"       , "TEXT");
+    ColoumnsStruct.Insert("varchar_field"    , "VARCHAR");
+    ColoumnsStruct.Insert("charn_field"      , "CHAR(3)");
+    ColoumnsStruct.Insert("char_field"       , "CHAR");
+    ColoumnsStruct.Insert("name_field"       , "NAME");
+    ColoumnsStruct.Insert("bytea_field"      , "BYTEA");
+    ColoumnsStruct.Insert("ts_field"         , "TIMESTAMP");
+    ColoumnsStruct.Insert("tswtz_field"      , "TIMESTAMP WITH TIME ZONE");
+    ColoumnsStruct.Insert("ip_field"         , "INET");
+    ColoumnsStruct.Insert("json_field"       , "JSON");
+    ColoumnsStruct.Insert("jsonb_field"      , "JSONB");
+    ColoumnsStruct.Insert("date_field"       , "DATE");
+    ColoumnsStruct.Insert("time_field"       , "TIME");
+    ColoumnsStruct.Insert("uuid_field"       , "UUID");
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable (exists)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
+
+    Table = "heyho";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_AddRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = FunctionParameters["Picture"];
+    TFN   = GetTempFileName();
+    OPI_TypeConversion.GetBinaryData(Image);
+    Image.Write(TFN);
+
+    CasualStructure = New Structure("key,value", "ItsKey", 10);
+
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+    CurrentDateTZ = OPI_Tools.DateRFC3339(CurrentDate, "+05:00");
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
+    RecordStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"                 , 1)); // or "char"
+    RecordStructure.Insert("smallint_field"   , New Structure("SMALLINT"                , 5));
+    RecordStructure.Insert("smallserial_field", New Structure("SMALLSERIAL"             , 6));
+    RecordStructure.Insert("int_field"        , New Structure("INT"                     , 100));
+    RecordStructure.Insert("serial_field"     , New Structure("SERIAL"                  , 100));
+    RecordStructure.Insert("oid_field"        , New Structure("OID"                     , 24576));
+    RecordStructure.Insert("bigint_field"     , New Structure("BIGINT"                  , 9999999));
+    RecordStructure.Insert("bigserial_field"  , New Structure("BIGSERIAL"               , 9999999));
+    RecordStructure.Insert("real_field"       , New Structure("REAL"                    , 15.2));
+    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0002)); // or DOUBLE PRECISION
+    RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
+    RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
+    RecordStructure.Insert("charn_field"      , New Structure("CHAR"                    , "AAA"));
+    RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
+    RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
+    RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , TFN));
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , CurrentDate));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", CurrentDateTZ)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
+    RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
+    RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
+    RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
+    RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
+    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , String(New UUID())));
+
+    RecordsArray.Add(RecordStructure);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("rows" , RecordsArray);
+    Options.Insert("trn"  , True);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddRecords", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Error deleting a picture file", "PostgreSQL");
+    EndTry;
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    // All records without filters
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
+
+    If ValueIsFilled(Result["data"]) Then // SKIP
+        Result["data"][0]["bytea_field"]["BYTEA"] // SKIP
+ = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
+    EndIf; // SKIP
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecords", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // Filter, selected fields, limit and sorting
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , "test_data");
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("fields", Fields);
+    Options.Insert("filter", Filters);
+    Options.Insert("order" , Sort);
+    Options.Insert("limit" , Count);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecords (filters)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "test_data";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Count = OPI_PostgreSQl.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Count, "UpdateRecords (amount)", "PostgreSQL"); // SKIP
+    Count = Count["data"].Count(); // SKIP
+
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("values", FieldsStructure);
+    Options.Insert("filter", Filters);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "UpdateRecords", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Check = OPI_PostgreSQl.GetRecords(Table
+        , "['ip_address']"
+        , Filters, , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "UpdateRecords (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], Count);
+
+    For N = 0 To Check["data"].UBound() Do
+        OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "test_data";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
+
+    Filters.Add(FilterStructure);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Obtaining = OPI_PostgreSQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("filter", Filters);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteRecords", Options);
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Obtaining, "DeleteRecords (get)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Count   = Obtaining["data"].Count();
+    Residue = 100 - Count;
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ClearTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base  = "test_data";
+    Table = "test_data";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result           = OPI_PostgreSQL.DeleteTable(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTable (test)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Options = New Structure;
+    Options.Insert("base", Base);
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DisableAllDatabaseConnections", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DisableAllDatabaseConnections", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+
+    Base = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("base", Base);
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecordsFilterStrucutre", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecordsFilterStrucutre", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+    Options = New Structure;
+    Options.Insert("empty", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecordsFilterStrucutre", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecordsFilterStrucutre (empty)", "PostgreSQL");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 
