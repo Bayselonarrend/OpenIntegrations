@@ -48,8 +48,8 @@ The PostgreSQL connector supports the use of positional parameters. All values p
   | DATE | 🟢 | - | Date (any time part), String (ISO 8601, RFC 3339) |
   | TIME | 🟢 | - | Date (any date part), String (ISO 8601, RFC 3339) |
   | BYTEA | 🟢 | - | BinaryData, File path, Base64 String (all converted to a Base64 string) |
-  | JSON | 🟢 | - | Array, Structure, Map |
-  | JSONB | 🟢 | - | Array, Structure, Map |
+  | JSON | 🟢 | - | Array, Structure, Map, String (JSON) |
+  | JSONB | 🟢 | - | Array, Structure, Map, String (JSON) |
   | LTREE | 🟡 | - | String |
   | LQUERY | 🟡 | - | String |
   | LTXTQUERY | 🟡 | - | String |
