@@ -1,0 +1,5 @@
+oint postgres СформироватьСтрокуПодключения ^
+  --addr "93.125.42.204" ^
+  --db "postgres" ^
+  --login "bayselonarrend" ^
+  --pass "***"
