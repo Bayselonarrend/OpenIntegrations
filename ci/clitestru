@@ -56,11 +56,6 @@ pipeline {
                 test_google()
              }
           }
-          stage('mongodb'){
-             steps{
-                test_mongodb()
-             }
-          }
           stage('neocities'){
              steps{
                 test_neocities()
@@ -1425,16 +1420,6 @@ def test_google(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
-               }
-
-}
-
-
-def test_mongodb(){
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe mongodb ПолучитьСписокБаз --connect "test" --debug --test '
                }
 
 }
@@ -2948,7 +2933,6 @@ test_gcalendar()
 test_gdrive()
 test_gsheets()
 test_google()
-test_mongodb()
 test_neocities()
 test_notion()
 test_ozon()
