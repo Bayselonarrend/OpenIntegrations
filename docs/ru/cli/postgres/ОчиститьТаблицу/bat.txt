@@ -1,0 +1,3 @@
+oint postgres ОчиститьТаблицу ^
+  --table "testtable" ^
+  --dbc "postgresql://bayselonarrend:12we3456!2154@93.125.42.204:5432/testbase1"
