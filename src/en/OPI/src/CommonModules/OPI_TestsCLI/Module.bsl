@@ -19622,7 +19622,7 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -19649,7 +19649,7 @@ EndProcedure
 
 Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
-    Address     = FunctionParameters["PG_IP"];
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
@@ -19661,7 +19661,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -19725,7 +19725,7 @@ Procedure CLI_PostgreSQL_GetTableInformation(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -19767,7 +19767,7 @@ Procedure CLI_PostgreSQL_AddRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -19844,7 +19844,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     // All records without filters
 
@@ -19873,7 +19873,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -19935,7 +19935,7 @@ Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -19996,7 +19996,7 @@ Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20060,7 +20060,7 @@ Procedure CLI_PostgreSQL_ClearTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20095,7 +20095,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20133,7 +20133,7 @@ Procedure CLI_PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -20160,7 +20160,7 @@ Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
-    ConnectionString    = GetStringFromBinaryData(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
