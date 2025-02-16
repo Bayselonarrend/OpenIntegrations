@@ -63,6 +63,26 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint postgres УдалитьЗаписи \
+              --table "test_data" \
+              --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" \
+              --dbc "postgresql://bayselonarrend:12we3456!2154@93.125.42.204:5432/test_data"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint postgres УдалитьЗаписи ^
+              --table "test_data" ^
+              --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" ^
+              --dbc "postgresql://bayselonarrend:12we3456!2154@93.125.42.204:5432/test_data"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
