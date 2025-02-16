@@ -2289,6 +2289,23 @@ EndProcedure
 
 #EndRegion
 
+#Region PostgreSQL
+
+Procedure CLI_Postgres_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL"        , TestParameters);
+
+    CLI_PostgreSQL_GenerateConnectionString(TestParameters);
+    CLI_PostgreSQL_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -19397,6 +19414,174 @@ Procedure CLI_SQLite_ClearTable(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+#EndRegion
+
+#Region PostgreSQL
+
+Procedure CLI_PostgreSQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    Result = GetStringFromBinaryData(Result);
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+    OPI_TestDataRetrieval.Check_True(StrStartsWith(Result, "postgresql"));
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    TFN   = GetTempFileName();
+    FileCopy(Image, TFN);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
+    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_PostgreSQL.DeleteTable("users"     , Connection);
+    OPI_PostgreSQL.DeleteTable("test_data" , Connection);
+    OPI_PostgreSQL.DeleteTable("test_table", Connection);
+
+    // CREATE
+
+    QueryText = "
+    |CREATE TABLE test_table (
+    |id SERIAL PRIMARY KEY,
+    |name NAME,
+    |age INT,
+    |salary REAL,
+    |is_active BOOL,
+    |created_at DATE,
+    |data BYTEA
+    |);";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+    |VALUES ($1, $2, $3, $4, $5, $6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("NAME" , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"  , 25));
+    ParameterArray.Add(New Structure("REAL" , 1000.12));
+    ParameterArray.Add(New Structure("BOOL" , True));
+    ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTEA", TFN));
+
+    Options = New Structure;
+    Options.Insert("sql"   , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("params", ParameterArray);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
+
+    Blob = Result["data"][0]["data"]["BYTEA"]; // SKIP
+
+    Result["data"][0]["data"]["BYTEA"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    // DO + Transaction
+
+    QueryText = "DO $$
+    |BEGIN
+    | CREATE TABLE users (
+    | id SMALLSERIAL,
+    | name TEXT NOT NULL,
+    | age INT NOT NULL
+    | );
+    | INSERT INTO users (name, age) VALUES ('Alice', 30);
+    | INSERT INTO users (name, age) VALUES ('Bob', 25);
+    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+    | COMMIT;
+    |END $$ LANGUAGE plpgsql;";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
+
+    Options = New Structure;
+    Options.Insert("sql" , SQLFile);
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "PostgreSQL");
+    EndTry;
 
 EndProcedure
 
