@@ -39,6 +39,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:CommentedCode-off
 // BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:UsingHardcodeNetworkAddress-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1929,7 +1930,7 @@
     Ozon_ПолучитьИнформациюОТоварах(ПараметрыТеста);
     Ozon_ПолучитьКонтентРейтингТоваров(ПараметрыТеста);
     Ozon_ПолучитьОписаниеТовара(ПараметрыТеста);
-    //Ozon_ОбновитьИзображенияТовара(ПараметрыТеста);
+    Ozon_ОбновитьИзображенияТовара(ПараметрыТеста);
     Ozon_ПроверитьЗагрузкуИзображенийТоваров(ПараметрыТеста);
     Ozon_ИзменитьАртикулыТоваров(ПараметрыТеста);
     Ozon_АрхивироватьТовары(ПараметрыТеста);
