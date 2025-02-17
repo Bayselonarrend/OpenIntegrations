@@ -236,7 +236,7 @@
 // Получает список товаров с фильтром или без
 //
 // Примечание:
-// Метод в документации API: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+// Метод в документации API: [post /v3/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
 //
 // Параметры:
 //  IDКлиента    - Строка                     - Идентификатор клиента                                       - clientid
@@ -250,7 +250,7 @@
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v2/product/list";
+    URL = "https://api-seller.ozon.ru/v3/product/list";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
     Лимит     = 200;
@@ -274,7 +274,7 @@
 // Получает описания характеристик товаров с фильтром или без
 //
 // Примечание:
-// Метод в документации API: [post /v3/products/info/attributes](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductAttributesV3)
+// Метод в документации API: [post /v4/products/info/attributes](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductAttributesV4)
 //
 // Параметры:
 //  IDКлиента    - Строка                     - Идентификатор клиента                                       - clientid
@@ -291,7 +291,7 @@
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v3/products/info/attributes";
+    URL = "https://api-seller.ozon.ru/v4/product/info/attributes";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
     Лимит     = 200;
@@ -319,7 +319,7 @@
 // Параметр active_product устарел, используйте значения параметра visible
 // Параметры fbs_sku и fbo_sku из ответа метода были отключены 15 августа 2023 года
 // В теле запроса должен быть один идентификатор или массив однотипных идентификаторов, в ответе будет массив items
-// Метод в документации API: [post /v2/product/info/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoListV2)
+// Метод в документации API: [post /v3/product/info/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoList)
 //
 // Параметры:
 //  IDКлиента  - Строка                   - Идентификатор клиента                               - clientid
@@ -338,7 +338,7 @@
 
     Массив_ = "Массив";
 
-    URL = "https://api-seller.ozon.ru/v2/product/info/list";
+    URL = "https://api-seller.ozon.ru/v3/product/info/list";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
 
@@ -531,7 +531,7 @@
 // Проверяет загрузку изображений по массиву ID товаров
 //
 // Примечание:
-// Метод в документации API: [post /v1/product/pictures/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductInfoPictures)
+// Метод в документации API: [post /v2/product/pictures/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductInfoPictures)
 //
 // Параметры:
 //  IDКлиента - Строка                                 - Идентификатор клиента   - clientid
@@ -542,7 +542,7 @@
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
 Функция ПроверитьЗагрузкуИзображенийТоваров(Знач IDКлиента, Знач КлючAPI, Знач IDТоваров) Экспорт
 
-    URL = "https://api-seller.ozon.ru/v1/product/pictures/info";
+    URL = "https://api-seller.ozon.ru/v2/product/pictures/info";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
 
@@ -1173,7 +1173,7 @@
 // Получает количество товаров в остатке с фильтром или без
 //
 // Примечание:
-// Метод в документации API: [post /v3/product/info/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoStocksV3)
+// Метод в документации API: [post /v4/product/info/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoStocks)
 //
 // Параметры:
 //  IDКлиента    - Строка                     - Идентификатор клиента                                       - clientid
@@ -1187,7 +1187,7 @@
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v3/product/info/stocks";
+    URL = "https://api-seller.ozon.ru/v4/product/info/stocks";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
     Лимит     = 100;
@@ -1211,7 +1211,7 @@
 // Получает цены товаров с фильтром или без
 //
 // Примечание:
-// Метод в документации API: [post /v4/product/info/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoPricesV4)
+// Метод в документации API: [post /v5/product/info/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoPrices)
 //
 // Параметры:
 //  IDКлиента    - Строка                     - Идентификатор клиента                                       - clientid
@@ -1225,7 +1225,7 @@
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v4/product/info/prices";
+    URL = "https://api-seller.ozon.ru/v5/product/info/prices";
 
     Заголовки = СоздатьЗаголовкиЗапроса(IDКлиента, КлючAPI);
     Лимит     = 300;
