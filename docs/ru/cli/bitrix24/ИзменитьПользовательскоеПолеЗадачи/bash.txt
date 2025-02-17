@@ -1,4 +1,4 @@
 oint bitrix24 ИзменитьПользовательскоеПолеЗадачи \
-  https://b24-ar17wx.bitrix24.by/rest/1/*** \
+  --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
   --fieldid 259 \
   --title "Новый заголовок"
