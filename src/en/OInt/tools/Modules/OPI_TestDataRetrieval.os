@@ -2396,8 +2396,9 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
         EndIf;
 
-        CurrentOption = FormOption(Option.Value, Option.Key);
+        CurrentOption       = Option.Value;
         ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
+        CurrentOption = FormOption(CurrentOption, Option.Key);
 
         OptionsArray.Add(CurrentOption);
 
