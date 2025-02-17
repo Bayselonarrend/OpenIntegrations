@@ -130,7 +130,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function ExecuteSQLQuery(Val QueryText
     , Val Parameters = ""
     , Val ForceResult = False
@@ -207,7 +207,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function CreateDatabase(Val Base, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateDatabase(OPI_PostgreSQL, Base, Connection);
@@ -223,7 +223,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DeleteDatabase(Val Base, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteDatabase(OPI_PostgreSQL, Base, Connection);
@@ -239,7 +239,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DisableAllDatabaseConnections(Val Base, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Base);
@@ -264,7 +264,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function GetTableInformation(Val Table, Val Connection = "") Export
 
     OPI_TypeConversion.GetLine(Table);
@@ -293,7 +293,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
     Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection);
@@ -309,7 +309,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function ClearTable(Val Table, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, , Connection);
@@ -325,7 +325,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DeleteTable(Val Table, Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection);
@@ -348,7 +348,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
 
     Result = OPI_SQLQueries.AddRecords(OPI_PostgreSQL, Table, DataArray, Transaction, Connection);
@@ -368,7 +368,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function GetRecords(Val Table
     , Val Fields = "*"
     , Val Filters = ""
@@ -396,7 +396,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection);
@@ -413,7 +413,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 //
 // Returns:
-// Structure Of KeyAndValue, String - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, Filters, Connection);
