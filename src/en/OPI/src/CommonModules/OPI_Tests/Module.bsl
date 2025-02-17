@@ -39,6 +39,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:CommentedCode-off
 // BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:UsingHardcodeNetworkAddress-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1929,7 +1930,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductsInformation(TestParameters);
     Ozon_GetProductsContentRating(TestParameters);
     Ozon_GetProductDescription(TestParameters);
-    //Ozon_UpdateProductImages(TestParameters);
+    Ozon_UpdateProductImages(TestParameters);
     Ozon_CheckProductsImagesUpload(TestParameters);
     Ozon_UpdateProductsArticles(TestParameters);
     Ozon_ArchiveProducts(TestParameters);
