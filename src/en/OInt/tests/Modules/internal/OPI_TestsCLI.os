@@ -39,6 +39,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:CommentedCode-off
 // BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:UsingHardcodeNetworkAddress-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -1466,7 +1467,7 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     CLI_Ozon_GetProductsInformation(TestParameters);
     CLI_Ozon_GetProductsContentRating(TestParameters);
     CLI_Ozon_GetProductDescription(TestParameters);
-    //CLI_Ozon_UpdateProductImages(TestParameters);
+    CLI_Ozon_UpdateProductImages(TestParameters);
     CLI_Ozon_CheckProductsImagesUpload(TestParameters);
     CLI_Ozon_UpdateProductsArticles(TestParameters);
     CLI_Ozon_ArchiveProducts(TestParameters);
@@ -19595,7 +19596,6 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
-
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseConnection (query)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);

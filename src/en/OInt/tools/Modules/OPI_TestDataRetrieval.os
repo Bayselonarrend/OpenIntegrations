@@ -33,6 +33,7 @@
 // BSLLS:ExecuteExternalCodeInCommonModule-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:MagicNumber-off
+// BSLLS:UsingHardcodeNetworkAddress-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -2456,9 +2457,12 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
             Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
 
-        ElsIf Option = "addr" Then
+        Else
 
-            Value = "127.0.0.1";
+            If Option = "addr" Then
+                Value = "127.0.0.1";
+                Return;
+            EndIf;
 
         EndIf;
 
