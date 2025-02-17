@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСобытиеКалендаря \
   --url "b24-ar17wx.bitrix24.by" \
-  --event 466 \
+  --event 474 \
   --token "***"
