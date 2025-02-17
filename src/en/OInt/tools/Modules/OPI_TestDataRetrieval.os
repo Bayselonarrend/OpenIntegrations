@@ -1811,6 +1811,12 @@ Procedure Check_OzonObjectsArray(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OzonObjects(Val Result) Export
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+EndProcedure
+
 Procedure Check_OzonUpdatedArray(Val Result) Export
 
     ExpectsThat(Result["result"][0]["updated"]).Равно(True);
@@ -1832,9 +1838,9 @@ EndProcedure
 
 Procedure Check_OzonProducts(Val Result) Export
 
-    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"]["items"][0]["name"]).Заполнено();
-    ExpectsThat(Result["result"]["items"][0]["id"]).Заполнено();
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+    ExpectsThat(Result["items"][0]["name"]).Заполнено();
+    ExpectsThat(Result["items"][0]["id"]).Заполнено();
 
 EndProcedure
 

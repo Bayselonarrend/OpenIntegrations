@@ -1,5 +1,5 @@
 ﻿    ClientID  = "2479669";
     APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "1393771402";
+    ProductID = "1394138741";
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
