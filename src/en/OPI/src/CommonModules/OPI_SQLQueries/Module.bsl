@@ -374,7 +374,7 @@ Function EmptySchemeTruncate()
 
 EndFunction
 
-Function EmptySchemeCreateDatabase();
+Function EmptySchemeCreateDatabase()
 
     Scheme = New Structure("type", "CREATEDATABASE");
 
@@ -384,7 +384,7 @@ Function EmptySchemeCreateDatabase();
 
 EndFunction
 
-Function EmptySchemeDropDatabase();
+Function EmptySchemeDropDatabase()
 
     Scheme = New Structure("type", "DROPDATABASE");
 
@@ -749,8 +749,6 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection)
     FieldArray  = New Array;
     ValuesArray = New Array;
 
-    Features = Module.GetFeatures();
-
     Scheme = NewSQLScheme("INSERT", Module);
     SetTableName(Scheme, Table);
 
@@ -1044,7 +1042,7 @@ Procedure AddFilter(Scheme
 
         If Numeration Then
             OrderNumber   = Scheme["values"].Count();
-            CurrentMarker = CurrentMarker + + OPI_Tools.NumberToString(OrderNumber);
+            CurrentMarker = CurrentMarker + OPI_Tools.NumberToString(OrderNumber);
         EndIf;
 
         MainStructure.Insert("value", CurrentMarker);
