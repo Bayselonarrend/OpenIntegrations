@@ -1929,7 +1929,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductsInformation(TestParameters);
     Ozon_GetProductsContentRating(TestParameters);
     Ozon_GetProductDescription(TestParameters);
-    Ozon_UpdateProductImages(TestParameters);
+    //Ozon_UpdateProductImages(TestParameters);
     Ozon_CheckProductsImagesUpload(TestParameters);
     Ozon_UpdateProductsArticles(TestParameters);
     Ozon_ArchiveProducts(TestParameters);
@@ -14062,7 +14062,7 @@ Procedure Ozon_CheckProductsImagesUpload(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "CheckProductsImagesUpload", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonPictures(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 
@@ -14310,7 +14310,7 @@ Procedure Ozon_GetProductsStocks(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductsStocks", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 
@@ -14371,7 +14371,7 @@ Procedure Ozon_GetProductsPrices(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductsPrices", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 

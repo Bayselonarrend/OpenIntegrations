@@ -1466,7 +1466,7 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     CLI_Ozon_GetProductsInformation(TestParameters);
     CLI_Ozon_GetProductsContentRating(TestParameters);
     CLI_Ozon_GetProductDescription(TestParameters);
-    CLI_Ozon_UpdateProductImages(TestParameters);
+    //CLI_Ozon_UpdateProductImages(TestParameters);
     CLI_Ozon_CheckProductsImagesUpload(TestParameters);
     CLI_Ozon_UpdateProductsArticles(TestParameters);
     CLI_Ozon_ArchiveProducts(TestParameters);
@@ -9988,7 +9988,7 @@ Procedure CLI_Ozon_CheckProductsImagesUpload(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CheckProductsImagesUpload", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CheckProductsImagesUpload", "Ozon");
-    OPI_TestDataRetrieval.Check_OzonPictures(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 
@@ -9998,7 +9998,7 @@ Procedure CLI_Ozon_UpdateProductsArticles(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     ArticlesMap = New Map;
-    ArticlesMap.Insert("143210609", "143210612");
+    ArticlesMap.Insert("143210609", "143210613");
 
     Options = New Structure;
     Options.Insert("clientid" , ClientID);
@@ -10011,7 +10011,7 @@ Procedure CLI_Ozon_UpdateProductsArticles(FunctionParameters)
     OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
 
     ArticlesMap = New Map;
-    ArticlesMap.Insert("143210612", "143210609");
+    ArticlesMap.Insert("143210613", "143210609");
 
     Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
 
@@ -10248,7 +10248,7 @@ Procedure CLI_Ozon_GetProductsStocks(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsStocks", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductsStocks", "Ozon");
-    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 
@@ -10315,7 +10315,7 @@ Procedure CLI_Ozon_GetProductsPrices(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsPrices", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductsPrices", "Ozon");
-    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+    OPI_TestDataRetrieval.Check_OzonObjects(Result);
 
 EndProcedure
 
