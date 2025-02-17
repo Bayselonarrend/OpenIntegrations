@@ -4,4 +4,4 @@ oint postgres ОбновитьЗаписи \
   --table "test_data" \
   --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
   --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}]" \
-  --dbc "postgresql://bayselonarrend:12we3456!2154@93.125.42.204:5432/test_data"
+  postgresql://bayselonarrend:***@127.0.0.1:5432/
