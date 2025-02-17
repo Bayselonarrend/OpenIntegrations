@@ -1,4 +1,4 @@
 oint telegram ИзменитьИмяГлавнойТемыФорума \
   --token "***" \
   --forum "-1001971186208" \
-  --title "Новое имя главной темы daf80c8c-abad-4ac5-8b4c-976cbea0eecd"
+  --title "Новое имя главной темы be5f00f6-fade-424c-852c-dafffa23dcd2"

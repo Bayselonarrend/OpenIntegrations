@@ -1,3 +1,3 @@
 oint postgres ВыполнитьЗапросSQL ^
   --sql "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/TEST_DATA.sql" ^
-  postgresql://bayselonarrend:***@127.0.0.1:5432/
+  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
