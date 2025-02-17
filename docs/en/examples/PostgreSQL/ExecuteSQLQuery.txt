@@ -1,7 +1,7 @@
 ﻿    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    Address  = "93.125.42.204";
+    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
     Password = "12we...";
     Base     = "test_data";

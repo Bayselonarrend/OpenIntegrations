@@ -130,7 +130,7 @@ EndFunction
 // Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
 //
 // Returns:
-// Structure Of KeyAndValue - Result of query execution
+// Map Of KeyAndValue - Result of query execution
 Function ExecuteSQLQuery(Val QueryText
     , Val Parameters = ""
     , Val ForceResult = False

@@ -2444,10 +2444,17 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
     EndIf;
 
-    If Library     = "postgres"
-        And Option = "dbc" Then
+    If Library = "postgres" Then
 
-        Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
+        If Option = "dbc" Then
+
+            Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
+
+        ElsIf Option = "addr" Then
+
+            Value = "127.0.0.1";
+
+        EndIf;
 
     EndIf;
 
