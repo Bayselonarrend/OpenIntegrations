@@ -33,6 +33,7 @@
 // BSLLS:ExecuteExternalCodeInCommonModule-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:MagicNumber-off
+// BSLLS:UsingHardcodeNetworkAddress-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -2455,11 +2456,14 @@
         Если Опция = "dbc" Тогда
 
             Значение = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
-
-        ИначеЕсли Опция = "addr" Тогда
-
-            Значение = "127.0.0.1";
-
+			
+        Иначе
+        	
+	        Если Опция = "addr" Тогда
+	            Значение = "127.0.0.1";
+	            Возврат;
+	        КонецЕсли;
+        
         КонецЕсли;
 
     КонецЕсли;
