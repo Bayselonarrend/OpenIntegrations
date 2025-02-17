@@ -236,7 +236,7 @@ EndFunction
 // Gets a list of products with or without filter
 //
 // Note
-// Method at API documentation: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+// Method at API documentation: [post /v3/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -250,7 +250,7 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v2/product/list";
+    URL = "https://api-seller.ozon.ru/v3/product/list";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 200;
@@ -274,7 +274,7 @@ EndFunction
 // Retrieves product attributes descriptions with or without filtering
 //
 // Note
-// Method at API documentation: [post /v3/products/info/attributes](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductAttributesV3)
+// Method at API documentation: [post /v4/products/info/attributes](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductAttributesV4)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -291,7 +291,7 @@ Function GetProductsAttributesData(Val ClientID
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v3/products/info/attributes";
+    URL = "https://api-seller.ozon.ru/v4/product/info/attributes";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 200;
@@ -319,7 +319,7 @@ EndFunction
 // The active_product parameter is deprecated, use the values of the visible parameter
 // The fbs_sku and fbo_sku parameters from the method response were disabled on August 15, 2023
 // The body of the request must contain a single identifier or an array of identical identifiers, the response will be an array of items
-// Method at API documentation: [post /v2/product/info/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoListV2)
+// Method at API documentation: [post /v3/product/info/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoList)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -338,7 +338,7 @@ Function GetProductsInformation(Val ClientID
 
     Array_ = "Array";
 
-    URL = "https://api-seller.ozon.ru/v2/product/info/list";
+    URL = "https://api-seller.ozon.ru/v3/product/info/list";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
@@ -531,7 +531,7 @@ EndFunction
 // Check images upload by products IDs
 //
 // Note
-// Method at API documentation: [post /v1/product/pictures/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductInfoPictures)
+// Method at API documentation: [post /v2/product/pictures/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductInfoPictures)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -542,7 +542,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Export
 
-    URL = "https://api-seller.ozon.ru/v1/product/pictures/info";
+    URL = "https://api-seller.ozon.ru/v2/product/pictures/info";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
@@ -1173,7 +1173,7 @@ EndFunction
 // Gets the number of items in the balance with or without filtering
 //
 // Note
-// Method at API documentation: [post /v3/product/info/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoStocksV3)
+// Method at API documentation: [post /v4/product/info/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoStocks)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -1187,7 +1187,7 @@ Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v3/product/info/stocks";
+    URL = "https://api-seller.ozon.ru/v4/product/info/stocks";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 100;
@@ -1211,7 +1211,7 @@ EndFunction
 // Gets products prices with or without filter
 //
 // Note
-// Method at API documentation: [post /v4/product/info/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoPricesV4)
+// Method at API documentation: [post /v5/product/info/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoPrices)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
@@ -1225,7 +1225,7 @@ Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID
 
     Filter_ = "filter";
 
-    URL = "https://api-seller.ozon.ru/v4/product/info/prices";
+    URL = "https://api-seller.ozon.ru/v5/product/info/prices";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
     Limit   = 300;
