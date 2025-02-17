@@ -538,9 +538,7 @@ Function ProcessParameter(CurrentParameter)
             CurrentKey   = Upper(ParamElement.Key);
             CurrentValue = ParamElement.Value;
 
-            If CurrentKey     = "JSONB"
-                Or CurrentKey = "JSON"
-                Or CurrentKey = "HSTORE" Then
+            If IsCollectionType(CurrentKey) Then
                 Continue;
             EndIf;
 
@@ -562,10 +560,12 @@ EndFunction
 
 Function ProcessBlobStructure(Val Value)
 
-    DataValue = Value["BYTEA"];
+    Bytea_ = "BYTEA";
+
+    DataValue = Value[Bytea_];
 
     If TypeOf(DataValue) = Type("BinaryData") Then
-        Value            = New Structure("BYTEA", Base64String(DataValue));
+        Value            = New Structure(Bytea_, Base64String(DataValue));
     Else
 
         DataFile = New File(String(DataValue));
@@ -573,7 +573,7 @@ Function ProcessBlobStructure(Val Value)
         If DataFile.Exists() Then
 
             CurrentData = New BinaryData(String(DataValue));
-            Value       = New Structure("BYTEA", Base64String(CurrentData));
+            Value       = New Structure(Bytea_, Base64String(CurrentData));
 
         EndIf;
 
@@ -583,44 +583,9 @@ Function ProcessBlobStructure(Val Value)
 
 EndFunction
 
-Function GetTypesMap()
+Function IsCollectionType(Val CheckedType)
 
-    DescriptionBool    = New TypeDescription("Boolean");
-    DescriptionOldchar = New TypeDescription("Number", , , New NumberQualifiers(1, 0, AllowedSign.Nonnegative));
-    DescriptionI       = New TypeDescription("Number", , , New NumberQualifiers(, 0, AllowedSign.Any));
-    DescriptionU       = New TypeDescription("Number", , , New NumberQualifiers(, 0, AllowedSign.Nonnegative));
-    DescriptionF       = New TypeDescription("Number", , , New NumberQualifiers(, , AllowedSign.Any));
-    DescriptionString  = New TypeDescription("String");
-
-    TypesMap = New Map();
-    TypesMap.Insert("BOOL"                    , DescriptionBool);
-    TypesMap.Insert("""CHAR"""                , DescriptionOldchar);
-    TypesMap.Insert("OLDCHAR"                 , DescriptionOldchar);
-    TypesMap.Insert("SMALLINT"                , DescriptionI);
-    TypesMap.Insert("SMALLSERIAL"             , DescriptionI);
-    TypesMap.Insert("INT"                     , DescriptionI);
-    TypesMap.Insert("SERIAL"                  , DescriptionI);
-    TypesMap.Insert("BIGINT"                  , DescriptionI);
-    TypesMap.Insert("BIGSERIAL"               , DescriptionI);
-    TypesMap.Insert("TIMESTAMP"               , DescriptionI);
-    TypesMap.Insert("TIMESTAMP WITH TIME ZONE", DescriptionI);
-    TypesMap.Insert("TIMESTAMP_WITH_TIME_ZONE", DescriptionI);
-    TypesMap.Insert("OID"                     , DescriptionU);
-    TypesMap.Insert("REAL"                    , DescriptionF);
-    TypesMap.Insert("DOUBLE PRECISION"        , DescriptionF);
-    TypesMap.Insert("DOUBLE_PRECISION"        , DescriptionF);
-    TypesMap.Insert("VARCHAR"                 , DescriptionString);
-    TypesMap.Insert("TEXT"                    , DescriptionString);
-    TypesMap.Insert("CHAR"                    , DescriptionString);
-    TypesMap.Insert("CITEXT"                  , DescriptionString);
-    TypesMap.Insert("NAME"                    , DescriptionString);
-    TypesMap.Insert("LTREE"                   , DescriptionString);
-    TypesMap.Insert("LQUERY"                  , DescriptionString);
-    TypesMap.Insert("LTXTQUERY"               , DescriptionString);
-    TypesMap.Insert("INET"                    , DescriptionString);
-    TypesMap.Insert("UUID"                    , DescriptionString);
-
-    Return TypesMap;
+    Return CheckedType = "JSONB" Or CheckedType = "JSON" Or CheckedType = "HSTORE";
 
 EndFunction
 
