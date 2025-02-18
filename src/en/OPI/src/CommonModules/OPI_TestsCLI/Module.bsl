@@ -19489,11 +19489,18 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
     ConnectionString = GetStringFromBinaryData(ConnectionString);
-    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
 
-    OPI_PostgreSQL.DeleteTable("users"     , Connection);
-    OPI_PostgreSQL.DeleteTable("test_data" , Connection);
-    OPI_PostgreSQL.DeleteTable("test_table", Connection);
+    Options = New Structure();
+    Options.Insert("dbc" , ConnectionString);
+
+    Options.Insert("table", "users");
+    OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
+
+    Options.Insert("table", "test_data");
+    OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
+
+    Options.Insert("table", "test_table");
+    OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
 
     // CREATE
 
@@ -19595,11 +19602,6 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
-    Closing = OPI_PostgreSQL.CloseConnection(Connection);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseConnection (query)", "PostgreSQL");
-    OPI_TestDataRetrieval.Check_ResultTrue(Result);
-
     Try
         DeleteFiles(TFN);
     Except
@@ -19626,8 +19628,12 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
 
     Base = "testbase1";
 
-    Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString); // SKIP
-    OPI_TestDataRetrieval.WriteLogCLI(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
+    Options = New Structure();
+    Options.Insert("dbc" , ConnectionString);
+    Options.Insert("base", Base);
+
+    Deletion = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options, False);
+    OPI_TestDataRetrieval.WriteLogCLI(Deletion, "CreateDatabase (deleting)", "PostgreSQL");
 
     Options = New Structure;
     Options.Insert("base" , Base);
@@ -19953,7 +19959,13 @@ Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Count = OPI_PostgreSQl.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("filter", Filters);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Count = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
+
     OPI_TestDataRetrieval.WriteLogCLI(Count, "UpdateRecords (amount)", "PostgreSQL"); // SKIP
     Count = Count["data"].Count(); // SKIP
 
@@ -19968,9 +19980,13 @@ Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Check = OPI_PostgreSQl.GetRecords(Table
-        , "['ip_address']"
-        , Filters, , , ConnectionString);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("fields", "['ip_address']");
+    Options.Insert("filter", Filters);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "UpdateRecords (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
@@ -20019,7 +20035,12 @@ Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
     FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
     FilterStructure.Insert("raw"  , False);
 
-    Obtaining = OPI_PostgreSQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("filter", Filters);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Obtaining = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     Options = New Structure;
     Options.Insert("table" , Table);
@@ -20038,7 +20059,11 @@ Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteRecords (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -20073,7 +20098,11 @@ Procedure CLI_PostgreSQL_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -20111,8 +20140,18 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
     Base  = "test_data";
     Table = "test_data";
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
-    Result           = OPI_PostgreSQL.DeleteTable(Table, ConnectionString);
+    Options          = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options, False);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+    Result     = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTable (test)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
