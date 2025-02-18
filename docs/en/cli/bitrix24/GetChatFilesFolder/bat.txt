@@ -1,3 +1,3 @@
 oint bitrix24 GetChatFilesFolder ^
- https://b24-ar17wx.bitrix24.by/rest/1/*** ^
- --chat 1996
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+ --chat 2072

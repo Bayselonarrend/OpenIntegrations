@@ -1,4 +1,4 @@
 oint slack CreateChannel ^
  --token "***" ^
- --title "testconv2fff0e62-3f89-45bb-981d-8e4261cac213" ^
+ --title "testconvda54e544-a18c-4b4d-8aaa-ca8488cb39ae" ^
  --private false

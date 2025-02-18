@@ -1,5 +1,5 @@
 oint bitrix24 DelegateTask ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "5000" ^
- --user 1604 ^
+ --task "5190" ^
+ --user 1688 ^
  --token "***"

@@ -1,0 +1,3 @@
+oint postgres DeleteTable ^
+ --table "testtable" ^
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
