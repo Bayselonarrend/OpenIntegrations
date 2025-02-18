@@ -1,0 +1,4 @@
+﻿ {
+ "error": "db error: ERROR: database \"testbase2\" already exists",
+ "result": false
+}
