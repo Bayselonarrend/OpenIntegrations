@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_80B2_2a.sqlite";
+    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_761F_2fd.sqlite";
     Table = "test";
 
     Filters = New Array;
@@ -46,6 +46,34 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint sqlite DeleteRecords \
+             --table "test" \
+             --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
+             --db "C:\Users\Administrator\AppData\Local\Temp\ttindjrjxqn.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint sqlite DeleteRecords ^
+             --table "test" ^
+             --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" ^
+             --db "C:\Users\Administrator\AppData\Local\Temp\ttindjrjxqn.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

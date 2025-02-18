@@ -65,6 +65,36 @@ The list of available types is described on the initial page of the PostgreSQL l
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint postgres UpdateRecords \
+             --table "test_data" \
+             --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
+             --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}]" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint postgres UpdateRecords ^
+             --table "test_data" ^
+             --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
+             --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}]" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```
