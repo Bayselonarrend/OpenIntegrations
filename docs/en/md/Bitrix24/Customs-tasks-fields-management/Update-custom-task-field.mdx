@@ -42,7 +42,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
     Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "afd0a867006e9f06006b12e400000001000...";
+    Token = "8536b467006e9f06006b12e400000001000...";
 
     FieldID    = "257";
     ExternalID = "NEW_TEXT_FIELD";
@@ -57,7 +57,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 UpdateCustomTaskField \
-             https://b24-ar17wx.bitrix24.by/rest/1/*** \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
              --fieldid 259 \
              --title "New title"
         ```
@@ -66,7 +66,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 UpdateCustomTaskField ^
-             https://b24-ar17wx.bitrix24.by/rest/1/*** ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
              --fieldid 259 ^
              --title "New title"
         ```

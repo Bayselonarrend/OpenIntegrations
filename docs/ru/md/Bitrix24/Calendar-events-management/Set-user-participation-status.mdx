@@ -33,14 +33,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСобытия = "318";
+    IDСобытия = "486";
     Статус    = "Y";
 
     Результат = OPI_Bitrix24.УстановитьСтатусУчастияПользователя(URL, IDСобытия, Статус);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "afd0a867006e9f06006b12e400000001000...";
-    IDСобытия = "322";
+    Токен     = "8536b467006e9f06006b12e400000001000...";
+    IDСобытия = "490";
 
     Результат = OPI_Bitrix24.УстановитьСтатусУчастияПользователя(URL, IDСобытия, Статус, Токен);
 ```
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УстановитьСтатусУчастияПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --event 474 \
+              --event 514 \
               --status "Y" \
               --token "***"
         ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УстановитьСтатусУчастияПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --event 474 ^
+              --event 514 ^
               --status "Y" ^
               --token "***"
         ```

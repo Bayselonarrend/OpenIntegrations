@@ -41,14 +41,14 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Image2 = "https://api.athenaeum.digital/test_data/picture.jpg"; // Local path, URL or Binary Data
     Image  = "https://api.athenaeum.digital/test_data/picture2.jpg"; // Local path, URL or Binary Data
 
-    DestinationID = "27278";
+    DestinationID = "28562";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "afd0a867006e9f06006b12e400000001000...";
+    Token = "8536b467006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
 ```
@@ -59,20 +59,20 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 UploadFileToFolder \
-             https://b24-ar17wx.bitrix24.by/rest/1/*** \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
              --title "Imortant doc.docx" \
              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
-             --folderid 27688
+             --folderid 28828
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 UploadFileToFolder ^
-             https://b24-ar17wx.bitrix24.by/rest/1/*** ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
              --title "Imortant doc.docx" ^
              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
-             --folderid 27688
+             --folderid 28828
         ```
     </TabItem>
 </Tabs>
