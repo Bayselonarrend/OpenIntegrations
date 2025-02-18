@@ -1,5 +1,5 @@
 oint postgres СформироватьСтрокуПодключения \
-  --addr "93.125.42.204" \
+  --addr "127.0.0.1" \
   --db "postgres" \
   --login "bayselonarrend" \
   --pass "***"
