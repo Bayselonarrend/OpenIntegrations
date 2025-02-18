@@ -32,9 +32,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token      = "ya29.a0AXeO80Qz2NkSHo3Esq-3Dkvxlvhh01u6oDPv7m6vJvN5MUeluZlh2FsDbmMjoXx3N_bStbQrfvky5LWOPkgGfh8kmAQnvGb4Tc84o0wzy...";
+    Token      = "ya29.a0AXeO80QmRD8H3PJ7Q4W_FrA0bUXT3qbvoufjrR5yC_gGUX-q8hpGM_XhHS1OMwb9Q7jPt-2h_AXtmWA2G27GIhpl6szrH7zn4IyFnnDp1...";
     NewName    = "UpdatedFile.jpg";
-    Identifier = "1QcKowOztpqRehZo3KcTjF96uq8Tb4RNw";
+    Identifier = "1KBkCrnbtPL9j-XfOlI8_-Ioq-AIAzJLI";
     File       = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
@@ -47,7 +47,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```bash
             oint gdrive UpdateFile \
              --token "***" \
-             --object "1famo3MBIRY2tpWsoFdhU2kIWIqFcXsb7" \
+             --object "1GACMPFFW6yhpaZuAjMqlhaQ8zG6Z_28P" \
              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
              --title "UpdatedFile.jpg"
         ```
@@ -57,7 +57,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```batch
             oint gdrive UpdateFile ^
              --token "***" ^
-             --object "1famo3MBIRY2tpWsoFdhU2kIWIqFcXsb7" ^
+             --object "1GACMPFFW6yhpaZuAjMqlhaQ8zG6Z_28P" ^
              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
              --title "UpdatedFile.jpg"
         ```

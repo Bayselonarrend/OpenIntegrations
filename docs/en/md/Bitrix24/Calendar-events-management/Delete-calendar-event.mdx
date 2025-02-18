@@ -32,13 +32,13 @@ Method at API documentation: [calendar.event.delete](https://apidocs.bitrix24.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "318";
+    EventID = "486";
 
     Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "afd0a867006e9f06006b12e400000001000...";
-    EventID = "322";
+    Token   = "8536b467006e9f06006b12e400000001000...";
+    EventID = "490";
 
     Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID, Token);
 ```
@@ -50,7 +50,7 @@ Method at API documentation: [calendar.event.delete](https://apidocs.bitrix24.ru
         ```bash
             oint bitrix24 DeleteCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --event 370 \
+             --event 522 \
              --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ Method at API documentation: [calendar.event.delete](https://apidocs.bitrix24.ru
         ```batch
             oint bitrix24 DeleteCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --event 370 ^
+             --event 522 ^
              --token "***"
         ```
     </TabItem>

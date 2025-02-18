@@ -41,6 +41,33 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint postgres DisableAllDatabaseConnections \
+             --base "testbase1" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint postgres DisableAllDatabaseConnections ^
+             --base "testbase1" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "data": [
+  {
+   "pg_terminate_backend": true
+  }
+ ],
+ "result": true
+}
+```
