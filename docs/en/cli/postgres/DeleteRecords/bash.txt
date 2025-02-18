@@ -1,0 +1,4 @@
+oint postgres DeleteRecords \
+ --table "test_data" \
+ --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" \
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
