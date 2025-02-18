@@ -33,14 +33,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "4938";
+    IDЗадачи = "5152";
 
     Текст = "Задача невыполнима, расходимся";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийЗадачи(URL, IDЗадачи, Текст);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "afd0a867006e9f06006b12e400000001000...";
+    Токен = "8536b467006e9f06006b12e400000001000...";
 
     Текст = "Задача выполнима, не расходимся";
 
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьКомментарийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "5132" \
+              --task "5182" \
               --text "Задача выполнима, не расходимся" \
               --token "***"
         ```
@@ -64,7 +64,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьКомментарийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "5132" ^
+              --task "5182" ^
               --text "Задача выполнима, не расходимся" ^
               --token "***"
         ```

@@ -43,6 +43,28 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint postgres DeleteTable \
+             --table "testtable" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint postgres DeleteTable ^
+             --table "testtable" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

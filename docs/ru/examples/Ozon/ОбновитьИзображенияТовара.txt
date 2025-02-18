@@ -1,6 +1,6 @@
 ﻿    IDКлиента = "2479669";
     КлючAPI   = "09f65e9f-262d-4aca...";
-    IDТовара  = "1394138741";
+    IDТовара  = "1413992764";
 
     Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
     Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";

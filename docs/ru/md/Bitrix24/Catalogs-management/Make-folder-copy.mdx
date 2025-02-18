@@ -32,18 +32,18 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDПриемника = "27280";
-    IDКаталога  = "27282";
+    IDПриемника = "28564";
+    IDКаталога  = "28566";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.СкопироватьКаталог(URL, IDКаталога, IDПриемника);
 
-    IDПриемника = "27282";
-    IDКаталога  = "27280";
+    IDПриемника = "28566";
+    IDКаталога  = "28564";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "afd0a867006e9f06006b12e400000001000...";
+    Токен = "8536b467006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.СкопироватьКаталог(URL, IDКаталога, IDПриемника, Токен);
 
@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СкопироватьКаталог \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 28444 \
-              --tagetid 28446 \
+              --folderid 28744 \
+              --tagetid 28746 \
               --token "***"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СкопироватьКаталог ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 28444 ^
-              --tagetid 28446 ^
+              --folderid 28744 ^
+              --tagetid 28746 ^
               --token "***"
         ```
     </TabItem>
