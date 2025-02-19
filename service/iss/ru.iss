@@ -4,6 +4,7 @@
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.bat"
 #define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release"
+#define Engine "C:\engine"
 
 [Setup]
 DisableWelcomePage      = no
@@ -31,7 +32,7 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
 Source: "{#Repo}\ci\installer_set\*"; DestDir: "{app}"; Flags: recursesubdirs
-Source: "{#Repo}\service\engine\windows\*"; DestDir: "{app}\share\oint\bin"; Flags: recursesubdirs
+Source: "{#Engine}\windows\*"; DestDir: "{app}\share\oint\bin"; Flags: recursesubdirs
 Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 Source: "{#Repo}\Media\icons\ex.ico"; DestDir: "{app}\share\oint\icons"
