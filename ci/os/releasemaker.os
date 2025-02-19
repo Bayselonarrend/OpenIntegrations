@@ -7,6 +7,7 @@
 Перем ПутьВыгрузки;
 Перем Кугвин;
 Перем Оскрипт;
+Перем ПутьДвижка;
 
 
 Процедура НачалоРаботы()
@@ -20,6 +21,7 @@
 	Сервер            = "AIONIOTISCORE:1742";
 	Кугвин            = "C:\cygwin64\bin\";
 	ОСкрипт           = "C:\Program Files\OneScript\";
+	ПутьДвижка        = "/cygdrive/c/engine/linux/";
 
 	ПутьКРепозиторию  = "C:\ProgramData\Jenkins\.jenkins\workspace\Release";
 	//ПутьКРепозиторию  = "C:\Repos\OPI";
@@ -240,7 +242,7 @@
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
 	+ " --verbose"
-	+ " ../ci/installer_set/=/usr ../service/engine/linux/=/usr/share/oint/bin";
+	+ " ../ci/installer_set/=/usr " + ПутьДвижка + "=/usr/share/oint/bin";
 
 	СоответствиеПакетов = Новый Соответствие();
 	СоответствиеПакетов.Вставить("deb", "oint_" + Версия + "_all_" + Данные["Префикс"] + ".deb");
