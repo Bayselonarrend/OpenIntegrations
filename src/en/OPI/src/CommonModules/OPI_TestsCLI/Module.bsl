@@ -20151,7 +20151,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
     Options = New Structure;
     Options.Insert("table", Table);
     Options.Insert("dbc"  , ConnectionString);
-    Result     = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
+    Result  = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options, False);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTable (test)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);

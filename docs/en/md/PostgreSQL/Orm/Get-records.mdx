@@ -89,28 +89,16 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint postgres GetRecords \
-             --table "test_data" \
-             --fields "['first_name','last_name','email']" \
-             --filter "[{'field':'gender','type':'=','value':'Male','union':'AND','raw':false},{'field':'id','type':'BETWEEN','value':'20 AND 50','raw':true}]" \
-             --order "{'ip_address':'DESC'}" \
-             --limit 5 \
+             --table "testtable" \
              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint postgres GetRecords ^
-             --table "test_data" ^
-             --fields "['first_name','last_name','email']" ^
-             --filter "[{'field':'gender','type':'=','value':'Male','union':'AND','raw':false},{'field':'id','type':'BETWEEN','value':'20 AND 50','raw':true}]" ^
-             --order "{'ip_address':'DESC'}" ^
-             --limit 5 ^
+             --table "testtable" ^
              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
         ```
     </TabItem>
