@@ -214,12 +214,11 @@ Procedure GetLine(Value, Val FromSource = False) Export
 
         If ThisIsSymbolic(Value) Then
 
+            Value = OPI_Tools.NumberToString(Value);
+
             If Not FromSource Then
-                Value = OPI_Tools.NumberToString(Value);
                 Return;
             EndIf;
-
-            Value = OPI_Tools.NumberToString(Value);
 
             ValueES = Value;
             OPI_Tools.RestoreEscapeSequences(ValueES);
@@ -296,8 +295,33 @@ EndProcedure
 
 Procedure GetNumber(Value) Export
 
-    TypeDescription = New TypeDescription("Number");
-    Value           = TypeDescription.AdjustValue(Value);
+    If TypeOf(Value) = Type("Number") Then
+
+        Return;
+
+    ElsIf TypeOf(Value) = Type("Boolean") Then
+
+        Value = ?(Value, 1, 0);
+
+    Else
+
+        TypeDescription = New TypeDescription("Number");
+        Value           = String(Value);
+        Value_       = TypeDescription.AdjustValue(Value);
+
+        If Value_ = 0 Then
+
+            Try
+                Value = Number(Value);
+            Except
+                Return;
+            EndTry;
+
+        Else
+            Value = Value_;
+        EndIf;
+
+    EndIf;
 
 EndProcedure
 
