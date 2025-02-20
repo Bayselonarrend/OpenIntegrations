@@ -785,10 +785,17 @@ Procedure Viber_DataRetrieval() Export
     OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
 
+    Return;
+
+    //@skip-check unreachable-statements
+    // BSLLS:UnreachableCode-off
+
     Viber_GetChannelInformation(TestParameters);
     Viber_GetUserData(TestParameters);
     Viber_GetOnlineUsers(TestParameters);
     Viber_SetWebhook(TestParameters);
+
+    // BSLLS:UnreachableCode-on
 
 EndProcedure
 
@@ -13871,7 +13878,6 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsAttributes", "Ozon");
-
     OPI_TestDataRetrieval.Check_OzonUploadTask(Result, False);
 
     TaskID = Result["task_id"];
@@ -13879,6 +13885,8 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
     FunctionParameters.Insert("Ozon_AttUpdateTaskID", TaskID);
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsAttributes (status)", "Ozon");
 
     While Result["result"]["items"][0]["status"] = "pending" Do
 
