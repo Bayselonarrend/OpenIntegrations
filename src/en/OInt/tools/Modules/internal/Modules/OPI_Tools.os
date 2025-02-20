@@ -1034,8 +1034,8 @@ Function NumberToString(Val Value) Export
 
     If TypeOf(Value) = Type("Number") Then
 
-        If Value = 0 Then
-            Value_  = "0";
+        If Value   = 0 Then
+            Value_ = "0";
         Else
             Value_ = Format(Value, "HG=0");
         EndIf;
