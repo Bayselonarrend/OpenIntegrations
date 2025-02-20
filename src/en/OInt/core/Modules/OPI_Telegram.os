@@ -322,7 +322,7 @@ Function SendTextMessage(Val Token
     OPI_Tools.AddField("parse_mode"         , Markup   , String_      , Parameters);
     OPI_Tools.AddField("text"               , Text     , String_      , Parameters);
     OPI_Tools.AddField("reply_markup"       , Keyboard , "Collection" , Parameters);
-    OPI_Tools.AddField("reply_to_message_id", RepliedID, String_      , Parameters);
+    OPI_Tools.AddField("reply_to_message_id", RepliedID, "Number"     , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -663,8 +663,8 @@ Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export
     URL = "api.telegram.org/bot" + Token + "/forwardMessage";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("from_chat_id", FromID    , "String", Parameters);
-    OPI_Tools.AddField("message_id"  , OriginalID, "String", Parameters);
+    OPI_Tools.AddField("from_chat_id", FromID    , "Number", Parameters);
+    OPI_Tools.AddField("message_id"  , OriginalID, "Number", Parameters);
 
     AddChatIdentifier(ToID, Parameters);
 
@@ -694,8 +694,8 @@ Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
     URL = "api.telegram.org/bot" + Token + "/deleteMessage";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("message_id", MessageID, "String", Parameters);
-    OPI_Tools.AddField("chat_id"   , ChatID   , "String", Parameters);
+    OPI_Tools.AddField("message_id", MessageID, "Number", Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID   , "Number", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
     Return Response;
@@ -723,7 +723,7 @@ Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboa
     String_ = "String";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("message_id"  , MessageID, String_     , Parameters);
+    OPI_Tools.AddField("message_id"  , MessageID, "Number"    , Parameters);
     OPI_Tools.AddField("reply_markup", Keyboard , "Collection", Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
@@ -756,8 +756,8 @@ Function ReplaceMessageText(Val Token, Val ChatID, Val MessageID, Val Text) Expo
     String_ = "String";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("message_id", MessageID, String_, Parameters);
-    OPI_Tools.AddField("text"      , Text     , String_, Parameters);
+    OPI_Tools.AddField("message_id", MessageID, "Number", Parameters);
+    OPI_Tools.AddField("text"      , Text     , String_ , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -789,8 +789,8 @@ Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Descrip
     String_ = "String";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("message_id", MessageID   , String_, Parameters);
-    OPI_Tools.AddField("caption"   , Description , String_, Parameters);
+    OPI_Tools.AddField("message_id", MessageID   , "Number", Parameters);
+    OPI_Tools.AddField("caption"   , Description , String_ , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
@@ -865,9 +865,9 @@ Function Ban(Val Token, Val ChatID, Val UserID) Export
     URL = "api.telegram.org/bot" + Token + "/banChatMember";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode", "Markdown" , String_, Parameters);
-    OPI_Tools.AddField("chat_id"   , ChatID     , String_, Parameters);
-    OPI_Tools.AddField("user_id"   , UserID     , String_, Parameters);
+    OPI_Tools.AddField("parse_mode", "Markdown" , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID     , "Number", Parameters);
+    OPI_Tools.AddField("user_id"   , UserID     , "Number", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -897,8 +897,8 @@ Function Unban(Val Token, Val ChatID, Val UserID) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode"    , "Markdown" , String_  , Parameters);
-    OPI_Tools.AddField("chat_id"       , ChatID     , String_  , Parameters);
-    OPI_Tools.AddField("user_id"       , UserID     , String_  , Parameters);
+    OPI_Tools.AddField("chat_id"       , ChatID     , "Number" , Parameters);
+    OPI_Tools.AddField("user_id"       , UserID     , "Number" , Parameters);
     OPI_Tools.AddField("only_if_banned", False      , "Boolean", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
@@ -934,11 +934,11 @@ Function CreateInvitationLink(Val Token
     URL = "api.telegram.org/bot" + Token + "/createChatInviteLink";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode"   , "Markdown"     , String_ , Parameters);
-    OPI_Tools.AddField("chat_id"      , ChatID         , String_ , Parameters);
-    OPI_Tools.AddField("name"         , Title          , String_ , Parameters);
-    OPI_Tools.AddField("member_limit" , UserLimit      , String_ , Parameters);
-    OPI_Tools.AddField("expire_date"  , ExpirationDate , "Date"  , Parameters);
+    OPI_Tools.AddField("parse_mode"   , "Markdown"     , String_  , Parameters);
+    OPI_Tools.AddField("chat_id"      , ChatID         , "Number" , Parameters);
+    OPI_Tools.AddField("name"         , Title          , String_  , Parameters);
+    OPI_Tools.AddField("member_limit" , UserLimit      , "Number" , Parameters);
+    OPI_Tools.AddField("expire_date"  , ExpirationDate , "Date"   , Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -968,8 +968,8 @@ Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode"          , "Markdown" , String_  , Parameters);
-    OPI_Tools.AddField("chat_id"             , ChatID     , String_  , Parameters);
-    OPI_Tools.AddField("message_id"          , MessageID  , String_  , Parameters);
+    OPI_Tools.AddField("chat_id"             , ChatID     , "Number" , Parameters);
+    OPI_Tools.AddField("message_id"          , MessageID  , "Number" , Parameters);
     OPI_Tools.AddField("disable_notification", False      , "Boolean", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
@@ -999,9 +999,9 @@ Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
     URL = "api.telegram.org/bot" + Token + "/unpinChatMessage";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode", "Markdown" , String_, Parameters);
-    OPI_Tools.AddField("chat_id"   , ChatID     , String_, Parameters);
-    OPI_Tools.AddField("message_id", MessageID  , String_, Parameters);
+    OPI_Tools.AddField("parse_mode", "Markdown" , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID     , "Number", Parameters);
+    OPI_Tools.AddField("message_id", MessageID  , "Number", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -1028,8 +1028,8 @@ Function GetParticipantCount(Val Token, Val ChatID) Export
     URL = "api.telegram.org/bot" + Token + "/getChatMemberCount";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode", "Markdown" , "String", Parameters);
-    OPI_Tools.AddField("chat_id"   , ChatID     , "String", Parameters);
+    OPI_Tools.AddField("parse_mode", "Markdown" , "String" , Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID     , "Number" , Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -1232,8 +1232,8 @@ Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
     URL = "api.telegram.org/bot" + Token + "/editGeneralForumTopic";
 
     Parameters = New Structure;
-    OPI_Tools.AddField("chat_id", ChatID , "String", Parameters);
-    OPI_Tools.AddField("name"   , Title  , "String", Parameters);
+    OPI_Tools.AddField("chat_id", ChatID , "Number" , Parameters);
+    OPI_Tools.AddField("name"   , Title  , "String" , Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
@@ -1335,10 +1335,10 @@ Function ForumTopicManagement(Val Token
     OPI_TypeConversion.GetLine(Token);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("name"                , Title    , String_, Parameters);
-    OPI_Tools.AddField("chat_id"             , ChatID   , String_, Parameters);
-    OPI_Tools.AddField("icon_custom_emoji_id", IconID   , String_, Parameters);
-    OPI_Tools.AddField("message_thread_id"   , ThreadID , String_, Parameters);
+    OPI_Tools.AddField("name"                , Title    , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"             , ChatID   , "Number", Parameters);
+    OPI_Tools.AddField("icon_custom_emoji_id", IconID   , String_ , Parameters);
+    OPI_Tools.AddField("message_thread_id"   , ThreadID , "Number", Parameters);
 
     If ValueIsFilled(ThreadID) Then
         Method = "/editForumTopic";
@@ -1365,8 +1365,8 @@ Function ManageForumThreadState(Val Token, Val ChatID, Val Status, Val ThreadID 
     Method = DetermineForumManagementMethod(Status, Forum);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("chat_id"          , ChatID  , "String", Parameters);
-    OPI_Tools.AddField("message_thread_id", ThreadID, "String", Parameters);
+    OPI_Tools.AddField("chat_id"          , ChatID  , "Number", Parameters);
+    OPI_Tools.AddField("message_thread_id", ThreadID, "Number", Parameters);
 
     URL      = "api.telegram.org/bot" + Token + Method;
     Response = OPI_Tools.Get(URL, Parameters);
@@ -1542,10 +1542,12 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
         ChatID   = ChatArray[0];
         ThreadID = ChatArray[1];
 
+        OPI_TypeConversion.GetNumber(ThreadID);
         Parameters.Insert("message_thread_id", ThreadID);
 
     EndIf;
 
+    OPI_TypeConversion.GetNumber(ThreadID);
     Parameters.Insert("chat_id", ChatID);
 
 EndProcedure

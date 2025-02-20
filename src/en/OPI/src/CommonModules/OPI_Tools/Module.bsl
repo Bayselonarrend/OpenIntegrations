@@ -1030,8 +1030,16 @@ Procedure RestoreEscapeSequences(Text) Export
 
 EndProcedure
 
-Function NumberToString(Val Number) Export
-    Return StrReplace(String(Number), Chars.NBSp, "");
+Function NumberToString(Val Value) Export
+
+    If TypeOf(Value) = Type("Number") Then
+        Value_ = Format(Value, "HG=0");
+    Else
+        Value_          = String(Value);
+    EndIf;
+
+    Return Value_;
+
 EndFunction
 
 Function GetCurrentDate() Export
