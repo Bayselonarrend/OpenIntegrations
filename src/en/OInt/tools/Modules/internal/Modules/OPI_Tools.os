@@ -1033,9 +1033,15 @@ EndProcedure
 Function NumberToString(Val Value) Export
 
     If TypeOf(Value) = Type("Number") Then
-        Value_ = Format(Value, "HG=0");
+
+        If Value = 0 Then
+            Value_  = "0";
+        Else
+            Value_ = Format(Value, "HG=0");
+        EndIf;
+
     Else
-        Value_          = String(Value);
+        Value_ = String(Value);
     EndIf;
 
     Return Value_;

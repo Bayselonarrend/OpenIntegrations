@@ -307,7 +307,7 @@ Procedure GetNumber(Value) Export
 
         TypeDescription = New TypeDescription("Number");
         Value           = String(Value);
-        Value_       = TypeDescription.AdjustValue(Value);
+        Value_          = TypeDescription.AdjustValue(Value);
 
         If Value_ = 0 Then
 
