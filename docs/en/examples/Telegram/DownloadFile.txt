@@ -1,4 +1,4 @@
-﻿    FileID = "CQACAgIAAx0EcNsaZQACOwABZ7bOPXhCtnOeW-0vhDiXGKiMzkgAAmdkAAJNNblJslye171feic2BA";
+﻿    FileID = "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADcwADNgQ";
     Token  = "6129457865:AAFyzNYOAFbu...";
 
     Result = OPI_Telegram.DownloadFile(Token, FileID);
