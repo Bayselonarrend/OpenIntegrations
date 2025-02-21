@@ -46,6 +46,7 @@
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_CDEK</commonModules>
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
+  <commonModules>CommonModule.OPI_GreenAPI</commonModules>
   <commonModules>CommonModule.OPI_GoogleCalendar</commonModules>
   <commonModules>CommonModule.OPI_GoogleDrive</commonModules>
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
