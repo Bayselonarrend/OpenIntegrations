@@ -131,7 +131,7 @@ li > a.menu__link {
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
-.Other a::before, .SQLite a::before, .PostgreSQL a::before{
+.Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -218,6 +218,10 @@ li > a.menu__link {
 
 .PostgreSQL > div > a::before{
   content: url(../../static/img/APIs/small/PostgreSQL.png);
+}
+
+.GreenAPI > div > a::before{
+  content: url(../../static/img/APIs/small/GreenAPI.png);
 }
 
 .Messenger > div > a::before{
