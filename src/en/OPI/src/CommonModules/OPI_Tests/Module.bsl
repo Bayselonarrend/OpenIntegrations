@@ -13888,16 +13888,19 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsAttributes (status)", "Ozon");
 
-    While Result["result"]["items"][0]["status"] = "pending" Do
+    If Result["result"]["items"].Count() > 0 Then
 
-        OPI_Tools.Pause(30);
-        Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+        While Result["result"]["items"][0]["status"] = "pending" Do
 
-    EndDo;
+            OPI_Tools.Pause(30);
+            Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (att.)", "Ozon");
+        EndDo;
 
-    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+        OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (att.)", "Ozon");
+        OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+
+    EndIf;
 
 EndProcedure
 
