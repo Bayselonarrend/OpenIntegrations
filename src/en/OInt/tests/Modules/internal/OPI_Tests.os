@@ -2375,6 +2375,10 @@ Procedure GAPI_Account() Export
     GreenAPI_GetInstanceSettings(TestParameters);
     GreenAPI_GetInstanceSettingsStructure(TestParameters);
     GreenAPI_SetInstanceSettings(TestParameters);
+    GreenAPI_GetInstanceStatus(TestParameters);
+    GreenAPI_RebootInstance(TestParameters);
+    //GreenAPI_LogoutInstance(TestParameters);
+    //GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -18166,6 +18170,74 @@ Procedure GreenAPI_SetInstanceSettings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettings", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenSettingsSaving(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetInstanceStatus(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.GetInstanceStatus(AccessParameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceStatus", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAuth(Result);
+
+EndProcedure
+
+Procedure GreenAPI_RebootInstance(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.RebootInstance(AccessParameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RebootInstance", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenReboot(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetQR(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.GetQR(AccessParameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetQR", "GreenAPI");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
+
+EndProcedure
+
+Procedure GreenAPI_LogoutInstance(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.LogoutInstance(AccessParameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LogoutInstance", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenUnlogin(Result);
 
 EndProcedure
 
