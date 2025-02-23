@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Form access parameters
+ Forms the structure of basic authorization data
+
+
+
+`Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ApiUrl | --api | String | &#x2714; | API host link |
+  | MediaUrl | --media | String | &#x2714; | Link to host API for sending files |
+  | IdInstance | --id | String | &#x2714; | Unique instance number |
+  | ApiTokenInstance | --token | String | &#x2714; | Instance access key |
+
+  
+  Returns:  Structure - Structure of access parameters
+
+<br/>
+
+:::tip
+More details in the API documentation: [Get access parameters to instance](https://green-api.com/en/docs/before-start/#parameters)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    Result = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+```
+ 
+
+
+
+

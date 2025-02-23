@@ -56,6 +56,11 @@ pipeline {
                 test_google()
              }
           }
+          stage('greenapi'){
+             steps{
+                test_greenapi()
+             }
+          }
           stage('neocities'){
              steps{
                 test_neocities()
@@ -1420,6 +1425,28 @@ def test_google(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe google RefreshToken --id "test" --secret "test" --refresh "test" --debug --test '
+               }
+
+}
+
+
+def test_greenapi(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi FormAccessParameters --api "test" --media "test" --id "test" --token "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi GetInstanceSettings --access "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi SetInstanceSettings --settings "test" --access "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi GetInstanceSettingsStructure --empty "test" --debug --test '
                }
 
 }
@@ -2933,6 +2960,7 @@ test_gcalendar()
 test_gdrive()
 test_gsheets()
 test_google()
+test_greenapi()
 test_neocities()
 test_notion()
 test_ozon()

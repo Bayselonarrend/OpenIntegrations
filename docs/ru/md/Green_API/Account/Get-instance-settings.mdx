@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить настройки инстанса
+ Получает текущие настройки инстанса
+
+
+
+`Функция ПолучитьНастройкиИнстанса(Знач ПараметрыДоступа) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. СформироватьПараметрыДоступа |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [GetSettings](https://green-api.com/docs/api/account/GetSettings/)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenAPI.ПолучитьНастройкиИнстанса(ПараметрыДоступа);
+```
+    
+
+
+
+

@@ -2329,6 +2329,25 @@ EndProcedure
 
 #EndRegion
 
+#Region GreenAPI
+
+Procedure CLI_GAPI_Account() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+
+    CLI_GreenAPI_FormAccessParameters(TestParameters);
+    CLI_GreenAPI_GetInstanceSettings(TestParameters);
+    CLI_GreenAPI_GetInstanceSettingsStructure(TestParameters);
+    CLI_GreenAPI_SetInstanceSettings(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -20236,6 +20255,123 @@ Procedure CLI_PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+#EndRegion
+
+#Region GreenAPI
+
+Procedure CLI_GreenAPI_FormAccessParameters(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "FormAccessParameters", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetInstanceSettings(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettings", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettings", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenInstance(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettingsStructure", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Options = New Structure;
+    Options.Insert("empty", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettingsStructure (empty)", "GreenAPI");
+
+    For Each Element In Result Do
+
+        If OPI_Tools.IsPrimitiveType(Element.Value) Then
+            OPI_TestDataRetrieval.Check_Empty(Element.Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SetInstanceSettings(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    SettingsStructure = New Structure;
+    SettingsStructure.Insert("pollMessageWebhook"   , "yes");
+    SettingsStructure.Insert("incomingBlockWebhook" , "no");
+    SettingsStructure.Insert("incomingCallWebhook"  , "no");
+    SettingsStructure.Insert("editedMessageWebhook" , "yes");
+    SettingsStructure.Insert("deletedMessageWebhook", "yes");
+
+    Options = New Structure;
+    Options.Insert("settings", SettingsStructure);
+    Options.Insert("access"  , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetInstanceSettings", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetInstanceSettings", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenSettingsSaving(Result);
 
 EndProcedure
 
