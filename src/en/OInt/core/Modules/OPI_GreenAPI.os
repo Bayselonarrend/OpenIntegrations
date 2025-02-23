@@ -97,7 +97,7 @@ EndFunction
 // Sets the instance settings
 //
 // Note
-// Method at API documentation: [GetSettings](@green-api.com/docs/api/account/SetSettings/)
+// Method at API documentation: [SetSettings](@green-api.com/docs/api/account/SetSettings/)
 //
 // Parameters:
 // Settings - Structure Of KeyAndValue - Instance settings. See GetInstanceSettingsStructure - settings
@@ -113,6 +113,96 @@ Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
     Response = OPI_Tools.Post(URL, Settings);
 
     Return Response;
+
+EndFunction
+
+// Get instance status
+// Gets instance status
+//
+// Note
+// Method at API documentation: [GetStateInstance](@green-api.com/docs/api/account/GetStateInstance/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetInstanceStatus(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "getStateInstance");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Reboot instance
+// Restarts the instance
+//
+// Note
+// Method at API documentation: [Reboot](@green-api.com/docs/api/account/Reboot/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function RebootInstance(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "reboot");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Logout instance
+// Unlogging the instance
+//
+// Note
+// Method at API documentation: [Logout](@green-api.com/docs/api/account/Logout/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function LogoutInstance(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "logout");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Get QR
+// Receives authorization QR code
+//
+// Note
+// Method at API documentation: [QR](@green-api.com/docs/api/account/QR/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// BinaryData, Map Of KeyAndValue - QR code or error information
+Function GetQR(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "qr");
+    Response = OPI_Tools.Get(URL);
+
+    Try
+
+        If Response["type"] = "qrCode" Then
+            Result          = Base64Value(Response["message"]);
+        EndIf;
+
+    Except
+        Result = Response;
+    EndTry;
+
+    Return Result;
 
 EndFunction
 

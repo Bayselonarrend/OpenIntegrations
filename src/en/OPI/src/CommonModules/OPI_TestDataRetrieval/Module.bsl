@@ -2142,6 +2142,24 @@ Procedure Check_GreenSettingsSaving(Val Result) Export
 
 EndProcedure
 
+Procedure Check_GreenAuth(Val Result) Export
+
+    ExpectsThat(Result["stateInstance"]).Равно("authorized");
+
+EndProcedure
+
+Procedure Check_GreenReboot(Val Result) Export
+
+    ExpectsThat(Result["isReboot"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenUnlogin(Val Result) Export
+
+    ExpectsThat(Result["isLogout"]).Равно(True);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
