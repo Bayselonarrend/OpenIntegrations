@@ -4723,6 +4723,8 @@ EndFunction
 // Structure Of KeyAndValue - Fields structure
 Function GetCalednarCustomSettingsStructure(Val Clear = False) Export
 
+    OPI_TypeConversion.GetBoolean(Clear);
+
     SettingsStructure = New Structure;
 
     SettingsStructure.Insert("view"              , "<standard presentation: day, week, month, list>");
@@ -4772,6 +4774,8 @@ EndFunction
 // Returns:
 // Structure Of KeyAndValue - Fields structure
 Function GetCalendarStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
 
     CalendarsStructure = New Structure;
 
@@ -5016,6 +5020,8 @@ EndFunction
 // Structure Of KeyAndValue - Fields structure
 Function GetCalendarEventsStructure(Val Clear = False) Export
 
+    OPI_TypeConversion.GetBoolean(Clear);
+
     EventStucture = New Structure;
 
     EventStucture.Insert("type"         , "<calendar type: user, group, company_calendar>");
@@ -5089,6 +5095,8 @@ EndFunction
 // Returns:
 // Structure Of KeyAndValue - Fields structure
 Function GetCalendarEventsFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
 
     FilterStructure = New Structure;
 
