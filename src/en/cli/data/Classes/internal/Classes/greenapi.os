@@ -86,6 +86,50 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetInstanceStatus";
+    NewLine.МетодПоиска = "GETINSTANCESTATUS";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Gets instance status";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "RebootInstance";
+    NewLine.МетодПоиска = "REBOOTINSTANCE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Restarts the instance";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "LogoutInstance";
+    NewLine.МетодПоиска = "LOGOUTINSTANCE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Unlogging the instance";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetQR";
+    NewLine.МетодПоиска = "GETQR";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Receives authorization QR code";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "GetInstanceSettingsStructure";
     NewLine.МетодПоиска = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Параметр    = "--empty";
