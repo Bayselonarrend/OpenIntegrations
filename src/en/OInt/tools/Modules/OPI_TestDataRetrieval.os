@@ -73,6 +73,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
+    Sections.Insert("GreenAPI"       , 5);
 
     Return Sections;
 
@@ -107,6 +108,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("YandexMetrika"  , StandardDependencies);
     Sections.Insert("S3"             , StandardDependencies);
     Sections.Insert("TCP"            , StandardDependencies);
+    Sections.Insert("GreenAPI"       , StandardDependencies);
 
     Return Sections;
 
@@ -137,6 +139,7 @@ Function GetTestTable() Export
     TCP       = "TCP";
     SQLite    = "SQLite";
     Postgres  = "PostgreSQL";
+    GreenAPI  = "GreenAPI";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -276,6 +279,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
+    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
 
     Return TestTable;
 
@@ -2123,6 +2127,18 @@ EndProcedure
 Procedure Check_ResultFalse(Val Result) Export
 
     ExpectsThat(Result["result"]).Равно(False);
+
+EndProcedure
+
+Procedure Check_GreenInstance(Val Result) Export
+
+    ExpectsThat(Result["wid"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenSettingsSaving(Val Result) Export
+
+    ExpectsThat(Result["saveSettings"]).Равно(True);
 
 EndProcedure
 
