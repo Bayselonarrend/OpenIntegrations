@@ -1461,8 +1461,12 @@ Function ExecuteRequestWithBody(Val URL, Val View, Val Parameters = "", Val Addi
 
 EndFunction
 
-Function ExecuteRequestWithBinaryData(Val URL, Val View, Val Data, Val AdditionalHeaders, Val FullResponse,
-    Val DataType)
+Function ExecuteRequestWithBinaryData(Val URL
+    , Val View
+    , Val Data
+    , Val AdditionalHeaders
+    , Val FullResponse
+    , Val DataType)
 
     URLStructure = SplitURL(URL);
     Host         = URLStructure["Host"];
@@ -1483,8 +1487,11 @@ Function ExecuteRequestWithBinaryData(Val URL, Val View, Val Data, Val Additiona
 
 EndFunction
 
-Function ExecuteRequestWithoutBody(Val URL, Val View, Val Parameters = "", Val AdditionalHeaders = "",
-    Val ResponseFile                                                 = Undefined)
+Function ExecuteRequestWithoutBody(Val URL
+    , Val View
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
