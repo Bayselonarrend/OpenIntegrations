@@ -86,6 +86,7 @@ pub fn load_extension(client: &mut component::AddIn, path: String, point: String
                 }
             }
         }
+
     }
 }
 
