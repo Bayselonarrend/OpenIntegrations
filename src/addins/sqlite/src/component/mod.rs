@@ -45,7 +45,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         3 => {
             let path = params[0].get_string().unwrap_or("".to_string());
-            let point = params[0].get_string().unwrap_or("".to_string());
+            let point = params[1].get_string().unwrap_or("".to_string());
 
             Box::new(methods::load_extension(obj, path, point))
         },
