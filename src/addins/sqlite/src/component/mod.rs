@@ -12,6 +12,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
     name!("Execute"),
+    name!("LoadExtension")
 
 ];
 
@@ -21,6 +22,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 0,
         1 => 0,
         2 => 3,
+        3 => 2,
         _ => 0,
     }
 }
@@ -40,6 +42,12 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let force_result = params[2].get_bool().unwrap_or(false);
 
             Box::new(methods::execute_query(obj, query, params_json, force_result))
+        },
+        3 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let point = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(methods::load_extension(obj, path, point))
         },
         _ => Box::new(false), // Неверный номер команды
     }

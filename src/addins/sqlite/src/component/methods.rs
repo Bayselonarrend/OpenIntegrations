@@ -1,4 +1,4 @@
-use rusqlite::{types::ValueRef, types::Value as SqlValue, params_from_iter, ParamsFromIter};
+use rusqlite::{LoadExtensionGuard, types::ValueRef, types::Value as SqlValue, params_from_iter, ParamsFromIter};
 use serde_json::{Value, json, Map};
 use crate::component;
 use base64::{engine::general_purpose, Engine as _};
@@ -57,6 +57,34 @@ pub fn execute_query(
         match conn.execute(&query, convert) {
             Ok(_) => r#"{"result": true}"#.to_string(),
             Err(e) => format_json_error(e),
+        }
+    }
+}
+
+pub fn load_extension(client: &mut component::AddIn, path: String, point: String) -> String {
+
+    let conn = match client.get_connection() {
+        Some(c) => c,
+        None => return format_json_error("No connection initialized"),
+    };
+
+    let entry_point = match point.is_empty() {
+        true => None,
+        false => Some(point.as_str())
+    };
+
+    unsafe {
+
+        let guard = LoadExtensionGuard::new(conn);
+
+        match guard {
+            Err(e) => format_json_error(e),
+            Ok(_) => {
+                match conn.load_extension(path, entry_point){
+                    Ok(_) => r#"{"result": true}"#.to_string(),
+                    Err(e) => format_json_error(e)
+                }
+            }
         }
     }
 }
