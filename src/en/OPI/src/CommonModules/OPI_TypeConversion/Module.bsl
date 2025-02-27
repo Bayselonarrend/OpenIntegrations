@@ -325,7 +325,7 @@ Procedure GetNumber(Value) Export
 
 EndProcedure
 
-Procedure GetFileOnDisk(Value, Val Extension = Undefined) Export
+Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
 
     ReturnStructure = New Structure("Path,Temporary", "", False);
     ValueAsString   = OPI_Tools.NumberToString(Value);
