@@ -2266,12 +2266,25 @@ EndProcedure
 Procedure SQLL_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    Base = GetTempFileName("sqlite");
+    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
+    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext", TestParameters);
 
     SQLite_CreateConnection(TestParameters);
     SQLite_CloseConnection(TestParameters);
     SQLite_ExecuteSQLQuery(TestParameters);
     SQLite_IsConnector(TestParameters);
+    SQLite_ConnectExtension(TestParameters);
+
+    Try
+       DeleteFiles(Base);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry;
 
 EndProcedure
 
@@ -17006,6 +17019,22 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "SQLite"); // SKIP
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
 
+    // With extension
+
+    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (extension)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1); // SKIP
+
     Closing = OPI_SQLite.CloseConnection(Connection);
 
     // END
@@ -17347,6 +17376,49 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
     OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+Procedure SQLite_ConnectExtension(FunctionParameters)
+
+    Base       = FunctionParameters["SQLite_DB"];
+    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    Connection = OPI_SQLite.CreateConnection(Base);
+    Result     = OPI_SQLite.ConnectExtension(Extension, EntryPoint, Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    TFN = GetTempFileName("dll");
+    FileCopy(Extension, TFN);
+
+    Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (path)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.ConnectExtension(New BinaryData(TFN), EntryPoint, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (binary)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.ExecuteSQLQuery("select uuid4();", , , Connection);
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (check)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+
+    Result = OPI_SQLite.CloseConnection(Connection);
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (closing)", "SQLite");
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting extension file", "SQLite");
+    EndTry;
 
 EndProcedure
 

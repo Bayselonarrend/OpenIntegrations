@@ -19050,6 +19050,27 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
     Image = New BinaryData(PictureFile);
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size());
 
+    // With extension
+
+    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, ""));
+    Options.Insert("db"  , TFN);
+    Options.Insert("exts", ExtensionMap);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (extension)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+
     Try
        DeleteFiles(TFN);
        DeleteFiles(PictureFile);

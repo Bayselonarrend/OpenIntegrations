@@ -57,4 +57,16 @@
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
+    // With extension
+
+    Extension  = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
+
     Closing = OPI_SQLite.CloseConnection(Connection);
