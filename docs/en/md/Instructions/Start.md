@@ -5,7 +5,7 @@ sidebar_class_name: NachaloRaboty
 
 # Welcome!
 
-![OPI](../../static/img/logo_long.webp)
+![OPI](../../static/img/logo_long.png)
 
 **Open Integrations Package** - is a set of tools for integration with some popular APIs via CLI, 1C, or OneScript. It consists of common modules, each responsible for its own API, as well as several utility modules that are common to all. 
 
