@@ -1,0 +1,19 @@
+﻿    {
+ "webhookUrl": "",
+ "webhookUrlToken": "",
+ "delaySendMessagesMilliseconds": "",
+ "markIncomingMessagesReaded": "",
+ "markIncomingMessagesReadedOnReply": "",
+ "outgoingWebhook": "",
+ "outgoingMessageWebhook": "",
+ "outgoingAPIMessageWebhook": "",
+ "stateWebhook": "",
+ "incomingWebhook": "",
+ "deviceWebhook": "",
+ "keepOnlineStatus": "",
+ "pollMessageWebhook": "",
+ "incomingBlockWebhook": "",
+ "incomingCallWebhook": "",
+ "editedMessageWebhook": "",
+ "deletedMessageWebhook": ""
+}
