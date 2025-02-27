@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "") Export`
+`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Extensions = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -18,6 +18,7 @@ import TabItem from '@theme/TabItem';
   | Parameters | --params | Array Of Arbitrary | &#x2716; | Array of positional parameters of the request |
   | ForceResult | --force | Boolean | &#x2716; | Includes an attempt to retrieve the result, even for nonSELECT queries |
   | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
+  | Extensions | --exts | Map Of KeyAndValue | &#x2716; | Extensions: Key > filepath or extension data, Value > entry point |
 
   
   Returns:  Map Of KeyAndValue - Result of query execution
@@ -28,6 +29,8 @@ import TabItem from '@theme/TabItem';
 Available parameter types: String, Number, Date, Boolean, BinaryData. Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned as `{'blob':Base64 string}`
 
 Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
+
+When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
 :::
 <br/>
 
@@ -92,6 +95,18 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     | COMMIT;";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // With extension
+
+    Extension  = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
 
     Closing = OPI_SQLite.CloseConnection(Connection);
 ```
