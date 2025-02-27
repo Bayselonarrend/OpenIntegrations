@@ -325,6 +325,33 @@ Procedure GetNumber(Value) Export
 
 EndProcedure
 
+Procedure GetFileOnDisk(Value, Val Extension = Undefined) Export
+
+    ReturnStructure = New Structure("Path,Temporary", "", False);
+    ValueAsString   = OPI_Tools.NumberToString(Value);
+    ValueFile       = New File(ValueAsString);
+
+    If ValueFile.Exists() Then
+
+        ReturnStructure.Insert("Path", ValueFile.FullName);
+
+    Else
+
+        OPI_TypeConversion.GetBinaryData(Value, True);
+
+        //@skip-check missing-temporary-file-deletion
+        Path = GetTempFileName(Extension);
+        Value.Write(Path);
+
+        ReturnStructure.Insert("Path"     , Path);
+        ReturnStructure.Insert("Temporary", True);
+
+    EndIf;
+
+    Value = ReturnStructure;
+
+EndProcedure
+
 #EndRegion
 
 #Region Private

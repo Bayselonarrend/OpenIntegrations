@@ -1,0 +1,53 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Connect extension 
+ Connects the SQLite extension for the specified connection
+
+
+
+`Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Extension | - | String, BinaryData | &#x2714; | Extension data or filepath |
+  | EntryPoint | - | String | &#x2716; | Expansion entry point, if required |
+  | Connection | - | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
+
+  
+  Returns:  Map Of KeyAndValue - Result of extension connecting
+
+<br/>
+
+:::tip
+The extension is active only for the current connection. You must reconnect it each time a new connection is established
+
+Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQuery` function
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Base       = "C:\Users\Administrator\AppData\Local\Temp\v8_4102_79.sqlite";
+    Extension  = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    Connection = OPI_SQLite.CreateConnection(Base);
+    Result     = OPI_SQLite.ConnectExtension(Extension, EntryPoint, Connection);
+```
+ 
+
+
+
+

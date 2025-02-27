@@ -2132,7 +2132,7 @@ def test_sqlite(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ExecuteSQLQuery --sql "test" --params "test" --force "test" --db "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe sqlite ExecuteSQLQuery --sql "test" --params "test" --force "test" --db "test" --exts "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

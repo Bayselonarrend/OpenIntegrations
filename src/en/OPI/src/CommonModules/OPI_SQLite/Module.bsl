@@ -122,19 +122,22 @@ EndFunction
 // as `{'blob':Base64 string}`
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
 // For other queries, `result:true` or `false` with error text is returned
+// When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
 //
 // Parameters:
 // QueryText - String - Database query text - sql
 // Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
 // ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
 // Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+// Extensions - Map Of KeyAndValue - Extensions: Key > filepath or extension data, Value > entry point - exts
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
 Function ExecuteSQLQuery(Val QueryText
     , Val Parameters = ""
     , Val ForceResult = False
-    , Val Connection = "") Export
+    , Val Connection = ""
+    , Val Extensions = Undefined) Export
 
     OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
@@ -146,8 +149,70 @@ Function ExecuteSQLQuery(Val QueryText
         Return Connector;
     EndIf;
 
+    If ValueIsFilled(Extensions) Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Extensions, "Incorrect collection of extensions!");
+
+        For Each Extension In Extensions Do
+
+            ExtensionConnection = ConnectExtension(Extension.Key, Extension.Value, Connector);
+
+            If Not ExtensionConnection["result"] Then
+                Return ExtensionConnection;
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
     Result = Connector.Execute(QueryText, Parameters_, ForceResult);
     Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Connect extension !NOCLI
+// Connects the SQLite extension for the specified connection
+//
+// Note
+// The extension is active only for the current connection. You must reconnect it each time a new connection is established
+// Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQuery` function
+//
+// Parameters:
+// Extension - String, BinaryData - Extension data or filepath - ext
+// EntryPoint - String - Expansion entry point, if required - point
+// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of extension connecting
+Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
+
+    Extension_ = Extension;
+
+    OPI_TypeConversion.GetFileOnDisk(Extension_);
+    OPI_TypeConversion.GetLine(EntryPoint);
+
+    Temporary = Extension_["Temporary"];
+    FilePath  = Extension_["Path"];
+    Connector = CreateConnection(Connection);
+
+    If TypeOf(Connector) <> Type("AddIn.OPI_SQLite.Main") Then
+        Return Connector;
+    EndIf;
+
+    Result = Connector.LoadExtension(FilePath, EntryPoint);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Temporary Then
+
+        Try
+            DeleteFiles(FilePath);
+        Except
+            Return Result;
+        EndTry;
+
+    EndIf;
 
     Return Result;
 

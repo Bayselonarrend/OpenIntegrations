@@ -1,0 +1,6 @@
+﻿    Base       = "C:\Users\Administrator\AppData\Local\Temp\v8_4102_79.sqlite";
+    Extension  = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Path or Binary Data
+    EntryPoint = "sqlite3_uuid_init";
+
+    Connection = OPI_SQLite.CreateConnection(Base);
+    Result     = OPI_SQLite.ConnectExtension(Extension, EntryPoint, Connection);
