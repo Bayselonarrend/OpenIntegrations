@@ -54,6 +54,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "sqlite";
     NewLine.Модуль      = "OPI_SQLite";
+    NewLine.Метод       = "ExecuteSQLQuery";
+    NewLine.МетодПоиска = "EXECUTESQLQUERY";
+    NewLine.Параметр    = "--exts";
+    NewLine.Описание    = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val. - Empty value)";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "sqlite";
+    NewLine.Модуль      = "OPI_SQLite";
     NewLine.Метод       = "GetTableInformation";
     NewLine.МетодПоиска = "GETTABLEINFORMATION";
     NewLine.Параметр    = "--table";
