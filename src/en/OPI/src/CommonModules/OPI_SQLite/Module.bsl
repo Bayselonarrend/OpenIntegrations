@@ -188,9 +188,10 @@ EndFunction
 // Map Of KeyAndValue - Result of extension connecting
 Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
 
-    Extension_ = Extension;
+    Extension_    = Extension;
+    FileExtension = ?(OPI_Tools.IsWindows(), "dll", "so");
 
-    OPI_TypeConversion.GetFileOnDisk(Extension_);
+    OPI_TypeConversion.GetFileOnDisk(Extension_, FileExtension);
     OPI_TypeConversion.GetLine(EntryPoint);
 
     Temporary = Extension_["Temporary"];

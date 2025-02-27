@@ -18176,6 +18176,7 @@ Procedure GreenAPI_FormAccessParameters(FunctionParameters)
 
     // END
 
+    Result.Insert("apiTokenInstance", "***");
     OPI_TestDataRetrieval.WriteLog(Result, "FormAccessParameters", "GreenAPI");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
