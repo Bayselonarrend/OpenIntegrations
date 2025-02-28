@@ -2607,8 +2607,7 @@ Procedure Telegram_SendPicture(FunctionParameters)
 
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (Path)");
-
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (Path)"); // SKIP
     OPI_TestDataRetrieval.Check_TelegramImage(Result, Text); // SKIP
 
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
@@ -2616,7 +2615,23 @@ Procedure Telegram_SendPicture(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (DD)");
+    OPI_TestDataRetrieval.Check_TelegramImage(Result, Text);
 
+    ButtonArray = New Array;
+    ButtonArray.Add("Button1");
+    ButtonArray.Add("Button2");
+    ButtonArray.Add("Button3");
+
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True);
+    Result   = OPI_Telegram.SendImage(Token, ChatID, Text, Image, Keyboard);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendImage (keyboard)", "Telegram");
+    OPI_TestDataRetrieval.Check_TelegramImage(Result, Text);
+
+    Keyboard = OPI_Tools.JsonToStructure(Keyboard);
+    Result   = OPI_Telegram.SendImage(Token, ChannelID, Text, Image, Keyboard);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendImage (keyboard, collection)", "Telegram");
     OPI_TestDataRetrieval.Check_TelegramImage(Result, Text);
 
     DeleteFiles(ImagePath);
