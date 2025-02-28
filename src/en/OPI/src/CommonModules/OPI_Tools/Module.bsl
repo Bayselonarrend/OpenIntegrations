@@ -1183,9 +1183,21 @@ EndFunction
 
 Function IsPrimitiveType(Val Value) Export
 
-    Return TypeOf(Value) = Type("String")
-        Or TypeOf(Value) = Type("Number")
-        Or TypeOf(Value) = Type("Boolean");
+    ValeType = TypeOf(Value);
+
+    Return ValeType = Type("String")
+        Or ValeType = Type("Number")
+        Or ValeType = Type("Boolean");
+
+EndFunction
+
+Function ThisIsCollection(Val Value, Val KeyValue = False) Export
+
+    ValeType = TypeOf(Value);
+
+    Return (ValeType = Type("Array") And Not KeyValue)
+        Or ValeType  = Type("Structure")
+        Or ValeType  = Type("Map");
 
 EndFunction
 
@@ -1234,23 +1246,32 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
             Continue;
         EndIf;
 
+        CurrentValue = Parameter.Value;
+        CurrentKey   = Parameter.Key;
+        ValeType     = TypeOf(CurrentValue);
+
         TextRecord.WriteLine("--" + boundary + LineSeparator);
-        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + Parameter.Key + """");
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + CurrentKey + """");
         TextRecord.WriteLine(LineSeparator);
         TextRecord.WriteLine(LineSeparator);
 
-        If TypeOf(Parameter.Value) = Type("String") Or TypeOf(Parameter.Value) = Type("Number") Then
+        If ValeType = Type("String") Or ValeType = Type("Number") Then
 
-            ValueAsString = NumberToString(Parameter.Value);
+            ValueAsString = NumberToString(CurrentValue);
             TextRecord.WriteLine(ValueAsString);
 
-        ElsIf TypeOf(Parameter.Value) = Type("Boolean") Then
+        ElsIf ValeType = Type("Boolean") Then
 
-            TextRecord.WriteLine(?(Parameter.Value, "true", "false"));
+            TextRecord.WriteLine(?(CurrentValue, "true", "false"));
+
+        ElsIf ThisIsCollection(CurrentValue) Then
+
+            ValueAsString = JSONString(CurrentValue);
+            TextRecord.WriteLine(ValueAsString);
 
         Else
 
-            TextRecord.Write(Parameter.Value);
+            TextRecord.Write(CurrentValue);
 
         EndIf;
 
