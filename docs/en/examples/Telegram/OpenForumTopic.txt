@@ -1,6 +1,6 @@
 ﻿    Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
-    Topic = "8660";
+    Topic = "8704";
 
     Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
 

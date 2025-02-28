@@ -1,5 +1,5 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "15165";
+    MessageID = "15239";
 
     Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
