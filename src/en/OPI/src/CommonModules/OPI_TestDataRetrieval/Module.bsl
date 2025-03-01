@@ -2132,7 +2132,7 @@ EndProcedure
 
 Procedure Check_GreenInstance(Val Result) Export
 
-    ExpectsThat(Result["wid"]).Заполнено();
+    ExpectsThat(Result["proxyInstance"]).Заполнено();
 
 EndProcedure
 
@@ -2157,6 +2157,26 @@ EndProcedure
 Procedure Check_GreenUnlogin(Val Result) Export
 
     ExpectsThat(Result["isLogout"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenAva(Val Result) Export
+
+    ExpectsThat(Result["setProfilePicture"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenCode(Val Result) Export
+
+    ExpectsThat(Result["status"]).Равно(True);
+    ExpectsThat(Result["code"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenProfile(Val Result) Export
+
+    ExpectsThat(Result["deviceId"]).Заполнено(True);
+    ExpectsThat(Result["phone"]).Заполнено(True);
 
 EndProcedure
 

@@ -73,6 +73,26 @@ Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiT
 
 EndFunction
 
+// Get account information
+// Gets account information
+//
+// Note
+// Method at API documentation: [GetWaSettings](@green-api.com/docs/api/account/GetWaSettings/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetAccountInformation(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "getWaSettings");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
 // Get instance settings
 // Gets the current instance settings
 //
@@ -203,6 +223,57 @@ Function GetQR(Val AccessParameters) Export
     EndTry;
 
     Return Result;
+
+EndFunction
+
+// Get authorization code
+// Receives the authorization code for phone number linking
+//
+// Note
+// Method at API documentation: [GetAuthorizationCode](@green-api.com/docs/api/account/GetAuthorizationCode/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// PhoneNumber - String, Number - Phone number in international format without + and 00 - phone
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("phoneNumber", PhoneNumber, "Number", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getAuthorizationCode");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set profile picture
+// Sets a new profile picture
+//
+// Note
+// Method at API documentation: [SetProfilePicture](@green-api.com/docs/api/account/SetProfilePicture/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Image - BinaryData, String - Profile picture - picture
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetProfilePicture(Val AccessParameters, Val Image) Export
+
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    PictureMap = New Map();
+    PictureMap.Insert("file|file.jpg", Image);
+
+    URL      = FormPrimaryURL(AccessParameters, "setProfilePicture");
+    Response = OPI_Tools.PostMultipart(URL, , PictureMap);
+
+    Return Response;
 
 EndFunction
 

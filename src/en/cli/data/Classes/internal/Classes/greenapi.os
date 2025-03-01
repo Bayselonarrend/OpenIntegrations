@@ -54,6 +54,17 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetAccountInformation";
+    NewLine.МетодПоиска = "GETACCOUNTINFORMATION";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Gets account information";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "GetInstanceSettings";
     NewLine.МетодПоиска = "GETINSTANCESETTINGS";
     NewLine.Параметр    = "--access";
@@ -125,6 +136,48 @@
     NewLine.Описание    = "Access parameters. See FormAccessParameters";
     NewLine.Область     = "Account";
     NewLine.ОписаниеМетода   = "Receives authorization QR code";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetAuthorizationCode";
+    NewLine.МетодПоиска = "GETAUTHORIZATIONCODE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Receives the authorization code for phone number linking";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetAuthorizationCode";
+    NewLine.МетодПоиска = "GETAUTHORIZATIONCODE";
+    NewLine.Параметр    = "--phone";
+    NewLine.Описание    = "Phone number in international format without + and 00";
+    NewLine.Область     = "Account";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetProfilePicture";
+    NewLine.МетодПоиска = "SETPROFILEPICTURE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Sets a new profile picture";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetProfilePicture";
+    NewLine.МетодПоиска = "SETPROFILEPICTURE";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Profile picture";
+    NewLine.Область     = "Account";
 
 
     NewLine = CompositionTable.Add();
