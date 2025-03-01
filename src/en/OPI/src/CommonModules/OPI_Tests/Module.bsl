@@ -2399,6 +2399,21 @@ Procedure GAPI_Account() Export
 
 EndProcedure
 
+Procedure GAPI_GroupManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+
+    GreenAPI_CreateGroup(TestParameters);
+    GreenAPI_GetGroupInformation(TestParameters);
+    GreenAPI_UpdateGroupName(TestParameters);
+    GreenAPI_LeaveGroup(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -18391,6 +18406,94 @@ Procedure GreenAPI_SetProfilePicture(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetProfilePicture", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenAva(Result);
+
+EndProcedure
+
+Procedure GreenAPI_CreateGroup(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Name = "New group";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateGroup", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenNewGroup(Result);
+
+    GroupID = Result["chatId"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_GroupID", GroupID);
+    OPI_Tools.AddField("GreenAPI_GroupID", GroupID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure GreenAPI_LeaveGroup(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.LeaveGroup(AccessParameters, GroupID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LeaveGroup", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenLeaveGroup(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetGroupInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.GetGroupInformation(AccessParameters, GroupID);
+
+    // END
+
+    Try
+        Result["owner"]                 = "***";
+        Result["participants"][0]["id"] = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetGroupInformation", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenGroup(Result);
+
+EndProcedure
+
+Procedure GreenAPI_UpdateGroupName(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    Name    = "New name";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.UpdateGroupName(AccessParameters, GroupID, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateGroupName", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenGroupName(Result);
 
 EndProcedure
 

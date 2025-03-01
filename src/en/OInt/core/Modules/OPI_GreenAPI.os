@@ -321,6 +321,118 @@ EndFunction
 
 #EndRegion
 
+#Region GroupManagement
+
+// Get group information
+// Gets group chat data
+//
+// Note
+// Method at API documentation: [GetGroupData](@green-api.com/docs/api/account/GetGroupData/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetGroupInformation(Val AccessParameters, Val GroupID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId", GroupID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getGroupData");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Create group
+// Creates a new group chat
+//
+// Note
+// Method at API documentation: [CreateGroup](@green-api.com/docs/api/account/CreateGroup/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Name - String - Name of the group chat - name
+// Members - Array Of String - Chat members array - members
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function CreateGroup(Val AccessParameters, Val Name, Val Members = Undefined) Export
+
+    If Not ValueIsFilled(Members) Then
+        Members = New Array;
+    EndIf;
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupName", Name   , "String"    , Parameters);
+    OPI_Tools.AddField("chatIds"  , Members, "Collection", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "createGroup");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update group name
+// Changes the name of an existing group
+//
+// Note
+// Method at API documentation: [UpdateGroupName](@green-api.com/docs/api/account/UpdateGroupName/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// Name - String - New group chat name - name
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function UpdateGroupName(Val AccessParameters, Val GroupID, Val Name) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId"  , GroupID, "String", Parameters);
+    OPI_Tools.AddField("groupName", Name   , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "updateGroupName");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Leave group
+// Logs the current account out of group chat
+//
+// Note
+// Method at API documentation: [LeaveGroup](@green-api.com/docs/api/account/LeaveGroup/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function LeaveGroup(Val AccessParameters, Val GroupID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId", GroupID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "leaveGroup");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private

@@ -190,6 +190,110 @@
     NewLine.Область     = "Account";
     NewLine.ОписаниеМетода   = "Gets the structure template for instance settings";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetGroupInformation";
+    NewLine.МетодПоиска = "GETGROUPINFORMATION";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Gets group chat data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetGroupInformation";
+    NewLine.МетодПоиска = "GETGROUPINFORMATION";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "CreateGroup";
+    NewLine.МетодПоиска = "CREATEGROUP";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Creates a new group chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "CreateGroup";
+    NewLine.МетодПоиска = "CREATEGROUP";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Name of the group chat";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "CreateGroup";
+    NewLine.МетодПоиска = "CREATEGROUP";
+    NewLine.Параметр    = "--members";
+    NewLine.Описание    = "Chat members array (optional, def. val. - Empty value)";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "UpdateGroupName";
+    NewLine.МетодПоиска = "UPDATEGROUPNAME";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Changes the name of an existing group";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "UpdateGroupName";
+    NewLine.МетодПоиска = "UPDATEGROUPNAME";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "UpdateGroupName";
+    NewLine.МетодПоиска = "UPDATEGROUPNAME";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "New group chat name";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "LeaveGroup";
+    NewLine.МетодПоиска = "LEAVEGROUP";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Logs the current account out of group chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "LeaveGroup";
+    NewLine.МетодПоиска = "LEAVEGROUP";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
     Return CompositionTable;
 EndFunction
 
