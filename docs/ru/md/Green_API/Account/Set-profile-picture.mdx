@@ -1,20 +1,21 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Разлогинить инстанс
- Разлогинивает инстанс
+# Установить картинку профиля
+ Устанавливает новую картинку профиля
 
 
 
-`Функция РазлогинитьИнстанс(Знач ПараметрыДоступа) Экспорт`
+`Функция УстановитьКартинкуПрофиля(Знач ПараметрыДоступа, Знач Картинка) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. СформироватьПараметрыДоступа |
+  | Картинка | --picture | ДвоичныеДанные, Строка | &#x2714; | Картинка профиля |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -22,7 +23,9 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [Logout](https://green-api.com/docs/api/account/Logout/)
+Метод в документации API: [SetProfilePicture](https://green-api.com/docs/api/account/SetProfilePicture/)
+
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
 :::
 <br/>
 
@@ -34,8 +37,10 @@ import TabItem from '@theme/TabItem';
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Результат        = OPI_GreenAPI.РазлогинитьИнстанс(ПараметрыДоступа);
+    Результат        = OPI_GreenAPI.УстановитьКартинкуПрофиля(ПараметрыДоступа, Картинка);
 ```
     
 

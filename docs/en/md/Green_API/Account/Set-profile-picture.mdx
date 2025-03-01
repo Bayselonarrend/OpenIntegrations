@@ -1,20 +1,21 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Logout instance
- Unlogging the instance
+# Set profile picture
+ Sets a new profile picture
 
 
 
-`Function LogoutInstance(Val AccessParameters) Export`
+`Function SetProfilePicture(Val AccessParameters, Val Image) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | Image | --picture | BinaryData, String | &#x2714; | Profile picture |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Green API
@@ -22,7 +23,9 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [Logout](https://green-api.com/docs/api/account/Logout/)
+Method at API documentation: [SetProfilePicture](https://green-api.com/docs/api/account/SetProfilePicture/)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
 :::
 <br/>
 
@@ -34,8 +37,10 @@ Method at API documentation: [Logout](https://green-api.com/docs/api/account/Log
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.LogoutInstance(AccessParameters);
+    Result           = OPI_GreenAPI.SetProfilePicture(AccessParameters, Image);
 ```
  
 

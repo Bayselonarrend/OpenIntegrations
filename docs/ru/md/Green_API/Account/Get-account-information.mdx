@@ -1,16 +1,16 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Разлогинить инстанс
- Разлогинивает инстанс
+# Получить информацию об аккаунте
+ Получает информацию об аккаунте
 
 
 
-`Функция РазлогинитьИнстанс(Знач ПараметрыДоступа) Экспорт`
+`Функция ПолучитьИнформациюОбАккаунте(Знач ПараметрыДоступа) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Метод в документации API: [Logout](https://green-api.com/docs/api/account/Logout/)
+Метод в документации API: [GetWaSettings](https://green-api.com/docs/api/account/GetWaSettings/)
 :::
 <br/>
 
@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Результат        = OPI_GreenAPI.РазлогинитьИнстанс(ПараметрыДоступа);
+    Результат        = OPI_GreenAPI.ПолучитьИнформациюОбАккаунте(ПараметрыДоступа);
 ```
     
 
