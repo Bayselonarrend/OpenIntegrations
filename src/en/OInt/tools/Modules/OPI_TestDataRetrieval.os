@@ -280,6 +280,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
+    NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
 
     Return TestTable;
 
@@ -2175,8 +2176,35 @@ EndProcedure
 
 Procedure Check_GreenProfile(Val Result) Export
 
-    ExpectsThat(Result["deviceId"]).Заполнено(True);
-    ExpectsThat(Result["phone"]).Заполнено(True);
+    ExpectsThat(Result["deviceId"]).Заполнено();
+    ExpectsThat(Result["phone"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenNewGroup(Val Result) Export
+
+    ExpectsThat(Result["created"]).Равно(True);
+    ExpectsThat(Result["chatId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenLeaveGroup(Val Result) Export
+
+    ExpectsThat(Result["removeAdmin"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenGroup(Val Result) Export
+
+    ExpectsThat(Result["groupId"]).Заполнено();
+    ExpectsThat(Result["owner"]).Заполнено();
+    ExpectsThat(Result["creation"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenGroupName(Val Result) Export
+
+    ExpectsThat(Result["updateGroupName"]).Равно(True);
 
 EndProcedure
 

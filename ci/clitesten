@@ -1477,6 +1477,22 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi GetInstanceSettingsStructure --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi GetGroupInformation --access "test" --group "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi CreateGroup --access "test" --name "test" --members "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi UpdateGroupName --access "test" --group "test" --name "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi LeaveGroup --access "test" --group "test" --debug --test '
+               }
+
 }
 
 
