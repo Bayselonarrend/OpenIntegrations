@@ -1477,6 +1477,22 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьСтруктуруНастроекИнстанса --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьИнформациюОГруппе --access "test" --group "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi СоздатьГруппу --access "test" --name "test" --members "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ИзменитьИмяГруппы --access "test" --group "test" --name "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПокинутьГруппу --access "test" --group "test" --debug --test '
+               }
+
 }
 
 
