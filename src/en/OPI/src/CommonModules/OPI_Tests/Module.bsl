@@ -2383,15 +2383,19 @@ Procedure GAPI_Account() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     GreenAPI_FormAccessParameters(TestParameters);
     GreenAPI_GetInstanceSettings(TestParameters);
+    GreenAPI_GetAccountInformation(TestParameters);
     GreenAPI_GetInstanceSettingsStructure(TestParameters);
     GreenAPI_SetInstanceSettings(TestParameters);
     GreenAPI_GetInstanceStatus(TestParameters);
-    GreenAPI_RebootInstance(TestParameters);
     //GreenAPI_LogoutInstance(TestParameters);
     //GreenAPI_GetQR(TestParameters);
+    GreenAPI_SetProfilePicture(TestParameters);
+    GreenAPI_RebootInstance(TestParameters);
+    GreenAPI_GetAuthorizationCode(TestParameters);
 
 EndProcedure
 
@@ -18214,6 +18218,30 @@ Procedure GreenAPI_GetInstanceSettings(FunctionParameters)
 
 EndProcedure
 
+Procedure GreenAPI_GetAccountInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.GetAccountInformation(AccessParameters);
+
+    // END
+
+    Try
+        Result["deviceId"] = "***";
+        Result["phone"]    = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAccountInformation", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenProfile(Result);
+
+EndProcedure
+
 Procedure GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
     Result = OPI_GreenAPI.GetInstanceSettingsStructure();
@@ -18326,6 +18354,43 @@ Procedure GreenAPI_LogoutInstance(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "LogoutInstance", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenUnlogin(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetAuthorizationCode(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    PhoneNumber = 441234567890;
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.GetAuthorizationCode(AccessParameters, PhoneNumber);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationCode", "GreenAPI");
+
+EndProcedure
+
+Procedure GreenAPI_SetProfilePicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Image = FunctionParameters["Picture"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetProfilePicture(AccessParameters, Image);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetProfilePicture", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAva(Result);
 
 EndProcedure
 

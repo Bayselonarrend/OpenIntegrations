@@ -2338,15 +2338,19 @@ Procedure CLI_GAPI_Account() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     CLI_GreenAPI_FormAccessParameters(TestParameters);
     CLI_GreenAPI_GetInstanceSettings(TestParameters);
+    GreenAPI_GetAccountInformation(TestParameters);
     CLI_GreenAPI_GetInstanceSettingsStructure(TestParameters);
     CLI_GreenAPI_SetInstanceSettings(TestParameters);
     CLI_GreenAPI_GetInstanceStatus(TestParameters);
+    //CLI_GreenAPI_LogoutInstance(TestParameters);
+    //CLI_GreenAPI_GetQR(TestParameters);
+    CLI_GreenAPI_SetProfilePicture(TestParameters);
     CLI_GreenAPI_RebootInstance(TestParameters);
-    CLI_GreenAPI_GetQR(TestParameters);
-    CLI_GreenAPI_LogoutInstance(TestParameters);
+    CLI_GreenAPI_GetAuthorizationCode(TestParameters);
 
 EndProcedure
 
@@ -20336,6 +20340,38 @@ Procedure CLI_GreenAPI_GetInstanceSettings(FunctionParameters)
 
 EndProcedure
 
+Procedure GreenAPI_GetAccountInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetAccountInformation", Options);
+
+    Try
+        Result["deviceId"] = "***";
+        Result["phone"]    = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAccountInformation", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenProfile(Result);
+
+EndProcedure
+
 Procedure CLI_GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
     Options = New Structure;
@@ -20497,6 +20533,61 @@ Procedure CLI_GreenAPI_LogoutInstance(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "LogoutInstance", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenReboot(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetAuthorizationCode(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    PhoneNumber = 441234567890;
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("phone" , PhoneNumber);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetAuthorizationCode", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationCode", "GreenAPI");
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SetProfilePicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Image = FunctionParameters["Picture"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("picture", Image);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetProfilePicture", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetProfilePicture", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAva(Result);
 
 EndProcedure
 

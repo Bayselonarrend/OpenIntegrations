@@ -1533,8 +1533,13 @@ Function ExecuteRequestWithoutBody(Val URL
 
 EndFunction
 
-Function ExecuteMultipartRequest(Val URL, Val View, Val Parameters = "", Val Files = "",
-    Val ContentType                                                = "image/jpeg", Val AdditionalHeaders = "", Val ResponseFile = Undefined)
+Function ExecuteMultipartRequest(Val URL
+    , Val View
+    , Val Parameters        = ""
+    , Val Files             = ""
+    , Val ContentType       = "image/jpeg"
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
