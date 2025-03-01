@@ -2342,7 +2342,7 @@ Procedure CLI_GAPI_Account() Export
 
     CLI_GreenAPI_FormAccessParameters(TestParameters);
     CLI_GreenAPI_GetInstanceSettings(TestParameters);
-    GreenAPI_GetAccountInformation(TestParameters);
+    CLI_GreenAPI_GetAccountInformation(TestParameters);
     CLI_GreenAPI_GetInstanceSettingsStructure(TestParameters);
     CLI_GreenAPI_SetInstanceSettings(TestParameters);
     CLI_GreenAPI_GetInstanceStatus(TestParameters);
@@ -20340,7 +20340,7 @@ Procedure CLI_GreenAPI_GetInstanceSettings(FunctionParameters)
 
 EndProcedure
 
-Procedure GreenAPI_GetAccountInformation(FunctionParameters)
+Procedure CLI_GreenAPI_GetAccountInformation(FunctionParameters)
 
     ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
     MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
