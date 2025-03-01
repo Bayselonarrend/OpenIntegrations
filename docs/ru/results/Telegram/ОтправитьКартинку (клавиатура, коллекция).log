@@ -1,0 +1,79 @@
+﻿    {
+ "ok": true,
+ "result": {
+  "message_id": 15267,
+  "sender_chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "date": 1740860924,
+  "photo": [
+   {
+    "file_id": "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADcwADNgQ",
+    "file_unique_id": "AQAD1e0xG0RaeUl4",
+    "file_size": 1568,
+    "width": 90,
+    "height": 67
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADbQADNgQ",
+    "file_unique_id": "AQAD1e0xG0RaeUly",
+    "file_size": 21633,
+    "width": 320,
+    "height": 240
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADeAADNgQ",
+    "file_unique_id": "AQAD1e0xG0RaeUl9",
+    "file_size": 99260,
+    "width": 800,
+    "height": 600
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADeQADNgQ",
+    "file_unique_id": "AQAD1e0xG0RaeUl-",
+    "file_size": 218651,
+    "width": 1280,
+    "height": 960
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIuwmeu2x9_zPKlDNad2yMITstIZN51AALV7TEbRFp5SZDlJEHN0afcAQADAgADdwADNgQ",
+    "file_unique_id": "AQAD1e0xG0RaeUl8",
+    "file_size": 650214,
+    "width": 2560,
+    "height": 1920
+   }
+  ],
+  "caption": "Строковое значение",
+  "reply_markup": {
+   "inline_keyboard": [
+    [
+     {
+      "text": "Кнопка1",
+      "callback_data": "Кнопка1"
+     }
+    ],
+    [
+     {
+      "text": "Кнопка2",
+      "callback_data": "Кнопка2"
+     }
+    ],
+    [
+     {
+      "text": "Кнопка3",
+      "callback_data": "Кнопка3"
+     }
+    ]
+   ]
+  }
+ }
+}
