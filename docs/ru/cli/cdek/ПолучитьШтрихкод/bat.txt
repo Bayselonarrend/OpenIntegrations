@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод ^
   --token "***" ^
-  --uuid "72753031-9ddc-4a95-8735-7fb0911bcdf5" ^
+  --uuid "72753031-b2a6-4a2b-8245-427a9197efbd" ^
   --getfile true ^
   --testapi "***" ^
-  --out "C:\Users\Administrator\AppData\Local\Temp\slspdfipaub.pdf"
+  --out "C:\Users\Administrator\AppData\Local\Temp\rjavacvgvsh.pdf"
