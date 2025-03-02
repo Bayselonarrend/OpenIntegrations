@@ -1490,6 +1490,14 @@ def test_greenapi(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi AddGroupMember --access "test" --group "test" --user "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ExcludeGroupMember --access "test" --group "test" --user "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi LeaveGroup --access "test" --group "test" --debug --test '
                }
 

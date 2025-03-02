@@ -714,11 +714,11 @@ pipeline {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_Аккаунт"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_УправлениеГруппами"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_УправлениеГруппами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_Аккаунт"'
                }
 
 			}
