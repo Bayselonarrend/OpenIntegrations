@@ -279,8 +279,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
-    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
+    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
 
     Return TestTable;
 
