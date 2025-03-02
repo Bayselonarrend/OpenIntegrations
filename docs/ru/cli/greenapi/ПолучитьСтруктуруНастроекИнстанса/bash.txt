@@ -1,0 +1,2 @@
+oint greenapi ПолучитьСтруктуруНастроекИнстанса \
+  --empty false
