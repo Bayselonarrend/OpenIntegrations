@@ -1,0 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint greenapi ПолучитьИнформациюОГруппе \
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --group "120363412015560740@g.us"

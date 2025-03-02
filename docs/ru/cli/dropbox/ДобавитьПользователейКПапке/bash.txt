@@ -1,5 +1,5 @@
 oint dropbox ДобавитьПользователейКПапке \
   --token "***" \
-  --folder "11783326787" \
+  --folder "11787721011" \
   --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
   --readonly true
