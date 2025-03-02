@@ -277,6 +277,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "AddGroupMember";
+    NewLine.МетодПоиска = "ADDGROUPMEMBER";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Adds a participant to a group chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "AddGroupMember";
+    NewLine.МетодПоиска = "ADDGROUPMEMBER";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "AddGroupMember";
+    NewLine.МетодПоиска = "ADDGROUPMEMBER";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID to add";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ExcludeGroupMember";
+    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Excludes a member from the group";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ExcludeGroupMember";
+    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ExcludeGroupMember";
+    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID to add";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "LeaveGroup";
     NewLine.МетодПоиска = "LEAVEGROUP";
     NewLine.Параметр    = "--access";

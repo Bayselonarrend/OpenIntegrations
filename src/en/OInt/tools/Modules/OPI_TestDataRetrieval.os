@@ -2208,6 +2208,18 @@ Procedure Check_GreenGroupName(Val Result) Export
 
 EndProcedure
 
+Procedure Check_GreenAddMember(Val Result) Export
+
+    ExpectsThat(Result["addParticipant"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenExcludeMember(Val Result) Export
+
+    ExpectsThat(Result["removeParticipant"]).Равно(True);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
