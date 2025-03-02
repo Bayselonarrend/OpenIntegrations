@@ -2410,6 +2410,8 @@ Procedure GAPI_GroupManagement() Export
     GreenAPI_CreateGroup(TestParameters);
     GreenAPI_GetGroupInformation(TestParameters);
     GreenAPI_UpdateGroupName(TestParameters);
+    GreenAPI_AddGroupMember(TestParameters);
+    GreenAPI_ExcludeGroupMember(TestParameters);
     GreenAPI_LeaveGroup(TestParameters);
 
 EndProcedure
@@ -18494,6 +18496,58 @@ Procedure GreenAPI_UpdateGroupName(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateGroupName", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenGroupName(Result);
+
+EndProcedure
+
+Procedure GreenAPI_AddGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.AddGroupMember(AccessParameters, GroupID, UserID);
+
+    // END
+
+    Try
+        Result["addParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddGroupMember", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAddMember(Result);
+
+EndProcedure
+
+Procedure GreenAPI_ExcludeGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.ExcludeGroupMember(AccessParameters, GroupID, UserID);
+
+    // END
+
+    Try
+        Result["removeParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExcludeGroupMember", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenExcludeMember(Result);
 
 EndProcedure
 

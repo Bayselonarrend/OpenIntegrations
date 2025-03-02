@@ -406,6 +406,60 @@ Function UpdateGroupName(Val AccessParameters, Val GroupID, Val Name) Export
 
 EndFunction
 
+// Add group member
+// Adds a participant to a group chat
+//
+// Note
+// Method at API documentation: [AddGroupParticipant](@green-api.com/docs/api/account/AddGroupParticipant/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// UserID - String - User ID to add - user
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function AddGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "addGroupParticipant");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Exclude group member
+// Excludes a member from the group
+//
+// Note
+// Method at API documentation: [RemoveGroupParticipant](@green-api.com/docs/api/account/RemoveGroupParticipant/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// UserID - String - User ID to add - user
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ExcludeGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "removeGroupParticipant");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Leave group
 // Logs the current account out of group chat
 //

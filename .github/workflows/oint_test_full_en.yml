@@ -1482,13 +1482,13 @@ jobs:
 
 
 
-      - name: Account
-        if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GAPI_Account"
-
       - name: Group management
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GAPI_GroupManagement"
+
+      - name: Account
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_GAPI_Account"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
