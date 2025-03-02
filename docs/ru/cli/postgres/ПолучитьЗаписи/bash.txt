@@ -1,9 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint postgres ПолучитьЗаписи \
-  --table "test_data" \
-  --fields "['first_name','last_name','email']" \
-  --filter "[{'field':'gender','type':'=','value':'Male','union':'AND','raw':false},{'field':'id','type':'BETWEEN','value':'20 AND 50','raw':true}]" \
-  --order "{'ip_address':'DESC'}" \
-  --limit 5 \
+  --table "testtable" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
