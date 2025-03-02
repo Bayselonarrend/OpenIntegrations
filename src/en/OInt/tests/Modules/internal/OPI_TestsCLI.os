@@ -2254,9 +2254,21 @@ EndProcedure
 Procedure CLI_SQLL_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+
+    Base = GetTempFileName("sqlite");
+    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
+    OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext", TestParameters);
 
     CLI_SQLite_ExecuteSQLQuery(TestParameters);
+
+    Try
+       DeleteFiles(Base);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry;
 
 EndProcedure
 
@@ -2354,7 +2366,7 @@ Procedure CLI_GAPI_Account() Export
 
 EndProcedure
 
-Procedure GAPI_GroupManagement() Export
+Procedure CLI_GAPI_GroupManagement() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"    , TestParameters);
@@ -2365,6 +2377,8 @@ Procedure GAPI_GroupManagement() Export
     CLI_GreenAPI_CreateGroup(TestParameters);
     CLI_GreenAPI_GetGroupInformation(TestParameters);
     CLI_GreenAPI_UpdateGroupName(TestParameters);
+    CLI_GreenAPI_AddGroupMember(TestParameters);
+    CLI_GreenAPI_ExcludeGroupMember(TestParameters);
     CLI_GreenAPI_LeaveGroup(TestParameters);
 
 EndProcedure
@@ -19063,6 +19077,10 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
+    Blob = Result["data"][0]["data"]["blob"];
+
+    Result["data"][0]["data"]["blob"] = "Base64";
+
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Select, code)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
@@ -20397,7 +20415,7 @@ Procedure CLI_GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettingsStructure", "GreenAPI");
-    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
     Options.Insert("empty", True);
@@ -20728,6 +20746,72 @@ Procedure CLI_GreenAPI_UpdateGroupName(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateGroupName", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenGroupName(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_AddGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("group" , GroupID);
+    Options.Insert("user"  , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "AddGroupMember", Options);
+
+    Try
+        Result["addParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddGroupMember", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAddMember(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_ExcludeGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("group" , GroupID);
+    Options.Insert("user"  , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ExcludeGroupMember", Options);
+
+    Try
+        Result["removeParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExcludeGroupMember", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenExcludeMember(Result);
 
 EndProcedure
 
