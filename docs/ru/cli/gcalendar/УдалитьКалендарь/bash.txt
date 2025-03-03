@@ -1,3 +1,3 @@
 oint gcalendar УдалитьКалендарь \
   --token "***" \
-  --calendar "64f289132ac58c89b0ba31a2897c8a60c1b88907ae9201ed59313b4675d61a8f@group.calendar.google.com"
+  --calendar "52824ef0fe1510e517d7b0a7520c9d5eaf172d294db379f664a8fe9db915613f@group.calendar.google.com"
