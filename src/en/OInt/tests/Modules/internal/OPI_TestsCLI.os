@@ -19085,7 +19085,7 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Image = New BinaryData(PictureFile);
-    OPI_TestDataRetrieval.Check_Equality(Base64Value(Result["data"][0]["data"]["blob"]).Size(), Image.Size());
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size());
 
     // With extension
 
@@ -20341,6 +20341,7 @@ Procedure CLI_GreenAPI_FormAccessParameters(FunctionParameters)
 
     // END
 
+    Result.Insert("apiTokenInstance", "***");
     OPI_TestDataRetrieval.WriteLog(Result, "FormAccessParameters", "GreenAPI");
     OPI_TestDataRetrieval.Check_Map(Result);
 

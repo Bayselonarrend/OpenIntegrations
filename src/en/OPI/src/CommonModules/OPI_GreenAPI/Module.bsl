@@ -128,6 +128,7 @@ EndFunction
 Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
 
     OPI_TypeConversion.GetKeyValueCollection(AccessParameters);
+    OPI_TypeConversion.GetKeyValueCollection(Settings);
 
     URL      = FormPrimaryURL(AccessParameters, "setSettings");
     Response = OPI_Tools.Post(URL, Settings);
