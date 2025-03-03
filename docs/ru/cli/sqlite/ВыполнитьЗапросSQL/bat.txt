@@ -1,3 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint sqlite ВыполнитьЗапросSQL ^
-  --sql "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;" ^
-  --db "C:\Users\Administrator\AppData\Local\Temp\qggihx3uxmi.sqlite"
+  --sql "SELECT uuid4();" ^
+  --db "C:\Users\Administrator\AppData\Local\Temp\idldvioihj1.sqlite" ^
+  --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"

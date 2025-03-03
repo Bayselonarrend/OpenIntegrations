@@ -2,5 +2,5 @@
 
 oint notion СоздатьСтраницуВБазу ^
   --token "***" ^
-  --base "1aa82aa7-fc4e-8149-bc75-ffd1af998351" ^
-  --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':1,'Статус':'Новый','Дата создания':'2025-03-02T21:31:21.2695994Z','Картинка':{'Лого':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535'}"
+  --base "1ab82aa7-fc4e-81f5-95f4-e0ab3547a6bf" ^
+  --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':1,'Статус':'Новый','Дата создания':'2025-03-03T09:58:22.5008893Z','Картинка':{'Лого':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535'}"

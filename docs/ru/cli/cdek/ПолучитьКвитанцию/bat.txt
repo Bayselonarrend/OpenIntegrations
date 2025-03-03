@@ -1,6 +1,6 @@
 oint cdek ПолучитьКвитанцию ^
   --token "***" ^
-  --uuid "72753031-23ee-44f9-bb82-99e533dda27f" ^
+  --uuid "72753031-d0f6-4bd4-a383-e3c39bd369dd" ^
   --getfile true ^
   --testapi "***" ^
-  --out "C:\Users\Administrator\AppData\Local\Temp\hwkoqvboujy.pdf"
+  --out "C:\Users\Administrator\AppData\Local\Temp\fpheisratyo.pdf"
