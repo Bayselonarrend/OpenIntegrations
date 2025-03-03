@@ -2,4 +2,4 @@ oint telegram ПереслатьСообщение \
   --token "***" \
   --from "@testsichee" \
   --to "461699897" \
-  --message "15303"
+  --message "15320"
