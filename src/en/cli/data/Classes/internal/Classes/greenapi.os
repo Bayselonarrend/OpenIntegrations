@@ -339,6 +339,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetAdminRights";
+    NewLine.МетодПоиска = "SETADMINRIGHTS";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Assigns the user as the group administrator";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetAdminRights";
+    NewLine.МетодПоиска = "SETADMINRIGHTS";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetAdminRights";
+    NewLine.МетодПоиска = "SETADMINRIGHTS";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID to add";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "RevokeAdminRights";
+    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Revokes administrator rights from the user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "RevokeAdminRights";
+    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "RevokeAdminRights";
+    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID to add";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "LeaveGroup";
     NewLine.МетодПоиска = "LEAVEGROUP";
     NewLine.Параметр    = "--access";
@@ -354,6 +416,37 @@
     NewLine.МетодПоиска = "LEAVEGROUP";
     NewLine.Параметр    = "--group";
     NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetGroupPicture";
+    NewLine.МетодПоиска = "SETGROUPPICTURE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Group management";
+    NewLine.ОписаниеМетода   = "Sets the group chat picture";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetGroupPicture";
+    NewLine.МетодПоиска = "SETGROUPPICTURE";
+    NewLine.Параметр    = "--group";
+    NewLine.Описание    = "Group chat identifier";
+    NewLine.Область     = "Group management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetGroupPicture";
+    NewLine.МетодПоиска = "SETGROUPPICTURE";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Profile picture";
     NewLine.Область     = "Group management";
 
     Return CompositionTable;

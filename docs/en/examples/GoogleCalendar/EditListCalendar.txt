@@ -4,8 +4,4 @@
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Result = OPI_GoogleCalendar.EditListCalendar(Token
-        , Calendar
-        , PrimaryColor
-        , SecondaryColor
-        , Hidden);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, Hidden);

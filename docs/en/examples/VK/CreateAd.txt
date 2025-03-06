@@ -6,9 +6,5 @@
     PostID         = "7134";
     AccountID      = "1607951446";
 
-    Result = OPI_VK.CreateAd(CampaignNumber
-        , DailyLimit
-        , CategoryNumber
-        , PostID
-        , AccountID
-        , Parameters);
+    Result = OPI_VK.CreateAd(CampaignNumber, DailyLimit, CategoryNumber, PostID, AccountID,
+        Parameters);

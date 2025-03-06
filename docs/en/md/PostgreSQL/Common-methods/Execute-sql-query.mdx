@@ -48,23 +48,23 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     // CREATE
 
     QueryText = "
-    |CREATE TABLE test_table (
-    |id SERIAL PRIMARY KEY,
-    |name NAME,
-    |age INT,
-    |salary REAL,
-    |is_active BOOL,
-    |created_at DATE,
-    |data BYTEA
-    |);";
+                   |CREATE TABLE test_table (
+                   |id SERIAL PRIMARY KEY,
+                   |name NAME,
+                   |age INT,
+                   |salary REAL,
+                   |is_active BOOL,
+                   |created_at DATE,
+                   |data BYTEA
+                   |);";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
     // INSERT with parameters
 
     QueryText = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES ($1, $2, $3, $4, $5, $6);";
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES ($1, $2, $3, $4, $5, $6);";
 
     ParameterArray = New Array;
     ParameterArray.Add(New Structure("NAME" , "Vitaly"));
@@ -85,17 +85,17 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     // DO + Transaction
 
     QueryText = "DO $$
-    |BEGIN
-    | CREATE TABLE users (
-    | id SMALLSERIAL,
-    | name TEXT NOT NULL,
-    | age INT NOT NULL
-    | );
-    | INSERT INTO users (name, age) VALUES ('Alice', 30);
-    | INSERT INTO users (name, age) VALUES ('Bob', 25);
-    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    | COMMIT;
-    |END $$ LANGUAGE plpgsql;";
+                   |BEGIN
+                   | CREATE TABLE users (
+                   | id SMALLSERIAL,
+                   | name TEXT NOT NULL,
+                   | age INT NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;
+                   |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
 

@@ -32,12 +32,8 @@
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -18,10 +18,10 @@
     RowStructure2.Insert("data"      , Image); // BLOB
 
     RowStrucutre1 = New Structure;
-    RowStrucutre1.Insert("name"      , "Lesha") ; // TEXT
+    RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
     RowStrucutre1.Insert("age"       , 20); // INTEGER
-    RowStrucutre1.Insert("salary"    , 200.20) ; // REAL
-    RowStrucutre1.Insert("is_active" , False) ; // BOOL
+    RowStrucutre1.Insert("salary"    , 200.20); // REAL
+    RowStrucutre1.Insert("is_active" , False); // BOOL
     RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
     RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
 

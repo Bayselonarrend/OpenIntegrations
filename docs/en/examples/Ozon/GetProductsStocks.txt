@@ -5,7 +5,7 @@
     IDArray.Add("143210608");
 
     Filter = New Structure;
-    Filter.Insert("visibility" , "ALL");
-    Filter.Insert("offer_id"   , IDArray);
+    Filter.Insert("visibility", "ALL");
+    Filter.Insert("offer_id"  , IDArray);
 
     Result = OPI_Ozon.GetProductsStocks(ClientID, APIKey, Filter);

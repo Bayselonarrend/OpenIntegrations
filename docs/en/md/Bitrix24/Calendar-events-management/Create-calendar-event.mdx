@@ -55,39 +55,39 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
     EventStucture.Insert("importance"   , "normal");
     EventStucture.Insert("private_event", "Y");
 
-        RepeatabilityStructure = New Structure;
-        RepeatabilityStructure.Insert("FREQ"    , "DAILY");
-        RepeatabilityStructure.Insert("COUNT"   , 3);
-        RepeatabilityStructure.Insert("INTERVAL", 10);
+    RepeatabilityStructure = New Structure;
+    RepeatabilityStructure.Insert("FREQ"    , "DAILY");
+    RepeatabilityStructure.Insert("COUNT"   , 3);
+    RepeatabilityStructure.Insert("INTERVAL", 10);
 
-            DaysArray = New Array;
-            DaysArray.Add("SA");
-            DaysArray.Add("MO");
+    DaysArray = New Array;
+    DaysArray.Add("SA");
+    DaysArray.Add("MO");
 
-        RepeatabilityStructure.Insert("BYDAY" , DaysArray);
-        RepeatabilityStructure.Insert("UNTIL" , XMLString(Tomorrow + Hour * 24 * 10));
+    RepeatabilityStructure.Insert("BYDAY", DaysArray);
+    RepeatabilityStructure.Insert("UNTIL", XMLString(Tomorrow + Hour * 24 * 10));
 
     EventStucture.Insert("rrule"     , RepeatabilityStructure);
     EventStucture.Insert("is_meeting", "Y");
     EventStucture.Insert("location"  , "Office");
 
-        RemindersArray = New Array;
+    RemindersArray = New Array;
 
-            ReminderStructure = New Structure;
-            ReminderStructure.Insert("type" , "day");
-            ReminderStructure.Insert("count", 1);
+    ReminderStructure = New Structure;
+    ReminderStructure.Insert("type" , "day");
+    ReminderStructure.Insert("count", 1);
 
-        RemindersArray.Add(ReminderStructure);
+    RemindersArray.Add(ReminderStructure);
 
     EventStucture.Insert("remind"   , RemindersArray);
     EventStucture.Insert("attendees", StrSplit("1,10", ","));
     EventStucture.Insert("host"     , 1);
 
-        MeetingStructure = New Structure;
-        MeetingStructure.Insert("notify"      , "Y");
-        MeetingStructure.Insert("reinvite"    , "Y");
-        MeetingStructure.Insert("allow_invite", "N");
-        MeetingStructure.Insert("hide_guests" , "N");
+    MeetingStructure = New Structure;
+    MeetingStructure.Insert("notify"      , "Y");
+    MeetingStructure.Insert("reinvite"    , "Y");
+    MeetingStructure.Insert("allow_invite", "N");
+    MeetingStructure.Insert("hide_guests" , "N");
 
     EventStucture.Insert("meeting", MeetingStructure);
 

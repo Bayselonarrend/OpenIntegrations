@@ -1498,7 +1498,19 @@ def test_greenapi(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi НазначитьПраваАдминистратора --access "test" --group "test" --user "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОтозватьПраваАдминистратора --access "test" --group "test" --user "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПокинутьГруппу --access "test" --group "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi УстановитьКартинкуГруппы --access "test" --group "test" --picture "test" --debug --test '
                }
 
 }

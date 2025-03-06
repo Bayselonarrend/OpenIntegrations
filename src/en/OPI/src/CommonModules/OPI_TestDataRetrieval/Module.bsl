@@ -2167,6 +2167,12 @@ Procedure Check_GreenAva(Val Result) Export
 
 EndProcedure
 
+Procedure Check_GreenGroupPicture(Val Result) Export
+
+    ExpectsThat(Result["setGroupPicture"]).Равно(True);
+
+EndProcedure
+
 Procedure Check_GreenCode(Val Result) Export
 
     ExpectsThat(Result["status"]).Равно(True);
@@ -2217,6 +2223,18 @@ EndProcedure
 Procedure Check_GreenExcludeMember(Val Result) Export
 
     ExpectsThat(Result["removeParticipant"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenAdminSet(Val Result) Export
+
+    ExpectsThat(Result["setGroupAdmin"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenAdminRemove(Val Result) Export
+
+    ExpectsThat(Result["removeAdmin"]).Равно(True);
 
 EndProcedure
 

@@ -1,2 +1,2 @@
 ﻿    Parameters = GetVKParameters();
-    Result     = OPI_VK.GetProductList(, Parameters);
+    Result     = OPI_VK.GetProductList( , Parameters);

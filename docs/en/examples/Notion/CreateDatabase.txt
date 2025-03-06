@@ -3,22 +3,22 @@
     Title  = "TestTitle";
 
     Properties = New Map;
-    Properties.Insert("Name"         , "title");
-    Properties.Insert("Description"  , "rich_text");
-    Properties.Insert("Number"       , "number");
-    Properties.Insert("Status"       , "status");
-    Properties.Insert("CreationDate" , "date");
-    Properties.Insert("Image"        , "files");
-    Properties.Insert("Active"       , "checkbox");
-    Properties.Insert("Website"      , "url");
-    Properties.Insert("Email"        , "email");
-    Properties.Insert("Phone"        , "phone_number");
-    Properties.Insert("User"         , "people");
+    Properties.Insert("Name"        , "title");
+    Properties.Insert("Description" , "rich_text");
+    Properties.Insert("Number"      , "number");
+    Properties.Insert("Status"      , "status");
+    Properties.Insert("CreationDate", "date");
+    Properties.Insert("Image"       , "files");
+    Properties.Insert("Active"      , "checkbox");
+    Properties.Insert("Website"     , "url");
+    Properties.Insert("Email"       , "email");
+    Properties.Insert("Phone"       , "phone_number");
+    Properties.Insert("User"        , "people");
 
     ValueSelection = New Map;
-    ValueSelection.Insert("New"        , "green");
-    ValueSelection.Insert("InProgress" , "yellow");
-    ValueSelection.Insert("Remote"     , "red");
+    ValueSelection.Insert("New"       , "green");
+    ValueSelection.Insert("InProgress", "yellow");
+    ValueSelection.Insert("Remote"    , "red");
 
     Properties.Insert("Status", ValueSelection);
 

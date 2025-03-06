@@ -6,11 +6,11 @@
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
     Наименование   = "opi-newbucket2";
     XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
-    |    <Rule>
-    |        <ApplyServerSideEncryptionByDefault>
-    |            <SSEAlgorithm>AES256</SSEAlgorithm>
-    |        </ApplyServerSideEncryptionByDefault>
-    |    </Rule>
-    |</ServerSideEncryptionConfiguration>";
+                      |    <Rule>
+                      |        <ApplyServerSideEncryptionByDefault>
+                      |            <SSEAlgorithm>AES256</SSEAlgorithm>
+                      |        </ApplyServerSideEncryptionByDefault>
+                      |    </Rule>
+                      |</ServerSideEncryptionConfiguration>";
 
     Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация);

@@ -36,64 +36,64 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
 
     OrderDescription = New Structure;
 
-        SendLocation = New Structure;
-        SendLocation.Insert("code"   , "44");
-        SendLocation.Insert("city"   , "Moscow");
-        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+    SendLocation = New Structure;
+    SendLocation.Insert("code"   , "44");
+    SendLocation.Insert("city"   , "Moscow");
+    SendLocation.Insert("address", "Ave. Leningradsky, 4");
 
-        DestLocation = New Structure;
-        DestLocation.Insert("code"   , "270");
-        DestLocation.Insert("city"   , "Novosibirsk");
-        DestLocation.Insert("address", "st. Bluchera, 32");
+    DestLocation = New Structure;
+    DestLocation.Insert("code"   , "270");
+    DestLocation.Insert("city"   , "Novosibirsk");
+    DestLocation.Insert("address", "st. Bluchera, 32");
 
-        Recipient = New Structure;
+    Recipient = New Structure;
 
-            Phones = New Array;
-            Phones.Add(New Structure("number", "+79134637228"));
+    Phones = New Array;
+    Phones.Add(New Structure("number", "+79134637228"));
 
-        Recipient.Insert("phones", Phones);
-        Recipient.Insert("name"  , "Ivaniv Ivan");
+    Recipient.Insert("phones", Phones);
+    Recipient.Insert("name"  , "Ivaniv Ivan");
 
-        Sender = New Structure("name", "Petrov Petr");
+    Sender = New Structure("name", "Petrov Petr");
 
-        Services = New Array;
+    Services = New Array;
 
-            Service = New Structure;
-            Service.Insert("code"     , "SECURE_PACKAGE_A2");
-            Service.Insert("parameter", 10);
+    Service = New Structure;
+    Service.Insert("code"     , "SECURE_PACKAGE_A2");
+    Service.Insert("parameter", 10);
 
-        Services.Add(Service);
+    Services.Add(Service);
 
-        Packages = New Array;
+    Packages = New Array;
 
-            Package = New Structure;
+    Package = New Structure;
 
-                Items = New Array;
+    Items = New Array;
 
-                    Item = New Structure;
+    Item = New Structure;
 
-                        Payment = New Structure;
-                        Payment.Insert("value", 3000);
+    Payment = New Structure;
+    Payment.Insert("value", 3000);
 
-                    Item.Insert("payment" , Payment);
-                    Item.Insert("ware_key", "00055");
-                    Item.Insert("name"    , "Product");
-                    Item.Insert("cost"    , 300);
-                    Item.Insert("amount"  , 2);
-                    Item.Insert("weight"  , 700);
-                    Item.Insert("url"     , "www.item.ru");
+    Item.Insert("payment" , Payment);
+    Item.Insert("ware_key", "00055");
+    Item.Insert("name"    , "Product");
+    Item.Insert("cost"    , 300);
+    Item.Insert("amount"  , 2);
+    Item.Insert("weight"  , 700);
+    Item.Insert("url"     , "www.item.ru");
 
-                Items.Add(Item);
+    Items.Add(Item);
 
-            Package.Insert("items"  , Items);
-            Package.Insert("number" , "bar-001");
-            Package.Insert("comment", "Packaging");
-            Package.Insert("height" , 10);
-            Package.Insert("length" , 10);
-            Package.Insert("weight" , "4000");
-            Package.Insert("width"  , 10);
+    Package.Insert("items"  , Items);
+    Package.Insert("number" , "bar-001");
+    Package.Insert("comment", "Packaging");
+    Package.Insert("height" , 10);
+    Package.Insert("length" , 10);
+    Package.Insert("weight" , "4000");
+    Package.Insert("width"  , 10);
 
-        Packages.Add(Package);
+    Packages.Add(Package);
 
     OrderDescription.Insert("from_location", SendLocation);
     OrderDescription.Insert("to_location"  , DestLocation);

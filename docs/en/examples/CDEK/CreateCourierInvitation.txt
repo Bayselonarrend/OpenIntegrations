@@ -13,30 +13,30 @@
     InvitationDescription.Insert("comment"         , "Comment to courier");
     InvitationDescription.Insert("need_call"       , False);
 
-        Sender = New Structure;
-        Sender.Insert("company", "Company");
-        Sender.Insert("name"   , "Ivaniv Ivan");
+    Sender = New Structure;
+    Sender.Insert("company", "Company");
+    Sender.Insert("name"   , "Ivaniv Ivan");
 
-            Phones = New Array;
-            Phone  = New Structure("number", "+79589441654");
-            Phones.Add(Phone);
+    Phones = New Array;
+    Phone  = New Structure("number", "+79589441654");
+    Phones.Add(Phone);
 
-        Sender.Insert("phones", Phones);
+    Sender.Insert("phones", Phones);
 
     InvitationDescription.Insert("sender", Sender);
 
-        ShippingPoint = New Structure;
-        ShippingPoint.Insert("code"        , "44");
-        ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
-        ShippingPoint.Insert("postal_code" , "109004");
-        ShippingPoint.Insert("longitude"   , 37.6204);
-        ShippingPoint.Insert("latitude"    , 55.754);
-        ShippingPoint.Insert("country_code", "RU");
-        ShippingPoint.Insert("region"      , "Moscow");
-        ShippingPoint.Insert("sub_region"  , "Moscow");
-        ShippingPoint.Insert("city"        , "Moscow");
-        ShippingPoint.Insert("kladr_code"  , "7700000000000");
-        ShippingPoint.Insert("address"     , "st. Bluchera, 32");
+    ShippingPoint = New Structure;
+    ShippingPoint.Insert("code"        , "44");
+    ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+    ShippingPoint.Insert("postal_code" , "109004");
+    ShippingPoint.Insert("longitude"   , 37.6204);
+    ShippingPoint.Insert("latitude"    , 55.754);
+    ShippingPoint.Insert("country_code", "RU");
+    ShippingPoint.Insert("region"      , "Moscow");
+    ShippingPoint.Insert("sub_region"  , "Moscow");
+    ShippingPoint.Insert("city"        , "Moscow");
+    ShippingPoint.Insert("kladr_code"  , "7700000000000");
+    ShippingPoint.Insert("address"     , "st. Bluchera, 32");
 
     InvitationDescription.Insert("from_location", ShippingPoint);
 

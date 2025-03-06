@@ -4,7 +4,4 @@
     Option   = "4716";
     Value    = "New variant name";
 
-    Result = OPI_VK.EditProductPropertyVariant(Value
-            , Property
-            , Option
-            , Parameters);
+    Result = OPI_VK.EditProductPropertyVariant(Value, Property, Option, Parameters);
