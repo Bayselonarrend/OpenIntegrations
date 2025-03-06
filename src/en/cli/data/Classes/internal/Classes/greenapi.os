@@ -449,6 +449,108 @@
     NewLine.Описание    = "Profile picture";
     NewLine.Область     = "Group management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendTextMessage";
+    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a text message to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendTextMessage";
+    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendTextMessage";
+    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Message text";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendTextMessage";
+    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends the file to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File data or filepath";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--filename";
+    NewLine.Описание    = "Name of the file with the extension";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--caption";
+    NewLine.Описание    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
     Return CompositionTable;
 EndFunction
 

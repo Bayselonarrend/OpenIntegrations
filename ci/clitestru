@@ -1513,6 +1513,14 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi УстановитьКартинкуГруппы --access "test" --group "test" --picture "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОтправитьТекстовоеСообщение --access "test" --chat "test" --text "test" --quoted "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОтправитьФайл --access "test" --chat "test" --file "test" --filename "test" --caption "test" --quoted "test" --debug --test '
+               }
+
 }
 
 
