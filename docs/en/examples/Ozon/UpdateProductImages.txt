@@ -11,9 +11,4 @@
     ImagesArray.Add(Image1);
     ImagesArray.Add(Image2);
 
-    Result = OPI_Ozon.UpdateProductImages(ClientID
-        , APIKey
-        , ProductID
-        , ImagesArray
-        ,
-        , MarketingColor);
+    Result = OPI_Ozon.UpdateProductImages(ClientID, APIKey, ProductID, ImagesArray, , MarketingColor);

@@ -8,23 +8,23 @@
     // CREATE
 
     QueryText = "
-    |CREATE TABLE test_table (
-    |id INTEGER PRIMARY KEY,
-    |name TEXT,
-    |age INTEGER,
-    |salary REAL,
-    |is_active BOOLEAN,
-    |created_at DATETIME,
-    |data BLOB
-    |);";
+                   |CREATE TABLE test_table (
+                   |id INTEGER PRIMARY KEY,
+                   |name TEXT,
+                   |age INTEGER,
+                   |salary REAL,
+                   |is_active BOOLEAN,
+                   |created_at DATETIME,
+                   |data BLOB
+                   |);";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     // INSERT with parameters
 
     QueryText = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
 
     ParameterArray = New Array;
     ParameterArray.Add("Vitaly"); // TEXT
@@ -45,15 +45,15 @@
     // Transaction
 
     QueryText = "BEGIN TRANSACTION;
-    | CREATE TABLE IF NOT EXISTS users (
-    | id INTEGER PRIMARY KEY AUTOINCREMENT,
-    | name TEXT NOT NULL,
-    | age INTEGER NOT NULL
-    | );
-    | INSERT INTO users (name, age) VALUES ('Alice', 30);
-    | INSERT INTO users (name, age) VALUES ('Bob', 25);
-    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    | COMMIT;";
+                   | CREATE TABLE IF NOT EXISTS users (
+                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   | name TEXT NOT NULL,
+                   | age INTEGER NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 

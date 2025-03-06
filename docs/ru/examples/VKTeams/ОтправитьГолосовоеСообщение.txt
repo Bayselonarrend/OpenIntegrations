@@ -2,7 +2,7 @@
     IDЧата        = "689203963@chat.agent";
     IDЦитируемого = "7472643225547712554";
 
-    Файл     = "https://api.athenaeum.digital/test_data/song.m4a"  ;        // URL
+    Файл     = "https://api.athenaeum.digital/test_data/song.m4a";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

@@ -2379,6 +2379,8 @@ Procedure CLI_GAPI_GroupManagement() Export
     CLI_GreenAPI_UpdateGroupName(TestParameters);
     CLI_GreenAPI_AddGroupMember(TestParameters);
     CLI_GreenAPI_ExcludeGroupMember(TestParameters);
+    CLI_GreenAPI_SetAdminRights(TestParameters);
+    CLI_GreenAPI_RevokeAdminRights(TestParameters);
     CLI_GreenAPI_LeaveGroup(TestParameters);
 
 EndProcedure
@@ -20813,6 +20815,66 @@ Procedure CLI_GreenAPI_ExcludeGroupMember(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ExcludeGroupMember", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenExcludeMember(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SetAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("group" , GroupID);
+    Options.Insert("user"  , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetAdminRights", Options);
+
+    Try
+        Result["setGroupAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAdminSet(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_RevokeAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("group" , GroupID);
+    Options.Insert("user"  , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "RevokeAdminRights", Options);
+
+    Try
+        Result["removeAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RevokeAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAdminRemove(Result);
 
 EndProcedure
 
