@@ -2385,6 +2385,22 @@ Procedure CLI_GAPI_GroupManagement() Export
 
 EndProcedure
 
+Procedure CLI_GAPI_MessageSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
+
+    CLI_GreenAPI_SendTextMessage(TestParameters);
+    CLI_GreenAPI_SendFile(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -20344,7 +20360,7 @@ Procedure CLI_GreenAPI_FormAccessParameters(FunctionParameters)
     // END
 
     Result.Insert("apiTokenInstance", "***");
-    OPI_TestDataRetrieval.WriteLog(Result, "FormAccessParameters", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "FormAccessParameters", "GreenAPI");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -20371,7 +20387,7 @@ Procedure CLI_GreenAPI_GetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettings", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetInstanceSettings", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenInstance(Result);
 
 EndProcedure
@@ -20417,7 +20433,7 @@ Procedure CLI_GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettingsStructure", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetInstanceSettingsStructure", "GreenAPI");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
@@ -20425,7 +20441,7 @@ Procedure CLI_GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettingsStructure (empty)", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetInstanceSettingsStructure (empty)", "GreenAPI");
 
     For Each Element In Result Do
 
@@ -20467,7 +20483,7 @@ Procedure CLI_GreenAPI_SetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetInstanceSettings", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetInstanceSettings", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenSettingsSaving(Result);
 
 EndProcedure
@@ -20492,7 +20508,7 @@ Procedure CLI_GreenAPI_GetInstanceStatus(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceStatus", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceStatus", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetInstanceStatus", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenAuth(Result);
 
 EndProcedure
@@ -20517,7 +20533,7 @@ Procedure CLI_GreenAPI_RebootInstance(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "RebootInstance", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RebootInstance", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RebootInstance", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenReboot(Result);
 
 EndProcedure
@@ -20542,7 +20558,7 @@ Procedure CLI_GreenAPI_GetQR(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetQR", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetQR", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetQR", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenAuth(Result);
 
 EndProcedure
@@ -20567,7 +20583,7 @@ Procedure CLI_GreenAPI_LogoutInstance(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "LogoutInstance", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "LogoutInstance", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "LogoutInstance", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenReboot(Result);
 
 EndProcedure
@@ -20798,7 +20814,13 @@ Procedure CLI_GreenAPI_ExcludeGroupMember(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     Options = New Structure;
     Options.Insert("access", AccessParameters);
@@ -20828,7 +20850,13 @@ Procedure CLI_GreenAPI_SetAdminRights(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     Options = New Structure;
     Options.Insert("access", AccessParameters);
@@ -20843,7 +20871,7 @@ Procedure CLI_GreenAPI_SetAdminRights(FunctionParameters)
         Message("Failed to replace the secrets!");
     EndTry;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetAdminRights", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenAdminSet(Result);
 
 EndProcedure
@@ -20858,7 +20886,13 @@ Procedure CLI_GreenAPI_RevokeAdminRights(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     Options = New Structure;
     Options.Insert("access", AccessParameters);
@@ -20873,8 +20907,107 @@ Procedure CLI_GreenAPI_RevokeAdminRights(FunctionParameters)
         Message("Failed to replace the secrets!");
     EndTry;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RevokeAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RevokeAdminRights", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenAdminRemove(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SendTextMessage(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+    Text   = "New message";
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_MessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_MessageID", MessageID, "String", FunctionParameters);
+
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("text"  , Text);
+    Options.Insert("quoted", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SendFile(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "photo.jpg";
+    ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
+    Description = "File description";
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access"  , AccessParameters);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("file"    , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption" , Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenFile(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_FileMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", FunctionParameters);
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+
+    Options = New Structure;
+    Options.Insert("access"  , AccessParameters);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("file"    , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption" , Description);
+    Options.Insert("quoted"  , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenFile(Result);
 
 EndProcedure
 

@@ -281,6 +281,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
 
     Return TestTable;
 
@@ -2235,6 +2236,19 @@ EndProcedure
 Procedure Check_GreenAdminRemove(Val Result) Export
 
     ExpectsThat(Result["removeAdmin"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenMessage(Val Result) Export
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenFile(Val Result) Export
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+    ExpectsThat(Result["urlFile"]).Заполнено();
 
 EndProcedure
 

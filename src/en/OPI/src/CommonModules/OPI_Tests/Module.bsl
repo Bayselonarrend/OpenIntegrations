@@ -2419,6 +2419,22 @@ Procedure GAPI_GroupManagement() Export
 
 EndProcedure
 
+Procedure GAPI_MessageSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
+
+    GreenAPI_SendTextMessage(TestParameters);
+    GreenAPI_SendFile(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -4030,21 +4046,21 @@ Procedure VK_AddProduct(FunctionParameters)
     ImageArray.Add(Image2);
 
     ProductDescription = New Map;
-    ProductDescription.Insert("Name"            , "TestProduct");
-    ProductDescription.Insert("Description"     , "Product description");
-    ProductDescription.Insert("Category"        , "20173");
-    ProductDescription.Insert("Price"           , 1);
-    ProductDescription.Insert("OldPrice"        , 15);
-    ProductDescription.Insert("MainPhoto"       , Image1);
-    ProductDescription.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
-    ProductDescription.Insert("AdditionalPhotos", ImageArray);
-    ProductDescription.Insert("MainInGroup"     , True);
-    ProductDescription.Insert("Width"           , 20);
-    ProductDescription.Insert("Height"          , 30);
-    ProductDescription.Insert("Depth"           , 40);
-    ProductDescription.Insert("Weight"          , 100);
-    ProductDescription.Insert("SKU"             , "12345");
-    ProductDescription.Insert("AvailableBalance", "10");
+    ProductDescription.Insert("Name"             , "TestProduct");
+    ProductDescription.Insert("Description"      , "Product description");
+    ProductDescription.Insert("Category"         , "20173");
+    ProductDescription.Insert("Price"            , 1);
+    ProductDescription.Insert("OldPrice"         , 15);
+    ProductDescription.Insert("MainPhoto"        , Image1);
+    ProductDescription.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
+    ProductDescription.Insert("AdditionalPhotos" , ImageArray);
+    ProductDescription.Insert("MainInGroup"      , True);
+    ProductDescription.Insert("Width"            , 20);
+    ProductDescription.Insert("Height"           , 30);
+    ProductDescription.Insert("Depth"            , 40);
+    ProductDescription.Insert("Weight"           , 100);
+    ProductDescription.Insert("SKU"              , "12345");
+    ProductDescription.Insert("AvailableBalance" , "10");
 
     Result = OPI_VK.AddProduct(ProductDescription, Selection, Parameters);
 
@@ -4261,23 +4277,23 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
     ImageArray.Add(Image2);
 
     Product = New Map;
-    Product.Insert("Name"            , "Test product (with prop)");
-    Product.Insert("Description"     , "Product description");
-    Product.Insert("Category"        , "20173");
-    Product.Insert("Price"           , 1);
-    Product.Insert("OldPrice"        , 15);
-    Product.Insert("MainPhoto"       , Image1);
-    Product.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
-    Product.Insert("AdditionalPhotos", ImageArray);
-    Product.Insert("MainInGroup"     , True);
-    Product.Insert("GroupNumber"     , Undefined);
-    Product.Insert("Width"           , 20);
-    Product.Insert("Height"          , 30);
-    Product.Insert("Depth"           , 40);
-    Product.Insert("Weight"          , 100);
-    Product.Insert("SKU"             , 12345);
-    Product.Insert("AvailableBalance", "10");
-    Product.Insert("PropertyValues"  , PropVariant1);
+    Product.Insert("Name"             , "Test product (with prop)");
+    Product.Insert("Description"      , "Product description");
+    Product.Insert("Category"         , "20173");
+    Product.Insert("Price"            , 1);
+    Product.Insert("OldPrice"         , 15);
+    Product.Insert("MainPhoto"        , Image1);
+    Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
+    Product.Insert("AdditionalPhotos" , ImageArray);
+    Product.Insert("MainInGroup"      , True);
+    Product.Insert("GroupNumber"      , Undefined);
+    Product.Insert("Width"            , 20);
+    Product.Insert("Height"           , 30);
+    Product.Insert("Depth"            , 40);
+    Product.Insert("Weight"           , 100);
+    Product.Insert("SKU"              , 12345);
+    Product.Insert("AvailableBalance" , "10");
+    Product.Insert("PropertyValues"   , PropVariant1);
 
     Result = OPI_VK.AddProduct(Product, , Parameters);
 
@@ -7285,9 +7301,9 @@ Procedure Notion_CreateDatabase(FunctionParameters)
     Properties.Insert("User"        , "people");
 
     ValueSelection = New Map;
-    ValueSelection.Insert("New"       , "green");
-    ValueSelection.Insert("InProgress", "yellow");
-    ValueSelection.Insert("Remote"    , "red");
+    ValueSelection.Insert("New"        , "green");
+    ValueSelection.Insert("InProgress" , "yellow");
+    ValueSelection.Insert("Remote"     , "red");
 
     Properties.Insert("Status", ValueSelection);
 
@@ -7860,7 +7876,7 @@ Procedure Dropbox_GetTagList(FunctionParameters)
 
     For Each Tag In Result["paths_to_tags"][0]["tags"] Do
         If Tag["tag_text"] = "important" Then
-            HasTag            = True;
+            HasTag         = True;
         EndIf;
     EndDo;
 
@@ -8004,8 +8020,8 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
     JobID         = Result["async_job_id"];
 
     While CurrentStatus = "in_progress" Do
-        Result             = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
-        CurrentStatus      = Result[".tag"];
+        Result          = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+        CurrentStatus   = Result[".tag"];
         OPI_Tools.Pause(3);
     EndDo;
 
@@ -10999,8 +11015,8 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     File   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
 
@@ -11051,8 +11067,8 @@ Procedure Bitrix24_EditMessage(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 
@@ -11264,8 +11280,8 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, , Attachments);
 
@@ -11306,8 +11322,8 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, , Attachments);
 
@@ -18345,7 +18361,7 @@ Procedure GreenAPI_SetProfilePicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Image = FunctionParameters["Picture"];
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetProfilePicture(AccessParameters, Image);
@@ -18556,7 +18572,7 @@ Procedure GreenAPI_SetGroupPicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Image   = FunctionParameters["Picture"];
+    Image   = FunctionParameters["Picture"]; // URL, Path or Binary Data
     GroupID = FunctionParameters["GreenAPI_GroupID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
@@ -18566,6 +18582,68 @@ Procedure GreenAPI_SetGroupPicture(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetGroupPicture", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenGroupPicture(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendTextMessage(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+    Text   = "New message";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendTextMessage(AccessParameters, ChatID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_MessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_MessageID", MessageID, "String", FunctionParameters);
+
+    Result = OPI_GreenAPI.SendTextMessage(AccessParameters, ChatID, Text, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendFile(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "photo.jpg";
+    ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
+    Description = "File description";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendFile(AccessParameters, ChatID, File, FileName, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenFile(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_FileMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", FunctionParameters);
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+    Result   = OPI_GreenAPI.SendFile(AccessParameters, ChatID, File, FileName, Description, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenFile(Result);
 
 EndProcedure
 
