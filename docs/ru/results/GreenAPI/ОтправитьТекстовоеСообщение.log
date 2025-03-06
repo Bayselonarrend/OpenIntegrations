@@ -1,0 +1,6 @@
+﻿    {
+ "statusCode": 400,
+ "timestamp": "2025-03-06T21:29:27.603Z",
+ "path": "/waInstance7105187566/sendMessage/425010d90e114aa6b78f0969e1e67ec62579d30401c84d5183",
+ "message": "Validation failed. Details: 'chatId' is required"
+}
