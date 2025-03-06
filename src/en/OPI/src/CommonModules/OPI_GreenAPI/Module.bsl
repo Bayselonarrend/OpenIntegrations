@@ -328,7 +328,7 @@ EndFunction
 // Gets group chat data
 //
 // Note
-// Method at API documentation: [GetGroupData](@green-api.com/docs/api/account/GetGroupData/)
+// Method at API documentation: [GetGroupData](@green-api.com/docs/api/groups/GetGroupData/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -353,7 +353,7 @@ EndFunction
 // Creates a new group chat
 //
 // Note
-// Method at API documentation: [CreateGroup](@green-api.com/docs/api/account/CreateGroup/)
+// Method at API documentation: [CreateGroup](@green-api.com/docs/api/groups/CreateGroup/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -384,7 +384,7 @@ EndFunction
 // Changes the name of an existing group
 //
 // Note
-// Method at API documentation: [UpdateGroupName](@green-api.com/docs/api/account/UpdateGroupName/)
+// Method at API documentation: [UpdateGroupName](@green-api.com/docs/api/groups/UpdateGroupName/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -411,7 +411,7 @@ EndFunction
 // Adds a participant to a group chat
 //
 // Note
-// Method at API documentation: [AddGroupParticipant](@green-api.com/docs/api/account/AddGroupParticipant/)
+// Method at API documentation: [AddGroupParticipant](@green-api.com/docs/api/groups/AddGroupParticipant/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -422,13 +422,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Green API
 Function AddGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
 
-    Parameters = New Structure;
-
-    OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
-    OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
-
-    URL      = FormPrimaryURL(AccessParameters, "addGroupParticipant");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = GroupMemberAction(AccessParameters, GroupID, UserID, "addGroupParticipant");
 
     Return Response;
 
@@ -438,7 +432,7 @@ EndFunction
 // Excludes a member from the group
 //
 // Note
-// Method at API documentation: [RemoveGroupParticipant](@green-api.com/docs/api/account/RemoveGroupParticipant/)
+// Method at API documentation: [RemoveGroupParticipant](@green-api.com/docs/api/groups/RemoveGroupParticipant/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -449,13 +443,49 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Green API
 Function ExcludeGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
 
-    Parameters = New Structure;
+    Response = GroupMemberAction(AccessParameters, GroupID, UserID, "removeGroupParticipant");
 
-    OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
-    OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
+    Return Response;
 
-    URL      = FormPrimaryURL(AccessParameters, "removeGroupParticipant");
-    Response = OPI_Tools.Post(URL, Parameters);
+EndFunction
+
+// Set admin rights
+// Assigns the user as the group administrator
+//
+// Note
+// Method at API documentation: [SetGroupAdmin](@green-api.com/docs/api/groups/SetGroupAdmin/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// UserID - String - User ID to add - user
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
+
+    Response = GroupMemberAction(AccessParameters, GroupID, UserID, "setGroupAdmin");
+
+    Return Response;
+
+EndFunction
+
+// Revoke admin rights
+// Revokes administrator rights from the user
+//
+// Note
+// Method at API documentation: [RemoveAdmin](@green-api.com/docs/api/groups/RemoveAdmin/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// UserID - String - User ID to add - user
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function RevokeAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
+
+    Response = GroupMemberAction(AccessParameters, GroupID, UserID, "removeAdmin");
 
     Return Response;
 
@@ -465,7 +495,7 @@ EndFunction
 // Logs the current account out of group chat
 //
 // Note
-// Method at API documentation: [LeaveGroup](@green-api.com/docs/api/account/LeaveGroup/)
+// Method at API documentation: [LeaveGroup](@green-api.com/docs/api/groups/LeaveGroup/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -481,6 +511,37 @@ Function LeaveGroup(Val AccessParameters, Val GroupID) Export
 
     URL      = FormPrimaryURL(AccessParameters, "leaveGroup");
     Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set group picture
+// Sets the group chat picture
+//
+// Note
+// Method at API documentation: [SetGroupPicture](@green-api.com/docs/api/groups/SetGroupPicture/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// GroupID - String - Group chat identifier - group
+// Image - BinaryData, String - Profile picture - picture
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export
+
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId", GroupID, "String", Parameters);
+
+    PictureMap = New Map();
+    PictureMap.Insert("file|file.jpg", Image);
+
+    URL      = FormPrimaryURL(AccessParameters, "setGroupPicture");
+    Response = OPI_Tools.PostMultipart(URL, Parameters, PictureMap);
 
     Return Response;
 
@@ -511,6 +572,20 @@ Function FormPrimaryURL(Val AccessParameters, Val Method)
     URL = StrTemplate("%1/waInstance%2/%3/%4", ApiUrl, IdInstance, Method, ApiTokenInstance);
 
     Return URL;
+
+EndFunction
+
+Function GroupMemberAction(Val AccessParameters, Val GroupID, Val UserID, Val Method)
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, Method);
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
 
 EndFunction
 

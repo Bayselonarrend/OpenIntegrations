@@ -1,7 +1,7 @@
 ﻿    FieldsStructure = New Structure;
-    FieldsStructure.Insert("TITLE"       , "Sale in RUB");
-    FieldsStructure.Insert("CURRENCY_ID" , "RUB");
-    FieldsStructure.Insert("OPPORTUNITY" , 50000);
+    FieldsStructure.Insert("TITLE"      , "Sale in RUB");
+    FieldsStructure.Insert("CURRENCY_ID", "RUB");
+    FieldsStructure.Insert("OPPORTUNITY", 50000);
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     DealID = "2910";

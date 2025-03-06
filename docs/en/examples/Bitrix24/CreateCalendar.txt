@@ -8,9 +8,9 @@
     CalendarsStructure.Insert("color"      , "#FFFFFF");
     CalendarsStructure.Insert("text_color" , "#000000");
 
-        ExportStructure = New Structure;
-        ExportStructure.Insert("ALLOW", "True");
-        ExportStructure.Insert("SET"  , "all");
+    ExportStructure = New Structure;
+    ExportStructure.Insert("ALLOW", "True");
+    ExportStructure.Insert("SET"  , "all");
 
     CalendarsStructure.Insert("export", ExportStructure);
 

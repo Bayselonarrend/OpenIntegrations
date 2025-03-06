@@ -13,12 +13,12 @@
     Attachments.Insert("Image2", Image2);
 
     EventDescription = New Map;
-    EventDescription.Insert("Description"           , Description);
-    EventDescription.Insert("Title"                 , Name);
-    EventDescription.Insert("Venue"                 , "InOffice");
-    EventDescription.Insert("StartDate"             , CurrentDate);
-    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
-    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
-    EventDescription.Insert("SendNotifications"     , True);
+    EventDescription.Insert("Description"          , Description);
+    EventDescription.Insert("Title"                , Name);
+    EventDescription.Insert("Venue"                , "InOffice");
+    EventDescription.Insert("StartDate"            , CurrentDate);
+    EventDescription.Insert("EndDate"              , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs", Attachments);
+    EventDescription.Insert("SendNotifications"    , True);
 
     Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);

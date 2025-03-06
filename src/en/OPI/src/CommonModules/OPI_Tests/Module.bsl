@@ -53,7 +53,6 @@
 // #Use "../../../tools"
 // #Use "../../../core"
 // #Use asserts
-
 #Region Internal
 
 // For YAxUnit
@@ -68,7 +67,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-   Return OPI_TestDataRetrieval.FormAssertsTests();
+    Return OPI_TestDataRetrieval.FormAssertsTests();
 
 EndFunction
 
@@ -97,9 +96,9 @@ EndProcedure
 
 Procedure TelegramAPI_SetWebhook() Export
 
-     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_URL"  , TestParameters);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_URL"  , TestParameters);
 
     Telegram_SetWebhook(TestParameters);
     Telegram_DeleteWebhook(TestParameters);
@@ -124,11 +123,11 @@ EndProcedure
 Procedure TelegramAPI_SendImage() Export
 
     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
 
     Telegram_SendPicture(TestParameters);
     Telegram_ReplaceMessageCaption(TestParameters);
@@ -139,11 +138,11 @@ EndProcedure
 Procedure TelegramAPI_SendVideo() Export
 
     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
 
     Telegram_SendVideo(TestParameters);
     Telegram_DownloadFile(TestParameters);
@@ -258,9 +257,9 @@ EndProcedure
 Procedure TelegramAPI_BanUnban() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
 
     Telegram_Ban(TestParameters);
     Telegram_Unban(TestParameters);
@@ -328,7 +327,7 @@ EndProcedure
 
 Procedure TelegramAPI_HideShowMainTopic() Export
 
-     TestParameters = New Structure;
+    TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
@@ -339,7 +338,7 @@ EndProcedure
 
 Procedure TelegramAPI_ChangeMainTopicName() Export
 
-     TestParameters = New Structure;
+    TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
@@ -374,8 +373,8 @@ EndProcedure
 Procedure VKAPI_CreateCompositePost() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"  , TestParameters);
 
     VK_CreateCompositePost(TestParameters);
 
@@ -390,7 +389,7 @@ EndProcedure
 Procedure VKAPI_SaveDeleteImage() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     VK_CreateAlbum(TestParameters);
     VK_SavePictureToAlbum(TestParameters);
@@ -403,7 +402,7 @@ EndProcedure
 Procedure VKAPI_CreateStory() Export
 
     TestParameters = New Map;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     VK_CreateStory(TestParameters);
 
@@ -427,7 +426,7 @@ EndProcedure
 
 Procedure VKAPI_LikeRepostComment() Export
 
-    TestParameters = New Structure();
+    TestParameters = New Structure;
     Parameters     = GetVKParameters();
     Text           = "Post from autotest";
 
@@ -451,7 +450,7 @@ EndProcedure
 
 Procedure VKAPI_GetStatistics() Export
 
-    TestParameters = New Structure();
+    TestParameters = New Structure;
 
     VK_GetStatistics(TestParameters);
 
@@ -461,7 +460,7 @@ EndProcedure
 
 Procedure VKAPI_GetPostStatistics() Export
 
-    TestParameters = New Structure();
+    TestParameters = New Structure;
 
     VK_GetPostStatistics(TestParameters);
 
@@ -479,7 +478,7 @@ Procedure VKAPI_CreateAdCampaign() Export
 
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
 
-    TestParameters = New Structure();
+    TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("VK_AdsCabinetID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VK_PostID"      , TestParameters);
 
@@ -991,7 +990,7 @@ EndProcedure
 Procedure GT_FillClearCells() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
     GoogleSheets_CreateSpreadsheet(TestParameters);
     GoogleSheets_SetCellValues(TestParameters);
@@ -1129,8 +1128,8 @@ EndProcedure
 Procedure Slack_CreateArchiveChannel() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User" , TestParameters);
 
     Slack_CreateChannel(TestParameters);
     Slack_SetChannelTopic(TestParameters);
@@ -1151,8 +1150,8 @@ EndProcedure
 Procedure Slack_OpenCloseDialog() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User" , TestParameters);
 
     Slack_OpenDialog(TestParameters);
     Slack_CloseDialog(TestParameters);
@@ -1801,9 +1800,9 @@ EndProcedure
 Procedure B24_CalendarsManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
 
     Bitrix24_CreateCalendar(TestParameters);
     Bitrix24_UpdateCalendar(TestParameters);
@@ -1873,10 +1872,10 @@ EndProcedure
 Procedure VKT_ChatManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture3"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture3"       , TestParameters);
 
     VKTeams_RemoveChatMembers(TestParameters);
     VKTeams_ChangeChatPicture(TestParameters);
@@ -1902,8 +1901,8 @@ EndProcedure
 Procedure OzonAPI_AttributesAndFeatures() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
 
     Ozon_GetCategoriesAndProductTypesTree(TestParameters);
     Ozon_GetCategoryAttributes(TestParameters);
@@ -1916,10 +1915,10 @@ EndProcedure
 Procedure OzonAPI_UploadingAndUpdatingProducts() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
 
     Ozon_GetProductStructure(TestParameters);
     Ozon_CreateUpdateProducts(TestParameters);
@@ -1983,8 +1982,8 @@ EndProcedure
 Procedure OzonAPI_WarehousesManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
 
     Ozon_GetWarehousesList(TestParameters);
 
@@ -1993,8 +1992,8 @@ EndProcedure
 Procedure OzonAPI_PromotionsManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
 
     Ozon_GetPromotionsList(TestParameters);
     Ozon_GetCurrentPromoProducts(TestParameters);
@@ -2005,8 +2004,8 @@ EndProcedure
 Procedure OzonAPI_FBOScheme() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
 
     Ozon_GetClustersList(TestParameters);
     Ozon_GetShippingWarehousesList(TestParameters);
@@ -2026,10 +2025,10 @@ EndProcedure
 Procedure NC_FilesManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("NC_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Gif"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("NC_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Gif"     , TestParameters);
 
     Neocities_UploadFile(TestParameters);
     Neocities_UploadFiles(TestParameters);
@@ -2058,8 +2057,8 @@ EndProcedure
 Procedure CdekAPI_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Account"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Account" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password", TestParameters);
 
     CDEK_GetToken(TestParameters);
     CDEK_GetCashboxChecksByDate(TestParameters);
@@ -2104,7 +2103,7 @@ EndProcedure
 Procedure CdekAPI_CourierInvitationsManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
 
     CDEK_CreateOrder(TestParameters);
 
@@ -2281,7 +2280,7 @@ Procedure SQLL_CommonMethods() Export
     SQLite_ConnectExtension(TestParameters);
 
     Try
-       DeleteFiles(Base);
+        DeleteFiles(Base);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
@@ -2323,7 +2322,7 @@ Procedure SQLL_ORM() Export
     SQLite_GetRecordsFilterStrucutre(TestParameters);
 
     Try
-       DeleteFiles(Base);
+        DeleteFiles(Base);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
@@ -2406,12 +2405,16 @@ Procedure GAPI_GroupManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     GreenAPI_CreateGroup(TestParameters);
     GreenAPI_GetGroupInformation(TestParameters);
     GreenAPI_UpdateGroupName(TestParameters);
+    GreenAPI_SetGroupPicture(TestParameters);
     GreenAPI_AddGroupMember(TestParameters);
     GreenAPI_ExcludeGroupMember(TestParameters);
+    GreenAPI_SetAdminRights(TestParameters);
+    GreenAPI_RevokeAdminRights(TestParameters);
     GreenAPI_LeaveGroup(TestParameters);
 
 EndProcedure
@@ -2429,10 +2432,10 @@ Function GetVKParameters()
     Parameters  = New Structure;
     GroupNumber = OPI_TestDataRetrieval.GetParameter("VK_GroupID");
 
-    Parameters.Insert("access_token" , OPI_TestDataRetrieval.GetParameter("VK_Token"));
-    Parameters.Insert("owner_id"     , "-" + GroupNumber);
-    Parameters.Insert("app_id"       , OPI_TestDataRetrieval.GetParameter("VK_AppID"));
-    Parameters.Insert("group_id"     , GroupNumber);
+    Parameters.Insert("access_token", OPI_TestDataRetrieval.GetParameter("VK_Token"));
+    Parameters.Insert("owner_id"    , "-" + GroupNumber);
+    Parameters.Insert("app_id"      , OPI_TestDataRetrieval.GetParameter("VK_AppID"));
+    Parameters.Insert("group_id"    , GroupNumber);
 
     Return Parameters;
 
@@ -2442,18 +2445,17 @@ Function GetTwitterAuthData()
 
     Parameters = New Map;
 
-    Parameters.Insert("redirect_uri"       , OPI_TestDataRetrieval.GetParameter("Twitter_Redirect"));
-    Parameters.Insert("client_id"          , OPI_TestDataRetrieval.GetParameter("Twitter_ClinetID"));
-    Parameters.Insert("client_secret"      , OPI_TestDataRetrieval.GetParameter("Twitter_ClientSecret"));
-    Parameters.Insert("access_token"       , OPI_TestDataRetrieval.GetParameter("Twitter_Token"));
-    Parameters.Insert("refresh_token"      , OPI_TestDataRetrieval.GetParameter("Twitter_Refresh"));
-    Parameters.Insert("oauth_token"        , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthToken"));
-    Parameters.Insert("oauth_token_secret" , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthSecret"));
+    Parameters.Insert("redirect_uri"      , OPI_TestDataRetrieval.GetParameter("Twitter_Redirect"));
+    Parameters.Insert("client_id"         , OPI_TestDataRetrieval.GetParameter("Twitter_ClinetID"));
+    Parameters.Insert("client_secret"     , OPI_TestDataRetrieval.GetParameter("Twitter_ClientSecret"));
+    Parameters.Insert("access_token"      , OPI_TestDataRetrieval.GetParameter("Twitter_Token"));
+    Parameters.Insert("refresh_token"     , OPI_TestDataRetrieval.GetParameter("Twitter_Refresh"));
+    Parameters.Insert("oauth_token"       , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthToken"));
+    Parameters.Insert("oauth_token_secret", OPI_TestDataRetrieval.GetParameter("Twitter_OAuthSecret"));
 
-    Parameters.Insert("oauth_consumer_key"
-        , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthConsumerKey"));
-    Parameters.Insert("oauth_consumer_secret"
-        , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthConsumerSecret"));
+    Parameters.Insert("oauth_consumer_key"   , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthConsumerKey"));
+    Parameters.Insert("oauth_consumer_secret", OPI_TestDataRetrieval.GetParameter(
+        "Twitter_OAuthConsumerSecret"));
 
     Return Parameters;
 
@@ -2925,7 +2927,7 @@ Procedure Telegram_SendContact(FunctionParameters)
     LastName  = FunctionParameters["Surname"];
     Phone     = FunctionParameters["Phone"];
 
-    Result = OPI_Telegram.SendContact(Token, ChatID , Name, LastName, Phone);
+    Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "Telegram");
 
@@ -2957,7 +2959,7 @@ Procedure Telegram_SendPoll(FunctionParameters)
     AnswersArray.Add("Green");
     AnswersArray.Add("Blue");
 
-    Result = OPI_Telegram.SendPoll(Token, ChatID , Question, AnswersArray, False);
+    Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "Telegram");
 
@@ -3452,7 +3454,7 @@ Procedure VK_CreatePost(FunctionParameters)
     PostID = Result["response"]["post_id"]; // SKIP
     Result = OPI_VK.DeletePost(PostID, Parameters); // SKIP
 
-    Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);
+    Result = OPI_VK.CreatePost(Text, Image, False, , Parameters);
 
     // END
 
@@ -3465,7 +3467,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     OPI_Tools.Pause(5);
 
-    Result = OPI_VK.CreatePost(Text, TFN , True, URL, Parameters);
+    Result = OPI_VK.CreatePost(Text, TFN, True, URL, Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (one path)");
 
@@ -3660,7 +3662,7 @@ Procedure VK_CreateStory(FunctionParameters)
     FileCopy(Image, TFN);
     Image = New BinaryData(TFN);
 
-    Result = OPI_VK.CreateStory(Image , URL, Parameters);
+    Result = OPI_VK.CreateStory(Image, URL, Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateStory", "VK");
 
@@ -3877,12 +3879,8 @@ Procedure VK_CreateAd(FunctionParameters)
     PostID         = FunctionParameters["VK_PostID"];
     AccountID      = FunctionParameters["VK_AdsCabinetID"];
 
-    Result = OPI_VK.CreateAd(CampaignNumber
-        , DailyLimit
-        , CategoryNumber
-        , PostID
-        , AccountID
-        , Parameters);
+    Result = OPI_VK.CreateAd(CampaignNumber, DailyLimit, CategoryNumber, PostID, AccountID,
+        Parameters);
 
     // END
 
@@ -3973,11 +3971,7 @@ Procedure VK_CreateProductCollection(FunctionParameters)
     Main   = True;
     Hidden = False;
 
-    Result = OPI_VK.CreateProductCollection(Name
-        , Image
-        , Main
-        , Hidden
-        , Parameters);
+    Result = OPI_VK.CreateProductCollection(Name, Image, Main, Hidden, Parameters);
 
     // END
 
@@ -4035,22 +4029,22 @@ Procedure VK_AddProduct(FunctionParameters)
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    ProductDescription = New Map();
-    ProductDescription.Insert("Name"             , "TestProduct");
-    ProductDescription.Insert("Description"      , "Product description");
-    ProductDescription.Insert("Category"         , "20173");
-    ProductDescription.Insert("Price"            , 1);
-    ProductDescription.Insert("OldPrice"         , 15);
-    ProductDescription.Insert("MainPhoto"        , Image1);
-    ProductDescription.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
-    ProductDescription.Insert("AdditionalPhotos" , ImageArray);
-    ProductDescription.Insert("MainInGroup"      , True);
-    ProductDescription.Insert("Width"            , 20);
-    ProductDescription.Insert("Height"           , 30);
-    ProductDescription.Insert("Depth"            , 40);
-    ProductDescription.Insert("Weight"           , 100);
-    ProductDescription.Insert("SKU"              , "12345");
-    ProductDescription.Insert("AvailableBalance" , "10");
+    ProductDescription = New Map;
+    ProductDescription.Insert("Name"            , "TestProduct");
+    ProductDescription.Insert("Description"     , "Product description");
+    ProductDescription.Insert("Category"        , "20173");
+    ProductDescription.Insert("Price"           , 1);
+    ProductDescription.Insert("OldPrice"        , 15);
+    ProductDescription.Insert("MainPhoto"       , Image1);
+    ProductDescription.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
+    ProductDescription.Insert("AdditionalPhotos", ImageArray);
+    ProductDescription.Insert("MainInGroup"     , True);
+    ProductDescription.Insert("Width"           , 20);
+    ProductDescription.Insert("Height"          , 30);
+    ProductDescription.Insert("Depth"           , 40);
+    ProductDescription.Insert("Weight"          , 100);
+    ProductDescription.Insert("SKU"             , "12345");
+    ProductDescription.Insert("AvailableBalance", "10");
 
     Result = OPI_VK.AddProduct(ProductDescription, Selection, Parameters);
 
@@ -4243,10 +4237,7 @@ Procedure VK_EditProductPropertyVariant(FunctionParameters)
     Option   = FunctionParameters["VK_PropVarID1"];
     Value    = "New variant name";
 
-    Result = OPI_VK.EditProductPropertyVariant(Value
-            , Property
-            , Option
-            , Parameters);
+    Result = OPI_VK.EditProductPropertyVariant(Value, Property, Option, Parameters);
 
     // END
 
@@ -4269,24 +4260,24 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Product = New Map();
-    Product.Insert("Name"             , "Test product (with prop)");
-    Product.Insert("Description"      , "Product description");
-    Product.Insert("Category"         , "20173");
-    Product.Insert("Price"            , 1);
-    Product.Insert("OldPrice"         , 15);
-    Product.Insert("MainPhoto"        , Image1);
-    Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
-    Product.Insert("AdditionalPhotos" , ImageArray);
-    Product.Insert("MainInGroup"      , True);
-    Product.Insert("GroupNumber"      , Undefined);
-    Product.Insert("Width"            , 20);
-    Product.Insert("Height"           , 30);
-    Product.Insert("Depth"            , 40);
-    Product.Insert("Weight"           , 100);
-    Product.Insert("SKU"              , 12345);
-    Product.Insert("AvailableBalance" , "10");
-    Product.Insert("PropertyValues"   , PropVariant1);
+    Product = New Map;
+    Product.Insert("Name"            , "Test product (with prop)");
+    Product.Insert("Description"     , "Product description");
+    Product.Insert("Category"        , "20173");
+    Product.Insert("Price"           , 1);
+    Product.Insert("OldPrice"        , 15);
+    Product.Insert("MainPhoto"       , Image1);
+    Product.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
+    Product.Insert("AdditionalPhotos", ImageArray);
+    Product.Insert("MainInGroup"     , True);
+    Product.Insert("GroupNumber"     , Undefined);
+    Product.Insert("Width"           , 20);
+    Product.Insert("Height"          , 30);
+    Product.Insert("Depth"           , 40);
+    Product.Insert("Weight"          , 100);
+    Product.Insert("SKU"             , 12345);
+    Product.Insert("AvailableBalance", "10");
+    Product.Insert("PropertyValues"  , PropVariant1);
 
     Result = OPI_VK.AddProduct(Product, , Parameters);
 
@@ -4398,7 +4389,7 @@ EndProcedure
 Procedure VK_GetProductList(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Result     = OPI_VK.GetProductList(, Parameters);
+    Result     = OPI_VK.GetProductList( , Parameters);
 
     // END
 
@@ -5148,8 +5139,7 @@ Procedure GoogleWorkspace_GetTokenByCode(FunctionParameters)
 
     // END
 
-    If ValueIsFilled(Result["access_token"])
-        And ValueIsFilled(Result["refresh_token"]) Then
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
 
         OPI_TestDataRetrieval.WriteParameter("Google_Token"  , Result["access_token"]);
         OPI_TestDataRetrieval.WriteParameter("Google_Refresh", Result["refresh_token"]);
@@ -5277,11 +5267,7 @@ Procedure GoogleCalendar_EditListCalendar(FunctionParameters)
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Result = OPI_GoogleCalendar.EditListCalendar(Token
-        , Calendar
-        , PrimaryColor
-        , SecondaryColor
-        , Hidden);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, Hidden);
 
     // END
 
@@ -5366,13 +5352,13 @@ Procedure GoogleCalendar_CreateEvent(FunctionParameters)
     Attachments.Insert("Image2", Image2);
 
     EventDescription = New Map;
-    EventDescription.Insert("Description"           , Description);
-    EventDescription.Insert("Title"                 , Name);
-    EventDescription.Insert("Venue"                 , "InOffice");
-    EventDescription.Insert("StartDate"             , CurrentDate);
-    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
-    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
-    EventDescription.Insert("SendNotifications"     , True);
+    EventDescription.Insert("Description"          , Description);
+    EventDescription.Insert("Title"                , Name);
+    EventDescription.Insert("Venue"                , "InOffice");
+    EventDescription.Insert("StartDate"            , CurrentDate);
+    EventDescription.Insert("EndDate"              , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs", Attachments);
+    EventDescription.Insert("SendNotifications"    , True);
 
     Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);
 
@@ -7048,7 +7034,7 @@ Procedure Twitter_RefreshToken(FunctionParameters)
     EndIf;
 
     If ValueIsFilled(Token) And Not Token = "null" Then
-        OPI_TestDataRetrieval.WriteParameter("Twitter_Token" , Token);
+        OPI_TestDataRetrieval.WriteParameter("Twitter_Token", Token);
     EndIf;
 
     OPI_Tools.Pause(5);
@@ -7220,7 +7206,7 @@ Procedure Twitter_CreateCustomTweet(FunctionParameters)
     Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
     Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
 
-    ImageArray = New Array();
+    ImageArray = New Array;
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
@@ -7243,7 +7229,7 @@ Procedure Twitter_UploadAttachmentsArray(FunctionParameters)
     Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
     Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
 
-    ImageArray = New Array();
+    ImageArray = New Array;
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
@@ -7286,22 +7272,22 @@ Procedure Notion_CreateDatabase(FunctionParameters)
     Title  = "TestTitle";
 
     Properties = New Map;
-    Properties.Insert("Name"         , "title");
-    Properties.Insert("Description"  , "rich_text");
-    Properties.Insert("Number"       , "number");
-    Properties.Insert("Status"       , "status");
-    Properties.Insert("CreationDate" , "date");
-    Properties.Insert("Image"        , "files");
-    Properties.Insert("Active"       , "checkbox");
-    Properties.Insert("Website"      , "url");
-    Properties.Insert("Email"        , "email");
-    Properties.Insert("Phone"        , "phone_number");
-    Properties.Insert("User"         , "people");
+    Properties.Insert("Name"        , "title");
+    Properties.Insert("Description" , "rich_text");
+    Properties.Insert("Number"      , "number");
+    Properties.Insert("Status"      , "status");
+    Properties.Insert("CreationDate", "date");
+    Properties.Insert("Image"       , "files");
+    Properties.Insert("Active"      , "checkbox");
+    Properties.Insert("Website"     , "url");
+    Properties.Insert("Email"       , "email");
+    Properties.Insert("Phone"       , "phone_number");
+    Properties.Insert("User"        , "people");
 
     ValueSelection = New Map;
-    ValueSelection.Insert("New"        , "green");
-    ValueSelection.Insert("InProgress" , "yellow");
-    ValueSelection.Insert("Remote"     , "red");
+    ValueSelection.Insert("New"       , "green");
+    ValueSelection.Insert("InProgress", "yellow");
+    ValueSelection.Insert("Remote"    , "red");
 
     Properties.Insert("Status", ValueSelection);
 
@@ -7377,17 +7363,17 @@ Procedure Notion_CreatePageInDatabase(FunctionParameters)
     Image.Insert("Logo", Image_);
 
     Properties = New Map;
-    Properties.Insert("Name"         , "LLC Vector");
-    Properties.Insert("Description"  , "OurFirstClient");
-    Properties.Insert("Number"       , 1);
-    Properties.Insert("Status"       , "Regular");
-    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
-    Properties.Insert("Image"        , Image);
-    Properties.Insert("Active"       , True);
-    Properties.Insert("Website"      , "https://vector.ru");
-    Properties.Insert("Email"        , "mail@vector.ru");
-    Properties.Insert("Phone"        , "88005553535");
-    Properties.Insert("Status"       , "New");
+    Properties.Insert("Name"        , "LLC Vector");
+    Properties.Insert("Description" , "OurFirstClient");
+    Properties.Insert("Number"      , 1);
+    Properties.Insert("Status"      , "Regular");
+    Properties.Insert("CreationDate", OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"       , Image);
+    Properties.Insert("Active"      , True);
+    Properties.Insert("Website"     , "https://vector.ru");
+    Properties.Insert("Email"       , "mail@vector.ru");
+    Properties.Insert("Phone"       , "88005553535");
+    Properties.Insert("Status"      , "New");
 
     Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 
@@ -7407,15 +7393,10 @@ Procedure Notion_EditPageProperties(FunctionParameters)
     Archive = False;
 
     Properties = New Map;
-    Properties.Insert("Active" , False);
-    Properties.Insert("Email"  , "vector@mail.ru");
+    Properties.Insert("Active", False);
+    Properties.Insert("Email" , "vector@mail.ru");
 
-    Result = OPI_Notion.EditPageProperties(Token
-        , Page
-        , Properties
-        , Icon
-        , Cover
-        , Archive);
+    Result = OPI_Notion.EditPageProperties(Token, Page, Properties, Icon, Cover, Archive);
 
     // END
 
@@ -7824,14 +7805,14 @@ Procedure Dropbox_GetObjectVersionList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetObjectVersionList", "Dropbox");
 
-   OPI_TestDataRetrieval.Check_DropboxArray(Result, 1);
+    OPI_TestDataRetrieval.Check_DropboxArray(Result, 1);
 
-   Revision = Result["entries"][0]["rev"];
+    Revision = Result["entries"][0]["rev"];
 
-   FunctionParameters.Insert("Dropbox_FileRevision", Revision);
-   OPI_TestDataRetrieval.WriteParameter("Dropbox_FileRevision", Revision);
+    FunctionParameters.Insert("Dropbox_FileRevision", Revision);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_FileRevision", Revision);
 
-   OPI_Tools.Pause(5);
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
@@ -7879,7 +7860,7 @@ Procedure Dropbox_GetTagList(FunctionParameters)
 
     For Each Tag In Result["paths_to_tags"][0]["tags"] Do
         If Tag["tag_text"] = "important" Then
-            HasTag         = True;
+            HasTag            = True;
         EndIf;
     EndDo;
 
@@ -8023,8 +8004,8 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
     JobID         = Result["async_job_id"];
 
     While CurrentStatus = "in_progress" Do
-        Result          = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
-        CurrentStatus   = Result[".tag"];
+        Result             = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+        CurrentStatus      = Result[".tag"];
         OPI_Tools.Pause(3);
     EndDo;
 
@@ -8858,7 +8839,7 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
 
     // Full filter structure you can find at GetTasksFilterStructure method
     Filter = New Map;
-    Filter.Insert("CREATED_BY" , 1); // Producer with ID 1
+    Filter.Insert("CREATED_BY", 1); // Producer with ID 1
     Filter.Insert("!RESPONSIBLE_ID", 10); // Performers with ID not equal to 10
     Filter.Insert(">=CREATED_DATE ", CurrentDate - 60 * 60 * 24); // Creation date >= yesterday
 
@@ -10352,13 +10333,8 @@ Procedure Bitrix24_AddTaskTimeAccounting(FunctionParameters)
     Time      = 7200;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
-        , TaskID
-        , Time
-        , UserID
-        , Text
-        , SetupDate
-        , Token);
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time, UserID, Text, SetupDate,
+        Token);
 
     // END
 
@@ -10395,13 +10371,7 @@ Procedure Bitrix24_UpdateTaskTimeAccounting(FunctionParameters)
     Time      = 4800;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL
-        , TaskID
-        , RecordID
-        , Time
-        , Text
-        , SetupDate
-        , Token);
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text, SetupDate, Token);
 
     // END
 
@@ -10547,9 +10517,9 @@ Procedure Bitrix24_CreateChat(FunctionParameters)
     Token = FunctionParameters["Bitrix24_Token"];
 
     ChatStructure = New Structure;
-    ChatStructure.Insert("TYPE"  , "CHAT");
-    ChatStructure.Insert("TITLE" , "Private chat");
-    ChatStructure.Insert("USERS" , MembersArray);
+    ChatStructure.Insert("TYPE" , "CHAT");
+    ChatStructure.Insert("TITLE", "Private chat");
+    ChatStructure.Insert("USERS", MembersArray);
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);
 
@@ -11029,8 +10999,8 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     File   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
 
     Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
 
@@ -11081,8 +11051,8 @@ Procedure Bitrix24_EditMessage(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 
@@ -11294,8 +11264,8 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
 
     Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, , Attachments);
 
@@ -11336,8 +11306,8 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
 
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, , Attachments);
 
@@ -11547,12 +11517,8 @@ Procedure Bitrix24_UpdateDepartment(FunctionParameters)
     ParentID     = 1;
     HeadID       = 10;
 
-    Result = OPI_Bitrix24.UpdateDepartment(URL
-        , DepartmentID
-        , Name
-        , ParentID
-        , HeadID
-        , Token);
+    Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, Name, ParentID, HeadID,
+        Token);
 
     // END
 
@@ -11727,10 +11693,10 @@ Procedure Bitrix24_UpdateUser(FunctionParameters)
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
-    UserStructure.Insert("EMAIL"         , Email);
-    UserStructure.Insert("NAME"          , "Oleg");
-    UserStructure.Insert("LAST_NAME"     , "Lama");
-    UserStructure.Insert("UF_DEPARTMENT" , 7);
+    UserStructure.Insert("EMAIL"        , Email);
+    UserStructure.Insert("NAME"         , "Oleg");
+    UserStructure.Insert("LAST_NAME"    , "Lama");
+    UserStructure.Insert("UF_DEPARTMENT", 7);
 
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure, Token);
 
@@ -11972,8 +11938,8 @@ Procedure Bitrix24_CreateLead(FunctionParameters)
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookLeadID", LeadID); // SKIP
     FunctionParameters.Insert("Bitrix24_HookLeadID", LeadID); // SKIP
 
-    FieldsStructure.Insert("NAME"      , "Ivan");
-    FieldsStructure.Insert("LAST_NAME" , "Ivanov");
+    FieldsStructure.Insert("NAME"     , "Ivan");
+    FieldsStructure.Insert("LAST_NAME", "Ivanov");
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -12008,8 +11974,8 @@ Procedure Bitrix24_UpdateLead(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_BitrixTrue(Result); // SKIP
 
-    FieldsStructure.Insert("NAME"      , "Evgeniy");
-    FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
+    FieldsStructure.Insert("NAME"     , "Evgeniy");
+    FieldsStructure.Insert("LAST_NAME", "Evgeniev");
 
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
@@ -12189,9 +12155,9 @@ EndProcedure
 Procedure Bitrix24_UpdateDeal(FunctionParameters)
 
     FieldsStructure = New Structure;
-    FieldsStructure.Insert("TITLE"       , "Sale in RUB");
-    FieldsStructure.Insert("CURRENCY_ID" , "RUB");
-    FieldsStructure.Insert("OPPORTUNITY" , 50000);
+    FieldsStructure.Insert("TITLE"      , "Sale in RUB");
+    FieldsStructure.Insert("CURRENCY_ID", "RUB");
+    FieldsStructure.Insert("OPPORTUNITY", 50000);
 
     URL    = FunctionParameters["Bitrix24_URL"];
     DealID = FunctionParameters["Bitrix24_HookDealID"];
@@ -12380,9 +12346,9 @@ Procedure Bitrix24_CreateCalendar(FunctionParameters)
     CalendarsStructure.Insert("color"      , "#FFFFFF");
     CalendarsStructure.Insert("text_color" , "#000000");
 
-        ExportStructure = New Structure;
-        ExportStructure.Insert("ALLOW", "True");
-        ExportStructure.Insert("SET"  , "all");
+    ExportStructure = New Structure;
+    ExportStructure.Insert("ALLOW", "True");
+    ExportStructure.Insert("SET"  , "all");
 
     CalendarsStructure.Insert("export", ExportStructure);
 
@@ -12548,7 +12514,8 @@ Procedure Bitrix24_GetCalednarCustomSettingsStructure(FunctionParameters)
     OPI_TestDataRetrieval.Check_Structure(Result);
 
     Result = OPI_Bitrix24.GetCalednarCustomSettingsStructure(True);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalednarCustomSettingsStructure)",
+        "Bitrix24");
 
     For Each Element In Result Do
 
@@ -12665,39 +12632,39 @@ Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
     EventStucture.Insert("importance"   , "normal");
     EventStucture.Insert("private_event", "Y");
 
-        RepeatabilityStructure = New Structure;
-        RepeatabilityStructure.Insert("FREQ"    , "DAILY");
-        RepeatabilityStructure.Insert("COUNT"   , 3);
-        RepeatabilityStructure.Insert("INTERVAL", 10);
+    RepeatabilityStructure = New Structure;
+    RepeatabilityStructure.Insert("FREQ"    , "DAILY");
+    RepeatabilityStructure.Insert("COUNT"   , 3);
+    RepeatabilityStructure.Insert("INTERVAL", 10);
 
-            DaysArray = New Array;
-            DaysArray.Add("SA");
-            DaysArray.Add("MO");
+    DaysArray = New Array;
+    DaysArray.Add("SA");
+    DaysArray.Add("MO");
 
-        RepeatabilityStructure.Insert("BYDAY" , DaysArray);
-        RepeatabilityStructure.Insert("UNTIL" , XMLString(Tomorrow + Hour * 24 * 10));
+    RepeatabilityStructure.Insert("BYDAY", DaysArray);
+    RepeatabilityStructure.Insert("UNTIL", XMLString(Tomorrow + Hour * 24 * 10));
 
     EventStucture.Insert("rrule"     , RepeatabilityStructure);
     EventStucture.Insert("is_meeting", "Y");
     EventStucture.Insert("location"  , "Office");
 
-        RemindersArray = New Array;
+    RemindersArray = New Array;
 
-            ReminderStructure = New Structure;
-            ReminderStructure.Insert("type" , "day");
-            ReminderStructure.Insert("count", 1);
+    ReminderStructure = New Structure;
+    ReminderStructure.Insert("type" , "day");
+    ReminderStructure.Insert("count", 1);
 
-        RemindersArray.Add(ReminderStructure);
+    RemindersArray.Add(ReminderStructure);
 
     EventStucture.Insert("remind"   , RemindersArray);
     EventStucture.Insert("attendees", StrSplit("1,10", ","));
     EventStucture.Insert("host"     , 1);
 
-        MeetingStructure = New Structure;
-        MeetingStructure.Insert("notify"      , "Y");
-        MeetingStructure.Insert("reinvite"    , "Y");
-        MeetingStructure.Insert("allow_invite", "N");
-        MeetingStructure.Insert("hide_guests" , "N");
+    MeetingStructure = New Structure;
+    MeetingStructure.Insert("notify"      , "Y");
+    MeetingStructure.Insert("reinvite"    , "Y");
+    MeetingStructure.Insert("allow_invite", "N");
+    MeetingStructure.Insert("hide_guests" , "N");
 
     EventStucture.Insert("meeting", MeetingStructure);
 
@@ -13189,7 +13156,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
     ChatID  = FunctionParameters["VkTeams_ChatID2"];
     ReplyID = FunctionParameters["VkTeams_MessageID"];
 
-    File     = FunctionParameters["Audio2"] ; // URL
+    File     = FunctionParameters["Audio2"]; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
     FileCopy(File, FilePath);
@@ -13653,12 +13620,8 @@ Procedure Ozon_SearchAttributeValue(FunctionParameters)
     AttributeID = 85;
     Value       = "Sunshine";
 
-    Result = OPI_Ozon.SearchAttributeValue(ClientID
-        , APIKey
-        , CategoryID
-        , TypeID
-        , AttributeID
-        , Value);
+    Result = OPI_Ozon.SearchAttributeValue(ClientID, APIKey, CategoryID, TypeID, AttributeID,
+        Value);
 
     // END
 
@@ -13717,9 +13680,10 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     // Attributes individualized for different categories
 
     CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
-    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
-    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "gray");
-    CategoryAttribute4 = New Structure("dictionary_value_id,value", 95911 , "Protective film set for X3 NFC. Dark cotton");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050, "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576, "gray");
+    CategoryAttribute4 = New Structure("dictionary_value_id,value", 95911,
+        "Protective film set for X3 NFC. Dark cotton");
 
     CategoryAttribute5 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
 
@@ -13831,8 +13795,8 @@ Procedure Ozon_CompleteComplexAttribute(FunctionParameters)
 
     CategoryAttribute2 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
 
-    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
-    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076, 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048, 0, CategoryAttribute2);
 
     // END
 
@@ -13938,8 +13902,8 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
     AttributesStructure = New Structure("offer_id", "143210609");
 
     CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
-    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
-    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "red");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050, "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576, "red");
 
     OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 5076 , 0, CategoryAttribute1);
     OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 85   , 0, CategoryAttribute2);
@@ -13998,8 +13962,8 @@ Procedure Ozon_GetProductList(FunctionParameters)
     IDArray.Add("1432106010");
 
     Filter = New Structure;
-    Filter.Insert("visibility" , "ALL");
-    Filter.Insert("offer_id"   , IDArray);
+    Filter.Insert("visibility", "ALL");
+    Filter.Insert("offer_id"  , IDArray);
 
     Result = OPI_Ozon.GetProductList(ClientID, APIKey, Filter);
 
@@ -14119,12 +14083,7 @@ Procedure Ozon_UpdateProductImages(FunctionParameters)
     ImagesArray.Add(Image1);
     ImagesArray.Add(Image2);
 
-    Result = OPI_Ozon.UpdateProductImages(ClientID
-        , APIKey
-        , ProductID
-        , ImagesArray
-        ,
-        , MarketingColor);
+    Result = OPI_Ozon.UpdateProductImages(ClientID, APIKey, ProductID, ImagesArray, , MarketingColor);
 
     // END
 
@@ -14385,8 +14344,8 @@ Procedure Ozon_GetProductsStocks(FunctionParameters)
     IDArray.Add("143210608");
 
     Filter = New Structure;
-    Filter.Insert("visibility" , "ALL");
-    Filter.Insert("offer_id"   , IDArray);
+    Filter.Insert("visibility", "ALL");
+    Filter.Insert("offer_id"  , IDArray);
 
     Result = OPI_Ozon.GetProductsStocks(ClientID, APIKey, Filter);
 
@@ -14893,64 +14852,64 @@ Procedure CDEK_CreateOrder(FunctionParameters)
 
     OrderDescription = New Structure;
 
-        SendLocation = New Structure;
-        SendLocation.Insert("code"   , "44");
-        SendLocation.Insert("city"   , "Moscow");
-        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+    SendLocation = New Structure;
+    SendLocation.Insert("code"   , "44");
+    SendLocation.Insert("city"   , "Moscow");
+    SendLocation.Insert("address", "Ave. Leningradsky, 4");
 
-        DestLocation = New Structure;
-        DestLocation.Insert("code"   , "270");
-        DestLocation.Insert("city"   , "Novosibirsk");
-        DestLocation.Insert("address", "st. Bluchera, 32");
+    DestLocation = New Structure;
+    DestLocation.Insert("code"   , "270");
+    DestLocation.Insert("city"   , "Novosibirsk");
+    DestLocation.Insert("address", "st. Bluchera, 32");
 
-        Recipient = New Structure;
+    Recipient = New Structure;
 
-            Phones = New Array;
-            Phones.Add(New Structure("number", "+79134637228"));
+    Phones = New Array;
+    Phones.Add(New Structure("number", "+79134637228"));
 
-        Recipient.Insert("phones", Phones);
-        Recipient.Insert("name"  , "Ivaniv Ivan");
+    Recipient.Insert("phones", Phones);
+    Recipient.Insert("name"  , "Ivaniv Ivan");
 
-        Sender = New Structure("name", "Petrov Petr");
+    Sender = New Structure("name", "Petrov Petr");
 
-        Services = New Array;
+    Services = New Array;
 
-            Service = New Structure;
-            Service.Insert("code"     , "SECURE_PACKAGE_A2");
-            Service.Insert("parameter", 10);
+    Service = New Structure;
+    Service.Insert("code"     , "SECURE_PACKAGE_A2");
+    Service.Insert("parameter", 10);
 
-        Services.Add(Service);
+    Services.Add(Service);
 
-        Packages = New Array;
+    Packages = New Array;
 
-            Package = New Structure;
+    Package = New Structure;
 
-                Items = New Array;
+    Items = New Array;
 
-                    Item = New Structure;
+    Item = New Structure;
 
-                        Payment = New Structure;
-                        Payment.Insert("value", 3000);
+    Payment = New Structure;
+    Payment.Insert("value", 3000);
 
-                    Item.Insert("payment" , Payment);
-                    Item.Insert("ware_key", "00055");
-                    Item.Insert("name"    , "Product");
-                    Item.Insert("cost"    , 300);
-                    Item.Insert("amount"  , 2);
-                    Item.Insert("weight"  , 700);
-                    Item.Insert("url"     , "www.item.ru");
+    Item.Insert("payment" , Payment);
+    Item.Insert("ware_key", "00055");
+    Item.Insert("name"    , "Product");
+    Item.Insert("cost"    , 300);
+    Item.Insert("amount"  , 2);
+    Item.Insert("weight"  , 700);
+    Item.Insert("url"     , "www.item.ru");
 
-                Items.Add(Item);
+    Items.Add(Item);
 
-            Package.Insert("items"  , Items);
-            Package.Insert("number" , "bar-001");
-            Package.Insert("comment", "Packaging");
-            Package.Insert("height" , 10);
-            Package.Insert("length" , 10);
-            Package.Insert("weight" , "4000");
-            Package.Insert("width"  , 10);
+    Package.Insert("items"  , Items);
+    Package.Insert("number" , "bar-001");
+    Package.Insert("comment", "Packaging");
+    Package.Insert("height" , 10);
+    Package.Insert("length" , 10);
+    Package.Insert("weight" , "4000");
+    Package.Insert("width"  , 10);
 
-        Packages.Add(Package);
+    Packages.Add(Package);
 
     OrderDescription.Insert("from_location", SendLocation);
     OrderDescription.Insert("to_location"  , DestLocation);
@@ -15103,30 +15062,30 @@ Procedure CDEK_CreateCourierInvitation(FunctionParameters)
     InvitationDescription.Insert("comment"         , "Comment to courier");
     InvitationDescription.Insert("need_call"       , False);
 
-        Sender = New Structure;
-        Sender.Insert("company", "Company");
-        Sender.Insert("name"   , "Ivaniv Ivan");
+    Sender = New Structure;
+    Sender.Insert("company", "Company");
+    Sender.Insert("name"   , "Ivaniv Ivan");
 
-            Phones = New Array;
-            Phone  = New Structure("number", "+79589441654");
-            Phones.Add(Phone);
+    Phones = New Array;
+    Phone  = New Structure("number", "+79589441654");
+    Phones.Add(Phone);
 
-        Sender.Insert("phones", Phones);
+    Sender.Insert("phones", Phones);
 
     InvitationDescription.Insert("sender", Sender);
 
-        ShippingPoint = New Structure;
-        ShippingPoint.Insert("code"        , "44");
-        ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
-        ShippingPoint.Insert("postal_code" , "109004");
-        ShippingPoint.Insert("longitude"   , 37.6204);
-        ShippingPoint.Insert("latitude"    , 55.754);
-        ShippingPoint.Insert("country_code", "RU");
-        ShippingPoint.Insert("region"      , "Moscow");
-        ShippingPoint.Insert("sub_region"  , "Moscow");
-        ShippingPoint.Insert("city"        , "Moscow");
-        ShippingPoint.Insert("kladr_code"  , "7700000000000");
-        ShippingPoint.Insert("address"     , "st. Bluchera, 32");
+    ShippingPoint = New Structure;
+    ShippingPoint.Insert("code"        , "44");
+    ShippingPoint.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+    ShippingPoint.Insert("postal_code" , "109004");
+    ShippingPoint.Insert("longitude"   , 37.6204);
+    ShippingPoint.Insert("latitude"    , 55.754);
+    ShippingPoint.Insert("country_code", "RU");
+    ShippingPoint.Insert("region"      , "Moscow");
+    ShippingPoint.Insert("sub_region"  , "Moscow");
+    ShippingPoint.Insert("city"        , "Moscow");
+    ShippingPoint.Insert("kladr_code"  , "7700000000000");
+    ShippingPoint.Insert("address"     , "st. Bluchera, 32");
 
     InvitationDescription.Insert("from_location", ShippingPoint);
 
@@ -15309,18 +15268,18 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
     Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
 
-        DeliveryLocation = New Structure;
-        DeliveryLocation.Insert("code"        , "270");
-        DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
-        DeliveryLocation.Insert("postal_code" , "109004");
-        DeliveryLocation.Insert("longitude"   , 37.6204);
-        DeliveryLocation.Insert("latitude"    , 55.754);
-        DeliveryLocation.Insert("country_code", "RU");
-        DeliveryLocation.Insert("region"      , "Novosibirsk");
-        DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
-        DeliveryLocation.Insert("city"        , "Novosibirsk");
-        DeliveryLocation.Insert("kladr_code"  , "7700000000000");
-        DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
+    DeliveryLocation = New Structure;
+    DeliveryLocation.Insert("code"        , "270");
+    DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+    DeliveryLocation.Insert("postal_code" , "109004");
+    DeliveryLocation.Insert("longitude"   , 37.6204);
+    DeliveryLocation.Insert("latitude"    , 55.754);
+    DeliveryLocation.Insert("country_code", "RU");
+    DeliveryLocation.Insert("region"      , "Novosibirsk");
+    DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
+    DeliveryLocation.Insert("city"        , "Novosibirsk");
+    DeliveryLocation.Insert("kladr_code"  , "7700000000000");
+    DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
 
     Appointment.Insert("to_location", DeliveryLocation);
 
@@ -15597,43 +15556,43 @@ Procedure YandexMetrika_CreateCounter(FunctionParameters)
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", True);
 
-        CodeSettingsStructure = New Structure;
-        CodeSettingsStructure.Insert("async"          , 0);
-        CodeSettingsStructure.Insert("clickmap"       , 1);
-        CodeSettingsStructure.Insert("ecommerce"      , 1);
-        CodeSettingsStructure.Insert("in_one_line"    , 0);
-        CodeSettingsStructure.Insert("track_hash"     , 1);
-        CodeSettingsStructure.Insert("visor"          , 1);
-        CodeSettingsStructure.Insert("xml_site"       , 0);
-        CodeSettingsStructure.Insert("ytm"            , 0);
-        CodeSettingsStructure.Insert("alternative_cdn", 1);
+    CodeSettingsStructure = New Structure;
+    CodeSettingsStructure.Insert("async"          , 0);
+    CodeSettingsStructure.Insert("clickmap"       , 1);
+    CodeSettingsStructure.Insert("ecommerce"      , 1);
+    CodeSettingsStructure.Insert("in_one_line"    , 0);
+    CodeSettingsStructure.Insert("track_hash"     , 1);
+    CodeSettingsStructure.Insert("visor"          , 1);
+    CodeSettingsStructure.Insert("xml_site"       , 0);
+    CodeSettingsStructure.Insert("ytm"            , 0);
+    CodeSettingsStructure.Insert("alternative_cdn", 1);
 
-            InformerStructure = New Structure;
-            InformerStructure.Insert("color_arrow", 1);
-            InformerStructure.Insert("color_end"  , "EFEFEFFE");
-            InformerStructure.Insert("color_start", "EEEEEEEE");
-            InformerStructure.Insert("color_text" , 0);
-            InformerStructure.Insert("enabled"    , 1);
-            InformerStructure.Insert("indicator"  , "uniques");
-            InformerStructure.Insert("size"       , 2);
-            InformerStructure.Insert("type"       , "ext");
+    InformerStructure = New Structure;
+    InformerStructure.Insert("color_arrow", 1);
+    InformerStructure.Insert("color_end"  , "EFEFEFFE");
+    InformerStructure.Insert("color_start", "EEEEEEEE");
+    InformerStructure.Insert("color_text" , 0);
+    InformerStructure.Insert("enabled"    , 1);
+    InformerStructure.Insert("indicator"  , "uniques");
+    InformerStructure.Insert("size"       , 2);
+    InformerStructure.Insert("type"       , "ext");
 
-        CodeSettingsStructure.Insert("informer", InformerStructure);
+    CodeSettingsStructure.Insert("informer", InformerStructure);
 
     CounterStructure.Insert("code_options", CodeSettingsStructure);
 
-        FlagsStructure = New Structure;
-        FlagsStructure.Insert("collect_first_party_data"             , True);
-        FlagsStructure.Insert("measurement_enabled"                  , True);
-        FlagsStructure.Insert("use_in_benchmarks"                    , True);
-        FlagsStructure.Insert("direct_allow_use_goals_without_access", True);
+    FlagsStructure = New Structure;
+    FlagsStructure.Insert("collect_first_party_data"             , True);
+    FlagsStructure.Insert("measurement_enabled"                  , True);
+    FlagsStructure.Insert("use_in_benchmarks"                    , True);
+    FlagsStructure.Insert("direct_allow_use_goals_without_access", True);
 
     CounterStructure.Insert("counter_flags"          , FlagsStructure);
     CounterStructure.Insert("favorite"               , 1);
     CounterStructure.Insert("filter_robots"          , 2);
     CounterStructure.Insert("gdpr_agreement_accepted", 1);
 
-        DomainStructure = New Structure("site", "openintegrations.dev");
+    DomainStructure = New Structure("site", "openintegrations.dev");
 
     CounterStructure.Insert("site2", DomainStructure);
 
@@ -15672,15 +15631,15 @@ Procedure YandexMetrika_UpdateCounter(FunctionParameters)
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", True);
 
-        FlagsStructure = New Structure;
-        FlagsStructure.Insert("collect_first_party_data"             , False);
-        FlagsStructure.Insert("measurement_enabled"                  , False);
-        FlagsStructure.Insert("use_in_benchmarks"                    , False);
-        FlagsStructure.Insert("direct_allow_use_goals_without_access", False);
+    FlagsStructure = New Structure;
+    FlagsStructure.Insert("collect_first_party_data"             , False);
+    FlagsStructure.Insert("measurement_enabled"                  , False);
+    FlagsStructure.Insert("use_in_benchmarks"                    , False);
+    FlagsStructure.Insert("direct_allow_use_goals_without_access", False);
 
-    CounterStructure.Insert("counter_flags" , FlagsStructure);
-    CounterStructure.Insert("favorite"      , 0);
-    CounterStructure.Insert("filter_robots" , 1);
+    CounterStructure.Insert("counter_flags", FlagsStructure);
+    CounterStructure.Insert("favorite"     , 0);
+    CounterStructure.Insert("filter_robots", 1);
 
     Result = OPI_YandexMetrika.UpdateCounter(Token, CounterID, CounterStructure);
 
@@ -15968,12 +15927,12 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Name      = "opi-newbucket2";
     XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
-    | <Rule>
-    | <ApplyServerSideEncryptionByDefault>
-    | <SSEAlgorithm>AES256</SSEAlgorithm>
-    | </ApplyServerSideEncryptionByDefault>
-    | </Rule>
-    |</ServerSideEncryptionConfiguration>";
+                      | <Rule>
+                      | <ApplyServerSideEncryptionByDefault>
+                      | <SSEAlgorithm>AES256</SSEAlgorithm>
+                      | </ApplyServerSideEncryptionByDefault>
+                      | </Rule>
+                      |</ServerSideEncryptionConfiguration>";
 
     Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig);
 
@@ -16471,12 +16430,8 @@ Procedure S3_InitPartsUpload(FunctionParameters)
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart (IPU)", "S3"); // SKIP
         OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
@@ -16542,12 +16497,8 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         OPI_TestDataRetrieval.WriteLog(Result, "UploadObjectPart (FPU)", "S3"); // SKIP
         OPI_TestDataRetrieval.Check_S3Success(Result); // SKIP
@@ -16614,12 +16565,8 @@ Procedure S3_UploadObjectPart(FunctionParameters)
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -16944,7 +16891,7 @@ Procedure SQLite_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
 
     Try
-       DeleteFiles(TFN);
+        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
@@ -16968,7 +16915,7 @@ Procedure SQLite_CloseConnection(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
 
     Try
-       DeleteFiles(TFN);
+        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
@@ -16990,15 +16937,15 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     // CREATE
 
     QueryText = "
-    |CREATE TABLE test_table (
-    |id INTEGER PRIMARY KEY,
-    |name TEXT,
-    |age INTEGER,
-    |salary REAL,
-    |is_active BOOLEAN,
-    |created_at DATETIME,
-    |data BLOB
-    |);";
+                   |CREATE TABLE test_table (
+                   |id INTEGER PRIMARY KEY,
+                   |name TEXT,
+                   |age INTEGER,
+                   |salary REAL,
+                   |is_active BOOLEAN,
+                   |created_at DATETIME,
+                   |data BLOB
+                   |);";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -17008,8 +16955,8 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     // INSERT with parameters
 
     QueryText = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
 
     ParameterArray = New Array;
     ParameterArray.Add("Vitaly"); // TEXT
@@ -17040,15 +16987,15 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     // Transaction
 
     QueryText = "BEGIN TRANSACTION;
-    | CREATE TABLE IF NOT EXISTS users (
-    | id INTEGER PRIMARY KEY AUTOINCREMENT,
-    | name TEXT NOT NULL,
-    | age INTEGER NOT NULL
-    | );
-    | INSERT INTO users (name, age) VALUES ('Alice', 30);
-    | INSERT INTO users (name, age) VALUES ('Bob', 25);
-    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    | COMMIT;";
+                   | CREATE TABLE IF NOT EXISTS users (
+                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   | name TEXT NOT NULL,
+                   | age INTEGER NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -17079,7 +17026,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Try
-       DeleteFiles(TFN);
+        DeleteFiles(TFN);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
@@ -17152,10 +17099,10 @@ Procedure SQLite_AddRecords(FunctionParameters)
     RowStructure2.Insert("data"      , Image); // BLOB
 
     RowStrucutre1 = New Structure;
-    RowStrucutre1.Insert("name"      , "Lesha") ; // TEXT
+    RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
     RowStrucutre1.Insert("age"       , 20); // INTEGER
-    RowStrucutre1.Insert("salary"    , 200.20) ; // REAL
-    RowStrucutre1.Insert("is_active" , False) ; // BOOL
+    RowStrucutre1.Insert("salary"    , 200.20); // REAL
+    RowStrucutre1.Insert("is_active" , False); // BOOL
     RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
     RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
 
@@ -17174,7 +17121,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (no tr)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
-    RowStrucutre1.Insert("error", "Lesha") ;
+    RowStrucutre1.Insert("error", "Lesha");
     DataArray.Add(RowStrucutre1);
 
     Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
@@ -17198,7 +17145,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
     Try
-       DeleteFiles(PictureFile);
+        DeleteFiles(PictureFile);
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
     EndTry;
@@ -17249,10 +17196,11 @@ Procedure SQLite_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (no params)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
 
-    FilterStructure2.Insert("type" , "BEETWEEN");
+    FilterStructure2.Insert("type", "BEETWEEN");
     Filters.Add(FilterStructure2);
 
-    Result = OPI_SQLite.GetRecords(Table, "['name','age','salary','is_active','created_at']", Filters, , , Base);
+    Result = OPI_SQLite.GetRecords(Table, "['name','age','salary','is_active','created_at']", Filters, , ,
+        Base);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (error)", "SQLite");
     OPI_TestDataRetrieval.Check_SQLiteError(Result);
@@ -17563,15 +17511,15 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     // CREATE
 
     QueryText = "
-    |CREATE TABLE test_table (
-    |id SERIAL PRIMARY KEY,
-    |name NAME,
-    |age INT,
-    |salary REAL,
-    |is_active BOOL,
-    |created_at DATE,
-    |data BYTEA
-    |);";
+                   |CREATE TABLE test_table (
+                   |id SERIAL PRIMARY KEY,
+                   |name NAME,
+                   |age INT,
+                   |salary REAL,
+                   |is_active BOOL,
+                   |created_at DATE,
+                   |data BYTEA
+                   |);";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -17581,8 +17529,8 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     // INSERT with parameters
 
     QueryText = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES ($1, $2, $3, $4, $5, $6);";
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES ($1, $2, $3, $4, $5, $6);";
 
     ParameterArray = New Array;
     ParameterArray.Add(New Structure("NAME" , "Vitaly"));
@@ -17613,17 +17561,17 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     // DO + Transaction
 
     QueryText = "DO $$
-    |BEGIN
-    | CREATE TABLE users (
-    | id SMALLSERIAL,
-    | name TEXT NOT NULL,
-    | age INT NOT NULL
-    | );
-    | INSERT INTO users (name, age) VALUES ('Alice', 30);
-    | INSERT INTO users (name, age) VALUES ('Bob', 25);
-    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    | COMMIT;
-    |END $$ LANGUAGE plpgsql;";
+                   |BEGIN
+                   | CREATE TABLE users (
+                   | id SMALLSERIAL,
+                   | name TEXT NOT NULL,
+                   | age INT NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;
+                   |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -17752,7 +17700,7 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
     Table = "somename";
-    ColoumnsStruct.Insert("wtf_field" , "WTF");
+    ColoumnsStruct.Insert("wtf_field", "WTF");
 
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
 
@@ -17837,7 +17785,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
     RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
     RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
-    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID()));
+    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID));
 
     RecordsArray.Add(RecordStructure);
 
@@ -17965,9 +17913,7 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Check = OPI_PostgreSQl.GetRecords(Table
-        , "['ip_address']"
-        , Filters, , , ConnectionString);
+    Check = OPI_PostgreSQl.GetRecords(Table, "['ip_address']", Filters, , , ConnectionString);
 
     OPI_TestDataRetrieval.WriteLog(Check, "UpdateRecords (check)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
@@ -18548,6 +18494,78 @@ Procedure GreenAPI_ExcludeGroupMember(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ExcludeGroupMember", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenExcludeMember(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SetAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetAdminRights(AccessParameters, GroupID, UserID);
+
+    // END
+
+    Try
+        Result["setGroupAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAdminSet(Result);
+
+EndProcedure
+
+Procedure GreenAPI_RevokeAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.RevokeAdminRights(AccessParameters, GroupID, UserID);
+
+    // END
+
+    Try
+        Result["removeAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RevokeAdminRights", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenAdminRemove(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SetGroupPicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Image   = FunctionParameters["Picture"];
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetGroupPicture", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenGroupPicture(Result);
 
 EndProcedure
 

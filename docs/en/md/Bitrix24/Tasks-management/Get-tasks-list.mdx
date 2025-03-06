@@ -37,7 +37,7 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
 
     // Full filter structure you can find at GetTasksFilterStructure method
     Filter = New Map;
-    Filter.Insert("CREATED_BY" , 1); // Producer with ID 1
+    Filter.Insert("CREATED_BY", 1); // Producer with ID 1
     Filter.Insert("!RESPONSIBLE_ID", 10); // Performers with ID not equal to 10
     Filter.Insert(">=CREATED_DATE ", CurrentDate - 60 * 60 * 24); // Creation date >= yesterday
 

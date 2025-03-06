@@ -18,18 +18,18 @@
     Appointment.Insert("time_to"    , "17:00");
     Appointment.Insert("comment"    , "Group office");
 
-        DeliveryLocation = New Structure;
-        DeliveryLocation.Insert("code"        , "270");
-        DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
-        DeliveryLocation.Insert("postal_code" , "109004");
-        DeliveryLocation.Insert("longitude"   , 37.6204);
-        DeliveryLocation.Insert("latitude"    , 55.754);
-        DeliveryLocation.Insert("country_code", "RU");
-        DeliveryLocation.Insert("region"      , "Novosibirsk");
-        DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
-        DeliveryLocation.Insert("city"        , "Novosibirsk");
-        DeliveryLocation.Insert("kladr_code"  , "7700000000000");
-        DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
+    DeliveryLocation = New Structure;
+    DeliveryLocation.Insert("code"        , "270");
+    DeliveryLocation.Insert("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+    DeliveryLocation.Insert("postal_code" , "109004");
+    DeliveryLocation.Insert("longitude"   , 37.6204);
+    DeliveryLocation.Insert("latitude"    , 55.754);
+    DeliveryLocation.Insert("country_code", "RU");
+    DeliveryLocation.Insert("region"      , "Novosibirsk");
+    DeliveryLocation.Insert("sub_region"  , "Novosibirsk");
+    DeliveryLocation.Insert("city"        , "Novosibirsk");
+    DeliveryLocation.Insert("kladr_code"  , "7700000000000");
+    DeliveryLocation.Insert("address"     , "st. Bluchera, 33");
 
     Appointment.Insert("to_location", DeliveryLocation);
 
