@@ -549,27 +549,114 @@ EndFunction
 
 #EndRegion
 
+#Region MessageSending
+
+// Send text message
+// Sends a text message to the selected chat room
+//
+// Note
+// Method at API documentation: [SendMessage](@green-api.com/docs/api/sending/SendMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Text - String - Message text - text
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val ReplyID = "") Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"         , ChatID , "String", Parameters);
+    OPI_Tools.AddField("message"        , Text   , "String", Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "sendMessage");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Send file
+// Sends the file to the selected chat room
+//
+// Note
+// Method at API documentation: [SendFileByUpload](@green-api.com/docs/api/sending/SendFileByUpload/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// File - String, BinaryData - File data or filepath - file
+// FileName - String - Name of the file with the extension - filename
+// Description - String - Message text below the file - caption
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendFile(Val AccessParameters
+    , Val ChatID
+    , Val File
+    , Val FileName
+    , Val Description = ""
+    , Val ReplyID = "") Export
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"         , ChatID      , "String", Parameters);
+    OPI_Tools.AddField("fileName"       , FileName    , "String", Parameters);
+    OPI_Tools.AddField("caption"        , Description , "String", Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID     , "String", Parameters);
+
+    FileMapping = New Map();
+    FileMapping.Insert(StrTemplate("file|%1", FileName), File);
+
+    URL      = FormMediaURL(AccessParameters, "SendFileByUpload");
+    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
 
 Function FormPrimaryURL(Val AccessParameters, Val Method)
 
+        Return FormURL(AccessParameters, Method, "apiUrl");
+
+EndFunction
+
+Function FormMediaURL(Val AccessParameters, Val Method)
+
+        Return FormURL(AccessParameters, Method, "mediaUrl");
+
+EndFunction
+
+Function FormURL(AccessParameters, Method, URLField)
+
     OPI_TypeConversion.GetKeyValueCollection(AccessParameters);
     OPI_TypeConversion.GetLine(Method);
 
-    RequiredFields = StrSplit("apiUrl,idInstance,apiTokenInstance", ",");
+    RequiredFields = StrSplit(URLField + ",idInstance,apiTokenInstance", ",");
     MissingFields  = OPI_Tools.FindMissingCollectionFields(AccessParameters, RequiredFields);
 
     If MissingFields.Count() > 0 Then
         Raise "Missing mandatory fields in access parameters!";
     EndIf;
 
-    ApiUrl           = AccessParameters["apiUrl"];
+    Url              = AccessParameters[URLField];
     IdInstance       = AccessParameters["idInstance"];
     ApiTokenInstance = AccessParameters["apiTokenInstance"];
 
-    URL = StrTemplate("%1/waInstance%2/%3/%4", ApiUrl, IdInstance, Method, ApiTokenInstance);
+    URL = StrTemplate("%1/waInstance%2/%3/%4", Url, IdInstance, Method, ApiTokenInstance);
 
     Return URL;
 
