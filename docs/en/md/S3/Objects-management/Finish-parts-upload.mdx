@@ -70,12 +70,8 @@ This is a service method. A `PutObject` method is intended for the common scenar
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name
-            , Bucket
-            , BasicData
-            , UploadID
-            , PartNumber
-            , CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
+            CurrentData);
 
         BytesRead = SourceStream.CurrentPosition();
 

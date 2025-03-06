@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 9
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set group picture
+ Sets the group chat picture
+
+
+
+`Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | GroupID | --group | String | &#x2714; | Group chat identifier |
+  | Image | --picture | BinaryData, String | &#x2714; | Profile picture |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SetGroupPicture](https://green-api.com/docs/api/groups/SetGroupPicture/)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    Image   = "https://api.athenaeum.digital/test_data/picture.jpg";
+    GroupID = "120363410798027942@g.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);
+```
+ 
+
+
+
+

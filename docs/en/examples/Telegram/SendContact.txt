@@ -5,6 +5,6 @@
     LastName  = "Петров";
     Phone     = "88005553535";
 
-    Result = OPI_Telegram.SendContact(Token, ChatID , Name, LastName, Phone);
+    Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
 
     Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);

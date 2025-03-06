@@ -50,13 +50,8 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
     Time      = 7200;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
-        , TaskID
-        , Time
-        , UserID
-        , Text
-        , SetupDate
-        , Token);
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time, UserID, Text, SetupDate,
+        Token);
 ```
  
 

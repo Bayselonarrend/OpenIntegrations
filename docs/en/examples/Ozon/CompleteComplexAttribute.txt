@@ -17,5 +17,5 @@
 
     CategoryAttribute2 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
 
-    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
-    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076, 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048, 0, CategoryAttribute2);

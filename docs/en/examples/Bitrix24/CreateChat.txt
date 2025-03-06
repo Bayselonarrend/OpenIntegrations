@@ -25,8 +25,8 @@
     Token = "8536b467006e9f06006b12e400000001000...";
 
     ChatStructure = New Structure;
-    ChatStructure.Insert("TYPE"  , "CHAT");
-    ChatStructure.Insert("TITLE" , "Private chat");
-    ChatStructure.Insert("USERS" , MembersArray);
+    ChatStructure.Insert("TYPE" , "CHAT");
+    ChatStructure.Insert("TITLE", "Private chat");
+    ChatStructure.Insert("USERS", MembersArray);
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);

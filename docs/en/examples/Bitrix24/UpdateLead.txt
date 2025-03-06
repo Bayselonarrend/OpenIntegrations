@@ -8,8 +8,8 @@
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
 
-    FieldsStructure.Insert("NAME"      , "Evgeniy");
-    FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
+    FieldsStructure.Insert("NAME"     , "Evgeniy");
+    FieldsStructure.Insert("LAST_NAME", "Evgeniev");
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "8536b467006e9f06006b12e400000001000...";

@@ -48,8 +48,8 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 ```
