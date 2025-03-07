@@ -2398,6 +2398,8 @@ Procedure CLI_GAPI_MessageSending() Export
 
     CLI_GreenAPI_SendTextMessage(TestParameters);
     CLI_GreenAPI_SendFile(TestParameters);
+    CLI_GreenAPI_SendFileByURL(TestParameters);
+    CLI_GreenAPI_SendPoll(TestParameters);
 
 EndProcedure
 
@@ -21008,6 +21010,113 @@ Procedure CLI_GreenAPI_SendFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenFile(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SendFileByURL(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "photo.jpg";
+    ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
+    Description = "File description";
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access"  , AccessParameters);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("url"     , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption" , Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFileByURL", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFileByURL", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_FileMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", FunctionParameters);
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+
+    Options = New Structure;
+    Options.Insert("access"  , AccessParameters);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("url"     , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption" , Description);
+    Options.Insert("quoted"  , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFileByURL", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFileByURL (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+    Text   = "What's your favorite color?";
+
+    Options = New Array;
+    Options.Add("Red");
+    Options.Add("Yellow");
+    Options.Add("Green");
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("text"   , Text);
+    Options.Insert("options", Options);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_PollMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_PollMessageID", MessageID, "String", FunctionParameters);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("text"   , Text);
+    Options.Insert("options", Options);
+    Options.Insert("multi"  , True);
+    Options.Insert("quoted" , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure
 

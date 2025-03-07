@@ -551,6 +551,128 @@
     NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a file from web to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "File URL";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--filename";
+    NewLine.Описание    = "Name of the file with the extension";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--caption";
+    NewLine.Описание    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendFileByURL";
+    NewLine.МетодПоиска = "SENDFILEBYURL";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a poll with answer choices to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Message text";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--options";
+    NewLine.Описание    = "Answer options";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--multi";
+    NewLine.Описание    = "Allows to select more than one answer choice (optional, def. val. - No)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendPoll";
+    NewLine.МетодПоиска = "SENDPOLL";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
     Return CompositionTable;
 EndFunction
 
