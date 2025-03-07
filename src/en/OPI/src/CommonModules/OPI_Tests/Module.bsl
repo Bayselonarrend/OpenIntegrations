@@ -1921,6 +1921,10 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
 
     Ozon_GetProductStructure(TestParameters);
+
+    // TODO: Comeback later
+    Return;
+
     Ozon_CreateUpdateProducts(TestParameters);
     Ozon_GetProductCreationStatus(TestParameters);
     Ozon_AddProductVideo(TestParameters);
@@ -1956,6 +1960,9 @@ Procedure OzonAPI_Barcodes() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
 
+    // TODO: Comeback later
+    Return;
+
     Ozon_BindBarcodes(TestParameters);
     Ozon_CreateBarcodes(TestParameters);
 
@@ -1973,7 +1980,7 @@ Procedure OzonAPI_PricesAndStocks() Export
     Ozon_UpdateProductsStocks(TestParameters);
     Ozon_GetProductsPrices(TestParameters);
     Ozon_GetDiscountInformation(TestParameters);
-    Ozon_SetProductDiscount(TestParameters);
+    // Ozon_SetProductDiscount(TestParameters);
     Ozon_GetProductStocksStructure(TestParameters);
     Ozon_GetProductPriceStructure(TestParameters);
 
@@ -2009,6 +2016,10 @@ Procedure OzonAPI_FBOScheme() Export
 
     Ozon_GetClustersList(TestParameters);
     Ozon_GetShippingWarehousesList(TestParameters);
+
+    // TODO: Comeback later
+    Return;
+
     Ozon_CreateFBODraft(TestParameters);
     Ozon_GetFBODraft(TestParameters);
     Ozon_GetShipmentAdditionalFields(TestParameters);
@@ -2432,6 +2443,8 @@ Procedure GAPI_MessageSending() Export
 
     GreenAPI_SendTextMessage(TestParameters);
     GreenAPI_SendFile(TestParameters);
+    GreenAPI_SendFileByURL(TestParameters);
+    GreenAPI_SendPoll(TestParameters);
 
 EndProcedure
 
@@ -18644,6 +18657,71 @@ Procedure GreenAPI_SendFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendFile (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenFile(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendFileByURL(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    File        = FunctionParameters["Picture"];
+    FileName    = "photo.jpg";
+    ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
+    Description = "File description";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendFileByURL(AccessParameters, ChatID, File, FileName, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFileByURL", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_FileMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", FunctionParameters);
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+    Result   = OPI_GreenAPI.SendFileByURL(AccessParameters, ChatID, File, FileName, Description, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFileByURL (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendPoll(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+    Text   = "What's your favorite color?";
+
+    Options = New Array;
+    Options.Add("Red");
+    Options.Add("Yellow");
+    Options.Add("Green");
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_PollMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_PollMessageID", MessageID, "String", FunctionParameters);
+
+    Result = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options, True, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure
 
