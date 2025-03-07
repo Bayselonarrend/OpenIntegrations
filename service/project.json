@@ -12,7 +12,6 @@
 "codeExamplesSrc": "./docs/ru/examples/",
 "testValuesSrc": "./docs/ru/data/",
 "testsModule": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
-"testsCheckFile": "./service/tests_set.json",
 "engineLinux": "C:/engine/linux",
 "engineWindows": "C:/engine/windows",
 "additionalLangs": [
