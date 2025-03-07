@@ -2,5 +2,5 @@
 
 oint greenapi ИзменитьИмяГруппы \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363408520535837@g.us" \
+  --group "120363410851699004@g.us" \
   --name "New name"

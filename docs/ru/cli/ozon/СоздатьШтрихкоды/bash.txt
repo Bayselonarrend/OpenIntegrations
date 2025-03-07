@@ -1,4 +1,4 @@
 oint ozon СоздатьШтрихкоды \
   --clientid "***" \
   --apikey "***" \
-  --productids 1453100655
+  --productids 1470297726

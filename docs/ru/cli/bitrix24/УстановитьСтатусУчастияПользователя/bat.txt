@@ -1,5 +1,5 @@
 oint bitrix24 УстановитьСтатусУчастияПользователя ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --event 626 ^
+  --event 642 ^
   --status "Y" ^
   --token "***"
