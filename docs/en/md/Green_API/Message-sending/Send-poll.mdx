@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send poll
+ Sends a poll with answer choices to the selected chat room
+
+
+
+`Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Options, Val MultipleSelect = False, Val ReplyID = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Chat identifier |
+  | Text | --text | String | &#x2714; | Message text |
+  | Options | --options | Array Of String | &#x2714; | Answer options |
+  | MultipleSelect | --multi | Boolean | &#x2716; | Allows to select more than one answer choice |
+  | ReplyID | --quoted | String | &#x2716; | Replying message id if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/SendPoll/)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ChatID = "120363410406221140@g.us";
+    Text   = "What's your favorite color?";
+
+    Options = New Array;
+    Options.Add("Red");
+    Options.Add("Yellow");
+    Options.Add("Green");
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options);
+
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_PollMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_PollMessageID", MessageID, "String", FunctionParameters);
+
+    Result = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options, True, MessageID);
+
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+```
+ 
+
+
+
+

@@ -1521,6 +1521,14 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi SendFile --access "test" --chat "test" --file "test" --filename "test" --caption "test" --quoted "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi SendFileByURL --access "test" --chat "test" --url "test" --filename "test" --caption "test" --quoted "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi SendPoll --access "test" --chat "test" --text "test" --options "test" --multi "test" --quoted "test" --debug --test '
+               }
+
 }
 
 
