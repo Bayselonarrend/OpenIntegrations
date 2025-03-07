@@ -622,6 +622,89 @@ Function SendFile(Val AccessParameters
 
 EndFunction
 
+// Send file by URL
+// Sends a file from web to the selected chat room
+//
+// Note
+// Method at API documentation: [SendFileByUrl](@green-api.com/docs/api/sending/SendFileByUrl/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// FileURL - String, - File URL - url
+// FileName - String - Name of the file with the extension - filename
+// Description - String - Message text below the file - caption
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendFileByURL(Val AccessParameters
+    , Val ChatID
+    , Val FileURL
+    , Val FileName
+    , Val Description = ""
+    , Val ReplyID = "") Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"         , ChatID      , "String", Parameters);
+    OPI_Tools.AddField("urlFile"        , FileURL     , "String", Parameters);
+    OPI_Tools.AddField("fileName"       , FileName    , "String", Parameters);
+    OPI_Tools.AddField("caption"        , Description , "String", Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID     , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "sendFileByUrl");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Send poll
+// Sends a poll with answer choices to the selected chat room
+//
+// Note
+// Method at API documentation: [SendPoll](@green-api.com/docs/api/sending/SendPoll/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Text - String - Message text - text
+// Options - Array Of String - Answer options - options
+// MultipleSelect - Boolean - Allows to select more than one answer choice - multi
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendPoll(Val AccessParameters
+    , Val ChatID
+    , Val Text
+    , Val Options
+    , Val MultipleSelect = False
+    , Val ReplyID = "") Export
+
+    Parameters  = New Structure;
+    OptionArray = New Array;
+
+    OPI_TypeConversion.GetArray(Options);
+
+    For Each Option In Options Do
+        OptionArray.Add(New Structure("optionName", Option));
+    EndDo;
+
+    OPI_Tools.AddField("chatId"         , ChatID        , "String"    , Parameters);
+    OPI_Tools.AddField("message"        , Text          , "String"    , Parameters);
+    OPI_Tools.AddField("options"        , OptionArray   , "Collection", Parameters);
+    OPI_Tools.AddField("multipleAnswers", MultipleSelect, "Boolean"   , Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID       , "String"    , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "sendPoll");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
