@@ -1,0 +1,6 @@
+﻿    Latitude  = 53.908522;
+    Longitude = 27.574821;
+    Address   = "Victory Square, Minsk";
+    Name      = "Victory sq.";
+
+    Result = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude, Address, Name);

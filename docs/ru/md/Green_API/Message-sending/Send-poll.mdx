@@ -49,19 +49,43 @@ import TabItem from '@theme/TabItem';
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ОтправитьОпрос(ПараметрыДоступа, IDЧата, Текст, Варианты);
-
-    OPI_ПолучениеДанныхТестов.Проверка_ГринСообщение(Результат);
-
-    IDСообщения = Результат["idMessage"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("GreenAPI_PollMessageID", IDСообщения);
-    OPI_Инструменты.ДобавитьПоле("GreenAPI_PollMessageID", IDСообщения, "Строка", ПараметрыФункции);
-
-    Результат = OPI_GreenAPI.ОтправитьОпрос(ПараметрыДоступа, IDЧата, Текст, Варианты, Истина, IDСообщения);
-
-    OPI_ПолучениеДанныхТестов.Проверка_ГринСообщение(Результат);
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ОтправитьОпрос \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --chat "120363410406221140@g.us" \
+              --text "Какой ваш любимый цвет?" \
+              --options "['Красный','Желтый','Зеленый']" \
+              --multi true \
+              --quoted "BAE596B9A4F54772"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ОтправитьОпрос ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --chat "120363410406221140@g.us" ^
+              --text "Какой ваш любимый цвет?" ^
+              --options "['Красный','Желтый','Зеленый']" ^
+              --multi true ^
+              --quoted "BAE596B9A4F54772"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "idMessage": "BAE596B9A4F54772"
+}
+```
