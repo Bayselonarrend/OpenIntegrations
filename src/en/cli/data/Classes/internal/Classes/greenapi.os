@@ -673,6 +673,88 @@
     NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendLocation";
+    NewLine.МетодПоиска = "SENDLOCATION";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends location data to the specified chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendLocation";
+    NewLine.МетодПоиска = "SENDLOCATION";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendLocation";
+    NewLine.МетодПоиска = "SENDLOCATION";
+    NewLine.Параметр    = "--loc";
+    NewLine.Описание    = "Location description. See GetLocationDescription";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendLocation";
+    NewLine.МетодПоиска = "SENDLOCATION";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetLocationDescription";
+    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
+    NewLine.Параметр    = "--lat";
+    NewLine.Описание    = "Geographic latitude";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Gets the description of the location to send with SendLocation method";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetLocationDescription";
+    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
+    NewLine.Параметр    = "--long";
+    NewLine.Описание    = "Geographic longitude";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetLocationDescription";
+    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
+    NewLine.Параметр    = "--addr";
+    NewLine.Описание    = "Location address (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetLocationDescription";
+    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Location name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
     Return CompositionTable;
 EndFunction
 

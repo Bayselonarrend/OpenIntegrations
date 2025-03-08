@@ -2445,6 +2445,8 @@ Procedure GAPI_MessageSending() Export
     GreenAPI_SendFile(TestParameters);
     GreenAPI_SendFileByURL(TestParameters);
     GreenAPI_SendPoll(TestParameters);
+    GreenAPI_SendLocation(TestParameters);
+    GreenAPI_GetLocationDescription(TestParameters);
 
 EndProcedure
 
@@ -18711,6 +18713,8 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options);
 
+    // END
+
     OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
@@ -18721,6 +18725,58 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
     Result = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options, True, MessageID);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetLocationDescription(FunctionParameters)
+
+    Latitude  = 53.908522;
+    Longitude = 27.574821;
+    Address   = "Victory Square, Minsk";
+    Name      = "Victory sq.";
+
+    Result = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude, Address, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLocationDescription", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendLocation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+
+    Latitude  = 53.908522;
+    Longitude = 27.574821;
+    Address   = "Victory Square, Minsk";
+    Name      = "Victory sq.";
+
+    Location = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude, Address, Name);
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendLocation(AccessParameters, ChatID, Location);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_LocMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_LocMessageID", MessageID, "String", FunctionParameters);
+
+    Location = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude);
+    Result   = OPI_GreenAPI.SendLocation(AccessParameters, ChatID, Location, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure

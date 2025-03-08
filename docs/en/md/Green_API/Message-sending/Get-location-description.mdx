@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get location description
+ Gets the description of the location to send with SendLocation method
+
+
+
+`Function GetLocationDescription(Val Latitude, Val Longitude, Val Address = "", Val Name = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Latitude | --lat | Number | &#x2714; | Geographic latitude |
+  | Longitude | --long | Number | &#x2714; | Geographic longitude |
+  | Address | --addr | String | &#x2716; | Location address |
+  | Name | --name | String | &#x2716; | Location name |
+
+  
+  Returns:  Structure Of KeyAndValue - Location description
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Latitude  = 53.908522;
+    Longitude = 27.574821;
+    Address   = "Victory Square, Minsk";
+    Name      = "Victory sq.";
+
+    Result = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude, Address, Name);
+```
+ 
+
+
+
+
