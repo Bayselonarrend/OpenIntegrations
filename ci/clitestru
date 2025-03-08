@@ -1529,6 +1529,14 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОтправитьОпрос --access "test" --chat "test" --text "test" --options "test" --multi "test" --quoted "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОтправитьЛокацию --access "test" --chat "test" --loc "test" --quoted "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьОписаниеЛокации --lat "test" --long "test" --addr "test" --name "test" --debug --test '
+               }
+
 }
 
 

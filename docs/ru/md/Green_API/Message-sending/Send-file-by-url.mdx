@@ -49,6 +49,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ОтправитьФайлПоURL \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --chat "120363410406221140@g.us" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" \
+              --filename "vid.mp4" \
+              --caption "Описание файла" \
+              --quoted "BAE5402A7D696441"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ОтправитьФайлПоURL ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --chat "120363410406221140@g.us" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" ^
+              --filename "vid.mp4" ^
+              --caption "Описание файла" ^
+              --quoted "BAE5402A7D696441"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

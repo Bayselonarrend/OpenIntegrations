@@ -705,6 +705,64 @@ Function SendPoll(Val AccessParameters
 
 EndFunction
 
+// Send location
+// Sends location data to the specified chat room
+//
+// Note
+// Method at API documentation: [SendPoll](@green-api.com/docs/api/sending/SendPoll/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Location - Structure Of KeyAndValue - Location description. See GetLocationDescription - loc
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyID = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(Location);
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"         , ChatID , "String", Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID, "String", Parameters);
+
+    For Each Element In Location Do
+        Parameters.Insert(Element.Key, Element.Value);
+    EndDo;
+
+    URL      = FormPrimaryURL(AccessParameters, "sendLocation");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get location description
+// Gets the description of the location to send with SendLocation method
+//
+// Parameters:
+// Latitude - Number - Geographic latitude - lat
+// Longitude - Number - Geographic longitude - long
+// Address - String - Location address - addr
+// Name - String - Location name - name
+//
+// Returns:
+// Structure Of KeyAndValue - Location description
+Function GetLocationDescription(Val Latitude, Val Longitude, Val Address = "", Val Name = "") Export
+
+    Location = New Structure;
+
+    OPI_Tools.AddField("latitude"    , Latitude  , "Number", Location);
+    OPI_Tools.AddField("longitude"   , Longitude , "Number", Location);
+    OPI_Tools.AddField("address"     , Address   , "String", Location);
+    OPI_Tools.AddField("nameLocation", Name      , "String", Location);
+
+    Return Location;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
