@@ -306,13 +306,31 @@ Procedure GetNumber(Value) Export
     Else
 
         TypeDescription = New TypeDescription("Number");
-        Value           = String(Value);
         Value_          = TypeDescription.AdjustValue(Value);
 
         If Value_ = 0 Then
 
             Try
-                Value = Number(Value);
+
+                Value_ = String(Value);
+                Value_ = StrReplace(Value, Chars.NBSp, "");
+                Value_ = StrReplace(Value, " "       , "");
+                Value_ = StrReplace(Value, ","       , ".");
+
+                If StrOccurrenceCount(Value_, ".") > 1 Then
+
+                    PartsArray     = StrSplit(Value_, ".");
+                    LastPart       = PartsArray.UBound();
+                    FractionalPart = PartsArray[LastPart];
+
+                    PartsArray.Delete(LastPart);
+
+                    Value_ = StrTemplate("%1.%2", StrConcat(PartsArray), FractionalPart);
+
+                EndIf;
+
+                Value = Number(Value_);
+
             Except
                 Return;
             EndTry;
