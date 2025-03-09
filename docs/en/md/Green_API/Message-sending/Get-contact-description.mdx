@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 7
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get contact description
+ Gets the contact description for the SendContact function
+
+
+
+`Function GetContactDescription(Val Phone, Val Name = "", Val LastName = "", Val Patronymic = "", Val Company = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Phone | --phone | Number | &#x2714; | Phone number in international format without a plus sign |
+  | Name | --name | String | &#x2716; | Contact name |
+  | LastName | --surname | String | &#x2716; | Contact last name |
+  | Patronymic | --midname | String | &#x2716; | Contacts patronymic or middle name |
+  | Company | --company | String | &#x2716; | Name of the contact company |
+
+  
+  Returns:  Structure Of KeyAndValue - Contact description
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Result = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);
+```
+ 
+
+
+
+

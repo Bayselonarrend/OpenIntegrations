@@ -1,0 +1,7 @@
+﻿    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Result = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);

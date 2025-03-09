@@ -1,0 +1,17 @@
+﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ChatID = "120363410406221140@g.us";
+
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Contact = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendContact(AccessParameters, ChatID, Contact);

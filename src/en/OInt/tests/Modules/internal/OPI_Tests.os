@@ -2446,7 +2446,9 @@ Procedure GAPI_MessageSending() Export
     GreenAPI_SendFileByURL(TestParameters);
     GreenAPI_SendPoll(TestParameters);
     GreenAPI_SendLocation(TestParameters);
+    GreenAPI_SendContact(TestParameters);
     GreenAPI_GetLocationDescription(TestParameters);
+    GreenAPI_GetContactDescription(TestParameters);
 
 EndProcedure
 
@@ -18777,6 +18779,60 @@ Procedure GreenAPI_SendLocation(FunctionParameters)
     Result   = OPI_GreenAPI.SendLocation(AccessParameters, ChatID, Location, MessageID);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure GreenAPI_GetContactDescription(FunctionParameters)
+
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Result = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContactDescription", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure GreenAPI_SendContact(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Contact = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendContact(AccessParameters, ChatID, Contact);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_ContactMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_ContactMessageID", MessageID, "String", FunctionParameters);
+
+    Contact = OPI_GreenAPI.GetContactDescription(Phone, , , , Company);
+    Result  = OPI_GreenAPI.SendContact(AccessParameters, ChatID, Contact, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure

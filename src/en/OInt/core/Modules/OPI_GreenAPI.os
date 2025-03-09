@@ -739,6 +739,65 @@ Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyI
 
 EndFunction
 
+// Send contact
+// Sends a contact with a phone number to the selected chat room
+//
+// Note
+// Method at API documentation: [SendContact](@green-api.com/docs/api/sending/SendContact/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Contact - Structure Of KeyAndValue - Contact description. See GetContactDescription - contact
+// ReplyID - String - Replying message id if necessary - quoted
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendContact(Val AccessParameters, Val ChatID, Val Contact, Val ReplyID = "") Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"         , ChatID  , "String"    , Parameters);
+    OPI_Tools.AddField("contact"        , Contact , "Collection", Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID , "String"    , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "sendContact");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get contact description
+// Gets the contact description for the SendContact function
+//
+// Parameters:
+// Phone - Number - Phone number in international format without a plus sign - phone
+// Name - String - Contact name - name
+// LastName - String - Contact last name - surname
+// Patronymic - String - Contacts patronymic or middle name - midname
+// Company - String - Name of the contact company - company
+//
+// Returns:
+// Structure Of KeyAndValue - Contact description
+Function GetContactDescription(Val Phone
+    , Val Name = ""
+    , Val LastName = ""
+    , Val Patronymic = ""
+    , Val Company = "") Export
+
+    Contact = New Structure;
+
+    OPI_Tools.AddField("phoneContact", Phone     , "Number" , Contact);
+    OPI_Tools.AddField("firstName"   , Name      , "String" , Contact);
+    OPI_Tools.AddField("middleName"  , LastName  , "String" , Contact);
+    OPI_Tools.AddField("lastName"    , Patronymic, "String" , Contact);
+    OPI_Tools.AddField("company"     , Company   , "String" , Contact);
+
+    Return Contact;
+
+EndFunction
+
 // Get location description
 // Gets the description of the location to send with SendLocation method
 //
@@ -754,10 +813,10 @@ Function GetLocationDescription(Val Latitude, Val Longitude, Val Address = "", V
 
     Location = New Structure;
 
-    OPI_Tools.AddField("latitude"    , Latitude  , "Number", Location);
-    OPI_Tools.AddField("longitude"   , Longitude , "Number", Location);
-    OPI_Tools.AddField("address"     , Address   , "String", Location);
-    OPI_Tools.AddField("nameLocation", Name      , "String", Location);
+    OPI_Tools.AddField("latitude"    , Latitude  , "Number" , Location);
+    OPI_Tools.AddField("longitude"   , Longitude , "Number" , Location);
+    OPI_Tools.AddField("address"     , Address   , "String" , Location);
+    OPI_Tools.AddField("nameLocation", Name      , "String" , Location);
 
     Return Location;
 

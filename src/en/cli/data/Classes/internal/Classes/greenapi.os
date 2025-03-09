@@ -718,6 +718,98 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendContact";
+    NewLine.МетодПоиска = "SENDCONTACT";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a contact with a phone number to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendContact";
+    NewLine.МетодПоиска = "SENDCONTACT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendContact";
+    NewLine.МетодПоиска = "SENDCONTACT";
+    NewLine.Параметр    = "--contact";
+    NewLine.Описание    = "Contact description. See GetContactDescription";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SendContact";
+    NewLine.МетодПоиска = "SENDCONTACT";
+    NewLine.Параметр    = "--quoted";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetContactDescription";
+    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
+    NewLine.Параметр    = "--phone";
+    NewLine.Описание    = "Phone number in international format without a plus sign";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Gets the contact description for the SendContact function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetContactDescription";
+    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "Contact name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetContactDescription";
+    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
+    NewLine.Параметр    = "--surname";
+    NewLine.Описание    = "Contact last name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetContactDescription";
+    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
+    NewLine.Параметр    = "--midname";
+    NewLine.Описание    = "Contacts patronymic or middle name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetContactDescription";
+    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
+    NewLine.Параметр    = "--company";
+    NewLine.Описание    = "Name of the contact company (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "GetLocationDescription";
     NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
     NewLine.Параметр    = "--lat";
