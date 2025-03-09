@@ -1446,12 +1446,11 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
 
-    // Message("Ozon product checkout is unavailable");
-    // Return;
-
-    // BSLLS:UnreachableCode-off
-
     CLI_Ozon_GetProductStructure(TestParameters);
+
+    // TODO: Comeback later
+    Return;
+
     CLI_Ozon_CreateUpdateProducts(TestParameters);
     CLI_Ozon_GetProductCreationStatus(TestParameters);
     CLI_Ozon_AddProductVideo(TestParameters);
@@ -1478,8 +1477,6 @@ Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
     CLI_Ozon_GetRelatedSKUs(TestParameters);
     CLI_Ozon_DeleteProductsWithoutSKU(TestParameters);
 
-    // BSLLS:UnreachableCode-on
-
 EndProcedure
 
 Procedure CLI_OzonAPI_Barcodes() Export
@@ -1488,6 +1485,9 @@ Procedure CLI_OzonAPI_Barcodes() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
+
+    // TODO: Comeback later
+    Return;
 
     CLI_Ozon_BindBarcodes(TestParameters);
     CLI_Ozon_CreateBarcodes(TestParameters);
@@ -1542,6 +1542,10 @@ Procedure CLI_OzonAPI_FBOScheme() Export
 
     CLI_Ozon_GetClustersList(TestParameters);
     CLI_Ozon_GetShippingWarehousesList(TestParameters);
+
+    // TODO: Comeback later
+    Return;
+
     CLI_Ozon_CreateFBODraft(TestParameters);
     CLI_Ozon_GetFBODraft(TestParameters);
     CLI_Ozon_GetShipmentAdditionalFields(TestParameters);
@@ -2402,6 +2406,8 @@ Procedure CLI_GAPI_MessageSending() Export
     CLI_GreenAPI_SendPoll(TestParameters);
     CLI_GreenAPI_GetLocationDescription(TestParameters);
     CLI_GreenAPI_SendLocation(TestParameters);
+    CLI_GreenAPI_GetContactDescription(TestParameters);
+    CLI_GreenAPI_SendContact(TestParameters);
 
 EndProcedure
 
@@ -21100,7 +21106,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendPoll", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
     MessageID = Result["idMessage"];
@@ -21117,7 +21123,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendPoll (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure
@@ -21137,7 +21143,7 @@ Procedure CLI_GreenAPI_GetLocationDescription(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetLocationDescription", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetLocationDescription", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetLocationDescription", "GreenAPI");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -21179,7 +21185,7 @@ Procedure CLI_GreenAPI_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLocation", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
     MessageID = Result["idMessage"];
@@ -21200,7 +21206,96 @@ Procedure CLI_GreenAPI_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLocation (quote)", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetContactDescription(FunctionParameters)
+
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Options = New Structure;
+    Options.Insert("phone"  , Phone);
+    Options.Insert("name"   , Name);
+    Options.Insert("surname", LastName);
+    Options.Insert("midname", Patronymic);
+    Options.Insert("company", Company);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetContactDescription", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_SendContact(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    ChatID = FunctionParameters["GreenAPI_TestGroupID"];
+
+    Phone      = 79001234568;
+    Name       = "Artem";
+    LastName   = "Evpatoriysky";
+    Patronymic = "Petrovich";
+    Company    = "Bicycle";
+
+    Options = New Structure;
+    Options.Insert("phone"  , Phone);
+    Options.Insert("name"   , Name);
+    Options.Insert("surname", LastName);
+    Options.Insert("midname", Patronymic);
+    Options.Insert("company", Company);
+
+    Contact = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("contact", Contact);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendContact", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+    MessageID = Result["idMessage"];
+    OPI_TestDataRetrieval.WriteParameter("GreenAPI_ContactMessageID", MessageID);
+    OPI_Tools.AddField("GreenAPI_ContactMessageID", MessageID, "String", FunctionParameters);
+
+    Options = New Structure;
+    Options.Insert("phone"  , Phone);
+    Options.Insert("company", Company);
+
+    Contact = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("contact", Contact);
+    Options.Insert("quoted" , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendContact (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
 EndProcedure

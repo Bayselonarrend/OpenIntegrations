@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
@@ -37,6 +37,35 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint greenapi ПолучитьОписаниеЛокации \
+              --lat 53,908522 \
+              --long 27,574821 \
+              --addr "Площадь Победы, Минск" \
+              --name "пл. Победы"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint greenapi ПолучитьОписаниеЛокации ^
+              --lat 53,908522 ^
+              --long 27,574821 ^
+              --addr "Площадь Победы, Минск" ^
+              --name "пл. Победы"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "latitude": 53.908522,
+ "longitude": 27.574821,
+ "address": "Площадь Победы, Минск",
+ "nameLocation": "пл. Победы"
+}
+```
