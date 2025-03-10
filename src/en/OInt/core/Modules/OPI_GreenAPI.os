@@ -768,6 +768,35 @@ Function SendContact(Val AccessParameters, Val ChatID, Val Contact, Val ReplyID 
 
 EndFunction
 
+// Forward messages
+// Sends messages from one chat room to another
+//
+// Note
+// Method at API documentation: [ForwardMessages](@green-api.com/docs/api/sending/ForwardMessages/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// From - String - Message source chat ID - from
+// Target - String - Message receiver chat ID - to
+// Messages - String, Array of String - Messages or a single message to be sent - msgs
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Messages) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"    , Target  , "String"    , Parameters);
+    OPI_Tools.AddField("chatIdFrom", From    , "String"    , Parameters);
+    OPI_Tools.AddField("messages"  , Messages, "Collection", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "forwardMessages");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get contact description
 // Gets the contact description for the SendContact function
 //

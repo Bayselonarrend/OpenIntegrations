@@ -2447,6 +2447,7 @@ Procedure GAPI_MessageSending() Export
     GreenAPI_SendPoll(TestParameters);
     GreenAPI_SendLocation(TestParameters);
     GreenAPI_SendContact(TestParameters);
+    GreenAPI_ForwardMessages(TestParameters);
     GreenAPI_GetLocationDescription(TestParameters);
     GreenAPI_GetContactDescription(TestParameters);
 
@@ -18834,6 +18835,30 @@ Procedure GreenAPI_SendContact(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendContact (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure GreenAPI_ForwardMessages(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    From   = "11001234567@c.us";
+    From   = FunctionParameters["GreenAPI_TestGroupID"]; // SKIP
+    Target = FunctionParameters["GreenAPI_TestGroupID"];
+
+
+    Message = FunctionParameters["GreenAPI_MessageID"];
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessages", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessages(Result);
 
 EndProcedure
 
