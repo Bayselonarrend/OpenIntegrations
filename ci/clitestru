@@ -1538,6 +1538,10 @@ def test_greenapi(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПереслатьСообщения --access "test" --from "test" --to "test" --msgs "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьОписаниеКонтакта --phone "test" --name "test" --surname "test" --midname "test" --company "test" --debug --test '
                }
 

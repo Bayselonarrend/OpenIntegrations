@@ -759,6 +759,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ForwardMessages";
+    NewLine.МетодПоиска = "FORWARDMESSAGES";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends messages from one chat room to another";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ForwardMessages";
+    NewLine.МетодПоиска = "FORWARDMESSAGES";
+    NewLine.Параметр    = "--from";
+    NewLine.Описание    = "Message source chat ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ForwardMessages";
+    NewLine.МетодПоиска = "FORWARDMESSAGES";
+    NewLine.Параметр    = "--to";
+    NewLine.Описание    = "Message receiver chat ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ForwardMessages";
+    NewLine.МетодПоиска = "FORWARDMESSAGES";
+    NewLine.Параметр    = "--msgs";
+    NewLine.Описание    = "Messages or a single message to be sent";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "GetContactDescription";
     NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
     NewLine.Параметр    = "--phone";
