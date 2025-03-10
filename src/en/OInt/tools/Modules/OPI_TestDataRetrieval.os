@@ -2245,6 +2245,12 @@ Procedure Check_GreenMessage(Val Result) Export
 
 EndProcedure
 
+Procedure Check_GreenMessages(Val Result) Export
+
+    ExpectsThat(Result["messages"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
 Procedure Check_GreenFile(Val Result) Export
 
     ExpectsThat(Result["idMessage"]).Заполнено();
