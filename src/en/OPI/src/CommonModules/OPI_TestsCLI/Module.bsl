@@ -2408,6 +2408,7 @@ Procedure CLI_GAPI_MessageSending() Export
     CLI_GreenAPI_SendLocation(TestParameters);
     CLI_GreenAPI_GetContactDescription(TestParameters);
     CLI_GreenAPI_SendContact(TestParameters);
+    CLI_GreenAPI_ForwardMessages(TestParameters);
 
 EndProcedure
 
@@ -21297,6 +21298,40 @@ Procedure CLI_GreenAPI_SendContact(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendContact (quote)", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_ForwardMessages(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    From   = "11001234567@c.us";
+    From   = FunctionParameters["GreenAPI_TestGroupID"]; // SKIP
+    Target = FunctionParameters["GreenAPI_TestGroupID"];
+
+    Message = FunctionParameters["GreenAPI_MessageID"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("from"   , From);
+    Options.Insert("to"     , Target);
+    Options.Insert("msgs"   , Message);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ForwardMessages", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ForwardMessages", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenMessages(Result);
 
 EndProcedure
 
