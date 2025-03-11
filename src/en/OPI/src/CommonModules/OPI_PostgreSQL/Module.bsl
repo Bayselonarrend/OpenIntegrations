@@ -52,10 +52,11 @@
 //
 // Parameters:
 // ConnectionString - String - Connection string. See GenerateConnectionString - sting
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Arbitrary - Connector object or structure with error information
-Function CreateConnection(Val ConnectionString = "") Export
+Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
 
     If IsConnector(ConnectionString) Then
         Return ConnectionString;
@@ -65,6 +66,30 @@ Function CreateConnection(Val ConnectionString = "") Export
     OPI_Tools.RestoreEscapeSequences(ConnectionString);
 
     Connector = AttachAddInOnServer("OPI_PostgreSQL");
+
+    If ValueIsFilled(Tls) Then
+
+        ErrorText = "Incorrect Tls settings!";
+        OPI_TypeConversion.GetKeyValueCollection(Tls, ErrorText);
+
+        UseTls            = OPI_Tools.GetOr(Tls, "use_tls", False);
+        DisableValidation = OPI_Tools.GetOr(Tls, "accept_invalid_certs", False);
+        CertFilepath      = OPI_Tools.GetOr(Tls, "ca_cert_path", "");
+
+        OPI_TypeConversion.GetBoolean(UseTls);
+        OPI_TypeConversion.GetBoolean(DisableValidation);
+        OPI_TypeConversion.GetLine(CertFilepath);
+
+        Result = Connector.SetTLS(UseTls, DisableValidation, CertFilepath);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+        Success = OPI_Tools.GetOr(Result, "result", False);
+
+        If Not Success Then
+            Return Result;
+        EndIf;
+
+    EndIf;
 
     Connector.ConnectionString = ConnectionString;
 
@@ -128,13 +153,15 @@ EndFunction
 // Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
 // ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
 Function ExecuteSQLQuery(Val QueryText
     , Val Parameters = ""
     , Val ForceResult = False
-    , Val Connection = "") Export
+    , Val Connection = ""
+    , Val Tls = "") Export
 
     OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
@@ -146,7 +173,7 @@ Function ExecuteSQLQuery(Val QueryText
         Connector       = Connection;
     Else
         CloseConnection = True;
-        Connector       = CreateConnection(Connection);
+        Connector       = CreateConnection(Connection, Tls);
     EndIf;
 
     If Not IsConnector(Connector) Then
@@ -195,6 +222,31 @@ Function GenerateConnectionString(Val Address, Val Base, Val Login, Val Password
 
 EndFunction
 
+// Get TLS Settings
+// Forms settings for using TLS
+//
+// Note
+// Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function^^
+// or implicit, when passing the connection string to ORM methods.
+// Passing Tls settings together with passing an already created connection to the `Connection` parameter will be ignored
+//
+// Parameters:
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
+// CertFilepath - String - Path to the PEM certificate file if it is not in the system store (for mTLS) - cert
+//
+// Returns:
+// Structure Of KeyAndValue - Structure of TLS connection settings
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+
+    CertStructure = New Structure;
+    OPI_Tools.AddField("use_tls"             , True                   , "Boolean", CertStructure);
+    OPI_Tools.AddField("accept_invalid_certs", DisableCertVerification, "Boolean", CertStructure);
+    OPI_Tools.AddField("ca_cert_path"        , CertFilepath           , "String" , CertStructure);
+
+    Return CertStructure;
+
+EndFunction
+
 #EndRegion
 
 #Region ORM
@@ -205,12 +257,13 @@ EndFunction
 // Parameters:
 // Base - String - Database name - base
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function CreateDatabase(Val Base, Val Connection = "") Export
+Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.CreateDatabase(OPI_PostgreSQL, Base, Connection);
+    Result = OPI_SQLQueries.CreateDatabase(OPI_PostgreSQL, Base, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -221,12 +274,13 @@ EndFunction
 // Parameters:
 // Base - String - Database name - base
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function DeleteDatabase(Val Base, Val Connection = "") Export
+Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.DeleteDatabase(OPI_PostgreSQL, Base, Connection);
+    Result = OPI_SQLQueries.DeleteDatabase(OPI_PostgreSQL, Base, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -237,10 +291,11 @@ EndFunction
 // Parameters:
 // Base - String - Database name - base
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function DisableAllDatabaseConnections(Val Base, Val Connection = "") Export
+Function DisableAllDatabaseConnections(Val Base, Val Connection = "", Val Tls = "") Export
 
     OPI_TypeConversion.GetLine(Base);
 
@@ -250,7 +305,7 @@ Function DisableAllDatabaseConnections(Val Base, Val Connection = "") Export
 
     TextSQL = StrTemplate(TextSQL, Base);
 
-    Result = ExecuteSQLQuery(TextSQL, , , Connection);
+    Result = ExecuteSQLQuery(TextSQL, , , Connection, Tls);
 
     Return Result;
 
@@ -262,10 +317,11 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function GetTableInformation(Val Table, Val Connection = "") Export
+Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
 
     OPI_TypeConversion.GetLine(Table);
 
@@ -275,7 +331,7 @@ Function GetTableInformation(Val Table, Val Connection = "") Export
 
     TextSQL = StrTemplate(TextSQL, Table);
 
-    Result = ExecuteSQLQuery(TextSQL, , , Connection);
+    Result = ExecuteSQLQuery(TextSQL, , , Connection, Tls);
 
     Return Result;
 
@@ -291,12 +347,13 @@ EndFunction
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
+Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection);
+    Result = OPI_SQLQueries.CreateTable(OPI_PostgreSQL, Table, ColoumnsStruct, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -307,12 +364,13 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function ClearTable(Val Table, Val Connection = "") Export
+Function ClearTable(Val Table, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, , Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, , Connection, Tls);
     Return Result;
 
 EndFunction
@@ -323,12 +381,13 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function DeleteTable(Val Table, Val Connection = "") Export
+Function DeleteTable(Val Table, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection);
+    Result = OPI_SQLQueries.DeleteTable(OPI_PostgreSQL, Table, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -346,12 +405,13 @@ EndFunction
 // DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
 // Transaction - Boolean - True > adding records to transactions with rollback on error - trn
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
+Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.AddRecords(OPI_PostgreSQL, Table, DataArray, Transaction, Connection);
+    Result = OPI_SQLQueries.AddRecords(OPI_PostgreSQL, Table, DataArray, Transaction, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -366,6 +426,7 @@ EndFunction
 // Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
 // Count - Number - Limiting the number of received strings - limit
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -374,9 +435,18 @@ Function GetRecords(Val Table
     , Val Filters = ""
     , Val Sort = ""
     , Val Count = ""
-    , Val Connection = "") Export
+    , Val Connection = ""
+    , Val Tls = "") Export
 
-    Result = OPI_SQLQueries.GetRecords(OPI_PostgreSQL, Table, Fields, Filters, Sort, Count, Connection);
+    Result = OPI_SQLQueries.GetRecords(OPI_PostgreSQL
+        , Table
+        , Fields
+        , Filters
+        , Sort
+        , Count
+        , Connection
+        , Tls);
+
     Return Result;
 
 EndFunction
@@ -394,12 +464,17 @@ EndFunction
 // ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
 // Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
+Function UpdateRecords(Val Table
+    , Val ValueStructure
+    , Val Filters = ""
+    , Val Connection = ""
+    , Val Tls = "") Export
 
-    Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection);
+    Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -411,12 +486,13 @@ EndFunction
 // Table - String - Table name - table
 // Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
 // Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
-Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
+Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, Filters, Connection);
+    Result = OPI_SQLQueries.DeleteRecords(OPI_PostgreSQL, Table, Filters, Connection, Tls);
     Return Result;
 
 EndFunction

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export`
+`Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -18,6 +18,7 @@ import TabItem from '@theme/TabItem';
   | DataArray | --rows | Array of Structure | &#x2714; | An array of string data structures: Key > field, Value > field value |
   | Transaction | --trn | Boolean | &#x2716; | True > adding records to transactions with rollback on error |
   | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
   Returns:  Map Of KeyAndValue - Result of query execution
