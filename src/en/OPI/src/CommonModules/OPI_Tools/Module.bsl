@@ -891,6 +891,19 @@ Function CopyCollection(Val Collection) Export
 
 EndFunction
 
+Function GetOr(Val Collection, Val Field, Val DefaultValue) Export
+
+    FieldValue = Undefined;
+    Exists     = CollectionFieldExists(Collection, Field, FieldValue);
+
+    If Not Exists Then
+        FieldValue = DefaultValue;
+    EndIf;
+
+    Return FieldValue;
+
+EndFunction
+
 #EndRegion
 
 #Region OneScript

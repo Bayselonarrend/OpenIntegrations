@@ -10,13 +10,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export`
+`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Table | --table | String | &#x2714; | Table name |
   | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
   | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
   Returns:  Map Of KeyAndValue - Result of query execution

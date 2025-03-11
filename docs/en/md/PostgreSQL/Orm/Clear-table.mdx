@@ -10,12 +10,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ClearTable(Val Table, Val Connection = "") Export`
+`Function ClearTable(Val Table, Val Connection = "", Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Table | --table | String | &#x2714; | Table name |
   | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
   Returns:  Map Of KeyAndValue - Result of query execution

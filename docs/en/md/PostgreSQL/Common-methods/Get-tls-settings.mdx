@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get TLS Settings
+ Forms settings for using TLS
+
+
+
+`Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | DisableCertVerification | --trust | Boolean | &#x2714; | Allows to work with invalid certificates, including self signed |
+  | CertFilepath | --cert | String | &#x2716; | Path to the PEM certificate file if it is not in the system store (for mTLS) |
+
+  
+  Returns:  Structure Of KeyAndValue - Structure of TLS connection settings
+
+<br/>
+
+:::tip
+Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function or implicit, when passing the connection string to ORM methods.
+
+Passing Tls settings together with passing an already created connection to the `Connection` parameter will be ignored
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
