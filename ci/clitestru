@@ -1866,7 +1866,7 @@ def test_postgres(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1874,47 +1874,51 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres СоздатьБазуДанных --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьНастройкиTls --trust "test" --cert "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьБазуДанных --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres СоздатьБазуДанных --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОтключитьВсеСоединенияБазыДанных --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьБазуДанных --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьИнформациюОТаблице --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОтключитьВсеСоединенияБазыДанных --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres СоздатьТаблицу --table "test" --cols "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьИнформациюОТаблице --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОчиститьТаблицу --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres СоздатьТаблицу --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьТаблицу --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОчиститьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ДобавитьЗаписи --table "test" --rows "test" --trn "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ДобавитьЗаписи --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОбновитьЗаписи --table "test" --values "test" --filter "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьЗаписи --table "test" --filter "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ОбновитьЗаписи --table "test" --values "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres УдалитьЗаписи --table "test" --filter "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

@@ -1866,7 +1866,7 @@ def test_postgres(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ExecuteSQLQuery --sql "test" --params "test" --force "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ExecuteSQLQuery --sql "test" --params "test" --force "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1874,47 +1874,51 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres CreateDatabase --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres GetTlsSettings --trust "test" --cert "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteDatabase --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres CreateDatabase --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DisableAllDatabaseConnections --base "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteDatabase --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres GetTableInformation --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DisableAllDatabaseConnections --base "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres CreateTable --table "test" --cols "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres GetTableInformation --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ClearTable --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres CreateTable --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteTable --table "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ClearTable --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres AddRecords --table "test" --rows "test" --trn "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteTable --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres GetRecords --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres AddRecords --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres UpdateRecords --table "test" --values "test" --filter "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres GetRecords --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteRecords --table "test" --filter "test" --dbc "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres UpdateRecords --table "test" --values "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres DeleteRecords --table "test" --filter "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

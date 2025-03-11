@@ -10,12 +10,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CreateDatabase(Val Base, Val Connection = "") Export`
+`Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Base | --base | String | &#x2714; | Database name |
   | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
   Returns:  Map Of KeyAndValue - Result of query execution

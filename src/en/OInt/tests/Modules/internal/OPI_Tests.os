@@ -17475,10 +17475,65 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
 
     OPI_PostgreSQL.CloseConnection(Result);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main"); // SKIP
+
+    // With TLS
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings      = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_PostgreSQL.CloseConnection(Result);
+
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "PostgreSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
+
+    Result = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Address = FunctionParameters["PG_IP"];
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Result           = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    TLSSettings = OPI_PostgreSQL.GetTlsSettings(True);
+    Result      = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
+
+    Address          = "api.athenaeum.digital";
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    TLSSettings = OPI_PostgreSQL.GetTlsSettings(False);
+    Connection  = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
+
+    Result = OPI_PostgreSQL.CreateDatabase("test1", Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, Connection, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 
@@ -17655,6 +17710,17 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.CreateDatabase(Base, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
     Base = "testbase2";
     OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);
 
@@ -17726,6 +17792,17 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
     Table = "ABC DEF";
 
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
@@ -17763,6 +17840,17 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
 
     Table = "heyho";
@@ -17832,6 +17920,17 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
@@ -17905,6 +18004,20 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Table = "testtable";
+
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"]);
+
 EndProcedure
 
 Procedure PostgreSQL_UpdateRecords(FunctionParameters)
@@ -17956,6 +18069,20 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     For N = 0 To Check["data"].UBound() Do
         OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
     EndDo;
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("bool_field", New Structure("bool", True));
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQl.UpdateRecords("testtable", FieldsStructure, , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 
@@ -18014,6 +18141,17 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.DeleteRecords("testtable", , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
 EndProcedure
 
 Procedure PostgreSQL_DeleteTable(FunctionParameters)
@@ -18036,6 +18174,17 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.DeleteTable(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Base  = "test_data";
@@ -18103,6 +18252,18 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    Base                = "testbase1";
+
+    Result = OPI_PostgreSQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
 EndProcedure
 
 Procedure PostgreSQL_ClearTable(FunctionParameters)
@@ -18125,6 +18286,17 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.ClearTable(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
@@ -18153,6 +18325,17 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DisableAllDatabaseConnections", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisableAllDatabaseConnections (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
