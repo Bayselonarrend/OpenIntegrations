@@ -4,6 +4,10 @@ use addin1c::{name, Variant};
 use crate::core::getset;
 use postgres::{Client, NoTls};
 use serde_json::json;
+use postgres_native_tls::MakeTlsConnector;
+use native_tls::TlsConnector;
+use std::fs::File;
+use std::io::Read;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -12,6 +16,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
     name!("Execute"),
+    name!("SetTLS")
 
 ];
 
@@ -21,6 +26,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 0,
         1 => 0,
         2 => 3,
+        3 => 3,
         _ => 0,
     }
 }
@@ -41,6 +47,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(methods::execute_query(obj, query, params_json, force_result))
         },
+        3 => {
+
+            let use_tls = params[0].get_bool().unwrap_or(false);
+            let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
+            let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
+
+            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+
+        }
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -52,13 +67,16 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("ConnectionString")
+    name!("ConnectionString"),
 ];
 
 
 pub struct AddIn {
     connection_string: String,
     client: Option<Client>,
+    use_tls: bool,
+    accept_invalid_certs: bool,
+    ca_cert_path: String,
 }
 
 impl AddIn {
@@ -67,21 +85,82 @@ impl AddIn {
         AddIn {
             connection_string: String::new(),
             client: None,
+            use_tls: false,
+            accept_invalid_certs: false,
+            ca_cert_path: String::new(),
         }
     }
 
     pub fn initialize(&mut self) -> String {
-        match Client::connect(&self.connection_string, NoTls) {
+
+        let result = if self.use_tls {
+
+            let mut builder = TlsConnector::builder();
+
+            // Если указан путь к сертификату, добавляем его
+            if !&self.ca_cert_path.is_empty() {
+
+                let mut cert_data = Vec::new();
+                let mut cert_file = match File::open(&self.ca_cert_path){
+                    Ok(file) => file,
+                    Err(e) => return Self::process_error(e.to_string())
+                };
+
+                match cert_file.read_to_end(&mut cert_data){
+                    Ok(_) => {},
+                    Err(e) => return Self::process_error(e.to_string())
+                };
+
+                let cert_data = match native_tls::Certificate::from_pem(&cert_data){
+                    Ok(cert) => cert,
+                    Err(e) => return Self::process_error(e.to_string())
+                };
+
+                builder.add_root_certificate(cert_data);
+
+            };
+
+            // Если нужно отключить проверку сертификатов
+            if self.accept_invalid_certs {
+                builder.danger_accept_invalid_certs(true);
+            }
+
+            let tls_connector = match builder.build(){
+                Ok(connector) => connector,
+                Err(e) => return Self::process_error(e.to_string())
+            };
+
+            let tls_connector = MakeTlsConnector::new(tls_connector);
+            Client::connect(&self.connection_string, tls_connector)
+
+        } else {
+
+            Client::connect(&self.connection_string, NoTls)
+
+        };
+
+        // Обрабатываем результат с помощью вспомогательной функции
+        let result_string = match result {
             Ok(client) => {
                 self.client = Some(client);
                 json!({"result": true}).to_string()
             }
-            Err(e) => json!({
-                "result": false,
-                "error": e.to_string()
-            })
-                .to_string(),
-        }
+            Err(e) => Self::process_error(e.to_string()),
+        };
+        result_string
+    }
+
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+
+        if self.get_connection().is_some(){
+            return Self::process_error("TLS settings can only be set before the connection is established".to_string());
+        };
+
+        self.accept_invalid_certs = accept_invalid_certs;
+        self.ca_cert_path = ca_cert_path.to_string();
+        self.use_tls = use_tls;
+
+        json!({"result": true}).to_string()
     }
 
     pub fn get_connection(&mut self) -> Option<&mut Client> {
@@ -98,6 +177,13 @@ impl AddIn {
             })
                 .to_string()
         }
+    }
+
+    fn process_error(e: String) -> String{
+        json!({
+            "result": false,
+            "error": e
+        }).to_string()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
