@@ -44,33 +44,37 @@
 
 #Region Internal
 
-Function CreateDatabase(Val Module, Val Base, Val Connection = "") Export
+Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
 
     Scheme = NewSQLScheme("CREATEDATABASE", Module);
 
     SetBaseName(Scheme, Base);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
 
     Return Result;
 
 EndFunction
 
-Function DeleteDatabase(Val Module, Val Base, Val Connection = "") Export
+Function DeleteDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
 
     Scheme = NewSQLScheme("DROPDATABASE", Module);
 
     SetBaseName(Scheme, Base);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
 
     Return Result;
 
 EndFunction
 
-Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "") Export
+Function CreateTable(Val Module
+    , Val Table
+    , Val ColoumnsStruct
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
 
     ErrorText = "The column structure is not a valid key-value structure";
     OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
@@ -84,7 +88,7 @@ Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection =
     EndDo;
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
 
     Return Result;
 
@@ -94,12 +98,13 @@ Function AddRecords(Val Module
     , Val Table
     , Val DataArray
     , Val Transaction = True
-    , Val Connection  = "") Export
+    , Val Connection  = ""
+    , Val Tls         = Undefined) Export
 
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
 
-    Connection  = CreateConnectionInsideModule(Module.ConnectorName(), Connection);
+    Connection  = CreateConnectionInsideModule(Module.ConnectorName(), Connection, Tls);
     ProblemStep = ProcessRecordsStart(Module, Transaction, Connection);
 
     If ValueIsFilled(ProblemStep) Then
@@ -119,7 +124,8 @@ Function GetRecords(Val Module
     , Val Filters    = ""
     , Val Sort       = ""
     , Val Count      = ""
-    , Val Connection = "") Export
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
 
     Scheme = NewSQLScheme("SELECT", Module);
 
@@ -132,7 +138,7 @@ Function GetRecords(Val Module
 
     Request = FormSQLText(Scheme);
 
-    Result = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+    Result = ExecuteSQLQuery(Module, Request, Scheme["values"], , Connection, Tls);
 
     Return Result;
 
@@ -142,7 +148,8 @@ Function UpdateRecords(Val Module
     , Val Table
     , Val ValueStructure
     , Val Filters    = ""
-    , Val Connection = "") Export
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
 
     Scheme = NewSQLScheme("UPDATE", Module);
 
@@ -161,13 +168,17 @@ Function UpdateRecords(Val Module
     FillFilters(Scheme, Filters);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, Scheme["values"], , Connection, Tls);
 
     Return Result;
 
 EndFunction
 
-Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection = "") Export
+Function DeleteRecords(Val Module
+    , Val Table
+    , Val Filters    = ""
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
 
     Scheme = NewSQLScheme("DELETE", Module);
 
@@ -176,33 +187,33 @@ Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection =
     FillFilters(Scheme, Filters);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, Scheme["values"], , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, Scheme["values"], , Connection, Tls);
 
     Return Result;
 
 EndFunction
 
-Function DeleteTable(Val Module, Val Table, Val Connection = "") Export
+Function DeleteTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
 
     Scheme = NewSQLScheme("DROP", Module);
 
     SetTableName(Scheme, Table);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
 
     Return Result;
 
 EndFunction
 
-Function ClearTable(Val Module, Val Table, Val Connection = "") Export
+Function ClearTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
 
     Scheme = NewSQLScheme("TRUNCATE", Module);
 
     SetTableName(Scheme, Table);
 
     Request = FormSQLText(Scheme);
-    Result  = Module.ExecuteSQLQuery(Request, , , Connection);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
 
     Return Result;
 
@@ -649,6 +660,23 @@ EndFunction
 
 #Region Auxiliary
 
+Function ExecuteSQLQuery(Val Module
+    , Val QueryText
+    , Val Parameters  = ""
+    , Val ForceResult = False
+    , Val Connection  = ""
+    , Val Tls         = Undefined)
+
+    If Tls     = Undefined Then
+        Result = Module.ExecuteSQLQuery(QueryText, Parameters, ForceResult, Connection);
+    Else
+        Result = Module.ExecuteSQLQuery(QueryText, Parameters, ForceResult, Connection, Tls);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function ProcessRecords(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
 
     ErrorsArray     = New Array;
@@ -857,7 +885,7 @@ Function FormCountText(Val Count)
 
 EndFunction
 
-Function CreateConnectionInsideModule(Val Connector, Val Base)
+Function CreateConnectionInsideModule(Val Connector, Val Base, Val Tls = Undefined)
 
     If IsAddIn(Base) Then
         Return Base;
@@ -870,6 +898,30 @@ Function CreateConnectionInsideModule(Val Connector, Val Base)
     Connector = AttachAddInOnServer(Connector);
 
     Connector[FieldName] = Base;
+
+    If ValueIsFilled(Tls) Then
+
+        ErrorText = "Incorrect Tls settings!";
+        OPI_TypeConversion.GetKeyValueCollection(Tls, ErrorText);
+
+        UseTls            = OPI_Tools.GetOr(Tls, "use_tls", False);
+        DisableValidation = OPI_Tools.GetOr(Tls, "accept_invalid_certs", False);
+        CertFilepath      = OPI_Tools.GetOr(Tls, "ca_cert_path", "");
+
+        OPI_TypeConversion.GetBoolean(UseTls);
+        OPI_TypeConversion.GetBoolean(DisableValidation);
+        OPI_TypeConversion.GetLine(CertFilepath);
+
+        Result = Connector.SetTLS(UseTls, DisableValidation, CertFilepath);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+        Success = OPI_Tools.GetOr(Tls, "result", False);
+
+        If Not Success Then
+            Return Result;
+        EndIf;
+
+    EndIf;
 
     Result = Connector.Connect();
     Result = OPI_Tools.JsonToStructure(Result, False);
