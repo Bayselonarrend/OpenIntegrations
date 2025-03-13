@@ -8082,7 +8082,7 @@
 "Перейдите в раздел **Premission scope** из пункта установки приложения": "Go to **Premission scope** page",
 "access_token нужно будет забрать из параметра в строке адреса браузера": "access_token will need to be taken from the parameter in the browser address bar",
 "!OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, \"СоздатьТаблицу": "!OInt OPI_TestDataRetrieval.WriteLog(Result, \"CreateTable",
-"Устанавливает отметку \"Прочитано\" для сообщения или всех сообщений чата": "Sets the \"Read\" mark for a message or all chat messages",
+"Устанавливает отметку Прочитано для сообщения или всех сообщений чата": "Sets the Read mark for a message or all chat messages",
 "Получает данные о лимитах на ассортимент, создание и обновление товаров": "Get requests limits for products management methods",
 "!OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, \"СоздатьСтраницу": "!OInt OPI_TestDataRetrieval.WriteLog(Result, \"CreatePage",
 "Информация о договоренности о доставке](@api-docs.cdek.ru/36981626.html": "Information about delivery appointment](@api-docs.cdek.ru/36989601.html",
