@@ -888,6 +888,132 @@
     NewLine.Описание    = "Location name (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetNotification";
+    NewLine.МетодПоиска = "GETNOTIFICATION";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Notifications receiving";
+    NewLine.ОписаниеМетода   = "Receives one notification from the queue";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetNotification";
+    NewLine.МетодПоиска = "GETNOTIFICATION";
+    NewLine.Параметр    = "--timeout";
+    NewLine.Описание    = "Timeout for waiting for new messages when the queue is empty (optional, def. val. - 5)";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteNotificationFromQueue";
+    NewLine.МетодПоиска = "DELETENOTIFICATIONFROMQUEUE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Notifications receiving";
+    NewLine.ОписаниеМетода   = "Deletes the notification from the queue after successful receipt";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteNotificationFromQueue";
+    NewLine.МетодПоиска = "DELETENOTIFICATIONFROMQUEUE";
+    NewLine.Параметр    = "--receipt";
+    NewLine.Описание    = "Receipt identifier from the GetNotification method";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DownloadMessageFile";
+    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Notifications receiving";
+    NewLine.ОписаниеМетода   = "Gets a link to download a file from an incoming message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DownloadMessageFile";
+    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DownloadMessageFile";
+    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Identifier of the message with the file";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetReadMark";
+    NewLine.МетодПоиска = "SETREADMARK";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Notifications receiving";
+    NewLine.ОписаниеМетода   = "Sets the Read mark for a message or all chat messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetReadMark";
+    NewLine.МетодПоиска = "SETREADMARK";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "SetReadMark";
+    NewLine.МетодПоиска = "SETREADMARK";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Message ID. All messages, if not filled in (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications receiving";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetMessageQueue";
+    NewLine.МетодПоиска = "GETMESSAGEQUEUE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message queue";
+    NewLine.ОписаниеМетода   = "Gets the list of messages in the queue to be sent";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ClearMessageQueue";
+    NewLine.МетодПоиска = "CLEARMESSAGEQUEUE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message queue";
+    NewLine.ОписаниеМетода   = "Clears the queue of messages to be sent";
+
     Return CompositionTable;
 EndFunction
 

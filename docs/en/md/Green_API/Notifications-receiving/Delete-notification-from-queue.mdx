@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete notification from queue
+ Deletes the notification from the queue after successful receipt
+
+
+
+`Function DeleteNotificationFromQueue(Val AccessParameters, Val ReceiptID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ReceiptID | --receipt | String, Number | &#x2714; | Receipt identifier from the GetNotification method |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [DeleteNotification](https://green-api.com/docs/api/receiving/technology-http-api/DeleteNotification/)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ReceiptID = "4";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.DeleteNotificationFromQueue(AccessParameters, ReceiptID);
+```
+ 
+
+
+
+
