@@ -38,11 +38,12 @@ Method at API documentation: [SetSettings](https://green-api.com/docs/api/accoun
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 
     SettingsStructure = New Structure;
-    SettingsStructure.Insert("pollMessageWebhook"   , "yes");
-    SettingsStructure.Insert("incomingBlockWebhook" , "no");
-    SettingsStructure.Insert("incomingCallWebhook"  , "no");
-    SettingsStructure.Insert("editedMessageWebhook" , "yes");
-    SettingsStructure.Insert("deletedMessageWebhook", "yes");
+    SettingsStructure.Insert("pollMessageWebhook"       , "yes");
+    SettingsStructure.Insert("incomingBlockWebhook"     , "no");
+    SettingsStructure.Insert("incomingCallWebhook"      , "no");
+    SettingsStructure.Insert("editedMessageWebhook"     , "yes");
+    SettingsStructure.Insert("deletedMessageWebhook"    , "yes");
+    SettingsStructure.Insert("outgoingAPIMessageWebhook", "yes");
 
     Result = OPI_GreenAPI.SetInstanceSettings(SettingsStructure, AccessParameters);
 ```
