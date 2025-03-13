@@ -280,8 +280,10 @@ Function GetTestTable() Export
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
-    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
+    NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageQueue"                    , "Message queue"                   , GreenAPI);
+    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
 
     Return TestTable;
 
@@ -2255,6 +2257,30 @@ Procedure Check_GreenFile(Val Result) Export
 
     ExpectsThat(Result["idMessage"]).Заполнено();
     ExpectsThat(Result["urlFile"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenNotification(Val Result) Export
+
+    ExpectsThat(Result["receiptId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenInputFile(Val Result) Export
+
+    ExpectsThat(Result["downloadUrl"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GreenReading(Val Result) Export
+
+    ExpectsThat(Result["setRead"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_GreenQueueClearing(Val Result) Export
+
+    ExpectsThat(Result["isCleared"]).Равно(True);
 
 EndProcedure
 

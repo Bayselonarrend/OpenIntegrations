@@ -1549,6 +1549,30 @@ def test_greenapi(){
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьОписаниеЛокации --lat "test" --long "test" --addr "test" --name "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьУведомление --access "test" --timeout "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi УдалитьУведомлениеИзОчереди --access "test" --receipt "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi СкачатьФайлСообщения --access "test" --chat "test" --message "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi УстановитьОтметкуПрочтения --access "test" --chat "test" --message "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьОчередьСообщений --access "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ОчиститьОчередьСообщений --access "test" --debug --test '
+               }
+
 }
 
 

@@ -853,6 +853,159 @@ EndFunction
 
 #EndRegion
 
+#Region NotificationsReceiving
+
+// Get notification
+// Receives one notification from the queue
+//
+// Note
+// Once the notification has been successfully accepted, you must remove it from the queue using the `DeleteNotificationFromQueue` method
+// Method at API documentation: [ReceiveNotification](@green-api.com/docs/api/receiving/technology-http-api/ReceiveNotification/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Timeout - Number - Timeout for waiting for new messages when the queue is empty - timeout
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetNotification(Val AccessParameters, Val Timeout = 5) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("receiveTimeout", Timeout, "Number", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "receiveNotification");
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete notification from queue
+// Deletes the notification from the queue after successful receipt
+//
+// Note
+// Method at API documentation: [DeleteNotification](@green-api.com/docs/api/receiving/technology-http-api/DeleteNotification/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ReceiptID - String, Number - Receipt identifier from the GetNotification method - receipt
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function DeleteNotificationFromQueue(Val AccessParameters, Val ReceiptID) Export
+
+    OPI_TypeConversion.GetLine(ReceiptID);
+
+    URL = FormPrimaryURL(AccessParameters, "deleteNotification");
+    URL = StrTemplate("%1/%2", URL, ReceiptID);
+
+    Response = OPI_Tools.Delete(URL);
+
+    Return Response;
+
+EndFunction
+
+// Download message file
+// Gets a link to download a file from an incoming message
+//
+// Note
+// Method at API documentation: [DownloadFile](@green-api.com/docs/api/receiving/files/DownloadFile/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// MessageID - String - Identifier of the message with the file - message
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function DownloadMessageFile(Val AccessParameters, Val ChatID, Val MessageID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"   , ChatID   , "String", Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "downloadFile");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set read mark
+// Sets the Read mark for a message or all chat messages
+//
+// Note
+// Method at API documentation: [ReadChat](@green-api.com/docs/api/marks/ReadChat/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// MessageID - String - Message ID. All messages, if not filled in - message
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetReadMark(Val AccessParameters, Val ChatID, Val MessageID = "") Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"    , ChatID   , "String", Parameters);
+    OPI_Tools.AddField("idMessage" , MessageID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "readChat");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region MessageQueue
+
+// Get message queue
+// Gets the list of messages in the queue to be sent
+//
+// Note
+// Method at API documentation: [ShowMessagesQueue](@green-api.com/docs/api/queues/ShowMessagesQueue/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetMessageQueue(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "showMessagesQueue");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Clear message queue
+// Clears the queue of messages to be sent
+//
+// Note
+// Method at API documentation: [ClearMessagesQueue](@green-api.com/docs/api/queues/ClearMessagesQueue/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ClearMessageQueue(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "clearMessagesQueue");
+    Response = OPI_Tools.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
