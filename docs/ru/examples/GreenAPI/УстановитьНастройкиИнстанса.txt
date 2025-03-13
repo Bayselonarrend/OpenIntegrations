@@ -6,10 +6,11 @@
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 
     СтруктураНастроек = Новый Структура;
-    СтруктураНастроек.Вставить("pollMessageWebhook"   , "yes");
-    СтруктураНастроек.Вставить("incomingBlockWebhook" , "no");
-    СтруктураНастроек.Вставить("incomingCallWebhook"  , "no");
-    СтруктураНастроек.Вставить("editedMessageWebhook" , "yes");
-    СтруктураНастроек.Вставить("deletedMessageWebhook", "yes");
+    СтруктураНастроек.Вставить("pollMessageWebhook"       , "yes");
+    СтруктураНастроек.Вставить("incomingBlockWebhook"     , "no");
+    СтруктураНастроек.Вставить("incomingCallWebhook"      , "no");
+    СтруктураНастроек.Вставить("editedMessageWebhook"     , "yes");
+    СтруктураНастроек.Вставить("deletedMessageWebhook"    , "yes");
+    СтруктураНастроек.Вставить("outgoingAPIMessageWebhook", "yes");
 
     Результат = OPI_GreenAPI.УстановитьНастройкиИнстанса(СтруктураНастроек, ПараметрыДоступа);

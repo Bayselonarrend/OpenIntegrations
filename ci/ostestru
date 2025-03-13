@@ -718,11 +718,19 @@ pipeline {
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_Аккаунт"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_ОтправкаСообщений"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_ОтправкаСообщений"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_ПолучениеУведомлений"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_ОчередьСообщений"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GAPI_Аккаунт"'
                }
 
 			}
