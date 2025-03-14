@@ -3,5 +3,5 @@
 oint s3 УстановитьШифрованиеБакета \
   --name "opi-newbucket2" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --conf "C:\Users\Administrator\AppData\Local\Temp\aha4g4khsp5.xml" \
+  --conf "C:\Users\Administrator\AppData\Local\Temp\hwagog0ykjw.xml" \
   --dir false
