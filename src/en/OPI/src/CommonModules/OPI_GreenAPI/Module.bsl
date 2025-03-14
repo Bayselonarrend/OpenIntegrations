@@ -1006,6 +1006,64 @@ EndFunction
 
 #EndRegion
 
+#Region MessageLogs
+
+// Get chat history
+// Retrieves the chat message history
+//
+// Note
+// Method at API documentation: [GetChatHistory](@green-api.com/docs/api/journals/GetChatHistory/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Count - Number - Number of messages to receive - count
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetChatHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId", ChatID , "String" , Parameters);
+    OPI_Tools.AddField("count" , Count  , "Number" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getChatHistory");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get message
+// Gets information about the chat message by ID
+//
+// Note
+// Method at API documentation: [GetMessage](@green-api.com/docs/api/journals/GetMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// MessageID - String - Message identifier - msg
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"   , ChatID   , "String" , Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, "String" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getMessage");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private

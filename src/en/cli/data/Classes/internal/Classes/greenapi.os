@@ -1014,6 +1014,68 @@
     NewLine.Область     = "Message queue";
     NewLine.ОписаниеМетода   = "Clears the queue of messages to be sent";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetChatHistory";
+    NewLine.МетодПоиска = "GETCHATHISTORY";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message logs";
+    NewLine.ОписаниеМетода   = "Retrieves the chat message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetChatHistory";
+    NewLine.МетодПоиска = "GETCHATHISTORY";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message logs";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetChatHistory";
+    NewLine.МетодПоиска = "GETCHATHISTORY";
+    NewLine.Параметр    = "--count";
+    NewLine.Описание    = "Number of messages to receive (optional, def. val. - 100)";
+    NewLine.Область     = "Message logs";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetMessage";
+    NewLine.МетодПоиска = "GETMESSAGE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message logs";
+    NewLine.ОписаниеМетода   = "Gets information about the chat message by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetMessage";
+    NewLine.МетодПоиска = "GETMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message logs";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetMessage";
+    NewLine.МетодПоиска = "GETMESSAGE";
+    NewLine.Параметр    = "--msg";
+    NewLine.Описание    = "Message identifier";
+    NewLine.Область     = "Message logs";
+
     Return CompositionTable;
 EndFunction
 
