@@ -1498,6 +1498,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_GAPI_ОчередьСообщений"
 
+      - name: Журналы сообщений
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_GAPI_ЖурналыСообщений"
+
       - name: Аккаунт
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_GAPI_Аккаунт"
