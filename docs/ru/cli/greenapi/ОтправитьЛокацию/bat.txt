@@ -3,4 +3,5 @@
 oint greenapi ОтправитьЛокацию ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "120363410406221140@g.us" ^
-  --loc "{'latitude':'53,908522','longitude':'27,574821','address':'Площадь Победы, Минск','nameLocation':'пл. Победы'}"
+  --loc "{'latitude':53.908522,'longitude':27.574821}" ^
+  --quoted "BAE53E6C46963140"

@@ -1,5 +1,5 @@
 oint gdrive ОбновитьФайл ^
   --token "***" ^
-  --object "1h19_6LHQwZEjuPWNl4rZqWPZC9I0OxLv" ^
+  --object "1ybCp9ZuAh12WQ6XKMwsu-s56Emw6F3os" ^
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
   --title "Обновленный файл.jpg"
