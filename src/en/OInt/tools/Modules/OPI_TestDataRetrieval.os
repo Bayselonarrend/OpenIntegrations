@@ -283,6 +283,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);
     NewTest(TestTable, "GAPI_MessageQueue"                    , "Message queue"                   , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageLogs"                     , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
 
     Return TestTable;
