@@ -53,6 +53,7 @@
 // #Use "../../../tools"
 // #Use "../../../core"
 // #Use asserts
+
 #Region Internal
 
 // For YAxUnit
@@ -2500,6 +2501,22 @@ Procedure GAPI_MessageLogs() Export
     GreenAPI_GetMessage(TestParameters);
     GreenAPI_GetIncomingMessageLog(TestParameters);
     GreenAPI_GetOutgoingMessageLog(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region RCON
+
+Procedure RC_CommandsExecution() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
+
+    RCON_FormConnectionParameters(TestParameters);
+    RCON_CreateConnection(TestParameters);
+    RCON_ExecuteCommand(TestParameters);
 
 EndProcedure
 
@@ -19290,6 +19307,70 @@ Procedure GreenAPI_GetOutgoingMessageLog(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOutgoingMessageLog", "GreenAPI");
     OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region RCON
+
+Procedure RCON_FormConnectionParameters(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Result = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+
+    // END
+
+    Result["URL"] = "127.0.0.1:25565";
+    OPI_TestDataRetrieval.WriteLog(Result, "FormConnectionParameters", "RCON");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure RCON_CreateConnection(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Result           = OPI_RCON.CreateConnection(ConnectionParams);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "RCON");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_RCON.Main");
+
+EndProcedure
+
+Procedure RCON_ExecuteCommand(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand", "RCON");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, ConnectionParams);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand (no connection)", "RCON");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 

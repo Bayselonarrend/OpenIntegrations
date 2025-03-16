@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Execute command
+ Executes the command on the server
+
+
+
+`Function ExecuteCommand(Val Command, Val Connection) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Command | --exec | String | &#x2714; | Command text |
+  | Connection | --conn | Arbitrary, Structure Of KeyAndValue | &#x2714; | Connection or connection parameters |
+
+  
+  Returns:  Map Of KeyAndValue - Result of command execution
+
+<br/>
+
+:::tip
+When passing connection parameters, a new connection will be created and closed within the execution of a single command. To execute several commands (in OS and 1C versions), it is recommended to use a connection created in advance (see CreateConnection)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL          = "127.0.0.1:25565";
+    Password     = "Jg9F...";
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
+```
+ 
+
+
+
+

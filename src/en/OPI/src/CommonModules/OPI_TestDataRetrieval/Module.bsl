@@ -56,6 +56,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Twitter"        , 4);
     Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("SQLite"         , 5);
+    Sections.Insert("RCON"           , 5);
     Sections.Insert("YandexDisk"     , 5);
     Sections.Insert("GoogleWorkspace", 2);
     Sections.Insert("GoogleCalendar" , 5);
@@ -91,6 +92,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Twitter"        , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("SQLite"         , StandardDependencies);
+    Sections.Insert("RCON"           , StandardDependencies);
     Sections.Insert("YandexDisk"     , StandardDependencies);
     Sections.Insert("GoogleWorkspace", StandardDependencies);
     Sections.Insert("GoogleCalendar" , GoogleDependencies);
@@ -140,6 +142,7 @@ Function GetTestTable() Export
     SQLite    = "SQLite";
     Postgres  = "PostgreSQL";
     GreenAPI  = "GreenAPI";
+    RCON      = "RCON";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -285,6 +288,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageQueue"                    , "Message queue"                   , GreenAPI);
     NewTest(TestTable, "GAPI_MessageLogs"                     , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
+    NewTest(TestTable, "RC_CommandsExecution"                 , "Commands execution"              , RCON);
 
     Return TestTable;
 

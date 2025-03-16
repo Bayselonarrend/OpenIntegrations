@@ -2460,6 +2460,21 @@ EndProcedure
 
 #EndRegion
 
+#Region RCON
+
+Procedure CLI_RC_CommandsExecution() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
+
+    CLI_RCON_FormConnectionParameters(TestParameters);
+    CLI_RCON_ExecuteCommand(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -21696,6 +21711,57 @@ Procedure CLI_GreenAPI_GetOutgoingMessageLog(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetOutgoingMessageLog", "GreenAPI");
     OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region RCON
+
+Procedure CLI_RCON_FormConnectionParameters(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("pass" , Password);
+    Options.Insert("wtout", WriteTimeout);
+    Options.Insert("rtout", ReadTimeout);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+
+    Result["URL"] = "127.0.0.1:25565";
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "FormConnectionParameters", "RCON");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CLI_RCON_ExecuteCommand(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+    Command      = "list";
+
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("pass" , Password);
+    Options.Insert("wtout", WriteTimeout);
+    Options.Insert("rtout", ReadTimeout);
+
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+
+    Options.Insert("exec", Command);
+    Options.Insert("conn", ConnectionParams);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand", "RCON");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 
