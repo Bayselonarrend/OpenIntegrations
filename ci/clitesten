@@ -81,6 +81,11 @@ pipeline {
                 test_postgres()
              }
           }
+          stage('rcon'){
+             steps{
+                test_rcon()
+             }
+          }
           stage('s3'){
              steps{
                 test_s3()
@@ -1968,6 +1973,20 @@ def test_postgres(){
 }
 
 
+def test_rcon(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe rcon ExecuteCommand --exec "test" --conn "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe rcon FormConnectionParameters --url "test" --pass "test" --rtout "test" --wtout "test" --debug --test '
+               }
+
+}
+
+
 def test_s3(){
 					
 
@@ -3109,6 +3128,7 @@ test_neocities()
 test_notion()
 test_ozon()
 test_postgres()
+test_rcon()
 test_s3()
 test_slack()
 test_sqlite()
