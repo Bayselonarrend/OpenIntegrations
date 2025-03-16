@@ -31,9 +31,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         0 => {
 
             let url = params[0].get_string().unwrap_or("".to_string());
-            let password = params[0].get_string().unwrap_or("".to_string());
+            let password = params[1].get_string().unwrap_or("".to_string());
             let read_timeout = params[2].get_i32().unwrap_or(0);
-            let write_timeout = params[2].get_i32().unwrap_or(0);
+            let write_timeout = params[3].get_i32().unwrap_or(0);
 
             Box::new(methods::connect(obj, &url, &password, read_timeout, write_timeout))
         },
