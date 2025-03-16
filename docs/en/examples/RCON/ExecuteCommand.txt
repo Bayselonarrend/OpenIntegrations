@@ -1,0 +1,10 @@
+﻿    URL          = "127.0.0.1:25565";
+    Password     = "Jg9F...";
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
