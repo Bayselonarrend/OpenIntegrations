@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create Connection 
+ Opens a new RCON connection
+
+
+
+`Function CreateConnection(Val ConnectionParams) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ConnectionParams | - | Structure Of KeyAndValue | &#x2714; | Connection parameters. See FormConnectionParameters |
+
+  
+  Returns:  Arbitrary - Connector object or structure with error information
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL          = "127.0.0.1:25565";
+    Password     = "Jg9F...";
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Result           = OPI_RCON.CreateConnection(ConnectionParams);
+```
+ 
+
+
+
+
