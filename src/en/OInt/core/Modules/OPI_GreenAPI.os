@@ -1062,6 +1062,56 @@ Function GetMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
 
 EndFunction
 
+// Get incoming message log
+// Gets the list of incoming messages of the instance for the specified period
+//
+// Note
+// Method at API documentation: [LastIncomingMessages](@green-api.com/docs/api/journals/LastIncomingMessages/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Period - Number - Time in minutes for which messages need to be received - period
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("minutes", Period, "Number" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "lastIncomingMessages");
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get outgoing message log
+// Gets the list of outgoing messages of the instance for the specified period
+//
+// Note
+// Method at API documentation: [LastOutgoingMessages](@green-api.com/docs/api/journals/LastOutgoingMessages/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Period - Number - Time in minutes for which messages need to be received - period
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("minutes", Period, "Number" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "lastOutgoingMessages");
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion

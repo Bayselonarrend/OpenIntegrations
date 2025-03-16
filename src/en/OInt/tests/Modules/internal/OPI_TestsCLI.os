@@ -2428,6 +2428,19 @@ Procedure CLI_GAPI_NotificationsReceiving() Export
 
 EndProcedure
 
+Procedure CLI_GAPI_MessageQueue() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
+
+    CLI_GreenAPI_GetMessageQueue(TestParameters);
+    CLI_GreenAPI_ClearMessageQueue(TestParameters);
+
+EndProcedure
+
 Procedure CLI_GAPI_MessageLogs() Export
 
     TestParameters = New Structure;
@@ -2440,6 +2453,8 @@ Procedure CLI_GAPI_MessageLogs() Export
 
     CLI_GreenAPI_GetChatHistory(TestParameters);
     CLI_GreenAPI_GetMessage(TestParameters);
+    CLI_GreenAPI_GetIncomingMessageLog(TestParameters);
+    CLI_GreenAPI_GetOutgoingMessageLog(TestParameters);
 
 EndProcedure
 
@@ -21521,6 +21536,56 @@ Procedure CLI_GreenAPI_SetReadMark(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_GreenAPI_GetMessageQueue(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetMessageQueue", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessageQueue", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_ClearMessageQueue(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ClearMessageQueue", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearMessageQueue", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenQueueClearing(Result);
+
+EndProcedure
+
 Procedure CLI_GreenAPI_GetChatHistory(FunctionParameters)
 
     ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
@@ -21554,7 +21619,6 @@ Procedure CLI_GreenAPI_GetChatHistory(FunctionParameters)
 
 EndProcedure
 
-
 Procedure CLI_GreenAPI_GetMessage(FunctionParameters)
 
     ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
@@ -21582,6 +21646,56 @@ Procedure CLI_GreenAPI_GetMessage(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessage", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetIncomingMessageLog(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetIncomingMessageLog", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetIncomingMessageLog", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+Procedure CLI_GreenAPI_GetOutgoingMessageLog(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetOutgoingMessageLog", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetOutgoingMessageLog", "GreenAPI");
+    OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
 
