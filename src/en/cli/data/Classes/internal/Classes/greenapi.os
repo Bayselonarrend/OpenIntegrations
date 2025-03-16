@@ -1076,6 +1076,48 @@
     NewLine.Описание    = "Message identifier";
     NewLine.Область     = "Message logs";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetIncomingMessageLog";
+    NewLine.МетодПоиска = "GETINCOMINGMESSAGELOG";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message logs";
+    NewLine.ОписаниеМетода   = "Gets the list of incoming messages of the instance for the specified period";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetIncomingMessageLog";
+    NewLine.МетодПоиска = "GETINCOMINGMESSAGELOG";
+    NewLine.Параметр    = "--period";
+    NewLine.Описание    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Область     = "Message logs";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetOutgoingMessageLog";
+    NewLine.МетодПоиска = "GETOUTGOINGMESSAGELOG";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message logs";
+    NewLine.ОписаниеМетода   = "Gets the list of outgoing messages of the instance for the specified period";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "GetOutgoingMessageLog";
+    NewLine.МетодПоиска = "GETOUTGOINGMESSAGELOG";
+    NewLine.Параметр    = "--period";
+    NewLine.Описание    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Область     = "Message logs";
+
     Return CompositionTable;
 EndFunction
 
