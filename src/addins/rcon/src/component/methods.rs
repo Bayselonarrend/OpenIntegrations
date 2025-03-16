@@ -1,78 +1,56 @@
-use std::io::{Read, Write};
-use std::net::{Shutdown, TcpStream};
-use std::time::{Duration, Instant};
+use crate::component::AddIn;
+use rcon_client::{AuthRequest, RCONClient, RCONConfig, RCONRequest};
+use serde_json;
+use serde_json::json;
 
-/// Отправляет данные
-pub fn send(connection: &mut TcpStream, data: Vec<u8>, timeout_ms: i32) -> bool {
+pub fn connect(obj: &mut AddIn, url: &str, password: &str, read_timeout: i32, write_timeout: i32) -> String {
 
-    if timeout_ms > 0 {
-        let timeout = Duration::from_millis(timeout_ms as u64);
-        connection.set_write_timeout(Some(timeout)).ok();
+    let mut client = match RCONClient::new(RCONConfig {
+
+        url: url.to_string(),
+        read_timeout: Some(read_timeout as u64),
+        write_timeout: Some(write_timeout as u64),
+
+    }){
+        Ok(client) => client,
+        Err(e) => {return process_error(e.to_string())}
     };
 
-    match connection.write(&data) {
-        Ok(_) => connection.flush().is_ok(),
-        Err(_) => false, // Ошибка при отправке данных
+    let auth_result = match client.auth(AuthRequest::new(password.to_string())){
+        Ok(auth_result) => auth_result,
+        Err(e) => {return process_error(e.to_string())}
+    };
+
+    match auth_result.is_success(){
+        true => {
+            obj.client = Some(client);
+            json!({"result": true}).to_string()
+        }
+        false => {
+            let response_type = auth_result.response_type;
+            process_error(format!("Unexpected authorisation rejection (type {})", response_type))
+        }
+    }
+}
+
+pub fn execute_command(obj: &mut AddIn, command: &str) -> String {
+
+    if let Some(client) = &mut obj.client {
+
+        match client.execute(RCONRequest::new(command.to_string())){
+            Ok(response) => { process_success(response.body) }
+            Err(e) => { process_error(e.to_string()) }
+        }
+    }else{
+        process_error("No client found. Initialize connection first".to_string())
     }
 }
 
-/// Считывает данные
-pub fn receive(
-    connection: &mut TcpStream,
-    max_data_size: i32,
-    end_marker: Vec<u8>,
-    timeout_ms: i32
-) -> Vec<u8> {
-    const BUFFER_SIZE: usize = 1024; // Размер временного буфера
-    const MIN_READ_TIMEOUT_MS: u64 = 200; // Минимальный таймаут для чтения
-
-    let mut result = Vec::new();
-    let mut buffer = vec![0u8; BUFFER_SIZE];
-
-    // Устанавливаем общее время ожидания
-    let total_timeout = Duration::from_millis(timeout_ms as u64);
-    let start_time = Instant::now(); // Время начала работы функции
-    let min_read_timeout = Duration::from_millis(MIN_READ_TIMEOUT_MS);
-    let marker_exists = !end_marker.is_empty();
-
-    connection.set_read_timeout(Some(min_read_timeout)).ok();
-
-    loop {
-        // Проверяем общее время выполнения
-        if start_time.elapsed() >= total_timeout {
-            break; // Прерываем, если общее время истекло
-        }
-
-        // Завершаем цикл, если превышен лимит данных
-        if max_data_size > 0 && result.len() >= max_data_size as usize {
-            break;
-        }
-
-        match connection.read(&mut buffer) {
-            Ok(0) => break, // EOF — конец данных
-            Ok(size) => {
-                result.extend_from_slice(&buffer[..size]);
-
-                // Завершаем цикл, если получен конец сообщения (если end_marker задан)
-                if marker_exists && result.ends_with(&end_marker) {
-                    break;
-                }
-            }
-            Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => continue,
-            Err(_) => break, // Любая другая ошибка завершает чтение
-        }
-    }
-
-    result
+fn process_error(e: String) -> String {
+    json!({"result": false, "error": e}).to_string()
 }
 
-/// Закрывает соединение
-pub fn disconnect(add_in: &mut crate::component::AddIn) -> bool {
-    add_in.connection = None;
-    true
+fn process_success(data: String) -> String {
+    json!({"result": true, "data": data}).to_string()
 }
 
-/// Закрытие потока записи
-pub fn close_output(connection: &mut TcpStream) -> bool {
-    connection.shutdown(Shutdown::Write).is_ok()
-}
