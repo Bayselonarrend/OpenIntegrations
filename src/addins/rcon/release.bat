@@ -1,6 +1,7 @@
 @echo off
 
 :: Установить переменную
+set CARGO_NAME=opi_rcon
 set LIB_NAME=OPI_RCON
 set OPENSSL_DIR=C:\msys64\mingw64
 set OPENSSL_LIB_DIR=%OPENSSL_DIR%\lib
@@ -31,16 +32,16 @@ cargo zigbuild --release --target i686-unknown-linux-gnu
 if errorlevel 1 goto :error
 
 :: Копирование файлов .dll и .so
-copy /y target\x86_64-pc-windows-msvc\release\%LIB_NAME%.dll "%OUTPUT_DIR%\AddIn_x64_windows.dll"
+copy /y target\x86_64-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\AddIn_x64_windows.dll"
 if errorlevel 1 goto :error
 
-copy /y target\i686-pc-windows-msvc\release\%LIB_NAME%.dll "%OUTPUT_DIR%\AddIn_x86_windows.dll"
+copy /y target\i686-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\AddIn_x86_windows.dll"
 if errorlevel 1 goto :error
 
-copy /y target\x86_64-unknown-linux-gnu\release\lib%LIB_NAME%.so "%OUTPUT_DIR%\AddIn_x64_linux.so"
+copy /y target\x86_64-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\AddIn_x64_linux.so"
 if errorlevel 1 goto :error
 
-copy /y target\i686-unknown-linux-gnu\release\lib%LIB_NAME%.so "%OUTPUT_DIR%\AddIn_x86_linux.so"
+copy /y target\i686-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\AddIn_x86_linux.so"
 if errorlevel 1 goto :error
 
 copy /y MANIFEST.XML "%OUTPUT_DIR%\MANIFEST.XML"

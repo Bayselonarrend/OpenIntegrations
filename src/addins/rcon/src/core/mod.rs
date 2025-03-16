@@ -30,13 +30,13 @@ impl RawAddin for AddIn {
     fn get_prop_val(&mut self, num: usize, val: &mut Variant) -> bool {let field: &dyn getset::ValueType = &self[num]; field.get_value(val) }
     fn set_prop_val(&mut self, num: usize, val: &Variant) -> bool {let field: &mut dyn getset::ValueType = &mut self[num]; field.set_value(val); true }
     fn is_prop_readable(&mut self, _num: usize) -> bool { true }
-    fn is_prop_writable(&mut self, num: usize) -> bool { true }
+    fn is_prop_writable(&mut self, _num: usize) -> bool { true }
     fn get_n_methods(&mut self) -> usize { METHODS.len() }
     fn find_method(&mut self, name: &[u16]) -> Option<usize> { METHODS.iter().position(|&x| x == name) }
     fn get_method_name(&mut self, num: usize, _alias: usize) -> Option<&'static [u16]> { METHODS.get(num).copied() }
     fn get_n_params(&mut self, num: usize) -> usize { get_params_amount(num) }
     fn get_param_def_value(&mut self, _method_num: usize, _param_num: usize, _value: Variant, ) -> bool { true }
-    fn has_ret_val(&mut self, num: usize) -> bool { true }
+    fn has_ret_val(&mut self, _num: usize) -> bool { true }
     fn call_as_proc(&mut self, _num: usize, _params: &mut [Variant]) -> bool { false }
     fn call_as_func(&mut self, num: usize, params: &mut [Variant], ret_value: &mut Variant, ) -> bool { cal_func(self, num, params).get_value(ret_value) }
 

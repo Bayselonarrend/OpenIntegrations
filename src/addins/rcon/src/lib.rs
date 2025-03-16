@@ -14,7 +14,7 @@ pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn GetClassObject(name: *const u16, component: *mut *mut c_void) -> c_long {
+pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
 
     let addin = AddIn::new();
     create_component(component, addin)
@@ -36,6 +36,7 @@ pub extern "C" fn GetClassNames() -> *const u16 {
 
 #[allow(non_snake_case)]
 #[no_mangle]
+#[allow(static_mut_refs)]
 pub unsafe extern "C" fn SetPlatformCapabilities(capabilities: c_int) -> c_int {
     PLATFORM_CAPABILITIES.store(capabilities, Ordering::Relaxed);
     3

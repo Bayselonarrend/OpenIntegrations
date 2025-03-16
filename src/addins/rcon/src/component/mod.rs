@@ -1,29 +1,23 @@
 mod methods;
 
 use addin1c::{name, Variant};
+use rcon_client::RCONClient;
 use crate::core::getset;
-use std::net::TcpStream;
-use crate::component::methods::disconnect;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),    // 0
-    name!("Disconnect"), // 1
-    name!("Read"),       // 2
-    name!("Send"),       // 3
-    name!("CloseOutput") // 4
+    name!("Command")     // 1
+
 ];
 
 // Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 0,
-        1 => 0,
-        2 => 3,
-        3 => 2,
-        4 => 0,
+        0 => 4,
+        1 => 1,
         _ => 0,
     }
 }
@@ -32,45 +26,22 @@ pub fn get_params_amount(num: usize) -> usize {
 // Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
-    let empty_array: [u8; 0] = [];
-
     match num {
 
-        0 => Box::new(obj.connect()),
+        0 => {
+
+            let url = params[0].get_string().unwrap_or("".to_string());
+            let password = params[0].get_string().unwrap_or("".to_string());
+            let read_timeout = params[2].get_i32().unwrap_or(0);
+            let write_timeout = params[2].get_i32().unwrap_or(0);
+
+            Box::new(methods::connect(obj, &url, &password, read_timeout, write_timeout))
+        },
         1 => {
-            disconnect(obj);
-            Box::new(true) // Возвращаем true для обозначения успешного выполнения
+            let command = params[0].get_string().unwrap_or("".to_string());
+            Box::new(methods::execute_command(obj, &command))
         },
-        2 => {
 
-            let maxsize = params[0].get_i32().unwrap_or(0);
-            let marker = params[1].get_blob().unwrap_or(&empty_array);
-            let timeout = params[2].get_i32().unwrap_or(0);
-
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::receive(connection, maxsize, marker.to_vec(), timeout))
-            } else {
-                Box::new("OPI: Connection closed".as_bytes().to_vec())
-            }
-        },
-        3 => {
-
-            let data = params[0].get_blob().unwrap_or(&empty_array);
-            let timeout = params[1].get_i32().unwrap_or(0);
-
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::send(connection, data.to_vec(), timeout))
-            } else {
-                Box::new(false) // Если соединения нет, возвращаем false
-            }
-        },
-        4 =>{
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::close_output(connection))
-            } else {
-                Box::new(false)
-            }
-        }
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -81,44 +52,23 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 // ПОЛЯ КОМПОНЕНТЫ ---------------------------------------------------------------------------------
 
 // Синонимы
-pub const PROPS: &[&[u16]] = &[
-    name!("Address")
-];
+pub const PROPS: &[&[u16]] = &[];
 
 
 pub struct AddIn {
-    pub address: String,
-    connection: Option<TcpStream>,
+    client: Option<RCONClient>,
 }
 
 impl AddIn {
-    /// Создает новый объект
     pub fn new() -> Self {
         AddIn {
-            address: String::new(),
-            connection: None,
+            client: None,
         }
     }
 
-    /// Подключается к серверу
-    pub fn connect(&mut self) -> bool {
-
-        if self.address.is_empty() {
-            return false; // Ошибка: пустой адрес
-        }
-
-        match TcpStream::connect(&self.address) {
-            Ok(tcp_stream) => {
-                self.connection = Some(tcp_stream);
-                true
-            }
-            Err(_) => false, // Ошибка при подключении
-        }
-    }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
-            0 => &self.address as &dyn getset::ValueType as *const _,
             _ => panic!("Index out of bounds"),
         }
     }
