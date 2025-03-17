@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_1CE5_34.sqlite";
+﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_28C5_13a.sqlite";
     Table = "test";
 
     Result = OPI_SQLite.GetTableInformation(Table, Base);
