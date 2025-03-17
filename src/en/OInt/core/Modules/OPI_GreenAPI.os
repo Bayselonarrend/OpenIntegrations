@@ -278,6 +278,42 @@ Function SetProfilePicture(Val AccessParameters, Val Image) Export
 
 EndFunction
 
+// Archive chat
+// Archives the selected chat
+//
+// Note
+// Method at API documentation: [ArchiveChat](@green-api.com/docs/api/service/archiveChat/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat ID for archiving - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ArchiveChat(Val AccessParameters, Val ChatID) Export
+
+    Return ChatArchivingManagement(AccessParameters, ChatID, True);
+
+EndFunction
+
+// Unarchive chat
+// Unarchives the selected chat
+//
+// Note
+// Method at API documentation: [UnarchiveChat](@green-api.com/docs/api/service/unarchiveChat/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat ID for dearchiving - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function UnarchiveChat(Val AccessParameters, Val ChatID) Export
+
+    Return ChatArchivingManagement(AccessParameters, ChatID, False);
+
+EndFunction
+
 // Get instance settings structure
 // Gets the structure template for instance settings
 //
@@ -797,6 +833,64 @@ Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Message
 
 EndFunction
 
+// Change the message text
+// Changes the text of the message
+//
+// Note
+// Method at API documentation: [EditMessage](@green-api.com/docs/api/service/EditMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// MessageID - String - Message identifier - message
+// Text - String - New message text - text
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Text) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"   , ChatID   , "String", Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, "String", Parameters);
+    OPI_Tools.AddField("message"  , Text     , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "editMessage");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete message
+// Deletes a message in the selected chat room
+//
+// Note
+// Method at API documentation: [DeleteMessage](@green-api.com/docs/api/service/deleteMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// MessageID - String - Message identifier - message
+// ForSenderOnly - Boolean - Delete for sender only - sender
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForSenderOnly = False) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"          , ChatID       , "String" , Parameters);
+    OPI_Tools.AddField("idMessage"       , MessageID    , "String" , Parameters);
+    OPI_Tools.AddField("onlySenderDelete", ForSenderOnly, "Boolean", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "deleteMessage");
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get contact description
 // Gets the contact description for the SendContact function
 //
@@ -1158,6 +1252,20 @@ Function GroupMemberAction(Val AccessParameters, Val GroupID, Val UserID, Val Me
 
     OPI_Tools.AddField("groupId"          , GroupID , "String", Parameters);
     OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, Method);
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+Function ChatArchivingManagement(Val AccessParameters, Val ChatID, Val Archiving)
+
+    Method     = ?(Archiving, "archiveChat", "unarchiveChat");
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, Method);
     Response = OPI_Tools.Post(URL, Parameters);
