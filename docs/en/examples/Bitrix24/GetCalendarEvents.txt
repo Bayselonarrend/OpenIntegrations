@@ -5,10 +5,10 @@
     Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Token       = "8536b467006e9f06006b12e400000001000...";
-    EventID     = "490";
-    CalendarID1 = "362";
-    CalendarID2 = "364";
+    Token       = "2f89d867006e9f06006b12e400000001000...";
+    EventID     = "690";
+    CalendarID1 = "462";
+    CalendarID2 = "464";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     NextDay  = Tomorrow + 86400;
