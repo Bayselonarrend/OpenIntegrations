@@ -2394,6 +2394,7 @@ Procedure GAPI_Account() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     GreenAPI_FormAccessParameters(TestParameters);
@@ -2417,6 +2418,7 @@ Procedure GAPI_GroupManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     GreenAPI_CreateGroup(TestParameters);
@@ -2439,6 +2441,7 @@ Procedure GAPI_MessageSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
 
@@ -2480,6 +2483,7 @@ Procedure GAPI_MessageQueue() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
 
     GreenAPI_GetMessageQueue(TestParameters);
     GreenAPI_ClearMessageQueue(TestParameters);
@@ -2517,6 +2521,7 @@ Procedure RC_CommandsExecution() Export
     RCON_FormConnectionParameters(TestParameters);
     RCON_CreateConnection(TestParameters);
     RCON_ExecuteCommand(TestParameters);
+    RCON_IsConnector(TestParameters);
 
 EndProcedure
 
@@ -18460,6 +18465,15 @@ Procedure GreenAPI_GetInstanceSettings(FunctionParameters)
 
     // END
 
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
+
     OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettings", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenInstance(Result);
 
@@ -19125,8 +19139,14 @@ Procedure GreenAPI_GetNotification(FunctionParameters)
 
     // END
 
-    JSON = OPI_Tools.JSONString(Result);
-    JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
 
     Result = OPI_Tools.JsonToStructure(JSON, True);
 
@@ -19246,12 +19266,16 @@ Procedure GreenAPI_GetChatHistory(FunctionParameters)
 
     // END
 
-    JSON = OPI_Tools.JSONString(Result);
-    JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
 
-    Result = OPI_Tools.JsonToStructure(JSON, True);
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "FormAccessParameters", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatHistory", "GreenAPI");
     OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
@@ -19271,6 +19295,15 @@ Procedure GreenAPI_GetMessage(FunctionParameters)
 
     // END
 
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
+
     OPI_TestDataRetrieval.WriteLog(Result, "GetMessage", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenMessage(Result);
 
@@ -19288,6 +19321,15 @@ Procedure GreenAPI_GetIncomingMessageLog(FunctionParameters)
 
     // END
 
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
+
     OPI_TestDataRetrieval.WriteLog(Result, "GetIncomingMessageLog", "GreenAPI");
     OPI_TestDataRetrieval.Check_Array(Result);
 
@@ -19304,6 +19346,15 @@ Procedure GreenAPI_GetOutgoingMessageLog(FunctionParameters)
     Result           = OPI_GreenAPI.GetOutgoingMessageLog(AccessParameters);
 
     // END
+
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, FunctionParameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        OPI_TestDataRetrieval.WriteLog(Result, "JSON Error");
+    EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOutgoingMessageLog", "GreenAPI");
     OPI_TestDataRetrieval.Check_Array(Result);
@@ -19325,7 +19376,8 @@ Procedure RCON_FormConnectionParameters(FunctionParameters)
 
     // END
 
-    Result["URL"] = "127.0.0.1:25565";
+    Result["url"]      = "127.0.0.1:25565";
+    Result["password"] = "***";
     OPI_TestDataRetrieval.WriteLog(Result, "FormConnectionParameters", "RCON");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
@@ -19371,6 +19423,24 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand (no connection)", "RCON");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure RCON_IsConnector(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+    Result           = OPI_RCON.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "RCON");
+    OPI_TestDataRetrieval.Check_True(Result);
 
 EndProcedure
 
