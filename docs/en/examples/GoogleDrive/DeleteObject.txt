@@ -1,4 +1,4 @@
-﻿    Token      = "ya29.a0AeXRPp4GQkWyXGKxGjI9dYRUqpQsN6nxl0z83bY6b3s6TwGJ3JznITBBhoHMEDHPF6sCDeNnyAAykBPLfqweLCigrMVX4FL8vcelNFAex...";
-    Identifier = "1pMp-IzFbFsUPcTeoCma8lPkOwofHgc36";
+﻿    Token      = "ya29.a0AeXRPp7yIYtWir0wC7l09O27fzCyaFxBylix9NPJ_QNA1wB4QVUrG4U7Fr2QSwtfnWG7ZYf6VNrnekZ-jXtryEWp_DVIDnn_y8ABtqeWr...";
+    Identifier = "1Zw1gcXzKA8iyhPpSv8Sg0wcqss9cJR2i";
 
     Result = OPI_GoogleDrive.DeleteObject(Token, Identifier);

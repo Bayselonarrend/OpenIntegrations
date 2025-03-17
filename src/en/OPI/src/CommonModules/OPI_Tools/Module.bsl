@@ -1050,7 +1050,7 @@ Function NumberToString(Val Value) Export
         If Value   = 0 Then
             Value_ = "0";
         Else
-            Value_ = Format(Value, "HG=0");
+            Value_ = Format(Value, "NG=0");
         EndIf;
 
     Else
@@ -1070,7 +1070,7 @@ Function UNIXTime(Val Date) Export
     OTD  = New TypeDescription("Date");
     Date = OTD.AdjustValue(Date);
 
-    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "HC=10; HDC=0; HG=0");
+    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "ND=10; NFD=0; NG=0");
     UNIX = StrReplace(UNIX, ","       , "");
     UNIX = StrReplace(UNIX, Chars.NBSp, "");
     UNIX = StrReplace(UNIX, " "       , "");

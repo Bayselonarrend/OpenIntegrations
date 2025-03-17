@@ -1,6 +1,6 @@
-﻿    Токен  = "ya29.a0AeXRPp4GQkWyXGKxGjI9dYRUqpQsN6nxl0z83bY6b3s6TwGJ3JznITBBhoHMEDHPF6sCDeNnyAAykBPLfqweLCigrMVX4FL8vcelNFAex...";
-    Откуда = "16DW75syjxbTdZQ9y4daN9P0nOyWZtLAjuO8zycoKoDk";
-    Куда   = "1crAb8YCL3ozqjqjA8ufF4VSAnKvS8R65vz0pxTCS-KM";
-    Лист   = "1524800852";
+﻿    Токен  = "ya29.a0AeXRPp7yIYtWir0wC7l09O27fzCyaFxBylix9NPJ_QNA1wB4QVUrG4U7Fr2QSwtfnWG7ZYf6VNrnekZ-jXtryEWp_DVIDnn_y8ABtqeWr...";
+    Откуда = "1T55Z5j62InVg9_3GgjDXccDBqRoyF7wXIB4ju3tIu_8";
+    Куда   = "1n3ZX0EbySYyqwK_5H-lPTa2HVKpleYXtGY7r2MWQmJs";
+    Лист   = "1368447649";
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
