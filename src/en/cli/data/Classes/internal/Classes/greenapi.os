@@ -183,6 +183,48 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "greenapi";
     NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ArchiveChat";
+    NewLine.МетодПоиска = "ARCHIVECHAT";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Archives the selected chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "ArchiveChat";
+    NewLine.МетодПоиска = "ARCHIVECHAT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID for archiving";
+    NewLine.Область     = "Account";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "UnarchiveChat";
+    NewLine.МетодПоиска = "UNARCHIVECHAT";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Account";
+    NewLine.ОписаниеМетода   = "Unarchives the selected chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "UnarchiveChat";
+    NewLine.МетодПоиска = "UNARCHIVECHAT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID for dearchiving";
+    NewLine.Область     = "Account";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
     NewLine.Метод       = "GetInstanceSettingsStructure";
     NewLine.МетодПоиска = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Параметр    = "--empty";
@@ -794,6 +836,88 @@
     NewLine.МетодПоиска = "FORWARDMESSAGES";
     NewLine.Параметр    = "--msgs";
     NewLine.Описание    = "Messages or a single message to be sent";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Changes the text of the message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Message identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "New message text";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--access";
+    NewLine.Описание    = "Access parameters. See FormAccessParameters";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Deletes a message in the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Message identifier";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "greenapi";
+    NewLine.Модуль      = "OPI_GreenAPI";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--sender";
+    NewLine.Описание    = "Delete for sender only (optional, def. val. - No)";
     NewLine.Область     = "Message sending";
 
 
