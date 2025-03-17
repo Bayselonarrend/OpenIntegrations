@@ -65,7 +65,7 @@ Function CreateConnection(Val ConnectionParams) Export
     MissingArray  = OPI_Tools.FindMissingCollectionFields(ConnectionParams, RequiredArray);
 
     If ValueIsFilled(MissingArray) Then
-        Raise StrTemplate("Missing connection parameters: %1", StrConcat(MissingArray));
+        Raise StrTemplate("Missing connection parameters: %1", StrConcat(MissingArray, ", "));
     EndIf;
 
     Connector = AttachAddInOnServer("OPI_RCON");
