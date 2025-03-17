@@ -3,10 +3,7 @@
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    From   = "11001234567@c.us";
-    Target = "120363410406221140@g.us";
-
-    Message = "BAE54460591FD182";
+    ChatID = "120363410406221140@g.us";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);
+    Result           = OPI_GreenAPI.ArchiveChat(AccessParameters, ChatID);

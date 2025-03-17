@@ -1,23 +1,23 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 9
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Forward messages
- Sends messages from one chat room to another
+# Delete message
+ Deletes a message in the selected chat room
 
 
 
-`Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Messages) Export`
+`Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForSenderOnly = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
-  | From | --from | String | &#x2714; | Message source chat ID |
-  | Target | --to | String | &#x2714; | Message receiver chat ID |
-  | Messages | --msgs | String, Array of String | &#x2714; | Messages or a single message to be sent |
+  | ChatID | --chat | String | &#x2714; | Chat identifier |
+  | MessageID | --message | String | &#x2714; | Message identifier |
+  | ForSenderOnly | --sender | Boolean | &#x2716; | Delete for sender only |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Green API
@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [ForwardMessages](https://green-api.com/docs/api/sending/ForwardMessages/)
+Method at API documentation: [DeleteMessage](https://green-api.com/docs/api/service/deleteMessage/)
 :::
 <br/>
 
@@ -37,13 +37,11 @@ Method at API documentation: [ForwardMessages](https://green-api.com/docs/api/se
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    From   = "11001234567@c.us";
-    Target = "120363410406221140@g.us";
-
-    Message = "BAE54460591FD182";
+    ChatID    = "120363410406221140@g.us";
+    MessageID = "BAE54460591FD182";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);
+    Result           = OPI_GreenAPI.DeleteMessage(AccessParameters, ChatID, MessageID);
 ```
  
 
