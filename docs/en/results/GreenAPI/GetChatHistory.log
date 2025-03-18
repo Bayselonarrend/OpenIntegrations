@@ -1,0 +1,2649 @@
+﻿ [
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5DCC8C1092AA9",
+  "timestamp": 1742274637,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE536960B4DEC58",
+  "timestamp": 1742274636,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Bicycle",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Bicycle\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE506D813842127",
+   "participant": "1234567890@c.us",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Artem Evpatoriysky Petrovich",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Petrovich;Artem;Evpatoriysky;\nFN:Artem Evpatoriysky Petrovich\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE506D813842127",
+  "timestamp": 1742274634,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Artem Evpatoriysky Petrovich",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Petrovich;Artem;Evpatoriysky;\nFN:Artem Evpatoriysky Petrovich\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE57765EF184EBE",
+  "timestamp": 1742274633,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5B5DB91EC93BD",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Victory Square, Minsk",
+    "address": "Victory sq.",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B5DB91EC93BD",
+  "timestamp": 1742274632,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "Victory Square, Minsk",
+   "address": "Victory sq.",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE536F160DEF884",
+  "timestamp": 1742274631,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5BEF5BEB74882",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE57E461911A39B",
+  "timestamp": 1742274630,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/17d26be0-0027-461c-a662-6b7dd9960ed4.jpg",
+  "caption": "File description",
+  "fileName": "17d26be0-0027-461c-a662-6b7dd9960ed4.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5BEF5BEB74882",
+  "timestamp": 1742274630,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE588DA94C72DC2",
+  "timestamp": 1742274628,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE56825B1C0FC63"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B8AB679FDE43",
+  "timestamp": 1742274627,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/12c2b623-b717-49f1-9e01-254fcb0a91a4.jpg",
+  "caption": "File description",
+  "fileName": "12c2b623-b717-49f1-9e01-254fcb0a91a4.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B11FDF9B70F5",
+  "timestamp": 1742274623,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "New message",
+   "stanzaId": "BAE56825B1C0FC63",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE56825B1C0FC63",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "New message",
+   "extendedTextMessage": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56825B1C0FC63",
+  "timestamp": 1742274622,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE588DA94C72DC2",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5EBEA6D4D06DE",
+  "timestamp": 1742245249,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE58FFB313AA023",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE58FFB313AA023",
+  "timestamp": 1742245248,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE512B3BFFA7917",
+  "timestamp": 1742245247,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE542644B2506C8",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5A80DFF9CA202",
+  "timestamp": 1742245246,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/9f73aa98-b6e5-400b-a709-f13444090936.jpg",
+  "caption": "Описание файла",
+  "fileName": "9f73aa98-b6e5-400b-a709-f13444090936.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE542644B2506C8",
+  "timestamp": 1742245246,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE541BA29B9B34B",
+  "timestamp": 1742245242,
+  "typeMessage": "videoMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/365266f3-1d44-4425-928b-079e97a11684.mp4",
+  "caption": "Описание файла",
+  "fileName": "365266f3-1d44-4425-928b-079e97a11684.mp4",
+  "jpegThumbnail": "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",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "BAE589D90574B721",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/ab70f709-b516-444a-bc6f-bf73b3db47b9.jpg",
+   "caption": "Описание файла",
+   "fileName": "ab70f709-b516-444a-bc6f-bf73b3db47b9.jpg",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B820765C5750",
+  "timestamp": 1742245240,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5356B1EF7AC84"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE589D90574B721",
+  "timestamp": 1742245238,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/ab70f709-b516-444a-bc6f-bf73b3db47b9.jpg",
+  "caption": "Описание файла",
+  "fileName": "ab70f709-b516-444a-bc6f-bf73b3db47b9.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE58B9DD5D9D729",
+  "timestamp": 1742245230,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5356B1EF7AC84",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5356B1EF7AC84",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5356B1EF7AC84",
+  "timestamp": 1742245229,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE5B820765C5750",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5D9492A33A79C",
+  "timestamp": 1742242280,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE564B728F06F69",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE564B728F06F69",
+  "timestamp": 1742242278,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE53600E3C16834",
+  "timestamp": 1742242278,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5DA82B33D5FB6"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE528B1FCBC7B0B",
+  "timestamp": 1742242277,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/8243eb37-a790-478a-81d5-b788be2b5bc2.jpg",
+  "caption": "File description",
+  "fileName": "8243eb37-a790-478a-81d5-b788be2b5bc2.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5BBB6E4F7DD21",
+  "timestamp": 1742242274,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/f932fac0-a624-4f87-be9a-6742c4aafaeb.jpg",
+  "caption": "File description",
+  "fileName": "f932fac0-a624-4f87-be9a-6742c4aafaeb.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE50EB757C863D8",
+  "timestamp": 1742242267,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "New message",
+   "stanzaId": "BAE5DA82B33D5FB6",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5DA82B33D5FB6",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "New message",
+   "extendedTextMessage": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5DA82B33D5FB6",
+  "timestamp": 1742242265,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE53600E3C16834",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE59B1A614D51AB",
+  "timestamp": 1742242190,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/8243eb37-a790-478a-81d5-b788be2b5bc2.jpg",
+  "caption": "Описание файла",
+  "fileName": "8243eb37-a790-478a-81d5-b788be2b5bc2.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56BE45071FB19",
+  "timestamp": 1742242187,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE51113F4946176"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5A9F9585CA69F",
+  "timestamp": 1742242185,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/b40dcb2c-80d3-4a05-86a8-892a2d234ccb.jpg",
+  "caption": "Описание файла",
+  "fileName": "b40dcb2c-80d3-4a05-86a8-892a2d234ccb.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56CF3B59AC989",
+  "timestamp": 1742242178,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE51113F4946176",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE51113F4946176",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE51113F4946176",
+  "timestamp": 1742242177,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE56BE45071FB19",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5DC3472FDD47F",
+  "timestamp": 1742241093,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/f135abf6-9063-49c5-86b4-276c48d1b190.jpg",
+  "caption": "File description",
+  "fileName": "f135abf6-9063-49c5-86b4-276c48d1b190.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE548070C1182DC",
+  "timestamp": 1742241089,
+  "typeMessage": "videoMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/6dfa67ee-6496-4398-a1dd-0866e3d69895.mp4",
+  "caption": "File description",
+  "fileName": "6dfa67ee-6496-4398-a1dd-0866e3d69895.mp4",
+  "jpegThumbnail": "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",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "BAE56384CF45D61A",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/373b290d-8592-4a9a-a8c2-d84ef5c7d3b0.jpg",
+   "caption": "File description",
+   "fileName": "373b290d-8592-4a9a-a8c2-d84ef5c7d3b0.jpg",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56581EC935239",
+  "timestamp": 1742241088,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5EFC6A8BA2E29"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56384CF45D61A",
+  "timestamp": 1742241084,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/373b290d-8592-4a9a-a8c2-d84ef5c7d3b0.jpg",
+  "caption": "File description",
+  "fileName": "373b290d-8592-4a9a-a8c2-d84ef5c7d3b0.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5E6163770506E",
+  "timestamp": 1742241079,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "New message",
+   "stanzaId": "BAE5EFC6A8BA2E29",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5EFC6A8BA2E29",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "New message",
+   "extendedTextMessage": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5EFC6A8BA2E29",
+  "timestamp": 1742241078,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE56581EC935239",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5D42BEC08D2AC",
+  "timestamp": 1742236510,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/34c6a8b3-2179-45cf-a291-bb86eb2c273d.jpg",
+  "caption": "Описание файла",
+  "fileName": "34c6a8b3-2179-45cf-a291-bb86eb2c273d.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5EF96A1196D03",
+  "timestamp": 1742236507,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5CA252D219638"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE543CF4C94E9A9",
+  "timestamp": 1742236504,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/cfaeb836-83bc-41a4-aa9e-bb81187f4895.jpg",
+  "caption": "Описание файла",
+  "fileName": "cfaeb836-83bc-41a4-aa9e-bb81187f4895.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE50E53F249221D",
+  "timestamp": 1742236498,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5CA252D219638",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5CA252D219638",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5CA252D219638",
+  "timestamp": 1742236497,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE5EF96A1196D03",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE57497997D0329",
+  "timestamp": 1742233159,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/d884251e-71ed-479d-ace5-f1211316bc37.jpg",
+  "caption": "File description",
+  "fileName": "d884251e-71ed-479d-ace5-f1211316bc37.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE52930A112AD51",
+  "timestamp": 1742233156,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5A87E478B31FF"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5621E82C0A279",
+  "timestamp": 1742233153,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/b3f28180-5411-41f4-b20c-8e0d90820575.jpg",
+  "caption": "File description",
+  "fileName": "b3f28180-5411-41f4-b20c-8e0d90820575.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5D72A349BCCF1",
+  "timestamp": 1742233145,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "New message",
+   "stanzaId": "BAE5A87E478B31FF",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5A87E478B31FF",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "New message",
+   "extendedTextMessage": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5A87E478B31FF",
+  "timestamp": 1742233144,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE52930A112AD51",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B5E5584CFE27",
+  "timestamp": 1742211169,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE560A11CEB18FC",
+  "timestamp": 1742211168,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Велосипед",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Велосипед\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE531A6344844EF",
+   "participant": "1234567890@c.us",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Артем Евпаторийский Петрович",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE531A6344844EF",
+  "timestamp": 1742211167,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Артем Евпаторийский Петрович",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5DE9EA8E4A178",
+  "timestamp": 1742211166,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE59277062ACE1A",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE59277062ACE1A",
+  "timestamp": 1742211165,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B4F1EBB81532",
+  "timestamp": 1742211164,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE54EA90912E348",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5DB1835F64429",
+  "timestamp": 1742211163,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/0fcf59a8-ee4a-48a6-b31c-1db95cee833b.jpg",
+  "caption": "Описание файла",
+  "fileName": "0fcf59a8-ee4a-48a6-b31c-1db95cee833b.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE54EA90912E348",
+  "timestamp": 1742211163,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5220286B513CF",
+  "timestamp": 1742211160,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE54460591FD182"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE556840D03356C",
+  "timestamp": 1742211157,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/f9ae8779-d2c9-4afe-8589-7c14e3923102.jpg",
+  "caption": "Описание файла",
+  "fileName": "f9ae8779-d2c9-4afe-8589-7c14e3923102.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE53F96E7E61D0A",
+  "timestamp": 1742211151,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE54460591FD182",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE54460591FD182",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE54460591FD182",
+  "timestamp": 1742211150,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новый текст сообщения",
+  "extendedTextMessage": {
+   "text": "Новый текст сообщения",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE5220286B513CF",
+  "editedMessageId": "BAE50C6432C39E9C",
+  "isEdited": true,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5880B9C045ED3",
+  "timestamp": 1742209248,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5CD55EE8C845D",
+  "timestamp": 1742209247,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Велосипед",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Велосипед\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5C186744EE5B7",
+   "participant": "1234567890@c.us",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Артем Евпаторийский Петрович",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5C186744EE5B7",
+  "timestamp": 1742209246,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Артем Евпаторийский Петрович",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5A8A3B7734046",
+  "timestamp": 1742209245,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE55E3C61470CD9",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE55E3C61470CD9",
+  "timestamp": 1742209244,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE54BE05DEE6BD8",
+  "timestamp": 1742209243,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5AD31E889AC27",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5409914796390",
+  "timestamp": 1742209242,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/ac0ee9a5-71dd-4a0c-9d23-caeaa9e66843.jpg",
+  "caption": "Описание файла",
+  "fileName": "ac0ee9a5-71dd-4a0c-9d23-caeaa9e66843.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5AD31E889AC27",
+  "timestamp": 1742209242,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5AD8BE3E78DDB",
+  "timestamp": 1742209237,
+  "typeMessage": "videoMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/815208c5-951b-488c-b761-38393f623a77.mp4",
+  "caption": "Описание файла",
+  "fileName": "815208c5-951b-488c-b761-38393f623a77.mp4",
+  "jpegThumbnail": "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",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "BAE5605C6E1D021F",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/eca1b7c7-32d7-4069-8661-d6de86290cce.jpg",
+   "caption": "Описание файла",
+   "fileName": "eca1b7c7-32d7-4069-8661-d6de86290cce.jpg",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5E9E56D57384A",
+  "timestamp": 1742209236,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "BAE5AAD2EA20EEFD"
+  },
+  "statusMessage": "",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5605C6E1D021F",
+  "timestamp": 1742209233,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/eca1b7c7-32d7-4069-8661-d6de86290cce.jpg",
+  "caption": "Описание файла",
+  "fileName": "eca1b7c7-32d7-4069-8661-d6de86290cce.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE54EDED0DFCA70",
+  "timestamp": 1742209226,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5AAD2EA20EEFD",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5AAD2EA20EEFD",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5AAD2EA20EEFD",
+  "timestamp": 1742209225,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "BAE5E9E56D57384A",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B7B67D5074B0",
+  "timestamp": 1742152347,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5B81E635DFDE3",
+  "timestamp": 1742152346,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Велосипед",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Велосипед\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5024A1D098D6E",
+   "participant": "1234567890@c.us",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Артем Евпаторийский Петрович",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5024A1D098D6E",
+  "timestamp": 1742152345,
+  "typeMessage": "contactMessage",
+  "chatId": "120363410406221140@g.us",
+  "contact": {
+   "displayName": "Артем Евпаторийский Петрович",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5ADEB4439CF4A",
+  "timestamp": 1742152344,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE50627ECF97323",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE50627ECF97323",
+  "timestamp": 1742152343,
+  "typeMessage": "locationMessage",
+  "chatId": "120363410406221140@g.us",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5F52E978ABD40",
+  "timestamp": 1742152342,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE58D285600873D",
+   "participant": "1234567890@c.us",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE55E746FBB7A54",
+  "timestamp": 1742152341,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/3b0aea60-8e69-4b88-bef0-a71b9cd5eb16.jpg",
+  "caption": "Описание файла",
+  "fileName": "3b0aea60-8e69-4b88-bef0-a71b9cd5eb16.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE58D285600873D",
+  "timestamp": 1742152341,
+  "typeMessage": "pollMessage",
+  "chatId": "120363410406221140@g.us",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5C00389196B42",
+  "timestamp": 1742152339,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/c660865a-f1ad-47d6-abbe-aecacd4b2197.jpg",
+  "caption": "Описание файла",
+  "fileName": "c660865a-f1ad-47d6-abbe-aecacd4b2197.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE52BE0E8B35B50",
+  "timestamp": 1742152331,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE504BCE50C4EE9",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE504BCE50C4EE9",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE504BCE50C4EE9",
+  "timestamp": 1742152330,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE58C1D915F216E",
+  "timestamp": 1742147691,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/e933b901-ed56-4cb9-99aa-b89d82a6b98b.jpg",
+  "caption": "Описание файла",
+  "fileName": "e933b901-ed56-4cb9-99aa-b89d82a6b98b.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5AF753C02E332",
+  "timestamp": 1742147686,
+  "typeMessage": "videoMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/5037d871-a243-4b22-af93-68fa78bbab2a.mp4",
+  "caption": "Описание файла",
+  "fileName": "5037d871-a243-4b22-af93-68fa78bbab2a.mp4",
+  "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAGQAZAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AP1G/wCC7n7JOo/HbQdKlWARwGZGjlcZV+oGCQQc9+fwxX8rv7SP7EfjP4WfC3wrqFnpss9vpE9vc+ZFCzqViYPjIX2/D+X9Nn/BTv8Abo8U+OJ/D3wx8FaBdXdzpl5Fb3NzbQPJvMUgjZiyKSScZJyOp9a+uv2ev2W7b9qf9n3Q9H8ZaQkGofYYTP8Aa7cBstGM53jj0yRjsSeK/aXiXRwNGeL5YLD04wqSU76RVlJJ66rXZq7smflVGjarUULzdR6Jb3vsrb9fzPw4/Y9/a08T+Pvgl4b+CEekX7XFnb29g2YJdo8tVj6bcdvbGBxmv6jf2CPhdrnhHw9p15qVpLbmWJZCGjZT8wDdwBjB/Xg8Vnfs+f8ABLr4Y/BTVINRXR9PeWJxJvSCFvmDbs5xwSSPX6ZzX6oaJpWiaLaQ2Gn28FvHDEqKFUKBgKBzgD0I7+9fGZlm2Hq0ZwoxdV1JS2uuWN7qT/B2/Jn2WBpyjK1RcjUI3UtLNW0181Y0p7b7UYpeBhehx3ye/wBaCmz5c5xn9DRdXtvbxkecgboAGBOO/TPr+H6UtnJbzJ5nmoSw5+bkc56ZB79elfL++oKTT5E2opRbb8r2vp38jvnD2jUbxTve7lG1+t+7/wCG30ILmAyRnnnHQjp37/kaltoj9meI9xx+OfwPSppf9gbgSM4Ix07c8/oKr/bREwiKHPHPt/kU1KpOHLFXtLm03Vuvy/VGNNRhWabezTelm0uj2X/Ddzjb3wV9qu/tO5B827GR656EE/r+fSqGs+Cnu4BACvKgZ4+mew4z0H516MWuG+dc7SAQABjv2/w68dacJJGGGjIOSAcd8/59vxrtp5pjqUoyjWTdPRf3f6tr+Q8ThadfDuLbipSvdNdL/e7LvqfOTfCmbTJjqK7W8smTC4zxg8cdu3tgVrWvja5sZF08QSHyiEztPAHHp0//AFcdveJIw0EiyAYZSOcZ5BHb047fhXK2fh3TPtMsslsjOSxBKr1zk8kZ/EfzOa9WnnscTSlDNKDxSpRtQcXyqDe7136f1t4ssn9lVjVpV2rq3LJK/wCHn36hYa01xbJKybS2cjGOw7Y4q5/af+z/AJ/KtJdPtkG1ECqOgHQfyp32GH0/n/jXjyrYRybjT5U22k+bRN6LRW08jqVCpFJOd2tL6r8Ln5U/s/fsxfs+674hv9T8ZWmi634gjkLpDeSW4LPuyzFnJJ5BO0EHPOeCD+lnh3wl4R8HWyWXg6zsNPgRAiwWjI0YVcYHyE+nbr9K/i+/aT+PX7RX7IfxavLq7k1WTTLu/kEQVpwu1pcDgHHTpjnn8K/dr/gmN+0J47+O+m2uu+Jo7xba4hR1Fx5mOVyCA3bn+feqxuLnWquTnV9mlyezlK8W092uq06/gZ4TCqlSlTcKbrTqKSrpPnitLRunyrltdLpd3vufsosty6/vdmfof8f5g9etUry3Z4yYvkY/xD8fw7f/AFjmte4X97GijAZSfYHco/ln364qrfyLbWkjs4VlXgk4HA+vT/OK4qc7uPJFXk0rd09r2Xd7HpVMNUu1Kq20rc/M73XS7110OAuvDV/dsWa98tSeMvtI6c447DHv1681yV9ev4dnEUupqQpPHmDoCcnr6dzxx2rhvHnjHWLeaeOwvdnJ2gPg5II7HPYfUnmvjzxlrXjm+u3dLu4lUsQNrMRySO2fTBx34r6nC4arCXNWlTnTcdIcuza2fpp8+h4mKrOnFxvPmUmnJO2t+/8AWp+jOm/EvRUiEdxeQlxwMyDtgdSf8B6VPd+MtLm/f29zHIFAOFZSeCB2OTjB+uTX52+Ffh58QfFEQmjubmLODne446nv1GO349Sa+lPCfwg8U6VZCTUtSeQgEFWkJOOCRgnjP4/pVVsBg8PapKSjWqNfu7qzUtrJvS+9u76aCw+OlVlGk1K0U3za3++9vLvq1c9yj+LWm2reRKqllGBzjp+OOfxPp3NXZvirp0cDXCwbwBuwCTngn+Y6c15fZfCW51SbzWkdQrZ3Z6jA7/z69/QV3sHw80HTRHbanqMEe4fMkksanHBI+YjPBIHbP514OKo4ZVKihpUVnZa36u6Wv3a7dT3qc6zpQal7l7K7ejWtnfRNJ/LU2tD+IsHiRmWC3MQQgHIyTg+9d1DqMLEIFG4deOTz/nnmuf0rwd4c01d2nTRlmAOUmjYHJ6jaSTn1+pFS6giad++UEooLFh+Le/b9e9clKiqs1CFR6391xlHtZarp+n3KrOtRblUV+ZX5uZSVrtvbm/H8TrMFwGUcMM9fX6/n+NGxvT9R/jXnsfjq2ClfLf5SV446Y/z+lSf8J1bf885PzFaPA4lNr2T0b6oy+s0HrJTu97RTV/Vu58YftdfsNfDz9omTS73VNMgeaKeOSUmFWJwwJydueR2POcivpT4C/s9eAvgZ4M0nw/4VsI7V7S0RJZowibpNoyCoXOVIwSTyfwNfmtbf8FnPgNqV/cWFje2MhQME/fITkEgH73boQc/rivOPEn/BXHwVbz3Rsb6II4cxqkgIBP3cDJA6fh14OK+eeZ0W+a1Wzaduut9909bffa3b0adBwqSkoxknF3jtaXlrtta79Nrr94ZBGAM3IDKMAl1LYPbGc/55rl/EFpeXtnJHatLypG5QcZwecjjnP9B6V/N/bf8ABW+NfE0c1zeudO8/n94NmzfnucYI/A5r9BPC3/BVj4Qav4ajZ7u3/tHyAMmRfvkY+7nk57/jmuijnGHptSVOelnqlbvdWs9Omul/Uxq0nNu8uTR8tryu+7Ta0fdbdE2j3bxZ8OvFd/qUxhuZdoLOV5zgEEcZ4+nWuW8G6RbXfimPwtq95Gl15gU+YVByTjucjkZxzXxx4o/4Kb+G9Jv72/8AtsH2Ty3K/OuMY+ueg6//AK6/FT49f8Fm9M8J/FaTWNDvWDR3Bx5LkAEN/s4HYnkY6eleiuK8Iou1GupW5U+l+9k9vwPErZTiavNapGzbk077fNPo/u8j+tD4t+MtI+Bnh0SxXsSSG3MgB2qy4XA4znPQj2OT7fm+P+CgN/8A8JBNFNfs9hFMQ2Gyu0N3x09sV/Pd8Yv+Czw+LHh8QX99cGUwiMDe3A24Ixn2H8/THlfws/bE8Ha7Y3MmpXm2eXeQZH5yx4PJB79eOg9a8XE8aYG7hUoYmpVhKznfZra1trPsuyPWoZXOhThUfs+XWOiTfld210sf1u23/BQ7wuunJDb30UVwYsMd6g7yvXseCOnUnOTX55/tE/tgfE3XNSN94S8QTJbK5IEU5A27uOhx0H/6ulfgH4+/aUhSeT+wdVcFmO0JKRzzjGCePp689K8wl/ap8Vw2MtrJqMrO6sELMSe+MZPXv1Hr2ryKnGWApzlUeGxT+euytr5fotdLPsXKoKlaOju+zbt5XXVPb70f0F/CP/goL8RtJ8VaXpPiXxBPJC00MUu+4YjaWVSTubpzg5H41/RP8N/ib4e+Ifw+t9fbxDZBhZLLNvuYgVPlgncC/Ppjn8q/zYrj49eK1v5b+W9uFut5aBgWHIbKkEEdwOe1epaD/wAFFP2ovB2kTaLomv6mmnSo0SKs8oXZgqBgPx8vAwK3p+IGTwjC+CxcWmm6kUnK17pXd1Z2s9Hvojiq4SdRycakVdWUXdLVadE763XTpqrn98l9+0N8M9JvLrT59f04y288iMTPDkkHHdvb/PWqv/DTHwt/6D+nf9/4f8a/zj/E/wC2T+1HqGs3d4Nd1ZvtDeYxE0x+ZmYno4555965/wD4a9/ak/6Dmr/9/p//AI5XevErJ3qsHjLP1/zOX+z6609rT+Z+lPw8/wCCZPx4065XUbttaJkG9t/2jqcHue+P89K+ufCv/BPL4lak6JfjUTsUElxL2IznOOOT6Y7V/Sx8P/2l/gX45tki0mPRCWQKmBb45GBg4Pbn+WeRXdt4i8JW7zTWcemBZEJj2+UB82SM46n+leVhcTSqtr2UrxgtWt3087dez7HVOtJ/DUktb6dvV+XWz2+/+b23/wCCeOuyuLKaO5EgGAQHzkceh4rWvP8Agnz468P2jT2L36qi7gAZMYHI4zjHpnn19a/fTRmGoeIDcotmbdpQUxs+7uA/UHt6evT0Xx9fW2laDJM1tZ7BDycJ0A56cen5mvSnh5TjHkpcul7uyb02fd3t6MmDk3K8m720dv60P5QPG37LvxEnS50yZ74YVkOPMHG085zjH0APavz48SfsJQat4ukt9cadrhpfmEgYsDu7g/if0PWv6qPE3jzwo2p3puVsRJ+8AB8v73IH45H0r80/Fd/p9/8AF03AW3WwNxnK7NuN3r09uP618zjp1aHO3Gfx8vu6ta6/8D8ztg4qznqrK/3avz+7/Nfjv4o/YJ0jw6ElBkEAQHnIHTP+T78+/iuufAW60BHXQJJgUBGIy33hnGMemP581+8v7REVnJoqvpCwlRbDLR4zkL/s/X/9Xf4M8P2TXE1wL2JW5fO8ZHBPY9ev+HpXz+IhXqRbhCfNKSd9G2uifra+3VI9D6pWqUozjJKLXup7emttl5rTS9tvyVv/AAf8QLPVhvF00IIOWDkYzzwRjuPbv70/WRrOm3FtLdiRY0Cu+QTx3znoP8ea/VfxB4R028b93bQlyCAQoBzg8dM8n159a+fvG/wutryJkkhVSwwCABjIwOQOuf8A6/avExWAzKtzxpylBtpq+mlrNbr+vPQ7MPhXDldSnGeju9G797K+i2XT0ufHdxrthqdvGluAbtFXAA5LAcfiTx7/AJiuS1PxF4j0mJ2lgfyEUlCY89Rxzg9vxzzyK90sfhNFp+sxxhGYvIoVQCRgtx29/r+VfaGifsnjxf4Ya+uLJhEsG7d5Z6BSfT0yf17ZpYbh7OpuE3Vi6bTvFy10T6X9Ol+r206K1XB0aclLDrmS1ajtfr3+4/IuD4o3TKxmhG8Ow5j7DGOo9c9OKm/4WfL/AM8R/wB8D/CvpLxv8DvDfh7xHfaWYipgYEgrzks4Pb/Zrkv+FVeGv+ef6f8A2NemsizJJJyhdK2j0ONYvBNJ+xlrrpFn3N4P/aJ8c/DG1SXSNauZjAmQBcOR8oJH8XXpz9cdq9J0r/gqB8XxLJavezsIQVGXfnaTgA5/yK/BHSP2sJ7i2dJmjb5SBuOepI7gj0xzxVfR/wBowz6lcNtgwQ3YfXoffjrwe+c18bLLOPably5i4Xlup62uvi1Xy26aHBKhTaShTjdfj6aLW1/X1bP6P/hx/wAFYfipH4ihsLqeQQLIuSzP0yc/X169+e2f0Ub/AIKA+JviP4YbToblnumtzkBmZtxXGOueMc8cHsa/jh+Hfx6s5fGCJqD28MTuAGJCjkg9SeMDA65579/24/Zg8YaBf3MF1HeW00c0a4UupHzAdvfPpxyRX1uWLiqNRLFZhOoo0kkua/vpPXf0387bGEoQj9lKzt8l96/rsbPxw/aW8e6JrF1ie5WRpGYgM443n0PTBxz29q+Wv+GxtYgvjJqFyVvAw+Ysd+VP1z6fn7cfWf7S3g6yvY7jXIIoSrQs6lQpyCCfT8Tyc9euK/DP4i6VrZ8S3E8COtskrcqCFxuPsBzj/PSvjOKa3EMKEn/adWgvrLXPCWreunXRu3T/AIHPJyjrvG6VtNtfLbo+vyR+t+nftcz+I7EWl7dCRWUr8z54IH8vp06ZBya9l8XLNrtQsqKkjEnDDqx6cH8+1fkv4e1jU4LyK28xl+6pOT26+vXHf8a9pi1m8hEQWY7yFP3jkng/Udep+tfjuZ5xxnRVR08+rwjGolH3krbabro/M5KmPr03KH1icYxdlFO1ltp09LWsfp8PH2kyxpIk8bPjgbgSTzn8fbJxWJqHirStQOJpIw4YBRkZ5J7ZHf274GK+DNG8TanHKvnTOVBzyxx1Az1x357Hp2rV1zxdPaqtyJ8CPn7/AANvOT0z/wDq69uHLuKuI6eLhHGZ9iZxUWqkVK6cnqra77Pr+NjOWaYhK0cVNO+mrt92m1rX7/h9/wDgnRfDeq63a3WovAqJLGfmK/3h/gTyefXsP1V8IeKfhho3g7+zWnsgTbbCd0eclMHjPv8AT6d/5mNM+PstrMkEd2EdSFGJMcg4B69R9e5HSvZNH+N2q38Hl/2pIARgDzmzjjuCPx/Xpx+kZfxxVwtOj9bzHGR5VLmUlbm7NX6bfLdPUl5hVnG08ROf8y6Pz7fftbQ/VDxR8IPhB4q1u91qW7tA9zIc/PF2Zm7n/bxXP/8ADPvwc/5/LT/vqH/GvzmHxX1aH5BqUpB+bPmt3AHr7e9L/wALc1j/AKCMv/f1v8a9yPiHlzim8xxd2k3rbXrpZkrGOy/ev7v+Az+WU67NY/KsmM8cMefrj/Ct7RdeuUkWUMRv6/MeM5+hGAf6+ufL7uK4kk6EkHPfHPUHGf8APatGLUfsaRpj5s4bHbjHqDxz/Ov6KxOVw9mrUV7SpdPXsvv/AOG9T6yceW2lt1/Xfrf8dD3aa6vSIb2wmZZ4/nPlkg5Bz1Hbj24/CvuX9lz9pvXPB+o2mn6jdyKsciJmSRh0IwDkjrjn2r4I8K6laRwxy3LqfMC5QkYGT/n/ADzXol1b21nbJrFg6o6jeArYPTPGMYz69fzzXy06Nem5xhHlcZ2Um2rq70T7avvqtWc8oKS0XW73/rqf0Sv+0SfiHokWmRSLMXgCn593Vewyff8A/XzXzz4ys7KKGYXMEYeTcdxAz1GOcHqCT7ivym+GX7TN54PvEjumZlQhSSSQAMjqfp9P5175rf7TmmeJoN8l0sTGP7u/HJAzxkfl16D1r4vP8mzPFYd2w7q3rc6Su3bo7Ltv62M/Zarminbo321tu+t/vPT7t9M0y8a4LxqQ2T8wGMc+vv3z+HJq5o/i/TL3VYYpJoggYA5YDjOPrjHfPT2r4E8c/Ghd8q2t0XBLYw5Jx6devPH45rzbT/jFeWshmE7hs9Q56ds/488gAmvEfAGIxeGU6uWxvK0knJrml38vS559XAzlUlJUotN31kr/AHf126H7L+JNf0WwsEmtZYd4iB4bnpz0H0xx+NfMXiT4uQFpLR50+bK53YGTx1znjrn1/CvkDT/jrc6tKlnc3bbWwvL8D1HJ6cAnp+OeOU8caw5dLy3uCwzuOHPfkk89sH2x6c1jgfDbDvFxeLyinSsm+dy159bW79Nluuhk8C729lC/XVLTXVfn0dvkep698Q72x12A2spaOWVchWYjBIPbOOuf/wBVfU3hL4hrDp9pJPOqyOiZBfB+YD6k8k+2e/evzg0rXba+uI5LlwxjIyWPcc9Tnp69uv19Ek8bw77e2trgjZtG1WPUcAcHHv8A5Fe7mfA+Hr4ahTWWQlUoJp1Va6XS6te2m9h0stld2owtLpzb33+V3fsfpK3xJiO0rOpG0c7z7+xpv/CyI/8Ansv/AH23+FfEtnrGqSW0TpvdWUEEFjngdffvVr+1dW/uyfm1fLPgSqm0stpJJu3vLv6nQssT3owv199f5M+GzFHl8qD15IGfvD2rjL/i5I7A8fk1duer/j/6EK4jUP8Aj6b6/wBGr+qKu8PV/kz2qnwx/rrI3bO4mWKILIwA28Z44xjOa9ys7iaTw+is5I8s8fhivB7X/VR/8B/pXuVh/wAgBP8Arn/hXy2YJKSskrzqXsrX1X+ZieYX6hJ5SowQx5/OuXu9SvYZmSOd1XjjJ9AfXtn/ABrqdR/103+8f5NXD6h/x8N+H8hXTgIxkrySl7i31/lez031InsvX9GFxdTzjMsjOeeSST9089e9QxuwGM5GB1z6t701un5/+gtSJ0/AfzavUSSVkkktklZL5Ixk2o7vS1r6+XUs6dNJHqMOxip8wDIPPJH69vpXrGozSS6UrSMWPlnqf9lq8isf+QjD/wBdV/mK9Zvf+QSn/XM/+gtXlZmrYrANbtpN91fYuW6/wJ/O8V+TOB0+4mQTFHK5z0+p/H9avaDd3EmuQq8hYecg5J5BIBzz3FZdj92X8f5mrfh7/kPQ/wDXeP8A9CFdGIilDFNKz9lv8kVBu1PV7Pr5H6MeErWCTQrNmQFigycDn5EPcH1rpPsVv/zzH5L/APE1h+D/APkAWX+4v/ouOunr4qpKXPL3pb93/mdh/9k=",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "BAE5D243791EE41E",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/b1334c81-4940-48a3-9a02-fa33d248260e.jpg",
+   "caption": "Описание файла",
+   "fileName": "b1334c81-4940-48a3-9a02-fa33d248260e.jpg",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5D243791EE41E",
+  "timestamp": 1742147681,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/b1334c81-4940-48a3-9a02-fa33d248260e.jpg",
+  "caption": "Описание файла",
+  "fileName": "b1334c81-4940-48a3-9a02-fa33d248260e.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE583EA7F711F4A",
+  "timestamp": 1742147673,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5509D550DFFF0",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5509D550DFFF0",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5509D550DFFF0",
+  "timestamp": 1742147672,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56EA2BFBA0BD3",
+  "timestamp": 1742145965,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/0fa682c0-afcd-4d20-a124-64ece6801109.jpg",
+  "caption": "Описание файла",
+  "fileName": "0fa682c0-afcd-4d20-a124-64ece6801109.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56C47EC586AFC",
+  "timestamp": 1742145958,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/40211bbb-5b85-4c97-93a0-ea66c82373ce.jpg",
+  "caption": "Описание файла",
+  "fileName": "40211bbb-5b85-4c97-93a0-ea66c82373ce.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5E3E981058027",
+  "timestamp": 1742145952,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5A6598153835F",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5A6598153835F",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE5A6598153835F",
+  "timestamp": 1742145951,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "120363410406221140@g.us",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE50859E4733406",
+  "timestamp": 1742116845,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/440a5451-d938-49ad-84a3-66e642c53b07.jpg",
+  "caption": "Описание файла",
+  "fileName": "440a5451-d938-49ad-84a3-66e642c53b07.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE56917A321A79D",
+  "timestamp": 1742116838,
+  "typeMessage": "videoMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/70039bde-d080-435f-9047-106f0c1da286.mp4",
+  "caption": "Описание файла",
+  "fileName": "70039bde-d080-435f-9047-106f0c1da286.mp4",
+  "jpegThumbnail": "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",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "BAE58A520E6EE2C0",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/1d011242-da44-4974-9b25-c9333713a4fa.jpg",
+   "caption": "Описание файла",
+   "fileName": "1d011242-da44-4974-9b25-c9333713a4fa.jpg",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE58A520E6EE2C0",
+  "timestamp": 1742116834,
+  "typeMessage": "imageMessage",
+  "chatId": "120363410406221140@g.us",
+  "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/1d011242-da44-4974-9b25-c9333713a4fa.jpg",
+  "caption": "Описание файла",
+  "fileName": "1d011242-da44-4974-9b25-c9333713a4fa.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "BAE57DF64DACEDAF",
+  "timestamp": 1742116828,
+  "typeMessage": "quotedMessage",
+  "chatId": "120363410406221140@g.us",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "BAE5A971ABCA3447",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "BAE5A971ABCA3447",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ }
+]
