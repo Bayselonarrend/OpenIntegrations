@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "BAE5EFC6A8BA2E29";
+    IDСообщения = "BAE5DA82B33D5FB6";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ПолучитьСообщение(ПараметрыДоступа, IDЧата, IDСообщения);
@@ -46,4 +46,28 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Результат"
+{
+ "type": "outgoing",
+ "idMessage": "BAE5356B1EF7AC84",
+ "timestamp": 1742245229,
+ "typeMessage": "extendedTextMessage",
+ "chatId": "120363410406221140@g.us",
+ "textMessage": "Новое сообщение",
+ "extendedTextMessage": {
+  "text": "Новое сообщение",
+  "description": "",
+  "title": "",
+  "previewType": "None",
+  "jpegThumbnail": "",
+  "forwardingScore": 0,
+  "isForwarded": false
+ },
+ "statusMessage": "",
+ "sendByApi": true,
+ "deletedMessageId": "BAE5B820765C5750",
+ "editedMessageId": "",
+ "isEdited": false,
+ "isDeleted": true
+}
+```

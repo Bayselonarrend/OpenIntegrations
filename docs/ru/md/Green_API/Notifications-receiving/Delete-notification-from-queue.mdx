@@ -35,13 +35,40 @@ import TabItem from '@theme/TabItem';
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDДоставки = "1";
+    IDДоставки = "2";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.УдалитьУведомлениеИзОчереди(ПараметрыДоступа, IDДоставки);
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi УдалитьУведомлениеИзОчереди \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --receipt "1"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi УдалитьУведомлениеИзОчереди ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --receipt "1"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "result": true,
+ "reason": ""
+}
+```
