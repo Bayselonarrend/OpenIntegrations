@@ -42,6 +42,28 @@ Method at API documentation: [UnarchiveChat](https://green-api.com/docs/api/serv
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi UnarchiveChat \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi UnarchiveChat ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

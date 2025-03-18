@@ -49,6 +49,36 @@ Method at API documentation: [SendFileByUrl](https://green-api.com/docs/api/send
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendFileByURL \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us" \
+             --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" \
+             --filename "vid.mp4" \
+             --caption "File description" \
+             --quoted "BAE5C198462D09F2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendFileByURL ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us" ^
+             --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" ^
+             --filename "vid.mp4" ^
+             --caption "File description" ^
+             --quoted "BAE5C198462D09F2"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
