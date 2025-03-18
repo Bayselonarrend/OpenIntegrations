@@ -1,5 +1,5 @@
 oint bitrix24 RenameFolder \
  --url "b24-ar17wx.bitrix24.by" \
- --folderid 29162 \
+ --folderid 30286 \
  --title "New catalog" \
  --token "***"
