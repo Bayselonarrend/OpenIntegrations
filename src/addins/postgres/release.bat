@@ -20,7 +20,7 @@ cargo build --release --target x86_64-pc-windows-msvc
 if errorlevel 1 goto :error
 
 :: Сборка для x86_64-unknown-linux-gnu
-wsl cargo build --release --target x86_64-unknown-linux-gnu
+cross build --release --target x86_64-unknown-linux-gnu
 if errorlevel 1 goto :error
 
 :: Сборка для i686-pc-windows-msvc
@@ -28,7 +28,7 @@ cargo build --release --target i686-pc-windows-msvc
 if errorlevel 1 goto :error
 
 :: Сборка для i686-unknown-linux-gnu
-wsl cargo build --release --target i686-unknown-linux-gnu
+cross build --release --target i686-unknown-linux-gnu
 if errorlevel 1 goto :error
 
 :: Копирование файлов .dll и .so
