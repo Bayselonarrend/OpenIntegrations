@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "BAE5EFC6A8BA2E29";
+    IDСообщения = "BAE5DA82B33D5FB6";
     Текст       = "Новый текст сообщения";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
@@ -46,6 +46,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ИзменитьТекстСообщения \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --chat "120363410406221140@g.us" \
+              --message "BAE52DCB244B5DDF" \
+              --text "Новый текст сообщения"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ИзменитьТекстСообщения ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --chat "120363410406221140@g.us" ^
+              --message "BAE52DCB244B5DDF" ^
+              --text "Новый текст сообщения"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "idMessage": "BAE5DFEB55A708EB"
+}
+```

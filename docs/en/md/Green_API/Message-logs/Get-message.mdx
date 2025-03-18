@@ -37,7 +37,7 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ChatID    = "120363410406221140@g.us";
-    MessageID = "BAE5EFC6A8BA2E29";
+    MessageID = "BAE5DA82B33D5FB6";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.GetMessage(AccessParameters, ChatID, MessageID);
@@ -46,4 +46,28 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
 
 
 
-
+```json title="Result"
+{
+ "type": "outgoing",
+ "idMessage": "BAE56825B1C0FC63",
+ "timestamp": 1742274622,
+ "typeMessage": "extendedTextMessage",
+ "chatId": "120363410406221140@g.us",
+ "textMessage": "New message",
+ "extendedTextMessage": {
+  "text": "New message",
+  "description": "",
+  "title": "",
+  "previewType": "None",
+  "jpegThumbnail": "",
+  "forwardingScore": 0,
+  "isForwarded": false
+ },
+ "statusMessage": "",
+ "sendByApi": true,
+ "deletedMessageId": "BAE588DA94C72DC2",
+ "editedMessageId": "",
+ "isEdited": false,
+ "isDeleted": true
+}
+```
