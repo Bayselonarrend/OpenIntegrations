@@ -1,0 +1,80 @@
+﻿ {
+ "ok": true,
+ "result": {
+  "message_id": 12627,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
+   "type": "private"
+  },
+  "date": 1742272510,
+  "photo": [
+   {
+    "file_id": "AgACAgIAAxkDAAIw5GfUmeoHpfq4O-mi5neDNwhLvymaAAKe6zEbuOahSujhUQt1CltiAQADAgADcwADNgQ",
+    "file_unique_id": "AQADnusxG7jmoUp4",
+    "file_size": 1568,
+    "width": 90,
+    "height": 67
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIw5GfUmeoHpfq4O-mi5neDNwhLvymaAAKe6zEbuOahSujhUQt1CltiAQADAgADbQADNgQ",
+    "file_unique_id": "AQADnusxG7jmoUpy",
+    "file_size": 21633,
+    "width": 320,
+    "height": 240
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIw5GfUmeoHpfq4O-mi5neDNwhLvymaAAKe6zEbuOahSujhUQt1CltiAQADAgADeAADNgQ",
+    "file_unique_id": "AQADnusxG7jmoUp9",
+    "file_size": 99260,
+    "width": 800,
+    "height": 600
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIw5GfUmeoHpfq4O-mi5neDNwhLvymaAAKe6zEbuOahSujhUQt1CltiAQADAgADeQADNgQ",
+    "file_unique_id": "AQADnusxG7jmoUp-",
+    "file_size": 218651,
+    "width": 1280,
+    "height": 960
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIw5GfUmeoHpfq4O-mi5neDNwhLvymaAAKe6zEbuOahSujhUQt1CltiAQADAgADdwADNgQ",
+    "file_unique_id": "AQADnusxG7jmoUp8",
+    "file_size": 650214,
+    "width": 2560,
+    "height": 1920
+   }
+  ],
+  "caption": "Строковое значение",
+  "reply_markup": {
+   "inline_keyboard": [
+    [
+     {
+      "text": "Button1",
+      "callback_data": "Button1"
+     }
+    ],
+    [
+     {
+      "text": "Button2",
+      "callback_data": "Button2"
+     }
+    ],
+    [
+     {
+      "text": "Button3",
+      "callback_data": "Button3"
+     }
+    ]
+   ]
+  }
+ }
+}
