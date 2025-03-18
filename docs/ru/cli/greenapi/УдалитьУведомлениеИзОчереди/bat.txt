@@ -1,0 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint greenapi УдалитьУведомлениеИзОчереди ^
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --receipt "1"
