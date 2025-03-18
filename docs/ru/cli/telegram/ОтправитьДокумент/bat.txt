@@ -2,5 +2,5 @@ oint telegram ОтправитьДокумент ^
   --token "***" ^
   --chat "@testsichee" ^
   --text "Строковое значение" ^
-  --doc "C:\Users\Administrator\AppData\Local\Temp\suexazri3bh.docx" ^
+  --doc "C:\Users\Administrator\AppData\Local\Temp\vkox2h2h2pn.docx" ^
   --filename "custom.docx"
