@@ -1,4 +1,4 @@
 oint cdek GetCashboxChecksByDate \
  --token "***" \
- --date "2025-02-19T09:31:37.8690634" \
+ --date "2025-03-18T11:18:12.6590238" \
  --testapi "***"
