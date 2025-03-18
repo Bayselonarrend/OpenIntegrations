@@ -1,6 +1,6 @@
 oint cdek СформироватьШтрихкод ^
   --token "***" ^
-  --uuids "af96e02a-c504-403b-a099-3a0f74caad41" ^
+  --uuids "a918e081-1a75-454b-b853-a7919915125a" ^
   --count 1 ^
   --format "A5" ^
   --testapi "***"
