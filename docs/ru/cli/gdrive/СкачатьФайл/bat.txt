@@ -1,3 +1,3 @@
 oint gdrive СкачатьФайл ^
   --token "***" ^
-  --object "1lzUoBkdXjfayR5CEaTNM0zEhk7Ou6bl-"
+  --object "1FJcNVeG6FPXaDjwwKJKWSXO-Gqq4yi_E"
