@@ -1,0 +1,18 @@
+[target.x86_64-unknown-linux-gnu]
+
+# Устанавливаем необходимые пакеты перед сборкой
+pre-build = [
+    "apt-get update",
+    "apt-get install -y pkg-config libssl-dev",
+]
+
+
+[target.i686-unknown-linux-gnu]
+pre-build = [
+    # Включаем поддержку мультиархитектурности
+    "dpkg --add-architecture i386",
+    "apt-get update",
+
+    # Устанавливаем 32-битные библиотеки
+    "apt-get install -y pkg-config libssl-dev:i386",
+]
