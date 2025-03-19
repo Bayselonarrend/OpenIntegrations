@@ -1,18 +1,26 @@
-[target.x86_64-unknown-linux-gnu]
-
-# Устанавливаем необходимые пакеты перед сборкой
-pre-build = [
-    "apt-get update",
-    "apt-get install -y pkg-config libssl-dev",
+[target.x86_64-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr",               # Корневой каталог OpenSSL
+    "OPENSSL_LIB_DIR=/usr/lib/x86_64-linux-gnu",  # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/include",          # Каталог с заголовочными файлами
 ]
 
+[target.x86_64-unknown-linux-gnu]
+pre-build = [
+    "apt-get update",
+    "apt-get install -y pkg-config libssl-dev",  # Устанавливаем OpenSSL
+]
+
+[target.i686-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr",               # Корневой каталог OpenSSL
+    "OPENSSL_LIB_DIR=/usr/lib/i386-linux-gnu",  # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/include",          # Каталог с заголовочными файлами
+]
 
 [target.i686-unknown-linux-gnu]
 pre-build = [
-    # Включаем поддержку мультиархитектурности
-    "dpkg --add-architecture i386",
+    "dpkg --add-architecture i386",  # Добавляем поддержку 32-битных библиотек
     "apt-get update",
-
-    # Устанавливаем 32-битные библиотеки
-    "apt-get install -y pkg-config libssl-dev:i386",
+    "apt-get install -y pkg-config libssl-dev:i386",  # Устанавливаем 32-битный OpenSSL
 ]
