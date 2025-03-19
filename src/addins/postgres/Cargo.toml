@@ -22,3 +22,6 @@ chrono = "0.4.39"
 uuid = "1.12.1"
 native-tls = { version = "0.2.14" }
 postgres-native-tls = "0.5"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+openssl-sys = "0.9.106"
