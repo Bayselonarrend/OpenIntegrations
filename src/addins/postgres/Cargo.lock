@@ -143,21 +143,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "compile-fmt"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bed69047ed42e52c7e38d6421eeb8ceefb4f2a2b52eed59137f7bad7908f6800"
-
-[[package]]
-name = "const-decoder2"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1c68e93fb1797567e252ae3c807a80760c57c3553a203d65bc69d9ae9c4e58a"
-dependencies = [
- "compile-fmt",
-]
-
-[[package]]
 name = "core-foundation"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -382,15 +367,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "lazy_static"
-version = "1.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
-dependencies = [
- "spin",
-]
-
-[[package]]
 name = "libc"
 version = "0.2.169"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -452,17 +428,6 @@ dependencies = [
  "libc",
  "wasi 0.11.0+wasi-snapshot-preview1",
  "windows-sys 0.52.0",
-]
-
-[[package]]
-name = "mozilla-root-ca"
-version = "2025.3.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "31b062cd0a619b646da238f367afe9708e457c51cf77270149e2048d473fcb23"
-dependencies = [
- "const-decoder2",
- "lazy_static",
- "native-tls",
 ]
 
 [[package]]
@@ -567,7 +532,6 @@ dependencies = [
  "addin1c",
  "base64",
  "chrono",
- "mozilla-root-ca",
  "native-tls",
  "postgres",
  "postgres-native-tls",
@@ -913,12 +877,6 @@ dependencies = [
  "libc",
  "windows-sys 0.52.0",
 ]
-
-[[package]]
-name = "spin"
-version = "0.9.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 
 [[package]]
 name = "stringprep"
