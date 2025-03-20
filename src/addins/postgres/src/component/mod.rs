@@ -99,14 +99,10 @@ impl AddIn {
 
             if self.ca_cert_path.is_empty() {
 
-                for ta in webpki_roots::TLS_SERVER_ROOTS.iter() {
-                    let cert = match Certificate::from_der(&ta.subject_public_key_info) {
-                        Ok(cert) => cert,
-                        Err(e) => return Self::process_error(format!("Failed to parse cert: {}", e)),
-                    };
+                let cert_list = mozilla_root_ca::native_tls::native_tls_certificate_list();
 
-                    builder.add_root_certificate(cert);
-                    println!("Cert added!");
+                for cert in cert_list.iter() {
+                    builder.add_root_certificate(cert.clone());
                 }
 
             }else{
