@@ -250,7 +250,7 @@
 
 	СоответствиеДополнений = Новый Соответствие();
 	СоответствиеДополнений.Вставить("deb", "--depends 'libssl1.1' ");
-	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu --depends 'openssl-libs >= 1.1.1, openssl-libs < 3.0.0' ");
+	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu --depends 'compat-openssl11' ");
 
 	Для Каждого Пакет Из СоответствиеПакетов Цикл
 
