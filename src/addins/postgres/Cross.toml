@@ -1,3 +1,4 @@
+
 [target.x86_64-unknown-linux-gnu.env]
 passthrough = [
     "OPENSSL_DIR=/usr",               # Корневой каталог OpenSSL
@@ -10,9 +11,9 @@ pre-build = [
     "export DEBIAN_FRONTEND=noninteractive",
     "apt-get update",
     "apt-get install -y build-essential",
-    "apt-get install -y pkg-config libssl3 libssl-dev",  # Устанавливаем OpenSSL 3.x
+    "apt-get install -y pkg-config libssl1.1 libssl-dev",  # Устанавливаем OpenSSL
 ]
-image = "ubuntu:22.04"  # Используем Ubuntu 22.04, где OpenSSL 3.x доступен по умолчанию
+image = "ubuntu:20.04"
 
 [target.i686-unknown-linux-gnu.env]
 passthrough = [
@@ -27,8 +28,8 @@ pre-build = [
     "dpkg --add-architecture i386",  # Добавляем поддержку 32-битных библиотек
     "apt-get install -y build-essential",
     "apt-get update",
-    "apt-get install -y pkg-config libssl3:i386 libssl-dev:i386",  # Устанавливаем 32-битный OpenSSL 3.x
+    "apt-get install -y pkg-config libssl1.1:i386 libssl-dev:i386",  # Устанавливаем 32-битный OpenSSL
     "apt-get install -y gcc-multilib g++-multilib",
     "apt-get install -y gcc-i686-linux-gnu g++-i686-linux-gnu",
 ]
-image = "ubuntu:22.04"  # Используем Ubuntu 22.04, где OpenSSL 3.x доступен по умолчанию
+image = "ubuntu:20.04"
