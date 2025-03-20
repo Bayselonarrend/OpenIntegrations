@@ -101,8 +101,11 @@ impl AddIn {
 
                 let cert_list = mozilla_root_ca::native_tls::native_tls_certificate_list();
 
+                println!("Get cert list!");
+
                 for cert in cert_list.iter() {
                     builder.add_root_certificate(cert.clone());
+                    println!("Cert added!");
                 }
 
             }else{
