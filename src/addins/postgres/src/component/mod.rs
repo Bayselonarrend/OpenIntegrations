@@ -5,7 +5,7 @@ use crate::core::getset;
 use postgres::{Client, NoTls};
 use serde_json::json;
 use postgres_native_tls::MakeTlsConnector;
-use native_tls::TlsConnector;
+use native_tls::{TlsConnector, Certificate};
 use std::fs::File;
 use std::io::Read;
 
@@ -97,8 +97,28 @@ impl AddIn {
 
             let mut builder = TlsConnector::builder();
 
-            // Если указан путь к сертификату, добавляем его
-            if !&self.ca_cert_path.is_empty() {
+            if self.ca_cert_path.is_empty() {
+
+                let probe_result = openssl_probe::probe();
+
+                // Если найден файл сертификатов, добавляем его
+                if let Some(cert_file) = &probe_result.cert_file {
+                    let cert_data = match std::fs::read(cert_file) {
+                        Ok(data) => data,
+                        Err(e) => return Self::process_error(format!("Failed to read cert file: {}", e)),
+                    };
+
+                    let cert = match Certificate::from_pem(&cert_data) {
+                        Ok(cert) => cert,
+                        Err(e) => return Self::process_error(format!("Failed to parse cert file: {}", e)),
+                    };
+
+                    builder.add_root_certificate(cert);
+                } else {
+                    return Self::process_error("No system certificate file found.".to_string());
+                }
+
+            }else{
 
                 let mut cert_data = Vec::new();
                 let mut cert_file = match File::open(&self.ca_cert_path){
@@ -111,7 +131,7 @@ impl AddIn {
                     Err(e) => return Self::process_error(e.to_string())
                 };
 
-                let cert_data = match native_tls::Certificate::from_pem(&cert_data){
+                let cert_data = match Certificate::from_pem(&cert_data){
                     Ok(cert) => cert,
                     Err(e) => return Self::process_error(e.to_string())
                 };
