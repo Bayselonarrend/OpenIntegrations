@@ -97,18 +97,7 @@ impl AddIn {
 
             let mut builder = TlsConnector::builder();
 
-            if self.ca_cert_path.is_empty() {
-
-                let cert_list = mozilla_root_ca::native_tls::native_tls_certificate_list();
-
-                println!("Get cert list!");
-
-                for cert in cert_list.iter() {
-                    builder.add_root_certificate(cert.clone());
-                    println!("Cert added!");
-                }
-
-            }else{
+            if !self.ca_cert_path.is_empty() {
 
                 let mut cert_data = Vec::new();
                 let mut cert_file = match File::open(&self.ca_cert_path){
