@@ -1,0 +1,23 @@
+[target.x86_64-unknown-linux-gnu]
+pre-build = [
+    "export DEBIAN_FRONTEND=noninteractive",
+    "apt-get update",
+    "apt-get install -y build-essential",
+    "apt-get install -y pkg-config libssl1.1 libssl-dev",  # Устанавливаем OpenSSL
+]
+image = "ubuntu:20.04"
+
+[target.i686-unknown-linux-gnu.env]
+
+[target.i686-unknown-linux-gnu]
+pre-build = [
+    "export DEBIAN_FRONTEND=noninteractive",
+    "dpkg --add-architecture i386",  # Добавляем поддержку 32-битных библиотек
+    "apt-get update",
+    "apt-get install -y build-essential",
+    "apt-get install -y pkg-config libssl1.1:i386 libssl-dev:i386 ca-certificates:i386",  # Устанавливаем 32-битные OpenSSL и корневые сертификаты
+    "update-ca-certificates",  # Обновляем корневые сертификаты
+    "apt-get install -y gcc-multilib g++-multilib",
+    "apt-get install -y gcc-i686-linux-gnu g++-i686-linux-gnu",
+]
+image = "ubuntu:20.04"
