@@ -100,12 +100,7 @@ impl AddIn {
             if self.ca_cert_path.is_empty() {
 
                 for ta in webpki_roots::TLS_SERVER_ROOTS.iter() {
-                    let pem = format!(
-                        "-----BEGIN CERTIFICATE-----\n{}\n-----END CERTIFICATE-----\n",
-                        base64::encode(&ta.subject_public_key_info)
-                    );
-
-                    let cert = match Certificate::from_pem(pem.as_bytes()) {
+                    let cert = match Certificate::from_der(&ta.subject_public_key_info) {
                         Ok(cert) => cert,
                         Err(e) => return Self::process_error(format!("Failed to parse cert: {}", e)),
                     };
