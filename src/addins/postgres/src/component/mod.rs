@@ -99,23 +99,19 @@ impl AddIn {
 
             if self.ca_cert_path.is_empty() {
 
-                let probe_result = openssl_probe::probe();
+                for ta in webpki_roots::TLS_SERVER_ROOTS.iter() {
+                    let pem = format!(
+                        "-----BEGIN CERTIFICATE-----\n{}\n-----END CERTIFICATE-----\n",
+                        base64::encode(&ta.subject_public_key_info)
+                    );
 
-                // Если найден файл сертификатов, добавляем его
-                if let Some(cert_file) = &probe_result.cert_file {
-                    let cert_data = match std::fs::read(cert_file) {
-                        Ok(data) => data,
-                        Err(e) => return Self::process_error(format!("Failed to read cert file: {}", e)),
-                    };
-
-                    let cert = match Certificate::from_pem(&cert_data) {
+                    let cert = match Certificate::from_pem(pem.as_bytes()) {
                         Ok(cert) => cert,
-                        Err(e) => return Self::process_error(format!("Failed to parse cert file: {}", e)),
+                        Err(e) => return Self::process_error(format!("Failed to parse cert: {}", e)),
                     };
 
                     builder.add_root_certificate(cert);
-                } else {
-                    return Self::process_error("No system certificate file found.".to_string());
+                    println!("Cert added!");
                 }
 
             }else{

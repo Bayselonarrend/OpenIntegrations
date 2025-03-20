@@ -23,3 +23,4 @@ uuid = "1.12.1"
 native-tls = { version = "0.2.14", features = ["vendored"] }
 postgres-native-tls = "0.5"
 openssl-probe = "0.1.6"
+webpki-roots = "0.26.8"
