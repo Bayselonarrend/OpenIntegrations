@@ -184,6 +184,15 @@ ___
 >- [Мастерская ОПИ: большой мануал по работе с Telegram](https://infostart.ru/1c/articles/2135517/)<br>
 >- [Библиотека для работы с Bitrix24: живая лента, задачи, файлы и личные сообщения](https://infostart.ru/1c/articles/2148213/)<br>
 >- [Работа с онлайн сервисами из консоли через OInt CLI](https://infostart.ru/1c/articles/2159665/)<br>
+>- [Библиотека для работы с VKTeams (open-source)](https://infostart.ru/1c/articles/2170692/)<br>
+>- [Управление товарами и остатками Ozon (open-source)](https://infostart.ru/1c/articles/2187012/)<br>
+>- [Библиотека для работы со CDEK (open-source)](https://infostart.ru/1c/articles/2216121/)<br>
+>- [Библиотека для работы с S3: AWS, MinIO и прочим (open-source)](https://infostart.ru/1c/articles/2244019/)<br>
+>- [TCP-клиент в 1С (open-source)](https://infostart.ru/1c/articles/2272364/)<br>
+>- [Коннектор SQLite для 1С (open-source)](https://infostart.ru/1c/articles/2276707/)<br>
+>- [Мастерская ОПИ: мануал по работе с S3 в 1С](https://infostart.ru/1c/articles/2288171/)<br>
+>- [Коннектор PostgreSQL для 1С и OneScript (open-source)](https://infostart.ru/1c/articles/2314338/)<br>
+>- [Библиотека для работы с WhatsApp через GreenAPI (open-source)](https://infostart.ru/1c/articles/2327294/)<br>
 
 
 
