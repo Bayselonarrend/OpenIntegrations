@@ -4,6 +4,15 @@ use addin1c::{name, Variant};
 use crate::core::getset;
 use std::net::TcpStream;
 use crate::component::methods::disconnect;
+use native_tls::{TlsStream};
+use serde_json::json;
+use std::fs::File;
+use std::io::Read;
+
+pub enum Connection {
+    Plain(TcpStream),
+    Tls(TlsStream<TcpStream>),
+}
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -88,7 +97,10 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     pub address: String,
-    connection: Option<TcpStream>,
+    connection: Option<Connection>,
+    use_tls: bool,
+    accept_invalid_certs: bool,
+    ca_cert_path: String,
 }
 
 impl AddIn {
@@ -97,23 +109,85 @@ impl AddIn {
         AddIn {
             address: String::new(),
             connection: None,
+            use_tls: false,
+            accept_invalid_certs: false,
+            ca_cert_path: String::new(),
         }
     }
 
     /// Подключается к серверу
     pub fn connect(&mut self) -> bool {
-
         if self.address.is_empty() {
             return false; // Ошибка: пустой адрес
         }
 
         match TcpStream::connect(&self.address) {
             Ok(tcp_stream) => {
-                self.connection = Some(tcp_stream);
-                true
+                if self.use_tls {
+                    let mut builder = native_tls::TlsConnector::builder();
+
+                    if !self.ca_cert_path.is_empty() {
+                        let mut cert_data = Vec::new();
+                        let mut cert_file = match File::open(&self.ca_cert_path) {
+                            Ok(file) => file,
+                            Err(_) => return false,
+                        };
+
+                        if cert_file.read_to_end(&mut cert_data).is_err() {
+                            return false;
+                        }
+
+                        let cert = match native_tls::Certificate::from_pem(&cert_data) {
+                            Ok(cert) => cert,
+                            Err(_) => return false,
+                        };
+
+                        builder.add_root_certificate(cert);
+                    }
+
+                    if self.accept_invalid_certs {
+                        builder.danger_accept_invalid_certs(true);
+                    }
+
+                    let connector = match builder.build() {
+                        Ok(connector) => connector,
+                        Err(_) => return false,
+                    };
+
+                    match connector.connect(&self.address, tcp_stream) {
+                        Ok(tls_stream) => {
+                            self.connection = Some(Connection::Tls(tls_stream));
+                            true
+                        }
+                        Err(_) => false,
+                    }
+                } else {
+                    self.connection = Some(Connection::Plain(tcp_stream));
+                    true
+                }
             }
             Err(_) => false, // Ошибка при подключении
         }
+    }
+
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+
+        if self.connection.is_some() {
+            return Self::process_error("TLS settings can only be set before the connection is established".to_string());
+        }
+
+        self.use_tls = use_tls;
+        self.accept_invalid_certs = accept_invalid_certs;
+        self.ca_cert_path = ca_cert_path.to_string();
+
+        json!({"result": true}).to_string()
+    }
+
+    fn process_error(e: String) -> String{
+        json!({
+            "result": false,
+            "error": e
+        }).to_string()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
