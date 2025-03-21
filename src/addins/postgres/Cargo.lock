@@ -523,6 +523,7 @@ dependencies = [
  "base64",
  "chrono",
  "native-tls",
+ "openssl-sys",
  "postgres",
  "postgres-native-tls",
  "serde_json",
