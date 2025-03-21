@@ -19,5 +19,6 @@ pre-build = [
     "update-ca-certificates",  # Обновляем корневые сертификаты
     "apt-get install -y gcc-multilib g++-multilib",
     "apt-get install -y gcc-i686-linux-gnu g++-i686-linux-gnu",
+    "apt-get install -y libssl-dev"
 ]
 image = "ubuntu:20.04"
