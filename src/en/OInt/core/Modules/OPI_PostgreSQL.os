@@ -65,30 +65,12 @@ Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
     OPI_TypeConversion.GetLine(ConnectionString);
     OPI_Tools.RestoreEscapeSequences(ConnectionString);
 
-    Connector = AttachAddInOnServer("OPI_PostgreSQL");
+    Connector = OPI_AddIns.GetAddIn("PostgreSQL");
 
-    If ValueIsFilled(Tls) Then
+    Tls = OPI_AddIns.SetTls(Connector, Tls);
 
-        ErrorText = "Incorrect Tls settings!";
-        OPI_TypeConversion.GetKeyValueCollection(Tls, ErrorText);
-
-        UseTls            = OPI_Tools.GetOr(Tls, "use_tls", False);
-        DisableValidation = OPI_Tools.GetOr(Tls, "accept_invalid_certs", False);
-        CertFilepath      = OPI_Tools.GetOr(Tls, "ca_cert_path", "");
-
-        OPI_TypeConversion.GetBoolean(UseTls);
-        OPI_TypeConversion.GetBoolean(DisableValidation);
-        OPI_TypeConversion.GetLine(CertFilepath);
-
-        Result = Connector.SetTLS(UseTls, DisableValidation, CertFilepath);
-        Result = OPI_Tools.JsonToStructure(Result);
-
-        Success = OPI_Tools.GetOr(Result, "result", False);
-
-        If Not Success Then
-            Return Result;
-        EndIf;
-
+    If Not OPI_Tools.GetOr(Tls, "result", False) Then
+        Return Tls;
     EndIf;
 
     Connector.ConnectionString = ConnectionString;
@@ -232,18 +214,13 @@ EndFunction
 //
 // Parameters:
 // DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the PEM certificate file if it is not in the system store (for mTLS) - cert
+// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 
-    CertStructure = New Structure;
-    OPI_Tools.AddField("use_tls"             , True                   , "Boolean", CertStructure);
-    OPI_Tools.AddField("accept_invalid_certs", DisableCertVerification, "Boolean", CertStructure);
-    OPI_Tools.AddField("ca_cert_path"        , CertFilepath           , "String" , CertStructure);
-
-    Return CertStructure;
+    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
 
 EndFunction
 
@@ -523,10 +500,6 @@ EndFunction
 
 #Region Internal
 
-Function ConnectorName() Export
-    Return "OPI_PostgreSQL";
-EndFunction
-
 Function GetFeatures() Export
 
     Features = New Map;
@@ -540,21 +513,6 @@ EndFunction
 #EndRegion
 
 #Region Private
-
-Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    AddIn = New ("AddIn." + AddInName + "." + Class);
-    Return AddIn;
-
-EndFunction
 
 Function ProcessParameters(Val Parameters)
 

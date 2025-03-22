@@ -129,7 +129,7 @@
     NewLine.Метод       = "GetTlsSettings";
     NewLine.МетодПоиска = "GETTLSSETTINGS";
     NewLine.Параметр    = "--cert";
-    NewLine.Описание    = "Path to the PEM certificate file if it is not in the system store (for mTLS) (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
     NewLine.Область     = "Common methods";
 
 

@@ -10,14 +10,15 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CreateConnection(Val Address) Export`
+`Function CreateConnection(Val Address, Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | - | String | &#x2714; | Address and port |
+  | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
-  Returns:  Undefined, Arbitrary - Returns the TCP client object on successful connection or undefined
+  Returns:  Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
 
 <br/>
 
@@ -34,6 +35,10 @@ import TabItem from '@theme/TabItem';
     Connection = OPI_TCP.CreateConnection(Address);
 
     OPI_TCP.CloseConnection(Connection);
+
+    Address    = "tcpbin.com:4243";
+    Tls        = OPI_TCP.GetTlsSettings(False);
+    Connection = OPI_TCP.CreateConnection(Address, TLS);
 ```
  
 
