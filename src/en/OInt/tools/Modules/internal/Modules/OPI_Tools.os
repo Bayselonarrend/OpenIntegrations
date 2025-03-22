@@ -454,6 +454,40 @@ Function GetRequestBody(Val Request) Export
 
 EndFunction
 
+Function GetDomain(Val ConnectionString) Export
+
+    Domain = String(ConnectionString);
+
+    If Not Lower(StrStartsWith(Domain, "http")) And StrFind(Domain, "@") <> 0 Then
+
+        Parts  = StrSplit(Domain, "@");
+        Domain = Parts[1];
+
+    EndIf;
+
+    ProtocolEnd = StrFind(Domain, "://");
+
+    If ProtocolEnd > 0 Then
+        Domain = Right(Domain, StrLen(Domain) - (ProtocolEnd + 2));
+    EndIf;
+
+    If StrFind(Domain, ":") <> 0 Then
+
+        HostPort = StrSplit(Domain, ":");
+        Domain   = HostPort[0];
+
+    EndIf;
+
+    If StrFind(Domain, "/") > 0 Then
+        Domain = Left(Domain, StrFind(Domain, "/", SearchDirection.FromBegin) - 1);
+    EndIf;
+
+    Domain = StrReplace(Domain, "www.", "");
+
+    Return Domain;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -1145,28 +1179,6 @@ Function CreateStream(Val FilePath = Undefined) Export
 
 EndFunction
 
-Function GetAddIn(Val AddInName, Val Class = "Main") Export
-
-    AddIn     = Undefined;
-    Error     = "";
-    AddInName = "OPI_" + AddInName;
-
-    If Not InitializeAddIn(AddInName, Class, AddIn) Then
-
-        AddIn = AttachAddInOnServer(AddInName, Class, Error);
-
-        If ValueIsFilled(Error) Then
-            Raise "Failed to initialize AddIn. "
-                + "It may not be compatible with your OS. Error: "
-                + Error;
-        EndIf;
-
-    EndIf;
-
-    Return AddIn;
-
-EndFunction
-
 Function IsWindows() Export
 
     SystemInfo      = New SystemInfo;
@@ -1745,57 +1757,6 @@ Function GetEscapeSequencesMap()
     Return CharacterMapping;
 
 EndFunction
-
-#Region AddinsManagement
-
-Function InitializeAddIn(Val AddInName, Val Class, AddIn)
-
-    Try
-        AddIn = New("AddIn." + AddInName + "." + Class);
-        Return True;
-    Except
-        Return False;
-    EndTry;
-
-EndFunction
-
-Function AttachAddInOnServer(Val AddInName, Val Class, Val Error)
-
-    If IsOneScript() Then
-        TemplateName = AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    Try
-        Success = AttachAddIn(TemplateName, AddInName, AddInType.Native);
-        AddIn   = New("AddIn." + AddInName + "." + Class);
-        Return AddIn;
-    Except
-        Error   = DetailErrorDescription(ErrorInfo());
-        Return Undefined;
-    EndTry;
-
-EndFunction
-
-Function AddInsFolderOS() Export
-
-    ProgramDirectory = StrReplace(ProgramDirectory(), "\", "/");
-
-    PathParts = StrSplit(ProgramDirectory, "/");
-    PathParts.Delete(PathParts.UBound());
-
-    // BSLLS:UsingHardcodePath-off
-
-    AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
-
-    // BSLLS:UsingHardcodePath-on
-
-    Return AddInsFolder;
-
-EndFunction
-
-#EndRegion
 
 #Region GZip
 
