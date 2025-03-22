@@ -73,6 +73,7 @@
   <commonModules>CommonModule.OPI_YandexMetrika</commonModules>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_ЗапросыSQL</commonModules>
+  <commonModules>CommonModule.OPI_Компоненты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>

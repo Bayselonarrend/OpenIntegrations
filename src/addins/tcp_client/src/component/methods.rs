@@ -4,7 +4,15 @@ use std::time::{Duration, Instant};
 use crate::component::{AddIn, Connection};
 
 /// Отправляет данные
-pub fn send(connection: &mut Connection, data: Vec<u8>, timeout_ms: i32) -> bool {
+pub fn send(add_in: &mut AddIn, data: Vec<u8>, timeout_ms: i32) -> bool {
+
+    let connection = match &mut add_in.connection {
+        Some(connection) => connection,
+        None => {
+            add_in.save_error("No connection found!");
+            return false
+        }
+    };
 
     if timeout_ms > 0 {
         let timeout = Duration::from_millis(timeout_ms as u64);
@@ -14,7 +22,10 @@ pub fn send(connection: &mut Connection, data: Vec<u8>, timeout_ms: i32) -> bool
         };
 
         match tm_result {
-            Err(_) => return false,
+            Err(e) => {
+                add_in.save_error(&e.to_string());
+                return false
+            },
             _ => true
         };
     };
@@ -22,21 +33,39 @@ pub fn send(connection: &mut Connection, data: Vec<u8>, timeout_ms: i32) -> bool
     match connection {
         Connection::Plain(tcp_stream) => match tcp_stream.write(&data) {
             Ok(_) => tcp_stream.flush().is_ok(),
-            Err(_) => false,
+            Err(e) => {
+                add_in.save_error(&e.to_string());
+                false
+            },
         },
         Connection::Tls(tls_stream) => match tls_stream.write(&data) {
             Ok(_) => tls_stream.flush().is_ok(),
-            Err(_) => false,
+            Err(e) => {
+                add_in.save_error(&e.to_string());
+                false
+            },
         }
     }
 }
 
 pub fn receive(
-    connection: &mut Connection,
+    add_in: &mut AddIn,
     max_data_size: i32,
     end_marker: Vec<u8>,
     timeout_ms: i32,
 ) -> Vec<u8> {
+
+
+    let connection = match &mut add_in.connection {
+        Some(connection) => connection,
+        None => {
+            return {
+                add_in.save_error("No connection found!");
+                vec![]
+            };
+        }
+    };
+
     const BUFFER_SIZE: usize = 1024;
     const MIN_READ_TIMEOUT_MS: u64 = 200;
 
@@ -48,10 +77,18 @@ pub fn receive(
     let min_read_timeout = Duration::from_millis(MIN_READ_TIMEOUT_MS);
     let marker_exists = !end_marker.is_empty();
 
-    match connection {
-        Connection::Plain(tcp_stream) => tcp_stream.set_read_timeout(Some(min_read_timeout)).ok(),
-        Connection::Tls(tls_stream) => tls_stream.get_ref().set_read_timeout(Some(min_read_timeout)).ok()
+    let connection_result = match connection {
+        Connection::Plain(tcp_stream) => tcp_stream.set_read_timeout(Some(min_read_timeout)),
+        Connection::Tls(tls_stream) => tls_stream.get_ref().set_read_timeout(Some(min_read_timeout))
     };
+
+    match connection_result {
+        Err(e) => {
+            add_in.save_error(&e.to_string());
+            return vec![];
+        },
+        _ => {}
+    }
 
     loop {
         if start_time.elapsed() >= total_timeout {
@@ -77,7 +114,10 @@ pub fn receive(
                 }
             }
             Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => continue,
-            Err(_) => break,
+            Err(e) => {
+                add_in.save_error(&e.to_string());
+                break
+            },
         }
     }
 
@@ -90,7 +130,18 @@ pub fn disconnect(add_in: &mut AddIn) -> bool {
     true
 }
 
-pub fn close_output(connection: &mut Connection) -> bool {
+pub fn close_output(add_in: &mut AddIn) -> bool {
+
+    let connection = match &mut add_in.connection {
+        Some(connection) => connection,
+        None => {
+            return {
+                add_in.save_error("No connection found!");
+                false
+            };
+        }
+    };
+
     match connection {
         Connection::Plain(tcp_stream) => tcp_stream.shutdown(Shutdown::Write).is_ok(),
         Connection::Tls(tls_stream) => tls_stream.shutdown().is_ok()
