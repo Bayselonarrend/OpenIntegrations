@@ -104,7 +104,7 @@ Function AddRecords(Val Module
     OPI_TypeConversion.GetArray(DataArray);
     OPI_TypeConversion.GetBoolean(Transaction);
 
-    Connection  = CreateConnectionInsideModule(Module.ConnectorName(), Connection, Tls);
+    Connection  = CreateConnection(Module, Connection, Tls);
     ProblemStep = ProcessRecordsStart(Module, Transaction, Connection);
 
     If ValueIsFilled(ProblemStep) Then
@@ -660,6 +660,18 @@ EndFunction
 
 #Region Auxiliary
 
+Function CreateConnection(Val Module, Val Connection, Val Tls)
+
+    If Tls     = Undefined Then
+        Result = Module.CreateConnection(Connection);
+    Else
+        Result = Module.CreateConnection(Connection, Tls);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function ExecuteSQLQuery(Val Module
     , Val QueryText
     , Val Parameters  = ""
@@ -723,7 +735,7 @@ EndFunction
 
 Function ProcessRecordsStart(Val Module, Val Transaction, Val Connection)
 
-    If Not IsAddIn(Connection) Then
+    If Not OPI_AddIns.IsAddIn(Connection) Then
         Return Connection;
     EndIf;
 
@@ -882,83 +894,6 @@ Function FormCountText(Val Count)
     CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
 
     Return CountText;
-
-EndFunction
-
-Function CreateConnectionInsideModule(Val Connector, Val Base, Val Tls = Undefined)
-
-    If IsAddIn(Base) Then
-        Return Base;
-    EndIf;
-
-    OPI_TypeConversion.GetLine(Base);
-    OPI_Tools.RestoreEscapeSequences(Base);
-
-    FieldName = GetPrimaryFieldName(Connector);
-    Connector = AttachAddInOnServer(Connector);
-
-    Connector[FieldName] = Base;
-
-    If ValueIsFilled(Tls) Then
-
-        ErrorText = "Incorrect Tls settings!";
-        OPI_TypeConversion.GetKeyValueCollection(Tls, ErrorText);
-
-        UseTls            = OPI_Tools.GetOr(Tls, "use_tls", False);
-        DisableValidation = OPI_Tools.GetOr(Tls, "accept_invalid_certs", False);
-        CertFilepath      = OPI_Tools.GetOr(Tls, "ca_cert_path", "");
-
-        OPI_TypeConversion.GetBoolean(UseTls);
-        OPI_TypeConversion.GetBoolean(DisableValidation);
-        OPI_TypeConversion.GetLine(CertFilepath);
-
-        Result = Connector.SetTLS(UseTls, DisableValidation, CertFilepath);
-        Result = OPI_Tools.JsonToStructure(Result);
-
-        Success = OPI_Tools.GetOr(Tls, "result", False);
-
-        If Not Success Then
-            Return Result;
-        EndIf;
-
-    EndIf;
-
-    Result = Connector.Connect();
-    Result = OPI_Tools.JsonToStructure(Result, False);
-
-    Return ?(Result["result"], Connector, Result);
-
-EndFunction
-
-Function IsAddIn(Val Value)
-
-    ValeType = String(TypeOf(Value));
-    Return StrStartsWith(ValeType, "AddIn.");
-
-EndFunction
-
-Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    AddIn = New ("AddIn." + AddInName + "." + Class);
-    Return AddIn;
-
-EndFunction
-
-Function GetPrimaryFieldName(Val Connector)
-
-    If Connector = "OPI_SQLite" Then
-        Return "Database";
-    Else
-        Return "ConnectionString";
-    EndIf;
 
 EndFunction
 

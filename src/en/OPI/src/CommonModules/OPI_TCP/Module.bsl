@@ -50,20 +50,31 @@
 //
 // Parameters:
 // Address - String - Address and port - address
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
-// Undefined, Arbitrary - Returns the TCP client object on successful connection or undefined
-Function CreateConnection(Val Address) Export
+// Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
+Function CreateConnection(Val Address, Val Tls = "") Export
 
     OPI_TypeConversion.GetLine(Address);
+    Domain = OPI_Tools.GetDomain(Address);
 
-    TCPClient = AttachAddInOnServer("OPI_TCPClient");
+    TCPClient = OPI_AddIns.GetAddIn("TCPClient");
+    TCPClient.SetAddress(Address, Domain);
 
-    TCPClient.Address = Address;
+    Tls = OPI_AddIns.SetTls(TCPClient, Tls);
+
+    If Not OPI_Tools.GetOr(Tls, "result", False) Then
+        Return Tls;
+    EndIf;
 
     Success = TCPClient.Connect();
 
-    Return ?(Success, TCPClient, Undefined);
+    If Not Success Then
+        Return GetLastError(TCPClient);
+    EndIf;
+
+    Return TCPClient;
 
 EndFunction
 
@@ -197,15 +208,16 @@ EndFunction
 // Address - String - Address and port - address
 // Data - String, BinaryData - Data or text to be sent - data
 // ResponseString - Boolean - An attribute of receiving the response as a string - string
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // BinaryData, String - Response
-Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export
+Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "") Export
 
     OPI_TypeConversion.GetBinaryData(Data, True, False);
     OPI_TypeConversion.GetBoolean(ResponseString);
 
-    Connection = CreateConnection(Address);
+    Connection = CreateConnection(Address, Tls);
     Result     = SendBinaryData(Connection, Data);
 
     If Result Then
@@ -226,25 +238,48 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) E
 
 EndFunction
 
-#EndRegion
+// Get last error
+// Gets information about the last error in the connection
+//
+// Parameters:
+// Connection - Arbitrary - Connection, see. CreateConnection - tcp
+//
+// Returns:
+// Map Of KeyAndValue, Undefined - Error information or undefined if there is no error
+Function GetLastError(Val Connection) Export
 
-#EndRegion
+    Result = Connection.GetLastError();
 
-#Region Private
-
-Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
+    If ValueIsFilled(Result) Then
+        Result = OPI_Tools.JsonToStructure(Result);
     Else
-        TemplateName = "CommonTemplate." + AddInName;
+        Result = Undefined;
     EndIf;
 
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
+    Return Result;
 
-    AddIn = New("AddIn." + AddInName + "." + Class);
-    Return AddIn;
+EndFunction
+
+// Get TLS Settings
+// Forms settings for using TLS
+//
+// Note
+// Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function^^
+// or implicit, when passing the connection string to the `ProcessRequest` method
+//
+// Parameters:
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
+// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+//
+// Returns:
+// Structure Of KeyAndValue - Structure of TLS connection settings
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+
+    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
 
 EndFunction
 
 #EndRegion
+
+#EndRegion
+

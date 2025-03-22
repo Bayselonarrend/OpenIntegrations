@@ -63,7 +63,7 @@ Function CreateConnection(Val Base = "") Export
     OPI_TypeConversion.GetLine(Base);
     OPI_Tools.RestoreEscapeSequences(Base);
 
-    Connector = AttachAddInOnServer("OPI_SQLite");
+    Connector = OPI_AddIns.GetAddIn("SQLite");
 
     Connector.Database = Base;
 
@@ -404,10 +404,6 @@ EndFunction
 
 #Region Internal
 
-Function ConnectorName() Export
-    Return "OPI_SQLite";
-EndFunction
-
 Function GetFeatures() Export
 
     Features = New Map;
@@ -421,21 +417,6 @@ EndFunction
 #EndRegion
 
 #Region Private
-
-Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    AddIn = New ("AddIn." + AddInName + "." + Class);
-    Return AddIn;
-
-EndFunction
 
 Function ProcessParameters(Val Parameters)
 
