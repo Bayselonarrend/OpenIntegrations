@@ -18,11 +18,14 @@ pub enum Connection {
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"),    // 0
-    name!("Disconnect"), // 1
-    name!("Read"),       // 2
-    name!("Send"),       // 3
-    name!("CloseOutput") // 4
+    name!("Connect"),     // 0
+    name!("Disconnect"),  // 1
+    name!("Read"),        // 2
+    name!("Send"),        // 3
+    name!("CloseOutput"), // 4
+    name!("SetTLS"),      // 5
+    name!("GetLastError"),// 6
+    name!("SetAddress"),  // 7
 ];
 
 // Число параметров функций компоненты
@@ -33,6 +36,9 @@ pub fn get_params_amount(num: usize) -> usize {
         2 => 3,
         3 => 2,
         4 => 0,
+        5 => 3,
+        6 => 0,
+        7 => 2,
         _ => 0,
     }
 }
@@ -56,30 +62,37 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let marker = params[1].get_blob().unwrap_or(&empty_array);
             let timeout = params[2].get_i32().unwrap_or(0);
 
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::receive(connection, maxsize, marker.to_vec(), timeout))
-            } else {
-                Box::new("OPI: Connection closed".as_bytes().to_vec())
-            }
+            Box::new(methods::receive(obj, maxsize, marker.to_vec(), timeout))
+
         },
         3 => {
 
             let data = params[0].get_blob().unwrap_or(&empty_array);
             let timeout = params[1].get_i32().unwrap_or(0);
 
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::send(connection, data.to_vec(), timeout))
-            } else {
-                Box::new(false) // Если соединения нет, возвращаем false
-            }
+            Box::new(methods::send(obj, data.to_vec(), timeout))
+
         },
-        4 =>{
-            if let Some(ref mut connection) = obj.connection {
-                Box::new(methods::close_output(connection))
-            } else {
-                Box::new(false)
-            }
+        4 => Box::new(methods::close_output(obj))
+,
+        5 => {
+
+            let use_tls = params[0].get_bool().unwrap_or(false);
+            let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
+            let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
+
+            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+
+        },
+        6 => Box::new(obj.last_error.clone()),
+
+        7 => {
+            let addr = params[0].get_string().unwrap_or("".to_string());
+            let host = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(obj.set_address(&addr, &host))
         }
+
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -96,11 +109,13 @@ pub const PROPS: &[&[u16]] = &[
 
 
 pub struct AddIn {
-    pub address: String,
+    address: String,
+    host: String,
     connection: Option<Connection>,
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
+    last_error: String,
 }
 
 impl AddIn {
@@ -108,16 +123,25 @@ impl AddIn {
     pub fn new() -> Self {
         AddIn {
             address: String::new(),
+            host: String::new(),
             connection: None,
             use_tls: false,
             accept_invalid_certs: false,
             ca_cert_path: String::new(),
+            last_error: String::new(),
         }
+    }
+
+    pub fn set_address(&mut self, address: &str, host: &str) -> bool{
+        self.address = address.to_string();
+        self.host = host.to_string();
+        true
     }
 
     /// Подключается к серверу
     pub fn connect(&mut self) -> bool {
         if self.address.is_empty() {
+            self.save_error("No address found!");
             return false; // Ошибка: пустой адрес
         }
 
@@ -130,16 +154,26 @@ impl AddIn {
                         let mut cert_data = Vec::new();
                         let mut cert_file = match File::open(&self.ca_cert_path) {
                             Ok(file) => file,
-                            Err(_) => return false,
+                            Err(e) => {
+                                self.save_error(&e.to_string());
+                                return false
+                            },
                         };
 
-                        if cert_file.read_to_end(&mut cert_data).is_err() {
-                            return false;
+                        match cert_file.read_to_end(&mut cert_data) {
+                            Ok(_) => {},
+                            Err(e) => {
+                                self.save_error(&e.to_string());
+                                return false;
+                            }
                         }
 
                         let cert = match native_tls::Certificate::from_pem(&cert_data) {
                             Ok(cert) => cert,
-                            Err(_) => return false,
+                            Err(e) => {
+                                self.save_error(&e.to_string());
+                                return false;
+                            }
                         };
 
                         builder.add_root_certificate(cert);
@@ -151,29 +185,38 @@ impl AddIn {
 
                     let connector = match builder.build() {
                         Ok(connector) => connector,
-                        Err(_) => return false,
+                        Err(e) => {
+                            self.save_error(&e.to_string());
+                            return false;
+                        }
                     };
 
-                    match connector.connect(&self.address, tcp_stream) {
+                    match connector.connect(&self.host, tcp_stream) {
                         Ok(tls_stream) => {
                             self.connection = Some(Connection::Tls(tls_stream));
                             true
                         }
-                        Err(_) => false,
+                        Err(e) => {
+                            self.save_error(&e.to_string());
+                            false
+                        }
                     }
                 } else {
                     self.connection = Some(Connection::Plain(tcp_stream));
                     true
                 }
             }
-            Err(_) => false, // Ошибка при подключении
+            Err(e) => {
+                self.save_error(&e.to_string());
+                false
+            }
         }
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
 
         if self.connection.is_some() {
-            return Self::process_error("TLS settings can only be set before the connection is established".to_string());
+            return Self::process_error("TLS settings can only be set before the connection is established");
         }
 
         self.use_tls = use_tls;
@@ -183,11 +226,15 @@ impl AddIn {
         json!({"result": true}).to_string()
     }
 
-    fn process_error(e: String) -> String{
+    fn process_error(e: &str) -> String{
         json!({
             "result": false,
             "error": e
         }).to_string()
+    }
+
+    pub fn save_error(&mut self, e: &str){
+        self.last_error = Self::process_error(e);
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
