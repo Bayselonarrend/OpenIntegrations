@@ -2341,7 +2341,15 @@ def test_tcp(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe tcp ОбработатьЗапрос --address "test" --data "test" --string "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe tcp ОбработатьЗапрос --address "test" --data "test" --string "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe tcp ПолучитьПоследнююОшибку --tcp "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe tcp ПолучитьНастройкиTls --trust "test" --cert "test" --debug --test '
                }
 
 }

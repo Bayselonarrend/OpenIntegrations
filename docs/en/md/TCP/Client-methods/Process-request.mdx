@@ -10,13 +10,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True) Export`
+`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | --address | String | &#x2714; | Address and port |
   | Data | --data | String, BinaryData | &#x2716; | Data or text to be sent |
   | ResponseString | --string | Boolean | &#x2716; | An attribute of receiving the response as a string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 
   
   Returns:  BinaryData, String - Response

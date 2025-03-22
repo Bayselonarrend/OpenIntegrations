@@ -2258,7 +2258,8 @@ EndProcedure
 Procedure TC_Client() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_AddressTLS", TestParameters);
 
     TCP_CreateConnection(TestParameters);
     TCP_CloseConnection(TestParameters);
@@ -16805,13 +16806,25 @@ Procedure TCP_CreateConnection(FunctionParameters)
     Connection = OPI_TCP.CreateConnection(Address);
 
     Result = String(Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "TCP"); // SKIP
+    OPI_TestDataRetrieval.Check_Filled(Result); // SKIP
 
     OPI_TCP.CloseConnection(Connection);
 
+    Address    = "tcpbin.com:4243";
+    Tls        = OPI_TCP.GetTlsSettings(False);
+    Connection = OPI_TCP.CreateConnection(Address, TLS);
+
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "TCP");
-    OPI_TestDataRetrieval.Check_Filled(Result);
+    If TypeOf(Connection) = Type("Map") Then
+        Result            = Connection;
+    Else
+        Result            = String(Connection);
+    EndIf;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result);
 
 EndProcedure
 

@@ -2,3 +2,7 @@
     Connection = OPI_TCP.CreateConnection(Address);
 
     OPI_TCP.CloseConnection(Connection);
+
+    Address    = "tcpbin.com:4243";
+    Tls        = OPI_TCP.GetTlsSettings(False);
+    Connection = OPI_TCP.CreateConnection(Address, TLS);
