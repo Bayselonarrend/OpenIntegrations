@@ -2366,11 +2366,11 @@ Procedure CLI_GAPI_Account() Export
     CLI_GreenAPI_GetInstanceSettingsStructure(TestParameters);
     CLI_GreenAPI_SetInstanceSettings(TestParameters);
     CLI_GreenAPI_GetInstanceStatus(TestParameters);
-    //CLI_GreenAPI_LogoutInstance(TestParameters);
-    //CLI_GreenAPI_GetQR(TestParameters);
     CLI_GreenAPI_SetProfilePicture(TestParameters);
     CLI_GreenAPI_RebootInstance(TestParameters);
     CLI_GreenAPI_GetAuthorizationCode(TestParameters);
+    CLI_GreenAPI_LogoutInstance(TestParameters);
+    CLI_GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -2387,6 +2387,7 @@ Procedure CLI_GAPI_GroupManagement() Export
     CLI_GreenAPI_CreateGroup(TestParameters);
     CLI_GreenAPI_GetGroupInformation(TestParameters);
     CLI_GreenAPI_UpdateGroupName(TestParameters);
+    CLI_GreenAPI_SetGroupPicture(TestParameters);
     CLI_GreenAPI_AddGroupMember(TestParameters);
     CLI_GreenAPI_ExcludeGroupMember(TestParameters);
     CLI_GreenAPI_SetAdminRights(TestParameters);
@@ -21028,6 +21029,36 @@ Procedure CLI_GreenAPI_RevokeAdminRights(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_GreenAPI_SetGroupPicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+
+    Image   = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    GroupID = FunctionParameters["GreenAPI_GroupID"];
+
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+
+    Options = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("group"  , GroupID);
+    Options.Insert("picture", Image);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetGroupPicture", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetGroupPicture", "GreenAPI");
+    OPI_TestDataRetrieval.Check_GreenGroupPicture(Result);
+
+EndProcedure
+
 Procedure CLI_GreenAPI_SendTextMessage(FunctionParameters)
 
     ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
@@ -21586,7 +21617,7 @@ Procedure CLI_GreenAPI_GetMessageQueue(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetMessageQueue", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessageQueue", "GreenAPI");
-    OPI_TestDataRetrieval.Check_Array(Result);
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 
@@ -21815,7 +21846,7 @@ Procedure CLI_GreenAPI_ArchiveChat(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ArchiveChat", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveChat", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ArchiveChat", "GreenAPI");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -21843,7 +21874,7 @@ Procedure CLI_GreenAPI_UnarchiveChat(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "UnarchiveChat", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UnarchiveChat", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UnarchiveChat", "GreenAPI");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure

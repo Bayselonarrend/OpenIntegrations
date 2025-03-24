@@ -2407,11 +2407,11 @@ Procedure GAPI_Account() Export
     GreenAPI_GetInstanceSettingsStructure(TestParameters);
     GreenAPI_SetInstanceSettings(TestParameters);
     GreenAPI_GetInstanceStatus(TestParameters);
-    //GreenAPI_LogoutInstance(TestParameters);
-    //GreenAPI_GetQR(TestParameters);
     GreenAPI_SetProfilePicture(TestParameters);
     GreenAPI_RebootInstance(TestParameters);
     GreenAPI_GetAuthorizationCode(TestParameters);
+    GreenAPI_LogoutInstance(TestParameters);
+    GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -18572,7 +18572,7 @@ Procedure GreenAPI_SetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetInstanceSettings", "GreenAPI");
+    OPI_TestDataRetrieval.WriteLog(Result, "SetInstanceSettings", "GreenAPI");
     OPI_TestDataRetrieval.Check_GreenSettingsSaving(Result);
 
 EndProcedure
