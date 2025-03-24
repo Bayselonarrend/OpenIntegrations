@@ -16919,9 +16919,17 @@ Procedure TCP_ProcessRequest(FunctionParameters) Export
 
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP"); // END
+    OPI_TestDataRetrieval.Check_String(Result, Data); // END
+
+    Address = FunctionParameters["TCP_AddressTLS"];
+    Tls     = OPI_TCP.GetTlsSettings(False);
+
+    Result = OPI_TCP.ProcessRequest(Address, Data, , );
+
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest (TLS)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Data);
 
 EndProcedure
