@@ -60,7 +60,11 @@ Function CreateConnection(Val Address, Val Tls = "") Export
     Domain = OPI_Tools.GetDomain(Address);
 
     TCPClient = OPI_AddIns.GetAddIn("TCPClient");
-    TCPClient.SetAddress(Address, Domain);
+    Success   = TCPClient.SetAddress(Address, Domain);
+
+    If Not Success Then
+        Return GetLastError(TCPClient);
+    EndIf;
 
     Tls = OPI_AddIns.SetTls(TCPClient, Tls);
 
@@ -218,7 +222,12 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
     OPI_TypeConversion.GetBoolean(ResponseString);
 
     Connection = CreateConnection(Address, Tls);
-    Result     = SendBinaryData(Connection, Data);
+
+    If Not OPI_AddIns.IsAddIn(Connection) Then
+        Return Connection;
+    EndIf;
+
+    Result = SendBinaryData(Connection, Data);
 
     If Result Then
 

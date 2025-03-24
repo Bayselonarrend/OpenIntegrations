@@ -16925,7 +16925,7 @@ Procedure TCP_ProcessRequest(FunctionParameters) Export
     Address = FunctionParameters["TCP_AddressTLS"];
     Tls     = OPI_TCP.GetTlsSettings(False);
 
-    Result = OPI_TCP.ProcessRequest(Address, Data, , );
+    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
 
     // END
 
