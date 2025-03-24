@@ -215,7 +215,7 @@ EndFunction
 // Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
-// BinaryData, String - Response
+// BinaryData, String - Response or error information
 Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "") Export
 
     OPI_TypeConversion.GetBinaryData(Data, True, False);
@@ -232,12 +232,25 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
     If Result Then
 
         Response = ReadBinaryData(Connection, , Chars.LF);
+
+        If Not ValueIsFilled(Response) Then
+
+            Error = GetLastError(Connection);
+
+            If ValueIsFilled(Error) Then
+                Response = OPI_Tools.JSONString(Error);
+                Response = GetBinaryDataFromString(Response);
+            EndIf;
+
+        EndIf;
+
         Response = ?(ResponseString, GetStringFromBinaryData(Response), Response);
 
     Else
 
-        Response = "OPI: Failed to send message";
-        Response = ?(ResponseString, Response, GetBinaryDataFromString(Response));
+        Response = GetLastError(Connection);
+        Response = ?(ValueIsFilled(Response), OPI_Tools.JSONString(Response), "OPI: Failed to send message");
+        Response = ?(ResponseString         , Response                      , GetBinaryDataFromString(Response));
 
     EndIf;
 
