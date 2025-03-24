@@ -332,6 +332,19 @@ Function FormYAXTests() Export
 
 EndFunction
 
+Function FormAssertsTests() Export
+
+    TestTable    = GetTestTable();
+    ArrayOfTests = New Array;
+
+    For Each Test In TestTable Do
+        ArrayOfTests.Add(Test.Method);
+    EndDo;
+
+    Return ArrayOfTests;
+
+EndFunction
+
 Function FormYAXTestsCLI() Export
 
     Module    = GetCommonModule("ЮТТесты");
@@ -353,19 +366,6 @@ Function FormYAXTestsCLI() Export
     EndDo;
 
     Return "";
-
-EndFunction
-
-Function FormAssertsTests() Export
-
-    TestTable    = GetTestTable();
-    ArrayOfTests = New Array;
-
-    For Each Test In TestTable Do
-        ArrayOfTests.Add(Test.Method);
-    EndDo;
-
-    Return ArrayOfTests;
 
 EndFunction
 
