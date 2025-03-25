@@ -68,7 +68,7 @@ Function CreateConnection(Val ConnectionParams) Export
         Raise StrTemplate("Missing connection parameters: %1", StrConcat(MissingArray, ", "));
     EndIf;
 
-    Connector = AttachAddInOnServer("OPI_RCON");
+    Connector = OPI_AddIns.GetAddIn("RCON");
 
     URL          = ConnectionParams["url"];
     Password     = ConnectionParams["password"];
@@ -159,24 +159,5 @@ Function IsConnector(Val Value) Export
 EndFunction
 
 #EndRegion
-
-#EndRegion
-
-#Region Private
-
-Function AttachAddInOnServer(Val AddInName, Val Class = "Main")
-
-    If OPI_Tools.IsOneScript() Then
-        TemplateName = OPI_Tools.AddInsFolderOS() + AddInName + ".zip";
-    Else
-        TemplateName = "CommonTemplate." + AddInName;
-    EndIf;
-
-    AttachAddIn(TemplateName, AddInName, AddInType.Native);
-
-    AddIn = New ("AddIn." + AddInName + "." + Class);
-    Return AddIn;
-
-EndFunction
 
 #EndRegion
