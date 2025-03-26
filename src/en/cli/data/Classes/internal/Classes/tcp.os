@@ -54,17 +54,6 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "tcp";
     NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "GetLastError";
-    NewLine.МетодПоиска = "GETLASTERROR";
-    NewLine.Параметр    = "--tcp";
-    NewLine.Описание    = "Connection, see. CreateConnection";
-    NewLine.Область     = "Client methods";
-    NewLine.ОписаниеМетода   = "Gets information about the last error in the connection";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
     NewLine.Метод       = "GetTlsSettings";
     NewLine.МетодПоиска = "GETTLSSETTINGS";
     NewLine.Параметр    = "--trust";
