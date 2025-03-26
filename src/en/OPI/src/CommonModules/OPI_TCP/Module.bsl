@@ -260,7 +260,7 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
 
 EndFunction
 
-// Get last error
+// Get last error !NOCLI
 // Gets information about the last error in the connection
 //
 // Parameters:

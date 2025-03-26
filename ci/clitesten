@@ -2345,10 +2345,6 @@ def test_tcp(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe tcp GetLastError --tcp "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe tcp GetTlsSettings --trust "test" --cert "test" --debug --test '
                }
 
