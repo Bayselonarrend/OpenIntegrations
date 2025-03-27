@@ -148,6 +148,7 @@ impl AddIn {
         match TcpStream::connect(&self.address) {
             Ok(tcp_stream) => {
                 if self.use_tls {
+
                     let mut builder = native_tls::TlsConnector::builder();
 
                     if !self.ca_cert_path.is_empty() {

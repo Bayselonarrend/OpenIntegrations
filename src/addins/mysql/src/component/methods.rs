@@ -28,7 +28,7 @@ pub fn execute_query(
         Some(array) => process_mysql_params(array),
         None => return format_json_error("Parameters must be a JSON array")
     };
-
+    
     let mut conn = match pool.get_conn(){
         Ok(conn) => conn,
         Err(e) => return format_json_error(e)
