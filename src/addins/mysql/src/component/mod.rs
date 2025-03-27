@@ -10,6 +10,7 @@ use mysql::*;
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
+    name!("Close"),
     name!("Execute"),
 
 ];
@@ -18,7 +19,8 @@ pub const METHODS: &[&[u16]] = &[
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
-        1 => 3,
+        1 => 0,
+        2 => 3,
         _ => 0,
     }
 }
@@ -30,7 +32,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     match num {
 
         0 => Box::new(obj.initialize()),
-        1 => {
+        1 => Box::new(obj.close_connection()),
+        2 => {
 
             let query = params[0].get_string().unwrap_or("".to_string());
             let params_json = params[1].get_string().unwrap_or("".to_string());
@@ -49,7 +52,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("Database")
+    name!("ConnectionString")
 ];
 
 
@@ -81,6 +84,18 @@ impl AddIn {
                 json!({"result": true}).to_string()
             },
             Err(e) => json!({"result": false, "error": e.to_string()}).to_string()
+        }
+    }
+
+    pub fn close_connection(&mut self) -> String {
+        if self.connections.take().is_some() {
+            json!({"result": true}).to_string()
+        } else {
+            json!({
+                "result": false,
+                "error": "Connection already closed"
+            })
+                .to_string()
         }
     }
 

@@ -53,6 +53,7 @@
   <commonModules>CommonModule.OPI_GoogleDrive</commonModules>
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPI_MySQL</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Ozon</commonModules>
