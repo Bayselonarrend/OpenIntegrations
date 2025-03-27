@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add rows
+ Adds new rows to the table
+
+
+
+`Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | DataArray | --rows | Array of Structure | &#x2714; | An array of string data structures: Key > field, Value > field value |
+  | Transaction | --trn | Boolean | &#x2716; | True > adding records to transactions with rollback on error |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+:::tip
+Record data is specified as an array of structures of the following type:<br/>`{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
+
+The list of available types is described on the initial page of the MySQL library documentation
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

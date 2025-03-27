@@ -7,7 +7,7 @@
   </synonym>
   <synonym>
     <key>en</key>
-    <value>Tests for YaxUnit (OPI)</value>
+    <value>Tests for YaxUnit (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
