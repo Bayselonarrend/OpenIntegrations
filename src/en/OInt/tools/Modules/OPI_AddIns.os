@@ -127,7 +127,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName, Val Class, Val Error)
+Function AttachAddInOnServer(Val AddInName, Val Class, Error)
 
     If OPI_Tools.IsOneScript() Then
         TemplateName = AddInsFolderOS() + AddInName + ".zip";
