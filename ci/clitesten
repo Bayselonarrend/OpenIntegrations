@@ -61,6 +61,11 @@ pipeline {
                 test_greenapi()
              }
           }
+          stage('mysql'){
+             steps{
+                test_mysql()
+             }
+          }
           stage('neocities'){
              steps{
                 test_neocities()
@@ -1613,6 +1618,64 @@ def test_greenapi(){
 }
 
 
+def test_mysql(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ExecuteSQLQuery --sql "test" --params "test" --force "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql GenerateConnectionString --addr "test" --db "test" --login "test" --pass "test" --port "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql GetTlsSettings --trust "test" --cert "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql CreateDatabase --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql DeleteDatabase --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql CreateTable --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ClearTable --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql DeleteTable --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql AddRecords --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql GetRecords --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql UpdateRecords --table "test" --values "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql DeleteRecords --table "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql GetRecordsFilterStrucutre --empty "test" --debug --test '
+               }
+
+}
+
+
 def test_neocities(){
 					
 
@@ -3144,6 +3207,7 @@ test_gdrive()
 test_gsheets()
 test_google()
 test_greenapi()
+test_mysql()
 test_neocities()
 test_notion()
 test_ozon()

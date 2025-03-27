@@ -679,10 +679,10 @@ Function ExecuteSQLQuery(Val Module
     , Val Connection  = ""
     , Val Tls         = Undefined)
 
-    If Tls     = Undefined Then
-        Result = Module.ExecuteSQLQuery(QueryText, Parameters, ForceResult, Connection);
-    Else
+    If ValueIsFilled(Tls) Then
         Result = Module.ExecuteSQLQuery(QueryText, Parameters, ForceResult, Connection, Tls);
+    Else
+        Result = Module.ExecuteSQLQuery(QueryText, Parameters, ForceResult, Connection);
     EndIf;
 
     Return Result;

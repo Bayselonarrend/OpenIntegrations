@@ -57,9 +57,9 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
         AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
         If ValueIsFilled(Error) Then
-            Raise "Failed to initialize AddIn. "
-                + "It may not be compatible with your OS. Error: "
-                + Error;
+
+            FormAddInException(Error);
+
         EndIf;
 
     EndIf;
@@ -162,5 +162,21 @@ Function AddInsFolderOS() Export
     Return AddInsFolder;
 
 EndFunction
+
+Procedure FormAddInException(Val Error)
+
+    If OPI_Tools.IsWindows() Then
+        Text = "Failed to initialize AddIn. "
+            + "Error text "
+            + Error;
+    Else
+        Text = "Failed to initialize AddIn. Perhaps OpenSSL 3.x is missing. "
+            + "Error text "
+            + Error;
+    EndIf;
+
+    Raise Text;
+
+EndProcedure
 
 #EndRegion
