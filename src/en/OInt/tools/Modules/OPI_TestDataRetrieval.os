@@ -55,6 +55,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Viber"          , 5);
     Sections.Insert("Twitter"        , 4);
     Sections.Insert("PostgreSQL"     , 5);
+    Sections.Insert("MySQL"          , 5);
     Sections.Insert("SQLite"         , 5);
     Sections.Insert("RCON"           , 5);
     Sections.Insert("YandexDisk"     , 5);
@@ -91,6 +92,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Viber"          , StandardDependencies);
     Sections.Insert("Twitter"        , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
+    Sections.Insert("MySQL"          , StandardDependencies);
     Sections.Insert("SQLite"         , StandardDependencies);
     Sections.Insert("RCON"           , StandardDependencies);
     Sections.Insert("YandexDisk"     , StandardDependencies);
@@ -143,6 +145,7 @@ Function GetTestTable() Export
     Postgres  = "PostgreSQL";
     GreenAPI  = "GreenAPI";
     RCON      = "RCON";
+    MySQL     = "MySQL";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -282,6 +285,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
+    NewTest(TestTable, "MYS_CommonMethods"                    , "Common methods"                  , MySQL);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);
@@ -1631,8 +1635,10 @@ Procedure Check_BitrixDeal(Val Result) Export
 EndProcedure
 
 Procedure Check_BitrixAttachment(Val Result) Export
+
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
+
 EndProcedure
 
 Procedure Check_BitrixAvailableActions(Val Result, Val Count) Export
@@ -2044,7 +2050,9 @@ Procedure Check_YaMarketOk(Val Result) Export
 EndProcedure
 
 Procedure Check_MetrikaTags(Val Result) Export
+
     ExpectsThat(Result["labels"]).ИмеетТип("Array");
+
 EndProcedure
 
 Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
@@ -2059,19 +2067,27 @@ Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
 EndProcedure
 
 Procedure Check_MetrikaSuccess(Val Result) Export
+
     ExpectsThat(Result["success"]).Равно(True);
+
 EndProcedure
 
 Procedure Check_MetrikaCounter(Val Result) Export
+
     ExpectsThat(Result["counter"]).ИмеетТип("Map").Заполнено();
+
 EndProcedure
 
 Procedure Check_MetrikaCounters(Val Result) Export
+
     ExpectsThat(Result["counters"]).ИмеетТип("Array").Заполнено();
+
 EndProcedure
 
 Procedure Check_MetrikaActions(Val Result) Export
+
     ExpectsThat(Result["operations"]).ИмеетТип("Array");
+
 EndProcedure
 
 Procedure Check_S3Success(Val Result) Export
@@ -2096,23 +2112,33 @@ Procedure Check_S3NotImplemented(Val Result) Export
 EndProcedure
 
 Procedure Check_AddIn(Val Result, Val TypeName) Export
+
     ExpectsThat(String(TypeOf(Result))).Равно(TypeName);
+
 EndProcedure
 
 Procedure Check_Equality(Val Value1, Val Value2) Export
+
     ExpectsThat(Value1).Равно(Value2);
+
 EndProcedure
 
 Procedure Check_SQLiteSuccess(Val Result) Export
+
     ExpectsThat(Result["result"]).Равно(True);
+
 EndProcedure
 
 Procedure Check_SQLiteError(Val Result) Export
+
     ExpectsThat(Result["result"]).Равно(False);
+
 EndProcedure
 
 Procedure Check_SQLiteRows(Val Result, Val Count) Export
+
     ExpectsThat(Result["rows"]).Равно(Count);
+
 EndProcedure
 
 Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
@@ -2124,7 +2150,9 @@ Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
 EndProcedure
 
 Procedure Check_SQLiteNoRows(Val Result) Export
+
     ExpectsThat(Result["data"].Count()).Равно(0);
+
 EndProcedure
 
 Procedure Check_ResultTrue(Val Result) Export
@@ -2603,32 +2631,64 @@ EndProcedure
 
 Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
-    If Library     = "bitrix24"
-        And Option = "url" Then
+    If Library = "bitrix24" Then
+
+        ProcessSecretsBitrix24(Option, Value);
+
+    ElsIf Library = "postgres" Then
+
+        ProcessSecretsPostgreSQL(Option, Value);
+
+    ElsIf Library = "mysql" Then
+
+        ProcessSecretsMySQL(Option, Value);
+
+    Else
+        Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsBitrix24(Val Option, Value)
+
+    If Option = "url" Then
 
         Value = ?(StrFind(Value, "rest") > 0
             , "https://b24-ar17wx.bitrix24.by/rest/1/***"
             , Value);
 
-        Return;
-
     EndIf;
 
-    If Library = "postgres" Then
+EndProcedure
 
-        If Option = "dbc" Then
+Procedure ProcessSecretsPostgreSQL(Val Option, Value)
 
-            Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
+    If Option = "dbc" Then
 
-        Else
+        Value = "postgresql://bayselonarrend:***@127.0.0.1:5432/";
 
-            If Option = "addr" Then
-                Value = "127.0.0.1";
-                Return;
-            EndIf;
+    ElsIf Option = "addr" Then
 
-        EndIf;
+        Value = "127.0.0.1";
 
+    Else
+        Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsMySQL(Val Option, Value)
+
+    If Option = "dbc" Then
+
+        Value = "mysql://bayselonarrend:***@127.0.0.1:3306/";
+
+    ElsIf Option = "addr" Then
+
+        Value = "127.0.0.1";
+
+    Else
+        Return;
     EndIf;
 
 EndProcedure

@@ -2386,6 +2386,26 @@ EndProcedure
 
 #EndRegion
 
+#Region MySQL
+
+Procedure MYS_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL"        , TestParameters);
+
+    MySQL_GenerateConnectionString(TestParameters);
+    MySQL_CreateConnection(TestParameters);
+    MySQL_CloseConnection(TestParameters);
+    MySQL_IsConnector(TestParameters);
+    MySQL_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #Region GreenAPI
 
 Procedure GAPI_Account() Export
@@ -18455,6 +18475,172 @@ Procedure PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+#EndRegion
+
+#Region MySQL
+
+Procedure MySQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Result = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // END
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "MySQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure MySQL_CreateConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result           = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
+
+EndProcedure
+
+Procedure MySQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_MySQL.CreateConnection(ConnectionString);
+    Result           = OPI_MySQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+    Result     = OPI_MySQL.IsConnector(Connection);
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "MySQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_MySQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_MySQL.DeleteTable("test_data", Connection); // SKIP
+    Deletion = OPI_MySQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "MySQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data BLOB
+                   |);";
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , Image));
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    Blob = Result["data"][0]["data"]["BYTES"]; // SKIP
+
+    Result["data"][0]["data"]["BYTES"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+
+    Closing = OPI_MySQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 

@@ -1,0 +1,11 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+    Result     = OPI_MySQL.IsConnector(Connection);
+
+    OPI_MySQL.CloseConnection(Result);
