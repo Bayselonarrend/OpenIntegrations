@@ -3,6 +3,8 @@ use crate::component;
 use base64::{engine::general_purpose, Engine as _};
 use mysql::prelude::Queryable;
 use std::collections::HashMap;
+use chrono::*;
+use mysql::consts::ColumnType;
 
 pub fn execute_query(
     client: &mut component::AddIn,
@@ -62,7 +64,10 @@ fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
             let column_name = column.name_str().to_string();
             let value: Value = match row.get::<Option<mysql::Value>, usize>(i) {
                 Some(mysql_value) => match mysql_value {
-                    Some(value) => from_sql_to_json(value),
+                    Some(value) => {
+                        let column_type = column.column_type();
+                        from_sql_to_json(value, &column_type)
+                    },
                     None => Value::Null
                 },
                 None => Value::Null,
@@ -79,20 +84,67 @@ fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
     json!({ "result": true, "data": json_array }).to_string()
 }
 
-fn from_sql_to_json(value: mysql::Value) -> Value {
+fn from_sql_to_json(value: mysql::Value, column_type: &ColumnType) -> Value {
     match value {
         mysql::Value::NULL => Value::Null,
         mysql::Value::Int(i) => Value::Number(i.into()),
         mysql::Value::Double(d) => serde_json::Number::from_f64(d).map(Value::Number).unwrap_or(Value::Null),
         mysql::Value::Float(f) => serde_json::Number::from_f64(f as f64).map(Value::Number).unwrap_or(Value::Null),
         mysql::Value::UInt(i) => serde_json::Number::from_f64(i as f64).map(Value::Number).unwrap_or(Value::Null),
-        mysql::Value::Bytes(b) => {
-            let base64_string = general_purpose::STANDARD.encode(b); // Кодируем в Base64
-            let mut blob_object = serde_json::Map::new();
-            blob_object.insert("BYTES".to_string(), Value::String(base64_string)); // Оборачиваем в объект
-            Value::Object(blob_object)
+        mysql::Value::Bytes(b) => process_bytes(b, column_type),
+        mysql::Value::Date(year, month, day, hour, minute, second, micros) => {
+            // Создаем дату и время
+            let date = NaiveDate::from_ymd_opt(year as i32, month as u32, day as u32)
+                .unwrap_or_else(|| NaiveDate::from_ymd_opt(1970, 1, 1).unwrap());
+            let time = NaiveTime::from_hms_micro_opt(hour as u32, minute as u32, second as u32, micros)
+                .unwrap_or_else(|| NaiveTime::from_hms_opt(0, 0, 0).unwrap());
+            let datetime = NaiveDateTime::new(date, time);
+
+            let datetime_utc = DateTime::<Utc>::from_naive_utc_and_offset(datetime, Utc);
+            Value::String(datetime_utc.to_rfc3339())
         },
-        _ => Value::Null
+        mysql::Value::Time(_is_neg, days, hours, minutes, seconds, micros) => {
+            // Используем "нулевую" дату (1970-01-01) и переданное время
+            let date = NaiveDate::from_ymd_opt(1970, 1, 1).unwrap();
+            let total_hours = days * 24 + (hours as u32);
+            let time = NaiveTime::from_hms_micro_opt(total_hours, minutes as u32, seconds as u32, micros)
+                .unwrap_or_else(|| NaiveTime::from_hms_opt(0, 0, 0).unwrap());
+            let datetime = NaiveDateTime::new(date, time);
+
+            // Преобразуем в UTC и форматируем как RFC 3339
+            let datetime_utc = DateTime::<Utc>::from_naive_utc_and_offset(datetime, Utc);
+            Value::String(datetime_utc.to_rfc3339())
+        }
+    }
+}
+
+fn process_bytes(bytes: Vec<u8>, column_type: &ColumnType) -> Value {
+
+    if is_text_type(column_type) {
+        match String::from_utf8(bytes.clone()) {
+            Ok(text) => Value::String(text),
+            Err(_) => encode_to_base64(bytes),
+        }
+    } else {
+        encode_to_base64(bytes)
+    }
+}
+
+fn encode_to_base64(bytes: Vec<u8>) -> Value {
+    let base64_string = general_purpose::STANDARD.encode(bytes);
+    let mut blob_object = serde_json::Map::new();
+    blob_object.insert("BYTES".to_string(), Value::String(base64_string));
+    Value::Object(blob_object)
+}
+
+fn is_text_type(column_type: &ColumnType) -> bool {
+
+    if column_type.is_character_type() && column_type != &ColumnType::MYSQL_TYPE_BLOB {
+        true
+    } else if column_type.is_enum_or_set_type() {
+        true
+    } else {
+        false
     }
 }
 
@@ -132,6 +184,15 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
                                 Err(_) => mysql::Value::from(chrono::DateTime::from_timestamp(0, 0).unwrap().time())
                             }
                         },
+                        "TEXT" => {
+                            let value_str = value.as_str();
+
+                            match value_str {
+                                Some(value_str) => mysql::Value::Bytes(value_str.as_bytes().to_vec()),
+                                None => mysql::Value::NULL
+                            }
+
+                        }
                         _ => mysql::Value::from(item.clone())
                     }
                 }else{ mysql::Value::NULL }
