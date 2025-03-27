@@ -3,7 +3,7 @@
   <name>OPI_PostgreSQL</name>
   <synonym>
     <key>en</key>
-    <value>Postgre SQL (OpenIntegrations)</value>
+    <value>PostgreSQL (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

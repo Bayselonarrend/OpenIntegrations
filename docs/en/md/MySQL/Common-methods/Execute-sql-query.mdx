@@ -1,0 +1,96 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Execute SQL query
+ Executes an arbitrary SQL query
+
+
+
+`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | QueryText | --sql | String | &#x2714; | Database query text |
+  | Parameters | --params | Array Of Arbitrary | &#x2716; | Array of positional parameters of the request |
+  | ForceResult | --force | Boolean | &#x2716; | Includes an attempt to retrieve the result, even for nonSELECT queries |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+:::tip
+Query parameters are specified as an array of structures of the following type: `{'Type': 'Value'}`. The list of available types is described on the initial page of the MySQL library documentation
+
+Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "test_data";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_MySQL.CreateConnection(ConnectionString);
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data BLOB
+                   |);";
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , Image));
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+
+    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    Closing = OPI_MySQL.CloseConnection(Connection);
+```
+ 
+
+
+
+

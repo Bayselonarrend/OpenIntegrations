@@ -3,7 +3,7 @@
   <name>OPI_Neocities</name>
   <synonym>
     <key>en</key>
-    <value>Neocities (OPI)</value>
+    <value>Neocities (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
