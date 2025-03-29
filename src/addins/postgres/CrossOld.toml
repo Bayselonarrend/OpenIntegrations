@@ -1,0 +1,40 @@
+[target.x86_64-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr/local/ssl",               # Корневой каталог OpenSSL 1.1.x
+    "OPENSSL_LIB_DIR=/usr/local/lib64",         # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/local/include",   # Каталог с заголовочными файлами
+]
+
+[target.x86_64-unknown-linux-gnu]
+zig = false  # Отключаем Zig, чтобы использовать системные зависимости
+pre-build = [
+    "export DEBIAN_FRONTEND=noninteractive || true",  # Для Ubuntu/Debian
+    "yum install -y gcc gcc-c++ make perl wget tar gzip || true",  # Устанавливаем необходимые инструменты для CentOS
+    "wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz",  # Скачиваем OpenSSL 1.1.x
+    "tar -xzf openssl-1.1.1w.tar.gz",           # Распаковываем архив
+    "cd openssl-1.1.1w && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl && make && make install",  # Компилируем и устанавливаем OpenSSL 1.1.x
+    "ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1",  # Создаем символические ссылки
+    "ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1",
+]
+image = "centos:7"  # Используем CentOS 7 с glibc 2.17
+
+[target.i686-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr/local/ssl",               # Корневой каталог OpenSSL 1.1.x
+    "OPENSSL_LIB_DIR=/usr/local/lib",           # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/local/include",   # Каталог с заголовочными файлами
+]
+
+[target.i686-unknown-linux-gnu]
+zig = false  # Отключаем Zig, чтобы использовать системные зависимости
+pre-build = [
+    "export DEBIAN_FRONTEND=noninteractive || true",  # Для Ubuntu/Debian
+    "yum install -y gcc gcc-c++ make perl wget tar gzip || true",  # Устанавливаем необходимые инструменты для CentOS
+    "yum install -y glibc-devel.i686 libstdc++-devel.i686 || true",  # Устанавливаем 32-битные библиотеки
+    "wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz",  # Скачиваем OpenSSL 1.1.x
+    "tar -xzf openssl-1.1.1w.tar.gz",           # Распаковываем архив
+    "cd openssl-1.1.1w && ./Configure linux-generic32 --prefix=/usr/local/ssl --openssldir=/usr/local/ssl && make && make install",  # Компилируем и устанавливаем OpenSSL 1.1.x для 32-битной архитектуры
+    "ln -s /usr/local/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.1",  # Создаем символические ссылки
+    "ln -s /usr/local/lib/libssl.so.1.1 /usr/lib/libssl.so.1.1",
+]
+image = "centos:7"  # Используем CentOS 7 с glibc 2.17
