@@ -1,23 +1,42 @@
+[target.x86_64-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr/local/ssl",               # Корневой каталог OpenSSL 3.x
+    "OPENSSL_LIB_DIR=/usr/local/lib64",         # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/local/include",   # Каталог с заголовочными файлами
+]
+
 [target.x86_64-unknown-linux-gnu]
+zig = false  # Отключаем Zig, чтобы использовать системные зависимости
 pre-build = [
     "export DEBIAN_FRONTEND=noninteractive",
     "apt-get update",
-    "apt-get install -y build-essential",
-    "apt-get install -y pkg-config libssl3 libssl-dev",  # Устанавливаем OpenSSL
+    "apt-get install -y build-essential wget perl",  # Устанавливаем необходимые инструменты
+    "wget https://www.openssl.org/source/openssl-3.0.11.tar.gz",  # Скачиваем OpenSSL 3.x
+    "tar -xzf openssl-3.0.11.tar.gz",           # Распаковываем архив
+    "cd openssl-3.0.11 && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl && make && make install",  # Компилируем и устанавливаем OpenSSL 3.x
+    "ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib/x86_64-linux-gnu/libcrypto.so.3",  # Создаем символические ссылки
+    "ln -s /usr/local/lib64/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.3",
 ]
-image = "ubuntu:22.04"
+image = "ubuntu:20.04"  # Используем Ubuntu 18.04 с glibc 2.27 (совместимо с 2.28)
 
 [target.i686-unknown-linux-gnu.env]
+passthrough = [
+    "OPENSSL_DIR=/usr/local/ssl",               # Корневой каталог OpenSSL 3.x
+    "OPENSSL_LIB_DIR=/usr/local/lib",           # Каталог с библиотеками
+    "OPENSSL_INCLUDE_DIR=/usr/local/include",   # Каталог с заголовочными файлами
+]
 
 [target.i686-unknown-linux-gnu]
+zig = false  # Отключаем Zig, чтобы использовать системные зависимости
 pre-build = [
     "export DEBIAN_FRONTEND=noninteractive",
-    "dpkg --add-architecture i386",  # Добавляем поддержку 32-битных библиотек
+    "dpkg --add-architecture i386",             # Добавляем поддержку 32-битных библиотек
     "apt-get update",
-    "apt-get install -y build-essential",
-    "apt-get install -y pkg-config libssl3:i386 libssl-dev:i386 ca-certificates:i386",  # Устанавливаем 32-битные OpenSSL и корневые сертификаты
-    "update-ca-certificates",  # Обновляем корневые сертификаты
-    "apt-get install -y gcc-multilib g++-multilib",
-    "apt-get install -y gcc-i686-linux-gnu g++-i686-linux-gnu",
+    "apt-get install -y build-essential gcc-multilib g++-multilib wget perl",  # Устанавливаем инструменты для 32-битной сборки
+    "wget https://www.openssl.org/source/openssl-3.0.11.tar.gz",  # Скачиваем OpenSSL 3.x
+    "tar -xzf openssl-3.0.11.tar.gz",           # Распаковываем архив
+    "cd openssl-3.0.11 && ./Configure linux-generic32 --prefix=/usr/local/ssl --openssldir=/usr/local/ssl && make && make install",  # Компилируем и устанавливаем OpenSSL 3.x для 32-битной архитектуры
+    "ln -s /usr/local/lib/libcrypto.so.3 /usr/lib/i386-linux-gnu/libcrypto.so.3",  # Создаем символические ссылки
+    "ln -s /usr/local/lib/libssl.so.3 /usr/lib/i386-linux-gnu/libssl.so.3",
 ]
-image = "ubuntu:22.04"
+image = "ubuntu:20.04"  # Используем Ubuntu 18.04 с glibc 2.27 (совместимо с 2.28)
