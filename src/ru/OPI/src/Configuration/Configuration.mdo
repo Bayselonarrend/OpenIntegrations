@@ -39,11 +39,12 @@
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
-  <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
-  <commonTemplates>CommonTemplate.OPI_SQLite</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_MySQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_PostgreSQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_RCON</commonTemplates>
-  <commonTemplates>CommonTemplate.OPI_MySQL</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_SQLite</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_PostgreSQL_FOLV</commonTemplates>
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_CDEK</commonModules>
