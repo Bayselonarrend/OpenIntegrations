@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="68b4741d-0ae3-4fcd-a43e-bc1b1678c408">
-  <name>OPI_TCPClient_FOLV</name>
-  <synonym>
-    <key>en</key>
-    <value>TCPClient (For old Linux versions)</value>
-  </synonym>
-  <templateType>AddIn</templateType>
-</mdclass:CommonTemplate>
