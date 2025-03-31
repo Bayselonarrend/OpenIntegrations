@@ -54,19 +54,11 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
-        IsLinux = Not OPI_Tools.IsWindows();
-        Error   = Undefined;
-        FOLV    = False;
-
+        Error = Undefined;
         AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
-        If ValueIsFilled(Error) And IsLinux Then
-            AddIn = AttachAddInOnServer(AddInName + "_FOLV", Class, Error);
-            FOLV  = True;
-        EndIf;
-
         If ValueIsFilled(Error) Then
-            FormAddInException(FOLV);
+            FormAddInException();
         EndIf;
 
     EndIf;
@@ -171,7 +163,7 @@ Function AddInsFolderOS() Export
 
 EndFunction
 
-Procedure FormAddInException(Val FOLV)
+Procedure FormAddInException()
 
     Text = "Failed to initialize an external component. It may not be compatible with your operating system.";
 
@@ -181,7 +173,7 @@ Procedure FormAddInException(Val FOLV)
             + Chars.LF
             + Chars.LF
             + "Important: The component requires GLIBC >=2.18"
-            + ?(FOLV, " and OpenSSL version 1.1 or 3.x.", "")
+            + " and OpenSSL version 3.x"
             + Chars.LF
             + "Check that these dependencies are resolved on your system!";
 
