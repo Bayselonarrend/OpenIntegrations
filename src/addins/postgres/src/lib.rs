@@ -10,6 +10,7 @@ use std::{
 use component::AddIn;
 use addin1c::{create_component, destroy_component, name, AttachType};
 
+
 pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
 
 #[allow(non_snake_case)]
