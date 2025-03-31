@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<bundle xmlns='http://v8.1c.ru/8.2/addin/bundle' name='OPIADDIN'>
-	<component os='Linux' path='AddIn_x86_linux.so' type='native' arch='i386' />
-	<component os='Linux' path='AddIn_x64_linux.so' type='native' arch='x86_64' />
-</bundle>

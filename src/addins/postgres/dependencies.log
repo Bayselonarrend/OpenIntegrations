@@ -1,30 +1,11 @@
 "MAIN ---" 
-	linux-vdso.so.1 (0x00007ffc8a3f2000)
+	linux-vdso.so.1 (0x00007ffc5a2ca000)
 	libssl.so.3 => not found
 	libcrypto.so.3 => not found
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f2b08bda000)
-	libc.so.6 => /lib64/libc.so.6 (0x00007f2b08803000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x00007f2b085ff000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f2b08dfa000)
-GLIBC_2.2.5
-GLIBC_2.12
-GLIBC_2.3
-GLIBC_2.3.2
-GLIBC_2.3.4
-GLIBC_2.7
-GLIBC_2.9
-GLIBC_2.14
-GLIBC_2.17
-GLIBC_2.18
-"FOLV ---" 
-	linux-vdso.so.1 (0x00007ffd56b86000)
-	libssl.so.1.1 => /lib64/libssl.so.1.1 (0x00007f54591f5000)
-	libcrypto.so.1.1 => /lib64/libcrypto.so.1.1 (0x00007f5458d0a000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f5458aea000)
-	libc.so.6 => /lib64/libc.so.6 (0x00007f5458713000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x00007f545850f000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f545948a000)
-	libz.so.1 => /lib64/libz.so.1 (0x00007f54582f7000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f4499938000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f4499561000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f449935d000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4499b58000)
 GLIBC_2.2.5
 GLIBC_2.12
 GLIBC_2.3
