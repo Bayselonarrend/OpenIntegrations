@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1bb8def8-cbfc-4698-8340-20447ebaa544">
-  <name>OPI_RCON_FOLV</name>
-  <synonym>
-    <key>en</key>
-    <value>RCON (For old Linux versions)</value>
-  </synonym>
-  <templateType>AddIn</templateType>
-</mdclass:CommonTemplate>
