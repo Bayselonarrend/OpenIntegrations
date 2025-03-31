@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ec4def3c-efb3-4e59-82f2-0945ef7968b0">
-  <name>OPI_SQLite_FOLV</name>
-  <synonym>
-    <key>en</key>
-    <value>SQLite (For old Linux versions)</value>
-  </synonym>
-  <templateType>AddIn</templateType>
-</mdclass:CommonTemplate>
