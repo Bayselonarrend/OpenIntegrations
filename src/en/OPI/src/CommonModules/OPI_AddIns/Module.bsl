@@ -54,12 +54,19 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
+        IsLinux = Not OPI_Tools.IsWindows();
+        Error   = Undefined;
+        FOLV    = False;
+
         AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
+        If ValueIsFilled(Error) And IsLinux Then
+            AddIn = AttachAddInOnServer(AddInName + "_FOLV", Class, Error);
+            FOLV  = True;
+        EndIf;
+
         If ValueIsFilled(Error) Then
-
-            FormAddInException(Error);
-
+            FormAddInException(FOLV);
         EndIf;
 
     EndIf;
@@ -138,6 +145,7 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error)
     Try
         AttachAddIn(TemplateName, AddInName, AddInType.Native);
         AddIn = New("AddIn." + AddInName + "." + Class);
+        Error = Undefined;
         Return AddIn;
     Except
         Error = DetailErrorDescription(ErrorInfo());
@@ -163,17 +171,26 @@ Function AddInsFolderOS() Export
 
 EndFunction
 
-Procedure FormAddInException(Val Error)
+Procedure FormAddInException(Val FOLV)
 
-    If OPI_Tools.IsWindows() Then
-        Text = "Failed to initialize AddIn. "
-            + "Error text "
-            + Error;
-    Else
-        Text = "Failed to initialize AddIn. Perhaps OpenSSL 3.x is missing. "
-            + "Error text "
-            + Error;
+    Text = "Failed to initialize an external component. It may not be compatible with your operating system.";
+
+    If Not OPI_Tools.IsWindows() Then
+
+        Text = Text
+            + Chars.LF
+            + Chars.LF
+            + "Important: The component requires GLIBC >=2.18"
+            + ?(FOLV, " and OpenSSL version 1.1 or 3.x.", "")
+            + Chars.LF
+            + "Check that these dependencies are resolved on your system!";
+
     EndIf;
+
+    Text = Text
+        + Chars.LF
+        + Chars.LF
+        + "Read more: https://en.openintegrations.dev/docs/Start/Component-requirements";
 
     Raise Text;
 
