@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="823f6e91-a517-46c7-8e44-bc37e61a3f9c">
-  <name>OPI_PostgreSQL_FOLV</name>
-  <synonym>
-    <key>en</key>
-    <value>Postgre SQL (For old Linux versions)</value>
-  </synonym>
-  <templateType>AddIn</templateType>
-</mdclass:CommonTemplate>
