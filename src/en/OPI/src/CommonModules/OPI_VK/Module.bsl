@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_VK.os
 // Lib: VK
 // CLI: vk
+// Keywords: vk, vkontakte
 
 // MIT License
 
