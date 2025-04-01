@@ -105,16 +105,22 @@ Some features of this documentation that will help you use it more effectively a
 
 <hr/>
 
-## Structure of modules
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
 
-The project's common modules come in two types: 
+## Support the project
 
-- Service 
-	- OPI_Tools
-	- OPI_Cryptography
-- Modules for direct interaction with APIs
-	- OPI_Telegram, OPI_VK...
-	
-:::warning
-It is not recommended to use the methods of utility modules in other parts of your configuration (if you plan to update to new versions in the future). To maintain backward compatibility, the number/purpose of parameters and the return types for API interaction methods do not change, but this does not apply to utility modules, which can be modified in any way for optimization and adaptation to new requirements. If you need functionality from the utility modules, it is recommended to copy it separately.
-:::
+<img src={require('../../static/img/heartnstar.png').default} width='320px' align="right" class="hearthnstar"/>
+
+If you like the OpenIntegrations project and want to support it, you can do so in one of the following ways:
+
++ Give a ⭐ to [this repository](https://github.com/Bayselonarrend/OpenIntegrations)
++ Upvote OPI articles [on InfoStart](https://infostart.ru/profile/1793672/)
+
+If you'd like, you can also financially support the project via Tribute or YooMoney by clicking one of the icons below or using the links in the right-hand sidebar of repository page
+
+<a href="https://t.me/tribute/app?startapp=dnje"><img src={require('../../static/img/tribute.png').default} width='40px' /></a>
+<a href="https://yoomoney.ru/to/4100117914332065"><img src={require('../../static/img/yoomoney.png').default} width='40px' /></a>
+
+**Thanks for supporting our project!**
+
+</div>
