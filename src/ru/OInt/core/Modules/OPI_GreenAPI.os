@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GreenAPI.os
 // Lib: Green API
 // CLI: greenapi
+// Keywords: greenapi, whatsapp
 
 // MIT License
 

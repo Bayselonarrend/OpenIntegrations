@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
+// Keywords: tcp
 
 // MIT License
 
