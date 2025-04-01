@@ -2260,6 +2260,7 @@ Procedure CLI_SQLL_CommonMethods() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
+    GetBinaryDataFromString("").Write(Base);
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
@@ -2281,7 +2282,8 @@ Procedure CLI_SQLL_ORM() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", Base);
+    GetBinaryDataFromString("").Write(Base);
+    OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
     OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
@@ -19839,7 +19841,7 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Options = New Structure;
     Options.Insert("base" , Base);
@@ -20416,7 +20418,7 @@ Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Options = New Structure;
     Options.Insert("base" , Base);
