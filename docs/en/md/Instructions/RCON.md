@@ -9,6 +9,13 @@ sidebar_class_name: RCON
 
 This section is dedicated to the library for working with the RCON. On this page, all the steps necessary to start working are described
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 ## About the library
 
 RCON (Remote Console) is a protocol used to remotely control servers, most commonly game servers. It allows administrators or owners to execute commands on a server from the outside, without having to physically access the machine where the server is running.

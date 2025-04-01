@@ -9,6 +9,13 @@ sidebar_class_name: RCON
 
 Этот раздел посвящен библиотеке для работы с протоколом RCON. На данной странице описаны все действия, необходимые для полноценного начала работы
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">Для реализации некоторых функции в этой библиотеке используется внешняя компонента <br/>
+Пожалуйста, ознакомьтесь с разделом ["О внешних компонентах"](/docs/Start/Component-requirements) перед началом работы</div>
+</div>
+
 ## О библиотеке
 
 RCON (Remote Console) — это протокол, используемый для удаленного управления серверами, чаще всего игровыми. Он позволяет администраторам или владельцам серверов выполнять команды на сервере извне, без необходимости физического доступа к машине, где запущен сервер.

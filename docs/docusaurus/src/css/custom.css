@@ -73,6 +73,36 @@ p{
   opacity: 0.8; /* Легкая прозрачность при наведении */
 }
 
+.tipimage{
+  width: 64px; 
+  height: 64px; 
+  margin-right: 16px;
+  padding-top: 0px;
+  margin-top: 0px;
+  float: left;
+  vertical-align: top;
+
+}
+
+.addin{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.hearthnstar{
+
+  margin-right: 12px;
+  margin-top: 5px;
+}
+
+.orangelink{
+  color: #E6A700;
+}
+
+.orangelink:hover{
+  color: #E6A700;
+}
+
 .footer{
   background-color: white;
 }
