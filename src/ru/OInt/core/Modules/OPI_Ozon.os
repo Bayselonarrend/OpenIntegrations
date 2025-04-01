@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Ozon.os
 // Lib: Ozon
 // CLI: ozon
+// Keywords: ozon, seller api
 
 // MIT License
 

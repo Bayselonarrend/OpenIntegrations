@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
 // Lib: Google Sheets
 // CLI: gsheets
+// Keywords: googlesheets, google sheets, spreadsheets
 
 // MIT License
 

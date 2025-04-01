@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
 // Lib: Viber
 // CLI: viber
+// Keywords: viber
 
 // MIT License
 
