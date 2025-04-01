@@ -104,16 +104,22 @@ sidebar_class_name: NachaloRaboty
 
 <hr/>
 
-## Структура модулей
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
 
-Общие модули проекта бывают двух видов: 
+## Поддержать проект
 
-- Служебные 
-	- OPI_Инструменты
-	- OPI_Криптография
-- Модули непосредственной работы с API
-	- OPI_Telegram, OPI_VK...
-	
-:::warning
-Не рекомендуется использовать методы служебных модулей в других местах вашей конфигурации (если вы собираетесь обновляться до новых версий в дальнейшем). Для сохранения обратной совместимости, количество/назначение параметров и типы возвращаемых значений для методов работы с API не изменяются, но это не применимо к служебным модулям, которые могут изменяться как угодно для оптимизации и дополнения под новые нужды. Если вам необходим функционал из служебных модулей, рекомендуется скопировать его себе отдельно.
-:::
+<img src={require('../../static/img/heartnstar.png').default} width='320px' align="right" class="hearthnstar"/>
+
+Если вам нравится проект OpenIntegrations и вы хотите его поддержать, то можете сделать это одним из следующих способов:
+
++ Поставить ⭐ [этому репозиторию](https://github.com/Bayselonarrend/OpenIntegrations)
++ Поставить `+` на статьи про ОПИ [на Инфостарт](https://infostart.ru/profile/1793672/)
+
+При желании, вы также можете помочь проекту материально через Tribute или YooMoney, нажав на один из значков ниже или по ссылкам, которые находятся в правой части страницы репозитория на GitHub
+
+<a href="https://t.me/tribute/app?startapp=dnje"><img src={require('../../static/img/tribute.png').default} width='40px' /></a>
+<a href="https://yoomoney.ru/to/4100117914332065"><img src={require('../../static/img/yoomoney.png').default} width='40px' /></a>
+
+**Спасибо за вашу поддержку!**
+
+</div>

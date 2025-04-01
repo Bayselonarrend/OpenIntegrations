@@ -9,6 +9,21 @@ sidebar_class_name: TCP
 
 This section is dedicated to the library for working with the TCP. On this page, all the steps necessary to start working are described
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
+
+<div class="theme-admonition theme-admonition-caution admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--warning">
+
+<img src={require('../../static/img/lock.png').default} class="tipimage" />
+<div class="addin">This library requires **OpenSSL 3.x** to run on Linux <br/>
+Learn more: <a href="/docs/Start/Component-requirements#openssl" class="orangelink">"Using OpenSSL in External Components"</a></div>
+</div>
+
 ## About implemented methods
 
 This library provides several ready-made methods for working as a TCP client. The standard scheme of interaction with the server is as follows:
