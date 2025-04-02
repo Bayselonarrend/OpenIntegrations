@@ -46,7 +46,12 @@ pub fn execute_query(
 
     } else {
 
-        match conn.exec_drop(query, params_array){
+        let exec_result = match params_array.len() == 0 {
+            true => conn.query_drop(query),
+            false => conn.exec_drop(query, params_array)
+        };
+
+        match exec_result{
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(e)
         }
