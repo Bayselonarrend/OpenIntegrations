@@ -76,8 +76,8 @@
   <commonModules>CommonModule.OPI_ЗапросыSQL</commonModules>
   <commonModules>CommonModule.OPI_Компоненты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
+  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
-  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>
