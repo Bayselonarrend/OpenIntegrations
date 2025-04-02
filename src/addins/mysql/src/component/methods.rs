@@ -161,12 +161,20 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
                     match key.to_uppercase().as_str(){
                         "BYTES" => {
 
-                            let cleaned_base64 = value.to_string().replace(&['\n', '\r', ' '][..], "");
+                            match value.as_str(){
+                                Some(b64) => {
 
-                            match general_purpose::STANDARD.decode(cleaned_base64) {
-                                Ok(decoded_blob) => mysql::Value::Bytes(decoded_blob),
-                                Err(e) => mysql::Value::Bytes(e.to_string().into_bytes())
+                                    let cleaned_base64 = b64.replace(&['\n', '\r', ' '][..], "");
+                                    match general_purpose::STANDARD.decode(cleaned_base64) {
+                                        Ok(decoded_blob) => mysql::Value::Bytes(decoded_blob),
+                                        Err(e) => mysql::Value::Bytes(e.to_string().into_bytes())
+                                    }
+
+                                },
+                                None => mysql::Value::Bytes("Not a Base64 value passed".as_bytes().to_vec()),
                             }
+
+
                         },
                         "UINT" => mysql::Value::UInt(value.as_u64().unwrap_or(0)),
                         "INT" => mysql::Value::Int(value.as_i64().unwrap_or(0)),
