@@ -2394,13 +2394,26 @@ Procedure MYS_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQL"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL2"       , TestParameters);
 
     MySQL_GenerateConnectionString(TestParameters);
     MySQL_CreateConnection(TestParameters);
     MySQL_CloseConnection(TestParameters);
     MySQL_IsConnector(TestParameters);
     MySQL_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
+Procedure MYS_ORM() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+
+    MySQL_CreateDatabase(TestParameters);
+    MySQL_CreateTable(TestParameters);
+    MySQL_AddRecords(TestParameters);
 
 EndProcedure
 
@@ -18533,6 +18546,46 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
 
+    Result = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Address = FunctionParameters["PG_IP"];
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Result           = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "MySQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    TLSSettings = OPI_MySQL.GetTlsSettings(True);
+    Result      = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
+
+    Address          = "api.athenaeum.digital";
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    TLSSettings = OPI_MySQL.GetTlsSettings(False);
+    Connection  = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Result = OPI_MySQL.CreateDatabase("test1", Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Result = OPI_MySQL.DeleteDatabase(Base, Connection, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
 EndProcedure
 
 Procedure MySQL_CloseConnection(FunctionParameters)
@@ -18649,12 +18702,216 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
 
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+
+    Result = OPI_MySQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     Closing = OPI_MySQL.CloseConnection(Connection);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    Deletion = OPI_MySQL.DeleteDatabase(Base, ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "MySQL"); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.CreateDatabase(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "", Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    OPI_MySQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
+    Result = OPI_MySQL.CreateDatabase(Base, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+    OPI_MySQL.DeleteDatabase(Base, ConnectionString);
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateDatabase (open)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Result = OPI_MySQL.CreateDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (connect)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.CreateDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_MySQL.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure MySQL_CreateTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("char_field"      , "CHAR(5)");
+    ColoumnsStruct.Insert("varchar_field"   , "VARCHAR(255)");
+    ColoumnsStruct.Insert("tinytext_field"  , "TINYTEXT");
+    ColoumnsStruct.Insert("text_field"      , "TEXT");
+    ColoumnsStruct.Insert("mediumtext_field", "MEDIUMTEXT");
+    ColoumnsStruct.Insert("longtext_field"  , "LONGTEXT");
+    ColoumnsStruct.Insert("tinyint_field"   , "TINYINT");
+    ColoumnsStruct.Insert("smallint_field"  , "SMALLINT");
+    ColoumnsStruct.Insert("mediumint_field" , "MEDIUMINT");
+    ColoumnsStruct.Insert("int_field"       , "INT");
+    ColoumnsStruct.Insert("uint_field"      , "INT UNSIGNED");
+    ColoumnsStruct.Insert("bigint_field"    , "BIGINT");
+    ColoumnsStruct.Insert("float_field"     , "FLOAT");
+    ColoumnsStruct.Insert("double_field"    , "DOUBLE");
+    ColoumnsStruct.Insert("date_field"      , "DATE");
+    ColoumnsStruct.Insert("time_field"      , "TIME");
+    ColoumnsStruct.Insert("datetime_field"  , "DATETIME");
+    ColoumnsStruct.Insert("timestamp_field" , "TIMESTAMP");
+    ColoumnsStruct.Insert("mediumblob_field", "MEDIUMBLOB");
+    ColoumnsStruct.Insert("set_field"       , "SET('one','two','three')");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Table = "ABC DEF";
+
+    Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (name error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Table = "somename";
+    ColoumnsStruct.Insert("wtf_field", "WTF");
+
+    Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (type error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure MySQL_AddRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("char_field"      , New Structure("TEXT"  , "AAAAA"));
+    RecordStructure.Insert("varchar_field"   , New Structure("TEXT"  , "Some varchar"));
+    RecordStructure.Insert("tinytext_field"  , New Structure("TEXT"  , "Some tiny text"));
+    RecordStructure.Insert("text_field"      , New Structure("TEXT"  , "Some text"));
+    RecordStructure.Insert("mediumtext_field", New Structure("TEXT"  , "Some medium text"));
+    RecordStructure.Insert("longtext_field"  , New Structure("TEXT"  , "Some looooooong text"));
+    RecordStructure.Insert("tinyint_field"   , New Structure("INT"   , 127));
+    RecordStructure.Insert("smallint_field"  , New Structure("INT"   , -32767));
+    RecordStructure.Insert("mediumint_field" , New Structure("INT"   , 8388607));
+    RecordStructure.Insert("int_field"       , New Structure("INT"   , -2147483647));
+    RecordStructure.Insert("uint_field"      , New Structure("UINT"  , 4294967295));
+    RecordStructure.Insert("bigint_field"    , New Structure("INT"   , 9223372036854775807));
+    RecordStructure.Insert("float_field"     , New Structure("FLOAT" , 100.50));
+    RecordStructure.Insert("double_field"    , New Structure("FLOAT" , 100.512123));
+    RecordStructure.Insert("date_field"      , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("time_field"      , New Structure("TIME"  , CurrentDate));
+    RecordStructure.Insert("datetime_field"  , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("timestamp_field" , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("mediumblob_field", New Structure("BYTES" , Image));
+    RecordStructure.Insert("set_field"       , New Structure("TEXT"  , "one"));
+
+    RecordsArray.Add(RecordStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.AddRecords(Table, RecordsArray, True, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.AddRecords(Table, RecordsArray, True, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
