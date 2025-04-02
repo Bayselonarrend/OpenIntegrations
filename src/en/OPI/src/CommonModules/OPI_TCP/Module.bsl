@@ -251,7 +251,8 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
 
         Response = GetLastError(Connection);
         Response = ?(ValueIsFilled(Response), OPI_Tools.JSONString(Response), "OPI: Failed to send message");
-        Response = ?(ResponseString         , Response                      , GetBinaryDataFromString(Response));
+
+        Response = ?(ResponseString, Response, GetBinaryDataFromString(Response));
 
     EndIf;
 

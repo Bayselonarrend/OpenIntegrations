@@ -21,7 +21,7 @@
                    |type TINYINT UNSIGNED,
                    |date DATE,
                    |time TIME,
-                   |data BLOB
+                   |data MEDIUMBLOB
                    |);";
 
     Результат = OPI_MySQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);

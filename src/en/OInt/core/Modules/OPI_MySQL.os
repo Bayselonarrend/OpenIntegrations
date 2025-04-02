@@ -68,6 +68,12 @@ Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
 
     Connector = OPI_AddIns.GetAddIn("MySQL");
 
+    Tls = OPI_AddIns.SetTls(Connector, Tls);
+
+    If Not OPI_Tools.GetOr(Tls, "result", False) Then
+        Return Tls;
+    EndIf;
+
     Connector.ConnectionString = ConnectionString;
 
     Result = Connector.Connect();
