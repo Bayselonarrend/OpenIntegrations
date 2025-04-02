@@ -37,6 +37,8 @@ Please review the ["About external components"](/docs/Start/Component-requiremen
 Learn more: <a href="/docs/Start/Component-requirements#openssl" class="orangelink">"Using OpenSSL in External Components"</a></div>
 </div>
 
+<br/>
+
 If such footnotes are missing, the library was implemented without external components
 
 <hr/>
