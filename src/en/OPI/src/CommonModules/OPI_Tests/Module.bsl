@@ -18511,11 +18511,26 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
     Result           = OPI_MySQL.CreateConnection(ConnectionString);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main"); // SKIP
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // With TLS
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings      = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
     OPI_MySQL.CloseConnection(Result);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MySQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
 
 EndProcedure
@@ -18592,7 +18607,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
                    |type TINYINT UNSIGNED,
                    |date DATE,
                    |time TIME,
-                   |data BLOB
+                   |data MEDIUMBLOB
                    |);";
 
     Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);

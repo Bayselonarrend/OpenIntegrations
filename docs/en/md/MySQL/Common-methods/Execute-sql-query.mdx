@@ -58,7 +58,7 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
                    |type TINYINT UNSIGNED,
                    |date DATE,
                    |time TIME,
-                   |data BLOB
+                   |data MEDIUMBLOB
                    |);";
 
     Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
