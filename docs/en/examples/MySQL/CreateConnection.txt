@@ -7,3 +7,15 @@
     Result           = OPI_MySQL.CreateConnection(ConnectionString);
 
     OPI_MySQL.CloseConnection(Result);
+
+    // With TLS
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings      = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_MySQL.CloseConnection(Result);

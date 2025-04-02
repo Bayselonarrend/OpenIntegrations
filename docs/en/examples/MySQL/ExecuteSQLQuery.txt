@@ -21,7 +21,7 @@
                    |type TINYINT UNSIGNED,
                    |date DATE,
                    |time TIME,
-                   |data BLOB
+                   |data MEDIUMBLOB
                    |);";
 
     Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
