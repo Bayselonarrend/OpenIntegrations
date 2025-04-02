@@ -286,6 +286,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
     NewTest(TestTable, "MYS_CommonMethods"                    , "Common methods"                  , MySQL);
+    NewTest(TestTable, "MYS_ORM"                              , "ORM"                             , MySQL);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);
