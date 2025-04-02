@@ -251,7 +251,8 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
 
         Response = GetLastError(Connection);
         Response = ?(ValueIsFilled(Response), OPI_Tools.JSONString(Response), "OPI: Failed to send message");
-        Response = ?(ResponseString         , Response                      , ПолучитьДвоичныеДанныеИзСтроки(Response));
+
+        Response = ?(ResponseString, Response, ПолучитьДвоичныеДанныеИзСтроки(Response));
 
     EndIf;
 
