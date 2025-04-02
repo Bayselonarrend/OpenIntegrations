@@ -37,6 +37,8 @@ sidebar_position: 3
 Узнать больше: <a href="/docs/Start/Component-requirements#openssl" class="orangelink">"Об использовании OpenSSL во внешних компонентах"</a></div>
 </div>
 
+<br/>
+
 Их отсутствие, в свою очередь, означает, что внешние компоненты при реализации библиотеки не использовались
 
 <hr/>
