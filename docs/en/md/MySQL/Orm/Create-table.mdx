@@ -32,7 +32,42 @@ The list of available types is described on the initial page of the MySQL librar
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
 
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("char_field"      , "CHAR(5)");
+    ColoumnsStruct.Insert("varchar_field"   , "VARCHAR(255)");
+    ColoumnsStruct.Insert("tinytext_field"  , "TINYTEXT");
+    ColoumnsStruct.Insert("text_field"      , "TEXT");
+    ColoumnsStruct.Insert("mediumtext_field", "MEDIUMTEXT");
+    ColoumnsStruct.Insert("longtext_field"  , "LONGTEXT");
+    ColoumnsStruct.Insert("tinyint_field"   , "TINYINT");
+    ColoumnsStruct.Insert("smallint_field"  , "SMALLINT");
+    ColoumnsStruct.Insert("mediumint_field" , "MEDIUMINT");
+    ColoumnsStruct.Insert("int_field"       , "INT");
+    ColoumnsStruct.Insert("uint_field"      , "INT UNSIGNED");
+    ColoumnsStruct.Insert("bigint_field"    , "BIGINT");
+    ColoumnsStruct.Insert("float_field"     , "FLOAT");
+    ColoumnsStruct.Insert("double_field"    , "DOUBLE");
+    ColoumnsStruct.Insert("date_field"      , "DATE");
+    ColoumnsStruct.Insert("time_field"      , "TIME");
+    ColoumnsStruct.Insert("datetime_field"  , "DATETIME");
+    ColoumnsStruct.Insert("timestamp_field" , "TIMESTAMP");
+    ColoumnsStruct.Insert("mediumblob_field", "MEDIUMBLOB");
+    ColoumnsStruct.Insert("set_field"       , "SET('one','two','three')");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, ConnectionString);
 ```
  
 
