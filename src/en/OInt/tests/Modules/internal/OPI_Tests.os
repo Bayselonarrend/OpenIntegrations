@@ -2414,6 +2414,13 @@ Procedure MYS_ORM() Export
     MySQL_CreateDatabase(TestParameters);
     MySQL_CreateTable(TestParameters);
     MySQL_AddRecords(TestParameters);
+    MySQL_GetRecords(TestParameters);
+    MySQL_UpdateRecords(TestParameters);
+    MySQL_DeleteRecords(TestParameters);
+    MySQL_ClearTable(TestParameters);
+    MySQL_DeleteTable(TestParameters);
+    MySQL_DeleteDatabase(TestParameters);
+    MySQL_GetRecordsFilterStrucutre(TestParameters);
 
 EndProcedure
 
@@ -18086,8 +18093,7 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
 
     If ValueIsFilled(Result["data"]) Then // SKIP
-        Result["data"][0]["bytea_field"]["BYTEA"] // SKIP
- = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
+        Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "..."; // SKIP
     EndIf; // SKIP
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "PostgreSQL"); // SKIP
@@ -18701,6 +18707,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MySQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+    OPI_MySQL.ExecuteSQLQuery("create table TEST_DATA (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
 
     // SQL query from file
 
@@ -18913,6 +18920,392 @@ Procedure MySQL_AddRecords(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_GetRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // All records without filters
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.GetRecords(Table, , , , , ConnectionString);
+
+    If ValueIsFilled(Result["data"]) Then // SKIP
+        Result["data"][0]["mediumblob_field"]["BYTES"] = Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "..."; // SKIP
+    EndIf; // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // Filter, selected fields, limit and sorting
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, "test_data", Login, Password);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Result = OPI_MySQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (filters)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Table = "testtable";
+
+    Result = OPI_MySQL.GetRecords(Table, , , , , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"]);
+
+EndProcedure
+
+Procedure MySQL_UpdateRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Count = OPI_MySQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Count, "UpdateRecords (amount)", "MySQL"); // SKIP
+    Count = Count["data"].Count(); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Check = OPI_MySQL.GetRecords(Table, "['ip_address']", Filters, , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "UpdateRecords (check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], Count);
+
+    For N = 0 To Check["data"].UBound() Do
+        OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
+    EndDo;
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("varchar_field", New Structure("VARCHAR", "Another varchar"));
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.UpdateRecords("testtable", FieldsStructure, , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_DeleteRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
+
+    Filters.Add(FilterStructure);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("VARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Obtaining = OPI_MySQL.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.DeleteRecords(Table, Filters, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Obtaining, "DeleteRecords (get)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Count   = Obtaining["data"].Count();
+    Residue = 100 - Count;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.DeleteRecords("testtable", , TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_DeleteTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.DeleteTable(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.DeleteTable(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base  = "test_data";
+    Table = "test_data";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Result           = OPI_MySQL.DeleteTable(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable (test)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_DeleteDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Base = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.DeleteDatabase(Base, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "DeleteDatabase (open)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Result = OPI_MySQL.DeleteDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.DeleteDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Closing = OPI_MySQL.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "DeleteDatabase (close)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Closing);
+
+    Result = OPI_MySQL.DeleteDatabase(Base, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "", Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    Base                = "testbase1";
+
+    Result = OPI_MySQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.ClearTable(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.ClearTable(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.GetRecords(Table, , , , , ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure MySQL_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Result = OPI_MySQL.GetRecordsFilterStrucutre();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "MySQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_MySQL.GetRecordsFilterStrucutre(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "MySQL");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 

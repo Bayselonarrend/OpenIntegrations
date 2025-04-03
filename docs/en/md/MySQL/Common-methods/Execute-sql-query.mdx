@@ -87,6 +87,12 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 
     Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
 
+    // SQL query from file
+
+    SQLFile = "https://api.athenaeum.digital/test_data/TEST_DATA2.sql"; // Binary Data, URL or path to file
+
+    Result = OPI_MySQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
     Closing = OPI_MySQL.CloseConnection(Connection);
 ```
  
