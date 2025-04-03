@@ -20538,15 +20538,17 @@
     // CREATE
 
     ТекстЗапроса = "
-    |CREATE TABLE test_table (
-    |id SERIAL PRIMARY KEY,
-    |name NAME,
-    |age INT,
-    |salary REAL,
-    |is_active BOOL,
-    |created_at DATE,
-    |data BYTEA
-    |);";
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data MEDIUMBLOB
+                   |);";
 
     Опции = Новый Структура;
     Опции.Вставить("sql" , СтрЗаменить(ТекстЗапроса, Символы.ПС, " "));
@@ -20560,16 +20562,18 @@
     // INSERT с параметрами
 
     ТекстЗапроса = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES ($1, $2, $3, $4, $5, $6);";
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
     МассивПараметров = Новый Массив;
-    МассивПараметров.Добавить(Новый Структура("NAME" , "Vitaly"));
-    МассивПараметров.Добавить(Новый Структура("INT"  , 25));
-    МассивПараметров.Добавить(Новый Структура("REAL" , 1000.12));
-    МассивПараметров.Добавить(Новый Структура("BOOL" , Истина));
-    МассивПараметров.Добавить(Новый Структура("DATE" , OPI_Инструменты.ПолучитьТекущуюДату()));
-    МассивПараметров.Добавить(Новый Структура("BYTEA", ИВФ));
+    МассивПараметров.Добавить(Новый Структура("TEXT"  , "Vitaly"));
+    МассивПараметров.Добавить(Новый Структура("INT"   , 25));
+    МассивПараметров.Добавить(Новый Структура("DOUBLE", 1000.12));
+    МассивПараметров.Добавить(Новый Структура("FLOAT" , 1000.12));
+    МассивПараметров.Добавить(Новый Структура("UINT"  , 1));
+    МассивПараметров.Добавить(Новый Структура("DATE"  , OPI_Инструменты.ПолучитьТекущуюДату()));
+    МассивПараметров.Добавить(Новый Структура("TIME"  , OPI_Инструменты.ПолучитьТекущуюДату()));
+    МассивПараметров.Добавить(Новый Структура("BYTES" , ИВФ));
 
     Опции = Новый Структура;
     Опции.Вставить("sql"   , СтрЗаменить(ТекстЗапроса, Символы.ПС, " "));
@@ -20583,7 +20587,7 @@
 
     // SELECT (Результат этого запроса приведен в следующем блоке)
 
-    ТекстЗапроса = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+    ТекстЗапроса = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
 
     Опции = Новый Структура;
     Опции.Вставить("sql" , СтрЗаменить(ТекстЗапроса, Символы.ПС, " "));
@@ -20598,29 +20602,11 @@
     OPI_ПолучениеДанныхТестов.Проверка_РезультатИстина(Результат);                                  // SKIP
     OPI_ПолучениеДанныхТестов.Проверка_Равенство(Base64Значение(Blob).Размер(), Картинка.Размер()); // SKIP
 
-    // DO + Транзакция
-
-    ТекстЗапроса = "DO $$
-    |BEGIN
-    |    CREATE TABLE users (
-    |        id SMALLSERIAL,
-    |        name TEXT NOT NULL,
-    |        age INT NOT NULL
-    |    );
-    |    INSERT INTO users (name, age) VALUES ('Alice', 30);
-    |    INSERT INTO users (name, age) VALUES ('Bob', 25);
-    |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    |    COMMIT;
-    |END $$ LANGUAGE plpgsql;";
-
     Опции = Новый Структура;
-    Опции.Вставить("sql" , СтрЗаменить(ТекстЗапроса, Символы.ПС, " "));
+    Опции.Вставить("sql" , "create table TEST_DATA (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));");
     Опции.Вставить("dbc" , СтрокаПодключения);
 
     Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ВыполнитьЗапросSQL", Опции, Ложь);
-
-    OPI_ПолучениеДанныхТестов.ЗаписатьЛогCLI(Результат, "ВыполнитьЗапросSQL (Transaction)", "MySQL"); // SKIP
-    OPI_ПолучениеДанныхТестов.Проверка_РезультатИстина(Результат);                                    // SKIP
 
     // SQL запрос из файла
 

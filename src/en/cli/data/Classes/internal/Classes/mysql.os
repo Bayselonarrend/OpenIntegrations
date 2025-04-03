@@ -78,7 +78,7 @@
     NewLine.Метод       = "GenerateConnectionString";
     NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
     NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Name of the database to connect";
+    NewLine.Описание    = "Name of the database to connect (optional, def. val. - Empty value)";
     NewLine.Область     = "Common methods";
 
 
@@ -88,7 +88,7 @@
     NewLine.Метод       = "GenerateConnectionString";
     NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
     NewLine.Параметр    = "--login";
-    NewLine.Описание    = "MySQL user";
+    NewLine.Описание    = "MySQL user (optional, def. val. - Empty value)";
     NewLine.Область     = "Common methods";
 
 
