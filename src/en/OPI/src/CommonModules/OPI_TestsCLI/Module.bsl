@@ -20538,15 +20538,17 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
     // CREATE
 
     QueryText = "
-    |CREATE TABLE test_table (
-    |id SERIAL PRIMARY KEY,
-    |name NAME,
-    |age INT,
-    |salary REAL,
-    |is_active BOOL,
-    |created_at DATE,
-    |data BYTEA
-    |);";
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data MEDIUMBLOB
+                   |);";
 
     Options = New Structure;
     Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
@@ -20560,16 +20562,18 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
     // INSERT with parameters
 
     QueryText = "
-    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
-    |VALUES ($1, $2, $3, $4, $5, $6);";
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
     ParameterArray = New Array;
-    ParameterArray.Add(New Structure("NAME" , "Vitaly"));
-    ParameterArray.Add(New Structure("INT"  , 25));
-    ParameterArray.Add(New Structure("REAL" , 1000.12));
-    ParameterArray.Add(New Structure("BOOL" , True));
-    ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
-    ParameterArray.Add(New Structure("BYTEA", TFN));
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , TFN));
 
     Options = New Structure;
     Options.Insert("sql"   , StrReplace(QueryText, Chars.LF, " "));
@@ -20583,7 +20587,7 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
 
     // SELECT (The result of this query is shown in the Result block)
 
-    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
 
     Options = New Structure;
     Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
@@ -20598,29 +20602,11 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
 
-    // DO + Transaction
-
-    QueryText = "DO $$
-    |BEGIN
-    | CREATE TABLE users (
-    | id SMALLSERIAL,
-    | name TEXT NOT NULL,
-    | age INT NOT NULL
-    | );
-    | INSERT INTO users (name, age) VALUES ('Alice', 30);
-    | INSERT INTO users (name, age) VALUES ('Bob', 25);
-    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-    | COMMIT;
-    |END $$ LANGUAGE plpgsql;";
-
     Options = New Structure;
-    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("sql" , "create table TEST_DATA (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));");
     Options.Insert("dbc" , ConnectionString);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Transaction)", "MySQL"); // SKIP
-    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // SQL query from file
 
