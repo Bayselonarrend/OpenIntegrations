@@ -1,0 +1,44 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("char_field"      , New Structure("TEXT"  , "AAAAA"));
+    RecordStructure.Insert("varchar_field"   , New Structure("TEXT"  , "Some varchar"));
+    RecordStructure.Insert("tinytext_field"  , New Structure("TEXT"  , "Some tiny text"));
+    RecordStructure.Insert("text_field"      , New Structure("TEXT"  , "Some text"));
+    RecordStructure.Insert("mediumtext_field", New Structure("TEXT"  , "Some medium text"));
+    RecordStructure.Insert("longtext_field"  , New Structure("TEXT"  , "Some looooooong text"));
+    RecordStructure.Insert("tinyint_field"   , New Structure("INT"   , 127));
+    RecordStructure.Insert("smallint_field"  , New Structure("INT"   , -32767));
+    RecordStructure.Insert("mediumint_field" , New Structure("INT"   , 8388607));
+    RecordStructure.Insert("int_field"       , New Structure("INT"   , -2147483647));
+    RecordStructure.Insert("uint_field"      , New Structure("UINT"  , 4294967295));
+    RecordStructure.Insert("bigint_field"    , New Structure("INT"   , 9223372036854775807));
+    RecordStructure.Insert("float_field"     , New Structure("FLOAT" , 100.50));
+    RecordStructure.Insert("double_field"    , New Structure("FLOAT" , 100.512123));
+    RecordStructure.Insert("date_field"      , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("time_field"      , New Structure("TIME"  , CurrentDate));
+    RecordStructure.Insert("datetime_field"  , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("timestamp_field" , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("mediumblob_field", New Structure("BYTES" , Image));
+    RecordStructure.Insert("set_field"       , New Structure("TEXT"  , "one"));
+
+    RecordsArray.Add(RecordStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.AddRecords(Table, RecordsArray, True, ConnectionString);

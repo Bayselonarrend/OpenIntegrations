@@ -87,6 +87,12 @@ import TabItem from '@theme/TabItem';
 
     Результат = OPI_MySQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);
 
+    // SQL запрос из файла
+
+    ФайлSQL = "https://api.athenaeum.digital/test_data/TEST_DATA2.sql"; // Двоичные данные, URL или путь к файлу
+
+    Результат = OPI_MySQL.ВыполнитьЗапросSQL(ФайлSQL, , , Соединение);
+
     Закрытие = OPI_MySQL.ЗакрытьСоединение(Соединение);
 ```
     

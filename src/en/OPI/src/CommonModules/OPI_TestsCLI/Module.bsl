@@ -2347,6 +2347,23 @@ EndProcedure
 
 #EndRegion
 
+#Region MySQL
+
+Procedure CLI_MYS_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL2"       , TestParameters);
+
+    CLI_MySQL_GenerateConnectionString(TestParameters);
+    CLI_MySQL_ExecuteSQLQuery(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #Region GreenAPI
 
 Procedure CLI_GAPI_Account() Export
@@ -20454,6 +20471,175 @@ Procedure CLI_PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+#EndRegion
+
+#Region MySQL
+
+Procedure CLI_MySQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
+    Result = GetStringFromBinaryData(Result);
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "MySQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    TFN   = GetTempFileName();
+    OPI_TypeConversion.GetBinaryData(Image);
+    Image.Write(TFN);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
+
+    Options = New Structure();
+    Options.Insert("dbc" , ConnectionString);
+
+    Options.Insert("table", "users");
+    OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options, False);
+
+    Options.Insert("table", "test_data");
+    OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options, False);
+
+    Options.Insert("table", "test_table");
+    OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options, False);
+
+    // CREATE
+
+    QueryText = "
+    |CREATE TABLE test_table (
+    |id SERIAL PRIMARY KEY,
+    |name NAME,
+    |age INT,
+    |salary REAL,
+    |is_active BOOL,
+    |created_at DATE,
+    |data BYTEA
+    |);";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Create)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+    |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+    |VALUES ($1, $2, $3, $4, $5, $6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("NAME" , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"  , 25));
+    ParameterArray.Add(New Structure("REAL" , 1000.12));
+    ParameterArray.Add(New Structure("BOOL" , True));
+    ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTEA", TFN));
+
+    Options = New Structure;
+    Options.Insert("sql"   , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("params", ParameterArray);
+    Options.Insert("dbc"   , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Insert)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
+
+    Blob = Result["data"][0]["data"]["BYTES"]; // SKIP
+
+    Result["data"][0]["data"]["BYTES"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    // DO + Transaction
+
+    QueryText = "DO $$
+    |BEGIN
+    | CREATE TABLE users (
+    | id SMALLSERIAL,
+    | name TEXT NOT NULL,
+    | age INT NOT NULL
+    | );
+    | INSERT INTO users (name, age) VALUES ('Alice', 30);
+    | INSERT INTO users (name, age) VALUES ('Bob', 25);
+    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+    | COMMIT;
+    |END $$ LANGUAGE plpgsql;";
+
+    Options = New Structure;
+    Options.Insert("sql" , StrReplace(QueryText, Chars.LF, " "));
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (Transaction)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+
+    Options = New Structure;
+    Options.Insert("sql" , SQLFile);
+    Options.Insert("dbc" , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ExecuteSQLQuery (file)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Error deleting a picture file", "MySQL");
+    EndTry;
 
 EndProcedure
 
