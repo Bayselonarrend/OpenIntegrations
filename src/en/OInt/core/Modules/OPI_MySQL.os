@@ -187,7 +187,7 @@ EndFunction
 //
 // Returns:
 // String - MySQL database connection string
-Function GenerateConnectionString(Val Address, Val Base, Val Login, Val Password = "", Val Port = "3306") Export
+Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Port = "3306") Export
 
     OPI_TypeConversion.GetLine(Address);
     OPI_TypeConversion.GetLine(Login);
