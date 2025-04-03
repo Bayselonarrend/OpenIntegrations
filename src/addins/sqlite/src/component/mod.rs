@@ -2,7 +2,7 @@ mod methods;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
-use rusqlite::{Connection};
+use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
@@ -82,7 +82,11 @@ impl AddIn {
         let conn_result = if self.connection_string.is_empty() {
             Connection::open_in_memory()
         } else {
-            Connection::open(&self.connection_string)
+            let flags = OpenFlags::SQLITE_OPEN_READ_WRITE
+                | OpenFlags::SQLITE_OPEN_CREATE
+                | OpenFlags::SQLITE_OPEN_URI
+                | OpenFlags::SQLITE_OPEN_NO_MUTEX;
+            Connection::open_with_flags(&self.connection_string, flags)
         };
 
         match conn_result {

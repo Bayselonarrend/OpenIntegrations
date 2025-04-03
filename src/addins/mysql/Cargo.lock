@@ -853,6 +853,7 @@ dependencies = [
  "base64",
  "chrono",
  "mysql",
+ "mysql_common",
  "serde_json",
 ]
 

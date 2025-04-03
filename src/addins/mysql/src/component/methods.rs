@@ -4,7 +4,7 @@ use base64::{engine::general_purpose, Engine as _};
 use mysql::prelude::Queryable;
 use std::collections::HashMap;
 use chrono::*;
-use mysql::consts::ColumnType;
+use mysql_common::packets::Column;
 
 pub fn execute_query(
     client: &mut component::AddIn,
@@ -70,8 +70,7 @@ fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
             let value: Value = match row.get::<Option<mysql::Value>, usize>(i) {
                 Some(mysql_value) => match mysql_value {
                     Some(value) => {
-                        let column_type = column.column_type();
-                        from_sql_to_json(value, &column_type)
+                        from_sql_to_json(value, &column)
                     },
                     None => Value::Null
                 },
@@ -89,14 +88,14 @@ fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
     json!({ "result": true, "data": json_array }).to_string()
 }
 
-fn from_sql_to_json(value: mysql::Value, column_type: &ColumnType) -> Value {
+fn from_sql_to_json(value: mysql::Value, column: &Column) -> Value {
     match value {
         mysql::Value::NULL => Value::Null,
         mysql::Value::Int(i) => Value::Number(i.into()),
         mysql::Value::Double(d) => serde_json::Number::from_f64(d).map(Value::Number).unwrap_or(Value::Null),
         mysql::Value::Float(f) => serde_json::Number::from_f64(f as f64).map(Value::Number).unwrap_or(Value::Null),
         mysql::Value::UInt(i) => serde_json::Number::from_f64(i as f64).map(Value::Number).unwrap_or(Value::Null),
-        mysql::Value::Bytes(b) => process_bytes(b, column_type),
+        mysql::Value::Bytes(b) => process_bytes(b, column),
         mysql::Value::Date(year, month, day, hour, minute, second, micros) => {
             // Создаем дату и время
             let date = NaiveDate::from_ymd_opt(year as i32, month as u32, day as u32)
@@ -123,12 +122,12 @@ fn from_sql_to_json(value: mysql::Value, column_type: &ColumnType) -> Value {
     }
 }
 
-fn process_bytes(bytes: Vec<u8>, column_type: &ColumnType) -> Value {
+fn process_bytes(bytes: Vec<u8>, column: &Column) -> Value {
 
-    if is_text_type(column_type) {
+    if is_text_type(column) {
         match String::from_utf8(bytes.clone()) {
             Ok(text) => Value::String(text),
-            Err(_) => encode_to_base64(bytes),
+            Err(e) => Value::String(e.to_string()),
         }
     } else {
         encode_to_base64(bytes)
@@ -142,14 +141,25 @@ fn encode_to_base64(bytes: Vec<u8>) -> Value {
     Value::Object(blob_object)
 }
 
-fn is_text_type(column_type: &ColumnType) -> bool {
+fn is_text_type(column: &Column) -> bool {
+    use mysql::consts::ColumnType; // или mysql_async::consts::ColumnType
 
-    if column_type.is_character_type() && column_type != &ColumnType::MYSQL_TYPE_BLOB {
-        true
-    } else if column_type.is_enum_or_set_type() {
-        true
-    } else {
-        false
+    let column_type = column.column_type();
+
+    match column.column_type() {
+        // Обычные строковые типы
+        ColumnType::MYSQL_TYPE_STRING
+        | ColumnType::MYSQL_TYPE_VAR_STRING
+        | ColumnType::MYSQL_TYPE_VARCHAR => true,
+
+        // BLOB — только если charset не binary (63)
+        ColumnType::MYSQL_TYPE_BLOB => column.character_set() != 63,
+
+        // ENUM/SET — текстовые
+        _ if column_type.is_enum_or_set_type() => true,
+
+        // Остальные (включая TINYBLOB/MEDIUMBLOB/LONGBLOB) — не текстовые
+        _ => false,
     }
 }
 
