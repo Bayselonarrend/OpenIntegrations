@@ -15,7 +15,7 @@ All external components added to OPI are compiled for x64 and x32 versions of Wi
 
 ### glibc
 
-**glibc** is a C library that provides system calls and core functions like open, malloc, printf, etc. It always comes preinstalled in x86 Linux distributions, though version numbers may vary. The minimum required version for OPI components is **2.17**. This version corresponds to distributions such as CENTOS 7, RHEL 7, Fedora 19, Debian 8 and Ubuntu 12.04 (around 2013-2014). On older distributions, libraries using external components won't work.
+**glibc** is a C library that provides system calls and core functions like open, malloc, printf, etc. It always comes preinstalled in x86 Linux distributions, though version numbers may vary. The minimum required version for OPI components is **2.18**. This version corresponds to distributions such as CENTOS 7, RHEL 7, Fedora 19, Debian 8 and Ubuntu 12.04 (around 2013-2014). On older distributions, libraries using external components won't work.
 
 ### gcc
 
