@@ -17,7 +17,7 @@ cargo build --release --target x86_64-pc-windows-msvc
 if errorlevel 1 goto :error
 
 :: Сборка для x86_64-unknown-linux-gnu
-wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib64 OPENSSL_DIR=/usr cargo zigbuild --release --target x86_64-unknown-linux-gnu
+wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib64 OPENSSL_DIR=/usr cargo zigbuild --release --target x86_64-unknown-linux-gnu.2.17
 if errorlevel 1 goto :error
 
 :: Сборка для i686-pc-windows-msvc
@@ -25,7 +25,7 @@ cargo build --release --target i686-pc-windows-msvc
 if errorlevel 1 goto :error
 
 :: Сборка для i686-unknown-linux-gnu
-wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include cargo zigbuild --release --target i686-unknown-linux-gnu
+wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include cargo zigbuild --release --target i686-unknown-linux-gnu.2.17
 if errorlevel 1 goto :error
 
 :: Копирование файлов .dll и .so
