@@ -94,10 +94,25 @@ impl AddIn {
                 self.connection = Some(conn);
                 r#"{"result": true}"#.to_string()
             }
-            Err(e) => json!({
+            Err(e) => {
+
+                let detailed_error = match e {
+                    rusqlite::Error::SqliteFailure(err, msg) => {
+                        format!(
+                            "SQLite error: code={:?}, message='{}', details={:?}",
+                            err.code,
+                            err.extended_code,
+                            msg
+                        )
+                    }
+                    _ => e.to_string(),
+                };
+
+                json!({
                     "result": false,
-                    "error": e.to_string()
-            }).to_string()
+                    "error": detailed_error
+                    }).to_string()
+            }
         }
     }
 
