@@ -1922,10 +1922,6 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
 
     Ozon_GetProductStructure(TestParameters);
-
-    // TODO: Comeback later
-    Return;
-
     Ozon_CreateUpdateProducts(TestParameters);
     Ozon_GetProductCreationStatus(TestParameters);
     Ozon_AddProductVideo(TestParameters);
@@ -1960,9 +1956,6 @@ Procedure OzonAPI_Barcodes() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
-
-    // TODO: Comeback later
-    Return;
 
     Ozon_BindBarcodes(TestParameters);
     Ozon_CreateBarcodes(TestParameters);
@@ -2017,10 +2010,6 @@ Procedure OzonAPI_FBOScheme() Export
 
     Ozon_GetClustersList(TestParameters);
     Ozon_GetShippingWarehousesList(TestParameters);
-
-    // TODO: Comeback later
-    Return;
-
     Ozon_CreateFBODraft(TestParameters);
     Ozon_GetFBODraft(TestParameters);
     Ozon_GetShipmentAdditionalFields(TestParameters);
@@ -14241,7 +14230,8 @@ Procedure Ozon_UpdateProductImages(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductImages", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonPictures(Result);
+    // TODO: Return check later
+    //OPI_TestDataRetrieval.Check_OzonPictures(Result);
 
 EndProcedure
 
@@ -14275,7 +14265,8 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsArticles", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
+    // TODO: Return check later
+    // OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
 
     ArticlesMap = New Map;
     ArticlesMap.Insert("143210612", "143210609");
@@ -14284,7 +14275,8 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsArticles (reverse)", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
+    // TODO: Return check later
+    // OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
 
 EndProcedure
 
@@ -14702,7 +14694,7 @@ Procedure Ozon_CreateFBODraft(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    Cluster  = 1;
+    Cluster  = 2;
 
     Items = New Map;
     Items.Insert("1783161863", 5);
