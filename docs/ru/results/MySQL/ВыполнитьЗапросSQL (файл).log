@@ -1,0 +1,4 @@
+﻿    {
+ "error": "MySqlError { ERROR 1065 (42000): Query was empty }",
+ "result": false
+}
