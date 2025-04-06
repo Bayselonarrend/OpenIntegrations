@@ -38,14 +38,14 @@ sidebar_class_name: MySQL
 
   | Имя типа (ключ) | Тип значения 1С | Подходит для типов MySQL |
   |-|-|-|
-  | BYTES | Строка (путь к файлу), ДвоичныеДанные||
+  | BYTES | Строка (путь к файлу), ДвоичныеДанные| TINYBLOB, BLOB, MEDIUMBLOB, LONGBLOB  |
   | UINT | Число (целое, без знака) | TINYINT UNSIGNED, SMALLINT UNSIGNED, MEDIUMINT UNSIGNED, INT UNSIGNED, BIGINT UNSIGNED |
   | INT | Число (целое) | TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT  |
   | FLOAT | Число | FLOAT |
   | DOUBLE | Число | DOUBLE (REAL, DOUBLE PRECISION) |
   | DATE | Дата, Строка (дата в формате RFC 3339) | DATE, DATETIME, TIMESTAMP |
   | TIME | Дата, Строка (дата в формате RFC 3339) | TIME |
-  | TEXT | Строка | CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT |
+  | TEXT | Строка | CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT, SET |
 
 
 ## TLS
