@@ -1,4 +1,4 @@
 oint bitrix24 GetUser \
  --url "b24-ar17wx.bitrix24.by" \
- --userid 1794 \
+ --userid 1854 \
  --token "***"

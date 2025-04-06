@@ -1,3 +1,3 @@
 oint dropbox GetAsynchronousChangeStatus \
  --token "***" \
- --job "dbjid:AACkFpv1Fh9atnWPPzCGnmX39hdunBaRIYi3s60kaY0N6sOwDMQj69uixFG6nJOoIVuVdyZ4a10zfNGWTb1nS5Wh"
+ --job "dbjid:AADdBBMqvFaoukjF8YwVpLJ1MT5dD6-KxKzHBtTQEzT0XQopuIoUm9UtwqttdiAIy79hp-QswCHCB0TtnUMDO9qV"

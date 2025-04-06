@@ -1,4 +1,4 @@
 oint vkteams UnpinMessage ^
  --token "***" ^
  --chatid "689203963@chat.agent" ^
- --messageid "7483059599277304549"
+ --messageid "7490189309413174370"
