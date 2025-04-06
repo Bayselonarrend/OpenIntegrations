@@ -1,0 +1,4 @@
+﻿ {
+ "error": "MySqlError { ERROR 3159 (HY000): Connections using insecure transport are prohibited while --require_secure_transport=ON. }",
+ "result": false
+}
