@@ -1,3 +1,3 @@
 oint metrika DeleteTag \
  --token "***" \
- --label "316244"
+ --label "316714"

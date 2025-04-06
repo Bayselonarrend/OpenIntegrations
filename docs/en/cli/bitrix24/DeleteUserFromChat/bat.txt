@@ -1,5 +1,5 @@
 oint bitrix24 DeleteUserFromChat ^
  --url "b24-ar17wx.bitrix24.by" ^
- --chat 2184 ^
+ --chat 2244 ^
  --user 10 ^
  --token "***"

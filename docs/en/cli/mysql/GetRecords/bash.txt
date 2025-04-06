@@ -1,0 +1,3 @@
+oint mysql GetRecords \
+ --table "testtable" \
+ --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"

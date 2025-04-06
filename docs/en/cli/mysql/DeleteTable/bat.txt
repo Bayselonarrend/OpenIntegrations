@@ -1,0 +1,3 @@
+oint mysql DeleteTable ^
+ --table "test_data" ^
+ --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
