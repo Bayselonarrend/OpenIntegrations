@@ -1,5 +1,5 @@
 ﻿    Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1742326928.266129";
+    Timestamp = "1743932156.301279";
 
     Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);

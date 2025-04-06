@@ -7,12 +7,12 @@
     CalendarsStructure.Insert("description", "This calendar has been changed");
 
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "490";
+    CalendarID = "526";
 
     Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "37d9d967006e9f06006b12e400000001000...";
-    CalendarID = "492";
+    Token      = "f85df267006e9f06006b12e400000001000...";
+    CalendarID = "528";
 
     Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure, Token);

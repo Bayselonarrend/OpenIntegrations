@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "2194";
+    ChatID = "2230";
 
     Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "37d9d967006e9f06006b12e400000001000...";
-    ChatID = "2196";
+    Token  = "f85df267006e9f06006b12e400000001000...";
+    ChatID = "2232";
 
     Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID, Token);

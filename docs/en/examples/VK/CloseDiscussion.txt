@@ -1,3 +1,3 @@
 ﻿    Parameters   = GetVKParameters();
-    DiscussionID = "53239010";
+    DiscussionID = "53296872";
     Result       = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);

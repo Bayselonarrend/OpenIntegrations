@@ -32,10 +32,10 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
 
-    CampaignNumber = "1031165039";
+    CampaignNumber = "1031220520";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "7359";
+    PostID         = "7494";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber, DailyLimit, CategoryNumber, PostID, AccountID,
@@ -50,10 +50,10 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk CreateAd \
-             --campaign 1031165909 \
+             --campaign 1031220793 \
              --limit 150 \
              --category 126 \
-             --post 7395 \
+             --post 7521 \
              --cabinet "1607951446" \
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
@@ -64,10 +64,10 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk CreateAd ^
-             --campaign 1031165909 ^
+             --campaign 1031220793 ^
              --limit 150 ^
              --category 126 ^
-             --post 7395 ^
+             --post 7521 ^
              --cabinet "1607951446" ^
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

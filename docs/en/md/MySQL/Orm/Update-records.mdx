@@ -66,6 +66,36 @@ The list of available types is described on the initial page of the MySQL librar
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mysql UpdateRecords \
+             --table "testtable" \
+             --values "{'varchar_field':{'VARCHAR':'Another varchar'}}" \
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mysql UpdateRecords ^
+             --table "testtable" ^
+             --values "{'varchar_field':{'VARCHAR':'Another varchar'}}" ^
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

@@ -1,16 +1,16 @@
-﻿    FromID        = "5468";
-    DestinationID = "5470";
+﻿    FromID        = "5558";
+    DestinationID = "5560";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "5470";
-    DestinationID = "5468";
+    FromID        = "5560";
+    DestinationID = "5558";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "37d9d967006e9f06006b12e400000001000...";
+    Token = "f85df267006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
