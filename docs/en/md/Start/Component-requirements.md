@@ -8,10 +8,10 @@ Some tools in the OPI toolkit utilize **external components (AddIns)** — dynam
 
 ## Compatibility
 
-All external components added to OPI are compiled for x64 and x32 versions of Windows and Linux. They are stored in special ZIP archives containing four library files—one for each platform. However, while there are no issues with their usage on Windows, on Linux these components depend on three things being present in the system: `glibc`, `gcc`⃰ и `OpenSSL`⃰⃰ 
+All external components added to OPI are compiled for x64 and x32 versions of Windows and Linux. They are stored in special ZIP archives containing four library files—one for each platform. However, while there are no issues with their usage on Windows, on Linux these components depend on three things being present in the system: `glibc`, `gcc`\* и `OpenSSL`\*\* 
 
-> ⃰  Relevant for CLI and OneScript versions
-> ⃰⃰ Relevant for libraries that use TLS functionality
+> \*  Relevant for CLI and OneScript versions
+> \*\* Relevant for libraries that use TLS functionality
 
 ### glibc
 
