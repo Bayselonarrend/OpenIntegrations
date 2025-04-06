@@ -1,0 +1,4 @@
+﻿ {
+ "error": "MySqlError { ERROR 1008 (HY000): Can't drop database 'testbase1'; database doesn't exist }",
+ "result": false
+}
