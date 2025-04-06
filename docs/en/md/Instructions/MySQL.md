@@ -38,14 +38,14 @@ The MySQL connector supports the use of positional parameters. All values passed
 
   | Type name (key) | 1C type | Suitable MySQL types |
   |-|-|-|
-  | BYTES | String (filepath), BinaryData ||
+  | BYTES | String (filepath), BinaryData | TINYBLOB, BLOB, MEDIUMBLOB, LONGBLOB |
   | UINT | Number (integer, unsigned) | TINYINT UNSIGNED, SMALLINT UNSIGNED, MEDIUMINT UNSIGNED, INT UNSIGNED, BIGINT UNSIGNED |
   | INT | Number (integer) | TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT  |
   | FLOAT | Number | FLOAT |
   | DOUBLE | Number | DOUBLE (REAL, DOUBLE PRECISION) |
   | DATE | Date, String (RFC 3339) | DATE, DATETIME, TIMESTAMP |
   | TIME | Дата, String (RFC 3339) | TIME |
-  | TEXT | String | CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT |
+  | TEXT | String | CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT, SET  |
 
 
 
