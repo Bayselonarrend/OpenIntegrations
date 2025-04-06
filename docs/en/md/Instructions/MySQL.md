@@ -26,6 +26,28 @@ Learn more: <a href="/docs/Start/Component-requirements#openssl" class="orangeli
 
 ## About implemented methods
 
+This library has two parts: basic methods, like connecting and executing SQL queries, and a small ORM for common operations like CREATE, SELECT, INSERT, DELETE, and so on. Working through the ORM and through the query texts executed through the `ExecuteSQLQuery()` function is technically the same: the ORM simply generates the SQL query text based on the layouts, but then also calls them through this function
+
+By default, all SELECT queries return an array of selected data, while other queries return only `true` in the `result` field on success, or `false` and error text in the `result` and `error` fields, respectively. To execute queries that require data to be returned but are not SELECT queries, the `ExecuteSQLQuery()` function has a `ForceResult` parameter
+
+## Query parameters
+
+The MySQL connector supports the use of positional parameters. All values passed both when executing queries directly through the `ExecuteRequestSQL()` function and in ORM methods with value setting, such as `AddRecords` and `UpdateRecords`, must be a structure of the form `{'Data Type': 'Value'}`. The following data types are supported\*:
+
+> \* The MySQL type list lists only a few suitable types
+
+  | Type name (key) | 1C type | Suitable MySQL types |
+  |-|-|-|
+  | BYTES | String (filepath), BinaryData ||
+  | UINT | Number (integer, unsigned) | TINYINT UNSIGNED, SMALLINT UNSIGNED, MEDIUMINT UNSIGNED, INT UNSIGNED, BIGINT UNSIGNED |
+  | INT | Number (integer) | TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT  |
+  | FLOAT | Number | FLOAT |
+  | DOUBLE | Number | DOUBLE (REAL, DOUBLE PRECISION) |
+  | DATE | Date, String (RFC 3339) | DATE, DATETIME, TIMESTAMP |
+  | TIME | Дата, String (RFC 3339) | TIME |
+  | TEXT | String | CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT |
+
+
 
 ## TLS
 
