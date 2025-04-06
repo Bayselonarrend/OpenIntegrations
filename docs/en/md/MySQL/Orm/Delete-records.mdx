@@ -64,6 +64,30 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint mysql DeleteRecords \
+             --table "test_data" \
+             --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" \
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint mysql DeleteRecords ^
+             --table "test_data" ^
+             --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" ^
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```
