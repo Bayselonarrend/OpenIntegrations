@@ -1,0 +1,4 @@
+﻿    {
+ "error": "MySqlError { ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ГДЕ (\n char_field CHAR(5),\nvarchar_field VARCHAR(255),\ntinytext_field TINYTEX' at line 1 }",
+ "result": false
+}
