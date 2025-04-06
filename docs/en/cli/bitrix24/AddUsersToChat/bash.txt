@@ -1,6 +1,6 @@
 oint bitrix24 AddUsersToChat \
  --url "b24-ar17wx.bitrix24.by" \
- --chat 2184 \
+ --chat 2244 \
  --users "[10,12]" \
  --hide true \
  --token "***"
