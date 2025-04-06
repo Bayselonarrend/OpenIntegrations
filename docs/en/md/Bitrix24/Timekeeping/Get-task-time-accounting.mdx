@@ -33,14 +33,14 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID   = "5476";
-    RecordID = "2030";
+    TaskID   = "5566";
+    RecordID = "2066";
 
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "37d9d967006e9f06006b12e400000001000...";
-    RecordID = "2032";
+    Token    = "f85df267006e9f06006b12e400000001000...";
+    RecordID = "2068";
 
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID, Token);
 ```
@@ -52,8 +52,8 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 GetTaskTimeAccounting \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "5446" \
-             --record 2020 \
+             --task "5596" \
+             --record 2080 \
              --token "***"
         ```
     </TabItem>
@@ -62,8 +62,8 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 GetTaskTimeAccounting ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "5446" ^
-             --record 2020 ^
+             --task "5596" ^
+             --record 2080 ^
              --token "***"
         ```
     </TabItem>

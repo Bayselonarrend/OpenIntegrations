@@ -1,6 +1,6 @@
 ﻿    Token       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base        = "appfVrwbWcoHKh5Rv";
-    Table       = "tblgdVSByIqgajAyf";
+    Base        = "app0CjRlX0c4N2NME";
+    Table       = "tblKDtiE1I6YBYev5";
     Name        = "Test table 2 (change.)";
     Description = "New table (change.)";
 

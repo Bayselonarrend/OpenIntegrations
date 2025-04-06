@@ -35,15 +35,15 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "2194";
+    ChatID = "2230";
 
     Image = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "37d9d967006e9f06006b12e400000001000...";
-    ChatID = "2196";
+    Token  = "f85df267006e9f06006b12e400000001000...";
+    ChatID = "2232";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```
@@ -55,7 +55,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```bash
             oint bitrix24 ChangeChatPicture \
              --url "b24-ar17wx.bitrix24.by" \
-             --chat 2184 \
+             --chat 2244 \
              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
              --token "***"
         ```
@@ -65,7 +65,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```batch
             oint bitrix24 ChangeChatPicture ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --chat 2184 ^
+             --chat 2244 ^
              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
              --token "***"
         ```

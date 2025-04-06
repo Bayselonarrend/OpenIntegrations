@@ -97,6 +97,42 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint mysql ExecuteSQLQuery \
+             --sql "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/TEST_DATA2.sql" \
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint mysql ExecuteSQLQuery ^
+             --sql "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/TEST_DATA2.sql" ^
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "data": [
+  {
+   "age": 25,
+   "amount": 1000.11999511719,
+   "data": {
+    "BYTES": "Base64"
+   },
+   "date": "2025-04-06T03:00:00+03:00",
+   "name": "Vitaly",
+   "salary": 1000.12,
+   "time": "1970-01-01T16:53:40+03:00",
+   "type": 1
+  }
+ ],
+ "result": true
+}
+```
