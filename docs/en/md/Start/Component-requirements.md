@@ -19,8 +19,6 @@ All external components added to OPI are compiled for x64 and x32 versions of Wi
 
 ### gcc
 
-От версии набора компиляторов **gcc** зависит наличие в системе нужной версии библиотеки `libstdc++.so.6`, которая необходима для работы движка внешних компонент в CLI и OSPX версиях ОПИ. Минимальная версия - **7.5.0**. Это соответствует CentOS 8, RHEL 8, Fedora 28, Debian 10 и Ubuntu 20.04, а также может быть настроено и на более низких версиях при и доступности `devtoolset-7`
-
 The version of the **GNU Compiler Collection** determines which version of the `libstdc++.so.6` library is available in the system, required for the external component engine in CLI and OSPX versions of OpenIntegrations. The minimum required version is **7.5.0**. This corresponds to CentOS 8, RHEL 8, Fedora 28, Debian 10, and Ubuntu 20.04, and can also be configured on older versions if `devtoolset-7` is available.
 
 ### OpenSSL
