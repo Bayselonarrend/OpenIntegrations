@@ -2566,6 +2566,20 @@ EndProcedure
 
 #EndRegion
 
+#Region Ollama
+
+Procedure OLLM_RequestsProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
+
+    Ollama_ProcessRequest(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -20441,6 +20455,30 @@ Procedure RCON_IsConnector(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "RCON");
     OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Ollama
+
+Procedure Ollama_ProcessRequest(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Prompt = "What is 1C:Enterprise?";
+    Model  = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.ProcessRequest(URL, Model, Prompt, , AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaResponse(Result);
 
 EndProcedure
 
