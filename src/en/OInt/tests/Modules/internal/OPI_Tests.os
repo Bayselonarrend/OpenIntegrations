@@ -2257,6 +2257,8 @@ Procedure TC_Client() Export
     TCP_ReadLine(TestParameters);
     TCP_SendLine(TestParameters);
     TCP_ProcessRequest(TestParameters);
+    TCP_GetTlsSettings(TestParameters);
+    TCP_GetLastError(TestParameters);
 
 EndProcedure
 
@@ -2348,6 +2350,7 @@ Procedure Postgres_CommonMethods() Export
     PostgreSQL_CloseConnection(TestParameters);
     PostgreSQL_IsConnector(TestParameters);
     PostgreSQL_ExecuteSQLQuery(TestParameters);
+    PostgreSQL_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -2390,6 +2393,7 @@ Procedure MYS_CommonMethods() Export
     MySQL_CloseConnection(TestParameters);
     MySQL_IsConnector(TestParameters);
     MySQL_ExecuteSQLQuery(TestParameters);
+    MySQL_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -16874,7 +16878,7 @@ Procedure TCP_CloseConnection(FunctionParameters)
 
 EndProcedure
 
-Procedure TCP_ReadBinaryData(FunctionParameters) Export
+Procedure TCP_ReadBinaryData(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -16909,7 +16913,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters) Export
 
 EndProcedure
 
-Procedure TCP_SendBinaryData(FunctionParameters) Export
+Procedure TCP_SendBinaryData(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -16944,7 +16948,7 @@ Procedure TCP_SendBinaryData(FunctionParameters) Export
 
 EndProcedure
 
-Procedure TCP_ProcessRequest(FunctionParameters) Export
+Procedure TCP_ProcessRequest(FunctionParameters)
 
     Address = FunctionParameters["TCP_Address"];
     Data    = "Echo this!" + Chars.LF;
@@ -16966,7 +16970,7 @@ Procedure TCP_ProcessRequest(FunctionParameters) Export
 
 EndProcedure
 
-Procedure TCP_ReadLine(FunctionParameters) Export
+Procedure TCP_ReadLine(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -16998,7 +17002,7 @@ Procedure TCP_ReadLine(FunctionParameters) Export
 
 EndProcedure
 
-Procedure TCP_SendLine(FunctionParameters) Export
+Procedure TCP_SendLine(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -17027,6 +17031,32 @@ Procedure TCP_SendLine(FunctionParameters) Export
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendLine (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_TCP.GetTlsSettings(False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "TCP");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure TCP_GetLastError(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    Sending = OPI_TCP.SendLine(Connection, Data);
+    Result  = OPI_TCP.GetLastError(Connection); // SKIP
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLastError", "TCP");
 
 EndProcedure
 
@@ -18489,6 +18519,17 @@ Procedure PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
 
 EndProcedure
 
+Procedure PostgreSQL_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_PostgreSQL.GetTlsSettings(False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region MySQL
@@ -19298,6 +19339,17 @@ Procedure MySQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure MySQL_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_MySQL.GetTlsSettings(False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "MySQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 
