@@ -2248,6 +2248,7 @@ Procedure CLI_TC_Client() Export
     OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
 
     CLI_TCP_ProcessRequest(TestParameters);
+    CLI_TCP_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -2320,6 +2321,7 @@ Procedure CLI_Postgres_CommonMethods() Export
 
     CLI_PostgreSQL_GenerateConnectionString(TestParameters);
     CLI_PostgreSQL_ExecuteSQLQuery(TestParameters);
+    CLI_PostgreSQL_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -2359,6 +2361,7 @@ Procedure CLI_MYS_CommonMethods() Export
 
     CLI_MySQL_GenerateConnectionString(TestParameters);
     CLI_MySQL_ExecuteSQLQuery(TestParameters);
+    CLI_MySQL_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -19134,7 +19137,7 @@ EndProcedure
 
 #Region TCP
 
-Procedure CLI_TCP_ProcessRequest(FunctionParameters) Export
+Procedure CLI_TCP_ProcessRequest(FunctionParameters)
 
     Address = FunctionParameters["TCP_Address"];
     Data    = "Echo this!\n";
@@ -19149,6 +19152,18 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters) Export
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
+
+EndProcedure
+
+Procedure CLI_TCP_GetTlsSettings(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("trust", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTlsSettings", Options, False);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "TCP");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -20494,6 +20509,20 @@ Procedure CLI_PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_PostgreSQL_GetTlsSettings(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("trust", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region MySQL
@@ -21451,6 +21480,20 @@ Procedure CLI_MySQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure CLI_MySQL_GetTlsSettings(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("trust", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTlsSettings", Options, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "MySQL");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
