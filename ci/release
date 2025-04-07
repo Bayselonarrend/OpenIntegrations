@@ -5,7 +5,7 @@ pipeline {
         stage('Release') {
             steps {
                     bat 'oscript ./ci/os/releasemaker.os'
-                    archiveArtifacts artifacts: '1.21.0/*'
+                    archiveArtifacts artifacts: '1.22.0/*'
             }
         }
     }
