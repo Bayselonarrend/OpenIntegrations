@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Process request
+ Generates a response for a given text query
+
+
+
+`Function ProcessRequest(Val URL, Val Model, Val Prompt, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Model | --model | String | &#x2714; | Models name |
+  | Prompt | --prompt | String | &#x2714; | Request text |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetRequestParametersStructure |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Generate a completion](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Prompt = "What is 1C:Enterprise?";
+    Model  = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.ProcessRequest(URL, Model, Prompt, , AdditionalHeaders);
+```
+ 
+
+
+
+

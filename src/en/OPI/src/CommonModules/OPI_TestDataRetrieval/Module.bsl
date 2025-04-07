@@ -76,6 +76,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
     Sections.Insert("GreenAPI"       , 5);
+    Sections.Insert("Ollama"         , 5);
 
     Return Sections;
 
@@ -113,6 +114,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("S3"             , StandardDependencies);
     Sections.Insert("TCP"            , StandardDependencies);
     Sections.Insert("GreenAPI"       , StandardDependencies);
+    Sections.Insert("Ollama"         , StandardDependencies);
 
     Return Sections;
 
@@ -146,6 +148,7 @@ Function GetTestTable() Export
     GreenAPI  = "GreenAPI";
     RCON      = "RCON";
     MySQL     = "MySQL";
+    Ollama    = "Ollama";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -294,6 +297,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageLogs"                     , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
     NewTest(TestTable, "RC_CommandsExecution"                 , "Commands execution"              , RCON);
+    NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
 
     Return TestTable;
 
@@ -2315,6 +2319,14 @@ EndProcedure
 Procedure Check_GreenQueueClearing(Val Result) Export
 
     ExpectsThat(Result["isCleared"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
+
+   ExpectsThat(Result["model"]).Заполнено();
+   ExpectsThat(Result["response"]).Заполнено();
+   ExpectsThat(Result["done"]).Равно(Completed);
 
 EndProcedure
 

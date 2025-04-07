@@ -76,6 +76,11 @@ pipeline {
                 test_notion()
              }
           }
+          stage('ollama'){
+             steps{
+                test_ollama()
+             }
+          }
           stage('ozon'){
              steps{
                 test_ozon()
@@ -1768,6 +1773,16 @@ def test_notion(){
 }
 
 
+def test_ollama(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ОбработатьЗапрос --url "test" --model "test" --prompt "test" --options "test" --headers "test" --debug --test '
+               }
+
+}
+
+
 def test_ozon(){
 					
 
@@ -3210,6 +3225,7 @@ test_greenapi()
 test_mysql()
 test_neocities()
 test_notion()
+test_ollama()
 test_ozon()
 test_postgres()
 test_rcon()

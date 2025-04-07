@@ -1,0 +1,10 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Токен = "10KO..."; // Авторизация - не часть API Ollama
+
+    Промпт = "What is 1C:Enterprise?";
+    Модель = "tinyllama";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.ОбработатьЗапрос(URL, Модель, Промпт, , ДопЗаголовки);
