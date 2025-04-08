@@ -2569,7 +2569,7 @@
 "ДобавитьКолонку": "AddColoumn",
 "УдалитьЛид (хук": "DeleteLead (wh",
 "текст сообщения": "message text",
-"МассивСообщений": "Messages array",
+"МассивСообщений": "MessagesArray",
 "OllamaСообщение": "OllamaMessage",
 "Новое сообщение": "New message",
 "ПеременнаяСреды": "EnvironmentVariable",
