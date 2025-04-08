@@ -1777,7 +1777,23 @@ def test_ollama(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe ollama ProcessRequest --url "test" --model "test" --prompt "test" --options "test" --headers "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetResponse --url "test" --model "test" --prompt "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextResponse --url "test" --model "test" --msgs "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetRequestParameterStructure --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextParameterStructure --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextMessageStructure --empty "test" --debug --test '
                }
 
 }
