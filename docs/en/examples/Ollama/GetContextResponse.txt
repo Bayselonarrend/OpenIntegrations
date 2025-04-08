@@ -1,0 +1,26 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Model = "tinyllama";
+
+    MessagesArray = New Array;
+
+    Question1 = New Structure("role,content", "user", "What is 1C:Enterprise?");
+    Question2 = New Structure("role,content", "user", "When the first version was released?"); // Question without specifics
+
+    // Adding the first question to the context
+    MessagesArray.Add(Question1);
+
+    Response1 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    MessagesArray.Add(Response1["message"]); // Add response to first question in context
+    MessagesArray.Add(Question2); // Add second question in context
+
+    Response2 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    MessagesArray.Add(Response2["message"]);
+
+    // ...

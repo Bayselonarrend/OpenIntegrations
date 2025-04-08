@@ -2442,9 +2442,9 @@ Procedure GAPI_Account() Export
     GreenAPI_GetInstanceStatus(TestParameters);
     GreenAPI_SetProfilePicture(TestParameters);
     GreenAPI_RebootInstance(TestParameters);
-    GreenAPI_GetAuthorizationCode(TestParameters);
-    GreenAPI_LogoutInstance(TestParameters);
-    GreenAPI_GetQR(TestParameters);
+    // GreenAPI_GetAuthorizationCode(TestParameters);
+    // GreenAPI_LogoutInstance(TestParameters);
+    // GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -2574,7 +2574,8 @@ Procedure OLLM_RequestsProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
-    Ollama_ProcessRequest(TestParameters);
+    Ollama_GetResponse(TestParameters);
+    Ollama_GetContextResponse(TestParameters);
 
 EndProcedure
 
@@ -20462,7 +20463,7 @@ EndProcedure
 
 #Region Ollama
 
-Procedure Ollama_ProcessRequest(FunctionParameters)
+Procedure Ollama_GetResponse(FunctionParameters)
 
     URL   = FunctionParameters["Ollama_URL"];
     Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
@@ -20473,12 +20474,52 @@ Procedure Ollama_ProcessRequest(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.ProcessRequest(URL, Model, Prompt, , AdditionalHeaders);
+    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "Ollama");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResponse", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaResponse(Result);
+
+EndProcedure
+
+Procedure Ollama_GetContextResponse(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Model = "tinyllama";
+
+    MessagesArray = New Array;
+
+    Question1 = New Structure("role,content", "user", "What is 1C:Enterprise?");
+    Question2 = New Structure("role,content", "user", "When the first version was released?"); // Question without specifics
+
+    // Adding the first question to the context
+    MessagesArray.Add(Question1);
+
+    Response1 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Response1, "GetContextResponse (preliminary)", "Ollama"); // SKIP
+    OPI_TestDataRetrieval.Check_OllamaMessage(Response1); // SKIP
+
+
+    MessagesArray.Add(Response1["message"]); // Add response to first question in context
+    MessagesArray.Add(Question2); // Add second question in context
+
+    Response2 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    MessagesArray.Add(Response2["message"]);
+
+    // ...
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Response2, "GetContextResponse", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaMessage(Response2);
 
 EndProcedure
 

@@ -1,0 +1,10 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Prompt = "What is 1C:Enterprise?";
+    Model  = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);

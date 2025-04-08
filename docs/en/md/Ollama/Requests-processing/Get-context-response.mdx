@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get context response
+ Receives the next response from the model according to the message history
+
+
+
+`Function GetContextResponse(Val URL, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Model | --model | String | &#x2714; | Models name |
+  | Messages | --msgs | Array of Structure | &#x2714; | Messages log. See GetContextMessageStructure |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetRequestParametersStructure |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Generate a chat completion](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Model = "tinyllama";
+
+    MessagesArray = New Array;
+
+    Question1 = New Structure("role,content", "user", "What is 1C:Enterprise?");
+    Question2 = New Structure("role,content", "user", "When the first version was released?"); // Question without specifics
+
+    // Adding the first question to the context
+    MessagesArray.Add(Question1);
+
+    Response1 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    MessagesArray.Add(Response1["message"]); // Add response to first question in context
+    MessagesArray.Add(Question2); // Add second question in context
+
+    Response2 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
+
+    MessagesArray.Add(Response2["message"]);
+
+    // ...
+```
+ 
+
+
+
+

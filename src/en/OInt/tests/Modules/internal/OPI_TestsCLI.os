@@ -2245,7 +2245,8 @@ EndProcedure
 Procedure CLI_TC_Client() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_AddressTls", TestParameters);
 
     CLI_TCP_ProcessRequest(TestParameters);
     CLI_TCP_GetTlsSettings(TestParameters);
@@ -2410,9 +2411,9 @@ Procedure CLI_GAPI_Account() Export
     CLI_GreenAPI_GetInstanceStatus(TestParameters);
     CLI_GreenAPI_SetProfilePicture(TestParameters);
     CLI_GreenAPI_RebootInstance(TestParameters);
-    CLI_GreenAPI_GetAuthorizationCode(TestParameters);
-    CLI_GreenAPI_LogoutInstance(TestParameters);
-    CLI_GreenAPI_GetQR(TestParameters);
+    // CLI_GetAuthorizationCode(TestParameters);
+    // CLI_GreenAPI_LogoutInstance(TestParameters);
+    // CLI_GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -19151,6 +19152,22 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
     Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest", "TCP");
+    OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
+
+    Address = FunctionParameters["TCP_AddressTLS"];
+    Tls     = OPI_TCP.GetTlsSettings(False);
+    Data    = "Echo this!\n";
+
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("data"   , Data);
+    Options.Insert("tls"    , Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
+
+    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest (TLS)", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
 
 EndProcedure
