@@ -5,18 +5,18 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Process request
+# Get response
  Generates a response for a given text query
 
 
 
-`Function ProcessRequest(Val URL, Val Model, Val Prompt, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+`Function GetResponse(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | Ollama server URL |
   | Model | --model | String | &#x2714; | Models name |
-  | Prompt | --prompt | String | &#x2714; | Request text |
+  | Question | --prompt | String | &#x2714; | Request text |
   | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetRequestParametersStructure |
   | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
@@ -42,7 +42,7 @@ Method at API documentation: [Generate a completion](https://github.com/ollama/o
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.ProcessRequest(URL, Model, Prompt, , AdditionalHeaders);
+    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);
 ```
  
 

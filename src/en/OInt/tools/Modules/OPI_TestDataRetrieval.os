@@ -2330,6 +2330,14 @@ Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
 
 EndProcedure
 
+Procedure Check_OllamaMessage(Val Result, Val Completed = True) Export
+
+   ExpectsThat(Result["model"]).Заполнено();
+   ExpectsThat(Result["message"]).Заполнено();
+   ExpectsThat(Result["done"]).Равно(Completed);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion

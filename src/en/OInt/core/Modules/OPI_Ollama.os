@@ -47,7 +47,7 @@
 
 #Region RequestsProcessing
 
-// Process request
+// Get response
 // Generates a response for a given text query
 //
 // Note
@@ -56,22 +56,22 @@
 // Parameters:
 // URL - String - Ollama server URL - url
 // Model - String - Models name - model
-// Prompt - String - Request text - prompt
+// Question - String - Request text - prompt
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function ProcessRequest(Val URL, Val Model, Val Prompt, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+Function GetResponse(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
 
     CompleteURL(URL, "api/generate");
 
     Parameters = New Structure;
     Parameters.Insert("suffix", "");
 
-    OPI_Tools.AddField("model" , Model , "String" , Parameters);
-    OPI_Tools.AddField("prompt", Prompt, "String" , Parameters);
-    OPI_Tools.AddField("stream", False , "Boolean", Parameters);
+    OPI_Tools.AddField("model" , Model   , "String" , Parameters);
+    OPI_Tools.AddField("prompt", Question, "String" , Parameters);
+    OPI_Tools.AddField("stream", False   , "Boolean", Parameters);
 
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders);
@@ -79,6 +79,125 @@ Function ProcessRequest(Val URL, Val Model, Val Prompt, Val AdditionalParameters
     Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
 
     Return Response;
+
+EndFunction
+
+// Get context response
+// Receives the next response from the model according to the message history
+//
+// Note
+// Method at API documentation: [Generate a chat completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Messages - Array of Structure - Messages log. See GetContextMessageStructure - msgs
+// AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetContextResponse(Val URL, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/chat");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model"   , Model   , "String"    , Parameters);
+    OPI_Tools.AddField("messages", Messages, "Collection", Parameters);
+    OPI_Tools.AddField("stream"  , False   , "Boolean"   , Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Get request parameter structure
+// Gets the structure of additional parameters for request processing
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetRequestParameterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("format"    , "<the format in which the response is returned: json or JSON schema>");
+    FieldsStructure.Insert("options"   , "<additional model parameters listed in the Modelfile documentation>");
+    FieldsStructure.Insert("system"    , "<system message (overrides what is defined in Modelfile)>");
+    FieldsStructure.Insert("template"  , "<prompt template (overrides what is defined in Modelfile)>");
+    FieldsStructure.Insert("raw"       , "<true > disable formatting prompt>");
+    FieldsStructure.Insert("keep_alive", "<how long the model will remain loaded in memory after a request>");
+    FieldsStructure.Insert("suffix"    , "<text after the model's response>");
+    FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
+
+    If Clear Then
+        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
+
+EndFunction
+
+// Get context parameter structure
+// Gets the structure of additional parameters to process the request in context
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetContextParameterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("format"    , "<the format in which the response is returned: json or JSON schema>");
+    FieldsStructure.Insert("options"   , "<additional model parameters listed in the Modelfile documentation>");
+    FieldsStructure.Insert("keep_alive", "<how long the model will remain loaded in memory after a request>");
+    FieldsStructure.Insert("tools"     , "<list of tools in JSON format (for models that support this)>");
+
+    If Clear Then
+        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
+
+EndFunction
+
+// Get context message structure
+// Gets the message structure for a list of request messages in context
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetContextMessageStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("role"      , "<message source: system, user, assistant, tool>");
+    FieldsStructure.Insert("content"   , "<message text>");
+    FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
+    FieldsStructure.Insert("tool_calls", "<list of tools in JSON format that the model should use>");
+
+    If Clear Then
+        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
 
 EndFunction
 
