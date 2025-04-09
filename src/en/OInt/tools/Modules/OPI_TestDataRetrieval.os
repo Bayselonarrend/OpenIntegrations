@@ -298,6 +298,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
     NewTest(TestTable, "RC_CommandsExecution"                 , "Commands execution"              , RCON);
     NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
+    NewTest(TestTable, "OLLM_ModelsManagement"                , "Models management"               , Ollama);
 
     Return TestTable;
 

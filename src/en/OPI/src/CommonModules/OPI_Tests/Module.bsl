@@ -2576,6 +2576,18 @@ Procedure OLLM_RequestsProcessing() Export
 
     Ollama_GetResponse(TestParameters);
     Ollama_GetContextResponse(TestParameters);
+    Ollama_GetRequestParameterStructure(TestParameters);
+    Ollama_GetContextParameterStructure(TestParameters);
+    Ollama_GetContextMessageStructure(TestParameters);
+
+EndProcedure
+
+Procedure OLLM_ModelsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
+
     Ollama_LoadModelToMemory(TestParameters);
     Ollama_UnloadModelFromMemory(TestParameters);
 
@@ -20561,6 +20573,66 @@ Procedure Ollama_UnloadModelFromMemory(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UnloadModelFromMemory", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaLoadUnload(Result, True);
+
+EndProcedure
+
+Procedure Ollama_GetRequestParameterStructure(FunctionParameters)
+
+    Result = OPI_Ollama.GetRequestParameterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRequestParameterStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Ollama.GetRequestParameterStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRequestParameterStructure (empty)", "Ollama");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure Ollama_GetContextParameterStructure(FunctionParameters)
+
+    Result = OPI_Ollama.GetContextParameterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextParameterStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Ollama.GetContextParameterStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextParameterStructure (empty)", "Ollama");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure Ollama_GetContextMessageStructure(FunctionParameters)
+
+    Result = OPI_Ollama.GetContextMessageStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Ollama.GetContextMessageStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure (empty)", "Ollama");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 
