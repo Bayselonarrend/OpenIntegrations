@@ -144,6 +144,78 @@
     NewLine.Область     = "Requests processing";
     NewLine.ОписаниеМетода   = "Gets the message structure for a list of request messages in context";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "LoadModelToMemory";
+    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Loads the selected model into RAM";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "LoadModelToMemory";
+    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "LoadModelToMemory";
+    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
+    NewLine.Параметр    = "--keep";
+    NewLine.Описание    = "Model hold time in seconds (optional, def. val. - 300)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "LoadModelToMemory";
+    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "UnloadModelFromMemory";
+    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Unloads the selected model from memory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "UnloadModelFromMemory";
+    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "UnloadModelFromMemory";
+    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
     Return CompositionTable;
 EndFunction
 

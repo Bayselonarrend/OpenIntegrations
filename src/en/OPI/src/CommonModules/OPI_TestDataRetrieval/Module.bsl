@@ -2330,6 +2330,19 @@ Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
 
 EndProcedure
 
+Procedure Check_OllamaLoadUnload(Val Result, Val Unload) Export
+
+   ExpectsThat(Result["model"]).Заполнено();
+   ExpectsThat(Result["done"]).Равно(True);
+
+   If Unload Then
+       ExpectsThat(Result["done_reason"]).Равно("unload");
+   Else
+       ExpectsThat(Result["done_reason"]).Равно("load");
+   EndIf;
+
+EndProcedure
+
 Procedure Check_OllamaMessage(Val Result, Val Completed = True) Export
 
    ExpectsThat(Result["model"]).Заполнено();
