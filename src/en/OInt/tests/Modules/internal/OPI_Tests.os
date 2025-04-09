@@ -2576,6 +2576,8 @@ Procedure OLLM_RequestsProcessing() Export
 
     Ollama_GetResponse(TestParameters);
     Ollama_GetContextResponse(TestParameters);
+    Ollama_LoadModelToMemory(TestParameters);
+    Ollama_UnloadModelFromMemory(TestParameters);
 
 EndProcedure
 
@@ -20520,6 +20522,45 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Response2, "GetContextResponse", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaMessage(Response2);
+
+EndProcedure
+
+Procedure Ollama_LoadModelToMemory(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model  = "tinyllama";
+    Period = 500;
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.LoadModelToMemory(URL, Model, Period, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LoadModelToMemory", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaLoadUnload(Result, False);
+
+EndProcedure
+
+Procedure Ollama_UnloadModelFromMemory(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.UnloadModelFromMemory(URL, Model, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UnloadModelFromMemory", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaLoadUnload(Result, True);
 
 EndProcedure
 

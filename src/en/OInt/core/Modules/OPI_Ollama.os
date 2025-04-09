@@ -203,6 +203,74 @@ EndFunction
 
 #EndRegion
 
+#Region ModelsManagement
+
+// Load model to memory
+// Loads the selected model into RAM
+//
+// Note
+// Method at API documentation: [Load a model](@github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Period - Number - Model hold time in seconds - keep
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function LoadModelToMemory(Val URL, Val Model, Val Period = 300, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/generate");
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("model"     , Model , "String" , Parameters);
+    OPI_Tools.AddField("keep_alive", Period, "Number" , Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Unload model from memory
+// Unloads the selected model from memory
+//
+// Note
+// Method at API documentation: [Unload a model](@github.com/ollama/ollama/blob/main/docs/api.md#unload-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/generate");
+
+    Parameters = New Structure;
+    Parameters.Insert("keep_alive", 0);
+
+    OPI_Tools.AddField("model", Model, "String", Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Private
+
 Procedure CompleteURL(URL, Val Path)
 
     OPI_TypeConversion.GetLine(URL);
@@ -237,5 +305,6 @@ Procedure HeadersProcessing(AdditionalHeaders)
     EndIf;
 
 EndProcedure
+
 
 #EndRegion
