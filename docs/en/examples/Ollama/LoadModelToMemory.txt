@@ -1,0 +1,10 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Model  = "tinyllama";
+    Period = 500;
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.LoadModelToMemory(URL, Model, Period, AdditionalHeaders);
