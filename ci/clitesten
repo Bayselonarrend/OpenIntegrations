@@ -1796,6 +1796,14 @@ def test_ollama(){
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextMessageStructure --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama LoadModelToMemory --url "test" --model "test" --keep "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama UnloadModelFromMemory --url "test" --model "test" --headers "test" --debug --test '
+               }
+
 }
 
 

@@ -1796,6 +1796,14 @@ def test_ollama(){
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama ПолучитьСтруктуруСообщенияКонтекста --empty "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ЗагрузитьМодельВПамять --url "test" --model "test" --keep "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ВыгрузитьМодельИзПамяти --url "test" --model "test" --headers "test" --debug --test '
+               }
+
 }
 
 
