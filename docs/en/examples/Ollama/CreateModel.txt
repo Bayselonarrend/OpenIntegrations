@@ -1,0 +1,11 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
+
+    Result = OPI_Ollama.CreateModel(URL, Model, Settings, AdditionalHeaders);

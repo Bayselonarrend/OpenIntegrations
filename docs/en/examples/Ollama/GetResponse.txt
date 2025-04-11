@@ -8,3 +8,28 @@
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
     Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);
+
+    // With paramether
+
+    Prompt = "Ollama is 22 years old and is busy saving the world. Respond using JSON";
+
+    Format = OPI_Tools.JSONToStructure("
+    |{
+    |""type"": ""object"",
+    |""properties"": {
+    | ""age"": {
+    | ""type"": ""integer""
+    | },
+    | ""available"": {
+    | ""type"": ""boolean""
+    | }
+    |},
+    |""required"": [
+    | ""age"",
+    | ""available""
+    |]
+    |}");
+
+    AdditionalParameters = New Structure("format", Format);
+
+    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, AdditionalParameters, AdditionalHeaders);

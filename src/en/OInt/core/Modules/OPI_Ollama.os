@@ -139,7 +139,7 @@ Function GetRequestParameterStructure(Val Clear = False) Export
     FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
 
     If Clear Then
-        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -166,7 +166,7 @@ Function GetContextParameterStructure(Val Clear = False) Export
     FieldsStructure.Insert("tools"     , "<list of tools in JSON format (for models that support this)>");
 
     If Clear Then
-        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -193,7 +193,7 @@ Function GetContextMessageStructure(Val Clear = False) Export
     FieldsStructure.Insert("tool_calls", "<list of tools in JSON format that the model should use>");
 
     If Clear Then
-        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -204,6 +204,67 @@ EndFunction
 #EndRegion
 
 #Region ModelsManagement
+
+// Create model
+// Creates a new model with the specified settings
+//
+// Note
+// Method at API documentation: [Create a Model](@github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Settings - Structure Of KeyAndValue - Model settings. See GetModelSettingsStructure - settings
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/create");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model" , Model , "String"  , Parameters);
+    OPI_Tools.AddField("stream", False , "Boolean" , Parameters);
+
+    ProcessParameters(Parameters, Settings);
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Delete model
+// Deletes an existing model
+//
+// Note
+// Method at API documentation: [Delete a Model](@github.com/ollama/ollama/blob/main/docs/api.md#delete-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteModel(Val URL, Val Model, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/delete");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model" , Model, "String", Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.DeleteWithBody(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
 
 // Load model to memory
 // Loads the selected model into RAM
@@ -262,6 +323,38 @@ Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") E
     Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
 
     Return Response;
+
+EndFunction
+
+// Get model settings structure
+// Gets the settings structure for creating a new model
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetModelSettingsStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("from"      , "<the name of the existing model from which the new model will be created>");
+    FieldsStructure.Insert("files"     , "<list of file names or SHA256 blobs from which the model will be created>");
+    FieldsStructure.Insert("adapters"  , "<list of file names or SHA256 blobs for LORA adapters>");
+    FieldsStructure.Insert("template"  , "<new model prompt template>");
+    FieldsStructure.Insert("license"   , "<a string or list of strings of license text for the model>");
+    FieldsStructure.Insert("system"    , "<system prompt for the model>");
+    FieldsStructure.Insert("parameters", "<model parameter list>");
+    FieldsStructure.Insert("messages"  , "<list of context message objects>");
+    FieldsStructure.Insert("quantize"  , "<quantize non-quantized (e.g. float16) model>");
+
+    If Clear Then
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
 
 EndFunction
 
