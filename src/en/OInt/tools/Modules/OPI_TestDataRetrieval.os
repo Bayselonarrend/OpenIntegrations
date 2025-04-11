@@ -2129,6 +2129,12 @@ Procedure Check_Equality(Val Value1, Val Value2) Export
 
 EndProcedure
 
+Procedure Check_Inequality(Val Value1, Val Value2) Export
+
+    ExpectsThat(Value1 = Value2).Равно(False);
+
+EndProcedure
+
 Procedure Check_SQLiteSuccess(Val Result) Export
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -2349,6 +2355,12 @@ Procedure Check_OllamaMessage(Val Result, Val Completed = True) Export
    ExpectsThat(Result["model"]).Заполнено();
    ExpectsThat(Result["message"]).Заполнено();
    ExpectsThat(Result["done"]).Равно(Completed);
+
+EndProcedure
+
+Procedure Check_OllamaSuccess(Val Result) Export
+
+   ExpectsThat(Result["status"]).Равно("success");
 
 EndProcedure
 
