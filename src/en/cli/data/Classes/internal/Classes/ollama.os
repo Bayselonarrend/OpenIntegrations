@@ -148,6 +148,78 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ollama";
     NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CreateModel";
+    NewLine.МетодПоиска = "CREATEMODEL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Creates a new model with the specified settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CreateModel";
+    NewLine.МетодПоиска = "CREATEMODEL";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CreateModel";
+    NewLine.МетодПоиска = "CREATEMODEL";
+    NewLine.Параметр    = "--settings";
+    NewLine.Описание    = "Model settings. See GetModelSettingsStructure";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CreateModel";
+    NewLine.МетодПоиска = "CREATEMODEL";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "DeleteModel";
+    NewLine.МетодПоиска = "DELETEMODEL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Deletes an existing model";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "DeleteModel";
+    NewLine.МетодПоиска = "DELETEMODEL";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "DeleteModel";
+    NewLine.МетодПоиска = "DELETEMODEL";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
     NewLine.Метод       = "LoadModelToMemory";
     NewLine.МетодПоиска = "LOADMODELTOMEMORY";
     NewLine.Параметр    = "--url";
@@ -215,6 +287,17 @@
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelSettingsStructure";
+    NewLine.МетодПоиска = "GETMODELSETTINGSSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Gets the settings structure for creating a new model";
 
     Return CompositionTable;
 EndFunction

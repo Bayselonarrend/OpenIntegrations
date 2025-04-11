@@ -99,6 +99,17 @@ Function PostBinary(Val URL
 
 EndFunction
 
+Function DeleteWithBody(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val JSON              = True
+    , Val FullResponse      = False
+    , Val ResponseFile      = Undefined) Export
+
+    Return ExecuteRequestWithBody(URL, "DELETE", Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
+
+EndFunction
+
 #EndRegion
 
 #Region MultipartRequests

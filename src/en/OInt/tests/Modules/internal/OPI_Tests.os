@@ -2590,6 +2590,8 @@ Procedure OLLM_ModelsManagement() Export
 
     Ollama_LoadModelToMemory(TestParameters);
     Ollama_UnloadModelFromMemory(TestParameters);
+    Ollama_CreateModel(TestParameters);
+    Ollama_DeleteModel(TestParameters);
 
 EndProcedure
 
@@ -20490,9 +20492,37 @@ Procedure Ollama_GetResponse(FunctionParameters)
 
     Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResponse", "Ollama"); // SKIP
+    OPI_TestDataRetrieval.Check_OllamaResponse(Result); // SKIP
+
+    // With paramether
+
+    Prompt = "Ollama is 22 years old and is busy saving the world. Respond using JSON";
+
+    Format = OPI_Tools.JSONToStructure("
+    |{
+    |""type"": ""object"",
+    |""properties"": {
+    | ""age"": {
+    | ""type"": ""integer""
+    | },
+    | ""available"": {
+    | ""type"": ""boolean""
+    | }
+    |},
+    |""required"": [
+    | ""age"",
+    | ""available""
+    |]
+    |}");
+
+    AdditionalParameters = New Structure("format", Format);
+
+    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, AdditionalParameters, AdditionalHeaders);
+
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetResponse", "Ollama");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResponse (parameter)", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaResponse(Result);
 
 EndProcedure
@@ -20534,6 +20564,41 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Response2, "GetContextResponse", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaMessage(Response2);
+
+    MessagesArray = New Array;
+
+    Question = New Structure("role,content", "user", "Hello!");
+    MessagesArray.Add(Question);
+
+    Options              = New Structure("seed,temperature", 101, 0);
+    AdditionalParameters = New Structure("options", Options);
+
+    Result = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, AdditionalParameters, AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextResponse (seed, 1)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaMessage(Result);
+
+    Message1 = Result["message"]["content"];
+
+    Result = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, AdditionalParameters, AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextResponse (seed, 2)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaMessage(Result);
+
+    Message2 = Result["message"]["content"];
+
+    Options              = New Structure("seed,temperature", 555, 10);
+    AdditionalParameters = New Structure("options", Options);
+
+    Result = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, AdditionalParameters, AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextResponse (seed, 3)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaMessage(Result);
+
+    Message3 = Result["message"]["content"];
+
+    OPI_TestDataRetrieval.Check_Equality(Message1, Message2);
+    OPI_TestDataRetrieval.Check_Inequality(Message1, Message3);
 
 EndProcedure
 
@@ -20633,6 +20698,51 @@ Procedure Ollama_GetContextMessageStructure(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure Ollama_CreateModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
+
+    Result = OPI_Ollama.CreateModel(URL, Model, Settings, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+    Result = OPI_Ollama.GetResponse(URL, Model, "How are you?", , AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel (request)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaResponse(Result);
+
+EndProcedure
+
+Procedure Ollama_DeleteModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.DeleteModel(URL, Model, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel", "Ollama");
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 

@@ -1,21 +1,22 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Unload model from memory
- Unloads the selected model from memory
+# Create model
+ Creates a new model with the specified settings
 
 
 
-`Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") Export`
+`Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | Ollama server URL |
   | Model | --model | String | &#x2714; | Models name |
+  | Settings | --settings | Structure Of KeyAndValue | &#x2714; | Model settings. See GetModelSettingsStructure |
   | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -24,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [Unload a model](https://github.com/ollama/ollama/blob/main/docs/api.md#unload-a-model)
+Method at API documentation: [Create a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
 :::
 <br/>
 
@@ -34,12 +35,14 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
     URL   = "https://api.athenaeum.digital/ollama";
     Token = "10KO..."; // Authorization - not part API Ollama
 
-    Model = "tinyllama";
+    Model = "mario";
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.UnloadModelFromMemory(URL, Model, AdditionalHeaders);
+    Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
+
+    Result = OPI_Ollama.CreateModel(URL, Model, Settings, AdditionalHeaders);
 ```
  
 
