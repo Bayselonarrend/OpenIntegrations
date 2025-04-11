@@ -1,0 +1,11 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Токен = "10KO..."; // Авторизация - не часть API Ollama
+
+    Модель = "mario";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Настройки = Новый Структура("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
+
+    Результат = OPI_Ollama.СоздатьМодель(URL, Модель, Настройки, ДопЗаголовки);
