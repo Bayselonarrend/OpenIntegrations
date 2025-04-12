@@ -2591,6 +2591,9 @@ Procedure OLLM_ModelsManagement() Export
     Ollama_LoadModelToMemory(TestParameters);
     Ollama_UnloadModelFromMemory(TestParameters);
     Ollama_CreateModel(TestParameters);
+    Ollama_GetModelInformation(TestParameters);
+    Ollama_GetModelList(TestParameters);
+    Ollama_CopyModel(TestParameters);
     Ollama_DeleteModel(TestParameters);
 
 EndProcedure
@@ -20743,6 +20746,64 @@ Procedure Ollama_DeleteModel(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel", "Ollama");
     OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure Ollama_GetModelList(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetModelList(URL, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+
+EndProcedure
+
+Procedure Ollama_GetModelInformation(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetModelInformation(URL, Model, False, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelInformation", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModelInfo(Result);
+
+EndProcedure
+
+Procedure Ollama_CopyModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+    Name  = "mario2";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.CopyModel(URL, Model, Name, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyModel", "Ollama");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    Result = OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
 
 EndProcedure
 

@@ -2364,6 +2364,19 @@ Procedure Check_OllamaSuccess(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OllamaModels(Val Result) Export
+
+    ExpectsThat(Result["models"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OllamaModelInfo(Val Result) Export
+
+   ExpectsThat(Result["parameters"]).Заполнено();
+   ExpectsThat(Result["model_info"]).Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
