@@ -148,6 +148,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ollama";
     NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelList";
+    NewLine.МетодПоиска = "GETMODELLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Gets a list of local models";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelList";
+    NewLine.МетодПоиска = "GETMODELLIST";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelInformation";
+    NewLine.МетодПоиска = "GETMODELINFORMATION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Gets information about the model";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelInformation";
+    NewLine.МетодПоиска = "GETMODELINFORMATION";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelInformation";
+    NewLine.МетодПоиска = "GETMODELINFORMATION";
+    NewLine.Параметр    = "--verbose";
+    NewLine.Описание    = "Return full model information (optional, def. val. - Yes)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "GetModelInformation";
+    NewLine.МетодПоиска = "GETMODELINFORMATION";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
     NewLine.Метод       = "CreateModel";
     NewLine.МетодПоиска = "CREATEMODEL";
     NewLine.Параметр    = "--url";
@@ -181,6 +243,47 @@
     NewLine.Модуль      = "OPI_Ollama";
     NewLine.Метод       = "CreateModel";
     NewLine.МетодПоиска = "CREATEMODEL";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CopyModel";
+    NewLine.МетодПоиска = "COPYMODEL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Copies an existing model";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CopyModel";
+    NewLine.МетодПоиска = "COPYMODEL";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Name of existing model";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CopyModel";
+    NewLine.МетодПоиска = "COPYMODEL";
+    NewLine.Параметр    = "--name";
+    NewLine.Описание    = "The name of the new model";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CopyModel";
+    NewLine.МетодПоиска = "COPYMODEL";
     NewLine.Параметр    = "--headers";
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Models management";
