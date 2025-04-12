@@ -205,6 +205,61 @@ EndFunction
 
 #Region ModelsManagement
 
+// Get model list
+// Gets a list of local models
+//
+// Note
+// Method at API documentation: [List Local Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-local-models)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetModelList(Val URL, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/tags");
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Get model information
+// Gets information about the model
+//
+// Note
+// Method at API documentation: [Show Model Information](@github.com/ollama/ollama/blob/main/docs/api.md#show-model-information)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Detailed - Boolean - Return full model information - verbose
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetModelInformation(Val URL, Val Model, Val Detailed = True, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/show");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model"  , Model   , "String" , Parameters);
+    OPI_Tools.AddField("verbose", Detailed, "Boolean", Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
 // Create model
 // Creates a new model with the specified settings
 //
@@ -229,6 +284,37 @@ Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "
     OPI_Tools.AddField("stream", False , "Boolean" , Parameters);
 
     ProcessParameters(Parameters, Settings);
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Copy model
+// Copies an existing model
+//
+// Note
+// Method at API documentation: [Copy a Model](@github.com/ollama/ollama/blob/main/docs/api.md#copy-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Name of existing model - model
+// Name - String - The name of the new model - name
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CopyModel(Val URL, Val Model, Val Name, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/copy");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("source"     , Model, "String", Parameters);
+    OPI_Tools.AddField("destination", Name , "String", Parameters);
+
     HeadersProcessing(AdditionalHeaders);
 
     Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
