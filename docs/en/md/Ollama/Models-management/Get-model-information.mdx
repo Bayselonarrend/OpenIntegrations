@@ -1,22 +1,22 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Create model
- Creates a new model with the specified settings
+# Get model information
+ Gets information about the model
 
 
 
-`Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "") Export`
+`Function GetModelInformation(Val URL, Val Model, Val Detailed = True, Val AdditionalHeaders = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | Ollama server URL |
   | Model | --model | String | &#x2714; | Models name |
-  | Settings | --settings | Structure Of KeyAndValue | &#x2714; | Model settings. See GetModelSettingsStructure |
+  | Detailed | --verbose | Boolean | &#x2716; | Return full model information |
   | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Method at API documentation: [Create a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
+Method at API documentation: [Show Model Information](https://github.com/ollama/ollama/blob/main/docs/api.md#show-model-information)
 :::
 <br/>
 
@@ -40,9 +40,7 @@ Method at API documentation: [Create a Model](https://github.com/ollama/ollama/b
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
-
-    Result = OPI_Ollama.CreateModel(URL, Model, Settings, AdditionalHeaders);
+    Result = OPI_Ollama.GetModelInformation(URL, Model, False, AdditionalHeaders);
 ```
  
 
