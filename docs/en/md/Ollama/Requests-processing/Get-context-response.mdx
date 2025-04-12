@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -43,8 +43,8 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 
     MessagesArray = New Array;
 
-    Question1 = New Structure("role,content", "user", "What is 1C:Enterprise?");
-    Question2 = New Structure("role,content", "user", "When the first version was released?"); // Question without specifics
+    Question1 = OPI_Ollama.GetContextMessageStructure("user", "What is 1C:Enterprise?");
+    Question2 = OPI_Ollama.GetContextMessageStructure("user", "When the first version was released?"); // Question without specifics
 
     // Adding the first question to the context
     MessagesArray.Add(Question1);

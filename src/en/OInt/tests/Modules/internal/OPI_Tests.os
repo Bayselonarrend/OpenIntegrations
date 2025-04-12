@@ -2574,11 +2574,14 @@ Procedure OLLM_RequestsProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
+    Ollama_GetVersion(TestParameters);
     Ollama_GetResponse(TestParameters);
+    Ollama_GetEmbeddings(TestParameters);
     Ollama_GetContextResponse(TestParameters);
     Ollama_GetRequestParameterStructure(TestParameters);
     Ollama_GetContextParameterStructure(TestParameters);
     Ollama_GetContextMessageStructure(TestParameters);
+    Ollama_GetEmbeddingsParameterStructure(TestParameters);
 
 EndProcedure
 
@@ -2593,8 +2596,10 @@ Procedure OLLM_ModelsManagement() Export
     Ollama_CreateModel(TestParameters);
     Ollama_GetModelInformation(TestParameters);
     Ollama_GetModelList(TestParameters);
+    Ollama_ListRunningModels(TestParameters);
     Ollama_CopyModel(TestParameters);
     Ollama_DeleteModel(TestParameters);
+    Ollama_GetModelSettingsStructure(TestParameters);
 
 EndProcedure
 
@@ -20542,8 +20547,8 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     MessagesArray = New Array;
 
-    Question1 = New Structure("role,content", "user", "What is 1C:Enterprise?");
-    Question2 = New Structure("role,content", "user", "When the first version was released?"); // Question without specifics
+    Question1 = OPI_Ollama.GetContextMessageStructure("user", "What is 1C:Enterprise?");
+    Question2 = OPI_Ollama.GetContextMessageStructure("user", "When the first version was released?"); // Question without specifics
 
     // Adding the first question to the context
     MessagesArray.Add(Question1);
@@ -20686,15 +20691,26 @@ EndProcedure
 
 Procedure Ollama_GetContextMessageStructure(FunctionParameters)
 
-    Result = OPI_Ollama.GetContextMessageStructure();
+    Result = OPI_Ollama.GetContextMessageStructure("user", "Hello!");
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure", "Ollama");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
-    Result = OPI_Ollama.GetContextMessageStructure(True);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure (empty)", "Ollama");
+EndProcedure
+
+Procedure Ollama_GetModelSettingsStructure(FunctionParameters)
+
+    Result = OPI_Ollama.GetModelSettingsStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Ollama.GetModelSettingsStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure (empty)", "Ollama");
 
     For Each Element In Result Do
 
@@ -20766,6 +20782,23 @@ Procedure Ollama_GetModelList(FunctionParameters)
 
 EndProcedure
 
+Procedure Ollama_ListRunningModels(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.ListRunningModels(URL, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListRunningModels", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+
+EndProcedure
+
 Procedure Ollama_GetModelInformation(FunctionParameters)
 
     URL   = FunctionParameters["Ollama_URL"];
@@ -20804,6 +20837,66 @@ Procedure Ollama_CopyModel(FunctionParameters)
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     Result = OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
+
+EndProcedure
+
+Procedure Ollama_GetVersion(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetVersion(URL, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetVersion", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaVersion(Result);
+
+EndProcedure
+
+Procedure Ollama_GetEmbeddings(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    StingsArray = New Array;
+    StingsArray.Add("Why is the sky blue?");
+    StingsArray.Add("Why is the grass green?");
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetEmbeddings(URL, Model, StingsArray, , AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaResponse(Result);
+
+EndProcedure
+
+Procedure Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
+
+    Result = OPI_Ollama.GetEmbeddingsParameterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_Ollama.GetEmbeddingsParameterStructure(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure (empty)", "Ollama");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
 
 EndProcedure
 
