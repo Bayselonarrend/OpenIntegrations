@@ -1,0 +1,13 @@
+﻿    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    StingsArray = New Array;
+    StingsArray.Add("Why is the sky blue?");
+    StingsArray.Add("Why is the grass green?");
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetEmbeddings(URL, Model, StingsArray, , AdditionalHeaders);
