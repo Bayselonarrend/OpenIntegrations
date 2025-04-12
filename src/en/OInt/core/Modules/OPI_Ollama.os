@@ -47,6 +47,27 @@
 
 #Region RequestsProcessing
 
+// Get version
+// Gets a version of Ollama
+//
+// Note
+// Method at API documentation: [Version](@github.com/ollama/ollama/blob/main/docs/api.md#version)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetVersion(Val URL, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/version");
+    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
 // Get response
 // Generates a response for a given text query
 //
@@ -116,6 +137,39 @@ Function GetContextResponse(Val URL, Val Model, Val Messages, Val AdditionalPara
 
 EndFunction
 
+// Get embeddings
+// Gets the embeddings for the given entries
+//
+// Note
+// Method at API documentation: [Generate Embeddings](@github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Question - Array Of String - String or array of request strings - input
+// AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetEmbeddingsParameterStructure - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetEmbeddings(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/embed");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model", Model   , "String", Parameters);
+    OPI_Tools.AddField("input", Question, "String", Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
 // Get request parameter structure
 // Gets the structure of additional parameters for request processing
 //
@@ -137,6 +191,32 @@ Function GetRequestParameterStructure(Val Clear = False) Export
     FieldsStructure.Insert("keep_alive", "<how long the model will remain loaded in memory after a request>");
     FieldsStructure.Insert("suffix"    , "<text after the model's response>");
     FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
+
+    If Clear Then
+        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
+
+EndFunction
+
+// Get embeddings parameter structure
+// Gets the structure of additional parameters for processing embeddings requests
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetEmbeddingsParameterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("options"   , "<additional model parameters listed in the Modelfile documentation>");
+    FieldsStructure.Insert("keep_alive", "<how long the model will remain loaded in memory after a request>");
+    FieldsStructure.Insert("truncate"  , "<trims the end of each response to fit within the context length. Returns an error if false and the length is exceeded>");
 
     If Clear Then
         FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
@@ -178,25 +258,22 @@ EndFunction
 // Gets the message structure for a list of request messages in context
 //
 // Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// Role - String - Message source: system, user, assistant, tool - role
+// Text - String - Message text - text
+// Pictures - Array Of String - List of pictures in Base64 format (for multimodal models like llava) - images
+// Tools - Array Of String - List of tools in JSON format that the model should use - tools
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
-Function GetContextMessageStructure(Val Clear = False) Export
-
-    OPI_TypeConversion.GetBoolean(Clear);
+Function GetContextMessageStructure(Val Role, Val Text, Val Pictures = "", Val Tools = "") Export
 
     FieldsStructure = New Structure;
-    FieldsStructure.Insert("role"      , "<message source: system, user, assistant, tool>");
-    FieldsStructure.Insert("content"   , "<message text>");
-    FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
-    FieldsStructure.Insert("tool_calls", "<list of tools in JSON format that the model should use>");
 
-    If Clear Then
-        FieldsStructure = OPI_Tools.ClearCollectionRecursively(FieldsStructure);
-    EndIf;
+    OPI_Tools.AddField("role"      , Role     , "String"    , FieldsStructure);
+    OPI_Tools.AddField("content"   , Text     , "String"    , FieldsStructure);
+    OPI_Tools.AddField("images"    , Pictures , "Collection", FieldsStructure);
+    OPI_Tools.AddField("tool_calls", Tools    , "Collection", FieldsStructure);
 
-    //@skip-check constructor-function-return-section
     Return FieldsStructure;
 
 EndFunction
@@ -220,6 +297,30 @@ EndFunction
 Function GetModelList(Val URL, Val AdditionalHeaders = "") Export
 
     CompleteURL(URL, "api/tags");
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// List running models
+// Gets a list of running models
+//
+// Note
+// Method at API documentation: [List Running Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-running-models)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ListRunningModels(Val URL, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/ps");
 
     HeadersProcessing(AdditionalHeaders);
 
@@ -484,6 +585,5 @@ Procedure HeadersProcessing(AdditionalHeaders)
     EndIf;
 
 EndProcedure
-
 
 #EndRegion

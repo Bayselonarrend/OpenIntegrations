@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get version
+ Gets a version of Ollama
+
+
+
+`Function GetVersion(Val URL, Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Version](https://github.com/ollama/ollama/blob/main/docs/api.md#version)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetVersion(URL, AdditionalHeaders);
+```
+ 
+
+
+
+
