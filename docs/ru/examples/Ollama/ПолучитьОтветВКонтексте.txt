@@ -8,8 +8,8 @@
 
     МассивСообщений = Новый Массив;
 
-    Вопрос1 = Новый Структура("role,content", "user", "What is 1C:Enterprise?");
-    Вопрос2 = Новый Структура("role,content", "user", "When the first version was released?"); // Вопрос без конкретики
+    Вопрос1 = OPI_Ollama.ПолучитьСтруктуруСообщенияКонтекста("user", "What is 1C:Enterprise?");
+    Вопрос2 = OPI_Ollama.ПолучитьСтруктуруСообщенияКонтекста("user", "When the first version was released?"); // Вопрос без конкретики
 
     // Добавляем первый вопрос в контекст
     МассивСообщений.Добавить(Вопрос1);

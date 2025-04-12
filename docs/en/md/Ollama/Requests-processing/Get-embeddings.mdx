@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get embeddings
+ Gets the embeddings for the given entries
+
+
+
+`Function GetEmbeddings(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Model | --model | String | &#x2714; | Models name |
+  | Question | --input | Array Of String | &#x2714; | String or array of request strings |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetEmbeddingsParameterStructure |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Generate Embeddings](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    StingsArray = New Array;
+    StingsArray.Add("Why is the sky blue?");
+    StingsArray.Add("Why is the grass green?");
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.GetEmbeddings(URL, Model, StingsArray, , AdditionalHeaders);
+```
+ 
+
+
+
+

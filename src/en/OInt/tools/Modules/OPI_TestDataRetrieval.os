@@ -2377,6 +2377,12 @@ Procedure Check_OllamaModelInfo(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OllamaVersion(Val Result) Export
+
+   ExpectsThat(Result["version"]).Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion

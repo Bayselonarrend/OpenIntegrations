@@ -1777,6 +1777,10 @@ def test_ollama(){
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetVersion --url "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetResponse --url "test" --model "test" --prompt "test" --options "test" --headers "test" --debug --test '
                }
 
@@ -1785,7 +1789,15 @@ def test_ollama(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetEmbeddings --url "test" --model "test" --input "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetRequestParameterStructure --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetEmbeddingsParameterStructure --empty "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1793,11 +1805,15 @@ def test_ollama(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextMessageStructure --empty "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetContextMessageStructure --role "test" --text "test" --images "test" --tools "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama GetModelList --url "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ListRunningModels --url "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
