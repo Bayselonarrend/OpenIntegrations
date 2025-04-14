@@ -1,0 +1,49 @@
+﻿---
+sidebar_position: 10
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Pull model
+ Downloads a model from the library
+
+
+
+`Function PullModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Model | --model | String | &#x2714; | Models name |
+  | Insecure | --insecure | Boolean | &#x2716; | Allows an unsecured connection to the library |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Pull a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#pull-a-model)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.PullModel(URL, Model, , AdditionalHeaders);
+```
+ 
+
+
+
+

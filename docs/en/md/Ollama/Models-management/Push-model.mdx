@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 9
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Push model
+ Uploads the model to the model library
+
+
+
+`Function PushModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Model | --model | String | &#x2714; | Models name |
+  | Insecure | --insecure | Boolean | &#x2716; | Allows an unsecured connection to the library |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Push a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#push-a-model)
+
+The model name must follow the format &lt;namespace&gt;/&lt;model&gt;:&lt;tag&gt;<br/>Registration on ollama.ai and adding a public key is required.
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Token = "10KO..."; // Authorization - not part API Ollama
+
+    Model = "bayselonarrend/tinyllama:latest";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.PushModel(URL, Model, , AdditionalHeaders);
+```
+ 
+
+
+
+

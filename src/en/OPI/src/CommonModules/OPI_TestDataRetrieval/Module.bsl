@@ -299,6 +299,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "RC_CommandsExecution"                 , "Commands execution"              , RCON);
     NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"                , "Models management"               , Ollama);
+    NewTest(TestTable, "OLLM_WorkingWithBlob"                 , "Working with Blob"               , Ollama);
 
     Return TestTable;
 
@@ -2337,6 +2338,12 @@ Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
 
 EndProcedure
 
+Procedure Check_OllamaEmbeddings(Val Result) Export
+
+    ExpectsThat(Result["embeddings"]).Заполнено();
+
+EndProcedure
+
 Procedure Check_OllamaLoadUnload(Val Result, Val Unload) Export
 
    ExpectsThat(Result["model"]).Заполнено();
@@ -2380,6 +2387,12 @@ EndProcedure
 Procedure Check_OllamaVersion(Val Result) Export
 
    ExpectsThat(Result["version"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OllamaCode(Val Result) Export
+
+    ExpectsThat(Result["status_code"] < 300.Равно(True);
 
 EndProcedure
 
