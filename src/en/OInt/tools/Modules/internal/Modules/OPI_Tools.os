@@ -407,6 +407,10 @@ EndFunction
 
 Function SplitURL(Val URL) Export
 
+    OPI_TypeConversion.GetLine(URL);
+
+    RestoreEscapeSequences(URL);
+
     SecureConnection = Not StrStartsWith(URL, "http://");
 
     URL = StrReplace(URL, "https://", "");
