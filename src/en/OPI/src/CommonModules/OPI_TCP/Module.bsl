@@ -58,6 +58,8 @@
 Function CreateConnection(Val Address, Val Tls = "") Export
 
     OPI_TypeConversion.GetLine(Address);
+    OPI_Tools.RestoreEscapeSequences(Address);
+
     Domain = OPI_Tools.GetDomain(Address);
 
     TCPClient = OPI_AddIns.GetAddIn("TCPClient");
