@@ -3182,7 +3182,7 @@
 "Использовать oint": "Use oint",
 "ТекстовыйДокумент": "TextDocument",
 "Почтовые вложения": "Mail attachments",
-"300).Равно(Истина": "300.Equal(True",
+"300).Равно(Истина": "300).Equal(True",
 "Это сервер !NOCLI": "Is server !NOCLI",
 "Текст комментария": "Comment text",
 "ПараметрЛокальный": "LocalParameter",
