@@ -2392,7 +2392,7 @@ EndProcedure
 
 Procedure Check_OllamaCode(Val Result) Export
 
-    ExpectsThat(Result["status_code"] < 300.Равно(True);
+    ExpectsThat(Result["status_code"] < 300).Равно(True);
 
 EndProcedure
 
