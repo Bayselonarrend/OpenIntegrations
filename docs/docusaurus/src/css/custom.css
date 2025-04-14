@@ -165,7 +165,8 @@ li > a.menu__link {
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
-.Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before{
+.Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .AI a:before,
+.Ollama a::before {
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -266,6 +267,11 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/GreenAPI.png);
 }
 
+
+.Ollama > div > a::before{
+  content: url(../../static/img/APIs/small/ollama.png);
+}
+
 .Messenger > div > a::before{
   content: url(../../static/img/Categories/chat.png);
 }
@@ -300,6 +306,10 @@ li > a.menu__link {
 
 .Other > div > a::before{
   content: url(../../static/img/Categories/other.png);
+}
+
+.AI > div > a::before{
+  content: url(../../static/img/Categories/ai.png);
 }
 
 .theme-code-block,.tabs-container{
