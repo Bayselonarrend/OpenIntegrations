@@ -62,6 +62,9 @@
 Function GetVersion(Val URL, Val AdditionalHeaders = "") Export
 
     CompleteURL(URL, "api/version");
+
+    HeadersProcessing(AdditionalHeaders);
+
     Response = OPI_Tools.Get(URL, , AdditionalHeaders);
 
     Return Response;
