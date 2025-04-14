@@ -2541,11 +2541,15 @@ Procedure CLI_OLLM_RequestsProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
+    CLI_Ollama_PullModel(TestParameters);
+    CLI_Ollama_GetVersion(TestParameters);
     CLI_Ollama_GetResponse(TestParameters);
     CLI_Ollama_GetContextResponse(TestParameters);
+    CLI_Ollama_GetEmbeddings(TestParameters);
     CLI_Ollama_GetRequestParameterStructure(TestParameters);
     CLI_Ollama_GetContextParameterStructure(TestParameters);
     CLI_Ollama_GetContextMessageStructure(TestParameters);
+    CLI_Ollama_GetEmbeddingsParameterStructure(TestParameters);
 
 EndProcedure
 
@@ -2555,8 +2559,28 @@ Procedure CLI_OLLM_ModelsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
+    CLI_Ollama_PullModel(TestParameters);
     CLI_Ollama_LoadModelToMemory(TestParameters);
     CLI_Ollama_UnloadModelFromMemory(TestParameters);
+    CLI_Ollama_CreateModel(TestParameters);
+    CLI_Ollama_GetModelInformation(TestParameters);
+    CLI_Ollama_GetModelList(TestParameters);
+    CLI_Ollama_ListRunningModels(TestParameters);
+    CLI_Ollama_CopyModel(TestParameters);
+    CLI_Ollama_PushModel(TestParameters);
+    CLI_Ollama_GetModelSettingsStructure(TestParameters);
+    CLI_Ollama_DeleteModel(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OLLM_WorkingWithBlob() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+
+    CLI_Ollama_PushBlob(TestParameters);
 
 EndProcedure
 
@@ -23193,25 +23217,373 @@ EndProcedure
 Procedure CLI_Ollama_GetContextMessageStructure(FunctionParameters)
 
     Options = New Structure;
-    Options.Insert("empty", False);
+    Options.Insert("role", "user");
+    Options.Insert("text", "Hello!");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetContextMessageStructure", "Ollama");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_PullModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PullModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , "bayselonarrend/tinyllama:latest");
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PullModel (bay)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_DeleteModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , "library/tinyllama:latest");
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny)", "Ollama");
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , "bayselonarrend/tinyllama:latest");
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny, bay)", "Ollama");
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (list)", "Ollama");
+
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["models"], 0);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetVersion(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetVersion", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetVersion", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaVersion(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetEmbeddings(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    StingsArray = New Array;
+    StingsArray.Add("Why is the sky blue?");
+    StingsArray.Add("Why is the grass green?");
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("input"  , StingsArray);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddings", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaEmbeddings(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure", "Ollama");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
     Options.Insert("empty", True);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetContextMessageStructure (empty)", "Ollama");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure (empty)", "Ollama");
 
     For Each Element In Result Do
 
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+Procedure CLI_Ollama_CreateModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
+
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("model"   , Model);
+    Options.Insert("settings", Settings);
+    Options.Insert("headers" , AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CreateModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("prompt" , "How are you?");
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel (request)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaResponse(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetModelInformation(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("verbose", False);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelInformation", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModelInfo(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetModelList(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_ListRunningModels(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "ListRunningModels", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListRunningModels", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_CopyModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "mario";
+    Name  = "mario2";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("name"   , Name);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CopyModel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
+
+EndProcedure
+
+Procedure CLI_Ollama_PushModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "bayselonarrend/tinyllama:latest";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushModel", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PushModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_GetModelSettingsStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure", "Ollama");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+    Options = New Structure;
+    Options.Insert("empty", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure (empty)", "Ollama");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_Ollama_PushBlob(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
+    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Image  = OPI_Tools.MergeData(Image, Random); // SKIP
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("data"   , Image);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushBlob", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PushBlob", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
 EndProcedure
 

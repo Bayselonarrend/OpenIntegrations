@@ -20863,7 +20863,7 @@ Procedure Ollama_CopyModel(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CopyModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
-    Result = OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
+    OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
 
 EndProcedure
 
@@ -20992,7 +20992,6 @@ Procedure Ollama_PushBlob(FunctionParameters)
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
 EndProcedure
-
 
 #EndRegion
 
