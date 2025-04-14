@@ -1,0 +1,16 @@
+﻿    {
+ "model": "tinyllama",
+ "created_at": "2025-04-14T20:16:54.5071968Z",
+ "message": {
+  "role": "assistant",
+  "content": "The first version of 1C:Enterprise was released in 2001. However, the latest version (version 21) was released in 2021. The company has continued to make minor updates and upgrades to the software over time, including bug fixes and improvements."
+ },
+ "done_reason": "stop",
+ "done": true,
+ "total_duration": 21319004300,
+ "load_duration": 16999000,
+ "prompt_eval_count": 172,
+ "prompt_eval_duration": 11457001500,
+ "eval_count": 64,
+ "eval_duration": 9843003800
+}
