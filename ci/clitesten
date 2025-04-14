@@ -1856,6 +1856,10 @@ def test_ollama(){
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama PushBlob --url "test" --data "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama CheckBlob --url "test" --digest "test" --headers "test" --debug --test '
+               }
+
 }
 
 

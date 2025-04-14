@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Проверить BLOB
+ Проверяет существование BLOB по его SHA256 дайджесту
+
+
+
+`Функция ПроверитьBlob(Знач URL, Знач SHA256, Знач ДопЗаголовки = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ollama |
+  | SHA256 | --digest | Строка | &#x2714; | SHA256 дайджест нужного BLOB |
+  | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
+
+<br/>
+
+:::tip
+Метод в документации API: [Check if a Blob Exists](https://github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL    = "https://api.athenaeum.digital/ollama";
+    Токен  = "10KO..."; // Авторизация - не часть API Ollama
+    SHA256 = "f522b3e06f06995065350aed018ef04f328b91fc95f45408fb6790e0cc320962";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.ПроверитьBlob(URL, SHA256, ДопЗаголовки);
+```
+    
+
+
+
+
