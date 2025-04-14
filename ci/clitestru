@@ -1841,7 +1841,19 @@ def test_ollama(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ОтправитьМодель --url "test" --model "test" --insecure "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama СкачатьМодель --url "test" --model "test" --insecure "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe ollama ПолучитьСтруктуруНастроекМодели --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe ollama ОтправитьBlob --url "test" --data "test" --headers "test" --debug --test '
                }
 
 }

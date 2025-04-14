@@ -2574,6 +2574,7 @@ Procedure OLLM_RequestsProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
+    Ollama_PullModel(TestParameters);
     Ollama_GetVersion(TestParameters);
     Ollama_GetResponse(TestParameters);
     Ollama_GetEmbeddings(TestParameters);
@@ -2591,6 +2592,7 @@ Procedure OLLM_ModelsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
 
+    Ollama_PullModel(TestParameters);
     Ollama_LoadModelToMemory(TestParameters);
     Ollama_UnloadModelFromMemory(TestParameters);
     Ollama_CreateModel(TestParameters);
@@ -2598,8 +2600,20 @@ Procedure OLLM_ModelsManagement() Export
     Ollama_GetModelList(TestParameters);
     Ollama_ListRunningModels(TestParameters);
     Ollama_CopyModel(TestParameters);
-    Ollama_DeleteModel(TestParameters);
+    Ollama_PushModel(TestParameters);
     Ollama_GetModelSettingsStructure(TestParameters);
+    Ollama_DeleteModel(TestParameters);
+
+EndProcedure
+
+Procedure OLLM_WorkingWithBlob() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+
+    Ollama_PushBlob(TestParameters);
 
 EndProcedure
 
@@ -20761,7 +20775,20 @@ Procedure Ollama_DeleteModel(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel", "Ollama");
-    OPI_TestDataRetrieval.Check_Empty(Result);
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    Result = OPI_Ollama.DeleteModel(URL, "library/tinyllama:latest", AdditionalHeaders);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny)", "Ollama");
+
+    Result = OPI_Ollama.DeleteModel(URL, "bayselonarrend/tinyllama:latest", AdditionalHeaders);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny, bay)", "Ollama");
+
+    Result = OPI_Ollama.GetModelList(URL, AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (list)", "Ollama");
+
+    OPI_TestDataRetrieval.Check_OllamaModels(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["models"], 0);
 
 EndProcedure
 
@@ -20834,7 +20861,7 @@ Procedure Ollama_CopyModel(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CopyModel", "Ollama");
-    OPI_TestDataRetrieval.Check_Empty(Result);
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
     Result = OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
 
@@ -20876,7 +20903,7 @@ Procedure Ollama_GetEmbeddings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "Ollama");
-    OPI_TestDataRetrieval.Check_OllamaResponse(Result);
+    OPI_TestDataRetrieval.Check_OllamaEmbeddings(Result);
 
 EndProcedure
 
@@ -20899,6 +20926,73 @@ Procedure Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
     EndDo;
 
 EndProcedure
+
+Procedure Ollama_PushModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "bayselonarrend/tinyllama:latest";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.PushModel(URL, Model, , AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PushModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+EndProcedure
+
+Procedure Ollama_PullModel(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Model = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.PullModel(URL, Model, , AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PullModel", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+    Result = OPI_Ollama.PullModel(URL, "bayselonarrend/tinyllama:latest", , AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PullModel (bay)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
+
+EndProcedure
+
+Procedure Ollama_PushBlob(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
+    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Image  = OPI_Tools.MergeData(Image, Random); // SKIP
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.PushBlob(URL, Image, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PushBlob", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+EndProcedure
+
 
 #EndRegion
 

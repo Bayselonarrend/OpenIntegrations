@@ -418,7 +418,8 @@ Function CopyModel(Val URL, Val Model, Val Name, Val AdditionalHeaders = "") Exp
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders, , True);
+    Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;
 
@@ -447,7 +448,8 @@ Function DeleteModel(Val URL, Val Model, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.DeleteWithBody(URL, Parameters, AdditionalHeaders);
+    Response = OPI_Tools.DeleteWithBody(URL, Parameters, AdditionalHeaders, , True);
+    Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;
 
@@ -513,6 +515,72 @@ Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") E
 
 EndFunction
 
+// Push model
+// Uploads the model to the model library
+//
+// Note
+// Method at API documentation: [Push a Model](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-model)
+// The model name must follow the format <namespace>/<model>:<tag>^
+// Registration on ollama.ai and adding a public key is required.
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Insecure - Boolean - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function PushModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/push");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model"   , Model   , "String" , Parameters);
+    OPI_Tools.AddField("insecure", Insecure, "Boolean", Parameters);
+    OPI_Tools.AddField("stream"  , False   , "Boolean", Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Pull model
+// Downloads a model from the library
+//
+// Note
+// Method at API documentation: [Pull a Model](@github.com/ollama/ollama/blob/main/docs/api.md#pull-a-model)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Model - String - Models name - model
+// Insecure - Boolean - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function PullModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "api/pull");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model"   , Model   , "String" , Parameters);
+    OPI_Tools.AddField("insecure", Insecure, "Boolean", Parameters);
+    OPI_Tools.AddField("stream"  , False   , "Boolean", Parameters);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
 // Get model settings structure
 // Gets the settings structure for creating a new model
 //
@@ -542,6 +610,43 @@ Function GetModelSettingsStructure(Val Clear = False) Export
 
     //@skip-check constructor-function-return-section
     Return FieldsStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region WorkingWithBlob
+
+// Push BLOB
+// Sends binary data to the Ollama server
+//
+// Note
+// Method at API documentation: [Push a Blob](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-blob)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Data - String, BinaryData - File data or filepath - data
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
+
+    CompleteURL(URL, "api/blobs/sha256:%1");
+
+    Hash = OPI_Cryptography.Hash(Data, HashFunction.SHA256);
+    Hash = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Hash));
+
+    URL = StrTemplate(URL, Hash);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.PostBinary(URL, Data, AdditionalHeaders, True);
+    Response = New Structure("status_code,hash", Response.StatusCode, Hash);
+
+    Return Response;
 
 EndFunction
 

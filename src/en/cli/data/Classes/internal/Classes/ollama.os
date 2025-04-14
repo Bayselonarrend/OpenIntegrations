@@ -529,12 +529,125 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ollama";
     NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushModel";
+    NewLine.МетодПоиска = "PUSHMODEL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Uploads the model to the model library";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushModel";
+    NewLine.МетодПоиска = "PUSHMODEL";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushModel";
+    NewLine.МетодПоиска = "PUSHMODEL";
+    NewLine.Параметр    = "--insecure";
+    NewLine.Описание    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushModel";
+    NewLine.МетодПоиска = "PUSHMODEL";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PullModel";
+    NewLine.МетодПоиска = "PULLMODEL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Models management";
+    NewLine.ОписаниеМетода   = "Downloads a model from the library";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PullModel";
+    NewLine.МетодПоиска = "PULLMODEL";
+    NewLine.Параметр    = "--model";
+    NewLine.Описание    = "Models name";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PullModel";
+    NewLine.МетодПоиска = "PULLMODEL";
+    NewLine.Параметр    = "--insecure";
+    NewLine.Описание    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PullModel";
+    NewLine.МетодПоиска = "PULLMODEL";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
     NewLine.Метод       = "GetModelSettingsStructure";
     NewLine.МетодПоиска = "GETMODELSETTINGSSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Models management";
     NewLine.ОписаниеМетода   = "Gets the settings structure for creating a new model";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushBlob";
+    NewLine.МетодПоиска = "PUSHBLOB";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Working with blob";
+    NewLine.ОписаниеМетода   = "Sends binary data to the Ollama server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushBlob";
+    NewLine.МетодПоиска = "PUSHBLOB";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "File data or filepath";
+    NewLine.Область     = "Working with blob";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "PushBlob";
+    NewLine.МетодПоиска = "PUSHBLOB";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Working with blob";
 
     Return CompositionTable;
 EndFunction
