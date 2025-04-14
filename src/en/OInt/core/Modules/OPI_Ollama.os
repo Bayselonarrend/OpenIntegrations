@@ -647,7 +647,37 @@ Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
     HeadersProcessing(AdditionalHeaders);
 
     Response = OPI_Tools.PostBinary(URL, Data, AdditionalHeaders, True);
-    Response = New Structure("status_code,hash", Response.StatusCode, Hash);
+    Response = New Structure("status_code,digest", Response.StatusCode, Hash);
+
+    Return Response;
+
+EndFunction
+
+// Check BLOB
+// Checks the existence of a BLOB by its SHA256 digest
+//
+// Note
+// Method at API documentation: [Check if a Blob Exist](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// SHA256 - String - SHA256 BLOB digest - digest
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CheckBlob(Val URL, Val SHA256, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(SHA256);
+
+    CompleteURL(URL, "api/blobs/sha256:%1");
+
+    URL = StrTemplate(URL, SHA256);
+
+    HeadersProcessing(AdditionalHeaders);
+
+    Response = OPI_Tools.Head(URL, , AdditionalHeaders, , True);
+    Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;
 

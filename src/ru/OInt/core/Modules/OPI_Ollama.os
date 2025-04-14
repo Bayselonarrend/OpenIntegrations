@@ -655,7 +655,7 @@
 
 // Проверить BLOB
 // Проверяет существование BLOB по его SHA256 дайджесту
-// 
+//
 // Примечание:
 // Метод в документации API: [Check if a Blob Exists](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
 //
@@ -669,7 +669,7 @@
 Функция ПроверитьBlob(Знач URL, Знач SHA256, Знач ДопЗаголовки = "") Экспорт
 
     OPI_ПреобразованиеТипов.ПолучитьСтроку(SHA256);
-    
+
     ДополнитьURL(URL, "api/blobs/sha256:%1");
 
     URL = СтрШаблон(URL, SHA256);

@@ -44,12 +44,28 @@
 
 #Region RequestsWithoutBody
 
-Function Get(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
-    Return ExecuteRequestWithoutBody(URL, "GET", Parameters, AdditionalHeaders, ResponseFile);
+Function Get(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined
+    , Val FullResponse      = False) Export
+    Return ExecuteRequestWithoutBody(URL, "GET", Parameters, AdditionalHeaders, ResponseFile, FullResponse);
 EndFunction
 
-Function Delete(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val ResponseFile = Undefined) Export
-    Return ExecuteRequestWithoutBody(URL, "DELETE", Parameters, AdditionalHeaders, ResponseFile);
+Function Head(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined
+    , Val FullResponse      = False) Export
+    Return ExecuteRequestWithoutBody(URL, "HEAD", Parameters, AdditionalHeaders, ResponseFile, FullResponse);
+EndFunction
+
+Function Delete(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined
+    , Val FullResponse      = False) Export
+    Return ExecuteRequestWithoutBody(URL, "DELETE", Parameters, AdditionalHeaders, ResponseFile, FullResponse);
 EndFunction
 
 #EndRegion
@@ -1552,7 +1568,8 @@ Function ExecuteRequestWithoutBody(Val URL
     , Val View
     , Val Parameters        = ""
     , Val AdditionalHeaders = ""
-    , Val ResponseFile      = Undefined)
+    , Val ResponseFile      = Undefined
+    , Val FullResponse      = False)
 
     If Not ValueIsFilled(Parameters) Then
         Parameters = New Structure;
@@ -1567,7 +1584,7 @@ Function ExecuteRequestWithoutBody(Val URL
     Request    = CreateRequest(Address, AdditionalHeaders);
     Connection = CreateConnection(Host, Safe, , , Port);
 
-    Response = ExecuteRequest(Request, Connection, View, ResponseFile);
+    Response = ExecuteRequest(Request, Connection, View, ResponseFile, FullResponse);
 
     Return Response;
 

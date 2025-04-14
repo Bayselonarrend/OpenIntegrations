@@ -2577,8 +2577,8 @@ Procedure OLLM_RequestsProcessing() Export
     Ollama_PullModel(TestParameters);
     Ollama_GetVersion(TestParameters);
     Ollama_GetResponse(TestParameters);
-    Ollama_GetEmbeddings(TestParameters);
     Ollama_GetContextResponse(TestParameters);
+    Ollama_GetEmbeddings(TestParameters);
     Ollama_GetRequestParameterStructure(TestParameters);
     Ollama_GetContextParameterStructure(TestParameters);
     Ollama_GetContextMessageStructure(TestParameters);
@@ -2614,6 +2614,7 @@ Procedure OLLM_WorkingWithBlob() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
 
     Ollama_PushBlob(TestParameters);
+    Ollama_CheckBlob(TestParameters);
 
 EndProcedure
 
@@ -20990,6 +20991,32 @@ Procedure Ollama_PushBlob(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "PushBlob", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("Ollama_Blob", Result["digest"]);
+    FunctionParameters.Insert("Ollama_Blob", Result["digest"]);
+
+EndProcedure
+
+Procedure Ollama_CheckBlob(FunctionParameters)
+
+    URL    = FunctionParameters["Ollama_URL"];
+    Token  = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+    SHA256 = FunctionParameters["Ollama_Blob"];
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Result = OPI_Ollama.CheckBlob(URL, SHA256, AdditionalHeaders);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckBlob", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    Result = OPI_Ollama.CheckBlob(URL, "yoyoyo", AdditionalHeaders);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckBlob (error)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaError(Result);
 
 EndProcedure
 

@@ -2396,6 +2396,12 @@ Procedure Check_OllamaCode(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OllamaError(Val Result) Export
+
+    ExpectsThat(Result["status_code"] >= 400).Равно(True);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
