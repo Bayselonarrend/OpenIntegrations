@@ -649,6 +649,37 @@
     NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Working with blob";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CheckBlob";
+    NewLine.МетодПоиска = "CHECKBLOB";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Ollama server URL";
+    NewLine.Область     = "Working with blob";
+    NewLine.ОписаниеМетода   = "Checks the existence of a BLOB by its SHA256 digest";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CheckBlob";
+    NewLine.МетодПоиска = "CHECKBLOB";
+    NewLine.Параметр    = "--digest";
+    NewLine.Описание    = "SHA256 BLOB digest";
+    NewLine.Область     = "Working with blob";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ollama";
+    NewLine.Модуль      = "OPI_Ollama";
+    NewLine.Метод       = "CheckBlob";
+    NewLine.МетодПоиска = "CHECKBLOB";
+    NewLine.Параметр    = "--headers";
+    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Working with blob";
+
     Return CompositionTable;
 EndFunction
 

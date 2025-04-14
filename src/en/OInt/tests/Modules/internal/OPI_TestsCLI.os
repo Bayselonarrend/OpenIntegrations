@@ -2581,6 +2581,7 @@ Procedure CLI_OLLM_WorkingWithBlob() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
 
     CLI_Ollama_PushBlob(TestParameters);
+    CLI_Ollama_CheckBlob(TestParameters);
 
 EndProcedure
 
@@ -23222,7 +23223,7 @@ Procedure CLI_Ollama_GetContextMessageStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetContextMessageStructure", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetContextMessageStructure", "Ollama");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -23246,7 +23247,7 @@ Procedure CLI_Ollama_PullModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PullModel", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PullModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
 
     Options = New Structure;
@@ -23256,7 +23257,7 @@ Procedure CLI_Ollama_PullModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PullModel (bay)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PullModel (bay)", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
 
 EndProcedure
@@ -23278,7 +23279,7 @@ Procedure CLI_Ollama_DeleteModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
     Options = New Structure;
@@ -23288,7 +23289,7 @@ Procedure CLI_Ollama_DeleteModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteModel (tiny)", "Ollama");
 
     Options = New Structure;
     Options.Insert("url"    , URL);
@@ -23297,7 +23298,7 @@ Procedure CLI_Ollama_DeleteModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (tiny, bay)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteModel (tiny, bay)", "Ollama");
 
     Options = New Structure;
     Options.Insert("url"    , URL);
@@ -23305,7 +23306,7 @@ Procedure CLI_Ollama_DeleteModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteModel (list)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteModel (list)", "Ollama");
 
     OPI_TestDataRetrieval.Check_OllamaModels(Result);
     OPI_TestDataRetrieval.Check_Array(Result["models"], 0);
@@ -23328,7 +23329,7 @@ Procedure CLI_Ollama_GetVersion(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetVersion", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetVersion", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaVersion(Result);
 
 EndProcedure
@@ -23357,7 +23358,7 @@ Procedure CLI_Ollama_GetEmbeddings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEmbeddings", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaEmbeddings(Result);
 
 EndProcedure
@@ -23369,7 +23370,7 @@ Procedure CLI_Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEmbeddingsParameterStructure", "Ollama");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
@@ -23377,7 +23378,7 @@ Procedure CLI_Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddingsParameterStructure (empty)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEmbeddingsParameterStructure (empty)", "Ollama");
 
     For Each Element In Result Do
 
@@ -23407,7 +23408,7 @@ Procedure CLI_Ollama_CreateModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CreateModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
 
     Options = New Structure;
@@ -23418,7 +23419,7 @@ Procedure CLI_Ollama_CreateModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateModel (request)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateModel (request)", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaResponse(Result);
 
 EndProcedure
@@ -23441,7 +23442,7 @@ Procedure CLI_Ollama_GetModelInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetModelInformation", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetModelInformation", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaModelInfo(Result);
 
 EndProcedure
@@ -23462,7 +23463,7 @@ Procedure CLI_Ollama_GetModelList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetModelList", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaModels(Result);
 
 EndProcedure
@@ -23481,7 +23482,7 @@ Procedure CLI_Ollama_ListRunningModels(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "ListRunningModels", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ListRunningModels", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ListRunningModels", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaModels(Result);
 
 EndProcedure
@@ -23505,7 +23506,7 @@ Procedure CLI_Ollama_CopyModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CopyModel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyModel", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CopyModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
     OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
@@ -23531,7 +23532,7 @@ Procedure CLI_Ollama_PushModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PushModel", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PushModel", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaSuccess(Result);
 
 EndProcedure
@@ -23543,7 +23544,7 @@ Procedure CLI_Ollama_GetModelSettingsStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetModelSettingsStructure", "Ollama");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     Options = New Structure;
@@ -23551,7 +23552,7 @@ Procedure CLI_Ollama_GetModelSettingsStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetModelSettingsStructure (empty)", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetModelSettingsStructure (empty)", "Ollama");
 
     For Each Element In Result Do
 
@@ -23582,8 +23583,39 @@ Procedure CLI_Ollama_PushBlob(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushBlob", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PushBlob", "Ollama");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PushBlob", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+EndProcedure
+
+Procedure CLI_Ollama_CheckBlob(FunctionParameters)
+
+    URL    = FunctionParameters["Ollama_URL"];
+    Token  = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+    SHA256 = FunctionParameters["Ollama_Blob"];
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("digest" , SHA256);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CheckBlob", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaCode(Result);
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("digest" , "yoyoyo");
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CheckBlob (error)", "Ollama");
+    OPI_TestDataRetrieval.Check_OllamaError(Result);
 
 EndProcedure
 
