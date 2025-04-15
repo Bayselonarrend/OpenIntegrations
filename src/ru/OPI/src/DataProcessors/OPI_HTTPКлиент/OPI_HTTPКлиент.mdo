@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d28e1c58-e694-490d-9b8a-cf3d8418a465">
+  <producedTypes>
+    <objectType typeId="f8380b17-fc17-434c-af09-1e256a999b26" valueTypeId="1903aff0-3cae-41d2-9206-534e13cff1a3"/>
+    <managerType typeId="31cebf42-d435-40a7-b175-9a487c66b259" valueTypeId="0ade2c3a-405c-4423-8b00-3bd7a2f95c2a"/>
+  </producedTypes>
+  <name>OPI_HTTPКлиент</name>
+  <synonym>
+    <key>ru</key>
+    <value>HTTP клиент (ОПИ)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+</mdclass:DataProcessor>
