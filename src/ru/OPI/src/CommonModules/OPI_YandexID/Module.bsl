@@ -52,7 +52,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientId);
 
     Параметры = Новый Структура("client_id", ClientId);
-    Ответ     = OPI_Инструменты.Post("https://oauth.yandex.ru/device/code", Параметры, , Ложь);
+    Ответ     = OPI_ЗапросыHTTP.PostСТелом("https://oauth.yandex.ru/device/code", Параметры, , Ложь);
 
     Возврат Ответ;
 
@@ -80,7 +80,7 @@
     Параметры.Вставить("client_id"     , ClientId);
     Параметры.Вставить("client_secret" , ClientSecret);
 
-    Ответ = OPI_Инструменты.Post("https://oauth.yandex.ru/token", Параметры, , Ложь);
+    Ответ = OPI_ЗапросыHTTP.PostСТелом("https://oauth.yandex.ru/token", Параметры, , Ложь);
 
     Возврат Ответ;
 
@@ -108,7 +108,7 @@
     Параметры.Вставить("client_id"     , ClientId);
     Параметры.Вставить("client_secret" , ClientSecret);
 
-    Ответ = OPI_Инструменты.Post("https://oauth.yandex.ru/token", Параметры, , Ложь);
+    Ответ = OPI_ЗапросыHTTP.PostСТелом("https://oauth.yandex.ru/token", Параметры, , Ложь);
 
     Возврат Ответ;
 

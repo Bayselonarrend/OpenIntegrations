@@ -100,7 +100,7 @@
     ПараметрыURL.Вставить("redirect_uri" , "http://localhost");
     ПараметрыURL.Вставить("code"         , Code);
 
-    Ответ = OPI_Инструменты.Post(URL, ПараметрыURL, , Ложь);
+    Ответ = OPI_ЗапросыHTTP.PostСТелом(URL, ПараметрыURL, , Ложь);
 
     Возврат Ответ;
 
@@ -130,7 +130,7 @@
     ПараметрыURL.Вставить("client_secret", ClientSecret);
     ПараметрыURL.Вставить("refresh_token", RefreshToken);
 
-    Ответ = OPI_Инструменты.Post(URL, ПараметрыURL, , Ложь);
+    Ответ = OPI_ЗапросыHTTP.PostСТелом(URL, ПараметрыURL, , Ложь);
 
     Возврат Ответ;
 

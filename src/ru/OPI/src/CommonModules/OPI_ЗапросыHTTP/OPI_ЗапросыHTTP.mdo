@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6a9469ae-ee9b-4a26-a61b-715c5cb13e17">
+  <name>OPI_ЗапросыHTTP</name>
+  <synonym>
+    <key>ru</key>
+    <value>HTTP (служебный, ОПИ)</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
