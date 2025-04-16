@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Ollama.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Ollama.os
 // Lib: Ollama
 // CLI: ollama
 
@@ -651,7 +651,7 @@
         .УстановитьЗаголовки(ДопЗаголовки)
         .ОбработатьЗапрос("POST")
         .ВернутьОтвет(Ложь, Истина);
-        
+
     Ответ = Новый Структура("status_code,digest", Ответ.КодСостояния, Хеш);
 
     Возврат Ответ;

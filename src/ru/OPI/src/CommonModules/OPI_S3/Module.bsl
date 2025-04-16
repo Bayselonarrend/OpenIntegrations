@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_S3.os
+﻿// OneScript: ./OInt/core/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
@@ -1463,13 +1463,13 @@
 
     ОсновныеДанные_ = OPI_Инструменты.КопироватьКоллекцию(ОсновныеДанные);
     ПроверитьОсновныеДанные(ОсновныеДанные_);
-    
+
     AccessKey = ОсновныеДанные_["AccessKey"];
     SecretKey = ОсновныеДанные_["SecretKey"];
     Region    = ОсновныеДанные_["Region"];
     Service   = ОсновныеДанные_["Service"];
-    URL       = ОсновныеДанные_["URL"];   
-    
+    URL       = ОсновныеДанные_["URL"];
+
     Ответ = OPI_ЗапросыHTTP.НовыйЗапрос()
         .Инициализировать(URL)
         .УстановитьЗаголовки(Заголовки)
