@@ -155,7 +155,7 @@ Function CreateCompositePost(Val Text
     OPI_Tools.AddField("mark_as_ads"   , AdsNumber        , "Number" , Parameters_);
     OPI_Tools.AddField("close_comments", AdsNumber        , "Number" , Parameters_);
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.post", Parameters_);
 
     Return Response;
 
@@ -175,7 +175,7 @@ Function DeletePost(Val PostID, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     OPI_Tools.AddField("post_id", PostID, "String", Parameters_);
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.delete", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.delete", Parameters_);
 
     Return Response;
 
@@ -230,7 +230,7 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
     Parameters_.Insert("photo_id"   , OPI_Tools.NumberToString(PhotoID));
     Parameters_.Insert("question"   , Question);
 
-    Poll    = OPI_Tools.Get("api.vk.com/method/polls.create", Parameters_);
+    Poll    = OPI_HTTPRequests.Get("api.vk.com/method/polls.create", Parameters_);
     PollMap = Poll.Get(Response_);
 
     If Not ValueIsFilled(PollMap) Then
@@ -251,7 +251,7 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
 
     Parameters_.Insert("attachments", PollID);
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.post", Parameters_);
 
     Return Response;
 
@@ -278,7 +278,7 @@ Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export
     Parameters_.Insert("description"          , Description);
     Parameters_.Insert("upload_by_admins_only", 1);
 
-    Response = OPI_Tools.Get("api.vk.com/method/photos.createAlbum", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/photos.createAlbum", Parameters_);
 
     Return Response;
 
@@ -300,7 +300,7 @@ Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("album_id", OPI_Tools.NumberToString(AlbumID));
 
-    Response = OPI_Tools.Get("api.vk.com/method/photos.deleteAlbum", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/photos.deleteAlbum", Parameters_);
 
     Return Response;
 
@@ -371,7 +371,7 @@ Function DeleteImage(Val ImageID, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("photo_id", ImageID);
 
-    Response = OPI_Tools.Get("api.vk.com/method/photos.delete", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/photos.delete", Parameters_);
 
     Return Response;
 
@@ -402,7 +402,7 @@ Function UploadVideoToServer(Val Video
     OPI_Tools.AddField("description", Description , String_, Parameters);
     OPI_Tools.AddField("album_id"   , Album       , String_, Parameters);
 
-    Response = OPI_Tools.Get("api.vk.com/method/video.save", Parameters);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/video.save", Parameters);
 
     Result = Response["response"];
 
@@ -422,7 +422,7 @@ Function UploadVideoToServer(Val Video
     DataSize = FileMapping["video_file.mp4"].Size();
     DataSize = OPI_Tools.NumberToString(DataSize);
 
-    Response = OPI_Tools.PostMultipart(URL, , FileMapping, "video/mp4");
+    Response = OPI_HTTPRequests.PostMultipart(URL, , FileMapping, "video/mp4");
 
     Return Response;
 
@@ -460,7 +460,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
     For N = 1 To 5 Do
 
-        Response = OPI_Tools.Get(Upload, Parameters);
+        Response = OPI_HTTPRequests.Get(Upload, Parameters);
         Result   = Response[Response_];
 
         If ValueIsFilled(Result) Then
@@ -476,7 +476,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
         EndIf;
 
         Parameters.Insert("upload_url", URL);
-        Response = OPI_Tools.PostMultipart(URL, Parameters, Files);
+        Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files);
 
         If TypeOf(Response) = Type("Map") Then
             Break;
@@ -490,7 +490,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
     FillPhotoUploadParameters(Method, Response, Parameters);
 
-    Response = OPI_Tools.Get(Save, Parameters);
+    Response = OPI_HTTPRequests.Get(Save, Parameters);
 
     Return Response;
 
@@ -519,7 +519,7 @@ Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") E
     Parameters_.Insert("title", Name);
     Parameters_.Insert("text" , FirstMessageText);
 
-    Response = OPI_Tools.Get("api.vk.com/method/board.addTopic", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/board.addTopic", Parameters_);
 
     Return Response;
 
@@ -544,7 +544,7 @@ Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Par
     Parameters_.Insert("topic_id", DiscussionID);
 
     Method   = ?(DeleteCompletely, "deleteTopic", "closeTopic");
-    Response = OPI_Tools.Get("api.vk.com/method/board." + Method, Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/board." + Method, Parameters_);
 
     Return Response;
 
@@ -566,7 +566,7 @@ Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("topic_id", DiscussionID);
 
-    Response = OPI_Tools.Get("api.vk.com/method/board.openTopic", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/board.openTopic", Parameters_);
 
     Return Response;
 
@@ -591,7 +591,7 @@ Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Expo
     Parameters_.Insert("topic_id", DiscussionID);
     Parameters_.Insert("message" , Text);
 
-    Response = OPI_Tools.Get("api.vk.com/method/board.createComment", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/board.createComment", Parameters_);
 
     Return Response;
 
@@ -626,7 +626,7 @@ Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export
     Parameters_.Insert("owner_id"   , OPI_Tools.NumberToString(WallID));
     Parameters_.Insert("from_group" , 0);
 
-    Response = OPI_Tools.Get("api.vk.com/method/likes.add", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/likes.add", Parameters_);
 
     Return Response;
 
@@ -666,7 +666,7 @@ Function MakeRepost(Val PostID
     Parameters_.Insert("group_id"    , StrReplace(Receiver, "-", ""));
     Parameters_.Insert("mark_as_ads" , ?(Advertising      , 1  , 0));
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.repost", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.repost", Parameters_);
 
     Return Response;
 
@@ -708,7 +708,7 @@ Function WriteMessage(Val Text
         Parameters_.Insert("keyboard", Keyboard);
     EndIf;
 
-    Response = OPI_Tools.Get("api.vk.com/method/messages.send", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/messages.send", Parameters_);
 
     Return Response;
 
@@ -742,7 +742,7 @@ Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Exp
 
     Parameters_.Delete("group_id");
 
-    Response = OPI_Tools.Get("api.vk.com/method/wall.createComment", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.createComment", Parameters_);
 
     Return Response;
 
@@ -766,7 +766,7 @@ Function ShortenLink(Val URL, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("url", URL);
 
-    Response = OPI_Tools.Get("https://api.vk.com/method/utils.getShortLink", Parameters_);
+    Response = OPI_HTTPRequests.Get("https://api.vk.com/method/utils.getShortLink", Parameters_);
     Result   = Response[Response_];
 
     If ValueIsFilled(Result) Then
@@ -813,7 +813,7 @@ Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export
     Parameters_.Insert("timestamp_to"  , EndDate);
     Parameters_.Insert("stats_groups"  , "visitors, reach, activity");
 
-    Response = OPI_Tools.Get("api.vk.com/method/stats.get", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/stats.get", Parameters_);
 
     Return Response;
 
@@ -847,7 +847,7 @@ Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
             NumbersString = StrConcat(SetsArray, ",");
             Parameters_.Insert("post_ids", NumbersString);
 
-            Statistics      = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
+            Statistics      = OPI_HTTPRequests.Get("api.vk.com/method/stats.getPostReach", Parameters_);
             StatisticsArray = Statistics[Response_];
 
             For Each StatisticsItem In StatisticsArray Do
@@ -863,7 +863,7 @@ Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
     NumbersString = StrConcat(SetsArray, ",");
     Parameters_.Insert("post_ids", NumbersString);
 
-    Statistics      = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
+    Statistics      = OPI_HTTPRequests.Get("api.vk.com/method/stats.getPostReach", Parameters_);
     StatisticsArray = Statistics[Response_];
 
     If TypeOf(StatisticsArray) = Type("Array") Then
@@ -918,7 +918,7 @@ Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "")
 
     Parameters_.Insert("data", StructuresArray);
 
-    Response = OPI_Tools.Get("api.vk.com/method/ads.createCampaigns", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/ads.createCampaigns", Parameters_);
 
     Return Response;
 
@@ -980,7 +980,7 @@ Function CreateAd(Val CampaignNumber
     Parameters_.Insert("data"       , StructuresArray);
     Parameters_.Insert("account_id" , AccountID);
 
-    Response = OPI_Tools.Get("api.vk.com/method/ads.createAds", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/ads.createAds", Parameters_);
 
     Return Response;
 
@@ -1017,7 +1017,7 @@ Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export
 
     Parameters_.Insert("data", StructuresArray);
 
-    Response = OPI_Tools.Get("api.vk.com/method/ads.updateAds", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/ads.updateAds", Parameters_);
 
     Return Response;
 
@@ -1034,7 +1034,7 @@ EndFunction
 Function GetAdvertisingCategoryList(Val Parameters = "") Export
 
     Parameters_ = GetStandardParameters(Parameters);
-    Response    = OPI_Tools.Get("api.vk.com/method/ads.getCategories", Parameters_);
+    Response    = OPI_HTTPRequests.Get("api.vk.com/method/ads.getCategories", Parameters_);
 
     Return Response;
 
@@ -1056,7 +1056,7 @@ Function GetProductCategoryList(Val Parameters = "") Export
 
     Response_   = "response";
     Parameters_ = GetStandardParameters(Parameters);
-    Response    = OPI_Tools.Get("api.vk.com/method/market.getCategories", Parameters_);
+    Response    = OPI_HTTPRequests.Get("api.vk.com/method/market.getCategories", Parameters_);
     Result      = Response[Response_];
 
     If ValueIsFilled(Result) Then
@@ -1072,7 +1072,7 @@ Function GetProductCategoryList(Val Parameters = "") Export
     EndIf;
 
     Parameters_.Insert("count", Count);
-    Response = OPI_Tools.Get("api.vk.com/method/market.getCategories", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.getCategories", Parameters_);
     Result   = Response[Response_];
 
     If ValueIsFilled(Result) Then
@@ -1153,7 +1153,7 @@ Function GetProductsByID(Val Products, Val Parameters = "") Export
     Parameters_.Insert("item_ids", ProductsString);
     Parameters_.Insert("extended", 1);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.getById", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.getById", Parameters_);
 
     Return Response;
 
@@ -1208,7 +1208,7 @@ Function DeleteProduct(Val Product, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("item_id", Product);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.delete", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.delete", Parameters_);
 
     Return Response;
 
@@ -1244,7 +1244,7 @@ Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters
         Parameters_.Insert("item_group_id", ExistingGroup);
     EndIf;
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.groupItems", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.groupItems", Parameters_);
 
     Return Response;
 
@@ -1337,7 +1337,7 @@ Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
 
     Parameters_.Insert("album_ids", SelectionsString);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.getAlbumById", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.getAlbumById", Parameters_);
 
     Return Response;
 
@@ -1416,7 +1416,7 @@ Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters
     Parameters_.Insert("item_ids" , ProductList);
     Parameters_.Insert("album_ids", Selection);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.addToAlbum", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.addToAlbum", Parameters_);
 
     Return Response;
 
@@ -1442,7 +1442,7 @@ Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters =
     Parameters_.Insert("item_id"  , Product);
     Parameters_.Insert("album_ids", Selection);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.removeFromAlbum", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.removeFromAlbum", Parameters_);
 
     Return Response;
 
@@ -1464,7 +1464,7 @@ Function DeleteSelection(Val Selection, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("album_id", Selection);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.deleteAlbum", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.deleteAlbum", Parameters_);
 
     Return Response;
 
@@ -1487,7 +1487,7 @@ Function GetPropertyList(Val Parameters = "") Export
     Response_   = "response";
     Parameters_ = GetStandardParameters(Parameters);
 
-    Response   = OPI_Tools.Get("api.vk.com/method/market.getProperties", Parameters_);
+    Response   = OPI_HTTPRequests.Get("api.vk.com/method/market.getProperties", Parameters_);
     Properties = Response[Response_]["items"];
 
     Return Properties;
@@ -1510,7 +1510,7 @@ Function CreateProductProperty(Val Name, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("title", Name);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.addProperty", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.addProperty", Parameters_);
 
     Return Response;
 
@@ -1536,7 +1536,7 @@ Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export
     Parameters_.Insert("property_id", Property);
     Parameters_.Insert("type"       , "text");
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.editProperty", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.editProperty", Parameters_);
 
     Return Response;
 
@@ -1558,7 +1558,7 @@ Function DeleteProductProperty(Val Property, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("property_id", Property);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.deleteProperty", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.deleteProperty", Parameters_);
 
     Return Response;
 
@@ -1583,7 +1583,7 @@ Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "")
     Parameters_.Insert("property_id", Property);
     Parameters_.Insert("title"      , Value);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.addPropertyVariant", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.addPropertyVariant", Parameters_);
 
     Return Response;
 
@@ -1611,7 +1611,7 @@ Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Par
     Parameters_.Insert("variant_id" , Option);
     Parameters_.Insert("title"      , Value);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.editPropertyVariant", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.editPropertyVariant", Parameters_);
 
     Return Response;
 
@@ -1633,7 +1633,7 @@ Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("variant_id", Option);
 
-    Response = OPI_Tools.Get("api.vk.com/method/market.deletePropertyVariant", Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.deletePropertyVariant", Parameters_);
 
     Return Response;
 
@@ -1896,7 +1896,7 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
         Method = "add";
     EndIf;
 
-    Response = OPI_Tools.Get("api.vk.com/method/market." + Method, Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market." + Method, Parameters_);
     Result   = Response[Response_];
 
     If Not ValueIsFilled(ProductID) And ValueIsFilled(Result) Then
@@ -1949,7 +1949,7 @@ Function SelectionManagement(Val Name
         Method = "addAlbum";
     EndIf;
 
-    Response = OPI_Tools.Get("api.vk.com/method/market." + Method, Parameters_);
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market." + Method, Parameters_);
 
     Return Response;
 
@@ -2125,7 +2125,7 @@ Procedure GetProductListRecursively(ProductsArray, Parameters, Shift = 0)
 
     Response_    = "response";
     MaxInRequest = 200;
-    Response     = OPI_Tools.Get("api.vk.com/method/market.get", Parameters);
+    Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.get", Parameters);
     Products     = Response[Response_]["items"];
 
     If Products.Count() = 0 Then
@@ -2146,7 +2146,7 @@ Procedure GetAlbumListRecursively(ArrayOfAlbums, Parameters, Shift = 0)
 
     Response_    = "response";
     MaxInRequest = 100;
-    Response     = OPI_Tools.Get("api.vk.com/method/market.getAlbums", Parameters);
+    Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.getAlbums", Parameters);
     Albums       = Response[Response_]["items"];
 
     If Albums.Count() = 0 Then
@@ -2167,7 +2167,7 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
 
     Response_    = "response";
     MaxInRequest = 50;
-    Response     = OPI_Tools.Get("api.vk.com/method/market.getGroupOrders", Parameters);
+    Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.getGroupOrders", Parameters);
     Orders       = Response[Response_]["items"];
 
     If Orders.Count() = 0 Then

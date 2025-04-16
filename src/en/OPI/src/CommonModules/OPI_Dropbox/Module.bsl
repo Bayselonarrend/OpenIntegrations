@@ -71,26 +71,17 @@ EndFunction
 Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
 
     URL = "https://api.dropbox.com/oauth2/token";
-    DataType = "application/x-www-form-urlencoded; charset=utf-8";
 
     Parameters = New Structure;
     OPI_Tools.AddField("code"      , Code                , "String", Parameters);
     OPI_Tools.AddField("grant_type", "authorization_code", "String", Parameters);
 
-    URLStructure = OPI_Tools.SplitURL(URL);
-    Host         = URLStructure["Host"];
-    Address      = URLStructure["Address"];
-
-    Request    = OPI_Tools.CreateRequest(Address, , DataType);
-    Connection = OPI_Tools.CreateConnection(Host, True, AppKey, AppSecret);
-
-    ParameterString = OPI_Tools.RequestParametersToString(Parameters);
-    Data            = Right(ParameterString, StrLen(ParameterString) - 1);
-
-    Request.SetBodyFromString(Data);
-
-    Response = Connection.CallHTTPMethod("POST", Request);
-    OPI_Tools.ProcessResponse(Response);
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Parameters)
+        .AddBasicAuthorization(AppKey, AppSecret)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject(True, True);
 
     Return Response;
 
@@ -117,7 +108,7 @@ Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export
     OPI_Tools.AddField("client_id"    , AppKey          , String_, Parameters);
     OPI_Tools.AddField("client_secret", AppSecret       , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, , False);
 
     Return Response;
 
@@ -157,11 +148,13 @@ Function GetSpaceUsageData(Val Token) Export
     URL     = "https://api.dropboxapi.com/2/users/get_space_usage";
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.PostBinary(URL
-        , GetBinaryDataFromString("null")
-        , Headers
-        ,
-        , "text/plain; charset=dropbox-cors-hack");
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody("null")
+        .SetHeaders(Headers)
+        .SetDataType("text/plain; charset=dropbox-cors-hack")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject(True, True);
 
     Return Response;
 
@@ -190,7 +183,7 @@ Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export
     OPI_Tools.AddField("include_media_info", Detailed, "Boolean", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -228,7 +221,7 @@ Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Va
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -302,7 +295,7 @@ Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export
     OPI_Tools.AddField("url" , FileURL , "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -325,7 +318,7 @@ Function GetUploadStatusByURL(Val Token, Val JobID) Export
     OPI_Tools.AddField("async_job_id", JobID, "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -377,7 +370,7 @@ Function CopyObject(Val Token, Val From, Val Target) Export
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -403,7 +396,7 @@ Function MoveObject(Val Token, Val From, Val Target) Export
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -482,7 +475,7 @@ Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export
     OPI_Tools.AddField("limit", Count, "Number" , Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -507,7 +500,7 @@ Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export
     OPI_Tools.AddField("rev" , Version, "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -535,7 +528,7 @@ Function GetTagList(Val Token, Val Paths) Export
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -612,7 +605,7 @@ Function CancelFolderPublication(Val Token, Val FolderID) Export
     OPI_Tools.AddField("shared_folder_id", FolderID, "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -665,7 +658,7 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -712,7 +705,7 @@ Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewO
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -735,7 +728,7 @@ Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export
     OPI_Tools.AddField("async_job_id", JobID, "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -764,7 +757,7 @@ Function CancelFilePublication(Val Token, Val FileID) Export
     OPI_Tools.AddField("file", FileID, "String", Parameters);
 
     Headers  = GetRequestHeaders(Token);
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -776,6 +769,23 @@ EndFunction
 
 #Region Private
 
+Function PostBinary(Val URL, Val Data, Val Headers) Export
+
+    OPI_TypeConversion.GetBinaryData(Data);
+
+    HttpClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetDataType("application/octet-stream")
+        .SetHeaders(Headers);
+
+    If Data.Size() > 0 Then
+        HttpClient.SetBinaryBody(Data);
+    EndIf;
+
+    Return HttpClient.ProcessRequest("POST").ReturnResponseAsJSONObject(True, True);
+
+EndFunction
+
 Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
 
     Parameters = New Structure;
@@ -783,10 +793,10 @@ Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
 
     If InHeaders Then
         Headers  = GetRequestHeaders(Token, Parameters);
-        Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+        Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
     Else
         Headers  = GetRequestHeaders(Token);
-        Response = OPI_Tools.Post(URL, Parameters, Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     EndIf;
 
     Return Response;
@@ -807,7 +817,7 @@ Function ProcessTag(Val Token, Val Path, Val Tag, Val ThisIsDeletion = False)
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -862,7 +872,7 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
             Break;
         EndIf;
 
-        Response = OPI_Tools.PostBinary(URL, CurrentData, Headers);
+        Response = PostBinary(URL, CurrentData, Headers);
 
         CurrentPosition = NextPosition;
 
@@ -897,7 +907,7 @@ Function UploadSmallFile(Val Token, Val File, Val Path, Val Mode)
 
     Headers = GetRequestHeaders(Token, Parameters);
 
-    Response = OPI_Tools.PostBinary(URL, File, Headers);
+    Response = PostBinary(URL, File, Headers);
 
     Return Response;
 
@@ -909,7 +919,7 @@ Function OpenSession(Val Token)
     URL       = "https://content.dropboxapi.com/2/files/upload_session/start";
     Headers   = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
 
     Return Response[SessionId];
 
@@ -928,7 +938,7 @@ Function CloseSession(Val Token, Val Path, Val Mode, Val TotalSize, Val Session)
     Parameters = New Structure("commit,cursor", Commit, Cursor);
     Headers    = GetRequestHeaders(Token, Parameters);
 
-    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
 
     Return Response;
 
@@ -943,7 +953,7 @@ Function GetAccount(Val Token, Val Account)
 
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -954,14 +964,17 @@ Function GetOwnAccount(Val Token)
     URL     = "https://api.dropboxapi.com/2/users/get_current_account";
     Headers = GetRequestHeaders(Token);
 
-    Response = OPI_Tools.PostBinary(URL
-        , GetBinaryDataFromString("null")
-        , Headers
-        ,
-        , "text/plain; charset=dropbox-cors-hack");
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody("null")
+        .SetHeaders(Headers)
+        .SetDataType("text/plain; charset=dropbox-cors-hack")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject(True, True);
 
     Return Response;
 
 EndFunction
+
 
 #EndRegion

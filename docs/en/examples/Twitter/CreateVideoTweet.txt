@@ -1,8 +1,8 @@
 ﻿    Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or Path to file
-    Video2 = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or Path to file
+    Video  = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or File path
+    Video2 = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or File path
 
     VideosArray = New Array;
     VideosArray.Add(Video);
