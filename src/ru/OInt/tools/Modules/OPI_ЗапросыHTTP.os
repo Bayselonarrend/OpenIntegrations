@@ -43,7 +43,7 @@
 //@skip-check method-too-many-params
 
 // Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+#Использовать "./internal"
 
 #Область ПрограммныйИнтерфейс
 
