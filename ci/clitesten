@@ -2585,11 +2585,11 @@ def test_telegram(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageText --token "test" --chat "test" --message "test" --text "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageText --token "test" --chat "test" --message "test" --text "test" --parsemode "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageCaption --token "test" --chat "test" --message "test" --caption "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe telegram ReplaceMessageCaption --token "test" --chat "test" --message "test" --caption "test" --parsemode "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

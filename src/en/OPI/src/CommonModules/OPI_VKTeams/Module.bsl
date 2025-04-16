@@ -61,7 +61,7 @@ Function CheckToken(Val Token) Export
     URL        = "/self/get";
     Parameters = NormalizeMain(URL, Token);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -89,7 +89,7 @@ Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
     OPI_Tools.AddField("lastEventId", LastID  , "String", Parameters);
     OPI_Tools.AddField("pollTime"   , Timeout , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -114,7 +114,7 @@ Function GetFileInformation(Val Token, Val FileID) Export
 
     OPI_Tools.AddField("fileId", FileID , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -159,7 +159,7 @@ Function SendTextMessage(Val Token
     OPI_Tools.AddField("inlineKeyboardMarkup", Keyboard , "Collection", Parameters);
     OPI_Tools.AddField("parseMode"           , Markup   , String_     , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -210,7 +210,7 @@ Function SendFile(Val Token
     Files = New Map;
     Files.Insert("file|" + DisplayedName, File);
 
-    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, "");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, "");
 
     Return Response;
 
@@ -259,7 +259,7 @@ Function SendVoice(Val Token
     Files = New Map;
     Files.Insert("file|voice", File);
 
-    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, MIMETypeMapping[FileType]);
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, MIMETypeMapping[FileType]);
 
     Return Response;
 
@@ -297,7 +297,7 @@ Function EditMessageText(Val Token
     OPI_Tools.AddField("msgId"    , MessageID, String_, Parameters);
     OPI_Tools.AddField("parseMode", Markup   , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -324,7 +324,7 @@ Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
     OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -361,7 +361,7 @@ Function ResendFile(Val Token
     OPI_Tools.AddField("parseMode" , Markup , String_, Parameters);
     OPI_Tools.AddField("fileId"    , FileID , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -388,7 +388,7 @@ Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
     OPI_Tools.AddField("chatId", ChatID , "String", Parameters);
     OPI_Tools.AddField("fileId", FileID , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -422,7 +422,7 @@ Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Va
     OPI_Tools.AddField("forwardChatId", FromChatID, String_, Parameters);
     OPI_Tools.AddField("forwardMsgId" , MessageID , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -450,7 +450,7 @@ Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
     OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -478,7 +478,7 @@ Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
     OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -516,7 +516,7 @@ Function AnswerButtonEvent(Val Token
     OPI_Tools.AddField("url"      , URL     , String_  , Parameters);
     OPI_Tools.AddField("showAlert", AsAlert , "Boolean", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -590,7 +590,7 @@ Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
     OPI_Tools.AddField("chatId" , ChatID      , "String", Parameters);
     OPI_Tools.AddField("members", MembersQuery, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -621,7 +621,7 @@ Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
     Files = New Map;
     Files.Insert("image|image", File);
 
-    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, "image/xyz");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, "image/xyz");
 
     Return Response;
 
@@ -762,7 +762,7 @@ Function BlockChatUser(Val Token
     OPI_Tools.AddField("userId"         , UserID            , "String" , Parameters);
     OPI_Tools.AddField("delLastMessages", DeleteLastMessages, "Boolean", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -790,7 +790,7 @@ Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
     OPI_Tools.AddField("chatId", ChatID , "String", Parameters);
     OPI_Tools.AddField("userId", UserID , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -930,7 +930,7 @@ Function GetChatData(Val Token, Val ChatID, Val Method, Val Cursor = "")
     OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
     OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -950,7 +950,7 @@ Function ResolvePending(Val Token, Val ChatID, Val Response, Val UserID = "")
         OPI_Tools.AddField("everyone", True  , "Boolean", Parameters);
     EndIf;
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -964,7 +964,7 @@ Function UpdateChatParameters(Val Token, Val ChatID, Val Parameter, Val Value)
     OPI_Tools.AddField("chatId" , ChatID , "String", Parameters);
     OPI_Tools.AddField(Parameter, Value  , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 

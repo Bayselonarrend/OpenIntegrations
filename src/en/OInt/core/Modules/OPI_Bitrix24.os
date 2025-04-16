@@ -95,7 +95,7 @@ Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export
     OPI_Tools.AddField("client_secret", ClientSecret        , String_, Parameters);
     OPI_Tools.AddField("code"         , Code                , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -122,7 +122,7 @@ Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export
     OPI_Tools.AddField("client_secret", ClientSecret    , String_, Parameters);
     OPI_Tools.AddField("refresh_token", Refresh         , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -143,7 +143,7 @@ EndFunction
 Function ServerTime(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "server.time");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -200,7 +200,7 @@ Function CreatePost(Val URL
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -251,7 +251,7 @@ Function UpdatePost(Val URL
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -275,7 +275,7 @@ Function DeletePost(Val URL, Val PostID, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.delete");
     OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -299,7 +299,7 @@ Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.getusers.important");
     OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -326,7 +326,7 @@ Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") E
     OPI_Tools.AddField("POST_ID"   , PostID , "String", Parameters);
     OPI_Tools.AddField("LOG_RIGHTS", Filter , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -353,7 +353,7 @@ Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export
     OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
     OPI_Tools.AddField("TEXT"   , Text  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -380,7 +380,7 @@ Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") 
     OPI_Tools.AddField("POST_ID", PostID    , "String", Parameters);
     OPI_Tools.AddField("DEST"   , Visibility, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -432,7 +432,7 @@ Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "", 
     OPI_Tools.AddField("start" , Indent , "String"    , Parameters);
     OPI_Tools.AddField("select", Fields , "Array"     , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -456,7 +456,7 @@ Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "tasks.task.add");
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -482,7 +482,7 @@ Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Ex
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
     OPI_Tools.AddField("taskId", TaskID         , "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -528,7 +528,7 @@ Function AttachFileToTopic(Val URL, Val TaskID, Val FileID, Val Token = "") Expo
     OPI_Tools.AddField("fileId", FileID , "String", Parameters);
     OPI_Tools.AddField("taskId", TaskID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -734,7 +734,7 @@ Function DelegateTask(Val URL, Val TaskID, Val UserID, Val Token = "") Export
     OPI_Tools.AddField("taskId", TaskID , "String", Parameters);
     OPI_Tools.AddField("userId", UserID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -820,7 +820,7 @@ Function CheckTaskAccesses(Val URL, Val TaskID, Val Users = "", Val Token = "") 
     OPI_Tools.AddField("taskId", TaskID , "String" , Parameters);
     OPI_Tools.AddField("users" , Users  , "Array"  , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -892,7 +892,7 @@ Function CreateTasksDependencies(Val URL, Val FromID, Val DestinationID, Val Lin
     OPI_Tools.AddField("taskIdTo"  , DestinationID, String_, Parameters);
     OPI_Tools.AddField("linkType"  , LinkType     , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -924,7 +924,7 @@ Function DeleteTasksDependencies(Val URL, Val FromID, Val DestinationID, Val Lin
     OPI_Tools.AddField("taskIdTo"  , DestinationID, String_, Parameters);
     OPI_Tools.AddField("linkType"  , LinkType     , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -946,7 +946,7 @@ Function GetDailyPlan(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "task.planner.getlist");
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -967,7 +967,7 @@ EndFunction
 Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1057,7 +1057,7 @@ Function GetCustomTaskFieldsList(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "task.item.userfield.getlist");
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1101,7 +1101,7 @@ Function AddCustomTaskField(Val URL
 
     OPI_Tools.AddField("PARAMS", Fields, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1142,7 +1142,7 @@ Function UpdateCustomTaskField(Val URL
     OPI_Tools.AddField("ID"  , FieldID, String_     , Parameters);
     OPI_Tools.AddField("DATA", Fields , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1167,7 +1167,7 @@ Function GetCustomTaskField(Val URL, Val FieldID, Val Token = "") Export
 
     OPI_Tools.AddField("ID", FieldID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1192,7 +1192,7 @@ Function DeleteCustomTaskField(Val URL, Val FieldID, Val Token = "") Export
 
     OPI_Tools.AddField("ID", FieldID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1232,7 +1232,7 @@ Function AddTasksChecklistElement(Val URL, Val TaskID, Val Text, Val Completed =
     OPI_Tools.AddField("TASKID", TaskID , String_     , Parameters);
     OPI_Tools.AddField("FIELDS", Fields , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1266,7 +1266,7 @@ Function UpdateTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Tex
     OPI_Tools.AddField("ITEMID", ElementID, String_     , Parameters);
     OPI_Tools.AddField("FIELDS", Fields   , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1313,7 +1313,7 @@ Function GetTasksChecklist(Val URL, Val TaskID, Val Token = "") Export
 
     OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1429,7 +1429,7 @@ Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Expo
     OPI_Tools.AddField("TASKID", TaskID   , "String", Parameters);
     OPI_Tools.AddField("ITEMID", CommentID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1459,7 +1459,7 @@ Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export
     OPI_Tools.AddField("TASKID", TaskID , "String"    , Parameters);
     OPI_Tools.AddField("FIELDS", Comment, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1493,7 +1493,7 @@ Function UpdateTaskComment(Val URL, Val TaskID, Val CommentID, Val Text, Val Tok
     OPI_Tools.AddField("ITEMID", CommentID, String_     , Parameters);
     OPI_Tools.AddField("FIELDS", Comment  , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1520,7 +1520,7 @@ Function DeleteTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") E
     OPI_Tools.AddField("TASKID", TaskID   , "String", Parameters);
     OPI_Tools.AddField("ITEMID", CommentID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1564,7 +1564,7 @@ Function CreateResultFromComment(Val URL, Val CommentID, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "tasks.task.result.addFromComment");
     OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1588,7 +1588,7 @@ Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "tasks.task.result.deleteFromComment");
     OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1672,7 +1672,7 @@ Function AddKanbanStage(Val URL
 
     Parameters.Insert("fields", Fields);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1716,7 +1716,7 @@ Function UpdateKanbansStage(Val URL
     OPI_Tools.AddField("id"    , StageID, String_     , Parameters);
     OPI_Tools.AddField("fields", Fields , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1745,7 +1745,7 @@ Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token 
     OPI_Tools.AddField("id"     , StageID , "String", Parameters);
     OPI_Tools.AddField("isAdmin", AsAdmin , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1775,7 +1775,7 @@ Function GetKanbanStages(Val URL, Val EntityID = 0, Val AsAdmin = False, Val Tok
     OPI_Tools.AddField("entityId", EntityID , "String", Parameters);
     OPI_Tools.AddField("isAdmin" , AsAdmin  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1822,7 +1822,7 @@ Function MoveTaskToKanbanStage(Val URL
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1870,7 +1870,7 @@ Function AddTaskTimeAccounting(Val URL
     OPI_Tools.AddField("TASKID"  , TaskID , String_     , Parameters);
     OPI_Tools.AddField("ARFIELDS", Fields , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1897,7 +1897,7 @@ Function DeleteTaskTimeAccounting(Val URL, Val TaskID, Val RecordID, Val Token =
     OPI_Tools.AddField("TASKID", TaskID  , "String", Parameters);
     OPI_Tools.AddField("ITEMID", RecordID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1922,7 +1922,7 @@ Function GetTaskTimeAccountingList(Val URL, Val TaskID, Val Token = "") Export
 
     OPI_Tools.AddField("TASKID", TaskID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1949,7 +1949,7 @@ Function GetTaskTimeAccounting(Val URL, Val TaskID, Val RecordID, Val Token = ""
     OPI_Tools.AddField("TASKID", TaskID  , "String", Parameters);
     OPI_Tools.AddField("ITEMID", RecordID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1993,7 +1993,7 @@ Function UpdateTaskTimeAccounting(Val URL
     OPI_Tools.AddField("ITEMID"  , RecordID, String_     , Parameters);
     OPI_Tools.AddField("ARFIELDS", Fields  , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2026,7 +2026,7 @@ Function StartTimekeeping(Val URL
     OPI_Tools.AddField("TIME"   , Time   , "DateISOZ", Parameters);
     OPI_Tools.AddField("REPORT" , Report , "String"  , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2059,7 +2059,7 @@ Function StopTimekeeping(Val URL
     OPI_Tools.AddField("TIME"   , Time   , "DateISOZ", Parameters);
     OPI_Tools.AddField("REPORT" , Report , "String"  , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2084,7 +2084,7 @@ Function PauseTimekeeping(Val URL, Val UserID = "", Val Token = "") Export
 
     OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2109,7 +2109,7 @@ Function GetTimekeepingStatus(Val URL, Val UserID = "", Val Token = "") Export
 
     OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2134,7 +2134,7 @@ Function GetTimekeepingSettings(Val URL, Val UserID = "", Val Token = "") Export
 
     OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2159,7 +2159,7 @@ EndFunction
 Function GetStoragesList(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "disk.storage.getlist");
-    Response   = OPI_Tools.Post(URL, Parameters);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2180,7 +2180,7 @@ EndFunction
 Function GetAppSotrage(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "disk.storage.getforapp");
-    Response   = OPI_Tools.Post(URL, Parameters);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2227,7 +2227,7 @@ Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export
     OPI_Tools.AddField("id"     , StorageID , "String", Parameters);
     OPI_Tools.AddField("newName", Name      , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2278,7 +2278,7 @@ Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") E
     OPI_Tools.AddField("id"  , StorageID      , "String"    , Parameters);
     OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2333,7 +2333,7 @@ Function CreateSubfolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
     OPI_Tools.AddField("id"  , FolderID       , "String"    , Parameters);
     OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2360,7 +2360,7 @@ Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = ""
     OPI_Tools.AddField("id"            , FolderID     , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2387,7 +2387,7 @@ Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Ex
     OPI_Tools.AddField("id"            , FolderID     , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2453,7 +2453,7 @@ Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") 
     OPI_Tools.AddField("id"    , FolderID, "String"    , Parameters);
     OPI_Tools.AddField("filter", Filter  , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2520,7 +2520,7 @@ Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
     OPI_Tools.AddField("id"     , FolderID , "String", Parameters);
     OPI_Tools.AddField("newName", Name     , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2544,7 +2544,7 @@ Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Ex
     Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
     Filter     = New Structure;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
     Fields   = Response["result"];
 
     For Each Field In Fields Do
@@ -2612,7 +2612,7 @@ Function UploadFileToStorage(Val URL
         Parameters.Insert("fileContent", FileArray[0]);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2641,7 +2641,7 @@ Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token
     Parameters = NormalizeAuth(URL, Token, "disk.folder.uploadFile");
     OPI_Tools.AddField("id", FolderID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
     Result   = Response["result"];
 
     If ValueIsFilled(Result) Then
@@ -2658,7 +2658,7 @@ Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token
             FileMapping = New Map;
             FileMapping.Insert(FileName, File);
 
-            Response = OPI_Tools.PostMultipart(UploadURL, , FileMapping, "");
+            Response = OPI_HTTPRequests.PostMultipart(UploadURL, , FileMapping, "");
 
         EndIf;
 
@@ -2790,7 +2790,7 @@ Function MakeCopyFile(Val URL, Val FileID, Val FolderID, Val Token = "") Export
     OPI_Tools.AddField("id"            , FileID  , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", FolderID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2817,7 +2817,7 @@ Function MoveFileToFolder(Val URL, Val FileID, Val FolderID, Val Token = "") Exp
     OPI_Tools.AddField("id"            , FileID  , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", FolderID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2844,7 +2844,7 @@ Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export
     OPI_Tools.AddField("id"     , FileID , "String", Parameters);
     OPI_Tools.AddField("newName", Name   , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2877,7 +2877,7 @@ Function CreateChat(Val URL, Val ChatStructure, Val Token = "") Export
         Parameters.Insert(Element.Key, Element.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2942,7 +2942,7 @@ Function GetUsers(Val URL, Val UserIDs, Val Token = "") Export
 
     OPI_Tools.AddField("ID", UserIDs, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -2977,7 +2977,7 @@ Function AddUsersToChat(Val URL
     OPI_Tools.AddField("USERS"       , UserIDs     , "Collection", Parameters);
     OPI_Tools.AddField("HIDE_HISTORY", HideHistory , "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3004,7 +3004,7 @@ Function DeleteUserFromChat(Val URL, Val ChatID, Val UserID, Val Token = "") Exp
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("USER_ID", UserID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3031,7 +3031,7 @@ Function ChangeChatTitle(Val URL, Val ChatID, Val Title, Val Token = "") Export
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("TITLE"  , Title  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3059,7 +3059,7 @@ Function ChangeChatColor(Val URL, Val ChatID, Val Color, Val Token = "") Export
     OPI_Tools.AddField("CHAT_ID", ChatID, "String", Parameters);
     OPI_Tools.AddField("COLOR"  , Color , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3089,7 +3089,7 @@ Function ChangeChatPicture(Val URL, Val ChatID, Val Image, Val Token = "") Expor
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("AVATAR" , Image  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3116,7 +3116,7 @@ Function ChangeChatOwner(Val URL, Val ChatID, Val UserID, Val Token = "") Export
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("USER_ID", UserID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3194,7 +3194,7 @@ Function GetChatMessagesList(Val URL
     OPI_Tools.AddField("LAST_ID"  , LastID  , String_, Parameters);
     OPI_Tools.AddField("FIRST_ID" , FirstID , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3219,7 +3219,7 @@ Function GetDialog(Val URL, Val ChatID, Val Token = "") Export
 
     OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3244,7 +3244,7 @@ Function GetChatMembersList(Val URL, Val ChatID, Val Token = "") Export
 
     OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3269,7 +3269,7 @@ Function SendWritingNotification(Val URL, Val ChatID, Val Token = "") Export
 
     OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3291,7 +3291,7 @@ Function GetUserStatus(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "im.user.status.get");
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3316,7 +3316,7 @@ Function SetUserStatus(Val URL, Val Status, Val Token = "") Export
 
     OPI_Tools.AddField("STATUS", Status, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3337,7 +3337,7 @@ EndFunction
 Function ReadAll(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "im.dialog.read.all");
-    Response   = OPI_Tools.Post(URL, Parameters);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3423,7 +3423,7 @@ Function SendMessage(Val URL, Val ChatID, Val Text, Val Attachments = "", Val To
     OPI_Tools.AddField("MESSAGE"  , Text       , "String", Parameters);
     OPI_Tools.AddField("ATTACH"   , Attachments, "Array" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3452,7 +3452,7 @@ Function EditMessage(Val URL, Val MessageID, Val Text = "", Val Attachments = ""
     OPI_Tools.AddField("MESSAGE"   , Text        , "String", Parameters);
     OPI_Tools.AddField("ATTACH"    , Attachments , "Array" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3477,7 +3477,7 @@ Function SetMessageReaction(Val URL, Val MessageID, Val Token = "") Export
 
     OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3502,7 +3502,7 @@ Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export
 
     OPI_Tools.AddField("MESSAGE_ID", MessageID , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3533,7 +3533,7 @@ Function SendFile(Val URL, Val ChatID, Val FileID, Val Description = "", Val Tok
     OPI_Tools.AddField("UPLOAD_ID", FileID     , String_, Parameters);
     OPI_Tools.AddField("MESSAGE"  , Description, String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3560,7 +3560,7 @@ Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "")
     OPI_Tools.AddField("DIALOG_ID" , ChatID   , "String", Parameters);
     OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3587,7 +3587,7 @@ Function MarkMessageAsUnreaded(Val URL, Val ChatID, Val MessageID, Val Token = "
     OPI_Tools.AddField("DIALOG_ID" , ChatID   , "String", Parameters);
     OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3675,7 +3675,7 @@ Function CreatePersonalNotification(Val URL
     OPI_Tools.AddField("TAG"    , Tag         , String_ , Parameters);
     OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3713,7 +3713,7 @@ Function CreateSystemNotification(Val URL
     OPI_Tools.AddField("TAG"    , Tag         , String_ , Parameters);
     OPI_Tools.AddField("ATTACH" , Attachments , "Array" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3738,7 +3738,7 @@ Function DeleteNotification(Val URL, Val NotificationID, Val Token = "") Export
 
     OPI_Tools.AddField("ID", NotificationID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3777,7 +3777,7 @@ Function CreateDepartment(Val URL
     OPI_Tools.AddField("PARENT" , ParentID , String_, Parameters);
     OPI_Tools.AddField("UF_HEAD", HeadID   , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3815,7 +3815,7 @@ Function UpdateDepartment(Val URL
     OPI_Tools.AddField("PARENT" , ParentID    , String_, Parameters);
     OPI_Tools.AddField("UF_HEAD", HeadID      , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3853,7 +3853,7 @@ Function GetDepartments(Val URL
     OPI_Tools.AddField("PARENT" , ParentID    , String_, Parameters);
     OPI_Tools.AddField("UF_HEAD", HeadID      , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3878,7 +3878,7 @@ Function DeleteDepartment(Val URL, Val DepartmentID, Val Token = "") Export
 
     OPI_Tools.AddField("ID", DepartmentID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3904,7 +3904,7 @@ Function GetCurrentUser(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "user.current");
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3929,7 +3929,7 @@ Function GetUser(Val URL, Val UserID, Val Token = "") Export
 
     OPI_Tools.AddField("ID", UserID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3960,7 +3960,7 @@ Function CreateUser(Val URL, Val FieldsStructure, Val Token = "") Export
         Parameters.Insert(Field.Key, Field.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -3992,7 +3992,7 @@ Function UpdateUser(Val URL, Val UserID, Val FieldsStructure, Val Token = "") Ex
 
     OPI_Tools.AddField("ID", UserID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4044,7 +4044,7 @@ Function FindUsers(Val URL, Val FilterStructure, Val Token = "") Export
 
     OPI_Tools.AddField("FILTER", FilterStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4066,7 +4066,7 @@ Function GetUserFieldsStructure(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "user.fields");
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4125,7 +4125,7 @@ Function CreateLead(Val URL, Val FieldsStructure, Val Token = "") Export
 
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4192,7 +4192,7 @@ Function GetLeadsList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") 
     OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
     OPI_Tools.AddField("start" , Indent, "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4219,7 +4219,7 @@ Function UpdateLead(Val URL, Val LeadID, Val FieldsStructure, Val Token = "") Ex
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
     OPI_Tools.AddField("id"    , LeadID         , "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4240,7 +4240,7 @@ EndFunction
 Function GetLeadStructure(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "crm.lead.fields");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -4318,7 +4318,7 @@ Function CreateDeal(Val URL, Val FieldsStructure, Val Token = "") Export
 
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4385,7 +4385,7 @@ Function GetDealsList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") 
     OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
     OPI_Tools.AddField("start" , Indent, "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4412,7 +4412,7 @@ Function UpdateDeal(Val URL, Val DealID, Val FieldsStructure, Val Token = "") Ex
     OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
     OPI_Tools.AddField("id"    , DealID         , "String"    , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4433,7 +4433,7 @@ EndFunction
 Function GetDealStructure(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "crm.deal.fields");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -4517,7 +4517,7 @@ Function GetCalendarList(Val URL, Val OwnerID, Val Type, Val Token = "") Export
     OPI_Tools.AddField("type"   , Type   , "String", Parameters);
     OPI_Tools.AddField("ownerId", OwnerID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4546,7 +4546,7 @@ Function CreateCalendar(Val URL, Val FieldsStructure, Val Token = "") Export
         Parameters.Insert(Field.Key, Field.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4578,7 +4578,7 @@ Function UpdateCalendar(Val URL, Val CalendarID, Val FieldsStructure, Val Token 
         Parameters.Insert(Field.Key, Field.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4609,7 +4609,7 @@ Function DeleteCalendar(Val URL, Val CalendarID, Val OwnerID, Val Type, Val Toke
     OPI_Tools.AddField("ownerId", OwnerID   , String_, Parameters);
     OPI_Tools.AddField("id"     , CalendarID, String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4641,7 +4641,7 @@ Function GetUserBusy(Val URL, Val Users, Val StartDate, Val EndDate, Val Token =
     OPI_Tools.AddField("from" , Format(StartDate , "DF=yyyy-MM-dd"), String_ , Parameters);
     OPI_Tools.AddField("to"   , Format(EndDate   , "DF=yyyy-MM-dd"), String_ , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4662,7 +4662,7 @@ EndFunction
 Function GetCustomCalendarSettings(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "calendar.user.settings.get");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -4687,7 +4687,7 @@ Function SetCustomCalendarSettings(Val URL, Val SettingsStructure, Val Token = "
 
     OPI_Tools.AddField("settings", SettingsStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4708,7 +4708,7 @@ EndFunction
 Function GetCalendarSettingsStructure(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "calendar.settings.get");
-    Response   = OPI_Tools.Get(URL, Parameters);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -4829,7 +4829,7 @@ Function CreateCalendarEvent(Val URL, Val EventDescription, Val Token = "") Expo
         Parameters.Insert(Field.Key, Field.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4860,7 +4860,7 @@ Function UpdateCalendarEvent(Val URL, Val EventID, Val EventDescription, Val Tok
         Parameters.Insert(Field.Key, Field.Value);
     EndDo;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -4938,7 +4938,7 @@ Function GetCalendarEvents(Val URL, Val OwnerID, Val Type, Val Filter = "", Val 
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -5005,7 +5005,7 @@ Function SetUserParticipationStatus(Val URL, Val EventID, Val Status, Val Token 
     OPI_Tools.AddField("eventId", EventID, "String", Parameters);
     OPI_Tools.AddField("status" , Status , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -5201,7 +5201,7 @@ Function PrimaryControlAction(Val URL, Val ObjectID, Val Method, Val Token = "",
     Parameters = NormalizeAuth(URL, Token, Method);
     OPI_Tools.AddField(FieldID, ObjectID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -5214,7 +5214,7 @@ Function ChecklistElementManagement(Val URL, Val TaskID, Val ElementID, Val Meth
     OPI_Tools.AddField("TASKID", TaskID   , "String", Parameters);
     OPI_Tools.AddField("ITEMID", ElementID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -5229,7 +5229,7 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("MUTE"   , Off    , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 

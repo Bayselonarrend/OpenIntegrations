@@ -65,7 +65,7 @@ Function GetVersion(Val URL, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
 
     Return Response;
 
@@ -100,7 +100,7 @@ Function GetResponse(Val URL, Val Model, Val Question, Val AdditionalParameters 
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -134,7 +134,7 @@ Function GetContextResponse(Val URL, Val Model, Val Messages, Val AdditionalPara
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -167,7 +167,7 @@ Function GetEmbeddings(Val URL, Val Model, Val Question, Val AdditionalParameter
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -303,7 +303,7 @@ Function GetModelList(Val URL, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
 
     Return Response;
 
@@ -327,7 +327,7 @@ Function ListRunningModels(Val URL, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Get(URL, , AdditionalHeaders);
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
 
     Return Response;
 
@@ -358,7 +358,7 @@ Function GetModelInformation(Val URL, Val Model, Val Detailed = True, Val Additi
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -390,7 +390,7 @@ Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "
     ProcessParameters(Parameters, Settings);
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -421,7 +421,7 @@ Function CopyModel(Val URL, Val Model, Val Name, Val AdditionalHeaders = "") Exp
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders, , True);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders, , True);
     Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;
@@ -451,7 +451,7 @@ Function DeleteModel(Val URL, Val Model, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.DeleteWithBody(URL, Parameters, AdditionalHeaders, , True);
+    Response = OPI_HTTPRequests.DeleteWithBody(URL, Parameters, AdditionalHeaders, , True);
     Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;
@@ -482,7 +482,7 @@ Function LoadModelToMemory(Val URL, Val Model, Val Period = 300, Val AdditionalH
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -512,7 +512,7 @@ Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") E
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -546,7 +546,7 @@ Function PushModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeade
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -578,7 +578,7 @@ Function PullModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeade
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Post(URL, Parameters, AdditionalHeaders);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
     Return Response;
 
@@ -645,8 +645,13 @@ Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
     URL = StrTemplate(URL, Hash);
 
     HeadersProcessing(AdditionalHeaders);
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Data)
+        .SetHeaders(AdditionalHeaders)
+        .ProcessRequest("POST")
+        .ReturnResponse(False, True);
 
-    Response = OPI_Tools.PostBinary(URL, Data, AdditionalHeaders, True);
     Response = New Structure("status_code,digest", Response.StatusCode, Hash);
 
     Return Response;
@@ -676,7 +681,7 @@ Function CheckBlob(Val URL, Val SHA256, Val AdditionalHeaders = "") Export
 
     HeadersProcessing(AdditionalHeaders);
 
-    Response = OPI_Tools.Head(URL, , AdditionalHeaders, , True);
+    Response = OPI_HTTPRequests.Head(URL, , AdditionalHeaders, , True);
     Response = New Structure("status_code", Response.StatusCode);
 
     Return Response;

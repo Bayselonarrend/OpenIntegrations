@@ -69,7 +69,7 @@ Function CreatePage(Val Token, Val Parent, Val Title) Export
 
     Parameters.Insert("properties", Properties);
 
-    Response = OPI_Tools.Post("https://api.notion.com/v1/pages", Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody("https://api.notion.com/v1/pages", Parameters, Headers);
 
     Return Response;
 
@@ -99,7 +99,7 @@ Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
     Properties = FillDataBySchema(Parent, Data, Token);
     Parameters.Insert("properties", Properties);
 
-    Response = OPI_Tools.Post("https://api.notion.com/v1/pages", Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody("https://api.notion.com/v1/pages", Parameters, Headers);
 
     Return Response;
 
@@ -122,7 +122,7 @@ Function GetPage(Val Token, Val Page) Export
     Headers = CreateRequestHeaders(Token);
     ConvertID(Page);
 
-    Response = OPI_Tools.Get("https://api.notion.com/v1/pages/" + Page, , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/pages/" + Page, , Headers);
 
     Return Response;
 
@@ -193,7 +193,7 @@ Function EditPageProperties(Val Token
 
     ConvertID(Page);
 
-    Response = OPI_Tools.Patch("https://api.notion.com/v1/pages/" + Page, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody("https://api.notion.com/v1/pages/" + Page, Parameters, Headers);
 
     Return Response;
 
@@ -246,7 +246,7 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     AddDatabaseHeader(Title, Parameters);
     AddDatabaseProperties(Properties, Parameters);
 
-    Response = OPI_Tools.Post("https://api.notion.com/v1/databases", Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody("https://api.notion.com/v1/databases", Parameters, Headers);
 
     Return Response;
 
@@ -269,7 +269,7 @@ Function GetDatabase(Val Token, Val Base) Export
     Headers = CreateRequestHeaders(Token);
     ConvertID(Base);
 
-    Response = OPI_Tools.Get("https://api.notion.com/v1/databases/" + Base, , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/databases/" + Base, , Headers);
 
     Return Response;
 
@@ -311,7 +311,7 @@ Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Ti
         AddDatabaseProperties(Properties, Parameters);
     EndIf;
 
-    Response = OPI_Tools.Patch("https://api.notion.com/v1/databases/" + Base, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody("https://api.notion.com/v1/databases/" + Base, Parameters, Headers);
 
     Return Response;
 
@@ -362,7 +362,7 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
     EndIf;
 
     URL      = "https://api.notion.com/v1/blocks/" + Parent + "/children";
-    Response = OPI_Tools.Patch(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -387,7 +387,7 @@ Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
     ConvertID(BlockID);
 
     Headers  = CreateRequestHeaders(Token);
-    Response = OPI_Tools.Get("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
 
     If OnlyBase Then
         RemoveExtraBlockFields(Response);
@@ -414,7 +414,7 @@ Function ReturnChildBlocks(Val Token, Val BlockID) Export
     ConvertID(BlockID);
 
     Headers  = CreateRequestHeaders(Token);
-    Response = OPI_Tools.Get("https://api.notion.com/v1/blocks/" + BlockID + "/children", , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/blocks/" + BlockID + "/children", , Headers);
 
     Return Response;
 
@@ -437,7 +437,7 @@ Function DeleteBlock(Val Token, Val BlockID) Export
     ConvertID(BlockID);
 
     Headers  = CreateRequestHeaders(Token);
-    Response = OPI_Tools.Delete("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
+    Response = OPI_HTTPRequests.Delete("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
 
     Return Response;
 
@@ -460,7 +460,7 @@ Function UserList(Val Token) Export
     OPI_TypeConversion.GetLine(Token);
 
     Headers  = CreateRequestHeaders(Token);
-    Response = OPI_Tools.Get("https://api.notion.com/v1/users", , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/users", , Headers);
 
     Return Response;
 
@@ -483,7 +483,7 @@ Function GetUserData(Val Token, Val UserID) Export
     ConvertID(UserID);
 
     Headers  = CreateRequestHeaders(Token);
-    Response = OPI_Tools.Get("https://api.notion.com/v1/users/" + UserID, , Headers);
+    Response = OPI_HTTPRequests.Get("https://api.notion.com/v1/users/" + UserID, , Headers);
 
     Return Response;
 

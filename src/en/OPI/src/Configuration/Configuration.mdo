@@ -74,6 +74,7 @@
   <commonModules>CommonModule.OPI_YandexMarket</commonModules>
   <commonModules>CommonModule.OPI_YandexMetrika</commonModules>
   <commonModules>CommonModule.OPI_Tools</commonModules>
+  <commonModules>CommonModule.OPI_HTTPRequests</commonModules>
   <commonModules>CommonModule.OPI_SQLQueries</commonModules>
   <commonModules>CommonModule.OPI_AddIns</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>
@@ -81,4 +82,5 @@
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
+  <dataProcessors>DataProcessor.OPI_HTTPClient</dataProcessors>
 </mdclass:Configuration>

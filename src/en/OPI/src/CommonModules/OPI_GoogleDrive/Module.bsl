@@ -62,7 +62,7 @@ Function GetObjectInformation(Val Token, Val Identifier) Export
     Parameters = New Structure;
     Parameters.Insert("fields", "*");
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -203,7 +203,7 @@ Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export
     Parameters = New Map;
     Parameters.Insert("alt", "media");
 
-    Response = OPI_Tools.Get(URL, Parameters , Headers, SavePath);
+    Response = OPI_HTTPRequests.Get(URL, Parameters , Headers, SavePath);
 
     Return Response;
 
@@ -244,7 +244,7 @@ Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent =
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters , Headers, True);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters , Headers, True);
 
     Return Response;
 
@@ -295,7 +295,7 @@ Function DeleteObject(Val Token, Val Identifier) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/drive/v3/files/" + Identifier;
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -359,7 +359,7 @@ Function CreateComment(Val Token, Val Identifier, Val Comment) Export
     Parameters = New Structure;
     Parameters.Insert("content", Comment);
 
-    Response = OPI_Tools.POST(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -387,7 +387,7 @@ Function GetComment(Val Token, Val ObjectID, Val CommentID) Export
     Parameters = New Structure;
     Parameters.Insert("fields", "*");
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -413,7 +413,7 @@ Function GetCommentList(Val Token, Val ObjectID) Export
     Parameters = New Structure;
     Parameters.Insert("fields", "*");
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -438,7 +438,7 @@ Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL     = "https://www.googleapis.com/drive/v3/files/" + ObjectID + "/comments/" + CommentID;
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -468,7 +468,7 @@ Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = Fals
         Parameters.Insert("q", FilterString);
     EndIf;
 
-    Result = OPI_Tools.Get(URL, Parameters, Headers);
+    Result = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Objects = Result[Files];
     Page    = Result[NPT];
@@ -587,13 +587,25 @@ EndFunction
 Function UploadSmallFile(Val Description, Val FileMapping, Val Headers, Val Identifier = "")
 
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";
+    URL = StrReplace(URL, "/files", "/files/" + Identifier);
 
     If ValueIsFilled(Identifier) Then
-        URL      = StrReplace(URL, "/files", "/files/" + Identifier);
-        Response = OPI_Tools.PatchMultipartRelated(URL, Description, FileMapping, Headers);
+        Method = "PATCH";
     Else
-        Response = OPI_Tools.PostMultipartRelated(URL, Description, FileMapping, Headers);
+        Method = "POST";
     EndIf;
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetHeaders(Headers)
+        .StartMultipartBody(True, "related")
+        .AddDataAsRelated(Description, "application/json; charset=UTF-8");
+
+    For Each File In FileMapping Do
+        HTTPClient.AddDataAsRelated(File.Key, File.Value)
+    EndDo;
+
+    Response = HTTPClient.ProcessRequest(Method).ReturnResponseAsJSONObject(True, True);
 
     Return Response;
 
@@ -610,9 +622,9 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
 
     If ValueIsFilled(Identifier) Then
         URL      = StrReplace(URL, "/files", "/files/" + Identifier);
-        Response = OPI_Tools.Patch(URL, Description, Headers, True, True);
+        Response = OPI_HTTPRequests.PatchWithBody(URL, Description, Headers, True, True);
     Else
-        Response = OPI_Tools.Post(URL, Description, Headers, True, True);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Description, Headers, True, True);
     EndIf;
 
     UploadURL = Response.Headers["Location"];
@@ -665,7 +677,7 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
         AdditionalHeaders.Insert("Content-Range" , StreamHeader);
         AdditionalHeaders.Insert("Content-Type"  , "application/octet-stream");
 
-        Response = OPI_Tools.Put(UploadURL, CurrentData, AdditionalHeaders, False, True);
+        Response = OPI_HTTPRequests.PutWithBody(UploadURL, CurrentData, AdditionalHeaders, False, True);
 
         CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
 
@@ -699,7 +711,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
         StreamHeader = "bytes */" + StrTotalSize;
         AdditionalHeaders.Insert("Content-Range" , StreamHeader);
 
-        CheckResponse = OPI_Tools.Put(UploadURL, "", AdditionalHeaders, False, True);
+        CheckResponse = OPI_HTTPRequests.PutWithBody(UploadURL, "", AdditionalHeaders, False, True);
 
         If CheckResponse.StatusCode >= StartOfSuccessCodes And CheckResponse.StatusCode < EndOfSuccessCodes Then
 

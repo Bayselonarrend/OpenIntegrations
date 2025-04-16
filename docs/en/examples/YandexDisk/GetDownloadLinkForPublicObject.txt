@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/d/jO9YPGTfpl_zXQ";
+    URL   = "https://yadi.sk/d/Ty4qpH_7xuwN6A";
 
     Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);

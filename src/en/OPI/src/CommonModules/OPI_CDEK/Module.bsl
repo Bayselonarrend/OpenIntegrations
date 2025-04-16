@@ -70,7 +70,7 @@ Function GetToken(Val Account, Val Password, TestAPI = False) Export
     OPI_Tools.AddField("client_id"    , Account             , String_, Parameters);
     OPI_Tools.AddField("client_secret", Password            , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, , False);
 
     Return Response;
 
@@ -97,7 +97,7 @@ Function GetCashboxChecksByDate(Val Token, Val ReceivingDate, Val TestAPI = Fals
     Parameters = New Structure;
     OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -124,7 +124,7 @@ Function GetDeliveryCashRegistry(Val Token, Val ReceivingDate, Val TestAPI = Fal
     Parameters = New Structure;
     OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -151,7 +151,7 @@ Function GetDeliveryCashTransfers(Val Token, Val ReceivingDate, Val TestAPI = Fa
     Parameters = New Structure;
     OPI_Tools.AddField("date", ReceivingDate, "DateWithoutTime", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -177,7 +177,7 @@ Function GetOfficeList(Val Token, Val Filter = "", Val TestAPI = False) Export
     URL     = FormURL("/deliverypoints", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, Filter, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Filter, Headers);
 
     Return Response;
 
@@ -212,7 +212,7 @@ Function GetRegionsList(Val Token
     OPI_Tools.AddField("page"         , Page      , "Number" , Parameters);
     OPI_Tools.AddField("lang"         , Lang      , "String" , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -294,7 +294,7 @@ Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, V
 
     OPI_Tools.AddField("type", ?(OnlineStore, 1, 2), "Number", OrderDescription);
 
-    Response = OPI_Tools.Post(URL, OrderDescription, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, OrderDescription, Headers);
 
     Return Response;
 
@@ -323,7 +323,7 @@ Function UpdateOrder(Val Token, Val UUID, Val OrderDescription, Val TestAPI = Fa
 
     OPI_Tools.AddField("uuid", UUID, "String", OrderDescription);
 
-    Response = OPI_Tools.Patch(URL, OrderDescription, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, OrderDescription, Headers);
 
     Return Response;
 
@@ -349,7 +349,7 @@ Function DeleteOrder(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/orders/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -375,7 +375,7 @@ Function GetOrder(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/orders/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -407,7 +407,7 @@ Function GetOrderByNumber(Val Token, Val OrderNumber, Val Internal = False, Val 
     Parameters = New Structure;
     OPI_Tools.AddField(ParameterName, OrderNumber, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -439,7 +439,7 @@ Function CreateCustomerRefund(Val Token, Val UUID, Val Tariff, Val TestAPI = Fal
     Parameters = New Structure;
     OPI_Tools.AddField("tariff_code", Tariff, "Number", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -465,7 +465,7 @@ Function CreateRefusal(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/orders/" + UUID + "/refusal", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -513,7 +513,7 @@ Function CreateReceipt(Val Token
     OPI_Tools.AddField("copy_count", CopiesPerSheet , "Number" , Parameters);
     OPI_Tools.AddField("type"      , Type           , "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -543,7 +543,7 @@ Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
     URL     = FormURL("/print/orders/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     If GetFile Then
 
@@ -559,7 +559,7 @@ Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
             Return Response;
         EndIf;
 
-        Response = OPI_Tools.Get(URL, , Headers);
+        Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     EndIf;
 
@@ -610,7 +610,7 @@ Function CreateBarcode(Val Token
     OPI_Tools.AddField("format"    , Format       , "String" , Parameters);
     OPI_Tools.AddField("lang"      , Lang         , "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -640,7 +640,7 @@ Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
     URL     = FormURL("/print/barcodes/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     If GetFile Then
 
@@ -656,7 +656,7 @@ Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
             Return Response;
         EndIf;
 
-        Response = OPI_Tools.Get(URL, , Headers);
+        Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     EndIf;
 
@@ -704,7 +704,7 @@ Function CreatePrealert(Val Token, Val UUIDArray, Val TransferDate, Val Point, V
 
     Parameters[Planned_date_] = Parameters[Planned_date_] + "+0000";
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -731,7 +731,7 @@ Function GetPrealert(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/prealert/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -758,7 +758,7 @@ Function GetPassportDataStatus(Val Token, Val UUID, Val TestAPI = False) Export
     Parameters = New Structure;
     OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -785,7 +785,7 @@ Function GetCashboxCheck(Val Token, Val UUID, Val TestAPI = False) Export
     Parameters = New Structure;
     OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1016,7 +1016,7 @@ Function GetAvailableDeliveryIntervals(Val Token, Val UUID, Val TestAPI = False)
     Parameters = New Structure;
     OPI_Tools.AddField("order_uuid", UUID, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1042,7 +1042,7 @@ Function CreateCourierInvitation(Val Token, Val InvitationDescription, Val TestA
     URL     = FormURL("/intakes", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, InvitationDescription, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, InvitationDescription, Headers);
 
     Return Response;
 
@@ -1069,7 +1069,7 @@ Function GetCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/intakes/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -1094,7 +1094,7 @@ Function DeleteCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Expor
     URL     = FormURL("/intakes/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -1120,7 +1120,7 @@ Function RegisterDeliveryAppointment(Val Token, Val Appointment, Val TestAPI = F
     URL     = FormURL("/delivery", TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, Appointment, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Appointment, Headers);
 
     Return Response;
 
@@ -1147,7 +1147,7 @@ Function GetDeliveryAppointment(Val Token, Val UUID, Val TestAPI = False) Export
     URL     = FormURL("/delivery/" + UUID, TestAPI);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 

@@ -88,7 +88,7 @@ EndFunction
 Function GetAccountInformation(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "getWaSettings");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -108,7 +108,7 @@ EndFunction
 Function GetInstanceSettings(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "getSettings");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -132,7 +132,7 @@ Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
     OPI_TypeConversion.GetKeyValueCollection(Settings);
 
     URL      = FormPrimaryURL(AccessParameters, "setSettings");
-    Response = OPI_Tools.Post(URL, Settings);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Settings);
 
     Return Response;
 
@@ -152,7 +152,7 @@ EndFunction
 Function GetInstanceStatus(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "getStateInstance");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -172,7 +172,7 @@ EndFunction
 Function RebootInstance(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "reboot");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -192,7 +192,7 @@ EndFunction
 Function LogoutInstance(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "logout");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -212,7 +212,7 @@ EndFunction
 Function GetQR(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "qr");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Try
 
@@ -247,7 +247,7 @@ Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
     OPI_Tools.AddField("phoneNumber", PhoneNumber, "Number", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "getAuthorizationCode");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -273,7 +273,7 @@ Function SetProfilePicture(Val AccessParameters, Val Image) Export
     PictureMap.Insert("file|file.jpg", Image);
 
     URL      = FormPrimaryURL(AccessParameters, "setProfilePicture");
-    Response = OPI_Tools.PostMultipart(URL, , PictureMap);
+    Response = OPI_HTTPRequests.PostMultipart(URL, , PictureMap);
 
     Return Response;
 
@@ -380,7 +380,7 @@ Function GetGroupInformation(Val AccessParameters, Val GroupID) Export
     OPI_Tools.AddField("groupId", GroupID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "getGroupData");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -411,7 +411,7 @@ Function CreateGroup(Val AccessParameters, Val Name, Val Members = Undefined) Ex
     OPI_Tools.AddField("chatIds"  , Members, "Collection", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "createGroup");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -438,7 +438,7 @@ Function UpdateGroupName(Val AccessParameters, Val GroupID, Val Name) Export
     OPI_Tools.AddField("groupName", Name   , "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "updateGroupName");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -547,7 +547,7 @@ Function LeaveGroup(Val AccessParameters, Val GroupID) Export
     OPI_Tools.AddField("groupId", GroupID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "leaveGroup");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -578,7 +578,7 @@ Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export
     PictureMap.Insert("file|file.jpg", Image);
 
     URL      = FormPrimaryURL(AccessParameters, "setGroupPicture");
-    Response = OPI_Tools.PostMultipart(URL, Parameters, PictureMap);
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, PictureMap);
 
     Return Response;
 
@@ -611,7 +611,7 @@ Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val ReplyID
     OPI_Tools.AddField("quotedMessageId", ReplyID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendMessage");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -653,7 +653,7 @@ Function SendFile(Val AccessParameters
     FileMapping.Insert(StrTemplate("file|%1", FileName), File);
 
     URL      = FormMediaURL(AccessParameters, "SendFileByUpload");
-    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping);
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, FileMapping);
 
     Return Response;
 
@@ -691,7 +691,7 @@ Function SendFileByURL(Val AccessParameters
     OPI_Tools.AddField("quotedMessageId", ReplyID     , "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendFileByUrl");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -736,7 +736,7 @@ Function SendPoll(Val AccessParameters
     OPI_Tools.AddField("quotedMessageId", ReplyID       , "String"    , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendPoll");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -770,7 +770,7 @@ Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyI
     EndDo;
 
     URL      = FormPrimaryURL(AccessParameters, "sendLocation");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -799,7 +799,7 @@ Function SendContact(Val AccessParameters, Val ChatID, Val Contact, Val ReplyID 
     OPI_Tools.AddField("quotedMessageId", ReplyID , "String"    , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendContact");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -828,7 +828,7 @@ Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Message
     OPI_Tools.AddField("messages"  , Messages, "Collection", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "forwardMessages");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -857,7 +857,7 @@ Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Te
     OPI_Tools.AddField("message"  , Text     , "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "editMessage");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -886,7 +886,7 @@ Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForS
     OPI_Tools.AddField("onlySenderDelete", ForSenderOnly, "Boolean", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "deleteMessage");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -970,7 +970,7 @@ Function GetNotification(Val AccessParameters, Val Timeout = 5) Export
     OPI_Tools.AddField("receiveTimeout", Timeout, "Number", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "receiveNotification");
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -995,7 +995,7 @@ Function DeleteNotificationFromQueue(Val AccessParameters, Val ReceiptID) Export
     URL = FormPrimaryURL(AccessParameters, "deleteNotification");
     URL = StrTemplate("%1/%2", URL, ReceiptID);
 
-    Response = OPI_Tools.Delete(URL);
+    Response = OPI_HTTPRequests.Delete(URL);
 
     Return Response;
 
@@ -1022,7 +1022,7 @@ Function DownloadMessageFile(Val AccessParameters, Val ChatID, Val MessageID) Ex
     OPI_Tools.AddField("idMessage", MessageID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "downloadFile");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1049,7 +1049,7 @@ Function SetReadMark(Val AccessParameters, Val ChatID, Val MessageID = "") Expor
     OPI_Tools.AddField("idMessage" , MessageID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "readChat");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1073,7 +1073,7 @@ EndFunction
 Function GetMessageQueue(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "showMessagesQueue");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -1093,7 +1093,7 @@ EndFunction
 Function ClearMessageQueue(Val AccessParameters) Export
 
     URL      = FormPrimaryURL(AccessParameters, "clearMessagesQueue");
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -1124,7 +1124,7 @@ Function GetChatHistory(Val AccessParameters, Val ChatID, Val Count = 100) Expor
     OPI_Tools.AddField("count" , Count  , "Number" , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "getChatHistory");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1151,7 +1151,7 @@ Function GetMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("idMessage", MessageID, "String" , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "getMessage");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1176,7 +1176,7 @@ Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
     OPI_Tools.AddField("minutes", Period, "Number" , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "lastIncomingMessages");
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1201,7 +1201,7 @@ Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
     OPI_Tools.AddField("minutes", Period, "Number" , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "lastOutgoingMessages");
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1255,7 +1255,7 @@ Function GroupMemberAction(Val AccessParameters, Val GroupID, Val UserID, Val Me
     OPI_Tools.AddField("participantChatId", UserID  , "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, Method);
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -1269,7 +1269,7 @@ Function ChatArchivingManagement(Val AccessParameters, Val ChatID, Val Archiving
     OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, Method);
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
