@@ -99,7 +99,7 @@ Function GetToken(Val Code, Val Parameters = "") Export
     RequestParameters.Insert("redirect_uri" , Parameters_["redirect_uri"]);
     RequestParameters.Insert("code_verifier", "challenge");
 
-    Response = OPI_Tools.Post("https://api.twitter.com/2/oauth2/token"
+    Response = OPI_HTTPRequests.PostWithBody("https://api.twitter.com/2/oauth2/token"
         , RequestParameters, , False);
 
     Return Response;
@@ -124,7 +124,7 @@ Function RefreshToken(Val Parameters = "") Export
     RequestParameters.Insert("grant_type" , Refresh);
     RequestParameters.Insert("client_id"  , Parameters_["client_id"]);
 
-    Response = OPI_Tools.Post("https://api.twitter.com/2/oauth2/token"
+    Response = OPI_HTTPRequests.PostWithBody("https://api.twitter.com/2/oauth2/token"
     , RequestParameters, , False);
 
     Return Response;
@@ -223,7 +223,7 @@ Function CreateCustomTweet(Val Text = ""
         Authorization = CreateAuthorizationHeaderV2(Parameters_);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Fields, Authorization);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization);
 
     Return Response;
 
@@ -391,7 +391,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
 
     Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, RequestType, URL);
 
-    InitializationResponse = OPI_Tools.Post(URL, Fields, Authorization, False);
+    InitializationResponse = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization, False);
     InitializationID       = InitializationResponse[MID];
     InitializationIDS      = InitializationResponse[MIS];
 
@@ -411,7 +411,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
 
         Authorization = CreateAuthorizationHeaderV1(Parameters, New Structure, RequestType, URL);
 
-        OPI_Tools.PostMultipart(URL, Fields, , , Authorization);
+        OPI_HTTPRequests.PostMultipart(URL, Fields, , , Authorization);
 
         Counter = Counter + 1;
 
@@ -445,7 +445,7 @@ Function WaitForProcessingCompletion(Val ProcessingStatus, Val InitializationID,
     While String(ProcessingStatus) = "pending" Or String(ProcessingStatus) = "in_progress" Do
 
         Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, "GET", URL);
-        Response      = OPI_Tools.Get(URL, Fields, Authorization);
+        Response      = OPI_HTTPRequests.Get(URL, Fields, Authorization);
         Information   = Response[ProcessingInfo];
 
         If Not ValueIsFilled(Information) Then
@@ -663,7 +663,7 @@ Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
     ProcessingInfo = "processing_info";
     Authorization  = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
 
-    Response    = OPI_Tools.Post(URL, Fields, Authorization, False);
+    Response    = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization, False);
     Information = Response[ProcessingInfo];
 
     If Not ValueIsFilled(Information) Then

@@ -3769,7 +3769,7 @@ Procedure CLI_VK_UploadPhotoToServer(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Image = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image = FunctionParameters["Picture"]; // URL, Binary Data or File path
     View  = "Post";
 
     Options = New Structure;
@@ -3789,7 +3789,7 @@ Procedure CLI_VK_CreateStory(FunctionParameters)
     Parameters = GetVKParameters();
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
     Image = New BinaryData(TFN);
@@ -4238,8 +4238,8 @@ Procedure CLI_VK_AddProduct(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Image1    = FunctionParameters["Picture"]; // URL, Binary or Path to file
-    Image2    = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+    Image1    = FunctionParameters["Picture"]; // URL, Binary or File path
+    Image2    = FunctionParameters["Picture2"]; // URL, Binary or File path
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
     ImageArray = New Array;
@@ -4713,7 +4713,7 @@ Procedure CLI_VK_UploadVideoToServer(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Video       = FunctionParameters["Video"]; // URL, Binary Data or Path to file
+    Video       = FunctionParameters["Video"]; // URL, Binary Data or File path
     Name        = "NewVideo";
     Description = "Video description";
 
@@ -5707,8 +5707,8 @@ Procedure CLI_GoogleCalendar_CreateEvent(FunctionParameters)
     Description = "TestEventDescription";
     Hour        = 3600;
 
-    Image1      = FunctionParameters["Picture"]; // URL, Binary or Path to file
-    Image2      = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+    Image1      = FunctionParameters["Picture"]; // URL, Binary or File path
+    Image2      = FunctionParameters["Picture2"]; // URL, Binary or File path
     Attachments = New Map;
 
     Attachments.Insert("Image1", Image1);
@@ -5980,7 +5980,7 @@ Procedure CLI_GoogleDrive_DownloadFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "GoogleDrive");
 
-    Size       = OPI_Tools.Get(FunctionParameters["Picture"]).Size();
+    Size       = OPI_HTTPRequests.Get(FunctionParameters["Picture"]).Size();
     ExtraBytes = 2;
 
     OPI_TestDataRetrieval.Check_BinaryData(Result, Size + ExtraBytes);
@@ -5994,7 +5994,7 @@ Procedure CLI_GoogleDrive_UpdateFile(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     NewName    = "UpdatedFile.jpg";
     Identifier = FunctionParameters["GD_File"];
-    File       = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+    File       = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
     Options = New Structure;
     Options.Insert("token"  , Token);
@@ -6526,8 +6526,8 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = FunctionParameters["Picture"]; // URL, Binary or Path to file
-    Image2 = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+    Image  = FunctionParameters["Picture"]; // URL, Binary or File path
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary or File path
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -6557,7 +6557,7 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
-    Image = OPI_Tools.Get(Image);
+    Image = OPI_HTTPRequests.Get(Image);
 
     Text = "TestTweet" + String(New UUID);
 
@@ -6581,8 +6581,8 @@ Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = FunctionParameters["Video"]; // URL, Binary or Path to file
-    Video2 = FunctionParameters["Video"]; // URL, Binary or Path to file
+    Video  = FunctionParameters["Video"]; // URL, Binary or File path
+    Video2 = FunctionParameters["Video"]; // URL, Binary or File path
 
     VideosArray = New Array;
     VideosArray.Add(Video);
@@ -6612,7 +6612,7 @@ Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
-    Video = OPI_Tools.Get(Video);
+    Video = OPI_HTTPRequests.Get(Video);
 
     Text = "TestTweet" + String(New UUID);
 
@@ -6636,8 +6636,8 @@ Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    GIF  = FunctionParameters["GIF"]; // URL, Binary or Path to file
-    Gif2 = FunctionParameters["GIF"]; // URL, Binary or Path to file
+    GIF  = FunctionParameters["GIF"]; // URL, Binary or File path
+    Gif2 = FunctionParameters["GIF"]; // URL, Binary or File path
 
     GifsArray = New Array;
     GifsArray.Add(GIF);
@@ -6667,7 +6667,7 @@ Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
-    GIF = OPI_Tools.Get(GIF);
+    GIF = OPI_HTTPRequests.Get(GIF);
 
     Text = "TestTweet" + String(New UUID);
 
@@ -6715,8 +6715,8 @@ Procedure CLI_Twitter_CreateCustomTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
-    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
     ImageArray = New Array();
     ImageArray.Add(Image1);
@@ -6747,8 +6747,8 @@ Procedure CLI_Twitter_UploadAttachmentsArray(FunctionParameters)
 
     Parameters = GetTwitterAuthData();
 
-    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
-    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
     ImageArray = New Array();
     ImageArray.Add(Image1);
@@ -6897,7 +6897,7 @@ Procedure CLI_Notion_CreatePageInDatabase(FunctionParameters)
 
     Token  = FunctionParameters["Notion_Token"];
     Base   = FunctionParameters["Notion_Base"];
-    Image_ = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image_ = FunctionParameters["Picture"]; // URL, Binary Data or File path
 
     Image = New Map;
     Image.Insert("Logo", Image_);
@@ -7609,7 +7609,7 @@ Procedure CLI_Slack_UploadFile(FunctionParameters)
 
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_Channel"];
-    File    = FunctionParameters["Document"]; // URL, Binary Data or Path to file
+    File    = FunctionParameters["Document"]; // URL, Binary Data or File path
 
     FileName = "megadoc.docx";
     Title    = "NewFile";
@@ -18986,7 +18986,7 @@ Procedure CLI_S3_InitPartsUpload(FunctionParameters)
     Bucket = "opi-gpbucket3";
 
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
-    Entity = OPI_Tools.Get(Entity);
+    Entity = OPI_HTTPRequests.Get(Entity);
 
     Options = New Structure;
     Options.Insert("name"  , Name);
@@ -19135,7 +19135,7 @@ Procedure CLI_S3_GetObjectDownloadLink(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectDownloadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
 
-    Result = OPI_Tools.Get(Result);
+    Result = OPI_HTTPRequests.Get(Result);
 
     OPI_TestDataRetrieval.Check_BinaryData(Result, RequiredSize);
 
@@ -19175,7 +19175,7 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
 
-    Result = OPI_Tools.Put(Result, Image, , False);
+    Result = OPI_HTTPRequests.PutWithBody(Result, Image, , False);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink (PUT)", "S3");
 

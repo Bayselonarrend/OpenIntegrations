@@ -9,7 +9,7 @@
     Bucket = "opi-gpbucket3";
 
     Entity = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Path or Binary Data
-    Entity = OPI_Tools.Get(Entity);
+    Entity = OPI_HTTPRequests.Get(Entity);
 
     Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
 

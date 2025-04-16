@@ -46,15 +46,23 @@ Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
     Try
 
         If TypeOf(Value) = Type("BinaryData") Then
+
             Return;
+
+        ElsIf ThisIsCollection(Value) Then
+
+            Value = OPI_Tools.JSONString(Value);
+            Value = GetBinaryDataFromString(Value);
+
         Else
+            OPI_TypeConversion.GetLine(Value);
             ConvertSourceToValue(Value, TryB64);
         EndIf;
 
     Except
 
         If Force Then
-            Value = OPI_Tools.NumberToString(Value);
+            OPI_TypeConversion.GetLine(Value);
             Value = GetBinaryDataFromString(Value);
         Else
             Raise "Error getting binary data from parameter: " + ErrorDescription();
@@ -234,7 +242,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             ElsIf StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-                Value = OPI_Tools.Get(ValueES);
+                Value = OPI_HTTPRequests.Get(ValueES);
                 GetLine(Value);
 
             Else
@@ -404,7 +412,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
     ElsIf StrStartsWith(TrimL(ValueES), "http://")
         Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-        Value = OPI_Tools.Get(ValueES);
+        Value = OPI_HTTPRequests.Get(ValueES);
 
     Else
 

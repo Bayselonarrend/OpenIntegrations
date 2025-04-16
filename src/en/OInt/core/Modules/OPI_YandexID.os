@@ -52,7 +52,7 @@ Function GetConfirmationCode(Val ClientId) Export // Service
     OPI_TypeConversion.GetLine(ClientId);
 
     Parameters = New Structure("client_id", ClientId);
-    Response   = OPI_Tools.Post("https://oauth.yandex.ru/device/code", Parameters, , False);
+    Response   = OPI_HTTPRequests.PostWithBody("https://oauth.yandex.ru/device/code", Parameters, , False);
 
     Return Response;
 
@@ -80,7 +80,7 @@ Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Expo
     Parameters.Insert("client_id"     , ClientId);
     Parameters.Insert("client_secret" , ClientSecret);
 
-    Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody("https://oauth.yandex.ru/token", Parameters, , False);
 
     Return Response;
 
@@ -108,7 +108,7 @@ Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export /
     Parameters.Insert("client_id"     , ClientId);
     Parameters.Insert("client_secret" , ClientSecret);
 
-    Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody("https://oauth.yandex.ru/token", Parameters, , False);
 
     Return Response;
 

@@ -69,7 +69,7 @@ Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export
     OPI_Tools.AddField("properties", Properties, "Collection", Parameters);
     OPI_Tools.AddField("sheets"    , Sheets    , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -91,7 +91,7 @@ Function GetSpreadsheet(Val Token, Val Identifier) Export
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL     = "https://sheets.googleapis.com/v4/spreadsheets/" + Identifier;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -124,7 +124,7 @@ Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export
 
     Parameters = New Structure("requests", ArrayOfRequests);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -159,7 +159,7 @@ Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export
 
     Parameters = New Structure("requests", Requests);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -190,7 +190,7 @@ Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export
 
     Parameters = New Structure("requests", Requests);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -221,7 +221,7 @@ Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export
         + ":copyTo";
 
     Parameters = New Structure("destinationSpreadsheetId", Target);
-    Response   = OPI_Tools.Post(URL, Parameters, Headers);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -262,7 +262,7 @@ Function SetCellValues(Val Token
     DataArray = FormCellDataArray(ValueMapping, MajorDimension, Sheet);
 
     Parameters = New Structure("data,valueInputOption", DataArray, "USER_ENTERED");
-    Response   = OPI_Tools.Post(URL, Parameters, Headers);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -290,7 +290,7 @@ Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") 
     FormCellNameArray(CellsArray, Sheet);
 
     Parameters = New Structure("ranges", CellsArray);
-    Response   = OPI_Tools.Post(URL, Parameters, Headers);
+    Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -334,7 +334,7 @@ Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Shee
 
     EndIf;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 

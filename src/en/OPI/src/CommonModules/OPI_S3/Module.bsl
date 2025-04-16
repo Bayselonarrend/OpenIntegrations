@@ -1255,26 +1255,6 @@ EndFunction
 
 #Region Authorization
 
-Function CreateAuthorizationHeader(Val DataStructure, Val Request, Val Connection, Val Method)
-
-    AccessKey   = DataStructure["AccessKey"];
-    CurrentDate = CurrentUniversalDate();
-
-    Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
-    Request.Headers.Insert("Host"      , Connection.Host);
-
-    MainParts = GetMainSignatureParts(DataStructure, Request, Method, CurrentDate);
-
-    Scope       = MainParts["Scope"];
-    Signature   = MainParts["Signature"];
-    HeadersKeys = MainParts["HeadersKeys"];
-
-    AuthorizationHeader = FormAuthorisationHeader(AccessKey, Scope, Signature, HeadersKeys);
-
-    Return AuthorizationHeader;
-
-EndFunction
-
 Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Headers)
 
     AccessKey = DataStructure["AccessKey"];
@@ -1340,35 +1320,6 @@ Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Heade
 
 EndFunction
 
-Function GetMainSignatureParts(Val DataStructure
-    , Val Request
-    , Val Method
-    , Val CurrentDate)
-
-    SecretKey = DataStructure["SecretKey"];
-    Region    = DataStructure["Region"];
-    Service   = DataStructure["Service"];
-
-    SignKey          = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
-    CanonicalRequest = CreateCanonicalRequest(Request, Method);
-    Scope            = CreateScope(Region, Service, CurrentDate);
-    StringToSign     = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
-
-    Signature = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
-    Signature = Lower(GetHexStringFromBinaryData(Signature));
-
-    HeadersKeys = GetHeadersKeysString(Request.Headers);
-
-    PartsStructure = New Structure;
-
-    PartsStructure.Insert("Scope"      , Scope);
-    PartsStructure.Insert("Signature"  , Signature);
-    PartsStructure.Insert("HeadersKeys", HeadersKeys);
-
-    Return PartsStructure;
-
-EndFunction
-
 Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate)
 
     SecretKey  = GetBinaryDataFromString("AWS4" + SecretKey);
@@ -1384,41 +1335,6 @@ Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate
     FinalKey = OPI_Cryptography.HMACSHA256(ServiceKey, AWSRequest);
 
     Return FinalKey;
-
-EndFunction
-
-Function CreateCanonicalRequest(Val Request, Val Method)
-
-    RequestTemplate = "";
-    RequestBody     = OPI_Tools.GetRequestBody(Request);
-    HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
-    PartsAmount     = 6;
-
-    Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
-
-    For N = 1 To PartsAmount Do
-
-        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
-
-    EndDo;
-
-    Method          = Upper(Method);
-    URIString       = GetURIString(Request);
-    ParameterString = GetParamsString(Request);
-    HeadersString   = GetHeadersString(Request.Headers);
-    KeysString      = GetHeadersKeysString(Request.Headers);
-
-    HashString = Lower(GetHexStringFromBinaryData(HashSum));
-
-    CanonicalRequest = StrTemplate(RequestTemplate
-        , Method
-        , URIString
-        , ParameterString
-        , HeadersString
-        , KeysString
-        , HashString);
-
-    Return CanonicalRequest;
 
 EndFunction
 
@@ -1459,42 +1375,6 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     SignatureString = GetBinaryDataFromString(SignatureString);
 
     Return SignatureString;
-
-EndFunction
-
-Function GetURIString(Val Request)
-
-    URI = Request.ResourceAddress;
-    URI = ?(StrStartsWith(URI, "/"), URI, "/" + URI);
-
-    ParamsStart = StrFind(URI, "?");
-
-    If ParamsStart <> 0 Then
-        URI = Left(URI, ParamsStart - 1);
-    EndIf;
-
-    Return URI;
-
-EndFunction
-
-Function GetParamsString(Request)
-
-    URI         = Request.ResourceAddress;
-    ParamsStart = StrFind(URI, "?");
-
-    If ParamsStart = 0 Then
-
-        ParameterString = "";
-
-    Else
-
-        URILength       = StrLen(URI);
-        ParameterString = Right(URI, URILength - ParamsStart);
-        ProcessRequestParametersString(ParameterString);
-
-    EndIf;
-
-    Return ParameterString;
 
 EndFunction
 
@@ -1571,42 +1451,6 @@ Function GetServiceURL(BasicData)
 
 EndFunction
 
-Function FormAuthorisationHeader(Val AccessKey, Val Scope, Val Signature, Val HeadersKeys)
-
-    HeaderTemplate = "AWS4-HMAC-SHA256 "
-        + "Credential=%1/%2, "
-        + "SignedHeaders=%3, "
-        + "Signature=%4";
-
-    AuthorizationHeader = StrTemplate(HeaderTemplate, AccessKey, Scope, HeadersKeys, Signature);
-
-    Return AuthorizationHeader;
-
-EndFunction
-
-Procedure ProcessRequestParametersString(ParameterString)
-
-    ParameterArray = StrSplit(ParameterString, "&");
-    ParamsList     = New ValueList();
-    ParamsList.LoadValues(ParameterArray);
-
-    ParamsList.SortByValue();
-    ParameterArray = ParamsList.UnloadValues();
-
-    For N = 0 To ParameterArray.UBound() Do
-
-        QueryParameter = ParameterArray[N];
-
-        If StrFind(QueryParameter, "=") = 0 Then
-            ParameterArray[N] = QueryParameter + "=";
-        EndIf;
-
-    EndDo;
-
-    ParameterString = StrConcat(ParameterArray, "&");
-
-EndProcedure
-
 #EndRegion
 
 #Region Miscellaneous
@@ -1620,26 +1464,20 @@ Function SendRequest(Val Method
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
     CheckBasicData(BasicData_);
 
-    URL = BasicData_["URL"];
+    AccessKey = BasicData_["AccessKey"];
+    SecretKey = BasicData_["SecretKey"];
+    Region    = BasicData_["Region"];
+    Service   = BasicData_["Service"];
+    URL       = BasicData_["URL"];
 
-    URLStructure = OPI_Tools.SplitURL(URL);
-    Host         = URLStructure["Host"];
-    Address      = URLStructure["Address"];
-    Safe         = URLStructure["Safe"];
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetHeaders(Headers)
+        .SetBinaryBody(Body)
+        .AddAWS4Authorization(AccessKey, SecretKey, Region, Service)
+        .ProcessRequest(Method)
+        .ReturnResponse(False, True);
 
-    Request    = OPI_Tools.CreateRequest(Address);
-    Connection = OPI_Tools.CreateConnection(Host, Safe);
-
-    If ValueIsFilled(Body) Then
-        SetRequestBody(Request, Body);
-    EndIf;
-
-    AddAdditionalHeaders(Request, Headers);
-
-    AuthorizationHeader = CreateAuthorizationHeader(BasicData_, Request, Connection, Method);
-    Request.Headers.Insert("Authorization", AuthorizationHeader);
-
-    Response = OPI_Tools.ExecuteRequest(Request, Connection, Method, , True);
     Response = FormResponse(Response, ExpectedBinary);
 
     Return Response;
@@ -2065,13 +1903,6 @@ Procedure AddAdditionalHeaders(Receiver, Val Headers)
         EndDo;
 
     EndIf;
-
-EndProcedure
-
-Procedure SetRequestBody(Request, Body)
-
-    OPI_TypeConversion.GetBinaryData(Body);
-    Request.SetBodyFromBinaryData(Body);
 
 EndProcedure
 

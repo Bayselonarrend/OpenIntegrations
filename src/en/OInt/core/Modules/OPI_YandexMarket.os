@@ -52,7 +52,7 @@
 // Method at API documentation: [List of users shops](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // Page - Number - Issue page number of the list - page
 //
 // Returns:
@@ -68,7 +68,7 @@ Function GetMarketsList(Val Token, Val Page = 1) Export
     OPI_Tools.AddField("page"    , Page    , "Number", Parameters);
     OPI_Tools.AddField("pageSize", PageSize, "Number", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -81,7 +81,7 @@ EndFunction
 // Method at API documentation: [Market information](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaign)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // CampaignID - String, Number - Market ID (campaignsId) - campaign
 //
 // Returns:
@@ -93,7 +93,7 @@ Function GetMarket(Val Token, Val CampaignID) Export
     URL     = "https://api.partner.market.yandex.ru/campaigns/" + CampaignID;
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -106,7 +106,7 @@ EndFunction
 // Method at API documentation: [Cabinet settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // AccountID - String, Number - Business ID - business
 //
 // Returns:
@@ -119,7 +119,7 @@ Function GetBusinessSettings(Val Token, Val AccountID) Export
     URL     = StrTemplate(URL, AccountID);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -132,7 +132,7 @@ EndFunction
 // Method at API documentation: [Market settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // CampaignID - String, Number - Market ID (campaignsId) - campaign
 //
 // Returns:
@@ -145,7 +145,7 @@ Function GetCampaignSettings(Val Token, Val CampaignID) Export
     URL     = StrTemplate(URL, CampaignID);
     Headers = CreateRequestHeaders(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -162,7 +162,7 @@ EndFunction
 // Method at API documentation: [Adding products to the catalogue and changing information about them](@yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // AccountID - String, Number - Business ID - business
 // ProductsArray - Structure, Array of Structure - Array of product descriptions - offers
 // OwnImages - Boolean - A flag of using only your own product images - pmedia
@@ -181,7 +181,7 @@ Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnI
     OPI_Tools.AddField("offerMappings"          , ProductsArray , "Array"  , Parameters);
     OPI_Tools.AddField("onlyPartnerMediaContent", OwnImages     , "Boolean", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -194,7 +194,7 @@ EndFunction
 // Method at API documentation: [Information о productх, that размещены in заданbutм магазandnot](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // CampaignID - String, Number - Campaign ID - business
 // Filters - Structure Of KeyAndValue - Product filters - filters
 // PageToken - String - Next page token in case of a large selection - page
@@ -216,9 +216,9 @@ Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val Pa
 
     If ValueIsFilled(Filters) Then
         OPI_TypeConversion.GetCollection(Filters);
-        Response = OPI_Tools.Post(URL, Filters, Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Filters, Headers);
     Else
-        Response = OPI_Tools.Post(URL,        , Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL,        , Headers);
     EndIf;
 
     Return Response;
@@ -229,7 +229,7 @@ EndFunction
 // Gets the list of products of the business
 //
 // Parameters:
-// Token - String - Authorisation token (Api-Key) - token
+// Token - String - Authorization token (Api-Key) - token
 // AccountID - String, Number - Business ID - business
 // Filters - Structure Of KeyAndValue - Product filters - filters
 // PageToken - String - Next page token in case of a large selection - page
@@ -251,9 +251,9 @@ Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val Pag
 
     If ValueIsFilled(Filters) Then
         OPI_TypeConversion.GetCollection(Filters);
-        Response = OPI_Tools.Post(URL, Filters, Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Filters, Headers);
     Else
-        Response = OPI_Tools.Post(URL,        , Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL,        , Headers);
     EndIf;
 
     Return Response;

@@ -55,7 +55,7 @@ Function GetBotInformation(Val Token) Export
     URL     = "https://slack.com/api/auth.test";
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -135,7 +135,7 @@ Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = ""
 
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -172,7 +172,7 @@ Function SendEphemeralMessage(Val Token
 
     URL = "https://slack.com/api/chat.postEphemeral";
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -202,7 +202,7 @@ Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val B
     OPI_Tools.AddField("ts"     , Timestamp , String_     , Parameters);
     OPI_Tools.AddField("blocks" , BlockArray, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -237,7 +237,7 @@ Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = Fa
     OPI_Tools.AddField("channel"     , Channel  , "String", Parameters);
     OPI_Tools.AddField(TimestampField, Timestamp, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -262,7 +262,7 @@ Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("cursor" , Cursor  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -287,7 +287,7 @@ Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
     OPI_Tools.AddField("channel"   , Channel  , "String", Parameters);
     OPI_Tools.AddField("message_ts", Timestamp, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -315,7 +315,7 @@ Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor =
     OPI_Tools.AddField("cursor" , Cursor   , String_, Parameters);
     OPI_Tools.AddField("ts"     , Timestamp, String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -344,7 +344,7 @@ Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "")
     OPI_Tools.AddField("exclude_archived", ExcludeArchived, "Boolean", Parameters);
     OPI_Tools.AddField("cursor"          , Cursor         , "String" , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -369,7 +369,7 @@ Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("cursor" , Cursor  , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -394,7 +394,7 @@ Function CreateChannel(Val Token, Val Name, Val Private = False) Export
     OPI_Tools.AddField("name"      , Name   , "String" , Parameters);
     OPI_Tools.AddField("is_private", Private, "Boolean", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -473,7 +473,7 @@ Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
     OPI_Tools.AddField("channel", Channel     , "String", Parameters);
     OPI_Tools.AddField("users"  , ArrayOfUsers, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -498,7 +498,7 @@ Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("user"   , User    , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -557,7 +557,7 @@ Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("topic"  , Topic   , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -582,7 +582,7 @@ Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("purpose", Purpose , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -607,7 +607,7 @@ Function RenameChannel(Val Token, Val Channel, Val Name) Export
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("name"   , Name    , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -637,7 +637,7 @@ Function OpenDialog(Val Token, Val ArrayOfUsers) Export
     Parameters = New Structure;
     OPI_Tools.AddField("users", ArrayOfUsers, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -683,7 +683,7 @@ Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
     OPI_Tools.AddField("channel", Channel   , "String", Parameters);
     OPI_Tools.AddField("page"   , PageNumber, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -718,7 +718,7 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     OPI_Tools.AddField("filename", FileName, String_, Parameters);
     OPI_Tools.AddField("length"  , Size    , String_, Parameters);
 
-    Response   = OPI_Tools.Get(URL, Parameters, Headers);
+    Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
     URL        = Response[Upload_url];
     Identifier = Response[File_id];
 
@@ -729,7 +729,7 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     Files = New Map;
     Files.Insert(FileName, File);
 
-    Response  = OPI_Tools.PostMultipart(URL, , Files, , Headers);
+    Response  = OPI_HTTPRequests.PostMultipart(URL, , Files, , Headers);
     URL       = "https://slack.com/api/files.completeUploadExternal";
     SlackFile = New Structure("id, title", Identifier, Title);
 
@@ -738,7 +738,7 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     OPI_Tools.AddField("channel_id", Channel  , String_ , Parameters);
     OPI_Tools.AddField("files"     , SlackFile, "Array" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -839,7 +839,7 @@ Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Expor
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
     OPI_Tools.AddField("cursor" , Cursor  , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -885,7 +885,7 @@ Function AddExternalFile(Val Token, Val URL, Val Title) Export
     OPI_Tools.AddField("external_id" , UID   , String_, Parameters);
     OPI_Tools.AddField("title"       , Title , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -913,7 +913,7 @@ Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
     OPI_Tools.AddField("file"    , FileID       , "String", Parameters);
     OPI_Tools.AddField("channels", ChannelArray , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -988,9 +988,9 @@ Function DialogManagement(Val Token, Val Channel, Val URL, Val RequestType = "PO
     OPI_Tools.AddField("channel", Channel, "String", Parameters);
 
     If RequestType = "POST" Then
-        Response   = OPI_Tools.Post(URL, Parameters, Headers);
+        Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     Else
-        Response   = OPI_Tools.Get(URL, Parameters, Headers);
+        Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
     EndIf;
 
     Return Response;
@@ -1006,9 +1006,9 @@ Function FileManagement(Val Token, Val FileID, Val URL, Val RequestType = "POST"
     OPI_Tools.AddField("file", FileID , "String", Parameters);
 
     If RequestType = "POST" Then
-        Response   = OPI_Tools.Post(URL, Parameters, Headers);
+        Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     Else
-        Response   = OPI_Tools.Get(URL, Parameters, Headers);
+        Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
     EndIf;
 
     Return Response;
@@ -1022,7 +1022,7 @@ Function GeneralDataRetrieval(Val Token, Val URL, Val Cursor)
     Parameters = New Structure;
     OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1035,7 +1035,7 @@ Function ExternalFileManagement(Val Token, Val FileID, Val URL)
     Parameters = New Structure;
     OPI_Tools.AddField("file", FileID , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 

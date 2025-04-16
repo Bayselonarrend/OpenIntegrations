@@ -69,7 +69,7 @@ Function GetCategoriesAndProductTypesTree(Val ClientID, Val APIKey, Val Lang = "
     Parameters = New Structure;
     OPI_Tools.AddField("language", Lang, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -108,7 +108,7 @@ Function GetCategoryAttributes(Val ClientID
     OPI_Tools.AddField("type_id"                , TypeID    , String_, Parameters);
     OPI_Tools.AddField("language"               , Lang      , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -155,7 +155,7 @@ Function GetAttributeValues(Val ClientID
     OPI_Tools.AddField("limit"                  , Limit        , String_, Parameters);
     OPI_Tools.AddField("last_value_id"          , CatalogID - 1, String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -199,7 +199,7 @@ Function SearchAttributeValue(Val ClientID
     OPI_Tools.AddField("limit"                  , Limit       , String_, Parameters);
     OPI_Tools.AddField("value"                  , Value       , String_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -223,7 +223,7 @@ Function GetProductsRequestsLimits(Val ClientID, Val APIKey) Export
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -265,7 +265,7 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
         Parameters.Insert(Filter_, New Structure);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -306,7 +306,7 @@ Function GetProductsAttributesData(Val ClientID
         Parameters.Insert(Filter_, New Structure);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -348,7 +348,7 @@ Function GetProductsInformation(Val ClientID
     OPI_Tools.AddField("product_id", ProductsID, Array_, Parameters);
     OPI_Tools.AddField("sku"       , SKU       , Array_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -378,7 +378,7 @@ Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val 
     OPI_Tools.AddField("offer_id"  , Article  , "String" , Parameters);
     OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -406,7 +406,7 @@ Function GetProductsContentRating(Val ClientID, Val APIKey, Val SKU) Export
     Parameters = New Structure;
     OPI_Tools.AddField("skus", SKU, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -522,7 +522,7 @@ Function UpdateProductImages(Val ClientID
     OPI_Tools.AddField("images"     , ImagesArray   , "Array"  , Parameters);
     OPI_Tools.AddField("images360"  , Array360      , "Array"  , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -550,7 +550,7 @@ Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Exp
     Parameters = New Structure;
     OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -590,7 +590,7 @@ Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Expor
     Parameters = New Structure;
     OPI_Tools.AddField("update_offer_id", ArrayOfObjects, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -619,7 +619,7 @@ Function ArchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -648,7 +648,7 @@ Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -688,7 +688,7 @@ Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
     Parameters = New Structure;
     OPI_Tools.AddField("products", ProductsArray, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -720,7 +720,7 @@ Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, V
     OPI_Tools.AddField("product_id"   , ProductID, "Number" , Parameters);
     OPI_Tools.AddField("digital_codes", Codes    , "Array"  , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -748,7 +748,7 @@ Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
     Parameters = New Structure;
     OPI_Tools.AddField("skus", SKU, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -778,7 +778,7 @@ Function GetRelatedSKUs(Val ClientID, Val APIKey, Val SKU) Export
     Parameters = New Structure;
     OPI_Tools.AddField("sku", SKU, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -806,7 +806,7 @@ Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -834,7 +834,7 @@ Function GetCodesUploadStatus(Val ClientID, Val APIKey, Val TaskID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1130,7 +1130,7 @@ Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export
     Parameters = New Structure;
     OPI_Tools.AddField("barcodes", BarcodesArray, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1160,7 +1160,7 @@ Function CreateBarcodes(Val ClientID, Val APIKey, Val ProductsID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("product_ids", ProductsID, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1202,7 +1202,7 @@ Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID
         Parameters.Insert(Filter_, New Structure);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1240,7 +1240,7 @@ Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID
         Parameters.Insert(Filter_, New Structure);
     EndIf;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1268,7 +1268,7 @@ Function GetDiscountInformation(Val ClientID, Val APIKey, Val SKU) Export
     Parameters = New Structure;
     OPI_Tools.AddField("discounted_skus", SKU, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1299,7 +1299,7 @@ Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
     Parameters = New Structure;
     OPI_Tools.AddField("stocks", Stocks, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1327,7 +1327,7 @@ Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
     Parameters = New Structure;
     OPI_Tools.AddField("prices", Prices, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1357,7 +1357,7 @@ Function SetProductDiscount(Val ClientID, Val APIKey, Val ProductID, Val Discoun
     OPI_Tools.AddField("discount"  , Discount , "Number", Parameters);
     OPI_Tools.AddField("product_id", ProductID, "Number", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1455,7 +1455,7 @@ Function GetPromotionsList(Val ClientID, Val APIKey) Export
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -1489,7 +1489,7 @@ Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val In
     OPI_Tools.AddField("limit"    , Limit  , Number_, Parameters);
     OPI_Tools.AddField("offset"   , Indent , Number_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1523,7 +1523,7 @@ Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Inde
     OPI_Tools.AddField("limit"    , Limit  , Number_, Parameters);
     OPI_Tools.AddField("offset"   , Indent , Number_, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1551,7 +1551,7 @@ Function GetWarehousesList(Val ClientID, Val APIKey) Export
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -1583,7 +1583,7 @@ Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TY
     Parameters = New Structure;
     OPI_Tools.AddField("cluster_type", ClusterType, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1616,7 +1616,7 @@ Function GetShippingWarehousesList(Val ClientID
     OPI_Tools.AddField("filter_by_supply_type", SupplyType, "Array" , Parameters);
     OPI_Tools.AddField("search"               , Search    , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1656,7 +1656,7 @@ Function GetFBOShipmentsList(Val ClientID
     OPI_Tools.AddField("filter"  , Filter    , "Collection", Parameters);
     OPI_Tools.AddField("with"    , AddFields , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1701,7 +1701,7 @@ Function CreateFBODraft(Val ClientID
     OPI_Tools.AddField("items"                      , Items_       , "Array"  , Parameters);
     OPI_Tools.AddField("type"                       , SupplyType   , "String" , Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1729,7 +1729,7 @@ Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("operation_id", OperationID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1777,7 +1777,7 @@ Function GetFBOTimeslots(Val ClientID, Val APIKey, Val DateFrom, Val DateTo, Val
     OPI_Tools.AddField("draft_id"     , Draft                    , "Number"    , Parameters);
     OPI_Tools.AddField("warehouse_ids", Warehouses               , "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -1860,7 +1860,7 @@ Function SendObjectsDescription(Val ClientID, Val APIKey, Val ArrayOfObjects, Va
     Parameters = New Structure;
     OPI_Tools.AddField("items", ArrayOfObjects, "Array", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 

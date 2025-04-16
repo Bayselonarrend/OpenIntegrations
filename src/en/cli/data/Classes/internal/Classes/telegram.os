@@ -869,6 +869,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "telegram";
     NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageText";
+    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
+    NewLine.Параметр    = "--parsemode";
+    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
     NewLine.Метод       = "ReplaceMessageCaption";
     NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
     NewLine.Параметр    = "--token";
@@ -904,6 +914,16 @@
     NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
     NewLine.Параметр    = "--caption";
     NewLine.Описание    = "New message description";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "ReplaceMessageCaption";
+    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
+    NewLine.Параметр    = "--parsemode";
+    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 

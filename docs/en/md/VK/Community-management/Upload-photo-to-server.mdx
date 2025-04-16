@@ -33,7 +33,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
 
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary Data or File path
     View  = "Post";
 
     Result = OPI_VK.UploadPhotoToServer(Image, Parameters, View);

@@ -1,4 +1,4 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C08MLTYLPHN";
+    Channel = "C08N80PS3NJ";
 
     Result = OPI_Slack.ArchiveChannel(Token, Channel);

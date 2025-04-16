@@ -63,7 +63,7 @@ Function CreateCalendar(Val Token, Val Name) Export
     Parameters.Insert("summary" , Name);
     Parameters.Insert("timeZone", "Europe/Moscow");
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -85,7 +85,7 @@ Function GetCalendarMetadata(Val Token, Val Calendar) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/calendar/v3/calendars/" + Calendar;
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -125,7 +125,7 @@ Function EditCalendarMetadata(Val Token
         Parameters.Insert("description", Description);
     EndIf;
 
-    Response = OPI_Tools.Patch(URL, Parameters, Headers, True);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers, True);
 
     Return Response;
 
@@ -145,7 +145,7 @@ Function ClearMainCalendar(Val Token) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/calendar/v3/calendars/primary/clear";
-    Response = OPI_Tools.Post(URL, , Headers, False);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers, False);
 
     Return Response;
 
@@ -167,7 +167,7 @@ Function DeleteCalendar(Val Token, Val Calendar) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/calendar/v3/calendars/" + Calendar;
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -218,7 +218,7 @@ Function AddCalendarToList(Val Token, Val Calendar) Export
     Parameters = New Structure;
     Parameters.Insert("id", Calendar);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -240,7 +240,7 @@ Function GetListCalendar(Val Token, Val Calendar) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar;
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -262,7 +262,7 @@ Function DeleteCalendarFromList(Val Token, Val Calendar) Export
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL      = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar;
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -300,7 +300,7 @@ Function EditListCalendar(Val Token
     Parameters.Insert("foregroundColor", PrimaryColor);
     Parameters.Insert("backgroundColor", SecondaryColor);
 
-    Response = OPI_Tools.Put(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PutWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -393,7 +393,7 @@ Function GetEvent(Val Token, Val Calendar, Val Event) Export
         + "/events/"
         + Event;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -441,7 +441,7 @@ Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event)
         + "/move?destination="
         + TargetCalendar;
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -486,7 +486,7 @@ Function DeleteEvent(Val Token, Val Calendar, Val Event) Export
         + "/events/"
         + Event;
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -591,9 +591,9 @@ Function EventManagement(Val Token, Val Calendar, Val EventDescription, Val Even
     OPI_Tools.RemoveEmptyCollectionFields(Parameters);
 
     If Existing Then
-        Response = OPI_Tools.Patch(URL, Parameters, Headers, True);
+        Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers, True);
     Else
-        Response = OPI_Tools.Post(URL, Parameters, Headers, True);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers, True);
     EndIf;
 
     Return Response;
@@ -610,7 +610,7 @@ Procedure GetCalendarsListRecursively(Val Headers, ArrayOfCalendars, Page = "")
         Parameters.Insert("pageToken", Page);
     EndIf;
 
-    Result = OPI_Tools.Get("https://www.googleapis.com/calendar/v3/users/me/calendarList"
+    Result = OPI_HTTPRequests.Get("https://www.googleapis.com/calendar/v3/users/me/calendarList"
         , Parameters
         , Headers);
 
@@ -637,7 +637,7 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
         Parameters.Insert("pageToken", Page);
     EndIf;
 
-    Result = OPI_Tools.Get("https://www.googleapis.com/calendar/v3/calendars/" + Calendar + "/events"
+    Result = OPI_HTTPRequests.Get("https://www.googleapis.com/calendar/v3/calendars/" + Calendar + "/events"
         , Parameters
         , Headers);
 
