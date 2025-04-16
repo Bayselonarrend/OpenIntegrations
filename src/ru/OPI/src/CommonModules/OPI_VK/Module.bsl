@@ -155,7 +155,7 @@
     OPI_Инструменты.ДобавитьПоле("mark_as_ads"   , РекламаЧисло  , "Число" , Параметры_);
     OPI_Инструменты.ДобавитьПоле("close_comments", РекламаЧисло  , "Число" , Параметры_);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.post", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/wall.post", Параметры_);
 
     Возврат Ответ;
 
@@ -175,7 +175,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     OPI_Инструменты.ДобавитьПоле("post_id", IDПоста, "Строка", Параметры_);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.delete", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/wall.delete", Параметры_);
 
     Возврат Ответ;
 
@@ -230,7 +230,7 @@
     Параметры_.Вставить("photo_id"   , OPI_Инструменты.ЧислоВСтроку(IDФото));
     Параметры_.Вставить("question"   , Вопрос);
 
-    Опрос             = OPI_Инструменты.Get("api.vk.com/method/polls.create", Параметры_);
+    Опрос             = OPI_ЗапросыHTTP.Get("api.vk.com/method/polls.create", Параметры_);
     ОпросСоответствие = Опрос.Получить(Response_);
 
     Если Не ЗначениеЗаполнено(ОпросСоответствие) Тогда
@@ -251,7 +251,7 @@
 
     Параметры_.Вставить("attachments", ОпросID);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.post", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/wall.post", Параметры_);
 
     Возврат Ответ;
 
@@ -278,7 +278,7 @@
     Параметры_.Вставить("description"          , Описание);
     Параметры_.Вставить("upload_by_admins_only", 1);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.createAlbum", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/photos.createAlbum", Параметры_);
 
     Возврат Ответ;
 
@@ -300,7 +300,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("album_id", OPI_Инструменты.ЧислоВСтроку(IDАльбома));
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.deleteAlbum", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/photos.deleteAlbum", Параметры_);
 
     Возврат Ответ;
 
@@ -371,7 +371,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("photo_id", IDКартинки);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.delete", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/photos.delete", Параметры_);
 
     Возврат Ответ;
 
@@ -402,7 +402,7 @@
     OPI_Инструменты.ДобавитьПоле("description", Описание    , Строка_, Параметры);
     OPI_Инструменты.ДобавитьПоле("album_id"   , Альбом      , Строка_, Параметры);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/video.save", Параметры);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/video.save", Параметры);
 
     Результат = Ответ["response"];
 
@@ -422,7 +422,7 @@
     РазмерДанных = СоответствиеФайлов["video_file.mp4"].Размер();
     РазмерДанных = OPI_Инструменты.ЧислоВСтроку(РазмерДанных);
 
-    Ответ = OPI_Инструменты.PostMultipart(URL, , СоответствиеФайлов, "video/mp4");
+    Ответ = OPI_ЗапросыHTTP.PostMultipart(URL, , СоответствиеФайлов, "video/mp4");
 
     Возврат Ответ;
 
@@ -460,7 +460,7 @@
 
     Для Н = 1 По 5 Цикл
 
-        Ответ     = OPI_Инструменты.Get(Загрузка, Параметры);
+        Ответ     = OPI_ЗапросыHTTP.Get(Загрузка, Параметры);
         Результат = Ответ[Response_];
 
         Если ЗначениеЗаполнено(Результат) Тогда
@@ -476,7 +476,7 @@
         КонецЕсли;
 
         Параметры.Вставить("upload_url", URL);
-        Ответ = OPI_Инструменты.PostMultipart(URL, Параметры, Файлы);
+        Ответ = OPI_ЗапросыHTTP.PostMultipart(URL, Параметры, Файлы);
 
         Если ТипЗнч(Ответ) = Тип("Соответствие") Тогда
             Прервать;
@@ -490,7 +490,7 @@
 
     ЗаполнитьПараметрыЗагрузкиФото(Метод, Ответ, Параметры);
 
-    Ответ = OPI_Инструменты.Get(Сохранение, Параметры);
+    Ответ = OPI_ЗапросыHTTP.Get(Сохранение, Параметры);
 
     Возврат Ответ;
 
@@ -519,7 +519,7 @@
     Параметры_.Вставить("title", Наименование);
     Параметры_.Вставить("text" , ТекстПервогоСообщения);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.addTopic", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/board.addTopic", Параметры_);
 
     Возврат Ответ;
 
@@ -544,7 +544,7 @@
     Параметры_.Вставить("topic_id", IDОбсуждения);
 
     Метод = ?(УдалитьПолностью, "deleteTopic", "closeTopic");
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board." + Метод, Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/board." + Метод, Параметры_);
 
     Возврат Ответ;
 
@@ -566,7 +566,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("topic_id", IDОбсуждения);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.openTopic", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/board.openTopic", Параметры_);
 
     Возврат Ответ;
 
@@ -591,7 +591,7 @@
     Параметры_.Вставить("topic_id", IDОбсуждения);
     Параметры_.Вставить("message" , Текст);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.createComment", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/board.createComment", Параметры_);
 
     Возврат Ответ;
 
@@ -626,7 +626,7 @@
     Параметры_.Вставить("owner_id"    , OPI_Инструменты.ЧислоВСтроку(IDСтены));
     Параметры_.Вставить("from_group"  , 0);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/likes.add", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/likes.add", Параметры_);
 
     Возврат Ответ;
 
@@ -666,7 +666,7 @@
     Параметры_.Вставить("group_id"        , СтрЗаменить(Приемник, "-", ""));
     Параметры_.Вставить("mark_as_ads"     , ?(Рекламный         , 1  , 0));
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.repost", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/wall.repost", Параметры_);
 
     Возврат Ответ;
 
@@ -708,7 +708,7 @@
         Параметры_.Вставить("keyboard", Клавиатура);
     КонецЕсли;
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/messages.send", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/messages.send", Параметры_);
 
     Возврат Ответ;
 
@@ -742,7 +742,7 @@
 
     Параметры_.Удалить("group_id");
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.createComment", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/wall.createComment", Параметры_);
 
     Возврат Ответ;
 
@@ -766,7 +766,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("url", URL);
 
-    Ответ     = OPI_Инструменты.Get("https://api.vk.com/method/utils.getShortLink", Параметры_);
+    Ответ     = OPI_ЗапросыHTTP.Get("https://api.vk.com/method/utils.getShortLink", Параметры_);
     Результат = Ответ[Response_];
 
     Если ЗначениеЗаполнено(Результат) Тогда
@@ -813,7 +813,7 @@
     Параметры_.Вставить("timestamp_to"  , ДатаОкончания);
     Параметры_.Вставить("stats_groups"  , "visitors, reach, activity");
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/stats.get", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/stats.get", Параметры_);
 
     Возврат Ответ;
 
@@ -847,7 +847,7 @@
             СтрокаНомеров = СтрСоединить(МассивНабора, ",");
             Параметры_.Вставить("post_ids", СтрокаНомеров);
 
-            Статистика       = OPI_Инструменты.Get("api.vk.com/method/stats.getPostReach", Параметры_);
+            Статистика       = OPI_ЗапросыHTTP.Get("api.vk.com/method/stats.getPostReach", Параметры_);
             МассивСтатистики = Статистика[Response_];
 
             Для Каждого ЭлементСтатистики Из МассивСтатистики Цикл
@@ -863,7 +863,7 @@
     СтрокаНомеров = СтрСоединить(МассивНабора, ",");
     Параметры_.Вставить("post_ids", СтрокаНомеров);
 
-    Статистика       = OPI_Инструменты.Get("api.vk.com/method/stats.getPostReach", Параметры_);
+    Статистика       = OPI_ЗапросыHTTP.Get("api.vk.com/method/stats.getPostReach", Параметры_);
     МассивСтатистики = Статистика[Response_];
 
     Если ТипЗнч(МассивСтатистики) = Тип("Массив") Тогда
@@ -918,7 +918,7 @@
 
     Параметры_.Вставить("data", МассивСтруктур);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/ads.createCampaigns", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/ads.createCampaigns", Параметры_);
 
     Возврат Ответ;
 
@@ -980,7 +980,7 @@
     Параметры_.Вставить("data"        , МассивСтруктур);
     Параметры_.Вставить("account_id"  , IDКабинета);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/ads.createAds", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/ads.createAds", Параметры_);
 
     Возврат Ответ;
 
@@ -1017,7 +1017,7 @@
 
     Параметры_.Вставить("data", МассивСтруктур);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/ads.updateAds", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/ads.updateAds", Параметры_);
 
     Возврат Ответ;
 
@@ -1034,7 +1034,7 @@
 Функция ПолучитьСписокРекламныхКатегорий(Знач Параметры = "") Экспорт
 
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/ads.getCategories", Параметры_);
+    Ответ      = OPI_ЗапросыHTTP.Get("api.vk.com/method/ads.getCategories", Параметры_);
 
     Возврат Ответ;
 
@@ -1056,7 +1056,7 @@
 
     Response_  = "response";
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/market.getCategories", Параметры_);
+    Ответ      = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getCategories", Параметры_);
     Результат  = Ответ[Response_];
 
     Если ЗначениеЗаполнено(Результат) Тогда
@@ -1072,7 +1072,7 @@
     КонецЕсли;
 
     Параметры_.Вставить("count", Количество);
-    Ответ     = OPI_Инструменты.Get("api.vk.com/method/market.getCategories", Параметры_);
+    Ответ     = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getCategories", Параметры_);
     Результат = Ответ[Response_];
 
     Если ЗначениеЗаполнено(Результат) Тогда
@@ -1153,7 +1153,7 @@
     Параметры_.Вставить("item_ids", СтрокаТоваров);
     Параметры_.Вставить("extended", 1);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.getById", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getById", Параметры_);
 
     Возврат Ответ;
 
@@ -1208,7 +1208,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("item_id", Товар);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.delete", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.delete", Параметры_);
 
     Возврат Ответ;
 
@@ -1244,7 +1244,7 @@
         Параметры_.Вставить("item_group_id", СуществующаяГруппа);
     КонецЕсли;
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.groupItems", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.groupItems", Параметры_);
 
     Возврат Ответ;
 
@@ -1337,7 +1337,7 @@
 
     Параметры_.Вставить("album_ids", СтрокаПодборок);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.getAlbumById", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getAlbumById", Параметры_);
 
     Возврат Ответ;
 
@@ -1416,7 +1416,7 @@
     Параметры_.Вставить("item_ids" , СписокТоваров);
     Параметры_.Вставить("album_ids", Подборка);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addToAlbum", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.addToAlbum", Параметры_);
 
     Возврат Ответ;
 
@@ -1442,7 +1442,7 @@
     Параметры_.Вставить("item_id"  , Товар);
     Параметры_.Вставить("album_ids", Подборка);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.removeFromAlbum", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.removeFromAlbum", Параметры_);
 
     Возврат Ответ;
 
@@ -1464,7 +1464,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("album_id", Подборка);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deleteAlbum", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.deleteAlbum", Параметры_);
 
     Возврат Ответ;
 
@@ -1487,7 +1487,7 @@
     Response_  = "response";
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
 
-    Ответ    = OPI_Инструменты.Get("api.vk.com/method/market.getProperties", Параметры_);
+    Ответ    = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getProperties", Параметры_);
     Свойства = Ответ[Response_]["items"];
 
     Возврат Свойства;
@@ -1510,7 +1510,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("title", Название);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addProperty", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.addProperty", Параметры_);
 
     Возврат Ответ;
 
@@ -1536,7 +1536,7 @@
     Параметры_.Вставить("property_id", Свойство);
     Параметры_.Вставить("type"       , "text");
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.editProperty", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.editProperty", Параметры_);
 
     Возврат Ответ;
 
@@ -1558,7 +1558,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("property_id", Свойство);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deleteProperty", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.deleteProperty", Параметры_);
 
     Возврат Ответ;
 
@@ -1583,7 +1583,7 @@
     Параметры_.Вставить("property_id", Свойство);
     Параметры_.Вставить("title"      , Значение);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addPropertyVariant", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.addPropertyVariant", Параметры_);
 
     Возврат Ответ;
 
@@ -1611,7 +1611,7 @@
     Параметры_.Вставить("variant_id" , Вариант);
     Параметры_.Вставить("title"      , Значение);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.editPropertyVariant", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.editPropertyVariant", Параметры_);
 
     Возврат Ответ;
 
@@ -1633,7 +1633,7 @@
     Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
     Параметры_.Вставить("variant_id", Вариант);
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deletePropertyVariant", Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.deletePropertyVariant", Параметры_);
 
     Возврат Ответ;
 
@@ -1896,7 +1896,7 @@
         Метод = "add";
     КонецЕсли;
 
-    Ответ     = OPI_Инструменты.Get("api.vk.com/method/market." + Метод, Параметры_);
+    Ответ     = OPI_ЗапросыHTTP.Get("api.vk.com/method/market." + Метод, Параметры_);
     Результат = Ответ[Response_];
 
     Если Не ЗначениеЗаполнено(ИДТовара) И ЗначениеЗаполнено(Результат) Тогда
@@ -1949,7 +1949,7 @@
         Метод = "addAlbum";
     КонецЕсли;
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market." + Метод, Параметры_);
+    Ответ = OPI_ЗапросыHTTP.Get("api.vk.com/method/market." + Метод, Параметры_);
 
     Возврат Ответ;
 
@@ -2125,7 +2125,7 @@
 
     Response_        = "response";
     МаксимумВЗапросе = 200;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.get", Параметры);
+    Ответ            = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.get", Параметры);
     Товары           = Ответ[Response_]["items"];
 
     Если Товары.Количество() = 0 Тогда
@@ -2146,7 +2146,7 @@
 
     Response_        = "response";
     МаксимумВЗапросе = 100;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.getAlbums", Параметры);
+    Ответ            = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getAlbums", Параметры);
     Альбомы          = Ответ[Response_]["items"];
 
     Если Альбомы.Количество() = 0 Тогда
@@ -2167,7 +2167,7 @@
 
     Response_        = "response";
     МаксимумВЗапросе = 50;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.getGroupOrders", Параметры);
+    Ответ            = OPI_ЗапросыHTTP.Get("api.vk.com/method/market.getGroupOrders", Параметры);
     Заказы           = Ответ[Response_]["items"];
 
     Если Заказы.Количество() = 0 Тогда
