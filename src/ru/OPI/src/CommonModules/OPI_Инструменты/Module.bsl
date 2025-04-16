@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
+﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
 
 // MIT License
 
@@ -750,7 +750,7 @@
 Процедура ЗаменитьСпецСимволы(Текст, Разметка = "Markdown") Экспорт
 
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Разметка);
-    
+
     СоответствиеСимволов = Новый Соответствие;
 
     Если Разметка = "HTML" Тогда
