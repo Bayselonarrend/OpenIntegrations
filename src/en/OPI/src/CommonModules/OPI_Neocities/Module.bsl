@@ -67,7 +67,7 @@ Function GetSiteData(Val Token, Val Website = "") Export
     Parameters = New Structure;
     OPI_Tools.AddField("sitename", Website, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -144,7 +144,7 @@ Function UploadFile(Val Token, Val Path, Val Data) Export
     FileMapping = New Map;
     FileMapping.Insert(Path + "|" + Path, Data);
 
-    Response = OPI_Tools.PostMultipart(URL, , FileMapping, "multipart/form-data", Headers);
+    Response = OPI_HTTPRequests.PostMultipart(URL, , FileMapping, "multipart/form-data", Headers);
 
     Return Response;
 
@@ -197,7 +197,7 @@ Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export
         URL     = "https://neocities.org/api/upload";
         Headers = CreateRequestHeaders(Token);
 
-        FinalResponse = OPI_Tools.PostMultipart(URL
+        FinalResponse = OPI_HTTPRequests.PostMultipart(URL
             ,
             , ProcessedMap
             , "multipart/form-data"
@@ -239,7 +239,7 @@ Function DeleteSelectedFiles(Val Token, Val Paths) Export
     EndDo;
 
     PathsString = StrConcat(Paths, "&");
-    Response    = OPI_Tools.Post(URL, PathsString, Headers, False);
+    Response    = OPI_HTTPRequests.PostWithBody(URL, PathsString, Headers, False);
 
     Return Response;
 
@@ -265,7 +265,7 @@ Function GetFilesList(Val Token, Val Path = "") Export
     Parameters = New Structure;
     OPI_Tools.AddField("path", Path, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 

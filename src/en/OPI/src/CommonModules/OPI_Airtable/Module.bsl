@@ -60,7 +60,7 @@ Function GetListOfBases(Val Token, Val Indent = "") Export
 
     OPI_Tools.AddField("offset", Indent, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -82,7 +82,7 @@ Function GetDatabaseTables(Val Token, Val Base) Export
     URL     = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables";
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -126,7 +126,7 @@ Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection)
     OPI_Tools.AddField("tables"     , TableArray , "Array" , Parameters);
     OPI_Tools.AddField("workspaceId", Workspace  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -156,7 +156,7 @@ Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Descript
     Headers    = GetAuthorizationHeader(Token);
     Parameters = GenerateTableDescription(Name, FieldArray, Description);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -186,7 +186,7 @@ Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Descript
     OPI_Tools.AddField("name"       , Name        , "String", Parameters);
     OPI_Tools.AddField("description", Description , "String", Parameters);
 
-    Response = OPI_Tools.Patch(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -223,7 +223,7 @@ Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
     URL     = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables/" + Table + "/fields";
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Post(URL, FieldStructure, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, FieldStructure, Headers);
 
     Return Response;
 
@@ -261,7 +261,7 @@ Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", V
     OPI_Tools.AddField("name"       , Name        , "String", Parameters);
     OPI_Tools.AddField("description", Description , "String", Parameters);
 
-    Response = OPI_Tools.Patch(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -413,7 +413,7 @@ Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Expor
     Parameters = New Structure();
     OPI_Tools.AddField("offset", Indent, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -439,7 +439,7 @@ Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
     URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record;
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -468,7 +468,7 @@ Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
     URL     = "https://api.airtable.com/v0/" + Base + "/" + Table;
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -503,7 +503,7 @@ Function DeleteRecords(Val Token, Val Base, Val Table, Val Records) Export
     URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + RecordString;
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -537,7 +537,7 @@ Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = ""
     Parameters = New Structure();
     OPI_Tools.AddField("offset", Indent, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
 
     Return Response;
 
@@ -567,7 +567,7 @@ Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Exp
     Parameters = New Structure();
     OPI_Tools.AddField("text", Text, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -599,7 +599,7 @@ Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Va
     Parameters = New Structure();
     OPI_Tools.AddField("text", Text, "String", Parameters);
 
-    Response = OPI_Tools.Patch(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -627,7 +627,7 @@ Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) 
     URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments/" + Comment;
     Headers = GetAuthorizationHeader(Token);
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 

@@ -65,7 +65,7 @@ Function CreateTag(Val Token, Val Name) Export
     Label = New Structure;
     OPI_Tools.AddField("name", Name, "String", Label);
 
-    Response = OPI_Tools.Post(URL, New Structure("label", Label), Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, New Structure("label", Label), Headers);
 
     Return Response;
 
@@ -94,7 +94,7 @@ Function UpdateTag(Val Token, Val TagID, Val Name) Export
     Label = New Structure;
     OPI_Tools.AddField("name", Name, "String", Label);
 
-    Response = OPI_Tools.Put(URL, New Structure("label", Label), Headers);
+    Response = OPI_HTTPRequests.PutWithBody(URL, New Structure("label", Label), Headers);
 
     Return Response;
 
@@ -119,7 +119,7 @@ Function GetTag(Val Token, Val TagID) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://api-metrika.yandex.net/management/v1/label/" + TagID;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -144,7 +144,7 @@ Function DeleteTag(Val Token, Val TagID) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://api-metrika.yandex.net/management/v1/label/" + TagID;
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -166,7 +166,7 @@ Function GetTagsList(Val Token) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://api-metrika.yandex.net/management/v1/labels";
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -196,7 +196,7 @@ Function CreateCounter(Val Token, Val CounterStructure) Export
     Parameters = New Structure;
     OPI_Tools.AddField("counter", CounterStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -225,7 +225,7 @@ Function UpdateCounter(Val Token, Val CounterID, Val CounterStructure) Export
     Parameters = New Structure;
     OPI_Tools.AddField("counter", CounterStructure, "Collection", Parameters);
 
-    Response = OPI_Tools.Put(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.PutWithBody(URL, Parameters, Headers);
 
     Return Response;
 
@@ -250,7 +250,7 @@ Function GetCounter(Val Token, Val CounterID) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://api-metrika.yandex.net/management/v1/counter/" + CounterID;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -275,7 +275,7 @@ Function DeleteCounter(Val Token, Val CounterID) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://api-metrika.yandex.net/management/v1/counter/" + CounterID;
 
-    Response = OPI_Tools.Delete(URL, , Headers);
+    Response = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Response;
 
@@ -301,7 +301,7 @@ Function RestoreCounter(Val Token, Val CounterID) Export
     URL     = "https://api-metrika.yandex.net/management/v1/counter/%1/undelete";
     URL     = StrTemplate(URL, CounterID);
 
-    Response = OPI_Tools.Post(URL, , Headers);
+    Response = OPI_HTTPRequests.PostWithBody(URL, , Headers);
 
     Return Response;
 
@@ -332,7 +332,7 @@ Function GetCountersList(Val Token, Val Filter = Undefined) Export
 
     EndIf;
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 
@@ -578,7 +578,7 @@ Function GetActionsList(Val Token, Val CounterID) Export
     URL     = "https://api-metrika.yandex.net/management/v1/counter/%1/operations";
     URL     = StrTemplate(URL, CounterID);
 
-    Response = OPI_Tools.Get(URL, , Headers);
+    Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Response;
 

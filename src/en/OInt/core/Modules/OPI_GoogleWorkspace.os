@@ -100,7 +100,7 @@ Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
     URLParameters.Insert("redirect_uri" , "http://localhost");
     URLParameters.Insert("code"         , Code);
 
-    Response = OPI_Tools.Post(URL, URLParameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody(URL, URLParameters, , False);
 
     Return Response;
 
@@ -130,7 +130,7 @@ Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
     URLParameters.Insert("client_secret", ClientSecret);
     URLParameters.Insert("refresh_token", RefreshToken);
 
-    Response = OPI_Tools.Post(URL, URLParameters, , False);
+    Response = OPI_HTTPRequests.PostWithBody(URL, URLParameters, , False);
 
     Return Response;
 

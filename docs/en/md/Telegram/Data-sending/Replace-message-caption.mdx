@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Description) Export`
+`Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Description, Val Markup = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -18,6 +18,7 @@ import TabItem from '@theme/TabItem';
   | ChatID | --chat | String, Number | &#x2714; | Target chat ID |
   | MessageID | --message | String, Number | &#x2714; | ID of message to delete |
   | Description | --caption | String | &#x2714; | New message description |
+  | Markup | --parsemode | String | &#x2716; | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
@@ -34,7 +35,7 @@ Method at API documentation: [editMessageCaption](https://core.telegram.org/bots
 ```bsl title="1C:Enterprise/OneScript code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
-    MessageID = "12839";
+    MessageID = "13000";
 
     Description = "New picture description";
     Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);

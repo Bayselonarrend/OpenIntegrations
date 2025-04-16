@@ -60,7 +60,7 @@ Function SetWebhook(Val Token, Val URL) Export
     OPI_Tools.AddField("url"        , URL  , "String", Parameters);
     OPI_Tools.AddField("auth_token" , Token, "String", Parameters);
 
-    Return OPI_Tools.Post("https://chatapi.viber.com/pa/set_webhook", Parameters);
+    Return OPI_HTTPRequests.PostWithBody("https://chatapi.viber.com/pa/set_webhook", Parameters);
 
 EndFunction
 
@@ -76,7 +76,7 @@ EndFunction
 Function GetChannelInformation(Val Token) Export
 
     URL = "https://chatapi.viber.com/pa/get_account_info";
-    Return OPI_Tools.Get(URL, , TokenInHeaders(Token));
+    Return OPI_HTTPRequests.Get(URL, , TokenInHeaders(Token));
 
 EndFunction
 
@@ -96,7 +96,7 @@ Function GetUserData(Val Token, Val UserID) Export
     Parameters = New Structure;
     OPI_Tools.AddField("id", UserID, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, TokenInHeaders(Token));
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, TokenInHeaders(Token));
 
     Return Response;
 
@@ -118,7 +118,7 @@ Function GetOnlineUsers(Val Token, Val UserIDs) Export
     Parameters = New Structure;
     OPI_Tools.AddField("ids", UserIDs, "Collection", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, TokenInHeaders(Token));
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, TokenInHeaders(Token));
 
     Return Response;
 
@@ -190,7 +190,7 @@ Function SendFile(Val Token
 
     If Not ValueIsFilled(Size) Then
 
-        Response = OPI_Tools.Get(URL);
+        Response = OPI_HTTPRequests.Get(URL);
         Size     = Response.Size();
 
     EndIf;
@@ -369,7 +369,7 @@ Function SendMessage(Val Token
         URL = "https://chatapi.viber.com/pa/send_message";
     EndIf;
 
-    Response = OPI_Tools.Post(URL, ParametersStructure, TokenInHeaders(Token));
+    Response = OPI_HTTPRequests.PostWithBody(URL, ParametersStructure, TokenInHeaders(Token));
 
     Try
         Return OPI_Tools.JsonToStructure(Response.ПолучитьТелоКакДвоичныеДанные());

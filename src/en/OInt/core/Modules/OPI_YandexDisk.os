@@ -55,7 +55,7 @@
 Function GetDiskInformation(Val Token) Export
 
     Headers  = OPI_YandexID.GetAuthorizationHeader(Token);
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk", , Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk", , Headers);
 
     Return Response;
 
@@ -80,7 +80,7 @@ Function CreateFolder(Val Token, Val Path) Export
     OPI_Tools.AddField("path", Path, "String", Parameters);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_Tools.Put(URL + Parameters, , Headers, False);
+    Response   = OPI_HTTPRequests.PutWithBody(URL + Parameters, , Headers, False);
 
     ResponseURL = Response[Href];
 
@@ -88,7 +88,7 @@ Function CreateFolder(Val Token, Val Path) Export
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(ResponseURL, , Headers);
+    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
 
     Return Response;
 
@@ -110,7 +110,7 @@ Function GetObject(Val Token, Val Path) Export
     Parameters = New Structure;
     OPI_Tools.AddField("path", Path, "String", Parameters);
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
 
     Return Response;
 
@@ -136,7 +136,7 @@ Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
     OPI_Tools.AddField("path"       , Path      , "String" , Parameters);
     OPI_Tools.AddField("permanently", Not ToCart, "Boolean", Parameters);
 
-    Response = OPI_Tools.Delete("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
+    Response = OPI_HTTPRequests.Delete("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
 
     Return Response;
 
@@ -165,7 +165,7 @@ Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = Fal
     OPI_Tools.AddField("overwrite", Overwrite, "Boolean", Parameters);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_Tools.Post(URL + Parameters, , Headers, False);
+    Response   = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
 
     ResponseURL = Response[Href];
 
@@ -173,7 +173,7 @@ Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = Fal
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(ResponseURL, , Headers);
+    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
 
     Return Response;
 
@@ -195,7 +195,7 @@ Function GetDownloadLink(Val Token, Val Path) Export
     Parameters = New Structure;
     OPI_Tools.AddField("path", Path, "String", Parameters);
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/download", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/download", Parameters, Headers);
 
     Return Response;
 
@@ -222,7 +222,7 @@ Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(URL, , , SavePath);
+    Response = OPI_HTTPRequests.Get(URL, , , SavePath);
 
     Return Response;
 
@@ -276,7 +276,7 @@ Function GetFilesList(Val Token
         Destination = "files";
     EndIf;
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/" + Destination, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/" + Destination, Parameters, Headers);
 
     Return Response;
 
@@ -309,14 +309,14 @@ Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Ex
     Parameters.Insert("overwrite" , Overwrite);
 
     Parameters  = OPI_Tools.RequestParametersToString(Parameters);
-    Response    = OPI_Tools.Post(URL + Parameters, , Headers, False);
+    Response    = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
     ResponseURL = Response[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(ResponseURL, , Headers);
+    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
 
     Return Response;
 
@@ -347,14 +347,14 @@ Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     Parameters.Insert("path"      , Path);
     Parameters.Insert("overwrite" , Overwrite);
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Parameters, Headers);
     URL      = Response[Href];
 
     If Not ValueIsFilled(URL) Then
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.PutMultipart(URL, New Structure(), File, "multipart", Headers);
+    Response = OPI_HTTPRequests.PutMultipart(URL, New Structure(), File, "multipart", Headers);
 
     Return Response;
 
@@ -383,7 +383,7 @@ Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     Parameters.Insert("path", Path);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_Tools.Post(URL + Parameters, , Headers, False);
+    Response   = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
 
     Return Response;
 
@@ -450,7 +450,7 @@ Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart =
         Parameters.Insert("offset", OffsetFromStart);
     EndIf;
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/public", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/public", Parameters, Headers);
 
     Return Response;
 
@@ -487,7 +487,7 @@ Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart 
 
     Parameters.Insert("public_key", URL);
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/public/resources", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/public/resources", Parameters, Headers);
 
     Return Response;
 
@@ -518,7 +518,7 @@ Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Expor
 
     Parameters.Insert("public_key", URL);
 
-    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/public/resources/download", Parameters, Headers);
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/public/resources/download", Parameters, Headers);
 
     Return Response;
 
@@ -557,7 +557,7 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
     EndIf;
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_Tools.Post(Address + Parameters, , Headers, False);
+    Response   = OPI_HTTPRequests.PostWithBody(Address + Parameters, , Headers, False);
 
     ResponseURL = Response[Href];
 
@@ -565,7 +565,7 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(ResponseURL, , Headers);
+    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
 
     Return Response;
 
@@ -592,7 +592,7 @@ Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
     Parameters.Insert("path", Path);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_Tools.Put(URL + Parameters, , Headers, False);
+    Response   = OPI_HTTPRequests.PutWithBody(URL + Parameters, , Headers, False);
 
     ResponseURL = Response[Href];
 
@@ -600,7 +600,7 @@ Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
         Return Response;
     EndIf;
 
-    Response = OPI_Tools.Get(ResponseURL, , Headers);
+    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
 
     Return Response;
 

@@ -63,7 +63,7 @@ Function GetBotInformation(Val Token) Export
     OPI_TypeConversion.GetLine(Token);
 
     URL      = "api.telegram.org/bot" + Token + "/getMe";
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -92,7 +92,7 @@ Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export
     OPI_Tools.AddField("timeout", Timeout , "String", Parameters);
     OPI_Tools.AddField("offset" , Offset  , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
     Return Response;
 
 EndFunction
@@ -117,7 +117,7 @@ Function SetWebhook(Val Token, Val URL) Export
     OPI_Tools.AddField("url", URL, "String", Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/setWebHook";
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -139,7 +139,7 @@ Function DeleteWebhook(Val Token) Export
     OPI_TypeConversion.GetLine(Token);
 
     URL      = "api.telegram.org/bot" + Token + "/deleteWebHook";
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
 
     Return Response;
 
@@ -167,7 +167,7 @@ Function DownloadFile(Val Token, Val FileID) Export
     Parameters = New Structure("file_id", FileID);
 
     URL      = "api.telegram.org/bot" + Token + "/getFile";
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Path = Response[Result]["file_path"];
 
@@ -179,7 +179,7 @@ Function DownloadFile(Val Token, Val FileID) Export
 
             OPI_Tools.Pause(N);
 
-            Response = OPI_Tools.Get(URL, Parameters);
+            Response = OPI_HTTPRequests.Get(URL, Parameters);
             Path     = Response[Result]["file_path"];
 
             Ready = ValueIsFilled(Path);
@@ -197,7 +197,7 @@ Function DownloadFile(Val Token, Val FileID) Export
     EndIf;
 
     URL      = "api.telegram.org/file/bot" + Token + "/" + Path;
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -328,7 +328,7 @@ Function SendTextMessage(Val Token
     AddChatIdentifier(ChatID, Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/sendMessage";
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -519,7 +519,7 @@ Function SendMediaGroup(Val Token
     OPI_Tools.AddField("media"       , Media   , String_      , Parameters);
     OPI_Tools.AddField("reply_markup", Keyboard, "Collection" , Parameters);
 
-    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
     Return Response;
 
@@ -556,7 +556,7 @@ Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Ke
 
     AddChatIdentifier(ChatID, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -595,7 +595,7 @@ Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, V
 
     AddChatIdentifier(ChatID, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -634,7 +634,7 @@ Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Ano
     Parameters.Insert("is_anonymous", ?(Anonymous, 1, 0));
     AddChatIdentifier(ChatID, Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -669,7 +669,7 @@ Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export
 
     AddChatIdentifier(ToID, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -698,7 +698,7 @@ Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("message_id", MessageID, "Number", Parameters);
     OPI_Tools.AddField("chat_id"   , ChatID   , "Number", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
     Return Response;
 
 EndFunction
@@ -730,7 +730,7 @@ Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboa
     AddChatIdentifier(ChatID, Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/editMessageReplyMarkup";
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -747,23 +747,32 @@ EndFunction
 // ChatID - String, Number - Target chat ID - chat
 // MessageID - String, Number - ID of message to delete - message
 // Text - String - New message text - text
+// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function ReplaceMessageText(Val Token, Val ChatID, Val MessageID, Val Text) Export
+Function ReplaceMessageText(Val Token
+    , Val ChatID
+    , Val MessageID
+    , Val Text
+    , Val Markup = "") Export
 
     OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Text);
+
+    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
 
     String_ = "String";
 
     Parameters = New Structure;
     OPI_Tools.AddField("message_id", MessageID, "Number", Parameters);
     OPI_Tools.AddField("text"      , Text     , String_ , Parameters);
+    OPI_Tools.AddField("parse_mode", Markup   , String_ , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/editMessageText";
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -780,23 +789,32 @@ EndFunction
 // ChatID - String, Number - Target chat ID - chat
 // MessageID - String, Number - ID of message to delete - message
 // Description - String - New message description - caption
+// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Description) Export
+Function ReplaceMessageCaption(Val Token
+    , Val ChatID
+    , Val MessageID
+    , Val Description
+    , Val Markup = "") Export
 
     OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Description);
+
+    OPI_Tools.ReplaceSpecialCharacters(Description, Markup);
 
     String_ = "String";
 
     Parameters = New Structure;
     OPI_Tools.AddField("message_id", MessageID   , "Number", Parameters);
     OPI_Tools.AddField("caption"   , Description , String_ , Parameters);
+    OPI_Tools.AddField("parse_mode", Markup      , String_ , Parameters);
 
     AddChatIdentifier(ChatID, Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/editMessageCaption";
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
 
@@ -870,7 +888,7 @@ Function Ban(Val Token, Val ChatID, Val UserID) Export
     OPI_Tools.AddField("chat_id"   , ChatID     , "Number", Parameters);
     OPI_Tools.AddField("user_id"   , UserID     , "Number", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -902,7 +920,7 @@ Function Unban(Val Token, Val ChatID, Val UserID) Export
     OPI_Tools.AddField("user_id"       , UserID     , "Number" , Parameters);
     OPI_Tools.AddField("only_if_banned", False      , "Boolean", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -941,7 +959,7 @@ Function CreateInvitationLink(Val Token
     OPI_Tools.AddField("member_limit" , UserLimit      , "Number" , Parameters);
     OPI_Tools.AddField("expire_date"  , ExpirationDate , "Date"   , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -973,7 +991,7 @@ Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("message_id"          , MessageID  , "Number" , Parameters);
     OPI_Tools.AddField("disable_notification", False      , "Boolean", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1004,7 +1022,7 @@ Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
     OPI_Tools.AddField("chat_id"   , ChatID     , "Number", Parameters);
     OPI_Tools.AddField("message_id", MessageID  , "Number", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1032,7 +1050,7 @@ Function GetParticipantCount(Val Token, Val ChatID) Export
     OPI_Tools.AddField("parse_mode", "Markdown" , "String" , Parameters);
     OPI_Tools.AddField("chat_id"   , ChatID     , "Number" , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1059,7 +1077,7 @@ Function GetAvatarIconList(Val Token) Export
 
     Result   = "result";
     URL      = "api.telegram.org/bot" + Token + "/getForumTopicIconStickers";
-    Response = OPI_Tools.Get(URL);
+    Response = OPI_HTTPRequests.Get(URL);
     Icons    = Response[Result];
 
     If Not ValueIsFilled(Icons) Then
@@ -1236,7 +1254,7 @@ Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
     OPI_Tools.AddField("chat_id", ChatID , "Number" , Parameters);
     OPI_Tools.AddField("name"   , Title  , "String" , Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1272,7 +1290,7 @@ Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "")
     EndIf;
 
     URL      = "api.telegram.org/bot" + Token + Method;
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1320,7 +1338,7 @@ Function SendFile(Val Token
 
     Method   = DetermineSendMethod(View);
     URL      = "api.telegram.org/bot" + Token + Method;
-    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
     Return Response;
 
@@ -1347,7 +1365,7 @@ Function ForumTopicManagement(Val Token
         Method = "/createForumTopic";
     EndIf;
 
-    Response = OPI_Tools.Get("api.telegram.org/bot" + Token + Method, Parameters);
+    Response = OPI_HTTPRequests.Get("api.telegram.org/bot" + Token + Method, Parameters);
 
     Return Response;
 
@@ -1370,7 +1388,7 @@ Function ManageForumThreadState(Val Token, Val ChatID, Val Status, Val ThreadID 
     OPI_Tools.AddField("message_thread_id", ThreadID, "Number", Parameters);
 
     URL      = "api.telegram.org/bot" + Token + Method;
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
@@ -1391,7 +1409,7 @@ Function ManageMainTopicVisibility(Val Token, Val ChatID, Val Hide)
     OPI_Tools.AddField("chat_id", ChatID, "String", Parameters);
 
     URL      = "api.telegram.org/bot" + Token + Method;
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
 
