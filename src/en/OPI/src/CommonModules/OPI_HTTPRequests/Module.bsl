@@ -57,7 +57,7 @@ Function NewRequest() Export
     If OPI_Tools.IsOneScript() Then
         //@skip-check property-not-writable
         DataProcessors = Undefined;
-        HTTPClient     = New("HTTPClient");
+        HTTPClient     = New("OPI_HTTPClient");
     Else
         HTTPClient     = DataProcessors.OPI_HTTPClient.Create();
     EndIf;
