@@ -410,6 +410,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
         Fields.Insert("media"        , Part);
 
         Authorization = CreateAuthorizationHeaderV1(Parameters, New Structure, RequestType, URL);
+        Authorization.Insert("Content-Length", OPI_Tools.NumberToString(Part.Size()));
 
         OPI_HTTPRequests.PostMultipart(URL, Fields, , , Authorization);
 
