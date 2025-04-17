@@ -1302,9 +1302,9 @@ Function CompleteHeaders()
             CurrentBody = Request.ПолучитьТелоКакДвоичныеДанные();
 
             If CurrentBody = Undefined Then
-                BodySize      = 0;
+                BodySize   = 0;
             Else
-                BodySize      = CurrentBody.Size();
+                BodySize   = CurrentBody.Size();
             EndIf;
 
         Else
@@ -1314,6 +1314,7 @@ Function CompleteHeaders()
 
         EndIf;
 
+        OPI_TypeConversion.GetLine(BodySize);
         Request.Headers.Insert("Content-Length" , BodySize);
 
     EndIf;
