@@ -138,7 +138,7 @@ Function Initialize(Val URL = "") Export
     SetDefaultSettings();
     SetURL(URL);
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -154,7 +154,7 @@ Function SetURL(Val URL) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
             If ValueIsFilled(URL) Then
 
@@ -191,14 +191,14 @@ Function SetURLParams(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not ValueIsFilled(Value) Then Value = New Structure; EndIf;
 
         ErrorText        = "SetURLParams: The passed parameters are not a key/value collection";
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
         RequestURLParams = Value;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -221,7 +221,7 @@ Function SetRequestObject(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         If TypeOf(Value) <> Type("HTTPRequest") Then
             Return Error("SetRequestObject: Not a request has been passed");
@@ -230,7 +230,7 @@ Function SetRequestObject(Val Value) Export
             Request = Value;
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -253,7 +253,7 @@ Function SetConnectionObject(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         If TypeOf(Value) <> Type("HTTPConnection") Then
             Return Error("SetConnectionObject: Not a connection has been passed");
@@ -262,7 +262,7 @@ Function SetConnectionObject(Val Value) Export
             Connection = Value;
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -282,16 +282,16 @@ Function SetResponseFile(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not ValueIsFilled(Value) Then
             RequestOutputFile = Undefined;
-            Return ThisObject;
+            Return ЭтотОбъект;
         EndIf;
 
         OPI_TypeConversion.GetLine(Value);
         RequestOutputFile = Value;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -311,7 +311,7 @@ Function SetDataType(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         AddLog("SetDataType: Setting the value");
         OPI_TypeConversion.GetLine(Value);
@@ -319,7 +319,7 @@ Function SetDataType(Val Value) Export
         RequestDataType       = Value;
         RequestTypeSetManualy = True;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -364,7 +364,7 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         CancelMultipartBody();
 
@@ -390,7 +390,7 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
             AddLog("SetBinaryBody: Passed an empty body, skip");
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -412,13 +412,13 @@ Function SetStringBody(Val Data, Val Encoding = "UTF-8", Val WriteBOM = False) E
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
             AddLog("SetStringBody: No data, skip");
-            Return ThisObject;
+            Return ЭтотОбъект;
         EndIf;
 
         If Not RequestTypeSetManualy Then
@@ -429,7 +429,7 @@ Function SetStringBody(Val Data, Val Encoding = "UTF-8", Val WriteBOM = False) E
         SetBodyFromString(Data, Encoding, WriteBOM);
         AddLog(StrTemplate("SetStringBody: Body set, size %1", RequestBody.Size()));
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -449,13 +449,13 @@ Function SetJsonBody(Val Data) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
             AddLog("SetJsonBody: No data, skip");
-            Return ThisObject;
+            Return ЭтотОбъект;
         EndIf;
 
         If Not RequestTypeSetManualy Then
@@ -469,7 +469,7 @@ Function SetJsonBody(Val Data) Export
 
         AddLog(StrTemplate("SetJsonBody: Body set, size %1", RequestBody.Size()));
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -489,13 +489,13 @@ Function SetFormBody(Val Data) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
             AddLog("SetFormBody: No data, skip");
-            Return ThisObject;
+            Return ЭтотОбъект;
         EndIf;
 
         If Not RequestTypeSetManualy Then
@@ -522,7 +522,7 @@ Function SetFormBody(Val Data) Export
 
         AddLog(StrTemplate("SetFormBody: Body set, size %1", RequestBody.Size()));
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -546,7 +546,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         OPI_TypeConversion.GetBoolean(UseFile);
         OPI_TypeConversion.GetLine(View);
@@ -586,7 +586,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
 
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -612,7 +612,7 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not Multipart Then Return Error("AddMultipartFormDataFile: Multipart record not initialized") EndIf;
 
         OPI_TypeConversion.GetBinaryData(Data);
@@ -638,7 +638,7 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
 
         RequestDataWriter.WriteLine(LineSeparator);
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -662,7 +662,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not Multipart Then Return Error("AddMultipartFormDataField: Multipart record not initialized") EndIf;
 
         ValeType = TypeOf(Value);
@@ -687,7 +687,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
         RequestDataWriter.WriteLine(Value);
         RequestDataWriter.WriteLine(LineSeparator);
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -712,7 +712,7 @@ Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not Multipart Then Return Error("AddFileAsRelated: Multipart record not initialized") EndIf;
 
         OPI_TypeConversion.GetLine(DataType);
@@ -735,7 +735,7 @@ Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
         RequestDataWriter.WriteLine(LineSeparator);
         RequestDataWriter.WriteLine(LineSeparator);
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -763,7 +763,7 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
         If Not ValueIsFilled(Value) Then Value = New Map EndIf;
 
         ErrorText = "SetURLParams: The passed parameters are not a key/value collection";
@@ -778,7 +778,7 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
             EndDo;
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -803,7 +803,7 @@ Function AddBasicAuthorization(Val User, Val Password) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         OPI_TypeConversion.GetLine(User);
         OPI_TypeConversion.GetLine(Password);
@@ -811,7 +811,7 @@ Function AddBasicAuthorization(Val User, Val Password) Export
         RequestUser     = User;
         RequestPassword = Password;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -834,7 +834,7 @@ Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Serv
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         String_   = "String";
         AWS4Using = True;
@@ -845,7 +845,7 @@ Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Serv
         OPI_Tools.AddField("Region"   , Region   , String_, AWS4Data);
         OPI_Tools.AddField("Service"  , Service  , String_, AWS4Data);
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -878,13 +878,13 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         OPI_TypeConversion.GetBoolean(Start);
         RequestMethod = Method;
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         AddLog("ProcessRequest: Forming a request");
-        If FormRequest().Error Then Return ThisObject EndIf;
+        If FormRequest().Error Then Return ЭтотОбъект EndIf;
 
         AddLog("ProcessRequest: Setting the request body");
-        If SetRequestBody().Error Then Return ThisObject EndIf;
+        If SetRequestBody().Error Then Return ЭтотОбъект EndIf;
 
         If AWS4Using Then
             AddLog("ProcessRequest: Form AWS4");
@@ -896,7 +896,7 @@ Function ProcessRequest(Val Method, Val Start = True) Export
             ExecuteMethod();
         EndIf;
 
-        Return ThisObject;
+        Return ЭтотОбъект;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -916,7 +916,7 @@ Function ExecuteRequest(Val Method) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
         OPI_TypeConversion.GetLine(Method);
         RequestMethod = Method;
@@ -941,7 +941,7 @@ EndFunction
 // DataProcessorObject.OPI_HTTPClient, HTTPRequest, Undefined - The request or the same processing object
 Function ReturnRequest(Forced = False) Export
 
-    If StopExecution() And Not Forced Then Return ThisObject EndIf;
+    If StopExecution() And Not Forced Then Return ЭтотОбъект EndIf;
 
     Return Request;
 
@@ -957,7 +957,7 @@ EndFunction
 // DataProcessorObject.OPI_HTTPClient, HTTPConnection, Undefined - Connection or the same processor object
 Function ReturnConnection(Forced = False) Export
 
-    If StopExecution() And Not Forced Then Return ThisObject EndIf;
+    If StopExecution() And Not Forced Then Return ЭтотОбъект EndIf;
 
     Return Connection;
 
@@ -980,7 +980,7 @@ Function ReturnResponse(Val Forced = False, Val ExceptionOnError = False) Export
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
 
     Return Response;
 
@@ -997,7 +997,7 @@ EndFunction
 // Arbitrary - The response or the same processing object
 Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = False) Export
 
-    If StopExecution(ExceptionOnError) Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) Then Return ЭтотОбъект EndIf;
 
     Try
 
@@ -1079,7 +1079,7 @@ Function SetBodyFromBinary(Val Value)
     OPI_TypeConversion.GetBinaryData(Value, True, False);
     RequestBody = Value;
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1091,7 +1091,7 @@ Function SetBodyFromString(Val Value, Val Encoding = "UTF-8", Val WriteBOM = Fal
 
     RequestBody = ПолучитьДвоичныеДанныеИзСтроки(Value, Encoding, WriteBOM);
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1132,7 +1132,7 @@ Function SplitURL()
         RequestServer = RequestDomain;
     EndIf;
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1151,7 +1151,7 @@ Function FormRequest()
     AddLog("FormRequest: Creating a connection object");
     CreateConnection();
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1169,7 +1169,7 @@ Function CreateRequest()
 
     Request = New HTTPRequest(RequestAdress, Headers);
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1214,7 +1214,7 @@ Function CreateConnection()
 
     EndIf;
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1308,7 +1308,7 @@ Function SetRequestBody()
 
     EndIf;
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1329,7 +1329,7 @@ Function ExecuteMethod()
 
     EndIf;
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1677,7 +1677,7 @@ Function AddAWS4()
     RequestHeaders.Insert("Authorization", AuthorizationHeader);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -1980,7 +1980,7 @@ EndFunction
 Function RequestInitialized()
 
     Return ?(ValueIsFilled(Initialized)
-        , ThisObject
+        , ЭтотОбъект
         , Error("The request is not initialized. It is necessary to call the Initialize() function before starting work"));
 
 EndFunction
@@ -2011,7 +2011,7 @@ Function AddLog(Val Text)
 
     Log.Add(Text);
 
-    Return ThisObject;
+    Return ЭтотОбъект;
 
 EndFunction
 
@@ -2031,7 +2031,7 @@ Function FunctionTemplate()
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ЭтотОбъект EndIf;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
