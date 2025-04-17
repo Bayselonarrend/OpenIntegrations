@@ -679,12 +679,21 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
         AddLog("AddMultipartFormDataField: Data writing");
 
         If ValeType = Type("Boolean") Then
-            Value   = ?(Value, "true", "false");
+
+            Value = ?(Value, "true", "false");
+            RequestDataWriter.WriteLine(Value);
+
+        ElsIf ValeType = Type("BinaryData") Then
+
+            WriteBinaryData(RequestDataWriter, Value);
+
         Else
+
             OPI_TypeConversion.GetLine(Value);
+            RequestDataWriter.WriteLine(Value);
+
         EndIf;
 
-        RequestDataWriter.WriteLine(Value);
         RequestDataWriter.WriteLine(LineSeparator);
 
         Return ЭтотОбъект;
@@ -1155,15 +1164,6 @@ EndFunction
 Function CreateRequest()
 
     Headers = GetDefaultHeaders();
-
-    If TypeOf(RequestHeaders) = Type("Map") Then
-
-        For Each Title In RequestHeaders Do
-            Headers.Insert(Title.Key, Title.Value);
-        EndDo;
-
-    EndIf;
-
     Request = New HTTPRequest(RequestAdress, Headers);
 
     Return ЭтотОбъект;
@@ -1295,10 +1295,26 @@ Function CompleteHeaders()
 
         AddLog("CompleteHeaders: Content-Length setting");
 
-        BodySize = Request.GetBodyAsStream().Size();
+        BodyFileName = Request.GetBodyFileName();
+
+        If BodyFileName = Undefined Then
+
+            CurrentBody = Request.ПолучитьТелоКакДвоичныеДанные();
+
+            If CurrentBody = Undefined Then
+                BodySize      = 0;
+            Else
+                BodySize      = CurrentBody.Size();
+            EndIf;
+
+        Else
+
+            BodyFile = New File(BodyFileName);
+            BodySize = BodyFile.Size();
+
+        EndIf;
 
         Request.Headers.Insert("Content-Length" , BodySize);
-        RequestHeaders.Insert("Content-Length" , BodySize);
 
     EndIf;
 
@@ -1306,6 +1322,15 @@ Function CompleteHeaders()
         AddLog("CompleteHeaders: Generating AWS4 Authorization Header");
         AddAWS4();
     EndIf;
+
+    If TypeOf(RequestHeaders) = Type("Map") Then
+
+        For Each Title In RequestHeaders Do
+            Request.Headers.Insert(Title.Key, Title.Value);
+        EndDo;
+
+    EndIf;
+
 
 EndFunction
 
@@ -1691,7 +1716,6 @@ Function AddAWS4()
 
     AuthorizationHeader = CreateAuthorizationHeader();
 
-    RequestHeaders.Insert("Authorization", AuthorizationHeader);
     Request.Headers.Insert("Authorization", AuthorizationHeader);
 
     Return ЭтотОбъект;
