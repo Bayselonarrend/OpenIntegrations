@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPКлиент.os
+// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPКлиент.os
 
 // MIT License
 
@@ -1314,6 +1314,7 @@
 
         КонецЕсли;
 
+		OPI_ПреобразованиеТипов.ПолучитьСтроку(РазмерТела);
         Запрос.Заголовки.Вставить("Content-Length" , РазмерТела);
 
     КонецЕсли;
