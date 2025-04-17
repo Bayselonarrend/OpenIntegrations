@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPRequests.os
+﻿// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPClient.os
 
 // MIT License
 
@@ -886,10 +886,7 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         AddLog("ProcessRequest: Setting the request body");
         If SetRequestBody().Error Then Return ЭтотОбъект EndIf;
 
-        If AWS4Using Then
-            AddLog("ProcessRequest: Form AWS4");
-            AddAWS4();
-        EndIf;
+        CompleteHeaders();
 
         If Start Then
             AddLog("ProcessRequest: Execution");
@@ -1292,6 +1289,26 @@ Function GetDefaultHeaders()
 
 EndFunction
 
+Function CompleteHeaders()
+
+    If Request.Headers.Get("Content-Length") = Undefined Then
+
+        AddLog("CompleteHeaders: Content-Length setting");
+
+        BodySize = Request.GetBodyAsStream().Size();
+
+        Request.Headers.Insert("Content-Length" , BodySize);
+        RequestHeaders.Insert("Content-Length" , BodySize);
+
+    EndIf;
+
+    If AWS4Using Then
+        AddLog("CompleteHeaders: Generating AWS4 Authorization Header");
+        AddAWS4();
+    EndIf;
+
+EndFunction
+
 Function SetRequestBody()
 
     If Multipart Then
@@ -1442,8 +1459,8 @@ Procedure WriteBinaryData(DataWriter, Val BinaryData)
 
         DataWriter.Write(CurrentData);
 
-        // !OInt FreeObject(CurrentData);
-        // !OInt RunGarbageCollection();
+        FreeObject(CurrentData);
+        RunGarbageCollection();
 
         CurrentPosition = CurrentPosition + CurrentSize;
 
