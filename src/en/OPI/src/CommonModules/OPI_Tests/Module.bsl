@@ -2620,6 +2620,19 @@ EndProcedure
 
 #EndRegion
 
+#Region HTTP
+
+Procedure HTTP_MainTests() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
+
+    HTTPClient_SetURL(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -21020,6 +21033,28 @@ Procedure Ollama_CheckBlob(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "CheckBlob (error)", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaError(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region HTTP
+
+Procedure HTTPClient_SetURL(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
 
 EndProcedure
 
