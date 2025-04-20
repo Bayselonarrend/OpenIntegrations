@@ -149,6 +149,7 @@ Function GetTestTable() Export
     RCON      = "RCON";
     MySQL     = "MySQL";
     Ollama    = "Ollama";
+    Http      = "HTTP";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -300,6 +301,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"                , "Models management"               , Ollama);
     NewTest(TestTable, "OLLM_WorkingWithBlob"                 , "Working with Blob"               , Ollama);
+    NewTest(TestTable, "HTTP_MainTests"                       , "Main tests"                      , Http);
 
     Return TestTable;
 
@@ -365,8 +367,13 @@ Function FormYAXTestsCLI() Export
     For Each Section In Sections Do
 
         CurrentSection = Section.Key;
-        Filter         = New Structure("Section", CurrentSection);
-        SectionTests   = TestTable.FindRows(Filter);
+
+        If CurrentSection = "HTTP" Then
+            Continue;
+        EndIf;
+
+        Filter       = New Structure("Section", CurrentSection);
+        SectionTests = TestTable.FindRows(Filter);
 
         Set = Module.ДобавитьТестовыйНабор("CLI_" + CurrentSection);
 
@@ -382,11 +389,26 @@ EndFunction
 
 Function FormAssertsTestsCLI() Export
 
-    TestTable    = GetTestTable();
     ArrayOfTests = New Array;
 
-    For Each Test In TestTable Do
-        ArrayOfTests.Add("CLI_" + Test.Method);
+    Sections  = GetTestingSectionMapping();
+    TestTable = GetTestTable();
+
+    For Each Section In Sections Do
+
+        CurrentSection = Section.Key;
+
+        If CurrentSection = "HTTP" Then
+            Continue;
+        EndIf;
+
+        Filter       = New Structure("Section", CurrentSection);
+        SectionTests = TestTable.FindRows(Filter);
+
+        For Each Test In SectionTests Do
+            ArrayOfTests.Add("CLI_" + Test.Method);
+        EndDo;
+
     EndDo;
 
     Return ArrayOfTests;
