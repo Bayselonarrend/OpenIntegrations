@@ -22,5 +22,7 @@
 "My Drive":"Мой Диск",
 "<key>ru</key>":"<key>en</key>",
 "<scriptVariant>Russian</scriptVariant>":"<scriptVariant>English</scriptVariant>",
-"Base-Project: OpenIntegrations":"Base-Project: OpenIntegrationsENG"
+"Base-Project: OpenIntegrations":"Base-Project: OpenIntegrationsENG",
+"https://example.com/path": "https://example.com/путь",
+"СтруктураПараметров1.Вставить(\"param4\", \"cyrillic\");": "СтруктураПараметров1.Вставить(\"param4\", \"кириллица\");"
 }
