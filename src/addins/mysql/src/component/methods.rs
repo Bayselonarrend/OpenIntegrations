@@ -1,22 +1,18 @@
 use serde_json::{Value, json};
-use crate::component;
+use crate::component::format_json_error;
 use base64::{engine::general_purpose, Engine as _};
 use mysql::prelude::Queryable;
 use std::collections::HashMap;
 use chrono::*;
+use mysql::PooledConn;
 use mysql_common::packets::Column;
 
 pub fn execute_query(
-    client: &mut component::AddIn,
+    conn: &mut PooledConn,
     query: String,
     params_json: String,
     force_result: bool
 ) -> String {
-
-    let pool = match client.connections {
-        Some(ref mut conns) => conns,
-        None => return format_json_error("No connections pool!")
-    };
 
     // Парсинг JSON параметров
     let mut parsed_params: Value = match serde_json::from_str(&params_json) {
@@ -27,11 +23,6 @@ pub fn execute_query(
     let params_array = match parsed_params.as_array_mut() {
         Some(array) => process_mysql_params(array),
         None => return format_json_error("Parameters must be a JSON array")
-    };
-    
-    let mut conn = match pool.get_conn(){
-        Ok(conn) => conn,
-        Err(e) => return format_json_error(e)
     };
 
     // Определяем тип запроса
@@ -225,13 +216,4 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
     };
 
     result
-}
-
-fn format_json_error<E: ToString>(error: E) -> String {
-    let error_message = error.to_string();
-    let json_obj = json!({
-        "result": false,
-        "error": error_message,
-    });
-    json_obj.to_string()
 }
