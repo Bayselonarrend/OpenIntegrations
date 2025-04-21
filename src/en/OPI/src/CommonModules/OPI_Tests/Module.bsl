@@ -2627,6 +2627,7 @@ Procedure HTTP_MainTests() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
+    HTTPClient_Initialize(TestParameters);
     HTTPClient_SetURL(TestParameters);
 
 EndProcedure
@@ -21040,6 +21041,63 @@ EndProcedure
 
 #Region HTTP
 
+Procedure HTTPClient_Initialize(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "Initialize", "HTTPClient");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .ProcessRequest("POST", False);
+
+    HTTPRequest    = HTTPClient.ReturnRequest();
+    HTTPConnection = HTTPClient.ReturnConnection();
+    HTTPResponse   = HTTPClient.ReturnResponse();
+    MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
+
+    Try
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
+        OPI_TestDataRetrieval.ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest.ResourceAddress).Равно("/get");
+        OPI_TestDataRetrieval.ExpectsThat(HTTPConnection.Host).Равно(MainURL);
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPResponse).Равно(Undefined);
+
+        AnotherRequest = HTTPClient.SetURL(FunctionParameters["HTTP_URL"] + "/post")
+            .ProcessRequest("POST", False)
+            .ReturnRequest();
+
+        OPI_TestDataRetrieval.ExpectsThat(AnotherRequest).ИмеетТип("HTTPRequest");
+        OPI_TestDataRetrieval.ExpectsThat(AnotherRequest.ResourceAddress).Равно("/post");
+
+    Except
+        Message(HTTPClient.GetLog(True));
+        Raise ErrorDescription();
+    EndTry;
+
+EndProcedure
+
 Procedure HTTPClient_SetURL(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
@@ -21053,10 +21111,43 @@ Procedure HTTPClient_SetURL(FunctionParameters)
 
     // END
 
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetURL", "HTTPClient");
+
     OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
 
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("POST", False);
+
+    HTTPRequest    = HTTPClient.ReturnRequest();
+    HTTPConnection = HTTPClient.ReturnConnection();
+    HTTPResponse   = HTTPClient.ReturnResponse();
+    MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
+
+    Try
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
+        OPI_TestDataRetrieval.ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest.ResourceAddress).Равно("/get");
+        OPI_TestDataRetrieval.ExpectsThat(HTTPConnection.Host).Равно(MainURL);
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPResponse).Равно(Undefined);
+    Except
+        Message(HTTPClient.GetLog(True));
+        Raise ErrorDescription();
+    EndTry;
+
 EndProcedure
+
+
 
 #EndRegion
 

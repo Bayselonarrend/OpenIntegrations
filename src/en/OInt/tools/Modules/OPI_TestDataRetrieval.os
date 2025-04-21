@@ -77,6 +77,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("TCP"            , 5);
     Sections.Insert("GreenAPI"       , 5);
     Sections.Insert("Ollama"         , 5);
+    Sections.Insert("HTTPClient"     , 5);
 
     Return Sections;
 
@@ -115,6 +116,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("TCP"            , StandardDependencies);
     Sections.Insert("GreenAPI"       , StandardDependencies);
     Sections.Insert("Ollama"         , StandardDependencies);
+    Sections.Insert("HTTPClient"     , StandardDependencies);
 
     Return Sections;
 
@@ -149,7 +151,7 @@ Function GetTestTable() Export
     RCON      = "RCON";
     MySQL     = "MySQL";
     Ollama    = "Ollama";
-    Http      = "HTTP";
+    Http      = "HTTPClient";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
