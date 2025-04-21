@@ -59,6 +59,8 @@ Var RequestURL;
 Var RequestServer;
 Var RequestPort;
 Var RequestAdress;
+Var RequestAdressFull;
+Var RequestSection;
 Var RequestProtected;
 Var RequestDomain;
 
@@ -160,6 +162,10 @@ Function SetURL(Val URL) Export
 
                 OPI_TypeConversion.GetLine(URL);
                 OPI_Tools.RestoreEscapeSequences(URL);
+
+                If GetSetting("URLencoding") Then
+                    URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
+                EndIf;
 
                 RequestURL = URL;
 
@@ -514,7 +520,6 @@ Function SetFormBody(Val Data) Export
         Else
 
             Data = RequestParametersToString(Data);
-            Data = Right(Data, StrLen(Data) - 1);
 
         EndIf;
 
@@ -1045,6 +1050,8 @@ EndFunction
 
 Function ConvertParameterToString(Val Value)
 
+    EncodeURL = GetSetting("URLencoding");
+
     If TypeOf(Value) = Type("Array") Then
 
         For N        = 0 To Value.UBound() Do
@@ -1052,7 +1059,11 @@ Function ConvertParameterToString(Val Value)
         EndDo;
 
         Value = StrConcat(Value, ",");
-        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+
+        If EncodeURL Then
+            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+        EndIf;
+
         Value = "[" + Value + "]";
 
     ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
@@ -1072,7 +1083,10 @@ Function ConvertParameterToString(Val Value)
     Else
 
         OPI_TypeConversion.GetLine(Value);
-        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+
+        If EncodeURL Then
+            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+        EndIf;
 
     EndIf;
 
@@ -1109,6 +1123,13 @@ Function SplitURL()
 
     URL = StrReplace(URL, "https://", "");
     URL = StrReplace(URL, "http://" , "");
+
+    Section = StrFind(URL, "#");
+
+    If Section > 0 Then
+        RequestSection = Right(URL, StrLen(URL) - Section + 1);
+        URL            = Left(URL, Section - 1);
+    EndIf;
 
     If StrFind(URL, "/") = 0 Then
         RequestAdress    = "";
@@ -1149,7 +1170,7 @@ Function FormRequest()
     EndIf;
 
     AddLog("FormRequest: Adding parameters");
-    RequestAdress = RequestAdress + RequestParametersToString(RequestURLParams);
+    CompleteURLWithParameters();
 
     AddLog("FormRequest: Creating a request object");
     CreateRequest();
@@ -1164,7 +1185,7 @@ EndFunction
 Function CreateRequest()
 
     Headers = GetDefaultHeaders();
-    Request = New HTTPRequest(RequestAdress, Headers);
+    Request = New HTTPRequest(RequestAdressFull, Headers);
 
     Return ThisObject;
 
@@ -1215,14 +1236,34 @@ Function CreateConnection()
 
 EndFunction
 
-Function RequestParametersToString(Val Parameters, Val Start = True)
+Function CompleteURLWithParameters()
 
-    If Parameters.Count() = 0 Then
+    If StrEndsWith(RequestAdress, "?") Or Not ValueIsFilled(RequestURLParams) Then
+        FirstSymbol = "";
+    ElsIf StrFind(RequestAdress, "?") <> 0 Then
+        FirstSymbol = "&";
+    Else
+        FirstSymbol = "?";
+    EndIf;
+
+    RequestAdressFull = RequestAdress + FirstSymbol + RequestParametersToString(RequestURLParams) + RequestSection;
+
+    Return ThisObject;
+
+EndFunction
+
+Function RequestParametersToString(Val Parameters)
+
+    If Not ValueIsFilled(Parameters) Then
         Return "";
     EndIf;
 
-    ParameterString = ?(Start, "?", "&");
+    AddLog("RequestParametersToString: Retrieve collection KeyValue");
+    OPI_TypeConversion.GetKeyValueCollection(Parameters);
 
+    ParameterString = "";
+
+    AddLog("RequestParametersToString: Adding parameters");
     For Each Parameter In Parameters Do
 
         CurrentValue = Parameter.Value;
@@ -1231,7 +1272,6 @@ Function RequestParametersToString(Val Parameters, Val Start = True)
         If Not TypeOf(CurrentValue) = Type("Array") Or Not GetSetting("SplitArrayParams") Then
 
             ParameterValue = ConvertParameterToString(CurrentValue);
-
             ParameterString = ParameterString + Parameter.Key + "=" + ParameterValue + "&";
 
         Else
@@ -1258,6 +1298,10 @@ Function SplitArrayAsURLParameters(Val Key, Val Value)
         CurrentValue = Value[N];
 
         OPI_TypeConversion.GetLine(CurrentValue);
+
+        If GetSetting("URLencoding") Then
+            CurrentValue = EncodeString(CurrentValue, StringEncodingMethod.URLencoding);
+        EndIf;
 
         Value.Set(N, KeyArray + CurrentValue);
 
@@ -2066,6 +2110,7 @@ Procedure SetDefaultSettings()
     Settings = New Structure;
     Settings.Insert("gzip"            , True);
     Settings.Insert("SplitArrayParams", False);
+    Settings.Insert("URLencoding"     , True);
 
 EndProcedure
 

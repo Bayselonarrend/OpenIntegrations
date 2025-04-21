@@ -2629,6 +2629,7 @@ Procedure HTTP_MainTests() Export
 
     HTTPClient_Initialize(TestParameters);
     HTTPClient_SetURL(TestParameters);
+    HTTPClient_SetURLParams(TestParameters);
 
 EndProcedure
 
@@ -21048,7 +21049,7 @@ Procedure HTTPClient_Initialize(FunctionParameters)
 
     Result = OPI_HTTPRequests
         .NewRequest()
-        .Initialize(URL)
+        .Initialize(URL) // <---
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
@@ -21060,21 +21061,21 @@ Procedure HTTPClient_Initialize(FunctionParameters)
         Message("Cant replace origin");
     EndTry;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "Initialize", "HTTPClient");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
-
-    HTTPClient = OPI_HTTPRequests.NewRequest()
-        .Initialize(URL)
-        .ProcessRequest("POST", False);
-
-    HTTPRequest    = HTTPClient.ReturnRequest();
-    HTTPConnection = HTTPClient.ReturnConnection();
-    HTTPResponse   = HTTPClient.ReturnResponse();
-    MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
-
     Try
+
+        OPI_TestDataRetrieval.WriteLog(Result, "Initialize", "HTTPClient");
+
+        OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+        OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
+
+        HTTPClient = OPI_HTTPRequests.NewRequest()
+            .Initialize(URL)
+            .ProcessRequest("POST", False);
+
+        HTTPRequest    = HTTPClient.ReturnRequest();
+        HTTPConnection = HTTPClient.ReturnConnection();
+        HTTPResponse   = HTTPClient.ReturnResponse();
+        MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
 
         OPI_TestDataRetrieval.ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
         OPI_TestDataRetrieval.ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
@@ -21117,22 +21118,23 @@ Procedure HTTPClient_SetURL(FunctionParameters)
         Message("Cant replace origin");
     EndTry;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetURL", "HTTPClient");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
-
-    HTTPClient = OPI_HTTPRequests.NewRequest()
-        .Initialize()
-        .SetURL(URL)
-        .ProcessRequest("POST", False);
-
-    HTTPRequest    = HTTPClient.ReturnRequest();
-    HTTPConnection = HTTPClient.ReturnConnection();
-    HTTPResponse   = HTTPClient.ReturnResponse();
-    MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
-
     Try
+
+        OPI_TestDataRetrieval.WriteLog(Result, "SetURL", "HTTPClient");
+
+        OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+        OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
+
+        HTTPClient = OPI_HTTPRequests.NewRequest()
+            .Initialize()
+            .SetURL(URL)
+            .ProcessRequest("POST", False);
+
+        HTTPRequest    = HTTPClient.ReturnRequest();
+        HTTPConnection = HTTPClient.ReturnConnection();
+        HTTPResponse   = HTTPClient.ReturnResponse();
+        MainURL        = StrReplace(FunctionParameters["HTTP_URL"], "https://", "");
+
         OPI_TestDataRetrieval.ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
         OPI_TestDataRetrieval.ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
 
@@ -21147,7 +21149,173 @@ Procedure HTTPClient_SetURL(FunctionParameters)
 
 EndProcedure
 
+Procedure HTTPClient_SetURLParams(FunctionParameters)
 
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+    EndTry;
+
+    Address = "/get?param1=text&param2=10";
+    FullURL = FunctionParameters["HTTP_URL"] + Address;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetURLParams", "HTTPClient");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(2);
+    OPI_TestDataRetrieval.ExpectsThat(Result["url"]).Равно(FullURL);
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("POST", False);
+
+    HTTPRequest = HTTPClient.ReturnRequest();
+
+    Try
+
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
+        OPI_TestDataRetrieval.ExpectsThat(HTTPRequest.ResourceAddress).Равно(Address);
+
+    Except
+        Message(HTTPClient.GetLog(True));
+        Raise ErrorDescription();
+    EndTry;
+
+    // Encoding check
+
+    // Complex
+
+    ParameterStructure1 = New Structure;
+    ParameterStructure1.Insert("param1", "search?text");
+    ParameterStructure1.Insert("param2", "John Doe");
+    ParameterStructure1.Insert("param3", "value&another");
+    ParameterStructure1.Insert("param4", "cyrillic");
+    ParameterStructure1.Insert("param5", "<script>alert('XSS')</script>");
+
+    ResourceAddress1 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParameterStructure1)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant1 = "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress1).Равно(CorrectVariant1);
+
+    ParameterStructure2 = New Structure;
+    ParameterStructure2.Insert("param1", "search?text");
+    ParameterStructure2.Insert("param2", "John Doe");
+
+    // Parameters in the original URL
+
+    ResourceAddress2 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page?existing=value")
+        .SetURLParams(ParameterStructure2)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant2 = "/page?existing=value&param1=search%3Ftext&param2=John%20Doe";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress2).Равно(CorrectVariant2);
+
+    // Empty parameter string
+
+    ParameterStructure3 = New Structure;
+    ParameterStructure3.Insert("param1", "search?text");
+    ParameterStructure3.Insert("param2", "John Doe");
+
+    ResourceAddress3 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page?")
+        .SetURLParams(ParameterStructure3)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant3 = "/page?param1=search%3Ftext&param2=John%20Doe";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress3).Равно(CorrectVariant3);
+
+    // Special characters at path
+
+    ParameterStructure4 = New Structure;
+    ParameterStructure4.Insert("param1", "search?text");
+    ParameterStructure4.Insert("param2", "John Doe");
+
+    ResourceAddress4 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/путь with spaces")
+        .SetURLParams(ParameterStructure4)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant4 = "/path%20with%20spaces?param1=search%3Ftext&param2=John%20Doe";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress4).Равно(CorrectVariant4);
+
+    // URL with a snippet
+
+    ParameterStructure5 = New Structure;
+    ParameterStructure5.Insert("param1", "search?text");
+    ParameterStructure5.Insert("param2", "John Doe");
+
+    ResourceAddress5 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page#section")
+        .SetURLParams(ParameterStructure5)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant5 = "/page?param1=search%3Ftext&param2=John%20Doe#section";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress5).Равно(CorrectVariant5);
+
+    // Cyrillic at path
+
+    ParameterStructure6 = New Structure;
+    ParameterStructure6.Insert("param1", "search?text");
+    ParameterStructure6.Insert("param2", "John Doe");
+
+    ResourceAddress6 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/путь")
+        .SetURLParams(ParameterStructure6)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant6 = "/%D0%BF%D1%83%D1%82%D1%8C?param1=search%3Ftext&param2=John%20Doe";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress6).Равно(CorrectVariant6);
+
+    // Multiple parameters and encoding
+
+    ParameterStructure7 = New Structure;
+    ParameterStructure7.Insert("param1", "value1");
+    ParameterStructure7.Insert("param2", "value two");
+    ParameterStructure7.Insert("param3", "value<three>");
+
+    ResourceAddress7 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParameterStructure7)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    CorrectVariant7 = "/page?param1=value1&param2=value%20two&param3=value%3Cthree%3E";
+    OPI_TestDataRetrieval.ExpectsThat(ResourceAddress7).Равно(CorrectVariant7);
+
+EndProcedure
 
 #EndRegion
 

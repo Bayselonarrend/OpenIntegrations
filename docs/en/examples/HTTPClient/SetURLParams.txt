@@ -1,8 +1,11 @@
 ﻿    URL = "https://httpbin.org";
     URL = URL + "/get";
 
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
     Result = OPI_HTTPRequests
         .NewRequest()
-        .Initialize(URL) // <---
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure) // <---
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
