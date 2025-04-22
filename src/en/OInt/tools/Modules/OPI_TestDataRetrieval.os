@@ -303,7 +303,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"                , "Models management"               , Ollama);
     NewTest(TestTable, "OLLM_WorkingWithBlob"                 , "Working with Blob"               , Ollama);
-    NewTest(TestTable, "HTTP_MainTests"                       , "Main tests"                      , Http);
+    NewTest(TestTable, "HTTP_Initialization"                  , "Initialization"                  , Http);
+    NewTest(TestTable, "HTTP_BodySet"                         , "Body set"                        , Http);
 
     Return TestTable;
 

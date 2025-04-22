@@ -212,70 +212,6 @@ Function SetURLParams(Val Value) Export
 
 EndFunction
 
-// Set request object !NOCLI
-// Allows you to set a previously created HTTPRequest object for further work
-//
-// Note
-// You can get the request object using the `ReturnRequest` function
-//
-// Parameters:
-// Value - HTTPRequest - Request object - obj
-//
-// Returns:
-// DataProcessorObject.OPI_HTTPClient - This processor object
-Function SetRequestObject(Val Value) Export
-
-    Try
-
-        If StopExecution() Then Return ЭтотОбъект EndIf;
-
-        If TypeOf(Value) <> Type("HTTPRequest") Then
-            Return Error("SetRequestObject: Not a request has been passed");
-        Else
-            AddLog("SetRequestObject: Setting the value");
-            Request = Value;
-        EndIf;
-
-        Return ЭтотОбъект;
-
-    Except
-        Return Error(DetailErrorDescription(ErrorInfo()));
-    EndTry;
-
-EndFunction
-
-// Set connection object !NOCLI
-// Allows you to set a previously created HTTPConnection object for further work
-//
-// Note
-// You can get the request object using the `ReturnRequest` function
-//
-// Parameters:
-// Value - HTTPConnection - Connection object - obj
-//
-// Returns:
-// DataProcessorObject.OPI_HTTPClient - This processor object
-Function SetConnectionObject(Val Value) Export
-
-    Try
-
-        If StopExecution() Then Return ЭтотОбъект EndIf;
-
-        If TypeOf(Value) <> Type("HTTPConnection") Then
-            Return Error("SetConnectionObject: Not a connection has been passed");
-        Else
-            AddLog("SetConnectionObject: Setting the value");
-            Connection = Value;
-        EndIf;
-
-        Return ЭтотОбъект;
-
-    Except
-        Return Error(DetailErrorDescription(ErrorInfo()));
-    EndTry;
-
-EndFunction
-
 // Set response file
 // Sets the file path to save the query result
 //
@@ -307,6 +243,9 @@ EndFunction
 
 // Set data type
 // Sets the Content-Type of the request
+//
+// Note
+// If the data type is not set manually, it will be matched during the process of setting the request body
 //
 // Parameters:
 // Value - String - ContentType header value - type
@@ -375,12 +314,14 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
         CancelMultipartBody();
 
         If Not RequestTypeSetManualy Then
-          RequestDataType = "application/octet-stream";
+            RequestDataType = "application/octet-stream";
         EndIf;
 
+        OPI_TypeConversion.GetBinaryData(Data, True, False);
         OPI_TypeConversion.GetBoolean(SetIfEmpty);
 
-        IsData = ValueIsFilled(Data);
+        Data         = ?(Data = Undefined, ПолучитьДвоичныеДанныеИзСтроки(""), Data);
+        IsData = Data.Size() > 0;
 
         If IsData Or SetIfEmpty Then
 
@@ -952,6 +893,8 @@ EndFunction
 // DataProcessorObject.OPI_HTTPClient, HTTPRequest, Undefined - The request or the same processing object
 Function ReturnRequest(Forced = False) Export
 
+    OPI_TypeConversion.GetBoolean(Forced);
+
     If StopExecution() And Not Forced Then Return ЭтотОбъект EndIf;
 
     Return Request;
@@ -967,6 +910,8 @@ EndFunction
 // Returns:
 // DataProcessorObject.OPI_HTTPClient, HTTPConnection, Undefined - Connection or the same processor object
 Function ReturnConnection(Forced = False) Export
+
+    OPI_TypeConversion.GetBoolean(Forced);
 
     If StopExecution() And Not Forced Then Return ЭтотОбъект EndIf;
 
@@ -1014,21 +959,22 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
 
         OPI_TypeConversion.GetBoolean(ToMap);
 
-        JSONBody = GetResponseBody();
+        JSONStream = Response.GetBodyAsStream();
 
         Try
 
-            JSONString = ПолучитьСтрокуИзДвоичныхДанных(JSONBody);
-
-            If ValueIsFilled(JSONString) Then
-                JSON = OPI_Tools.JsonToStructure(JSONBody, ToMap);
+            If JSONStream.Size() > 0 Then
+                JSON = OPI_Tools.JsonToStructure(JSONStream, ToMap);
             Else
                 JSON = New Map;
             EndIf;
 
         Except
 
-            JSON = JSONBody;
+            JSONStream.Goto(0, PositionInStream.Start);
+
+            DataReader = New DataReader(JSONStream);
+            JSON       = DataReader.Read().GetBinaryData();
 
         EndTry;
 
@@ -1037,6 +983,69 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
     EndTry;
+
+EndFunction
+
+// Return response as binary data
+// Returns the response body as binary data
+//
+// Parameters:
+// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+//
+// Returns:
+// Arbitrary - The response or the same processing object
+Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = False) Export
+
+    OPI_TypeConversion.GetBoolean(Forced);
+
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
+
+    BodyAsString = GetResponseBodyAsBinaryData();
+
+    Return BodyAsString;
+
+EndFunction
+
+// Return response as string !NOCLI
+// Returns the body of the response as a string
+//
+// Parameters:
+// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+//
+// Returns:
+// Arbitrary - The response or the same processing object
+Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False) Export
+
+    OPI_TypeConversion.GetBoolean(Forced);
+
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
+
+    BodyAsString = ПолучитьСтрокуИзДвоичныхДанных(GetResponseBodyAsBinaryData());
+
+    Return BodyAsString;
+
+EndFunction
+
+// Return response filename !NOCLI
+// Returns the path to the response body file
+//
+// Parameters:
+// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+//
+// Returns:
+// Arbitrary - The response or the same processing object
+Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False) Export
+
+    OPI_TypeConversion.GetBoolean(Forced);
+
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
+
+    BodyFileName = Response.GetBodyFileName();
+
+    Return BodyFileName;
 
 EndFunction
 
@@ -1339,21 +1348,17 @@ Function CompleteHeaders()
 
         AddLog("CompleteHeaders: Content-Length setting");
 
-        BodyFileName = Request.GetBodyFileName();
+        If RequestBodyFile = Undefined Then
 
-        If BodyFileName = Undefined Then
-
-            CurrentBody = Request.ПолучитьТелоКакДвоичныеДанные();
-
-            If CurrentBody = Undefined Then
+            If RequestBody = Undefined Then
                 BodySize   = 0;
             Else
-                BodySize   = CurrentBody.Size();
+                BodySize   = RequestBody.Size();
             EndIf;
 
         Else
 
-            BodyFile = New File(BodyFileName);
+            BodyFile = New File(RequestBodyFile);
             BodySize = BodyFile.Size();
 
         EndIf;
@@ -1432,10 +1437,10 @@ Function GetResponseBody()
     If NeedsUnpacking Then
         Data = UnpackResponse(Response);
     Else
-        Data = Response.ПолучитьТелоКакДвоичныеДанные();
+        Data = GetResponseBodyAsBinaryData();
     EndIf;
 
-    Data = ?(TypeOf(Data) = Type("HTTPResponse"), Data.ПолучитьТелоКакДвоичныеДанные(), Data);
+    Data = ?(TypeOf(Data) = Type("HTTPResponse"), GetResponseBodyAsBinaryData(), Data);
 
     If TypeOf(Data) = Type("BinaryData") Then
 
@@ -1460,6 +1465,36 @@ Function ThisIsRedirection(Val Response)
         Response.Headers["Location"]);
 
     Return ThisIsRedirection;
+
+EndFunction
+
+Function GetResponseBodyAsBinaryData()
+
+    BodyStream    = Response.GetBodyAsStream();
+    DataReader    = New DataReader(BodyStream);
+    ReadingResult = DataReader.Read();
+    Data          = ReadingResult.GetBinaryData();
+
+    DataReader.Close();
+    BodyStream.Close();
+
+    Return Data;
+
+EndFunction
+
+Function GetRequestBodyAsBinaryData()
+
+    If ValueIsFilled(RequestBodyFile) Then
+        Data = New BinaryData(RequestBodyFile);
+    Else
+        Data = RequestBody;
+    EndIf;
+
+    If Data = Undefined Then
+        Data   = ПолучитьДвоичныеДанныеИзСтроки("");
+    EndIf;
+
+    Return Data;
 
 EndFunction
 
@@ -1586,7 +1621,7 @@ EndProcedure
 Function UnpackResponse(Response)
 
     Try
-        Return ReadGZip(Response.ПолучитьТелоКакДвоичныеДанные());
+        Return ReadGZip(GetResponseBodyAsBinaryData());
     Except
         Return Response;
     EndTry;
@@ -1847,7 +1882,7 @@ EndFunction
 Function CreateCanonicalRequest()
 
     RequestTemplate = "";
-    RequestBody     = GetRequestBody();
+    RequestBody     = GetRequestBodyAsBinaryData();
     HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
     PartsAmount     = 6;
 
@@ -1942,20 +1977,6 @@ Function GetHeadersKeysString()
     HeadersString = StrConcat(HeadersList.UnloadValues(), ";");
 
     Return HeadersString;
-
-EndFunction
-
-Function GetRequestBody()
-
-    Body = Request.ПолучитьТелоКакДвоичныеДанные();
-
-    If Body = Undefined Then
-
-        Body = ПолучитьДвоичныеДанныеИзСтроки("");
-
-    EndIf;
-
-    Return Body;
 
 EndFunction
 

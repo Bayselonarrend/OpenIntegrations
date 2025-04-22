@@ -79,8 +79,8 @@
   <commonModules>CommonModule.OPI_AddIns</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
-  <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
+  <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPClient</dataProcessors>
 </mdclass:Configuration>
