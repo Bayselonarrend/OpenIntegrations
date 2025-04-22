@@ -234,14 +234,25 @@ EndFunction
 
 Function JsonToStructure(Val Text, Val ToMap = True) Export
 
-    If Not ValueIsFilled(Text) Then
-        Return "";
+    JSONReader = New JSONReader;
+    TextType   = TypeOf(Text);
+
+    If TextType = Type("BinaryData") Then
+
+        Text = GetStringFromBinaryData(Text);
+        JSONReader.SetString(Text);
+
+    ElsIf TextType = Type("Stream") Or TextType = Type("MemoryStream") Or TextType = Type("FileStream") Then
+
+        JSONReader.OpenStream(Text);
+
+    Else
+
+        OPI_TypeConversion.GetLine(Text, True);
+        JSONReader.SetString(Text);
+
     EndIf;
 
-    Text = ?(TypeOf(Text) = Type("BinaryData"), GetStringFromBinaryData(Text), Text);
-
-    JSONReader = New JSONReader;
-    JSONReader.SetString(Text);
 
     Data = ReadJSON(JSONReader, ToMap, Undefined, JSONDateFormat.ISO);
     JSONReader.Close();
