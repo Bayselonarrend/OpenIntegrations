@@ -1682,9 +1682,13 @@ jobs:
 
 
 
-      - name: Основные тесты
+      - name: Инициализация
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_HTTP_ОсновныеТест"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_HTTP_Инициализация"
+
+      - name: Установка тела
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_HTTP_УстановкаТела"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false

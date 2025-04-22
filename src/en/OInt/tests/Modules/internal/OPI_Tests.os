@@ -2622,7 +2622,7 @@ EndProcedure
 
 #Region HTTP
 
-Procedure HTTP_MainTests() Export
+Procedure HTTP_Initialization() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
@@ -2630,6 +2630,19 @@ Procedure HTTP_MainTests() Export
     HTTPClient_Initialize(TestParameters);
     HTTPClient_SetURL(TestParameters);
     HTTPClient_SetURLParams(TestParameters);
+    HTTPClient_SetResponseFile(TestParameters);
+    HTTPClient_SetDataType(TestParameters);
+    HTTPClient_GetLog(TestParameters);
+
+EndProcedure
+
+Procedure HTTP_BodySet() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+
+    HTTPClient_SetBinaryBody(TestParameters);
 
 EndProcedure
 
@@ -21059,6 +21072,7 @@ Procedure HTTPClient_Initialize(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
+        Message(Result.GetLog(True));
     EndTry;
 
     Try
@@ -21116,6 +21130,7 @@ Procedure HTTPClient_SetURL(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
+        Message(Result.GetLog(True));
     EndTry;
 
     Try
@@ -21169,6 +21184,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
+        Message(Result.GetLog(True));
     EndTry;
 
     Address = "/get?param1=text&param2=10";
@@ -21314,6 +21330,135 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
 
     CorrectVariant7 = "/page?param1=value1&param2=value%20two&param3=value%3Cthree%3E";
     OPI_TestDataRetrieval.ExpectsThat(ResourceAddress7).Равно(CorrectVariant7);
+
+EndProcedure
+
+Procedure HTTPClient_SetResponseFile(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    TFN = GetTempFileName();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseFilename();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetResponseFile", "HTTPClient");
+
+    BodyFile             = New File(TFN);
+    BodyFileReturn = New File(Result);
+
+    OPI_TestDataRetrieval.ExpectsThat(TFN).Равно(Result);
+    OPI_TestDataRetrieval.ExpectsThat(BodyFile.Size()).Равно(BodyFileReturn.Size());
+    OPI_TestDataRetrieval.ExpectsThat(BodyFile.Size() > 0).Равно(True);
+
+    CheckResult = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsBinaryData();
+
+    OPI_TestDataRetrieval.ExpectsThat(BodyFile.Size()).Равно(CheckResult.Size());
+
+    CheckResultAsString = ПолучитьСтрокуИзДвоичныхДанных(CheckResult);
+
+    OPI_TestDataRetrieval.WriteLog(CheckResultAsString, "SetResponseFile (body)", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(OPI_Tools.JsonToStructure(CheckResultAsString)).ИмеетТип("Map");
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "File deletion error", "HTTPClient");
+    EndTry;
+
+
+EndProcedure
+
+Procedure HTTPClient_SetDataType(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    MIMEType = "text/markdown";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetStringBody("# Hello world!")
+        .SetDataType(MIMEType) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Message(Result.GetLog(True));
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetDataType", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно(MIMEType);
+
+EndProcedure
+
+Procedure HTTPClient_GetLog(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    HTTPClient = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET");
+
+    Response = HTTPClient.ReturnResponseAsJSONObject();
+    Log      = HTTPClient.GetLog(True);
+
+    // END
+
+EndProcedure
+
+Procedure HTTPClient_SetBinaryBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+        Result["data"]         = "...";
+    Except
+        Message("Cant replace origin");
+        Message(Result.GetLog(True));
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetBinaryBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/octet-stream");
+
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    Size = Image.Size();
+    OPI_TypeConversion.GetLine(Size);
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Length"]).Равно(Size);
 
 EndProcedure
 
