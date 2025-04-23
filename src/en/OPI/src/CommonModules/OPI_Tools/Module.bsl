@@ -845,13 +845,7 @@ Procedure StreamToStart(CurrentStream) Export
         Return;
     EndIf;
 
-    If IsOneScript() Then
-        //@skip-check property-not-writable
-        PositionInStream = Undefined;
-        StartPosition    = 0;
-    Else
-        StartPosition    = PositionInStream.Start;
-    EndIf;
+    StartPosition = PositionInStream.Start;
 
     CurrentStream.Seek(0, StartPosition);
 
