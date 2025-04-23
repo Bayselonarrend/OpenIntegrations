@@ -21350,7 +21350,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetResponseFile", "HTTPClient");
 
-    BodyFile             = New File(TFN);
+    BodyFile       = New File(TFN);
     BodyFileReturn = New File(Result);
 
     OPI_TestDataRetrieval.ExpectsThat(TFN).Равно(Result);
@@ -21445,7 +21445,7 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
 
     Try
         Result["origin"] = "***";
-        Result["data"]         = "...";
+        Result["data"]   = "...";
     Except
         Message("Cant replace origin");
         Message(Result.GetLog(True));

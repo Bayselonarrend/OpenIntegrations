@@ -320,7 +320,7 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
         OPI_TypeConversion.GetBinaryData(Data, True, False);
         OPI_TypeConversion.GetBoolean(SetIfEmpty);
 
-        Data         = ?(Data = Undefined, ПолучитьДвоичныеДанныеИзСтроки(""), Data);
+        Data   = ?(Data = Undefined, ПолучитьДвоичныеДанныеИзСтроки(""), Data);
         IsData = Data.Size() > 0;
 
         If IsData Or SetIfEmpty Then
@@ -960,6 +960,7 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
         OPI_TypeConversion.GetBoolean(ToMap);
 
         JSONStream = Response.GetBodyAsStream();
+        OPI_Tools.StreamToStart(JSONStream);
 
         Try
 
@@ -971,12 +972,14 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
 
         Except
 
-            JSONStream.Seek(0, 0);
+            OPI_Tools.StreamToStart(JSONStream);
 
             DataReader = New DataReader(JSONStream);
             JSON       = DataReader.Read().GetBinaryData();
 
         EndTry;
+
+        JSONStream.Close();
 
         Return JSON;
 
@@ -1490,8 +1493,8 @@ Function GetRequestBodyAsBinaryData()
         Data = RequestBody;
     EndIf;
 
-    If Data = Undefined Then
-        Data   = ПолучитьДвоичныеДанныеИзСтроки("");
+    If Data  = Undefined Then
+        Data = ПолучитьДвоичныеДанныеИзСтроки("");
     EndIf;
 
     Return Data;

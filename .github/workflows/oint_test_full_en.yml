@@ -1682,9 +1682,13 @@ jobs:
 
 
 
-      - name: Main tests
+      - name: Initialization
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_HTTP_MainTests"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_HTTP_Initialization"
+
+      - name: Body set
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os "CLI_HTTP_BodySet"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
