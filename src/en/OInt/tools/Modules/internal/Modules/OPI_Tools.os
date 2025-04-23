@@ -244,7 +244,18 @@ Function JsonToStructure(Val Text, Val ToMap = True) Export
 
     ElsIf TextType = Type("Stream") Or TextType = Type("MemoryStream") Or TextType = Type("FileStream") Then
 
-        JSONReader.OpenStream(Text);
+        If IsOneScript() Then
+
+            DataReader    = New DataReader(Text);
+            ReadingResult = DataReader.Read();
+            JSONBinary    = ReadingResult.GetBinaryData();
+
+            JSONReader.SetString(ПолучитьСтрокуИзДвоичныхДанных(JSONBinary));
+            DataReader.Close();
+
+        Else
+            JSONReader.OpenStream(Text);
+        EndIf;
 
     Else
 
@@ -825,6 +836,24 @@ Procedure RestoreEscapeSequences(Text) Export
         Text = StrReplace(Text, Symbol.Value, Symbol.Key);
 
     EndDo;
+
+EndProcedure
+
+Procedure StreamToStart(CurrentStream) Export
+
+    If Not CurrentStream.CanSeek Then
+        Return;
+    EndIf;
+
+    If IsOneScript() Then
+        //@skip-check property-not-writable
+        PositionInStream = Undefined;
+        StartPosition    = 0;
+    Else
+        StartPosition    = PositionInStream.Start;
+    EndIf;
+
+    CurrentStream.Seek(0, StartPosition);
 
 EndProcedure
 
