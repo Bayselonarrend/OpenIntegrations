@@ -971,7 +971,7 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
 
         Except
 
-            JSONStream.Goto(0, PositionInStream.Start);
+            JSONStream.Seek(0, 0);
 
             DataReader = New DataReader(JSONStream);
             JSON       = DataReader.Read().GetBinaryData();
