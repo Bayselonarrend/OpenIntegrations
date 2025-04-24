@@ -194,7 +194,7 @@ Function PostMultipart(Val URL
 
     HttpClient.ProcessRequest("POST");
 
-    Result = HttpClient.ReturnResponseAsJSONObject();
+    Result = HttpClient.ReturnResponseAsJSONObject(True, True);
 
     If HttpClient.Error Then
         Raise HttpClient.GetLog(True);
@@ -305,15 +305,9 @@ Function ExecuteMultipartRequest(Val URL
         HttpClient.AddMultipartFormDataField(Parameter.Key, Parameter.Value);
     EndDo;
 
-    HttpClient.ProcessRequest("POST");
+    Result = HttpClient.ProcessRequest("POST").ReturnResponseAsJSONObject(True, True);
 
-    Result = HttpClient.ReturnResponseAsJSONObject(True, True);
-
-    If HttpClient.Error Then
-        Raise HttpClient.GetLog(True);
-    Else
-        Return Result;
-    EndIf;
+    Return Result;
 
 EndFunction
 
