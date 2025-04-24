@@ -1438,13 +1438,7 @@ Function GetResponseBody()
 
     Data = ?(TypeOf(Data) = Type("HTTPResponse"), GetResponseBodyAsBinaryData(), Data);
 
-    If TypeOf(Data) = Type("BinaryData") Then
-
-        If Data.Size() = 0 Then
-            Data       = GetBinaryDataFromString("");
-        EndIf;
-
-    Else
+    If Not TypeOf(Data) = Type("BinaryData") Then
         OPI_TypeConversion.GetBinaryData(Data);
     EndIf;
 
@@ -1466,7 +1460,12 @@ EndFunction
 
 Function GetResponseBodyAsBinaryData()
 
-    BodyStream    = Response.GetBodyAsStream();
+    BodyStream = Response.GetBodyAsStream();
+
+    If BodyStream = Undefined Then
+        Return GetBinaryDataFromString("");
+    EndIf;
+
     DataReader    = New DataReader(BodyStream);
     ReadingResult = DataReader.Read();
     Data          = ReadingResult.GetBinaryData();
