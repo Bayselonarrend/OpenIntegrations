@@ -164,7 +164,7 @@ Function SetURL(Val URL) Export
                 OPI_Tools.RestoreEscapeSequences(URL);
 
                 If GetSetting("URLencoding") Then
-                    URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
+                    OPI_Tools.EncodeURLInURL(URL);
                 EndIf;
 
                 RequestURL = URL;
