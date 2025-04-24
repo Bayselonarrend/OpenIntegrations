@@ -958,29 +958,21 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
     Try
 
         OPI_TypeConversion.GetBoolean(ToMap);
-
-        JSONStream = Response.GetBodyAsStream();
-        OPI_Tools.StreamToStart(JSONStream);
+        ResponseBody = GetResponseBody();
 
         Try
 
-            If JSONStream.Size() > 0 Then
-                JSON = OPI_Tools.JsonToStructure(JSONStream, ToMap);
+            If ResponseBody.Size() > 0 Then
+                JSON = OPI_Tools.JsonToStructure(ResponseBody, ToMap);
             Else
                 JSON = New Map;
             EndIf;
 
         Except
 
-            JSONStream = Response.GetBodyAsStream();
-            OPI_Tools.StreamToStart(JSONStream);
-
-            DataReader = New DataReader(JSONStream);
-            JSON       = DataReader.Read().GetBinaryData();
+            JSON = ResponseBody;
 
         EndTry;
-
-        JSONStream.Close();
 
         Return JSON;
 
@@ -1005,7 +997,7 @@ Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = F
 
     If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
 
-    BodyAsString = GetResponseBodyAsBinaryData();
+    BodyAsString = GetResponseBody();
 
     Return BodyAsString;
 
@@ -1026,7 +1018,7 @@ Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False
 
     If StopExecution(ExceptionOnError) And Not Forced Then Return ЭтотОбъект EndIf;
 
-    BodyAsString = ПолучитьСтрокуИзДвоичныхДанных(GetResponseBodyAsBinaryData());
+    BodyAsString = ПолучитьСтрокуИзДвоичныхДанных(GetResponseBody());
 
     Return BodyAsString;
 
