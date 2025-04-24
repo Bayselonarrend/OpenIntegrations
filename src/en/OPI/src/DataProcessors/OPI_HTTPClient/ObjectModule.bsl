@@ -972,6 +972,7 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
 
         Except
 
+            JSONStream = Response.GetBodyAsStream();
             OPI_Tools.StreamToStart(JSONStream);
 
             DataReader = New DataReader(JSONStream);
