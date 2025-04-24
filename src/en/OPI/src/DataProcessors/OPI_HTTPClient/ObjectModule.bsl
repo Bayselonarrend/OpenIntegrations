@@ -1090,7 +1090,7 @@ Function ConvertParameterToString(Val Value)
         OPI_TypeConversion.GetLine(Value);
 
         If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
         EndIf;
 
     EndIf;
@@ -1305,7 +1305,7 @@ Function SplitArrayAsURLParameters(Val Key, Val Value)
         OPI_TypeConversion.GetLine(CurrentValue);
 
         If GetSetting("URLencoding") Then
-            CurrentValue = EncodeString(CurrentValue, StringEncodingMethod.URLencoding);
+            CurrentValue = EncodeString(CurrentValue, StringEncodingMethod.URLInURLEncoding);
         EndIf;
 
         Value.Set(N, KeyArray + CurrentValue);
