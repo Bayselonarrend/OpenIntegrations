@@ -88,6 +88,17 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
 
 EndProcedure
 
+Procedure EncodeURLInURL(URL) Export
+
+    IsOS = IsOneScript();
+    Plug = StrTemplate("@#%1#@", String(New UUID));
+
+    URL = StrReplace(URL, "&" , Plug);
+    URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
+    URL = StrReplace(URL, Plug, "&");
+
+EndProcedure
+
 Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False, Val Start = True) Export
 
     If Parameters.Count() = 0 Then
