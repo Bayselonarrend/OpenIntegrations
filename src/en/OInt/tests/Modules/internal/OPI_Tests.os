@@ -2643,6 +2643,12 @@ Procedure HTTP_BodySet() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
     HTTPClient_SetBinaryBody(TestParameters);
+    HTTPClient_SetStringBody(TestParameters);
+    HTTPClient_SetJsonBody(TestParameters);
+    HTTPClient_SetFormBody(TestParameters);
+    HTTPClient_StartMultipartBody(TestParameters);
+    HTTPClient_AddMultipartFormDataField(TestParameters);
+    HTTPClient_AddMultipartFormDataFile(TestParameters);
 
 EndProcedure
 
@@ -21072,7 +21078,11 @@ Procedure HTTPClient_Initialize(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
-        Message(Result.GetLog(True));
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
     EndTry;
 
     Try
@@ -21130,7 +21140,11 @@ Procedure HTTPClient_SetURL(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
-        Message(Result.GetLog(True));
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
     EndTry;
 
     Try
@@ -21184,7 +21198,11 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
-        Message(Result.GetLog(True));
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
     EndTry;
 
     Address = "/get?param1=text&param2=10";
@@ -21400,7 +21418,11 @@ Procedure HTTPClient_SetDataType(FunctionParameters)
         Result["origin"] = "***";
     Except
         Message("Cant replace origin");
-        Message(Result.GetLog(True));
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetDataType", "HTTPClient");
@@ -21448,7 +21470,11 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
         Result["data"]   = "...";
     Except
         Message("Cant replace origin");
-        Message(Result.GetLog(True));
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetBinaryBody", "HTTPClient");
@@ -21459,6 +21485,265 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
     Size = Image.Size();
     OPI_TypeConversion.GetLine(Size);
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Length"]).Равно(Size);
+
+EndProcedure
+
+Procedure HTTPClient_SetStringBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Text     = "Hello world!";
+    Encoding = "Windows-1251";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .UseEncoding(Encoding)
+        .SetStringBody(Text) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
+
+    TextBD = ПолучитьДвоичныеДанныеИзСтроки(Text, Encoding);
+    Size   = TextBD.Size();
+    OPI_TypeConversion.GetLine(Size);
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Length"]).Равно(Size);
+
+    TextB64 = "data:application/octet-stream;base64," + Base64String(TextBD);
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["data"]).Равно(TextB64);
+
+EndProcedure
+
+Procedure HTTPClient_SetJsonBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+
+    JSONResult   = Result["json"];
+    JSONOriginal = Data;
+
+    OPI_TestDataRetrieval.ExpectsThat(JSONResult["Field1"]).Равно(JSONOriginal["Field1"]);
+    OPI_TestDataRetrieval.ExpectsThat(JSONResult["Field2"]).Равно(JSONOriginal["Field2"]);
+    OPI_TestDataRetrieval.ExpectsThat(JSONResult["Field3"][0]).Равно(JSONOriginal["Field3"][0]);
+    OPI_TestDataRetrieval.ExpectsThat(JSONResult["Field3"][1]).Равно(JSONOriginal["Field3"][1]);
+    OPI_TestDataRetrieval.ExpectsThat(JSONResult["Field3"][2]).Равно(JSONOriginal["Field3"][2]);
+
+EndProcedure
+
+Procedure HTTPClient_SetFormBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetFormBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/x-www-form-urlencoded; charset=utf-8");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field1"]).Равно(Data["Field1"]);
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field2"]).Равно(Data["Field2"]);
+
+EndProcedure
+
+Procedure HTTPClient_StartMultipartBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody() // <---
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"]   = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "StartMultipartBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    OPI_TestDataRetrieval.ExpectsThat(ResponseFile).Равно(TextB64);
+
+EndProcedure
+
+Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png") // <---
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"]   = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddMultipartFormDataFile", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    OPI_TestDataRetrieval.ExpectsThat(ResponseFile).Равно(TextB64);
+
+EndProcedure
+
+Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text") // <---
+        .AddMultipartFormDataField("Field2", "10") // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"]   = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddMultipartFormDataField", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    OPI_TestDataRetrieval.ExpectsThat(ResponseFile).Равно(TextB64);
 
 EndProcedure
 
