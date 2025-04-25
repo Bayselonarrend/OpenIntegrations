@@ -1,0 +1,15 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();

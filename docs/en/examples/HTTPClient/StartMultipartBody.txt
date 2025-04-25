@@ -1,0 +1,13 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody() // <---
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();

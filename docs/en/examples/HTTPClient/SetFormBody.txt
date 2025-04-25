@@ -1,0 +1,10 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
