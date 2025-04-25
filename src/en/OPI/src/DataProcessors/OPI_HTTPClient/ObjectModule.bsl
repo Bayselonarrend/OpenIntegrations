@@ -294,6 +294,48 @@ EndFunction
 
 #EndRegion
 
+#Region Settings
+
+Function UseEncoding(Val Encoding) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject EndIf;
+
+        AddLog("UseEncoding: Setting the value");
+        OPI_TypeConversion.GetLine(Encoding);
+
+        SetSetting("EncodeRequestBody", Encoding);
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+Function UseGzipCompression(Val Flag) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject EndIf;
+
+        AddLog("UseGzipCompression: Setting the value");
+        OPI_TypeConversion.GetBoolean(Flag);
+
+        SetSetting("gzip", Flag);
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+#EndRegion
+
 #Region BodySet
 
 // Set binary body !NOCLI
@@ -350,12 +392,11 @@ EndFunction
 //
 // Parameters:
 // Data - String - Request body data - data
-// Encoding - String - String encoding - enc
 // WriteBOM - Boolean - True > BOM will be added - bom
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function SetStringBody(Val Data, Val Encoding = "UTF-8", Val WriteBOM = False) Export
+Function SetStringBody(Val Data, Val WriteBOM = False) Export
 
     Try
 
@@ -368,12 +409,16 @@ Function SetStringBody(Val Data, Val Encoding = "UTF-8", Val WriteBOM = False) E
             Return ThisObject;
         EndIf;
 
+        Encoding = GetSetting("EncodeRequestBody");
+
+        OPI_TypeConversion.GetLine(Encoding);
+
         If Not RequestTypeSetManualy Then
-          RequestDataType = "text/plain; charset=utf-8";
+          RequestDataType = StrTemplate("text/plain; charset=%1", Encoding);
         EndIf;
 
         AddLog("SetStringBody: Beginning of body setting");
-        SetBodyFromString(Data, Encoding, WriteBOM);
+        SetBodyFromString(Data, WriteBOM);
         AddLog(StrTemplate("SetStringBody: Body set, size %1", RequestBody.Size()));
 
         Return ThisObject;
@@ -500,7 +545,8 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
         Multipart     = True;
         Boundary      = StrReplace(String(New UUID), "-", "");
         LineSeparator = Chars.CR + Chars.LF;
-        RequestDataType = StrTemplate("multipart/%1; boundary=%2", View, Boundary);
+        Encoding      = GetSetting("EncodeRequestBody");
+        RequestDataType = StrTemplate("multipart/%1; boundary=%2; charset=%3", View, Boundary, Encoding);
 
         If UseFile Then
 
@@ -509,7 +555,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
             RequestBodyFile   = GetTempFileName();
             BodyTemporaryFile = True;
             RequestDataWriter = New DataWriter(RequestBodyFile
-                , TextEncoding.UTF8
+                , Encoding
                 , ByteOrder.LittleEndian
                 , ""
                 , False
@@ -523,12 +569,11 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
             RequestBodyStream = New MemoryStream();
 
             RequestDataWriter = New DataWriter(RequestBodyStream
-                , TextEncoding.UTF8
+                , Encoding
                 , ByteOrder.LittleEndian
                 , ""
                 , ""
                 , False);
-
 
         EndIf;
 
@@ -1090,7 +1135,7 @@ Function ConvertParameterToString(Val Value)
         OPI_TypeConversion.GetLine(Value);
 
         If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
         EndIf;
 
     EndIf;
@@ -1108,9 +1153,10 @@ Function SetBodyFromBinaryData(Val Value)
 
 EndFunction
 
-Function SetBodyFromString(Val Value, Val Encoding = "UTF-8", Val WriteBOM = False)
+Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
-    OPI_TypeConversion.GetLine(Encoding);
+    Encoding = GetSetting("EncodeRequestBody");
+
     OPI_TypeConversion.GetLine(Value);
     OPI_TypeConversion.GetBoolean(WriteBOM);
 
@@ -1423,12 +1469,21 @@ EndFunction
 
 Function GetResponseBody()
 
-    GZip = "gzip";
+    NeedsUnpacking = False;
 
-    Header1 = Response.Headers.Get("Content-Encoding");
-    Header2 = Response.Headers.Get("content-encoding");
+    For Each ResponseHeader In Response.Headers Do
 
-    NeedsUnpacking = Header1 = GZip Or Header2 = GZip;
+        HeaderKey   = ResponseHeader.Key;
+        HeaderValue = ResponseHeader.Value;
+
+        If Lower(HeaderKey)    = "content-encoding" Then
+            If Lower(HeaderValue) = "gzip" Then
+                NeedsUnpacking       = True;
+                Break;
+            EndIf;
+        EndIf;
+
+    EndDo;
 
     If NeedsUnpacking Then
         Data = UnpackResponse(Response);
@@ -2121,12 +2176,17 @@ Function GetSetting(Val SettingKey)
     Return Settings[SettingKey];
 EndFunction
 
+Procedure SetSetting(Val SettingKey, Val Value)
+    Settings[SettingKey] = Value;
+EndProcedure
+
 Procedure SetDefaultSettings()
 
     Settings = New Structure;
-    Settings.Insert("gzip"            , True);
-    Settings.Insert("SplitArrayParams", False);
-    Settings.Insert("URLencoding"     , True);
+    Settings.Insert("gzip"              , True);
+    Settings.Insert("SplitArrayParams"  , False);
+    Settings.Insert("URLencoding"       , True);
+    Settings.Insert("EncodeRequestBody" , "UTF-8");
 
 EndProcedure
 
