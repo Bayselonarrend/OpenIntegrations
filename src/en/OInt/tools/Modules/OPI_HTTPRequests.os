@@ -24,23 +24,19 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
+// BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
-// BSLLS:UsingHardcodePath-off
-// BSLLS:Typo-off
-// BSLLS:DeprecatedMessage-off
+// BSLLS:UnusedLocalVariable-off
 // BSLLS:UsingServiceTag-off
-// BSLLS:ExecuteExternalCodeInCommonModule-off
-// BSLLS:DuplicateStringLiteral-off
-// BSLLS:MagicNumber-off
-// BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:NumberOfOptionalParams-off
 
-//@skip-check use-non-recommended-method
+//@skip-check module-unused-local-variable
+//@skip-check method-too-many-params
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
-//@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
-//@skip-check method-too-many-params
+//@skip-check use-non-recommended-method
 
 // Uncomment if OneScript is executed
 #Use "./internal"

@@ -30,6 +30,8 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
+// BSLLS:ExportVariables-off
+// BSLLS:OneStatementPerLine-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -37,6 +39,7 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
+//@skip-check object-module-export-variable
 
 #If Not Client Then
 
@@ -44,59 +47,58 @@
 
 // Processor
 
-Var Initialized;
-
-Var Error Export;
-Var Log;
+Var Initialized; // Flag indicating that the mandatory Initialize() function was called
+Var Error Export; // Execution error flag to skip remaining actions in the chain
+Var Log; // Array of messages about actions within the processing
 
 // Request
 
-Var Request;
-Var Connection;
-Var Settings;
+Var Request; // HTTPRequest object
+Var Connection; // HTTPConnection object
+Var Settings; // Additional settings structure
 
-Var RequestURL;
-Var RequestServer;
-Var RequestPort;
-Var RequestAdress;
-Var RequestAdressFull;
-Var RequestSection;
-Var RequestProtected;
-Var RequestDomain;
+Var RequestURL; // Request URL
+Var RequestServer; // Server from the request URL
+Var RequestPort; // Port from the request URL or default
+Var RequestAdress; // Path from the request URL
+Var RequestAdressFull; // Path with parameters and section from the request URL
+Var RequestSection; // Section in the URL if present
+Var RequestProtected; // HTTPS usage flag
+Var RequestDomain; // Domain from the request URL
 
-Var RequestMethod;
-Var RequestURLParams;
-Var RequestBody;
-Var RequestHeaders;
-Var RequestUser;
-Var RequestPassword;
-Var RequestTimeout;
-Var RequestProxy;
-Var RequestOutputFile;
-Var RequestBodyFile;
-Var RequestBodyStream;
-Var RequestDataWriter;
-Var RequestDataType;
-Var RequestTypeSetManualy;
-Var BodyTemporaryFile;
+Var RequestMethod; // HTTP method used
+Var RequestURLParams; // URL parameters structure
+Var RequestBody; // Request body data
+Var RequestHeaders; // Request headers mapping
+Var RequestUser; // User for basic authorization
+Var RequestPassword; // Password for basic authorization
+Var RequestTimeout; // Request timeout
+Var RequestProxy; // Request proxy settings
+Var RequestOutputFile; // Path to the file for saving the request result
+Var RequestBodyFile; // Path to the file with the request body
+Var RequestBodyStream; // Request body stream
+Var RequestDataWriter; // Request body data writing
+Var RequestDataType; // MIME type for Content-Type
+Var RequestTypeSetManualy; // Flag to disable automatic Content-Type detection
+Var BodyTemporaryFile; // Flag to delete the body file if it was created automatically
 
 // AWS
 
-Var AWS4Using;
-Var AWS4Data;
+Var AWS4Using; // Flag to use AWS4 authorization
+Var AWS4Data; // Credentials structure
 
 // Response
 
-Var Response;
-Var ResponseStatusCode;
-Var ResponseBody;
-Var ResponseHeaders;
+Var Response; // HTTPResponse object
+Var ResponseStatusCode; // Response status code
+Var ResponseBody; // Response body data
+Var ResponseHeaders; // Response headers mapping
 
 // Multipart
 
-Var Multipart;
-Var Boundary;
-Var LineSeparator;
+Var Multipart; // Flag indicating the body is set in Multipart format
+Var Boundary; // Boundary for separating body parts
+Var LineSeparator; // Body line separator
 
 #EndRegion
 
@@ -156,28 +158,28 @@ Function SetURL(Val URL) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
-            If ValueIsFilled(URL) Then
+        If ValueIsFilled(URL) Then
 
-                OPI_TypeConversion.GetLine(URL);
-                OPI_Tools.RestoreEscapeSequences(URL);
+            OPI_TypeConversion.GetLine(URL);
+            OPI_Tools.RestoreEscapeSequences(URL);
 
-                If GetSetting("URLencoding") Then
-                    OPI_Tools.EncodeURLInURL(URL);
-                EndIf;
-
-                RequestURL = URL;
-
-                AddLog("SetURL: Splitting a request into component parts");
-
-            Else
-
-                AddLog("SetURL: URL is empty - skip");
-
+            If GetSetting("URLencoding") Then
+                OPI_Tools.EncodeURLInURL(URL);
             EndIf;
 
-            Return SplitURL();
+            RequestURL = URL;
+
+            AddLog("SetURL: Splitting a request into component parts");
+
+        Else
+
+            AddLog("SetURL: URL is empty - skip");
+
+        EndIf;
+
+        Return SplitURL();
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -197,7 +199,7 @@ Function SetURLParams(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
         If Not ValueIsFilled(Value) Then Value = New Structure; EndIf;
 
         ErrorText        = "SetURLParams: The passed parameters are not a key/value collection";
@@ -224,7 +226,7 @@ Function SetResponseFile(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
         If Not ValueIsFilled(Value) Then
             RequestOutputFile = Undefined;
             Return ThisObject;
@@ -241,7 +243,7 @@ Function SetResponseFile(Val Value) Export
 
 EndFunction
 
-// Set data type
+// Set data type !NOCLI
 // Sets the Content-Type of the request
 //
 // Note
@@ -256,7 +258,7 @@ Function SetDataType(Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         AddLog("SetDataType: Setting the value");
         OPI_TypeConversion.GetLine(Value);
@@ -296,11 +298,22 @@ EndFunction
 
 #Region Settings
 
+// Use encoding !NOCLI
+// Sets the encoding of the request body
+//
+// Note
+// UTF-8 is used by default
+//
+// Parameters:
+// Encoding - String - Encoding name - enc
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
 Function UseEncoding(Val Encoding) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         AddLog("UseEncoding: Setting the value");
         OPI_TypeConversion.GetLine(Encoding);
@@ -315,11 +328,22 @@ Function UseEncoding(Val Encoding) Export
 
 EndFunction
 
+// Use Gzip compression !NOCLI
+// Enables or disables the header for receiving data from the server in compressed form
+//
+// Note
+// By default, the response from the server is requested with gzip compression
+//
+// Parameters:
+// Flag - Boolean - Flag for gzip using - gzip
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
 Function UseGzipCompression(Val Flag) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         AddLog("UseGzipCompression: Setting the value");
         OPI_TypeConversion.GetBoolean(Flag);
@@ -351,7 +375,7 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         CancelMultipartBody();
 
@@ -400,7 +424,7 @@ Function SetStringBody(Val Data, Val WriteBOM = False) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         CancelMultipartBody();
 
@@ -441,7 +465,7 @@ Function SetJsonBody(Val Data) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         CancelMultipartBody();
 
@@ -481,7 +505,7 @@ Function SetFormBody(Val Data) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         CancelMultipartBody();
 
@@ -537,7 +561,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         OPI_TypeConversion.GetBoolean(UseFile);
         OPI_TypeConversion.GetLine(View);
@@ -545,14 +569,17 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
         Multipart     = True;
         Boundary      = StrReplace(String(New UUID), "-", "");
         LineSeparator = Chars.CR + Chars.LF;
-        Encoding      = GetSetting("EncodeRequestBody");
-        RequestDataType = StrTemplate("multipart/%1; boundary=%2; charset=%3", View, Boundary, Encoding);
+        Encoding            = GetSetting("EncodeRequestBody");
+        RequestDataType = StrTemplate("multipart/%1; boundary=%2", View, Boundary);
 
         If UseFile Then
 
             AddLog("StartMultipartBody: Creating a temporary file");
 
-            RequestBodyFile   = GetTempFileName();
+            // BSLLS:MissingTemporaryFileDeletion-off
+            RequestBodyFile = GetTempFileName();
+            // BSLLS:MissingTemporaryFileDeletion-on
+
             BodyTemporaryFile = True;
             RequestDataWriter = New DataWriter(RequestBodyFile
                 , Encoding
@@ -603,8 +630,8 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
-        If Not Multipart Then Return Error("AddMultipartFormDataFile: Multipart record not initialized") EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
+        If Not Multipart Then Return Error("AddMultipartFormDataFile: Multipart record not initialized"); EndIf;
 
         OPI_TypeConversion.GetBinaryData(Data);
 
@@ -653,7 +680,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
         If Not Multipart Then Return Error("AddMultipartFormDataField: Multipart record not initialized") EndIf;
 
         ValeType = TypeOf(Value);
@@ -712,8 +739,8 @@ Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
-        If Not Multipart Then Return Error("AddFileAsRelated: Multipart record not initialized") EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
+        If Not Multipart Then Return Error("AddFileAsRelated: Multipart record not initialized"); EndIf;
 
         OPI_TypeConversion.GetLine(DataType);
         OPI_TypeConversion.GetLine(ContentID);
@@ -763,8 +790,8 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
-        If Not ValueIsFilled(Value) Then Value = New Map EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
+        If Not ValueIsFilled(Value) Then Value = New Map; EndIf;
 
         ErrorText = "SetURLParams: The passed parameters are not a key/value collection";
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
@@ -803,7 +830,7 @@ Function AddBasicAuthorization(Val User, Val Password) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         OPI_TypeConversion.GetLine(User);
         OPI_TypeConversion.GetLine(Password);
@@ -834,7 +861,7 @@ Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Serv
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         String_   = "String";
         AWS4Using = True;
@@ -874,11 +901,11 @@ Function ProcessRequest(Val Method, Val Start = True) Export
 
     Try
 
+        If StopExecution() Then Return ThisObject; EndIf;
+
         OPI_TypeConversion.GetLine(Method);
         OPI_TypeConversion.GetBoolean(Start);
         RequestMethod = Method;
-
-        If StopExecution() Then Return ThisObject EndIf;
 
         AddLog("ProcessRequest: Forming a request");
         If FormRequest().Error Then Return ThisObject EndIf;
@@ -913,7 +940,7 @@ Function ExecuteRequest(Val Method) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
         OPI_TypeConversion.GetLine(Method);
         RequestMethod = Method;
@@ -981,7 +1008,7 @@ Function ReturnResponse(Val Forced = False, Val ExceptionOnError = False) Export
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
     Return Response;
 
@@ -998,7 +1025,7 @@ EndFunction
 // Arbitrary - The response or the same processing object
 Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = False) Export
 
-    If StopExecution(ExceptionOnError) Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) Then Return ThisObject; EndIf;
 
     Try
 
@@ -1040,7 +1067,7 @@ Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = F
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
     BodyAsString = GetResponseBody();
 
@@ -1061,7 +1088,7 @@ Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
     BodyAsString = GetStringFromBinaryData(GetResponseBody());
 
@@ -1082,7 +1109,7 @@ Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject EndIf;
+    If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
     BodyFileName = Response.GetBodyFileName();
 
@@ -1423,6 +1450,7 @@ Function CompleteHeaders()
 
     EndIf;
 
+    Return ThisObject;
 
 EndFunction
 
@@ -1476,9 +1504,9 @@ Function GetResponseBody()
         HeaderKey   = ResponseHeader.Key;
         HeaderValue = ResponseHeader.Value;
 
-        If Lower(HeaderKey)    = "content-encoding" Then
+        If Lower(HeaderKey)       = "content-encoding" Then
             If Lower(HeaderValue) = "gzip" Then
-                NeedsUnpacking       = True;
+                NeedsUnpacking    = True;
                 Break;
             EndIf;
         EndIf;
@@ -1550,46 +1578,46 @@ EndFunction
 
 Procedure CancelMultipartBody()
 
-    If Multipart Then
+    If Not Multipart Then
+        Return;
+    EndIf;
 
-        AddLog("CancelMultipartBody: Deleting recorded data");
-        Multipart = False;
+    AddLog("CancelMultipartBody: Deleting recorded data");
+    Multipart = False;
 
-       Try
-            RequestDataWriter.Close();
+    Try
+        RequestDataWriter.Close();
+    Except
+        AddLog("CancelMultipartBody: Could not close the writer. It may have already been closed");
+    EndTry;
+
+    If ValueIsFilled(RequestBodyFile) Then
+
+        Try
+
+            DeleteFiles(RequestBodyFile);
+            AddLog("CancelMultipartBody: The body file has been deleted");
+
         Except
-            AddLog("CancelMultipartBody: Could not close the writer. It may have already been closed");
+            AddLog("CancelMultipartBody: Failed to delete the body file. It may have already been deleted");
         EndTry;
 
-        If ValueIsFilled(RequestBodyFile) Then
+    Else
+
+        If TypeOf(RequestBodyStream) = Type("MemoryStream") Then
 
             Try
-
-                DeleteFiles(RequestBodyFile);
-                AddLog("CancelMultipartBody: The body file has been deleted");
-
+                RequestBodyStream.Close();
             Except
-                AddLog("CancelMultipartBody: Failed to delete the body file. It may have already been deleted");
+                AddLog("CancelMultipartBody: Failed to close the stream. It may have already been closed");
             EndTry;
-
-        Else
-
-            If TypeOf(RequestBodyStream) = Type("MemoryStream") Then
-
-                Try
-                    RequestBodyStream.Close();
-                Except
-                    AddLog("CancelMultipartBody: Failed to close the stream. It may have already been closed");
-                EndTry;
-
-            EndIf;
 
         EndIf;
 
-        RequestDataWriter = Undefined;
-        RequestBodyFile   = Undefined;
-
     EndIf;
+
+    RequestDataWriter = Undefined;
+    RequestBodyFile   = Undefined;
 
 EndProcedure
 

@@ -522,34 +522,7 @@ Function ProcessParameter(CurrentParameter, AsObject = True)
 
     Else
 
-        If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
-
-            If OPI_Tools.CollectionFieldExist(CurrentParameter, "BYTES") Then
-
-                CurrentParameter = ProcessBlobStructure(CurrentParameter);
-                CurrentKey       = "BYTES";
-
-            Else
-
-                For Each ParamElement In CurrentParameter Do
-
-                    CurrentKey   = Upper(ParamElement.Key);
-                    CurrentValue = ParamElement.Value;
-
-                    CurrentParameter = ProcessParameter(CurrentValue, False);
-
-                    Break;
-
-                EndDo;
-
-            EndIf;
-
-        Else
-
-            OPI_TypeConversion.GetLine(CurrentParameter);
-            CurrentKey = "TEXT";
-
-        EndIf;
+        ProcessCollectionParameter(CurrentType, CurrentParameter, CurrentKey);
 
     EndIf;
 
@@ -560,6 +533,39 @@ Function ProcessParameter(CurrentParameter, AsObject = True)
     Return CurrentParameter;
 
 EndFunction
+
+Procedure ProcessCollectionParameter(Val CurrentType, CurrentParameter, CurrentKey)
+
+    If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
+
+        If OPI_Tools.CollectionFieldExist(CurrentParameter, "BYTES") Then
+
+            CurrentParameter = ProcessBlobStructure(CurrentParameter);
+            CurrentKey       = "BYTES";
+
+        Else
+
+            For Each ParamElement In CurrentParameter Do
+
+                CurrentKey   = Upper(ParamElement.Key);
+                CurrentValue = ParamElement.Value;
+
+                CurrentParameter = ProcessParameter(CurrentValue, False);
+
+                Break;
+
+            EndDo;
+
+        EndIf;
+
+    Else
+
+        OPI_TypeConversion.GetLine(CurrentParameter);
+        CurrentKey = "TEXT";
+
+    EndIf;
+
+EndProcedure
 
 Function ProcessBlobStructure(Val Value)
 

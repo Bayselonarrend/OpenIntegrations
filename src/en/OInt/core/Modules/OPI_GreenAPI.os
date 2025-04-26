@@ -604,11 +604,12 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Green API
 Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val ReplyID = "") Export
 
+    String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("chatId"         , ChatID , "String", Parameters);
-    OPI_Tools.AddField("message"        , Text   , "String", Parameters);
-    OPI_Tools.AddField("quotedMessageId", ReplyID, "String", Parameters);
+    OPI_Tools.AddField("chatId"         , ChatID , String_, Parameters);
+    OPI_Tools.AddField("message"        , Text   , String_, Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID, String_, Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendMessage");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
@@ -642,12 +643,13 @@ Function SendFile(Val AccessParameters
 
     OPI_TypeConversion.GetBinaryData(File);
 
+    String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("chatId"         , ChatID      , "String", Parameters);
-    OPI_Tools.AddField("fileName"       , FileName    , "String", Parameters);
-    OPI_Tools.AddField("caption"        , Description , "String", Parameters);
-    OPI_Tools.AddField("quotedMessageId", ReplyID     , "String", Parameters);
+    OPI_Tools.AddField("chatId"         , ChatID      , String_, Parameters);
+    OPI_Tools.AddField("fileName"       , FileName    , String_, Parameters);
+    OPI_Tools.AddField("caption"        , Description , String_, Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID     , String_, Parameters);
 
     FileMapping = New Map();
     FileMapping.Insert(StrTemplate("file|%1", FileName), File);
@@ -668,7 +670,7 @@ EndFunction
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
 // ChatID - String - Chat identifier - chat
-// FileURL - String, - File URL - url
+// FileURL - String - File URL - url
 // FileName - String - Name of the file with the extension - filename
 // Description - String - Message text below the file - caption
 // ReplyID - String - Replying message id if necessary - quoted
@@ -682,13 +684,14 @@ Function SendFileByURL(Val AccessParameters
     , Val Description = ""
     , Val ReplyID = "") Export
 
+    String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("chatId"         , ChatID      , "String", Parameters);
-    OPI_Tools.AddField("urlFile"        , FileURL     , "String", Parameters);
-    OPI_Tools.AddField("fileName"       , FileName    , "String", Parameters);
-    OPI_Tools.AddField("caption"        , Description , "String", Parameters);
-    OPI_Tools.AddField("quotedMessageId", ReplyID     , "String", Parameters);
+    OPI_Tools.AddField("chatId"         , ChatID      , String_, Parameters);
+    OPI_Tools.AddField("urlFile"        , FileURL     , String_, Parameters);
+    OPI_Tools.AddField("fileName"       , FileName    , String_, Parameters);
+    OPI_Tools.AddField("caption"        , Description , String_, Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID     , String_, Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendFileByUrl");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
@@ -720,6 +723,7 @@ Function SendPoll(Val AccessParameters
     , Val MultipleSelect = False
     , Val ReplyID = "") Export
 
+    String_     = "String";
     Parameters  = New Structure;
     OptionArray = New Array;
 
@@ -729,11 +733,11 @@ Function SendPoll(Val AccessParameters
         OptionArray.Add(New Structure("optionName", Option));
     EndDo;
 
-    OPI_Tools.AddField("chatId"         , ChatID        , "String"    , Parameters);
-    OPI_Tools.AddField("message"        , Text          , "String"    , Parameters);
+    OPI_Tools.AddField("chatId"         , ChatID        , String_     , Parameters);
+    OPI_Tools.AddField("message"        , Text          , String_     , Parameters);
     OPI_Tools.AddField("options"        , OptionArray   , "Collection", Parameters);
     OPI_Tools.AddField("multipleAnswers", MultipleSelect, "Boolean"   , Parameters);
-    OPI_Tools.AddField("quotedMessageId", ReplyID       , "String"    , Parameters);
+    OPI_Tools.AddField("quotedMessageId", ReplyID       , String_     , Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "sendPoll");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
@@ -850,11 +854,12 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Green API
 Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Text) Export
 
+    String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("chatId"   , ChatID   , "String", Parameters);
-    OPI_Tools.AddField("idMessage", MessageID, "String", Parameters);
-    OPI_Tools.AddField("message"  , Text     , "String", Parameters);
+    OPI_Tools.AddField("chatId"   , ChatID   , String_, Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, String_, Parameters);
+    OPI_Tools.AddField("message"  , Text     , String_, Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "editMessage");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
@@ -910,13 +915,14 @@ Function GetContactDescription(Val Phone
     , Val Patronymic = ""
     , Val Company = "") Export
 
+    String_ = "String";
     Contact = New Structure;
 
-    OPI_Tools.AddField("phoneContact", Phone     , "Number" , Contact);
-    OPI_Tools.AddField("firstName"   , Name      , "String" , Contact);
-    OPI_Tools.AddField("middleName"  , LastName  , "String" , Contact);
-    OPI_Tools.AddField("lastName"    , Patronymic, "String" , Contact);
-    OPI_Tools.AddField("company"     , Company   , "String" , Contact);
+    OPI_Tools.AddField("phoneContact", Phone     , "Number", Contact);
+    OPI_Tools.AddField("firstName"   , Name      , String_ , Contact);
+    OPI_Tools.AddField("middleName"  , LastName  , String_ , Contact);
+    OPI_Tools.AddField("lastName"    , Patronymic, String_ , Contact);
+    OPI_Tools.AddField("company"     , Company   , String_ , Contact);
 
     Return Contact;
 
