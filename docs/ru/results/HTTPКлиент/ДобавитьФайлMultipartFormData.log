@@ -1,0 +1,24 @@
+﻿    {
+ "args": {},
+ "data": "",
+ "files": {
+  "file1": "..."
+ },
+ "form": {
+  "Поле1": "Текст",
+  "Поле2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "2114384",
+  "Content-Type": "multipart/form-data; boundary=27d6f7b7652c4141912dd47687f650a7",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-680d2bc8-0757289568f59a8b20ebf42c"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
