@@ -166,7 +166,7 @@ Function SetURL(Val URL) Export
             OPI_Tools.RestoreEscapeSequences(URL);
 
             If GetSetting("URLencoding") Then
-                OPI_Tools.EncodeURLInURL(URL);
+                EncodeURLInURL(URL);
             EndIf;
 
             RequestURL = URL;
@@ -2215,6 +2215,16 @@ Procedure SetDefaultSettings()
     Settings.Insert("SplitArrayParams"  , False);
     Settings.Insert("URLencoding"       , True);
     Settings.Insert("EncodeRequestBody" , "UTF-8");
+
+EndProcedure
+
+Procedure EncodeURLInURL(URL) Export
+
+    Plug = StrTemplate("@#%1#@", String(New UUID));
+
+    URL = StrReplace(URL, "&" , Plug);
+    URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
+    URL = StrReplace(URL, Plug, "&");
 
 EndProcedure
 
