@@ -146,7 +146,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // File - BinaryData,String - File to be uploaded - file
-// Description - Map Of KeyAndValue - See GetFileDescription - props - JSON description or path to .json
+// Description - Map Of KeyAndValue - See GetFileDescription - props
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -621,30 +621,40 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable";
 
     If ValueIsFilled(Identifier) Then
-        URL      = StrReplace(URL, "/files", "/files/" + Identifier);
-        Response = OPI_HTTPRequests.PatchWithBody(URL, Description, Headers, True, True);
+        URL    = StrReplace(URL, "/files", "/files/" + Identifier);
+        Method = "PATCH";
     Else
-        Response = OPI_HTTPRequests.PostWithBody(URL, Description, Headers, True, True);
+        Method = "POST";;
     EndIf;
+
+    HttpClient = OPI_HTTPRequests.NewRequest().Initialize(URL);
+
+    Response = HttpClient.SetHeaders(Headers)
+        .SetJsonBody(Description)
+        .ProcessRequest(Method)
+        .ReturnResponse(False, True);
 
     UploadURL = Response.Headers["Location"];
 
     If Not ValueIsFilled(UploadURL) Then
-        OPI_Tools.ProcessResponse(Response);
-        Return Response;
+        Return HttpClient.ReturnResponseAsJSONObject(True, True);
     EndIf;
 
-    UploadResponse = UploadFileInParts(Binary, UploadURL);
-    Response       = ?(ValueIsFilled(UploadResponse), UploadResponse, Response);
+    HttpUploadClient = UploadFileInParts(Binary, UploadURL);
 
-    OPI_Tools.ProcessResponse(Response);
+    If HttpUploadClient <> Undefined Then
+        Response = HttpUploadClient.ReturnResponseAsJSONObject(True, True);
+    Else
+        Response = HttpClient.ReturnResponseAsJSONObject(True, True);
+    EndIf;
+
     Return Response;
 
 EndFunction
 
 Function UploadFileInParts(Val Binary, Val UploadURL)
 
-    Response        = "";
+    HttpClient      = Undefined;
     ChunkSize       = 268435456;
     BytesRead       = 0;
     CurrentPosition = 0;
@@ -677,11 +687,16 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
         AdditionalHeaders.Insert("Content-Range" , StreamHeader);
         AdditionalHeaders.Insert("Content-Type"  , "application/octet-stream");
 
-        Response = OPI_HTTPRequests.PutWithBody(UploadURL, CurrentData, AdditionalHeaders, False, True);
+        HttpClient = OPI_HTTPRequests
+            .NewRequest()
+            .Initialize(UploadURL)
+            .SetHeaders(AdditionalHeaders)
+            .SetBinaryBody(CurrentData)
+            .ProcessRequest("PUT");
 
-        CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
+        CheckResult = CheckPartUpload(HttpClient, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
 
-        If ValueIsFilled(CheckResult) Then
+        If CheckResult <> Undefined Then
             Return CheckResult;
         EndIf;
 
@@ -694,11 +709,11 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
 
     EndDo;
 
-    Return Response;
+    Return HttpClient;
 
 EndFunction
 
-Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition)
+Function CheckPartUpload(HttpClient, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition)
 
     StartOfErrorCodes   = 400;
     EndOfFailureCodes   = 600;
@@ -706,17 +721,21 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
     EndOfSuccessCodes   = 300;
     Redirection         = 308;
 
+    Response = HttpClient.ReturnResponse(False, True);
+
     If Response.StatusCode >= StartOfErrorCodes And Response.StatusCode < EndOfFailureCodes Then
 
         StreamHeader = "bytes */" + StrTotalSize;
         AdditionalHeaders.Insert("Content-Range" , StreamHeader);
 
-        CheckResponse = OPI_HTTPRequests.PutWithBody(UploadURL, "", AdditionalHeaders, False, True);
+        HttpCheckClient = OPI_HTTPRequests.NewRequest().Initialize(UploadURL);
+        CheckResponse   = HttpCheckClient.SetHeaders(AdditionalHeaders)
+            .ProcessRequest("PUT")
+            .ReturnResponse(False, True);
 
         If CheckResponse.StatusCode >= StartOfSuccessCodes And CheckResponse.StatusCode < EndOfSuccessCodes Then
 
-            OPI_Tools.ProcessResponse(CheckResponse);
-            Return CheckResponse;
+            Return HttpCheckClient;
 
         ElsIf CheckResponse.StatusCode = Redirection Then
 
@@ -724,8 +743,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
 
         Else
 
-            OPI_Tools.ProcessResponse(Response);
-            Return Response;
+            Return HttpClient;
 
         EndIf;
 
@@ -734,8 +752,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
     EndIf;
 
     If Not ValueIsFilled(UploadedData) Then
-        OPI_Tools.ProcessResponse(Response);
-        Return Response;
+        Return HttpClient;
     EndIf;
 
     UploadedData = StrReplace(UploadedData, "bytes=", "");
@@ -743,13 +760,12 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
     PartsRequired      = 2;
 
     If Not ArrayOfInformation.Count() = PartsRequired Then
-        OPI_Tools.ProcessResponse(Response);
-        Return Response;
+        Return HttpClient;
     EndIf;
 
     CurrentPosition = Number(ArrayOfInformation[1]) + 1;
 
-    Return "";
+    Return Undefined;
 
 EndFunction
 

@@ -1,5 +1,5 @@
-﻿    Токен         = "ya29.a0AZYkNZjPdv9SxyICmqh9ci1psUDsod4nm51k501h79FNnNVA8M4kk-12mOzBfaqyI2IjZpX5Jhp_Ex6onBvGGzr5JzMV9ipqaYWhn7NE8...";
-    Идентификатор = "1TSELE3f7xJGsC2ZYEPKAoqflAr1EWNIV";
+﻿    Токен         = "ya29.a0AZYkNZiRXfKUTNfw3qXs1AmukqP0xyg0bYk5DEXqvWyWTwmCoN58u6TMW0rpZPQ08gVGhd663pMJZ2PVx26_bUbznyj5ORs_TVPI8Bxrj...";
+    Идентификатор = "1K6PcEPhCOekae1YoRxBIhwa_I2z7mmkc";
     Комментарий   = "Текст комментария";
 
     Результат = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);

@@ -128,7 +128,7 @@
     NewLine.Метод       = "UploadFile";
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--props";
-    NewLine.Описание    = "JSON description or path to .json";
+    NewLine.Описание    = "See GetFileDescription";
     NewLine.Область     = "File and directory management";
 
 

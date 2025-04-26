@@ -924,6 +924,7 @@ Procedure GD_UploadDeleteFile() Export
     OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Big"         , TestParameters);
 
     TestParameters.Insert("ArrayOfDeletions", New Array);
 
@@ -5777,6 +5778,24 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteParameter("GD_File", Identifier);
     OPI_Tools.AddField("GD_File", Identifier, "String", FunctionParameters);
+
+    If Not OPI_Tools.IsOneScript() Then
+
+        BigFile = FunctionParameters["Big"];
+        Description.Insert("Name", "big.rar");
+
+        Result = OPI_GoogleDrive.UploadFile(Token, BigFile, Description);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (big)", "GoogleDrive");
+        OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+        Identifier = Result["id"];
+
+        ArrayOfDeletions = FunctionParameters["ArrayOfDeletions"];
+        ArrayOfDeletions.Add(Identifier);
+        FunctionParameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
+
+    EndIf;
 
 EndProcedure
 

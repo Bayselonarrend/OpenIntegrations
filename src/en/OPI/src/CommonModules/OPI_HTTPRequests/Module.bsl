@@ -244,7 +244,7 @@ Function ExecuteRequestWithBody(Val URL
         Result = HttpClient.ReturnResponseAsJSONObject(True, True);
     EndIf;
 
-     Return Result;
+    Return Result;
 
 EndFunction
 
