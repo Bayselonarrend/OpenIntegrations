@@ -22643,7 +22643,6 @@ Procedure CLI_GreenAPI_DeleteNotificationFromQueue(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteNotificationFromQueue", "GreenAPI");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-
 EndProcedure
 
 Procedure CLI_GreenAPI_DownloadMessageFile(FunctionParameters)
@@ -23098,7 +23097,6 @@ Procedure CLI_Ollama_GetContextResponse(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Response1, "GetContextResponse (preliminary)", "Ollama"); // SKIP
     OPI_TestDataRetrieval.Check_OllamaMessage(Response1); // SKIP
-
 
     MessagesArray.Add(Response1["message"]); // Add response to first question in context
     MessagesArray.Add(Question2); // Add second question in context

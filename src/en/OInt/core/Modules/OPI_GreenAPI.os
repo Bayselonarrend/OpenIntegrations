@@ -347,7 +347,6 @@ Function GetInstanceSettingsStructure(Val Clear = False) Export
     SettingsStructure.Insert("editedMessageWebhook"             , "<to be notified when a message has been edited: yes, no>");
     SettingsStructure.Insert("deletedMessageWebhook"            , "<receive notifications when a message has been deleted: yes, no>");
 
-
     If Clear Then
         SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
     EndIf;

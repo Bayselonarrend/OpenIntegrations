@@ -276,7 +276,6 @@ Function JsonToStructure(Val Text, Val ToMap = True) Export
 
     EndIf;
 
-
     Data = ReadJSON(JSONReader, ToMap, Undefined, JSONDateFormat.ISO);
     JSONReader.Close();
 
