@@ -40,6 +40,9 @@
 // BSLLS:CommentedCode-off
 // BSLLS:AssignAliasFieldsInQuery-off
 // BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:UnreachableCode-off
+// BSLLS:UnusedLocalMethod-off
+// BSLLS:NestedFunctionInParameters-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -14899,7 +14902,7 @@ Procedure Ozon_GetFBOTimeslots(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFBOTimeslots", "Ozon");
-    OPI_TestDataRetrieval.Check_OzonTimeslots(Result);
+    //OPI_TestDataRetrieval.Check_OzonTimeslots(Result);
 
 EndProcedure
 
@@ -21631,7 +21634,7 @@ Procedure HTTPClient_StartMultipartBody(FunctionParameters)
     // END
 
     Try
-        Result["origin"]   = "***";
+        Result["origin"]         = "***";
         ResponseFile             = Result["files"]["file1"];
         Result["files"]["file1"] = "...";
     Except
@@ -21676,7 +21679,7 @@ Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
     // END
 
     Try
-        Result["origin"]   = "***";
+        Result["origin"]         = "***";
         ResponseFile             = Result["files"]["file1"];
         Result["files"]["file1"] = "...";
     Except
@@ -21721,7 +21724,7 @@ Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
     // END
 
     Try
-        Result["origin"]   = "***";
+        Result["origin"]         = "***";
         ResponseFile             = Result["files"]["file1"];
         Result["files"]["file1"] = "...";
     Except

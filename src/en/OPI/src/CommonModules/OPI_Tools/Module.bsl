@@ -217,9 +217,10 @@ Function GetDomain(Val ConnectionString) Export
     EndIf;
 
     ProtocolEnd = StrFind(Domain, "://");
+    Slashes     = 2;
 
     If ProtocolEnd > 0 Then
-        Domain = Right(Domain, StrLen(Domain) - (ProtocolEnd + 2));
+        Domain = Right(Domain, StrLen(Domain) - (ProtocolEnd + Slashes));
     EndIf;
 
     If StrFind(Domain, ":") <> 0 Then
@@ -1080,18 +1081,6 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
     OutputWriting.WriteChars(Text);
 
 EndProcedure
-
-Function ThisIsRedirection(Val Response)
-
-    Redirection = 300;
-    Error       = 400;
-
-    ThisIsRedirection = Response.StatusCode >= Redirection And Response.StatusCode < Error And ValueIsFilled(
-        Response.Headers["Location"]);
-
-    Return ThisIsRedirection;
-
-EndFunction
 
 Function ConvertParameterToString(Val Value)
 
