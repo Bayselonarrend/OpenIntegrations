@@ -569,7 +569,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
         Multipart     = True;
         Boundary      = StrReplace(String(New UUID), "-", "");
         LineSeparator = Chars.CR + Chars.LF;
-        Encoding            = GetSetting("EncodeRequestBody");
+        Encoding      = GetSetting("EncodeRequestBody");
         RequestDataType = StrTemplate("multipart/%1; boundary=%2", View, Boundary);
 
         If UseFile Then
@@ -681,7 +681,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
-        If Not Multipart Then Return Error("AddMultipartFormDataField: Multipart record not initialized") EndIf;
+        If Not Multipart Then Return Error("AddMultipartFormDataField: Multipart record not initialized"); EndIf;
 
         ValeType = TypeOf(Value);
 
@@ -908,10 +908,10 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         RequestMethod = Method;
 
         AddLog("ProcessRequest: Forming a request");
-        If FormRequest().Error Then Return ThisObject EndIf;
+        If FormRequest().Error Then Return ThisObject; EndIf;
 
         AddLog("ProcessRequest: Setting the request body");
-        If SetRequestBody().Error Then Return ThisObject EndIf;
+        If SetRequestBody().Error Then Return ThisObject; EndIf;
 
         CompleteHeaders();
 
@@ -967,7 +967,7 @@ Function ReturnRequest(Forced = False) Export
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution() And Not Forced Then Return ThisObject EndIf;
+    If StopExecution() And Not Forced Then Return ThisObject; EndIf;
 
     Return Request;
 
@@ -985,7 +985,7 @@ Function ReturnConnection(Forced = False) Export
 
     OPI_TypeConversion.GetBoolean(Forced);
 
-    If StopExecution() And Not Forced Then Return ThisObject EndIf;
+    If StopExecution() And Not Forced Then Return ThisObject; EndIf;
 
     Return Connection;
 
@@ -2222,7 +2222,7 @@ Function FunctionTemplate()
 
     Try
 
-        If StopExecution() Then Return ThisObject EndIf;
+        If StopExecution() Then Return ThisObject; EndIf;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));

@@ -55,14 +55,14 @@ Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
             Value = GetBinaryDataFromString(Value);
 
         Else
-            OPI_TypeConversion.GetLine(Value);
+            GetLine(Value);
             ConvertSourceToValue(Value, TryB64);
         EndIf;
 
     Except
 
         If Force Then
-            OPI_TypeConversion.GetLine(Value);
+            GetLine(Value);
             Value = GetBinaryDataFromString(Value);
         Else
             Raise "Error getting binary data from parameter: " + ErrorDescription();
