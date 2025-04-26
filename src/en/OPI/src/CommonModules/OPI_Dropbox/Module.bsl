@@ -976,5 +976,4 @@ Function GetOwnAccount(Val Token)
 
 EndFunction
 
-
 #EndRegion

@@ -20170,7 +20170,6 @@ Procedure GreenAPI_ForwardMessages(FunctionParameters)
     From   = FunctionParameters["GreenAPI_TestGroupID"]; // SKIP
     Target = FunctionParameters["GreenAPI_TestGroupID"];
 
-
     Message = FunctionParameters["GreenAPI_MessageID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
@@ -20612,7 +20611,6 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Response1, "GetContextResponse (preliminary)", "Ollama"); // SKIP
     OPI_TestDataRetrieval.Check_OllamaMessage(Response1); // SKIP
-
 
     MessagesArray.Add(Response1["message"]); // Add response to first question in context
     MessagesArray.Add(Question2); // Add second question in context
@@ -21397,7 +21395,6 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "File deletion error", "HTTPClient");
     EndTry;
-
 
 EndProcedure
 
