@@ -721,8 +721,6 @@ Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboa
 
     OPI_TypeConversion.GetLine(Token);
 
-    String_ = "String";
-
     Parameters = New Structure;
     OPI_Tools.AddField("message_id"  , MessageID, "Number"    , Parameters);
     OPI_Tools.AddField("reply_markup", Keyboard , "Collection", Parameters);

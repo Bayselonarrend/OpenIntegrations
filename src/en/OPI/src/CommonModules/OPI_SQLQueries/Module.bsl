@@ -32,6 +32,7 @@
 // BSLLS:LineLength-off
 // BSLLS:QueryParseError-off
 // BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:NumberOfParams-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions

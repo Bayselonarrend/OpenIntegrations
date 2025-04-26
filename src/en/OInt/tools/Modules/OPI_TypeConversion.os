@@ -337,7 +337,9 @@ Procedure GetNumber(Value) Export
 
                 EndIf;
 
+                // BSLLS:TryNumber-off
                 Value = Number(Value_);
+                // BSLLS:TryNumber-on
 
             Except
                 Return;
@@ -363,10 +365,15 @@ Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
 
     Else
 
-        OPI_TypeConversion.GetBinaryData(Value, True);
+        GetBinaryData(Value, True);
+
+        // BSLLS:MissingTemporaryFileDeletion-off
 
         //@skip-check missing-temporary-file-deletion
         Path = GetTempFileName(Extension);
+
+        // BSLLS:MissingTemporaryFileDeletion-on
+
         Value.Write(Path);
 
         ReturnStructure.Insert("Path"     , Path);

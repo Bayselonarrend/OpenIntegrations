@@ -602,7 +602,7 @@ Function UploadSmallFile(Val Description, Val FileMapping, Val Headers, Val Iden
         .AddDataAsRelated(Description, "application/json; charset=UTF-8");
 
     For Each File In FileMapping Do
-        HTTPClient.AddDataAsRelated(File.Key, File.Value)
+        HTTPClient.AddDataAsRelated(File.Key, File.Value);
     EndDo;
 
     Response = HTTPClient.ProcessRequest(Method).ReturnResponseAsJSONObject(True, True);
