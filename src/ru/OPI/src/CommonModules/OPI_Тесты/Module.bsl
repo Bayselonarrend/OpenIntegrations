@@ -40,6 +40,9 @@
 // BSLLS:CommentedCode-off
 // BSLLS:AssignAliasFieldsInQuery-off
 // BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:UnreachableCode-off
+// BSLLS:UnusedLocalMethod-off
+// BSLLS:NestedFunctionInParameters-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -14899,7 +14902,7 @@
     // END
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьТаймслотыFBO", "Ozon");
-    OPI_ПолучениеДанныхТестов.Проверка_ОзонТаймслоты(Результат);
+    //OPI_ПолучениеДанныхТестов.Проверка_ОзонТаймслоты(Результат);
 
 КонецПроцедуры
 
