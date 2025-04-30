@@ -853,6 +853,10 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
     TotalSize       = File.Size();
     Session         = OpenSession(Token);
 
+    If OPI_Tools.ThisIsCollection(Session) Then
+        Return Session;
+    EndIf;
+
     While BytesRead < TotalSize Do
 
         Indent = CurrentPosition;
@@ -868,7 +872,7 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
         CurrentSize  = CurrentData.Size();
         NextPosition = CurrentPosition + CurrentSize;
 
-        If Not ValueIsFilled(CurrentData) Then
+        If CurrentSize = 0 Then
             Break;
         EndIf;
 
@@ -921,7 +925,13 @@ Function OpenSession(Val Token)
 
     Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
 
-    Return Response[SessionId];
+    Session = Response[SessionId];
+
+    If Session  = Undefined Then
+        Session = Response;
+    EndIf;
+
+    Return Session;
 
 EndFunction
 

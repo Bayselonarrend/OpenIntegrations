@@ -1,4 +1,4 @@
-﻿    База       = "C:\Users\Administrator\AppData\Local\Temp\v8_4D76_3e.sqlite";
+﻿    База       = "C:\Users\Administrator\AppData\Local\Temp\v8_CCDB_14e.sqlite";
     Расширение = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Путь или Двоичные данные
     ТочкаВхода = "sqlite3_uuid_init";
 

@@ -1,5 +1,5 @@
 ﻿    Parameters   = GetVKParameters();
-    DiscussionID = "53373668";
+    DiscussionID = "53374049";
     Message      = "I like yellow more";
 
     Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);
