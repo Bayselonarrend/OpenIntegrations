@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
+// OneScript: ./OInt/core/Modules/OPI_Twitter.os
 // Lib: Twitter
 // CLI: twitter
 // Keywords: twitter, x
@@ -410,9 +410,7 @@
         Поля.Вставить("media"        , Часть);
 
         Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры, Новый Структура, ВидЗапроса, URL);
-        Авторизация.Вставить("Content-Length", OPI_Инструменты.ЧислоВСтроку(Часть.Размер()));
-
-        OPI_ЗапросыHTTP.PostMultipart(URL, Поля, , , Авторизация);
+        Ответ       = OPI_ЗапросыHTTP.PostMultipart(URL, Поля, , , Авторизация);
 
         Счетчик = Счетчик + 1;
 
