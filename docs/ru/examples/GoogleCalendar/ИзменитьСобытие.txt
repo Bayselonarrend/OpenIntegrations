@@ -1,6 +1,6 @@
-﻿    Токен     = "ya29.a0AZYkNZiRXfKUTNfw3qXs1AmukqP0xyg0bYk5DEXqvWyWTwmCoN58u6TMW0rpZPQ08gVGhd663pMJZ2PVx26_bUbznyj5ORs_TVPI8Bxrj...";
-    Календарь = "1787427d11cac1af55bf37e5112f26cd1468a657fdd99be3b213d0754454e427@group.calendar.google.com";
-    Событие   = "e0qrvcpd1g8l60rdnnr0op70ms";
+﻿    Токен     = "ya29.a0AZYkNZjIV5CkSd4sG47GQZDD-dFWBLC9lYHit70VQoD1wHLXasvRgFEiis7NvRJmYFxPlQAZq3Jr5IbR8xb2VlpMtT6cSTKYo2UHXdMyx...";
+    Календарь = "13f149d2f2417ea08a6e5409e81eb2eeec7787008751e9557e6476cf97daffd6@group.calendar.google.com";
+    Событие   = "uehkshp6nracmebc499if28gfo";
     Описание  = "Новое описание события";
 
     ОписаниеСобытия = Новый Соответствие;
