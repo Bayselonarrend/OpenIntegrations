@@ -624,7 +624,7 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
         URL    = StrReplace(URL, "/files", "/files/" + Identifier);
         Method = "PATCH";
     Else
-        Method = "POST";;
+        Method = "POST";
     EndIf;
 
     HttpClient = OPI_HTTPRequests.NewRequest().Initialize(URL);
@@ -694,7 +694,11 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
             .SetBinaryBody(CurrentData)
             .ProcessRequest("PUT");
 
-        CheckResult = CheckPartUpload(HttpClient, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
+        CheckResult = CheckPartUpload(HttpClient
+            , StrTotalSize
+            , AdditionalHeaders
+            , UploadURL
+            , CurrentPosition);
 
         If CheckResult <> Undefined Then
             Return CheckResult;
