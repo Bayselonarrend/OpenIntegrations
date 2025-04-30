@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/332273b8-7848-44b6-8a00-8ccab5a5c3a7.png";
+    Path  = "/cd0a6a3d-748f-4789-873d-660fb18fafc3.png";
 
     Result = OPI_YandexDisk.DeleteObject(Token, Path, False);

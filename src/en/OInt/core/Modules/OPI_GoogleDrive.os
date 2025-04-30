@@ -663,6 +663,9 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
     DataReader      = New DataReader(Binary);
     SourceStream    = DataReader.SourceStream();
 
+    KBytes = 1024;
+    MByte  = KBytes * KBytes;
+
     While BytesRead < TotalSize Do
 
         BytesRead    = SourceStream.CurrentPosition();
@@ -704,14 +707,14 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
             Return CheckResult;
         EndIf;
 
-        KBytes = 1024;
-        MByte  = KBytes * KBytes;
         OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte);
 
         RunGarbageCollection();
         FreeObject(CurrentData);
 
     EndDo;
+
+    OPI_Tools.ProgressInformation(TotalSize, TotalSize, "MB", MByte);
 
     Return HttpClient;
 
