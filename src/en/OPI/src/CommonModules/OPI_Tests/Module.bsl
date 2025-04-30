@@ -2653,6 +2653,7 @@ Procedure HTTP_BodySet() Export
     HTTPClient_StartMultipartBody(TestParameters);
     HTTPClient_AddMultipartFormDataField(TestParameters);
     HTTPClient_AddMultipartFormDataFile(TestParameters);
+    HTTPClient_AddDataAsRelated(TestParameters);
 
 EndProcedure
 
@@ -21763,6 +21764,44 @@ Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field1"]).Равно("Text");
     OPI_TestDataRetrieval.ExpectsThat(Result["form"]["Field2"]).Равно("10");
     OPI_TestDataRetrieval.ExpectsThat(ResponseFile).Равно(TextB64);
+
+EndProcedure
+
+Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody(True, "related")
+        .AddDataAsRelated(Data, "application/json; charset=UTF-8") // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddDataAsRelated", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
 EndProcedure
 
