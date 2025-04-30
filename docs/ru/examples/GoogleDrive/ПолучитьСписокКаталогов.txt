@@ -1,4 +1,4 @@
 ﻿    Имя   = "Тестовая папка";
-    Токен = "ya29.a0AZYkNZiRXfKUTNfw3qXs1AmukqP0xyg0bYk5DEXqvWyWTwmCoN58u6TMW0rpZPQ08gVGhd663pMJZ2PVx26_bUbznyj5ORs_TVPI8Bxrj...";
+    Токен = "ya29.a0AZYkNZjIV5CkSd4sG47GQZDD-dFWBLC9lYHit70VQoD1wHLXasvRgFEiis7NvRJmYFxPlQAZq3Jr5IbR8xb2VlpMtT6cSTKYo2UHXdMyx...";
 
     Результат = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Истина);

@@ -1286,6 +1286,7 @@ Procedure DropboxAPI_UploadFile() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Big"          , TestParameters);
 
     Dropbox_UploadFile(TestParameters);
     Dropbox_GetObjectInformation(TestParameters);
@@ -5780,7 +5781,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
     OPI_TestDataRetrieval.WriteParameter("GD_File", Identifier);
     OPI_Tools.AddField("GD_File", Identifier, "String", FunctionParameters);
 
-    If Not OPI_Tools.IsOneScript() Then
+    If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
 
         BigFile = FunctionParameters["Big"];
         Description.Insert("Name", "big.rar");
@@ -7860,9 +7861,19 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Dropbox");
-
     OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
     DeleteFiles(ImagePath);
+
+    If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
+
+        BigFile = FunctionParameters["Big"];
+
+        Result = OPI_Dropbox.UploadFile(Token, BigFile, "/giant.tmp", True);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (big)", "Dropbox");
+        OPI_TestDataRetrieval.Check_DropboxFile(Result, "/giant.tmp");
+
+    EndIf;
 
     OPI_Tools.Pause(5);
 

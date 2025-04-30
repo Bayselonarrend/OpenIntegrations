@@ -1,6 +1,6 @@
 ﻿    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base   = "app02UpK712algCg8";
-    Table  = "tblbJ2OWW9Ck3psv7";
-    Record = "recP57yptRl9vEMyR";
+    Base   = "app6fsvW9YBOmCEw5";
+    Table  = "tblQOlWzjYbvlpHuM";
+    Record = "rec5NRJMGEzpdqCPu";
 
     Result = OPI_Airtable.DeleteRecords(Token, Base, Table, Record);
