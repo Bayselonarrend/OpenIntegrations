@@ -1,5 +1,5 @@
 ﻿    URL   = "https://api.athenaeum.digital/ollama";
-    Token = "10KO..."; // Authorization - not part API Ollama
+    Token = "10KO-82..."; // Authorization - not part API Ollama
 
     Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
 

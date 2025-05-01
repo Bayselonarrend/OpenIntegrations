@@ -2753,6 +2753,10 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
         ProcessSecretsMySQL(Option, Value);
 
+    ElsIf Library = "ollama" Then
+
+        ProcessSecretsMySQLOllama(Option, Value);
+
     Else
         Return;
     EndIf;
@@ -2796,6 +2800,18 @@ Procedure ProcessSecretsMySQL(Val Option, Value)
     ElsIf Option = "addr" Then
 
         Value = "127.0.0.1";
+
+    Else
+        Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsMySQLOllama(Val Option, Value)
+
+    If Option = "headers" Then
+
+        Value = New Structure("Authorization", "***");
 
     Else
         Return;
