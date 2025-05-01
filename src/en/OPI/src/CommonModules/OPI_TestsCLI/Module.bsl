@@ -22338,10 +22338,10 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
     Text   = "What's your favorite color?";
 
-    Options = New Array;
-    Options.Add("Red");
-    Options.Add("Yellow");
-    Options.Add("Green");
+    AnswerOptions = New Array;
+    AnswerOptions.Add("Red");
+    AnswerOptions.Add("Yellow");
+    AnswerOptions.Add("Green");
 
     Options = New Structure;
     Options.Insert("api"  , ApiUrl);
@@ -22355,7 +22355,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     Options.Insert("access" , AccessParameters);
     Options.Insert("chat"   , ChatID);
     Options.Insert("text"   , Text);
-    Options.Insert("options", Options);
+    Options.Insert("options", AnswerOptions);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
@@ -22370,7 +22370,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     Options.Insert("access" , AccessParameters);
     Options.Insert("chat"   , ChatID);
     Options.Insert("text"   , Text);
-    Options.Insert("options", Options);
+    Options.Insert("options", AnswerOptions);
     Options.Insert("multi"  , True);
     Options.Insert("quoted" , MessageID);
 
