@@ -1825,7 +1825,7 @@ EndProcedure
 Procedure Check_OzonAttributesList(Val Result) Export
 
     ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["description"]).Заполнено();
+    ExpectsThat(Result["result"][0]["name"]).Заполнено();
     ExpectsThat(Result["result"][0]["id"]).Заполнено();
 
 EndProcedure

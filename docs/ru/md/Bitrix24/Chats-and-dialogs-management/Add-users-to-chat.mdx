@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЧата = "2318";
+    IDЧата = "2326";
 
     IDПользователей = Новый Массив;
     IDПользователей.Добавить(10);
@@ -43,8 +43,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ДобавитьПользователейВЧат(URL, IDЧата, IDПользователей);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "82191268006e9f06006b12e400000001000...";
-    IDЧата         = "2320";
+    Токен          = "139a1268006e9f06006b12e400000001000...";
+    IDЧата         = "2328";
     IDПользователя = 10;
 
     Результат = OPI_Bitrix24.ДобавитьПользователейВЧат(URL, IDЧата, IDПользователя, Истина, Токен);
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьПользователейВЧат \
               --url "b24-ar17wx.bitrix24.by" \
-              --chat 2240 \
+              --chat 2340 \
               --users "[10,12]" \
               --hide true \
               --token "***"
@@ -68,7 +68,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьПользователейВЧат ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --chat 2240 ^
+              --chat 2340 ^
               --users "[10,12]" ^
               --hide true ^
               --token "***"

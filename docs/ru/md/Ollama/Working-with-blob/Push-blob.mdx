@@ -45,6 +45,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ОтправитьBlob \
+              --url "https://api.athenaeum.digital/ollama" \
+              --data "C:\Users\Administrator\AppData\Local\Temp\31otltozubj.tmp" \
+              --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ОтправитьBlob ^
+              --url "https://api.athenaeum.digital/ollama" ^
+              --data "C:\Users\Administrator\AppData\Local\Temp\31otltozubj.tmp" ^
+              --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

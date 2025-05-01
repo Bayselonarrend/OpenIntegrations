@@ -2577,6 +2577,7 @@ Procedure CLI_OLLM_WorkingWithBlob() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Blob" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
 
     CLI_Ollama_PushBlob(TestParameters);
@@ -10727,7 +10728,7 @@ Procedure CLI_Ozon_CreateFBODraft(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    Cluster  = 1;
+    Cluster  = 2;
 
     Items = New Map;
     Items.Insert("1783161863", 5);
@@ -19174,7 +19175,10 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
 
-    Result = OPI_HTTPRequests.PutWithBody(Result, Image, , False);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(Result)
+        .SetBinaryBody(Image)
+        .ProcessRequest("PUT");
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink (PUT)", "S3");
 

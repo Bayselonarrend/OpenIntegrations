@@ -33,7 +33,7 @@ Method at API documentation: [Check if a Blob Exist](https://github.com/ollama/o
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://api.athenaeum.digital/ollama";
     Token  = "10KO..."; // Authorization - not part API Ollama
-    SHA256 = "72e957f936152af0a3aacf055fb01c73c7a9fb1cc056b9ef536afaa7462ed2fc";
+    SHA256 = "52c90de7404fe5ce163539bce1b81baea4225cacee2ba72ce9671378b41e1897";
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
@@ -44,4 +44,8 @@ Method at API documentation: [Check if a Blob Exist](https://github.com/ollama/o
 
 
 
-
+```json title="Result"
+{
+ "status_code": 200
+}
+```

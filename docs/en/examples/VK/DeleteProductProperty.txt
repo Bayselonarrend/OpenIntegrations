@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
 
-    Property = "3000";
+    Property = "3008";
 
     Result = OPI_VK.DeleteProductProperty(Property, Parameters);
