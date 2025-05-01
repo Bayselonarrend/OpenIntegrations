@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод \
   --token "***" \
-  --uuid "72753031-0761-4d79-99fa-fc51a9b4b5e9" \
+  --uuid "72753031-2c2a-4660-9e76-65efdbba126b" \
   --getfile true \
   --testapi "***" \
-  --out "C:\Users\Administrator\AppData\Local\Temp\0ydk4tzdpy1.pdf"
+  --out "C:\Users\Administrator\AppData\Local\Temp\451qtry1voy.pdf"

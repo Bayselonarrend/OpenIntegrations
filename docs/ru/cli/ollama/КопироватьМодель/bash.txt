@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint ollama КопироватьМодель \
+  --url "https://api.athenaeum.digital/ollama" \
+  --model "mario" \
+  --name "mario2" \
+  --headers "{'Authorization':'Bearer 10KO-82RJ'}"
