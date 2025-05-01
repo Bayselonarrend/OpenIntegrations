@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьСообщение ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --message 44420 ^
+  --message 44512 ^
   --token "***"

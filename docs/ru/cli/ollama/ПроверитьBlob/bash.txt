@@ -1,0 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint ollama ПроверитьBlob \
+  --url "https://api.athenaeum.digital/ollama" \
+  --digest "yoyoyo" \
+  --headers "{'Authorization':'Bearer 10KO-82RJ'}"
