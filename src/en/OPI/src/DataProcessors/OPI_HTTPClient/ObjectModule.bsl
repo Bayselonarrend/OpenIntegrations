@@ -480,7 +480,10 @@ Function SetJsonBody(Val Data) Export
 
         AddLog("SetJsonBody: Beginning of body setting");
 
-        OPI_TypeConversion.GetCollection(Data);
+        If Not TypeOf(Data) = Type("BinaryData") Then
+            OPI_TypeConversion.GetCollection(Data);
+        EndIf;
+
         SetBodyFromString(Data);
 
         AddLog(StrTemplate("SetJsonBody: Body set, size %1", RequestBody.Size()));
@@ -525,7 +528,10 @@ Function SetFormBody(Val Data) Export
         If TypeOf(Data) = Type("Array") Then
 
             Data = Data[0];
-            OPI_TypeConversion.GetLine(Data);
+
+            If Not TypeOf(Data) = Type("BinaryData") Then
+                OPI_TypeConversion.GetLine(Data);
+            EndIf;
 
         Else
 
@@ -1182,12 +1188,20 @@ EndFunction
 
 Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
-    Encoding = GetSetting("EncodeRequestBody");
+    If TypeOf(Value) = Type("BinaryData") Then
 
-    OPI_TypeConversion.GetLine(Value);
-    OPI_TypeConversion.GetBoolean(WriteBOM);
+        RequestBody = Value;
 
-    RequestBody = GetBinaryDataFromString(Value, Encoding, WriteBOM);
+    Else
+
+        Encoding = GetSetting("EncodeRequestBody");
+
+        OPI_TypeConversion.GetLine(Value);
+        OPI_TypeConversion.GetBoolean(WriteBOM);
+
+        RequestBody = GetBinaryDataFromString(Value, Encoding, WriteBOM);
+
+    EndIf;
 
     Return ThisObject;
 

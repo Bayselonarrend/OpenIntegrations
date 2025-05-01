@@ -39,13 +39,37 @@ import TabItem from '@theme/TabItem';
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    IDГруппы = "120363400876712543@g.us";
+    IDГруппы = "120363403038255123@g.us";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.УстановитьКартинкуГруппы(ПараметрыДоступа, IDГруппы, Картинка);
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi УстановитьКартинкуГруппы \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --group "120363401415373667@g.us" \
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi УстановитьКартинкуГруппы ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --group "120363401415373667@g.us" ^
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
