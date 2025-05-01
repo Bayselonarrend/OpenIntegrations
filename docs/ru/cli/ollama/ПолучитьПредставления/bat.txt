@@ -1,0 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint ollama ПолучитьПредставления ^
+  --url "https://api.athenaeum.digital/ollama" ^
+  --model "tinyllama" ^
+  --input "['Why is the sky blue?','Why is the grass green?']" ^
+  --headers "{'Authorization':'Bearer 10KO-82RJ'}"
