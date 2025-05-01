@@ -1,0 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
+oint ollama UnloadModelFromMemory \
+ --url "https://api.athenaeum.digital/ollama" \
+ --model "tinyllama" \
+ --headers "{'Authorization':'Bearer 10KO-82RJ'}"
