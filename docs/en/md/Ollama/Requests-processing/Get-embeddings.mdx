@@ -49,6 +49,32 @@ Method at API documentation: [Generate Embeddings](https://github.com/ollama/oll
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ollama GetEmbeddings \
+             --url "https://api.athenaeum.digital/ollama" \
+             --model "tinyllama" \
+             --input "['Why is the sky blue?','Why is the grass green?']" \
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ollama GetEmbeddings ^
+             --url "https://api.athenaeum.digital/ollama" ^
+             --model "tinyllama" ^
+             --input "['Why is the sky blue?','Why is the grass green?']" ^
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

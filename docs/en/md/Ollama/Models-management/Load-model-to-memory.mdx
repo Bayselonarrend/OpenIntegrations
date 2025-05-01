@@ -45,6 +45,32 @@ Method at API documentation: [Load a model](https://github.com/ollama/ollama/blo
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ollama LoadModelToMemory \
+             --url "https://api.athenaeum.digital/ollama" \
+             --model "tinyllama" \
+             --keep 500 \
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ollama LoadModelToMemory ^
+             --url "https://api.athenaeum.digital/ollama" ^
+             --model "tinyllama" ^
+             --keep 500 ^
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
