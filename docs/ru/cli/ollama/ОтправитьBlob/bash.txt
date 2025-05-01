@@ -3,4 +3,4 @@
 oint ollama ОтправитьBlob \
   --url "https://api.athenaeum.digital/ollama" \
   --data "C:\Users\Administrator\AppData\Local\Temp\yv31ht15ylw.tmp" \
-  --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+  --headers "{'Authorization':'Bearer ***'}"
