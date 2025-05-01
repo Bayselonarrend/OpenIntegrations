@@ -1,6 +1,6 @@
 ﻿    URL    = "https://api.athenaeum.digital/ollama";
     Token  = "10KO..."; // Authorization - not part API Ollama
-    SHA256 = "52c90de7404fe5ce163539bce1b81baea4225cacee2ba72ce9671378b41e1897";
+    SHA256 = "1bcf78c1dbf255ab0917f4d7763890d6b7189bb4af446e0e77f29e0f9b4d48fa";
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));

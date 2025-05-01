@@ -43,6 +43,30 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ollama UnloadModelFromMemory \
+             --url "https://api.athenaeum.digital/ollama" \
+             --model "tinyllama" \
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ollama UnloadModelFromMemory ^
+             --url "https://api.athenaeum.digital/ollama" ^
+             --model "tinyllama" ^
+             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
