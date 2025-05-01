@@ -1,0 +1,19 @@
+﻿ {
+ "args": {},
+ "data": "Hello world!",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "12",
+  "Content-Type": "text/plain; charset=Windows-1251",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-6813198c-2cc2e9d30cb7cc3868030c13"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
