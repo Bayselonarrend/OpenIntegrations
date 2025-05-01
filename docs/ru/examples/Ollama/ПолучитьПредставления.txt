@@ -1,5 +1,5 @@
 ﻿    URL   = "https://api.athenaeum.digital/ollama";
-    Токен = "10KO..."; // Авторизация - не часть API Ollama
+    Токен = "10KO-82..."; // Авторизация - не часть API Ollama
 
     МассивСтрок = Новый Массив;
     МассивСтрок.Добавить("Why is the sky blue?");
