@@ -1,0 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint ollama ОтправитьBlob \
+  --url "https://api.athenaeum.digital/ollama" \
+  --data "C:\Users\Administrator\AppData\Local\Temp\31otltozubj.tmp" \
+  --headers "{'Authorization':'Bearer 10KO-82RJ'}"
