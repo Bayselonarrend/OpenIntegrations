@@ -1,0 +1,3 @@
+oint ollama ПолучитьСтруктуруСообщенияКонтекста \
+  --role "user" \
+  --text "Hello!"

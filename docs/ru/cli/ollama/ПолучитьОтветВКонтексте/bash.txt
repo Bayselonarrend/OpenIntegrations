@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint ollama ПолучитьОтветВКонтексте \
+  --url "https://api.athenaeum.digital/ollama" \
+  --model "tinyllama" \
+  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise, also known as 1C Enterprise, is a business software program developed by 1C Company. It is a comprehensive suite of financial management, inventory management, warehouse management, and supply chain management applications that are designed to meet the needs of small and medium-sized businesses (SMBs). The product offers a wide range of features and functionalities that help businesses streamline their operations, reduce costs, improve profitability, and enhance customer satisfaction. 1C:Enterprise is available in different editions, such as Professional, Business, and Enterprise.'},{'role':'user','content':'When the first version was released?'}]" \
+  --headers "{'Authorization':'Bearer 10KO-82RJ'}"

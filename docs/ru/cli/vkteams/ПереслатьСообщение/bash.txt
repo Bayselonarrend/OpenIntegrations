@@ -1,6 +1,6 @@
 oint vkteams ПереслатьСообщение \
   --token "***" \
-  --messageid "7490172322817518660" \
+  --messageid "7499383910975942318" \
   --fromid "689203963@chat.agent" \
   --chatid "AoLI0egLWBSLR1Ngn2w" \
   --text "Дополнительный текст"
