@@ -1,4 +1,4 @@
 oint gcalendar GetEvent \
  --token "***" \
- --calendar "df925064f2b67cdc2287de450ed1da48bf69bb1c3d72e7aa8803f5630396a800@group.calendar.google.com" \
- --event "g9i3e9baijrbirj5ue7ah4d0kg"
+ --calendar "bfa0b9aa4a90d293f608bc1788add444ad5d39b30dff980aebd7701e4d57a3dc@group.calendar.google.com" \
+ --event "huecma4e0g3ghu3het0neqa2d0"
