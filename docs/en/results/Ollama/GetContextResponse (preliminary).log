@@ -1,0 +1,16 @@
+﻿ {
+ "model": "tinyllama",
+ "created_at": "2025-05-01T06:45:54.6565995Z",
+ "message": {
+  "role": "assistant",
+  "content": "1C:Enterprise is a comprehensive ERP (enterprise resource planning) system developed by the Ukrainian software development company Caspian Systems. It's an enterprise management system that automates business processes across multiple departments, provides real-time financial reporting, and enables easy access to data from any device. 1C:Enterprise is designed for medium and large businesses, providing robust functionality to manage sales, purchasing, finance, HR, and inventory. It's used by hundreds of companies in various industries worldwide."
+ },
+ "done_reason": "stop",
+ "done": true,
+ "total_duration": 18100007600,
+ "load_duration": 14995300,
+ "prompt_eval_count": 43,
+ "prompt_eval_duration": 1847996100,
+ "eval_count": 117,
+ "eval_duration": 16237016200
+}
