@@ -32,6 +32,24 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ollama GetContextMessageStructure \
+             --role "user" \
+             --text "Hello!"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ollama GetContextMessageStructure ^
+             --role "user" ^
+             --text "Hello!"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
