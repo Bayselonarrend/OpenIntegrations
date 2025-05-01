@@ -1173,7 +1173,7 @@ EndFunction
 // Period - Number - Time in minutes for which messages need to be received - period
 //
 // Returns:
-// Map Of KeyAndValue - serialized JSON response from Green API
+// Array Of Arbitrary - serialized JSON response from Green API
 Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
 
     Parameters = New Structure;
@@ -1182,6 +1182,10 @@ Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
 
     URL      = FormPrimaryURL(AccessParameters, "lastIncomingMessages");
     Response = OPI_HTTPRequests.Get(URL, Parameters);
+
+    If Not ValueIsFilled(Response) Then
+        Return New Array;
+    EndIf;
 
     Return Response;
 

@@ -1,10 +1,10 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CommentID = "13516";
+    CommentID = "13560";
 
     Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "82191268006e9f06006b12e400000001000...";
-    CommentID = "13518";
+    Token     = "139a1268006e9f06006b12e400000001000...";
+    CommentID = "13562";
 
     Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID, Token);

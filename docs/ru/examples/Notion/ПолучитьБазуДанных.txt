@@ -1,4 +1,4 @@
 ﻿    Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База  = "1e582aa7-fc4e-8189-abbd-fea5aa85787e";
+    База  = "1e582aa7-fc4e-814a-a121-ebdf1f5cf5be";
 
     Результат = OPI_Notion.ПолучитьБазуДанных(Токен, База);
