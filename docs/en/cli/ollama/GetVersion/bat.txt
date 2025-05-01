@@ -2,4 +2,4 @@
 
 oint ollama GetVersion ^
  --url "https://api.athenaeum.digital/ollama" ^
- --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+ --headers "{'Authorization':'Bearer ***'}"
