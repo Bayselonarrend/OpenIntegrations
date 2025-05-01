@@ -2,4 +2,4 @@
 
 oint greenapi ПокинутьГруппу \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363401415373667@g.us"
+  --group "120363399739108386@g.us"
