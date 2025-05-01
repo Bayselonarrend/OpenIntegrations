@@ -1,4 +1,4 @@
 oint bitrix24 DeleteResultFromComment \
  --url "b24-ar17wx.bitrix24.by" \
- --comment 13052 \
+ --comment 13672 \
  --token "***"

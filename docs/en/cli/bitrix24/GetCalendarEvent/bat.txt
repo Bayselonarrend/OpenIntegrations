@@ -1,4 +1,4 @@
 oint bitrix24 GetCalendarEvent ^
  --url "b24-ar17wx.bitrix24.by" ^
- --event 842 ^
+ --event 1058 ^
  --token "***"
