@@ -31,4 +31,16 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Result"
+{
+ "from": "<the name of the existing model from which the new model will be created>",
+ "files": "<list of file names or SHA256 blobs from which the model will be created>",
+ "adapters": "<list of file names or SHA256 blobs for LORA adapters>",
+ "template": "<new model prompt template>",
+ "license": "<a string or list of strings of license text for the model>",
+ "system": "<system prompt for the model>",
+ "parameters": "<model parameter list>",
+ "messages": "<list of context message objects>",
+ "quantize": "<quantize non-quantized (e.g. float16) model>"
+}
+```

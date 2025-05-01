@@ -1,7 +1,7 @@
 ﻿    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "app6fsvW9YBOmCEw5";
-    Таблица = "tblQOlWzjYbvlpHuM";
-    Запись  = "rec5NRJMGEzpdqCPu";
+    База    = "appPvIb7wxCkgyZKC";
+    Таблица = "tbl2x83eNbGHdzxxj";
+    Запись  = "recxcOCUDfXvE9jb5";
     Текст   = "Тестовый комментарий";
 
     Результат = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, Запись, Текст);
