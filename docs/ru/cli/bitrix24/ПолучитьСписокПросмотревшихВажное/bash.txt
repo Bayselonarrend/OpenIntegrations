@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокПросмотревшихВажное \
   --url "b24-ar17wx.bitrix24.by" \
-  --postid 2290 \
+  --postid 2294 \
   --token "***"
