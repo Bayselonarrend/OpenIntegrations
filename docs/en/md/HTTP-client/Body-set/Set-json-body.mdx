@@ -1,0 +1,53 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set JSON body 
+ Sets the body in JSON format from a suitable collection or string
+
+
+
+`Function SetJsonBody(Val Data) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Data | - | Arbitrary | &#x2714; | String or collection to convert to JSON |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

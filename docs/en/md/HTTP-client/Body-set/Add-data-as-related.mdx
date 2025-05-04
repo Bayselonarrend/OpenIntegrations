@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 8
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add data as Related
+ Adds data to the multipart/related body
+
+
+
+`Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Data | --data | Arbitrary | &#x2714; | Data to be written |
+  | DataType | --mime | String | &#x2714; | MIME type of data |
+  | ContentID | --cid | String | &#x2716; | Content ID, if required |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+The Multipart record must first be initialized using the `StartMultipartBody` function
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody(True, "related")
+        .AddDataAsRelated(Data, "application/json; charset=UTF-8") // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

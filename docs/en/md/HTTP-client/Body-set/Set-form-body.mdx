@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set Form body 
+ Sets the body to x-www-form-urlencoded from a collection of field values
+
+
+
+`Function SetFormBody(Val Data) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Data | - | Arbitrary | &#x2714; | KeyValue collection with form parameters |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - Set Form body
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

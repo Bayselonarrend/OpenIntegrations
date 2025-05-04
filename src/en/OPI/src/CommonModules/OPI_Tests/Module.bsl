@@ -2658,6 +2658,15 @@ Procedure HTTP_BodySet() Export
 
 EndProcedure
 
+Procedure HTTP_Settings() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+
+    HTTPClient_UseEncoding(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -3609,6 +3618,11 @@ Procedure Telegram_ReplaceMessageText(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ReplaceMessageText", "Telegram");
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
+
+    Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, "<b>Bold text</b>", "HTML");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReplaceMessageText (parsemode)", "Telegram");
+    OPI_TestDataRetrieval.Check_TelegramMessage(Result, "Bold text");
 
 EndProcedure
 
@@ -21813,6 +21827,39 @@ Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddDataAsRelated", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+EndProcedure
+
+Procedure HTTPClient_UseEncoding(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Text     = "Hello world!";
+    Encoding = "Windows-1251";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .UseEncoding(Encoding) // <---
+        .SetStringBody(Text)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
 
 EndProcedure
 

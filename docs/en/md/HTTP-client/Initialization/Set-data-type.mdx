@@ -1,0 +1,52 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set data type 
+ Sets the Content-Type of the request
+
+
+
+`Function SetDataType(Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | - | String | &#x2714; | ContentType header value |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+If the data type is not set manually, it will be matched during the process of setting the request body
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    MIMEType = "text/markdown";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetStringBody("# Hello world!")
+        .SetDataType(MIMEType) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+
