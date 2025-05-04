@@ -1,4 +1,4 @@
 oint greenapi ОтправитьТекстовоеСообщение \
-  --access "C:\Users\Administrator\AppData\Local\Temp\lyvd5rvstg3.tmp" \
+  --access "C:\Users\Administrator\AppData\Local\Temp\pvzmyrm2ijl.tmp" \
   --chat "120363410406221140@g.us" \
   --text "Новое сообщение"

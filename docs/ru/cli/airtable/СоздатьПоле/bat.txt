@@ -2,5 +2,5 @@ oint airtable СоздатьПоле ^
   --token "***" ^
   --base "appOitMmS9nwNCIl3" ^
   --table "tbluoviRB9yQ8UIn7" ^
-  --title "146f3dce-58be-49af-be99-effa77658e07" ^
-  --fielddata "C:\Users\Administrator\AppData\Local\Temp\lzk3uqaic1e.tmp"
+  --title "444e6102-02b8-468a-b10e-21697aa7cc2b" ^
+  --fielddata "C:\Users\Administrator\AppData\Local\Temp\ixzkqgovrhz.tmp"

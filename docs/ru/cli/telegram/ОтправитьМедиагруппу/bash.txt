@@ -4,4 +4,4 @@ oint telegram ОтправитьМедиагруппу \
   --token "***" \
   --chat "461699897" \
   --text "Строковое значение" \
-  --media "{'C:\\Users\\Administrator\\AppData\\Local\\Temp\\jpeynvwxpeu.png':'photo','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4':'video'}"
+  --media "{'C:\\Users\\Administrator\\AppData\\Local\\Temp\\gmuvzxyoxdm.png':'photo','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4':'video'}"
