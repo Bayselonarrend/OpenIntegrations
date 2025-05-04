@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокЗапущенныхМоделей ^
   --url "https://api.athenaeum.digital/ollama" ^
-  --headers "{'Authorization':'Bearer ***'}"
+  --headers "{'Authorization':'***'}"

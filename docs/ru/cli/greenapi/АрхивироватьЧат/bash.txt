@@ -1,3 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint greenapi АрхивироватьЧат \
-  --access "C:\Users\Administrator\AppData\Local\Temp\03g0md3gbqc.tmp" \
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "120363410406221140@g.us"
