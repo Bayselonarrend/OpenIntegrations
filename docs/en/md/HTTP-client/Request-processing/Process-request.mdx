@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Process request 
+ Creates a request based on the entered data with or without execution
+
+
+
+`Function ProcessRequest(Val Method, Val Start = True) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Method | - | String | &#x2714; | Request HTTP method |
+  | Start | - | Boolean | &#x2716; | Executes the request immediately after it is generated |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+`ExecuteRequest=False` can be used to get ready HTTPConnection and HTTPConnection objects without executing them. See `ReturnRequest` and `ReturnConnection`.
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

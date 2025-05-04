@@ -1,0 +1,12 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Text     = "Hello world!";
+    Encoding = "Windows-1251";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .UseEncoding(Encoding) // <---
+        .SetStringBody(Text)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
