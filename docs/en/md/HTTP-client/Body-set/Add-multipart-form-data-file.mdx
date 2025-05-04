@@ -1,0 +1,59 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add Multipart file 
+ Adds a file block to the multipart/form-data body
+
+
+
+`Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val DataType = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | FieldName | - | String | &#x2714; | Form field name |
+  | FileName | - | String | &#x2714; | File name with extension |
+  | Data | - | BinaryData, String | &#x2714; | File data to be written |
+  | DataType | - | String | &#x2716; | MIME type of data |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+The Multipart record must first be initialized using the `StartMultipartBody` function
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png") // <---
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

@@ -1,4 +1,6 @@
 ﻿// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPClient.os
+// Lib: HTTP-client
+// CLI: none
 
 // MIT License
 
@@ -119,9 +121,12 @@ Var LineSeparator; // Body line separator
 // DataProcessorObject.OPI_HTTPClient - This processor object
 Function Initialize(Val URL = "") Export
 
+    Log = New Array;
+
+    AddLog("Initialize: setting of default values");
+
     Initialized = True;
     Error       = False;
-    Log         = New Array;
 
     RequestURLParams = New Array;
     RequestBody      = Undefined;
@@ -162,6 +167,8 @@ Function SetURL(Val URL) Export
 
         If ValueIsFilled(URL) Then
 
+            AddLog("SetURL: setting the value");
+
             OPI_TypeConversion.GetLine(URL);
             OPI_Tools.RestoreEscapeSequences(URL);
 
@@ -170,8 +177,6 @@ Function SetURL(Val URL) Export
             EndIf;
 
             RequestURL = URL;
-
-            AddLog("SetURL: Splitting a request into component parts");
 
         Else
 
@@ -202,8 +207,11 @@ Function SetURLParams(Val Value) Export
         If StopExecution() Then Return ThisObject; EndIf;
         If Not ValueIsFilled(Value) Then Value = New Structure; EndIf;
 
-        ErrorText        = "SetURLParams: The passed parameters are not a key/value collection";
+        AddLog("SetURLParams: parameter setting");
+
+        ErrorText = "SetURLParams: the passed parameters are not a key/value collection";
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
+
         RequestURLParams = Value;
 
         Return ThisObject;
@@ -227,10 +235,14 @@ Function SetResponseFile(Val Value) Export
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
+
         If Not ValueIsFilled(Value) Then
             RequestOutputFile = Undefined;
+            AddLog("SetResponseFile: response file not specified - skip");
             Return ThisObject;
         EndIf;
+
+        AddLog("SetResponseFile: setting the value");
 
         OPI_TypeConversion.GetLine(Value);
         RequestOutputFile = Value;
@@ -260,7 +272,7 @@ Function SetDataType(Val Value) Export
 
         If StopExecution() Then Return ThisObject; EndIf;
 
-        AddLog("SetDataType: Setting the value");
+        AddLog("SetDataType: setting the value");
         OPI_TypeConversion.GetLine(Value);
 
         RequestDataType       = Value;
@@ -315,7 +327,7 @@ Function UseEncoding(Val Encoding) Export
 
         If StopExecution() Then Return ThisObject; EndIf;
 
-        AddLog("UseEncoding: Setting the value");
+        AddLog("UseEncoding: setting the value");
         OPI_TypeConversion.GetLine(Encoding);
 
         SetSetting("EncodeRequestBody", Encoding);
@@ -345,7 +357,7 @@ Function UseGzipCompression(Val Flag) Export
 
         If StopExecution() Then Return ThisObject; EndIf;
 
-        AddLog("UseGzipCompression: Setting the value");
+        AddLog("UseGzipCompression: setting the value");
         OPI_TypeConversion.GetBoolean(Flag);
 
         SetSetting("gzip", Flag);
@@ -395,12 +407,12 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
                 Data = GetBinaryDataFromString("");
             EndIf;
 
-            AddLog("SetBinaryBody: Beginning of body setting");
+            AddLog("SetBinaryBody: beginning of body setting");
             SetBodyFromBinaryData(Data);
-            AddLog(StrTemplate("SetBinaryBody: Body set, size %1", RequestBody.Size()));
+            AddLog(StrTemplate("SetBinaryBody: body set, size %1", RequestBody.Size()));
 
         Else
-            AddLog("SetBinaryBody: Passed an empty body, skip");
+            AddLog("SetBinaryBody: an empty body has been passed - skip");
         EndIf;
 
         Return ThisObject;
@@ -412,7 +424,7 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
 EndFunction
 
 // Set string body !NOCLI
-// Sets the request body from a string in the specified encoding
+// Sets the body of the request from the string
 //
 // Parameters:
 // Data - String - Request body data - data
@@ -429,7 +441,7 @@ Function SetStringBody(Val Data, Val WriteBOM = False) Export
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
-            AddLog("SetStringBody: No data, skip");
+            AddLog("SetStringBody: no data - skip");
             Return ThisObject;
         EndIf;
 
@@ -441,9 +453,9 @@ Function SetStringBody(Val Data, Val WriteBOM = False) Export
           RequestDataType = StrTemplate("text/plain; charset=%1", Encoding);
         EndIf;
 
-        AddLog("SetStringBody: Beginning of body setting");
+        AddLog("SetStringBody: beginning of body setting");
         SetBodyFromString(Data, WriteBOM);
-        AddLog(StrTemplate("SetStringBody: Body set, size %1", RequestBody.Size()));
+        AddLog(StrTemplate("SetStringBody: body set, size %1", RequestBody.Size()));
 
         Return ThisObject;
 
@@ -470,7 +482,7 @@ Function SetJsonBody(Val Data) Export
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
-            AddLog("SetJsonBody: No data, skip");
+            AddLog("SetJsonBody: no data - skip");
             Return ThisObject;
         EndIf;
 
@@ -478,7 +490,7 @@ Function SetJsonBody(Val Data) Export
           RequestDataType = "application/json; charset=utf-8";
         EndIf;
 
-        AddLog("SetJsonBody: Beginning of body setting");
+        AddLog("SetJsonBody: beginning of body setting");
 
         If Not TypeOf(Data) = Type("BinaryData") Then
             OPI_TypeConversion.GetCollection(Data);
@@ -486,7 +498,7 @@ Function SetJsonBody(Val Data) Export
 
         SetBodyFromString(Data);
 
-        AddLog(StrTemplate("SetJsonBody: Body set, size %1", RequestBody.Size()));
+        AddLog(StrTemplate("SetJsonBody: body set, size %1", RequestBody.Size()));
 
         Return ThisObject;
 
@@ -513,7 +525,7 @@ Function SetFormBody(Val Data) Export
         CancelMultipartBody();
 
         If Not ValueIsFilled(Data) Then
-            AddLog("SetFormBody: No data, skip");
+            AddLog("SetFormBody: no data - skip");
             Return ThisObject;
         EndIf;
 
@@ -521,7 +533,7 @@ Function SetFormBody(Val Data) Export
           RequestDataType = "application/x-www-form-urlencoded; charset=utf-8";
         EndIf;
 
-        AddLog("SetFormBody: Beginning of body setting");
+        AddLog("SetFormBody: beginning of body setting");
 
         OPI_TypeConversion.GetCollection(Data);
 
@@ -541,7 +553,7 @@ Function SetFormBody(Val Data) Export
 
         SetBodyFromString(Data);
 
-        AddLog(StrTemplate("SetFormBody: Body set, size %1", RequestBody.Size()));
+        AddLog(StrTemplate("SetFormBody: body set, size %1", RequestBody.Size()));
 
         Return ThisObject;
 
@@ -580,7 +592,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
 
         If UseFile Then
 
-            AddLog("StartMultipartBody: Creating a temporary file");
+            AddLog("StartMultipartBody: creating a temporary file");
 
             // BSLLS:MissingTemporaryFileDeletion-off
             RequestBodyFile = GetTempFileName();
@@ -597,7 +609,7 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
 
         Else
 
-            AddLog("StartMultipartBody: Creating a stream in memory");
+            AddLog("StartMultipartBody: creating a stream in memory");
 
             RequestBodyStream = New MemoryStream();
 
@@ -637,11 +649,11 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
-        If Not Multipart Then Return Error("AddMultipartFormDataFile: Multipart record not initialized"); EndIf;
+        If Not Multipart Then Return Error("AddMultipartFile: Multipart record not initialized"); EndIf;
 
         OPI_TypeConversion.GetBinaryData(Data);
 
-        AddLog("AddMultipartFormDataFile: Writing the block header");
+        AddLog("AddMultipartFile: writing the block header");
 
         Header = StrTemplate("Content-Disposition: form-data; name=""%1""; filename=""%2""", FieldName, FileName);
 
@@ -656,7 +668,7 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
         RequestDataWriter.WriteLine(LineSeparator);
         RequestDataWriter.WriteLine(LineSeparator);
 
-        AddLog("AddMultipartFormDataFile: Data writing");
+        AddLog("AddMultipartFile: data writing");
 
         WriteBinaryData(RequestDataWriter, Data);
 
@@ -687,11 +699,11 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
-        If Not Multipart Then Return Error("AddMultipartFormDataField: Multipart record not initialized"); EndIf;
+        If Not Multipart Then Return Error("AddMultipartField: multipart record not initialized"); EndIf;
 
         ValeType = TypeOf(Value);
 
-        AddLog("AddMultipartFormDataField: Writing the block header");
+        AddLog("AddMultipartField: writing the block header");
 
         Header = StrTemplate("Content-Disposition: form-data; name=""%1""", FieldName);
 
@@ -700,7 +712,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
         RequestDataWriter.WriteLine(LineSeparator);
         RequestDataWriter.WriteLine(LineSeparator);
 
-        AddLog("AddMultipartFormDataField: Data writing");
+        AddLog("AddMultipartField: data writing");
 
         If ValeType = Type("Boolean") Then
 
@@ -746,13 +758,13 @@ Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
-        If Not Multipart Then Return Error("AddFileAsRelated: Multipart record not initialized"); EndIf;
+        If Not Multipart Then Return Error("AddFileAsRelated: multipart record not initialized"); EndIf;
 
         OPI_TypeConversion.GetLine(DataType);
         OPI_TypeConversion.GetLine(ContentID);
         OPI_TypeConversion.GetBinaryData(Data, True, False);
 
-        AddLog("AddFileAsRelated: Writing the block header");
+        AddLog("AddFileAsRelated: writing the block header");
         RequestDataWriter.WriteLine("--" + Boundary + LineSeparator);
         RequestDataWriter.WriteLine("Content-Type: " + DataType);
 
@@ -763,7 +775,7 @@ Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
         RequestDataWriter.WriteLine(LineSeparator);
         RequestDataWriter.WriteLine(LineSeparator);
 
-        AddLog("AddFileAsRelated: Data writing");
+        AddLog("AddFileAsRelated: data writing");
         WriteBinaryData(RequestDataWriter, Data);
         RequestDataWriter.WriteLine(LineSeparator);
         RequestDataWriter.WriteLine(LineSeparator);
@@ -799,9 +811,11 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
         If StopExecution() Then Return ThisObject; EndIf;
         If Not ValueIsFilled(Value) Then Value = New Map; EndIf;
 
-        ErrorText = "SetURLParams: The passed parameters are not a key/value collection";
+        ErrorText = "SetHeaders: the passed parameters are not a key/value collection";
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
         OPI_TypeConversion.GetBoolean(FullReplace);
+
+        AddLog("SetHeaders: query header setting");
 
         If FullReplace Then
             RequestHeaders = Value;
@@ -913,16 +927,15 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         OPI_TypeConversion.GetBoolean(Start);
         RequestMethod = Method;
 
-        AddLog("ProcessRequest: Forming a request");
+        AddLog("ProcessRequest: creation of HTTPRequest object");
         If FormRequest().Error Then Return ThisObject; EndIf;
 
-        AddLog("ProcessRequest: Setting the request body");
+        AddLog("ProcessRequest: place the body in the HTTPRequest object");
         If SetRequestBody().Error Then Return ThisObject; EndIf;
 
         CompleteHeaders();
 
         If Start Then
-            AddLog("ProcessRequest: Execution");
             ExecuteMethod();
         EndIf;
 
@@ -951,7 +964,7 @@ Function ExecuteRequest(Val Method) Export
         OPI_TypeConversion.GetLine(Method);
         RequestMethod = Method;
 
-        AddLog("ExecuteRequest: Execution");
+        AddLog("ExecuteRequest: executing");
 
         Return ExecuteMethod();
 
@@ -1209,9 +1222,13 @@ EndFunction
 
 Function SplitURL()
 
+    AddLog("SplitURL: splitting a request into component parts");
+
     URL = RequestURL;
 
     RequestProtected = Not StrStartsWith(RequestURL, "http://");
+
+    AddLog("SplitURL: Secure = " + String(RequestProtected));
 
     URL = StrReplace(URL, "https://", "");
     URL = StrReplace(URL, "http://" , "");
@@ -1219,8 +1236,12 @@ Function SplitURL()
     Section = StrFind(URL, "#");
 
     If Section > 0 Then
+
         RequestSection = Right(URL, StrLen(URL) - Section + 1);
-        URL            = Left(URL, Section - 1);
+        AddLog("SplitURL: Section = " + RequestSection);
+
+        URL = Left(URL, Section - 1);
+
     EndIf;
 
     If StrFind(URL, "/") = 0 Then
@@ -1230,6 +1251,9 @@ Function SplitURL()
         RequestAdress    = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
         RequestDomain    = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
     EndIf;
+
+    AddLog("SplitURL: Address = " + RequestAdress);
+    AddLog("SplitURL: Domain = " + RequestDomain);
 
     If StrFind(RequestDomain, ":") <> 0 Then
 
@@ -1245,11 +1269,15 @@ Function SplitURL()
 
     EndIf;
 
+    AddLog("SplitURL: Port = " + OPI_Tools.NumberToString(RequestPort));
+
     If OPI_Tools.IsOneScript() And RequestProtected Then
         RequestServer = "https://" + RequestDomain;
     Else
         RequestServer = RequestDomain;
     EndIf;
+
+    AddLog("SplitURL: Host = " + RequestServer);
 
     Return ThisObject;
 
@@ -2210,6 +2238,8 @@ Function AddLog(Val Text)
 
     Log.Add(Text);
 
+    OPI_Tools.DebugInfo(Text);
+
     Return ThisObject;
 
 EndFunction
@@ -2223,6 +2253,8 @@ Procedure SetSetting(Val SettingKey, Val Value)
 EndProcedure
 
 Procedure SetDefaultSettings()
+
+    AddLog("SetDefaultSettings: configuration setting");
 
     Settings = New Structure;
     Settings.Insert("gzip"              , True);

@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add AWS4 authorization 
+ Adds data for AWS4 authorization
+
+
+
+`Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessKey | - | String | &#x2714; | Access key for authorization |
+  | SecretKey | - | String | &#x2714; | Secret key for authorization |
+  | Region | - | String | &#x2714; | Service region |
+  | Service | - | String | &#x2716; | Type of service, if different from s3 |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

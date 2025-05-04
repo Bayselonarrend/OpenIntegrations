@@ -152,7 +152,7 @@ Function GetDomain(Val ConnectionString) Export
 
     Domain = String(ConnectionString);
 
-    If Not Lower(StrStartsWith(Domain, "http")) And StrFind(Domain, "@") <> 0 Then
+    If Not StrStartsWith(Lower(Domain), "http") And StrFind(Domain, "@") <> 0 Then
 
         Parts  = StrSplit(Domain, "@");
         Domain = Parts[1];
@@ -405,9 +405,8 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         OPI_TypeConversion.GetNumber(Value);
 
     ElsIf Type = "UUID" Then
-
         OPI_TypeConversion.GetLine(Value);
-        Value = New UUID(Value);
+        Value  = New UUID(Value);
 
     Else
 
@@ -487,7 +486,8 @@ Procedure ValueToArray(Value) Export
 
     Value_ = New Array;
     Value_.Add(Value);
-    Value  = Value_;
+
+    Value = Value_;
 
 EndProcedure
 
@@ -715,6 +715,28 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
 
     If Percent = Whole Then
         WriteOnCurrentLine(Chars.LF, , True);
+    EndIf;
+
+EndProcedure
+
+Procedure DebugInfo(Val Text) Export
+
+    If Not IsOneScript() Then
+        Return;
+    EndIf;
+
+    Try
+
+        IsDebug = Undefined;
+        IsDebug = GetEnvironmentVariable("OINT_DEBUG");
+        IsDebug = ?(ValueIsFilled(IsDebug), IsDebug, "NO");
+
+    Except
+       IsDebug = "NO";
+    EndTry;
+
+    If IsDebug = "YES" Then
+        Message(Text);
     EndIf;
 
 EndProcedure
