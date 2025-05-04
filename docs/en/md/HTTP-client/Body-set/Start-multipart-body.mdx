@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Start Multipart body 
+ Initializes writing data to the body in multipart format
+
+
+
+`Function StartMultipartBody(UseFile = True, Val View = "form-data") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | UseFile | - | Boolean | &#x2716; | True > use a temporary file, False > form a body in memory |
+  | View | - | String | &#x2716; | Multipart data type: form data, related |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+The `AddMultipartFormDataFile` and `AddMultipartFormDataField` methods are used for further body formation
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody() // <---
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

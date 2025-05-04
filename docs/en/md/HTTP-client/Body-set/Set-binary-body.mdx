@@ -1,0 +1,52 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set binary body 
+ Sets the request body from binary data, file or string (with conversion to binary data)
+
+
+
+`Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Data | - | String, BinaryData | &#x2714; | File, string, or request body data |
+  | SetIfEmpty | - | Boolean | &#x2716; | Sets the body even when empty data is passed |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

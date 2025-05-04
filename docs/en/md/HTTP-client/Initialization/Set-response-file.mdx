@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set response file
+ Sets the file path to save the query result
+
+
+
+`Function SetResponseFile(Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | --filepath | String | &#x2714; | File path |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    TFN = GetTempFileName();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseFilename();
+```
+ 
+
+
+
+

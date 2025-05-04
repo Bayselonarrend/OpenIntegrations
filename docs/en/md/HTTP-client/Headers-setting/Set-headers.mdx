@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set headers 
+ Sets a collection of query headers
+
+
+
+`Function SetHeaders(Val Value, Val FullReplace = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | - | Arbitrary | &#x2714; | Structure or map of request headers |
+  | FullReplace | - | Boolean | &#x2716; | Clears all existing headers before setting up |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+`FullReplace` also clears headers previously set by other methods (e.g., authorization headers)
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

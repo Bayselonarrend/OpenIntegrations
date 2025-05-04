@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get log 
+ Gets the execution log
+
+
+
+`Function GetLog(Val AsString = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AsString | - | Boolean | &#x2716; | Return the log as a string |
+
+  
+  Returns:  String, Array - Execution log
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    HTTPClient = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET");
+
+    Response = HTTPClient.ReturnResponseAsJSONObject();
+    Log      = HTTPClient.GetLog(True);
+```
+ 
+
+
+
+

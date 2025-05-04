@@ -1,0 +1,49 @@
+﻿---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set URL params 
+ Sets a collection of URL parameters
+
+
+
+`Function SetURLParams(Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | - | Arbitrary | &#x2714; | Structure or map of URL parameters |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+
