@@ -3,4 +3,4 @@
 oint ollama ПроверитьBlob ^
   --url "https://api.athenaeum.digital/ollama" ^
   --digest "yoyoyo" ^
-  --headers "{'Authorization':'Bearer ***'}"
+  --headers "{'Authorization':'***'}"

@@ -1,4 +1,8 @@
 oint bitrix24 ДобавитьТрудозатратыЗадачи ^
-  --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-  --task "5924" ^
-  --amount 3600
+  --url "b24-ar17wx.bitrix24.by" ^
+  --task "5934" ^
+  --amount 7200 ^
+  --user 10 ^
+  --text "Трудозатраты по обработке" ^
+  --date "2025-04-05T00:35:34.0990007" ^
+  --token "***"

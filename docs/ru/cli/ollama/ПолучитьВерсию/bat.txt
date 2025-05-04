@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьВерсию ^
   --url "https://api.athenaeum.digital/ollama" ^
-  --headers "{'Authorization':'Bearer ***'}"
+  --headers "{'Authorization':'***'}"

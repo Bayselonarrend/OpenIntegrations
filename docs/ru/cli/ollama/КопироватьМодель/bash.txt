@@ -4,4 +4,4 @@ oint ollama КопироватьМодель \
   --url "https://api.athenaeum.digital/ollama" \
   --model "mario" \
   --name "mario2" \
-  --headers "{'Authorization':'Bearer ***'}"
+  --headers "{'Authorization':'***'}"
