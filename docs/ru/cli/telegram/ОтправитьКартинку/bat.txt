@@ -1,5 +1,5 @@
 oint telegram ОтправитьКартинку ^
   --token "***" ^
-  --chat "@testsichee" ^
+  --chat "461699897" ^
   --text "Строковое значение" ^
-  --picture "C:\Users\Administrator\AppData\Local\Temp\zrxoh4wurkn.png"
+  --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
