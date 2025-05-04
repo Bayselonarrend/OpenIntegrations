@@ -24,8 +24,8 @@ pipeline {
 
         stage('Local update'){
             steps {
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install -f oint-1.22.0.ospx; del oint-1.22.0.ospx'
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/cli; opm build; opm install -f oint-cli-1.22.0.ospx; del oint-cli-1.22.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install -f oint-1.23.0.ospx; del oint-1.23.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/ru/cli; opm build; opm install -f oint-cli-1.23.0.ospx; del oint-cli-1.23.0.ospx'
             }
 
         }
