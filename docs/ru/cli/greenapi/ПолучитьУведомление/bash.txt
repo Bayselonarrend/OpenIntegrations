@@ -1,2 +1,2 @@
 oint greenapi ПолучитьУведомление \
-  --access "C:\Users\Administrator\AppData\Local\Temp\g41qfkqs0im.tmp"
+  --access "C:\Users\Administrator\AppData\Local\Temp\exv3ehtm5lf.tmp"

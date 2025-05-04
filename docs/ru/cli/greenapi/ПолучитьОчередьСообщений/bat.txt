@@ -1,2 +1,2 @@
 oint greenapi ПолучитьОчередьСообщений ^
-  --access "C:\Users\Administrator\AppData\Local\Temp\c3nur20qnro.tmp"
+  --access "C:\Users\Administrator\AppData\Local\Temp\m2zu22ciqx3.tmp"

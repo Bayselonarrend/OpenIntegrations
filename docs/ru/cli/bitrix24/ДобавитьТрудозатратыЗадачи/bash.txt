@@ -1,4 +1,4 @@
 oint bitrix24 ДобавитьТрудозатратыЗадачи \
   --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-  --task "5918" \
+  --task "5924" \
   --amount 3600

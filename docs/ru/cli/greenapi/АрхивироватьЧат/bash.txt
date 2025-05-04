@@ -1,3 +1,3 @@
 oint greenapi АрхивироватьЧат \
-  --access "C:\Users\Administrator\AppData\Local\Temp\pw4yrzzwyai.tmp" \
+  --access "C:\Users\Administrator\AppData\Local\Temp\03g0md3gbqc.tmp" \
   --chat "120363410406221140@g.us"

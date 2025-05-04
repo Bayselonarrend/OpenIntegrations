@@ -1,3 +1,3 @@
 oint s3 СоздатьБакет \
   --name "opi-dirbucket3" \
-  --basic "C:\Users\Administrator\AppData\Local\Temp\khkb5nprtvw.tmp"
+  --basic "C:\Users\Administrator\AppData\Local\Temp\sgtf4y3435z.tmp"

@@ -1,4 +1,4 @@
 oint s3 ОтправитьЗапросСТелом \
   --method "PUT" \
-  --basic "C:\Users\Administrator\AppData\Local\Temp\pnvcwlrhamd.tmp" \
+  --basic "C:\Users\Administrator\AppData\Local\Temp\mi2tw1uykkb.tmp" \
   --body "C:\test_data\document.docx"
