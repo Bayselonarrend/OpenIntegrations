@@ -1,3 +1,3 @@
 oint greenapi СоздатьГруппу ^
-  --access "C:\Users\Administrator\AppData\Local\Temp\au1eryhmpfv.tmp" ^
+  --access "C:\Users\Administrator\AppData\Local\Temp\n450urgq3ds.tmp" ^
   --name "New group"
