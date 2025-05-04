@@ -54,7 +54,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -180,7 +180,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -298,7 +298,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -344,7 +344,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -398,7 +398,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -444,7 +444,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -490,7 +490,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -536,7 +536,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -578,7 +578,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -656,7 +656,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -706,7 +706,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -760,7 +760,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -818,7 +818,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -868,7 +868,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -922,7 +922,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -984,7 +984,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1038,7 +1038,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1108,7 +1108,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1210,7 +1210,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1260,7 +1260,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1326,7 +1326,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1372,7 +1372,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1422,7 +1422,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1472,7 +1472,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1522,7 +1522,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1564,7 +1564,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
@@ -1626,7 +1626,7 @@ jobs:
       - name: Установить OInt
         run: |
           TEMP_DEB="$(mktemp)" &&
-          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.22.0/oint_1.22.0_all_en.deb' &&
+          wget -O "$TEMP_DEB" 'https://api.athenaeum.digital/tc/job/Release/lastSuccessfulBuild/artifact/1.23.0/oint_1.23.0_all_en.deb' &&
           sudo dpkg -i "$TEMP_DEB"
           rm -f "$TEMP_DEB"
 
