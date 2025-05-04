@@ -2,6 +2,6 @@
 
 oint telegram ОтправитьМедиагруппу ^
   --token "***" ^
-  --chat "@testsichee" ^
+  --chat "461699897" ^
   --text "Строковое значение" ^
-  --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\cijc1tbrmz5.docx':'document'}"
+  --media "{'C:\\Users\\Administrator\\AppData\\Local\\Temp\\jpeynvwxpeu.png':'photo','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4':'video'}"
