@@ -1,5 +1,5 @@
 oint telegram ОтправитьВидео \
   --token "***" \
-  --chat "@testsichee" \
+  --chat "461699897" \
   --text "Строковое значение" \
-  --video "C:\Users\Administrator\AppData\Local\Temp\hj0ni3eizjc.mp4"
+  --video "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"

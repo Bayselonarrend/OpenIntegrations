@@ -2,5 +2,5 @@
 
 oint ollama ОтправитьBlob \
   --url "https://api.athenaeum.digital/ollama" \
-  --data "C:\Users\Administrator\AppData\Local\Temp\yv31ht15ylw.tmp" \
-  --headers "{'Authorization':'Bearer ***'}"
+  --data "C:\Users\Administrator\AppData\Local\Temp\fam12ky5kkm.tmp" \
+  --headers "{'Authorization':'***'}"
