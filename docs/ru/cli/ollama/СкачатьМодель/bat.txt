@@ -2,5 +2,5 @@
 
 oint ollama СкачатьМодель ^
   --url "https://api.athenaeum.digital/ollama" ^
-  --model "tinyllama" ^
+  --model "bayselonarrend/tinyllama:latest" ^
   --headers "{'Authorization':'***'}"
