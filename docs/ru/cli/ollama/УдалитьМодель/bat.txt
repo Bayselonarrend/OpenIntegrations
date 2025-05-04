@@ -3,4 +3,4 @@
 oint ollama УдалитьМодель ^
   --url "https://api.athenaeum.digital/ollama" ^
   --model "bayselonarrend/tinyllama:latest" ^
-  --headers "{'Authorization':'Bearer ***'}"
+  --headers "{'Authorization':'***'}"
