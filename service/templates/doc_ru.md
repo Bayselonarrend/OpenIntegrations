@@ -1,5 +1,7 @@
 ---
 sidebar_position: @Счетчик
+description: @ОписаниеСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, @ИмяБиблиотеки]
 ---
 
 import Tabs from '@theme/Tabs';
