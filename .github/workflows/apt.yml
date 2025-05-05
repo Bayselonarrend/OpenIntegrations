@@ -116,10 +116,10 @@ jobs:
         run: |
           cd oint
       
-          # Установить доверие к ключу
-          echo -e "trust\n5\ny\nquit" | gpg --batch --edit-key EB79CD3197AD41BF
+          # Установить максимальное доверие к ключу
+          echo "EB79CD3197AD41BF:6:" | gpg --import-ownertrust
       
-          # Подробный вывод для диагностики
+          # Добавляем пакет в репозиторий с подробным логом
           GPG="gpg --verbose --pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
             reprepro includedeb focal ../oint.deb
 
