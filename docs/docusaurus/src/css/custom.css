@@ -166,7 +166,7 @@ li > a.menu__link {
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
 .Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .AI a:before,
-.Ollama a::before, .Exchange a::before {
+.Ollama a::before, .Exchange a::before, HTTP a::before {
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -177,6 +177,10 @@ li > a.menu__link {
 
 .Telegram > div > a::before{
   content: url(../../static/img/APIs/small/Telegram.png);
+}
+
+.HTTP > div > a::before{
+  content: url(../../static/img/APIs/small/HTTP.png);
 }
 
 .VK > div > a::before{
