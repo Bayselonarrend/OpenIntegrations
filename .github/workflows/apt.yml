@@ -25,17 +25,54 @@ jobs:
           sudo apt update
           sudo apt install -y reprepro nginx gnupg
 
-      - name: Download deb file from release
+      - name: Find and download correct .deb file
         run: |
-          REPO_NAME=$(echo $GITHUB_REPOSITORY)
-          RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-            "https://api.github.com/repos/$REPO_NAME/releases/latest" | jq -r '.id')
-          ASSET_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-            "https://api.github.com/repos/$REPO_NAME/releases/$RELEASE_ID/assets" | jq -r '.[0].url')
+          REPO_NAME="${{ github.repository }}"
           
-          curl -L -H "Accept: application/octet-stream" \
-            -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-            "$ASSET_URL" -o oint.deb
+          # Получаем ID последнего релиза
+          LATEST_RELEASE_JSON=$(mktemp)
+          curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+               -H "Accept: application/vnd.github+json" \
+               "https://api.github.com/repos/$REPO_NAME/releases/latest" > "$LATEST_RELEASE_JSON"
+      
+          RELEASE_ID=$(jq -r '.id' "$LATEST_RELEASE_JSON")
+          if [[ "$RELEASE_ID" == "null" ]]; then
+            echo "❌ Failed to get release ID"
+            exit 1
+          fi
+      
+          # Получаем список ассетов
+          ASSET_JSON=$(mktemp)
+          curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+               -H "Accept: application/vnd.github+json" \
+               "https://api.github.com/repos/$REPO_NAME/releases/$RELEASE_ID/assets" > "$ASSET_JSON"
+      
+          # Ищем первый файл, подходящий под маску 'oint_*_all_ru.deb'
+          FILENAME=$(jq -r '.[] | select(.name | startswith("oint_") and endswith("_all_ru.deb")) | .name' "$ASSET_JSON" | head -n 1)
+      
+          if [[ -z "$FILENAME" || "$FILENAME" == "null" ]]; then
+            echo "❌ No matching file found (mask: oint_*_all_ru.deb)"
+            echo "📎 Available assets:"
+            jq -r '.[].name' "$ASSET_JSON"
+            exit 1
+          fi
+      
+          echo "📎 Selected file: $FILENAME"
+      
+          # Получаем URL файла
+          ASSET_URL=$(jq -r ".[] | select(.name == \"$FILENAME\") | .url" "$ASSET_JSON")
+      
+          # Скачиваем .deb
+          echo "📥 Downloading: $FILENAME"
+          curl -L -o "$FILENAME" \
+               -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+               -H "Accept: application/octet-stream" \
+               "$ASSET_URL"
+      
+          # Проверяем, что это настоящий .deb
+          echo "🔍 Verifying file type..."
+          file "$FILENAME"
+          ar tvf "$FILENAME" || echo "⚠️ This may not be a valid .deb file!"
 
       - name: Setup repo structure
         run: |
