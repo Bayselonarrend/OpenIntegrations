@@ -1,0 +1,73 @@
+name: Update APT Repo
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup GPG
+        run: |
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "$GPG_PRIVATE_KEY" | gpg --import
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y reprepro nginx gnupg
+
+      - name: Download deb file from release
+        run: |
+          REPO_NAME=$(echo $GITHUB_REPOSITORY)
+          RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+            "https://api.github.com/repos/$REPO_NAME/releases/latest" | jq -r '.id')
+          ASSET_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+            "https://api.github.com/repos/$REPO_NAME/releases/$RELEASE_ID/assets" | jq -r '.[0].url')
+          
+          curl -L -H "Accept: application/octet-stream" \
+            -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+            "$ASSET_URL" -o oint.deb
+
+      - name: Setup repo structure
+        run: |
+          mkdir -p oint/{conf,dists,pool/main}
+          cat <<EOT > oint/conf/distributions
+          Origin: bayselonarrend
+          Label: oint
+          Suite: stable
+          Codename: focal
+          Architectures: amd64
+          Components: main
+          Description: OpenIntegrations CLI repo
+          SignWith: ${{ secrets.GPG_KEY_ID }}
+          EOT
+
+      - name: Add package to repo
+        run: |
+          cp oint.deb oint/pool/main/
+          cd oint
+          reprepro includedeb focal ../oint.deb
+
+      - name: Deploy to GitHub Pages
+        run: |
+          cd oint
+          git init
+          git config user.name "Vitaly the Alpaca (bot) "
+          git config user.email "vitaly.the.alpaca@gmail.com"
+          git add .
+          git commit -m "Update APT repo"
+          git branch -M gh-pages
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push -f origin gh-pages
+
+      - name: Cleanup
+        run: |
+          rm -rf oint
