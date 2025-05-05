@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description:  Добавляет стабию канбана или Моего планаСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -59,20 +61,24 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ДобавитьСтадиюКанбана \
-              --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-              --title "Новая стадия" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --title "Новая стадия 2" \
               --color "0026FF" \
-              --prevstage 6
+              --prevstage 2220 \
+              --admin true \
+              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ДобавитьСтадиюКанбана ^
-              --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-              --title "Новая стадия" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --title "Новая стадия 2" ^
               --color "0026FF" ^
-              --prevstage 6
+              --prevstage 2220 ^
+              --admin true ^
+              --token "***"
         ```
     </TabItem>
 </Tabs>

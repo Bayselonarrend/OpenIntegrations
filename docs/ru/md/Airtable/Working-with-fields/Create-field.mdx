@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description:  Создет новое поле в таблицеСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Airtable]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -42,23 +44,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint airtable СоздатьПоле \
               --token "***" \
-              --base "appOitMmS9nwNCIl3" \
-              --table "tbluoviRB9yQ8UIn7" \
-              --title "444e6102-02b8-468a-b10e-21697aa7cc2b" \
-              --fielddata "C:\Users\Administrator\AppData\Local\Temp\ixzkqgovrhz.tmp"
+              --base "appbVOXLftP7ZkJ41" \
+              --table "tbl9YGoBZfjRwfPxO" \
+              --title "e6c1fb4b-5218-4bab-8442-1a2df6027e90" \
+              --fielddata "{'name':'e6c1fb4b-5218-4bab-8442-1a2df6027e90','type':'number','options':{'precision':0}}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint airtable СоздатьПоле ^
               --token "***" ^
-              --base "appOitMmS9nwNCIl3" ^
-              --table "tbluoviRB9yQ8UIn7" ^
-              --title "444e6102-02b8-468a-b10e-21697aa7cc2b" ^
-              --fielddata "C:\Users\Administrator\AppData\Local\Temp\ixzkqgovrhz.tmp"
+              --base "appbVOXLftP7ZkJ41" ^
+              --table "tbl9YGoBZfjRwfPxO" ^
+              --title "e6c1fb4b-5218-4bab-8442-1a2df6027e90" ^
+              --fielddata "{'name':'e6c1fb4b-5218-4bab-8442-1a2df6027e90','type':'number','options':{'precision':0}}"
         ```
     </TabItem>
 </Tabs>

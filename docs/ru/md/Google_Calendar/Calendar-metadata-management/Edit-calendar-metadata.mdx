@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 3
+description:  Изменяет свойства существуещего календаряСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Calendar]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -43,7 +45,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar ИзменитьМетаданныеКалендаря \
               --token "***" \
-              --calendar "e0626c031820cfc3540c19c1b43059a28fb52fef90a685df89d43d1d03da7ae2@group.calendar.google.com" \
+              --calendar "1d454408a0f191c478a716a610b04129b22cd21c957beda102941348476c2bc7@group.calendar.google.com" \
               --title "Новое наименование" \
               --description "Новое описание"
         ```
@@ -53,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar ИзменитьМетаданныеКалендаря ^
               --token "***" ^
-              --calendar "e0626c031820cfc3540c19c1b43059a28fb52fef90a685df89d43d1d03da7ae2@group.calendar.google.com" ^
+              --calendar "1d454408a0f191c478a716a610b04129b22cd21c957beda102941348476c2bc7@group.calendar.google.com" ^
               --title "Новое наименование" ^
               --description "Новое описание"
         ```

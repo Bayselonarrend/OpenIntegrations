@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description:  Отправляет сообщение в выбранный часСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Slack]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -66,7 +68,8 @@ import TabItem from '@theme/TabItem';
             oint slack ОтправитьСообщение \
               --token "***" \
               --channel "C06UFNUTKUL" \
-              --text "Тестовое сообщение 1"
+              --text "Отложенное сообщение" \
+              --date "2025-05-06T00:22:23.4378404"
         ```
     </TabItem>
   
@@ -75,7 +78,8 @@ import TabItem from '@theme/TabItem';
             oint slack ОтправитьСообщение ^
               --token "***" ^
               --channel "C06UFNUTKUL" ^
-              --text "Тестовое сообщение 1"
+              --text "Отложенное сообщение" ^
+              --date "2025-05-06T00:22:23.4378404"
         ```
     </TabItem>
 </Tabs>
