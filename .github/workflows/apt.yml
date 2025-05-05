@@ -64,15 +64,15 @@ jobs:
       
           # Скачиваем .deb
           echo "📥 Downloading: $FILENAME"
-          curl -L -o "$FILENAME" \
+          curl -L -o "oint.deb" \
                -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
                -H "Accept: application/octet-stream" \
                "$ASSET_URL"
       
           # Проверяем, что это настоящий .deb
           echo "🔍 Verifying file type..."
-          file "$FILENAME"
-          ar tvf "$FILENAME" || echo "⚠️ This may not be a valid .deb file!"
+          file "oint.deb"
+          ar tvf "oint.deb" || echo "⚠️ This may not be a valid .deb file!"
 
       - name: Setup repo structure
         run: |
