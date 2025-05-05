@@ -112,12 +112,12 @@ jobs:
 
       - name: Add package to repo
         env:
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_PASSPHRASE: ${{ secrets.ENC_JSON }}
         run: |
           cd oint
       
           # Установить максимальное доверие к ключу
-          echo "EB79CD3197AD41BF:6:" | gpg --import-ownertrust
+          echo ${{ secrets.GPG_KEY_ID }} | gpg --import-ownertrust
       
           # Добавляем пакет в репозиторий с подробным логом
           GPG="gpg --verbose --pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
