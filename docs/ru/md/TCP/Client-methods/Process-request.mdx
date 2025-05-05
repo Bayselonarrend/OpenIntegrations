@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 7
+description:  Отправляет одиночный запрос на указанный адрес и получает ответ, используя стандартные настройкиСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, TCP]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -43,17 +45,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint tcp ОбработатьЗапрос \
-              --address "45.79.112.203:4242" \
-              --data "Echo this!\n"
+              --address "tcpbin.com:4243" \
+              --data "Echo this!\n" \
+              --tls "{'use_tls':true,'accept_invalid_certs':false}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint tcp ОбработатьЗапрос ^
-              --address "45.79.112.203:4242" ^
-              --data "Echo this!\n"
+              --address "tcpbin.com:4243" ^
+              --data "Echo this!\n" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':false}"
         ```
     </TabItem>
 </Tabs>

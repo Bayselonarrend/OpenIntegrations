@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 3
+description:  Определяет доступ к файлу для сторонних пользователейСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Dropbox]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -43,8 +45,8 @@ import TabItem from '@theme/TabItem';
             oint dropbox ДобавитьПользователейКФайлу \
               --token "***" \
               --fileid "kJU6-a-pT48AAAAAAAAABw" \
-              --emails "h5bk6ft62s@privaterelay.appleid.com" \
-              --readonly false
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
+              --readonly true
         ```
     </TabItem>
   
@@ -53,8 +55,8 @@ import TabItem from '@theme/TabItem';
             oint dropbox ДобавитьПользователейКФайлу ^
               --token "***" ^
               --fileid "kJU6-a-pT48AAAAAAAAABw" ^
-              --emails "h5bk6ft62s@privaterelay.appleid.com" ^
-              --readonly false
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" ^
+              --readonly true
         ```
     </TabItem>
 </Tabs>

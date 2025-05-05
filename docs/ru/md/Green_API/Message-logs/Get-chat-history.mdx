@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description:  Получает историю сообщений чатаСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Green API]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -47,16 +49,20 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ПолучитьИсториюЧата \
-              --access "C:\Users\Administrator\AppData\Local\Temp\jw34zhi0ya2.tmp" \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "120363410406221140@g.us"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ПолучитьИсториюЧата ^
-              --access "C:\Users\Administrator\AppData\Local\Temp\jw34zhi0ya2.tmp" ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "120363410406221140@g.us"
         ```
     </TabItem>
