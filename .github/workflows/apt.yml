@@ -13,12 +13,34 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup GPG
+        env:
+          GPG_PASSPHRASE: ${{ secrets.ENC_JSON }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: |
+          # Создаем директорию GPG
           mkdir -p ~/.gnupg
           chmod 700 ~/.gnupg
-          echo "$GPG_PRIVATE_KEY" | gpg --batch --import --passphrase ${{ secrets.ENC_JSON }}
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      
+          # Настройка GPG для работы без терминала
+          cat <<EOF > ~/.gnupg/gpg.conf
+          batch
+          no-tty
+          use-agent
+          pinentry-mode loopback
+          EOF
+      
+          # Сохраняем пароль во временный файл
+          echo "$GPG_PASSPHRASE" > ~/gpg-passphrase.txt
+          chmod 600 ~/gpg-passphrase.txt
+      
+          # Импортируем приватный ключ
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --pinentry-mode loopback --passphrase-file ~/gpg-passphrase.txt --import
+      
+          # Проверяем, что ключ импортирован
+          gpg --list-secret-keys
+      
+          # Удаляем пароль из файловой системы
+          rm ~/gpg-passphrase.txt
 
       - name: Install dependencies
         run: |
@@ -89,10 +111,12 @@ jobs:
           EOT
 
       - name: Add package to repo
+        env:
+          GPG_PASSPHRASE: ${{ secrets.ENC_JSON }}
         run: |
-          cp oint.deb oint/pool/main/
           cd oint
-          reprepro includedeb focal ../oint.deb
+          GPG_OPTS="--pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
+            reprepro includedeb focal ../oint.deb
 
       - name: Deploy to GitHub Pages
         run: |
