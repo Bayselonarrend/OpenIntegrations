@@ -1,13 +1,14 @@
 ---
 id: PostgreSQL
 sidebar_class_name: PostgreSQL
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, PostgreSQL, postgres]
 ---
 
 <img src={require('../../static/img/APIs/PostgreSQL.png').default} width='64px' />
 
 # PostgreSQL
 
-Этот раздел посвящен библиотеке для работы с базами данных PostgreSQL. На данной странице описаны все действия, необходимые для полноценного начала работы
+Этот раздел посвящен библиотеке для работы с базами данных PostgreSQL в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
 
