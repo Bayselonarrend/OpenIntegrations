@@ -117,7 +117,7 @@ jobs:
           cd oint
       
           # Установить максимальное доверие к ключу
-          echo ${{ secrets.GPG_KEY_ID }} | gpg --import-ownertrust
+          echo "${{ secrets.GPG_KEY_ID }}:6:"  | gpg --import-ownertrust
       
           # Добавляем пакет в репозиторий с подробным логом
           GPG="gpg --verbose --pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
