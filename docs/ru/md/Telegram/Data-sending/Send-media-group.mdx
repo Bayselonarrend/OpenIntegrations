@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 7
+description:  Отправляет набор файлов в чат или канал. Варианты типов медиа: audio, document, photo, videoСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -64,9 +66,9 @@ import TabItem from '@theme/TabItem';
             
             oint telegram ОтправитьМедиагруппу \
               --token "***" \
-              --chat "461699897" \
+              --chat "@testsichee" \
               --text "Строковое значение" \
-              --media "{'C:\\Users\\Administrator\\AppData\\Local\\Temp\\gmuvzxyoxdm.png':'photo','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4':'video'}"
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\xk3ztyie3bl.docx':'document'}"
         ```
     </TabItem>
   
@@ -76,9 +78,9 @@ import TabItem from '@theme/TabItem';
             
             oint telegram ОтправитьМедиагруппу ^
               --token "***" ^
-              --chat "461699897" ^
+              --chat "@testsichee" ^
               --text "Строковое значение" ^
-              --media "{'C:\\Users\\Administrator\\AppData\\Local\\Temp\\gmuvzxyoxdm.png':'photo','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4':'video'}"
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\xk3ztyie3bl.docx':'document'}"
         ```
     </TabItem>
 </Tabs>

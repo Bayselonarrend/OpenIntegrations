@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 10
+description:  Загружает файл на диск по заданному путиСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Disk]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -53,8 +55,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ЗагрузитьФайл \
               --token "***" \
-              --path "/ea5b71dc-39e9-4f8a-935c-3a3c98c6f7b5.png" \
-              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --path "/00a459b3-4426-4525-92b6-3bb6732c52ae.png" \
+              --file "C:\Users\Administrator\AppData\Local\Temp\1csslmqnrte.png" \
               --rewrite true
         ```
     </TabItem>
@@ -63,8 +65,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ЗагрузитьФайл ^
               --token "***" ^
-              --path "/ea5b71dc-39e9-4f8a-935c-3a3c98c6f7b5.png" ^
-              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --path "/00a459b3-4426-4525-92b6-3bb6732c52ae.png" ^
+              --file "C:\Users\Administrator\AppData\Local\Temp\1csslmqnrte.png" ^
               --rewrite true
         ```
     </TabItem>

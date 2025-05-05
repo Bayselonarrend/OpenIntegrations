@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 4
+description:  Выполняет произвольный SQL запросСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, SQLite]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -116,17 +118,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ВыполнитьЗапросSQL \
-              --sql "CREATE TABLE test_table (id INTEGER PRIMARY KEY,name TEXT,age INTEGER,salary REAL,is_active BOOLEAN,created_at DATETIME,data BLOB);" \
-              --db "C:\Users\Administrator\AppData\Local\Temp\z3ihkmbdhxa.sqlite"
+              --sql "SELECT uuid4();" \
+              --db "C:\Users\Administrator\AppData\Local\Temp\0pxmcnjxsru.sqlite" \
+              --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ВыполнитьЗапросSQL ^
-              --sql "CREATE TABLE test_table (id INTEGER PRIMARY KEY,name TEXT,age INTEGER,salary REAL,is_active BOOLEAN,created_at DATETIME,data BLOB);" ^
-              --db "C:\Users\Administrator\AppData\Local\Temp\z3ihkmbdhxa.sqlite"
+              --sql "SELECT uuid4();" ^
+              --db "C:\Users\Administrator\AppData\Local\Temp\0pxmcnjxsru.sqlite" ^
+              --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
         ```
     </TabItem>
 </Tabs>

@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 4
+description:  Получает информацию об аккаунтеСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Dropbox]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -37,14 +39,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint dropbox ПолучитьИнформациюОбАккаунте \
-              --token "***"
+              --token "***" \
+              --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint dropbox ПолучитьИнформациюОбАккаунте ^
-              --token "***"
+              --token "***" ^
+              --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
         ```
     </TabItem>
 </Tabs>

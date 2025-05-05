@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 10
+description:  Отправляет опрос с вариантами ответаСтраницы
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -56,7 +58,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint telegram ОтправитьОпрос \
               --token "***" \
-              --chat "461699897" \
+              --chat "@testsichee" \
               --question "Какой ваш любимый цвет?" \
               --options "['Красный','Желтый','Зеленый','Синий']"
         ```
@@ -66,7 +68,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint telegram ОтправитьОпрос ^
               --token "***" ^
-              --chat "461699897" ^
+              --chat "@testsichee" ^
               --question "Какой ваш любимый цвет?" ^
               --options "['Красный','Желтый','Зеленый','Синий']"
         ```
