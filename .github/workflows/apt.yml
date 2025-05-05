@@ -112,10 +112,15 @@ jobs:
 
       - name: Add package to repo
         env:
-          GPG_PASSPHRASE: ${{ secrets.ENC_JSON }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           cd oint
-          GPG_OPTS="--pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
+      
+          # Установить доверие к ключу
+          echo -e "trust\n5\ny\nquit" | gpg --batch --edit-key EB79CD3197AD41BF
+      
+          # Подробный вывод для диагностики
+          GPG="gpg --verbose --pinentry-mode loopback --passphrase=$GPG_PASSPHRASE" \
             reprepro includedeb focal ../oint.deb
 
       - name: Deploy to GitHub Pages
