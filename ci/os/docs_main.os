@@ -157,9 +157,9 @@
 	Макет = Макет.ПолучитьТекст();
 
 	Если ТекущийЯзык = "ru" Тогда
-		ШаблонОписания = """%1"" и другие функции для работы с %2 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI";
+		ШаблонОписания = "%1 и другие функции для работы с %2 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI";
 	Иначе
-		ШаблонОписания = """%1"" and other functions to work with %2 in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI";
+		ШаблонОписания = "%1 and other functions to work with %2 in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI";
 	КонецЕсли;
 	
 	ОписаниеСтраницы = СтрШаблон(ШаблонОписания, СтруктураМетода["Заголовок"], СтруктураМетода["Библиотека"]);
