@@ -1,7 +1,7 @@
 ---
 id: Ozon
 sidebar_class_name: Ozon
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ozon]
 ---
 
 <img src={require('../../static/img/APIs/Ozon.png').default} width='64px' />
