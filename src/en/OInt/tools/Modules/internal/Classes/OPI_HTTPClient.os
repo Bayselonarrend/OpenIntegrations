@@ -89,6 +89,10 @@ Var BodyTemporaryFile; // Flag to delete the body file if it was created automat
 Var AWS4Using; // Flag to use AWS4 authorization
 Var AWS4Data; // Credentials structure
 
+// Bearer
+
+Var Bearer; // Bearer token
+
 // Response
 
 Var Response; // HTTPResponse object
@@ -833,6 +837,36 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
 
 EndFunction
 
+// Add header !NOCLI
+// Adds a header to the request header set
+//
+// Parameters:
+// Name - String - Header key - header
+// Value - String - Header value - value
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function AddHeader(Val Name, Val Value) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+        If Not ValueIsFilled(Value) Then Value = New Map; EndIf;
+
+        OPI_TypeConversion.GetLine(Name);
+        OPI_TypeConversion.GetLine(Value);
+
+        AddLog("AddHeader: header setting");
+
+        RequestHeaders.Insert(Name, Value);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+EndFunction
+
 #EndRegion
 
 #Region Authorization
@@ -857,6 +891,31 @@ Function AddBasicAuthorization(Val User, Val Password) Export
 
         RequestUser     = User;
         RequestPassword = Password;
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Add Bearer authorization
+// Adds a request header for Bearer authorization
+//
+// Parameters:
+// Token - String - Bearer token value - token
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function AddBearerAuthorization(Val Token) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        OPI_TypeConversion.GetLine(Token);
+        Bearer = Token;
 
         Return ЭтотОбъект;
 
@@ -1441,14 +1500,6 @@ Function GetDefaultHeaders()
     Headers.Insert("Connection"     , "keep-alive");
     Headers.Insert("Accept-Charset" , "utf-8");
 
-    If GetSetting("gzip") Then
-        Headers.Insert("Accept-Encoding", "gzip");
-    EndIf;
-
-    If ValueIsFilled(RequestDataType) Then
-        Headers.Insert("Content-Type", RequestDataType);
-    EndIf;
-
     Return Headers;
 
 EndFunction
@@ -1480,8 +1531,22 @@ Function CompleteHeaders()
     EndIf;
 
     If AWS4Using Then
-        AddLog("CompleteHeaders: Generating AWS4 Authorization Header");
+        AddLog("CompleteHeaders: generating AWS4 Authorization Header");
         AddAWS4();
+    EndIf;
+
+    If ValueIsFilled(Bearer) Then
+        AddLog("CompleteHeaders: generating Bearer Authorization Header");
+        Request.Headers.Insert("Authorization", StrTemplate("Bearer %1", Bearer));
+    EndIf;
+
+    If GetSetting("gzip") Then
+        AddLog("CompleteHeaders: setting the gzip header");
+        Request.Headers.Insert("Accept-Encoding", "gzip");
+    EndIf;
+
+    If ValueIsFilled(RequestDataType) Then
+        Request.Headers.Insert("Content-Type", RequestDataType);
     EndIf;
 
     If TypeOf(RequestHeaders) = Type("Map") Then
@@ -1516,7 +1581,7 @@ Function SetRequestBody()
 
 EndFunction
 
-Function ExecuteMethod()
+Function ExecuteMethod(Val RedirectCount = 0)
 
     If ValueIsFilled(RequestOutputFile) Then
         Response = Connection.CallHTTPMethod(RequestMethod, Request, RequestOutputFile);
@@ -1526,10 +1591,18 @@ Function ExecuteMethod()
 
     If ThisIsRedirection(Response) Then
 
+        If RedirectCount = 5 Then
+            Error("ExecuteMethod: the number of redirects has been exceeded");
+            Return ЭтотОбъект;
+        EndIf;
+
         URL = Response.Headers["Location"];
         SetURL(URL);
 
-        ProcessRequest(RequestMethod);
+        CreateConnection();
+        Request.ResourceAddress = RequestAdress;
+
+        ExecuteMethod(RedirectCount + 1);
 
     EndIf;
 
@@ -1599,6 +1672,18 @@ Function GetResponseBodyAsBinaryData()
     BodyStream.Close();
 
     Return Data;
+
+EndFunction
+
+Function GetResponseBodyAsBinaryOrPath()
+
+    BodyFileName = Response.GetBodyFileName();
+
+    If Not ValueIsFilled(BodyFileName) Then
+        Return GetResponseBodyAsBinaryData();
+    Else
+        Return BodyFileName;
+    EndIf;
 
 EndFunction
 
@@ -1741,14 +1826,14 @@ EndProcedure
 Function UnpackResponse(Response)
 
     Try
-        Return ReadGZip(GetResponseBodyAsBinaryData());
+        Return ReadGZip(GetResponseBodyAsBinaryOrPath());
     Except
         Return Response;
     EndTry;
 
 EndFunction
 
-Function ReadGZip(CompressedData) Export
+Function ReadGZip(CompressedData)
 
     GZipPrefixSize  = 10;
     GZipPostfixSize = 8;
@@ -2273,18 +2358,6 @@ Procedure EncodeURLInURL(URL) Export
     URL = StrReplace(URL, Plug, "&");
 
 EndProcedure
-
-Function FunctionTemplate()
-
-    Try
-
-        If StopExecution() Then Return ЭтотОбъект; EndIf;
-
-    Except
-        Return Error(DetailErrorDescription(ErrorInfo()));
-    EndTry;
-
-EndFunction
 
 #EndRegion
 
