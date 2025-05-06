@@ -2662,8 +2662,10 @@ Procedure HTTP_Settings() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
     HTTPClient_UseEncoding(TestParameters);
+    HTTPClient_UseGzipCompression(TestParameters);
 
 EndProcedure
 
@@ -21860,6 +21862,30 @@ Procedure HTTPClient_UseEncoding(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
+
+EndProcedure
+
+Procedure HTTPClient_UseGzipCompression(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .UseGzipCompression(True) // <---
+        .ProcessRequest("POST", False)
+        .ReturnRequest();
+
+    // END
+
+
+    Data = Result.ПолучитьТелоКакДвоичныеДанные();
+    OPI_TestDataRetrieval.WriteLog(Result, "UseGzipCompression", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Accept-Encoding"]).Равно("gzip");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Encoding"]).Равно("gzip");
 
 EndProcedure
 

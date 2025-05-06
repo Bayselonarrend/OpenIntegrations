@@ -2587,6 +2587,28 @@ EndProcedure
 
 #EndRegion
 
+#Region HTTP
+
+Procedure CLI_HTTP_Initialization() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_BodySet() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_Settings() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
