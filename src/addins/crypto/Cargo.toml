@@ -1,0 +1,22 @@
+[package]
+name = "opi_crypto"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = "fat"       # Enable Link Time Optimization
+codegen-units = 1 # Reduce number of codegen units to increase optimizations.
+panic = "abort"   # Abort on panic
+strip = true      # Automatically strip symbols from the binary.
+opt-level = "z"
+
+[dependencies]
+addin1c = "0.5.0"
+hmac = "0.12"
+sha1 = "0.10"
+sha2 = "0.10"
+rsa = "0.9"
+digest = "0.10.7"
