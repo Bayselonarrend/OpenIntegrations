@@ -1442,6 +1442,10 @@ def test_google(){
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe google ПолучитьТокенServiceАккаунта --auth "test" --scope "test" --exp "test" --debug --test '
+               }
+
 }
 
 

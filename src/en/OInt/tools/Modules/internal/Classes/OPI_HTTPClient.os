@@ -1104,6 +1104,7 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         AddLog("ProcessRequest: place the body in the HTTPRequest object");
         If SetRequestBody().Error Then Return ЭтотОбъект; EndIf;
 
+        GuaranteeBodyCollection();
         CompleteHeaders();
 
         If Start Then
@@ -2430,18 +2431,6 @@ Function AddOAuthV1Header()
     ParametersTable.Columns.Add("Key");
     ParametersTable.Columns.Add("Value");
 
-    If Not ValueIsFilled(RequestBodyCollection)
-        Or Not OPI_Tools.ThisIsCollection(RequestBodyCollection, True) Then
-
-        Try
-            RequestBodyCollection = RequestBody;
-            OPI_TypeConversion.GetKeyValueCollection(RequestBodyCollection);
-        Except
-            RequestBodyCollection = New Structure;
-        EndTry;
-
-    EndIf;
-
     If GetSetting("MultipartAtOAuth") Or Not Multipart Then
         For Each Field In RequestBodyCollection Do
 
@@ -2627,6 +2616,24 @@ Procedure EncodeURLInURL(URL) Export
     URL = StrReplace(URL, "&" , Plug);
     URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
     URL = StrReplace(URL, Plug, "&");
+
+EndProcedure
+
+Procedure GuaranteeBodyCollection()
+
+    If Not ValueIsFilled(RequestBodyCollection)
+        Or Not OPI_Tools.ThisIsCollection(RequestBodyCollection, True) Then
+
+        Try
+            RequestBodyCollection = RequestBody;
+            OPI_TypeConversion.GetKeyValueCollection(RequestBodyCollection);
+        Except
+            RequestBodyCollection = New Structure;
+        EndTry;
+
+        RequestBodyCollection = ?(ValueIsFilled(RequestBodyCollection), RequestBodyCollection, New Structure);
+
+    EndIf;
 
 EndProcedure
 

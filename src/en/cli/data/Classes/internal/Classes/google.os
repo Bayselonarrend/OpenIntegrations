@@ -112,6 +112,37 @@
     NewLine.Описание    = "Refresh token";
     NewLine.Область     = "Public";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetServiceAccountToken";
+    NewLine.МетодПоиска = "GETSERVICEACCOUNTTOKEN";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "JSON authorization data as a file, collection or binary data";
+    NewLine.Область     = "Public";
+    NewLine.ОписаниеМетода   = "Gets authorization token by service account data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetServiceAccountToken";
+    NewLine.МетодПоиска = "GETSERVICEACCOUNTTOKEN";
+    NewLine.Параметр    = "--scope";
+    NewLine.Описание    = "Scope or array of scopes";
+    NewLine.Область     = "Public";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetServiceAccountToken";
+    NewLine.МетодПоиска = "GETSERVICEACCOUNTTOKEN";
+    NewLine.Параметр    = "--exp";
+    NewLine.Описание    = "Token lifetime in seconds (optional, def. val. - 3600)";
+    NewLine.Область     = "Public";
+
     Return CompositionTable;
 EndFunction
 
