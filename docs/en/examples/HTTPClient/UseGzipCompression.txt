@@ -6,6 +6,6 @@
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
         .SetBinaryBody(Image)
-        .UseGzipCompression(True) // <---
+        .UseGzipCompression(False) // <---
         .ProcessRequest("POST", False)
         .ReturnRequest();

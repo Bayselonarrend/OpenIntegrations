@@ -306,6 +306,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "HTTP_Initialization"                  , "Initialization"                  , Http);
     NewTest(TestTable, "HTTP_BodySet"                         , "Body set"                        , Http);
     NewTest(TestTable, "HTTP_Settings"                        , "Settings"                        , Http);
+    NewTest(TestTable, "HTTP_HeadersSetting" , "Headers setting" , Http);
+    NewTest(TestTable, "HTTP_Authorization"  , "Authorization"   , Http);
 
     Return TestTable;
 

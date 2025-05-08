@@ -43,7 +43,7 @@ By default, the response from the server is requested with gzip compression
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
         .SetBinaryBody(Image)
-        .UseGzipCompression(True) // <---
+        .UseGzipCompression(False) // <---
         .ProcessRequest("POST", False)
         .ReturnRequest();
 ```
