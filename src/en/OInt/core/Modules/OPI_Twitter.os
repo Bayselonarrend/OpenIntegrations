@@ -100,7 +100,9 @@ Function GetToken(Val Code, Val Parameters = "") Export
     RequestParameters.Insert("code_verifier", "challenge");
 
     Response = OPI_HTTPRequests.PostWithBody("https://api.twitter.com/2/oauth2/token"
-        , RequestParameters, , False);
+        , RequestParameters
+        ,
+        , False);
 
     Return Response;
 
@@ -125,7 +127,9 @@ Function RefreshToken(Val Parameters = "") Export
     RequestParameters.Insert("client_id"  , Parameters_["client_id"]);
 
     Response = OPI_HTTPRequests.PostWithBody("https://api.twitter.com/2/oauth2/token"
-    , RequestParameters, , False);
+        , RequestParameters
+        ,
+        , False);
 
     Return Response;
 
@@ -218,12 +222,12 @@ Function CreateCustomTweet(Val Text = ""
     EndIf;
 
     If ValueIsFilled(Fields["media"]) Then
-        Authorization = CreateAuthorizationHeaderV1(Parameters_, New Structure, "POST", URL);
+        IsV2 = False;
     Else
-        Authorization = CreateAuthorizationHeaderV2(Parameters_);
+        IsV2 = True;
     EndIf;
 
-    Response = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization);
+    Response = Post(URL, Fields, Parameters_, True, IsV2);
 
     Return Response;
 
@@ -389,9 +393,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Fields.Insert("total_bytes"   , OPI_Tools.NumberToString(Size));
     Fields.Insert("media_category", Type);
 
-    Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, RequestType, URL);
-
-    InitializationResponse = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization, False);
+    InitializationResponse = Post(URL, Fields, Parameters);
     InitializationID       = InitializationResponse[MID];
     InitializationIDS      = InitializationResponse[MIS];
 
@@ -409,8 +411,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
         Fields.Insert("segment_index", OPI_Tools.NumberToString(Counter));
         Fields.Insert("media"        , Part);
 
-        Authorization = CreateAuthorizationHeaderV1(Parameters, New Structure, RequestType, URL);
-        Response      = OPI_HTTPRequests.PostMultipart(URL, Fields, , , Authorization);
+        Response = PostMultipart(URL, Fields, Parameters);
 
         Counter = Counter + 1;
 
@@ -443,9 +444,8 @@ Function WaitForProcessingCompletion(Val ProcessingStatus, Val InitializationID,
 
     While String(ProcessingStatus) = "pending" Or String(ProcessingStatus) = "in_progress" Do
 
-        Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, "GET", URL);
-        Response      = OPI_HTTPRequests.Get(URL, Fields, Authorization);
-        Information   = Response[ProcessingInfo];
+        Response    = Get(URL, Fields, Parameters);
+        Information = Response[ProcessingInfo];
 
         If Not ValueIsFilled(Information) Then
             Return Response;
@@ -537,132 +537,11 @@ Function GetStandardParameters(Val Parameters = "")
 
 EndFunction
 
-Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType, Val URL)
-
-    CurrentDate         = OPI_Tools.GetCurrentDate();
-    AuthorizationHeader = "";
-    HashingMethod       = "HMAC-SHA1";
-    APIVersion          = "1.0";
-    SignatureString     = "";
-    Signature           = "";
-    OCK                 = "oauth_consumer_key";
-    OTK                 = "oauth_token";
-    CurrentUNIXDate     = OPI_Tools.UNIXTime(CurrentDate);
-    CurrentUNIXDate     = OPI_Tools.NumberToString(CurrentUNIXDate);
-    ParametersTable     = New ValueTable;
-    ParametersTable.Columns.Add("Key");
-    ParametersTable.Columns.Add("Value");
-
-    For Each Field In Fields Do
-
-        NewLine       = ParametersTable.Add();
-        NewLine.Key   = Field.Key;
-        NewLine.Value = Field.Value;
-
-    EndDo;
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = OCK;
-    NewLine.Value = Parameters[OCK];
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = OTK;
-    NewLine.Value = Parameters[OTK];
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_version";
-    NewLine.Value = APIVersion;
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_signature_method";
-    NewLine.Value = HashingMethod;
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_timestamp";
-    NewLine.Value = CurrentUNIXDate;
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_nonce";
-    NewLine.Value = CurrentUNIXDate;
-
-    For Each TableRow In ParametersTable Do
-
-        TableRow.Key   = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
-        TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
-
-    EndDo;
-
-    ParametersTable.Sort("Key");
-
-    For Each TableRow In ParametersTable Do
-
-        SignatureString = SignatureString
-            + TableRow.Key
-
-            + "="
-            + TableRow.Value
-            + "&";
-
-    EndDo;
-
-    SignatureString = Left(SignatureString, StrLen(SignatureString) - 1);
-    SignatureString = Upper(RequestType)
-        + "&"
-        + EncodeString(URL            , StringEncodingMethod.URLencoding)
-        + "&"
-        + EncodeString(SignatureString, StringEncodingMethod.URLencoding);
-
-    Signature = EncodeString(Parameters["oauth_consumer_secret"], StringEncodingMethod.URLencoding)
-        + "&"
-        + EncodeString(Parameters["oauth_token_secret"], StringEncodingMethod.URLencoding);
-
-    Signature = OPI_Cryptography.HMAC(ПолучитьДвоичныеДанныеИзСтроки(Signature)
-        , ПолучитьДвоичныеДанныеИзСтроки(SignatureString)
-        , HashFunction.SHA1
-        , 64);
-
-    Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
-
-    Delimiter = """,";
-
-    AuthorizationHeader = AuthorizationHeader
-        + "OAuth "
-        + "oauth_consumer_key=""" + Parameters[OCK] + Delimiter
-
-        + "oauth_token=""" + Parameters[OTK] + Delimiter
-
-        + "oauth_signature_method=""" + HashingMethod + Delimiter
-
-        + "oauth_timestamp=""" + CurrentUNIXDate + Delimiter
-
-        + "oauth_nonce=""" + CurrentUNIXDate + Delimiter
-
-        + "oauth_version=""" + APIVersion + Delimiter
-
-        + "oauth_signature=" + Signature;
-
-        HeaderMapping = New Map;
-        HeaderMapping.Insert("Authorization", AuthorizationHeader);
-
-    Return HeaderMapping;
-
-EndFunction
-
-Function CreateAuthorizationHeaderV2(Val Parameters)
-
-    ReturnMapping = New Map;
-    ReturnMapping.Insert("Authorization", "Bearer " + Parameters["access_token"]);
-
-    Return ReturnMapping;
-
-EndFunction
-
 Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
 
     ProcessingInfo = "processing_info";
-    Authorization  = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
 
-    Response    = OPI_HTTPRequests.PostWithBody(URL, Fields, Authorization, False);
+    Response    = Post(URL, Fields, Parameters);
     Information = Response[ProcessingInfo];
 
     If Not ValueIsFilled(Information) Then
@@ -676,6 +555,79 @@ Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
     Else
         Return ProcessingStatus;
     EndIf;
+
+EndFunction
+
+Function Get(Val URL, Val Fields, Val SecretData)
+
+    Token       = SecretData["oauth_token"];
+    Secret      = SecretData["oauth_token_secret"];
+    UsersKey    = SecretData["oauth_consumer_key"];
+    UsersSecret = SecretData["oauth_consumer_secret"];
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetURLParams(Fields)
+        .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .SetOAuthV1Algorithm("HMAC", "SHA1")
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject(True, True);
+
+    Return Result;
+
+EndFunction
+
+Function Post(Val URL, Val Fields, Val SecretData, Val JSON = False, Val IsV2 = False)
+
+    Token       = SecretData["oauth_token"];
+    Secret      = SecretData["oauth_token_secret"];
+    UsersKey    = SecretData["oauth_consumer_key"];
+    UsersSecret = SecretData["oauth_consumer_secret"];
+    Version     = "1.0";
+
+    HttpClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL);
+
+    If IsV2 Then
+        HttpClient.AddHeader("Authorization", "Bearer " + SecretData["access_token"]);
+    Else
+        HttpClient.AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+            .SetOAuthV1Algorithm("HMAC", "SHA1");
+    EndIf;
+
+    If JSON Then
+        HttpClient.SetJsonBody(Fields);
+    Else
+        HttpClient.SetFormBody(Fields);
+    EndIf;
+
+    Return HttpClient.ProcessRequest("POST").ReturnResponseAsJSONObject(True, True);
+
+EndFunction
+
+Function PostMultipart(Val URL, Val Fields, Val SecretData)
+
+    Token       = SecretData["oauth_token"];
+    Secret      = SecretData["oauth_token_secret"];
+    UsersKey    = SecretData["oauth_consumer_key"];
+    UsersSecret = SecretData["oauth_consumer_secret"];
+    Version     = "1.0";
+
+    HttpClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .SetOAuthV1Algorithm("HMAC", "SHA1")
+        .UseMultipartFieldsAtOAuth(False);
+
+    For Each Parameter In Fields Do
+        HttpClient.AddMultipartFormDataField(Parameter.Key, Parameter.Value);
+    EndDo;
+
+    Result = HttpClient.ProcessRequest("POST").ReturnResponseAsJSONObject(True, True);
+
+    Return Result;
 
 EndFunction
 

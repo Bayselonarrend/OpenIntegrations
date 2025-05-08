@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 3
+description: Use multipart fields at OAuth and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Use multipart fields at OAuth
+ Includes or excludes multipart body fields when calculating the OAuth signature depending on server requirements
+
+
+
+`Function UseMultipartFieldsAtOAuth(Val Flag) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Flag | --use | Boolean | &#x2714; | Sign of using multipart fields in OAuth |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+Multipart fields are used for signature calculation by default
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
