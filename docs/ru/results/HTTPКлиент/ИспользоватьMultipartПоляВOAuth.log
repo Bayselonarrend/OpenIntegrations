@@ -1,0 +1,25 @@
+﻿    {
+ "args": {},
+ "data": "",
+ "files": {
+  "file1": "..."
+ },
+ "form": {
+  "field1": "Текст",
+  "field2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1746748644\",oauth_nonce=\"1746748644\",oauth_version=\"1.0\",oauth_signature=qA3fjnku83ZgWsSpdzv2u5HmFQv5zyrz9X1yLXmKgkU%3D",
+  "Content-Length": "2114378",
+  "Content-Type": "multipart/form-data; boundary=87810284e7e447148182c8454745e666",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-681d28c4-090c649e689069505ba99348"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
