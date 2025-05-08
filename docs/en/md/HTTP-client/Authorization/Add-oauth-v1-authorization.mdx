@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 4
+description: Add OAuth V1 authorization and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add OAuth V1 authorization
+ Adds data for OAuth v1 authorization
+
+
+
+`Function AddOauthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token for authorization |
+  | Secret | --secret | String | &#x2714; | Secret for authorization |
+  | ConsumerKey | --ck | String | &#x2714; | Consumer key for authorization |
+  | ConsumerSecret | --cs | String | &#x2714; | Consumer secret for authorization |
+  | Version | --ver | String | &#x2714; | API version |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+By default, HMAC-SHA256 is used to create the signature. To change the algorithm, you can use `SetOAuthV1Algorithm`
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
