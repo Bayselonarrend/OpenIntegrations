@@ -1,10 +1,9 @@
 use hmac::{Hmac, Mac};
 use sha1::Sha1;
-use sha2::{Sha256};
-use rsa::{RsaPrivateKey, pkcs1::DecodeRsaPrivateKey};
-use rsa::pkcs1v15::SigningKey;
+use sha2::Sha256;
+use rsa::{RsaPrivateKey, pkcs1::DecodeRsaPrivateKey, pkcs8::DecodePrivateKey};
+use rsa::pkcs1v15::{Pkcs1v15Sign};
 use rsa::signature::digest::{Digest, FixedOutput};
-use rsa::signature::{Signer, SignatureEncoding};
 
 // ===== HMAC ===== //
 
@@ -30,44 +29,48 @@ pub fn hmac_sha256(key: &[u8], data: &[u8]) -> Result<Vec<u8>, String> {
 
 // ===== RSA ===== //
 
-fn load_rsa_key(key: &[u8]) -> Result<RsaPrivateKey, String> {
-
-    match RsaPrivateKey::from_pkcs1_der(key){
-        Ok(v) => Ok(v),
-        Err(_) => {
-
-            let pem_string = match std::str::from_utf8(key){
-                Ok(pem_str) => pem_str,
-                Err(_) =>  return Err("Invalid RSA key format".to_string()),
-            };
-
-            match RsaPrivateKey::from_pkcs1_pem(pem_string){
-                Ok(v) => Ok(v),
-                Err(_) =>  Err("Invalid RSA key format".to_string()),
-            }
-
-        }
+pub fn load_rsa_key(key_data: &[u8]) -> Result<RsaPrivateKey, String> {
+    if let Ok(key) = RsaPrivateKey::from_pkcs1_der(key_data) {
+        return Ok(key);
     }
+
+    if let Ok(key) = RsaPrivateKey::from_pkcs8_der(key_data) {
+        return Ok(key);
+    }
+
+    let pem_str = match std::str::from_utf8(key_data) {
+        Ok(s) => s,
+        Err(_) => return Err("Invalid key format: not DER or PEM".to_string()),
+    };
+
+    if let Ok(key) = RsaPrivateKey::from_pkcs1_pem(pem_str) {
+        return Ok(key);
+    }
+
+    if let Ok(key) = RsaPrivateKey::from_pkcs8_pem(pem_str) {
+        return Ok(key);
+    }
+
+    Err("Invalid RSA key format. Expected: PKCS#1/8 PEM or DER".to_string())
 }
 
 fn rsa_sign<D>(key: &RsaPrivateKey, data: &[u8]) -> Result<Vec<u8>, String>
 where
-    D: Digest + FixedOutput,
-    SigningKey<D>: From<RsaPrivateKey>,
+    D: Digest + FixedOutput  + rsa::pkcs8::AssociatedOid,
 {
-    let signing_key = SigningKey::<D>::new_unprefixed(key.clone());
+    // Создаем схему подписи с указанием хеш-алгоритма
+    let scheme = Pkcs1v15Sign::new::<D>();
+
+    // Хешируем данные
     let mut hasher = D::new();
     Digest::update(&mut hasher, data);
     let digest = hasher.finalize();
 
-    let sign_result = signing_key.try_sign(&digest);
+    // Подписываем хеш
+    let signature = key.sign(scheme, &digest).map_err(|e| format!("RSA signing error: {}", e))?;
 
-    match sign_result {
-        Ok(signature) => Ok(signature.to_vec()),
-        Err(e) => Err(format!("RSA signing error: {}", e)),
-    }
+    Ok(signature)
 }
-
 
 /// Подписывает данные с помощью RSA-SHA1
 pub fn rsa_sha1(key: &[u8], data: &[u8]) -> Result<Vec<u8>, String> {
