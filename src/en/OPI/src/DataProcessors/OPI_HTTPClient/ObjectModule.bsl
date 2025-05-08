@@ -837,12 +837,9 @@ EndFunction
 // Set headers !NOCLI
 // Sets a collection of query headers
 //
-// Note
-// `FullReplace` also clears headers previously set by other methods (e.g., authorization headers)
-//
 // Parameters:
 // Value - Arbitrary - Structure or map of request headers - headers
-// FullReplace - Boolean - Clears all existing headers before setting up - replace
+// FullReplace - Boolean - Clears all previously added headers before setting - replace
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1015,7 +1012,7 @@ EndFunction
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function AddOauthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export
+Function AddOAuthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export
 
     Try
 
@@ -2410,6 +2407,8 @@ EndProcedure
 
 Function AddOAuthV1Header()
 
+    AddLog("AddOAuthV1Header: signature creation");
+
     OAuthAlgorithm      = AuthData["OAuthAlgorithm"];
     OAuthHashFunction   = AuthData["OAuthHashFunction"];
     OAuthToken          = AuthData["OAuthToken"];
@@ -2432,6 +2431,9 @@ Function AddOAuthV1Header()
     ParametersTable.Columns.Add("Value");
 
     If GetSetting("MultipartAtOAuth") Or Not Multipart Then
+
+        AddLog("AddOAuthV1Header: adding body fields to the signature string");
+
         For Each Field In RequestBodyCollection Do
 
             If TypeOf(Field.Value) = Type("BinaryData") Then
@@ -2444,6 +2446,8 @@ Function AddOAuthV1Header()
 
         EndDo;
     EndIf;
+
+    AddLog("AddOAuthV1Header: updating the signature string with credentials");
 
     NewLine       = ParametersTable.Add();
     NewLine.Key   = "oauth_consumer_key";
@@ -2503,10 +2507,14 @@ Function AddOAuthV1Header()
     SignBD      = GetBinaryDataFromString(Signature);
     SignatureBD = GetBinaryDataFromString(SignatureString);
 
+    AddLog("AddOAuthV1Header: ");
+
     Signature = OPI_Cryptography.CreateSignature(SignBD, SignatureBD, OAuthAlgorithm, OAuthHashFunction);
     Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
 
     Delimiter = """,";
+
+    AddLog("AddOAuthV1Header: authorization header creation");
 
     AuthorizationHeader = AuthorizationHeader
         + "OAuth "
