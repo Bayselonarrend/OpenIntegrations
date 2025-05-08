@@ -71,6 +71,7 @@ Var RequestDomain; // Domain from the request URL
 Var RequestMethod; // HTTP method used
 Var RequestURLParams; // URL parameters structure
 Var RequestBody; // Request body data
+Var RequestBodyCollection; // Data of body in view of collection, if maybe
 Var RequestHeaders; // Request headers mapping
 Var RequestUser; // User for basic authorization
 Var RequestPassword; // Password for basic authorization
@@ -84,14 +85,10 @@ Var RequestDataType; // MIME type for Content-Type
 Var RequestTypeSetManualy; // Flag to disable automatic Content-Type detection
 Var BodyTemporaryFile; // Flag to delete the body file if it was created automatically
 
-// AWS
+// Authorization
 
-Var AWS4Using; // Flag to use AWS4 authorization
-Var AWS4Data; // Credentials structure
-
-// Bearer
-
-Var Bearer; // Bearer token
+Var AuthType; // View authorization
+Var AuthData; // Credentials structure
 
 // Response
 
@@ -132,15 +129,15 @@ Function Initialize(Val URL = "") Export
     Initialized = True;
     Error       = False;
 
-    RequestURLParams = New Array;
-    RequestBody      = Undefined;
-    RequestHeaders   = New Map;
-    RequestTimeout   = 3600;
+    RequestURLParams      = New Array;
+    RequestBody           = Undefined;
+    RequestBodyCollection = New Structure;
+    RequestHeaders        = New Map;
+    RequestTimeout        = 3600;
 
     RequestTypeSetManualy = False;
 
     BodyTemporaryFile = False;
-    AWS4Using         = False;
 
     ResponseStatusCode = 0;
     ResponseBody       = Undefined;
@@ -374,6 +371,36 @@ Function UseGzipCompression(Val Flag) Export
 
 EndFunction
 
+// Use multipart fields at OAuth
+// Includes or excludes multipart body fields when calculating the OAuth signature depending on server requirements
+//
+// Note
+// Multipart fields are used for signature calculation by default
+//
+// Parameters:
+// Flag - Boolean - Sign of using multipart fields in OAuth - use
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function UseMultipartFieldsAtOAuth(Val Flag) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("UseMultipartFieldsAtOAuth: setting the value");
+        OPI_TypeConversion.GetBoolean(Flag);
+
+        SetSetting("MultipartAtOAuth", Flag);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
 #EndRegion
 
 #Region BodySet
@@ -497,7 +524,13 @@ Function SetJsonBody(Val Data) Export
         AddLog("SetJsonBody: beginning of body setting");
 
         If Not TypeOf(Data) = Type("BinaryData") Then
+
             OPI_TypeConversion.GetCollection(Data);
+
+            If Not TypeOf(Data)       = Type("Array") Then
+                RequestBodyCollection = Data;
+            EndIf;
+
         EndIf;
 
         SetBodyFromString(Data);
@@ -551,7 +584,8 @@ Function SetFormBody(Val Data) Export
 
         Else
 
-            Data = RequestParametersToString(Data);
+            RequestBodyCollection = Data;
+            Data                  = RequestParametersToString(Data);
 
         EndIf;
 
@@ -593,6 +627,8 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
         LineSeparator = Chars.CR + Chars.LF;
         Encoding      = GetSetting("EncodeRequestBody");
         RequestDataType = StrTemplate("multipart/%1; boundary=%2", View, Boundary);
+
+        RequestBodyCollection = New Structure;
 
         If UseFile Then
 
@@ -722,6 +758,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
 
             Value = ?(Value, "true", "false");
             RequestDataWriter.WriteLine(Value);
+            RequestBodyCollection.Insert(FieldName, Value);
 
         ElsIf ValeType = Type("BinaryData") Then
 
@@ -731,6 +768,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
 
             OPI_TypeConversion.GetLine(Value);
             RequestDataWriter.WriteLine(Value);
+            RequestBodyCollection.Insert(FieldName, Value);
 
         EndIf;
 
@@ -915,7 +953,9 @@ Function AddBearerAuthorization(Val Token) Export
         If StopExecution() Then Return ЭтотОбъект; EndIf;
 
         OPI_TypeConversion.GetLine(Token);
-        Bearer = Token;
+
+        AuthType = "bearer";
+        AuthData = Token;
 
         Return ЭтотОбъект;
 
@@ -942,14 +982,86 @@ Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Serv
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
 
-        String_   = "String";
-        AWS4Using = True;
+        String_  = "String";
+        AuthType = "aws4";
 
-        AWS4Data = New Structure;
-        OPI_Tools.AddField("AccessKey", AccessKey, String_, AWS4Data);
-        OPI_Tools.AddField("SecretKey", SecretKey, String_, AWS4Data);
-        OPI_Tools.AddField("Region"   , Region   , String_, AWS4Data);
-        OPI_Tools.AddField("Service"  , Service  , String_, AWS4Data);
+        AuthData = New Structure;
+        OPI_Tools.AddField("AccessKey", AccessKey, String_, AuthData);
+        OPI_Tools.AddField("SecretKey", SecretKey, String_, AuthData);
+        OPI_Tools.AddField("Region"   , Region   , String_, AuthData);
+        OPI_Tools.AddField("Service"  , Service  , String_, AuthData);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Add OAuth V1 authorization
+// Adds data for OAuth v1 authorization
+//
+// Note
+// By default, HMAC-SHA256 is used to create the signature. To change the algorithm, you can use^^
+// `SetOAuthV1Algorithm`
+//
+// Parameters:
+// Token - String - Token for authorization - token
+// Secret - String - Secret for authorization - secret
+// ConsumerKey - String - Consumer key for authorization - ck
+// ConsumerSecret - String - Consumer secret for authorization - cs
+// Version - String - API version - ver
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function AddOauthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        String_  = "String";
+        AuthType = "oauth1";
+
+        AuthData = New Structure;
+        OPI_Tools.AddField("OAuthToken"         , Token          , String_, AuthData);
+        OPI_Tools.AddField("OAuthSecret"        , Secret         , String_, AuthData);
+        OPI_Tools.AddField("OAuthConsumerKey"   , ConsumerKey    , String_, AuthData);
+        OPI_Tools.AddField("OAuthConsumerSecret", ConsumerSecret , String_, AuthData);
+        OPI_Tools.AddField("OAuthAlgorithm"     , "HMAC"         , String_, AuthData);
+        OPI_Tools.AddField("OAuthHashFunction"  , "SHA256"       , String_, AuthData);
+        OPI_Tools.AddField("OAuthAPIVersion"    , Version        , String_, AuthData);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Set OAuth V1 algorithm
+// Changes the algorithm for OAuth signatures
+//
+// Parameters:
+// Algorithm - String - Encryption algorithm: HMAC, RSA - alg
+// HashFunction - String - Hash function for signature: SHA1, SHA256 - hash
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SetOAuthV1Algorithm(Val Algorithm, Val HashFunction) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        If AuthType <> "oauth1" Then
+            Return Error("SetOAuthV1Algorithm: OAuth v1 authorization must be initialized before the algorithm is changed");
+        EndIf;
+
+        OPI_Tools.AddField("OAuthAlgorithm"   , Algorithm   , "String", AuthData);
+        OPI_Tools.AddField("OAuthHashFunction", HashFunction, "String", AuthData);
 
         Return ЭтотОбъект;
 
@@ -1530,15 +1642,7 @@ Function CompleteHeaders()
 
     EndIf;
 
-    If AWS4Using Then
-        AddLog("CompleteHeaders: generating AWS4 Authorization Header");
-        AddAWS4();
-    EndIf;
-
-    If ValueIsFilled(Bearer) Then
-        AddLog("CompleteHeaders: generating Bearer Authorization Header");
-        Request.Headers.Insert("Authorization", StrTemplate("Bearer %1", Bearer));
-    EndIf;
+    CompleteAuthHeaders();
 
     If GetSetting("gzip") Then
         AddLog("CompleteHeaders: setting the gzip header");
@@ -1554,6 +1658,33 @@ Function CompleteHeaders()
         For Each Title In RequestHeaders Do
             Request.Headers.Insert(Title.Key, Title.Value);
         EndDo;
+
+    EndIf;
+
+    Return ЭтотОбъект;
+
+EndFunction
+
+Function CompleteAuthHeaders()
+
+    If Not ValueIsFilled(AuthType) Then
+        Return ЭтотОбъект;
+    EndIf;
+
+    If AuthType = "aws4" Then
+
+        AddLog("CompleteAuthHeaders: generating AWS4 Authorization header");
+        AddAWS4();
+
+    ElsIf AuthType = "oauth1" Then
+
+        AddLog("CompleteAuthHeaders: generating OAuth V1 Authorization header");
+        AddOAuthV1Header();
+
+    Else
+
+        AddLog("CompleteAuthHeaders: generating Bearer Authorization header");
+        Request.Headers.Insert("Authorization", StrTemplate("Bearer %1", AuthData));
 
     EndIf;
 
@@ -2009,7 +2140,7 @@ EndFunction
 
 Function CreateAuthorizationHeader()
 
-    AccessKey   = AWS4Data["AccessKey"];
+    AccessKey   = AuthData["AccessKey"];
     CurrentDate = CurrentUniversalDate();
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
@@ -2029,16 +2160,16 @@ EndFunction
 
 Function GetMainSignatureParts(Val CurrentDate)
 
-    SecretKey = AWS4Data["SecretKey"];
-    Region    = AWS4Data["Region"];
-    Service   = AWS4Data["Service"];
+    SecretKey = AuthData["SecretKey"];
+    Region    = AuthData["Region"];
+    Service   = AuthData["Service"];
 
     SignKey          = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
     CanonicalRequest = CreateCanonicalRequest();
     Scope            = CreateScope(Region, Service, CurrentDate);
     StringToSign     = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
 
-    Signature = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
+    Signature = OPI_Cryptography.HMAC(SignKey, StringToSign, "SHA256");
     Signature = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Signature));
 
     HeadersKeys = GetHeadersKeysString();
@@ -2073,12 +2204,13 @@ Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate
     Region     = ПолучитьДвоичныеДанныеИзСтроки(Region);
     Service    = ПолучитьДвоичныеДанныеИзСтроки(Service);
     AWSRequest = ПолучитьДвоичныеДанныеИзСтроки("aws4_request");
+    SHA256_    = "SHA256";
 
-    DataKey    = OPI_Cryptography.HMACSHA256(SecretKey, DateData);
-    RegionKey  = OPI_Cryptography.HMACSHA256(DataKey, Region);
-    ServiceKey = OPI_Cryptography.HMACSHA256(RegionKey, Service);
+    DataKey    = OPI_Cryptography.HMAC(SecretKey, DateData, SHA256_);
+    RegionKey  = OPI_Cryptography.HMAC(DataKey, Region, SHA256_);
+    ServiceKey = OPI_Cryptography.HMAC(RegionKey, Service, SHA256_);
 
-    FinalKey = OPI_Cryptography.HMACSHA256(ServiceKey, AWSRequest);
+    FinalKey = OPI_Cryptography.HMAC(ServiceKey, AWSRequest, SHA256_);
 
     Return FinalKey;
 
@@ -2273,6 +2405,144 @@ EndProcedure
 
 #EndRegion
 
+#Region OAuth
+
+Function AddOAuthV1Header()
+
+    OAuthAlgorithm      = AuthData["OAuthAlgorithm"];
+    OAuthHashFunction   = AuthData["OAuthHashFunction"];
+    OAuthToken          = AuthData["OAuthToken"];
+    OAuthSecret         = AuthData["OAuthSecret"];
+    OAuthConsumerKey    = AuthData["OAuthConsumerKey"];
+    OAuthConsumerSecret = AuthData["OAuthConsumerSecret"];
+    OAuthAPIVersion     = AuthData["OAuthAPIVersion"];
+
+    HashingMethod       = OAuthAlgorithm + "-" + OAuthHashFunction;
+    CurrentDate         = OPI_Tools.GetCurrentDate();
+    AuthorizationHeader = "";
+    SignatureString     = "";
+    Signature           = "";
+
+    CurrentUNIXDate = OPI_Tools.UNIXTime(CurrentDate);
+    CurrentUNIXDate = OPI_Tools.NumberToString(CurrentUNIXDate);
+
+    ParametersTable = New ValueTable;
+    ParametersTable.Columns.Add("Key");
+    ParametersTable.Columns.Add("Value");
+
+    If Not ValueIsFilled(RequestBodyCollection)
+        Or Not OPI_Tools.ThisIsCollection(RequestBodyCollection, True) Then
+
+        Try
+            RequestBodyCollection = RequestBody;
+            OPI_TypeConversion.GetKeyValueCollection(RequestBodyCollection);
+        Except
+            RequestBodyCollection = New Structure;
+        EndTry;
+
+    EndIf;
+
+    If GetSetting("MultipartAtOAuth") Or Not Multipart Then
+        For Each Field In RequestBodyCollection Do
+
+            If TypeOf(Field.Value) = Type("BinaryData") Then
+                Continue;
+            EndIf;
+
+            NewLine       = ParametersTable.Add();
+            NewLine.Key   = Field.Key;
+            NewLine.Value = Field.Value;
+
+        EndDo;
+    EndIf;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_consumer_key";
+    NewLine.Value = OAuthConsumerKey;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_token";
+    NewLine.Value = OAuthToken;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_version";
+    NewLine.Value = OAuthAPIVersion;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_signature_method";
+    NewLine.Value = HashingMethod;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_timestamp";
+    NewLine.Value = CurrentUNIXDate;
+
+    NewLine       = ParametersTable.Add();
+    NewLine.Key   = "oauth_nonce";
+    NewLine.Value = CurrentUNIXDate;
+
+    For Each TableRow In ParametersTable Do
+
+        TableRow.Key   = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
+        TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
+
+    EndDo;
+
+    ParametersTable.Sort("Key");
+
+    For Each TableRow In ParametersTable Do
+
+        SignatureString = SignatureString
+            + TableRow.Key
+
+            + "="
+            + TableRow.Value
+            + "&";
+
+    EndDo;
+
+    SignatureString = Left(SignatureString, StrLen(SignatureString) - 1);
+    SignatureString = Upper(RequestMethod)
+        + "&"
+        + EncodeString(RequestURL     , StringEncodingMethod.URLencoding)
+        + "&"
+        + EncodeString(SignatureString, StringEncodingMethod.URLencoding);
+
+    Signature = EncodeString(OAuthConsumerSecret, StringEncodingMethod.URLencoding)
+        + "&"
+        + EncodeString(OAuthSecret, StringEncodingMethod.URLencoding);
+
+    SignBD      = ПолучитьДвоичныеДанныеИзСтроки(Signature);
+    SignatureBD = ПолучитьДвоичныеДанныеИзСтроки(SignatureString);
+
+    Signature = OPI_Cryptography.CreateSignature(SignBD, SignatureBD, OAuthAlgorithm, OAuthHashFunction);
+    Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
+
+    Delimiter = """,";
+
+    AuthorizationHeader = AuthorizationHeader
+        + "OAuth "
+        + "oauth_consumer_key=""" + OAuthConsumerKey + Delimiter
+
+        + "oauth_token=""" + OAuthToken + Delimiter
+
+        + "oauth_signature_method=""" + HashingMethod + Delimiter
+
+        + "oauth_timestamp=""" + CurrentUNIXDate + Delimiter
+
+        + "oauth_nonce=""" + CurrentUNIXDate + Delimiter
+
+        + "oauth_version=""" + OAuthAPIVersion + Delimiter
+
+        + "oauth_signature=" + Signature;
+
+    Request.Headers.Insert("Authorization", AuthorizationHeader);
+
+    Return ЭтотОбъект;
+
+EndFunction
+
+#EndRegion
+
 #Region Auxiliary
 
 Function StopExecution(Val ExceptionOnError = False)
@@ -2346,6 +2616,7 @@ Procedure SetDefaultSettings()
     Settings.Insert("SplitArrayParams"  , False);
     Settings.Insert("URLencoding"       , True);
     Settings.Insert("EncodeRequestBody" , "UTF-8");
+    Settings.Insert("MultipartAtOAuth"  , True);
 
 EndProcedure
 
