@@ -841,10 +841,13 @@ Procedure GW_Auth() Export
     OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
 
     GoogleWorkspace_FormCodeRetrievalLink(TestParameters);
     GoogleWorkspace_GetTokenByCode(TestParameters);
     GoogleWorkspace_RefreshToken(TestParameters);
+    GoogleWorkspace_GetServiceAccountToken(TestParameters);
 
 EndProcedure
 
@@ -5416,10 +5419,35 @@ Procedure GoogleWorkspace_RefreshToken(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Check_GoogleToken(Result);
-
     OPI_TestDataRetrieval.WriteParameter("Google_Token", Result["access_token"]);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleWorkspace_GetServiceAccountToken(FunctionParameters)
+
+    Data = FunctionParameters["Google_ServiceData"]; // URL, binary Data, file or collection
+
+    Token = FunctionParameters["Access_Token"]; // SKIP
+    Data  = OPI_HTTPRequests // SKIP
+        .NewRequest() // SKIP
+        .Initialize(Data) // SKIP
+        .AddBearerAuthorization(Token) // SKIP
+        .ProcessRequest("GET") // SKIP
+        .ReturnResponseAsBinaryData(); // SKIP
+
+    Scope = New Array;
+    Scope.Add("https://www.googleapis.com/auth/calendar");
+    Scope.Add("https://www.googleapis.com/auth/drive");
+    Scope.Add("https://www.googleapis.com/auth/spreadsheets");
+
+    Result = OPI_GoogleWorkspace.GetServiceAccountToken(Data, Scope);
+
+    // END
+
+    OPI_TestDataRetrieval.Check_GoogleToken(Result);
+    OPI_TestDataRetrieval.WriteParameter("Google_ServiceToken", Result["access_token"]);
 
 EndProcedure
 

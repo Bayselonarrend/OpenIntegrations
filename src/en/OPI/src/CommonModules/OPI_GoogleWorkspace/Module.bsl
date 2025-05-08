@@ -136,6 +136,73 @@ Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
 
 EndFunction
 
+// Get service account token
+// Gets authorization token by service account data
+//
+// Note
+// List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
+//
+// Parameters:
+// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
+// Scope - Array Of String - Scope or array of scopes - scope
+// Expire - Number - Token lifetime in seconds - exp
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Google
+Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
+
+    ErrorText = "The passed service account data is not valid JSON";
+    OPI_TypeConversion.GetKeyValueCollection(Data, ErrorText);
+    OPI_TypeConversion.GetNumber(Expire);
+    OPI_TypeConversion.GetArray(Scope);
+
+    RequiredFieldsArray = New Array;
+    RequiredFieldsArray.Add("token_uri");
+    RequiredFieldsArray.Add("client_email");
+    RequiredFieldsArray.Add("private_key");
+    RequiredFieldsArray.Add("private_key_id");
+
+    MissingFields = OPI_Tools.FindMissingCollectionFields(Data, RequiredFieldsArray);
+
+    If ValueIsFilled(MissingFields) Then
+
+        FieldsErrorPattern = "There are no required fields in the service account data: %1";
+        FieldsErrorText    = StrTemplate(FieldsErrorPattern, StrConcat(MissingFields, ", "));
+        Raise FieldsErrorText;
+
+    EndIf;
+
+    ScopeAsString = StrConcat(Scope, " ");
+    SignKey       = Data["private_key"];
+    URL           = Data["token_uri"];
+
+    CurrentDate = CurrentUniversalDate();
+    ExpireDate  = CurrentDate + Expire;
+
+    UnixTime = OPI_Tools.UnixTime(CurrentDate);
+    ExpTime  = OPI_Tools.UnixTime(ExpireDate);
+
+    Payload = New Structure;
+
+    Payload.Insert("iss"  , Data["client_email"]);
+    Payload.Insert("scope", ScopeAsString);
+    Payload.Insert("aud"  , URL);
+    Payload.Insert("exp"  , Number(ExpTime));
+    Payload.Insert("iat"  , Number(UnixTime));
+
+    AdditionalHeaders = New Structure("kid", Data["private_key_id"]);
+
+    JWT = OPI_Cryptography.JWT(Payload, SignKey, "RS256", AdditionalHeaders);
+
+    Grant         = "urn:ietf:params:oauth:grant-type:jwt-bearer";
+    BodyStructure = New Structure("grant_type,assertion", Grant, JWT);
+
+    Response = OPI_HTTPRequests.PostWithBody(URL, BodyStructure, , False);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region Internal
