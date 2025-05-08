@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 5
+description: Set OAuth V1 algorithm and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set OAuth V1 algorithm
+ Changes the algorithm for OAuth signatures
+
+
+
+`Function SetOAuthV1Algorithm(Val Algorithm, Val HashFunction) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Algorithm | --alg | String | &#x2714; | Encryption algorithm: HMAC, RSA |
+  | HashFunction | --hash | String | &#x2714; | Hash function for signature: SHA1, SHA256 |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

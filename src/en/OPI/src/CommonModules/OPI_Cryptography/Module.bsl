@@ -35,6 +35,48 @@
 
 #Region Internal
 
+Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export
+
+    OPI_TypeConversion.GetBinaryData(SignKey);
+    OPI_TypeConversion.GetBinaryData(SignatureData);
+    OPI_TypeConversion.GetLine(Algorithm);
+
+    Algorithm = Upper(Algorithm);
+    HashFunc  = Upper(HashFunc);
+
+    If Algorithm    = "HMAC" Then
+        Result      = HMAC(SignKey, SignatureData, HashFunc);
+    ElsIf Algorithm = "RSA" Then
+        Result      = RSA(SignKey, SignatureData, HashFunc);
+    Else
+        Raise "Cryptography processing error: unsupported method";
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function RSA(Val Key, Val Data, Val HashFunc) Export
+
+    AddIn = OPI_AddIns.GetAddIn("Cryptography");
+
+    If HashFunc    = "SHA256" Then
+        Result     = AddIn.RsaSha256(Key, Data);
+    ElsIf HashFunc = "SHA1" Then
+        Result     = AddIn.RsaSha1(Key, Data);
+    Else
+        Result     = "unsupported hashing method";
+    EndIf;
+
+    If TypeOf(Result) = Type("String") Then
+        Raise StrTemplate("Cryptography processing error: %1", Result);
+    Else
+        Return Result;
+    EndIf;
+
+EndFunction
+
+
 #Region BSP
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,27 +87,14 @@
 // https://creativecommons.org/licenses/by/4.0/legalcode
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Function HMACSHA256(Val Key, Val Data) Export
+Function HMAC(Val Key, Val Data, Val HashFunc) Export
 
-    Return HMAC(Key, Data, HashFunction.SHA256, 64);
-
-EndFunction
-
-Function Hash(BinaryData, Type) Export
-
-    Hashing = New DataHashing(Type);
-    Hashing.Append(BinaryData);
-
-    Return Hashing.HashSum;
-
-EndFunction
-
-Function HMAC(Val Key, Val Data, Type, BlockSize) Export
-
-    Twice = 2;
+    Twice     = 2;
+    BlockSize = 64;
+    HashType  = HashFunction[HashFunc];
 
     If Key.Size() > BlockSize Then
-        Key = Hash(Key, Type);
+        Key = Hash(Key, HashType);
     EndIf;
 
     If Key.Size() <= BlockSize Then
@@ -84,7 +113,16 @@ Function HMAC(Val Key, Val Data, Type, BlockSize) Export
     Opad.WriteBitwiseXor(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
 
-    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashType)), HashType);
+
+EndFunction
+
+Function Hash(BinaryData, Type) Export
+
+    Hashing = New DataHashing(Type);
+    Hashing.Append(BinaryData);
+
+    Return Hashing.HashSum;
 
 EndFunction
 

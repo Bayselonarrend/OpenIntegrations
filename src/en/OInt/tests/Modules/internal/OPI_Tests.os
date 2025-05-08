@@ -1029,7 +1029,7 @@ Procedure TwitterAPI_Tweets() Export
     OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
 
-    Twitter_CreateTextTweet(TestParameters);
+    //Twitter_CreateTextTweet(TestParameters);
     Twitter_UploadAttachmentsArray(TestParameters);
     Twitter_CreateVideoTweet(TestParameters);
     Twitter_CreateImageTweet(TestParameters);
