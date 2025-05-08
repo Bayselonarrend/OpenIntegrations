@@ -801,6 +801,14 @@ pipeline {
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_HTTP_Настройки"'
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_HTTP_УстановкаЗаголовков"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_HTTP_Авторизация"'
+               }
+
 			}
 		}
 
