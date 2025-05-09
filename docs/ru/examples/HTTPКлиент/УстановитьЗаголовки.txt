@@ -1,4 +1,4 @@
-﻿    URL    = "https://httpbin.org";
+﻿    URL = "https://httpbin.org";
     URL = URL + "/get";
 
     Заголовки = Новый Соответствие;

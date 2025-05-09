@@ -35,7 +35,19 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
 
+    AccessKey = "AccessKey";
+    SecretKey = "SecretKey";
+    Region    = "Region";
+
+    Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать()
+        .УстановитьURL(URL)
+        .ДобавитьAWS4Авторизацию(AccessKey, SecretKey, Region) // <---
+        .ОбработатьЗапрос("GET")
+        .ВернутьОтветКакJSONКоллекцию();
 ```
     
 

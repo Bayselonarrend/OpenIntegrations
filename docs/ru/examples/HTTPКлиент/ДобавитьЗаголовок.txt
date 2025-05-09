@@ -1,4 +1,4 @@
-﻿    URL    = "https://httpbin.org";
+﻿    URL = "https://httpbin.org";
     URL = URL + "/get";
 
     Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
