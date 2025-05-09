@@ -129,7 +129,7 @@ Function Initialize(Val URL = "") Export
     Initialized = True;
     Error       = False;
 
-    RequestURLParams      = New Array;
+    RequestURLParams      = New Structure;
     RequestBody           = Undefined;
     RequestBodyCollection = New Structure;
     RequestHeaders        = New Map;
@@ -371,27 +371,27 @@ Function UseGzipCompression(Val Flag) Export
 
 EndFunction
 
-// Use multipart fields at OAuth
-// Includes or excludes multipart body fields when calculating the OAuth signature depending on server requirements
+// Use body fields at OAuth
+// Includes or excludes body fields when calculating the OAuth signature depending on server requirements
 //
 // Note
-// Multipart fields are used for signature calculation by default
+// By default, the body data is used in the signature calculation
 //
 // Parameters:
-// Flag - Boolean - Sign of using multipart fields in OAuth - use
+// Flag - Boolean - Flag to use body fields in OAuth signature calculation - use
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function UseMultipartFieldsAtOAuth(Val Flag) Export
+Function UseBodyFiledsAtOAuth(Val Flag) Export
 
     Try
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
 
-        AddLog("UseMultipartFieldsAtOAuth: setting the value");
+        AddLog("UseBodyFiledsAtOAuth: setting the value");
         OPI_TypeConversion.GetBoolean(Flag);
 
-        SetSetting("MultipartAtOAuth", Flag);
+        SetSetting("BodyFieldsAtOAuth", Flag);
 
         Return ЭтотОбъект;
 
@@ -2430,21 +2430,39 @@ Function AddOAuthV1Header()
     ParametersTable.Columns.Add("Key");
     ParametersTable.Columns.Add("Value");
 
-    If GetSetting("MultipartAtOAuth") Or Not Multipart Then
+    If GetSetting("BodyFieldsAtOAuth") Then
 
         AddLog("AddOAuthV1Header: adding body fields to the signature string");
 
         For Each Field In RequestBodyCollection Do
 
-            If TypeOf(Field.Value) = Type("BinaryData") Then
+            CurrentValue = Field.Value;
+
+            If TypeOf(CurrentValue) = Type("BinaryData") Then
                 Continue;
+            Else
+                OPI_TypeConversion.GetLine(CurrentValue);
             EndIf;
 
             NewLine       = ParametersTable.Add();
             NewLine.Key   = Field.Key;
-            NewLine.Value = Field.Value;
+            NewLine.Value = CurrentValue;
 
         EndDo;
+    EndIf;
+
+    If ValueIsFilled(RequestURLParams) Then
+
+        AddLog("AddOAuthV1Header: adding URL parameters to the signature string");
+
+        For Each URLParameter In RequestURLParams Do
+
+            NewLine       = ParametersTable.Add();
+            NewLine.Key   = URLParameter.Key;
+            NewLine.Value = URLParameter.Value;
+
+        EndDo;
+
     EndIf;
 
     AddLog("AddOAuthV1Header: updating the signature string with credentials");
@@ -2613,7 +2631,7 @@ Procedure SetDefaultSettings()
     Settings.Insert("SplitArrayParams"  , False);
     Settings.Insert("URLencoding"       , True);
     Settings.Insert("EncodeRequestBody" , "UTF-8");
-    Settings.Insert("MultipartAtOAuth"  , True);
+    Settings.Insert("BodyFieldsAtOAuth" , True);
 
 EndProcedure
 

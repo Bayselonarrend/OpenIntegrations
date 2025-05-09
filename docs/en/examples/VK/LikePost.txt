@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    PostID     = "7738";
+    PostID     = "7867";
 
     Result = OPI_VK.LikePost(PostID, , Parameters);

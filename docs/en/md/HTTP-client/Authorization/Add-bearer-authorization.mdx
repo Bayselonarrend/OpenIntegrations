@@ -27,7 +27,15 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
 
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("123123") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 ```
  
 
