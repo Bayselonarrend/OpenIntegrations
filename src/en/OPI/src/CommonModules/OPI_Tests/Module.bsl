@@ -2669,7 +2669,7 @@ Procedure HTTP_Settings() Export
 
     HTTPClient_UseEncoding(TestParameters);
     HTTPClient_UseGzipCompression(TestParameters);
-    HTTPClient_UseMultipartFieldsAtOAuth(TestParameters);
+    HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
 
 EndProcedure
 
@@ -2689,6 +2689,10 @@ Procedure HTTP_Authorization() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
     HTTPClient_AddBasicAuthorization(TestParameters);
+    HTTPClient_AddBearerAuthorization(TestParameters);
+    HTTPClient_AddAWS4Authorization(TestParameters);
+    HTTPClient_AddOAuthV1Authorization(TestParameters);
+    HTTPClient_SetOAuthV1Algorithm(TestParameters);
 
 EndProcedure
 
@@ -21944,7 +21948,7 @@ Procedure HTTPClient_UseGzipCompression(FunctionParameters)
 
 EndProcedure
 
-Procedure HTTPClient_UseMultipartFieldsAtOAuth(FunctionParameters)
+Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -21964,7 +21968,7 @@ Procedure HTTPClient_UseMultipartFieldsAtOAuth(FunctionParameters)
         .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
         .AddMultipartFormDataField("field1", "Text")
         .AddMultipartFormDataField("field2", "10")
-        .UseMultipartFieldsAtOAuth(False) // <---
+        .UseBodyFiledsAtOAuth(False) // <---
         .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
         .ProcessRequest("POST")
         .ReturnResponseAsJSONObject();
@@ -21995,7 +21999,7 @@ Procedure HTTPClient_UseMultipartFieldsAtOAuth(FunctionParameters)
         .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
         .AddMultipartFormDataField("field1", "Text")
         .AddMultipartFormDataField("field2", "10")
-        .UseMultipartFieldsAtOAuth(True) // <---
+        .UseBodyFiledsAtOAuth(True) // <---
         .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
         .ProcessRequest("POST", False)
         .GetLog(True);
@@ -22007,7 +22011,7 @@ EndProcedure
 
 Procedure HTTPClient_SetHeaders(FunctionParameters)
 
-    URL    = FunctionParameters["HTTP_URL"];
+    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
 
     Headers = New Map;
@@ -22057,7 +22061,7 @@ EndProcedure
 
 Procedure HTTPClient_AddHeader(FunctionParameters)
 
-    URL    = FunctionParameters["HTTP_URL"];
+    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
 
     Result = OPI_HTTPRequests.NewRequest()
@@ -22106,7 +22110,7 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header3"]).Равно(Undefined);
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header4"]).Равно(Undefined);
-    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("1111");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer 1111");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -22124,13 +22128,13 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header3"]).Равно("BadValue");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Header4"]).Равно("BadValue");
-    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("1111");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer 1111");
 
 EndProcedure
 
 Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
 
-    URL    = FunctionParameters["HTTP_URL"];
+    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
 
     Result = OPI_HTTPRequests.NewRequest()
@@ -22155,6 +22159,146 @@ Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddBasicAuthorization", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
+
+EndProcedure
+
+Procedure HTTPClient_AddBearerAuthorization(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("123123") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddBearerAuthorization", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer " + "123123");
+
+EndProcedure
+
+Procedure HTTPClient_AddAWS4Authorization(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    AccessKey = "AccessKey";
+    SecretKey = "SecretKey";
+    Region    = "Region";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddAWS4Authorization(AccessKey, SecretKey, Region) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddAWS4Authorization", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["X-Amz-Content-Sha256"] = Undefined).Равно(False);
+
+EndProcedure
+
+Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddOauthV1Authorization", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+
+EndProcedure
+
+Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .SetOAuthV1Algorithm("HMAC", "SHA1") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddOauthV1Authorization", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
 
 EndProcedure
 
