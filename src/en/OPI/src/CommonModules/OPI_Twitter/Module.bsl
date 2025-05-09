@@ -259,7 +259,14 @@ EndFunction
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
 
     MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
-    Return CreateCustomTweet(Text, MediaArray, , , Parameters);
+
+    If TypeOf(MediaArray) = Type("Array") Then
+        Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
+    Else
+        Result               = MediaArray;
+    EndIf;
+
+    Return Result;
 
 EndFunction
 
@@ -276,7 +283,15 @@ EndFunction
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
     MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
-    Return CreateCustomTweet(Text, MediaArray, , , Parameters);
+
+    If TypeOf(MediaArray) = Type("Array") Then
+        Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
+    Else
+        Result               = MediaArray;
+    EndIf;
+
+    Return Result;
+
 
 EndFunction
 
@@ -293,7 +308,14 @@ EndFunction
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
 
     MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
-    Return CreateCustomTweet(Text, MediaArray, , , Parameters);
+
+    If TypeOf(MediaArray) = Type("Array") Then
+        Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
+    Else
+        Result               = MediaArray;
+    EndIf;
+
+    Return Result;
 
 EndFunction
 
@@ -586,14 +608,20 @@ Function Post(Val URL, Val Fields, Val SecretData, Val JSON = False, Val IsV2 = 
     UsersSecret = SecretData["oauth_consumer_secret"];
     Version     = "1.0";
 
-    HttpClient = OPI_HTTPRequests.NewRequest()
-        .Initialize(URL);
+    HttpClient = OPI_HTTPRequests.NewRequest().Initialize(URL);
 
     If IsV2 Then
+
         HttpClient.AddHeader("Authorization", "Bearer " + SecretData["access_token"]);
+
     Else
+
+        ActionWithAttachment = OPI_Tools.CollectionFieldExists(Fields, "media");
+
         HttpClient.AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
-            .SetOAuthV1Algorithm("HMAC", "SHA1");
+            .SetOAuthV1Algorithm("HMAC", "SHA1")
+            .UseBodyFiledsAtOAuth(Not ActionWithAttachment);
+
     EndIf;
 
     If JSON Then
@@ -619,7 +647,7 @@ Function PostMultipart(Val URL, Val Fields, Val SecretData)
         .StartMultipartBody()
         .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
         .SetOAuthV1Algorithm("HMAC", "SHA1")
-        .UseMultipartFieldsAtOAuth(False);
+        .UseBodyFiledsAtOAuth(False);
 
     For Each Parameter In Fields Do
         HttpClient.AddMultipartFormDataField(Parameter.Key, Parameter.Value);
