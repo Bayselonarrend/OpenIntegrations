@@ -9,7 +9,6 @@
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .StartMultipartBody()
         .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
         .SetOAuthV1Algorithm("HMAC", "SHA1") // <---
         .ProcessRequest("GET")
