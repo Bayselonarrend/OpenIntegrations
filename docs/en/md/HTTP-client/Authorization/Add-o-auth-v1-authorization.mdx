@@ -46,7 +46,6 @@ By default, HMAC-SHA256 is used to create the signature. To change the algorithm
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .StartMultipartBody()
         .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version) // <---
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
