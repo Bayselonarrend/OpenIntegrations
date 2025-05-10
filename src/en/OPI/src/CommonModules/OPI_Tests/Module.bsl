@@ -2696,6 +2696,15 @@ Procedure HTTP_Authorization() Export
 
 EndProcedure
 
+Procedure HTTP_RequestProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+
+    HTTPClient_ProcessRequest(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -22240,7 +22249,6 @@ Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .StartMultipartBody()
         .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version) // <---
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
@@ -22277,7 +22285,6 @@ Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .StartMultipartBody()
         .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
         .SetOAuthV1Algorithm("HMAC", "SHA1") // <---
         .ProcessRequest("GET")
@@ -22299,6 +22306,37 @@ Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddOauthV1Authorization", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+
+EndProcedure
+
+Procedure HTTPClient_ProcessRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET") // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "HTTPClient");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
 
 EndProcedure
 

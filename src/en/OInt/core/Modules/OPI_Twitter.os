@@ -263,7 +263,7 @@ Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
     If TypeOf(MediaArray) = Type("Array") Then
         Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
     Else
-        Result               = MediaArray;
+        Result            = MediaArray;
     EndIf;
 
     Return Result;
@@ -287,7 +287,7 @@ Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
     If TypeOf(MediaArray) = Type("Array") Then
         Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
     Else
-        Result               = MediaArray;
+        Result            = MediaArray;
     EndIf;
 
     Return Result;
@@ -312,7 +312,7 @@ Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
     If TypeOf(MediaArray) = Type("Array") Then
         Result            = CreateCustomTweet(Text, MediaArray, , , Parameters);
     Else
-        Result               = MediaArray;
+        Result            = MediaArray;
     EndIf;
 
     Return Result;
