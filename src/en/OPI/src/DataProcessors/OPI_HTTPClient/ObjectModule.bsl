@@ -114,9 +114,10 @@ Var LineSeparator; // Body line separator
 //
 // Note
 // The function must be called first when creating a new processor object
+// The URL can be set later using the `SetURL` function
 //
 // Parameters:
-// URL - String - URL address for request
+// URL - String - URL address for request - url
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -375,7 +376,7 @@ EndFunction
 // Includes or excludes body fields when calculating the OAuth signature depending on server requirements
 //
 // Note
-// By default, the body data is used in the signature calculation
+// By default, the body data is used in the signature calculation if it was set using the `SetFormBody` function
 //
 // Parameters:
 // Flag - Boolean - Flag to use body fields in OAuth signature calculation - use
@@ -590,6 +591,7 @@ Function SetFormBody(Val Data) Export
         EndIf;
 
         SetBodyFromString(Data);
+        SetSetting("BodyFieldsAtOAuth", True);
 
         AddLog(StrTemplate("SetFormBody: body set, size %1", RequestBody.Size()));
 
@@ -1117,25 +1119,22 @@ Function ProcessRequest(Val Method, Val Start = True) Export
 EndFunction
 
 // Execute request !NOCLI
-// Executes the request if it has been generated or set previously
+// Executes the request if it was created earlier
 //
 // Parameters:
-// Method - String - Request HTTP method - method
+// Forced - Boolean - Attempted execution without additional checks - force
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function ExecuteRequest(Val Method) Export
+Function ExecuteRequest(Forced = False) Export
 
     Try
 
         If StopExecution() Then Return ThisObject; EndIf;
 
-        OPI_TypeConversion.GetLine(Method);
-        RequestMethod = Method;
-
         AddLog("ExecuteRequest: executing");
 
-        Return ExecuteMethod();
+        Return ExecuteMethod(0, Forced);
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -1257,9 +1256,20 @@ Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = F
 
     If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
-    BodyAsString = GetResponseBody();
+    Try
+        BodyBinary = Undefined;
+        BodyBinary = GetResponseBody();
+    Except
 
-    Return BodyAsString;
+        Error = True;
+
+        If StopExecution(ExceptionOnError) And Not Forced Then
+            BodyBinary = ThisObject;
+        EndIf;
+
+    EndTry;
+
+    Return BodyBinary;
 
 EndFunction
 
@@ -1278,7 +1288,18 @@ Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False
 
     If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
-    BodyAsString = GetStringFromBinaryData(GetResponseBody());
+    Try
+        BodyAsString = Undefined;
+        BodyAsString = GetStringFromBinaryData(GetResponseBody());
+    Except
+
+        Error = True;
+
+        If StopExecution(ExceptionOnError) And Not Forced Then
+            BodyAsString = ThisObject;
+        EndIf;
+
+    EndTry;
 
     Return BodyAsString;
 
@@ -1299,7 +1320,18 @@ Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False
 
     If StopExecution(ExceptionOnError) And Not Forced Then Return ThisObject; EndIf;
 
-    BodyFileName = Response.GetBodyFileName();
+    Try
+        BodyFileName = Undefined;
+        BodyFileName       = Response.GetBodyFileName();
+    Except
+
+        Error = True;
+
+        If StopExecution(ExceptionOnError) And Not Forced Then
+            BodyFileName = ThisObject;
+        EndIf;
+
+    EndTry;
 
     Return BodyFileName;
 
@@ -1710,7 +1742,13 @@ Function SetRequestBody()
 
 EndFunction
 
-Function ExecuteMethod(Val RedirectCount = 0)
+Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
+
+    OPI_TypeConversion.GetBoolean(Forced);
+
+    If (Request = Undefined Or Connection = Undefined) And Not Forced Then
+        Return Error("ExecuteMethod: the request was not generated before execution");
+    EndIf;
 
     If ValueIsFilled(RequestOutputFile) Then
         Response = Connection.CallHTTPMethod(RequestMethod, Request, RequestOutputFile);
@@ -1731,7 +1769,7 @@ Function ExecuteMethod(Val RedirectCount = 0)
         CreateConnection();
         Request.ResourceAddress = RequestAdress;
 
-        ExecuteMethod(RedirectCount + 1);
+        ExecuteMethod(RedirectCount + 1, Forced);
 
     EndIf;
 
@@ -2631,7 +2669,7 @@ Procedure SetDefaultSettings()
     Settings.Insert("SplitArrayParams"  , False);
     Settings.Insert("URLencoding"       , True);
     Settings.Insert("EncodeRequestBody" , "UTF-8");
-    Settings.Insert("BodyFieldsAtOAuth" , True);
+    Settings.Insert("BodyFieldsAtOAuth" , False);
 
 EndProcedure
 
