@@ -2702,6 +2702,9 @@ Procedure HTTP_RequestProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
     HTTPClient_ProcessRequest(TestParameters);
+    HTTPClient_ExecuteRequest(TestParameters);
+    HTTPClient_ReturnRequest(TestParameters);
+    HTTPClient_ReturnConnection(TestParameters);
 
 EndProcedure
 
@@ -22337,6 +22340,111 @@ Procedure HTTPClient_ProcessRequest(FunctionParameters)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
+
+EndProcedure
+
+Procedure HTTPClient_ExecuteRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ExecuteRequest() // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Message("Cant replace origin");
+        Try
+            Message(Result.GetLog(True));
+        Except
+            Message(GetStringFromBinaryData(Result));
+        EndTry;
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteRequest", "HTTPClient");
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["args"].Count()).Равно(0);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnResponse(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteRequest (no execution)", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).Равно(Undefined);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ExecuteRequest()
+        .ReturnResponse(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteRequest (execution)", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result = Undefined).Равно(False);
+
+EndProcedure
+
+Procedure HTTPClient_ReturnRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnRequest(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnRequest", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPRequest");
+
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ReturnRequest(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnRequest (forced)", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).Равно(Undefined);
+
+EndProcedure
+
+Procedure HTTPClient_ReturnConnection(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnConnection(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnConnection", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPConnection");
+
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ReturnConnection(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnConnection (forced)", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).Равно(Undefined);
 
 EndProcedure
 
