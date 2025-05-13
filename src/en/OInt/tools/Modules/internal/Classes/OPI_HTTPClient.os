@@ -1322,7 +1322,7 @@ Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False
 
     Try
         BodyFileName = Undefined;
-        BodyFileName       = Response.GetBodyFileName();
+        BodyFileName = Response.GetBodyFileName();
     Except
 
         Error = True;
