@@ -318,6 +318,23 @@ Function DeleteTable(Val Table, Val Connection = "", Val Tls = "") Export
 
 EndFunction
 
+// Get table information
+// Gets information about the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
+
+    Result = OPI_SQLQueries.GetTableStructure(OPI_MySQL, Table, Connection, Tls);
+    Return Result;
+
+EndFunction
+
 // Add rows
 // Adds new rows to the table
 //
@@ -454,6 +471,7 @@ Function GetFeatures() Export
     Features = New Map;
     Features.Insert("ParameterNumeration", False);
     Features.Insert("ParameterMarker"    , "?");
+    Features.Insert("DBMS"               , "mysql");
 
     Return Features;
 

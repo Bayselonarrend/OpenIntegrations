@@ -301,16 +301,7 @@ EndFunction
 // Map Of KeyAndValue - Result of query execution
 Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
 
-    OPI_TypeConversion.GetLine(Table);
-
-    TextSQL           = "SELECT column_name, data_type, character_maximum_length
-    |FROM information_schema.columns
-    |WHERE table_name = '%1';";
-
-    TextSQL = StrTemplate(TextSQL, Table);
-
-    Result = ExecuteSQLQuery(TextSQL, , , Connection, Tls);
-
+    Result = OPI_SQLQueries.GetTableStructure(OPI_PostgreSQL, Table, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -506,6 +497,7 @@ Function GetFeatures() Export
     Features = New Map;
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "$");
+    Features.Insert("DBMS"               , "postgres");
 
     Return Features;
 

@@ -2374,6 +2374,7 @@ Procedure CLI_MYS_ORM() Export
 
     CLI_MySQL_CreateDatabase(TestParameters);
     CLI_MySQL_CreateTable(TestParameters);
+    CLI_MySQL_GetTableInformation(TestParameters);
     CLI_MySQL_AddRecords(TestParameters);
     CLI_MySQL_GetRecords(TestParameters);
     CLI_MySQL_UpdateRecords(TestParameters);
@@ -21590,6 +21591,48 @@ Procedure CLI_MySQL_GetTlsSettings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "MySQL");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation", "MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
+
+    Table = "heyho";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation (error)", "MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
 EndProcedure
 

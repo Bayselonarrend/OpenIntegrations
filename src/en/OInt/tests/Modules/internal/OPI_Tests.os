@@ -2414,6 +2414,7 @@ Procedure MYS_ORM() Export
 
     MySQL_CreateDatabase(TestParameters);
     MySQL_CreateTable(TestParameters);
+    MySQL_GetTableInformation(TestParameters);
     MySQL_AddRecords(TestParameters);
     MySQL_GetRecords(TestParameters);
     MySQL_UpdateRecords(TestParameters);
@@ -19575,6 +19576,48 @@ Procedure MySQL_GetTlsSettings(FunctionParameters)
 
 EndProcedure
 
+Procedure MySQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.GetTableInformation(Table, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "OPI_MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (TLS)", "OPI_MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
+
+    Table = "heyho";
+
+    Result = OPI_MySQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (error)", "OPI_MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
 #EndRegion
 
 #Region GreenAPI
@@ -22719,7 +22762,7 @@ Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
     CorrectVariant1 = "/page?arrayfield=val1&arrayfield=val2&arrayfield=val3";
     OPI_TestDataRetrieval.ExpectsThat(Separation).Равно(CorrectVariant1);
 
-    CorrectVariant2 = "/page?arrayfield=%5Bval1%2Cval2%2Cval3%5D";
+    CorrectVariant2 = "/page?arrayfield=[val1,val2,val3]";
     OPI_TestDataRetrieval.ExpectsThat(NoSeparation).Равно(CorrectVariant2);
 
     CorrectVariant3 = "/page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3";

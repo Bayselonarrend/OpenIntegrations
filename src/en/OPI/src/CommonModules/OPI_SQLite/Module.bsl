@@ -235,13 +235,7 @@ EndFunction
 // Map Of KeyAndValue - Result of query execution
 Function GetTableInformation(Val Table, Val Connection = "") Export
 
-    OPI_TypeConversion.GetLine(Table);
-
-    TextSQL = "PRAGMA table_info('%1')";
-    TextSQL = StrTemplate(TextSQL, Table);
-
-    Result = ExecuteSQLQuery(TextSQL, , True, Connection);
-
+    Result = OPI_SQLQueries.GetTableStructure(OPI_SQLite, Table, Connection);
     Return Result;
 
 EndFunction
@@ -410,6 +404,7 @@ Function GetFeatures() Export
     Features = New Map;
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "?");
+    Features.Insert("DBMS"               , "sqlite");
 
     Return Features;
 
