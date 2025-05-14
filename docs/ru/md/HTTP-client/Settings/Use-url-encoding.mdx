@@ -64,4 +64,9 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Результат"
+{
+ "Без кодирования": "/page?param1=search?text&param2=John Doe&param3=value&another&param4=кириллица&param5=<script>alert('XSS')</script>",
+ "С кодированием": "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E"
+}
+```
