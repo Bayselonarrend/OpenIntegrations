@@ -1,9 +1,9 @@
 ﻿    Parameters = GetVKParameters();
 
-    CampaignNumber = "1031307788";
+    CampaignNumber = "1031318248";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "7867";
+    PostID         = "7913";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber, DailyLimit, CategoryNumber, PostID, AccountID,

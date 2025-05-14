@@ -1461,6 +1461,10 @@ Function ConvertParameterToString(Val Value)
 
         Value = StrConcat(Value, ",");
 
+        If EncodeURL Then
+            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+        EndIf;
+
         Value = "[" + Value + "]";
 
     ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
@@ -1482,10 +1486,10 @@ Function ConvertParameterToString(Val Value)
 
         OPI_TypeConversion.GetLine(Value);
 
-    EndIf;
+        If EncodeURL Then
+            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+        EndIf;
 
-    If EncodeURL Then
-        Value = EncodeString(Value, StringEncodingMethod.URLencoding);
     EndIf;
 
     Return Value;
