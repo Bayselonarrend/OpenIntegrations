@@ -1663,6 +1663,10 @@ def test_mysql(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ПолучитьИнформациюОТаблице --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe mysql ДобавитьЗаписи --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
                }
 

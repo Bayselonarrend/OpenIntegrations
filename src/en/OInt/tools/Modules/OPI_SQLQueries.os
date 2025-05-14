@@ -220,6 +220,19 @@ Function ClearTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefi
 
 EndFunction
 
+Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+
+    Scheme = NewSQLScheme("TABLESCHEMA", Module);
+
+    SetTableName(Scheme, Table);
+
+    Request = FormSQLText(Scheme);
+    Result  = ExecuteSQLQuery(Module, Request, , True, Connection, Tls);
+
+    Return Result;
+
+EndFunction
+
 Function GetRecordsFilterStrucutre(Val Clear = False) Export
 
     FilterStructure = New Structure;
@@ -287,6 +300,10 @@ Function NewSQLScheme(Val Action, Val Module = Undefined)
 
         Scheme = EmptySchemeDropDatabase();
 
+    ElsIf Action = "TABLESCHEMA" Then
+
+        Scheme = EmptySchemeTableSchema();
+
     Else
 
         Scheme = New Structure;
@@ -299,6 +316,7 @@ Function NewSQLScheme(Val Action, Val Module = Undefined)
 
     Scheme.Insert("nump" , Features["ParameterNumeration"]);
     Scheme.Insert("markp", Features["ParameterMarker"]);
+    Scheme.Insert("dbms" , Features["DBMS"]);
 
     Return Scheme;
 
@@ -406,6 +424,17 @@ Function EmptySchemeDropDatabase()
 
 EndFunction
 
+Function EmptySchemeTableSchema()
+
+    Scheme = New Structure("type", "TABLESCHEMA");
+
+    Scheme.Insert("table" , "");
+    Scheme.Insert("common", True);
+
+    Return Scheme;
+
+EndFunction
+
 #EndRegion
 
 #Region Processors
@@ -458,6 +487,11 @@ Function FormSQLText(Val Scheme)
     ElsIf SchemeType = "DROPDATABASE" Then
 
         QueryText = FormTextDropDatabase(Scheme);
+
+    ElsIf SchemeType = "TABLESCHEMA" Then
+
+        QueryText = FormTextTableSchema(Scheme);
+
     Else
 
         QueryText = "";
@@ -652,6 +686,29 @@ Function FormTextDropDatabase(Val Scheme)
     SQLTemplate = "DROP DATABASE %1;";
 
     TextSQL = StrTemplate(SQLTemplate, Base);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextTableSchema(Val Scheme)
+
+    DBMS  = Scheme["dbms"];
+    Table = Scheme["table"];
+
+    If DBMS = "sqlite" Then
+
+        SQLTemplate = "PRAGMA table_info('%1');";
+
+    Else
+
+        SQLTemplate       = "SELECT column_name, data_type, is_nullable, column_default, character_maximum_length
+        |FROM information_schema.columns
+        |WHERE table_name = '%1';";
+
+    EndIf;
+
+    TextSQL = StrTemplate(SQLTemplate, Table);
 
     Return TextSQL;
 
@@ -1074,11 +1131,20 @@ Procedure SetLimit(Scheme, Val Count)
 
 EndProcedure
 
+Procedure SetCustomField(Scheme, Val FieldName, Val Value, Val DataType)
+
+    OPI_TypeConversion.GetLine(FieldName);
+
+    OPI_Tools.AddField(FieldName, Value, DataType, Scheme);
+
+EndProcedure
+
 Procedure ReplaceDefaultFeatures(Features)
 
     DefaultFeatures = New Map;
     DefaultFeatures.Insert("ParameterNumeration", True); // nump
     DefaultFeatures.Insert("ParameterMarker"    , "?"); // markp
+    DefaultFeatures.Insert("DBMS"               , ""); // dbms
 
     For Each Feature In Features Do
         DefaultFeatures.Insert(Feature.Key, Feature.Value);
