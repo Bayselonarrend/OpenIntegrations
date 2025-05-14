@@ -12,7 +12,7 @@ The Open Integration Package is a project with three development paths: 1C, OneS
 These release options are various forms of distribution for the extension for the 1C:Enterprise platform
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/1.png').default} width="86" align="left"/>
-**OpenIntegrations_x.x.x.cfe** - the standard distribution option for the 1C configuration extension. To start working, it is sufficient to load it into the list of extensions for your specific configuration. Development is carried out in compatibility mode with 1C 8.3.9.
+**OpenIntegrations_x.x.x.cfe** - the standard distribution option for the 1C configuration extension. To start working, it is sufficient to load it into the list of extensions for your specific configuration. Development is carried out in compatibility mode with 1C 8.3.10.
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/2.png').default} width="86" align="left"/>
 **XML.zip** - this is a zip archive that contains the files of the standard 1C extension export "to files". Similar to the CFE option, the unpacked archive can be used to load the extension through the Configuration Extensions panel in a specific project
