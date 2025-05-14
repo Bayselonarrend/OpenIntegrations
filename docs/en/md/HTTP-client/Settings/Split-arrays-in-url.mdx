@@ -1,0 +1,74 @@
+﻿---
+sidebar_position: 5
+description: Split arrays in URL and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Split arrays in URL
+ Defines the representation of arrays in URL parameters: as a whole JSON array or separate parameters for each element
+
+
+
+`Function SplitArraysInURL(Val Flag, Val SquareBrackets = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Flag | --split | Boolean | &#x2714; | Flag for dividing the array into individual URL parameters |
+  | SquareBrackets | --php | Boolean | &#x2716; | Add PHP style empty brackets to keys (key[]=value) if Flag = True |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+By default, arrays are interpreted as a single parameter with JSON array in value
+
+By default, square brackets to parameter keys are not set when array splitting is performed
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ArrayParam = New Array;
+    ArrayParam.Add("val1");
+    ArrayParam.Add("val2");
+    ArrayParam.Add("val3");
+
+    ParametersStructure = New Structure("arrayfield", ArrayParam);
+
+    Separation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    SeparationPhp = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True, True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    NoSeparation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+```
+ 
+
+
+
+
