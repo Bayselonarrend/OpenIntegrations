@@ -214,7 +214,7 @@ Function SetURLParams(Val Value) Export
         ErrorText = "SetURLParams: the passed parameters are not a key/value collection";
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
 
-        RequestURLParams = Value;
+        RequestURLParams = OPI_Tools.CopyCollection(Value);
 
         Return ЭтотОбъект;
 
@@ -279,6 +279,37 @@ Function SetDataType(Val Value) Export
 
         RequestDataType       = Value;
         RequestTypeSetManualy = True;
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Set proxy !NOCLI
+// Sets the proxy settings for the connection
+//
+// Parameters:
+// Settings - InternetProxy - Proxy settings - proxy
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SetProxy(Val Settings) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        If TypeOf(Settings) = Type("InternetProxy") Then
+
+            AddLog("SetProxy: setting the value");
+            RequestProxy = Settings;
+
+        Else
+            Error("SetProxy: passed settings are not an object of the InternetProxy type");
+        EndIf;
 
         Return ЭтотОбъект;
 
@@ -372,7 +403,7 @@ Function UseGzipCompression(Val Flag) Export
 
 EndFunction
 
-// Use body fields at OAuth
+// Use body fields at OAuth !NOCLI
 // Includes or excludes body fields when calculating the OAuth signature depending on server requirements
 //
 // Note
@@ -393,6 +424,77 @@ Function UseBodyFiledsAtOAuth(Val Flag) Export
         OPI_TypeConversion.GetBoolean(Flag);
 
         SetSetting("BodyFieldsAtOAuth", Flag);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Use URL encoding !NOCLI
+// Enables or disables standard encoding of special characters in URLs
+//
+// Note
+// URL encoding is enabled by default
+//
+// Parameters:
+// Flag - Boolean - Flag to use URL encoding - enc
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function UseURLEncoding(Val Flag) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("UseURLEncoding: setting the value");
+        OPI_TypeConversion.GetBoolean(Flag);
+
+        SetSetting("URLencoding", Flag);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Split arrays in URL
+// Defines the representation of arrays in URL parameters: as a whole JSON array or separate parameters for each element
+//
+// Note
+// By default, arrays are interpreted as a single parameter with JSON array in value
+// By default, square brackets to parameter keys are not set when array splitting is performed
+//
+// Parameters:
+// Flag - Boolean - Flag for dividing the array into individual URL parameters - split
+// SquareBrackets - Boolean - Add PHP style empty brackets to keys (key[]=value) if Flag = True - php
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SplitArraysInURL(Val Flag, Val SquareBrackets = Undefined) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("SplitArraysInURL: setting the value");
+        OPI_TypeConversion.GetBoolean(Flag);
+
+        If SquareBrackets <> Undefined Then
+
+            AddLog("SplitArraysInURL: square brackets option setting");
+            OPI_TypeConversion.GetBoolean(SquareBrackets);
+
+            SetSetting("ArraysSquareBrackets", SquareBrackets);
+
+        EndIf;
+
+        SetSetting("SplitArrayParams", Flag);
 
         Return ЭтотОбъект;
 
@@ -529,7 +631,7 @@ Function SetJsonBody(Val Data) Export
             OPI_TypeConversion.GetCollection(Data);
 
             If Not TypeOf(Data)       = Type("Array") Then
-                RequestBodyCollection = Data;
+                RequestBodyCollection = OPI_Tools.CopyCollection(Data);
             EndIf;
 
         EndIf;
@@ -585,7 +687,7 @@ Function SetFormBody(Val Data) Export
 
         Else
 
-            RequestBodyCollection = Data;
+            RequestBodyCollection = OPI_Tools.CopyCollection(Data);
             Data                  = RequestParametersToString(Data);
 
         EndIf;
@@ -784,7 +886,7 @@ Function AddMultipartFormDataField(Val FieldName, Val Value) Export
 
 EndFunction
 
-// Add data as Related
+// Add data as Related !NOCLI
 // Adds data to the multipart/related body
 //
 // Note
@@ -1040,7 +1142,7 @@ Function AddOAuthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val Con
 
 EndFunction
 
-// Set OAuth V1 algorithm
+// Set OAuth V1 algorithm !NOCLI
 // Changes the algorithm for OAuth signatures
 //
 // Parameters:
@@ -1351,20 +1453,19 @@ Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
 
+        Value = OPI_Tools.CopyCollection(Value);
+
         For N        = 0 To Value.UBound() Do
             Value[N] = ConvertParameterToString(Value[N]);
         EndDo;
 
         Value = StrConcat(Value, ",");
 
-        If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
-        EndIf;
-
         Value = "[" + Value + "]";
 
     ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
 
+        Value          = OPI_Tools.CopyCollection(Value);
         JSONParameters = New JSONWriterSettings(JSONLineBreak.None, "");
 
         JSONWriter = New JSONWriter;
@@ -1381,10 +1482,10 @@ Function ConvertParameterToString(Val Value)
 
         OPI_TypeConversion.GetLine(Value);
 
-        If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
-        EndIf;
+    EndIf;
 
+    If EncodeURL Then
+        Value = EncodeString(Value, StringEncodingMethod.URLencoding);
     EndIf;
 
     Return Value;
@@ -1612,7 +1713,8 @@ EndFunction
 
 Function SplitArrayAsURLParameters(Val Key, Val Value)
 
-    KeyArray = Key + "=";
+    KeyArray = StrTemplate("%1%2=", Key, ?(GetSetting("ArraysSquareBrackets"), "[]", ""));
+    Value = OPI_Tools.CopyCollection(Value);
 
     For N = 0 To Value.UBound() Do
 
@@ -2665,11 +2767,12 @@ Procedure SetDefaultSettings()
     AddLog("SetDefaultSettings: configuration setting");
 
     Settings = New Structure;
-    Settings.Insert("gzip"              , True);
-    Settings.Insert("SplitArrayParams"  , False);
-    Settings.Insert("URLencoding"       , True);
-    Settings.Insert("EncodeRequestBody" , "UTF-8");
-    Settings.Insert("BodyFieldsAtOAuth" , False);
+    Settings.Insert("gzip"                 , True);
+    Settings.Insert("SplitArrayParams"     , False);
+    Settings.Insert("ArraysSquareBrackets" , False);
+    Settings.Insert("URLencoding"          , True);
+    Settings.Insert("EncodeRequestBody"    , "UTF-8");
+    Settings.Insert("BodyFieldsAtOAuth"    , False);
 
 EndProcedure
 

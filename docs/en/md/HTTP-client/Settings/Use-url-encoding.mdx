@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 4
+description: Use URL encoding  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Use URL encoding 
+ Enables or disables standard encoding of special characters in URLs
+
+
+
+`Function UseURLEncoding(Val Flag) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Flag | - | Boolean | &#x2714; | Flag to use URL encoding |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+:::tip
+URL encoding is enabled by default
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("param1", "search?text");
+    ParametersStructure.Insert("param2", "John Doe");
+    ParametersStructure.Insert("param3", "value&another");
+    ParametersStructure.Insert("param4", "cyrillic");
+    ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
+
+    NoEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .UseURLEncoding(False) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    WithEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+```
+ 
+
+
+
+
