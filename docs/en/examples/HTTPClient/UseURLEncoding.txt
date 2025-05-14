@@ -1,0 +1,24 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("param1", "search?text");
+    ParametersStructure.Insert("param2", "John Doe");
+    ParametersStructure.Insert("param3", "value&another");
+    ParametersStructure.Insert("param4", "cyrillic");
+    ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
+
+    NoEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .UseURLEncoding(False) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    WithEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;

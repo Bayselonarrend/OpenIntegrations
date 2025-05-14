@@ -1,0 +1,14 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ProxySettings = New InternetProxy;
+
+    ProxySettings.User     = "user";
+    ProxySettings.Password = "password";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetProxy(ProxySettings) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();

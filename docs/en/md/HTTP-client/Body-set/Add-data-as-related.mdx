@@ -1,13 +1,13 @@
 ﻿---
 sidebar_position: 8
-description: Add data as Related and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Add data as Related  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Add data as Related
+# Add data as Related 
  Adds data to the multipart/related body
 
 
@@ -16,9 +16,9 @@ import TabItem from '@theme/TabItem';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Data | --data | Arbitrary | &#x2714; | Data to be written |
-  | DataType | --mime | String | &#x2714; | MIME type of data |
-  | ContentID | --cid | String | &#x2716; | Content ID, if required |
+  | Data | - | Arbitrary | &#x2714; | Data to be written |
+  | DataType | - | String | &#x2714; | MIME type of data |
+  | ContentID | - | String | &#x2716; | Content ID, if required |
 
   
   Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
@@ -27,6 +27,10 @@ import TabItem from '@theme/TabItem';
 
 :::tip
 The Multipart record must first be initialized using the `StartMultipartBody` function
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
 :::
 <br/>
 
