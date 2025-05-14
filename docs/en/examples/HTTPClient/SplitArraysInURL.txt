@@ -1,0 +1,32 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ArrayParam = New Array;
+    ArrayParam.Add("val1");
+    ArrayParam.Add("val2");
+    ArrayParam.Add("val3");
+
+    ParametersStructure = New Structure("arrayfield", ArrayParam);
+
+    Separation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    SeparationPhp = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True, True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    NoSeparation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;

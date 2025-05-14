@@ -2641,6 +2641,7 @@ Procedure HTTP_Initialization() Export
     HTTPClient_SetResponseFile(TestParameters);
     HTTPClient_SetDataType(TestParameters);
     HTTPClient_GetLog(TestParameters);
+    HTTPClient_SetProxy(TestParameters);
 
 EndProcedure
 
@@ -2670,6 +2671,8 @@ Procedure HTTP_Settings() Export
     HTTPClient_UseEncoding(TestParameters);
     HTTPClient_UseGzipCompression(TestParameters);
     HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
+    HTTPClient_UseURLEncoding(TestParameters);
+    HTTPClient_SplitArraysInURL(TestParameters);
 
 EndProcedure
 
@@ -22598,6 +22601,129 @@ Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "File deletion error", "HTTPClient");
     EndTry;
+
+EndProcedure
+
+Procedure HTTPClient_SetProxy(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ProxySettings = New InternetProxy;
+
+    ProxySettings.User     = "user";
+    ProxySettings.Password = "password";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetProxy(ProxySettings) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetProxy", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPConnection");
+    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.User).Равно("user");
+    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.Password).Равно("password");
+
+EndProcedure
+
+Procedure HTTPClient_UseURLEncoding(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("param1", "search?text");
+    ParametersStructure.Insert("param2", "John Doe");
+    ParametersStructure.Insert("param3", "value&another");
+    ParametersStructure.Insert("param4", "cyrillic");
+    ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
+
+    NoEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .UseURLEncoding(False) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    WithEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    // END
+
+    Result = New Map;
+    Result.Insert("No encoding"   , NoEncoding);
+    Result.Insert("With encoding" , WithEncoding);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UseURLEncoding", "HTTPClient");
+
+    CorrectVariant1 = "/page?param1=search?text&param2=John Doe&param3=value&another&param4=кириллица&param5=<script>alert('XSS')</script>";
+    OPI_TestDataRetrieval.ExpectsThat(NoEncoding).Равно(CorrectVariant1);
+
+    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
+    OPI_TestDataRetrieval.ExpectsThat(WithEncoding).Равно(CorrectVariant2);
+
+EndProcedure
+
+Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ArrayParam = New Array;
+    ArrayParam.Add("val1");
+    ArrayParam.Add("val2");
+    ArrayParam.Add("val3");
+
+    ParametersStructure = New Structure("arrayfield", ArrayParam);
+
+    Separation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    SeparationPhp = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True, True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    NoSeparation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    // END
+
+    Result = StrTemplate("No separation: %1;
+    |Separation: %2
+    |Separation (php): %3", NoSeparation, Separation, SeparationPhp);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SplitArraysInURL", "HTTPClient");
+
+    CorrectVariant1 = "/page?arrayfield=val1&arrayfield=val2&arrayfield=val3";
+    OPI_TestDataRetrieval.ExpectsThat(Separation).Равно(CorrectVariant1);
+
+    CorrectVariant2 = "/page?arrayfield=%5Bval1%2Cval2%2Cval3%5D";
+    OPI_TestDataRetrieval.ExpectsThat(NoSeparation).Равно(CorrectVariant2);
+
+    CorrectVariant3 = "/page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3";
+    OPI_TestDataRetrieval.ExpectsThat(SeparationPhp).Равно(CorrectVariant3);
 
 EndProcedure
 
