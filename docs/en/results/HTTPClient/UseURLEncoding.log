@@ -1,4 +1,0 @@
-﻿ {
- "No encoding": "/page?param1=search?text&param2=John Doe&param3=value&another&param4=cyrillic&param5=<script>alert('XSS')</script>",
- "With encoding": "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=cyrillic&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E"
-}
