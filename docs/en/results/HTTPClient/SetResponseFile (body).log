@@ -1,0 +1,1 @@
+﻿ "{\n  \"args\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Charset\": \"utf-8\", \n    \"Accept-Encoding\": \"gzip\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"1Script v$1.9.2.10\", \n    \"X-Amzn-Trace-Id\": \"Root=1-682cd687-42d56cef246a2584322143f9\"\n  }, \n  \"origin\": \"93.125.42.204\", \n  \"url\": \"https://httpbin.org/get\"\n}\n"
