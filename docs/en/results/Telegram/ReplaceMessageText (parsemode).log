@@ -1,0 +1,28 @@
+﻿ {
+ "ok": true,
+ "result": {
+  "message_id": 17184,
+  "sender_chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "date": 1747756733,
+  "edit_date": 1747756740,
+  "text": "Bold text",
+  "entities": [
+   {
+    "offset": 0,
+    "length": 9,
+    "type": "bold"
+   }
+  ]
+ }
+}
