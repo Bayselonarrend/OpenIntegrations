@@ -1,4 +1,4 @@
 oint cdek СоздатьОтказ \
   --token "***" \
-  --uuid "269898b8-10d8-419a-a03b-7603afe55dea" \
+  --uuid "5adf859f-4a27-4a76-808a-cc3219ed230e" \
   --testapi "***"
