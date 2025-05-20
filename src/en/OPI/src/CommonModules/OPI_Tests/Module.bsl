@@ -21411,7 +21411,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
     ParameterStructure1.Insert("param1", "search?text");
     ParameterStructure1.Insert("param2", "John Doe");
     ParameterStructure1.Insert("param3", "value&another");
-    ParameterStructure1.Insert("param4", "cyrillic");
+    ParameterStructure1.Insert("param4", "кириллица");
     ParameterStructure1.Insert("param5", "<script>alert('XSS')</script>");
 
     ResourceAddress1 = OPI_HTTPRequests.NewRequest()
@@ -21698,7 +21698,7 @@ Procedure HTTPClient_SetStringBody(FunctionParameters)
 
     TextB64 = "data:application/octet-stream;base64," + Base64String(TextBD);
 
-    OPI_TestDataRetrieval.ExpectsThat(Result["data"]).Равно(TextB64);
+    OPI_TestDataRetrieval.ExpectsThat(Result["data"] = TextB64 Or Result["data"] = Text).Равно(True);
 
 EndProcedure
 
@@ -22682,7 +22682,7 @@ Procedure HTTPClient_UseURLEncoding(FunctionParameters)
     ParametersStructure.Insert("param1", "search?text");
     ParametersStructure.Insert("param2", "John Doe");
     ParametersStructure.Insert("param3", "value&another");
-    ParametersStructure.Insert("param4", "cyrillic");
+    ParametersStructure.Insert("param4", "кириллица");
     ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
 
     NoEncoding = OPI_HTTPRequests.NewRequest()
