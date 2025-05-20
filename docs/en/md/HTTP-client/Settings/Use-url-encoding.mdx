@@ -42,7 +42,7 @@ URL encoding is enabled by default
     ParametersStructure.Insert("param1", "search?text");
     ParametersStructure.Insert("param2", "John Doe");
     ParametersStructure.Insert("param3", "value&another");
-    ParametersStructure.Insert("param4", "cyrillic");
+    ParametersStructure.Insert("param4", "кириллица");
     ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
 
     NoEncoding = OPI_HTTPRequests.NewRequest()
