@@ -21463,7 +21463,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
     ParameterStructure4.Insert("param2", "John Doe");
 
     ResourceAddress4 = OPI_HTTPRequests.NewRequest()
-        .Initialize("https://example.com/путь with spaces")
+        .Initialize("https://example.com/path with spaces")
         .SetURLParams(ParameterStructure4)
         .ProcessRequest("GET", False)
         .ReturnRequest()
