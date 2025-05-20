@@ -1,0 +1,25 @@
+﻿ {
+ "args": {},
+ "data": "",
+ "files": {
+  "file1": "..."
+ },
+ "form": {
+  "field1": "Text",
+  "field2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1747767000\",oauth_nonce=\"1747767000\",oauth_version=\"1.0\",oauth_signature=tus2gTVjvayXtBkUUdbhiv0bWpedesx%2FsDgFwFRPeuY%3D",
+  "Content-Length": "2114372",
+  "Content-Type": "multipart/form-data; boundary=b40ebc5c096945adaa7775b729365fce",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-682cb2b8-213540510836597a6230c216"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
