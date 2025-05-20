@@ -1,0 +1,24 @@
+﻿ {
+ "args": {},
+ "data": "",
+ "files": {
+  "file1": "..."
+ },
+ "form": {
+  "Field1": "Text",
+  "Field2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "2114372",
+  "Content-Type": "multipart/form-data; boundary=5e72ac80b8b046caabe050446d3ce734",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-682cd6a3-47e4b39b749910d77683a89a"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
