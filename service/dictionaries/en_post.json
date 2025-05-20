@@ -26,7 +26,7 @@
 "<key>ru</key>":"<key>en</key>",
 "<scriptVariant>Russian</scriptVariant>":"<scriptVariant>English</scriptVariant>",
 "Base-Project: OpenIntegrations":"Base-Project: OpenIntegrationsENG",
-"https://example.com/path": "https://example.com/путь",
+"(\"https://example.com/path\")": "(\"https://example.com/путь\")",
 "\"cyrillic\"":"\"кириллица\"",
 "=cyrillic":"=кириллица"
 }
