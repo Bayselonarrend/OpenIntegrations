@@ -1,0 +1,19 @@
+﻿ {
+ "args": {},
+ "data": "...",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "2114023",
+  "Content-Type": "application/octet-stream",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-682cd71d-6d5204744d5702f27d3f5509"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
