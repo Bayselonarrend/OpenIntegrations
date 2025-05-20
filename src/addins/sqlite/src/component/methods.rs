@@ -12,9 +12,14 @@ pub fn execute_query(
     force_result: bool
 ) -> String {
 
-    let conn = match client.get_connection() {
+    let conn_arc = match client.get_connection() {
         Some(c) => c,
         None => return format_json_error("No connection initialized"),
+    };
+
+    let conn = match conn_arc.lock() {
+        Ok(conn) => conn,
+        Err(_) => return format_json_error("Failed to acquire connection lock"),
     };
 
     // Парсинг JSON параметров
@@ -62,10 +67,14 @@ pub fn execute_query(
 }
 
 pub fn load_extension(client: &mut component::AddIn, path: String, point: String) -> String {
-
-    let conn = match client.get_connection() {
+    let conn_arc = match client.get_connection() {
         Some(c) => c,
         None => return format_json_error("No connection initialized"),
+    };
+
+    let conn = match conn_arc.lock() {
+        Ok(conn) => conn,
+        Err(_) => return format_json_error("Failed to acquire connection lock"),
     };
 
     let entry_point = match point.is_empty() {
@@ -74,19 +83,16 @@ pub fn load_extension(client: &mut component::AddIn, path: String, point: String
     };
 
     unsafe {
+        // Здесь мы берем ссылку на Connection из MutexGuard
+        let _guard = match LoadExtensionGuard::new(&*conn) {
+            Ok(g) => g,
+            Err(e) => return format_json_error(e),
+        };
 
-        let guard = LoadExtensionGuard::new(conn);
-
-        match guard {
-            Err(e) => format_json_error(e),
-            Ok(_) => {
-                match conn.load_extension(path, entry_point){
-                    Ok(_) => r#"{"result": true}"#.to_string(),
-                    Err(e) => format_json_error(e)
-                }
-            }
+        match conn.load_extension(path, entry_point) {
+            Ok(_) => r#"{"result": true}"#.to_string(),
+            Err(e) => format_json_error(e)
         }
-
     }
 }
 
