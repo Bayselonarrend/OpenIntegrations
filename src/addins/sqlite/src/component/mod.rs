@@ -1,6 +1,7 @@
 mod methods;
 
 use addin1c::{name, Variant};
+use std::sync::{Mutex, Arc};
 use crate::core::getset;
 use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
@@ -66,7 +67,7 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     connection_string: String,
-    connection: Option<Connection>,
+    connection: Option<Arc<Mutex<Connection>>>,
 }
 
 impl AddIn {
@@ -91,7 +92,7 @@ impl AddIn {
 
         match conn_result {
             Ok(conn) => {
-                self.connection = Some(conn);
+                self.connection = Some(Arc::new(Mutex::new(conn)));
                 r#"{"result": true}"#.to_string()
             }
             Err(e) => {
@@ -116,17 +117,29 @@ impl AddIn {
         }
     }
 
-    pub fn get_connection(&self) -> Option<&Connection> {
-        self.connection.as_ref()
+    pub fn get_connection(&self) -> Option<Arc<Mutex<Connection>>> {
+        self.connection.clone()
     }
 
     pub fn close_connection(&mut self) -> String {
         if let Some(conn) = self.connection.take() {
-            match conn.close() {
-                Ok(_) => json!({"result": true}).to_string(),
-                Err((_conn, err)) => json!({
+            match Arc::try_unwrap(conn) {
+                Ok(conn_mutex) => match conn_mutex.into_inner() {
+                    Ok(conn) => match conn.close() {
+                        Ok(_) => json!({"result": true}).to_string(),
+                        Err((_conn, err)) => json!({
+                            "result": false,
+                            "error": err.to_string()
+                        }).to_string(),
+                    },
+                    Err(_) => json!({
+                        "result": false,
+                        "error": "Failed to acquire connection lock"
+                    }).to_string(),
+                },
+                Err(_) => json!({
                     "result": false,
-                    "error": err.to_string()
+                    "error": "Connection is still in use by other threads"
                 }).to_string(),
             }
         } else {
