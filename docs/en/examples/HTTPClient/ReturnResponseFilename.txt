@@ -1,0 +1,10 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    TFN = GetTempFileName();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseFilename();

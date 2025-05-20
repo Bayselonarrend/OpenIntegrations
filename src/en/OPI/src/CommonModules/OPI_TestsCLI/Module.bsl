@@ -2374,6 +2374,7 @@ Procedure CLI_MYS_ORM() Export
 
     CLI_MySQL_CreateDatabase(TestParameters);
     CLI_MySQL_CreateTable(TestParameters);
+    CLI_MySQL_GetTableInformation(TestParameters);
     CLI_MySQL_AddRecords(TestParameters);
     CLI_MySQL_GetRecords(TestParameters);
     CLI_MySQL_UpdateRecords(TestParameters);
@@ -2582,6 +2583,28 @@ Procedure CLI_OLLM_WorkingWithBlob() Export
 
     CLI_Ollama_PushBlob(TestParameters);
     CLI_Ollama_CheckBlob(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region HTTP
+
+Procedure CLI_HTTP_Initialization() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_BodySet() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_Settings() Export
+
+    TestParameters = New Structure;
 
 EndProcedure
 
@@ -21571,6 +21594,48 @@ Procedure CLI_MySQL_GetTlsSettings(FunctionParameters)
 
 EndProcedure
 
+Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation", "MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
+
+    Table = "heyho";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation (error)", "MySQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
 #EndRegion
 
 #Region GreenAPI
@@ -22338,10 +22403,10 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
     Text   = "What's your favorite color?";
 
-    Options = New Array;
-    Options.Add("Red");
-    Options.Add("Yellow");
-    Options.Add("Green");
+    AnswerOptions = New Array;
+    AnswerOptions.Add("Red");
+    AnswerOptions.Add("Yellow");
+    AnswerOptions.Add("Green");
 
     Options = New Structure;
     Options.Insert("api"  , ApiUrl);
@@ -22355,7 +22420,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     Options.Insert("access" , AccessParameters);
     Options.Insert("chat"   , ChatID);
     Options.Insert("text"   , Text);
-    Options.Insert("options", Options);
+    Options.Insert("options", AnswerOptions);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
@@ -22370,7 +22435,7 @@ Procedure CLI_GreenAPI_SendPoll(FunctionParameters)
     Options.Insert("access" , AccessParameters);
     Options.Insert("chat"   , ChatID);
     Options.Insert("text"   , Text);
-    Options.Insert("options", Options);
+    Options.Insert("options", AnswerOptions);
     Options.Insert("multi"  , True);
     Options.Insert("quoted" , MessageID);
 

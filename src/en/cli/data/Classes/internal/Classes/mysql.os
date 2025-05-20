@@ -301,6 +301,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "mysql";
     NewLine.Модуль      = "OPI_MySQL";
+    NewLine.Метод       = "GetTableInformation";
+    NewLine.МетодПоиска = "GETTABLEINFORMATION";
+    NewLine.Параметр    = "--table";
+    NewLine.Описание    = "Table name";
+    NewLine.Область     = "Orm";
+    NewLine.ОписаниеМетода   = "Gets information about the table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "mysql";
+    NewLine.Модуль      = "OPI_MySQL";
+    NewLine.Метод       = "GetTableInformation";
+    NewLine.МетодПоиска = "GETTABLEINFORMATION";
+    NewLine.Параметр    = "--dbc";
+    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "mysql";
+    NewLine.Модуль      = "OPI_MySQL";
+    NewLine.Метод       = "GetTableInformation";
+    NewLine.МетодПоиска = "GETTABLEINFORMATION";
+    NewLine.Параметр    = "--tls";
+    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Область     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "mysql";
+    NewLine.Модуль      = "OPI_MySQL";
     NewLine.Метод       = "AddRecords";
     NewLine.МетодПоиска = "ADDRECORDS";
     NewLine.Параметр    = "--table";

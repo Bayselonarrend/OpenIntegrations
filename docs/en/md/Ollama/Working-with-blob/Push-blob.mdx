@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description: Push BLOB and other functions to work with Ollama in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Ollama]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -34,7 +36,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL   = "https://api.athenaeum.digital/ollama";
-    Token = "10KO..."; // Authorization - not part API Ollama
+    Token = "10KO-82..."; // Authorization - not part API Ollama
 
     Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
 
@@ -54,7 +56,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             oint ollama PushBlob \
              --url "https://api.athenaeum.digital/ollama" \
              --data "C:\Users\Administrator\AppData\Local\Temp\4p03xhfr0z4.tmp" \
-             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+             --headers "{'Authorization':'Bearer ***'}"
         ```
     </TabItem>
   
@@ -65,7 +67,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             oint ollama PushBlob ^
              --url "https://api.athenaeum.digital/ollama" ^
              --data "C:\Users\Administrator\AppData\Local\Temp\4p03xhfr0z4.tmp" ^
-             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+             --headers "{'Authorization':'Bearer ***'}"
         ```
     </TabItem>
 </Tabs>

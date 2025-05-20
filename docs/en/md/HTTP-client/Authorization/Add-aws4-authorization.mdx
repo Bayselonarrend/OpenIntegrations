@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 3
+description: Add AWS4 authorization  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add AWS4 authorization 
+ Adds data for AWS4 authorization
+
+
+
+`Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessKey | - | String | &#x2714; | Access key for authorization |
+  | SecretKey | - | String | &#x2714; | Secret key for authorization |
+  | Region | - | String | &#x2714; | Service region |
+  | Service | - | String | &#x2716; | Type of service, if different from s3 |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    AccessKey = "AccessKey";
+    SecretKey = "SecretKey";
+    Region    = "Region";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddAWS4Authorization(AccessKey, SecretKey, Region) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+

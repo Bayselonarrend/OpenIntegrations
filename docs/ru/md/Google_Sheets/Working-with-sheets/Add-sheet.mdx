@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 1
+description: Добавить лист и другие функции для работы с Google Sheets в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Sheets]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен        = "ya29.a0AZYkNZiCaf3vW8I05cl_i6pLKCRWSjff1YhC7Yi0SgLO50zysjwrX_9QPi1WejmqgGdFjcbaOJKsPO3tvT7gB712mg1gxgxiL1pCUVthx...";
+    Токен        = "ya29.a0AZYkNZhaN34-QCvSBZA-17pqmWk4J-hG3NCuiF3xCTvXkfgcrkdZq-Hc-3OEMvntvgcahm2fS3UiNdNti6Qbmb3t5t5QtJrGQwTVfNpDE...";
     Книга        = "1mPXsdn2dQXSGxubILyd2DWJlqqaF6t3m4AlmgWsHOP4";
     Наименование = "Тестовый лист";
 
@@ -41,7 +43,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gsheets ДобавитьЛист \
               --token "***" \
-              --spreadsheet "1X6yelKyb72zlSIKo8u5G4k0K1JuzXZ3hqHeYuFxe32Q" \
+              --spreadsheet "10bR1dvgy-ZrvixOazGSMloqkbLkDNM8NFt7MxOqo9ok" \
               --title "Тестовый лист"
         ```
     </TabItem>
@@ -50,7 +52,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gsheets ДобавитьЛист ^
               --token "***" ^
-              --spreadsheet "1X6yelKyb72zlSIKo8u5G4k0K1JuzXZ3hqHeYuFxe32Q" ^
+              --spreadsheet "10bR1dvgy-ZrvixOazGSMloqkbLkDNM8NFt7MxOqo9ok" ^
               --title "Тестовый лист"
         ```
     </TabItem>

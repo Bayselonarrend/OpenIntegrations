@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 4
+description: Return response as string  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Return response as string 
+ Returns the body of the response as a string
+
+
+
+`Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Forced | - | Boolean | &#x2716; | False > The processor object will be returned instead of the response if there were errors in it |
+  | ExceptionOnError | - | Boolean | &#x2716; | Causes an exception with a log if there were errors during processing |
+
+  
+  Returns:  Arbitrary - The response or the same processing object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .ProcessRequest("POST")
+        .ReturnResponseAsString(); // <---
+```
+ 
+
+
+
+

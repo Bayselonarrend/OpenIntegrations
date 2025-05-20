@@ -237,7 +237,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     Hash      = "";
     BinaryKey = GetBinaryDataFromString(KeyString);
 
-    Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
+    Result = OPI_Cryptography.HMACSHA(BinaryKey, GetBinaryDataFromString(Token), "SHA256");
 
     TValue = New ValueTable;
     TValue.Columns.Add("Key");
@@ -268,7 +268,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     EndDo;
 
     DCS       = Left(DCS, StrLen(DCS) - 1);
-    Signature = OPI_Cryptography.HMACSHA256(Result, GetBinaryDataFromString(DCS));
+    Signature = OPI_Cryptography.HMAC(Result, GetBinaryDataFromString(DCS), "SHA256");
 
     Final = GetHexStringFromBinaryData(Signature);
 

@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 9
+description: Переместить объект и другие функции для работы с Yandex Disk в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Disk]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -29,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Оригинал = "/15c8e799-0071-41db-8218-236514d8f0c6.png";
+    Оригинал = "/ecca8c66-f8a8-410c-bdac-11d9f9ebfb91.png";
     Путь     = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ПереместитьОбъект(Токен, Оригинал, Путь, Истина);
@@ -42,8 +44,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ПереместитьОбъект \
               --token "***" \
-              --from "/e6facda1-5b81-4a7b-a8fa-4022f272c399.png" \
-              --to "/ff24b25f-8834-483c-a355-8151dad76bb4.png" \
+              --from "/254f3e86-7feb-4703-bea3-c743272884e9.png" \
+              --to "/8157c959-51b0-4d04-9c44-0a98106217c0.png" \
               --rewrite true
         ```
     </TabItem>
@@ -52,8 +54,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ПереместитьОбъект ^
               --token "***" ^
-              --from "/e6facda1-5b81-4a7b-a8fa-4022f272c399.png" ^
-              --to "/ff24b25f-8834-483c-a355-8151dad76bb4.png" ^
+              --from "/254f3e86-7feb-4703-bea3-c743272884e9.png" ^
+              --to "/8157c959-51b0-4d04-9c44-0a98106217c0.png" ^
               --rewrite true
         ```
     </TabItem>

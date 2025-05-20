@@ -1,0 +1,15 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .SetOAuthV1Algorithm("HMAC", "SHA1") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();

@@ -1,4 +1,6 @@
 {
+"СтруктураПараметров1.Вставить(\"param4\", \"cyrillic\");": "СтруктураПараметров1.Вставить(\"param4\", \"кириллица\");",
+"page?param1=search?text&param2=John Doe&param3=value&another&param4=cyrillic&param5": "page?param1=search?text&param2=John Doe&param3=value&another&param4=кириллица&param5",
 "UTTests": "ЮТТесты",
 "UTest": "ЮТест",
 "AddTestSet":"ДобавитьТестовыйНабор",
@@ -23,6 +25,5 @@
 "<key>ru</key>":"<key>en</key>",
 "<scriptVariant>Russian</scriptVariant>":"<scriptVariant>English</scriptVariant>",
 "Base-Project: OpenIntegrations":"Base-Project: OpenIntegrationsENG",
-"https://example.com/path": "https://example.com/путь",
-"СтруктураПараметров1.Вставить(\"param4\", \"cyrillic\");": "СтруктураПараметров1.Вставить(\"param4\", \"кириллица\");"
+"https://example.com/path": "https://example.com/путь"
 }

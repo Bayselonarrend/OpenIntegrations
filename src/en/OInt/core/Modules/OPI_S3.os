@@ -1309,7 +1309,7 @@ Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Heade
         , HashString);
 
     StringToSign = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
-    Signature    = OPI_Cryptography.HMACSHA256(SignKey, StringToSign);
+    Signature    = OPI_Cryptography.HMAC(SignKey, StringToSign, "SHA256");
     Signature    = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Signature));
 
     OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Signature", Signature);
@@ -1327,12 +1327,13 @@ Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate
     Region     = ПолучитьДвоичныеДанныеИзСтроки(Region);
     Service    = ПолучитьДвоичныеДанныеИзСтроки(Service);
     AWSRequest = ПолучитьДвоичныеДанныеИзСтроки("aws4_request");
+    Sha256_    = "SHA256";
 
-    DataKey    = OPI_Cryptography.HMACSHA256(SecretKey, DateData);
-    RegionKey  = OPI_Cryptography.HMACSHA256(DataKey, Region);
-    ServiceKey = OPI_Cryptography.HMACSHA256(RegionKey, Service);
+    DataKey    = OPI_Cryptography.HMAC(SecretKey, DateData, Sha256_);
+    RegionKey  = OPI_Cryptography.HMAC(DataKey, Region, Sha256_);
+    ServiceKey = OPI_Cryptography.HMAC(RegionKey, Service, Sha256_);
 
-    FinalKey = OPI_Cryptography.HMACSHA256(ServiceKey, AWSRequest);
+    FinalKey = OPI_Cryptography.HMAC(ServiceKey, AWSRequest, Sha256_);
 
     Return FinalKey;
 

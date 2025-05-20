@@ -1,0 +1,68 @@
+﻿---
+sidebar_position: 3
+description: Set URL params  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set URL params 
+ Sets a collection of URL parameters
+
+
+
+`Function SetURLParams(Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | - | Arbitrary | &#x2714; | Structure or map of URL parameters |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+```
+ 
+
+
+
+```json title="Result"
+{
+ "args": {
+  "param1": "text",
+  "param2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-6813197e-7efd59a94945473062202cf0"
+ },
+ "origin": "***",
+ "url": "https://httpbin.org/get?param1=text&param2=10"
+}
+```

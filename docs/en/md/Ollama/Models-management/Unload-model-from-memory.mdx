@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 8
+description: Unload model from memory and other functions to work with Ollama in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Ollama]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -32,7 +34,7 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL   = "https://api.athenaeum.digital/ollama";
-    Token = "10KO..."; // Authorization - not part API Ollama
+    Token = "10KO-82..."; // Authorization - not part API Ollama
 
     Model = "tinyllama";
 
@@ -52,7 +54,7 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
             oint ollama UnloadModelFromMemory \
              --url "https://api.athenaeum.digital/ollama" \
              --model "tinyllama" \
-             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+             --headers "{'Authorization':'Bearer ***'}"
         ```
     </TabItem>
   
@@ -63,7 +65,7 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
             oint ollama UnloadModelFromMemory ^
              --url "https://api.athenaeum.digital/ollama" ^
              --model "tinyllama" ^
-             --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+             --headers "{'Authorization':'Bearer ***'}"
         ```
     </TabItem>
 </Tabs>

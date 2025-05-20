@@ -1,0 +1,53 @@
+﻿---
+sidebar_position: 7
+description: Get log  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get log 
+ Gets the execution log
+
+
+
+`Function GetLog(Val AsString = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AsString | - | Boolean | &#x2716; | Return the log as a string |
+
+  
+  Returns:  String, Array - Execution log
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    HTTPClient = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET");
+
+    Response = HTTPClient.ReturnResponseAsJSONObject();
+    Log      = HTTPClient.GetLog(True);
+```
+ 
+
+
+
+

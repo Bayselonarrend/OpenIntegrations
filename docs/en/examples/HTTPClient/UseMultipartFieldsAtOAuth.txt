@@ -1,0 +1,22 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    NewRequest = OPI_HTTPRequests.NewRequest().Initialize(URL);
+
+    Result = NewRequest
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("field1", "Text")
+        .AddMultipartFormDataField("field2", "10")
+        .UseMultipartFieldsAtOAuth(False) // <---
+        .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();

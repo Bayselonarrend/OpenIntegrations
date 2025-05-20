@@ -305,6 +305,11 @@ Function GetTestTable() Export
     NewTest(TestTable, "OLLM_WorkingWithBlob"                 , "Working with Blob"               , Ollama);
     NewTest(TestTable, "HTTP_Initialization"                  , "Initialization"                  , Http);
     NewTest(TestTable, "HTTP_BodySet"                         , "Body set"                        , Http);
+    NewTest(TestTable, "HTTP_Settings"                        , "Settings"                        , Http);
+    NewTest(TestTable, "HTTP_HeadersSetting"                  , "Headers setting"                 , Http);
+    NewTest(TestTable, "HTTP_Authorization"                   , "Authorization"                   , Http);
+    NewTest(TestTable, "HTTP_RequestProcessing"               , "Request processing"              , Http);
+    NewTest(TestTable, "HTTP_ResponseReceiving"               , "Response receiving"              , Http);
 
     Return TestTable;
 
@@ -2753,6 +2758,10 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
         ProcessSecretsMySQL(Option, Value);
 
+    ElsIf Library = "ollama" Then
+
+        ProcessSecretsMySQLOllama(Option, Value);
+
     Else
         Return;
     EndIf;
@@ -2796,6 +2805,18 @@ Procedure ProcessSecretsMySQL(Val Option, Value)
     ElsIf Option = "addr" Then
 
         Value = "127.0.0.1";
+
+    Else
+        Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsMySQLOllama(Val Option, Value)
+
+    If Option = "headers" Then
+
+        Value = New Structure("Authorization", "***");
 
     Else
         Return;

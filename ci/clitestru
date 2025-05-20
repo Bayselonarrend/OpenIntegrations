@@ -4,7 +4,7 @@ pipeline {
    	stages {
           stage('Prepare'){
              steps{
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.22.0.ospx; del oint-1.22.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.23.0.ospx; del oint-1.23.0.ospx'
                 powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
              }
           }
@@ -1442,6 +1442,10 @@ def test_google(){
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe google ПолучитьТокенServiceАккаунта --auth "test" --scope "test" --exp "test" --debug --test '
+               }
+
 }
 
 
@@ -1656,6 +1660,10 @@ def test_mysql(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe mysql УдалитьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ПолучитьИнформациюОТаблице --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -3286,7 +3294,7 @@ pipeline {
    stages {
       stage('Prepare'){
          steps{
-            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.22.0.ospx; del oint-1.22.0.ospx'
+            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.23.0.ospx; del oint-1.23.0.ospx'
             powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
          }
       }

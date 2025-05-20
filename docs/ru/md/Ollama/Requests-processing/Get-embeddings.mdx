@@ -1,5 +1,7 @@
 ﻿---
 sidebar_position: 4
+description: Получить представления и другие функции для работы с Ollama в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -34,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL   = "https://api.athenaeum.digital/ollama";
-    Токен = "10KO..."; // Авторизация - не часть API Ollama
+    Токен = "10KO-82..."; // Авторизация - не часть API Ollama
 
     МассивСтрок = Новый Массив;
     МассивСтрок.Добавить("Why is the sky blue?");
@@ -59,7 +61,7 @@ import TabItem from '@theme/TabItem';
               --url "https://api.athenaeum.digital/ollama" \
               --model "tinyllama" \
               --input "['Why is the sky blue?','Why is the grass green?']" \
-              --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
@@ -71,7 +73,7 @@ import TabItem from '@theme/TabItem';
               --url "https://api.athenaeum.digital/ollama" ^
               --model "tinyllama" ^
               --input "['Why is the sky blue?','Why is the grass green?']" ^
-              --headers "{'Authorization':'Bearer 10KO-82RJ'}"
+              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
 </Tabs>

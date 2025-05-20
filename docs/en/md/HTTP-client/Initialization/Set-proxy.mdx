@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 6
+description: Set proxy  and other functions to work with HTTP-client in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP-client]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set proxy 
+ Sets the proxy settings for the connection
+
+
+
+`Function SetProxy(Val Settings) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Settings | - | InternetProxy | &#x2714; | Proxy settings |
+
+  
+  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    ProxySettings = New InternetProxy;
+
+    ProxySettings.User     = "user";
+    ProxySettings.Password = "password";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetProxy(ProxySettings) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();
+```
+ 
+
+
+
+
