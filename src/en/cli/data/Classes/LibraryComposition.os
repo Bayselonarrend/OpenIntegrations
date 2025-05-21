@@ -7,7 +7,7 @@ Var CompositionCache;
 
 Procedure OnObjectCreate()
 
-    Version = "1.23.0";
+    Version = "1.24.0";
     CompositionCache       = New Map();
     ModuleCommandMapping = New Map();
     ModuleCommandMapping.Insert("tools", "Utils");
