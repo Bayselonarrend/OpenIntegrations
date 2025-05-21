@@ -3,4 +3,4 @@
 oint ollama UnloadModelFromMemory ^
  --url "https://api.athenaeum.digital/ollama" ^
  --model "tinyllama" ^
- --headers "{'Authorization':'Bearer ***'}"
+ --headers "{'Authorization':'***'}"
