@@ -1,5 +1,5 @@
 oint yadisk UploadFile ^
  --token "***" ^
- --path "/2c1c4285-8787-4b5c-9c80-ad3bea7ae35a.png" ^
+ --path "/f3765cc4-3676-4f6b-a84e-515a28fd5b49.png" ^
  --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
  --rewrite true
