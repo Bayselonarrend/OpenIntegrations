@@ -54,6 +54,36 @@ Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/S
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendPoll \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us" \
+             --text "What's your favorite color?" \
+             --options "['Red','Yellow','Green']" \
+             --multi true \
+             --quoted "BAE500FEA098AC14"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendPoll ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us" ^
+             --text "What's your favorite color?" ^
+             --options "['Red','Yellow','Green']" ^
+             --multi true ^
+             --quoted "BAE500FEA098AC14"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

@@ -70,8 +70,9 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
             # JSON data can also be passed as a path to a .json file
             
             oint bitrix24 CreateCalendar \
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-             --fields "{'type':'user','ownerId':1,'name':'new calendar','description':'My new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}"
+             --url "b24-ar17wx.bitrix24.by" \
+             --fields "{'type':'user','ownerId':1,'name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" \
+             --token "***"
         ```
     </TabItem>
   
@@ -80,8 +81,9 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
             :: JSON data can also be passed as a path to a .json file
             
             oint bitrix24 CreateCalendar ^
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-             --fields "{'type':'user','ownerId':1,'name':'new calendar','description':'My new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}"
+             --url "b24-ar17wx.bitrix24.by" ^
+             --fields "{'type':'user','ownerId':1,'name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" ^
+             --token "***"
         ```
     </TabItem>
 </Tabs>
