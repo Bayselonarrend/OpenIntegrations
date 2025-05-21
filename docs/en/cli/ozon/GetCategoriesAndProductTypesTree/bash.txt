@@ -1,3 +1,4 @@
 oint ozon GetCategoriesAndProductTypesTree \
  --clientid "***" \
- --apikey "***"
+ --apikey "***" \
+ --lang "EN"
