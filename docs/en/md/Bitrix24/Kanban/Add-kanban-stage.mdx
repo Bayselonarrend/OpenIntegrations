@@ -50,7 +50,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     Color = "0026FF";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "139a1268006e9f06006b12e400000001000...";
+    Token = "4dee2c68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);
 ```
@@ -61,24 +61,20 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 AddKanbanStage \
-             --url "b24-ar17wx.bitrix24.by" \
-             --title "New stage 2" \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
+             --title "New stage" \
              --color "0026FF" \
-             --prevstage 2200 \
-             --admin true \
-             --token "***"
+             --prevstage 6
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 AddKanbanStage ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --title "New stage 2" ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+             --title "New stage" ^
              --color "0026FF" ^
-             --prevstage 2200 ^
-             --admin true ^
-             --token "***"
+             --prevstage 6
         ```
     </TabItem>
 </Tabs>
