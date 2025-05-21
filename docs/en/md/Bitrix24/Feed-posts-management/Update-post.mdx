@@ -40,7 +40,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "2280";
+    PostID = "2376";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -50,8 +50,8 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "139a1268006e9f06006b12e400000001000...";
-    PostID = "2278";
+    Token  = "4dee2c68006e9f06006b12e400000001000...";
+    PostID = "2374";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```
