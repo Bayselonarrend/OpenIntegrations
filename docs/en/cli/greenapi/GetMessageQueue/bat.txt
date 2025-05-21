@@ -1,2 +1,2 @@
 oint greenapi GetMessageQueue ^
- --access "C:\Users\Administrator\AppData\Local\Temp\nni0xklcxnc.tmp"
+ --access "C:\Users\Administrator\AppData\Local\Temp\q3u1njs3yny.tmp"

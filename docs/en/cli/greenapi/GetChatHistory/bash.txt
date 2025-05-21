@@ -1,3 +1,3 @@
 oint greenapi GetChatHistory \
- --access "C:\Users\Administrator\AppData\Local\Temp\i4v2vywtf1z.tmp" \
+ --access "C:\Users\Administrator\AppData\Local\Temp\wxoa4zrvd3d.tmp" \
  --chat "120363410406221140@g.us"

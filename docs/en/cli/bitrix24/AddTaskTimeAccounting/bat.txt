@@ -1,4 +1,4 @@
 oint bitrix24 AddTaskTimeAccounting ^
  --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
- --task "6090" ^
+ --task "6096" ^
  --amount 3600
