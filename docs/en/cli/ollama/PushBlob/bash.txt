@@ -2,5 +2,5 @@
 
 oint ollama PushBlob \
  --url "https://api.athenaeum.digital/ollama" \
- --data "C:\Users\Administrator\AppData\Local\Temp\4p03xhfr0z4.tmp" \
- --headers "{'Authorization':'Bearer ***'}"
+ --data "C:\Users\Administrator\AppData\Local\Temp\vkuuzdqvm0a.tmp" \
+ --headers "{'Authorization':'***'}"

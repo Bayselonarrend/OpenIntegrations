@@ -1,7 +1,4 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint greenapi SendTextMessage ^
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+ --access "C:\Users\Administrator\AppData\Local\Temp\fh2w0bv0dyu.tmp" ^
  --chat "120363410406221140@g.us" ^
- --text "New message" ^
- --quoted "BAE5FCA0F7BFA3AE"
+ --text "New message"
