@@ -1,4 +1,4 @@
 oint s3 SendRequestWithBody ^
  --method "PUT" ^
- --basic "C:\Users\Administrator\AppData\Local\Temp\0j5aoxqdzyy.tmp" ^
+ --basic "C:\Users\Administrator\AppData\Local\Temp\mxmkhwszegy.tmp" ^
  --body "C:\test_data\document.docx"

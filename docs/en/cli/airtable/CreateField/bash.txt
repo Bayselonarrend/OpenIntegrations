@@ -2,5 +2,5 @@ oint airtable CreateField \
  --token "***" \
  --base "appPli0MOZzZfk9cC" \
  --table "tblCWdRHnJcWIZttO" \
- --title "e4e66842-7615-4b10-96ff-ca2518eec144" \
- --fielddata "C:\Users\Administrator\AppData\Local\Temp\urf4jttrrlr.tmp"
+ --title "8f3ad36c-8acc-4de6-8fb2-bb6d6f978eff" \
+ --fielddata "C:\Users\Administrator\AppData\Local\Temp\ycnnscsh0iz.tmp"
