@@ -1,3 +1,3 @@
 oint yadisk GetPublicObject ^
  --token "***" ^
- --url "https://yadi.sk/d/g1e9kq0ADtydEg"
+ --url "https://yadi.sk/i/pDSjBE4GRXFnIA"

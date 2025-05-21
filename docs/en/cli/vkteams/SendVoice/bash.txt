@@ -1,5 +1,5 @@
 oint vkteams SendVoice \
  --token "***" \
  --chatid "689203963@chat.agent" \
- --file "C:\Users\Administrator\AppData\Local\Temp\sburleqkhyh.m4a" \
- --reply "7499469350760361706"
+ --file "C:\Users\Administrator\AppData\Local\Temp\qojhtuez4t2.m4a" \
+ --reply "7506785771714523354"

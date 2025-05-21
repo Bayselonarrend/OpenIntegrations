@@ -4,4 +4,4 @@ oint ollama CreateModel ^
  --url "https://api.athenaeum.digital/ollama" ^
  --model "mario" ^
  --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" ^
- --headers "{'Authorization':'Bearer ***'}"
+ --headers "{'Authorization':'***'}"
