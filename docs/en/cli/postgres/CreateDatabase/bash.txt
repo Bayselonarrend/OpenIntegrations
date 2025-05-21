@@ -1,6 +1,3 @@
-# JSON data can also be passed as a path to a .json file
-
 oint postgres CreateDatabase \
  --base "testbase1" \
- --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
