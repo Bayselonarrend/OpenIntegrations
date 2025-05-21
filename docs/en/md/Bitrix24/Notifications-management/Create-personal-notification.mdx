@@ -50,7 +50,7 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
     Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, , Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "139a1268006e9f06006b12e400000001000...";
+    Token  = "4dee2c68006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 
@@ -63,22 +63,20 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 CreatePersonalNotification \
-             --url "b24-ar17wx.bitrix24.by" \
-             --user 10 \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
+             --user 1 \
              --text "Message text" \
-             --tag "New" \
-             --token "***"
+             --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 CreatePersonalNotification ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --user 10 ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+             --user 1 ^
              --text "Message text" ^
-             --tag "New" ^
-             --token "***"
+             --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"
         ```
     </TabItem>
 </Tabs>
