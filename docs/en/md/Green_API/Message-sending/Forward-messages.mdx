@@ -49,6 +49,32 @@ Method at API documentation: [ForwardMessages](https://green-api.com/docs/api/se
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ForwardMessages \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --from "120363410406221140@g.us" \
+             --to "120363410406221140@g.us" \
+             --msgs "BAE58D5D56CC3E39"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ForwardMessages ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --from "120363410406221140@g.us" ^
+             --to "120363410406221140@g.us" ^
+             --msgs "BAE58D5D56CC3E39"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
