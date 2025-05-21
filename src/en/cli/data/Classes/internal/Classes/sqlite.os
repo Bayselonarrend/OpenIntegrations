@@ -1,343 +1,343 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--sql";
-    NewLine.Описание    = "Database query text";
-    NewLine.Область     = "Common methods";
-    NewLine.ОписаниеМетода   = "Executes an arbitrary SQL query";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--params";
-    NewLine.Описание    = "Array of positional parameters of the request (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--sql";
+    NewLine.Description    = "Database query text";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Executes an arbitrary SQL query";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--force";
-    NewLine.Описание    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - No)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--params";
+    NewLine.Description    = "Array of positional parameters of the request (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or path to the base. In memory, if not filled (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--force";
+    NewLine.Description    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - No)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--exts";
-    NewLine.Описание    = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or path to the base. In memory, if not filled (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetTableInformation";
-    NewLine.МетодПоиска = "GETTABLEINFORMATION";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets information about the table";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--exts";
+    NewLine.Description    = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetTableInformation";
-    NewLine.МетодПоиска = "GETTABLEINFORMATION";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetTableInformation";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets information about the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Creates an empty table in the database";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetTableInformation";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--cols";
-    NewLine.Описание    = "Column structure: Key > Name, Value > Data type";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Creates an empty table in the database";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--cols";
+    NewLine.Description    = "Column structure: Key > Name, Value > Data type";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Adds new rows to the table";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--rows";
-    NewLine.Описание    = "An array of string data structures: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Adds new rows to the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--trn";
-    NewLine.Описание    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--rows";
+    NewLine.Description    = "An array of string data structures: Key > field, Value > field value";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--trn";
+    NewLine.Description    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets records from the selected table";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Fields for selection (optional, def. val. - *)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets records from the selected table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Fields for selection (optional, def. val. - *)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--order";
-    NewLine.Описание    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--limit";
-    NewLine.Описание    = "Limiting the number of received strings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--order";
+    NewLine.Description    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--limit";
+    NewLine.Description    = "Limiting the number of received strings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Updates the value of records by selected criteria";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--values";
-    NewLine.Описание    = "Values structure: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Updates the value of records by selected criteria";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--values";
+    NewLine.Description    = "Values structure: Key > field, Value > field value";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes records from the table";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes records from the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes a table from the database";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "DeleteTable";
+    NewLine.SearchMethod = "DELETETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes a table from the database";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Clears the database table";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "DeleteTable";
+    NewLine.SearchMethod = "DELETETABLE";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ClearTable";
+    NewLine.SearchMethod = "CLEARTABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Clears the database table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "sqlite";
-    NewLine.Модуль      = "OPI_SQLite";
-    NewLine.Метод       = "GetRecordsFilterStrucutre";
-    NewLine.МетодПоиска = "GETRECORDSFILTERSTRUCUTRE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets the template structure for filtering records in ORM queries";
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "ClearTable";
+    NewLine.SearchMethod = "CLEARTABLE";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sqlite";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetRecordsFilterStrucutre";
+    NewLine.SearchMethod = "GETRECORDSFILTERSTRUCUTRE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets the template structure for filtering records in ORM queries";
 
     Return CompositionTable;
 EndFunction
