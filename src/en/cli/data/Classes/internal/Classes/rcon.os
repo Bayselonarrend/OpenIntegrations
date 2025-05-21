@@ -1,75 +1,75 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "ExecuteCommand";
-    NewLine.МетодПоиска = "EXECUTECOMMAND";
-    NewLine.Параметр    = "--exec";
-    NewLine.Описание    = "Command text";
-    NewLine.Область     = "Commands execution";
-    NewLine.ОписаниеМетода   = "Executes the command on the server";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "ExecuteCommand";
-    NewLine.МетодПоиска = "EXECUTECOMMAND";
-    NewLine.Параметр    = "--conn";
-    NewLine.Описание    = "Connection or connection parameters";
-    NewLine.Область     = "Commands execution";
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "ExecuteCommand";
+    NewLine.SearchMethod = "EXECUTECOMMAND";
+    NewLine.Parameter    = "--exec";
+    NewLine.Description    = "Command text";
+    NewLine.Region     = "Commands execution";
+    NewLine.MethodDescription   = "Executes the command on the server";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "FormConnectionParameters";
-    NewLine.МетодПоиска = "FORMCONNECTIONPARAMETERS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Server URL";
-    NewLine.Область     = "Commands execution";
-    NewLine.ОписаниеМетода   = "Forms a collection of connection parameters";
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "ExecuteCommand";
+    NewLine.SearchMethod = "EXECUTECOMMAND";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Connection or connection parameters";
+    NewLine.Region     = "Commands execution";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "FormConnectionParameters";
-    NewLine.МетодПоиска = "FORMCONNECTIONPARAMETERS";
-    NewLine.Параметр    = "--pass";
-    NewLine.Описание    = "Password for connection";
-    NewLine.Область     = "Commands execution";
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "FormConnectionParameters";
+    NewLine.SearchMethod = "FORMCONNECTIONPARAMETERS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Server URL";
+    NewLine.Region     = "Commands execution";
+    NewLine.MethodDescription   = "Forms a collection of connection parameters";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "FormConnectionParameters";
-    NewLine.МетодПоиска = "FORMCONNECTIONPARAMETERS";
-    NewLine.Параметр    = "--rtout";
-    NewLine.Описание    = "Response timeout (in seconds) (optional, def. val. - 30)";
-    NewLine.Область     = "Commands execution";
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "FormConnectionParameters";
+    NewLine.SearchMethod = "FORMCONNECTIONPARAMETERS";
+    NewLine.Parameter    = "--pass";
+    NewLine.Description    = "Password for connection";
+    NewLine.Region     = "Commands execution";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "rcon";
-    NewLine.Модуль      = "OPI_RCON";
-    NewLine.Метод       = "FormConnectionParameters";
-    NewLine.МетодПоиска = "FORMCONNECTIONPARAMETERS";
-    NewLine.Параметр    = "--wtout";
-    NewLine.Описание    = "Request sending timeout (in seconds) (optional, def. val. - 30)";
-    NewLine.Область     = "Commands execution";
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "FormConnectionParameters";
+    NewLine.SearchMethod = "FORMCONNECTIONPARAMETERS";
+    NewLine.Parameter    = "--rtout";
+    NewLine.Description    = "Response timeout (in seconds) (optional, def. val. - 30)";
+    NewLine.Region     = "Commands execution";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "rcon";
+    NewLine.Module      = "OPI_RCON";
+    NewLine.Method       = "FormConnectionParameters";
+    NewLine.SearchMethod = "FORMCONNECTIONPARAMETERS";
+    NewLine.Parameter    = "--wtout";
+    NewLine.Description    = "Request sending timeout (in seconds) (optional, def. val. - 30)";
+    NewLine.Region     = "Commands execution";
 
     Return CompositionTable;
 EndFunction

@@ -1,6502 +1,6502 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetAppAuthLink";
-    NewLine.МетодПоиска = "GETAPPAUTHLINK";
-    NewLine.Параметр    = "--domain";
-    NewLine.Описание    = "Current Bitrix URL (like 'portal.bitrix24.com')";
-    NewLine.Область     = "Settings and administartion";
-    NewLine.ОписаниеМетода   = "Forms a link for authorization via the browser";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetAppAuthLink";
+    NewLine.SearchMethod = "GETAPPAUTHLINK";
+    NewLine.Parameter    = "--domain";
+    NewLine.Description    = "Current Bitrix URL (like 'portal.bitrix24.com')";
+    NewLine.Region     = "Settings and administartion";
+    NewLine.MethodDescription   = "Forms a link for authorization via the browser";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetAppAuthLink";
-    NewLine.МетодПоиска = "GETAPPAUTHLINK";
-    NewLine.Параметр    = "--clientid";
-    NewLine.Описание    = "Client ID from app settings";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetAppAuthLink";
+    NewLine.SearchMethod = "GETAPPAUTHLINK";
+    NewLine.Parameter    = "--clientid";
+    NewLine.Description    = "Client ID from app settings";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetToken";
-    NewLine.МетодПоиска = "GETTOKEN";
-    NewLine.Параметр    = "--clientid";
-    NewLine.Описание    = "Client ID from app settings";
-    NewLine.Область     = "Settings and administartion";
-    NewLine.ОписаниеМетода   = "Get token by auth code";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--clientid";
+    NewLine.Description    = "Client ID from app settings";
+    NewLine.Region     = "Settings and administartion";
+    NewLine.MethodDescription   = "Get token by auth code";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetToken";
-    NewLine.МетодПоиска = "GETTOKEN";
-    NewLine.Параметр    = "--clientsecret";
-    NewLine.Описание    = "Client secret from app settings";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--clientsecret";
+    NewLine.Description    = "Client secret from app settings";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetToken";
-    NewLine.МетодПоиска = "GETTOKEN";
-    NewLine.Параметр    = "--code";
-    NewLine.Описание    = "Code from browser auth page";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--code";
+    NewLine.Description    = "Code from browser auth page";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RefreshToken";
-    NewLine.МетодПоиска = "REFRESHTOKEN";
-    NewLine.Параметр    = "--clientid";
-    NewLine.Описание    = "Client ID from app settings";
-    NewLine.Область     = "Settings and administartion";
-    NewLine.ОписаниеМетода   = "Update token by refresh token";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--clientid";
+    NewLine.Description    = "Client ID from app settings";
+    NewLine.Region     = "Settings and administartion";
+    NewLine.MethodDescription   = "Update token by refresh token";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RefreshToken";
-    NewLine.МетодПоиска = "REFRESHTOKEN";
-    NewLine.Параметр    = "--clientsecret";
-    NewLine.Описание    = "Client secret from app settings";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--clientsecret";
+    NewLine.Description    = "Client secret from app settings";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RefreshToken";
-    NewLine.МетодПоиска = "REFRESHTOKEN";
-    NewLine.Параметр    = "--refresh";
-    NewLine.Описание    = "Refresh token";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--refresh";
+    NewLine.Description    = "Refresh token";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ServerTime";
-    NewLine.МетодПоиска = "SERVERTIME";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Settings and administartion";
-    NewLine.ОписаниеМетода   = "Get current server time";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ServerTime";
+    NewLine.SearchMethod = "SERVERTIME";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Settings and administartion";
+    NewLine.MethodDescription   = "Get current server time";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ServerTime";
-    NewLine.МетодПоиска = "SERVERTIME";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Settings and administartion";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ServerTime";
+    NewLine.SearchMethod = "SERVERTIME";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Settings and administartion";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Create a new post at news feed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Create a new post at news feed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Text of post";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Text of post";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--vision";
+    NewLine.Description    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--files";
+    NewLine.Description    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Post title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--important";
-    NewLine.Описание    = "Mark post as important (optional, def. val. - No)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--important";
+    NewLine.Description    = "Mark post as important (optional, def. val. - No)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePost";
-    NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePost";
+    NewLine.SearchMethod = "CREATEPOST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Change post data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Change post data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Post ID";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Text of post";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Text of post";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--vision";
+    NewLine.Description    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--files";
+    NewLine.Description    = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Post title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdatePost";
-    NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdatePost";
+    NewLine.SearchMethod = "UPDATEPOST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeletePost";
-    NewLine.МетодПоиска = "DELETEPOST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Remove post from a news feed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeletePost";
+    NewLine.SearchMethod = "DELETEPOST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Remove post from a news feed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeletePost";
-    NewLine.МетодПоиска = "DELETEPOST";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Id of post to remove";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeletePost";
+    NewLine.SearchMethod = "DELETEPOST";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Id of post to remove";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeletePost";
-    NewLine.МетодПоиска = "DELETEPOST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeletePost";
+    NewLine.SearchMethod = "DELETEPOST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetImportantPostViewers";
-    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Return list of important post viewers ids";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetImportantPostViewers";
+    NewLine.SearchMethod = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Return list of important post viewers ids";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetImportantPostViewers";
-    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Id of important post";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetImportantPostViewers";
+    NewLine.SearchMethod = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Id of important post";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetImportantPostViewers";
-    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetImportantPostViewers";
+    NewLine.SearchMethod = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPosts";
-    NewLine.МетодПоиска = "GETPOSTS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Gen post or array of post with ID or rights selection";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPosts";
+    NewLine.SearchMethod = "GETPOSTS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Gen post or array of post with ID or rights selection";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPosts";
-    NewLine.МетодПоиска = "GETPOSTS";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Id of important post (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPosts";
+    NewLine.SearchMethod = "GETPOSTS";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Id of important post (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPosts";
-    NewLine.МетодПоиска = "GETPOSTS";
-    NewLine.Параметр    = "--sel";
-    NewLine.Описание    = "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (optional, def. val. - UA)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPosts";
+    NewLine.SearchMethod = "GETPOSTS";
+    NewLine.Parameter    = "--sel";
+    NewLine.Description    = "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (optional, def. val. - UA)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPosts";
-    NewLine.МетодПоиска = "GETPOSTS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPosts";
+    NewLine.SearchMethod = "GETPOSTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostComment";
-    NewLine.МетодПоиска = "ADDPOSTCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Adds a comment to the post";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostComment";
+    NewLine.SearchMethod = "ADDPOSTCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Adds a comment to the post";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostComment";
-    NewLine.МетодПоиска = "ADDPOSTCOMMENT";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostComment";
+    NewLine.SearchMethod = "ADDPOSTCOMMENT";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Post ID";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostComment";
-    NewLine.МетодПоиска = "ADDPOSTCOMMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostComment";
+    NewLine.SearchMethod = "ADDPOSTCOMMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostComment";
-    NewLine.МетодПоиска = "ADDPOSTCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostComment";
+    NewLine.SearchMethod = "ADDPOSTCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostRecipients";
-    NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Feed posts management";
-    NewLine.ОписаниеМетода   = "Adds new groups or users to the recipients";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostRecipients";
+    NewLine.SearchMethod = "ADDPOSTRECIPIENTS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Feed posts management";
+    NewLine.MethodDescription   = "Adds new groups or users to the recipients";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostRecipients";
-    NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
-    NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Post ID";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostRecipients";
+    NewLine.SearchMethod = "ADDPOSTRECIPIENTS";
+    NewLine.Parameter    = "--postid";
+    NewLine.Description    = "Post ID";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostRecipients";
-    NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
-    NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostRecipients";
+    NewLine.SearchMethod = "ADDPOSTRECIPIENTS";
+    NewLine.Parameter    = "--vision";
+    NewLine.Description    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddPostRecipients";
-    NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Feed posts management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddPostRecipients";
+    NewLine.SearchMethod = "ADDPOSTRECIPIENTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Feed posts management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTask";
-    NewLine.МетодПоиска = "GETTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Get task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTask";
+    NewLine.SearchMethod = "GETTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Get task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTask";
-    NewLine.МетодПоиска = "GETTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTask";
+    NewLine.SearchMethod = "GETTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTask";
-    NewLine.МетодПоиска = "GETTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTask";
+    NewLine.SearchMethod = "GETTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksList";
-    NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Get tasks list (50 at one response max))";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksList";
+    NewLine.SearchMethod = "GETTASKSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Get tasks list (50 at one response max))";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksList";
-    NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Structure of task filter (see GetTaskFieldsStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksList";
+    NewLine.SearchMethod = "GETTASKSLIST";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Structure of task filter (see GetTaskFieldsStructure) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksList";
-    NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset of tasks list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksList";
+    NewLine.SearchMethod = "GETTASKSLIST";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset of tasks list (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksList";
-    NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksList";
+    NewLine.SearchMethod = "GETTASKSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksList";
-    NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--select";
-    NewLine.Описание    = "A list of task fields in the response. All non calculable by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksList";
+    NewLine.SearchMethod = "GETTASKSLIST";
+    NewLine.Parameter    = "--select";
+    NewLine.Description    = "A list of task fields in the response. All non calculable by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTask";
-    NewLine.МетодПоиска = "CREATETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Create new task by fields structure (see GetTaskFieldsStructure)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTask";
+    NewLine.SearchMethod = "CREATETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Create new task by fields structure (see GetTaskFieldsStructure)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTask";
-    NewLine.МетодПоиска = "CREATETASK";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Task fields structure (see GetTaskFieldsStructure)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTask";
+    NewLine.SearchMethod = "CREATETASK";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Task fields structure (see GetTaskFieldsStructure)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTask";
-    NewLine.МетодПоиска = "CREATETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTask";
+    NewLine.SearchMethod = "CREATETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTask";
-    NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Update a task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTask";
+    NewLine.SearchMethod = "UPDATETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Update a task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTask";
-    NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTask";
+    NewLine.SearchMethod = "UPDATETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTask";
-    NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Task fields structure";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTask";
+    NewLine.SearchMethod = "UPDATETASK";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Task fields structure";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTask";
-    NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTask";
+    NewLine.SearchMethod = "UPDATETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTask";
-    NewLine.МетодПоиска = "DELETETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Delete task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTask";
+    NewLine.SearchMethod = "DELETETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Delete task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTask";
-    NewLine.МетодПоиска = "DELETETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTask";
+    NewLine.SearchMethod = "DELETETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTask";
-    NewLine.МетодПоиска = "DELETETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTask";
+    NewLine.SearchMethod = "DELETETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AttachFileToTopic";
-    NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Attaches a file to the selected task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AttachFileToTopic";
+    NewLine.SearchMethod = "ATTACHFILETOTOPIC";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Attaches a file to the selected task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AttachFileToTopic";
-    NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AttachFileToTopic";
+    NewLine.SearchMethod = "ATTACHFILETOTOPIC";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AttachFileToTopic";
-    NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AttachFileToTopic";
+    NewLine.SearchMethod = "ATTACHFILETOTOPIC";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AttachFileToTopic";
-    NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AttachFileToTopic";
+    NewLine.SearchMethod = "ATTACHFILETOTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ApproveTask";
-    NewLine.МетодПоиска = "APPROVETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Approve task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ApproveTask";
+    NewLine.SearchMethod = "APPROVETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Approve task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ApproveTask";
-    NewLine.МетодПоиска = "APPROVETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ApproveTask";
+    NewLine.SearchMethod = "APPROVETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ApproveTask";
-    NewLine.МетодПоиска = "APPROVETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ApproveTask";
+    NewLine.SearchMethod = "APPROVETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisapproveTask";
-    NewLine.МетодПоиска = "DISAPPROVETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Disapprove task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisapproveTask";
+    NewLine.SearchMethod = "DISAPPROVETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Disapprove task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisapproveTask";
-    NewLine.МетодПоиска = "DISAPPROVETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisapproveTask";
+    NewLine.SearchMethod = "DISAPPROVETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisapproveTask";
-    NewLine.МетодПоиска = "DISAPPROVETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisapproveTask";
+    NewLine.SearchMethod = "DISAPPROVETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTask";
-    NewLine.МетодПоиска = "COMPLETETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Complete task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTask";
+    NewLine.SearchMethod = "COMPLETETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Complete task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTask";
-    NewLine.МетодПоиска = "COMPLETETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTask";
+    NewLine.SearchMethod = "COMPLETETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTask";
-    NewLine.МетодПоиска = "COMPLETETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTask";
+    NewLine.SearchMethod = "COMPLETETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTask";
-    NewLine.МетодПоиска = "RENEWTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Returns a task to work by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTask";
+    NewLine.SearchMethod = "RENEWTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Returns a task to work by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTask";
-    NewLine.МетодПоиска = "RENEWTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTask";
+    NewLine.SearchMethod = "RENEWTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTask";
-    NewLine.МетодПоиска = "RENEWTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTask";
+    NewLine.SearchMethod = "RENEWTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeferTask";
-    NewLine.МетодПоиска = "DEFERTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Defer task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeferTask";
+    NewLine.SearchMethod = "DEFERTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Defer task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeferTask";
-    NewLine.МетодПоиска = "DEFERTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeferTask";
+    NewLine.SearchMethod = "DEFERTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeferTask";
-    NewLine.МетодПоиска = "DEFERTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeferTask";
+    NewLine.SearchMethod = "DEFERTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTask";
-    NewLine.МетодПоиска = "PAUSETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Pause a task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTask";
+    NewLine.SearchMethod = "PAUSETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Pause a task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTask";
-    NewLine.МетодПоиска = "PAUSETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTask";
+    NewLine.SearchMethod = "PAUSETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTask";
-    NewLine.МетодПоиска = "PAUSETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTask";
+    NewLine.SearchMethod = "PAUSETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTask";
-    NewLine.МетодПоиска = "STARTTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Start a task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTask";
+    NewLine.SearchMethod = "STARTTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Start a task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTask";
-    NewLine.МетодПоиска = "STARTTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTask";
+    NewLine.SearchMethod = "STARTTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTask";
-    NewLine.МетодПоиска = "STARTTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTask";
+    NewLine.SearchMethod = "STARTTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartWatchingTask";
-    NewLine.МетодПоиска = "STARTWATCHINGTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Start watching a task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartWatchingTask";
+    NewLine.SearchMethod = "STARTWATCHINGTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Start watching a task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartWatchingTask";
-    NewLine.МетодПоиска = "STARTWATCHINGTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartWatchingTask";
+    NewLine.SearchMethod = "STARTWATCHINGTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartWatchingTask";
-    NewLine.МетодПоиска = "STARTWATCHINGTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartWatchingTask";
+    NewLine.SearchMethod = "STARTWATCHINGTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopWatchingTask";
-    NewLine.МетодПоиска = "STOPWATCHINGTASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Stop watching a task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopWatchingTask";
+    NewLine.SearchMethod = "STOPWATCHINGTASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Stop watching a task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopWatchingTask";
-    NewLine.МетодПоиска = "STOPWATCHINGTASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopWatchingTask";
+    NewLine.SearchMethod = "STOPWATCHINGTASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopWatchingTask";
-    NewLine.МетодПоиска = "STOPWATCHINGTASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopWatchingTask";
+    NewLine.SearchMethod = "STOPWATCHINGTASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DelegateTask";
-    NewLine.МетодПоиска = "DELEGATETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Delegate task to another user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DelegateTask";
+    NewLine.SearchMethod = "DELEGATETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Delegate task to another user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DelegateTask";
-    NewLine.МетодПоиска = "DELEGATETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DelegateTask";
+    NewLine.SearchMethod = "DELEGATETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DelegateTask";
-    NewLine.МетодПоиска = "DELEGATETASK";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "ID of responsible user";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DelegateTask";
+    NewLine.SearchMethod = "DELEGATETASK";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "ID of responsible user";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DelegateTask";
-    NewLine.МетодПоиска = "DELEGATETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DelegateTask";
+    NewLine.SearchMethod = "DELEGATETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskToFavorites";
-    NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Add task to favorites list";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskToFavorites";
+    NewLine.SearchMethod = "ADDTASKTOFAVORITES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Add task to favorites list";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskToFavorites";
-    NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskToFavorites";
+    NewLine.SearchMethod = "ADDTASKTOFAVORITES";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskToFavorites";
-    NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskToFavorites";
+    NewLine.SearchMethod = "ADDTASKTOFAVORITES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RemoveTaskFromFavorites";
-    NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Delete task from favorites list";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RemoveTaskFromFavorites";
+    NewLine.SearchMethod = "REMOVETASKFROMFAVORITES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Delete task from favorites list";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RemoveTaskFromFavorites";
-    NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RemoveTaskFromFavorites";
+    NewLine.SearchMethod = "REMOVETASKFROMFAVORITES";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RemoveTaskFromFavorites";
-    NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RemoveTaskFromFavorites";
+    NewLine.SearchMethod = "REMOVETASKFROMFAVORITES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskHistory";
-    NewLine.МетодПоиска = "GETTASKHISTORY";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Get history of task changing";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskHistory";
+    NewLine.SearchMethod = "GETTASKHISTORY";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Get history of task changing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskHistory";
-    NewLine.МетодПоиска = "GETTASKHISTORY";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskHistory";
+    NewLine.SearchMethod = "GETTASKHISTORY";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskHistory";
-    NewLine.МетодПоиска = "GETTASKHISTORY";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskHistory";
+    NewLine.SearchMethod = "GETTASKHISTORY";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CheckTaskAccesses";
-    NewLine.МетодПоиска = "CHECKTASKACCESSES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Checks the availability of the task for users";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CheckTaskAccesses";
+    NewLine.SearchMethod = "CHECKTASKACCESSES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Checks the availability of the task for users";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CheckTaskAccesses";
-    NewLine.МетодПоиска = "CHECKTASKACCESSES";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CheckTaskAccesses";
+    NewLine.SearchMethod = "CHECKTASKACCESSES";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CheckTaskAccesses";
-    NewLine.МетодПоиска = "CHECKTASKACCESSES";
-    NewLine.Параметр    = "--users";
-    NewLine.Описание    = "User IDs for access checking (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CheckTaskAccesses";
+    NewLine.SearchMethod = "CHECKTASKACCESSES";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "User IDs for access checking (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CheckTaskAccesses";
-    NewLine.МетодПоиска = "CHECKTASKACCESSES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CheckTaskAccesses";
+    NewLine.SearchMethod = "CHECKTASKACCESSES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MuteTask";
-    NewLine.МетодПоиска = "MUTETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Mute task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MuteTask";
+    NewLine.SearchMethod = "MUTETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Mute task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MuteTask";
-    NewLine.МетодПоиска = "MUTETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MuteTask";
+    NewLine.SearchMethod = "MUTETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MuteTask";
-    NewLine.МетодПоиска = "MUTETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MuteTask";
+    NewLine.SearchMethod = "MUTETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UnmuteTask";
-    NewLine.МетодПоиска = "UNMUTETASK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Unmute task by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UnmuteTask";
+    NewLine.SearchMethod = "UNMUTETASK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Unmute task by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UnmuteTask";
-    NewLine.МетодПоиска = "UNMUTETASK";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UnmuteTask";
+    NewLine.SearchMethod = "UNMUTETASK";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UnmuteTask";
-    NewLine.МетодПоиска = "UNMUTETASK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UnmuteTask";
+    NewLine.SearchMethod = "UNMUTETASK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTasksDependencies";
-    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Creates the dependency of one task to another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTasksDependencies";
+    NewLine.SearchMethod = "CREATETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Creates the dependency of one task to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTasksDependencies";
-    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--taskfrom";
-    NewLine.Описание    = "From task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTasksDependencies";
+    NewLine.SearchMethod = "CREATETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--taskfrom";
+    NewLine.Description    = "From task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTasksDependencies";
-    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--taskto";
-    NewLine.Описание    = "To task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTasksDependencies";
+    NewLine.SearchMethod = "CREATETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--taskto";
+    NewLine.Description    = "To task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTasksDependencies";
-    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--linktype";
-    NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTasksDependencies";
+    NewLine.SearchMethod = "CREATETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--linktype";
+    NewLine.Description    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateTasksDependencies";
-    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateTasksDependencies";
+    NewLine.SearchMethod = "CREATETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksDependencies";
-    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Removes the dependency of one task to another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksDependencies";
+    NewLine.SearchMethod = "DELETETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Removes the dependency of one task to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksDependencies";
-    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--taskfrom";
-    NewLine.Описание    = "From task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksDependencies";
+    NewLine.SearchMethod = "DELETETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--taskfrom";
+    NewLine.Description    = "From task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksDependencies";
-    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--taskto";
-    NewLine.Описание    = "To task ID";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksDependencies";
+    NewLine.SearchMethod = "DELETETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--taskto";
+    NewLine.Description    = "To task ID";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksDependencies";
-    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--linktype";
-    NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksDependencies";
+    NewLine.SearchMethod = "DELETETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--linktype";
+    NewLine.Description    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksDependencies";
-    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksDependencies";
+    NewLine.SearchMethod = "DELETETASKSDEPENDENCIES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDailyPlan";
-    NewLine.МетодПоиска = "GETDAILYPLAN";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Gets the task plan for the current users day";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDailyPlan";
+    NewLine.SearchMethod = "GETDAILYPLAN";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Gets the task plan for the current users day";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDailyPlan";
-    NewLine.МетодПоиска = "GETDAILYPLAN";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDailyPlan";
+    NewLine.SearchMethod = "GETDAILYPLAN";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskFieldsStructure";
-    NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Gets a structure with a description of the fields for creating a task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskFieldsStructure";
+    NewLine.SearchMethod = "GETTASKFIELDSSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Gets a structure with a description of the fields for creating a task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskFieldsStructure";
-    NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskFieldsStructure";
+    NewLine.SearchMethod = "GETTASKFIELDSSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksFilterStructure";
-    NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Tasks management";
-    NewLine.ОписаниеМетода   = "Return filter structure for GetTasksList";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksFilterStructure";
+    NewLine.SearchMethod = "GETTASKSFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Tasks management";
+    NewLine.MethodDescription   = "Return filter structure for GetTasksList";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksFilterStructure";
-    NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
-    NewLine.Параметр    = "--map";
-    NewLine.Описание    = "True > returns the filter fields as a map (optional, def. val. - No)";
-    NewLine.Область     = "Tasks management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksFilterStructure";
+    NewLine.SearchMethod = "GETTASKSFILTERSTRUCTURE";
+    NewLine.Parameter    = "--map";
+    NewLine.Description    = "True > returns the filter fields as a map (optional, def. val. - No)";
+    NewLine.Region     = "Tasks management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomTaskFieldsList";
-    NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields management";
-    NewLine.ОписаниеМетода   = "Gets list of custom task fields";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomTaskFieldsList";
+    NewLine.SearchMethod = "GETCUSTOMTASKFIELDSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Customs tasks fields management";
+    NewLine.MethodDescription   = "Gets list of custom task fields";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomTaskFieldsList";
-    NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomTaskFieldsList";
+    NewLine.SearchMethod = "GETCUSTOMTASKFIELDSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields management";
-    NewLine.ОписаниеМетода   = "Adds a new custom field to be added to the task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Customs tasks fields management";
+    NewLine.MethodDescription   = "Adds a new custom field to be added to the task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Field type: string, double, date, boolean";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Field type: string, double, date, boolean";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--fieldname";
-    NewLine.Описание    = "Text identifier (name) of the field";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--fieldname";
+    NewLine.Description    = "Text identifier (name) of the field";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--externalid";
-    NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--externalid";
+    NewLine.Description    = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--label";
-    NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--label";
+    NewLine.Description    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddCustomTaskField";
-    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddCustomTaskField";
+    NewLine.SearchMethod = "ADDCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields management";
-    NewLine.ОписаниеМетода   = "Updates a custom task field data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Customs tasks fields management";
+    NewLine.MethodDescription   = "Updates a custom task field data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--fieldid";
-    NewLine.Описание    = "Field ID for updating";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--fieldid";
+    NewLine.Description    = "Field ID for updating";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--externalid";
-    NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--externalid";
+    NewLine.Description    = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--label";
-    NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--label";
+    NewLine.Description    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCustomTaskField";
-    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCustomTaskField";
+    NewLine.SearchMethod = "UPDATECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomTaskField";
-    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields management";
-    NewLine.ОписаниеМетода   = "Get custom task field data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomTaskField";
+    NewLine.SearchMethod = "GETCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Customs tasks fields management";
+    NewLine.MethodDescription   = "Get custom task field data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomTaskField";
-    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--fieldid";
-    NewLine.Описание    = "Field ID for retrieval";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomTaskField";
+    NewLine.SearchMethod = "GETCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--fieldid";
+    NewLine.Description    = "Field ID for retrieval";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomTaskField";
-    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomTaskField";
+    NewLine.SearchMethod = "GETCUSTOMTASKFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCustomTaskField";
-    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Customs tasks fields management";
-    NewLine.ОписаниеМетода   = "Deletes a custom task field";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCustomTaskField";
+    NewLine.SearchMethod = "DELETECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Customs tasks fields management";
+    NewLine.MethodDescription   = "Deletes a custom task field";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCustomTaskField";
-    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--fieldid";
-    NewLine.Описание    = "Field ID for deletion";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCustomTaskField";
+    NewLine.SearchMethod = "DELETECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--fieldid";
+    NewLine.Description    = "Field ID for deletion";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCustomTaskField";
-    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Customs tasks fields management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCustomTaskField";
+    NewLine.SearchMethod = "DELETECUSTOMTASKFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Customs tasks fields management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTasksChecklistElement";
-    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Adds new element of tasks checklist";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTasksChecklistElement";
+    NewLine.SearchMethod = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Adds new element of tasks checklist";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTasksChecklistElement";
-    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTasksChecklistElement";
+    NewLine.SearchMethod = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTasksChecklistElement";
-    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Text (title) of checklist element";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTasksChecklistElement";
+    NewLine.SearchMethod = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Text (title) of checklist element";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTasksChecklistElement";
-    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--complete";
-    NewLine.Описание    = "Mark as completed (optional, def. val. - No)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTasksChecklistElement";
+    NewLine.SearchMethod = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--complete";
+    NewLine.Description    = "Mark as completed (optional, def. val. - No)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTasksChecklistElement";
-    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTasksChecklistElement";
+    NewLine.SearchMethod = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTasksChecklistElement";
-    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Updates text of element of tasks checklist";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTasksChecklistElement";
+    NewLine.SearchMethod = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Updates text of element of tasks checklist";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTasksChecklistElement";
-    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTasksChecklistElement";
+    NewLine.SearchMethod = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTasksChecklistElement";
-    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--element";
-    NewLine.Описание    = "Checklist element ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTasksChecklistElement";
+    NewLine.SearchMethod = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--element";
+    NewLine.Description    = "Checklist element ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTasksChecklistElement";
-    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Text (title) of checklist element";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTasksChecklistElement";
+    NewLine.SearchMethod = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Text (title) of checklist element";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTasksChecklistElement";
-    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTasksChecklistElement";
+    NewLine.SearchMethod = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksChecklistElement";
-    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Deletes element from tasks checklist";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksChecklistElement";
+    NewLine.SearchMethod = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Deletes element from tasks checklist";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksChecklistElement";
-    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksChecklistElement";
+    NewLine.SearchMethod = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksChecklistElement";
-    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--element";
-    NewLine.Описание    = "ID of deleted element";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksChecklistElement";
+    NewLine.SearchMethod = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--element";
+    NewLine.Description    = "ID of deleted element";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTasksChecklistElement";
-    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTasksChecklistElement";
+    NewLine.SearchMethod = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklist";
-    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Gets the list of elements on the task checklist";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklist";
+    NewLine.SearchMethod = "GETTASKSCHECKLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Gets the list of elements on the task checklist";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklist";
-    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklist";
+    NewLine.SearchMethod = "GETTASKSCHECKLIST";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklist";
-    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklist";
+    NewLine.SearchMethod = "GETTASKSCHECKLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklistElement";
-    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Gets tasks checklist element by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklistElement";
+    NewLine.SearchMethod = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Gets tasks checklist element by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklistElement";
-    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklistElement";
+    NewLine.SearchMethod = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklistElement";
-    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--element";
-    NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklistElement";
+    NewLine.SearchMethod = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--element";
+    NewLine.Description    = "Element ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTasksChecklistElement";
-    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTasksChecklistElement";
+    NewLine.SearchMethod = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTasksChecklistElement";
-    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Mark an element as completed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTasksChecklistElement";
+    NewLine.SearchMethod = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Mark an element as completed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTasksChecklistElement";
-    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTasksChecklistElement";
+    NewLine.SearchMethod = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTasksChecklistElement";
-    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--element";
-    NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTasksChecklistElement";
+    NewLine.SearchMethod = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--element";
+    NewLine.Description    = "Element ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CompleteTasksChecklistElement";
-    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CompleteTasksChecklistElement";
+    NewLine.SearchMethod = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTasksChecklistElement";
-    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Tasks checklists management";
-    NewLine.ОписаниеМетода   = "Unmark an element as completed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTasksChecklistElement";
+    NewLine.SearchMethod = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Tasks checklists management";
+    NewLine.MethodDescription   = "Unmark an element as completed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTasksChecklistElement";
-    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTasksChecklistElement";
+    NewLine.SearchMethod = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTasksChecklistElement";
-    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--element";
-    NewLine.Описание    = "Element ID";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTasksChecklistElement";
+    NewLine.SearchMethod = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--element";
+    NewLine.Description    = "Element ID";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenewTasksChecklistElement";
-    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tasks checklists management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenewTasksChecklistElement";
+    NewLine.SearchMethod = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tasks checklists management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskCommentsList";
-    NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Get user comments list for a task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskCommentsList";
+    NewLine.SearchMethod = "GETTASKCOMMENTSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Get user comments list for a task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskCommentsList";
-    NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskCommentsList";
+    NewLine.SearchMethod = "GETTASKCOMMENTSLIST";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskCommentsList";
-    NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskCommentsList";
+    NewLine.SearchMethod = "GETTASKCOMMENTSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskComment";
-    NewLine.МетодПоиска = "GETTASKCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Gets task comment data by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskComment";
+    NewLine.SearchMethod = "GETTASKCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Gets task comment data by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskComment";
-    NewLine.МетодПоиска = "GETTASKCOMMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskComment";
+    NewLine.SearchMethod = "GETTASKCOMMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskComment";
-    NewLine.МетодПоиска = "GETTASKCOMMENT";
-    NewLine.Параметр    = "--comment";
-    NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskComment";
+    NewLine.SearchMethod = "GETTASKCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "CommentID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskComment";
-    NewLine.МетодПоиска = "GETTASKCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskComment";
+    NewLine.SearchMethod = "GETTASKCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskComment";
-    NewLine.МетодПоиска = "ADDTASKCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Create new comment to the task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskComment";
+    NewLine.SearchMethod = "ADDTASKCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Create new comment to the task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskComment";
-    NewLine.МетодПоиска = "ADDTASKCOMMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskComment";
+    NewLine.SearchMethod = "ADDTASKCOMMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskComment";
-    NewLine.МетодПоиска = "ADDTASKCOMMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskComment";
+    NewLine.SearchMethod = "ADDTASKCOMMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskComment";
-    NewLine.МетодПоиска = "ADDTASKCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskComment";
+    NewLine.SearchMethod = "ADDTASKCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskComment";
-    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Changes task comment text";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskComment";
+    NewLine.SearchMethod = "UPDATETASKCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Changes task comment text";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskComment";
-    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskComment";
+    NewLine.SearchMethod = "UPDATETASKCOMMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskComment";
-    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--comment";
-    NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskComment";
+    NewLine.SearchMethod = "UPDATETASKCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "CommentID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskComment";
-    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Comment text";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskComment";
+    NewLine.SearchMethod = "UPDATETASKCOMMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskComment";
-    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskComment";
+    NewLine.SearchMethod = "UPDATETASKCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskComment";
-    NewLine.МетодПоиска = "DELETETASKCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Delete task comment by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskComment";
+    NewLine.SearchMethod = "DELETETASKCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Delete task comment by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskComment";
-    NewLine.МетодПоиска = "DELETETASKCOMMENT";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskComment";
+    NewLine.SearchMethod = "DELETETASKCOMMENT";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskComment";
-    NewLine.МетодПоиска = "DELETETASKCOMMENT";
-    NewLine.Параметр    = "--comment";
-    NewLine.Описание    = "ID of comment to remove";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskComment";
+    NewLine.SearchMethod = "DELETETASKCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "ID of comment to remove";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskComment";
-    NewLine.МетодПоиска = "DELETETASKCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskComment";
+    NewLine.SearchMethod = "DELETETASKCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetResultsList";
-    NewLine.МетодПоиска = "GETRESULTSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Gets results list for task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetResultsList";
+    NewLine.SearchMethod = "GETRESULTSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Gets results list for task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetResultsList";
-    NewLine.МетодПоиска = "GETRESULTSLIST";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetResultsList";
+    NewLine.SearchMethod = "GETRESULTSLIST";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetResultsList";
-    NewLine.МетодПоиска = "GETRESULTSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetResultsList";
+    NewLine.SearchMethod = "GETRESULTSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateResultFromComment";
-    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Create task result from comment";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateResultFromComment";
+    NewLine.SearchMethod = "CREATERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Create task result from comment";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateResultFromComment";
-    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--comment";
-    NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateResultFromComment";
+    NewLine.SearchMethod = "CREATERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "CommentID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateResultFromComment";
-    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateResultFromComment";
+    NewLine.SearchMethod = "CREATERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteResultFromComment";
-    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Deletes task result, created from a comment";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteResultFromComment";
+    NewLine.SearchMethod = "DELETERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Deletes task result, created from a comment";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteResultFromComment";
-    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--comment";
-    NewLine.Описание    = "CommentID";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteResultFromComment";
+    NewLine.SearchMethod = "DELETERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "CommentID";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteResultFromComment";
-    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Comments and results management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteResultFromComment";
+    NewLine.SearchMethod = "DELETERESULTFROMCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Comments and results management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCommentStructure";
-    NewLine.МетодПоиска = "GETCOMMENTSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Comments and results management";
-    NewLine.ОписаниеМетода   = "Get comment fields structure";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCommentStructure";
+    NewLine.SearchMethod = "GETCOMMENTSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Comments and results management";
+    NewLine.MethodDescription   = "Get comment fields structure";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Add new stage of kanban or My Plan";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Kanban";
+    NewLine.MethodDescription   = "Add new stage of kanban or My Plan";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New stage name";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New stage name";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--color";
-    NewLine.Описание    = "HEX of new stage color (optional, def. val. - FFD800)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--color";
+    NewLine.Description    = "HEX of new stage color (optional, def. val. - FFD800)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--prevstage";
-    NewLine.Описание    = "ID of the stage after which a new stage should be inserted (at the beginning by default.) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--prevstage";
+    NewLine.Description    = "ID of the stage after which a new stage should be inserted (at the beginning by default.) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--entityid";
-    NewLine.Описание    = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--entityid";
+    NewLine.Description    = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--admin";
+    NewLine.Description    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddKanbanStage";
-    NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddKanbanStage";
+    NewLine.SearchMethod = "ADDKANBANSTAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Changes the properties of the existing kanban or My plan stage";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Kanban";
+    NewLine.MethodDescription   = "Changes the properties of the existing kanban or My plan stage";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New stages name";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New stages name";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--stage";
-    NewLine.Описание    = "Stage ID for change";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--stage";
+    NewLine.Description    = "Stage ID for change";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--color";
-    NewLine.Описание    = "HEX of new stage color (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--color";
+    NewLine.Description    = "HEX of new stage color (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--prevstage";
-    NewLine.Описание    = "Stage ID, after which the selected stage should be inserted (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--prevstage";
+    NewLine.Description    = "Stage ID, after which the selected stage should be inserted (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--admin";
+    NewLine.Description    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateKanbansStage";
-    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateKanbansStage";
+    NewLine.SearchMethod = "UPDATEKANBANSSTAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteKanbanStage";
-    NewLine.МетодПоиска = "DELETEKANBANSTAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Removes a kanban (My Plan) stage, provided there are no tasks in it";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteKanbanStage";
+    NewLine.SearchMethod = "DELETEKANBANSTAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Kanban";
+    NewLine.MethodDescription   = "Removes a kanban (My Plan) stage, provided there are no tasks in it";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteKanbanStage";
-    NewLine.МетодПоиска = "DELETEKANBANSTAGE";
-    NewLine.Параметр    = "--stage";
-    NewLine.Описание    = "ID of stage to dele";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteKanbanStage";
+    NewLine.SearchMethod = "DELETEKANBANSTAGE";
+    NewLine.Parameter    = "--stage";
+    NewLine.Description    = "ID of stage to dele";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteKanbanStage";
-    NewLine.МетодПоиска = "DELETEKANBANSTAGE";
-    NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteKanbanStage";
+    NewLine.SearchMethod = "DELETEKANBANSTAGE";
+    NewLine.Parameter    = "--admin";
+    NewLine.Description    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteKanbanStage";
-    NewLine.МетодПоиска = "DELETEKANBANSTAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteKanbanStage";
+    NewLine.SearchMethod = "DELETEKANBANSTAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetKanbanStages";
-    NewLine.МетодПоиска = "GETKANBANSTAGES";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Get kanban (My Plan) stages info";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetKanbanStages";
+    NewLine.SearchMethod = "GETKANBANSTAGES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Kanban";
+    NewLine.MethodDescription   = "Get kanban (My Plan) stages info";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetKanbanStages";
-    NewLine.МетодПоиска = "GETKANBANSTAGES";
-    NewLine.Параметр    = "--entityid";
-    NewLine.Описание    = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetKanbanStages";
+    NewLine.SearchMethod = "GETKANBANSTAGES";
+    NewLine.Parameter    = "--entityid";
+    NewLine.Description    = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetKanbanStages";
-    NewLine.МетодПоиска = "GETKANBANSTAGES";
-    NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - No)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetKanbanStages";
+    NewLine.SearchMethod = "GETKANBANSTAGES";
+    NewLine.Parameter    = "--admin";
+    NewLine.Description    = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetKanbanStages";
-    NewLine.МетодПоиска = "GETKANBANSTAGES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetKanbanStages";
+    NewLine.SearchMethod = "GETKANBANSTAGES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Move task to another kanban stage";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Kanban";
+    NewLine.MethodDescription   = "Move task to another kanban stage";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "ID of task to move";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "ID of task to move";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--stage";
-    NewLine.Описание    = "Stage ID";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--stage";
+    NewLine.Description    = "Stage ID";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--before";
-    NewLine.Описание    = "ID of the task to put the selected one in front of (if After not filled) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--before";
+    NewLine.Description    = "ID of the task to put the selected one in front of (if After not filled) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--after";
-    NewLine.Описание    = "ID of the task to be followed by the selected (if Prev not filled) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--after";
+    NewLine.Description    = "ID of the task to be followed by the selected (if Prev not filled) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveTaskToKanbanStage";
-    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Kanban";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveTaskToKanbanStage";
+    NewLine.SearchMethod = "MOVETASKTOKANBANSTAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Kanban";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Adds information about the user's time spent to the task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Adds information about the user's time spent to the task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "ID of task for time accounting";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "ID of task for time accounting";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--amount";
-    NewLine.Описание    = "Time spent in seconds";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Time spent in seconds";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "ID of user for time accounting (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "ID of user for time accounting (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Comment text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--date";
-    NewLine.Описание    = "Date the record was set (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--date";
+    NewLine.Description    = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddTaskTimeAccounting";
-    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddTaskTimeAccounting";
+    NewLine.SearchMethod = "ADDTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskTimeAccounting";
-    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Deletes record of time accounting";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskTimeAccounting";
+    NewLine.SearchMethod = "DELETETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Deletes record of time accounting";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskTimeAccounting";
-    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "ID of task for time accounting";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskTimeAccounting";
+    NewLine.SearchMethod = "DELETETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "ID of task for time accounting";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskTimeAccounting";
-    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--record";
-    NewLine.Описание    = "Time record ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskTimeAccounting";
+    NewLine.SearchMethod = "DELETETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Time record ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteTaskTimeAccounting";
-    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteTaskTimeAccounting";
+    NewLine.SearchMethod = "DELETETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccountingList";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Get list of time accounting records for task";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccountingList";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Get list of time accounting records for task";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccountingList";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccountingList";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccountingList";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccountingList";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccounting";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Get time accounting record data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccounting";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Get time accounting record data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccounting";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccounting";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccounting";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--record";
-    NewLine.Описание    = "Time record ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccounting";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Time record ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskTimeAccounting";
-    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTaskTimeAccounting";
+    NewLine.SearchMethod = "GETTASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Update time accounting record data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Update time accounting record data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--task";
-    NewLine.Описание    = "Task ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--task";
+    NewLine.Description    = "Task ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--record";
-    NewLine.Описание    = "Time record ID";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Time record ID";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--amount";
-    NewLine.Описание    = "Time spent in seconds";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Time spent in seconds";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Comment text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--date";
-    NewLine.Описание    = "Date the record was set (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--date";
+    NewLine.Description    = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateTaskTimeAccounting";
-    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateTaskTimeAccounting";
+    NewLine.SearchMethod = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTimekeeping";
-    NewLine.МетодПоиска = "STARTTIMEKEEPING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Starts user timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTimekeeping";
+    NewLine.SearchMethod = "STARTTIMEKEEPING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Starts user timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTimekeeping";
-    NewLine.МетодПоиска = "STARTTIMEKEEPING";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTimekeeping";
+    NewLine.SearchMethod = "STARTTIMEKEEPING";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTimekeeping";
-    NewLine.МетодПоиска = "STARTTIMEKEEPING";
-    NewLine.Параметр    = "--time";
-    NewLine.Описание    = "Start time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTimekeeping";
+    NewLine.SearchMethod = "STARTTIMEKEEPING";
+    NewLine.Parameter    = "--time";
+    NewLine.Description    = "Start time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTimekeeping";
-    NewLine.МетодПоиска = "STARTTIMEKEEPING";
-    NewLine.Параметр    = "--report";
-    NewLine.Описание    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTimekeeping";
+    NewLine.SearchMethod = "STARTTIMEKEEPING";
+    NewLine.Parameter    = "--report";
+    NewLine.Description    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StartTimekeeping";
-    NewLine.МетодПоиска = "STARTTIMEKEEPING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StartTimekeeping";
+    NewLine.SearchMethod = "STARTTIMEKEEPING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopTimekeeping";
-    NewLine.МетодПоиска = "STOPTIMEKEEPING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Stops user timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopTimekeeping";
+    NewLine.SearchMethod = "STOPTIMEKEEPING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Stops user timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopTimekeeping";
-    NewLine.МетодПоиска = "STOPTIMEKEEPING";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopTimekeeping";
+    NewLine.SearchMethod = "STOPTIMEKEEPING";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopTimekeeping";
-    NewLine.МетодПоиска = "STOPTIMEKEEPING";
-    NewLine.Параметр    = "--time";
-    NewLine.Описание    = "Stop time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopTimekeeping";
+    NewLine.SearchMethod = "STOPTIMEKEEPING";
+    NewLine.Parameter    = "--time";
+    NewLine.Description    = "Stop time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopTimekeeping";
-    NewLine.МетодПоиска = "STOPTIMEKEEPING";
-    NewLine.Параметр    = "--report";
-    NewLine.Описание    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopTimekeeping";
+    NewLine.SearchMethod = "STOPTIMEKEEPING";
+    NewLine.Parameter    = "--report";
+    NewLine.Description    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "StopTimekeeping";
-    NewLine.МетодПоиска = "STOPTIMEKEEPING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "StopTimekeeping";
+    NewLine.SearchMethod = "STOPTIMEKEEPING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTimekeeping";
-    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Pauses user timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTimekeeping";
+    NewLine.SearchMethod = "PAUSETIMEKEEPING";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Pauses user timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTimekeeping";
-    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTimekeeping";
+    NewLine.SearchMethod = "PAUSETIMEKEEPING";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "PauseTimekeeping";
-    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "PauseTimekeeping";
+    NewLine.SearchMethod = "PAUSETIMEKEEPING";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingStatus";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Gets user timekeeping status";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingStatus";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Gets user timekeeping status";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingStatus";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingStatus";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSTATUS";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingStatus";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingStatus";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingSettings";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Timekeeping";
-    NewLine.ОписаниеМетода   = "Gets user timekeeping settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingSettings";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Timekeeping";
+    NewLine.MethodDescription   = "Gets user timekeeping settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingSettings";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingSettings";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTimekeepingSettings";
-    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Timekeeping";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetTimekeepingSettings";
+    NewLine.SearchMethod = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStoragesList";
-    NewLine.МетодПоиска = "GETSTORAGESLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Get list of available files storages";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStoragesList";
+    NewLine.SearchMethod = "GETSTORAGESLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Get list of available files storages";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStoragesList";
-    NewLine.МетодПоиска = "GETSTORAGESLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStoragesList";
+    NewLine.SearchMethod = "GETSTORAGESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetAppSotrage";
-    NewLine.МетодПоиска = "GETAPPSOTRAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Get information about storage with which the application can work to store its data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetAppSotrage";
+    NewLine.SearchMethod = "GETAPPSOTRAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Get information about storage with which the application can work to store its data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetAppSotrage";
-    NewLine.МетодПоиска = "GETAPPSOTRAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetAppSotrage";
+    NewLine.SearchMethod = "GETAPPSOTRAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorage";
-    NewLine.МетодПоиска = "GETSTORAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Get information about storage";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorage";
+    NewLine.SearchMethod = "GETSTORAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Get information about storage";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorage";
-    NewLine.МетодПоиска = "GETSTORAGE";
-    NewLine.Параметр    = "--storageid";
-    NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorage";
+    NewLine.SearchMethod = "GETSTORAGE";
+    NewLine.Parameter    = "--storageid";
+    NewLine.Description    = "Storage ID";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorage";
-    NewLine.МетодПоиска = "GETSTORAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorage";
+    NewLine.SearchMethod = "GETSTORAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameStorage";
-    NewLine.МетодПоиска = "RENAMESTORAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Change storage name (for app storage only, see. GetAppStorage)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameStorage";
+    NewLine.SearchMethod = "RENAMESTORAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Change storage name (for app storage only, see. GetAppStorage)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameStorage";
-    NewLine.МетодПоиска = "RENAMESTORAGE";
-    NewLine.Параметр    = "--storageid";
-    NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameStorage";
+    NewLine.SearchMethod = "RENAMESTORAGE";
+    NewLine.Parameter    = "--storageid";
+    NewLine.Description    = "Storage ID";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameStorage";
-    NewLine.МетодПоиска = "RENAMESTORAGE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New storage name";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameStorage";
+    NewLine.SearchMethod = "RENAMESTORAGE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New storage name";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameStorage";
-    NewLine.МетодПоиска = "RENAMESTORAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameStorage";
+    NewLine.SearchMethod = "RENAMESTORAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorageObjects";
-    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Get a list of files and folders, located at the root of the storage";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorageObjects";
+    NewLine.SearchMethod = "GETSTORAGEOBJECTS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Get a list of files and folders, located at the root of the storage";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorageObjects";
-    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
-    NewLine.Параметр    = "--storageid";
-    NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorageObjects";
+    NewLine.SearchMethod = "GETSTORAGEOBJECTS";
+    NewLine.Parameter    = "--storageid";
+    NewLine.Description    = "Storage ID";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetStorageObjects";
-    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetStorageObjects";
+    NewLine.SearchMethod = "GETSTORAGEOBJECTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateStorageFolder";
-    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Storages management";
-    NewLine.ОписаниеМетода   = "Create new foldera at the storage";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateStorageFolder";
+    NewLine.SearchMethod = "CREATESTORAGEFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Storages management";
+    NewLine.MethodDescription   = "Create new foldera at the storage";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateStorageFolder";
-    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
-    NewLine.Параметр    = "--storageid";
-    NewLine.Описание    = "Storage ID";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateStorageFolder";
+    NewLine.SearchMethod = "CREATESTORAGEFOLDER";
+    NewLine.Parameter    = "--storageid";
+    NewLine.Description    = "Storage ID";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateStorageFolder";
-    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Folder name";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateStorageFolder";
+    NewLine.SearchMethod = "CREATESTORAGEFOLDER";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Folder name";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateStorageFolder";
-    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Storages management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateStorageFolder";
+    NewLine.SearchMethod = "CREATESTORAGEFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Storages management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderInformation";
-    NewLine.МетодПоиска = "GETFOLDERINFORMATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Get folder information";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderInformation";
+    NewLine.SearchMethod = "GETFOLDERINFORMATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Get folder information";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderInformation";
-    NewLine.МетодПоиска = "GETFOLDERINFORMATION";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderInformation";
+    NewLine.SearchMethod = "GETFOLDERINFORMATION";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderInformation";
-    NewLine.МетодПоиска = "GETFOLDERINFORMATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderInformation";
+    NewLine.SearchMethod = "GETFOLDERINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSubfolder";
-    NewLine.МетодПоиска = "CREATESUBFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Create new folder inside another folder";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSubfolder";
+    NewLine.SearchMethod = "CREATESUBFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Create new folder inside another folder";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSubfolder";
-    NewLine.МетодПоиска = "CREATESUBFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Parent folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSubfolder";
+    NewLine.SearchMethod = "CREATESUBFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Parent folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSubfolder";
-    NewLine.МетодПоиска = "CREATESUBFOLDER";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Name of new folder";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSubfolder";
+    NewLine.SearchMethod = "CREATESUBFOLDER";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Name of new folder";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSubfolder";
-    NewLine.МетодПоиска = "CREATESUBFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSubfolder";
+    NewLine.SearchMethod = "CREATESUBFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeFolderCopy";
-    NewLine.МетодПоиска = "MAKEFOLDERCOPY";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Copy one folder to another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeFolderCopy";
+    NewLine.SearchMethod = "MAKEFOLDERCOPY";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Copy one folder to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeFolderCopy";
-    NewLine.МетодПоиска = "MAKEFOLDERCOPY";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeFolderCopy";
+    NewLine.SearchMethod = "MAKEFOLDERCOPY";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeFolderCopy";
-    NewLine.МетодПоиска = "MAKEFOLDERCOPY";
-    NewLine.Параметр    = "--tagetid";
-    NewLine.Описание    = "ID of target folder";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeFolderCopy";
+    NewLine.SearchMethod = "MAKEFOLDERCOPY";
+    NewLine.Parameter    = "--tagetid";
+    NewLine.Description    = "ID of target folder";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeFolderCopy";
-    NewLine.МетодПоиска = "MAKEFOLDERCOPY";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeFolderCopy";
+    NewLine.SearchMethod = "MAKEFOLDERCOPY";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFolder";
-    NewLine.МетодПоиска = "MOVEFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Moves one folder inside another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFolder";
+    NewLine.SearchMethod = "MOVEFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Moves one folder inside another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFolder";
-    NewLine.МетодПоиска = "MOVEFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFolder";
+    NewLine.SearchMethod = "MOVEFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFolder";
-    NewLine.МетодПоиска = "MOVEFOLDER";
-    NewLine.Параметр    = "--tagetid";
-    NewLine.Описание    = "ID of target folder";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFolder";
+    NewLine.SearchMethod = "MOVEFOLDER";
+    NewLine.Parameter    = "--tagetid";
+    NewLine.Description    = "ID of target folder";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFolder";
-    NewLine.МетодПоиска = "MOVEFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFolder";
+    NewLine.SearchMethod = "MOVEFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFolder";
-    NewLine.МетодПоиска = "DELETEFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Remove folder with subfolders";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFolder";
+    NewLine.SearchMethod = "DELETEFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Remove folder with subfolders";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFolder";
-    NewLine.МетодПоиска = "DELETEFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "ID of folder to be deleted";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFolder";
+    NewLine.SearchMethod = "DELETEFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "ID of folder to be deleted";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFolder";
-    NewLine.МетодПоиска = "DELETEFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFolder";
+    NewLine.SearchMethod = "DELETEFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderExternalLink";
-    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Get external link to folder";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderExternalLink";
+    NewLine.SearchMethod = "GETFOLDEREXTERNALLINK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Get external link to folder";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderExternalLink";
-    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderExternalLink";
+    NewLine.SearchMethod = "GETFOLDEREXTERNALLINK";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderExternalLink";
-    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderExternalLink";
+    NewLine.SearchMethod = "GETFOLDEREXTERNALLINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderItems";
-    NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Get folder child elements";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderItems";
+    NewLine.SearchMethod = "GETFOLDERITEMS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Get folder child elements";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderItems";
-    NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderItems";
+    NewLine.SearchMethod = "GETFOLDERITEMS";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderItems";
-    NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Items filter (see GetFolderFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderItems";
+    NewLine.SearchMethod = "GETFOLDERITEMS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Items filter (see GetFolderFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderItems";
-    NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderItems";
+    NewLine.SearchMethod = "GETFOLDERITEMS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFolderAsDeleted";
-    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Move folder to recycle bin";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFolderAsDeleted";
+    NewLine.SearchMethod = "MARKFOLDERASDELETED";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Move folder to recycle bin";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFolderAsDeleted";
-    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFolderAsDeleted";
+    NewLine.SearchMethod = "MARKFOLDERASDELETED";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFolderAsDeleted";
-    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFolderAsDeleted";
+    NewLine.SearchMethod = "MARKFOLDERASDELETED";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFolder";
-    NewLine.МетодПоиска = "RESTOREFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Resotre folder form recycle bin";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFolder";
+    NewLine.SearchMethod = "RESTOREFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Resotre folder form recycle bin";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFolder";
-    NewLine.МетодПоиска = "RESTOREFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFolder";
+    NewLine.SearchMethod = "RESTOREFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFolder";
-    NewLine.МетодПоиска = "RESTOREFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFolder";
+    NewLine.SearchMethod = "RESTOREFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFolder";
-    NewLine.МетодПоиска = "RENAMEFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Change folder name";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFolder";
+    NewLine.SearchMethod = "RENAMEFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Change folder name";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFolder";
-    NewLine.МетодПоиска = "RENAMEFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFolder";
+    NewLine.SearchMethod = "RENAMEFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFolder";
-    NewLine.МетодПоиска = "RENAMEFOLDER";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New folders name";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFolder";
+    NewLine.SearchMethod = "RENAMEFOLDER";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New folders name";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFolder";
-    NewLine.МетодПоиска = "RENAMEFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFolder";
+    NewLine.SearchMethod = "RENAMEFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderFilterStructure";
-    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Catalogs management";
-    NewLine.ОписаниеМетода   = "Returns filter structure for child folder items";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderFilterStructure";
+    NewLine.SearchMethod = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Catalogs management";
+    NewLine.MethodDescription   = "Returns filter structure for child folder items";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderFilterStructure";
-    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderFilterStructure";
+    NewLine.SearchMethod = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFolderFilterStructure";
-    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Catalogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFolderFilterStructure";
+    NewLine.SearchMethod = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Catalogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Upload file to storage root";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Upload file to storage root";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "File name with extension";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "File name with extension";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--file";
-    NewLine.Описание    = "File for upload";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File for upload";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--storageid";
-    NewLine.Описание    = "Storage id";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--storageid";
+    NewLine.Description    = "Storage id";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--rights";
-    NewLine.Описание    = "Rights array if required (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--rights";
+    NewLine.Description    = "Rights array if required (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToStorage";
-    NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToStorage";
+    NewLine.SearchMethod = "UPLOADFILETOSTORAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToFolder";
-    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Upload local file to the folder";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToFolder";
+    NewLine.SearchMethod = "UPLOADFILETOFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Upload local file to the folder";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToFolder";
-    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "File name with extension";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToFolder";
+    NewLine.SearchMethod = "UPLOADFILETOFOLDER";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "File name with extension";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToFolder";
-    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--file";
-    NewLine.Описание    = "File for upload";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToFolder";
+    NewLine.SearchMethod = "UPLOADFILETOFOLDER";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File for upload";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToFolder";
-    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Folder identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToFolder";
+    NewLine.SearchMethod = "UPLOADFILETOFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "Folder identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UploadFileToFolder";
-    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UploadFileToFolder";
+    NewLine.SearchMethod = "UPLOADFILETOFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileInformation";
-    NewLine.МетодПоиска = "GETFILEINFORMATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Get information about file by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Get information about file by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileInformation";
-    NewLine.МетодПоиска = "GETFILEINFORMATION";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileInformation";
-    NewLine.МетодПоиска = "GETFILEINFORMATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFile";
-    NewLine.МетодПоиска = "DELETEFILE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Delete file by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Delete file by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFile";
-    NewLine.МетодПоиска = "DELETEFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "ID of removing file";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "ID of removing file";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteFile";
-    NewLine.МетодПоиска = "DELETEFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileExternalLink";
-    NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Get external link to file";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileExternalLink";
+    NewLine.SearchMethod = "GETFILEEXTERNALLINK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Get external link to file";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileExternalLink";
-    NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileExternalLink";
+    NewLine.SearchMethod = "GETFILEEXTERNALLINK";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileExternalLink";
-    NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileExternalLink";
+    NewLine.SearchMethod = "GETFILEEXTERNALLINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFileAsDeleted";
-    NewLine.МетодПоиска = "MARKFILEASDELETED";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Move file to recycle bin";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFileAsDeleted";
+    NewLine.SearchMethod = "MARKFILEASDELETED";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Move file to recycle bin";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFileAsDeleted";
-    NewLine.МетодПоиска = "MARKFILEASDELETED";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFileAsDeleted";
+    NewLine.SearchMethod = "MARKFILEASDELETED";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkFileAsDeleted";
-    NewLine.МетодПоиска = "MARKFILEASDELETED";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkFileAsDeleted";
+    NewLine.SearchMethod = "MARKFILEASDELETED";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFile";
-    NewLine.МетодПоиска = "RESTOREFILE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Restore file from recycle bin";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFile";
+    NewLine.SearchMethod = "RESTOREFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Restore file from recycle bin";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFile";
-    NewLine.МетодПоиска = "RESTOREFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFile";
+    NewLine.SearchMethod = "RESTOREFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RestoreFile";
-    NewLine.МетодПоиска = "RESTOREFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RestoreFile";
+    NewLine.SearchMethod = "RESTOREFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeCopyFile";
-    NewLine.МетодПоиска = "MAKECOPYFILE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Copy file from one destination to another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeCopyFile";
+    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Copy file from one destination to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeCopyFile";
-    NewLine.МетодПоиска = "MAKECOPYFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "Original file ID";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeCopyFile";
+    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "Original file ID";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeCopyFile";
-    NewLine.МетодПоиска = "MAKECOPYFILE";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "ID of copy destination folder";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeCopyFile";
+    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "ID of copy destination folder";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MakeCopyFile";
-    NewLine.МетодПоиска = "MAKECOPYFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MakeCopyFile";
+    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFileToFolder";
-    NewLine.МетодПоиска = "MOVEFILETOFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Move file from one destination to another";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFileToFolder";
+    NewLine.SearchMethod = "MOVEFILETOFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Move file from one destination to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFileToFolder";
-    NewLine.МетодПоиска = "MOVEFILETOFOLDER";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File ID";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFileToFolder";
+    NewLine.SearchMethod = "MOVEFILETOFOLDER";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File ID";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFileToFolder";
-    NewLine.МетодПоиска = "MOVEFILETOFOLDER";
-    NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "ID of new destination folder";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFileToFolder";
+    NewLine.SearchMethod = "MOVEFILETOFOLDER";
+    NewLine.Parameter    = "--folderid";
+    NewLine.Description    = "ID of new destination folder";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MoveFileToFolder";
-    NewLine.МетодПоиска = "MOVEFILETOFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MoveFileToFolder";
+    NewLine.SearchMethod = "MOVEFILETOFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFile";
-    NewLine.МетодПоиска = "RENAMEFILE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "File management";
-    NewLine.ОписаниеМетода   = "Changes the name of an existing file";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFile";
+    NewLine.SearchMethod = "RENAMEFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Changes the name of an existing file";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFile";
-    NewLine.МетодПоиска = "RENAMEFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File identifier";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFile";
+    NewLine.SearchMethod = "RENAMEFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFile";
-    NewLine.МетодПоиска = "RENAMEFILE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New folders name";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFile";
+    NewLine.SearchMethod = "RENAMEFILE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New folders name";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "RenameFile";
-    NewLine.МетодПоиска = "RENAMEFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "File management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "RenameFile";
+    NewLine.SearchMethod = "RENAMEFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateChat";
-    NewLine.МетодПоиска = "CREATECHAT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Creates a new chat based on the field structure";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateChat";
+    NewLine.SearchMethod = "CREATECHAT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Creates a new chat based on the field structure";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateChat";
-    NewLine.МетодПоиска = "CREATECHAT";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Chat fields structure. See GetChatStructure";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateChat";
+    NewLine.SearchMethod = "CREATECHAT";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Chat fields structure. See GetChatStructure";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateChat";
-    NewLine.МетодПоиска = "CREATECHAT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateChat";
+    NewLine.SearchMethod = "CREATECHAT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatUsers";
-    NewLine.МетодПоиска = "GETCHATUSERS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Gets the list of chat users by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatUsers";
+    NewLine.SearchMethod = "GETCHATUSERS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Gets the list of chat users by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatUsers";
-    NewLine.МетодПоиска = "GETCHATUSERS";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatUsers";
+    NewLine.SearchMethod = "GETCHATUSERS";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatUsers";
-    NewLine.МетодПоиска = "GETCHATUSERS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatUsers";
+    NewLine.SearchMethod = "GETCHATUSERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "LeaveChat";
-    NewLine.МетодПоиска = "LEAVECHAT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Removes the current user from the chat room";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "LeaveChat";
+    NewLine.SearchMethod = "LEAVECHAT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Removes the current user from the chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "LeaveChat";
-    NewLine.МетодПоиска = "LEAVECHAT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "LeaveChat";
+    NewLine.SearchMethod = "LEAVECHAT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "LeaveChat";
-    NewLine.МетодПоиска = "LEAVECHAT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "LeaveChat";
+    NewLine.SearchMethod = "LEAVECHAT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUsers";
-    NewLine.МетодПоиска = "GETUSERS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Get users information for dialog";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUsers";
+    NewLine.SearchMethod = "GETUSERS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Get users information for dialog";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUsers";
-    NewLine.МетодПоиска = "GETUSERS";
-    NewLine.Параметр    = "--users";
-    NewLine.Описание    = "Usesr ID or array of users IDs";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUsers";
+    NewLine.SearchMethod = "GETUSERS";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "Usesr ID or array of users IDs";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUsers";
-    NewLine.МетодПоиска = "GETUSERS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUsers";
+    NewLine.SearchMethod = "GETUSERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddUsersToChat";
-    NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Adds users to the chat by ID array";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddUsersToChat";
+    NewLine.SearchMethod = "ADDUSERSTOCHAT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Adds users to the chat by ID array";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddUsersToChat";
-    NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddUsersToChat";
+    NewLine.SearchMethod = "ADDUSERSTOCHAT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddUsersToChat";
-    NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--users";
-    NewLine.Описание    = "New members IDs";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddUsersToChat";
+    NewLine.SearchMethod = "ADDUSERSTOCHAT";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "New members IDs";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddUsersToChat";
-    NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--hide";
-    NewLine.Описание    = "Hide old messages from new members (optional, def. val. - No)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddUsersToChat";
+    NewLine.SearchMethod = "ADDUSERSTOCHAT";
+    NewLine.Parameter    = "--hide";
+    NewLine.Description    = "Hide old messages from new members (optional, def. val. - No)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "AddUsersToChat";
-    NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "AddUsersToChat";
+    NewLine.SearchMethod = "ADDUSERSTOCHAT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteUserFromChat";
-    NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Deletes user from chat";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteUserFromChat";
+    NewLine.SearchMethod = "DELETEUSERFROMCHAT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Deletes user from chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteUserFromChat";
-    NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteUserFromChat";
+    NewLine.SearchMethod = "DELETEUSERFROMCHAT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteUserFromChat";
-    NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteUserFromChat";
+    NewLine.SearchMethod = "DELETEUSERFROMCHAT";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteUserFromChat";
-    NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteUserFromChat";
+    NewLine.SearchMethod = "DELETEUSERFROMCHAT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatTitle";
-    NewLine.МетодПоиска = "CHANGECHATTITLE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Change text of chat title";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatTitle";
+    NewLine.SearchMethod = "CHANGECHATTITLE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Change text of chat title";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatTitle";
-    NewLine.МетодПоиска = "CHANGECHATTITLE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatTitle";
+    NewLine.SearchMethod = "CHANGECHATTITLE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatTitle";
-    NewLine.МетодПоиска = "CHANGECHATTITLE";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New title";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatTitle";
+    NewLine.SearchMethod = "CHANGECHATTITLE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New title";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatTitle";
-    NewLine.МетодПоиска = "CHANGECHATTITLE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatTitle";
+    NewLine.SearchMethod = "CHANGECHATTITLE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatColor";
-    NewLine.МетодПоиска = "CHANGECHATCOLOR";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Chat chat color for mobile app";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatColor";
+    NewLine.SearchMethod = "CHANGECHATCOLOR";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Chat chat color for mobile app";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatColor";
-    NewLine.МетодПоиска = "CHANGECHATCOLOR";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatColor";
+    NewLine.SearchMethod = "CHANGECHATCOLOR";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatColor";
-    NewLine.МетодПоиска = "CHANGECHATCOLOR";
-    NewLine.Параметр    = "--color";
-    NewLine.Описание    = "New chat color";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatColor";
+    NewLine.SearchMethod = "CHANGECHATCOLOR";
+    NewLine.Parameter    = "--color";
+    NewLine.Description    = "New chat color";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatColor";
-    NewLine.МетодПоиска = "CHANGECHATCOLOR";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatColor";
+    NewLine.SearchMethod = "CHANGECHATCOLOR";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatPicture";
-    NewLine.МетодПоиска = "CHANGECHATPICTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Setup new chat picture";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatPicture";
+    NewLine.SearchMethod = "CHANGECHATPICTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Setup new chat picture";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatPicture";
-    NewLine.МетодПоиска = "CHANGECHATPICTURE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatPicture";
+    NewLine.SearchMethod = "CHANGECHATPICTURE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatPicture";
-    NewLine.МетодПоиска = "CHANGECHATPICTURE";
-    NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "Picture data";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatPicture";
+    NewLine.SearchMethod = "CHANGECHATPICTURE";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Picture data";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatPicture";
-    NewLine.МетодПоиска = "CHANGECHATPICTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatPicture";
+    NewLine.SearchMethod = "CHANGECHATPICTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatOwner";
-    NewLine.МетодПоиска = "CHANGECHATOWNER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Change chat owner";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatOwner";
+    NewLine.SearchMethod = "CHANGECHATOWNER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Change chat owner";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatOwner";
-    NewLine.МетодПоиска = "CHANGECHATOWNER";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatOwner";
+    NewLine.SearchMethod = "CHANGECHATOWNER";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatOwner";
-    NewLine.МетодПоиска = "CHANGECHATOWNER";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatOwner";
+    NewLine.SearchMethod = "CHANGECHATOWNER";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeChatOwner";
-    NewLine.МетодПоиска = "CHANGECHATOWNER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeChatOwner";
+    NewLine.SearchMethod = "CHANGECHATOWNER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisableChatNotifications";
-    NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Disable chat notifications";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisableChatNotifications";
+    NewLine.SearchMethod = "DISABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Disable chat notifications";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisableChatNotifications";
-    NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisableChatNotifications";
+    NewLine.SearchMethod = "DISABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DisableChatNotifications";
-    NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DisableChatNotifications";
+    NewLine.SearchMethod = "DISABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EnableChatNotifications";
-    NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Enable chat notifications";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EnableChatNotifications";
+    NewLine.SearchMethod = "ENABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Enable chat notifications";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EnableChatNotifications";
-    NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EnableChatNotifications";
+    NewLine.SearchMethod = "ENABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EnableChatNotifications";
-    NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EnableChatNotifications";
+    NewLine.SearchMethod = "ENABLECHATNOTIFICATIONS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMessagesList";
-    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMessagesList";
+    NewLine.SearchMethod = "GETCHATMESSAGESLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMessagesList";
-    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMessagesList";
+    NewLine.SearchMethod = "GETCHATMESSAGESLIST";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMessagesList";
-    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--last";
-    NewLine.Описание    = "Id of last message (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMessagesList";
+    NewLine.SearchMethod = "GETCHATMESSAGESLIST";
+    NewLine.Parameter    = "--last";
+    NewLine.Description    = "Id of last message (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMessagesList";
-    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--first";
-    NewLine.Описание    = "ID of first message (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMessagesList";
+    NewLine.SearchMethod = "GETCHATMESSAGESLIST";
+    NewLine.Parameter    = "--first";
+    NewLine.Description    = "ID of first message (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMessagesList";
-    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMessagesList";
+    NewLine.SearchMethod = "GETCHATMESSAGESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDialog";
-    NewLine.МетодПоиска = "GETDIALOG";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Get chat data by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDialog";
+    NewLine.SearchMethod = "GETDIALOG";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Get chat data by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDialog";
-    NewLine.МетодПоиска = "GETDIALOG";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDialog";
+    NewLine.SearchMethod = "GETDIALOG";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDialog";
-    NewLine.МетодПоиска = "GETDIALOG";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDialog";
+    NewLine.SearchMethod = "GETDIALOG";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMembersList";
-    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Get chat members list";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMembersList";
+    NewLine.SearchMethod = "GETCHATMEMBERSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Get chat members list";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMembersList";
-    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMembersList";
+    NewLine.SearchMethod = "GETCHATMEMBERSLIST";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatMembersList";
-    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatMembersList";
+    NewLine.SearchMethod = "GETCHATMEMBERSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendWritingNotification";
-    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Send Writing... status to dialog...";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendWritingNotification";
+    NewLine.SearchMethod = "SENDWRITINGNOTIFICATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Send Writing... status to dialog...";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendWritingNotification";
-    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendWritingNotification";
+    NewLine.SearchMethod = "SENDWRITINGNOTIFICATION";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendWritingNotification";
-    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendWritingNotification";
+    NewLine.SearchMethod = "SENDWRITINGNOTIFICATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserStatus";
-    NewLine.МетодПоиска = "GETUSERSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Gets the status (online) of the current user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserStatus";
+    NewLine.SearchMethod = "GETUSERSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Gets the status (online) of the current user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserStatus";
-    NewLine.МетодПоиска = "GETUSERSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserStatus";
+    NewLine.SearchMethod = "GETUSERSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserStatus";
-    NewLine.МетодПоиска = "SETUSERSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Sets the status (online) of the current user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserStatus";
+    NewLine.SearchMethod = "SETUSERSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Sets the status (online) of the current user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserStatus";
-    NewLine.МетодПоиска = "SETUSERSTATUS";
-    NewLine.Параметр    = "--status";
-    NewLine.Описание    = "Status value: online, dnd, away";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserStatus";
+    NewLine.SearchMethod = "SETUSERSTATUS";
+    NewLine.Parameter    = "--status";
+    NewLine.Description    = "Status value: online, dnd, away";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserStatus";
-    NewLine.МетодПоиска = "SETUSERSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserStatus";
+    NewLine.SearchMethod = "SETUSERSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ReadAll";
-    NewLine.МетодПоиска = "READALL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Mark all message as readed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ReadAll";
+    NewLine.SearchMethod = "READALL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Mark all message as readed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ReadAll";
-    NewLine.МетодПоиска = "READALL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ReadAll";
+    NewLine.SearchMethod = "READALL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatFilesFolder";
-    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Get information about folder for chat files";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatFilesFolder";
+    NewLine.SearchMethod = "GETCHATFILESFOLDER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Get information about folder for chat files";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatFilesFolder";
-    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatFilesFolder";
+    NewLine.SearchMethod = "GETCHATFILESFOLDER";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatFilesFolder";
-    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Chats and dialogs management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatFilesFolder";
+    NewLine.SearchMethod = "GETCHATFILESFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Chats and dialogs management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetChatStructure";
-    NewLine.МетодПоиска = "GETCHATSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
-    NewLine.Область     = "Chats and dialogs management";
-    NewLine.ОписаниеМетода   = "Get chat fields structure";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetChatStructure";
+    NewLine.SearchMethod = "GETCHATSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
+    NewLine.Region     = "Chats and dialogs management";
+    NewLine.MethodDescription   = "Get chat fields structure";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendMessage";
-    NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Send message to dialog";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Send message to dialog";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendMessage";
-    NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendMessage";
-    NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendMessage";
-    NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendMessage";
-    NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EditMessage";
-    NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Edit dialog message content";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Edit dialog message content";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EditMessage";
-    NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of the message to be edited";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of the message to be edited";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EditMessage";
-    NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "New message text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "New message text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EditMessage";
-    NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "New blocks array (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "New blocks array (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "EditMessage";
-    NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetMessageReaction";
-    NewLine.МетодПоиска = "SETMESSAGEREACTION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Set or remove reaction mark on the message";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetMessageReaction";
+    NewLine.SearchMethod = "SETMESSAGEREACTION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Set or remove reaction mark on the message";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetMessageReaction";
-    NewLine.МетодПоиска = "SETMESSAGEREACTION";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Message ID";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetMessageReaction";
+    NewLine.SearchMethod = "SETMESSAGEREACTION";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message ID";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetMessageReaction";
-    NewLine.МетодПоиска = "SETMESSAGEREACTION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetMessageReaction";
+    NewLine.SearchMethod = "SETMESSAGEREACTION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Deletes a dialog message";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Deletes a dialog message";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of the message to be deleted";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of the message to be deleted";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Send disk file to chat";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Send disk file to chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File ID from UploadFileToFolder method";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File ID from UploadFileToFolder method";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--description";
-    NewLine.Описание    = "File description (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--description";
+    NewLine.Description    = "File description (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsReaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Mark current and all previous messages as readed";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsReaded";
+    NewLine.SearchMethod = "MARKMESSAGEASREADED";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Mark current and all previous messages as readed";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsReaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsReaded";
+    NewLine.SearchMethod = "MARKMESSAGEASREADED";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsReaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Id of last readed message";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsReaded";
+    NewLine.SearchMethod = "MARKMESSAGEASREADED";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Id of last readed message";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsReaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsReaded";
+    NewLine.SearchMethod = "MARKMESSAGEASREADED";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsUnreaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Mark current and all messages after as unreaded";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsUnreaded";
+    NewLine.SearchMethod = "MARKMESSAGEASUNREADED";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Mark current and all messages after as unreaded";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsUnreaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsUnreaded";
+    NewLine.SearchMethod = "MARKMESSAGEASUNREADED";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsUnreaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of last unreaded message";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsUnreaded";
+    NewLine.SearchMethod = "MARKMESSAGEASUNREADED";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of last unreaded message";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "MarkMessageAsUnreaded";
-    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "MarkMessageAsUnreaded";
+    NewLine.SearchMethod = "MARKMESSAGEASUNREADED";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPictureBlock";
-    NewLine.МетодПоиска = "GETPICTUREBLOCK";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Picture name";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Make picture block for SendMessage method";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPictureBlock";
+    NewLine.SearchMethod = "GETPICTUREBLOCK";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Picture name";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Make picture block for SendMessage method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetPictureBlock";
-    NewLine.МетодПоиска = "GETPICTUREBLOCK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of sending picture";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetPictureBlock";
+    NewLine.SearchMethod = "GETPICTUREBLOCK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of sending picture";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileBlock";
-    NewLine.МетодПоиска = "GETFILEBLOCK";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Picture name";
-    NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Make file block for SendMessage method";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileBlock";
+    NewLine.SearchMethod = "GETFILEBLOCK";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Picture name";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Make file block for SendMessage method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetFileBlock";
-    NewLine.МетодПоиска = "GETFILEBLOCK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "File URL";
-    NewLine.Область     = "Message management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetFileBlock";
+    NewLine.SearchMethod = "GETFILEBLOCK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "File URL";
+    NewLine.Region     = "Message management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications management";
-    NewLine.ОписаниеМетода   = "Creates a personal notification to the user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Notifications management";
+    NewLine.MethodDescription   = "Creates a personal notification to the user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID for sending the notification";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID for sending the notification";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Notification text";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Notification text";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--tag";
-    NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--tag";
+    NewLine.Description    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreatePersonalNotification";
-    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreatePersonalNotification";
+    NewLine.SearchMethod = "CREATEPERSONALNOTIFICATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications management";
-    NewLine.ОписаниеМетода   = "Creates a system notification to the user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Notifications management";
+    NewLine.MethodDescription   = "Creates a system notification to the user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID for sending the notification";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID for sending the notification";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Notification text";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Notification text";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--tag";
-    NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--tag";
+    NewLine.Description    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateSystemNotification";
-    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateSystemNotification";
+    NewLine.SearchMethod = "CREATESYSTEMNOTIFICATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteNotification";
-    NewLine.МетодПоиска = "DELETENOTIFICATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Notifications management";
-    NewLine.ОписаниеМетода   = "Delete notification by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteNotification";
+    NewLine.SearchMethod = "DELETENOTIFICATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Notifications management";
+    NewLine.MethodDescription   = "Delete notification by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteNotification";
-    NewLine.МетодПоиска = "DELETENOTIFICATION";
-    NewLine.Параметр    = "--notif";
-    NewLine.Описание    = "Notification ID";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteNotification";
+    NewLine.SearchMethod = "DELETENOTIFICATION";
+    NewLine.Parameter    = "--notif";
+    NewLine.Description    = "Notification ID";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteNotification";
-    NewLine.МетодПоиска = "DELETENOTIFICATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteNotification";
+    NewLine.SearchMethod = "DELETENOTIFICATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDepartment";
-    NewLine.МетодПоиска = "CREATEDEPARTMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments management";
-    NewLine.ОписаниеМетода   = "Creates a new department";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDepartment";
+    NewLine.SearchMethod = "CREATEDEPARTMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Departments management";
+    NewLine.MethodDescription   = "Creates a new department";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDepartment";
-    NewLine.МетодПоиска = "CREATEDEPARTMENT";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Department name";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDepartment";
+    NewLine.SearchMethod = "CREATEDEPARTMENT";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Department name";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDepartment";
-    NewLine.МетодПоиска = "CREATEDEPARTMENT";
-    NewLine.Параметр    = "--parentid";
-    NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDepartment";
+    NewLine.SearchMethod = "CREATEDEPARTMENT";
+    NewLine.Parameter    = "--parentid";
+    NewLine.Description    = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDepartment";
-    NewLine.МетодПоиска = "CREATEDEPARTMENT";
-    NewLine.Параметр    = "--headid";
-    NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDepartment";
+    NewLine.SearchMethod = "CREATEDEPARTMENT";
+    NewLine.Parameter    = "--headid";
+    NewLine.Description    = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDepartment";
-    NewLine.МетодПоиска = "CREATEDEPARTMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDepartment";
+    NewLine.SearchMethod = "CREATEDEPARTMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments management";
-    NewLine.ОписаниеМетода   = "Update an existing department";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Departments management";
+    NewLine.MethodDescription   = "Update an existing department";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--depid";
-    NewLine.Описание    = "Department ID";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--depid";
+    NewLine.Description    = "Department ID";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Department name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Department name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--parentid";
-    NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--parentid";
+    NewLine.Description    = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--headid";
-    NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--headid";
+    NewLine.Description    = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDepartment";
-    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDepartment";
+    NewLine.SearchMethod = "UPDATEDEPARTMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments management";
-    NewLine.ОписаниеМетода   = "Gets a list of departments by ID or filter";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Departments management";
+    NewLine.MethodDescription   = "Gets a list of departments by ID or filter";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--depid";
-    NewLine.Описание    = "Selection by department ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--depid";
+    NewLine.Description    = "Selection by department ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Filter by name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Filter by name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--parentid";
-    NewLine.Описание    = "Filter by parent ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--parentid";
+    NewLine.Description    = "Filter by parent ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--headid";
-    NewLine.Описание    = "Filter by manager ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--headid";
+    NewLine.Description    = "Filter by manager ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDepartments";
-    NewLine.МетодПоиска = "GETDEPARTMENTS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDepartments";
+    NewLine.SearchMethod = "GETDEPARTMENTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDepartment";
-    NewLine.МетодПоиска = "DELETEDEPARTMENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Departments management";
-    NewLine.ОписаниеМетода   = "Delets department by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDepartment";
+    NewLine.SearchMethod = "DELETEDEPARTMENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Departments management";
+    NewLine.MethodDescription   = "Delets department by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDepartment";
-    NewLine.МетодПоиска = "DELETEDEPARTMENT";
-    NewLine.Параметр    = "--depid";
-    NewLine.Описание    = "Department ID for deletion";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDepartment";
+    NewLine.SearchMethod = "DELETEDEPARTMENT";
+    NewLine.Parameter    = "--depid";
+    NewLine.Description    = "Department ID for deletion";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDepartment";
-    NewLine.МетодПоиска = "DELETEDEPARTMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Departments management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDepartment";
+    NewLine.SearchMethod = "DELETEDEPARTMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Departments management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCurrentUser";
-    NewLine.МетодПоиска = "GETCURRENTUSER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Get current user data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCurrentUser";
+    NewLine.SearchMethod = "GETCURRENTUSER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Get current user data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCurrentUser";
-    NewLine.МетодПоиска = "GETCURRENTUSER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCurrentUser";
+    NewLine.SearchMethod = "GETCURRENTUSER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUser";
-    NewLine.МетодПоиска = "GETUSER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Gets user information by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUser";
+    NewLine.SearchMethod = "GETUSER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Gets user information by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUser";
-    NewLine.МетодПоиска = "GETUSER";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUser";
+    NewLine.SearchMethod = "GETUSER";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUser";
-    NewLine.МетодПоиска = "GETUSER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUser";
+    NewLine.SearchMethod = "GETUSER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateUser";
-    NewLine.МетодПоиска = "CREATEUSER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Create new user by fields structure";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateUser";
+    NewLine.SearchMethod = "CREATEUSER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Create new user by fields structure";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateUser";
-    NewLine.МетодПоиска = "CREATEUSER";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateUser";
+    NewLine.SearchMethod = "CREATEUSER";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "New user data. See. GetUserFieldsStructure";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateUser";
-    NewLine.МетодПоиска = "CREATEUSER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateUser";
+    NewLine.SearchMethod = "CREATEUSER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateUser";
-    NewLine.МетодПоиска = "UPDATEUSER";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Updates user data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateUser";
+    NewLine.SearchMethod = "UPDATEUSER";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Updates user data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateUser";
-    NewLine.МетодПоиска = "UPDATEUSER";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateUser";
+    NewLine.SearchMethod = "UPDATEUSER";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateUser";
-    NewLine.МетодПоиска = "UPDATEUSER";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateUser";
+    NewLine.SearchMethod = "UPDATEUSER";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "New user data. See. GetUserFieldsStructure";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateUser";
-    NewLine.МетодПоиска = "UPDATEUSER";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateUser";
+    NewLine.SearchMethod = "UPDATEUSER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeUserStatus";
-    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Activates or deactivates (fire) the selected user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeUserStatus";
+    NewLine.SearchMethod = "CHANGEUSERSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Activates or deactivates (fire) the selected user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeUserStatus";
-    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
-    NewLine.Параметр    = "--userid";
-    NewLine.Описание    = "User ID";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeUserStatus";
+    NewLine.SearchMethod = "CHANGEUSERSTATUS";
+    NewLine.Parameter    = "--userid";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeUserStatus";
-    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
-    NewLine.Параметр    = "--fire";
-    NewLine.Описание    = "True > Deactivation, False > Activation (optional, def. val. - Yes)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeUserStatus";
+    NewLine.SearchMethod = "CHANGEUSERSTATUS";
+    NewLine.Parameter    = "--fire";
+    NewLine.Description    = "True > Deactivation, False > Activation (optional, def. val. - Yes)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "ChangeUserStatus";
-    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "ChangeUserStatus";
+    NewLine.SearchMethod = "CHANGEUSERSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "FindUsers";
-    NewLine.МетодПоиска = "FINDUSERS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Gets the list of users according to the specified filter";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "FindUsers";
+    NewLine.SearchMethod = "FINDUSERS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Gets the list of users according to the specified filter";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "FindUsers";
-    NewLine.МетодПоиска = "FINDUSERS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filter. See GetUserFilterStructure";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "FindUsers";
+    NewLine.SearchMethod = "FINDUSERS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filter. See GetUserFilterStructure";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "FindUsers";
-    NewLine.МетодПоиска = "FINDUSERS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "FindUsers";
+    NewLine.SearchMethod = "FINDUSERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserFieldsStructure";
-    NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Gets the field structure for creating or modifying user information";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserFieldsStructure";
+    NewLine.SearchMethod = "GETUSERFIELDSSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Gets the field structure for creating or modifying user information";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserFieldsStructure";
-    NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Users management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserFieldsStructure";
+    NewLine.SearchMethod = "GETUSERFIELDSSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Users management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserFilterStructure";
-    NewLine.МетодПоиска = "GETUSERFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Users management";
-    NewLine.ОписаниеМетода   = "Returns the field structure for filtering users in the FindUsers method";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserFilterStructure";
+    NewLine.SearchMethod = "GETUSERFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Users management";
+    NewLine.MethodDescription   = "Returns the field structure for filtering users in the FindUsers method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateLead";
-    NewLine.МетодПоиска = "CREATELEAD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Creates a new lead by fields structure (see GetLeadStructure)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateLead";
+    NewLine.SearchMethod = "CREATELEAD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Creates a new lead by fields structure (see GetLeadStructure)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateLead";
-    NewLine.МетодПоиска = "CREATELEAD";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Lead fields structure (see GetLeadStructure)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateLead";
+    NewLine.SearchMethod = "CREATELEAD";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Lead fields structure (see GetLeadStructure)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateLead";
-    NewLine.МетодПоиска = "CREATELEAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateLead";
+    NewLine.SearchMethod = "CREATELEAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteLead";
-    NewLine.МетодПоиска = "DELETELEAD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Deletes a lead by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteLead";
+    NewLine.SearchMethod = "DELETELEAD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Deletes a lead by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteLead";
-    NewLine.МетодПоиска = "DELETELEAD";
-    NewLine.Параметр    = "--lead";
-    NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteLead";
+    NewLine.SearchMethod = "DELETELEAD";
+    NewLine.Parameter    = "--lead";
+    NewLine.Description    = "Lead ID";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteLead";
-    NewLine.МетодПоиска = "DELETELEAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteLead";
+    NewLine.SearchMethod = "DELETELEAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLead";
-    NewLine.МетодПоиска = "GETLEAD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Gets a lead by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLead";
+    NewLine.SearchMethod = "GETLEAD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Gets a lead by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLead";
-    NewLine.МетодПоиска = "GETLEAD";
-    NewLine.Параметр    = "--lead";
-    NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLead";
+    NewLine.SearchMethod = "GETLEAD";
+    NewLine.Parameter    = "--lead";
+    NewLine.Description    = "Lead ID";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLead";
-    NewLine.МетодПоиска = "GETLEAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLead";
+    NewLine.SearchMethod = "GETLEAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadsList";
-    NewLine.МетодПоиска = "GETLEADSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadsList";
+    NewLine.SearchMethod = "GETLEADSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadsList";
-    NewLine.МетодПоиска = "GETLEADSLIST";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Lead filter structure (see GetLeadFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadsList";
+    NewLine.SearchMethod = "GETLEADSLIST";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Lead filter structure (see GetLeadFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadsList";
-    NewLine.МетодПоиска = "GETLEADSLIST";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadsList";
+    NewLine.SearchMethod = "GETLEADSLIST";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadsList";
-    NewLine.МетодПоиска = "GETLEADSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadsList";
+    NewLine.SearchMethod = "GETLEADSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateLead";
-    NewLine.МетодПоиска = "UPDATELEAD";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Modifies an existing lead";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateLead";
+    NewLine.SearchMethod = "UPDATELEAD";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Modifies an existing lead";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateLead";
-    NewLine.МетодПоиска = "UPDATELEAD";
-    NewLine.Параметр    = "--lead";
-    NewLine.Описание    = "Lead ID";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateLead";
+    NewLine.SearchMethod = "UPDATELEAD";
+    NewLine.Parameter    = "--lead";
+    NewLine.Description    = "Lead ID";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateLead";
-    NewLine.МетодПоиска = "UPDATELEAD";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Structure of lead fields";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateLead";
+    NewLine.SearchMethod = "UPDATELEAD";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Structure of lead fields";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateLead";
-    NewLine.МетодПоиска = "UPDATELEAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateLead";
+    NewLine.SearchMethod = "UPDATELEAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadStructure";
-    NewLine.МетодПоиска = "GETLEADSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a lead";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadStructure";
+    NewLine.SearchMethod = "GETLEADSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Gets a structure with field descriptions for creating a lead";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadStructure";
-    NewLine.МетодПоиска = "GETLEADSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Leads management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadStructure";
+    NewLine.SearchMethod = "GETLEADSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Leads management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetLeadFilterStructure";
-    NewLine.МетодПоиска = "GETLEADFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Leads management";
-    NewLine.ОписаниеМетода   = "Returns the field structure for filtering leads in the GetLeadsList method";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetLeadFilterStructure";
+    NewLine.SearchMethod = "GETLEADFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Leads management";
+    NewLine.MethodDescription   = "Returns the field structure for filtering leads in the GetLeadsList method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDeal";
-    NewLine.МетодПоиска = "CREATEDEAL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Creates a new deal by field structure (see. GetDealStructure)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDeal";
+    NewLine.SearchMethod = "CREATEDEAL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Creates a new deal by field structure (see. GetDealStructure)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDeal";
-    NewLine.МетодПоиска = "CREATEDEAL";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDeal";
+    NewLine.SearchMethod = "CREATEDEAL";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateDeal";
-    NewLine.МетодПоиска = "CREATEDEAL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateDeal";
+    NewLine.SearchMethod = "CREATEDEAL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDeal";
-    NewLine.МетодПоиска = "DELETEDEAL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Deletes deal by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDeal";
+    NewLine.SearchMethod = "DELETEDEAL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Deletes deal by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDeal";
-    NewLine.МетодПоиска = "DELETEDEAL";
-    NewLine.Параметр    = "--deal";
-    NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDeal";
+    NewLine.SearchMethod = "DELETEDEAL";
+    NewLine.Parameter    = "--deal";
+    NewLine.Description    = "Deal ID";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteDeal";
-    NewLine.МетодПоиска = "DELETEDEAL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteDeal";
+    NewLine.SearchMethod = "DELETEDEAL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDeal";
-    NewLine.МетодПоиска = "GETDEAL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Gets deal by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDeal";
+    NewLine.SearchMethod = "GETDEAL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Gets deal by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDeal";
-    NewLine.МетодПоиска = "GETDEAL";
-    NewLine.Параметр    = "--deal";
-    NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDeal";
+    NewLine.SearchMethod = "GETDEAL";
+    NewLine.Parameter    = "--deal";
+    NewLine.Description    = "Deal ID";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDeal";
-    NewLine.МетодПоиска = "GETDEAL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDeal";
+    NewLine.SearchMethod = "GETDEAL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealsList";
-    NewLine.МетодПоиска = "GETDEALSLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealsList";
+    NewLine.SearchMethod = "GETDEALSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealsList";
-    NewLine.МетодПоиска = "GETDEALSLIST";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Deals filter structure (see. GetDealsFilterStructure) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealsList";
+    NewLine.SearchMethod = "GETDEALSLIST";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Deals filter structure (see. GetDealsFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealsList";
-    NewLine.МетодПоиска = "GETDEALSLIST";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealsList";
+    NewLine.SearchMethod = "GETDEALSLIST";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealsList";
-    NewLine.МетодПоиска = "GETDEALSLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealsList";
+    NewLine.SearchMethod = "GETDEALSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDeal";
-    NewLine.МетодПоиска = "UPDATEDEAL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Modifies an existing deal";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDeal";
+    NewLine.SearchMethod = "UPDATEDEAL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Modifies an existing deal";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDeal";
-    NewLine.МетодПоиска = "UPDATEDEAL";
-    NewLine.Параметр    = "--deal";
-    NewLine.Описание    = "Deal ID";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDeal";
+    NewLine.SearchMethod = "UPDATEDEAL";
+    NewLine.Parameter    = "--deal";
+    NewLine.Description    = "Deal ID";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDeal";
-    NewLine.МетодПоиска = "UPDATEDEAL";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Deal fields structure";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDeal";
+    NewLine.SearchMethod = "UPDATEDEAL";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Deal fields structure";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateDeal";
-    NewLine.МетодПоиска = "UPDATEDEAL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateDeal";
+    NewLine.SearchMethod = "UPDATEDEAL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealStructure";
-    NewLine.МетодПоиска = "GETDEALSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a deal";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealStructure";
+    NewLine.SearchMethod = "GETDEALSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Gets a structure with field descriptions for creating a deal";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealStructure";
-    NewLine.МетодПоиска = "GETDEALSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Deals management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealStructure";
+    NewLine.SearchMethod = "GETDEALSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Deals management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetDealsFilterStructure";
-    NewLine.МетодПоиска = "GETDEALSFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Deals management";
-    NewLine.ОписаниеМетода   = "Returns the field structure for filtering deals in the GetDealsList method";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetDealsFilterStructure";
+    NewLine.SearchMethod = "GETDEALSFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Deals management";
+    NewLine.MethodDescription   = "Returns the field structure for filtering deals in the GetDealsList method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarList";
-    NewLine.МетодПоиска = "GETCALENDARLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Gets a list of calendars of the specified owner";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarList";
+    NewLine.SearchMethod = "GETCALENDARLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Gets a list of calendars of the specified owner";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarList";
-    NewLine.МетодПоиска = "GETCALENDARLIST";
-    NewLine.Параметр    = "--owner";
-    NewLine.Описание    = "Calendar owner ID";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarList";
+    NewLine.SearchMethod = "GETCALENDARLIST";
+    NewLine.Parameter    = "--owner";
+    NewLine.Description    = "Calendar owner ID";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarList";
-    NewLine.МетодПоиска = "GETCALENDARLIST";
-    NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Calendar type: user, group, company_calendar, location, etc.";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarList";
+    NewLine.SearchMethod = "GETCALENDARLIST";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Calendar type: user, group, company_calendar, location, etc.";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarList";
-    NewLine.МетодПоиска = "GETCALENDARLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarList";
+    NewLine.SearchMethod = "GETCALENDARLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendar";
-    NewLine.МетодПоиска = "CREATECALENDAR";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Creates a new calendar";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendar";
+    NewLine.SearchMethod = "CREATECALENDAR";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Creates a new calendar";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendar";
-    NewLine.МетодПоиска = "CREATECALENDAR";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Calendar fields structure (see GetCalendarStructure)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendar";
+    NewLine.SearchMethod = "CREATECALENDAR";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Calendar fields structure (see GetCalendarStructure)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendar";
-    NewLine.МетодПоиска = "CREATECALENDAR";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendar";
+    NewLine.SearchMethod = "CREATECALENDAR";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendar";
-    NewLine.МетодПоиска = "UPDATECALENDAR";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Changes the calendar settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendar";
+    NewLine.SearchMethod = "UPDATECALENDAR";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Changes the calendar settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendar";
-    NewLine.МетодПоиска = "UPDATECALENDAR";
-    NewLine.Параметр    = "--calendar";
-    NewLine.Описание    = "Calendar ID";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendar";
+    NewLine.SearchMethod = "UPDATECALENDAR";
+    NewLine.Parameter    = "--calendar";
+    NewLine.Description    = "Calendar ID";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendar";
-    NewLine.МетодПоиска = "UPDATECALENDAR";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendar";
+    NewLine.SearchMethod = "UPDATECALENDAR";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendar";
-    NewLine.МетодПоиска = "UPDATECALENDAR";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendar";
+    NewLine.SearchMethod = "UPDATECALENDAR";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendar";
-    NewLine.МетодПоиска = "DELETECALENDAR";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Deletes an existing calendar";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendar";
+    NewLine.SearchMethod = "DELETECALENDAR";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Deletes an existing calendar";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendar";
-    NewLine.МетодПоиска = "DELETECALENDAR";
-    NewLine.Параметр    = "--calendar";
-    NewLine.Описание    = "Calendar ID";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendar";
+    NewLine.SearchMethod = "DELETECALENDAR";
+    NewLine.Parameter    = "--calendar";
+    NewLine.Description    = "Calendar ID";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendar";
-    NewLine.МетодПоиска = "DELETECALENDAR";
-    NewLine.Параметр    = "--owner";
-    NewLine.Описание    = "Calendar owner ID";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendar";
+    NewLine.SearchMethod = "DELETECALENDAR";
+    NewLine.Parameter    = "--owner";
+    NewLine.Description    = "Calendar owner ID";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendar";
-    NewLine.МетодПоиска = "DELETECALENDAR";
-    NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Calendar type: user, group";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendar";
+    NewLine.SearchMethod = "DELETECALENDAR";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Calendar type: user, group";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendar";
-    NewLine.МетодПоиска = "DELETECALENDAR";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendar";
+    NewLine.SearchMethod = "DELETECALENDAR";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserBusy";
-    NewLine.МетодПоиска = "GETUSERBUSY";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Gets an array of user events in the specified interval";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserBusy";
+    NewLine.SearchMethod = "GETUSERBUSY";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Gets an array of user events in the specified interval";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserBusy";
-    NewLine.МетодПоиска = "GETUSERBUSY";
-    NewLine.Параметр    = "--users";
-    NewLine.Описание    = "IDs of users or a single user";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserBusy";
+    NewLine.SearchMethod = "GETUSERBUSY";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "IDs of users or a single user";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserBusy";
-    NewLine.МетодПоиска = "GETUSERBUSY";
-    NewLine.Параметр    = "--from";
-    NewLine.Описание    = "Start date of the period";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserBusy";
+    NewLine.SearchMethod = "GETUSERBUSY";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Start date of the period";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserBusy";
-    NewLine.МетодПоиска = "GETUSERBUSY";
-    NewLine.Параметр    = "--to";
-    NewLine.Описание    = "End date of the period";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserBusy";
+    NewLine.SearchMethod = "GETUSERBUSY";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "End date of the period";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserBusy";
-    NewLine.МетодПоиска = "GETUSERBUSY";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserBusy";
+    NewLine.SearchMethod = "GETUSERBUSY";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomCalendarSettings";
-    NewLine.МетодПоиска = "GETCUSTOMCALENDARSETTINGS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Gets the current users custom calendar settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomCalendarSettings";
+    NewLine.SearchMethod = "GETCUSTOMCALENDARSETTINGS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Gets the current users custom calendar settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCustomCalendarSettings";
-    NewLine.МетодПоиска = "GETCUSTOMCALENDARSETTINGS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCustomCalendarSettings";
+    NewLine.SearchMethod = "GETCUSTOMCALENDARSETTINGS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetCustomCalendarSettings";
-    NewLine.МетодПоиска = "SETCUSTOMCALENDARSETTINGS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Sets new custom calendar settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetCustomCalendarSettings";
+    NewLine.SearchMethod = "SETCUSTOMCALENDARSETTINGS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Sets new custom calendar settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetCustomCalendarSettings";
-    NewLine.МетодПоиска = "SETCUSTOMCALENDARSETTINGS";
-    NewLine.Параметр    = "--settings";
-    NewLine.Описание    = "Settings structure (see GetCalednarCustomSettingsStructure)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetCustomCalendarSettings";
+    NewLine.SearchMethod = "SETCUSTOMCALENDARSETTINGS";
+    NewLine.Parameter    = "--settings";
+    NewLine.Description    = "Settings structure (see GetCalednarCustomSettingsStructure)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetCustomCalendarSettings";
-    NewLine.МетодПоиска = "SETCUSTOMCALENDARSETTINGS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetCustomCalendarSettings";
+    NewLine.SearchMethod = "SETCUSTOMCALENDARSETTINGS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarSettingsStructure";
-    NewLine.МетодПоиска = "GETCALENDARSETTINGSSTRUCTURE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Gets the structure of the default calendar settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarSettingsStructure";
+    NewLine.SearchMethod = "GETCALENDARSETTINGSSTRUCTURE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Gets the structure of the default calendar settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarSettingsStructure";
-    NewLine.МетодПоиска = "GETCALENDARSETTINGSSTRUCTURE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendars management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarSettingsStructure";
+    NewLine.SearchMethod = "GETCALENDARSETTINGSSTRUCTURE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendars management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalednarCustomSettingsStructure";
-    NewLine.МетодПоиска = "GETCALEDNARCUSTOMSETTINGSSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Gets an empty structure for setting custom calendar settings";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalednarCustomSettingsStructure";
+    NewLine.SearchMethod = "GETCALEDNARCUSTOMSETTINGSSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Gets an empty structure for setting custom calendar settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarStructure";
-    NewLine.МетодПоиска = "GETCALENDARSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Calendars management";
-    NewLine.ОписаниеМетода   = "Returns the structure of the calendar description fields";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarStructure";
+    NewLine.SearchMethod = "GETCALENDARSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Calendars management";
+    NewLine.MethodDescription   = "Returns the structure of the calendar description fields";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendarEvent";
-    NewLine.МетодПоиска = "CREATECALENDAREVENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Creates a new calendar event";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendarEvent";
+    NewLine.SearchMethod = "CREATECALENDAREVENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Creates a new calendar event";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendarEvent";
-    NewLine.МетодПоиска = "CREATECALENDAREVENT";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Event description. See GetCalendarEventsStructure";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendarEvent";
+    NewLine.SearchMethod = "CREATECALENDAREVENT";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Event description. See GetCalendarEventsStructure";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "CreateCalendarEvent";
-    NewLine.МетодПоиска = "CREATECALENDAREVENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "CreateCalendarEvent";
+    NewLine.SearchMethod = "CREATECALENDAREVENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendarEvent";
-    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Modifies calendar event data";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendarEvent";
+    NewLine.SearchMethod = "UPDATECALENDAREVENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Modifies calendar event data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendarEvent";
-    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
-    NewLine.Параметр    = "--event";
-    NewLine.Описание    = "Calednar event ID";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendarEvent";
+    NewLine.SearchMethod = "UPDATECALENDAREVENT";
+    NewLine.Parameter    = "--event";
+    NewLine.Description    = "Calednar event ID";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendarEvent";
-    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Event description. See GetCalendarEventsStructure";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendarEvent";
+    NewLine.SearchMethod = "UPDATECALENDAREVENT";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Event description. See GetCalendarEventsStructure";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "UpdateCalendarEvent";
-    NewLine.МетодПоиска = "UPDATECALENDAREVENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "UpdateCalendarEvent";
+    NewLine.SearchMethod = "UPDATECALENDAREVENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvent";
-    NewLine.МетодПоиска = "GETCALENDAREVENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Gets a calendar event by ID";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvent";
+    NewLine.SearchMethod = "GETCALENDAREVENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Gets a calendar event by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvent";
-    NewLine.МетодПоиска = "GETCALENDAREVENT";
-    NewLine.Параметр    = "--event";
-    NewLine.Описание    = "Event ID to retrieve";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvent";
+    NewLine.SearchMethod = "GETCALENDAREVENT";
+    NewLine.Parameter    = "--event";
+    NewLine.Description    = "Event ID to retrieve";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvent";
-    NewLine.МетодПоиска = "GETCALENDAREVENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvent";
+    NewLine.SearchMethod = "GETCALENDAREVENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvents";
-    NewLine.МетодПоиска = "GETCALENDAREVENTS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Gets events of calendars with or without filters";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvents";
+    NewLine.SearchMethod = "GETCALENDAREVENTS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Gets events of calendars with or without filters";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvents";
-    NewLine.МетодПоиска = "GETCALENDAREVENTS";
-    NewLine.Параметр    = "--owner";
-    NewLine.Описание    = "Calendar owner ID";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvents";
+    NewLine.SearchMethod = "GETCALENDAREVENTS";
+    NewLine.Parameter    = "--owner";
+    NewLine.Description    = "Calendar owner ID";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvents";
-    NewLine.МетодПоиска = "GETCALENDAREVENTS";
-    NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Calendar type: user, group, company_calendar";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvents";
+    NewLine.SearchMethod = "GETCALENDAREVENTS";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Calendar type: user, group, company_calendar";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvents";
-    NewLine.МетодПоиска = "GETCALENDAREVENTS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Events filter. See GetCalendarEventsFilterStructure (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvents";
+    NewLine.SearchMethod = "GETCALENDAREVENTS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Events filter. See GetCalendarEventsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEvents";
-    NewLine.МетодПоиска = "GETCALENDAREVENTS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEvents";
+    NewLine.SearchMethod = "GETCALENDAREVENTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendarEvent";
-    NewLine.МетодПоиска = "DELETECALENDAREVENT";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Deletes an event from the calendar";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendarEvent";
+    NewLine.SearchMethod = "DELETECALENDAREVENT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Deletes an event from the calendar";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendarEvent";
-    NewLine.МетодПоиска = "DELETECALENDAREVENT";
-    NewLine.Параметр    = "--event";
-    NewLine.Описание    = "ID of the event to be deleted";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendarEvent";
+    NewLine.SearchMethod = "DELETECALENDAREVENT";
+    NewLine.Parameter    = "--event";
+    NewLine.Description    = "ID of the event to be deleted";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "DeleteCalendarEvent";
-    NewLine.МетодПоиска = "DELETECALENDAREVENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "DeleteCalendarEvent";
+    NewLine.SearchMethod = "DELETECALENDAREVENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserParticipationStatus";
-    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Gets the event participation status of the current user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserParticipationStatus";
+    NewLine.SearchMethod = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Gets the event participation status of the current user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserParticipationStatus";
-    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--event";
-    NewLine.Описание    = "Calednar event ID";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserParticipationStatus";
+    NewLine.SearchMethod = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--event";
+    NewLine.Description    = "Calednar event ID";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetUserParticipationStatus";
-    NewLine.МетодПоиска = "GETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetUserParticipationStatus";
+    NewLine.SearchMethod = "GETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserParticipationStatus";
-    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Sets the event participation status for the current user";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserParticipationStatus";
+    NewLine.SearchMethod = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Sets the event participation status for the current user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserParticipationStatus";
-    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--event";
-    NewLine.Описание    = "Calednar event ID";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserParticipationStatus";
+    NewLine.SearchMethod = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--event";
+    NewLine.Description    = "Calednar event ID";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserParticipationStatus";
-    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--status";
-    NewLine.Описание    = "Participation status: Y (agreed), N (refused), Q (did not answer)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserParticipationStatus";
+    NewLine.SearchMethod = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--status";
+    NewLine.Description    = "Participation status: Y (agreed), N (refused), Q (did not answer)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "SetUserParticipationStatus";
-    NewLine.МетодПоиска = "SETUSERPARTICIPATIONSTATUS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
-    NewLine.Область     = "Calendar events management";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "SetUserParticipationStatus";
+    NewLine.SearchMethod = "SETUSERPARTICIPATIONSTATUS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Region     = "Calendar events management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEventsStructure";
-    NewLine.МетодПоиска = "GETCALENDAREVENTSSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Returns the structure of the calendar event fields";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEventsStructure";
+    NewLine.SearchMethod = "GETCALENDAREVENTSSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Returns the structure of the calendar event fields";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCalendarEventsFilterStructure";
-    NewLine.МетодПоиска = "GETCALENDAREVENTSFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Calendar events management";
-    NewLine.ОписаниеМетода   = "Gets the filter structure for the function GetCalendarEvents";
+    NewLine.Library  = "bitrix24";
+    NewLine.Module      = "OPI_Bitrix24";
+    NewLine.Method       = "GetCalendarEventsFilterStructure";
+    NewLine.SearchMethod = "GETCALENDAREVENTSFILTERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Calendar events management";
+    NewLine.MethodDescription   = "Gets the filter structure for the function GetCalendarEvents";
 
     Return CompositionTable;
 EndFunction
