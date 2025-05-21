@@ -1,2 +1,2 @@
 oint greenapi GetNotification ^
- --access "C:\Users\Administrator\AppData\Local\Temp\afhljwwoyr2.tmp"
+ --access "C:\Users\Administrator\AppData\Local\Temp\4wovb33emny.tmp"
