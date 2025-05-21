@@ -45,6 +45,30 @@ Method at API documentation: [Delete a Model](https://github.com/ollama/ollama/b
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ollama DeleteModel \
+             --url "https://api.athenaeum.digital/ollama" \
+             --model "bayselonarrend/tinyllama:latest" \
+             --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ollama DeleteModel ^
+             --url "https://api.athenaeum.digital/ollama" ^
+             --model "bayselonarrend/tinyllama:latest" ^
+             --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

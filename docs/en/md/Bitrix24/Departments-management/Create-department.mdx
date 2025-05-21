@@ -58,18 +58,22 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 CreateDepartment \
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-             --title "Main department" \
-             --parentid 1
+             --url "b24-ar17wx.bitrix24.by" \
+             --title "Subordinate department" \
+             --parentid 2038 \
+             --headid 1 \
+             --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 CreateDepartment ^
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-             --title "Main department" ^
-             --parentid 1
+             --url "b24-ar17wx.bitrix24.by" ^
+             --title "Subordinate department" ^
+             --parentid 2038 ^
+             --headid 1 ^
+             --token "***"
         ```
     </TabItem>
 </Tabs>

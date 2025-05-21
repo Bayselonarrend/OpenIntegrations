@@ -44,23 +44,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint airtable CreateField \
              --token "***" \
-             --base "appPli0MOZzZfk9cC" \
-             --table "tblCWdRHnJcWIZttO" \
-             --title "8f3ad36c-8acc-4de6-8fb2-bb6d6f978eff" \
-             --fielddata "C:\Users\Administrator\AppData\Local\Temp\ycnnscsh0iz.tmp"
+             --base "appd1JtQRWxOoweQg" \
+             --table "tblh0DeyKd6T8nEUj" \
+             --title "7b632a77-a9dd-4cd5-a0ce-794093229b7d" \
+             --fielddata "{'name':'7b632a77-a9dd-4cd5-a0ce-794093229b7d','type':'number','options':{'precision':0}}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint airtable CreateField ^
              --token "***" ^
-             --base "appPli0MOZzZfk9cC" ^
-             --table "tblCWdRHnJcWIZttO" ^
-             --title "8f3ad36c-8acc-4de6-8fb2-bb6d6f978eff" ^
-             --fielddata "C:\Users\Administrator\AppData\Local\Temp\ycnnscsh0iz.tmp"
+             --base "appd1JtQRWxOoweQg" ^
+             --table "tblh0DeyKd6T8nEUj" ^
+             --title "7b632a77-a9dd-4cd5-a0ce-794093229b7d" ^
+             --fielddata "{'name':'7b632a77-a9dd-4cd5-a0ce-794093229b7d','type':'number','options':{'precision':0}}"
         ```
     </TabItem>
 </Tabs>
