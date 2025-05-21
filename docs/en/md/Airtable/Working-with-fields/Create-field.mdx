@@ -31,8 +31,8 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appPvIb7wxCkgyZKC";
-    Table = "tbl2x83eNbGHdzxxj";
+    Base  = "app7HgN8N8JXk96nj";
+    Table = "tblDHsmb8j2zvXWAs";
     Name  = String(New UUID);
 
     Field  = OPI_Airtable.GetNumberField(Name);
@@ -44,27 +44,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint airtable CreateField \
              --token "***" \
-             --base "app0SvCs0MbKiXML2" \
-             --table "tblHCb2NG3vEhdtJI" \
-             --title "5158a51d-cd68-45f0-ac9a-2dc0317e782a" \
-             --fielddata "{'name':'5158a51d-cd68-45f0-ac9a-2dc0317e782a','type':'number','options':{'precision':0}}"
+             --base "appPli0MOZzZfk9cC" \
+             --table "tblCWdRHnJcWIZttO" \
+             --title "8f3ad36c-8acc-4de6-8fb2-bb6d6f978eff" \
+             --fielddata "C:\Users\Administrator\AppData\Local\Temp\ycnnscsh0iz.tmp"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint airtable CreateField ^
              --token "***" ^
-             --base "app0SvCs0MbKiXML2" ^
-             --table "tblHCb2NG3vEhdtJI" ^
-             --title "5158a51d-cd68-45f0-ac9a-2dc0317e782a" ^
-             --fielddata "{'name':'5158a51d-cd68-45f0-ac9a-2dc0317e782a','type':'number','options':{'precision':0}}"
+             --base "appPli0MOZzZfk9cC" ^
+             --table "tblCWdRHnJcWIZttO" ^
+             --title "8f3ad36c-8acc-4de6-8fb2-bb6d6f978eff" ^
+             --fielddata "C:\Users\Administrator\AppData\Local\Temp\ycnnscsh0iz.tmp"
         ```
     </TabItem>
 </Tabs>

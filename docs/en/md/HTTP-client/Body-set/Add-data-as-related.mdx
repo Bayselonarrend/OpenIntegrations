@@ -58,4 +58,24 @@ The Multipart record must first be initialized using the `StartMultipartBody` fu
 
 
 
-
+```json title="Result"
+{
+ "args": {},
+ "data": "--cbadf205ae3e4688be037159b0ce9cc1\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{\r\n \"Field1\": 10,\r\n \"Field2\": \"Text\",\r\n \"Field3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}\r\n\r\n--cbadf205ae3e4688be037159b0ce9cc1--\r\n",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "208",
+  "Content-Type": "multipart/related; boundary=cbadf205ae3e4688be037159b0ce9cc1",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-682cd6ca-12842436343d0ac515d034eb"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
+```

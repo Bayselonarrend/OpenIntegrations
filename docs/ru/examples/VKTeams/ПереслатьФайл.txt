@@ -1,6 +1,6 @@
 ﻿    Токен   = "001.3501506236.091...";
     IDЧата  = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла = "dIYJBBsZEIJjsTECl9IGGX6824969b1bd";
+    IDФайла = "qLb3Ywxn1eSIJtqrnuaf2f682ce0fb1bd";
     Текст   = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст);

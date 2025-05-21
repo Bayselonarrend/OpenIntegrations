@@ -1,6 +1,6 @@
 ﻿    Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "dIYJBBsZEIJjsTECl9IGGX6824969b1bd";
+    FileID = "qLb3Ywxn1eSIJtqrnuaf2f682ce0fb1bd";
     Text   = "File caption";
 
     Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);

@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    AlbumID    = "308693519";
+    AlbumID    = "308821632";
 
     Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);

@@ -1,4 +1,4 @@
-﻿    Токен = "ya29.a0AZYkNZhaN34-QCvSBZA-17pqmWk4J-hG3NCuiF3xCTvXkfgcrkdZq-Hc-3OEMvntvgcahm2fS3UiNdNti6Qbmb3t5t5QtJrGQwTVfNpDE...";
-    Книга = "1mPXsdn2dQXSGxubILyd2DWJlqqaF6t3m4AlmgWsHOP4";
+﻿    Токен = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Книга = "15pyer8RapTluc4feiD8_y1P42RVoDG5xBDly6IPC-OE";
 
     Результат = OPI_GoogleSheets.ПолучитьКнигу(Токен, Книга);
