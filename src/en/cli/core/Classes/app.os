@@ -1,337 +1,337 @@
-﻿#Использовать cmdline
-#Использовать oint
-#Использовать "../../tools"
-#Использовать "../../help"
-#Использовать "../../data"
+﻿#Use oint
+#Use "../../tools"
+#Use "../../help"
+#Use "../../data"
+#Use "../../env"
 
-Перем Отладка;           // Флаг вывода отладочной информации
-Перем Тестирование;      // Флаг отключения отправки данных после обработки
+Var Debugging;           // Flag output debug information
+Var Testing;      // Flag disconnection of sending data after processing
 
-Перем Парсер;            // Объект парсера входящих данных 
-Перем ОбъектОПИ;         // Объект работы с методами ОПИ
+Var Parser;            // Object parser incoming data 
+Var OPIObject;         // Object work with methods OPI
 
-Перем ФайлВывода;        // Путь перенаправления вывода в файл
+Var OutputFile;        // Path redirection output in file
 
-Перем ТаблицаПараметров; // Таблица параметров текущей библиотеки
-Перем ТекущаяКоманда;    // Имя текущей команды
+Var ParametersTable; // Table parameters current libraries
+Var CurrentCommand;    // Name current commands
 
-#Область СлужебныеПроцедурыИФункции
+#Region Private
 
-#Область Основные
+#Region Main
 
-Процедура ОсновнойОбработчик()
+Procedure MainHandler()
 	
-	Отладка        = Ложь;
-	Тестирование   = Ложь;
+	Debugging        = False;
+	Testing   = False;
 
-	Парсер         = Новый ПарсерАргументовКоманднойСтроки();
-	ОбъектОПИ      = Новый СоставБиблиотеки();
+	Parser         = New CommandLineArgumentParser();
+	OPIObject      = New LibraryComposition();
 	
-	ОпределитьТекущуюКоманду();
-	СформироватьКоманду();
+	DetermineCurrentCommand();
+	FormCommand();
 
-	Результат = Парсер.Разобрать(АргументыКоманднойСтроки);
-	ВыполнитьОбработкуКоманды(Результат);
+	Result = Parser.Parse(CommandLineArguments);
+	ExecuteCommandProcessing(Result);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ОпределитьТекущуюКоманду()
+Procedure DetermineCurrentCommand()
 
-	Если АргументыКоманднойСтроки.Количество() > 0 Тогда
-		ТекущаяКоманда = АргументыКоманднойСтроки[0];
-	Иначе
-		ТекущаяКоманда = Неопределено;
-	КонецЕсли;
+	If CommandLineArguments.Count() > 0 Then
+		CurrentCommand = CommandLineArguments[0];
+	Else
+		CurrentCommand = Undefined;
+	EndIf;
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура СформироватьКоманду()
+Procedure FormCommand()
 
-	Если ТекущаяКоманда = Неопределено Тогда
+	If CurrentCommand = Undefined Then
 
-		ВсеКоманды = ОбъектОПИ.ПолучитьСоответствиеКомандМодулей();
-		Версия     = ОбъектОПИ.ПолучитьВерсию();
+		AllCommands = OPIObject.GetCommandModuleMapping();
+		Version     = OPIObject.GetVersion();
 
-		Справка.ВывестиНачальнуюСтраницу(ВсеКоманды, Версия);
+		Help.DisplayStartPage(AllCommands, Version);
 
-		Возврат;
+		Return;
 		
-	КонецЕсли;
+	EndIf;
 	
-	Команда           = Парсер.ОписаниеКоманды(ТекущаяКоманда);
-	ТаблицаПараметров = ОбъектОПИ.ПолучитьСостав(ТекущаяКоманда);
+	Command           = Parser.CommandDescription(CurrentCommand);
+	ParametersTable = OPIObject.GetComposition(CurrentCommand);
 
-	Если Не ТаблицаПараметров = Неопределено Тогда
+	If Not ParametersTable = Undefined Then
 
-		Парсер.ДобавитьПозиционныйПараметрКоманды(Команда, "Метод");
+		Parser.AddPositionalCommandParameter(Command, "Method");
 		
-		ДобавитьПараметрыКоманды(Парсер, Команда);
-		Парсер.ДобавитьПараметрФлагКоманды(Команда, "--help");
-		Парсер.ДобавитьПараметрФлагКоманды(Команда, "--debug");
-		Парсер.ДобавитьПараметрФлагКоманды(Команда, "--test");
+		AddCommandParameters(Parser, Command);
+		Parser.AddCommandFlagParameter(Command, "--help");
+		Parser.AddCommandFlagParameter(Command, "--debug");
+		Parser.AddCommandFlagParameter(Command, "--test");
 
-		Парсер.ДобавитьИменованныйПараметрКоманды(Команда, "--out");
+		Parser.AddNamedCommandParameter(Command, "--out");
 		
-		Парсер.ДобавитьКоманду(Команда);
+		Parser.AddCommand(Command);
 
-	Иначе
-		Справка.ВывестиСообщениеИсключения("Команда", ФайлВывода);
-	КонецЕсли;
+	Else
+		Help.DisplayExceptionMessage("Command", OutputFile);
+	EndIf;
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура ВыполнитьОбработкуКоманды(Знач Данные)
+Procedure ExecuteCommandProcessing(Val Data)
 	
-	ТекущаяКоманда = Данные["Команда"];
-	Параметры      = Данные["ЗначенияПараметров"];
-	Вывод		   = "";
+	CurrentCommand = Data["Command"];
+	Parameters      = Data["ParameterValues"];
+	Output		   = "";
 
-	УстановитьРежимОтладки(Параметры);
-	УстановитьРежимТеста(Параметры);
-	УстановитьФайлВывода(Параметры);
-	ВывестиДопИнформацию(Параметры);
+	SetDebugMode(Parameters);
+	SetTestMode(Parameters);
+	SetOutputFile(Parameters);
+	DisplayAdditionalInformation(Parameters);
 
-	Попытка
+	Try
 			
-		Вывод = ПолучитьРезультатОбработки(ТекущаяКоманда, Параметры);
+		Output = GetProcessingResult(CurrentCommand, Parameters);
 
-		ОбработатьВыводJSON(Вывод);
-		СообщитьРезультат(Вывод, СтатусСообщения.Внимание);
+		ProcessJSONOutput(Output);
+		ReportResult(Output, MessageStatus.Attention);
 
-	Исключение
-		ОбработатьОшибочныйВывод(Вывод, ErrorInfo());
-	КонецПопытки;
+	Except
+		HandleErrorOutput(Output, ErrorInfo());
+	EndTry;
 	
-КонецПроцедуры
+EndProcedure
 
-Функция ПолучитьРезультатОбработки(Знач Команда, Знач Параметры)
+Function GetProcessingResult(Val Command, Val Parameters)
 
-	Метод     = Параметры["Метод"];
-	Ответ     = "The function returned an empty value.";
+	Method     = Parameters["Method"];
+	Response     = "Function Returned Empty Value";
 
-	ЧислоСтандартныхПараметров = 4;
+	NumberOfStandardParameters = 4;
 
-	Если Не ЗначениеЗаполнено(Метод) Или Метод = "--help" Тогда
-		Справка.ВывестиСправкуПоМетодам(Команда, ТаблицаПараметров);
-	КонецЕсли;
+	If Not ValueIsFilled(Method) Or Method = "--help" Then
+		Help.DisplayMethodHelp(Command, ParametersTable);
+	EndIf;
 
-	Если Параметры.Количество() = ЧислоСтандартныхПараметров Или Параметры["--help"] Тогда
+	If Parameters.Count() = NumberOfStandardParameters Or Parameters["--help"] Then
 
-		ОтборКоманды      = Новый Структура("МетодПоиска", вРег(Метод));
-		ПараметрыМетода   = ТаблицаПараметров.НайтиСтроки(ОтборКоманды);
+		CommandSelection      = New Structure("SearchMethod", Upper(Method));
+		MethodParameters   = ParametersTable.FindRows(CommandSelection);
 	
-		Если Не ЗначениеЗаполнено(ПараметрыМетода) Тогда
-			Справка.ВывестиСообщениеИсключения("Метод", ФайлВывода);
-		КонецЕсли;
+		If Not ValueIsFilled(MethodParameters) Then
+			Help.DisplayExceptionMessage("Method", OutputFile);
+		EndIf;
 
-		Справка.ВывестиСправкуПоПараметрам(ПараметрыМетода);
-	КонецЕсли;
+		Help.DisplayParameterHelp(MethodParameters);
+	EndIf;
 
-	СтруктураВыполнения = ОбъектОПИ.СформироватьСтрокуВызоваМетода(Параметры, Команда, Метод);
+	ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
 
-	Если СтруктураВыполнения["Ошибка"] Тогда
-		Справка.ВывестиСообщениеИсключения(СтруктураВыполнения["Результат"], ФайлВывода);
-	Иначе
-		ТекстВыполнения = СтруктураВыполнения["Результат"];
-	КонецЕсли;
+	If ExecutionStructure["Error"] Then
+		Help.DisplayExceptionMessage(ExecutionStructure["Result"], OutputFile);
+	Else
+		ExecutionText = ExecutionStructure["Result"];
+	EndIf;
 
-	Если Отладка Или Тестирование Тогда
-		Сообщить(ТекстВыполнения, СтатусСообщения.Внимание);
-	КонецЕсли;
+	If Debugging Or Testing Then
+		Message(ExecutionText, MessageStatus.Attention);
+	EndIf;
 
-	Если Не Тестирование Тогда
-		Выполнить(ТекстВыполнения);
-	КонецЕсли;
+	If Not Testing Then
+		Execute(ExecutionText);
+	EndIf;
 
-	Возврат Ответ;
+	Return Response;
 	
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область Вспомогательные
+#Region Auxiliary
 
-Процедура ДобавитьПараметрыКоманды(Парсер, Команда);
+Procedure AddCommandParameters(Parser, Command);
 	
-	Параметр_ = "Параметр";
+	Parameter_ = "Parameter";
 
-	ТаблицаДляИспользования = ТаблицаПараметров.Скопировать(, Параметр_);
-	ТаблицаДляИспользования.Свернуть(Параметр_);
+	TableForUse = ParametersTable.Copy(, Parameter_);
+	TableForUse.GroupBy(Parameter_);
 
-	МассивПараметров = ТаблицаДляИспользования.ВыгрузитьКолонку(Параметр_);
+	ParameterArray = TableForUse.UnloadColumn(Parameter_);
 	
-	Для Каждого Параметр Из МассивПараметров Цикл
-		Парсер.ДобавитьИменованныйПараметрКоманды(Команда, Параметр);
-	КонецЦикла;
+	For Each Parameter In ParameterArray Do
+		Parser.AddNamedCommandParameter(Command, Parameter);
+	EndDo;
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура ОбработатьВыводJSON(Вывод)
+Procedure ProcessJSONOutput(Output)
 	
-	Если ПустойВывод(Вывод) Тогда
-		Вывод = Новый Структура;
-	КонецЕсли;
+	If EmptyOutput(Output) Then
+		Output = New Structure;
+	EndIf;
 
-	Если ТипЗнч(Вывод) = Тип("Структура")
-		Или ТипЗнч(Вывод) = Тип("Соответствие")
-		Или ТипЗнч(Вывод) = Тип("Массив") Тогда
+	If TypeOf(Output) = Type("Structure")
+		Or TypeOf(Output) = Type("Map")
+		Or TypeOf(Output) = Type("Array") Then
 	
-		Вывод = OPI_Tools.JSONString(Вывод, , , Ложь);
+		Output = OPI_Tools.JSONString(Output, , , False);
 
-	КонецЕсли;
+	EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура УстановитьРежимОтладки(Знач Параметры)
+Procedure SetDebugMode(Val Parameters)
 
-	Если Параметры["--debug"] Тогда
-		Отладка         = Истина;
-		ПеременнаяСреды = "YES";
-	Иначе
-		Отладка         = Ложь;
-		ПеременнаяСреды = "NO"
-	КонецЕсли;
+	If Parameters["--debug"] Then
+		Debugging         = True;
+		EnvironmentVariable = "YES";
+	Else
+		Debugging         = False;
+		EnvironmentVariable = "NO"
+	EndIf;
 
-	УстановитьПеременнуюСреды("OINT_DEBUG", ПеременнаяСреды);
+	SetEnvironmentVariable("OINT_DEBUG", EnvironmentVariable);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура УстановитьРежимТеста(Знач Параметры)
+Procedure SetTestMode(Val Parameters)
 
-	Если Параметры["--test"] Тогда
-		Тестирование = Истина;
-	Иначе
-		Тестирование = Ложь;
-	КонецЕсли;
+	If Parameters["--test"] Then
+		Testing = True;
+	Else
+		Testing = False;
+	EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура УстановитьФайлВывода(Знач Параметры)
+Procedure SetOutputFile(Val Parameters)
 
-	Вывод = Параметры["--out"];
+	Output = Parameters["--out"];
 
-	Если ЗначениеЗаполнено(Вывод) Тогда
-		ФайлВывода = Вывод;
-	КонецЕсли;
+	If ValueIsFilled(Output) Then
+		OutputFile = Output;
+	EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВывестиДопИнформацию(Параметры)
+Procedure DisplayAdditionalInformation(Parameters)
 
-	Если Отладка Или Тестирование Тогда
+	If Debugging Or Testing Then
 
-		Для каждого ВводныйПараметр Из Параметры Цикл
-			Сообщить(ВводныйПараметр.Ключ + " : " + ВводныйПараметр.Значение);	
-		КонецЦикла;
+		For each IntroductoryParameter In Parameters Do
+			Message(IntroductoryParameter.Key + " : " + IntroductoryParameter.Value);	
+		EndDo;
 
-    КонецЕсли;
+    EndIf;
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура ОбработатьОшибочныйВывод(Вывод, ErrorInfo)
+Procedure HandleErrorOutput(Output, ErrorInfo)
 
-	Информация = "";
-	Если ЗначениеЗаполнено(Вывод) Тогда
+	Information = "";
+	If ValueIsFilled(Output) Then
 
-		Если Отладка Или Тестирование Тогда
-			Информация = ПодробноеПредставлениеОшибки(ErrorInfo);
-		КонецЕсли;
+		If Debugging Or Testing Then
+			Information = DetailErrorDescription(ErrorInfo);
+		EndIf;
 
-		СообщитьРезультат(Вывод);
-	Иначе
+		ReportResult(Output);
+	Else
 
-		Если Отладка Или Тестирование Тогда
-			Информация = ПодробноеПредставлениеОшибки(ErrorInfo);
-		Иначе
-			Информация = BriefErrorDescription(ErrorInfo);
-		КонецЕсли;
+		If Debugging Or Testing Then
+			Information = DetailErrorDescription(ErrorInfo);
+		Else
+			Information = BriefErrorDescription(ErrorInfo);
+		EndIf;
 	
-	КонецЕсли;
+	EndIf;
 	
-	Справка.ВывестиСообщениеИсключения(Информация, ФайлВывода);
+	Help.DisplayExceptionMessage(Information, OutputFile);
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура СообщитьРезультат(Знач Текст, Знач Статус = "")
+Procedure ReportResult(Val Text, Val Status = "")
 
-	Если Не ЗначениеЗаполнено(Статус) Тогда
-		Статус = СтатусСообщения.БезСтатуса;
-	КонецЕсли;
+	If Not ValueIsFilled(Status) Then
+		Status = MessageStatus.NoStatus;
+	EndIf;
 
-	Если ЗначениеЗаполнено(ФайлВывода) Тогда
-		Текст = ЗаписатьЗначениеВФайл(Текст, ФайлВывода);
-	ИначеЕсли ТипЗнч(Текст) = Тип("ДвоичныеДанные") Тогда
-		Текст = "It seems that binary data was returned in the response! "
-		    + "Next time, use the --out option to specify the path for saving them";
-		Статус = СтатусСообщения.Информация;
-	Иначе 
-		Текст = Строка(Текст);
-	КонецЕсли;
+	If ValueIsFilled(OutputFile) Then
+		Text = WriteValueToFile(Text, OutputFile);
+	ElsIf TypeOf(Text) = Type("BinaryData") Then
+		Text = "It Seems Binary Data Was Received in Response! "
+		    + "Next time, use the --out option to specify the path for saving";
+		Status = MessageStatus.Information;
+	Else 
+		Text = String(Text);
+	EndIf;
 
-    Сообщить(Текст, Статус);
+    Message(Text, Status);
 	
-КонецПроцедуры
+EndProcedure
 
-Функция ЗаписатьЗначениеВФайл(Знач Значение, Знач Путь)
+Function WriteValueToFile(Val Value, Val Path)
 	
-	СтандартнаяЕдиница = 1024;
-	ЕдиницаДанных      = СтандартнаяЕдиница * СтандартнаяЕдиница;
-	Значение           = ?(ТипЗнч(Значение) = Тип("ДвоичныеДанные"), Значение, Строка(Значение));
+	StandardUnit = 1024;
+	DataUnit      = StandardUnit * StandardUnit;
+	Value           = ?(TypeOf(Value) = Type("BinaryData"), Value, String(Value));
 
-	Если ТипЗнч(Значение) = Тип("Строка") Тогда 
+	If TypeOf(Value) = Type("String") Then 
 
-		ВозможныйФайл = Новый Файл(Значение);
+		PossibleFile = New File(Value);
 
-		Если ВозможныйФайл.Существует() Тогда
-			Путь = Значение;
-		Иначе
-			Значение = ПолучитьДвоичныеДанныеИзСтроки(Значение);
-	    КонецЕсли;
+		If PossibleFile.Exist() Then
+			Path = Value;
+		Else
+			Value = ПолучитьДвоичныеДанныеИзСтроки(Value);
+	    EndIf;
 
-	КонецЕсли;
+	EndIf;
 
-	Если ТипЗнч(Значение) = Тип("ДвоичныеДанные") Тогда
-        Значение.Записать(Путь);
-	КонецЕсли;
+	If TypeOf(Value) = Type("BinaryData") Then
+        Value.Write(Path);
+	EndIf;
 
-	ЗаписанныйФайл = Новый Файл(Путь);
+	RecordedFile = New File(Path);
 
-	Если ЗаписанныйФайл.Существует() Тогда
-		Возврат "File (Size " 
-		    + Строка(Окр(ЗаписанныйФайл.Размер() / ЕдиницаДанных, 3)) 
-			+ " MB) has been written to " 
-			+ ЗаписанныйФайл.ПолноеИмя;
-	Иначе
-		ВызватьИсключение "The file was not written! Use the --debug flag for additional information";
-	КонецЕсли;
+	If RecordedFile.Exist() Then
+		Return "File with size " 
+		    + String(Round(RecordedFile.Size() / DataUnit, 3)) 
+			+ " MB was recorded in " 
+			+ RecordedFile.FullName;
+	Else
+		Raise "File was not saved! Use the --debug flag for more information";
+	EndIf;
 
-КонецФункции
+EndFunction
 
-Функция ПустойВывод(Вывод)
+Function EmptyOutput(Output)
 
-	Если ТипЗнч(Вывод) = Тип("ДвоичныеДанные") Тогда
-		Возврат Вывод.Размер() = 0;
-	Иначе
-		Возврат Не ЗначениеЗаполнено(Вывод);
-	КонецЕсли;
+	If TypeOf(Output) = Type("BinaryData") Then
+		Return Output.Size() = 0;
+	Else
+		Return Not ValueIsFilled(Output);
+	EndIf;
 	
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-Попытка
-	ОсновнойОбработчик();	
-Исключение
+Try
+	MainHandler();	
+Except
 	
-	Если Отладка Тогда
-		Информация = ErrorDescription();
-	Иначе
-		Информация = BriefErrorDescription(ErrorInfo());
-	КонецЕсли;
+	If Debugging Then
+		Information = ErrorDescription();
+	Else
+		Information = BriefErrorDescription(ErrorInfo());
+	EndIf;
 
-	Справка.ВывестиСообщениеИсключения(Информация, ФайлВывода);
+	Help.DisplayExceptionMessage(Information, OutputFile);
 
-КонецПопытки;
+EndTry;
 

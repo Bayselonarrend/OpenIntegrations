@@ -1,1246 +1,1246 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "FormAccessParameters";
-    NewLine.МетодПоиска = "FORMACCESSPARAMETERS";
-    NewLine.Параметр    = "--api";
-    NewLine.Описание    = "API host link";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Forms the structure of basic authorization data";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "FormAccessParameters";
+    NewLine.SearchMethod = "FORMACCESSPARAMETERS";
+    NewLine.Parameter    = "--api";
+    NewLine.Description    = "API host link";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Forms the structure of basic authorization data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "FormAccessParameters";
-    NewLine.МетодПоиска = "FORMACCESSPARAMETERS";
-    NewLine.Параметр    = "--media";
-    NewLine.Описание    = "Link to host API for sending files";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "FormAccessParameters";
+    NewLine.SearchMethod = "FORMACCESSPARAMETERS";
+    NewLine.Parameter    = "--media";
+    NewLine.Description    = "Link to host API for sending files";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "FormAccessParameters";
-    NewLine.МетодПоиска = "FORMACCESSPARAMETERS";
-    NewLine.Параметр    = "--id";
-    NewLine.Описание    = "Unique instance number";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "FormAccessParameters";
+    NewLine.SearchMethod = "FORMACCESSPARAMETERS";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Unique instance number";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "FormAccessParameters";
-    NewLine.МетодПоиска = "FORMACCESSPARAMETERS";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Instance access key";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "FormAccessParameters";
+    NewLine.SearchMethod = "FORMACCESSPARAMETERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Instance access key";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetAccountInformation";
-    NewLine.МетодПоиска = "GETACCOUNTINFORMATION";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Gets account information";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetAccountInformation";
+    NewLine.SearchMethod = "GETACCOUNTINFORMATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Gets account information";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetInstanceSettings";
-    NewLine.МетодПоиска = "GETINSTANCESETTINGS";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Gets the current instance settings";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetInstanceSettings";
+    NewLine.SearchMethod = "GETINSTANCESETTINGS";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Gets the current instance settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetInstanceSettings";
-    NewLine.МетодПоиска = "SETINSTANCESETTINGS";
-    NewLine.Параметр    = "--settings";
-    NewLine.Описание    = "Instance settings. See GetInstanceSettingsStructure";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Sets the instance settings";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetInstanceSettings";
+    NewLine.SearchMethod = "SETINSTANCESETTINGS";
+    NewLine.Parameter    = "--settings";
+    NewLine.Description    = "Instance settings. See GetInstanceSettingsStructure";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Sets the instance settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetInstanceSettings";
-    NewLine.МетодПоиска = "SETINSTANCESETTINGS";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetInstanceSettings";
+    NewLine.SearchMethod = "SETINSTANCESETTINGS";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetInstanceStatus";
-    NewLine.МетодПоиска = "GETINSTANCESTATUS";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Gets instance status";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetInstanceStatus";
+    NewLine.SearchMethod = "GETINSTANCESTATUS";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Gets instance status";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "RebootInstance";
-    NewLine.МетодПоиска = "REBOOTINSTANCE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Restarts the instance";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "RebootInstance";
+    NewLine.SearchMethod = "REBOOTINSTANCE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Restarts the instance";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "LogoutInstance";
-    NewLine.МетодПоиска = "LOGOUTINSTANCE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Unlogging the instance";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "LogoutInstance";
+    NewLine.SearchMethod = "LOGOUTINSTANCE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Unlogging the instance";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetQR";
-    NewLine.МетодПоиска = "GETQR";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Receives authorization QR code";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetQR";
+    NewLine.SearchMethod = "GETQR";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Receives authorization QR code";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetAuthorizationCode";
-    NewLine.МетодПоиска = "GETAUTHORIZATIONCODE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Receives the authorization code for phone number linking";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetAuthorizationCode";
+    NewLine.SearchMethod = "GETAUTHORIZATIONCODE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Receives the authorization code for phone number linking";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetAuthorizationCode";
-    NewLine.МетодПоиска = "GETAUTHORIZATIONCODE";
-    NewLine.Параметр    = "--phone";
-    NewLine.Описание    = "Phone number in international format without + and 00";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetAuthorizationCode";
+    NewLine.SearchMethod = "GETAUTHORIZATIONCODE";
+    NewLine.Parameter    = "--phone";
+    NewLine.Description    = "Phone number in international format without + and 00";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetProfilePicture";
-    NewLine.МетодПоиска = "SETPROFILEPICTURE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Sets a new profile picture";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetProfilePicture";
+    NewLine.SearchMethod = "SETPROFILEPICTURE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Sets a new profile picture";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetProfilePicture";
-    NewLine.МетодПоиска = "SETPROFILEPICTURE";
-    NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "Profile picture";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetProfilePicture";
+    NewLine.SearchMethod = "SETPROFILEPICTURE";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Profile picture";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ArchiveChat";
-    NewLine.МетодПоиска = "ARCHIVECHAT";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Archives the selected chat";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ArchiveChat";
+    NewLine.SearchMethod = "ARCHIVECHAT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Archives the selected chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ArchiveChat";
-    NewLine.МетодПоиска = "ARCHIVECHAT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID for archiving";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ArchiveChat";
+    NewLine.SearchMethod = "ARCHIVECHAT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID for archiving";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "UnarchiveChat";
-    NewLine.МетодПоиска = "UNARCHIVECHAT";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Unarchives the selected chat";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "UnarchiveChat";
+    NewLine.SearchMethod = "UNARCHIVECHAT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Unarchives the selected chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "UnarchiveChat";
-    NewLine.МетодПоиска = "UNARCHIVECHAT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat ID for dearchiving";
-    NewLine.Область     = "Account";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "UnarchiveChat";
+    NewLine.SearchMethod = "UNARCHIVECHAT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID for dearchiving";
+    NewLine.Region     = "Account";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetInstanceSettingsStructure";
-    NewLine.МетодПоиска = "GETINSTANCESETTINGSSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Account";
-    NewLine.ОписаниеМетода   = "Gets the structure template for instance settings";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetInstanceSettingsStructure";
+    NewLine.SearchMethod = "GETINSTANCESETTINGSSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Account";
+    NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetGroupInformation";
-    NewLine.МетодПоиска = "GETGROUPINFORMATION";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Gets group chat data";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetGroupInformation";
+    NewLine.SearchMethod = "GETGROUPINFORMATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Gets group chat data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetGroupInformation";
-    NewLine.МетодПоиска = "GETGROUPINFORMATION";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetGroupInformation";
+    NewLine.SearchMethod = "GETGROUPINFORMATION";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "CreateGroup";
-    NewLine.МетодПоиска = "CREATEGROUP";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Creates a new group chat";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "CreateGroup";
+    NewLine.SearchMethod = "CREATEGROUP";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Creates a new group chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "CreateGroup";
-    NewLine.МетодПоиска = "CREATEGROUP";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Name of the group chat";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "CreateGroup";
+    NewLine.SearchMethod = "CREATEGROUP";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Name of the group chat";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "CreateGroup";
-    NewLine.МетодПоиска = "CREATEGROUP";
-    NewLine.Параметр    = "--members";
-    NewLine.Описание    = "Chat members array (optional, def. val. - Empty value)";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "CreateGroup";
+    NewLine.SearchMethod = "CREATEGROUP";
+    NewLine.Parameter    = "--members";
+    NewLine.Description    = "Chat members array (optional, def. val. - Empty value)";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "UpdateGroupName";
-    NewLine.МетодПоиска = "UPDATEGROUPNAME";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Changes the name of an existing group";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "UpdateGroupName";
+    NewLine.SearchMethod = "UPDATEGROUPNAME";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Changes the name of an existing group";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "UpdateGroupName";
-    NewLine.МетодПоиска = "UPDATEGROUPNAME";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "UpdateGroupName";
+    NewLine.SearchMethod = "UPDATEGROUPNAME";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "UpdateGroupName";
-    NewLine.МетодПоиска = "UPDATEGROUPNAME";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "New group chat name";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "UpdateGroupName";
+    NewLine.SearchMethod = "UPDATEGROUPNAME";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "New group chat name";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "AddGroupMember";
-    NewLine.МетодПоиска = "ADDGROUPMEMBER";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Adds a participant to a group chat";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "AddGroupMember";
+    NewLine.SearchMethod = "ADDGROUPMEMBER";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Adds a participant to a group chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "AddGroupMember";
-    NewLine.МетодПоиска = "ADDGROUPMEMBER";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "AddGroupMember";
+    NewLine.SearchMethod = "ADDGROUPMEMBER";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "AddGroupMember";
-    NewLine.МетодПоиска = "ADDGROUPMEMBER";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID to add";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "AddGroupMember";
+    NewLine.SearchMethod = "ADDGROUPMEMBER";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID to add";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ExcludeGroupMember";
-    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Excludes a member from the group";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ExcludeGroupMember";
+    NewLine.SearchMethod = "EXCLUDEGROUPMEMBER";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Excludes a member from the group";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ExcludeGroupMember";
-    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ExcludeGroupMember";
+    NewLine.SearchMethod = "EXCLUDEGROUPMEMBER";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ExcludeGroupMember";
-    NewLine.МетодПоиска = "EXCLUDEGROUPMEMBER";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID to add";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ExcludeGroupMember";
+    NewLine.SearchMethod = "EXCLUDEGROUPMEMBER";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID to add";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetAdminRights";
-    NewLine.МетодПоиска = "SETADMINRIGHTS";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Assigns the user as the group administrator";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetAdminRights";
+    NewLine.SearchMethod = "SETADMINRIGHTS";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Assigns the user as the group administrator";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetAdminRights";
-    NewLine.МетодПоиска = "SETADMINRIGHTS";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetAdminRights";
+    NewLine.SearchMethod = "SETADMINRIGHTS";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetAdminRights";
-    NewLine.МетодПоиска = "SETADMINRIGHTS";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID to add";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetAdminRights";
+    NewLine.SearchMethod = "SETADMINRIGHTS";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID to add";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "RevokeAdminRights";
-    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Revokes administrator rights from the user";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "RevokeAdminRights";
+    NewLine.SearchMethod = "REVOKEADMINRIGHTS";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Revokes administrator rights from the user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "RevokeAdminRights";
-    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "RevokeAdminRights";
+    NewLine.SearchMethod = "REVOKEADMINRIGHTS";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "RevokeAdminRights";
-    NewLine.МетодПоиска = "REVOKEADMINRIGHTS";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID to add";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "RevokeAdminRights";
+    NewLine.SearchMethod = "REVOKEADMINRIGHTS";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID to add";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "LeaveGroup";
-    NewLine.МетодПоиска = "LEAVEGROUP";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Logs the current account out of group chat";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "LeaveGroup";
+    NewLine.SearchMethod = "LEAVEGROUP";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Logs the current account out of group chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "LeaveGroup";
-    NewLine.МетодПоиска = "LEAVEGROUP";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "LeaveGroup";
+    NewLine.SearchMethod = "LEAVEGROUP";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetGroupPicture";
-    NewLine.МетодПоиска = "SETGROUPPICTURE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Group management";
-    NewLine.ОписаниеМетода   = "Sets the group chat picture";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetGroupPicture";
+    NewLine.SearchMethod = "SETGROUPPICTURE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Group management";
+    NewLine.MethodDescription   = "Sets the group chat picture";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetGroupPicture";
-    NewLine.МетодПоиска = "SETGROUPPICTURE";
-    NewLine.Параметр    = "--group";
-    NewLine.Описание    = "Group chat identifier";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetGroupPicture";
+    NewLine.SearchMethod = "SETGROUPPICTURE";
+    NewLine.Parameter    = "--group";
+    NewLine.Description    = "Group chat identifier";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetGroupPicture";
-    NewLine.МетодПоиска = "SETGROUPPICTURE";
-    NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "Profile picture";
-    NewLine.Область     = "Group management";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetGroupPicture";
+    NewLine.SearchMethod = "SETGROUPPICTURE";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Profile picture";
+    NewLine.Region     = "Group management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends a text message to the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a text message to the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends the file to the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends the file to the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--file";
-    NewLine.Описание    = "File data or filepath";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File data or filepath";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--filename";
-    NewLine.Описание    = "Name of the file with the extension";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "Name of the file with the extension";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--caption";
-    NewLine.Описание    = "Message text below the file (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--caption";
+    NewLine.Description    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFile";
-    NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends a file from web to the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a file from web to the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "File URL";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "File URL";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--filename";
-    NewLine.Описание    = "Name of the file with the extension";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "Name of the file with the extension";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--caption";
-    NewLine.Описание    = "Message text below the file (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--caption";
+    NewLine.Description    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendFileByURL";
-    NewLine.МетодПоиска = "SENDFILEBYURL";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends a poll with answer choices to the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a poll with answer choices to the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Answer options";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Answer options";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--multi";
-    NewLine.Описание    = "Allows to select more than one answer choice (optional, def. val. - No)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--multi";
+    NewLine.Description    = "Allows to select more than one answer choice (optional, def. val. - No)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends location data to the specified chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends location data to the specified chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--loc";
-    NewLine.Описание    = "Location description. See GetLocationDescription";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--loc";
+    NewLine.Description    = "Location description. See GetLocationDescription";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends a contact with a phone number to the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a contact with a phone number to the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--contact";
-    NewLine.Описание    = "Contact description. See GetContactDescription";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--contact";
+    NewLine.Description    = "Contact description. See GetContactDescription";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--quoted";
-    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--quoted";
+    NewLine.Description    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ForwardMessages";
-    NewLine.МетодПоиска = "FORWARDMESSAGES";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Sends messages from one chat room to another";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ForwardMessages";
+    NewLine.SearchMethod = "FORWARDMESSAGES";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends messages from one chat room to another";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ForwardMessages";
-    NewLine.МетодПоиска = "FORWARDMESSAGES";
-    NewLine.Параметр    = "--from";
-    NewLine.Описание    = "Message source chat ID";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ForwardMessages";
+    NewLine.SearchMethod = "FORWARDMESSAGES";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Message source chat ID";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ForwardMessages";
-    NewLine.МетодПоиска = "FORWARDMESSAGES";
-    NewLine.Параметр    = "--to";
-    NewLine.Описание    = "Message receiver chat ID";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ForwardMessages";
+    NewLine.SearchMethod = "FORWARDMESSAGES";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "Message receiver chat ID";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ForwardMessages";
-    NewLine.МетодПоиска = "FORWARDMESSAGES";
-    NewLine.Параметр    = "--msgs";
-    NewLine.Описание    = "Messages or a single message to be sent";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ForwardMessages";
+    NewLine.SearchMethod = "FORWARDMESSAGES";
+    NewLine.Parameter    = "--msgs";
+    NewLine.Description    = "Messages or a single message to be sent";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "EditMessageText";
-    NewLine.МетодПоиска = "EDITMESSAGETEXT";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Changes the text of the message";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "EditMessageText";
+    NewLine.SearchMethod = "EDITMESSAGETEXT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Changes the text of the message";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "EditMessageText";
-    NewLine.МетодПоиска = "EDITMESSAGETEXT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "EditMessageText";
+    NewLine.SearchMethod = "EDITMESSAGETEXT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "EditMessageText";
-    NewLine.МетодПоиска = "EDITMESSAGETEXT";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Message identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "EditMessageText";
+    NewLine.SearchMethod = "EDITMESSAGETEXT";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "EditMessageText";
-    NewLine.МетодПоиска = "EDITMESSAGETEXT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "New message text";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "EditMessageText";
+    NewLine.SearchMethod = "EDITMESSAGETEXT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "New message text";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Deletes a message in the selected chat room";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Deletes a message in the selected chat room";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Message identifier";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message identifier";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--sender";
-    NewLine.Описание    = "Delete for sender only (optional, def. val. - No)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--sender";
+    NewLine.Description    = "Delete for sender only (optional, def. val. - No)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetContactDescription";
-    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
-    NewLine.Параметр    = "--phone";
-    NewLine.Описание    = "Phone number in international format without a plus sign";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Gets the contact description for the SendContact function";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetContactDescription";
+    NewLine.SearchMethod = "GETCONTACTDESCRIPTION";
+    NewLine.Parameter    = "--phone";
+    NewLine.Description    = "Phone number in international format without a plus sign";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Gets the contact description for the SendContact function";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetContactDescription";
-    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Contact name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetContactDescription";
+    NewLine.SearchMethod = "GETCONTACTDESCRIPTION";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Contact name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetContactDescription";
-    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
-    NewLine.Параметр    = "--surname";
-    NewLine.Описание    = "Contact last name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetContactDescription";
+    NewLine.SearchMethod = "GETCONTACTDESCRIPTION";
+    NewLine.Parameter    = "--surname";
+    NewLine.Description    = "Contact last name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetContactDescription";
-    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
-    NewLine.Параметр    = "--midname";
-    NewLine.Описание    = "Contacts patronymic or middle name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetContactDescription";
+    NewLine.SearchMethod = "GETCONTACTDESCRIPTION";
+    NewLine.Parameter    = "--midname";
+    NewLine.Description    = "Contacts patronymic or middle name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetContactDescription";
-    NewLine.МетодПоиска = "GETCONTACTDESCRIPTION";
-    NewLine.Параметр    = "--company";
-    NewLine.Описание    = "Name of the contact company (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetContactDescription";
+    NewLine.SearchMethod = "GETCONTACTDESCRIPTION";
+    NewLine.Parameter    = "--company";
+    NewLine.Description    = "Name of the contact company (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetLocationDescription";
-    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
-    NewLine.Параметр    = "--lat";
-    NewLine.Описание    = "Geographic latitude";
-    NewLine.Область     = "Message sending";
-    NewLine.ОписаниеМетода   = "Gets the description of the location to send with SendLocation method";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetLocationDescription";
+    NewLine.SearchMethod = "GETLOCATIONDESCRIPTION";
+    NewLine.Parameter    = "--lat";
+    NewLine.Description    = "Geographic latitude";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Gets the description of the location to send with SendLocation method";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetLocationDescription";
-    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
-    NewLine.Параметр    = "--long";
-    NewLine.Описание    = "Geographic longitude";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetLocationDescription";
+    NewLine.SearchMethod = "GETLOCATIONDESCRIPTION";
+    NewLine.Parameter    = "--long";
+    NewLine.Description    = "Geographic longitude";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetLocationDescription";
-    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
-    NewLine.Параметр    = "--addr";
-    NewLine.Описание    = "Location address (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetLocationDescription";
+    NewLine.SearchMethod = "GETLOCATIONDESCRIPTION";
+    NewLine.Parameter    = "--addr";
+    NewLine.Description    = "Location address (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetLocationDescription";
-    NewLine.МетодПоиска = "GETLOCATIONDESCRIPTION";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Location name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetLocationDescription";
+    NewLine.SearchMethod = "GETLOCATIONDESCRIPTION";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Location name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetNotification";
-    NewLine.МетодПоиска = "GETNOTIFICATION";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Notifications receiving";
-    NewLine.ОписаниеМетода   = "Receives one notification from the queue";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetNotification";
+    NewLine.SearchMethod = "GETNOTIFICATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications receiving";
+    NewLine.MethodDescription   = "Receives one notification from the queue";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetNotification";
-    NewLine.МетодПоиска = "GETNOTIFICATION";
-    NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Timeout for waiting for new messages when the queue is empty (optional, def. val. - 5)";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetNotification";
+    NewLine.SearchMethod = "GETNOTIFICATION";
+    NewLine.Parameter    = "--timeout";
+    NewLine.Description    = "Timeout for waiting for new messages when the queue is empty (optional, def. val. - 5)";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteNotificationFromQueue";
-    NewLine.МетодПоиска = "DELETENOTIFICATIONFROMQUEUE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Notifications receiving";
-    NewLine.ОписаниеМетода   = "Deletes the notification from the queue after successful receipt";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteNotificationFromQueue";
+    NewLine.SearchMethod = "DELETENOTIFICATIONFROMQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications receiving";
+    NewLine.MethodDescription   = "Deletes the notification from the queue after successful receipt";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DeleteNotificationFromQueue";
-    NewLine.МетодПоиска = "DELETENOTIFICATIONFROMQUEUE";
-    NewLine.Параметр    = "--receipt";
-    NewLine.Описание    = "Receipt identifier from the GetNotification method";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DeleteNotificationFromQueue";
+    NewLine.SearchMethod = "DELETENOTIFICATIONFROMQUEUE";
+    NewLine.Parameter    = "--receipt";
+    NewLine.Description    = "Receipt identifier from the GetNotification method";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DownloadMessageFile";
-    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Notifications receiving";
-    NewLine.ОписаниеМетода   = "Gets a link to download a file from an incoming message";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DownloadMessageFile";
+    NewLine.SearchMethod = "DOWNLOADMESSAGEFILE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications receiving";
+    NewLine.MethodDescription   = "Gets a link to download a file from an incoming message";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DownloadMessageFile";
-    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DownloadMessageFile";
+    NewLine.SearchMethod = "DOWNLOADMESSAGEFILE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "DownloadMessageFile";
-    NewLine.МетодПоиска = "DOWNLOADMESSAGEFILE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Identifier of the message with the file";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "DownloadMessageFile";
+    NewLine.SearchMethod = "DOWNLOADMESSAGEFILE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Identifier of the message with the file";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetReadMark";
-    NewLine.МетодПоиска = "SETREADMARK";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Notifications receiving";
-    NewLine.ОписаниеМетода   = "Sets the Read mark for a message or all chat messages";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetReadMark";
+    NewLine.SearchMethod = "SETREADMARK";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications receiving";
+    NewLine.MethodDescription   = "Sets the Read mark for a message or all chat messages";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetReadMark";
-    NewLine.МетодПоиска = "SETREADMARK";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetReadMark";
+    NewLine.SearchMethod = "SETREADMARK";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "SetReadMark";
-    NewLine.МетодПоиска = "SETREADMARK";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Message ID. All messages, if not filled in (optional, def. val. - Empty value)";
-    NewLine.Область     = "Notifications receiving";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "SetReadMark";
+    NewLine.SearchMethod = "SETREADMARK";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message ID. All messages, if not filled in (optional, def. val. - Empty value)";
+    NewLine.Region     = "Notifications receiving";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetMessageQueue";
-    NewLine.МетодПоиска = "GETMESSAGEQUEUE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message queue";
-    NewLine.ОписаниеМетода   = "Gets the list of messages in the queue to be sent";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetMessageQueue";
+    NewLine.SearchMethod = "GETMESSAGEQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message queue";
+    NewLine.MethodDescription   = "Gets the list of messages in the queue to be sent";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "ClearMessageQueue";
-    NewLine.МетодПоиска = "CLEARMESSAGEQUEUE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message queue";
-    NewLine.ОписаниеМетода   = "Clears the queue of messages to be sent";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "ClearMessageQueue";
+    NewLine.SearchMethod = "CLEARMESSAGEQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message queue";
+    NewLine.MethodDescription   = "Clears the queue of messages to be sent";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetChatHistory";
-    NewLine.МетодПоиска = "GETCHATHISTORY";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message logs";
-    NewLine.ОписаниеМетода   = "Retrieves the chat message history";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetChatHistory";
+    NewLine.SearchMethod = "GETCHATHISTORY";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message logs";
+    NewLine.MethodDescription   = "Retrieves the chat message history";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetChatHistory";
-    NewLine.МетодПоиска = "GETCHATHISTORY";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetChatHistory";
+    NewLine.SearchMethod = "GETCHATHISTORY";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message logs";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetChatHistory";
-    NewLine.МетодПоиска = "GETCHATHISTORY";
-    NewLine.Параметр    = "--count";
-    NewLine.Описание    = "Number of messages to receive (optional, def. val. - 100)";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetChatHistory";
+    NewLine.SearchMethod = "GETCHATHISTORY";
+    NewLine.Parameter    = "--count";
+    NewLine.Description    = "Number of messages to receive (optional, def. val. - 100)";
+    NewLine.Region     = "Message logs";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetMessage";
-    NewLine.МетодПоиска = "GETMESSAGE";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message logs";
-    NewLine.ОписаниеМетода   = "Gets information about the chat message by ID";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetMessage";
+    NewLine.SearchMethod = "GETMESSAGE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message logs";
+    NewLine.MethodDescription   = "Gets information about the chat message by ID";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetMessage";
-    NewLine.МетодПоиска = "GETMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Chat identifier";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetMessage";
+    NewLine.SearchMethod = "GETMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message logs";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetMessage";
-    NewLine.МетодПоиска = "GETMESSAGE";
-    NewLine.Параметр    = "--msg";
-    NewLine.Описание    = "Message identifier";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetMessage";
+    NewLine.SearchMethod = "GETMESSAGE";
+    NewLine.Parameter    = "--msg";
+    NewLine.Description    = "Message identifier";
+    NewLine.Region     = "Message logs";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetIncomingMessageLog";
-    NewLine.МетодПоиска = "GETINCOMINGMESSAGELOG";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message logs";
-    NewLine.ОписаниеМетода   = "Gets the list of incoming messages of the instance for the specified period";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetIncomingMessageLog";
+    NewLine.SearchMethod = "GETINCOMINGMESSAGELOG";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message logs";
+    NewLine.MethodDescription   = "Gets the list of incoming messages of the instance for the specified period";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetIncomingMessageLog";
-    NewLine.МетодПоиска = "GETINCOMINGMESSAGELOG";
-    NewLine.Параметр    = "--period";
-    NewLine.Описание    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetIncomingMessageLog";
+    NewLine.SearchMethod = "GETINCOMINGMESSAGELOG";
+    NewLine.Parameter    = "--period";
+    NewLine.Description    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Region     = "Message logs";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetOutgoingMessageLog";
-    NewLine.МетодПоиска = "GETOUTGOINGMESSAGELOG";
-    NewLine.Параметр    = "--access";
-    NewLine.Описание    = "Access parameters. See FormAccessParameters";
-    NewLine.Область     = "Message logs";
-    NewLine.ОписаниеМетода   = "Gets the list of outgoing messages of the instance for the specified period";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetOutgoingMessageLog";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGELOG";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message logs";
+    NewLine.MethodDescription   = "Gets the list of outgoing messages of the instance for the specified period";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "greenapi";
-    NewLine.Модуль      = "OPI_GreenAPI";
-    NewLine.Метод       = "GetOutgoingMessageLog";
-    NewLine.МетодПоиска = "GETOUTGOINGMESSAGELOG";
-    NewLine.Параметр    = "--period";
-    NewLine.Описание    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
-    NewLine.Область     = "Message logs";
+    NewLine.Library  = "greenapi";
+    NewLine.Module      = "OPI_GreenAPI";
+    NewLine.Method       = "GetOutgoingMessageLog";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGELOG";
+    NewLine.Parameter    = "--period";
+    NewLine.Description    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Region     = "Message logs";
 
     Return CompositionTable;
 EndFunction

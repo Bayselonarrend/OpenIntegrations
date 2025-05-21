@@ -1,684 +1,684 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetVersion";
-    NewLine.МетодПоиска = "GETVERSION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets a version of Ollama";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetVersion";
+    NewLine.SearchMethod = "GETVERSION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets a version of Ollama";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetVersion";
-    NewLine.МетодПоиска = "GETVERSION";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetVersion";
+    NewLine.SearchMethod = "GETVERSION";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetResponse";
-    NewLine.МетодПоиска = "GETRESPONSE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Generates a response for a given text query";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetResponse";
+    NewLine.SearchMethod = "GETRESPONSE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Generates a response for a given text query";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetResponse";
-    NewLine.МетодПоиска = "GETRESPONSE";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetResponse";
+    NewLine.SearchMethod = "GETRESPONSE";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetResponse";
-    NewLine.МетодПоиска = "GETRESPONSE";
-    NewLine.Параметр    = "--prompt";
-    NewLine.Описание    = "Request text";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetResponse";
+    NewLine.SearchMethod = "GETRESPONSE";
+    NewLine.Parameter    = "--prompt";
+    NewLine.Description    = "Request text";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetResponse";
-    NewLine.МетодПоиска = "GETRESPONSE";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetResponse";
+    NewLine.SearchMethod = "GETRESPONSE";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetResponse";
-    NewLine.МетодПоиска = "GETRESPONSE";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetResponse";
+    NewLine.SearchMethod = "GETRESPONSE";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextResponse";
-    NewLine.МетодПоиска = "GETCONTEXTRESPONSE";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Receives the next response from the model according to the message history";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextResponse";
+    NewLine.SearchMethod = "GETCONTEXTRESPONSE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Receives the next response from the model according to the message history";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextResponse";
-    NewLine.МетодПоиска = "GETCONTEXTRESPONSE";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextResponse";
+    NewLine.SearchMethod = "GETCONTEXTRESPONSE";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextResponse";
-    NewLine.МетодПоиска = "GETCONTEXTRESPONSE";
-    NewLine.Параметр    = "--msgs";
-    NewLine.Описание    = "Messages log. See GetContextMessageStructure";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextResponse";
+    NewLine.SearchMethod = "GETCONTEXTRESPONSE";
+    NewLine.Parameter    = "--msgs";
+    NewLine.Description    = "Messages log. See GetContextMessageStructure";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextResponse";
-    NewLine.МетодПоиска = "GETCONTEXTRESPONSE";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextResponse";
+    NewLine.SearchMethod = "GETCONTEXTRESPONSE";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextResponse";
-    NewLine.МетодПоиска = "GETCONTEXTRESPONSE";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextResponse";
+    NewLine.SearchMethod = "GETCONTEXTRESPONSE";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddings";
-    NewLine.МетодПоиска = "GETEMBEDDINGS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets the embeddings for the given entries";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddings";
+    NewLine.SearchMethod = "GETEMBEDDINGS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the embeddings for the given entries";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddings";
-    NewLine.МетодПоиска = "GETEMBEDDINGS";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddings";
+    NewLine.SearchMethod = "GETEMBEDDINGS";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddings";
-    NewLine.МетодПоиска = "GETEMBEDDINGS";
-    NewLine.Параметр    = "--input";
-    NewLine.Описание    = "String or array of request strings";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddings";
+    NewLine.SearchMethod = "GETEMBEDDINGS";
+    NewLine.Parameter    = "--input";
+    NewLine.Description    = "String or array of request strings";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddings";
-    NewLine.МетодПоиска = "GETEMBEDDINGS";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Additional parameters. See GetEmbeddingsParameterStructure (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddings";
+    NewLine.SearchMethod = "GETEMBEDDINGS";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional parameters. See GetEmbeddingsParameterStructure (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddings";
-    NewLine.МетодПоиска = "GETEMBEDDINGS";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddings";
+    NewLine.SearchMethod = "GETEMBEDDINGS";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetRequestParameterStructure";
-    NewLine.МетодПоиска = "GETREQUESTPARAMETERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets the structure of additional parameters for request processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetRequestParameterStructure";
+    NewLine.SearchMethod = "GETREQUESTPARAMETERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of additional parameters for request processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetEmbeddingsParameterStructure";
-    NewLine.МетодПоиска = "GETEMBEDDINGSPARAMETERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets the structure of additional parameters for processing embeddings requests";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetEmbeddingsParameterStructure";
+    NewLine.SearchMethod = "GETEMBEDDINGSPARAMETERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of additional parameters for processing embeddings requests";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextParameterStructure";
-    NewLine.МетодПоиска = "GETCONTEXTPARAMETERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets the structure of additional parameters to process the request in context";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextParameterStructure";
+    NewLine.SearchMethod = "GETCONTEXTPARAMETERSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of additional parameters to process the request in context";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextMessageStructure";
-    NewLine.МетодПоиска = "GETCONTEXTMESSAGESTRUCTURE";
-    NewLine.Параметр    = "--role";
-    NewLine.Описание    = "Message source: system, user, assistant, tool";
-    NewLine.Область     = "Requests processing";
-    NewLine.ОписаниеМетода   = "Gets the message structure for a list of request messages in context";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextMessageStructure";
+    NewLine.SearchMethod = "GETCONTEXTMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--role";
+    NewLine.Description    = "Message source: system, user, assistant, tool";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the message structure for a list of request messages in context";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextMessageStructure";
-    NewLine.МетодПоиска = "GETCONTEXTMESSAGESTRUCTURE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextMessageStructure";
+    NewLine.SearchMethod = "GETCONTEXTMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextMessageStructure";
-    NewLine.МетодПоиска = "GETCONTEXTMESSAGESTRUCTURE";
-    NewLine.Параметр    = "--images";
-    NewLine.Описание    = "List of pictures in Base64 format (for multimodal models like llava) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextMessageStructure";
+    NewLine.SearchMethod = "GETCONTEXTMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--images";
+    NewLine.Description    = "List of pictures in Base64 format (for multimodal models like llava) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetContextMessageStructure";
-    NewLine.МетодПоиска = "GETCONTEXTMESSAGESTRUCTURE";
-    NewLine.Параметр    = "--tools";
-    NewLine.Описание    = "List of tools in JSON format that the model should use (optional, def. val. - Empty value)";
-    NewLine.Область     = "Requests processing";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetContextMessageStructure";
+    NewLine.SearchMethod = "GETCONTEXTMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--tools";
+    NewLine.Description    = "List of tools in JSON format that the model should use (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelList";
-    NewLine.МетодПоиска = "GETMODELLIST";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Gets a list of local models";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelList";
+    NewLine.SearchMethod = "GETMODELLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Gets a list of local models";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelList";
-    NewLine.МетодПоиска = "GETMODELLIST";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelList";
+    NewLine.SearchMethod = "GETMODELLIST";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "ListRunningModels";
-    NewLine.МетодПоиска = "LISTRUNNINGMODELS";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Gets a list of running models";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "ListRunningModels";
+    NewLine.SearchMethod = "LISTRUNNINGMODELS";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Gets a list of running models";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "ListRunningModels";
-    NewLine.МетодПоиска = "LISTRUNNINGMODELS";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "ListRunningModels";
+    NewLine.SearchMethod = "LISTRUNNINGMODELS";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelInformation";
-    NewLine.МетодПоиска = "GETMODELINFORMATION";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Gets information about the model";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelInformation";
+    NewLine.SearchMethod = "GETMODELINFORMATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Gets information about the model";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelInformation";
-    NewLine.МетодПоиска = "GETMODELINFORMATION";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelInformation";
+    NewLine.SearchMethod = "GETMODELINFORMATION";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelInformation";
-    NewLine.МетодПоиска = "GETMODELINFORMATION";
-    NewLine.Параметр    = "--verbose";
-    NewLine.Описание    = "Return full model information (optional, def. val. - Yes)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelInformation";
+    NewLine.SearchMethod = "GETMODELINFORMATION";
+    NewLine.Parameter    = "--verbose";
+    NewLine.Description    = "Return full model information (optional, def. val. - Yes)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelInformation";
-    NewLine.МетодПоиска = "GETMODELINFORMATION";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelInformation";
+    NewLine.SearchMethod = "GETMODELINFORMATION";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CreateModel";
-    NewLine.МетодПоиска = "CREATEMODEL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Creates a new model with the specified settings";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CreateModel";
+    NewLine.SearchMethod = "CREATEMODEL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Creates a new model with the specified settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CreateModel";
-    NewLine.МетодПоиска = "CREATEMODEL";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CreateModel";
+    NewLine.SearchMethod = "CREATEMODEL";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CreateModel";
-    NewLine.МетодПоиска = "CREATEMODEL";
-    NewLine.Параметр    = "--settings";
-    NewLine.Описание    = "Model settings. See GetModelSettingsStructure";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CreateModel";
+    NewLine.SearchMethod = "CREATEMODEL";
+    NewLine.Parameter    = "--settings";
+    NewLine.Description    = "Model settings. See GetModelSettingsStructure";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CreateModel";
-    NewLine.МетодПоиска = "CREATEMODEL";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CreateModel";
+    NewLine.SearchMethod = "CREATEMODEL";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CopyModel";
-    NewLine.МетодПоиска = "COPYMODEL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Copies an existing model";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CopyModel";
+    NewLine.SearchMethod = "COPYMODEL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Copies an existing model";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CopyModel";
-    NewLine.МетодПоиска = "COPYMODEL";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Name of existing model";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CopyModel";
+    NewLine.SearchMethod = "COPYMODEL";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Name of existing model";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CopyModel";
-    NewLine.МетодПоиска = "COPYMODEL";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "The name of the new model";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CopyModel";
+    NewLine.SearchMethod = "COPYMODEL";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "The name of the new model";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CopyModel";
-    NewLine.МетодПоиска = "COPYMODEL";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CopyModel";
+    NewLine.SearchMethod = "COPYMODEL";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "DeleteModel";
-    NewLine.МетодПоиска = "DELETEMODEL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Deletes an existing model";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "DeleteModel";
+    NewLine.SearchMethod = "DELETEMODEL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Deletes an existing model";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "DeleteModel";
-    NewLine.МетодПоиска = "DELETEMODEL";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "DeleteModel";
+    NewLine.SearchMethod = "DELETEMODEL";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "DeleteModel";
-    NewLine.МетодПоиска = "DELETEMODEL";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "DeleteModel";
+    NewLine.SearchMethod = "DELETEMODEL";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "LoadModelToMemory";
-    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Loads the selected model into RAM";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "LoadModelToMemory";
+    NewLine.SearchMethod = "LOADMODELTOMEMORY";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Loads the selected model into RAM";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "LoadModelToMemory";
-    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "LoadModelToMemory";
+    NewLine.SearchMethod = "LOADMODELTOMEMORY";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "LoadModelToMemory";
-    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
-    NewLine.Параметр    = "--keep";
-    NewLine.Описание    = "Model hold time in seconds (optional, def. val. - 300)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "LoadModelToMemory";
+    NewLine.SearchMethod = "LOADMODELTOMEMORY";
+    NewLine.Parameter    = "--keep";
+    NewLine.Description    = "Model hold time in seconds (optional, def. val. - 300)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "LoadModelToMemory";
-    NewLine.МетодПоиска = "LOADMODELTOMEMORY";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "LoadModelToMemory";
+    NewLine.SearchMethod = "LOADMODELTOMEMORY";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "UnloadModelFromMemory";
-    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Unloads the selected model from memory";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "UnloadModelFromMemory";
+    NewLine.SearchMethod = "UNLOADMODELFROMMEMORY";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Unloads the selected model from memory";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "UnloadModelFromMemory";
-    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "UnloadModelFromMemory";
+    NewLine.SearchMethod = "UNLOADMODELFROMMEMORY";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "UnloadModelFromMemory";
-    NewLine.МетодПоиска = "UNLOADMODELFROMMEMORY";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "UnloadModelFromMemory";
+    NewLine.SearchMethod = "UNLOADMODELFROMMEMORY";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushModel";
-    NewLine.МетодПоиска = "PUSHMODEL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Uploads the model to the model library";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushModel";
+    NewLine.SearchMethod = "PUSHMODEL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Uploads the model to the model library";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushModel";
-    NewLine.МетодПоиска = "PUSHMODEL";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushModel";
+    NewLine.SearchMethod = "PUSHMODEL";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushModel";
-    NewLine.МетодПоиска = "PUSHMODEL";
-    NewLine.Параметр    = "--insecure";
-    NewLine.Описание    = "Allows an unsecured connection to the library (optional, def. val. - No)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushModel";
+    NewLine.SearchMethod = "PUSHMODEL";
+    NewLine.Parameter    = "--insecure";
+    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushModel";
-    NewLine.МетодПоиска = "PUSHMODEL";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushModel";
+    NewLine.SearchMethod = "PUSHMODEL";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PullModel";
-    NewLine.МетодПоиска = "PULLMODEL";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Downloads a model from the library";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PullModel";
+    NewLine.SearchMethod = "PULLMODEL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Downloads a model from the library";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PullModel";
-    NewLine.МетодПоиска = "PULLMODEL";
-    NewLine.Параметр    = "--model";
-    NewLine.Описание    = "Models name";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PullModel";
+    NewLine.SearchMethod = "PULLMODEL";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PullModel";
-    NewLine.МетодПоиска = "PULLMODEL";
-    NewLine.Параметр    = "--insecure";
-    NewLine.Описание    = "Allows an unsecured connection to the library (optional, def. val. - No)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PullModel";
+    NewLine.SearchMethod = "PULLMODEL";
+    NewLine.Parameter    = "--insecure";
+    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PullModel";
-    NewLine.МетодПоиска = "PULLMODEL";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Models management";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PullModel";
+    NewLine.SearchMethod = "PULLMODEL";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "GetModelSettingsStructure";
-    NewLine.МетодПоиска = "GETMODELSETTINGSSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Models management";
-    NewLine.ОписаниеМетода   = "Gets the settings structure for creating a new model";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "GetModelSettingsStructure";
+    NewLine.SearchMethod = "GETMODELSETTINGSSTRUCTURE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Gets the settings structure for creating a new model";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushBlob";
-    NewLine.МетодПоиска = "PUSHBLOB";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Working with blob";
-    NewLine.ОписаниеМетода   = "Sends binary data to the Ollama server";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushBlob";
+    NewLine.SearchMethod = "PUSHBLOB";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Working with blob";
+    NewLine.MethodDescription   = "Sends binary data to the Ollama server";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushBlob";
-    NewLine.МетодПоиска = "PUSHBLOB";
-    NewLine.Параметр    = "--data";
-    NewLine.Описание    = "File data or filepath";
-    NewLine.Область     = "Working with blob";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushBlob";
+    NewLine.SearchMethod = "PUSHBLOB";
+    NewLine.Parameter    = "--data";
+    NewLine.Description    = "File data or filepath";
+    NewLine.Region     = "Working with blob";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "PushBlob";
-    NewLine.МетодПоиска = "PUSHBLOB";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Working with blob";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "PushBlob";
+    NewLine.SearchMethod = "PUSHBLOB";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Working with blob";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CheckBlob";
-    NewLine.МетодПоиска = "CHECKBLOB";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Ollama server URL";
-    NewLine.Область     = "Working with blob";
-    NewLine.ОписаниеМетода   = "Checks the existence of a BLOB by its SHA256 digest";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CheckBlob";
+    NewLine.SearchMethod = "CHECKBLOB";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Working with blob";
+    NewLine.MethodDescription   = "Checks the existence of a BLOB by its SHA256 digest";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CheckBlob";
-    NewLine.МетодПоиска = "CHECKBLOB";
-    NewLine.Параметр    = "--digest";
-    NewLine.Описание    = "SHA256 BLOB digest";
-    NewLine.Область     = "Working with blob";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CheckBlob";
+    NewLine.SearchMethod = "CHECKBLOB";
+    NewLine.Parameter    = "--digest";
+    NewLine.Description    = "SHA256 BLOB digest";
+    NewLine.Region     = "Working with blob";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ollama";
-    NewLine.Модуль      = "OPI_Ollama";
-    NewLine.Метод       = "CheckBlob";
-    NewLine.МетодПоиска = "CHECKBLOB";
-    NewLine.Параметр    = "--headers";
-    NewLine.Описание    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Working with blob";
+    NewLine.Library  = "ollama";
+    NewLine.Module      = "OPI_Ollama";
+    NewLine.Method       = "CheckBlob";
+    NewLine.SearchMethod = "CHECKBLOB";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Working with blob";
 
     Return CompositionTable;
 EndFunction

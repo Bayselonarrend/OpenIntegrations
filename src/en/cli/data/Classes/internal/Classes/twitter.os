@@ -1,423 +1,423 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "GetAuthorizationLink";
-    NewLine.МетодПоиска = "GETAUTHORIZATIONLINK";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data and settings";
-    NewLine.ОписаниеМетода   = "Forms a link for authorization via the browser
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetAuthorizationLink";
+    NewLine.SearchMethod = "GETAUTHORIZATIONLINK";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Forms a link for authorization via the browser
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "GetToken";
-    NewLine.МетодПоиска = "GETTOKEN";
-    NewLine.Параметр    = "--code";
-    NewLine.Описание    = "Code obtained from authorization See GetAuthorizationLink";
-    NewLine.Область     = "Data and settings";
-    NewLine.ОписаниеМетода   = "Gets the token by the code received when authorizing using the link from GetAuthorizationLink
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--code";
+    NewLine.Description    = "Code obtained from authorization See GetAuthorizationLink";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Gets the token by the code received when authorizing using the link from GetAuthorizationLink
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "GetToken";
-    NewLine.МетодПоиска = "GETTOKEN";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data and settings";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data and settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "RefreshToken";
-    NewLine.МетодПоиска = "REFRESHTOKEN";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data and settings";
-    NewLine.ОписаниеМетода   = "Updates the v2 token using the refresh_token
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Updates the v2 token using the refresh_token
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateCustomTweet";
-    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet with custom content
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateCustomTweet";
+    NewLine.SearchMethod = "CREATECUSTOMTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with custom content
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateCustomTweet";
-    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
-    NewLine.Параметр    = "--media";
-    NewLine.Описание    = "Array of binary data or file paths (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateCustomTweet";
+    NewLine.SearchMethod = "CREATECUSTOMTWEET";
+    NewLine.Parameter    = "--media";
+    NewLine.Description    = "Array of binary data or file paths (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateCustomTweet";
-    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Array of poll options, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateCustomTweet";
+    NewLine.SearchMethod = "CREATECUSTOMTWEET";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Array of poll options, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateCustomTweet";
-    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
-    NewLine.Параметр    = "--dur";
-    NewLine.Описание    = "Poll duration if necessary (poll without duration is not created) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateCustomTweet";
+    NewLine.SearchMethod = "CREATECUSTOMTWEET";
+    NewLine.Parameter    = "--dur";
+    NewLine.Description    = "Poll duration if necessary (poll without duration is not created) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateCustomTweet";
-    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateCustomTweet";
+    NewLine.SearchMethod = "CREATECUSTOMTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateTextTweet";
-    NewLine.МетодПоиска = "CREATETEXTTWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet without attachments
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateTextTweet";
+    NewLine.SearchMethod = "CREATETEXTTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet without attachments
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateTextTweet";
-    NewLine.МетодПоиска = "CREATETEXTTWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateTextTweet";
+    NewLine.SearchMethod = "CREATETEXTTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateImageTweet";
-    NewLine.МетодПоиска = "CREATEIMAGETWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet with an image attachment
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with an image attachment
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateImageTweet";
-    NewLine.МетодПоиска = "CREATEIMAGETWEET";
-    NewLine.Параметр    = "--pictures";
-    NewLine.Описание    = "Image files array";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--pictures";
+    NewLine.Description    = "Image files array";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateImageTweet";
-    NewLine.МетодПоиска = "CREATEIMAGETWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateGifTweet";
-    NewLine.МетодПоиска = "CREATEGIFTWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet with a gif attachment
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a gif attachment
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateGifTweet";
-    NewLine.МетодПоиска = "CREATEGIFTWEET";
-    NewLine.Параметр    = "--gifs";
-    NewLine.Описание    = "Gif files array";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--gifs";
+    NewLine.Description    = "Gif files array";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateGifTweet";
-    NewLine.МетодПоиска = "CREATEGIFTWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateVideoTweet";
-    NewLine.МетодПоиска = "CREATEVIDEOTWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet with a video attachment
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a video attachment
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateVideoTweet";
-    NewLine.МетодПоиска = "CREATEVIDEOTWEET";
-    NewLine.Параметр    = "--videos";
-    NewLine.Описание    = "Video files array";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--videos";
+    NewLine.Description    = "Video files array";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreateVideoTweet";
-    NewLine.МетодПоиска = "CREATEVIDEOTWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreatePollTweet";
-    NewLine.МетодПоиска = "CREATEPOLLTWEET";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Tweet text";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Creates a tweet with a poll
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a poll
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreatePollTweet";
-    NewLine.МетодПоиска = "CREATEPOLLTWEET";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Poll options array";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Poll options array";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreatePollTweet";
-    NewLine.МетодПоиска = "CREATEPOLLTWEET";
-    NewLine.Параметр    = "--duration";
-    NewLine.Описание    = "Poll duration";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--duration";
+    NewLine.Description    = "Poll duration";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "CreatePollTweet";
-    NewLine.МетодПоиска = "CREATEPOLLTWEET";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "UploadAttachmentsArray";
-    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
-    NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Array of files to be uploaded";
-    NewLine.Область     = "Tweets";
-    NewLine.ОписаниеМетода   = "Uploads files to the server and returns their IDs
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "UploadAttachmentsArray";
+    NewLine.SearchMethod = "UPLOADATTACHMENTSARRAY";
+    NewLine.Parameter    = "--files";
+    NewLine.Description    = "Array of files to be uploaded";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Uploads files to the server and returns their IDs
     |    Data structure for option --auth:
     |    {
-    |     ""redirect_uri"": """",  
-    |     ""client_id"": """",  
-    |     ""client_secret"": """",  
-    |     ""access_token"": """",  
-    |     ""refresh_token"": """",  
-    |     ""oauth_token"": """",  
-    |     ""oauth_token_secret"": """",  
-    |     ""oauth_consumer_key"": """", 
-    |     ""oauth_consumer_secret"": """"  
+    |     ""redirect_uri""            : """",  
+    |     ""client_id""               : """",  
+    |     ""client_secret""           : """",  
+    |     ""access_token""            : """",  
+    |     ""refresh_token""           : """",  
+    |     ""oauth_token""             : """",  
+    |     ""oauth_token_secret""      : """",  
+    |     ""oauth_consumer_key""      : """", 
+    |     ""oauth_consumer_secret""   : """"  
     |    }
     |";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "UploadAttachmentsArray";
-    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
-    NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Attachment type: tweet_video, tweet_image, tweet_gif";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "UploadAttachmentsArray";
+    NewLine.SearchMethod = "UPLOADATTACHMENTSARRAY";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Attachment type: tweet_video, tweet_image, tweet_gif";
+    NewLine.Region     = "Tweets";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "twitter";
-    NewLine.Модуль      = "OPI_Twitter";
-    NewLine.Метод       = "UploadAttachmentsArray";
-    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
-    NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
-    NewLine.Область     = "Tweets";
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "UploadAttachmentsArray";
+    NewLine.SearchMethod = "UPLOADATTACHMENTSARRAY";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Tweets";
 
     Return CompositionTable;
 EndFunction
