@@ -1,4 +1,4 @@
 oint slack InviteUsersToChannel \
  --token "***" \
- --channel "C08R6G47KKJ" \
+ --channel "C08SXAZFUNT" \
  --users "U06UABH3APP"
