@@ -1,66 +1,66 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tools";
-    NewLine.Модуль      = "Tools";
-    NewLine.Метод       = "ParseJSON";
-    NewLine.МетодПоиска = "PARSEJSON";
-    NewLine.Параметр    = "--json";
-    NewLine.Описание    = "JSON data";
-    NewLine.Область     = "Service";
-    NewLine.ОписаниеМетода   = "Displays the values that can be obtained from the passed JSON and returns
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Utils";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "PARSEJSON";
+    NewLine.Parameter    = "--json";
+    NewLine.Description    = "JSON data";
+    NewLine.Region     = "Service";
+    NewLine.MethodDescription   = "Displays the values that can be obtained from the passed JSON and returns
     |    Specific Value When Specifying Field Name";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tools";
-    NewLine.Модуль      = "Tools";
-    NewLine.Метод       = "ParseJSON";
-    NewLine.МетодПоиска = "PARSEJSON";
-    NewLine.Параметр    = "--nesting";
-    NewLine.Описание    = "Parsing depth limit. Full depth by default (optional, def. val. - Empty value)";
-    NewLine.Область     = "Service";
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Utils";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "PARSEJSON";
+    NewLine.Parameter    = "--nesting";
+    NewLine.Description    = "Parsing depth limit. Full depth by default (optional, def. val. - Empty value)";
+    NewLine.Region     = "Service";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tools";
-    NewLine.Модуль      = "Tools";
-    NewLine.Метод       = "ParseJSON";
-    NewLine.МетодПоиска = "PARSEJSON";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty value)";
-    NewLine.Область     = "Service";
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Utils";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "PARSEJSON";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty value)";
+    NewLine.Region     = "Service";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tools";
-    NewLine.Модуль      = "Tools";
-    NewLine.Метод       = "ParseJSON";
-    NewLine.МетодПоиска = "PARSEJSON";
-    NewLine.Параметр    = "--enc";
-    NewLine.Описание    = "Encoding of JSON Data (optional, def. val. - UTF-8)";
-    NewLine.Область     = "Service";
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Utils";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "PARSEJSON";
+    NewLine.Parameter    = "--enc";
+    NewLine.Description    = "Encoding of JSON Data (optional, def. val. - UTF-8)";
+    NewLine.Region     = "Service";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tools";
-    NewLine.Модуль      = "Tools";
-    NewLine.Метод       = "ConvertBase64ToBinary";
-    NewLine.МетодПоиска = "ПРЕОБРАЗОInATЬBASE64InДInОAndЧNЫЕ";
-    NewLine.Параметр    = "--in";
-    NewLine.Описание    = "Base64 File";
-    NewLine.Область     = "Service";
-    NewLine.ОписаниеМетода   = "Convert file with Base64 string to binary file";
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Utils";
+    NewLine.Method       = "ConvertBase64ToBinary";
+    NewLine.SearchMethod = "ПРЕОБРАЗОInATЬBASE64InДInОAndЧNЫЕ";
+    NewLine.Parameter    = "--in";
+    NewLine.Description    = "Base64 File";
+    NewLine.Region     = "Service";
+    NewLine.MethodDescription   = "Convert file with Base64 string to binary file";
 
     Return CompositionTable;
 EndFunction
