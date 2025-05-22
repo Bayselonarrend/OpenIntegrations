@@ -95,9 +95,7 @@ end;
 var
 
   AddonTaskPage: TWizardPage;
-
   AddonCheckBox: TNewCheckBox;
-  
   AddonDescription: TNewStaticText;
 
 procedure InitializeWizard();
@@ -106,18 +104,6 @@ begin
   // --- Страница для аддона ---
   AddonTaskPage := CreateCustomPage(wpLicense,
     'Установить Melezh', 'Установка серверной версии OInt');
-
-  // Картинка справа
-  with TBitmapImage.Create(WizardForm) do
-  begin
-    Parent := AddonTaskPage.Surface;
-    Left := WizardForm.Width - 165;  // Прижимаем к правому краю
-    Top := 35;
-    Width := 175;
-    Height := 200;
-    Stretch := True;
-    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
-  end;
 
   AddonDescription := TNewStaticText.Create(WizardForm);
   AddonDescription.Parent := AddonTaskPage.Surface;
@@ -136,7 +122,22 @@ begin
   AddonCheckBox.Width := 300;
   AddonCheckBox.Caption := 'Установить Melezh';
   AddonCheckBox.Checked := True;
-  
+
+  if ShouldInstallAddon then
+  begin
+    ExtractTemporaryFile('melezh.bmp'); // Явно извлекаем файл
+    with TBitmapImage.Create(WizardForm) do
+    begin
+      Parent := AddonTaskPage.Surface;
+      Left := WizardForm.Width - 165;
+      Top := 35;
+      Width := 175;
+      Height := 200;
+      Stretch := True;
+      Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));
+    end;
+  end;
+
 end;
 
 function ShouldInstallAddon(): Boolean;
