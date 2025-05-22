@@ -103,6 +103,20 @@ begin
   AddonTaskPage := CreateCustomPage(wpLicense,
     'Install Melezh', 'Installing the OInt Server Version');
 
+  // Картинка справа
+  ExtractTemporaryFile('melezh.bmp');
+  
+  with TBitmapImage.Create(WizardForm) do
+  begin
+    Parent := AddonTaskPage.Surface;
+    Left := WizardForm.Width - 165;  // Прижимаем к правому краю
+    Top := 35;
+    Width := 175;
+    Height := 200;
+    Stretch := True;
+    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
+  end;
+
   AddonDescription := TNewStaticText.Create(WizardForm);
   AddonDescription.Parent := AddonTaskPage.Surface;
   AddonDescription.Caption := 'Melezh is a small (~1 MB) server-side add-on for OInt that allows you to run a customizable gateway for any of its methods. Melezh can listen on a port of your choice and interpret incoming HTTP requests as OInt commands for further execution. It features built-in logging and a Web UI for convenient configuration';
@@ -120,21 +134,6 @@ begin
   AddonCheckBox.Width := 300;
   AddonCheckBox.Caption := 'Install Melezh';
   AddonCheckBox.Checked := True;
-
-  if ShouldInstallAddon() then
-  begin
-    ExtractTemporaryFile('melezh.bmp'); // Явно извлекаем файл
-    with TBitmapImage.Create(WizardForm) do
-    begin
-      Parent := AddonTaskPage.Surface;
-      Left := WizardForm.Width - 165;
-      Top := 35;
-      Width := 175;
-      Height := 200;
-      Stretch := True;
-      Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));
-    end;
-  end;
   
 end;
 
