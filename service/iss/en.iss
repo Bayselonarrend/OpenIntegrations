@@ -5,6 +5,7 @@
 #define MyAppExeName "oint.bat"
 #define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release"
 #define Engine "C:\engine"
+#define Melezh "C:\ProgramData\Jenkins\.jenkins\workspace\Release\Melezh"
 
 [Setup]
 DisableWelcomePage      = no
@@ -36,6 +37,14 @@ Source: "{#Repo}\Media\icons\ex.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\wizard.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\doc.ico"; DestDir: "{app}\share\oint\icons"
 
+; Файлы Melezh (устанавливаются только если выбран чекбокс)
+Source: "{#Melezh}\src\en\*"; DestDir: "{app}\share\oint\lib\melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh.bat"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\media\icons\m_ex.ico"; DestDir: "{app}\share\oint\icons"; Flags: recursesubdirs; Check: ShouldInstallAddon
+
+
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"
@@ -43,14 +52,18 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "
 Name: "{group}\Uninstall OInt"; Filename: "{uninstallexe}"; IconFilename: "{app}\share\oint\icons\wizard.ico"
 Name: "{group}\Web-documentation"; Filename: "https://www.en.openintegrations.dev/"; IconFilename: "{app}\share\oint\icons\doc.ico"  
 
+Name: "{group}\Melezh"; Filename: "{app}\melezh_start.bat"; IconFilename: "{app}\share\oint\icons\m_ex.ico"; Check: ShouldInstallAddon
+Name: "{userdesktop}\Melezh"; Filename: "{app}\melezh_start.bat"; IconFilename: "{app}\share\oint\icons\m_ex.ico"; Tasks: desktopicon; Check: ShouldInstallAddon 
+
 [Tasks]
 Name: desktopicon; Description: "Create a desktop shortcut"; 
 
 [InstallDelete]
-Type: filesandordirs; Name: "{app}\*"
+Type: filesandordirs; Name: "{app}"
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}/bin"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{cmd}"; Parameters: "/k ""cd ""{app}/bin"" && melezh.bat"""; Description: "{cm:LaunchProgram,{#StringChange("Melezh", '&', '&&')}}"; Flags: nowait postinstall skipifsilent; Check: ShouldInstallAddon 
 Filename: "https://en.openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall; Description: "Visit documentation en.openintegrations.dev"
 
 [Registry]
@@ -76,3 +89,54 @@ begin
   Result := Pos(Element, ';' + OrigPath + ';') = 0;
 end;    
 
+var
+
+  AddonTaskPage: TWizardPage;
+
+  AddonCheckBox: TNewCheckBox;
+  
+  AddonDescription: TNewStaticText;
+
+procedure InitializeWizard();
+begin
+
+  // --- Страница для аддона ---
+  AddonTaskPage := CreateCustomPage(wpLicense,
+    'Install Melezh', 'Installing the OInt Server Version');
+
+  // Картинка справа
+  with TBitmapImage.Create(WizardForm) do
+  begin
+    Parent := AddonTaskPage.Surface;
+    Left := WizardForm.Width - 165;  // Прижимаем к правому краю
+    Top := 35;
+    Width := 175;
+    Height := 200;
+    Stretch := True;
+    Bitmap.LoadFromFile(ExpandConstant('{#Repo}\Media\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
+  end;
+
+  AddonDescription := TNewStaticText.Create(WizardForm);
+  AddonDescription.Parent := AddonTaskPage.Surface;
+  AddonDescription.Caption := 'Melezh is a small (~1 MB) server-side add-on for OInt that allows you to run a customizable gateway for any of its methods. Melezh can listen on a port of your choice and interpret incoming HTTP requests as OInt commands for further execution. It features built-in logging and a Web UI for convenient configuration';
+  AddonDescription.WordWrap := True;
+  AddonDescription.Width := 350;
+  AddonDescription.Height := 300;
+  AddonDescription.Top := 90;
+  AddonDescription.AutoSize := False;
+    
+  // Флажок слева от картинки
+  AddonCheckBox := TNewCheckBox.Create(WizardForm);
+  AddonCheckBox.Parent := AddonTaskPage.Surface;
+  AddonCheckBox.Left := 2;
+  AddonCheckBox.Top := 190;
+  AddonCheckBox.Width := 300;
+  AddonCheckBox.Caption := 'Install Melezh';
+  AddonCheckBox.Checked := True;
+  
+end;
+
+function ShouldInstallAddon(): Boolean;
+begin
+  Result := AddonCheckBox.Checked;
+end;
