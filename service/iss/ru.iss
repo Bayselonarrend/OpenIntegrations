@@ -46,6 +46,7 @@ Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; Flags: recursesu
 Source: "{#Melezh}\service\melezh.bat"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
 Source: "{#Melezh}\service\melezh"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
 Source: "{#Melezh}\media\icons\m_ex.ico"; DestDir: "{app}\share\oint\icons"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Repo}\Media\melezh.bmp"; DestDir: "{tmp}"; Flags: deleteafterinstall; Check: ShouldInstallAddon
 
 
 [Icons]
@@ -115,7 +116,7 @@ begin
     Width := 175;
     Height := 200;
     Stretch := True;
-    Bitmap.LoadFromFile(ExpandConstant('{#Repo}\Media\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
+    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
   end;
 
   AddonDescription := TNewStaticText.Create(WizardForm);
