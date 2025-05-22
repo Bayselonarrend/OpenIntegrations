@@ -105,7 +105,7 @@ begin
 
   // Картинка справа
   ExtractTemporaryFile('melezh.bmp');
-  
+
   with TBitmapImage.Create(WizardForm) do
   begin
     Parent := AddonTaskPage.Surface;
@@ -123,14 +123,14 @@ begin
   AddonDescription.WordWrap := True;
   AddonDescription.Width := 350;
   AddonDescription.Height := 300;
-  AddonDescription.Top := 90;
+  AddonDescription.Top := 85;
   AddonDescription.AutoSize := False;
     
   // Флажок слева от картинки
   AddonCheckBox := TNewCheckBox.Create(WizardForm);
   AddonCheckBox.Parent := AddonTaskPage.Surface;
   AddonCheckBox.Left := 2;
-  AddonCheckBox.Top := 190;
+  AddonCheckBox.Top := 185;
   AddonCheckBox.Width := 300;
   AddonCheckBox.Caption := 'Install Melezh';
   AddonCheckBox.Checked := True;
