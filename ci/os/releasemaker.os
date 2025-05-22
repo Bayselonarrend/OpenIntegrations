@@ -36,7 +36,7 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 
-	ЗапуститьПриложение("IF EXIST "Melezh" RMDIR /S /Q "Melezh" && git clone https://github.com/bayselonarrend/Melezh ");
+	ЗапуститьПриложение("IF EXIST ""Melezh"" RMDIR /S /Q ""Melezh"" && git clone https://github.com/bayselonarrend/Melezh");
 	
 	МассивЛокализаций = Новый Массив();
 
