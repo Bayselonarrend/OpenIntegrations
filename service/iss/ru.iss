@@ -110,7 +110,7 @@ begin
   // Картинка справа
 
   ExtractTemporaryFile('melezh.bmp');
-  
+
   with TBitmapImage.Create(WizardForm) do
   begin
     Parent := AddonTaskPage.Surface;
@@ -139,21 +139,6 @@ begin
   AddonCheckBox.Width := 300;
   AddonCheckBox.Caption := 'Установить Melezh';
   AddonCheckBox.Checked := True;
-
-  if ShouldInstallAddon then
-  begin
-    ExtractTemporaryFile('melezh.bmp'); // Явно извлекаем файл
-    with TBitmapImage.Create(WizardForm) do
-    begin
-      Parent := AddonTaskPage.Surface;
-      Left := WizardForm.Width - 165;
-      Top := 35;
-      Width := 175;
-      Height := 200;
-      Stretch := True;
-      Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));
-    end;
-  end;
     
 end;
 
