@@ -41,12 +41,12 @@ Source: "{#Repo}\Media\icons\wizard.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\doc.ico"; DestDir: "{app}\share\oint\icons"
 
 ; Файлы Melezh (устанавливаются только если выбран чекбокс)
-Source: "{#Melezh}\src\ru\*"; DestDir: "{app}\share\oint\lib\melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh.bat"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh"; DestDir: "{app}\bin"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\media\icons\m_ex.ico"; DestDir: "{app}\share\oint\icons"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Repo}\Media\melezh.bmp"; DestDir: "{tmp}"; Flags: deleteafterinstall; Check: ShouldInstallAddon
+Source: "{#Melezh}\src\ru\*"; DestDir: "{app}\share\oint\lib\melezh"; Flags: recursesubdirs ignoreparentfolder; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; DestName: "melezh_start.bat"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh.bat"; DestDir: "{app}\bin"; DestName: "melezh.bat"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\service\melezh"; DestDir: "{app}\bin"; DestName: "melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Melezh}\media\icons\m_ex.ico"; DestDir: "{app}\share\oint\icons"; DestName: "m_ex.ico"; Flags: recursesubdirs; Check: ShouldInstallAddon
+Source: "{#Repo}\Media\melezh.bmp"; DestDir: "{tmp}"; DestName: "melezh.bmp"; Flags: deleteafterinstall; Check: ShouldInstallAddon
 
 
 [Icons]
