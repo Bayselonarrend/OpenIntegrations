@@ -35,7 +35,7 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 
-	ЗапуститьПриложение("cd %1 && git clone https://github.com/Bayselonarrend/Melezh");
+	ЗапуститьПриложение("git clone https://github.com/Bayselonarrend/Melezh");
 	
 	МассивЛокализаций = Новый Массив();
 
