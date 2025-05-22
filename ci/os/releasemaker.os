@@ -36,12 +36,7 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 
-	КаталогMelezh = Новый Файл(ПутьMelezh);
-	Если КаталогMelezh.Существует() Тогда 
-		УдалитьФайлы(ПутьMelezh);
-	КонецЕсли;
-
-	ЗапуститьПриложение("git clone https://github.com/Bayselonarrend/Melezh");
+	ЗапуститьПриложение("IF EXIST "Melezh" RMDIR /S /Q "Melezh" && git clone https://github.com/bayselonarrend/Melezh ");
 	
 	МассивЛокализаций = Новый Массив();
 
@@ -90,8 +85,6 @@
 		УдалитьФайлы(".\ci\installer_set\share\oint\lib\oint-cli");
 		
 	КонецЦикла;
-
-	УдалитьФайлы(ПутьMelezh);
 
 	//Draft 
 
