@@ -123,7 +123,7 @@ begin
   AddonCheckBox.Caption := 'Установить Melezh';
   AddonCheckBox.Checked := True;
 
-  if ShouldInstallAddon then
+  if ShouldInstallAddon() then
   begin
     ExtractTemporaryFile('melezh.bmp'); // Явно извлекаем файл
     with TBitmapImage.Create(WizardForm) do
