@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -51,36 +51,37 @@ const config = {
   ],
 
   plugins: [
-    
 
 
-        ['docusaurus-plugin-yandex-metrica', {
-          counterID: '97292922',
-        }],
 
-  
-    
-    [ require.resolve('docusaurus-lunr-search'), {
-    languages: ['en', 'ru'] // language codes
-  }]],
+    ['docusaurus-plugin-yandex-metrica', {
+      counterID: '97292922',
+    }],
+
+
+
+    [require.resolve('docusaurus-lunr-search'), {
+      languages: ['en', 'ru'] // language codes
+    }]],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      docs:{
-        sidebar:{
+      docs: {
+        sidebar: {
           autoCollapseCategories: true
         }
       },
 
+
       metadata: [
-        {name: 'description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript'},
-        {name: 'keywords', content: '1С, OneScript, библиотеки, расширение, CLI, 1С:Предприятие, обмен, http, сервисы, интеграция, Telegram, Bitrix24, CDEK, VK, VK Teams, Viber, Ozon, S3, Twitter, Notion, Яндекс Диск, Google Drive, Календарь Google, Google Таблицы, Slack, Airtable, Dropbox, Neocities, MySQL, SQLite, PostgreSQL, Ollama, TCP, RCON'},
-        {name: 'og:title', content: 'Открытый Пакет Интеграций - библиотека интеграции для 1С и OneScript'},
-        {name: 'og:description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript'},
-        {name: 'og:image', content: 'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/preview.png'}, // Замените на ваше изображение
-        {name: 'og:url', content: 'https://openintegrations.dev/'},
+        { name: 'description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript' },
+        { name: 'keywords', content: '1С, OneScript, библиотеки, расширение, CLI, 1С:Предприятие, обмен, http, сервисы, интеграция, Telegram, Bitrix24, CDEK, VK, VK Teams, Viber, Ozon, S3, Twitter, Notion, Яндекс Диск, Google Drive, Календарь Google, Google Таблицы, Slack, Airtable, Dropbox, Neocities, MySQL, SQLite, PostgreSQL, Ollama, TCP, RCON' },
+        { name: 'og:title', content: 'Открытый Пакет Интеграций - библиотека интеграции для 1С и OneScript' },
+        { name: 'og:description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript' },
+        { name: 'og:image', content: 'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/preview.png' }, // Замените на ваше изображение
+        { name: 'og:url', content: 'https://openintegrations.dev/' },
       ],
 
       sitemap: {
@@ -89,7 +90,7 @@ const config = {
       },
 
       customFields: {
-      yandexAdsBlock: `
+        yandexAdsBlock: `
 <div id="yandex_rtb_R-A-12294791-1"></div>
 <script>
 window.yaContextCb.push(() => {
@@ -101,7 +102,7 @@ window.yaContextCb.push(() => {
 })
 </script>
       `,
-    },
+      },
 
       colorMode: {
         defaultMode: 'light',
@@ -121,6 +122,12 @@ window.yaContextCb.push(() => {
             sidebarId: 'docs',
             position: 'left',
             label: 'Описания методов',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'addonsSidebar',
+            position: 'left',
+            label: 'Аддоны',
           },
           {
             href: 'https://github.com/Bayselonarrend/OpenIntegrations',
@@ -170,7 +177,7 @@ window.yaContextCb.push(() => {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.github,
-		additionalLanguages: ['powershell','json','bsl','batch','bash']
+        additionalLanguages: ['powershell', 'json', 'bsl', 'batch', 'bash']
       },
     }),
 };
