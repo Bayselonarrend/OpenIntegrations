@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
+// OneScript: ./OInt/core/Modules/OPI_Viber.os
 // Lib: Viber
 // CLI: viber
 // Keywords: viber
@@ -401,6 +401,147 @@ Function TokenInHeaders(Val Token)
     HeadersStructure.Insert("X-Viber-Auth-Token", Token);
     Return HeadersStructure;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function УстановитьWebhook(Val Токен, Val URL) Export
+	Return SetWebhook(Токен, URL);
+EndFunction
+
+Function ПолучитьИнформациюОКанале(Val Токен) Export
+	Return GetChannelInformation(Токен);
+EndFunction
+
+Function ПолучитьДанныеПользователя(Val Токен, Val IDПользователя) Export
+	Return GetUserData(Токен, IDПользователя);
+EndFunction
+
+Function ПолучитьОнлайнПользователей(Val Токен, Val IDПользователей) Export
+	Return GetOnlineUsers(Токен, IDПользователей);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val Токен, Val Текст, Val IDПользователя, Val ОтправкаВКанал, Val Клавиатура = "") Export
+	Return SendTextMessage(Токен, Текст, IDПользователя, ОтправкаВКанал, Клавиатура);
+EndFunction
+
+Function ОтправитьКартинку(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал, Val Описание = "") Export
+	Return SendImage(Токен, URL, IDПользователя, ОтправкаВКанал, Описание);
+EndFunction
+
+Function ОтправитьФайл(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал, Val Расширение, Val Размер = "") Export
+	Return SendFile(Токен, URL, IDПользователя, ОтправкаВКанал, Расширение, Размер);
+EndFunction
+
+Function ОтправитьКонтакт(Val Токен, Val ИмяКонтакта, Val НомерТелефона, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendContact(Токен, ИмяКонтакта, НомерТелефона, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function ОтправитьЛокацию(Val Токен, Val Широта, Val Долгота, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendLocation(Токен, Широта, Долгота, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function ОтправитьСсылку(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendLink(Токен, URL, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function СформироватьКлавиатуруИзМассиваКнопок(Val МассивКнопок, Val ЦветКнопок = "#2db9b9") Export
+	Return CreateKeyboardFromArrayButton(МассивКнопок, ЦветКнопок);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function УстановитьWebhook(Val Токен, Val URL) Export
+	Return SetWebhook(Токен, URL);
+EndFunction
+
+Function ПолучитьИнформациюОКанале(Val Токен) Export
+	Return GetChannelInformation(Токен);
+EndFunction
+
+Function ПолучитьДанныеПользователя(Val Токен, Val IDПользователя) Export
+	Return GetUserData(Токен, IDПользователя);
+EndFunction
+
+Function ПолучитьОнлайнПользователей(Val Токен, Val IDПользователей) Export
+	Return GetOnlineUsers(Токен, IDПользователей);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val Токен, Val Текст, Val IDПользователя, Val ОтправкаВКанал, Val Клавиатура = "") Export
+	Return SendTextMessage(Токен, Текст, IDПользователя, ОтправкаВКанал, Клавиатура);
+EndFunction
+
+Function ОтправитьКартинку(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал, Val Описание = "") Export
+	Return SendImage(Токен, URL, IDПользователя, ОтправкаВКанал, Описание);
+EndFunction
+
+Function ОтправитьФайл(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал, Val Расширение, Val Размер = "") Export
+	Return SendFile(Токен, URL, IDПользователя, ОтправкаВКанал, Расширение, Размер);
+EndFunction
+
+Function ОтправитьКонтакт(Val Токен, Val ИмяКонтакта, Val НомерТелефона, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendContact(Токен, ИмяКонтакта, НомерТелефона, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function ОтправитьЛокацию(Val Токен, Val Широта, Val Долгота, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendLocation(Токен, Широта, Долгота, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function ОтправитьСсылку(Val Токен, Val URL, Val IDПользователя, Val ОтправкаВКанал) Export
+	Return SendLink(Токен, URL, IDПользователя, ОтправкаВКанал);
+EndFunction
+
+Function СформироватьКлавиатуруИзМассиваКнопок(Val МассивКнопок, Val ЦветКнопок = "#2db9b9") Export
+	Return CreateKeyboardFromArrayButton(МассивКнопок, ЦветКнопок);
+EndFunction
+
+Function SetWebhook(Val Token, Val URL) Export
+	Return УстановитьWebhook(Token, URL);
+EndFunction
+
+Function GetChannelInformation(Val Token) Export
+	Return ПолучитьИнформациюОКанале(Token);
+EndFunction
+
+Function GetUserData(Val Token, Val UserID) Export
+	Return ПолучитьДанныеПользователя(Token, UserID);
+EndFunction
+
+Function GetOnlineUsers(Val Token, Val UserIDs) Export
+	Return ПолучитьОнлайнПользователей(Token, UserIDs);
+EndFunction
+
+Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export
+	Return ОтправитьТекстовоеСообщение(Token, Text, UserID, SendingToChannel, Keyboard);
+EndFunction
+
+Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
+	Return ОтправитьКартинку(Token, URL, UserID, SendingToChannel, Description);
+EndFunction
+
+Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export
+	Return ОтправитьФайл(Token, URL, UserID, SendingToChannel, Extension, Size);
+EndFunction
+
+Function SendContact(Val Token, Val ContactName, Val PhoneNumber, Val UserID, Val SendingToChannel) Export
+	Return ОтправитьКонтакт(Token, ContactName, PhoneNumber, UserID, SendingToChannel);
+EndFunction
+
+Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
+	Return ОтправитьЛокацию(Token, Latitude, Longitude, UserID, SendingToChannel);
+EndFunction
+
+Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
+	Return ОтправитьСсылку(Token, URL, UserID, SendingToChannel);
+EndFunction
+
+Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export
+	Return СформироватьКлавиатуруИзМассиваКнопок(ButtonArray, ButtonColor);
 EndFunction
 
 #EndRegion
