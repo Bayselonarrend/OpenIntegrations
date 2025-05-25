@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
+// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
 // Lib: Yandex Disk
 // CLI: yadisk
 // Keywords: yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk
@@ -607,3 +607,216 @@
 КонецФункции
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetDiskInformation(Val Token) Export
+	Return ПолучитьИнформациюОДиске(Token);
+EndFunction
+
+Function CreateFolder(Val Token, Val Path) Export
+	Return СоздатьПапку(Token, Path);
+EndFunction
+
+Function GetObject(Val Token, Val Path) Export
+	Return ПолучитьОбъект(Token, Path);
+EndFunction
+
+Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
+	Return УдалитьОбъект(Token, Path, ToCart);
+EndFunction
+
+Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+	Return СоздатьКопиюОбъекта(Token, Original, Path, Overwrite);
+EndFunction
+
+Function GetDownloadLink(Val Token, Val Path) Export
+	Return ПолучитьСсылкуДляСкачивания(Token, Path);
+EndFunction
+
+Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
+	Return СкачатьФайл(Token, Path, SavePath);
+EndFunction
+
+Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export
+	Return ПолучитьСписокФайлов(Token, Count, OffsetFromStart, FilterByType, SortByDate);
+EndFunction
+
+Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+	Return ПереместитьОбъект(Token, Original, Path, Overwrite);
+EndFunction
+
+Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
+	Return ЗагрузитьФайл(Token, Path, File, Overwrite);
+EndFunction
+
+Function UploadFileByURL(Val Token, Val Path, Val Address) Export
+	Return ЗагрузитьФайлПоURL(Token, Path, Address);
+EndFunction
+
+Function PublishObject(Val Token, Val Path) Export
+	Return ОпубликоватьОбъект(Token, Path);
+EndFunction
+
+Function CancelObjectPublication(Val Token, Val Path) Export
+	Return ОтменитьПубликациюОбъекта(Token, Path);
+EndFunction
+
+Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
+	Return ПолучитьСписокОпубликованныхОбъектов(Token, Count, OffsetFromStart);
+EndFunction
+
+Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
+	Return ПолучитьПубличныйОбъект(Token, URL, Count, OffsetFromStart);
+EndFunction
+
+Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
+	Return ПолучитьСсылкуСкачиванияПубличногоОбъекта(Token, URL, Path);
+EndFunction
+
+Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
+	Return СохранитьПубличныйОбъектНаДиск(Token, URL, From, Target);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function GetDiskInformation(Val Token) Export
+	Return ПолучитьИнформациюОДиске(Token);
+EndFunction
+
+Function CreateFolder(Val Token, Val Path) Export
+	Return СоздатьПапку(Token, Path);
+EndFunction
+
+Function GetObject(Val Token, Val Path) Export
+	Return ПолучитьОбъект(Token, Path);
+EndFunction
+
+Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
+	Return УдалитьОбъект(Token, Path, ToCart);
+EndFunction
+
+Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+	Return СоздатьКопиюОбъекта(Token, Original, Path, Overwrite);
+EndFunction
+
+Function GetDownloadLink(Val Token, Val Path) Export
+	Return ПолучитьСсылкуДляСкачивания(Token, Path);
+EndFunction
+
+Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
+	Return СкачатьФайл(Token, Path, SavePath);
+EndFunction
+
+Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export
+	Return ПолучитьСписокФайлов(Token, Count, OffsetFromStart, FilterByType, SortByDate);
+EndFunction
+
+Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+	Return ПереместитьОбъект(Token, Original, Path, Overwrite);
+EndFunction
+
+Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
+	Return ЗагрузитьФайл(Token, Path, File, Overwrite);
+EndFunction
+
+Function UploadFileByURL(Val Token, Val Path, Val Address) Export
+	Return ЗагрузитьФайлПоURL(Token, Path, Address);
+EndFunction
+
+Function PublishObject(Val Token, Val Path) Export
+	Return ОпубликоватьОбъект(Token, Path);
+EndFunction
+
+Function CancelObjectPublication(Val Token, Val Path) Export
+	Return ОтменитьПубликациюОбъекта(Token, Path);
+EndFunction
+
+Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
+	Return ПолучитьСписокОпубликованныхОбъектов(Token, Count, OffsetFromStart);
+EndFunction
+
+Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
+	Return ПолучитьПубличныйОбъект(Token, URL, Count, OffsetFromStart);
+EndFunction
+
+Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
+	Return ПолучитьСсылкуСкачиванияПубличногоОбъекта(Token, URL, Path);
+EndFunction
+
+Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
+	Return СохранитьПубличныйОбъектНаДиск(Token, URL, From, Target);
+EndFunction
+
+Function ПолучитьИнформациюОДиске(Val Токен) Export
+	Return GetDiskInformation(Токен);
+EndFunction
+
+Function СоздатьПапку(Val Токен, Val Путь) Export
+	Return CreateFolder(Токен, Путь);
+EndFunction
+
+Function ПолучитьОбъект(Val Токен, Val Путь) Export
+	Return GetObject(Токен, Путь);
+EndFunction
+
+Function УдалитьОбъект(Val Токен, Val Путь, Val ВКорзину = True) Export
+	Return DeleteObject(Токен, Путь, ВКорзину);
+EndFunction
+
+Function СоздатьКопиюОбъекта(Val Токен, Val Оригинал, Val Путь, Val Перезаписывать = False) Export
+	Return CreateObjectCopy(Токен, Оригинал, Путь, Перезаписывать);
+EndFunction
+
+Function ПолучитьСсылкуДляСкачивания(Val Токен, Val Путь) Export
+	Return GetDownloadLink(Токен, Путь);
+EndFunction
+
+Function СкачатьФайл(Val Токен, Val Путь, Val ПутьСохранения = "") Export
+	Return DownloadFile(Токен, Путь, ПутьСохранения);
+EndFunction
+
+Function ПолучитьСписокФайлов(Val Токен, Val Количество = 0, Val СмещениеОтНачала = 0, Val ОтборПоТипу = "", Val СортироватьПоДате = False) Export
+	Return GetFilesList(Токен, Количество, СмещениеОтНачала, ОтборПоТипу, СортироватьПоДате);
+EndFunction
+
+Function ПереместитьОбъект(Val Токен, Val Оригинал, Val Путь, Val Перезаписывать = False) Export
+	Return MoveObject(Токен, Оригинал, Путь, Перезаписывать);
+EndFunction
+
+Function ЗагрузитьФайл(Val Токен, Val Путь, Val Файл, Val Перезаписывать = False) Export
+	Return UploadFile(Токен, Путь, Файл, Перезаписывать);
+EndFunction
+
+Function ЗагрузитьФайлПоURL(Val Токен, Val Путь, Val Адрес) Export
+	Return UploadFileByURL(Токен, Путь, Адрес);
+EndFunction
+
+Function ОпубликоватьОбъект(Val Токен, Val Путь) Export
+	Return PublishObject(Токен, Путь);
+EndFunction
+
+Function ОтменитьПубликациюОбъекта(Val Токен, Val Путь) Export
+	Return CancelObjectPublication(Токен, Путь);
+EndFunction
+
+Function ПолучитьСписокОпубликованныхОбъектов(Val Токен, Val Количество = 0, Val СмещениеОтНачала = 0) Export
+	Return GetPublishedObjectsList(Токен, Количество, СмещениеОтНачала);
+EndFunction
+
+Function ПолучитьПубличныйОбъект(Val Токен, Val URL, Val Количество = 0, Val СмещениеОтНачала = 0) Export
+	Return GetPublicObject(Токен, URL, Количество, СмещениеОтНачала);
+EndFunction
+
+Function ПолучитьСсылкуСкачиванияПубличногоОбъекта(Val Токен, Val URL, Val Путь = "") Export
+	Return GetDownloadLinkForPublicObject(Токен, URL, Путь);
+EndFunction
+
+Function СохранитьПубличныйОбъектНаДиск(Val Токен, Val URL, Откуда = "", Куда = "") Export
+	Return SavePublicObjectToDisk(Токен, URL, Откуда, Куда);
+EndFunction
+
+#EndRegion

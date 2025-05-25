@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_VKTeams.os
+// OneScript: ./OInt/core/Modules/OPI_VKTeams.os
 // Lib: VKTeams
 // CLI: vkteams
 // Keywords: vkteams, vk teams
@@ -971,3 +971,360 @@
 КонецФункции
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function CheckToken(Val Token) Export
+	Return ПроверитьТокен(Token);
+EndFunction
+
+Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
+	Return ПолучитьСобытия(Token, LastID, Timeout);
+EndFunction
+
+Function GetFileInformation(Val Token, Val FileID) Export
+	Return ПолучитьИнформациюОФайле(Token, FileID);
+EndFunction
+
+Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val Keyboard = "", Val Markup = "MarkdownV2") Export
+	Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, ReplyID, Keyboard, Markup);
+EndFunction
+
+Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export
+	Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup);
+EndFunction
+
+Function SendVoice(Val Token, Val ChatID, Val File, Val FileType = "m4a", Val ReplyID = 0, Val Keyboard = "") Export
+	Return ОтправитьГолосовоеСообщение(Token, ChatID, File, FileType, ReplyID, Keyboard);
+EndFunction
+
+Function EditMessageText(Val Token, Val ChatID, Val MessageID, Val Text, Val Markup = "MarkdownV2") Export
+	Return ИзменитьТекстСообщения(Token, ChatID, MessageID, Text, Markup);
+EndFunction
+
+Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return УдалитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val Markup = "MarkdownV2") Export
+	Return ПереслатьФайл(Token, ChatID, FileID, Text, Markup);
+EndFunction
+
+Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
+	Return ПереслатьГолосовоеСообщение(Token, ChatID, FileID);
+EndFunction
+
+Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
+	Return ПереслатьСообщение(Token, MessageID, FromChatID, ChatID, Text);
+EndFunction
+
+Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return ЗакрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return ОткрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function AnswerButtonEvent(Val Token, Val EventID, Val Text = "", Val URL = "", Val AsAlert = False) Export
+	Return ОтветитьНаСобытиеКлавиатуры(Token, EventID, Text, URL, AsAlert);
+EndFunction
+
+Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export
+	Return СформироватьКнопкуДействия(Text, Value, URL, Style);
+EndFunction
+
+Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
+	Return ИсключитьПользователейЧата(Token, ChatID, Users);
+EndFunction
+
+Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
+	Return ИзменитьАватарЧата(Token, ChatID, File);
+EndFunction
+
+Function GetChatInfo(Val Token, Val ChatID) Export
+	Return ПолучитьИнформациюОЧате(Token, ChatID);
+EndFunction
+
+Function GetChatAdmins(Val Token, Val ChatID) Export
+	Return ПолучитьАдминистраторовЧата(Token, ChatID);
+EndFunction
+
+Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
+	Return ПолучитьПользователейЧата(Token, ChatID, Cursor);
+EndFunction
+
+Function GetChatBlockedUsers(Val Token, Val ChatID) Export
+	Return ПолучитьЗаблокированныхПользователейЧата(Token, ChatID);
+EndFunction
+
+Function GetChatJoinRequests(Val Token, Val ChatID) Export
+	Return ПолучитьЗапросыВступленияЧата(Token, ChatID);
+EndFunction
+
+Function BlockChatUser(Val Token, Val ChatID, Val UserID, Val DeleteLastMessages = False) Export
+	Return ЗаблокироватьПользователяЧата(Token, ChatID, UserID, DeleteLastMessages);
+EndFunction
+
+Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
+	Return РазблокироватьПользователяЧата(Token, ChatID, UserID);
+EndFunction
+
+Function ApprovePending(Val Token, Val ChatID, Val UserID = "") Export
+	Return ОдобритьЗаявкуНаВступление(Token, ChatID, UserID);
+EndFunction
+
+Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
+	Return ОтклонитьЗаявкуНаВступление(Token, ChatID, UserID);
+EndFunction
+
+Function SetChatTitle(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьЗаголовокЧата(Token, ChatID, Text);
+EndFunction
+
+Function SetChatDescription(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьОписаниеЧата(Token, ChatID, Text);
+EndFunction
+
+Function SetChatRules(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьПравилаЧата(Token, ChatID, Text);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function CheckToken(Val Token) Export
+	Return ПроверитьТокен(Token);
+EndFunction
+
+Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
+	Return ПолучитьСобытия(Token, LastID, Timeout);
+EndFunction
+
+Function GetFileInformation(Val Token, Val FileID) Export
+	Return ПолучитьИнформациюОФайле(Token, FileID);
+EndFunction
+
+Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val Keyboard = "", Val Markup = "MarkdownV2") Export
+	Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, ReplyID, Keyboard, Markup);
+EndFunction
+
+Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export
+	Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup);
+EndFunction
+
+Function SendVoice(Val Token, Val ChatID, Val File, Val FileType = "m4a", Val ReplyID = 0, Val Keyboard = "") Export
+	Return ОтправитьГолосовоеСообщение(Token, ChatID, File, FileType, ReplyID, Keyboard);
+EndFunction
+
+Function EditMessageText(Val Token, Val ChatID, Val MessageID, Val Text, Val Markup = "MarkdownV2") Export
+	Return ИзменитьТекстСообщения(Token, ChatID, MessageID, Text, Markup);
+EndFunction
+
+Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return УдалитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val Markup = "MarkdownV2") Export
+	Return ПереслатьФайл(Token, ChatID, FileID, Text, Markup);
+EndFunction
+
+Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
+	Return ПереслатьГолосовоеСообщение(Token, ChatID, FileID);
+EndFunction
+
+Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
+	Return ПереслатьСообщение(Token, MessageID, FromChatID, ChatID, Text);
+EndFunction
+
+Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return ЗакрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
+	Return ОткрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function AnswerButtonEvent(Val Token, Val EventID, Val Text = "", Val URL = "", Val AsAlert = False) Export
+	Return ОтветитьНаСобытиеКлавиатуры(Token, EventID, Text, URL, AsAlert);
+EndFunction
+
+Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export
+	Return СформироватьКнопкуДействия(Text, Value, URL, Style);
+EndFunction
+
+Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
+	Return ИсключитьПользователейЧата(Token, ChatID, Users);
+EndFunction
+
+Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
+	Return ИзменитьАватарЧата(Token, ChatID, File);
+EndFunction
+
+Function GetChatInfo(Val Token, Val ChatID) Export
+	Return ПолучитьИнформациюОЧате(Token, ChatID);
+EndFunction
+
+Function GetChatAdmins(Val Token, Val ChatID) Export
+	Return ПолучитьАдминистраторовЧата(Token, ChatID);
+EndFunction
+
+Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
+	Return ПолучитьПользователейЧата(Token, ChatID, Cursor);
+EndFunction
+
+Function GetChatBlockedUsers(Val Token, Val ChatID) Export
+	Return ПолучитьЗаблокированныхПользователейЧата(Token, ChatID);
+EndFunction
+
+Function GetChatJoinRequests(Val Token, Val ChatID) Export
+	Return ПолучитьЗапросыВступленияЧата(Token, ChatID);
+EndFunction
+
+Function BlockChatUser(Val Token, Val ChatID, Val UserID, Val DeleteLastMessages = False) Export
+	Return ЗаблокироватьПользователяЧата(Token, ChatID, UserID, DeleteLastMessages);
+EndFunction
+
+Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
+	Return РазблокироватьПользователяЧата(Token, ChatID, UserID);
+EndFunction
+
+Function ApprovePending(Val Token, Val ChatID, Val UserID = "") Export
+	Return ОдобритьЗаявкуНаВступление(Token, ChatID, UserID);
+EndFunction
+
+Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
+	Return ОтклонитьЗаявкуНаВступление(Token, ChatID, UserID);
+EndFunction
+
+Function SetChatTitle(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьЗаголовокЧата(Token, ChatID, Text);
+EndFunction
+
+Function SetChatDescription(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьОписаниеЧата(Token, ChatID, Text);
+EndFunction
+
+Function SetChatRules(Val Token, Val ChatID, Val Text) Export
+	Return УстановитьПравилаЧата(Token, ChatID, Text);
+EndFunction
+
+Function ПроверитьТокен(Val Токен) Export
+	Return CheckToken(Токен);
+EndFunction
+
+Function ПолучитьСобытия(Val Токен, Val IDПоследнего, Val Таймаут = 0) Export
+	Return GetEvents(Токен, IDПоследнего, Таймаут);
+EndFunction
+
+Function ПолучитьИнформациюОФайле(Val Токен, Val IDФайла) Export
+	Return GetFileInformation(Токен, IDФайла);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val Токен, Val IDЧата, Val Текст, Val IDЦитируемого = 0, Val Клавиатура = "", Val Разметка = "MarkdownV2") Export
+	Return SendTextMessage(Токен, IDЧата, Текст, IDЦитируемого, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьФайл(Val Токен, Val IDЧата, Val Файл, Val Текст = "", Val ИмяФайла = "", Val Разметка = "MarkdownV2") Export
+	Return SendFile(Токен, IDЧата, Файл, Текст, ИмяФайла, Разметка);
+EndFunction
+
+Function ОтправитьГолосовоеСообщение(Val Токен, Val IDЧата, Val Файл, Val ТипФайла = "m4a", Val IDЦитируемого = 0, Val Клавиатура = "") Export
+	Return SendVoice(Токен, IDЧата, Файл, ТипФайла, IDЦитируемого, Клавиатура);
+EndFunction
+
+Function ИзменитьТекстСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Текст, Val Разметка = "MarkdownV2") Export
+	Return EditMessageText(Токен, IDЧата, IDСообщения, Текст, Разметка);
+EndFunction
+
+Function УдалитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return DeleteMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ПереслатьФайл(Val Токен, Val IDЧата, Val IDФайла, Val Текст = "", Val Разметка = "MarkdownV2") Export
+	Return ResendFile(Токен, IDЧата, IDФайла, Текст, Разметка);
+EndFunction
+
+Function ПереслатьГолосовоеСообщение(Val Токен, Val IDЧата, Val IDФайла) Export
+	Return ResendVoice(Токен, IDЧата, IDФайла);
+EndFunction
+
+Function ПереслатьСообщение(Val Токен, Val IDСообщения, Val IDЧатаИсточника, Val IDЧата, Val Текст = "") Export
+	Return ForwardMessage(Токен, IDСообщения, IDЧатаИсточника, IDЧата, Текст);
+EndFunction
+
+Function ЗакрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return PinMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ОткрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return UnpinMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ОтветитьНаСобытиеКлавиатуры(Val Токен, Val IDСобытия, Val Текст = "", Val URL = "", Val ЭтоПредупреждение = False) Export
+	Return AnswerButtonEvent(Токен, IDСобытия, Текст, URL, ЭтоПредупреждение);
+EndFunction
+
+Function СформироватьКнопкуДействия(Val Текст, Val Значение = "", Val URL = "", Val Стиль = "base") Export
+	Return MakeActionButton(Текст, Значение, URL, Стиль);
+EndFunction
+
+Function ИсключитьПользователейЧата(Val Токен, Val IDЧата, Val Пользователи) Export
+	Return RemoveChatMembers(Токен, IDЧата, Пользователи);
+EndFunction
+
+Function ИзменитьАватарЧата(Val Токен, Val IDЧата, Val Файл) Export
+	Return ChangeChatPicture(Токен, IDЧата, Файл);
+EndFunction
+
+Function ПолучитьИнформациюОЧате(Val Токен, Val IDЧата) Export
+	Return GetChatInfo(Токен, IDЧата);
+EndFunction
+
+Function ПолучитьАдминистраторовЧата(Val Токен, Val IDЧата) Export
+	Return GetChatAdmins(Токен, IDЧата);
+EndFunction
+
+Function ПолучитьПользователейЧата(Val Токен, Val IDЧата, Val Курсор = "") Export
+	Return GetChatMembers(Токен, IDЧата, Курсор);
+EndFunction
+
+Function ПолучитьЗаблокированныхПользователейЧата(Val Токен, Val IDЧата) Export
+	Return GetChatBlockedUsers(Токен, IDЧата);
+EndFunction
+
+Function ПолучитьЗапросыВступленияЧата(Val Токен, Val IDЧата) Export
+	Return GetChatJoinRequests(Токен, IDЧата);
+EndFunction
+
+Function ЗаблокироватьПользователяЧата(Val Токен, Val IDЧата, Val IDПользователя, Val УдалитьПоследниеСообщения = False) Export
+	Return BlockChatUser(Токен, IDЧата, IDПользователя, УдалитьПоследниеСообщения);
+EndFunction
+
+Function РазблокироватьПользователяЧата(Val Токен, Val IDЧата, Val IDПользователя) Export
+	Return UnblockChatUser(Токен, IDЧата, IDПользователя);
+EndFunction
+
+Function ОдобритьЗаявкуНаВступление(Val Токен, Val IDЧата, Val IDПользователя = "") Export
+	Return ApprovePending(Токен, IDЧата, IDПользователя);
+EndFunction
+
+Function ОтклонитьЗаявкуНаВступление(Val Токен, Val IDЧата, Val IDПользователя = "") Export
+	Return DisapprovePending(Токен, IDЧата, IDПользователя);
+EndFunction
+
+Function УстановитьЗаголовокЧата(Val Токен, Val IDЧата, Val Текст) Export
+	Return SetChatTitle(Токен, IDЧата, Текст);
+EndFunction
+
+Function УстановитьОписаниеЧата(Val Токен, Val IDЧата, Val Текст) Export
+	Return SetChatDescription(Токен, IDЧата, Текст);
+EndFunction
+
+Function УстановитьПравилаЧата(Val Токен, Val IDЧата, Val Текст) Export
+	Return SetChatRules(Токен, IDЧата, Текст);
+EndFunction
+
+#EndRegion

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GreenAPI.os
+// OneScript: ./OInt/core/Modules/OPI_GreenAPI.os
 // Lib: Green API
 // CLI: greenapi
 // Keywords: greenapi, whatsapp
@@ -1282,6 +1282,531 @@ Function ChatArchivingManagement(Val AccessParameters, Val ChatID, Val Archiving
 
     Return Response;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function СформироватьПараметрыДоступа(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
+	Return FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+EndFunction
+
+Function ПолучитьИнформациюОбАккаунте(Val ПараметрыДоступа) Export
+	Return GetAccountInformation(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьНастройкиИнстанса(Val ПараметрыДоступа) Export
+	Return GetInstanceSettings(ПараметрыДоступа);
+EndFunction
+
+Function УстановитьНастройкиИнстанса(Val Настройки, Val ПараметрыДоступа) Export
+	Return SetInstanceSettings(Настройки, ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьСостояниеИнстанса(Val ПараметрыДоступа) Export
+	Return GetInstanceStatus(ПараметрыДоступа);
+EndFunction
+
+Function ПерезапуститьИнстанс(Val ПараметрыДоступа) Export
+	Return RebootInstance(ПараметрыДоступа);
+EndFunction
+
+Function РазлогинитьИнстанс(Val ПараметрыДоступа) Export
+	Return LogoutInstance(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьQR(Val ПараметрыДоступа) Export
+	Return GetQR(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьКодАвторизации(Val ПараметрыДоступа, Val НомерТелефона) Export
+	Return GetAuthorizationCode(ПараметрыДоступа, НомерТелефона);
+EndFunction
+
+Function УстановитьКартинкуПрофиля(Val ПараметрыДоступа, Val Картинка) Export
+	Return SetProfilePicture(ПараметрыДоступа, Картинка);
+EndFunction
+
+Function АрхивироватьЧат(Val ПараметрыДоступа, Val IDЧата) Export
+	Return ArchiveChat(ПараметрыДоступа, IDЧата);
+EndFunction
+
+Function РазархивироватьЧат(Val ПараметрыДоступа, Val IDЧата) Export
+	Return UnarchiveChat(ПараметрыДоступа, IDЧата);
+EndFunction
+
+Function ПолучитьСтруктуруНастроекИнстанса(Val Пустая = False) Export
+	Return GetInstanceSettingsStructure(Пустая);
+EndFunction
+
+Function ПолучитьИнформациюОГруппе(Val ПараметрыДоступа, Val IDГруппы) Export
+	Return GetGroupInformation(ПараметрыДоступа, IDГруппы);
+EndFunction
+
+Function СоздатьГруппу(Val ПараметрыДоступа, Val Имя, Val Участники = Undefined) Export
+	Return CreateGroup(ПараметрыДоступа, Имя, Участники);
+EndFunction
+
+Function ИзменитьИмяГруппы(Val ПараметрыДоступа, Val IDГруппы, Val Имя) Export
+	Return UpdateGroupName(ПараметрыДоступа, IDГруппы, Имя);
+EndFunction
+
+Function ДобавитьУчастникаВГруппу(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return AddGroupMember(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ИсключитьУчастникаГруппы(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return ExcludeGroupMember(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function НазначитьПраваАдминистратора(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return SetAdminRights(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ОтозватьПраваАдминистратора(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return RevokeAdminRights(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ПокинутьГруппу(Val ПараметрыДоступа, Val IDГруппы) Export
+	Return LeaveGroup(ПараметрыДоступа, IDГруппы);
+EndFunction
+
+Function УстановитьКартинкуГруппы(Val ПараметрыДоступа, Val IDГруппы, Val Картинка) Export
+	Return SetGroupPicture(ПараметрыДоступа, IDГруппы, Картинка);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val ПараметрыДоступа, Val IDЧата, Val Текст, Val IDЦитируемого = "") Export
+	Return SendTextMessage(ПараметрыДоступа, IDЧата, Текст, IDЦитируемого);
+EndFunction
+
+Function ОтправитьФайл(Val ПараметрыДоступа, Val IDЧата, Val Файл, Val ИмяФайла, Val Описание = "", Val IDЦитируемого = "") Export
+	Return SendFile(ПараметрыДоступа, IDЧата, Файл, ИмяФайла, Описание, IDЦитируемого);
+EndFunction
+
+Function ОтправитьФайлПоURL(Val ПараметрыДоступа, Val IDЧата, Val URLФайла, Val ИмяФайла, Val Описание = "", Val IDЦитируемого = "") Export
+	Return SendFileByURL(ПараметрыДоступа, IDЧата, URLФайла, ИмяФайла, Описание, IDЦитируемого);
+EndFunction
+
+Function ОтправитьОпрос(Val ПараметрыДоступа, Val IDЧата, Val Текст, Val Варианты, Val МножественныйВыбор = False, Val IDЦитируемого = "") Export
+	Return SendPoll(ПараметрыДоступа, IDЧата, Текст, Варианты, МножественныйВыбор, IDЦитируемого);
+EndFunction
+
+Function ОтправитьЛокацию(Val ПараметрыДоступа, Val IDЧата, Val Локация, Val IDЦитируемого = "") Export
+	Return SendLocation(ПараметрыДоступа, IDЧата, Локация, IDЦитируемого);
+EndFunction
+
+Function ОтправитьКонтакт(Val ПараметрыДоступа, Val IDЧата, Val Контакт, Val IDЦитируемого = "") Export
+	Return SendContact(ПараметрыДоступа, IDЧата, Контакт, IDЦитируемого);
+EndFunction
+
+Function ПереслатьСообщения(Val ПараметрыДоступа, Val Откуда, Val Куда, Val Сообщения) Export
+	Return ForwardMessages(ПараметрыДоступа, Откуда, Куда, Сообщения);
+EndFunction
+
+Function ИзменитьТекстСообщения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения, Val Текст) Export
+	Return EditMessageText(ПараметрыДоступа, IDЧата, IDСообщения, Текст);
+EndFunction
+
+Function УдалитьСообщение(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения, Val ТолькоУОтправителя = False) Export
+	Return DeleteMessage(ПараметрыДоступа, IDЧата, IDСообщения, ТолькоУОтправителя);
+EndFunction
+
+Function ПолучитьОписаниеКонтакта(Val Телефон, Val Имя = "", Val Фамилия = "", Val Отчество = "", Val Компания = "") Export
+	Return GetContactDescription(Телефон, Имя, Фамилия, Отчество, Компания);
+EndFunction
+
+Function ПолучитьОписаниеЛокации(Val Широта, Val Долгота, Val Адрес = "", Val Название = "") Export
+	Return GetLocationDescription(Широта, Долгота, Адрес, Название);
+EndFunction
+
+Function ПолучитьУведомление(Val ПараметрыДоступа, Val Таймаут = 5) Export
+	Return GetNotification(ПараметрыДоступа, Таймаут);
+EndFunction
+
+Function УдалитьУведомлениеИзОчереди(Val ПараметрыДоступа, Val IDДоставки) Export
+	Return DeleteNotificationFromQueue(ПараметрыДоступа, IDДоставки);
+EndFunction
+
+Function СкачатьФайлСообщения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения) Export
+	Return DownloadMessageFile(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function УстановитьОтметкуПрочтения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения = "") Export
+	Return SetReadMark(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function ПолучитьОчередьСообщений(Val ПараметрыДоступа) Export
+	Return GetMessageQueue(ПараметрыДоступа);
+EndFunction
+
+Function ОчиститьОчередьСообщений(Val ПараметрыДоступа) Export
+	Return ClearMessageQueue(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьИсториюЧата(Val ПараметрыДоступа, Val IDЧата, Val Количество = 100) Export
+	Return GetChatHistory(ПараметрыДоступа, IDЧата, Количество);
+EndFunction
+
+Function ПолучитьСообщение(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения) Export
+	Return GetMessage(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function ПолучитьЖурналВходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
+	Return GetIncomingMessageLog(ПараметрыДоступа, Период);
+EndFunction
+
+Function ПолучитьЖурналИсходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
+	Return GetOutgoingMessageLog(ПараметрыДоступа, Период);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function СформироватьПараметрыДоступа(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
+	Return FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+EndFunction
+
+Function ПолучитьИнформациюОбАккаунте(Val ПараметрыДоступа) Export
+	Return GetAccountInformation(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьНастройкиИнстанса(Val ПараметрыДоступа) Export
+	Return GetInstanceSettings(ПараметрыДоступа);
+EndFunction
+
+Function УстановитьНастройкиИнстанса(Val Настройки, Val ПараметрыДоступа) Export
+	Return SetInstanceSettings(Настройки, ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьСостояниеИнстанса(Val ПараметрыДоступа) Export
+	Return GetInstanceStatus(ПараметрыДоступа);
+EndFunction
+
+Function ПерезапуститьИнстанс(Val ПараметрыДоступа) Export
+	Return RebootInstance(ПараметрыДоступа);
+EndFunction
+
+Function РазлогинитьИнстанс(Val ПараметрыДоступа) Export
+	Return LogoutInstance(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьQR(Val ПараметрыДоступа) Export
+	Return GetQR(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьКодАвторизации(Val ПараметрыДоступа, Val НомерТелефона) Export
+	Return GetAuthorizationCode(ПараметрыДоступа, НомерТелефона);
+EndFunction
+
+Function УстановитьКартинкуПрофиля(Val ПараметрыДоступа, Val Картинка) Export
+	Return SetProfilePicture(ПараметрыДоступа, Картинка);
+EndFunction
+
+Function АрхивироватьЧат(Val ПараметрыДоступа, Val IDЧата) Export
+	Return ArchiveChat(ПараметрыДоступа, IDЧата);
+EndFunction
+
+Function РазархивироватьЧат(Val ПараметрыДоступа, Val IDЧата) Export
+	Return UnarchiveChat(ПараметрыДоступа, IDЧата);
+EndFunction
+
+Function ПолучитьСтруктуруНастроекИнстанса(Val Пустая = False) Export
+	Return GetInstanceSettingsStructure(Пустая);
+EndFunction
+
+Function ПолучитьИнформациюОГруппе(Val ПараметрыДоступа, Val IDГруппы) Export
+	Return GetGroupInformation(ПараметрыДоступа, IDГруппы);
+EndFunction
+
+Function СоздатьГруппу(Val ПараметрыДоступа, Val Имя, Val Участники = Undefined) Export
+	Return CreateGroup(ПараметрыДоступа, Имя, Участники);
+EndFunction
+
+Function ИзменитьИмяГруппы(Val ПараметрыДоступа, Val IDГруппы, Val Имя) Export
+	Return UpdateGroupName(ПараметрыДоступа, IDГруппы, Имя);
+EndFunction
+
+Function ДобавитьУчастникаВГруппу(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return AddGroupMember(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ИсключитьУчастникаГруппы(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return ExcludeGroupMember(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function НазначитьПраваАдминистратора(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return SetAdminRights(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ОтозватьПраваАдминистратора(Val ПараметрыДоступа, Val IDГруппы, Val IDПользователя) Export
+	Return RevokeAdminRights(ПараметрыДоступа, IDГруппы, IDПользователя);
+EndFunction
+
+Function ПокинутьГруппу(Val ПараметрыДоступа, Val IDГруппы) Export
+	Return LeaveGroup(ПараметрыДоступа, IDГруппы);
+EndFunction
+
+Function УстановитьКартинкуГруппы(Val ПараметрыДоступа, Val IDГруппы, Val Картинка) Export
+	Return SetGroupPicture(ПараметрыДоступа, IDГруппы, Картинка);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val ПараметрыДоступа, Val IDЧата, Val Текст, Val IDЦитируемого = "") Export
+	Return SendTextMessage(ПараметрыДоступа, IDЧата, Текст, IDЦитируемого);
+EndFunction
+
+Function ОтправитьФайл(Val ПараметрыДоступа, Val IDЧата, Val Файл, Val ИмяФайла, Val Описание = "", Val IDЦитируемого = "") Export
+	Return SendFile(ПараметрыДоступа, IDЧата, Файл, ИмяФайла, Описание, IDЦитируемого);
+EndFunction
+
+Function ОтправитьФайлПоURL(Val ПараметрыДоступа, Val IDЧата, Val URLФайла, Val ИмяФайла, Val Описание = "", Val IDЦитируемого = "") Export
+	Return SendFileByURL(ПараметрыДоступа, IDЧата, URLФайла, ИмяФайла, Описание, IDЦитируемого);
+EndFunction
+
+Function ОтправитьОпрос(Val ПараметрыДоступа, Val IDЧата, Val Текст, Val Варианты, Val МножественныйВыбор = False, Val IDЦитируемого = "") Export
+	Return SendPoll(ПараметрыДоступа, IDЧата, Текст, Варианты, МножественныйВыбор, IDЦитируемого);
+EndFunction
+
+Function ОтправитьЛокацию(Val ПараметрыДоступа, Val IDЧата, Val Локация, Val IDЦитируемого = "") Export
+	Return SendLocation(ПараметрыДоступа, IDЧата, Локация, IDЦитируемого);
+EndFunction
+
+Function ОтправитьКонтакт(Val ПараметрыДоступа, Val IDЧата, Val Контакт, Val IDЦитируемого = "") Export
+	Return SendContact(ПараметрыДоступа, IDЧата, Контакт, IDЦитируемого);
+EndFunction
+
+Function ПереслатьСообщения(Val ПараметрыДоступа, Val Откуда, Val Куда, Val Сообщения) Export
+	Return ForwardMessages(ПараметрыДоступа, Откуда, Куда, Сообщения);
+EndFunction
+
+Function ИзменитьТекстСообщения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения, Val Текст) Export
+	Return EditMessageText(ПараметрыДоступа, IDЧата, IDСообщения, Текст);
+EndFunction
+
+Function УдалитьСообщение(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения, Val ТолькоУОтправителя = False) Export
+	Return DeleteMessage(ПараметрыДоступа, IDЧата, IDСообщения, ТолькоУОтправителя);
+EndFunction
+
+Function ПолучитьОписаниеКонтакта(Val Телефон, Val Имя = "", Val Фамилия = "", Val Отчество = "", Val Компания = "") Export
+	Return GetContactDescription(Телефон, Имя, Фамилия, Отчество, Компания);
+EndFunction
+
+Function ПолучитьОписаниеЛокации(Val Широта, Val Долгота, Val Адрес = "", Val Название = "") Export
+	Return GetLocationDescription(Широта, Долгота, Адрес, Название);
+EndFunction
+
+Function ПолучитьУведомление(Val ПараметрыДоступа, Val Таймаут = 5) Export
+	Return GetNotification(ПараметрыДоступа, Таймаут);
+EndFunction
+
+Function УдалитьУведомлениеИзОчереди(Val ПараметрыДоступа, Val IDДоставки) Export
+	Return DeleteNotificationFromQueue(ПараметрыДоступа, IDДоставки);
+EndFunction
+
+Function СкачатьФайлСообщения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения) Export
+	Return DownloadMessageFile(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function УстановитьОтметкуПрочтения(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения = "") Export
+	Return SetReadMark(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function ПолучитьОчередьСообщений(Val ПараметрыДоступа) Export
+	Return GetMessageQueue(ПараметрыДоступа);
+EndFunction
+
+Function ОчиститьОчередьСообщений(Val ПараметрыДоступа) Export
+	Return ClearMessageQueue(ПараметрыДоступа);
+EndFunction
+
+Function ПолучитьИсториюЧата(Val ПараметрыДоступа, Val IDЧата, Val Количество = 100) Export
+	Return GetChatHistory(ПараметрыДоступа, IDЧата, Количество);
+EndFunction
+
+Function ПолучитьСообщение(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения) Export
+	Return GetMessage(ПараметрыДоступа, IDЧата, IDСообщения);
+EndFunction
+
+Function ПолучитьЖурналВходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
+	Return GetIncomingMessageLog(ПараметрыДоступа, Период);
+EndFunction
+
+Function ПолучитьЖурналИсходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
+	Return GetOutgoingMessageLog(ПараметрыДоступа, Период);
+EndFunction
+
+Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
+	Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+EndFunction
+
+Function GetAccountInformation(Val AccessParameters) Export
+	Return ПолучитьИнформациюОбАккаунте(AccessParameters);
+EndFunction
+
+Function GetInstanceSettings(Val AccessParameters) Export
+	Return ПолучитьНастройкиИнстанса(AccessParameters);
+EndFunction
+
+Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
+	Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
+EndFunction
+
+Function GetInstanceStatus(Val AccessParameters) Export
+	Return ПолучитьСостояниеИнстанса(AccessParameters);
+EndFunction
+
+Function RebootInstance(Val AccessParameters) Export
+	Return ПерезапуститьИнстанс(AccessParameters);
+EndFunction
+
+Function LogoutInstance(Val AccessParameters) Export
+	Return РазлогинитьИнстанс(AccessParameters);
+EndFunction
+
+Function GetQR(Val AccessParameters) Export
+	Return ПолучитьQR(AccessParameters);
+EndFunction
+
+Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
+	Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
+EndFunction
+
+Function SetProfilePicture(Val AccessParameters, Val Image) Export
+	Return УстановитьКартинкуПрофиля(AccessParameters, Image);
+EndFunction
+
+Function ArchiveChat(Val AccessParameters, Val ChatID) Export
+	Return АрхивироватьЧат(AccessParameters, ChatID);
+EndFunction
+
+Function UnarchiveChat(Val AccessParameters, Val ChatID) Export
+	Return РазархивироватьЧат(AccessParameters, ChatID);
+EndFunction
+
+Function GetInstanceSettingsStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруНастроекИнстанса(Clear);
+EndFunction
+
+Function GetGroupInformation(Val AccessParameters, Val GroupID) Export
+	Return ПолучитьИнформациюОГруппе(AccessParameters, GroupID);
+EndFunction
+
+Function CreateGroup(Val AccessParameters, Val Name, Val Members = Undefined) Export
+	Return СоздатьГруппу(AccessParameters, Name, Members);
+EndFunction
+
+Function UpdateGroupName(Val AccessParameters, Val GroupID, Val Name) Export
+	Return ИзменитьИмяГруппы(AccessParameters, GroupID, Name);
+EndFunction
+
+Function AddGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
+	Return ДобавитьУчастникаВГруппу(AccessParameters, GroupID, UserID);
+EndFunction
+
+Function ExcludeGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
+	Return ИсключитьУчастникаГруппы(AccessParameters, GroupID, UserID);
+EndFunction
+
+Function SetAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
+	Return НазначитьПраваАдминистратора(AccessParameters, GroupID, UserID);
+EndFunction
+
+Function RevokeAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
+	Return ОтозватьПраваАдминистратора(AccessParameters, GroupID, UserID);
+EndFunction
+
+Function LeaveGroup(Val AccessParameters, Val GroupID) Export
+	Return ПокинутьГруппу(AccessParameters, GroupID);
+EndFunction
+
+Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export
+	Return УстановитьКартинкуГруппы(AccessParameters, GroupID, Image);
+EndFunction
+
+Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val ReplyID = "") Export
+	Return ОтправитьТекстовоеСообщение(AccessParameters, ChatID, Text, ReplyID);
+EndFunction
+
+Function SendFile(Val AccessParameters, Val ChatID, Val File, Val FileName, Val Description = "", Val ReplyID = "") Export
+	Return ОтправитьФайл(AccessParameters, ChatID, File, FileName, Description, ReplyID);
+EndFunction
+
+Function SendFileByURL(Val AccessParameters, Val ChatID, Val FileURL, Val FileName, Val Description = "", Val ReplyID = "") Export
+	Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, ReplyID);
+EndFunction
+
+Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Options, Val MultipleSelect = False, Val ReplyID = "") Export
+	Return ОтправитьОпрос(AccessParameters, ChatID, Text, Options, MultipleSelect, ReplyID);
+EndFunction
+
+Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyID = "") Export
+	Return ОтправитьЛокацию(AccessParameters, ChatID, Location, ReplyID);
+EndFunction
+
+Function SendContact(Val AccessParameters, Val ChatID, Val Contact, Val ReplyID = "") Export
+	Return ОтправитьКонтакт(AccessParameters, ChatID, Contact, ReplyID);
+EndFunction
+
+Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Messages) Export
+	Return ПереслатьСообщения(AccessParameters, From, Target, Messages);
+EndFunction
+
+Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Text) Export
+	Return ИзменитьТекстСообщения(AccessParameters, ChatID, MessageID, Text);
+EndFunction
+
+Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForSenderOnly = False) Export
+	Return УдалитьСообщение(AccessParameters, ChatID, MessageID, ForSenderOnly);
+EndFunction
+
+Function GetContactDescription(Val Phone, Val Name = "", Val LastName = "", Val Patronymic = "", Val Company = "") Export
+	Return ПолучитьОписаниеКонтакта(Phone, Name, LastName, Patronymic, Company);
+EndFunction
+
+Function GetLocationDescription(Val Latitude, Val Longitude, Val Address = "", Val Name = "") Export
+	Return ПолучитьОписаниеЛокации(Latitude, Longitude, Address, Name);
+EndFunction
+
+Function GetNotification(Val AccessParameters, Val Timeout = 5) Export
+	Return ПолучитьУведомление(AccessParameters, Timeout);
+EndFunction
+
+Function DeleteNotificationFromQueue(Val AccessParameters, Val ReceiptID) Export
+	Return УдалитьУведомлениеИзОчереди(AccessParameters, ReceiptID);
+EndFunction
+
+Function DownloadMessageFile(Val AccessParameters, Val ChatID, Val MessageID) Export
+	Return СкачатьФайлСообщения(AccessParameters, ChatID, MessageID);
+EndFunction
+
+Function SetReadMark(Val AccessParameters, Val ChatID, Val MessageID = "") Export
+	Return УстановитьОтметкуПрочтения(AccessParameters, ChatID, MessageID);
+EndFunction
+
+Function GetMessageQueue(Val AccessParameters) Export
+	Return ПолучитьОчередьСообщений(AccessParameters);
+EndFunction
+
+Function ClearMessageQueue(Val AccessParameters) Export
+	Return ОчиститьОчередьСообщений(AccessParameters);
+EndFunction
+
+Function GetChatHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export
+	Return ПолучитьИсториюЧата(AccessParameters, ChatID, Count);
+EndFunction
+
+Function GetMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
+	Return ПолучитьСообщение(AccessParameters, ChatID, MessageID);
+EndFunction
+
+Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
+	Return ПолучитьЖурналВходящихСообщений(AccessParameters, Period);
+EndFunction
+
+Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
+	Return ПолучитьЖурналИсходящихСообщений(AccessParameters, Period);
 EndFunction
 
 #EndRegion
