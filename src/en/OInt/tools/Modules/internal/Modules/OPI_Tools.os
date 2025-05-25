@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Tools.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Tools.os
 
 // MIT License
 
@@ -1142,5 +1142,158 @@ Function GetEscapeSequencesMap()
     Return CharacterMapping;
 
 EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПараметрыЗапросаВСтроку(Val Параметры, Val ОтдельныеЭлементыМассивов = False, Val Начало = True) Export
+	Return RequestParametersToString(Параметры, ОтдельныеЭлементыМассивов, Начало);
+EndFunction
+
+Function ПараметрыЗапросаВСоответствие(Val СтрокаПараметров) Export
+	Return RequestParametersToMap(СтрокаПараметров);
+EndFunction
+
+Function РазбитьURL(Val URL) Export
+	Return SplitURL(URL);
+EndFunction
+
+Function ПолучитьДомен(Val СтрокаПодключения) Export
+	Return GetDomain(СтрокаПодключения);
+EndFunction
+
+Function JsonВСтруктуру(Val Текст, Val ВСоответствие = True) Export
+	Return JsonToStructure(Текст, ВСоответствие);
+EndFunction
+
+Function JSONСтрокой(Val Данные, Val Экранирование = "Нет", Val ПереносСтрок = True, Val ДвойныеКавычки = True) Export
+	Return JSONString(Данные, Экранирование, ПереносСтрок, ДвойныеКавычки);
+EndFunction
+
+Function ПрочитатьJSONФайл(Val Путь) Export
+	Return ReadJSONFile(Путь);
+EndFunction
+
+Function ОбработатьXML(XML) Export
+	Return ProcessXML(XML);
+EndFunction
+
+Function ПолучитьXML(Значение, ПространствоИмен = "", ЗаписьXML = Undefined) Export
+	Return GetXML(Значение, ПространствоИмен, ЗаписьXML);
+EndFunction
+
+Procedure ДобавитьПоле(Val Имя, Val Значение, Val Тип, Коллекция) Export
+	AddField(Имя, Значение, Тип, Коллекция);
+EndProcedure
+
+Procedure ДобавитьКлючЗначение(Таблица, Val Ключ, Val Значение) Export
+	AddKeyValue(Таблица, Ключ, Значение);
+EndProcedure
+
+Procedure УдалитьПустыеПоляКоллекции(Коллекция) Export
+	RemoveEmptyCollectionFields(Коллекция);
+EndProcedure
+
+Procedure ЗначениеВМассив(Значение) Export
+	ValueToArray(Значение);
+EndProcedure
+
+Function ПолеКоллекцииСуществует(Val Коллекция, Val Поле, ЗначениеПоля = Undefined) Export
+	Return CollectionFieldExist(Коллекция, Поле, ЗначениеПоля);
+EndFunction
+
+Function НайтиОтсутствующиеПоляКоллекции(Val Коллекция, Val Поля) Export
+	Return FindMissingCollectionFields(Коллекция, Поля);
+EndFunction
+
+Function ОчиститьКоллекциюРекурсивно(Val Коллекция) Export
+	Return ClearCollectionRecursively(Коллекция);
+EndFunction
+
+Function КопироватьКоллекцию(Val Коллекция) Export
+	Return CopyCollection(Коллекция);
+EndFunction
+
+Function ПолучитьИли(Val Коллекция, Val Поле, Val ЗначениеИначе) Export
+	Return GetOr(Коллекция, Поле, ЗначениеИначе);
+EndFunction
+
+Function ЭтоOneScript() Export
+	Return IsOneScript();
+EndFunction
+
+Procedure ИнформацияОПрогрессе(Val Текущее, Val Всего, Val ЕдИзм, Val Делитель = 1) Export
+	ProgressInformation(Текущее, Всего, ЕдИзм, Делитель);
+EndProcedure
+
+Procedure ОтладочнаяИнформация(Val Текст) Export
+	DebugInfo(Текст);
+EndProcedure
+
+Procedure ЗаменитьСпецСимволы(Текст, Разметка = "Markdown") Export
+	ReplaceSpecialCharacters(Текст, Разметка);
+EndProcedure
+
+Procedure Пауза(Val Секунды) Export
+	Pause(Секунды);
+EndProcedure
+
+Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
+	ReplaceEscapeSequences(Текст);
+EndProcedure
+
+Procedure ВернутьУправляющиеПоследовательности(Текст) Export
+	RestoreEscapeSequences(Текст);
+EndProcedure
+
+Procedure ПотокВНачало(ТекущийПоток) Export
+	StreamToStart(ТекущийПоток);
+EndProcedure
+
+Function ЧислоВСтроку(Val Значение) Export
+	Return NumberToString(Значение);
+EndFunction
+
+Function ПолучитьТекущуюДату() Export
+	Return GetCurrentDate();
+EndFunction
+
+Function ДатаRFC3339(Val Дата, Val Смещение = "Z") Export
+	Return DateRFC3339(Дата, Смещение);
+EndFunction
+
+Function ПреобразоватьДанныеСПолучениемРазмера(Данные, Val МинимальныйРазмерДляПотока = 0) Export
+	Return ConvertDataWithSizeRetrieval(Данные, МинимальныйРазмерДляПотока);
+EndFunction
+
+Function ВременнаяМеткаISO(Val Дата) Export
+	Return ISOTimestamp(Дата);
+EndFunction
+
+Function СоздатьПоток(Val ПутьКФайлу = Undefined) Export
+	Return CreateStream(ПутьКФайлу);
+EndFunction
+
+Function ЭтоWindows() Export
+	Return IsWindows();
+EndFunction
+
+Function СклеитьДанные(Val Данные, Val Дополнение) Export
+	Return MergeData(Данные, Дополнение);
+EndFunction
+
+Function ЭтоПримитивныйТип(Val Значение) Export
+	Return IsPrimitiveType(Значение);
+EndFunction
+
+Function ЭтоКоллекция(Val Значение, Val КлючЗначение = False) Export
+	Return ThisIsCollection(Значение, КлючЗначение);
+EndFunction
+
+Procedure ВывестиТекстВТекущуюСтроку(Val Текст, Val Цвет = "", Val ВНачало = False) Export
+	WriteOnCurrentLine(Текст, Цвет, ВНачало);
+EndProcedure
 
 #EndRegion

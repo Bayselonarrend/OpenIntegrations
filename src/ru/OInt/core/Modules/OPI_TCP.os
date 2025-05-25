@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_TCP.os
+// OneScript: ./OInt/core/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
 // Keywords: tcp
@@ -308,3 +308,44 @@
 #КонецОбласти
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function CreateConnection(Val Address, Val Tls = "") Export
+	Return ОткрытьСоединение(Address, Tls);
+EndFunction
+
+Function CloseConnection(Val Connection) Export
+	Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function ReadBinaryData(Val Connection, Val MaxSize = 0, Val Marker = "", Val Timeout = 5000) Export
+	Return ПрочитатьДвоичныеДанные(Connection, MaxSize, Marker, Timeout);
+EndFunction
+
+Function ReadLine(Val Connection, Val Encoding = "UTF-8", Val Marker = "", Val Timeout = 5000) Export
+	Return ПрочитатьСтроку(Connection, Encoding, Marker, Timeout);
+EndFunction
+
+Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
+	Return ОтправитьДвоичныеДанные(Connection, Data, Timeout);
+EndFunction
+
+Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout = 5000) Export
+	Return ОтправитьСтроку(Connection, Data, Encoding, Timeout);
+EndFunction
+
+Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "") Export
+	Return ОбработатьЗапрос(Address, Data, ResponseString, Tls);
+EndFunction
+
+Function GetLastError(Val Connection) Export
+	Return ПолучитьПоследнююОшибку(Connection);
+EndFunction
+
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+#EndRegion

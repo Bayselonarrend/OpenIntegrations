@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Neocities.os
+// OneScript: ./OInt/core/Modules/OPI_Neocities.os
 // Lib: Neocities
 // CLI: neocities
 // Keywords: neocities
@@ -446,5 +446,38 @@ Procedure GetLocalPathsSets(LocalFolder, RemoteFolder, LocalPaths, LocalSubfolde
     EndDo;
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьДанныеОСайте(Val Токен, Val Сайт = "") Export
+	Return GetSiteData(Токен, Сайт);
+EndFunction
+
+Function ПолучитьТокен(Val Логин, Val Пароль) Export
+	Return GetToken(Логин, Пароль);
+EndFunction
+
+Function ЗагрузитьФайл(Val Токен, Val Путь, Val Данные) Export
+	Return UploadFile(Токен, Путь, Данные);
+EndFunction
+
+Function ЗагрузитьФайлы(Val Токен, Val СоответствиеФайлов, Val ПоОдному = False) Export
+	Return UploadFiles(Токен, СоответствиеФайлов, ПоОдному);
+EndFunction
+
+Function УдалитьВыбранныеФайлы(Val Токен, Val Пути) Export
+	Return DeleteSelectedFiles(Токен, Пути);
+EndFunction
+
+Function ПолучитьСписокФайлов(Val Токен, Val Путь = "") Export
+	Return GetFilesList(Токен, Путь);
+EndFunction
+
+Function СинхронизироватьКаталоги(Val Токен, Val ЛокальныйКаталог, Val УдаленныйКаталог = "") Export
+	Return SynchronizeFolders(Токен, ЛокальныйКаталог, УдаленныйКаталог);
+EndFunction
 
 #EndRegion

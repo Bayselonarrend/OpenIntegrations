@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Ollama.os
+// OneScript: ./OInt/core/Modules/OPI_Ollama.os
 // Lib: Ollama
 // CLI: ollama
 
@@ -728,5 +728,94 @@ Procedure HeadersProcessing(AdditionalHeaders)
     EndIf;
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьВерсию(Val URL, Val ДопЗаголовки = "") Export
+	Return GetVersion(URL, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьОтвет(Val URL, Val Модель, Val Вопрос, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
+	Return GetResponse(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьОтветВКонтексте(Val URL, Val Модель, Val Сообщения, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
+	Return GetContextResponse(URL, Модель, Сообщения, ДопПараметры, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьПредставления(Val URL, Val Модель, Val Вопрос, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
+	Return GetEmbeddings(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьСтруктуруПараметровЗапроса(Val Пустая = False) Export
+	Return GetRequestParameterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруПараметровПредставлений(Val Пустая = False) Export
+	Return GetEmbeddingsParameterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруПараметровВКонтексте(Val Пустая = False) Export
+	Return GetContextParameterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруСообщенияКонтекста(Val Роль, Val Текст, Val Картинки = "", Val Инструменты = "") Export
+	Return GetContextMessageStructure(Роль, Текст, Картинки, Инструменты);
+EndFunction
+
+Function ПолучитьСписокМоделей(Val URL, Val ДопЗаголовки = "") Export
+	Return GetModelList(URL, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьСписокЗапущенныхМоделей(Val URL, Val ДопЗаголовки = "") Export
+	Return ListRunningModels(URL, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьИнформациюОМодели(Val URL, Val Модель, Val Подробно = True, Val ДопЗаголовки = "") Export
+	Return GetModelInformation(URL, Модель, Подробно, ДопЗаголовки);
+EndFunction
+
+Function СоздатьМодель(Val URL, Val Модель, Val Настройки, Val ДопЗаголовки = "") Export
+	Return CreateModel(URL, Модель, Настройки, ДопЗаголовки);
+EndFunction
+
+Function КопироватьМодель(Val URL, Val Модель, Val Имя, Val ДопЗаголовки = "") Export
+	Return CopyModel(URL, Модель, Имя, ДопЗаголовки);
+EndFunction
+
+Function УдалитьМодель(Val URL, Val Модель, Val ДопЗаголовки = "") Export
+	Return DeleteModel(URL, Модель, ДопЗаголовки);
+EndFunction
+
+Function ЗагрузитьМодельВПамять(Val URL, Val Модель, Val Период = 300, Val ДопЗаголовки = "") Export
+	Return LoadModelToMemory(URL, Модель, Период, ДопЗаголовки);
+EndFunction
+
+Function ВыгрузитьМодельИзПамяти(Val URL, Val Модель, Val ДопЗаголовки = "") Export
+	Return UnloadModelFromMemory(URL, Модель, ДопЗаголовки);
+EndFunction
+
+Function ОтправитьМодель(Val URL, Val Модель, Val Небезопасно = False, Val ДопЗаголовки = "") Export
+	Return PushModel(URL, Модель, Небезопасно, ДопЗаголовки);
+EndFunction
+
+Function СкачатьМодель(Val URL, Val Модель, Val Небезопасно = False, Val ДопЗаголовки = "") Export
+	Return PullModel(URL, Модель, Небезопасно, ДопЗаголовки);
+EndFunction
+
+Function ПолучитьСтруктуруНастроекМодели(Val Пустая = False) Export
+	Return GetModelSettingsStructure(Пустая);
+EndFunction
+
+Function ОтправитьBlob(Val URL, Val Данные, Val ДопЗаголовки = "") Export
+	Return PushBlob(URL, Данные, ДопЗаголовки);
+EndFunction
+
+Function ПроверитьBlob(Val URL, Val SHA256, Val ДопЗаголовки = "") Export
+	Return CheckBlob(URL, SHA256, ДопЗаголовки);
+EndFunction
 
 #EndRegion

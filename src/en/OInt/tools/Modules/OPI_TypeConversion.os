@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_TypeConversion.os
+// OneScript: ./OInt/tools/Modules/OPI_TypeConversion.os
 
 // MIT License
 
@@ -431,6 +431,51 @@ Procedure ConvertSourceToValue(Value, TryB64)
 
     EndIf;
 
+EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Procedure ПолучитьДвоичныеДанные(Значение, Val Безусловно = False, Val ПопыткаB64 = True) Export
+	GetBinaryData(Значение, Безусловно, ПопыткаB64);
+EndProcedure
+
+Procedure ПолучитьДвоичныеИлиПоток(Значение) Export
+	GetBinaryOrStream(Значение);
+EndProcedure
+
+Procedure ПолучитьКоллекцию(Значение) Export
+	GetCollection(Значение);
+EndProcedure
+
+Procedure ПолучитьКоллекциюКлючИЗначение(Значение, Val СообщениеОшибки = "Указанное значение не является подходящей коллекцией!") Export
+	GetKeyValueCollection(Значение, СообщениеОшибки);
+EndProcedure
+
+Procedure ПолучитьМассив(Значение) Export
+	GetArray(Значение);
+EndProcedure
+
+Procedure ПолучитьБулево(Значение) Export
+	GetBoolean(Значение);
+EndProcedure
+
+Procedure ПолучитьСтроку(Значение, Val ИзИсточника = False) Export
+	GetLine(Значение, ИзИсточника);
+EndProcedure
+
+Procedure ПолучитьДату(Значение) Export
+	GetDate(Значение);
+EndProcedure
+
+Procedure ПолучитьЧисло(Значение) Export
+	GetNumber(Значение);
+EndProcedure
+
+Procedure ПолучитьФайлНаДиске(Значение, Val Расширение = "tmp") Export
+	GetFileOnDisk(Значение, Расширение);
 EndProcedure
 
 #EndRegion

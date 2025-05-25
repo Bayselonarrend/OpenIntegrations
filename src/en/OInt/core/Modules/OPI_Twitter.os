@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
+// OneScript: ./OInt/core/Modules/OPI_Twitter.os
 // Lib: Twitter
 // CLI: twitter
 // Keywords: twitter, x
@@ -657,6 +657,55 @@ Function PostMultipart(Val URL, Val Fields, Val SecretData)
 
     Return Result;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьСсылкуАвторизации(Параметры = "") Export
+	Return GetAuthorizationLink(Параметры);
+EndFunction
+
+Function ПолучитьТокен(Val Код, Val Параметры = "") Export
+	Return GetToken(Код, Параметры);
+EndFunction
+
+Function ОбновитьТокен(Val Параметры = "") Export
+	Return RefreshToken(Параметры);
+EndFunction
+
+Function ОбработкаВходящегоЗапросаПослеАвторизации(Запрос) Export
+	Return HandleIncomingRequestAfterAuthorization(Запрос);
+EndFunction
+
+Function СоздатьПроизвольныйТвит(Val Текст = "", Val МассивМедиа = "", Val МассивВариантовОпроса = "", Val ДлительностьОпроса = "", Val Параметры = "") Export
+	Return CreateCustomTweet(Текст, МассивМедиа, МассивВариантовОпроса, ДлительностьОпроса, Параметры);
+EndFunction
+
+Function СоздатьТекстовыйТвит(Val Текст, Val Параметры = "") Export
+	Return CreateTextTweet(Текст, Параметры);
+EndFunction
+
+Function СоздатьТвитКартинки(Val Текст, Val МассивКартинок, Val Параметры = "") Export
+	Return CreateImageTweet(Текст, МассивКартинок, Параметры);
+EndFunction
+
+Function СоздатьТвитГифки(Val Текст, Val МассивГифок, Val Параметры = "") Export
+	Return CreateGifTweet(Текст, МассивГифок, Параметры);
+EndFunction
+
+Function СоздатьТвитВидео(Val Текст, Val МассивВидео, Val Параметры = "") Export
+	Return CreateVideoTweet(Текст, МассивВидео, Параметры);
+EndFunction
+
+Function СоздатьТвитОпрос(Val Текст, Val МассивВариантов, Val Длительность, Val Параметры = "") Export
+	Return CreatePollTweet(Текст, МассивВариантов, Длительность, Параметры);
+EndFunction
+
+Function ЗагрузитьМассивВложений(Val МассивФайлов, Val ТипВложений, Val Параметры = "") Export
+	Return UploadAttachmentsArray(МассивФайлов, ТипВложений, Параметры);
 EndFunction
 
 #EndRegion

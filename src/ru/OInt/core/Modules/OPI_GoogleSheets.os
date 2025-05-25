@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
 // Lib: Google Sheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
@@ -419,3 +419,44 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export
+	Return СоздатьКнигу(Token, Name, ArrayOfSheetNames);
+EndFunction
+
+Function GetSpreadsheet(Val Token, Val Identifier) Export
+	Return ПолучитьКнигу(Token, Identifier);
+EndFunction
+
+Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export
+	Return ИзменитьНаименованиеКниги(Token, Spreadsheet, Name);
+EndFunction
+
+Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export
+	Return ДобавитьЛист(Token, Spreadsheet, Name);
+EndFunction
+
+Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export
+	Return УдалитьЛист(Token, Spreadsheet, Sheet);
+EndFunction
+
+Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export
+	Return КопироватьЛист(Token, From, Target, Sheet);
+EndFunction
+
+Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export
+	Return УстановитьЗначенияЯчеек(Token, Spreadsheet, ValueMapping, Sheet, MajorDimension);
+EndFunction
+
+Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export
+	Return ОчиститьЯчейки(Token, Spreadsheet, CellsArray, Sheet);
+EndFunction
+
+Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Sheet = "") Export
+	Return ПолучитьЗначенияЯчеек(Token, Spreadsheet, CellsArray, Sheet);
+EndFunction
+
+#EndRegion

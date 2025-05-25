@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
 // Lib: Google Drive
 // CLI: gdrive
 // Keywords: google drive, googledrive, gdrive, google disk
@@ -774,6 +774,67 @@ Function CheckPartUpload(HttpClient, StrTotalSize, AdditionalHeaders, UploadURL,
 
     Return Undefined;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьИнформациюОбОбъекте(Val Токен, Val Идентификатор) Export
+	Return GetObjectInformation(Токен, Идентификатор);
+EndFunction
+
+Function ПолучитьСписокКаталогов(Val Токен, Val ИмяСодержит = "", Val Подробно = False) Export
+	Return GetDirectoriesList(Токен, ИмяСодержит, Подробно);
+EndFunction
+
+Function ПолучитьСписокФайлов(Val Токен, Val ИмяСодержит = "", Val Каталог = "") Export
+	Return GetFilesList(Токен, ИмяСодержит, Каталог);
+EndFunction
+
+Function ЗагрузитьФайл(Val Токен, Val Файл, Val Описание) Export
+	Return UploadFile(Токен, Файл, Описание);
+EndFunction
+
+Function СоздатьПапку(Val Токен, Val Имя, Val Родитель = "") Export
+	Return CreateFolder(Токен, Имя, Родитель);
+EndFunction
+
+Function СкачатьФайл(Val Токен, Val Идентификатор, Val ПутьСохранения = "") Export
+	Return DownloadFile(Токен, Идентификатор, ПутьСохранения);
+EndFunction
+
+Function СкопироватьОбъект(Val Токен, Val Идентификатор, Val НовоеИмя = "", Val НовыйРодитель = "") Export
+	Return CopyObject(Токен, Идентификатор, НовоеИмя, НовыйРодитель);
+EndFunction
+
+Function ОбновитьФайл(Val Токен, Val Идентификатор, Val Файл, Val НовоеИмя = "") Export
+	Return UpdateFile(Токен, Идентификатор, Файл, НовоеИмя);
+EndFunction
+
+Function УдалитьОбъект(Val Токен, Val Идентификатор) Export
+	Return DeleteObject(Токен, Идентификатор);
+EndFunction
+
+Function ПолучитьОписаниеФайла(Val Пустая = False) Export
+	Return GetFileDescription(Пустая);
+EndFunction
+
+Function СоздатьКомментарий(Val Токен, Val Идентификатор, Val Комментарий) Export
+	Return CreateComment(Токен, Идентификатор, Комментарий);
+EndFunction
+
+Function ПолучитьКомментарий(Val Токен, Val ИДОбъекта, Val ИДКомментария) Export
+	Return GetComment(Токен, ИДОбъекта, ИДКомментария);
+EndFunction
+
+Function ПолучитьСписокКомментариев(Val Токен, Val ИДОбъекта) Export
+	Return GetCommentList(Токен, ИДОбъекта);
+EndFunction
+
+Function УдалитьКомментарий(Val Токен, Val ИДОбъекта, Val ИДКомментария) Export
+	Return DeleteComment(Токен, ИДОбъекта, ИДКомментария);
 EndFunction
 
 #EndRegion

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Notion.os
+// OneScript: ./OInt/core/Modules/OPI_Notion.os
 // Lib: Notion
 // CLI: notion
 // Keywords: notion
@@ -891,5 +891,62 @@ Function ConvertPhone(Val Phone)
 EndFunction
 
 #EndRegion
+
+#EndRegion
+
+
+#Region Alternate
+
+Function СоздатьСтраницу(Val Токен, Val Родитель, Val Заголовок) Export
+	Return CreatePage(Токен, Родитель, Заголовок);
+EndFunction
+
+Function СоздатьСтраницуВБазу(Val Токен, Val Родитель, Val Данные) Export
+	Return CreatePageInDatabase(Токен, Родитель, Данные);
+EndFunction
+
+Function ПолучитьСтраницу(Val Токен, Val Страница) Export
+	Return GetPage(Токен, Страница);
+EndFunction
+
+Function ИзменитьСвойстваСтраницы(Val Токен, Val Страница, Val Данные = "", Val Иконка = "", Val Обложка = "", Val Архивирована = False) Export
+	Return EditPageProperties(Токен, Страница, Данные, Иконка, Обложка, Архивирована);
+EndFunction
+
+Function СоздатьБазуДанных(Val Токен, Val Родитель, Val Заголовок, Val Свойства = "") Export
+	Return CreateDatabase(Токен, Родитель, Заголовок, Свойства);
+EndFunction
+
+Function ПолучитьБазуДанных(Val Токен, Val База) Export
+	Return GetDatabase(Токен, База);
+EndFunction
+
+Function ИзменитьСвойстваБазы(Val Токен, Val База, Val Свойства = "", Val Заголовок = "", Val Описание = "") Export
+	Return EditDatabaseProperties(Токен, База, Свойства, Заголовок, Описание);
+EndFunction
+
+Function СоздатьБлок(Val Токен, Val Родитель, Val Блок, Val ВставитьПосле = "") Export
+	Return CreateBlock(Токен, Родитель, Блок, ВставитьПосле);
+EndFunction
+
+Function ВернутьБлок(Val Токен, Val ИДБлока, Val ТолькоОснова = True) Export
+	Return ReturnBlock(Токен, ИДБлока, ТолькоОснова);
+EndFunction
+
+Function ВернутьДочерниеБлоки(Val Токен, Val ИДБлока) Export
+	Return ReturnChildBlocks(Токен, ИДБлока);
+EndFunction
+
+Function УдалитьБлок(Val Токен, Val ИДБлока) Export
+	Return DeleteBlock(Токен, ИДБлока);
+EndFunction
+
+Function СписокПользователей(Val Токен) Export
+	Return UserList(Токен);
+EndFunction
+
+Function ПолучитьДанныеПользователя(Val Токен, Val ИДПользователя) Export
+	Return GetUserData(Токен, ИДПользователя);
+EndFunction
 
 #EndRegion
