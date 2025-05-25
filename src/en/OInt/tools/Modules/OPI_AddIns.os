@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
+// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
 
 // MIT License
 
@@ -187,5 +187,74 @@ Procedure FormAddInException()
     Raise Text;
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main") Export
+	Return GetAddIn(ИмяКомпоненты, Класс);
+EndFunction
+
+Function ЭтоКомпонента(Val Значение) Export
+	Return IsAddIn(Значение);
+EndFunction
+
+Function УстановитьTls(Val Компонета, Val Tls) Export
+	Return SetTls(Компонета, Tls);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function КаталогКомпонентOS() Export
+	Return AddInsFolderOS();
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main") Export
+	Return GetAddIn(ИмяКомпоненты, Класс);
+EndFunction
+
+Function ЭтоКомпонента(Val Значение) Export
+	Return IsAddIn(Значение);
+EndFunction
+
+Function УстановитьTls(Val Компонета, Val Tls) Export
+	Return SetTls(Компонета, Tls);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function КаталогКомпонентOS() Export
+	Return AddInsFolderOS();
+EndFunction
+
+Function GetAddIn(Val AddInName, Val Class = "Main") Export
+	Return ПолучитьКомпоненту(AddInName, Class);
+EndFunction
+
+Function IsAddIn(Val Value) Export
+	Return ЭтоКомпонента(Value);
+EndFunction
+
+Function SetTls(Val AddIn, Val Tls) Export
+	Return УстановитьTls(AddIn, Tls);
+EndFunction
+
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function AddInsFolderOS() Export
+	Return КаталогКомпонентOS();
+EndFunction
 
 #EndRegion

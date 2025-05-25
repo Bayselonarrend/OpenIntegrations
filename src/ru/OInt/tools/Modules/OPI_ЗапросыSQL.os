@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
+// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
 
 // MIT License
 
@@ -1157,3 +1157,168 @@
 #КонецОбласти
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
+	Return СоздатьБазуДанных(Module, Base, Connection, Tls);
+EndFunction
+
+Function DeleteDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьБазуДанных(Module, Base, Connection, Tls);
+EndFunction
+
+Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = Undefined) Export
+	Return СоздатьТаблицу(Module, Table, ColoumnsStruct, Connection, Tls);
+EndFunction
+
+Function AddRecords(Val Module, Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = Undefined) Export
+	Return ДобавитьЗаписи(Module, Table, DataArray, Transaction, Connection, Tls);
+EndFunction
+
+Function GetRecords(Val Module, Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = Undefined) Export
+	Return ПолучитьЗаписи(Module, Table, Fields, Filters, Sort, Count, Connection, Tls);
+EndFunction
+
+Function UpdateRecords(Val Module, Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
+	Return ОбновитьЗаписи(Module, Table, ValueStructure, Filters, Connection, Tls);
+EndFunction
+
+Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьЗаписи(Module, Table, Filters, Connection, Tls);
+EndFunction
+
+Function DeleteTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьТаблицу(Module, Table, Connection, Tls);
+EndFunction
+
+Function ClearTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return ОчиститьТаблицу(Module, Table, Connection, Tls);
+EndFunction
+
+Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return ПолучитьСтруктуруТаблицы(Module, Table, Connection, Tls);
+EndFunction
+
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
+EndFunction
+
+Procedure AddColoumn(Scheme, Val Name, Val Type) Export
+	ДобавитьКолонку(Scheme, Name, Type);
+EndProcedure
+
+Procedure AddField(Scheme, Val Name) Export
+	ДобавитьПоле(Scheme, Name);
+EndProcedure
+
+#EndRegion
+
+#Region Alternate
+
+Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
+	Return СоздатьБазуДанных(Module, Base, Connection, Tls);
+EndFunction
+
+Function DeleteDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьБазуДанных(Module, Base, Connection, Tls);
+EndFunction
+
+Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = Undefined) Export
+	Return СоздатьТаблицу(Module, Table, ColoumnsStruct, Connection, Tls);
+EndFunction
+
+Function AddRecords(Val Module, Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = Undefined) Export
+	Return ДобавитьЗаписи(Module, Table, DataArray, Transaction, Connection, Tls);
+EndFunction
+
+Function GetRecords(Val Module, Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = Undefined) Export
+	Return ПолучитьЗаписи(Module, Table, Fields, Filters, Sort, Count, Connection, Tls);
+EndFunction
+
+Function UpdateRecords(Val Module, Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
+	Return ОбновитьЗаписи(Module, Table, ValueStructure, Filters, Connection, Tls);
+EndFunction
+
+Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьЗаписи(Module, Table, Filters, Connection, Tls);
+EndFunction
+
+Function DeleteTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return УдалитьТаблицу(Module, Table, Connection, Tls);
+EndFunction
+
+Function ClearTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return ОчиститьТаблицу(Module, Table, Connection, Tls);
+EndFunction
+
+Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
+	Return ПолучитьСтруктуруТаблицы(Module, Table, Connection, Tls);
+EndFunction
+
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
+EndFunction
+
+Procedure AddColoumn(Scheme, Val Name, Val Type) Export
+	ДобавитьКолонку(Scheme, Name, Type);
+EndProcedure
+
+Procedure AddField(Scheme, Val Name) Export
+	ДобавитьПоле(Scheme, Name);
+EndProcedure
+
+Function СоздатьБазуДанных(Val Модуль, Val База, Val Соединение = "", Val Tls = Undefined) Export
+	Return CreateDatabase(Модуль, База, Соединение, Tls);
+EndFunction
+
+Function УдалитьБазуДанных(Val Модуль, Val База, Val Соединение = "", Val Tls = Undefined) Export
+	Return DeleteDatabase(Модуль, База, Соединение, Tls);
+EndFunction
+
+Function СоздатьТаблицу(Val Модуль, Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = Undefined) Export
+	Return CreateTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
+EndFunction
+
+Function ДобавитьЗаписи(Val Модуль, Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = Undefined) Export
+	Return AddRecords(Модуль, Таблица, МассивДанных, Транзакция, Соединение, Tls);
+EndFunction
+
+Function ПолучитьЗаписи(Val Модуль, Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = Undefined) Export
+	Return GetRecords(Модуль, Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
+EndFunction
+
+Function ОбновитьЗаписи(Val Модуль, Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "", Val Tls = Undefined) Export
+	Return UpdateRecords(Модуль, Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
+EndFunction
+
+Function УдалитьЗаписи(Val Модуль, Val Таблица, Val Фильтры = "", Val Соединение = "", Val Tls = Undefined) Export
+	Return DeleteRecords(Модуль, Таблица, Фильтры, Соединение, Tls);
+EndFunction
+
+Function УдалитьТаблицу(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
+	Return DeleteTable(Модуль, Таблица, Соединение, Tls);
+EndFunction
+
+Function ОчиститьТаблицу(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
+	Return ClearTable(Модуль, Таблица, Соединение, Tls);
+EndFunction
+
+Function ПолучитьСтруктуруТаблицы(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
+	Return GetTableStructure(Модуль, Таблица, Соединение, Tls);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
+	Return GetRecordsFilterStrucutre(Пустая);
+EndFunction
+
+Procedure ДобавитьКолонку(Схема, Val Имя, Val Тип) Export
+	AddColoumn(Схема, Имя, Тип);
+EndProcedure
+
+Procedure ДобавитьПоле(Схема, Val Имя) Export
+	AddField(Схема, Имя);
+EndProcedure
+
+#EndRegion

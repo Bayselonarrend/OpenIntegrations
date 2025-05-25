@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
 
 // MIT License
 
@@ -434,3 +434,132 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
+	ПолучитьДвоичныеДанные(Value, Force, TryB64);
+EndProcedure
+
+Procedure GetBinaryOrStream(Value) Export
+	ПолучитьДвоичныеИлиПоток(Value);
+EndProcedure
+
+Procedure GetCollection(Value) Export
+	ПолучитьКоллекцию(Value);
+EndProcedure
+
+Procedure GetKeyValueCollection(Value, Val ErrorText = "The specified value is not a valid collection!") Export
+	ПолучитьКоллекциюКлючИЗначение(Value, ErrorText);
+EndProcedure
+
+Procedure GetArray(Value) Export
+	ПолучитьМассив(Value);
+EndProcedure
+
+Procedure GetBoolean(Value) Export
+	ПолучитьБулево(Value);
+EndProcedure
+
+Procedure GetLine(Value, Val FromSource = False) Export
+	ПолучитьСтроку(Value, FromSource);
+EndProcedure
+
+Procedure GetDate(Value) Export
+	ПолучитьДату(Value);
+EndProcedure
+
+Procedure GetNumber(Value) Export
+	ПолучитьЧисло(Value);
+EndProcedure
+
+Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
+	ПолучитьФайлНаДиске(Value, Extension);
+EndProcedure
+
+#EndRegion
+
+#Region Alternate
+
+Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
+	ПолучитьДвоичныеДанные(Value, Force, TryB64);
+EndProcedure
+
+Procedure GetBinaryOrStream(Value) Export
+	ПолучитьДвоичныеИлиПоток(Value);
+EndProcedure
+
+Procedure GetCollection(Value) Export
+	ПолучитьКоллекцию(Value);
+EndProcedure
+
+Procedure GetKeyValueCollection(Value, Val ErrorText = "The specified value is not a valid collection!") Export
+	ПолучитьКоллекциюКлючИЗначение(Value, ErrorText);
+EndProcedure
+
+Procedure GetArray(Value) Export
+	ПолучитьМассив(Value);
+EndProcedure
+
+Procedure GetBoolean(Value) Export
+	ПолучитьБулево(Value);
+EndProcedure
+
+Procedure GetLine(Value, Val FromSource = False) Export
+	ПолучитьСтроку(Value, FromSource);
+EndProcedure
+
+Procedure GetDate(Value) Export
+	ПолучитьДату(Value);
+EndProcedure
+
+Procedure GetNumber(Value) Export
+	ПолучитьЧисло(Value);
+EndProcedure
+
+Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
+	ПолучитьФайлНаДиске(Value, Extension);
+EndProcedure
+
+Procedure ПолучитьДвоичныеДанные(Значение, Val Безусловно = False, Val ПопыткаB64 = True) Export
+	GetBinaryData(Значение, Безусловно, ПопыткаB64);
+EndProcedure
+
+Procedure ПолучитьДвоичныеИлиПоток(Значение) Export
+	GetBinaryOrStream(Значение);
+EndProcedure
+
+Procedure ПолучитьКоллекцию(Значение) Export
+	GetCollection(Значение);
+EndProcedure
+
+Procedure ПолучитьКоллекциюКлючИЗначение(Значение, Val СообщениеОшибки = "Указанное значение не является подходящей коллекцией!") Export
+	GetKeyValueCollection(Значение, СообщениеОшибки);
+EndProcedure
+
+Procedure ПолучитьМассив(Значение) Export
+	GetArray(Значение);
+EndProcedure
+
+Procedure ПолучитьБулево(Значение) Export
+	GetBoolean(Значение);
+EndProcedure
+
+Procedure ПолучитьСтроку(Значение, Val ИзИсточника = False) Export
+	GetLine(Значение, ИзИсточника);
+EndProcedure
+
+Procedure ПолучитьДату(Значение) Export
+	GetDate(Значение);
+EndProcedure
+
+Procedure ПолучитьЧисло(Значение) Export
+	GetNumber(Значение);
+EndProcedure
+
+Procedure ПолучитьФайлНаДиске(Значение, Val Расширение = "tmp") Export
+	GetFileOnDisk(Значение, Расширение);
+EndProcedure
+
+#EndRegion
