@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
+// OneScript: ./OInt/core/Modules/OPI_YandexID.os
 // Lib: Yandex ID
 // CLI: yandex
 
@@ -127,6 +127,27 @@ Function GetAuthorizationHeader(Val Token) Export
 
     Return Headers;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьКодПодтверждения(Val ClientId) Export
+	Return GetConfirmationCode(ClientId);
+EndFunction
+
+Function ПреобразоватьКодВТокен(Val ClientId, Val ClientSecret, Val КодУстройства) Export
+	Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
+EndFunction
+
+Function ОбновитьТокен(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+	Return RefreshToken(ClientId, ClientSecret, RefreshToken);
+EndFunction
+
+Function ПолучитьЗаголовокАвторизации(Val Токен) Export
+	Return GetAuthorizationHeader(Токен);
 EndFunction
 
 #EndRegion

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Telegram.os
+// OneScript: ./OInt/core/Modules/OPI_Telegram.os
 // Lib: Telegram
 // CLI: telegram
 // Keywords: telegram
@@ -1568,5 +1568,162 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
     Parameters.Insert("chat_id", ChatID);
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьИнформациюБота(Val Токен) Export
+	Return GetBotInformation(Токен);
+EndFunction
+
+Function ПолучитьОбновления(Val Токен, Val Таймаут = 0, Val Смещение = "") Export
+	Return GetUpdates(Токен, Таймаут, Смещение);
+EndFunction
+
+Function УстановитьWebhook(Val Токен, Val URL) Export
+	Return SetWebhook(Токен, URL);
+EndFunction
+
+Function УдалитьWebhook(Val Токен) Export
+	Return DeleteWebhook(Токен);
+EndFunction
+
+Function СкачатьФайл(Val Токен, Val IDФайла) Export
+	Return DownloadFile(Токен, IDФайла);
+EndFunction
+
+Function ОбработатьДанныеTMA(Val СтрокаДанных, Val Токен) Export
+	Return ProcessTMAData(СтрокаДанных, Токен);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val Токен, Val IDЧата, Val Текст, Val Клавиатура = "", Val Разметка = "Markdown", Val IDВходящего = 0) Export
+	Return SendTextMessage(Токен, IDЧата, Текст, Клавиатура, Разметка, IDВходящего);
+EndFunction
+
+Function ОтправитьКартинку(Val Токен, Val IDЧата, Val Текст, Val Картинка, Val Клавиатура = "", Val Разметка = "Markdown") Export
+	Return SendImage(Токен, IDЧата, Текст, Картинка, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьВидео(Val Токен, Val IDЧата, Val Текст, Val Видео, Val Клавиатура = "", Val Разметка = "Markdown") Export
+	Return SendVideo(Токен, IDЧата, Текст, Видео, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьАудио(Val Токен, Val IDЧата, Val Текст, Val Аудио, Val Клавиатура = "", Val Разметка = "Markdown") Export
+	Return SendAudio(Токен, IDЧата, Текст, Аудио, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьДокумент(Val Токен, Val IDЧата, Val Текст, Val Документ, Val Клавиатура = "", Val Разметка = "Markdown", Val ИмяФайла = "") Export
+	Return SendDocument(Токен, IDЧата, Текст, Документ, Клавиатура, Разметка, ИмяФайла);
+EndFunction
+
+Function ОтправитьГифку(Val Токен, Val IDЧата, Val Текст, Val Гифка, Val Клавиатура = "", Val Разметка = "Markdown") Export
+	Return SendGif(Токен, IDЧата, Текст, Гифка, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьМедиагруппу(Val Токен, Val IDЧата, Val Текст, Val СоответствиеФайлов, Val Клавиатура = "", Val Разметка = "Markdown") Export
+	Return SendMediaGroup(Токен, IDЧата, Текст, СоответствиеФайлов, Клавиатура, Разметка);
+EndFunction
+
+Function ОтправитьМестоположение(Val Токен, Val IDЧата, Val Широта, Val Долгота, Val Клавиатура = "") Export
+	Return SendLocation(Токен, IDЧата, Широта, Долгота, Клавиатура);
+EndFunction
+
+Function ОтправитьКонтакт(Val Токен, Val IDЧата, Val Имя, Val Фамилия, Val Телефон, Val Клавиатура = "") Export
+	Return SendContact(Токен, IDЧата, Имя, Фамилия, Телефон, Клавиатура);
+EndFunction
+
+Function ОтправитьОпрос(Val Токен, Val IDЧата, Val Вопрос, Val МассивОтветов, Val Анонимный = True) Export
+	Return SendPoll(Токен, IDЧата, Вопрос, МассивОтветов, Анонимный);
+EndFunction
+
+Function ПереслатьСообщение(Val Токен, Val IDОригинала, Val ОткудаID, Val КудаID) Export
+	Return ForwardMessage(Токен, IDОригинала, ОткудаID, КудаID);
+EndFunction
+
+Function УдалитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return DeleteMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ЗаменитьКлавиатуруСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Клавиатура) Export
+	Return ReplaceMessageKeyboard(Токен, IDЧата, IDСообщения, Клавиатура);
+EndFunction
+
+Function ЗаменитьТекстСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Текст, Val Разметка = "") Export
+	Return ReplaceMessageText(Токен, IDЧата, IDСообщения, Текст, Разметка);
+EndFunction
+
+Function ЗаменитьОписаниеСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Описание, Val Разметка = "") Export
+	Return ReplaceMessageCaption(Токен, IDЧата, IDСообщения, Описание, Разметка);
+EndFunction
+
+Function СформироватьКлавиатуруПоМассивуКнопок(Val МассивКнопок, Val ПодСообщением = False, Val ОднаПодОдной = True) Export
+	Return FormKeyboardFromButtonArray(МассивКнопок, ПодСообщением, ОднаПодОдной);
+EndFunction
+
+Function Бан(Val Токен, Val IDЧата, Val IDПользователя) Export
+	Return Ban(Токен, IDЧата, IDПользователя);
+EndFunction
+
+Function Разбан(Val Токен, Val IDЧата, Val IDПользователя) Export
+	Return Unban(Токен, IDЧата, IDПользователя);
+EndFunction
+
+Function СоздатьСсылкуПриглашение(Val Токен, Val IDЧата, Val Заголовок = "", Val ДатаИстечения = "", Val ЛимитПользователей = 0) Export
+	Return CreateInvitationLink(Токен, IDЧата, Заголовок, ДатаИстечения, ЛимитПользователей);
+EndFunction
+
+Function ЗакрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return PinMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ОткрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
+	Return UnpinMessage(Токен, IDЧата, IDСообщения);
+EndFunction
+
+Function ПолучитьЧислоУчастников(Val Токен, Val IDЧата) Export
+	Return GetParticipantCount(Токен, IDЧата);
+EndFunction
+
+Function ПолучитьСписокИконокАватаров(Val Токен) Export
+	Return GetAvatarIconList(Токен);
+EndFunction
+
+Function СоздатьТемуФорума(Val Токен, Val IDЧата, Val Заголовок, Val IDИконки = "") Export
+	Return CreateForumThread(Токен, IDЧата, Заголовок, IDИконки);
+EndFunction
+
+Function ИзменитьТемуФорума(Val Токен, Val IDЧата, Val IDТемы, Val Заголовок = Undefined, Val IDИконки = Undefined) Export
+	Return EditForumTopic(Токен, IDЧата, IDТемы, Заголовок, IDИконки);
+EndFunction
+
+Function ЗакрытьТемуФорума(Val Токен, Val IDЧата, Val IDТемы = "") Export
+	Return CloseForumThread(Токен, IDЧата, IDТемы);
+EndFunction
+
+Function ОткрытьТемуФорума(Val Токен, Val IDЧата, Val IDТемы = "") Export
+	Return OpenForumThread(Токен, IDЧата, IDТемы);
+EndFunction
+
+Function УдалитьТемуФорума(Val Токен, Val IDЧата, Val IDТемы) Export
+	Return DeleteForumTopic(Токен, IDЧата, IDТемы);
+EndFunction
+
+Function СкрытьГлавнуюТемуФорума(Val Токен, Val IDЧата) Export
+	Return HideMainForumTopic(Токен, IDЧата);
+EndFunction
+
+Function ПоказатьГлавнуюТемуФорума(Val Токен, Val IDЧата) Export
+	Return ShowMainForumTopic(Токен, IDЧата);
+EndFunction
+
+Function ИзменитьИмяГлавнойТемыФорума(Val Токен, Val IDЧата, Val Заголовок) Export
+	Return EditMainForumTopicName(Токен, IDЧата, Заголовок);
+EndFunction
+
+Function ОчиститьСписокЗакрепленныхСообщенийТемы(Val Токен, Val IDЧата, Val IDТемы = "") Export
+	Return ClearThreadPinnedMessagesList(Токен, IDЧата, IDТемы);
+EndFunction
 
 #EndRegion

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_HTTPRequests.os
+// OneScript: ./OInt/tools/Modules/OPI_HTTPRequests.os
 
 // MIT License
 
@@ -336,6 +336,31 @@ Function SplitFileKey(Val FileData, Val ContentType)
 
     Return ReturnStructure;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function НовыйЗапрос() Export
+	Return NewRequest();
+EndFunction
+
+Function PostСТелом(Val URL, Val Параметры = "", Val ДопЗаголовки = "", Val JSON = True, Val ПолныйОтвет = False, Val ФайлОтвета = Undefined) Export
+	Return PostWithBody(URL, Параметры, ДопЗаголовки, JSON, ПолныйОтвет, ФайлОтвета);
+EndFunction
+
+Function PatchСТелом(Val URL, Val Параметры = "", Val ДопЗаголовки = "", Val JSON = True, Val ПолныйОтвет = False, Val ФайлОтвета = Undefined) Export
+	Return PatchWithBody(URL, Параметры, ДопЗаголовки, JSON, ПолныйОтвет, ФайлОтвета);
+EndFunction
+
+Function PutСТелом(Val URL, Val Параметры = "", Val ДопЗаголовки = "", Val JSON = True, Val ПолныйОтвет = False, Val ФайлОтвета = Undefined) Export
+	Return PutWithBody(URL, Параметры, ДопЗаголовки, JSON, ПолныйОтвет, ФайлОтвета);
+EndFunction
+
+Function DeleteСТелом(Val URL, Val Параметры = "", Val ДопЗаголовки = "", Val JSON = True, Val ПолныйОтвет = False, Val ФайлОтвета = Undefined) Export
+	Return DeleteWithBody(URL, Параметры, ДопЗаголовки, JSON, ПолныйОтвет, ФайлОтвета);
 EndFunction
 
 #EndRegion
