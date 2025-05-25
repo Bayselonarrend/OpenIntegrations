@@ -1,4 +1,4 @@
-﻿#Use "./internal"
+#Use "./internal"
 
 Var ModuleCommandMapping;
 Var Version;
@@ -163,3 +163,34 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
                 And Not ParameterName = "Parameter_out";
 
 EndFunction
+
+
+#Region Alternate
+
+Function ПолучитьВерсию() Export
+	Return GetVersion();
+EndFunction
+
+Function ПолучитьСоответствиеКомандМодулей() Export
+	Return GetCommandModuleMapping();
+EndFunction
+
+Function ПолучитьСостав(Val Команда) Export
+	Return GetComposition(Команда);
+EndFunction
+
+Function ПолучитьПолныйСостав() Export
+	Return GetFullComposition();
+EndFunction
+
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+
+
+#EndRegion
