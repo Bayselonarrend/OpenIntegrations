@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
+// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
 
 // MIT License
 
@@ -187,5 +187,30 @@ Procedure FormAddInException()
     Raise Text;
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main") Export
+	Return GetAddIn(ИмяКомпоненты, Класс);
+EndFunction
+
+Function ЭтоКомпонента(Val Значение) Export
+	Return IsAddIn(Значение);
+EndFunction
+
+Function УстановитьTls(Val Компонета, Val Tls) Export
+	Return SetTls(Компонета, Tls);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function КаталогКомпонентOS() Export
+	Return AddInsFolderOS();
+EndFunction
 
 #EndRegion

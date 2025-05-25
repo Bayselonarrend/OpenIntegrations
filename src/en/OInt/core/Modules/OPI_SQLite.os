@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
@@ -470,6 +470,71 @@ Function ProcessBlobStructure(Val Value)
 
     Return Value;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ОткрытьСоединение(Val База = "") Export
+	Return CreateConnection(База);
+EndFunction
+
+Function ЗакрытьСоединение(Val Соединение) Export
+	Return CloseConnection(Соединение);
+EndFunction
+
+Function ЭтоКоннектор(Val Значение) Export
+	Return IsConnector(Значение);
+EndFunction
+
+Function ВыполнитьЗапросSQL(Val ТекстЗапроса, Val Параметры = "", Val ФорсироватьРезультат = False, Val Соединение = "", Val Расширения = Undefined) Export
+	Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Расширения);
+EndFunction
+
+Function ПодключитьРасширение(Val Расширение, Val ТочкаВхода = "", Val Соединение = "") Export
+	Return ConnectExtension(Расширение, ТочкаВхода, Соединение);
+EndFunction
+
+Function ПолучитьИнформациюОТаблице(Val Таблица, Val Соединение = "") Export
+	Return GetTableInformation(Таблица, Соединение);
+EndFunction
+
+Function СоздатьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "") Export
+	Return CreateTable(Таблица, СтруктураКолонок, Соединение);
+EndFunction
+
+Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "") Export
+	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
+EndFunction
+
+Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "") Export
+	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
+EndFunction
+
+Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "") Export
+	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение);
+EndFunction
+
+Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "") Export
+	Return DeleteRecords(Таблица, Фильтры, Соединение);
+EndFunction
+
+Function УдалитьТаблицу(Val Таблица, Val Соединение = "") Export
+	Return DeleteTable(Таблица, Соединение);
+EndFunction
+
+Function ОчиститьТаблицу(Val Таблица, Val Соединение = "") Export
+	Return ClearTable(Таблица, Соединение);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
+	Return GetRecordsFilterStrucutre(Пустая);
+EndFunction
+
+Function ПолучитьОсобенности() Export
+	Return GetFeatures();
 EndFunction
 
 #EndRegion

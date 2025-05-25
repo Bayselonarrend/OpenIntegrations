@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Bitrix24.os
+// OneScript: ./OInt/core/Modules/OPI_Bitrix24.os
 // Lib: Bitrix24
 // CLI: bitrix24
 // Keywords: bitrix24, b24, bitrix
@@ -5233,6 +5233,727 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 
     Return Response;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьСсылкуАвторизацииПриложения(Val Домен, Val ClientID) Export
+	Return GetAppAuthLink(Домен, ClientID);
+EndFunction
+
+Function ПолучитьТокен(Val ClientID, Val ClientSecret, Val Code) Export
+	Return GetToken(ClientID, ClientSecret, Code);
+EndFunction
+
+Function ОбновитьТокен(Val ClientID, Val ClientSecret, Val Refresh) Export
+	Return RefreshToken(ClientID, ClientSecret, Refresh);
+EndFunction
+
+Function СерверноеВремя(Val URL, Val Токен = "") Export
+	Return ServerTime(URL, Токен);
+EndFunction
+
+Function СоздатьНовость(Val URL, Val Текст, Val Видимость = "UA", Val Файлы = "", Val Заголовок = "", Val Важное = False, Val Токен = "") Export
+	Return CreatePost(URL, Текст, Видимость, Файлы, Заголовок, Важное, Токен);
+EndFunction
+
+Function ИзменитьНовость(Val URL, Val IDНовости, Val Текст, Val Видимость = "UA", Val Файлы = "", Val Заголовок = "", Val Токен = "") Export
+	Return UpdatePost(URL, IDНовости, Текст, Видимость, Файлы, Заголовок, Токен);
+EndFunction
+
+Function УдалитьНовость(Val URL, Val IDНовости, Val Токен = "") Export
+	Return DeletePost(URL, IDНовости, Токен);
+EndFunction
+
+Function ПолучитьСписокПросмотревшихВажное(Val URL, Val IDНовости, Val Токен = "") Export
+	Return GetImportantPostViewers(URL, IDНовости, Токен);
+EndFunction
+
+Function ПолучитьНовости(Val URL, Val IDНовости = "", Val Отбор = "UA", Val Токен = "") Export
+	Return GetPosts(URL, IDНовости, Отбор, Токен);
+EndFunction
+
+Function ДобавитьКомментарийНовости(Val URL, Val IDНовости, Val Текст, Val Токен = "") Export
+	Return AddPostComment(URL, IDНовости, Текст, Токен);
+EndFunction
+
+Function ДобавитьПолучателейКНовости(Val URL, Val IDНовости, Val Видимость, Val Токен = "") Export
+	Return AddPostRecipients(URL, IDНовости, Видимость, Токен);
+EndFunction
+
+Function ПолучитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПолучитьСписокЗадач(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "", Val Поля = "") Export
+	Return GetTasksList(URL, Фильтр, Отступ, Токен, Поля);
+EndFunction
+
+Function СоздатьЗадачу(Val URL, Val СтруктураПолей, Val Токен = "") Export
+	Return CreateTask(URL, СтруктураПолей, Токен);
+EndFunction
+
+Function ИзменитьЗадачу(Val URL, Val IDЗадачи, Val СтруктураПолей, Val Токен = "") Export
+	Return UpdateTask(URL, IDЗадачи, СтруктураПолей, Токен);
+EndFunction
+
+Function УдалитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return DeleteTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ДобавитьФайлВЗадачу(Val URL, Val IDЗадачи, Val IDФайла, Val Токен = "") Export
+	Return AttachFileToTopic(URL, IDЗадачи, IDФайла, Токен);
+EndFunction
+
+Function ПринятьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return ApproveTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ОтклонитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return DisapproveTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ЗавершитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return CompleteTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ВозобновитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return RenewTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ОтложитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return DeferTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПриостановитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return PauseTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function НачатьВыполнениеЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return StartTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function НачатьНаблюдатьЗаЗадачей(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return StartWatchingTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПрекратитьНаблюдатьЗаЗадачей(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return StopWatchingTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ДелегироватьЗадачу(Val URL, Val IDЗадачи, Val IDПользователя, Val Токен = "") Export
+	Return DelegateTask(URL, IDЗадачи, IDПользователя, Токен);
+EndFunction
+
+Function ДобавитьЗадачуВИзбранное(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return AddTaskToFavorites(URL, IDЗадачи, Токен);
+EndFunction
+
+Function УбратьЗадачуИзИзбранного(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return RemoveTaskFromFavorites(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПолучитьИсториюЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetTaskHistory(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПроверитьДоступКЗадаче(Val URL, Val IDЗадачи, Val Пользователи = "", Val Токен = "") Export
+	Return CheckTaskAccesses(URL, IDЗадачи, Пользователи, Токен);
+EndFunction
+
+Function ОтключитьЗвукЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return MuteTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ВключитьЗвукЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return UnmuteTask(URL, IDЗадачи, Токен);
+EndFunction
+
+Function СоздатьЗависимостьЗадач(Val URL, Val IDИсточника, Val IDПриемника, Val ТипСвязи, Val Токен = "") Export
+	Return CreateTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
+EndFunction
+
+Function УдалитьЗависимостьЗадач(Val URL, Val IDИсточника, Val IDПриемника, Val ТипСвязи, Val Токен = "") Export
+	Return DeleteTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
+EndFunction
+
+Function ПолучитьПланЗадачНаДень(Val URL, Val Токен = "") Export
+	Return GetDailyPlan(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруЗадачи(Val URL, Val Токен = "") Export
+	Return GetTaskFieldsStructure(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЗадач(Val Пустая = False, Val КакСоответствие = False) Export
+	Return GetTasksFilterStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСписокПользовательскихПолейЗадачи(Val URL, Val Токен = "") Export
+	Return GetCustomTaskFieldsList(URL, Токен);
+EndFunction
+
+Function ДобавитьПользовательскоеПолеЗадачи(Val URL, Val Тип, Val Имя, Val ВнешнийКод = "", Val Заголовок = "", Val Подпись = "", Val Токен = "") Export
+	Return AddCustomTaskField(URL, Тип, Имя, ВнешнийКод, Заголовок, Подпись, Токен);
+EndFunction
+
+Function ИзменитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val ВнешнийКод = "", Val Заголовок = "", Val Подпись = "", Val Токен = "") Export
+	Return UpdateCustomTaskField(URL, IDПоля, ВнешнийКод, Заголовок, Подпись, Токен);
+EndFunction
+
+Function ПолучитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val Токен = "") Export
+	Return GetCustomTaskField(URL, IDПоля, Токен);
+EndFunction
+
+Function УдалитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val Токен = "") Export
+	Return DeleteCustomTaskField(URL, IDПоля, Токен);
+EndFunction
+
+Function ДобавитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val Текст, Val Выполнен = False, Токен = "") Export
+	Return AddTasksChecklistElement(URL, IDЗадачи, Текст, Выполнен, Токен);
+EndFunction
+
+Function ИзменитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Текст, Val Токен = "") Export
+	Return UpdateTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Текст, Токен);
+EndFunction
+
+Function УдалитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
+	Return DeleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+EndFunction
+
+Function ПолучитьЧеклистЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetTasksChecklist(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПолучитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
+	Return GetTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+EndFunction
+
+Function ВыполнитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
+	Return CompleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+EndFunction
+
+Function ВозобновитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
+	Return RenewTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+EndFunction
+
+Function ПолучитьСписокКомментариевЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetTaskCommentsList(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПолучитьКомменатрийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
+	Return GetTaskComment(URL, IDЗадачи, IDКомментария, Токен);
+EndFunction
+
+Function ДобавитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val Текст, Val Токен = "") Export
+	Return AddTaskComment(URL, IDЗадачи, Текст, Токен);
+EndFunction
+
+Function ИзменитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Текст, Val Токен = "") Export
+	Return UpdateTaskComment(URL, IDЗадачи, IDКомментария, Текст, Токен);
+EndFunction
+
+Function УдалитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
+	Return DeleteTaskComment(URL, IDЗадачи, IDКомментария, Токен);
+EndFunction
+
+Function ПолучитьСписокРезультатов(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetResultsList(URL, IDЗадачи, Токен);
+EndFunction
+
+Function СоздатьРезультатИзКомментария(Val URL, Val IDКомментария, Val Токен = "") Export
+	Return CreateResultFromComment(URL, IDКомментария, Токен);
+EndFunction
+
+Function УдалитьРезультатИзКомментария(Val URL, Val IDКомментария, Val Токен = "") Export
+	Return DeleteResultFromComment(URL, IDКомментария, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруКомментария(Val Пустая = False) Export
+	Return GetCommentStructure(Пустая);
+EndFunction
+
+Function ДобавитьСтадиюКанбана(Val URL, Val Наименование, Val Цвет = "FFD800", Val IDПредыдущей = 0, Val IDСущности = 0, Val КакАдминистратор = False, Val Токен = "") Export
+	Return AddKanbanStage(URL, Наименование, Цвет, IDПредыдущей, IDСущности, КакАдминистратор, Токен);
+EndFunction
+
+Function ИзменитьСтадиюКанбана(Val URL, Val Наименование, Val IDСтадии, Val Цвет = "", Val IDПредыдущей = 0, Val КакАдминистратор = False, Val Токен = "") Export
+	Return UpdateKanbansStage(URL, Наименование, IDСтадии, Цвет, IDПредыдущей, КакАдминистратор, Токен);
+EndFunction
+
+Function УдалитьСтадиюКанбана(Val URL, Val IDСтадии, Val КакАдминистратор = False, Val Токен = "") Export
+	Return DeleteKanbanStage(URL, IDСтадии, КакАдминистратор, Токен);
+EndFunction
+
+Function ПолучитьСтадииКанбана(Val URL, Val IDСущности = 0, Val КакАдминистратор = False, Val Токен = "") Export
+	Return GetKanbanStages(URL, IDСущности, КакАдминистратор, Токен);
+EndFunction
+
+Function ПеренестиЗадачуВСтадиюКанбана(Val URL, Val IDЗадачи, Val IDСтадии, Val Перед = 0, Val После = 0, Val Токен = "") Export
+	Return MoveTaskToKanbanStage(URL, IDЗадачи, IDСтадии, Перед, После, Токен);
+EndFunction
+
+Function ДобавитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val Время, Val IDПользователя = "", Val Текст = "", Val ДатаУстановки = "", Val Токен = "") Export
+	Return AddTaskTimeAccounting(URL, IDЗадачи, Время, IDПользователя, Текст, ДатаУстановки, Токен);
+EndFunction
+
+Function УдалитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Токен = "") Export
+	Return DeleteTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
+EndFunction
+
+Function ПолучитьСписокТрудозатратЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
+	Return GetTaskTimeAccountingList(URL, IDЗадачи, Токен);
+EndFunction
+
+Function ПолучитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Токен = "") Export
+	Return GetTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
+EndFunction
+
+Function ИзменитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Время, Val Текст = "", Val ДатаУстановки = "", Val Токен = "") Export
+	Return UpdateTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Время, Текст, ДатаУстановки, Токен);
+EndFunction
+
+Function НачатьУчетВремени(Val URL, Val IDПользователя = "", Val Время = "", Val Отчет = "", Val Токен = "") Export
+	Return StartTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
+EndFunction
+
+Function ЗавершитьУчетВремени(Val URL, Val IDПользователя = "", Val Время = "", Val Отчет = "", Val Токен = "") Export
+	Return StopTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
+EndFunction
+
+Function ПриостановитьУчетВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
+	Return PauseTimekeeping(URL, IDПользователя, Токен);
+EndFunction
+
+Function ПолучитьСтатусУчетаВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
+	Return GetTimekeepingStatus(URL, IDПользователя, Токен);
+EndFunction
+
+Function ПолучитьНастройкиУчетаВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
+	Return GetTimekeepingSettings(URL, IDПользователя, Токен);
+EndFunction
+
+Function ПолучитьСписокХранилищ(Val URL, Val Токен = "") Export
+	Return GetStoragesList(URL, Токен);
+EndFunction
+
+Function ПолучитьХранилищеПриложения(Val URL, Val Токен = "") Export
+	Return GetAppSotrage(URL, Токен);
+EndFunction
+
+Function ПолучитьХранилище(Val URL, Val IDХранилища, Val Токен = "") Export
+	Return GetStorage(URL, IDХранилища, Токен);
+EndFunction
+
+Function ПереименоватьХранилище(Val URL, Val IDХранилища, Val Наименование, Val Токен = "") Export
+	Return RenameStorage(URL, IDХранилища, Наименование, Токен);
+EndFunction
+
+Function ПолучитьСодержимоеХранилища(Val URL, Val IDХранилища, Val Токен = "") Export
+	Return GetStorageObjects(URL, IDХранилища, Токен);
+EndFunction
+
+Function СоздатьКаталогВХранилище(Val URL, Val IDХранилища, Val Наименование, Val Токен = "") Export
+	Return CreateStorageFolder(URL, IDХранилища, Наименование, Токен);
+EndFunction
+
+Function ПолучитьИнформациюОКаталоге(Val URL, Val IDКаталога, Val Токен = "") Export
+	Return GetFolderInformation(URL, IDКаталога, Токен);
+EndFunction
+
+Function СоздатьПодкаталог(Val URL, Val IDКаталога, Val Наименование, Val Токен = "") Export
+	Return CreateSubfolder(URL, IDКаталога, Наименование, Токен);
+EndFunction
+
+Function СкопироватьКаталог(Val URL, Val IDКаталога, Val IDПриемника, Val Токен = "") Export
+	Return MakeFolderCopy(URL, IDКаталога, IDПриемника, Токен);
+EndFunction
+
+Function ПереместитьКаталог(Val URL, Val IDКаталога, Val IDПриемника, Val Токен = "") Export
+	Return MoveFolder(URL, IDКаталога, IDПриемника, Токен);
+EndFunction
+
+Function УдалитьКаталог(Val URL, Val IDКаталога, Val Токен = "") Export
+	Return DeleteFolder(URL, IDКаталога, Токен);
+EndFunction
+
+Function ПолучитьВнешнююСсылкуКаталога(Val URL, Val IDКаталога, Val Токен = "") Export
+	Return GetFolderExternalLink(URL, IDКаталога, Токен);
+EndFunction
+
+Function ПолучитьДочерниеЭлементыКаталога(Val URL, Val IDКаталога, Val Фильтр = "", Val Токен = "") Export
+	Return GetFolderItems(URL, IDКаталога, Фильтр, Токен);
+EndFunction
+
+Function ПоместитьКаталогВКорзину(Val URL, Val IDКаталога, Val Токен = "") Export
+	Return MarkFolderAsDeleted(URL, IDКаталога, Токен);
+EndFunction
+
+Function ВосстановитьКаталог(Val URL, Val IDКаталога, Val Токен = "") Export
+	Return RestoreFolder(URL, IDКаталога, Токен);
+EndFunction
+
+Function ПереименоватьКаталог(Val URL, Val IDКаталога, Val Наименование, Val Токен = "") Export
+	Return RenameFolder(URL, IDКаталога, Наименование, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраКаталога(Val URL, Val Пустая = False, Val Токен = "") Export
+	Return GetFolderFilterStructure(URL, Пустая, Токен);
+EndFunction
+
+Function ЗагрузитьФайлВХранилище(Val URL, Val Наименование, Val Файл, Val IDХранилища, Val Доступы = "", Val Токен = "") Export
+	Return UploadFileToStorage(URL, Наименование, Файл, IDХранилища, Доступы, Токен);
+EndFunction
+
+Function ЗагрузитьФайлВКаталог(Val URL, Val Наименование, Val Файл, Val IDКаталога, Val Токен = "") Export
+	Return UploadFileToFolder(URL, Наименование, Файл, IDКаталога, Токен);
+EndFunction
+
+Function ПолучитьИнформациюОФайле(Val URL, Val IDФайла, Val Токен = "") Export
+	Return GetFileInformation(URL, IDФайла, Токен);
+EndFunction
+
+Function УдалитьФайл(Val URL, Val IDФайла, Val Токен = "") Export
+	Return DeleteFile(URL, IDФайла, Токен);
+EndFunction
+
+Function ПолучитьВнешнююСсылкуФайла(Val URL, Val IDФайла, Val Токен = "") Export
+	Return GetFileExternalLink(URL, IDФайла, Токен);
+EndFunction
+
+Function ПоместитьФайлВКорзину(Val URL, Val IDФайла, Val Токен = "") Export
+	Return MarkFileAsDeleted(URL, IDФайла, Токен);
+EndFunction
+
+Function ВосстановитьФайл(Val URL, Val IDФайла, Val Токен = "") Export
+	Return RestoreFile(URL, IDФайла, Токен);
+EndFunction
+
+Function СкопироватьФайл(Val URL, Val IDФайла, Val IDКаталога, Val Токен = "") Export
+	Return MakeCopyFile(URL, IDФайла, IDКаталога, Токен);
+EndFunction
+
+Function ПереместитьФайлВКаталог(Val URL, Val IDФайла, Val IDКаталога, Val Токен = "") Export
+	Return MoveFileToFolder(URL, IDФайла, IDКаталога, Токен);
+EndFunction
+
+Function ПереименоватьФайл(Val URL, Val IDФайла, Val Наименование, Val Токен = "") Export
+	Return RenameFile(URL, IDФайла, Наименование, Токен);
+EndFunction
+
+Function СоздатьЧат(Val URL, Val СтруктураЧата, Val Токен = "") Export
+	Return CreateChat(URL, СтруктураЧата, Токен);
+EndFunction
+
+Function ПолучитьСписокПользователейЧата(Val URL, Val IDЧата, Val Токен = "") Export
+	Return GetChatUsers(URL, IDЧата, Токен);
+EndFunction
+
+Function ПокинутьЧат(Val URL, Val IDЧата, Val Токен = "") Export
+	Return LeaveChat(URL, IDЧата, Токен);
+EndFunction
+
+Function ПолучитьПользователей(Val URL, Val IDПользователей, Val Токен = "") Export
+	Return GetUsers(URL, IDПользователей, Токен);
+EndFunction
+
+Function ДобавитьПользователейВЧат(Val URL, Val IDЧата, Val IDПользователей, Val СкрытьИсторию = False, Val Токен = "") Export
+	Return AddUsersToChat(URL, IDЧата, IDПользователей, СкрытьИсторию, Токен);
+EndFunction
+
+Function ИсключитьПользователяИзЧата(Val URL, Val IDЧата, Val IDПользователя, Val Токен = "") Export
+	Return DeleteUserFromChat(URL, IDЧата, IDПользователя, Токен);
+EndFunction
+
+Function ИзменитьЗаголовокЧата(Val URL, Val IDЧата, Val Заголовок, Val Токен = "") Export
+	Return ChangeChatTitle(URL, IDЧата, Заголовок, Токен);
+EndFunction
+
+Function ИзменитьЦветЧата(Val URL, Val IDЧата, Val Цвет, Val Токен = "") Export
+	Return ChangeChatColor(URL, IDЧата, Цвет, Токен);
+EndFunction
+
+Function ИзменитьКартинкуЧата(Val URL, Val IDЧата, Val Картинка, Val Токен = "") Export
+	Return ChangeChatPicture(URL, IDЧата, Картинка, Токен);
+EndFunction
+
+Function СменитьВладельцаЧата(Val URL, Val IDЧата, Val IDПользователя, Val Токен = "") Export
+	Return ChangeChatOwner(URL, IDЧата, IDПользователя, Токен);
+EndFunction
+
+Function ОтключитьУведомленияЧата(Val URL, Val IDЧата, Val Токен = "") Export
+	Return DisableChatNotifications(URL, IDЧата, Токен);
+EndFunction
+
+Function ВключитьУведомленияЧата(Val URL, Val IDЧата, Val Токен = "") Export
+	Return EnableChatNotifications(URL, IDЧата, Токен);
+EndFunction
+
+Function ПолучитьСписокСообщенийЧата(Val URL, Val IDЧата, Val IDПоследнего = "", Val IDПервого = "", Val Токен = "") Export
+	Return GetChatMessagesList(URL, IDЧата, IDПоследнего, IDПервого, Токен);
+EndFunction
+
+Function ПолучитьДиалог(Val URL, Val IDЧата, Val Токен = "") Export
+	Return GetDialog(URL, IDЧата, Токен);
+EndFunction
+
+Function ПолучитьСписокПользователейДиалога(Val URL, Val IDЧата, Val Токен = "") Export
+	Return GetChatMembersList(URL, IDЧата, Токен);
+EndFunction
+
+Function ОтправитьУведомлениеОВводе(Val URL, Val IDЧата, Val Токен = "") Export
+	Return SendWritingNotification(URL, IDЧата, Токен);
+EndFunction
+
+Function ПолучитьСтатусПользователя(Val URL, Val Токен = "") Export
+	Return GetUserStatus(URL, Токен);
+EndFunction
+
+Function УстановитьСтатусПользователя(Val URL, Val Статус, Val Токен = "") Export
+	Return SetUserStatus(URL, Статус, Токен);
+EndFunction
+
+Function ПрочитатьВсе(Val URL, Val Токен = "") Export
+	Return ReadAll(URL, Токен);
+EndFunction
+
+Function ПолучитьКаталогФайловЧата(Val URL, Val IDЧата, Val Токен = "") Export
+	Return GetChatFilesFolder(URL, IDЧата, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруЧата(Val Пустая = False) Export
+	Return GetChatStructure(Пустая);
+EndFunction
+
+Function ОтправитьСообщение(Val URL, Val IDЧата, Val Текст, Val Вложения = "", Val Токен = "") Export
+	Return SendMessage(URL, IDЧата, Текст, Вложения, Токен);
+EndFunction
+
+Function ИзменитьСообщение(Val URL, Val IDСообщения, Val Текст = "", Val Вложения = "", Val Токен = "") Export
+	Return EditMessage(URL, IDСообщения, Текст, Вложения, Токен);
+EndFunction
+
+Function УстановитьРеакциюНаСообщение(Val URL, Val IDСообщения, Val Токен = "") Export
+	Return SetMessageReaction(URL, IDСообщения, Токен);
+EndFunction
+
+Function УдалитьСообщение(Val URL, Val IDСообщения, Val Токен = "") Export
+	Return DeleteMessage(URL, IDСообщения, Токен);
+EndFunction
+
+Function ОтправитьФайл(Val URL, Val IDЧата, Val IDФайла, Val Описание = "", Val Токен = "") Export
+	Return SendFile(URL, IDЧата, IDФайла, Описание, Токен);
+EndFunction
+
+Function ОтметитьСообщениеКакПрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
+	Return MarkMessageAsReaded(URL, IDЧата, IDСообщения, Токен);
+EndFunction
+
+Function ОтметитьСообщениеКакНепрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
+	Return MarkMessageAsUnreaded(URL, IDЧата, IDСообщения, Токен);
+EndFunction
+
+Function ПолучитьБлокКартинки(Val Наименование, Val URL) Export
+	Return GetPictureBlock(Наименование, URL);
+EndFunction
+
+Function ПолучитьБлокФайла(Val Наименование, Val URL) Export
+	Return GetFileBlock(Наименование, URL);
+EndFunction
+
+Function СоздатьПерсональноеУведомление(Val URL, Val IDПользователя, Val Текст, Val Тег = "", Val Вложения = "", Val Токен = "") Export
+	Return CreatePersonalNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
+EndFunction
+
+Function СоздатьСистемноеУведомление(Val URL, Val IDПользователя, Val Текст, Val Тег = "", Val Вложения = "", Val Токен = "") Export
+	Return CreateSystemNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
+EndFunction
+
+Function УдалитьУведомление(Val URL, Val IDУведомления, Val Токен = "") Export
+	Return DeleteNotification(URL, IDУведомления, Токен);
+EndFunction
+
+Function СоздатьПодразделение(Val URL, Val Наименование, Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
+	Return CreateDepartment(URL, Наименование, IDРодителя, IDРуководителя, Токен);
+EndFunction
+
+Function ИзменитьПодразделение(Val URL, Val IDПодразделения, Val Наименование = "", Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
+	Return UpdateDepartment(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
+EndFunction
+
+Function ПолучитьПодразделения(Val URL, Val IDПодразделения = "", Val Наименование = "", Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
+	Return GetDepartments(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
+EndFunction
+
+Function УдалитьПодразделение(Val URL, Val IDПодразделения, Val Токен = "") Export
+	Return DeleteDepartment(URL, IDПодразделения, Токен);
+EndFunction
+
+Function ПолучитьТекущегоПользователя(Val URL, Val Токен = "") Export
+	Return GetCurrentUser(URL, Токен);
+EndFunction
+
+Function ПолучитьПользователя(Val URL, Val IDПользователя, Val Токен = "") Export
+	Return GetUser(URL, IDПользователя, Токен);
+EndFunction
+
+Function СоздатьПользователя(Val URL, Val СтруктураПолей, Val Токен = "") Export
+	Return CreateUser(URL, СтруктураПолей, Токен);
+EndFunction
+
+Function ИзменитьПользователя(Val URL, Val IDПользователя, Val СтруктураПолей, Val Токен = "") Export
+	Return UpdateUser(URL, IDПользователя, СтруктураПолей, Токен);
+EndFunction
+
+Function ИзменитьСтатусПользователя(Val URL, Val IDПользователя, Val Уволить = True, Val Токен = "") Export
+	Return ChangeUserStatus(URL, IDПользователя, Уволить, Токен);
+EndFunction
+
+Function НайтиПользователей(Val URL, Val СтруктураФильтра, Val Токен = "") Export
+	Return FindUsers(URL, СтруктураФильтра, Токен);
+EndFunction
+
+Function ПолучитьСтурктуруПользователя(Val URL, Val Токен = "") Export
+	Return GetUserFieldsStructure(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраПользователей(Val Пустая = False) Export
+	Return GetUserFilterStructure(Пустая);
+EndFunction
+
+Function СоздатьЛид(Val URL, Val СтруктураПолей, Val Токен = "") Export
+	Return CreateLead(URL, СтруктураПолей, Токен);
+EndFunction
+
+Function УдалитьЛид(Val URL, Val IDЛида, Val Токен = "") Export
+	Return DeleteLead(URL, IDЛида, Токен);
+EndFunction
+
+Function ПолучитьЛид(Val URL, Val IDЛида, Val Токен = "") Export
+	Return GetLead(URL, IDЛида, Токен);
+EndFunction
+
+Function ПолучитьСписокЛидов(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "") Export
+	Return GetLeadsList(URL, Фильтр, Отступ, Токен);
+EndFunction
+
+Function ИзменитьЛид(Val URL, Val IDЛида, Val СтруктураПолей, Val Токен = "") Export
+	Return UpdateLead(URL, IDЛида, СтруктураПолей, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруЛида(Val URL, Val Токен = "") Export
+	Return GetLeadStructure(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЛидов(Val Пустая = False) Export
+	Return GetLeadFilterStructure(Пустая);
+EndFunction
+
+Function СоздатьСделку(Val URL, Val СтруктураПолей, Val Токен = "") Export
+	Return CreateDeal(URL, СтруктураПолей, Токен);
+EndFunction
+
+Function УдалитьСделку(Val URL, Val IDСделки, Val Токен = "") Export
+	Return DeleteDeal(URL, IDСделки, Токен);
+EndFunction
+
+Function ПолучитьСделку(Val URL, Val IDСделки, Val Токен = "") Export
+	Return GetDeal(URL, IDСделки, Токен);
+EndFunction
+
+Function ПолучитьСписокСделок(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "") Export
+	Return GetDealsList(URL, Фильтр, Отступ, Токен);
+EndFunction
+
+Function ИзменитьСделку(Val URL, Val IDСделки, Val СтруктураПолей, Val Токен = "") Export
+	Return UpdateDeal(URL, IDСделки, СтруктураПолей, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруСделки(Val URL, Val Токен = "") Export
+	Return GetDealStructure(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраСделок(Val Пустая = False) Export
+	Return GetDealsFilterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСписокКалендарей(Val URL, Val IDВладельца, Val Тип, Val Токен = "") Export
+	Return GetCalendarList(URL, IDВладельца, Тип, Токен);
+EndFunction
+
+Function СоздатьКалендарь(Val URL, Val СтруктураПолей, Val Токен = "") Export
+	Return CreateCalendar(URL, СтруктураПолей, Токен);
+EndFunction
+
+Function ИзменитьКалендарь(Val URL, Val IDКалендаря, Val СтруктураПолей, Val Токен = "") Export
+	Return UpdateCalendar(URL, IDКалендаря, СтруктураПолей, Токен);
+EndFunction
+
+Function УдалитьКалендарь(Val URL, Val IDКалендаря, Val IDВладельца, Val Тип, Val Токен = "") Export
+	Return DeleteCalendar(URL, IDКалендаря, IDВладельца, Тип, Токен);
+EndFunction
+
+Function ПолучитьЗанятостьПользователей(Val URL, Val Пользователи, Val ДатаНачала, Val ДатаОкончания, Val Токен = "") Export
+	Return GetUserBusy(URL, Пользователи, ДатаНачала, ДатаОкончания, Токен);
+EndFunction
+
+Function ПолучитьПользовательскиеНастройкиКалендаря(Val URL, Val Токен = "") Export
+	Return GetCustomCalendarSettings(URL, Токен);
+EndFunction
+
+Function УстановитьПользовательскиеНастройкиКалендаря(Val URL, Val СтруктураНастроек, Val Токен = "") Export
+	Return SetCustomCalendarSettings(URL, СтруктураНастроек, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруНастроекКалендаря(Val URL, Val Токен = "") Export
+	Return GetCalendarSettingsStructure(URL, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруПользовательскихНастроекКаледнаря(Val Пустая = False) Export
+	Return GetCalednarCustomSettingsStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруКалендаря(Val Пустая = False) Export
+	Return GetCalendarStructure(Пустая);
+EndFunction
+
+Function СоздатьСобытиеКалендаря(Val URL, Val ОписаниеСобытия, Val Токен = "") Export
+	Return CreateCalendarEvent(URL, ОписаниеСобытия, Токен);
+EndFunction
+
+Function ИзменитьСобытиеКалендаря(Val URL, Val IDСобытия, Val ОписаниеСобытия, Val Токен = "") Export
+	Return UpdateCalendarEvent(URL, IDСобытия, ОписаниеСобытия, Токен);
+EndFunction
+
+Function ПолучитьСобытиеКалендаря(Val URL, Val IDСобытия, Val Токен = "") Export
+	Return GetCalendarEvent(URL, IDСобытия, Токен);
+EndFunction
+
+Function ПолучитьСобытияКалендарей(Val URL, Val IDВладельца, Val Тип, Val Фильтр = "", Val Токен = "") Export
+	Return GetCalendarEvents(URL, IDВладельца, Тип, Фильтр, Токен);
+EndFunction
+
+Function УдалитьСобытиеКалендаря(Val URL, Val IDСобытия, Val Токен = "") Export
+	Return DeleteCalendarEvent(URL, IDСобытия, Токен);
+EndFunction
+
+Function ПолучитьСтатусУчастияПользователя(Val URL, Val IDСобытия, Val Токен = "") Export
+	Return GetUserParticipationStatus(URL, IDСобытия, Токен);
+EndFunction
+
+Function УстановитьСтатусУчастияПользователя(Val URL, Val IDСобытия, Val Статус, Val Токен = "") Export
+	Return SetUserParticipationStatus(URL, IDСобытия, Статус, Токен);
+EndFunction
+
+Function ПолучитьСтруктуруСобытияКалендаря(Val Пустая = False) Export
+	Return GetCalendarEventsStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраСобытийКалендарей(Val Пустая = False) Export
+	Return GetCalendarEventsFilterStructure(Пустая);
 EndFunction
 
 #EndRegion
