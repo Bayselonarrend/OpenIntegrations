@@ -6,7 +6,8 @@
 	ФайлыOint = НайтиФайлы(ПутьПакета, "*.os", Истина);
 
 	ФайлыOint.Добавить(Новый Файл("./src/ru/cli/data/Classes/LibraryComposition.os"));
-	ФайлыOint.Добавить(Новый Файл("./src/en/cli/data/Classes/LibraryComposition.os"));
+	ФайлыOint.Добавить(Новый Файл("./src/ru/cli/env/Classes/CommandLineArgumentParser.os"));
+	ФайлыOint.Добавить(Новый Файл("./src/ru/cli/env/Modules/ColorOutput.os"));
 	
 	СоответствиеФайловДублеров = Новый Соответствие();
 	
