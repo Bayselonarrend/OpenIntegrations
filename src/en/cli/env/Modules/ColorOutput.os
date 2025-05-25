@@ -1,4 +1,4 @@
-﻿#Region Public
+#Region Public
 
 Procedure Message(Val MessageText = "", Val pMessageStatus = Undefined) Export
 	
@@ -142,5 +142,22 @@ Function ColoredSubstringPattern()
 	Return "\((.+?)\|#color=(.+?)\)"; // (Text|#color=Color)
 
 EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Procedure Сообщить(Val ТекстСообщения = "", Val пСтатусСообщения = Undefined) Export
+	Message(ТекстСообщения, пСтатусСообщения);
+EndProcedure
+
+Procedure ВывестиСтроку(Val ТекстСообщения = "", Val ЦветТекста = Undefined) Export
+	WriteLine(ТекстСообщения, ЦветТекста);
+EndProcedure
+
+Procedure Вывести(Val ТекстСообщения, Val ЦветТекста = Undefined) Export
+	Write(ТекстСообщения, ЦветТекста);
+EndProcedure
 
 #EndRegion
