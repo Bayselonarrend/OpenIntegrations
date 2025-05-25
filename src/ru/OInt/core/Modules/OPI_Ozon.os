@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Ozon.os
+// OneScript: ./OInt/core/Modules/OPI_Ozon.os
 // Lib: Ozon
 // CLI: ozon
 // Keywords: ozon, seller api
@@ -1910,3 +1910,648 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetCategoriesAndProductTypesTree(Val ClientID, Val APIKey, Val Lang = "DEFAULT") Export
+	Return ПолучитьДеревоКатегорийИТиповТоваров(ClientID, APIKey, Lang);
+EndFunction
+
+Function GetCategoryAttributes(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val Lang = "DEFAULT") Export
+	Return ПолучитьХарактеристикиКатегории(ClientID, APIKey, CategoryID, TypeID, Lang);
+EndFunction
+
+Function GetAttributeValues(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val AttributeID, Val CatalogID = 1, Val Lang = "DEFAULT") Export
+	Return ПолучитьЗначенияХарактеристики(ClientID, APIKey, CategoryID, TypeID, AttributeID, CatalogID, Lang);
+EndFunction
+
+Function SearchAttributeValue(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val AttributeID, Val Value) Export
+	Return НайтиЗначенияХарактеристики(ClientID, APIKey, CategoryID, TypeID, AttributeID, Value);
+EndFunction
+
+Function GetProductsRequestsLimits(Val ClientID, Val APIKey) Export
+	Return ПолучитьЛимитыРаботыСТоварами(ClientID, APIKey);
+EndFunction
+
+Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьСписокТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsAttributesData(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьОписанияХарактеристикТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsInformation(Val ClientID, Val APIKey, Val ProductsID = 0, Val SKU = 0, Val Articles = "") Export
+	Return ПолучитьИнформациюОТоварах(ClientID, APIKey, ProductsID, SKU, Articles);
+EndFunction
+
+Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val Article = "") Export
+	Return ПолучитьОписаниеТовара(ClientID, APIKey, ProductID, Article);
+EndFunction
+
+Function GetProductsContentRating(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьКонтентРейтингТоваров(ClientID, APIKey, SKU);
+EndFunction
+
+Function CreateUpdateProducts(Val ClientID, Val APIKey, Val ProductsArray) Export
+	Return СоздатьОбновитьТовары(ClientID, APIKey, ProductsArray);
+EndFunction
+
+Function CreateProductByOzonID(Val ClientID, Val APIKey, Val ProductsArray) Export
+	Return СоздатьТоварыПоOzonID(ClientID, APIKey, ProductsArray);
+EndFunction
+
+Function UpdateProductsAttributes(Val ClientID, Val APIKey, Val AttributesArray) Export
+	Return ОбновитьХарактеристикиТоваров(ClientID, APIKey, AttributesArray);
+EndFunction
+
+Function UpdateProductImages(Val ClientID, Val APIKey, Val ProductID, Val ImagesArray = "", Val Array360 = "", Val MarketingColor = "") Export
+	Return ОбновитьИзображенияТовара(ClientID, APIKey, ProductID, ImagesArray, Array360, MarketingColor);
+EndFunction
+
+Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return ПроверитьЗагрузкуИзображенийТоваров(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Export
+	Return ИзменитьАртикулыТоваров(ClientID, APIKey, ArticlesMap);
+EndFunction
+
+Function ArchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return АрхивироватьТовары(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return РазархивироватьТовары(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
+	Return УдалитьТоварыБезSKU(ClientID, APIKey, Articles);
+EndFunction
+
+Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, Val Codes) Export
+	Return ЗагрузитьКодыАктивацииТовара(ClientID, APIKey, ProductID, Codes);
+EndFunction
+
+Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьКоличествоПодписчиковТоваров(ClientID, APIKey, SKU);
+EndFunction
+
+Function GetRelatedSKUs(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьСвязанныеSKU(ClientID, APIKey, SKU);
+EndFunction
+
+Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
+	Return ПолучитьСтатусДобавленияТовара(ClientID, APIKey, TaskID);
+EndFunction
+
+Function GetCodesUploadStatus(Val ClientID, Val APIKey, Val TaskID) Export
+	Return ПолучитьСтатусДобавленияКодов(ClientID, APIKey, TaskID);
+EndFunction
+
+Function GetProductStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруТовара(Clear);
+EndFunction
+
+Function GetSimplifiedProductStructure(Val Clear = False) Export
+	Return ПолучитьСокращеннуюСтруктуруТовара(Clear);
+EndFunction
+
+Function GetAttributesUpdateStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруОбновленияХарактеристик(Clear);
+EndFunction
+
+Function GetProductsFilterStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраТоваров(Clear);
+EndFunction
+
+Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
+	Return ДобавитьВидеоТовара(ItemStructure, URL, Name);
+EndFunction
+
+Function AddProductVideoCover(ItemStructure, Val URL) Export
+	Return ДобавитьВидеообложкуТовара(ItemStructure, URL);
+EndFunction
+
+Function CompleteComplexAttribute(Collection, Val AttributeID, Val ComplexID, Val Values) Export
+	Return ДополнитьКомплексныйАтрибут(Collection, AttributeID, ComplexID, Values);
+EndFunction
+
+Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export
+	Return ПривязатьШтрихкоды(ClientID, APIKey, BarcodesMap);
+EndFunction
+
+Function CreateBarcodes(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return СоздатьШтрихкоды(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьКоличествоТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьЦеныТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetDiscountInformation(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьИнформациюОбУценке(ClientID, APIKey, SKU);
+EndFunction
+
+Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
+	Return ОбновитьКоличествоТоваров(ClientID, APIKey, Stocks);
+EndFunction
+
+Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
+	Return ОбновитьЦеныТоваров(ClientID, APIKey, Prices);
+EndFunction
+
+Function SetProductDiscount(Val ClientID, Val APIKey, Val ProductID, Val Discount) Export
+	Return УстановитьСкидкуНаУцененныйТовар(ClientID, APIKey, ProductID, Discount);
+EndFunction
+
+Function GetProductStocksStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруОстатковТовара(Clear);
+EndFunction
+
+Function GetProductPriceStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруЦеныТовара(Clear);
+EndFunction
+
+Function GetPromotionsList(Val ClientID, Val APIKey) Export
+	Return ПолучитьСписокАкций(ClientID, APIKey);
+EndFunction
+
+Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+	Return ПолучитьДоступныеТоварыАкции(ClientID, APIKey, PromoID, Indent);
+EndFunction
+
+Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+	Return ПолучитьУчаствующиеТоварыАкции(ClientID, APIKey, PromoID, Indent);
+EndFunction
+
+Function GetWarehousesList(Val ClientID, Val APIKey) Export
+	Return ПолучитьСписокСкладов(ClientID, APIKey);
+EndFunction
+
+Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TYPE_OZON") Export
+	Return ПолучитьСписокКластеров(ClientID, APIKey, ClusterType);
+EndFunction
+
+Function GetShippingWarehousesList(Val ClientID, Val APIKey, Val Search, Val SupplyType = "CREATE_TYPE_DIRECT") Export
+	Return ПолучитьСписокСкладовОтгрузки(ClientID, APIKey, Search, SupplyType);
+EndFunction
+
+Function GetFBOShipmentsList(Val ClientID, Val APIKey, Val Filter = Undefined, Val AddFields = Undefined, Val Indent = 0, Val Traslit = False) Export
+	Return ПолучитьСписокОтправленийFBO(ClientID, APIKey, Filter, AddFields, Indent, Traslit);
+EndFunction
+
+Function CreateFBODraft(Val ClientID, Val APIKey, Val Clusters, Val Items, Val SupplyType = "CREATE_TYPE_DIRECT", Val ShippingPoint = "") Export
+	Return СоздатьЧерновикЗаявкиFBO(ClientID, APIKey, Clusters, Items, SupplyType, ShippingPoint);
+EndFunction
+
+Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
+	Return ПолучитьЧерновикЗаявкиFBO(ClientID, APIKey, OperationID);
+EndFunction
+
+Function GetFBOTimeslots(Val ClientID, Val APIKey, Val DateFrom, Val DateTo, Val Draft, Val Warehouses) Export
+	Return ПолучитьТаймслотыFBO(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouses);
+EndFunction
+
+Function GetShipmentAdditionalFields(Val Clear = False) Export
+	Return ПолучитьСтруктуруДопПолейОтправления(Clear);
+EndFunction
+
+Function GetShipmentsFilterStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраОтправлений(Clear);
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function GetCategoriesAndProductTypesTree(Val ClientID, Val APIKey, Val Lang = "DEFAULT") Export
+	Return ПолучитьДеревоКатегорийИТиповТоваров(ClientID, APIKey, Lang);
+EndFunction
+
+Function GetCategoryAttributes(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val Lang = "DEFAULT") Export
+	Return ПолучитьХарактеристикиКатегории(ClientID, APIKey, CategoryID, TypeID, Lang);
+EndFunction
+
+Function GetAttributeValues(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val AttributeID, Val CatalogID = 1, Val Lang = "DEFAULT") Export
+	Return ПолучитьЗначенияХарактеристики(ClientID, APIKey, CategoryID, TypeID, AttributeID, CatalogID, Lang);
+EndFunction
+
+Function SearchAttributeValue(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val AttributeID, Val Value) Export
+	Return НайтиЗначенияХарактеристики(ClientID, APIKey, CategoryID, TypeID, AttributeID, Value);
+EndFunction
+
+Function GetProductsRequestsLimits(Val ClientID, Val APIKey) Export
+	Return ПолучитьЛимитыРаботыСТоварами(ClientID, APIKey);
+EndFunction
+
+Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьСписокТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsAttributesData(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьОписанияХарактеристикТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsInformation(Val ClientID, Val APIKey, Val ProductsID = 0, Val SKU = 0, Val Articles = "") Export
+	Return ПолучитьИнформациюОТоварах(ClientID, APIKey, ProductsID, SKU, Articles);
+EndFunction
+
+Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val Article = "") Export
+	Return ПолучитьОписаниеТовара(ClientID, APIKey, ProductID, Article);
+EndFunction
+
+Function GetProductsContentRating(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьКонтентРейтингТоваров(ClientID, APIKey, SKU);
+EndFunction
+
+Function CreateUpdateProducts(Val ClientID, Val APIKey, Val ProductsArray) Export
+	Return СоздатьОбновитьТовары(ClientID, APIKey, ProductsArray);
+EndFunction
+
+Function CreateProductByOzonID(Val ClientID, Val APIKey, Val ProductsArray) Export
+	Return СоздатьТоварыПоOzonID(ClientID, APIKey, ProductsArray);
+EndFunction
+
+Function UpdateProductsAttributes(Val ClientID, Val APIKey, Val AttributesArray) Export
+	Return ОбновитьХарактеристикиТоваров(ClientID, APIKey, AttributesArray);
+EndFunction
+
+Function UpdateProductImages(Val ClientID, Val APIKey, Val ProductID, Val ImagesArray = "", Val Array360 = "", Val MarketingColor = "") Export
+	Return ОбновитьИзображенияТовара(ClientID, APIKey, ProductID, ImagesArray, Array360, MarketingColor);
+EndFunction
+
+Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return ПроверитьЗагрузкуИзображенийТоваров(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Export
+	Return ИзменитьАртикулыТоваров(ClientID, APIKey, ArticlesMap);
+EndFunction
+
+Function ArchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return АрхивироватьТовары(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return РазархивироватьТовары(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
+	Return УдалитьТоварыБезSKU(ClientID, APIKey, Articles);
+EndFunction
+
+Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, Val Codes) Export
+	Return ЗагрузитьКодыАктивацииТовара(ClientID, APIKey, ProductID, Codes);
+EndFunction
+
+Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьКоличествоПодписчиковТоваров(ClientID, APIKey, SKU);
+EndFunction
+
+Function GetRelatedSKUs(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьСвязанныеSKU(ClientID, APIKey, SKU);
+EndFunction
+
+Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
+	Return ПолучитьСтатусДобавленияТовара(ClientID, APIKey, TaskID);
+EndFunction
+
+Function GetCodesUploadStatus(Val ClientID, Val APIKey, Val TaskID) Export
+	Return ПолучитьСтатусДобавленияКодов(ClientID, APIKey, TaskID);
+EndFunction
+
+Function GetProductStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруТовара(Clear);
+EndFunction
+
+Function GetSimplifiedProductStructure(Val Clear = False) Export
+	Return ПолучитьСокращеннуюСтруктуруТовара(Clear);
+EndFunction
+
+Function GetAttributesUpdateStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруОбновленияХарактеристик(Clear);
+EndFunction
+
+Function GetProductsFilterStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраТоваров(Clear);
+EndFunction
+
+Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
+	Return ДобавитьВидеоТовара(ItemStructure, URL, Name);
+EndFunction
+
+Function AddProductVideoCover(ItemStructure, Val URL) Export
+	Return ДобавитьВидеообложкуТовара(ItemStructure, URL);
+EndFunction
+
+Function CompleteComplexAttribute(Collection, Val AttributeID, Val ComplexID, Val Values) Export
+	Return ДополнитьКомплексныйАтрибут(Collection, AttributeID, ComplexID, Values);
+EndFunction
+
+Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export
+	Return ПривязатьШтрихкоды(ClientID, APIKey, BarcodesMap);
+EndFunction
+
+Function CreateBarcodes(Val ClientID, Val APIKey, Val ProductsID) Export
+	Return СоздатьШтрихкоды(ClientID, APIKey, ProductsID);
+EndFunction
+
+Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьКоличествоТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+	Return ПолучитьЦеныТоваров(ClientID, APIKey, Filter, LastID);
+EndFunction
+
+Function GetDiscountInformation(Val ClientID, Val APIKey, Val SKU) Export
+	Return ПолучитьИнформациюОбУценке(ClientID, APIKey, SKU);
+EndFunction
+
+Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
+	Return ОбновитьКоличествоТоваров(ClientID, APIKey, Stocks);
+EndFunction
+
+Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
+	Return ОбновитьЦеныТоваров(ClientID, APIKey, Prices);
+EndFunction
+
+Function SetProductDiscount(Val ClientID, Val APIKey, Val ProductID, Val Discount) Export
+	Return УстановитьСкидкуНаУцененныйТовар(ClientID, APIKey, ProductID, Discount);
+EndFunction
+
+Function GetProductStocksStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруОстатковТовара(Clear);
+EndFunction
+
+Function GetProductPriceStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруЦеныТовара(Clear);
+EndFunction
+
+Function GetPromotionsList(Val ClientID, Val APIKey) Export
+	Return ПолучитьСписокАкций(ClientID, APIKey);
+EndFunction
+
+Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+	Return ПолучитьДоступныеТоварыАкции(ClientID, APIKey, PromoID, Indent);
+EndFunction
+
+Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+	Return ПолучитьУчаствующиеТоварыАкции(ClientID, APIKey, PromoID, Indent);
+EndFunction
+
+Function GetWarehousesList(Val ClientID, Val APIKey) Export
+	Return ПолучитьСписокСкладов(ClientID, APIKey);
+EndFunction
+
+Function GetClustersList(Val ClientID, Val APIKey, Val ClusterType = "CLUSTER_TYPE_OZON") Export
+	Return ПолучитьСписокКластеров(ClientID, APIKey, ClusterType);
+EndFunction
+
+Function GetShippingWarehousesList(Val ClientID, Val APIKey, Val Search, Val SupplyType = "CREATE_TYPE_DIRECT") Export
+	Return ПолучитьСписокСкладовОтгрузки(ClientID, APIKey, Search, SupplyType);
+EndFunction
+
+Function GetFBOShipmentsList(Val ClientID, Val APIKey, Val Filter = Undefined, Val AddFields = Undefined, Val Indent = 0, Val Traslit = False) Export
+	Return ПолучитьСписокОтправленийFBO(ClientID, APIKey, Filter, AddFields, Indent, Traslit);
+EndFunction
+
+Function CreateFBODraft(Val ClientID, Val APIKey, Val Clusters, Val Items, Val SupplyType = "CREATE_TYPE_DIRECT", Val ShippingPoint = "") Export
+	Return СоздатьЧерновикЗаявкиFBO(ClientID, APIKey, Clusters, Items, SupplyType, ShippingPoint);
+EndFunction
+
+Function GetFBODraft(Val ClientID, Val APIKey, Val OperationID) Export
+	Return ПолучитьЧерновикЗаявкиFBO(ClientID, APIKey, OperationID);
+EndFunction
+
+Function GetFBOTimeslots(Val ClientID, Val APIKey, Val DateFrom, Val DateTo, Val Draft, Val Warehouses) Export
+	Return ПолучитьТаймслотыFBO(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouses);
+EndFunction
+
+Function GetShipmentAdditionalFields(Val Clear = False) Export
+	Return ПолучитьСтруктуруДопПолейОтправления(Clear);
+EndFunction
+
+Function GetShipmentsFilterStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраОтправлений(Clear);
+EndFunction
+
+Function ПолучитьДеревоКатегорийИТиповТоваров(Val IDКлиента, Val КлючAPI, Val Язык = "DEFAULT") Export
+	Return GetCategoriesAndProductTypesTree(IDКлиента, КлючAPI, Язык);
+EndFunction
+
+Function ПолучитьХарактеристикиКатегории(Val IDКлиента, Val КлючAPI, Val IDКатегории, Val IDТипа, Val Язык = "DEFAULT") Export
+	Return GetCategoryAttributes(IDКлиента, КлючAPI, IDКатегории, IDТипа, Язык);
+EndFunction
+
+Function ПолучитьЗначенияХарактеристики(Val IDКлиента, Val КлючAPI, Val IDКатегории, Val IDТипа, Val IDХарактеристики, Val IDСправочника = 1, Val Язык = "DEFAULT") Export
+	Return GetAttributeValues(IDКлиента, КлючAPI, IDКатегории, IDТипа, IDХарактеристики, IDСправочника, Язык);
+EndFunction
+
+Function НайтиЗначенияХарактеристики(Val IDКлиента, Val КлючAPI, Val IDКатегории, Val IDТипа, Val IDХарактеристики, Val Значение) Export
+	Return SearchAttributeValue(IDКлиента, КлючAPI, IDКатегории, IDТипа, IDХарактеристики, Значение);
+EndFunction
+
+Function ПолучитьЛимитыРаботыСТоварами(Val IDКлиента, Val КлючAPI) Export
+	Return GetProductsRequestsLimits(IDКлиента, КлючAPI);
+EndFunction
+
+Function ПолучитьСписокТоваров(Val IDКлиента, Val КлючAPI, Val Фильтр = "", Val IDПоследнего = 0) Export
+	Return GetProductList(IDКлиента, КлючAPI, Фильтр, IDПоследнего);
+EndFunction
+
+Function ПолучитьОписанияХарактеристикТоваров(Val IDКлиента, Val КлючAPI, Val Фильтр = "", Val IDПоследнего = 0) Export
+	Return GetProductsAttributesData(IDКлиента, КлючAPI, Фильтр, IDПоследнего);
+EndFunction
+
+Function ПолучитьИнформациюОТоварах(Val IDКлиента, Val КлючAPI, Val IDТоваров = 0, Val SKU = 0, Val Артикулы = "") Export
+	Return GetProductsInformation(IDКлиента, КлючAPI, IDТоваров, SKU, Артикулы);
+EndFunction
+
+Function ПолучитьОписаниеТовара(Val IDКлиента, Val КлючAPI, Val IDТовара = 0, Val Артикул = "") Export
+	Return GetProductDescription(IDКлиента, КлючAPI, IDТовара, Артикул);
+EndFunction
+
+Function ПолучитьКонтентРейтингТоваров(Val IDКлиента, Val КлючAPI, Val SKU) Export
+	Return GetProductsContentRating(IDКлиента, КлючAPI, SKU);
+EndFunction
+
+Function СоздатьОбновитьТовары(Val IDКлиента, Val КлючAPI, Val МассивТоваров) Export
+	Return CreateUpdateProducts(IDКлиента, КлючAPI, МассивТоваров);
+EndFunction
+
+Function СоздатьТоварыПоOzonID(Val IDКлиента, Val КлючAPI, Val МассивТоваров) Export
+	Return CreateProductByOzonID(IDКлиента, КлючAPI, МассивТоваров);
+EndFunction
+
+Function ОбновитьХарактеристикиТоваров(Val IDКлиента, Val КлючAPI, Val МассивХарактеристик) Export
+	Return UpdateProductsAttributes(IDКлиента, КлючAPI, МассивХарактеристик);
+EndFunction
+
+Function ОбновитьИзображенияТовара(Val IDКлиента, Val КлючAPI, Val IDТовара, Val МассивИзображений = "", Val Массив360 = "", Val МаркетинговыйЦвет = "") Export
+	Return UpdateProductImages(IDКлиента, КлючAPI, IDТовара, МассивИзображений, Массив360, МаркетинговыйЦвет);
+EndFunction
+
+Function ПроверитьЗагрузкуИзображенийТоваров(Val IDКлиента, Val КлючAPI, Val IDТоваров) Export
+	Return CheckProductsImagesUpload(IDКлиента, КлючAPI, IDТоваров);
+EndFunction
+
+Function ИзменитьАртикулыТоваров(Val IDКлиента, Val КлючAPI, Val СоответствиеАртикулов) Export
+	Return UpdateProductsArticles(IDКлиента, КлючAPI, СоответствиеАртикулов);
+EndFunction
+
+Function АрхивироватьТовары(Val IDКлиента, Val КлючAPI, Val IDТоваров) Export
+	Return ArchiveProducts(IDКлиента, КлючAPI, IDТоваров);
+EndFunction
+
+Function РазархивироватьТовары(Val IDКлиента, Val КлючAPI, Val IDТоваров) Export
+	Return UnarchiveProducts(IDКлиента, КлючAPI, IDТоваров);
+EndFunction
+
+Function УдалитьТоварыБезSKU(Val IDКлиента, Val КлючAPI, Val Артикулы) Export
+	Return DeleteProductsWithoutSKU(IDКлиента, КлючAPI, Артикулы);
+EndFunction
+
+Function ЗагрузитьКодыАктивацииТовара(Val IDКлиента, Val КлючAPI, Val IDТовара, Val Коды) Export
+	Return UploadProductActivationCodes(IDКлиента, КлючAPI, IDТовара, Коды);
+EndFunction
+
+Function ПолучитьКоличествоПодписчиковТоваров(Val IDКлиента, Val КлючAPI, Val SKU) Export
+	Return GetProductSubscribersCount(IDКлиента, КлючAPI, SKU);
+EndFunction
+
+Function ПолучитьСвязанныеSKU(Val IDКлиента, Val КлючAPI, Val SKU) Export
+	Return GetRelatedSKUs(IDКлиента, КлючAPI, SKU);
+EndFunction
+
+Function ПолучитьСтатусДобавленияТовара(Val IDКлиента, Val КлючAPI, Val IDЗадачи) Export
+	Return GetProductCreationStatus(IDКлиента, КлючAPI, IDЗадачи);
+EndFunction
+
+Function ПолучитьСтатусДобавленияКодов(Val IDКлиента, Val КлючAPI, Val IDЗадачи) Export
+	Return GetCodesUploadStatus(IDКлиента, КлючAPI, IDЗадачи);
+EndFunction
+
+Function ПолучитьСтруктуруТовара(Val Пустая = False) Export
+	Return GetProductStructure(Пустая);
+EndFunction
+
+Function ПолучитьСокращеннуюСтруктуруТовара(Val Пустая = False) Export
+	Return GetSimplifiedProductStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруОбновленияХарактеристик(Val Пустая = False) Export
+	Return GetAttributesUpdateStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраТоваров(Val Пустая = False) Export
+	Return GetProductsFilterStructure(Пустая);
+EndFunction
+
+Function ДобавитьВидеоТовара(СтруктураТовара, Val URL, Val Наименование) Export
+	Return AddProductVideo(СтруктураТовара, URL, Наименование);
+EndFunction
+
+Function ДобавитьВидеообложкуТовара(СтруктураТовара, Val URL) Export
+	Return AddProductVideoCover(СтруктураТовара, URL);
+EndFunction
+
+Function ДополнитьКомплексныйАтрибут(Коллекция, Val IDАтрибута, Val КомплексныйID, Val Значения) Export
+	Return CompleteComplexAttribute(Коллекция, IDАтрибута, КомплексныйID, Значения);
+EndFunction
+
+Function ПривязатьШтрихкоды(Val IDКлиента, Val КлючAPI, Val СоответствиеШтрихкодов) Export
+	Return BindBarcodes(IDКлиента, КлючAPI, СоответствиеШтрихкодов);
+EndFunction
+
+Function СоздатьШтрихкоды(Val IDКлиента, Val КлючAPI, Val IDТоваров) Export
+	Return CreateBarcodes(IDКлиента, КлючAPI, IDТоваров);
+EndFunction
+
+Function ПолучитьКоличествоТоваров(Val IDКлиента, Val КлючAPI, Val Фильтр = "", Val IDПоследнего = 0) Export
+	Return GetProductsStocks(IDКлиента, КлючAPI, Фильтр, IDПоследнего);
+EndFunction
+
+Function ПолучитьЦеныТоваров(Val IDКлиента, Val КлючAPI, Val Фильтр = "", Val IDПоследнего = 0) Export
+	Return GetProductsPrices(IDКлиента, КлючAPI, Фильтр, IDПоследнего);
+EndFunction
+
+Function ПолучитьИнформациюОбУценке(Val IDКлиента, Val КлючAPI, Val SKU) Export
+	Return GetDiscountInformation(IDКлиента, КлючAPI, SKU);
+EndFunction
+
+Function ОбновитьКоличествоТоваров(Val IDКлиента, Val КлючAPI, Val Остатки) Export
+	Return UpdateProductsStocks(IDКлиента, КлючAPI, Остатки);
+EndFunction
+
+Function ОбновитьЦеныТоваров(Val IDКлиента, Val КлючAPI, Val Цены) Export
+	Return UpdateProductsPrices(IDКлиента, КлючAPI, Цены);
+EndFunction
+
+Function УстановитьСкидкуНаУцененныйТовар(Val IDКлиента, Val КлючAPI, Val IDТовара, Val Скидка) Export
+	Return SetProductDiscount(IDКлиента, КлючAPI, IDТовара, Скидка);
+EndFunction
+
+Function ПолучитьСтруктуруОстатковТовара(Val Пустая = False) Export
+	Return GetProductStocksStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруЦеныТовара(Val Пустая = False) Export
+	Return GetProductPriceStructure(Пустая);
+EndFunction
+
+Function ПолучитьСписокАкций(Val IDКлиента, Val КлючAPI) Export
+	Return GetPromotionsList(IDКлиента, КлючAPI);
+EndFunction
+
+Function ПолучитьДоступныеТоварыАкции(Val IDКлиента, Val КлючAPI, Val IDАкции, Val Отступ = 0) Export
+	Return GetAvailablePromoProducts(IDКлиента, КлючAPI, IDАкции, Отступ);
+EndFunction
+
+Function ПолучитьУчаствующиеТоварыАкции(Val IDКлиента, Val КлючAPI, Val IDАкции, Val Отступ = 0) Export
+	Return GetCurrentPromoProducts(IDКлиента, КлючAPI, IDАкции, Отступ);
+EndFunction
+
+Function ПолучитьСписокСкладов(Val IDКлиента, Val КлючAPI) Export
+	Return GetWarehousesList(IDКлиента, КлючAPI);
+EndFunction
+
+Function ПолучитьСписокКластеров(Val IDКлиента, Val КлючAPI, Val ТипКластера = "CLUSTER_TYPE_OZON") Export
+	Return GetClustersList(IDКлиента, КлючAPI, ТипКластера);
+EndFunction
+
+Function ПолучитьСписокСкладовОтгрузки(Val IDКлиента, Val КлючAPI, Val Поиск, Val ТипПоставки = "CREATE_TYPE_DIRECT") Export
+	Return GetShippingWarehousesList(IDКлиента, КлючAPI, Поиск, ТипПоставки);
+EndFunction
+
+Function ПолучитьСписокОтправленийFBO(Val IDКлиента, Val КлючAPI, Val Фильтр = Undefined, Val ДопПоля = Undefined, Val Отступ = 0, Val Транслит = False) Export
+	Return GetFBOShipmentsList(IDКлиента, КлючAPI, Фильтр, ДопПоля, Отступ, Транслит);
+EndFunction
+
+Function СоздатьЧерновикЗаявкиFBO(Val IDКлиента, Val КлючAPI, Val Кластеры, Val Позиции, Val ТипПоставки = "CREATE_TYPE_DIRECT", Val ТочкаОтгрузки = "") Export
+	Return CreateFBODraft(IDКлиента, КлючAPI, Кластеры, Позиции, ТипПоставки, ТочкаОтгрузки);
+EndFunction
+
+Function ПолучитьЧерновикЗаявкиFBO(Val IDКлиента, Val КлючAPI, Val IDОперации) Export
+	Return GetFBODraft(IDКлиента, КлючAPI, IDОперации);
+EndFunction
+
+Function ПолучитьТаймслотыFBO(Val IDКлиента, Val КлючAPI, Val ДатаОт, Val ДатаПо, Val Черновик, Val Склады) Export
+	Return GetFBOTimeslots(IDКлиента, КлючAPI, ДатаОт, ДатаПо, Черновик, Склады);
+EndFunction
+
+Function ПолучитьСтруктуруДопПолейОтправления(Val Пустая = False) Export
+	Return GetShipmentAdditionalFields(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраОтправлений(Val Пустая = False) Export
+	Return GetShipmentsFilterStructure(Пустая);
+EndFunction
+
+#EndRegion
