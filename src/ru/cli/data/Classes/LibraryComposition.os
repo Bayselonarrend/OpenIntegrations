@@ -1,4 +1,4 @@
-﻿#Использовать "./internal"
+#Использовать "./internal"
 
 Перем СоответствиеКомандМодулей;
 Перем Версия;
@@ -163,3 +163,28 @@
                 И Не ИмяПараметра = "Параметр_out";
 
 КонецФункции
+
+
+#Region Alternate
+
+Function GetVersion() Export
+	Return ПолучитьВерсию();
+EndFunction
+
+Function GetCommandModuleMapping() Export
+	Return ПолучитьСоответствиеКомандМодулей();
+EndFunction
+
+Function GetComposition(Val Command) Export
+	Return ПолучитьСостав(Command);
+EndFunction
+
+Function GetFullComposition() Export
+	Return ПолучитьПолныйСостав();
+EndFunction
+
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
+	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method);
+EndFunction
+
+#EndRegion
