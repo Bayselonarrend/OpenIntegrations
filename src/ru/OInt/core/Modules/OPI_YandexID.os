@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_YandexID.os
+﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
 // Lib: Yandex ID
 // CLI: yandex
 
@@ -130,60 +130,3 @@
 КонецФункции
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function GetConfirmationCode(Val ClientId) Export
-	Return ПолучитьКодПодтверждения(ClientId);
-EndFunction
-
-Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
-	Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
-EndFunction
-
-Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
-EndFunction
-
-Function GetAuthorizationHeader(Val Token) Export
-	Return ПолучитьЗаголовокАвторизации(Token);
-EndFunction
-
-#EndRegion
-
-#Region Alternate
-
-Function GetConfirmationCode(Val ClientId) Export
-	Return ПолучитьКодПодтверждения(ClientId);
-EndFunction
-
-Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
-	Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
-EndFunction
-
-Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
-EndFunction
-
-Function GetAuthorizationHeader(Val Token) Export
-	Return ПолучитьЗаголовокАвторизации(Token);
-EndFunction
-
-Function ПолучитьКодПодтверждения(Val ClientId) Export
-	Return GetConfirmationCode(ClientId);
-EndFunction
-
-Function ПреобразоватьКодВТокен(Val ClientId, Val ClientSecret, Val КодУстройства) Export
-	Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
-EndFunction
-
-Function ОбновитьТокен(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return RefreshToken(ClientId, ClientSecret, RefreshToken);
-EndFunction
-
-Function ПолучитьЗаголовокАвторизации(Val Токен) Export
-	Return GetAuthorizationHeader(Токен);
-EndFunction
-
-#EndRegion

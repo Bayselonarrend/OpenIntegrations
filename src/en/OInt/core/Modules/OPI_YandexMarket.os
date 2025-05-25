@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_YandexMarket.os
+﻿// OneScript: ./OInt/core/Modules/OPI_YandexMarket.os
 // Lib: Yandex Market
 // CLI: yamarket
 
@@ -424,111 +424,6 @@ Function CreateRequestHeaders(Val Token)
     Headers.Insert("Api-Key", Token);
     Return Headers;
 
-EndFunction
-
-#EndRegion
-
-
-#Region Alternate
-
-Function ПолучитьСписокМагазинов(Val Токен, Val Страница = 1) Export
-	Return GetMarketsList(Токен, Страница);
-EndFunction
-
-Function ПолучитьМагазин(Val Токен, Val IDМагазина) Export
-	Return GetMarket(Токен, IDМагазина);
-EndFunction
-
-Function ПолучитьНастройкиКабинета(Val Токен, Val IDКабинета) Export
-	Return GetBusinessSettings(Токен, IDКабинета);
-EndFunction
-
-Function ПолучитьНастройкиМагазина(Val Токен, Val IDМагазина) Export
-	Return GetCampaignSettings(Токен, IDМагазина);
-EndFunction
-
-Function ДобавитьОбновитьТовары(Val Токен, Val IDКабинета, Val МассивТоваров, Val СвоиИзображения = False) Export
-	Return AddUpdateProducts(Токен, IDКабинета, МассивТоваров, СвоиИзображения);
-EndFunction
-
-Function ПолучитьТоварыМагазина(Val Токен, Val IDМагазина, Val Фильтры = "", Val ТокенСтраницы = "") Export
-	Return GetCampaignProducts(Токен, IDМагазина, Фильтры, ТокенСтраницы);
-EndFunction
-
-Function ПолучитьТоварыКабинета(Val Токен, Val IDКабинета, Val Фильтры = "", Val ТокенСтраницы = "") Export
-	Return GetBusinessProducts(Токен, IDКабинета, Фильтры, ТокенСтраницы);
-EndFunction
-
-Function ПолучитьСтруктуруТовара(Val Пустая = False) Export
-	Return GetProductStructure(Пустая);
-EndFunction
-
-#EndRegion
-
-#Region Alternate
-
-Function ПолучитьСписокМагазинов(Val Токен, Val Страница = 1) Export
-	Return GetMarketsList(Токен, Страница);
-EndFunction
-
-Function ПолучитьМагазин(Val Токен, Val IDМагазина) Export
-	Return GetMarket(Токен, IDМагазина);
-EndFunction
-
-Function ПолучитьНастройкиКабинета(Val Токен, Val IDКабинета) Export
-	Return GetBusinessSettings(Токен, IDКабинета);
-EndFunction
-
-Function ПолучитьНастройкиМагазина(Val Токен, Val IDМагазина) Export
-	Return GetCampaignSettings(Токен, IDМагазина);
-EndFunction
-
-Function ДобавитьОбновитьТовары(Val Токен, Val IDКабинета, Val МассивТоваров, Val СвоиИзображения = False) Export
-	Return AddUpdateProducts(Токен, IDКабинета, МассивТоваров, СвоиИзображения);
-EndFunction
-
-Function ПолучитьТоварыМагазина(Val Токен, Val IDМагазина, Val Фильтры = "", Val ТокенСтраницы = "") Export
-	Return GetCampaignProducts(Токен, IDМагазина, Фильтры, ТокенСтраницы);
-EndFunction
-
-Function ПолучитьТоварыКабинета(Val Токен, Val IDКабинета, Val Фильтры = "", Val ТокенСтраницы = "") Export
-	Return GetBusinessProducts(Токен, IDКабинета, Фильтры, ТокенСтраницы);
-EndFunction
-
-Function ПолучитьСтруктуруТовара(Val Пустая = False) Export
-	Return GetProductStructure(Пустая);
-EndFunction
-
-Function GetMarketsList(Val Token, Val Page = 1) Export
-	Return ПолучитьСписокМагазинов(Token, Page);
-EndFunction
-
-Function GetMarket(Val Token, Val CampaignID) Export
-	Return ПолучитьМагазин(Token, CampaignID);
-EndFunction
-
-Function GetBusinessSettings(Val Token, Val AccountID) Export
-	Return ПолучитьНастройкиКабинета(Token, AccountID);
-EndFunction
-
-Function GetCampaignSettings(Val Token, Val CampaignID) Export
-	Return ПолучитьНастройкиМагазина(Token, CampaignID);
-EndFunction
-
-Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnImages = False) Export
-	Return ДобавитьОбновитьТовары(Token, AccountID, ProductsArray, OwnImages);
-EndFunction
-
-Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val PageToken = "") Export
-	Return ПолучитьТоварыМагазина(Token, CampaignID, Filters, PageToken);
-EndFunction
-
-Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export
-	Return ПолучитьТоварыКабинета(Token, AccountID, Filters, PageToken);
-EndFunction
-
-Function GetProductStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруТовара(Clear);
 EndFunction
 
 #EndRegion
