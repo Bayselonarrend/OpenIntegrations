@@ -1,0 +1,125 @@
+﻿---
+sidebar_position: 3
+description: Получить заявку на вызов курьера и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить заявку на вызов курьера
+ Получает заявку на вызов курьера по UUID
+
+
+
+`Функция ПолучитьЗаявкуНаВызовКурьера(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | UUID | --uuid | Строка | &#x2714; | UUID заявки |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Заявка должна быть предварительно создана. См. СоздатьЗаявкуНаВызовКурьера
+
+Метод в документации API: [Информация о заявке](https://api-docs.cdek.ru/29948360.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NDc3NzYzMjQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "72753031-ef46-4e94-8c76-9f7f58dad530";
+
+    Результат = OPI_CDEK.ПолучитьЗаявкуНаВызовКурьера(Токен, UUID, Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek ПолучитьЗаявкуНаВызовКурьера \
+              --token "***" \
+              --uuid "72753031-e7d6-4c9d-81e5-cde93633ed82" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek ПолучитьЗаявкуНаВызовКурьера ^
+              --token "***" ^
+              --uuid "72753031-e7d6-4c9d-81e5-cde93633ed82" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "entity": {
+  "uuid": "72753031-4b12-4b4f-ae6b-388db53199a9",
+  "intake_date": "2024-10-22",
+  "intake_time_from": "10:00",
+  "intake_time_to": "17:00",
+  "name": "Консолидированный груз",
+  "weight": 1000,
+  "length": 10,
+  "width": 10,
+  "height": 10,
+  "comment": "Комментарий курьеру",
+  "sender": {
+   "company": "Компания",
+   "name": "Иванов Иван",
+   "phones": [
+    {
+     "number": "+79589441654"
+    }
+   ],
+   "passport_requirements_satisfied": false
+  },
+  "from_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "kladr_code": "7700000000000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "sub_region": "Москва",
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "ул. Блюхера, 32"
+  },
+  "need_call": false,
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-21T20:42:31+03:00"
+   }
+  ],
+  "contragent_uuid": "ed75ecf4-30ed-4153-afe9-eb80bb512f22"
+ },
+ "requests": [
+  {
+   "request_uuid": "0b726355-bbe5-4b52-9972-c66e4ee3f457",
+   "type": "CREATE",
+   "date_time": "2024-10-21T20:42:31+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

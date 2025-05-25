@@ -1,0 +1,63 @@
+﻿---
+sidebar_position: 4
+description: Удалить объект и другие функции для работы с Yandex Disk в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Disk]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить объект
+ Удаляет объект по заданному пути
+
+
+
+`Функция УдалитьОбъект(Знач Токен, Знач Путь, Знач ВКорзину = Истина) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Путь | --path | Строка | &#x2714; | Путь к удаляемой папке или файлу |
+  | ВКорзину | --can | Булево | &#x2716; | В корзину |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Путь  = "/74281cd6-b81c-412a-8ae1-d9a101c7733c.png";
+
+    Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint yadisk УдалитьОбъект \
+              --token "***" \
+              --path "/8b67a175-402e-4e22-ba8b-5d9da851d0d6.png" \
+              --can false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk УдалитьОбъект ^
+              --token "***" ^
+              --path "/8b67a175-402e-4e22-ba8b-5d9da851d0d6.png" ^
+              --can false
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+null
+```

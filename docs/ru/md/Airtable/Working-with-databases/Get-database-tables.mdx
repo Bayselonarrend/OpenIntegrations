@@ -1,0 +1,90 @@
+﻿---
+sidebar_position: 2
+description: Получить таблицы базы и другие функции для работы с Airtable в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Airtable]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить таблицы базы
+ Получает схему таблиц базы
+
+
+
+`Функция ПолучитьТаблицыБазы(Знач Токен, Знач База) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | База | --base | Строка | &#x2714; | Идентификатор базы |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База  = "app7HgN8N8JXk96nj";
+
+    Результат = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable ПолучитьТаблицыБазы \
+              --token "***" \
+              --base "appPli0MOZzZfk9cC"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьТаблицыБазы ^
+              --token "***" ^
+              --base "appPli0MOZzZfk9cC"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "tables": [
+  {
+   "id": "tblPK7iM6QVCGbral",
+   "name": "Тестовая таблица",
+   "primaryFieldId": "fldiLeIBGEKLvCGHn",
+   "fields": [
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldiLeIBGEKLvCGHn",
+     "name": "Номер"
+    },
+    {
+     "type": "richText",
+     "id": "flduxcmTlD7hCz9ZS",
+     "name": "Строковое"
+    }
+   ],
+   "views": [
+    {
+     "id": "viw5lk0HjJwqDX1vM",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  }
+ ]
+}
+```

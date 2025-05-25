@@ -1,0 +1,126 @@
+﻿---
+sidebar_position: 15
+description: Получить список версий объектов и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список версий объектов
+ Получает список всех версий объектов в выбранном бакете
+
+
+
+`Функция ПолучитьСписокВерсийОбъектов(Знач Бакет, Знач ОсновныеДанные, Знач Префикс = "", Знач Версия = "", Знач Заголовки = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Бакет | --bucket | Строка | &#x2714; | Наименование бакета |
+  | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | Префикс | --prefix | Строка | &#x2716; | Отбор по префиксу, если необходимо |
+  | Версия | --ver | Строка | &#x2716; | ID версии начала списка |
+  | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+
+<br/>
+
+:::tip
+Метод в документации AWS: [ListObjectVersions](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Бакет     = "opi-gpbucket3";
+    Префикс   = "pic";
+    Результат = OPI_S3.ПолучитьСписокВерсийОбъектов(Бакет, ОсновныеДанные, Префикс);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокВерсийОбъектов \
+              --url "storage-155.s3hoster.by" \
+              --access "BRN5RKJE67YCVDZRRQVI" \
+              --secret "***" \
+              --region "BTC" \
+              --bucket "opi-gpbucket3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --prefix "pic"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокВерсийОбъектов ^
+              --url "storage-155.s3hoster.by" ^
+              --access "BRN5RKJE67YCVDZRRQVI" ^
+              --secret "***" ^
+              --region "BTC" ^
+              --bucket "opi-gpbucket3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --prefix "pic"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status": 200,
+ "response": {
+  "ListVersionsResult": {
+   "Name": "opi-gpbucket3",
+   "Prefix": "pic",
+   "KeyMarker": {},
+   "NextVersionIdMarker": {},
+   "VersionIdMarker": {},
+   "MaxKeys": "250",
+   "IsTruncated": "false",
+   "Version": {
+    "Key": "picture.jpg",
+    "LastModified": "2024-11-22T09:34:54.938Z",
+    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
+    "Size": "2114023",
+    "Owner": {
+     "ID": "02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4",
+     "DisplayName": "minio"
+    },
+    "StorageClass": "STANDARD",
+    "IsLatest": "true",
+    "VersionId": "null"
+   }
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "707",
+  "Content-Type": "application/xml",
+  "Date": "Fri, 22 Nov 2024 09:35:15 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "180A40AC6721A0DD",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```

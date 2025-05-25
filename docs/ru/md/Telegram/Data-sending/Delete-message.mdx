@@ -1,0 +1,71 @@
+﻿---
+sidebar_position: 12
+description: Удалить сообщение и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить сообщение
+ Удаляет указанное сообщение из чата или канала
+
+
+
+`Функция УдалитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID целевого чата |
+  | IDСообщения | --message | Строка, Число | &#x2714; | ID удаляемого сообщения |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDЧата      = "@testsichee";
+    IDСообщения = "17253";
+
+    Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram УдалитьСообщение \
+              --token "***" \
+              --chat "@testsichee" \
+              --message "17274"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram УдалитьСообщение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --message "17274"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": true
+}
+```

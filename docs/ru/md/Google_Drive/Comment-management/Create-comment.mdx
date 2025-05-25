@@ -1,0 +1,79 @@
+﻿---
+sidebar_position: 1
+description: Создать комментарий и другие функции для работы с Google Drive в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Drive]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать комментарий
+ Создает комментарий к файлу или каталогу
+
+
+
+`Функция СоздатьКомментарий(Знач Токен, Знач Идентификатор, Знач Комментарий) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Идентификатор | --object | Строка | &#x2714; | Идентификатор объекта, для которого необходим комментарий |
+  | Комментарий | --text | Строка | &#x2714; | Текст комментария |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен         = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Идентификатор = "1jnYtECZqTZpHN3SBvNxTvytyYwAk6q8d";
+    Комментарий   = "Текст комментария";
+
+    Результат = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gdrive СоздатьКомментарий \
+              --token "***" \
+              --object "1qeTJLS5KHGkaYv9xLRn8QIp9degd4iap" \
+              --text "Текст комментария"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive СоздатьКомментарий ^
+              --token "***" ^
+              --object "1qeTJLS5KHGkaYv9xLRn8QIp9degd4iap" ^
+              --text "Текст комментария"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "id": "AAABW19Pq0I",
+ "kind": "drive#comment",
+ "createdTime": "2024-10-08T17:42:33.807Z",
+ "modifiedTime": "2024-10-08T17:42:33.807Z",
+ "replies": [],
+ "author": {
+  "displayName": "Антон Титовец",
+  "kind": "drive#user",
+  "me": true,
+  "photoLink": "//lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s50-c-k-no"
+ },
+ "deleted": false,
+ "htmlContent": "Текст комментария",
+ "content": "Текст комментария"
+}
+```

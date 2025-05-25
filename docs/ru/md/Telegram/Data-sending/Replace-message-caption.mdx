@@ -1,0 +1,131 @@
+﻿---
+sidebar_position: 15
+description: Заменить описание сообщения и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Заменить описание сообщения
+ Заменяет текст в сообщении с вложениями
+
+
+
+`Функция ЗаменитьОписаниеСообщения(Знач Токен, Знач IDЧата, Знач IDСообщения, Знач Описание, Знач Разметка = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID целевого чата |
+  | IDСообщения | --message | Строка, Число | &#x2714; | ID удаляемого сообщения |
+  | Описание | --caption | Строка | &#x2714; | Новое описание сообщения |
+  | Разметка | --parsemode | Строка | &#x2716; | Вид обработки текста (HTML, Markdown, MarkdownV2) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [editMessageCaption](https://core.telegram.org/bots/api#editmessagecaption)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDЧата      = "461699897";
+    IDСообщения = "13743";
+
+    Описание  = "Новое описание картинки";
+    Результат = OPI_Telegram.ЗаменитьОписаниеСообщения(Токен, IDЧата, IDСообщения, Описание);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ЗаменитьОписаниеСообщения \
+              --token "***" \
+              --chat "461699897" \
+              --message "13757" \
+              --caption "Новое описание картинки"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ЗаменитьОписаниеСообщения ^
+              --token "***" ^
+              --chat "461699897" ^
+              --message "13757" ^
+              --caption "Новое описание картинки"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "message_id": 11414,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1737051880,
+  "edit_date": 1737051892,
+  "photo": [
+   {
+    "file_id": "AgACAgIAAxkDAAIrBWdz-63HiyuuYGJK5nyqPoP6ZZ-0AAJz6DEbE_WgS78HisbQ9AQ_AQADAgADcwADNgQ",
+    "file_unique_id": "AQADc-gxGxP1oEt4",
+    "file_size": 1568,
+    "width": 90,
+    "height": 67
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIrBWdz-63HiyuuYGJK5nyqPoP6ZZ-0AAJz6DEbE_WgS78HisbQ9AQ_AQADAgADbQADNgQ",
+    "file_unique_id": "AQADc-gxGxP1oEty",
+    "file_size": 21633,
+    "width": 320,
+    "height": 240
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIrBWdz-63HiyuuYGJK5nyqPoP6ZZ-0AAJz6DEbE_WgS78HisbQ9AQ_AQADAgADeAADNgQ",
+    "file_unique_id": "AQADc-gxGxP1oEt9",
+    "file_size": 99260,
+    "width": 800,
+    "height": 600
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIrBWdz-63HiyuuYGJK5nyqPoP6ZZ-0AAJz6DEbE_WgS78HisbQ9AQ_AQADAgADeQADNgQ",
+    "file_unique_id": "AQADc-gxGxP1oEt-",
+    "file_size": 218651,
+    "width": 1280,
+    "height": 960
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIrBWdz-63HiyuuYGJK5nyqPoP6ZZ-0AAJz6DEbE_WgS78HisbQ9AQ_AQADAgADdwADNgQ",
+    "file_unique_id": "AQADc-gxGxP1oEt8",
+    "file_size": 650214,
+    "width": 2560,
+    "height": 1920
+   }
+  ],
+  "caption": "Новое описание картинки"
+ }
+}
+```

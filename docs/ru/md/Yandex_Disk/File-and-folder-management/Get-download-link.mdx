@@ -1,0 +1,64 @@
+﻿---
+sidebar_position: 6
+description: Получить ссылку для скачивания и другие функции для работы с Yandex Disk в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Disk]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить ссылку для скачивания
+ Получает ссылку для скачивания файла
+
+
+
+`Функция ПолучитьСсылкуДляСкачивания(Знач Токен, Знач Путь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Путь | --path | Строка | &#x2714; | Путь к файлу для скачивания |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Путь  = "/f93811d7-a160-4bbb-aecd-d8a1234cc992.png";
+
+    Результат = OPI_YandexDisk.ПолучитьСсылкуДляСкачивания(Токен, Путь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint yadisk ПолучитьСсылкуДляСкачивания \
+              --token "***" \
+              --path "/d1d292a5-5d6c-4008-bb83-db314098a8bc.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ПолучитьСсылкуДляСкачивания ^
+              --token "***" ^
+              --path "/d1d292a5-5d6c-4008-bb83-db314098a8bc.png"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "href": "https://downloader.disk.yandex.ru/disk/dd238bf4fdd879d13c37dc6b404e14c84ab2186704d640ce6e8213a30318e641/6705a64e/gwThwhLBKYvLhQCNnqAHirWAoEC4dKsPFFzSTeWuFK5ceIUkIDC7fKzI6e0Ic1rFWZAX7ZAMHvmKl9PvgqcSEQ%3D%3D?uid=1573541518&filename=6605347b-a937-40bd-9d48-b1d480048e0d.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "method": "GET",
+ "templated": false
+}
+```

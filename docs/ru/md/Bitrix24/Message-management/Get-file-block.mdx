@@ -1,0 +1,69 @@
+﻿---
+sidebar_position: 9
+description: Получить блок файла и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить блок файла
+ Формирует блок файла для отправки в функции ОтправитьСообщение
+
+
+
+`Функция ПолучитьБлокФайла(Знач Наименование, Знач URL) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Наименование | --title | Строка | &#x2714; | Наименование картинки |
+  | URL | --url | Строка | &#x2714; | URL файла для отправки |
+
+  
+  Возвращаемое значение:   Структура - Блок с файлом
+
+<br/>
+
+:::tip
+Блоки в документации API: [Ссылка](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Наименование = "Картинка";
+    URL          = "https://api.athenaeum.digital/test_data/document.docx";
+
+    Результат = OPI_Bitrix24.ПолучитьБлокФайла(Наименование, URL);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПолучитьБлокФайла \
+              --title "Картинка" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПолучитьБлокФайла ^
+              --title "Картинка" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "FILE": {
+  "NAME": "Картинка",
+  "LINK": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+ }
+}
+```
