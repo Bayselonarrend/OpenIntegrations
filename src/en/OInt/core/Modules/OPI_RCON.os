@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_RCON.os
+﻿// OneScript: ./OInt/core/Modules/OPI_RCON.os
 // Lib: RCON
 // CLI: rcon
 // Keywords: rcon, remote console
@@ -160,62 +160,5 @@ Function IsConnector(Val Value) Export
 EndFunction
 
 #EndRegion
-
-#EndRegion
-
-
-#Region Alternate
-
-Function ОткрытьСоединение(Val ПараметрыСоединения) Export
-	Return CreateConnection(ПараметрыСоединения);
-EndFunction
-
-Function ВыполнитьКоманду(Val Команда, Val Соединение) Export
-	Return ExecuteCommand(Команда, Соединение);
-EndFunction
-
-Function СформироватьПараметрыСоединения(Val URL, Val Пароль, Val ТаймаутЧтения = 30, Val ТаймаутЗаписи = 30) Export
-	Return FormConnectionParameters(URL, Пароль, ТаймаутЧтения, ТаймаутЗаписи);
-EndFunction
-
-Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
-EndFunction
-
-#EndRegion
-
-#Region Alternate
-
-Function ОткрытьСоединение(Val ПараметрыСоединения) Export
-	Return CreateConnection(ПараметрыСоединения);
-EndFunction
-
-Function ВыполнитьКоманду(Val Команда, Val Соединение) Export
-	Return ExecuteCommand(Команда, Соединение);
-EndFunction
-
-Function СформироватьПараметрыСоединения(Val URL, Val Пароль, Val ТаймаутЧтения = 30, Val ТаймаутЗаписи = 30) Export
-	Return FormConnectionParameters(URL, Пароль, ТаймаутЧтения, ТаймаутЗаписи);
-EndFunction
-
-Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
-EndFunction
-
-Function CreateConnection(Val ConnectionParams) Export
-	Return ОткрытьСоединение(ConnectionParams);
-EndFunction
-
-Function ExecuteCommand(Val Command, Val Connection) Export
-	Return ВыполнитьКоманду(Command, Connection);
-EndFunction
-
-Function FormConnectionParameters(Val URL, Val Password, Val ReadTimeout = 30, Val WriteTimeout = 30) Export
-	Return СформироватьПараметрыСоединения(URL, Password, ReadTimeout, WriteTimeout);
-EndFunction
-
-Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
-EndFunction
 
 #EndRegion
