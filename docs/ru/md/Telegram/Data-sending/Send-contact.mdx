@@ -1,0 +1,104 @@
+﻿---
+sidebar_position: 9
+description: Отправить контакт и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отправить контакт
+ Отправляет контакт с именем и номером телефона
+
+
+
+`Функция ОтправитьКонтакт(Знач Токен, Знач IDЧата, Знач Имя, Знач Фамилия, Знач Телефон, Знач Клавиатура = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID целевого чата или IDЧата*IDТемы |
+  | Имя | --name | Строка | &#x2714; | Имя контакта |
+  | Фамилия | --surname | Строка | &#x2714; | Фамилия контакта |
+  | Телефон | --phone | Строка | &#x2714; | Телефон контакта |
+  | Клавиатура | --keyboard | Строка, Структура Из КлючИЗначение | &#x2716; | Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [sendContact](https://core.telegram.org/bots/api#sendcontact)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Имя      = "Петр";
+    Фамилия  = "Петров";
+    Телефон  = "88005553535";
+
+    Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDЧата, Имя, Фамилия, Телефон);
+
+    Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDКанала, Имя, Фамилия, Телефон);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ОтправитьКонтакт \
+              --token "***" \
+              --chat "@testsichee" \
+              --surname "Петров" \
+              --phone "88005553535" \
+              --name "Петр"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьКонтакт ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --surname "Петров" ^
+              --phone "88005553535" ^
+              --name "Петр"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "message_id": 8285,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1728408362,
+  "contact": {
+   "phone_number": "88005553535",
+   "first_name": "Петр",
+   "last_name": "Петров"
+  }
+ }
+}
+```

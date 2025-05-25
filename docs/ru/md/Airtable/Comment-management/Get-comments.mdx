@@ -1,0 +1,84 @@
+﻿---
+sidebar_position: 1
+description: Получить комментарии и другие функции для работы с Airtable в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Airtable]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить комментарии
+ Получает список комментариев к записи в таблице
+
+
+
+`Функция ПолучитьКомментарии(Знач Токен, Знач База, Знач Таблица, Знач Запись, Знач Отступ = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | База | --base | Строка | &#x2714; | Идентификатор базы данных |
+  | Таблица | --table | Строка | &#x2714; | Идентификатор таблицы |
+  | Запись | --record | Строка | &#x2714; | Идентификатор записи в таблице |
+  | Отступ | --offset | Строка | &#x2716; | Иднтификатор следующей страницы данных из предыдущего запроса |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База    = "app7HgN8N8JXk96nj";
+    Таблица = "tblDHsmb8j2zvXWAs";
+    Запись  = "rec34JXPDjEzXX5jo";
+
+    Результат = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable ПолучитьКомментарии \
+              --token "***" \
+              --base "appPli0MOZzZfk9cC" \
+              --table "tblCWdRHnJcWIZttO" \
+              --record "recYUaax0IGErP37T"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьКомментарии ^
+              --token "***" ^
+              --base "appPli0MOZzZfk9cC" ^
+              --table "tblCWdRHnJcWIZttO" ^
+              --record "recYUaax0IGErP37T"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "comments": [
+  {
+   "id": "comtbulEbTtAISgHM",
+   "author": {
+    "id": "usrFlaAHlTfYWAbVW",
+    "email": "bayselonarrend@gmail.com",
+    "name": "Антон Титовец"
+   },
+   "text": "Тестовый комментарий (изм.)",
+   "createdTime": "2024-10-08T17:44:50Z",
+   "lastUpdatedTime": "2024-10-08T17:44:50Z"
+  }
+ ],
+ "offset": null
+}
+```

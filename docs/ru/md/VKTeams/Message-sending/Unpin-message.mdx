@@ -1,0 +1,72 @@
+﻿---
+sidebar_position: 10
+description: Открепить сообщение и другие функции для работы с VKTeams в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VKTeams]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Открепить сообщение
+ Открепляет ранее закрепленное сообщение в чате
+
+
+
+`Функция ОткрепитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chatid | Строка, Число | &#x2714; | ID чата |
+  | IDСообщения | --messageid | Строка, Число | &#x2714; | ID сообщения для открепления |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
+
+<br/>
+
+:::tip
+Для вызова этого метода бот должен быть администратором в чате
+
+Метод в документации API: [GET /chats/unpinMessage](https://teams.vk.com/botapi/#/chats/get_chats_unpinMessage)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен       = "001.3501506236.091...";
+    IDЧата      = "689203963@chat.agent";
+    IDСообщения = "7506621862877606067";
+
+    Результат = OPI_VKTeams.ОткрепитьСообщение(Токен, IDЧата, IDСообщения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams ОткрепитьСообщение \
+              --token "***" \
+              --chatid "689203963@chat.agent" \
+              --messageid "7506644755053293767"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОткрепитьСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --messageid "7506644755053293767"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true
+}
+```

@@ -1,0 +1,73 @@
+﻿---
+sidebar_position: 11
+description: Отклонить заявку на вступление и другие функции для работы с VKTeams в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VKTeams]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отклонить заявку на вступление
+ Отклоняет вступление пользователя в закрытый чат
+
+
+
+`Функция ОтклонитьЗаявкуНаВступление(Знач Токен, Знач IDЧата, Знач IDПользователя = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chatid | Строка, Число | &#x2714; | ID чата |
+  | IDПользователя | --userid | Строка, Число | &#x2716; | ID пользователя. Ответ на все заявки, если не заполнено |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
+
+<br/>
+
+:::tip
+Для вызова этого метода бот должен быть администратором в чате.
+
+Метод в документации API: [GET ​​/chats/resolvePending](https://teams.vk.com/botapi/#/chats/get_chats_resolvePending)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен        = "001.3501506236.091...";
+    IDЧата       = "689203963@chat.agent";
+    Пользователь = 1011987091;
+
+    Результат = OPI_VKTeams.ОтклонитьЗаявкуНаВступление(Токен, IDЧата, Пользователь);
+
+    Результат = OPI_VKTeams.ОтклонитьЗаявкуНаВступление(Токен, IDЧата);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams ОтклонитьЗаявкуНаВступление \
+              --token "***" \
+              --chatid "689203963@chat.agent"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОтклонитьЗаявкуНаВступление ^
+              --token "***" ^
+              --chatid "689203963@chat.agent"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": false,
+ "description": "User is not pending or nobody in pending list"
+}
+```

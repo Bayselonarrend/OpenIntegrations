@@ -1,0 +1,83 @@
+﻿---
+sidebar_position: 3
+description: Написать сообщение и другие функции для работы с VK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Написать сообщение
+ Написать сообщение пользователю в диалоге сообщества
+
+
+
+`Функция НаписатьСообщение(Знач Текст, Знач IDПользователя, Знач Communitytoken, Знач Клавиатура = "", Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Текст | --text | Строка | &#x2714; | Текст сообщения |
+  | IDПользователя | --user | Строка | &#x2714; | ID пользователя адресата |
+  | Communitytoken | --ct | Строка | &#x2714; | Токен бота чата сообщества, котрый можно получить в настройках |
+  | Клавиатура | --keyboard | Строка | &#x2716; | JSON клавиатуры. См.СформироватьКлавиатуру |
+  | Параметры | --auth | Структура из Строка | &#x2716; | JSON авторизации или путь к .json |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыВК();
+
+    Текст          = "Сообщение из автотеста";
+    IDПользователя = "657846756";
+    Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
+
+    МассивКнопок = Новый Массив;
+    МассивКнопок.Добавить("Button 1");
+    МассивКнопок.Добавить("Button 2");
+
+    Клавиатура = OPI_VK.СформироватьКлавиатуру(МассивКнопок);
+    Результат  = OPI_VK.НаписатьСообщение(Текст, IDПользователя, Communitytoken, Клавиатура, Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk НаписатьСообщение \
+              --text "Сообщение из автотеста" \
+              --user "657846756" \
+              --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" \
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk НаписатьСообщение ^
+              --text "Сообщение из автотеста" ^
+              --user "657846756" ^
+              --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" ^
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "response": 561
+}
+```

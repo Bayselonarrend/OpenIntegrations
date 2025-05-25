@@ -1,0 +1,85 @@
+﻿---
+sidebar_position: 3
+description: Покинуть чат и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Покинуть чат
+ Исключает текущего пользователя из чата
+
+
+
+`Функция ПокинутьЧат(Знач URL, Знач IDЧата, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID чата |
+  | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
+
+<br/>
+
+:::tip
+Метод в документации API: [im.chat.leave](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12101)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    IDЧата = "2422";
+
+    Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Токен  = "4dee2c68006e9f06006b12e400000001000...";
+    IDЧата = "2424";
+
+    Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата, Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПокинутьЧат \
+              --url "b24-ar17wx.bitrix24.by" \
+              --chat 2428 \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПокинутьЧат ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --chat 2428 ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true,
+ "time": {
+  "start": 1728409860.62434,
+  "finish": 1728409860.70563,
+  "duration": 0.0812890529632568,
+  "processing": 0.043381929397583,
+  "date_start": "2024-10-08T20:51:00+03:00",
+  "date_finish": "2024-10-08T20:51:00+03:00",
+  "operating_reset_at": 1728410460,
+  "operating": 0
+ }
+}
+```

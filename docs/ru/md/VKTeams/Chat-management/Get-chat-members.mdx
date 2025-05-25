@@ -1,0 +1,80 @@
+﻿---
+sidebar_position: 5
+description: Получить пользователей чата и другие функции для работы с VKTeams в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VKTeams]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить пользователей чата
+ Получает список пользователей чата
+
+
+
+`Функция ПолучитьПользователейЧата(Знач Токен, Знач IDЧата, Знач Курсор = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chatid | Строка, Число | &#x2714; | ID чата |
+  | Курсор | --cursor | Строка | &#x2716; | Маркер продолжения списка из предыдущего запроса |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
+
+<br/>
+
+:::tip
+Метод в документации API: [GET /chats/getMembers](https://teams.vk.com/botapi/#/chats/get_chats_getMembers)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен  = "001.3501506236.091...";
+    IDЧата = "AoLI0egLWBSLR1Ngn2w";
+
+    Результат = OPI_VKTeams.ПолучитьПользователейЧата(Токен, IDЧата);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams ПолучитьПользователейЧата \
+              --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПолучитьПользователейЧата ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "members": [
+  {
+   "admin": true,
+   "userId": "1011893356"
+  },
+  {
+   "creator": true,
+   "userId": "bayselonarrend@openintegrations.bizml.ru"
+  },
+  {
+   "userId": "1011987091"
+  }
+ ],
+ "ok": true
+}
+```

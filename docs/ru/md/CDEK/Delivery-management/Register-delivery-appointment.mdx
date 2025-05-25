@@ -1,0 +1,116 @@
+﻿---
+sidebar_position: 5
+description: Зафиксировать договоренность о доставке и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Зафиксировать договоренность о доставке
+ Фиксирует оговоренные с клиентом дату, время и адрес доставки
+
+
+
+`Функция ЗафиксироватьДоговоренностьОДоставке(Знач Токен, Знач Договоренность, Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | Договоренность | --appt | Структура Из КлючИЗначение | &#x2714; | Описание договоренности. См. ПолучитьОписаниеДоговоренности |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Регистрация договоренности о доставке](https://api-docs.cdek.ru/36981338.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен      = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NDc3NzYzMjQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUIDЗаказа = "db1a3e7c-adbe-4052-81d7-9180ecb1dc11";
+
+    Сутки        = 60 * 60 * 24;
+    ТекущаяДата  = НачалоДня(OPI_Инструменты.ПолучитьТекущуюДату());
+    ДатаДоставки = ТекущаяДата + Сутки * 14;
+
+    Пока ДеньНедели(ДатаДоставки) > 5 Цикл
+        ДатаДоставки = ДатаДоставки + Сутки;
+    КонецЦикла;
+
+    Договоренность = Новый Структура;
+
+    Договоренность.Вставить("cdek_number", "1106207236");
+    Договоренность.Вставить("order_uuid" , UUIDЗаказа);
+    Договоренность.Вставить("date"       , Формат(ДатаДоставки, "ДФ=yyyy-MM-dd"));
+    Договоренность.Вставить("time_from"  , "10:00");
+    Договоренность.Вставить("time_to"    , "17:00");
+    Договоренность.Вставить("comment"    , "Офис группы компаний");
+
+    МестоДоставки = Новый Структура;
+    МестоДоставки.Вставить("code"        , "270");
+    МестоДоставки.Вставить("fias_guid"   , "0c5b2444-70a0-4932-980c-b4dc0d3f02b5");
+    МестоДоставки.Вставить("postal_code" , "109004");
+    МестоДоставки.Вставить("longitude"   , 37.6204);
+    МестоДоставки.Вставить("latitude"    , 55.754);
+    МестоДоставки.Вставить("country_code", "RU");
+    МестоДоставки.Вставить("region"      , "Новосибирск");
+    МестоДоставки.Вставить("sub_region"  , "Новосибирск");
+    МестоДоставки.Вставить("city"        , "Новосибирск");
+    МестоДоставки.Вставить("kladr_code"  , "7700000000000");
+    МестоДоставки.Вставить("address"     , "ул. Блюхера, 33");
+
+    Договоренность.Вставить("to_location", МестоДоставки);
+
+    Результат = OPI_CDEK.ЗафиксироватьДоговоренностьОДоставке(Токен, Договоренность, Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint cdek ЗафиксироватьДоговоренностьОДоставке \
+              --token "***" \
+              --appt "{'cdek_number':'1106207236','order_uuid':'9d6a54a6-9061-48d1-a361-31a547db9035','date':'2025-06-04','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint cdek ЗафиксироватьДоговоренностьОДоставке ^
+              --token "***" ^
+              --appt "{'cdek_number':'1106207236','order_uuid':'9d6a54a6-9061-48d1-a361-31a547db9035','date':'2025-06-04','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "entity": {
+  "uuid": "72753031-6834-4a3e-9dc1-c0e367a9fdf7"
+ },
+ "requests": [
+  {
+   "request_uuid": "e0e62206-50f4-4f8a-9c2b-a970e9a21189",
+   "type": "CREATE",
+   "date_time": "2024-10-21T20:42:32+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

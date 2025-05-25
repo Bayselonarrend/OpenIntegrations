@@ -1,0 +1,143 @@
+﻿---
+sidebar_position: 2
+description: Отправить картинку и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отправить картинку
+ Отправляет картинку в чат или канал
+
+
+
+`Функция ОтправитьКартинку(Знач Токен, Знач IDЧата, Знач Текст, Знач Картинка, Знач Клавиатура = "", Знач Разметка = "Markdown") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID целевого чата или IDЧата*IDТемы |
+  | Текст | --text | Строка | &#x2714; | Текст сообщения |
+  | Картинка | --picture | ДвоичныеДанные, Строка | &#x2714; | Файл картинки |
+  | Клавиатура | --keyboard | Строка, Структура Из КлючИЗначение | &#x2716; | Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок |
+  | Разметка | --parsemode | Строка | &#x2716; | Вид обработки текста (HTML, Markdown, MarkdownV2) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [sendPhoto](https://core.telegram.org/bots/api#sendphoto)
+
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+
+    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
+    КопироватьФайл(Картинка, КартинкаПуть);
+
+    КартинкаДД = Новый ДвоичныеДанные(КартинкаПуть);
+
+    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDЧата, Текст, Картинка);
+
+    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаПуть);
+
+    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаДД);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ОтправитьКартинку \
+              --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --picture "C:\Users\Administrator\AppData\Local\Temp\qkw5m50f00n.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьКартинку ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --picture "C:\Users\Administrator\AppData\Local\Temp\qkw5m50f00n.png"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "message_id": 8276,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1728408218,
+  "photo": [
+   {
+    "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADcwADNgQ",
+    "file_unique_id": "AQAD4-QxG9SO8Et4",
+    "file_size": 1568,
+    "width": 90,
+    "height": 67
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADbQADNgQ",
+    "file_unique_id": "AQAD4-QxG9SO8Ety",
+    "file_size": 21633,
+    "width": 320,
+    "height": 240
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADeAADNgQ",
+    "file_unique_id": "AQAD4-QxG9SO8Et9",
+    "file_size": 99260,
+    "width": 800,
+    "height": 600
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADeQADNgQ",
+    "file_unique_id": "AQAD4-QxG9SO8Et-",
+    "file_size": 218651,
+    "width": 1280,
+    "height": 960
+   },
+   {
+    "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADdwADNgQ",
+    "file_unique_id": "AQAD4-QxG9SO8Et8",
+    "file_size": 650214,
+    "width": 2560,
+    "height": 1920
+   }
+  ],
+  "caption": "Строковое значение"
+ }
+}
+```

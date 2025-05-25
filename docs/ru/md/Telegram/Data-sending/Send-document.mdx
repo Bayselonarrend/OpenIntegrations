@@ -1,0 +1,118 @@
+﻿---
+sidebar_position: 5
+description: Отправить документ и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отправить документ
+ Отправляет документ в чат или канал
+
+
+
+`Функция ОтправитьДокумент(Знач Токен, Знач IDЧата, Знач Текст, Знач Документ, Знач Клавиатура = "", Знач Разметка = "Markdown", Знач ИмяФайла = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chat | Строка,Число | &#x2714; | ID целевого чата или IDЧата*IDТемы |
+  | Текст | --text | Строка | &#x2714; | Текст сообщения |
+  | Документ | --doc | ДвоичныеДанные, Строка | &#x2714; | Файл документа |
+  | Клавиатура | --keyboard | Строка, Структура Из КлючИЗначение | &#x2716; | Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок |
+  | Разметка | --parsemode | Строка | &#x2716; | Вид обработки текста (HTML, Markdown, MarkdownV2) |
+  | ИмяФайла | --filename | Строка | &#x2716; | Отображаемое имя файла c расширением, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [sendDocument](https://core.telegram.org/bots/api#senddocument)
+
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Документ = "https://api.athenaeum.digital/test_data/document.docx";
+
+    ДокументПуть = ПолучитьИмяВременногоФайла("docx");
+    КопироватьФайл(Документ, ДокументПуть);
+
+    ДокументДД = Новый ДвоичныеДанные(ДокументПуть);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ, , , "customname.docx");
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументПуть);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД, , , "customname.docx");
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ОтправитьДокумент \
+              --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --doc "C:\Users\Administrator\AppData\Local\Temp\dtfzs05z2xf.docx" \
+              --filename "custom.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьДокумент ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --doc "C:\Users\Administrator\AppData\Local\Temp\dtfzs05z2xf.docx" ^
+              --filename "custom.docx"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "message_id": 8279,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1728408314,
+  "document": {
+   "file_name": "document.docx",
+   "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+   "file_id": "BQACAgIAAxkDAAIgV2cFavr7Sbt50mNnaTLorEcjT60bAAKLXQAC_cgwSJNNK5mZj9GxNgQ",
+   "file_unique_id": "AgADi10AAv3IMEg",
+   "file_size": 24069
+  },
+  "caption": "Строковое значение"
+ }
+}
+```

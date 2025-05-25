@@ -1,0 +1,102 @@
+﻿---
+sidebar_position: 3
+description: Получить данные файла и другие функции для работы с Slack в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Slack]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить данные файла
+ Получает информацию о файле
+
+
+
+`Функция ПолучитьДанныеФайла(Знач Токен, Знач ИдентификаторФайла) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | ИдентификаторФайла | --fileid | Строка | &#x2714; | Идентификатор файла |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен              = "xoxb-6965308400114-696804637...";
+    ИдентификаторФайла = "F08T2HPN6DC";
+
+    Результат = OPI_Slack.ПолучитьДанныеФайла(Токен, ИдентификаторФайла);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint slack ПолучитьДанныеФайла \
+              --token "***" \
+              --fileid "F08TN0TSD17"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьДанныеФайла ^
+              --token "***" ^
+              --fileid "F08TN0TSD17"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "file": {
+  "id": "F07RMJNEF32",
+  "created": 1728409464,
+  "timestamp": 1728409464,
+  "name": "megadoc.docx",
+  "title": "Новый файл",
+  "mimetype": "",
+  "filetype": "",
+  "pretty_type": "",
+  "user": "U06UG1CAYH2",
+  "user_team": "T06UD92BS3C",
+  "editable": false,
+  "size": 24069,
+  "mode": "hosted",
+  "is_external": false,
+  "external_type": "",
+  "is_public": false,
+  "public_url_shared": false,
+  "display_as_bot": false,
+  "username": "",
+  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F07RMJNEF32/megadoc.docx",
+  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F07RMJNEF32/download/megadoc.docx",
+  "media_display_type": "unknown",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07RMJNEF32/megadoc.docx",
+  "permalink_public": "https://slack-files.com/T06UD92BS3C-F07RMJNEF32-40bbd2cc47",
+  "favorites": [],
+  "is_starred": false,
+  "shares": {},
+  "channels": [],
+  "groups": [],
+  "ims": [],
+  "has_more_shares": false,
+  "has_rich_preview": false,
+  "file_access": "visible",
+  "comments_count": 0
+ },
+ "comments": [],
+ "response_metadata": {
+  "next_cursor": ""
+ }
+}
+```
