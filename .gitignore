@@ -1,4 +1,4 @@
-
+﻿
 .vscode
 OInt/coverage/genericCoverage.xml
 OInt/coverage/coverage.xml
@@ -16,6 +16,7 @@ fakedata.json
 /docs/docusaurus/.docusaurus
 /docs/docusaurus/build
 /docs/docusaurus/docs
+/Melezh
 
 target/
 .idea/
