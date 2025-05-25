@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
 // Lib: Google Workspace
 // CLI: google
 
@@ -240,6 +240,31 @@ Function GetPermissionsList(Calendar, Drive, Sheets)
 
     Return StrConcat(PermissionsArray, " ");
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
+	Return FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
+EndFunction
+
+Function ПолучитьТокенПоКоду(Val ClientID, Val ClientSecret, Val Code) Export
+	Return GetTokenByCode(ClientID, ClientSecret, Code);
+EndFunction
+
+Function ОбновитьТокен(Val ClientID, Val ClientSecret, Val RefreshToken) Export
+	Return RefreshToken(ClientID, ClientSecret, RefreshToken);
+EndFunction
+
+Function ПолучитьТокенServiceАккаунта(Val Данные, Val ОбластиДействия, Val ВремяЖизни = 3600) Export
+	Return GetServiceAccountToken(Данные, ОбластиДействия, ВремяЖизни);
+EndFunction
+
+Function ПолучитьЗаголовокАвторизации(Val Токен) Export
+	Return GetAuthorizationHeader(Токен);
 EndFunction
 
 #EndRegion

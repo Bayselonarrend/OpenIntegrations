@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_S3.os
+// OneScript: ./OInt/core/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
@@ -1927,5 +1927,138 @@ Procedure FillObjectURL(BasicData, Name, Bucket, Version = "")
 EndProcedure
 
 #EndRegion
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьСтруктуруДанных(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
+	Return GetBasicDataStructure(URL, AccessKey, SecretKey, Region, Service);
+EndFunction
+
+Function ОтправитьЗапросБезТела(Val Метод, Val ОсновныеДанные, Val ОжидаютсяДвоичные = False, Val Заголовки = Undefined) Export
+	Return SendRequestWithoutBody(Метод, ОсновныеДанные, ОжидаютсяДвоичные, Заголовки);
+EndFunction
+
+Function ОтправитьЗапросСТелом(Val Метод, Val ОсновныеДанные, Val Тело, Val ОжидаютсяДвоичные = False, Val Заголовки = Undefined) Export
+	Return SendRequestWithBody(Метод, ОсновныеДанные, Тело, ОжидаютсяДвоичные, Заголовки);
+EndFunction
+
+Function СоздатьБакет(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return CreateBucket(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function УдалитьБакет(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return DeleteBucket(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function ПроверитьДоступностьБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val IDАккаунта = "", Val Заголовки = Undefined) Export
+	Return HeadBucket(Наименование, ОсновныеДанные, Каталог, IDАккаунта, Заголовки);
+EndFunction
+
+Function УстановитьШифрованиеБакета(Val Наименование, Val ОсновныеДанные, Val XMLКонфигурация, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return PutBucketEncryption(Наименование, ОсновныеДанные, XMLКонфигурация, Каталог, Заголовки);
+EndFunction
+
+Function ПолучитьШифрованиеБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return GetBucketEncryption(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function УдалитьШифрованиеБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return DeleteBucketEncryption(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function УстановитьТегиБакета(Val Наименование, Val ОсновныеДанные, Val Теги, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return PutBucketTagging(Наименование, ОсновныеДанные, Теги, Каталог, Заголовки);
+EndFunction
+
+Function ПолучитьТегиБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return GetBucketTagging(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function УдалитьТегиБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return DeleteBucketTagging(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function УстановитьНастройкиВерсионированияБакета(Val Наименование, Val ОсновныеДанные, Val Статус = Undefined, Val УдалениеMFA = Undefined, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return PutBucketVersioning(Наименование, ОсновныеДанные, Статус, УдалениеMFA, Каталог, Заголовки);
+EndFunction
+
+Function ПолучитьНастройкийВерсионированияБакета(Val Наименование, Val ОсновныеДанные, Val Каталог = False, Val Заголовки = Undefined) Export
+	Return GetBucketVersioning(Наименование, ОсновныеДанные, Каталог, Заголовки);
+EndFunction
+
+Function ПолучитьСписокБакетов(Val ОсновныеДанные, Val Префикс = "", Val Регион = "", Val ТокенСтраницы = "", Val Заголовки = Undefined) Export
+	Return ListBuckets(ОсновныеДанные, Префикс, Регион, ТокенСтраницы, Заголовки);
+EndFunction
+
+Function ЗагрузитьОбъект(Val Наименование, Val Бакет, Val Содержимое, Val ОсновныеДанные, Val Заголовки = Undefined) Export
+	Return PutObject(Наименование, Бакет, Содержимое, ОсновныеДанные, Заголовки);
+EndFunction
+
+Function ЗагрузитьОбъектЦеликом(Val Наименование, Val Бакет, Val Содержимое, Val ОсновныеДанные, Val Заголовки = Undefined) Export
+	Return UploadFullObject(Наименование, Бакет, Содержимое, ОсновныеДанные, Заголовки);
+EndFunction
+
+Function ИнициализироватьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Заголовки = Undefined) Export
+	Return InitPartsUpload(Наименование, Бакет, ОсновныеДанные, Заголовки);
+EndFunction
+
+Function ЗагрузитьЧастьОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val НомерЧасти, Val Данные) Export
+	Return UploadObjectPart(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, НомерЧасти, Данные);
+EndFunction
+
+Function ЗавершитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val МассивТегов, Val Заголовки = Undefined) Export
+	Return FinishPartsUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, МассивТегов, Заголовки);
+EndFunction
+
+Function ОтменитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val Заголовки = Undefined) Export
+	Return AbortMultipartUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, Заголовки);
+EndFunction
+
+Function ПолучитьОписаниеОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined) Export
+	Return HeadObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+EndFunction
+
+Function ПолучитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined, Val ПутьСохранения = "") Export
+	Return GetObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, ПутьСохранения);
+EndFunction
+
+Function УдалитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined) Export
+	Return DeleteObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+EndFunction
+
+Function КопироватьОбъект(Val ПутьИсточник, Val БакетИсточник, Val ПутьПриемник, Val БакетПриемник, Val ОсновныеДанные, Val Заголовки = Undefined) Export
+	Return CopyObject(ПутьИсточник, БакетИсточник, ПутьПриемник, БакетПриемник, ОсновныеДанные, Заголовки);
+EndFunction
+
+Function УстановитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Теги, Val Заголовки = Undefined) Export
+	Return PutObjectTagging(Наименование, Бакет, ОсновныеДанные, Теги, Заголовки);
+EndFunction
+
+Function ПолучитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined) Export
+	Return GetObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+EndFunction
+
+Function УдалитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined) Export
+	Return DeleteObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+EndFunction
+
+Function ПолучитьСписокОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val ТокенСтраницы = "", Val Заголовки = Undefined) Export
+	Return ListObjects(Бакет, ОсновныеДанные, Префикс, ТокенСтраницы, Заголовки);
+EndFunction
+
+Function ПолучитьСписокВерсийОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val Версия = "", Val Заголовки = Undefined) Export
+	Return ListObjectVersions(Бакет, ОсновныеДанные, Префикс, Версия, Заголовки);
+EndFunction
+
+Function ПолучитьСсылкуСкачиванияОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined) Export
+	Return GetObjectDownloadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки);
+EndFunction
+
+Function ПолучитьСсылкуЗагрузкиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined) Export
+	Return GetObjectUploadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки);
+EndFunction
 
 #EndRegion
