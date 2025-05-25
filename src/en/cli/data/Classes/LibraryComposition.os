@@ -188,9 +188,3 @@ Function СформироватьСтрокуВызоваМетода(Val Пер
 EndFunction
 
 #EndRegion
-
-#Region Alternate
-
-
-
-#EndRegion
