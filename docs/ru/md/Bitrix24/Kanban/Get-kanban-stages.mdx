@@ -1,0 +1,220 @@
+﻿---
+sidebar_position: 4
+description: Получить стадии канбана и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить стадии канбана
+ Получает информацию о стадиях Канбана или Моего плана
+
+
+
+`Функция ПолучитьСтадииКанбана(Знач URL, Знач IDСущности = 0, Знач КакАдминистратор = Ложь, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | IDСущности | --entityid | Строка, Число | &#x2716; | ID группы или пользователя владельца канбан. Свой по умолчанию |
+  | КакАдминистратор | --admin | Булево | &#x2716; | Позволяет получать стадии без проверки прав (для администраторов) |
+  | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
+
+<br/>
+
+:::tip
+Метод в документации API: [task.stages.get](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+
+    Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , Истина);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "4dee2c68006e9f06006b12e400000001000...";
+
+    Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , , Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПолучитьСтадииКанбана \
+              --url "b24-ar17wx.bitrix24.by" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПолучитьСтадииКанбана ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": {
+  "142": {
+   "ID": "142",
+   "TITLE": "Новое имя стадии стадии",
+   "SORT": "100",
+   "COLOR": "000000",
+   "SYSTEM_TYPE": "NEW",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "20": {
+   "ID": "20",
+   "TITLE": "Новая стадия",
+   "SORT": "200",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "24": {
+   "ID": "24",
+   "TITLE": "Название",
+   "SORT": "300",
+   "COLOR": "75d900",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "16": {
+   "ID": "16",
+   "TITLE": "Новая стадия",
+   "SORT": "400",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "18": {
+   "ID": "18",
+   "TITLE": "Новая стадия 2",
+   "SORT": "500",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "12": {
+   "ID": "12",
+   "TITLE": "Новая стадия",
+   "SORT": "600",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "14": {
+   "ID": "14",
+   "TITLE": "Новая стадия 2",
+   "SORT": "700",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "8": {
+   "ID": "8",
+   "TITLE": "Новая стадия",
+   "SORT": "800",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "10": {
+   "ID": "10",
+   "TITLE": "Новая стадия 2",
+   "SORT": "900",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "6": {
+   "ID": "6",
+   "TITLE": "Новая стадия",
+   "SORT": "1000",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "836": {
+   "ID": "836",
+   "TITLE": "Новая стадия",
+   "SORT": "1100",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "838": {
+   "ID": "838",
+   "TITLE": "Новая стадия 2",
+   "SORT": "1200",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "720": {
+   "ID": "720",
+   "TITLE": "Новая стадия",
+   "SORT": "1300",
+...
+```

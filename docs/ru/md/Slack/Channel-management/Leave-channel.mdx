@@ -1,0 +1,62 @@
+﻿---
+sidebar_position: 10
+description: Покинуть канал и другие функции для работы с Slack в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Slack]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Покинуть канал
+ Удаляет текущего бота из канала
+
+
+
+`Функция ПокинутьКанал(Знач Токен, Знач Канал) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | Канал | --channel | Строка | &#x2714; | ID канала |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "xoxb-6965308400114-696804637...";
+    Канал = "C08TMMCHZGR";
+
+    Результат = OPI_Slack.ПокинутьКанал(Токен, Канал);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint slack ПокинутьКанал \
+              --token "***" \
+              --channel "C08T2SPTLS2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПокинутьКанал ^
+              --token "***" ^
+              --channel "C08T2SPTLS2"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true
+}
+```

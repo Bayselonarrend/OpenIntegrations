@@ -1,0 +1,77 @@
+﻿---
+sidebar_position: 3
+description: Копировать лист и другие функции для работы с Google Sheets в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Sheets]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Копировать лист
+ Копирует лист из одной книги в другую
+
+
+
+`Функция КопироватьЛист(Знач Токен, Знач Откуда, Знач Куда, Знач Лист) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Откуда | --from | Строка | &#x2714; | ID книги источника |
+  | Куда | --to | Строка | &#x2714; | ID книги приемника |
+  | Лист | --sheet | Строка | &#x2714; | ID копируемого листа |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен  = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Откуда = "15pyer8RapTluc4feiD8_y1P42RVoDG5xBDly6IPC-OE";
+    Куда   = "1XwySCwIIO7fVoyIIj2pG72Q07HYRLhZMMqyAIIupddc";
+    Лист   = "48778352";
+
+    Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gsheets КопироватьЛист \
+              --token "***" \
+              --from "1hYlTmMRqC7F694eP-WfXZOTZcOU_aVnhUBRUumpVOdM" \
+              --to "1lkMMhrJWuLNYEr-BeO7yL3ssaOoZiktbA-_tKctPnWw" \
+              --sheet "1714714301"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets КопироватьЛист ^
+              --token "***" ^
+              --from "1hYlTmMRqC7F694eP-WfXZOTZcOU_aVnhUBRUumpVOdM" ^
+              --to "1lkMMhrJWuLNYEr-BeO7yL3ssaOoZiktbA-_tKctPnWw" ^
+              --sheet "1714714301"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "sheetId": 2030603781,
+ "title": "Лист1 (копия)",
+ "index": 2,
+ "sheetType": "GRID",
+ "gridProperties": {
+  "rowCount": 1000,
+  "columnCount": 26
+ }
+}
+```

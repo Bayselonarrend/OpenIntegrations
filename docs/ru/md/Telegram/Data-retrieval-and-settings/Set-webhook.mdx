@@ -1,0 +1,68 @@
+﻿---
+sidebar_position: 3
+description: Установить Webhook и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Установить Webhook
+ Устанавливает URL обработчика событий бота для работы в режиме Webhook
+
+
+
+`Функция УстановитьWebhook(Знач Токен, Знач URL) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | URL | --url | Строка | &#x2714; | Адрес обработки запросов от Telegram (с https:) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "6129457865:AAFyzNYOAFbu...";
+    URL   = "https://api.athenaeum.digital/opi/hs/twitter";
+
+    Результат = OPI_Telegram.УстановитьWebhook(Токен, URL);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram УстановитьWebhook \
+              --token "***" \
+              --url "https://api.athenaeum.digital/opi/hs/twitter"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram УстановитьWebhook ^
+              --token "***" ^
+              --url "https://api.athenaeum.digital/opi/hs/twitter"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": true,
+ "description": "Webhook was set"
+}
+```

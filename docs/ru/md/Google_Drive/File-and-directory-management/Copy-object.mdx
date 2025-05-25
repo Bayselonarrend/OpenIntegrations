@@ -1,0 +1,73 @@
+﻿---
+sidebar_position: 7
+description: Скоприровать объект и другие функции для работы с Google Drive в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Drive]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Скоприровать объект
+ Копирует файл или каталог
+
+
+
+`Функция СкопироватьОбъект(Знач Токен, Знач Идентификатор, Знач НовоеИмя = "", Знач НовыйРодитель = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Идентификатор | --object | Строка | &#x2714; | Идентификатор объекта |
+  | НовоеИмя | --title | Строка | &#x2716; | Новое имя объекта |
+  | НовыйРодитель | --catalog | Строка | &#x2716; | Новый каталог размещения |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен         = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Идентификатор = "1jnYtECZqTZpHN3SBvNxTvytyYwAk6q8d";
+    НовоеИмя      = "Скопированный файл.jpeg";
+    НовыйРодитель = "root";
+
+    Результат = OPI_GoogleDrive.СкопироватьОбъект(Токен, Идентификатор, НовоеИмя, НовыйРодитель);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gdrive СкопироватьОбъект \
+              --token "***" \
+              --object "1mZOvJOzvuGapieFWiLH8Ubwn23FHLWpI" \
+              --title "Скопированный файл.jpeg" \
+              --catalog "root"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive СкопироватьОбъект ^
+              --token "***" ^
+              --object "1mZOvJOzvuGapieFWiLH8Ubwn23FHLWpI" ^
+              --title "Скопированный файл.jpeg" ^
+              --catalog "root"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "kind": "drive#file",
+ "id": "1P8WK9Wn2710HiQYkKzYMFso2FmFenV6d",
+ "name": "Скопированный файл.jpeg",
+ "mimeType": "image/jpeg"
+}
+```

@@ -1,0 +1,89 @@
+﻿---
+sidebar_position: 4
+description: Создать твит гифки и другие функции для работы с Twitter в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Twitter]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать твит гифки
+ Создает твит с вложением-гифкой
+
+
+
+`Функция СоздатьТвитГифки(Знач Текст, Знач МассивГифок, Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Текст | --text | Строка | &#x2714; | Текст твита |
+  | МассивГифок | --gifs | Массив из Строка,ДвоичныеДанные | &#x2714; | Массив файлов гифок |
+  | Параметры | --auth | Структура из Строка | &#x2716; | Данные авторизации. См.ПолучитьСтандартныеПараметры |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
+
+<br/>
+
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыАвторизацииТвиттер();
+    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+
+    Гифка  = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+    Гифка2 = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+
+    МассивГифок = Новый Массив;
+    МассивГифок.Добавить(Гифка);
+    МассивГифок.Добавить(Гифка2);
+
+    Результат = OPI_Twitter.СоздатьТвитГифки(Текст, МассивГифок, Параметры);
+
+    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+    Результат = OPI_Twitter.СоздатьТвитГифки(Текст, Гифка, Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТвитГифки \
+              --text "Тестовый твитт4defda55-3536-4125-96e8-c9723d4ba1ec" \
+              --gifs "C:\Users\Administrator\AppData\Local\Temp\1aq232ykk4z.tmp" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТвитГифки ^
+              --text "Тестовый твитт4defda55-3536-4125-96e8-c9723d4ba1ec" ^
+              --gifs "C:\Users\Administrator\AppData\Local\Temp\1aq232ykk4z.tmp" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": {
+  "id": "1843703120704008495",
+  "edit_history_tweet_ids": [
+   "1843703120704008495"
+  ],
+  "text": "Тестовый твитт7bb8366e-e270-4284-957c-19ec2ecda762 https://t.co/eufWFKfOpX"
+ }
+}
+```

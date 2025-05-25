@@ -1,0 +1,216 @@
+﻿---
+sidebar_position: 6
+description: Получить список регионов и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список регионов
+ Получает список доступных регионов
+
+
+
+`Функция ПолучитьСписокРегионов(Знач Токен, Знач Страны = Неопределено, Знач Страница = 0, Знач Язык = "rus", Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | Страны | --countries | Массив Из Строка | &#x2716; | Массив кодов стран в формате ISO_31661_alpha2 для отбора |
+  | Страница | --page | Число | &#x2716; | Страница выборки результата |
+  | Язык | --lang | Строка | &#x2716; | Язык: rus, eng, zho |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Список регионов](https://api-docs.cdek.ru/33829418.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NDc3NzYzMjQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+
+    Результат = OPI_CDEK.ПолучитьСписокРегионов(Токен, , , , Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek ПолучитьСписокРегионов \
+              --token "***" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek ПолучитьСписокРегионов ^
+              --token "***" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+[
+ {
+  "country_code": "ES",
+  "country": "Испания",
+  "region": "Галисия",
+  "region_code": 482
+ },
+ {
+  "country_code": "RO",
+  "country": "Румыния",
+  "region": "Западный регион",
+  "region_code": 1552
+ },
+ {
+  "country_code": "PT",
+  "country": "Португалия",
+  "region": "Сантарен",
+  "region_code": 1281
+ },
+ {
+  "country_code": "RS",
+  "country": "Сербия",
+  "region": "Моравичский округ",
+  "region_code": 1639
+ },
+ {
+  "country_code": "EE",
+  "country": "Эстония",
+  "region": "Уезд Вильяндимаа",
+  "region_code": 1508
+ },
+ {
+  "country_code": "IT",
+  "country": "Италия",
+  "region": "Пьемонт",
+  "region_code": 712
+ },
+ {
+  "country_code": "FI",
+  "country": "Финляндия",
+  "region": "Кайнуу",
+  "region_code": 221
+ },
+ {
+  "country_code": "HR",
+  "country": "Хорватия",
+  "region": "Сплитско-Далматинская жупания",
+  "region_code": 1581
+ },
+ {
+  "country_code": "LV",
+  "country": "Латвия",
+  "region": "Вентспилс",
+  "region_code": 1472
+ },
+ {
+  "country_code": "KG",
+  "country": "Киргизия",
+  "region": "Баткенская область",
+  "region_code": 1727
+ },
+ {
+  "country_code": "TR",
+  "country": "Турция",
+  "region": "Газиантеп",
+  "region_code": 408
+ },
+ {
+  "country_code": "IT",
+  "country": "Италия",
+  "region": "Лацио",
+  "region_code": 561
+ },
+ {
+  "country_code": "JP",
+  "country": "Япония",
+  "region": "Префектура Сага",
+  "region_code": 733
+ },
+ {
+  "country_code": "MD",
+  "country": "Молдавия",
+  "region": "Хынчештский район",
+  "region_code": 1773
+ },
+ {
+  "country_code": "US",
+  "country": "США",
+  "region": "Пенсильвания",
+  "region_code": 695
+ },
+ {
+  "country_code": "FI",
+  "country": "Финляндия",
+  "region": "Северная Карелия",
+  "region_code": 1182
+ },
+ {
+  "country_code": "MZ",
+  "country": "Мозамбик",
+  "region": "Мозамбик",
+  "region_code": 613
+ },
+ {
+  "country_code": "RU",
+  "country": "Россия",
+  "region": "Белгородская область",
+  "region_code": 16
+ },
+ {
+  "country_code": "BE",
+  "country": "Бельгия",
+  "region": "Намюр",
+  "region_code": 1540
+ },
+ {
+  "country_code": "EE",
+  "country": "Эстония",
+  "region": "Уезд Ляэнемаа",
+  "region_code": 1513
+ },
+ {
+  "country_code": "TR",
+  "country": "Турция",
+  "region": "Сивас",
+  "region_code": 772
+ },
+ {
+  "country_code": "HU",
+  "country": "Венгрия",
+  "region": "медье Пешт",
+  "region_code": 699
+ },
+ {
+  "country_code": "HU",
+  "country": "Венгрия",
+  "region": "медье Тольна",
+  "region_code": 1588
+ },
+ {
+  "country_code": "GR",
+  "country": "Греция",
+  "region": "периферия Южные Эгейские острова",
+  "region_code": 173
+ },
+ {
+  "country_code": "BG",
+  "country": "Болгария",
+  "region": "Габровская область",
+  "region_code": 405
+...
+```

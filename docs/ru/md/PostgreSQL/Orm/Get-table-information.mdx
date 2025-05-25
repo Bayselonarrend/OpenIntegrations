@@ -1,0 +1,200 @@
+﻿---
+sidebar_position: 4
+description: Получить информацию о таблице и другие функции для работы с PostgreSQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, PostgreSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить информацию о таблице
+ Получает информацию о таблице
+
+
+
+`Функция ПолучитьИнформациюОТаблице(Знач Таблица, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. ПолучитьНастройкиTls |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    СтрокаПодключения = OPI_PostgreSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль);
+
+    Таблица = "testtable";
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_PostgreSQL.ПолучитьИнформациюОТаблице(Таблица, СтрокаПодключения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint postgres ПолучитьИнформациюОТаблице \
+              --table "heyho" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint postgres ПолучитьИнформациюОТаблице ^
+              --table "heyho" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": [
+  {
+   "character_maximum_length": null,
+   "column_name": "bool_field",
+   "data_type": "boolean"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "oldchar_field",
+   "data_type": "\"char\""
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "smallint_field",
+   "data_type": "smallint"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "smallserial_field",
+   "data_type": "smallint"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "int_field",
+   "data_type": "integer"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "serial_field",
+   "data_type": "integer"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "oid_field",
+   "data_type": "oid"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "bigint_field",
+   "data_type": "bigint"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "bigserial_field",
+   "data_type": "bigint"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "real_field",
+   "data_type": "real"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "dp_field",
+   "data_type": "double precision"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "json_field",
+   "data_type": "json"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "jsonb_field",
+   "data_type": "jsonb"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "date_field",
+   "data_type": "date"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "time_field",
+   "data_type": "time without time zone"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "uuid_field",
+   "data_type": "uuid"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "bytea_field",
+   "data_type": "bytea"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "ts_field",
+   "data_type": "timestamp without time zone"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "tswtz_field",
+   "data_type": "timestamp with time zone"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "ip_field",
+   "data_type": "inet"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "text_field",
+   "data_type": "text"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "varchar_field",
+   "data_type": "character varying"
+  },
+  {
+   "character_maximum_length": 3,
+   "column_name": "charn_field",
+   "data_type": "character"
+  },
+  {
+   "character_maximum_length": 1,
+   "column_name": "char_field",
+   "data_type": "character"
+  },
+  {
+   "character_maximum_length": null,
+   "column_name": "name_field",
+   "data_type": "name"
+  }
+ ],
+ "result": true
+}
+```

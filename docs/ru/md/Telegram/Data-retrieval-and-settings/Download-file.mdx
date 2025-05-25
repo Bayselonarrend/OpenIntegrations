@@ -1,0 +1,64 @@
+﻿---
+sidebar_position: 5
+description: Скачать файл и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Скачать файл
+ Скачивает файл с серверов Telegram
+
+
+
+`Функция СкачатьФайл(Знач Токен, Знач IDФайла) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | IDФайла | --fileid | Строка | &#x2714; | ID файла для скачивания |
+
+  
+  Возвращаемое значение:   ДвоичныеДанные - данные файла
+
+<br/>
+
+:::tip
+Метод в документации API: [getFile](https://core.telegram.org/bots/api#getfile)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    IDФайла = "CQACAgIAAx0EcNsaZQACQ25oLOd57jz-ulyDDHGbuEsLN1rjBAACvHYAAn2saEmQbhgZTctxbDYE";
+    Токен   = "6129457865:AAFyzNYOAFbu...";
+
+    Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram СкачатьФайл \
+              --token "***" \
+              --fileid "CQACAgIAAx0EcNsaZQACQ4BoLOn2ohpDFbl2yLr1G1QKxwAB9JsAArt6AAJFzGhJg3IaXmvNNKA2BA"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram СкачатьФайл ^
+              --token "***" ^
+              --fileid "CQACAgIAAx0EcNsaZQACQ4BoLOn2ohpDFbl2yLr1G1QKxwAB9JsAArt6AAJFzGhJg3IaXmvNNKA2BA"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+НЕ JSON: 49 44 33 03 00 00 00 05 1F 76 54 49 54 32 00 00 00 0B 00 00 01 FF FE 44 00 6F 00 67 00 73 00 54 50 45 31 00 00 00 15 00 00 01 FF FE 4D 00 6F 00 74 00 6F 00 72 00 68 00 65 00 61 00 64 00 54 59…
+```

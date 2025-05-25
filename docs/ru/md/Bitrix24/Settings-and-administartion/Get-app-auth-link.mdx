@@ -1,0 +1,60 @@
+﻿---
+sidebar_position: 1
+description: Получить ссылку авторизации приложения и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить ссылку авторизации приложения
+ Формирует ссылку для авторизации через браузер
+
+
+
+`Функция ПолучитьСсылкуАвторизацииПриложения(Знач Домен, Знач ClientID) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Домен | --domain | Строка | &#x2714; | Адрес битрикс вида portal.bitrix24.com |
+  | ClientID | --clientid | Строка | &#x2714; | Client ID из настроек приложения |
+
+  
+  Возвращаемое значение:   Строка - URL для перехода в браузере
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Домен    = "b24-ar17wx.bitrix24.by";
+    ClientID = "local.6667fc928a50a9.70414732";
+
+    Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПолучитьСсылкуАвторизацииПриложения \
+              --domain "b24-ar17wx.bitrix24.by" \
+              --clientid "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПолучитьСсылкуАвторизацииПриложения ^
+              --domain "b24-ar17wx.bitrix24.by" ^
+              --clientid "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
+```

@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 5
+description: Получить список меток и другие функции для работы с Yandex Metrika в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Metrika]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список меток
+ Получает список меток пользователя
+
+
+
+`Функция ПолучитьСписокМеток(Знач Токен) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+:::tip
+Метод в документации API: [Список меток пользователя](https://yandex.ru/dev/metrika/ru/management/openapi/label/getLabels)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+
+    Результат = OPI_YandexMetrika.ПолучитьСписокМеток(Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika ПолучитьСписокМеток \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika ПолучитьСписокМеток ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "labels": [
+  {
+   "id": 313493,
+   "name": "Новая метка"
+  }
+ ]
+}
+```

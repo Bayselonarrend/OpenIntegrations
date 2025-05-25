@@ -1,0 +1,101 @@
+﻿---
+sidebar_position: 3
+description: Получить значения ячеек и другие функции для работы с Google Sheets в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Sheets]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить значения ячеек
+ Получает значения ячеек таблицы
+
+
+
+`Функция ПолучитьЗначенияЯчеек(Знач Токен, Знач Книга, Знач МассивЯчеек = "", Знач Лист = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Книга | --spreadsheet | Строка | &#x2714; | ID книги |
+  | МассивЯчеек | --cells | Массив из Строка | &#x2716; | Массив ячеек вида А1 для получения (весь лист, если не заполнено) |
+  | Лист | --sheetname | Строка | &#x2716; | Имя листа (первый лист по умолчанию) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Книга = "15pyer8RapTluc4feiD8_y1P42RVoDG5xBDly6IPC-OE";
+    Лист  = "Лист2";
+
+    МассивЯчеек = Новый Массив;
+    МассивЯчеек.Добавить("B2");
+    МассивЯчеек.Добавить("A3");
+    МассивЯчеек.Добавить("B4");
+
+    Результат = OPI_GoogleSheets.ПолучитьЗначенияЯчеек(Токен, Книга, МассивЯчеек, Лист);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gsheets ПолучитьЗначенияЯчеек \
+              --token "***" \
+              --spreadsheet "1F-uPSraOKu7LexUAmxlJv5vBAMAHAOH6PFItbbCbtCM" \
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets ПолучитьЗначенияЯчеек ^
+              --token "***" ^
+              --spreadsheet "1F-uPSraOKu7LexUAmxlJv5vBAMAHAOH6PFItbbCbtCM" ^
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "spreadsheetId": "1DOVr33ZTV_T3AroyEg7gHrpCYHIpV52K_TmXdgpDwgM",
+ "valueRanges": [
+  {
+   "range": "'Лист2'!B2",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B2"
+    ]
+   ]
+  },
+  {
+   "range": "'Лист2'!A3",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это A3"
+    ]
+   ]
+  },
+  {
+   "range": "'Лист2'!B4",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B4"
+    ]
+   ]
+  }
+ ]
+}
+```

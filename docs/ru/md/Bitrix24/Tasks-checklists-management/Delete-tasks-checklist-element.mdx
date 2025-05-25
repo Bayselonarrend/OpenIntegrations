@@ -1,0 +1,91 @@
+﻿---
+sidebar_position: 3
+description: Удалить элемент чеклиста задачи и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить элемент чеклиста задачи
+ Удаляет элемент из чеклиста задачи
+
+
+
+`Функция УдалитьЭлементЧеклистаЗадачи(Знач URL, Знач IDЗадачи, Знач IDЭлемента, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | IDЗадачи | --task | Число, Строка | &#x2714; | ID задачи |
+  | IDЭлемента | --element | Число, Строка | &#x2714; | ID элемента для удаления |
+  | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
+
+<br/>
+
+:::tip
+Метод в документации API: [task.checklistitem.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/delete.php)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    IDЗадачи   = "6066";
+    IDЭлемента = "4302";
+
+    Результат = OPI_Bitrix24.УдалитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента);
+
+    IDЗадачи   = "6068";
+    IDЭлемента = "4306";
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "4dee2c68006e9f06006b12e400000001000...";
+
+    Результат = OPI_Bitrix24.УдалитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента, Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 УдалитьЭлементЧеклистаЗадачи \
+              --url "b24-ar17wx.bitrix24.by" \
+              --task "6078" \
+              --element 4314 \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 УдалитьЭлементЧеклистаЗадачи ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --task "6078" ^
+              --element 4314 ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true,
+ "time": {
+  "start": 1728409732.65437,
+  "finish": 1728409732.71569,
+  "duration": 0.0613141059875488,
+  "processing": 0.0355100631713867,
+  "date_start": "2024-10-08T20:48:52+03:00",
+  "date_finish": "2024-10-08T20:48:52+03:00",
+  "operating_reset_at": 1728410332,
+  "operating": 0
+ }
+}
+```

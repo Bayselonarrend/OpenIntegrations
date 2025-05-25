@@ -1,0 +1,110 @@
+﻿---
+sidebar_position: 8
+description: Получить структуру настроек календаря и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить структуру настроек календаря
+ Получает структуру стандартных настроек календаря
+
+
+
+`Функция ПолучитьСтруктуруНастроекКалендаря(Знач URL, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+
+<br/>
+
+:::tip
+Метод в документации API: [calendar.settings.get](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-settings-get.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+
+    Результат = OPI_Bitrix24.ПолучитьСтруктуруНастроекКалендаря(URL);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "4dee2c68006e9f06006b12e400000001000...";
+
+    Результат = OPI_Bitrix24.ПолучитьСтруктуруНастроекКалендаря(URL, Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПолучитьСтруктуруНастроекКалендаря \
+              --url "b24-ar17wx.bitrix24.by" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПолучитьСтруктуруНастроекКалендаря ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": {
+  "work_time_start": "9",
+  "work_time_end": "19",
+  "year_holidays": "1.01,2.01,7.01,23.02,8.03,1.05,9.05,12.06,4.11",
+  "year_workdays": "31.12",
+  "week_holidays": [
+   "SA",
+   "SU"
+  ],
+  "week_start": "MO",
+  "user_name_template": "#NAME# #LAST_NAME#",
+  "sync_by_push": "",
+  "user_show_login": "1",
+  "path_to_user": "/company/personal/user/#user_id#/",
+  "path_to_user_calendar": "/company/personal/user/#user_id#/calendar/",
+  "path_to_group": "/workgroups/group/#group_id#/",
+  "path_to_group_calendar": "/workgroups/group/#group_id#/calendar/",
+  "path_to_vr": "",
+  "path_to_rm": "",
+  "rm_iblock_type": "",
+  "rm_iblock_id": "",
+  "dep_manager_sub": "1",
+  "denied_superpose_types": [],
+  "pathes_for_sites": "",
+  "pathes": [],
+  "forum_id": "1",
+  "rm_for_sites": "1",
+  "path_to_type_company_calendar": "/calendar/",
+  "path_to_type_events": "",
+  "path_to_type_location": ""
+ },
+ "time": {
+  "start": 1737222008.52717,
+  "finish": 1737222008.55406,
+  "duration": 0.0268878936767578,
+  "processing": 0.00323605537414551,
+  "date_start": "2025-01-18T20:40:08+03:00",
+  "date_finish": "2025-01-18T20:40:08+03:00",
+  "operating_reset_at": 1737222608,
+  "operating": 0
+ }
+}
+```

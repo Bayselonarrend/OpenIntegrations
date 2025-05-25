@@ -1,0 +1,88 @@
+﻿---
+sidebar_position: 12
+description: Создать преалерт и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать преалерт
+ Создает преалерт для списка заказов
+
+
+
+`Функция СоздатьПреалерт(Знач Токен, Знач МассивUUID, Знач ДатаПередачи, Знач ПВЗ, Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | МассивUUID | --uuids | Строка, Массив Из Строка | &#x2714; | Один или массив UUID заказов |
+  | ДатаПередачи | --date | Дата | &#x2714; | Планируемая дата передачи заказов в СДЭК |
+  | ПВЗ | --point | Строка | &#x2714; | Код ПВЗ, в который планируется передать заказы |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Регистрация преалерта](https://api-docs.cdek.ru/78934763.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NDc3NzYzMjQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID         = "db1a3e7c-adbe-4052-81d7-9180ecb1dc11";
+    ПВЗ          = "NSK27";
+    ДатаПередачи = OPI_Инструменты.ПолучитьТекущуюДату() + 60 * 60 * 24;
+
+    Результат = OPI_CDEK.СоздатьПреалерт(Токен, UUID, ДатаПередачи, ПВЗ, Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek СоздатьПреалерт \
+              --token "***" \
+              --uuids "5adf859f-4a27-4a76-808a-cc3219ed230e" \
+              --date "2025-05-22T00:42:12.4453853" \
+              --point "NSK27" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek СоздатьПреалерт ^
+              --token "***" ^
+              --uuids "5adf859f-4a27-4a76-808a-cc3219ed230e" ^
+              --date "2025-05-22T00:42:12.4453853" ^
+              --point "NSK27" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "entity": {
+  "uuid": "72753031-94b1-47a5-b67c-1a6a7ca544e9"
+ },
+ "requests": [
+  {
+   "request_uuid": "5981866b-31d4-493d-9236-c6efc0b5c7eb",
+   "type": "CREATE",
+   "date_time": "2024-10-21T20:41:44+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
+```

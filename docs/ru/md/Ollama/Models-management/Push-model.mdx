@@ -1,0 +1,81 @@
+﻿---
+sidebar_position: 9
+description: Отправить модель и другие функции для работы с Ollama в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отправить модель
+ Загружает модель в библиотеку моделей
+
+
+
+`Функция ОтправитьМодель(Знач URL, Знач Модель, Знач Небезопасно = Ложь, Знач ДопЗаголовки = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ollama |
+  | Модель | --model | Строка | &#x2714; | Имя модели |
+  | Небезопасно | --insecure | Булево | &#x2716; | Разрешает незащищенное соединение с библиотекой |
+  | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
+
+<br/>
+
+:::tip
+Метод в документации API: [Push a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#push-a-model)
+
+Имя модели должно быть в формате &lt;namespace&gt;/&lt;model&gt;:&lt;tag&gt;<br/>Требуется регистрация на ollama.ai и добавление открытого ключа.
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Токен = "10KO-82..."; // Авторизация - не часть API Ollama
+
+    Модель = "bayselonarrend/tinyllama:latest";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.ОтправитьМодель(URL, Модель, , ДопЗаголовки);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ОтправитьМодель \
+              --url "https://api.athenaeum.digital/ollama" \
+              --model "bayselonarrend/tinyllama:latest" \
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ОтправитьМодель ^
+              --url "https://api.athenaeum.digital/ollama" ^
+              --model "bayselonarrend/tinyllama:latest" ^
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status": "success"
+}
+```

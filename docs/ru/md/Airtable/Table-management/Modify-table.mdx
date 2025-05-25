@@ -1,0 +1,142 @@
+﻿---
+sidebar_position: 2
+description: Изменить таблицу и другие функции для работы с Airtable в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Airtable]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Изменить таблицу
+ Изменяет наименование и|или описание базы
+
+
+
+`Функция ИзменитьТаблицу(Знач Токен, Знач База, Знач Таблица, Знач Наименование = "", Знач Описание = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | База | --base | Строка | &#x2714; | Идентификатор базы |
+  | Таблица | --table | Строка | &#x2714; | Идентификатор таблицы |
+  | Наименование | --title | Строка | &#x2716; | Новое наименование |
+  | Описание | --description | Строка | &#x2716; | Новое описание |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен        = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База         = "app7HgN8N8JXk96nj";
+    Таблица      = "tblDHsmb8j2zvXWAs";
+    Наименование = "Тестовая таблица 2 (изм.)";
+    Описание     = "Новая таблица (изм.)";
+
+    Результат = OPI_Airtable.ИзменитьТаблицу(Токен, База, Таблица, Наименование, Описание);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable ИзменитьТаблицу \
+              --token "***" \
+              --base "appPli0MOZzZfk9cC" \
+              --table "tblCWdRHnJcWIZttO" \
+              --title "Тестовая таблица 2 (изм.)" \
+              --description "Новая таблица (изм.)"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ИзменитьТаблицу ^
+              --token "***" ^
+              --base "appPli0MOZzZfk9cC" ^
+              --table "tblCWdRHnJcWIZttO" ^
+              --title "Тестовая таблица 2 (изм.)" ^
+              --description "Новая таблица (изм.)"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "id": "tblhBYsKZ3w9qZzlj",
+ "name": "Тестовая таблица 2 (изм.)",
+ "description": "Новая таблица (изм.)",
+ "primaryFieldId": "fld9iS1ofdALjC2yT",
+ "fields": [
+  {
+   "id": "fld9iS1ofdALjC2yT",
+   "name": "Номер",
+   "type": "number",
+   "options": {
+    "precision": 0
+   }
+  },
+  {
+   "id": "fldcMrmBANDdi3wjL",
+   "name": "Строковое",
+   "type": "richText"
+  },
+  {
+   "id": "fldQlnMrCcjrKoGvN",
+   "name": "Вложение",
+   "type": "multipleAttachments",
+   "options": {
+    "isReversed": false
+   }
+  },
+  {
+   "id": "fldPKXJmkzAFRo41T",
+   "name": "Флажок",
+   "type": "checkbox",
+   "options": {
+    "icon": "check",
+    "color": "yellowBright"
+   }
+  },
+  {
+   "id": "fldvgGvcjT2zaVAoa",
+   "name": "Дата",
+   "type": "date",
+   "options": {
+    "dateFormat": {
+     "name": "iso",
+     "format": "YYYY-MM-DD"
+    }
+   }
+  },
+  {
+   "id": "fldxpWaIK8kfA0bdI",
+   "name": "Телефон",
+   "type": "phoneNumber"
+  },
+  {
+   "id": "fldSIeymPzrNvPv5E",
+   "name": "Почта",
+   "type": "email"
+  },
+  {
+   "id": "fldFczkpBLZWvsRld",
+   "name": "Ссылка",
+   "type": "url"
+  }
+ ],
+ "views": [
+  {
+   "id": "viw1FaP6XyTzHPsAD",
+   "name": "Grid view",
+   "type": "grid"
+  }
+ ]
+}
+```

@@ -1,0 +1,73 @@
+﻿---
+sidebar_position: 4
+description: Установить Form тело  и другие функции для работы с HTTP-клиент в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, HTTP-клиент]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Установить Form тело 
+ Устанавливает тело в формате x-www-form-urlencoded из коллекции значений полей
+
+
+
+`Функция УстановитьFormТело(Знач Данные) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Данные | - | Произвольный | &#x2714; | Коллекция КлючЗначение с параметрами формы |
+
+  
+  Возвращаемое значение:   ОбработкаОбъект.OPI_HTTPКлиент -  Установить form тело
+
+<br/>
+
+
+:::caution
+**NOCLI:** данный метод недоступен для использования в CLI версии
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://httpbin.org";
+    URL = URL + "/post";
+
+    Данные = Новый Структура("Поле1,Поле2", "10", "Текст");
+
+    Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать(URL)
+        .УстановитьFormТело(Данные) // <---
+        .ОбработатьЗапрос("POST")
+        .ВернутьОтветКакJSONКоллекцию();
+```
+    
+
+
+
+```json title="Результат"
+{
+ "args": {},
+ "data": "",
+ "files": {},
+ "form": {
+  "Поле1": "10",
+  "Поле2": "Текст"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "53",
+  "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-680be6e7-638df5b8013c644a6f5e5778"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
+```

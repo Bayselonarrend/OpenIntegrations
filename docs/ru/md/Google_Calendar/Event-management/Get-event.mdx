@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 3
+description: Получить событие и другие функции для работы с Google Calendar в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Google Calendar]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить событие
+ Получает событие по ID
+
+
+
+`Функция ПолучитьСобытие(Знач Токен, Знач Календарь, Знач Событие) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | Календарь | --calendar | Строка | &#x2714; | ID календаря |
+  | Событие | --event | Строка | &#x2714; | ID события |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен     = "ya29.a0AW4XtxhtghlL7aK7VhJX0jOgNWau4CUoOEDkQBr4uJEjPidCjKm-4r4l7AoJnODBt7yblowJtvv_3vETd6CulW4V5zxxPx8TTvQAMESj7...";
+    Календарь = "fe4bd80b7ead13d35f71c0ac29e9e95ab721e9292cb911fef6947f71ac87df84@group.calendar.google.com";
+    Событие   = "blllfmka97itfpk2ua2mr5c8jc";
+
+    Результат = OPI_GoogleCalendar.ПолучитьСобытие(Токен, Календарь, Событие);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint gcalendar ПолучитьСобытие \
+              --token "***" \
+              --calendar "077b7917c55279fb17a21d28b2b3d674ba07b788489a394f622b5f470f01139e@group.calendar.google.com" \
+              --event "8iatm705tc05m75deplff0tjng"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gcalendar ПолучитьСобытие ^
+              --token "***" ^
+              --calendar "077b7917c55279fb17a21d28b2b3d674ba07b788489a394f622b5f470f01139e@group.calendar.google.com" ^
+              --event "8iatm705tc05m75deplff0tjng"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "kind": "calendar#event",
+ "etag": "\"3456818524660000\"",
+ "id": "ukaeqabapn045fr78jnkr0m6dk",
+ "status": "confirmed",
+ "htmlLink": "https://www.google.com/calendar/event?eid=dWthZXFhYmFwbjA0NWZyNzhqbmtyMG02ZGsgZjhjYjI1MzUxNmNjOTkwZDFmMzZhN2QxNWNkYjgyNWZmZGMxNWM2Y2VlYWEyNWVmNzg5MjRkZTliZWVhM2E1NkBn",
+ "created": "2024-10-08T17:41:01Z",
+ "updated": "2024-10-08T17:41:02.33Z",
+ "summary": "Новое событие",
+ "description": "Новое описание события",
+ "location": "В офисе",
+ "creator": {
+  "email": "bayselonarrend@gmail.com"
+ },
+ "organizer": {
+  "email": "f8cb253516cc990d1f36a7d15cdb825ffdc15c6ceeaa25ef78924de9beea3a56@group.calendar.google.com",
+  "displayName": "Тестовый календарь",
+  "self": true
+ },
+ "start": {
+  "dateTime": "2024-10-08T23:41:01+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "end": {
+  "dateTime": "2024-10-09T00:41:01+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "iCalUID": "ukaeqabapn045fr78jnkr0m6dk@google.com",
+ "sequence": 0,
+ "reminders": {
+  "useDefault": true
+ },
+ "attachments": [
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+   "title": "Картинка1",
+   "iconLink": ""
+  },
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
+   "title": "Картинка2",
+   "iconLink": ""
+  }
+ ],
+ "eventType": "default"
+}
+```

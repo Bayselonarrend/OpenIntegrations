@@ -1,0 +1,89 @@
+﻿---
+sidebar_position: 5
+description: Создать твит видео и другие функции для работы с Twitter в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Twitter]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать твит видео
+ Создает твит с видеовложением
+
+
+
+`Функция СоздатьТвитВидео(Знач Текст, Знач МассивВидео, Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Текст | --text | Строка | &#x2714; | Текст твита |
+  | МассивВидео | --videos | Массив из Строка,ДвоичныеДанные | &#x2714; | Массив файлов видео |
+  | Параметры | --auth | Структура из Строка | &#x2716; | Данные авторизации. См.ПолучитьСтандартныеПараметры |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
+
+<br/>
+
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыАвторизацииТвиттер();
+    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+
+    Видео  = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
+    Видео2 = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
+
+    МассивВидео = Новый Массив;
+    МассивВидео.Добавить(Видео);
+    МассивВидео.Добавить(Видео2);
+
+    Результат = OPI_Twitter.СоздатьТвитВидео(Текст, МассивВидео, Параметры);
+
+    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+    Результат = OPI_Twitter.СоздатьТвитВидео(Текст, Видео, Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТвитВидео \
+              --text "Тестовый твиттbbe0f2b9-338e-4bf6-a20b-d20106e6f5fc" \
+              --videos "C:\Users\Administrator\AppData\Local\Temp\x2tt23gnjql.tmp" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТвитВидео ^
+              --text "Тестовый твиттbbe0f2b9-338e-4bf6-a20b-d20106e6f5fc" ^
+              --videos "C:\Users\Administrator\AppData\Local\Temp\x2tt23gnjql.tmp" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": {
+  "edit_history_tweet_ids": [
+   "1843702415477895473"
+  ],
+  "text": "Тестовый твитт3d643580-f681-495e-9b5e-1f8af82745d4 https://t.co/0e9OmASUoP",
+  "id": "1843702415477895473"
+ }
+}
+```

@@ -1,0 +1,82 @@
+﻿---
+sidebar_position: 5
+description: Копировать модель и другие функции для работы с Ollama в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Копировать модель
+ Копирует существующую модель
+
+
+
+`Функция КопироватьМодель(Знач URL, Знач Модель, Знач Имя, Знач ДопЗаголовки = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ollama |
+  | Модель | --model | Строка | &#x2714; | Имя существующей модели |
+  | Имя | --name | Строка | &#x2714; | Имя новой модели |
+  | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
+
+<br/>
+
+:::tip
+Метод в документации API: [Copy a Model](https://github.com/ollama/ollama/blob/main/docs/api.md#copy-a-model)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Токен = "10KO-82..."; // Авторизация - не часть API Ollama
+
+    Модель = "mario";
+    Имя    = "mario2";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.КопироватьМодель(URL, Модель, Имя, ДопЗаголовки);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama КопироватьМодель \
+              --url "https://api.athenaeum.digital/ollama" \
+              --model "mario" \
+              --name "mario2" \
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama КопироватьМодель ^
+              --url "https://api.athenaeum.digital/ollama" ^
+              --model "mario" ^
+              --name "mario2" ^
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status_code": 200
+}
+```

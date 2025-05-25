@@ -1,0 +1,229 @@
+﻿---
+sidebar_position: 6
+description: Получить список счетчиков и другие функции для работы с Yandex Metrika в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Metrika]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список счетчиков
+ Получает список доступных счетчиков с фильтром или без
+
+
+
+`Функция ПолучитьСписокСчетчиков(Знач Токен, Знач Фильтр = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | Фильтр | --filter | Структура Из КлючИЗначение | &#x2716; | Фильтр списка. См. ПолучитьСтруктуруФильтраСчетчиков |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+:::tip
+Метод в документации API: [Список доступных счетчиков](https://yandex.ru/dev/metrika/ru/management/openapi/counter/counters)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен      = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    IDСчетчика = "102032703";
+
+    Результат = OPI_YandexMetrika.ПолучитьСписокСчетчиков(Токен);
+
+    // Фильтр по списку ID
+
+    Фильтр = Новый Структура;
+
+    МассивСчетчиков = Новый Массив;
+    МассивСчетчиков.Добавить(IDСчетчика);
+
+    Фильтр.Вставить("counter_ids", МассивСчетчиков);
+
+    Результат = OPI_YandexMetrika.ПолучитьСписокСчетчиков(Токен, Фильтр);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint metrika ПолучитьСписокСчетчиков \
+              --token "***" \
+              --filter "{'counter_ids':['102034215']}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint metrika ПолучитьСписокСчетчиков ^
+              --token "***" ^
+              --filter "{'counter_ids':['102034215']}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "rows": 9,
+ "counters": [
+  {
+   "id": 98876516,
+   "status": "Active",
+   "owner_login": "bayselonarrend",
+   "code_status": "CS_ERR_UNKNOWN",
+   "activity_status": "low",
+   "type": "simple",
+   "favorite": 0,
+   "hide_address": 0,
+   "pro": 0,
+   "permission": "own",
+   "webvisor": {
+    "arch_enabled": 0,
+    "arch_type": "none",
+    "load_player_type": "proxy",
+    "wv_version": 2,
+    "allow_wv2": true,
+    "wv_forms": 1
+   },
+   "code_options": {
+    "async": 0,
+    "informer": {
+     "enabled": 1,
+     "type": "ext",
+     "size": 2,
+     "indicator": "uniques",
+     "color_start": "EEEEEEEE",
+     "color_end": "EFEFEFFE",
+     "color_text": 0,
+     "color_arrow": 1
+    },
+    "visor": 1,
+    "track_hash": 1,
+    "xml_site": 0,
+    "clickmap": 1,
+    "in_one_line": 0,
+    "ecommerce": 1,
+    "alternative_cdn": 1,
+    "ecommerce_object": "dataLayer",
+    "ytm": false
+   },
+   "create_time": "2024-11-10T21:51:32+03:00",
+   "time_zone_name": "Europe/Moscow",
+   "time_zone_offset": 180,
+   "partner_id": 0,
+   "site": "openintegrations.dev",
+   "site2": {
+    "site": "openintegrations.dev",
+    "domain": "openintegrations.dev"
+   },
+   "gdpr_agreement_accepted": 1
+  },
+  {
+   "id": 98875749,
+   "status": "Active",
+   "owner_login": "bayselonarrend",
+   "code_status": "CS_ERR_UNKNOWN",
+   "activity_status": "low",
+   "type": "simple",
+   "favorite": 0,
+   "hide_address": 0,
+   "pro": 0,
+   "permission": "own",
+   "webvisor": {
+    "arch_enabled": 0,
+    "arch_type": "none",
+    "load_player_type": "proxy",
+    "wv_version": 2,
+    "allow_wv2": true,
+    "wv_forms": 1
+   },
+   "code_options": {
+    "async": 0,
+    "informer": {
+     "enabled": 1,
+     "type": "ext",
+     "size": 2,
+     "indicator": "uniques",
+     "color_start": "EEEEEEEE",
+     "color_end": "EFEFEFFE",
+     "color_text": 0,
+     "color_arrow": 1
+    },
+    "visor": 1,
+    "track_hash": 1,
+    "xml_site": 0,
+    "clickmap": 1,
+    "in_one_line": 0,
+    "ecommerce": 1,
+    "alternative_cdn": 1,
+    "ecommerce_object": "dataLayer",
+    "ytm": false
+   },
+   "create_time": "2024-11-10T18:43:12+03:00",
+   "time_zone_name": "Europe/Moscow",
+   "time_zone_offset": 180,
+   "partner_id": 0,
+   "site": "openintegrations.dev",
+   "site2": {
+    "site": "openintegrations.dev",
+    "domain": "openintegrations.dev"
+   },
+   "gdpr_agreement_accepted": 1
+  },
+  {
+   "id": 98875706,
+   "status": "Active",
+   "owner_login": "bayselonarrend",
+   "code_status": "CS_ERR_UNKNOWN",
+   "activity_status": "low",
+   "type": "simple",
+   "favorite": 0,
+   "hide_address": 0,
+   "pro": 0,
+   "permission": "own",
+   "webvisor": {
+    "arch_enabled": 0,
+    "arch_type": "none",
+    "load_player_type": "proxy",
+    "wv_version": 2,
+    "allow_wv2": true,
+    "wv_forms": 1
+   },
+   "code_options": {
+    "async": 0,
+    "informer": {
+     "enabled": 1,
+     "type": "ext",
+     "size": 2,
+     "indicator": "uniques",
+     "color_start": "EEEEEEEE",
+     "color_end": "EFEFEFFE",
+     "color_text": 0,
+     "color_arrow": 1
+    },
+    "visor": 1,
+    "track_hash": 1,
+    "xml_site": 0,
+    "clickmap": 1,
+    "in_one_line": 0,
+    "ecommerce": 1,
+    "alternative_cdn": 1,
+    "ecommerce_object": "dataLayer",
+    "ytm": false
+   },
+   "create_time": "2024-11-10T18:39:43+03:00",
+   "time_zone_name": "Europe/Moscow",
+...
+```
