@@ -1,0 +1,80 @@
+﻿---
+sidebar_position: 7
+description: Загрузить массив вложений и другие функции для работы с Twitter в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Twitter]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Загрузить массив вложений
+ Загружает файлы на сервер и возвращает их ID
+
+
+
+`Функция ЗагрузитьМассивВложений(Знач МассивФайлов, Знач ТипВложений, Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | МассивФайлов | --files | Массив из Строка, ДвоичныеДанные | &#x2714; | Массив файлов для загрузки |
+  | ТипВложений | --type | Строка | &#x2714; | Тип вложений: tweet_video, tweet_image, tweet_gif |
+  | Параметры | --auth | Структура из Строка | &#x2716; | Данные авторизации. См.ПолучитьСтандартныеПараметры |
+
+  
+  Возвращаемое значение:   Массив Из Строка -  Массив ID медиа
+
+<br/>
+
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыАвторизацииТвиттер();
+
+    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+
+    МассивКартинок = Новый Массив;
+    МассивКартинок.Добавить(Картинка1);
+    МассивКартинок.Добавить(Картинка2);
+
+    Результат = OPI_Twitter.ЗагрузитьМассивВложений(МассивКартинок, "tweet_image", Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter ЗагрузитьМассивВложений \
+              --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" \
+              --type "tweet_image" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter ЗагрузитьМассивВложений ^
+              --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" ^
+              --type "tweet_image" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+[
+ "1843702341419106304",
+ "1843702367809626112"
+]
+```

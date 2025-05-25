@@ -1,0 +1,115 @@
+﻿---
+sidebar_position: 14
+description: Получить список объектов и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить список объектов
+ Получает список объектов в выбранном бакете
+
+
+
+`Функция ПолучитьСписокОбъектов(Знач Бакет, Знач ОсновныеДанные, Знач Префикс = "", Знач ТокенСтраницы = "", Знач Заголовки = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Бакет | --bucket | Строка | &#x2714; | Наименование бакета |
+  | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | Префикс | --prefix | Строка | &#x2716; | Отбор по префиксу, если необходимо |
+  | ТокенСтраницы | --ctoken | Строка | &#x2716; | Токен страницы, если используется пагинация |
+  | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+
+<br/>
+
+:::tip
+Метод в документации AWS: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Бакет     = "opi-gpbucket3";
+    Результат = OPI_S3.ПолучитьСписокОбъектов(Бакет, ОсновныеДанные);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокОбъектов \
+              --url "storage-155.s3hoster.by" \
+              --access "BRN5RKJE67YCVDZRRQVI" \
+              --secret "***" \
+              --region "BTC" \
+              --bucket "opi-gpbucket3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСписокОбъектов ^
+              --url "storage-155.s3hoster.by" ^
+              --access "BRN5RKJE67YCVDZRRQVI" ^
+              --secret "***" ^
+              --region "BTC" ^
+              --bucket "opi-gpbucket3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status": 200,
+ "response": {
+  "ListBucketResult": {
+   "Name": "opi-gpbucket3",
+   "Prefix": {},
+   "KeyCount": "1",
+   "MaxKeys": "250",
+   "IsTruncated": "false",
+   "Contents": {
+    "Key": "picture.jpg",
+    "LastModified": "2024-11-22T09:34:54.938Z",
+    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
+    "Size": "2114023",
+    "StorageClass": "STANDARD"
+   }
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "451",
+  "Content-Type": "application/xml",
+  "Date": "Fri, 22 Nov 2024 09:35:15 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "180A40AC66778378",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```

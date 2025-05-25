@@ -1,0 +1,108 @@
+﻿---
+sidebar_position: 13
+description: Переименовать канал и другие функции для работы с Slack в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Slack]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Переименовать канал
+ Изменяет название канала
+
+
+
+`Функция ПереименоватьКанал(Знач Токен, Знач Канал, Знач Название) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | Канал | --channel | Строка | &#x2714; | ID канала |
+  | Название | --title | Строка | &#x2714; | Новое название канала |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен    = "xoxb-6965308400114-696804637...";
+    Канал    = "C08TMMCHZGR";
+    Название = "testconv" + Строка(Новый УникальныйИдентификатор);
+
+    Результат = OPI_Slack.ПереименоватьКанал(Токен, Канал, Название);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint slack ПереименоватьКанал \
+              --token "***" \
+              --channel "C08T2SPTLS2" \
+              --title "testconva7e100ab-f032-4eea-ba42-fe3668caf472"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПереименоватьКанал ^
+              --token "***" ^
+              --channel "C08T2SPTLS2" ^
+              --title "testconva7e100ab-f032-4eea-ba42-fe3668caf472"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "channel": {
+  "id": "C07R1A2DAS0",
+  "name": "testconve34522e4-7b58-47dc-ad72-2b37eb41d7c8",
+  "is_channel": true,
+  "is_group": false,
+  "is_im": false,
+  "is_mpim": false,
+  "is_private": false,
+  "created": 1728409452,
+  "is_archived": false,
+  "is_general": false,
+  "unlinked": 0,
+  "name_normalized": "testconve34522e4-7b58-47dc-ad72-2b37eb41d7c8",
+  "is_shared": false,
+  "is_org_shared": false,
+  "is_pending_ext_shared": false,
+  "pending_shared": [],
+  "context_team_id": "T06UD92BS3C",
+  "updated": 1728409455684,
+  "parent_conversation": null,
+  "creator": "U06UG1CAYH2",
+  "is_ext_shared": false,
+  "shared_team_ids": [
+   "T06UD92BS3C"
+  ],
+  "pending_connected_team_ids": [],
+  "is_member": true,
+  "last_read": "1728409454.019979",
+  "topic": {
+   "value": "Тестовая тема",
+   "creator": "U06UG1CAYH2",
+   "last_set": 1728409453
+  },
+  "purpose": {
+   "value": "Тестовая цель",
+   "creator": "U06UG1CAYH2",
+   "last_set": 1728409453
+  },
+  "previous_names": [
+   "testconv2e86d4e6-e191-4d76-981d-e9680d2efc74"
+  ]
+ }
+}
+```

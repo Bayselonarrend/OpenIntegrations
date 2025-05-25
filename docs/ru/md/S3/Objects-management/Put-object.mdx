@@ -1,0 +1,112 @@
+﻿---
+sidebar_position: 1
+description: Загрузить объект и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Загрузить объект
+ Загружает файл в бакет
+
+
+
+`Функция ЗагрузитьОбъект(Знач Наименование, Знач Бакет, Знач Содержимое, Знач ОсновныеДанные, Знач Заголовки = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Наименование | --name | Строка | &#x2714; | Наименование объекта в бакете |
+  | Бакет | --bucket | Строка | &#x2714; | Имя бакета для загрузки объекта |
+  | Содержимое | --data | Строка, ДвоичныеДанные | &#x2714; | Данные или путь к файлу для загрузки |
+  | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+
+<br/>
+
+:::tip
+Метод в документации AWS (стандартный): [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)<br/>Метод в документации AWS (по частям): [Multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+
+Вы можете использовать поле `ChunkSize` в основных данных для указания минимального размера и величины чанка загрузки по частям. Например, `ChunkSize равный X` означает, что все файлы, размером больше `X` (в байтах) будут загружаться по частям, где одна часть будет размером `X`. Загрузка по частям используется для больших файлов. Стандартный размер `ChunkSize` - 20971520 байт (20 МБайт)
+
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Наименование = "picture.jpg";
+    Бакет        = "opi-gpbucket3";
+    Содержимое   = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+
+    Результат = OPI_S3.ЗагрузитьОбъект(Наименование, Бакет, Содержимое, ОсновныеДанные);
+
+    Наименование = "fileChunked.mp3";
+    Бакет        = "opi-gpbucket3";
+    Содержимое   = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Путь или Двоичные данные
+
+    ОсновныеДанные.Вставить("ChunkSize", 5242880);
+
+    Результат = OPI_S3.ЗагрузитьОбъект(Наименование, Бакет, Содержимое, ОсновныеДанные);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ЗагрузитьОбъект \
+              --name "pictureSmall.jpg" \
+              --bucket "opi-gpbucket3" \
+              --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ЗагрузитьОбъект ^
+              --name "pictureSmall.jpg" ^
+              --bucket "opi-gpbucket3" ^
+              --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status": 200,
+ "response": {},
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "0",
+  "Content-Type": "text/plain; charset=utf-8",
+  "Date": "Fri, 22 Nov 2024 09:34:54 GMT",
+  "Etag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "180A40A730FE669A",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```

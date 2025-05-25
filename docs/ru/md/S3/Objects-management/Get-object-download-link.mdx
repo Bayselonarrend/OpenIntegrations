@@ -1,0 +1,84 @@
+﻿---
+sidebar_position: 16
+description: Получить ссылку скачивания объекта и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить ссылку скачивания объекта
+ Получает прямую ссылку для скачивания объекта без дополнительной авторизации
+
+
+
+`Функция ПолучитьСсылкуСкачиванияОбъекта(Знач Наименование, Знач Бакет, Знач ОсновныеДанные, Знач ВремяЖизни = 3600, Знач Заголовки = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Наименование | --name | Строка | &#x2714; | Наименование объекта в бакете |
+  | Бакет | --bucket | Строка | &#x2714; | Имя бакета для загрузки объекта |
+  | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | ВремяЖизни | --expires | Строка, Число | &#x2716; | Время жизни ссылки в секундах. 604800 максимум |
+  | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Строка - URL для получения объекта
+
+<br/>
+
+:::tip
+В Заголовки необходимо добавить все x-amz заголовки, которые будут использоваться при обращении к полученному URL
+
+О механизме в документации AWS: [Download and upload objects with presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+
+    Наименование = "picture.jpg";
+    Бакет        = "opi-gpbucket3";
+
+    Результат = OPI_S3.ПолучитьСсылкуСкачиванияОбъекта(Наименование, Бакет, ОсновныеДанные, 7200);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСсылкуСкачиванияОбъекта \
+              --name "picture.jpg" \
+              --bucket "opi-gpbucket3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --expires 7200
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 ПолучитьСсылкуСкачиванияОбъекта ^
+              --name "picture.jpg" ^
+              --bucket "opi-gpbucket3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --expires 7200
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+"opi-gpbucket3.storage-155.s3hoster.by/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20241128%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20241128T171930Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=f4e1a933fe344f514e639b01767f42b21ac63e198b9e0ba1bf28580b1c7dc054"
+```

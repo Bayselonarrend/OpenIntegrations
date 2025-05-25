@@ -1,0 +1,77 @@
+﻿---
+sidebar_position: 2
+description: Проверить BLOB и другие функции для работы с Ollama в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Проверить BLOB
+ Проверяет существование BLOB по его SHA256 дайджесту
+
+
+
+`Функция ПроверитьBlob(Знач URL, Знач SHA256, Знач ДопЗаголовки = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ollama |
+  | SHA256 | --digest | Строка | &#x2714; | SHA256 дайджест нужного BLOB |
+  | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
+
+<br/>
+
+:::tip
+Метод в документации API: [Check if a Blob Exists](https://github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL    = "https://api.athenaeum.digital/ollama";
+    Токен  = "10KO-82..."; // Авторизация - не часть API Ollama
+    SHA256 = "25a79d3e35f356931a7308eb6624b5eeb1d9f5f309ab2dfd2c61de2ee0fa6ee5";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.ПроверитьBlob(URL, SHA256, ДопЗаголовки);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ПроверитьBlob \
+              --url "https://api.athenaeum.digital/ollama" \
+              --digest "yoyoyo" \
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ПроверитьBlob ^
+              --url "https://api.athenaeum.digital/ollama" ^
+              --digest "yoyoyo" ^
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status_code": 200
+}
+```

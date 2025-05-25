@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 6
+description: Получить число участников и другие функции для работы с Telegram в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить число участников
+ Получает общее число участников чата
+
+
+
+`Функция ПолучитьЧислоУчастников(Знач Токен, Знач IDЧата) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chat | Строка, Число | &#x2714; | ID целевого чата |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [getChatMemberCount](https://core.telegram.org/bots/api#getchatmembercount)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDКанала = "@testsichee";
+
+    Результат = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ПолучитьЧислоУчастников \
+              --token "***" \
+              --chat "@testsichee"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПолучитьЧислоУчастников ^
+              --token "***" ^
+              --chat "@testsichee"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": 2
+}
+```

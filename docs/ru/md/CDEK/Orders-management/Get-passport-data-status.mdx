@@ -1,0 +1,84 @@
+﻿---
+sidebar_position: 14
+description: Получить статус паспортных данных и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить статус паспортных данных
+ Получает информацию о статусе обработки паспортных данных для международных заказов
+
+
+
+`Функция ПолучитьСтатусПаспортныхДанных(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | UUID | --uuid | Строка | &#x2714; | UUID заказа |
+  | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+
+<br/>
+
+:::tip
+Метод в документации API: [Информация о паспортных данных](https://api-docs.cdek.ru/55343091.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NDc3NzYzMjQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "db1a3e7c-adbe-4052-81d7-9180ecb1dc11";
+
+    Результат = OPI_CDEK.ПолучитьСтатусПаспортныхДанных(Токен, UUID, Истина);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint cdek ПолучитьСтатусПаспортныхДанных \
+              --token "***" \
+              --uuid "5adf859f-4a27-4a76-808a-cc3219ed230e" \
+              --testapi "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint cdek ПолучитьСтатусПаспортныхДанных ^
+              --token "***" ^
+              --uuid "5adf859f-4a27-4a76-808a-cc3219ed230e" ^
+              --testapi "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "orders": [
+  {
+   "order_uuid": "f1647903-ff8f-4460-bfb2-0df32616250c",
+   "cdek_number": 1106094895,
+   "passport": [
+    {
+     "client": "SENDER",
+     "passport_requirements_satisfied": false
+    },
+    {
+     "client": "RECEIVER",
+     "passport_requirements_satisfied": false
+    }
+   ]
+  }
+ ]
+}
+```

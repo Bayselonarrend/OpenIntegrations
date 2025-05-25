@@ -1,0 +1,70 @@
+﻿---
+sidebar_position: 5
+description: Удалить сообщение и другие функции для работы с VKTeams в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VKTeams]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить сообщение
+ Удаляет сообщение по ID
+
+
+
+`Функция УдалитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен бота |
+  | IDЧата | --chatid | Строка, Число | &#x2714; | ID чата для отправки сообщения |
+  | IDСообщения | --messageid | Строка, Число | &#x2714; | ID сообщения для редактирования |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
+
+<br/>
+
+:::tip
+Метод в документации API: [GET /messages/deleteMessages](https://teams.vk.com/botapi/#/messages/get_messages_deleteMessages)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен       = "001.3501506236.091...";
+    IDЧата      = "689203963@chat.agent";
+    IDСообщения = "7506621862877606067";
+
+    Результат = OPI_VKTeams.УдалитьСообщение(Токен, IDЧата, IDСообщения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vkteams УдалитьСообщение \
+              --token "***" \
+              --chatid "689203963@chat.agent" \
+              --messageid "7506644755053293767"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams УдалитьСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --messageid "7506644755053293767"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true
+}
+```

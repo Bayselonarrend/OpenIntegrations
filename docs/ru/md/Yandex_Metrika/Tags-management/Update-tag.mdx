@@ -1,0 +1,73 @@
+﻿---
+sidebar_position: 2
+description: Изменить метку и другие функции для работы с Yandex Metrika в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Yandex Metrika]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Изменить метку
+ Изменяет имя метки по ID
+
+
+
+`Функция ИзменитьМетку(Знач Токен, Знач IDМетки, Знач Наименование) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен авторизации |
+  | IDМетки | --label | Строка | &#x2714; | ID метки для изменения |
+  | Наименование | --title | Строка | &#x2714; | Новое наименование |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+:::tip
+Метод в документации API: [Изменение метки](https://yandex.ru/dev/metrika/ru/management/openapi/label/updateLabel)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен        = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    IDМетки      = "317633";
+    Наименование = "Новое имя метки";
+
+    Результат = OPI_YandexMetrika.ИзменитьМетку(Токен, IDМетки, Наименование);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint metrika ИзменитьМетку \
+              --token "***" \
+              --label "317635" \
+              --title "Новое имя метки"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint metrika ИзменитьМетку ^
+              --token "***" ^
+              --label "317635" ^
+              --title "Новое имя метки"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "label": {
+  "id": 313493,
+  "name": "Новое имя метки"
+ }
+}
+```

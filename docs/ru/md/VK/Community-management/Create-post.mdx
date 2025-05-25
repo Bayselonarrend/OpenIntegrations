@@ -1,0 +1,94 @@
+﻿---
+sidebar_position: 1
+description: Создать пост и другие функции для работы с VK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать пост
+ Создает пост с картинками
+
+
+
+`Функция СоздатьПост(Знач Текст, Знач МассивКартинок, Знач Реклама = Ложь, Знач СсылкаПодЗаписью = "", Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Текст | --text | Строка | &#x2714; | Текст поста |
+  | МассивКартинок | --pictures | Массив из Строка,ДвоичныеДанные | &#x2714; | Массив картинок |
+  | Реклама | --ad | Булево | &#x2716; | Признак ""Это реклама"" |
+  | СсылкаПодЗаписью | --url | Строка | &#x2716; | Ссылка (URL) под записью |
+  | Параметры | --auth | Структура из Строка | &#x2716; | JSON авторизации или путь к .json |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+
+<br/>
+
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыВК();
+    Текст     = "Пост из автотеста";
+    URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+
+    ИВФ = ПолучитьИмяВременногоФайла("png");
+    КопироватьФайл(Картинка2, ИВФ);
+
+    МассивКартинок = Новый Массив;
+    МассивКартинок.Добавить(Картинка);
+    МассивКартинок.Добавить(ИВФ);
+
+    Результат = OPI_VK.СоздатьПост(Текст, МассивКартинок, Истина, URL, Параметры);
+
+    Результат = OPI_VK.СоздатьПост(Текст, Картинка, Ложь, , Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk СоздатьПост \
+              --text "Пост из автотеста" \
+              --pictures "C:\Users\Administrator\AppData\Local\Temp\bbiwu4vd54f.png" \
+              --ad true \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk СоздатьПост ^
+              --text "Пост из автотеста" ^
+              --pictures "C:\Users\Administrator\AppData\Local\Temp\bbiwu4vd54f.png" ^
+              --ad true ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "response": {
+  "post_id": 4534
+ }
+}
+```

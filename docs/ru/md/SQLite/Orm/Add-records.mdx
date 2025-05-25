@@ -1,0 +1,99 @@
+﻿---
+sidebar_position: 3
+description: Добавить записи и другие функции для работы с SQLite в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить записи
+ Добавляет записи в таблицу
+
+
+
+`Функция ДобавитьЗаписи(Знач Таблица, Знач МассивДанных, Знач Транзакция = Истина, Знач Соединение = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | МассивДанных | --rows | Массив Из Структура | &#x2714; | Массив структур данных строк: Ключ > поле, Значение > значение поля |
+  | Транзакция | --trn | Булево | &#x2716; | Истина > добавление записей в транзакции с откатом при ошибке |
+  | Соединение | --db | Строка, Произвольный | &#x2716; | Существующее соединение или путь к базе |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+<br/>
+
+:::tip
+Двоичные данные могут также быть переданы как структура `{'blob':Путь к файлу}`
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
+
+    ФайлКартинки = ПолучитьИмяВременногоФайла("png");
+    Картинка.Записать(ФайлКартинки);                          // ФайлКартинки - Файл на диске
+
+    База    = "C:\Users\Administrator\AppData\Local\Temp\v8_CAAE_321.sqlite";
+    Таблица = "test";
+
+    МассивДанных = Новый Массив;
+
+    СтруктураСтроки1 = Новый Структура;
+    СтруктураСтроки1.Вставить("name"      , "Vitaly");                              // TEXT
+    СтруктураСтроки1.Вставить("age"       , 25);                                    // INTEGER
+    СтруктураСтроки1.Вставить("salary"    , 1000.12);                               // REAL
+    СтруктураСтроки1.Вставить("is_active" , Истина);                                // BOOL
+    СтруктураСтроки1.Вставить("created_at", OPI_Инструменты.ПолучитьТекущуюДату()); // DATETIME
+    СтруктураСтроки1.Вставить("data"      , Картинка);                              // BLOB
+
+    СтруктураСтроки2 = Новый Структура;
+    СтруктураСтроки2.Вставить("name"      , "Lesha");                              // TEXT
+    СтруктураСтроки2.Вставить("age"       , 20);                                    // INTEGER
+    СтруктураСтроки2.Вставить("salary"    , 200.20);                               // REAL
+    СтруктураСтроки2.Вставить("is_active" , Ложь);                                // BOOL
+    СтруктураСтроки2.Вставить("created_at", OPI_Инструменты.ПолучитьТекущуюДату()); // DATETIME
+    СтруктураСтроки2.Вставить("data"      , Новый Структура("blob", ФайлКартинки)); // BLOB
+
+    МассивДанных.Добавить(СтруктураСтроки1);
+    МассивДанных.Добавить(СтруктураСтроки2);
+
+    Результат = OPI_SQLite.ДобавитьЗаписи(Таблица, МассивДанных, , База);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite ДобавитьЗаписи \
+              --table "test" \
+              --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-05-21T00:03:37.9063665Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\d2r5b1m0fpf.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-05-21T00:03:37.9063665Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\d2r5b1m0fpf.png'}}]" \
+              --db "C:\Users\Administrator\AppData\Local\Temp\lo5i4lftni4.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite ДобавитьЗаписи ^
+              --table "test" ^
+              --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-05-21T00:03:37.9063665Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\d2r5b1m0fpf.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-05-21T00:03:37.9063665Z','data':{'blob':'C:\\Users\\Administrator\\AppData\\Local\\Temp\\d2r5b1m0fpf.png'}}]" ^
+              --db "C:\Users\Administrator\AppData\Local\Temp\lo5i4lftni4.sqlite"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true,
+ "rows": 2,
+ "errors": []
+}
+```

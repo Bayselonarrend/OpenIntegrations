@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 6
+description: Удалить шифрование бакета и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить шифрование бакета
+ Удаляет конфигурацию шифрования бакета
+
+
+
+`Функция УдалитьШифрованиеБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Ложь, Знач Заголовки = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Наименование | --name | Строка | &#x2714; | Наименование бакета |
+  | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
+  | Каталог | --dir | Булево | &#x2716; | Истина > Directory Bucket, Ложь > General Purpose Bucket |
+  | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+
+<br/>
+
+:::tip
+Метод в документации AWS: [DeleteBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+    Наименование   = "opi-newbucket2";
+
+    Результат = OPI_S3.УдалитьШифрованиеБакета(Наименование, ОсновныеДанные);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 УдалитьШифрованиеБакета \
+              --name "opi-newbucket2" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --dir false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint s3 УдалитьШифрованиеБакета ^
+              --name "opi-newbucket2" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --dir false
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "status": 204,
+ "response": {},
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Type": "text/plain; charset=utf-8",
+  "Date": "Fri, 22 Nov 2024 09:34:49 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "180A40A655F006F3",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}
+```

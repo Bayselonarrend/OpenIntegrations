@@ -1,0 +1,63 @@
+﻿---
+sidebar_position: 5
+description: Сократить ссылку и другие функции для работы с VK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VK]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Сократить ссылку
+ Создает сокращенный URL из обычного
+
+
+
+`Функция СократитьСсылку(Знач URL, Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL для сокращения |
+  | Параметры | --auth | Структура из Строка | &#x2716; | JSON авторизации или путь к .json |
+
+  
+  Возвращаемое значение:  Строка - Сокращенный URL
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыВК();
+
+    Результат = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk СократитьСсылку \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint vk СократитьСсылку ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+"https://vk.cc/ctL1sM"
+```

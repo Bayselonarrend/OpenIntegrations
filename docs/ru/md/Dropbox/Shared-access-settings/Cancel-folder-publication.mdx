@@ -1,0 +1,63 @@
+﻿---
+sidebar_position: 2
+description: Отменить публикацию папки и другие функции для работы с Dropbox в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Dropbox]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отменить публикацию папки
+ Отменяет режим общего доступа для каталога
+
+
+
+`Функция ОтменитьПубликациюПапки(Знач Токен, Знач IDПапки) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Токен | --token | Строка | &#x2714; | Токен |
+  | IDПапки | --folder | Строка | &#x2714; | ID публичного каталога (shared folder ID) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Токен = "sl.u.AFuirnTYF7i-fX6aKaAYl44qx-71lVvTtO3HGJFNVDl98KzyBH3-UlncIc2prbWEkF1SobIcQI31Z7A1-vS29owNaQihccgsdraWoMnw5Y9hWI5Kun6HyAbBAWZBIv6Z1tEDNX9_l_S_bvMuRBSGLsaIBXcnwuk5mAyyPrGxcl5Kndmf4hkZwFK8raQ-32g2_6MFJUPnZOqSk1ZFqq_-u9BiXahjIcGaJWrJ5bcT7byP4O1F5pNvp7Ox8PD1nGcD6NN-3Z56CrQLjRtDcFr9-T0u0hCVP4_aJKjC0WdvTSvPD55e6DtZTXbVE4lctUOvEeDvyCZKwg7HYCzfaPgLc9lnKREUQU-IQ10P9jlFRvSYDRzWryCPFGU_85WUrHfFctZZGzrmUkDON_fGlWuHo0ffSxJepA70MblsKCUMEJgAJ2IqvCKVeiJ2_XHUVCUBqYuEe1qQjmdcdukoB01xinXsROV2xeyyql4yvsQsMPb85RQo5B0TJM69CoGIVtyQVEBnk-mKcRbP5qMptz00VD1xOaHqznitylFM69foZoEdkYhQ77wYsvn864B4WbHV2JsdyC3loft-K7HkgTyhajr-pm9_EcF-ls8MTYY5QhQG2-8AkOKqFDOtvKm_ruyA1saB7PymIIGno4x3fLZF_7NeWfXvGVWLEyURlv_c0vaktadJAuxodMiCuOP-thoiM4zDoqYdJqQaVCerXQ4qgkka5p0uyVc...";
+    Папка = "12515446035";
+
+    Результат = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox ОтменитьПубликациюПапки \
+              --token "***" \
+              --folder "12522886771"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ОтменитьПубликациюПапки ^
+              --token "***" ^
+              --folder "12522886771"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ ".tag": "async_job_id",
+ "async_job_id": "dbjid:AADtwNfCN9W_5zHUPzHqUjDmmt1pFYi933Ij6TGpKSjgMzZpJsSyyGwalhvYCzHMZeCmjajZBlgvLOqk0jscPd5m"
+}
+```

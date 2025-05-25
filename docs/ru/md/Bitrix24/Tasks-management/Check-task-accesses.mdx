@@ -1,0 +1,151 @@
+﻿---
+sidebar_position: 20
+description: Проверить доступ к задаче и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Проверить доступ к задаче
+ Проверяет доступность задачи для пользователей
+
+
+
+`Функция ПроверитьДоступКЗадаче(Знач URL, Знач IDЗадачи, Знач Пользователи = "", Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | IDЗадачи | --task | Число,Строка | &#x2714; | ID задачи |
+  | Пользователи | --users | Массив из Строка | &#x2716; | ID пользователей для проверки доступа |
+  | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
+
+<br/>
+
+:::tip
+Метод в документации API: [tasks.task.getaccess](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    МассивПользователей = Новый Массив;
+    МассивПользователей.Добавить("1");
+    МассивПользователей.Добавить("10");
+
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    IDЗадачи = "6066";
+
+    Результат = OPI_Bitrix24.ПроверитьДоступКЗадаче(URL, IDЗадачи, МассивПользователей);
+
+    URL      = "b24-ar17wx.bitrix24.by";
+    Токен    = "4dee2c68006e9f06006b12e400000001000...";
+    IDЗадачи = "6068";
+
+    Результат = OPI_Bitrix24.ПроверитьДоступКЗадаче(URL, IDЗадачи, МассивПользователей, Токен);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint bitrix24 ПроверитьДоступКЗадаче \
+              --url "b24-ar17wx.bitrix24.by" \
+              --task "6078" \
+              --users "['1','10']" \
+              --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint bitrix24 ПроверитьДоступКЗадаче ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --task "6078" ^
+              --users "['1','10']" ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": {
+  "allowedActions": {
+   "1": {
+    "ACCEPT": false,
+    "DECLINE": false,
+    "COMPLETE": true,
+    "APPROVE": false,
+    "DISAPPROVE": false,
+    "START": true,
+    "PAUSE": false,
+    "DELEGATE": true,
+    "REMOVE": true,
+    "EDIT": true,
+    "DEFER": true,
+    "RENEW": false,
+    "CREATE": true,
+    "CHANGE_DEADLINE": true,
+    "CHECKLIST_ADD_ITEMS": true,
+    "ADD_FAVORITE": true,
+    "DELETE_FAVORITE": false,
+    "RATE": true,
+    "EDIT.ORIGINATOR": false,
+    "CHECKLIST.REORDER": true,
+    "ELAPSEDTIME.ADD": true,
+    "DAYPLAN.TIMER.TOGGLE": false,
+    "EDIT.PLAN": true,
+    "CHECKLIST.ADD": true,
+    "FAVORITE.ADD": true,
+    "FAVORITE.DELETE": false
+   },
+   "10": {
+    "ACCEPT": false,
+    "DECLINE": false,
+    "COMPLETE": false,
+    "APPROVE": false,
+    "DISAPPROVE": false,
+    "START": false,
+    "PAUSE": false,
+    "DELEGATE": false,
+    "REMOVE": false,
+    "EDIT": false,
+    "DEFER": false,
+    "RENEW": false,
+    "CREATE": true,
+    "CHANGE_DEADLINE": false,
+    "CHECKLIST_ADD_ITEMS": false,
+    "ADD_FAVORITE": false,
+    "DELETE_FAVORITE": false,
+    "RATE": false,
+    "EDIT.ORIGINATOR": false,
+    "CHECKLIST.REORDER": false,
+    "ELAPSEDTIME.ADD": false,
+    "DAYPLAN.TIMER.TOGGLE": false,
+    "EDIT.PLAN": false,
+    "CHECKLIST.ADD": false,
+    "FAVORITE.ADD": false,
+    "FAVORITE.DELETE": false
+   }
+  }
+ },
+ "time": {
+  "start": 1728409731.09459,
+  "finish": 1728409731.14691,
+  "duration": 0.052325963973999,
+  "processing": 0.0272109508514404,
+  "date_start": "2024-10-08T20:48:51+03:00",
+  "date_finish": "2024-10-08T20:48:51+03:00",
+  "operating_reset_at": 1728410331,
+  "operating": 0
+ }
+}
+```

@@ -1,0 +1,256 @@
+﻿---
+sidebar_position: 2
+description: Получить ответ и другие функции для работы с Ollama в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ollama]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить ответ
+ Генерирует ответ по заданному текстовому запросу
+
+
+
+`Функция ПолучитьОтвет(Знач URL, Знач Модель, Знач Вопрос, Знач ДопПараметры = "", Знач ДопЗаголовки = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ollama |
+  | Модель | --model | Строка | &#x2714; | Имя модели |
+  | Вопрос | --prompt | Строка | &#x2714; | Текст запроса |
+  | ДопПараметры | --options | Структура Из КлючИЗначение | &#x2716; | Доп. параметры. См. ПолучитьСтруктуруПараметровЗапроса |
+  | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
+
+<br/>
+
+:::tip
+Метод в документации API: [Generate a completion](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion)
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL   = "https://api.athenaeum.digital/ollama";
+    Токен = "10KO-82..."; // Авторизация - не часть API Ollama
+
+    Промпт = "What is 1C:Enterprise?";
+    Модель = "tinyllama";
+
+    ДопЗаголовки = Новый Соответствие;
+    ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
+
+    Результат = OPI_Ollama.ПолучитьОтвет(URL, Модель, Промпт, , ДопЗаголовки);
+
+    // С параметрами
+
+    Промпт = "Ollama is 22 years old and is busy saving the world. Respond using JSON";
+
+    Формат = OPI_Инструменты.JSONВСтруктуру("
+    |{
+    |""type"": ""object"",
+    |""properties"": {
+    |  ""age"": {
+    |    ""type"": ""integer""
+    |  },
+    |  ""available"": {
+    |    ""type"": ""boolean""
+    |  }
+    |},
+    |""required"": [
+    |  ""age"",
+    |  ""available""
+    |]
+    |}");
+
+    ДопПараметры = Новый Структура("format", Формат);
+
+    Результат = OPI_Ollama.ПолучитьОтвет(URL, Модель, Промпт, ДопПараметры, ДопЗаголовки);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ПолучитьОтвет \
+              --url "https://api.athenaeum.digital/ollama" \
+              --model "mario" \
+              --prompt "How are you?" \
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ollama ПолучитьОтвет ^
+              --url "https://api.athenaeum.digital/ollama" ^
+              --model "mario" ^
+              --prompt "How are you?" ^
+              --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "model": "tinyllama",
+ "created_at": "2025-04-14T20:16:12.5276519Z",
+ "response": "1C:Enterprise is a full-featured business management software developed by 1C Company, which provides solutions for small and medium-sized businesses (SMBs). It offers various features such as accounting, inventory management, sales, supply chain, human resources, payroll, financials, and more. 1C:Enterprise includes a wide range of modules and options to meet the needs of different businesses, making it an attractive choice for enterprises seeking a comprehensive ERP solution.",
+ "done": true,
+ "done_reason": "stop",
+ "context": [
+  529,
+  29989,
+  5205,
+  29989,
+  29958,
+  13,
+  3492,
+  526,
+  263,
+  8444,
+  319,
+  29902,
+  20255,
+  29889,
+  2,
+  29871,
+  13,
+  29966,
+  29989,
+  1792,
+  29989,
+  29958,
+  13,
+  5618,
+  338,
+  29871,
+  29896,
+  29907,
+  29901,
+  10399,
+  7734,
+  29973,
+  2,
+  29871,
+  13,
+  29966,
+  29989,
+  465,
+  22137,
+  29989,
+  29958,
+  13,
+  29896,
+  29907,
+  29901,
+  10399,
+  7734,
+  338,
+  263,
+  2989,
+  29899,
+  14394,
+  29881,
+  5381,
+  10643,
+  7047,
+  8906,
+  491,
+  29871,
+  29896,
+  29907,
+  6938,
+  29892,
+  607,
+  8128,
+  6851,
+  363,
+  2319,
+  322,
+  18350,
+  29899,
+  2311,
+  29881,
+  5381,
+  267,
+  313,
+  17061,
+  29933,
+  29879,
+  467,
+  739,
+  16688,
+  5164,
+  5680,
+  1316,
+  408,
+  3633,
+  292,
+  29892,
+  11817,
+  706,
+  10643,
+  29892,
+  16538,
+  29892,
+  11421,
+  9704,
+  29892,
+  5199,
+  7788,
+  29892,
+  5146,
+  1245,
+  29892,
+  18161,
+  29879,
+  29892,
+  322,
+  901,
+  29889,
+  29871,
+  29896,
+  29907,
+  29901,
+  10399,
+  7734,
+  7805,
+  263,
+  9377,
+  3464,
+  310,
+  10585,
+  322,
+  3987,
+  304,
+  5870,
+  278,
+  4225,
+  310,
+  1422,
+  5381,
+  267,
+  29892,
+  3907,
+  372,
+  385,
+  13978,
+  573,
+  7348,
+  363,
+  3896,
+  7734,
+  29879,
+...
+```

@@ -1,0 +1,75 @@
+﻿---
+sidebar_position: 1
+description: Получить структуру данных и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить структуру данных
+ Возвращает основные данные запроса в структурированном виде
+
+
+
+`Функция ПолучитьСтруктуруДанных(Знач URL, Знач AccessKey, Знач SecretKey, Знач Region, Знач Service = "s3") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL: домен для обычных методов или полный URL с параметрами для прямой отправки запросов |
+  | AccessKey | --access | Строка | &#x2714; | Access key для авторизации |
+  | SecretKey | --secret | Строка | &#x2714; | Secret key для авторизации |
+  | Region | --region | Строка | &#x2714; | Регион сервиса |
+  | Service | --service | Строка | &#x2716; | Вид сервиса, если отличен от s3 |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение -  Структура основных данных запроса
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    Region    = "BTC";
+
+    Результат = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint s3 ПолучитьСтруктуруДанных \
+              --url "storage-155.s3hoster.by" \
+              --access "BRN5RKJE67YCVDZRRQVI" \
+              --secret "***" \
+              --region "BTC"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint s3 ПолучитьСтруктуруДанных ^
+              --url "storage-155.s3hoster.by" ^
+              --access "BRN5RKJE67YCVDZRRQVI" ^
+              --secret "***" ^
+              --region "BTC"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "URL": "storage-155.s3hoster.by",
+ "AccessKey": "BRN5RKJE67YCVDZRRQVI",
+ "SecretKey": "***",
+ "Region": "BTC",
+ "Service": "s3"
+}
+```

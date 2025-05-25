@@ -1,0 +1,72 @@
+﻿---
+sidebar_position: 2
+description: Создать текстовый твит и другие функции для работы с Twitter в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Twitter]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать текстовый твит
+ Создает твит без вложений
+
+
+
+`Функция СоздатьТекстовыйТвит(Знач Текст, Знач Параметры = "") ЭкспортВозврат СоздатьПроизвольныйТвит(Текст, , , , Параметры);КонецФункции`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Текст | --text | Строка | &#x2714; | Текст твита |
+  | Параметры | --auth | Структура из Строка | &#x2716; | Данные авторизации. См.ПолучитьСтандартныеПараметры |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Параметры = ПолучитьПараметрыАвторизацииТвиттер();
+    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+
+    Результат = OPI_Twitter.СоздатьТекстовыйТвит(Текст, Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТекстовыйТвит \
+              --text "Тестовый твитт458ae827-00bc-477e-9850-a065c8e7087b" \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint twitter СоздатьТекстовыйТвит ^
+              --text "Тестовый твитт458ae827-00bc-477e-9850-a065c8e7087b" ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": {
+  "edit_history_tweet_ids": [
+   "1843702311643721803"
+  ],
+  "text": "Тестовый твиттc6e90c85-c8f1-42e2-93d6-417465165081",
+  "id": "1843702311643721803"
+ }
+}
+```

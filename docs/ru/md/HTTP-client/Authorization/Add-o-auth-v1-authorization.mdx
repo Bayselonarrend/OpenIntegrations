@@ -1,0 +1,76 @@
+﻿---
+sidebar_position: 4
+description: Добавить OAuth v1 авторизацию  и другие функции для работы с HTTP-клиент в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, HTTP-клиент]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить OAuth v1 авторизацию 
+ Добавляет данные для OAuth v1 авторизации
+
+
+
+`Функция ДобавитьOAuthV1Авторизацию(Знач Token, Знач Secret, Знач ConsumerKey, Знач ConsumerSecret, Знач Версия) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Token | - | Строка | &#x2714; | Token для авторизации |
+  | Secret | - | Строка | &#x2714; | Secret для авторизации |
+  | ConsumerKey | - | Строка | &#x2714; | Consumer key для авторизации |
+  | ConsumerSecret | - | Строка | &#x2714; | Consumer secret для авторизации |
+  | Версия | - | Строка | &#x2714; | Версия API |
+
+  
+  Возвращаемое значение:   ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
+
+<br/>
+
+:::tip
+По умолчанию, для создания подписи используется HMAC-SHA256. Для изменения алгоритма можно восопользоваться функцией `УстановитьАлгоритмOAuthV1`
+:::
+
+:::caution
+**NOCLI:** данный метод недоступен для использования в CLI версии
+:::
+<br/>
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    Токен              = "***";
+    Секрет             = "***";
+    КлючПользователя   = "***";
+    СекретПользователя = "***";
+    Версия             = "1.0";
+
+    Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать(URL)
+        .ДобавитьOAuthV1Авторизацию(Токен, Секрет, КлючПользователя, СекретПользователя, Версия) // <---
+        .ОбработатьЗапрос("GET")
+        .ВернутьОтветКакJSONКоллекцию();
+```
+    
+
+
+
+```json title="Результат"
+{
+ "args": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1747210847\",oauth_nonce=\"1747210847\",oauth_version=\"1.0\",oauth_signature=siu%2B16CkU3XgOu38lvBEW2XUxz1iGj1XG2b0VG5nook%3D",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$1.9.2.10",
+  "X-Amzn-Trace-Id": "Root=1-6824363e-1b9823c54729b7eb07e14b1c"
+ },
+ "origin": "***",
+ "url": "https://httpbin.org/get"
+}
+```
