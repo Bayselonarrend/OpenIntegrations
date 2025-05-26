@@ -148,23 +148,6 @@ EndFunction
 
 #Region Alternate
 
-Procedure Message(Val MessageText = "", Val pMessageStatus = Undefined) Export
-	Message(MessageText, pMessageStatus);
-EndProcedure
-
-Procedure WriteLine(Val MessageText = "", Val TextColor = Undefined) Export
-	WriteLine(MessageText, TextColor);
-EndProcedure
-
-Procedure Write(Val MessageText, Val TextColor = Undefined) Export
-	Write(MessageText, TextColor);
-EndProcedure
-
-#EndRegion
-
-
-#Region Alternate
-
 Procedure Сообщить(Val ТекстСообщения = "", Val пСтатусСообщения = Undefined) Export
 	Message(ТекстСообщения, пСтатусСообщения);
 EndProcedure
