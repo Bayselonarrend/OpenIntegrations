@@ -431,3 +431,88 @@
 	Возврат СтрПараметр;
 
 КонецФункции
+
+
+#Region Alternate
+
+Function AddParameter(Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьПараметр(ParameterName, Explanation);
+EndFunction
+
+Function AddNamedParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
+	Return ДобавитьИменованныйПараметр(ParameterName, Explanation, Global);
+EndFunction
+
+Function AddFlagParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
+	Return ДобавитьПараметрФлаг(ParameterName, Explanation, Global);
+EndFunction
+
+Function AddCollectionParam(Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьПараметрКоллекция(ParameterName, Explanation);
+EndFunction
+
+Function CommandDescription(Val CommandName, Val Explanation = "") Export
+	Return ОписаниеКоманды(CommandName, Explanation);
+EndFunction
+
+Procedure AddCommand(Val CommandDescription) Export
+	ДобавитьКоманду(CommandDescription);
+EndProcedure
+
+Function GetCommand(Val CommandName) Export
+	Return ПолучитьКоманду(CommandName);
+EndFunction
+
+Function AddPositionalCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьПозиционныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddNamedCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьИменованныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddCommandFlagParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьПараметрФлагКоманды(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddNamedCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return ДобавитьИменованныйПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function ParseCommand(Val ParameterArray) Export
+	Return РазобратьКоманду(ParameterArray);
+EndFunction
+
+Function Parse(Val InputParamsArray) Export
+	Return Разобрать(InputParamsArray);
+EndFunction
+
+Function ParamsHelp() Export
+	Return СправкаПоПараметрам();
+EndFunction
+
+Procedure DisplayParameterHelp() Export
+	ВывестиСправкуПоПараметрам();
+EndProcedure
+
+Function CommandHelp(Val CommandName) Export
+	Return СправкаПоКоманде(CommandName);
+EndFunction
+
+Function HelpAvailableCommand() Export
+	Return СправкаВозможныеКоманды();
+EndFunction
+
+Procedure ShowCommandsHelp() Export
+	ВывестиСправкуПоКомандам();
+EndProcedure
+
+Procedure ShowCommandHelp(Val CommandName) Export
+	ВывестиСправкуПоКоманде(CommandName);
+EndProcedure
+
+#EndRegion
