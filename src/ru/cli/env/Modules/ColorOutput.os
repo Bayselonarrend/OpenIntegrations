@@ -145,7 +145,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Procedure Message(Val MessageText = "", Val pMessageStatus = Undefined) Export
