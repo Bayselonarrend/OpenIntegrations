@@ -193,7 +193,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
 	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method);
 EndFunction
 
-Function ДotoлнandтьKэшСowithтаinа(Val Library, Val ParametersTable, Command = "") Export
+Function CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
 	Return ДополнитьКэшСостава(Library, ParametersTable, Command);
 EndFunction
 
