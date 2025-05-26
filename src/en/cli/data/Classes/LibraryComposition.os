@@ -152,7 +152,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
 
 EndFunction
 
-Function ДotoлнandтьKэшСowithтаinа(Val Library, Val ParametersTable, Command = "") Export
+Function CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
    CompositionCache.Insert(Library, ParametersTable);
    Command = ?(ValueIsFilled(Command), Command, Library);
    ModuleCommandMapping.Insert(Command, Library);
