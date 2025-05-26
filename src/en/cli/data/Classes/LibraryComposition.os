@@ -194,7 +194,7 @@ Function СформироватьСтрокуВызоваМетода(Val Пер
 EndFunction
 
 Function ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
-	Return ДotoлнandтьKэшСowithтаinа(Библиотека, ТаблицаПараметров, Команда);
+	Return CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndFunction
 
 #EndRegion
