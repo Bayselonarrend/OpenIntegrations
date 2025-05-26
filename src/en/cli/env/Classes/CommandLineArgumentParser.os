@@ -435,6 +435,91 @@ EndFunction
 
 #Region Alternate
 
+Function AddParameter(Val ParameterName, Val Explanation = "") Export
+	Return AddParameter(ParameterName, Explanation);
+EndFunction
+
+Function AddNamedParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
+	Return AddNamedParam(ParameterName, Explanation, Global);
+EndFunction
+
+Function AddFlagParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
+	Return AddFlagParam(ParameterName, Explanation, Global);
+EndFunction
+
+Function AddCollectionParam(Val ParameterName, Val Explanation = "") Export
+	Return AddCollectionParam(ParameterName, Explanation);
+EndFunction
+
+Function CommandDescription(Val CommandName, Val Explanation = "") Export
+	Return CommandDescription(CommandName, Explanation);
+EndFunction
+
+Procedure AddCommand(Val CommandDescription) Export
+	AddCommand(CommandDescription);
+EndProcedure
+
+Function GetCommand(Val CommandName) Export
+	Return GetCommand(CommandName);
+EndFunction
+
+Function AddPositionalCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return AddPositionalCommandParameter(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddNamedCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return AddNamedCommandParameter(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddCommandFlagParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return AddCommandFlagParameter(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return AddCommandCollectionParam(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function AddNamedCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
+	Return AddNamedCommandCollectionParam(CommandDescription, ParameterName, Explanation);
+EndFunction
+
+Function ParseCommand(Val ParameterArray) Export
+	Return ParseCommand(ParameterArray);
+EndFunction
+
+Function Parse(Val InputParamsArray) Export
+	Return Parse(InputParamsArray);
+EndFunction
+
+Function ParamsHelp() Export
+	Return ParamsHelp();
+EndFunction
+
+Procedure DisplayParameterHelp() Export
+	DisplayParameterHelp();
+EndProcedure
+
+Function CommandHelp(Val CommandName) Export
+	Return CommandHelp(CommandName);
+EndFunction
+
+Function HelpAvailableCommand() Export
+	Return HelpAvailableCommand();
+EndFunction
+
+Procedure ShowCommandsHelp() Export
+	ShowCommandsHelp();
+EndProcedure
+
+Procedure ShowCommandHelp(Val CommandName) Export
+	ShowCommandHelp(CommandName);
+EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
 Function ДобавитьПараметр(Val ИмяПараметра, Val Пояснение = "") Export
 	Return AddParameter(ИмяПараметра, Пояснение);
 EndFunction
