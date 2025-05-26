@@ -7,63 +7,6 @@
     Выполнить("OPI_Тесты." + Тест + "()");
 КонецЦикла;
 
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
-#Region Alternate
-
-
-
-#EndRegion
-
-
 #Region Alternate
 
 
