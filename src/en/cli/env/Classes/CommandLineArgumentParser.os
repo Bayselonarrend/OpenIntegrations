@@ -1,4 +1,4 @@
-﻿Var mParams;
+Var mParams;
 Var mPositionParams;
 
 Var mCommands;
@@ -512,6 +512,91 @@ EndProcedure
 
 Procedure ShowCommandHelp(Val CommandName) Export
 	ShowCommandHelp(CommandName);
+EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ДобавитьПараметр(Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddParameter(ИмяПараметра, Пояснение);
+EndFunction
+
+Function ДобавитьИменованныйПараметр(Val ИмяПараметра, Val Пояснение = "", Val Глобальный = False) Export
+	Return AddNamedParam(ИмяПараметра, Пояснение, Глобальный);
+EndFunction
+
+Function ДобавитьПараметрФлаг(Val ИмяПараметра, Val Пояснение = "", Val Глобальный = False) Export
+	Return AddFlagParam(ИмяПараметра, Пояснение, Глобальный);
+EndFunction
+
+Function ДобавитьПараметрКоллекция(Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddCollectionParam(ИмяПараметра, Пояснение);
+EndFunction
+
+Function ОписаниеКоманды(Val ИмяКоманды, Val Пояснение = "") Export
+	Return CommandDescription(ИмяКоманды, Пояснение);
+EndFunction
+
+Procedure ДобавитьКоманду(Val ОписаниеКоманды) Export
+	AddCommand(ОписаниеКоманды);
+EndProcedure
+
+Function ПолучитьКоманду(Val ИмяКоманды) Export
+	Return GetCommand(ИмяКоманды);
+EndFunction
+
+Function ДобавитьПозиционныйПараметрКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddPositionalCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+EndFunction
+
+Function ДобавитьИменованныйПараметрКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddNamedCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+EndFunction
+
+Function ДобавитьПараметрФлагКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddCommandFlagParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+EndFunction
+
+Function ДобавитьПараметрКоллекцияКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
+EndFunction
+
+Function ДобавитьИменованныйПараметрКоллекцияКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
+	Return AddNamedCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
+EndFunction
+
+Function РазобратьКоманду(Val МассивПараметров) Export
+	Return ParseCommand(МассивПараметров);
+EndFunction
+
+Function Разобрать(Val ВходнойМассивПараметров) Export
+	Return Parse(ВходнойМассивПараметров);
+EndFunction
+
+Function СправкаПоПараметрам() Export
+	Return ParamsHelp();
+EndFunction
+
+Procedure ВывестиСправкуПоПараметрам() Export
+	DisplayParameterHelp();
+EndProcedure
+
+Function СправкаПоКоманде(Val ИмяКоманды) Export
+	Return CommandHelp(ИмяКоманды);
+EndFunction
+
+Function СправкаВозможныеКоманды() Export
+	Return HelpAvailableCommand();
+EndFunction
+
+Procedure ВывестиСправкуПоКомандам() Export
+	ShowCommandsHelp();
+EndProcedure
+
+Procedure ВывестиСправкуПоКоманде(Val ИмяКоманды) Export
+	ShowCommandHelp(ИмяКоманды);
 EndProcedure
 
 #EndRegion
