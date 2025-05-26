@@ -432,7 +432,6 @@
 
 КонецФункции
 
-
 #Region Alternate
 
 Function AddParameter(Val ParameterName, Val Explanation = "") Export
