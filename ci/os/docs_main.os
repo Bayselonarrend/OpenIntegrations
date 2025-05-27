@@ -62,7 +62,8 @@
 		ПроверитьСоздатьКаталог(КаталогДокументации);
 		СоздатьФайлыДокументации();
 
-		ЗапуститьПриложение(СтрШаблон("xcopy ./Melezh/docs/%1/md ./docs/%1/md/Addons /E /I /H", Язык));
+		ЗапуститьПриложение(СтрШаблон("robocopy ""./Melezh/docs/%1/md/Melezh"" ""./docs/%1/md/Addons/Melezh"" /E /I /H", Язык));
+		ЗапуститьПриложение(СтрШаблон("copy /Y ""./Melezh/docs/%1/md/Melezh.mdx"" ""./docs/%1/md/Addons/Melezh.mdx""", Язык));
 
 	КонецЦикла;
 
