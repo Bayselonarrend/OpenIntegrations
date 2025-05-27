@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 4
+description: Удалить обработчик запросов и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить обработчик запросов
+ Удаляет обработчик запросов из проекта
+
+
+
+`Функция УдалитьОбработчикЗапросов(Знач Проект, Знач КлючОбработчика) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+  | КлючОбработчика | --handler | Строка | &#x2714; | Ключ обработчика |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Результат удаления
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  УдалитьОбработчикЗапросов \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\diujk5r0.pdy" \
+              --handler "my-key"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  УдалитьОбработчикЗапросов ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\diujk5r0.pdy" ^
+              --handler "my-key"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "result": true,
+ "tables": {
+  "handlers": true,
+  "arguments": true
+ }
+}
+```

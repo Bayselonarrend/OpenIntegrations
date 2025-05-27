@@ -1,0 +1,53 @@
+﻿---
+sidebar_position: 1
+description: Create project and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create project
+ Creates a project file at the selected path
+
+
+
+`Function CreateProject(Val Path) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Path | --path | String | &#x2714; | Project filepath |
+
+  
+  Returns:  Structure Of KeyAndValue - Creating result
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  CreateProject \
+              --path "C:\Users\bayselonarrend\AppData\Local\Temp\oxebtcco.ilx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  CreateProject ^
+              --path "C:\Users\bayselonarrend\AppData\Local\Temp\oxebtcco.ilx"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "result": true,
+ "message": "The project file has been successfully created!",
+ "path": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\lv4rgf4d.bii"
+}
+```
