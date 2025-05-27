@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 4
+description: Delete request handler and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete request handler
+ Removes the request handler from the project
+
+
+
+`Function DeleteRequestsHandler(Val Project, Val HandlersKey) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlersKey | --handler | String | &#x2714; | Handlers key |
+
+  
+  Returns:  Structure Of KeyAndValue - Deleting result
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  DeleteRequestsHandler \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" \
+              --handler "my-key"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  DeleteRequestsHandler ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" ^
+              --handler "my-key"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "result": true,
+ "tables": {
+  "handlers": true,
+  "arguments": true
+ }
+}
+```
