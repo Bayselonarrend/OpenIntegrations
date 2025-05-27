@@ -1,0 +1,57 @@
+﻿---
+sidebar_position: 5
+description: Set project setting and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set project setting
+ Sets the value of the selected project setting
+
+
+
+`Function SetProjectSetting(Val Project, Val Setting, Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | Setting | --key | String | &#x2714; | Project setting key |
+  | Value | --value | String | &#x2714; | Value of project setting |
+
+  
+  Returns:  Structure Of KeyAndValue - Setting result
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  SetProjectSetting \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" \
+              --key "***" \
+              --value "yo"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  SetProjectSetting ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" ^
+              --key "***" ^
+              --value "yo"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "result": true
+}
+```

@@ -1,0 +1,61 @@
+﻿---
+sidebar_position: 2
+description: Get handler arguments and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get handler arguments
+ Gets the list of handler arguments
+
+
+
+`Function GetHandlerArguments(Val Project, Val HandlersKey) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlersKey | --handler | String | &#x2714; | Handlers key |
+
+  
+  Returns:  Structure Of KeyAndValue - Handlers list
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  GetHandlerArguments \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" \
+              --handler "my-key"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  GetHandlerArguments ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" ^
+              --handler "my-key"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "data": [
+  {
+   "arg": "text",
+   "strict": 1,
+   "value": "Hello world!"
+  }
+ ],
+ "result": true
+}
+```

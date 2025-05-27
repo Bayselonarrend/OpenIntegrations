@@ -1,0 +1,88 @@
+﻿---
+sidebar_position: 3
+description: Get project settings and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get project settings
+ Gets a list of all current project settings
+
+
+
+`Function GetProjectSettings(Val Project) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+
+  
+  Returns:  Structure Of KeyAndValue - Project settings list
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  GetProjectSettings \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  GetProjectSettings ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "data": [
+  {
+   "description": "Web console login Password",
+   "name": "ui_password",
+   "value": "admin"
+  },
+  {
+   "description": "Logs save path. To disable logging, set the value to empty",
+   "name": "logs_path",
+   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/cb82a741-27d0-4be9-acbb-5accf5bd2e7f"
+  },
+  {
+   "description": "Logging of incoming request headers",
+   "name": "logs_req_headers",
+   "value": "true"
+  },
+  {
+   "description": "Logging the body of incoming requests",
+   "name": "logs_req_body",
+   "value": "true"
+  },
+  {
+   "description": "Disable logging logs_req_body for requests over this size (in bytes). 0 - no limitation",
+   "name": "logs_req_max_size",
+   "value": "104857600"
+  },
+  {
+   "description": "Logging the body of outgoing responses",
+   "name": "logs_res_body",
+   "value": "true"
+  },
+  {
+   "description": "Disable logging logs_res_body for requests over this size (in bytes). 0 - no limitation",
+   "name": "logs_res_max_size",
+   "value": "104857600"
+  }
+ ],
+ "result": true
+}
+```

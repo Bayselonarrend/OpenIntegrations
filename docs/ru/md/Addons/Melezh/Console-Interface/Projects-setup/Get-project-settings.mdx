@@ -1,0 +1,88 @@
+﻿---
+sidebar_position: 3
+description: Получить настройки проекта и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить настройки проекта
+ Получает список всех текущих настроек проекта
+
+
+
+`Функция ПолучитьНастройкиПроекта(Знач Проект) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Список настроек проекта
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  ПолучитьНастройкиПроекта \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  ПолучитьНастройкиПроекта ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "data": [
+  {
+   "description": "Пароль входа веб-консоли",
+   "name": "ui_password",
+   "value": "admin"
+  },
+  {
+   "description": "Путь сохранения логов. Для отключения логирования установите пустое значение",
+   "name": "logs_path",
+   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/1dd360e7-2c1c-4d65-9b19-626257c88520"
+  },
+  {
+   "description": "Логирование заголовков входящих запросов",
+   "name": "logs_req_headers",
+   "value": "true"
+  },
+  {
+   "description": "Логирование тела входящих запросов",
+   "name": "logs_req_body",
+   "value": "true"
+  },
+  {
+   "description": "Отключение логирования logs_req_body для запросов, свыше этого размер (в байтах). 0 - без ограничений",
+   "name": "logs_req_max_size",
+   "value": "104857600"
+  },
+  {
+   "description": "Логирование тела исходящих ответов",
+   "name": "logs_res_body",
+   "value": "true"
+  },
+  {
+   "description": "Отключение логирования logs_res_body для запросов, свыше этого размер (в байтах). 0 - без ограничений",
+   "name": "logs_res_max_size",
+   "value": "104857600"
+  }
+ ],
+ "result": true
+}
+```

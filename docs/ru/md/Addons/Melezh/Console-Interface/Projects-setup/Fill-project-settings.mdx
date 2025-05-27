@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 4
+description: Заполнить настройки проекта и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Заполнить настройки проекта
+ Заполняет настройки из переданной коллекции
+
+
+
+`Функция ЗаполнитьНастройкиПроекта(Знач Проект, Знач Настройки) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+  | Настройки | --set | Соответствие Из КлючИЗначение | &#x2714; | Коллекция ключ и значение для заполнения настроек |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Список настроек проекта
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            melezh  ЗаполнитьНастройкиПроекта \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" \
+              --set "{'logs_req_headers':false,'logs_req_body':false}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            melezh  ЗаполнитьНастройкиПроекта ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" ^
+              --set "{'logs_req_headers':false,'logs_req_body':false}"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "result": true
+}
+```

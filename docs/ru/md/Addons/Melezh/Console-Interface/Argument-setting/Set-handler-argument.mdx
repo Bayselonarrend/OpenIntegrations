@@ -1,0 +1,77 @@
+﻿---
+sidebar_position: 1
+description: Установить аргумент обработчика и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Установить аргумент обработчика
+ Устанавливает аргумент для функции обработчика, позволяя не указывать его при вызове
+
+
+
+`Функция УстановитьАргументОбработчика(Знач Проект, Знач КлючОбработчика, Знач Аргумент, Знач Значение, Знач Строгий = Истина) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+  | КлючОбработчика | --handler | Строка | &#x2714; | Ключ обработчика |
+  | Аргумент | --arg | Строка | &#x2714; | CLI аргумент (опция) для функции обработчика |
+  | Значение | --value | Строка | &#x2714; | Строковое значение аргумента |
+  | Строгий | --strict | Булево | &#x2716; | Истина > аргумент не может быть перезаписан данными из запроса |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Результат установки
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  УстановитьАргументОбработчика \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" \
+              --handler "my-key" \
+              --arg "text" \
+              --value "Hello world!" \
+              --strict true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  УстановитьАргументОбработчика ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" ^
+              --handler "my-key" ^
+              --arg "text" ^
+              --value "Hello world!" ^
+              --strict true
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "data": {
+  "active": 1,
+  "function": "СоздатьПост",
+  "key": "my-key",
+  "library": "vk",
+  "method": "FORM",
+  "args": [
+   {
+    "arg": "text",
+    "strict": 1,
+    "value": "Hello world!"
+   }
+  ]
+ },
+ "result": true
+}
+```
