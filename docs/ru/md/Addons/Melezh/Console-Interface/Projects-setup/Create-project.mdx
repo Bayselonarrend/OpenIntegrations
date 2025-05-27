@@ -1,0 +1,53 @@
+﻿---
+sidebar_position: 1
+description: Создать проект и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать проект
+ Создает файл проекта по выбранному пути
+
+
+
+`Функция СоздатьПроект(Знач Путь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Путь | --path | Строка | &#x2714; | Путь к файлу проекта |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Результат создания
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  СоздатьПроект \
+              --path "C:\Users\bayselonarrend\AppData\Local\Temp\ikacftkh.cnv"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  СоздатьПроект ^
+              --path "C:\Users\bayselonarrend\AppData\Local\Temp\ikacftkh.cnv"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "result": true,
+ "message": "Файл проекта успешно создан!",
+ "path": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\zw443uvy.0xx"
+}
+```

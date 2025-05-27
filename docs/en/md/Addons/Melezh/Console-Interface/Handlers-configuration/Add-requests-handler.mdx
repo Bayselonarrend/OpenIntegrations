@@ -1,0 +1,62 @@
+﻿---
+sidebar_position: 1
+description: Add request handler and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add request handler
+ Adds a new handler to the project
+
+
+
+`Function AddRequestsHandler(Val Project, Val OintLibrary, Val OintFunction, Val Method = "GET") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | OintLibrary | --lib | String | &#x2714; | Library name in CLI format |
+  | OintFunction | --func | String | &#x2714; | OpenIntegrations function name |
+  | Method | --method | String | &#x2716; | HTTP method to be processed by the handler: GET, JSON, FORM |
+
+  
+  Returns:  Structure Of KeyAndValue - Result of handler modification
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  AddRequestsHandler \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" \
+              --lib "telegram" \
+              --func "SendTextMessage" \
+              --method "get"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  AddRequestsHandler ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" ^
+              --lib "telegram" ^
+              --func "SendTextMessage" ^
+              --method "get"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "result": true,
+ "key": "4992c8a35",
+ "url_example": "localhost:port/4992c8a35"
+}
+```

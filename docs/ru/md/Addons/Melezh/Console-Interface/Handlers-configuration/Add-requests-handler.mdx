@@ -1,0 +1,62 @@
+﻿---
+sidebar_position: 1
+description: Добавить обработчик запросов и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить обработчик запросов
+ Добавляет новый обработчик в проект
+
+
+
+`Функция ДобавитьОбработчикЗапросов(Знач Проект, Знач БиблиотекаОПИ, Знач ФункцияОПИ, Знач Метод = "GET") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+  | БиблиотекаОПИ | --lib | Строка | &#x2714; | Имя библиотеки в CLI формате |
+  | ФункцияОПИ | --func | Строка | &#x2714; | Имя функции Открытого пакета интеграций |
+  | Метод | --method | Строка | &#x2716; | HTTP метод, который будет обрабатывать обработчик: GET, JSON, FORM |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Результат добавления обработчика
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  ДобавитьОбработчикЗапросов \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" \
+              --lib "telegram" \
+              --func "ОтправитьТекстовоеСообщение" \
+              --method "get"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  ДобавитьОбработчикЗапросов ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" ^
+              --lib "telegram" ^
+              --func "ОтправитьТекстовоеСообщение" ^
+              --method "get"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "result": true,
+ "key": "fd758d8d2",
+ "url_example": "localhost:port/fd758d8d2"
+}
+```

@@ -1,0 +1,60 @@
+﻿---
+sidebar_position: 2
+description: Get request handlers list and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get request handlers list
+ Gets the list of handlers in the project
+
+
+
+`Function GetRequestsHandlersList(Val Project) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+
+  
+  Returns:  Structure Of KeyAndValue - Handlers list
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  GetRequestsHandlersList \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  GetRequestsHandlersList ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "data": [
+  {
+   "active": 1,
+   "function": "SendTextMessage",
+   "key": "4992c8a35",
+   "library": "telegram",
+   "method": "GET"
+  }
+ ],
+ "result": true
+}
+```

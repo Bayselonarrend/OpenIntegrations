@@ -1,0 +1,57 @@
+﻿---
+sidebar_position: 5
+description: Установить настройку проекта и другие функции для работы с Melezh в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Установить настройку проекта
+ Устанавливает значение выбранной настройки проекта
+
+
+
+`Функция УстановитьНастройкуПроекта(Знач Проект, Знач Настройка, Знач Значение) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Проект | --proj | Строка | &#x2714; | Путь к файлу проекта |
+  | Настройка | --key | Строка | &#x2714; | Ключ настройки проекта |
+  | Значение | --value | Строка | &#x2714; | Значение настройки проекта |
+
+  
+  Возвращаемое значение:   Структура Из КлючИЗначение - Результат установки
+
+<br/>
+
+
+
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  УстановитьНастройкуПроекта \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" \
+              --key "***" \
+              --value "yo"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  УстановитьНастройкуПроекта ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\osb5ekwx.44f" ^
+              --key "***" ^
+              --value "yo"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Результат"
+{
+ "result": true
+}
+```

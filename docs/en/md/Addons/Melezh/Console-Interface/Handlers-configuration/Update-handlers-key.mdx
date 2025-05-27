@@ -1,0 +1,65 @@
+﻿---
+sidebar_position: 8
+description: Update handlers key and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update handlers key
+ Replaces the handler key with a new one
+
+
+
+`Function UpdateHandlersKey(Val Project, Val HandlersKey, Val NewKey = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlersKey | --handler | String | &#x2714; | Handlers key |
+  | NewKey | --key | String | &#x2716; | Your own key, if necessary. New standard UUID by default |
+
+  
+  Returns:  Structure Of KeyAndValue - Handlers information
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  UpdateHandlersKey \
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" \
+              --handler "a8b779075" \
+              --key "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  UpdateHandlersKey ^
+              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\anxujp4k.bmi" ^
+              --handler "a8b779075" ^
+              --key "***"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "data": {
+  "active": 1,
+  "function": "CreatePost",
+  "key": "8ef003d30",
+  "library": "vk",
+  "method": "FORM",
+  "args": []
+ },
+ "result": true
+}
+```
