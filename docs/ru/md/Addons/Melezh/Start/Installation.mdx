@@ -7,6 +7,25 @@ sidebar_position: 1
 
 Для начала работы с Melezh необходимо пройти процедуру его установки, после чего создать и настроить проект. В этом разделе описан процесс установки Melezh на конкретном устройстве. Выбор того или иного способа зависит от операционной системы и наличия в ней OneScript с пакетным менеджером OPM:
 
+## Docker (рекомендуется)
+
+Запустить Melezh в Docker-контейнере можно одним из следующих способов:
+
++ Получив и запустив образ из Docker Hub:
+
+```bat
+    :: Вместо -ru можно указать -en для получения английской версии
+    :: Вместо latest можно указать конкретную версию Melezh
+    :: Порт может быть изменен в аргументе -p
+    
+    docker pull bayselonarrend/melezh:latest-ru
+    docker run -d -p 7788:7788 --name melezh-app bayselonarrend/melezh:latest-ru
+```
+
++ Скачав zip-архив с Dockerfile (`melezh-docker-ru.zip` или `melezh-docker-en.zip`) из релиза репозитория на Github. Архив необходимо распаковать, после чего запустить один из находящихся там скриптов установки - `bat` или `sh`, в зависимости от используемой ОС
+
+<hr/>
+
 ## Windows
 
 Установка Melezh на Windows осуществляется в процессе установки `oint` - основного консольного приложения Открытого пакета интеграций. Достаточно скачать установщики `oint` из релиза репозитория [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations) (v >= 1.24.0), после чего, в процессе установки, поставить флажок на странице с вопросом о дополнительной установке Melezh:
@@ -38,8 +57,9 @@ opm install melezh
 Помимо этого, и английская, и русская версии могут быть установлены из `.ospx` файлов пакетов, которые находятся в релизах соответствующих репозиториев [Melezh](https://github.com/Bayselonarrend/OpenIntegrations) и [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations):
 
 ```powershell
-opm install -f oint.ospx
-opm install -f melezh.ospx
+opm install -f 	oint-x.x.x_lang.ospx
+opm install -f 	oint-cli-x.x.x_lang.ospx
+opm install -f melezh-x.x.x_lang.ospx
 ```
 
 Как и в случае с пакетами для Linux, важно соблюдать соответствие языков версий: русская версия Melezh может работать только в зависимости от русской версии OInt, а английская - в зависимости от английской
