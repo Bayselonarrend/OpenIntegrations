@@ -5,24 +5,24 @@ title: Установка
 sidebar_position: 1
 ---
 
-Для начала работы с Melezh необходимо пройти процедуру его установки, после чего создать и настроить проект. В этом разделе описан процесс установки Melezh на конкретном устройстве. Выбор того или иного способа зависит от операционной системы и наличия в ней OneScript с пакетным менеджером OPM:
+Для начала работы с Melezh необходимо пройти процедуру его установки, после чего создать и настроить проект. В этом разделе описан процесс установки Melezh на конкретном устройстве. Выбор того или иного способа зависит от операционной системы, а также доступности в ней Docker или OneScript с пакетным менеджером OPM:
 
 ## Docker (рекомендуется)
 
 Запустить Melezh в Docker-контейнере можно одним из следующих способов:
 
-+ Получив и запустив образ из Docker Hub:
++ Получить образ из GHCR и запустить контейнер:
 
-```bat
+```bash
     :: Вместо -ru можно указать -en для получения английской версии
     :: Вместо latest можно указать конкретную версию Melezh
     :: Порт может быть изменен в аргументе -p
     
-    docker pull bayselonarrend/melezh:latest-ru
-    docker run -d -p 7788:7788 --name melezh-app bayselonarrend/melezh:latest-ru
+    docker pull ghcr.io/bayselonarrend/melezh:0.1.0-ru
+    docker run -d -p 1921:1921 --name melezh-app bayselonarrend/melezh:latest-ru
 ```
 
-+ Скачав zip-архив с Dockerfile (`melezh-docker-ru.zip` или `melezh-docker-en.zip`) из релиза репозитория на Github. Архив необходимо распаковать, после чего запустить один из находящихся там скриптов установки - `bat` или `sh`, в зависимости от используемой ОС
++ Скачать zip-архив с Dockerfile (`melezh-docker-ru.zip` или `melezh-docker-en.zip`) из релиза репозитория на Github. Архив необходимо распаковать, после чего запустить один из находящихся там скриптов установки - `bat` или `sh`, в зависимости от используемой ОС
 
 <hr/>
 
@@ -48,17 +48,17 @@ Melezh совместим с любой версией `oint`, выше 1.24.0, 
 
 Melezh и OInt - это, в первую очередь, пакеты для [OneScript](https://github.com/EvilBeaver/OneScript), которые могут быть установлены при помощи пакетного менеджера OPM. Русская версия пакета может быть установлена из облачного хаба пакетов при помощи консольной команды:
 
-```powershell
+```bash
 opm install melezh
 ```
 
-В этом пакете уже прописаны зависимости от OInt - он будет установлен автоматически 
+В этом пакете уже прописаны зависимости от OInt и OInt CLI - они будут установлен автоматически 
 
-Помимо этого, и английская, и русская версии могут быть установлены из `.ospx` файлов пакетов, которые находятся в релизах соответствующих репозиториев [Melezh](https://github.com/Bayselonarrend/OpenIntegrations) и [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations):
+Кроме получения из облака, и английская, и русская версии могут быть установлены из локальных `.ospx` файлов пакетов, которые находятся в релизах соответствующих репозиториев [Melezh](https://github.com/Bayselonarrend/OpenIntegrations) и [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations):
 
-```powershell
-opm install -f 	oint-x.x.x_lang.ospx
-opm install -f 	oint-cli-x.x.x_lang.ospx
+```bash
+opm install -f oint-x.x.x_lang.ospx
+opm install -f oint-cli-x.x.x_lang.ospx
 opm install -f melezh-x.x.x_lang.ospx
 ```
 
