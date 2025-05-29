@@ -14,12 +14,13 @@ sidebar_position: 1
 + Получить образ из GHCR и запустить контейнер:
 
 ```bash
+    :: Вместо -deb можно указать -rpm для использования rpm-based дистрибутива
     :: Вместо -ru можно указать -en для получения английской версии
     :: Вместо latest можно указать конкретную версию Melezh
     :: Порт может быть изменен в аргументе -p
     
-    docker pull ghcr.io/bayselonarrend/melezh:0.1.0-ru
-    docker run -d -p 1921:1921 --name melezh-app bayselonarrend/melezh:latest-ru
+    docker pull ghcr.io/bayselonarrend/melezh:latest-deb-ru
+    docker run -d -p 1921:1921 --name melezh ghcr.io/bayselonarrend/melezh:latest-deb-ru
 ```
 
 + Скачать zip-архив с Dockerfile (`melezh-docker-ru.zip` или `melezh-docker-en.zip`) из релиза репозитория на Github. Архив необходимо распаковать, после чего запустить один из находящихся там скриптов установки - `bat` или `sh`, в зависимости от используемой ОС
