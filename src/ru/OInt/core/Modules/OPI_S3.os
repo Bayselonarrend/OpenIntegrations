@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_S3.os
+// OneScript: ./OInt/core/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
@@ -1929,3 +1929,136 @@
 #КонецОбласти
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
+	Return ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region, Service);
+EndFunction
+
+Function SendRequestWithoutBody(Val Method, Val BasicData, Val ExpectedBinary = False, Val Headers = Undefined) Export
+	Return ОтправитьЗапросБезТела(Method, BasicData, ExpectedBinary, Headers);
+EndFunction
+
+Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val ExpectedBinary = False, Val Headers = Undefined) Export
+	Return ОтправитьЗапросСТелом(Method, BasicData, Body, ExpectedBinary, Headers);
+EndFunction
+
+Function CreateBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return СоздатьБакет(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function DeleteBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return УдалитьБакет(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function HeadBucket(Val Name, Val BasicData, Val Directory = False, Val AccountID = "", Val Headers = Undefined) Export
+	Return ПроверитьДоступностьБакета(Name, BasicData, Directory, AccountID, Headers);
+EndFunction
+
+Function PutBucketEncryption(Val Name, Val BasicData, Val XmlConfig, Val Directory = False, Val Headers = Undefined) Export
+	Return УстановитьШифрованиеБакета(Name, BasicData, XmlConfig, Directory, Headers);
+EndFunction
+
+Function GetBucketEncryption(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return ПолучитьШифрованиеБакета(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function DeleteBucketEncryption(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return УдалитьШифрованиеБакета(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function PutBucketTagging(Val Name, Val BasicData, Val Tags, Val Directory = False, Val Headers = Undefined) Export
+	Return УстановитьТегиБакета(Name, BasicData, Tags, Directory, Headers);
+EndFunction
+
+Function GetBucketTagging(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return ПолучитьТегиБакета(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function DeleteBucketTagging(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return УдалитьТегиБакета(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Val MFADelete = Undefined, Val Directory = False, Val Headers = Undefined) Export
+	Return УстановитьНастройкиВерсионированияБакета(Name, BasicData, Status, MFADelete, Directory, Headers);
+EndFunction
+
+Function GetBucketVersioning(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
+	Return ПолучитьНастройкийВерсионированияБакета(Name, BasicData, Directory, Headers);
+EndFunction
+
+Function ListBuckets(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export
+	Return ПолучитьСписокБакетов(BasicData, Prefix, Region, PageToken, Headers);
+EndFunction
+
+Function PutObject(Val Name, Val Bucket, Val Entity, Val BasicData, Val Headers = Undefined) Export
+	Return ЗагрузитьОбъект(Name, Bucket, Entity, BasicData, Headers);
+EndFunction
+
+Function UploadFullObject(Val Name, Val Bucket, Val Entity, Val BasicData, Val Headers = Undefined) Export
+	Return ЗагрузитьОбъектЦеликом(Name, Bucket, Entity, BasicData, Headers);
+EndFunction
+
+Function InitPartsUpload(Val Name, Val Bucket, Val BasicData, Val Headers = Undefined) Export
+	Return ИнициализироватьЗагрузкуЧастями(Name, Bucket, BasicData, Headers);
+EndFunction
+
+Function UploadObjectPart(Val Name, Val Bucket, Val BasicData, Val UploadID, Val PartNumber, Val Data) Export
+	Return ЗагрузитьЧастьОбъекта(Name, Bucket, BasicData, UploadID, PartNumber, Data);
+EndFunction
+
+Function FinishPartsUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val TagsArray, Val Headers = Undefined) Export
+	Return ЗавершитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, TagsArray, Headers);
+EndFunction
+
+Function AbortMultipartUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val Headers = Undefined) Export
+	Return ОтменитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, Headers);
+EndFunction
+
+Function HeadObject(Val Name, Val Bucket, Val BasicData, Val Version = Undefined, Val Headers = Undefined) Export
+	Return ПолучитьОписаниеОбъекта(Name, Bucket, BasicData, Version, Headers);
+EndFunction
+
+Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "") Export
+	Return ПолучитьОбъект(Name, Bucket, BasicData, Version, Headers, SavePath);
+EndFunction
+
+Function DeleteObject(Val Name, Val Bucket, Val BasicData, Val Version = Undefined, Val Headers = Undefined) Export
+	Return УдалитьОбъект(Name, Bucket, BasicData, Version, Headers);
+EndFunction
+
+Function CopyObject(Val SourcePath, Val DestinationBucket, Val DestinationPath, Val SourceBucket, Val BasicData, Val Headers = Undefined) Export
+	Return КопироватьОбъект(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, Headers);
+EndFunction
+
+Function PutObjectTagging(Val Name, Val Bucket, Val BasicData, Val Tags, Val Headers = Undefined) Export
+	Return УстановитьТегиОбъекта(Name, Bucket, BasicData, Tags, Headers);
+EndFunction
+
+Function GetObjectTagging(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined) Export
+	Return ПолучитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers);
+EndFunction
+
+Function DeleteObjectTagging(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined) Export
+	Return УдалитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers);
+EndFunction
+
+Function ListObjects(Val Bucket, Val BasicData, Val Prefix = "", Val PageToken = "", Val Headers = Undefined) Export
+	Return ПолучитьСписокОбъектов(Bucket, BasicData, Prefix, PageToken, Headers);
+EndFunction
+
+Function ListObjectVersions(Val Bucket, Val BasicData, Val Prefix = "", Val Version = "", Val Headers = Undefined) Export
+	Return ПолучитьСписокВерсийОбъектов(Bucket, BasicData, Prefix, Version, Headers);
+EndFunction
+
+Function GetObjectDownloadLink(Val Name, Val Bucket, Val BasicData, Val Expire = 3600, Val Headers = Undefined) Export
+	Return ПолучитьСсылкуСкачиванияОбъекта(Name, Bucket, BasicData, Expire, Headers);
+EndFunction
+
+Function GetObjectUploadLink(Val Name, Val Bucket, Val BasicData, Val Expire = 3600, Val Headers = Undefined) Export
+	Return ПолучитьСсылкуЗагрузкиОбъекта(Name, Bucket, BasicData, Expire, Headers);
+EndFunction
+
+#EndRegion

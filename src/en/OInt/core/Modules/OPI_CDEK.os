@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_CDEK.os
+// OneScript: ./OInt/core/Modules/OPI_CDEK.os
 // Lib: CDEK
 // CLI: cdek
 // Keywords: cdek
@@ -1329,6 +1329,135 @@ Function CreateRequestHeaders(Val Token)
     Headers.Insert("Authorization", "Bearer " + Token);
     Return Headers;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьТокен(Val Аккаунт, Val Пароль, ТестовыйAPI = False) Export
+	Return GetToken(Аккаунт, Пароль, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьЧекиНаДату(Val Токен, Val ДатаПолучения, Val ТестовыйAPI = False) Export
+	Return GetCashboxChecksByDate(Токен, ДатаПолучения, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьРеестрыПлатежейНаДату(Val Токен, Val ДатаПолучения, Val ТестовыйAPI = False) Export
+	Return GetDeliveryCashRegistry(Токен, ДатаПолучения, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьПереводыПлатежейНаДату(Val Токен, Val ДатаПолучения, Val ТестовыйAPI = False) Export
+	Return GetDeliveryCashTransfers(Токен, ДатаПолучения, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьСписокОфисов(Val Токен, Val Фильтр = "", Val ТестовыйAPI = False) Export
+	Return GetOfficeList(Токен, Фильтр, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьСписокРегионов(Val Токен, Val Страны = Undefined, Val Страница = 0, Val Язык = "rus", Val ТестовыйAPI = False) Export
+	Return GetRegionsList(Токен, Страны, Страница, Язык, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьОписаниеФильтраОфисов(Val Пустая = False) Export
+	Return GetOfficeFilterDescription(Пустая);
+EndFunction
+
+Function СоздатьЗаказ(Val Токен, Val ОписаниеЗаказа, Val ИнтернетМагазин = False, Val ТестовыйAPI = False) Export
+	Return CreateOrder(Токен, ОписаниеЗаказа, ИнтернетМагазин, ТестовыйAPI);
+EndFunction
+
+Function ИзменитьЗаказ(Val Токен, Val UUID, Val ОписаниеЗаказа, Val ТестовыйAPI = False) Export
+	Return UpdateOrder(Токен, UUID, ОписаниеЗаказа, ТестовыйAPI);
+EndFunction
+
+Function УдалитьЗаказ(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return DeleteOrder(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьЗаказ(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetOrder(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьЗаказПоНомеру(Val Токен, Val НомерЗаказа, Val Внутренний = False, Val ТестовыйAPI = False) Export
+	Return GetOrderByNumber(Токен, НомерЗаказа, Внутренний, ТестовыйAPI);
+EndFunction
+
+Function ОформитьКлиентскийВозврат(Val Токен, Val UUID, Val Тариф, Val ТестовыйAPI = False) Export
+	Return CreateCustomerRefund(Токен, UUID, Тариф, ТестовыйAPI);
+EndFunction
+
+Function СоздатьОтказ(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return CreateRefusal(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function СформироватьКвитанцию(Val Токен, Val МассивUUID, Val Тип = "tpl_russia", Val КопийНаЛисте = 2, Val ТестовыйAPI = False) Export
+	Return CreateReceipt(Токен, МассивUUID, Тип, КопийНаЛисте, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьКвитанцию(Val Токен, Val UUID, Val ПолучитьФайл = False, Val ТестовыйAPI = False) Export
+	Return GetReceipt(Токен, UUID, ПолучитьФайл, ТестовыйAPI);
+EndFunction
+
+Function СформироватьШтрихкод(Val Токен, Val МассивUUID, Val Копий = 1, Val Формат = "A4", Val Язык = "RUS", Val ТестовыйAPI = False) Export
+	Return CreateBarcode(Токен, МассивUUID, Копий, Формат, Язык, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьШтрихкод(Val Токен, Val UUID, Val ПолучитьФайл = False, Val ТестовыйAPI = False) Export
+	Return GetBarcode(Токен, UUID, ПолучитьФайл, ТестовыйAPI);
+EndFunction
+
+Function СоздатьПреалерт(Val Токен, Val МассивUUID, Val ДатаПередачи, Val ПВЗ, Val ТестовыйAPI = False) Export
+	Return CreatePrealert(Токен, МассивUUID, ДатаПередачи, ПВЗ, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьПреалерт(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetPrealert(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьСтатусПаспортныхДанных(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetPassportDataStatus(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьЧекЗаказа(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetCashboxCheck(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьОписаниеЗаказа(Val Пустая = False, Val ТолькоОбязательные = False, Val ИнтернетМагазин = False) Export
+	Return GetOrderDescription(Пустая, ТолькоОбязательные, ИнтернетМагазин);
+EndFunction
+
+Function ПолучитьДоступныеИнтервалыДоставки(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetAvailableDeliveryIntervals(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function СоздатьЗаявкуНаВызовКурьера(Val Токен, Val ОписаниеЗаявки, Val ТестовыйAPI = False) Export
+	Return CreateCourierInvitation(Токен, ОписаниеЗаявки, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьЗаявкуНаВызовКурьера(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetCourierInvitation(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function УдалитьЗаявкуНаВызовКурьера(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return DeleteCourierInvitation(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ЗафиксироватьДоговоренностьОДоставке(Val Токен, Val Договоренность, Val ТестовыйAPI = False) Export
+	Return RegisterDeliveryAppointment(Токен, Договоренность, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьДоговоренностьОДоставке(Val Токен, Val UUID, Val ТестовыйAPI = False) Export
+	Return GetDeliveryAppointment(Токен, UUID, ТестовыйAPI);
+EndFunction
+
+Function ПолучитьОписаниеЗаявкиКурьера(Val Пустая = False, Val ТолькоОбязательные = False) Export
+	Return GetCourierInvitationsDescription(Пустая, ТолькоОбязательные);
+EndFunction
+
+Function ПолучитьОписаниеДоговоренности(Val Пустая = False, Val ТолькоОбязательные = False) Export
+	Return GetAppointmentDescription(Пустая, ТолькоОбязательные);
 EndFunction
 
 #EndRegion

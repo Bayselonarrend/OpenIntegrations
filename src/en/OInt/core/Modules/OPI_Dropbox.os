@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
+// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
 // Lib: Dropbox
 // CLI: dropbox
 // Keywords: dropbox
@@ -984,6 +984,123 @@ Function GetOwnAccount(Val Token)
 
     Return Response;
 
+EndFunction
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьСсылкуАвторизации(Val КлючПриложения) Export
+	Return GetAuthorizationLink(КлючПриложения);
+EndFunction
+
+Function ПолучитьТокен(Val КлючПриложения, Val СекретПриложения, Val Код) Export
+	Return GetToken(КлючПриложения, СекретПриложения, Код);
+EndFunction
+
+Function ОбновитьТокен(Val КлючПриложения, Val СекретПриложения, Val РефрешТокен) Export
+	Return RefreshToken(КлючПриложения, СекретПриложения, РефрешТокен);
+EndFunction
+
+Function ПолучитьИнформациюОбАккаунте(Val Токен, Val Аккаунт = "") Export
+	Return GetAccountInformation(Токен, Аккаунт);
+EndFunction
+
+Function ПолучитьДанныеИспользованияПространства(Val Токен) Export
+	Return GetSpaceUsageData(Токен);
+EndFunction
+
+Function ПолучитьИнформациюОбОбъекте(Val Токен, Val Путь, Val Подробно = False) Export
+	Return GetObjectInformation(Токен, Путь, Подробно);
+EndFunction
+
+Function ПолучитьСписокФайловПапки(Val Токен, Val Путь = "", Val Подробно = False, Val Курсор = "") Export
+	Return GetListOfFolderFiles(Токен, Путь, Подробно, Курсор);
+EndFunction
+
+Function ПолучитьПревью(Val Токен, Val Путь) Export
+	Return GetPreview(Токен, Путь);
+EndFunction
+
+Function ЗагрузитьФайл(Val Токен, Val Файл, Val Путь, Val Перезаписывать = False) Export
+	Return UploadFile(Токен, Файл, Путь, Перезаписывать);
+EndFunction
+
+Function ЗагрузитьФайлПоURL(Val Токен, Val URLФайла, Val Путь) Export
+	Return UploadFileByURL(Токен, URLФайла, Путь);
+EndFunction
+
+Function ПолучитьСтатусЗагрузкиПоURL(Val Токен, Val IDРаботы) Export
+	Return GetUploadStatusByURL(Токен, IDРаботы);
+EndFunction
+
+Function УдалитьОбъект(Val Токен, Val Путь, Val Безвозвратно = False) Export
+	Return DeleteObject(Токен, Путь, Безвозвратно);
+EndFunction
+
+Function КопироватьОбъект(Val Токен, Val Откуда, Val Куда) Export
+	Return CopyObject(Токен, Откуда, Куда);
+EndFunction
+
+Function ПереместитьОбъект(Val Токен, Val Откуда, Val Куда) Export
+	Return MoveObject(Токен, Откуда, Куда);
+EndFunction
+
+Function СоздатьПапку(Val Токен, Val Путь) Export
+	Return CreateFolder(Токен, Путь);
+EndFunction
+
+Function СкачатьФайл(Val Токен, Val Путь) Export
+	Return DownloadFile(Токен, Путь);
+EndFunction
+
+Function СкачатьПапку(Val Токен, Val Путь) Export
+	Return DownloadFolder(Токен, Путь);
+EndFunction
+
+Function ПолучитьСписокВерсийОбъекта(Val Токен, Val Путь, Val Количество = 10) Export
+	Return GetObjectVersionList(Токен, Путь, Количество);
+EndFunction
+
+Function ВосстановитьОбъектКВерсии(Val Токен, Val Путь, Val Версия) Export
+	Return RestoreObjectToVersion(Токен, Путь, Версия);
+EndFunction
+
+Function ПолучитьСписокТегов(Val Токен, Val Пути) Export
+	Return GetTagList(Токен, Пути);
+EndFunction
+
+Function ДобавитьТег(Val Токен, Val Путь, Val Тег) Export
+	Return AddTag(Токен, Путь, Тег);
+EndFunction
+
+Function УдалитьТег(Val Токен, Val Путь, Val Тег) Export
+	Return DeleteTag(Токен, Путь, Тег);
+EndFunction
+
+Function ОпубликоватьПапку(Val Токен, Val Путь) Export
+	Return PublishFolder(Токен, Путь);
+EndFunction
+
+Function ОтменитьПубликациюПапки(Val Токен, Val IDПапки) Export
+	Return CancelFolderPublication(Токен, IDПапки);
+EndFunction
+
+Function ДобавитьПользователейКФайлу(Val Токен, Val IDФайла, Val АдресаПочты, Val ТолькоПросмотр = True) Export
+	Return AddUsersToFile(Токен, IDФайла, АдресаПочты, ТолькоПросмотр);
+EndFunction
+
+Function ДобавитьПользователейКПапке(Val Токен, Val IDПапки, Val АдресаПочты, Val ТолькоПросмотр = True) Export
+	Return AddUsersToFolder(Токен, IDПапки, АдресаПочты, ТолькоПросмотр);
+EndFunction
+
+Function ПолучитьСтатусАсинхронногоИзменения(Val Токен, Val IDРаботы) Export
+	Return GetAsynchronousChangeStatus(Токен, IDРаботы);
+EndFunction
+
+Function ОтменитьПубликациюФайла(Val Токен, Val IDФайла) Export
+	Return CancelFilePublication(Токен, IDФайла);
 EndFunction
 
 #EndRegion

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Airtable.os
+// OneScript: ./OInt/core/Modules/OPI_Airtable.os
 // Lib: Airtable
 // CLI: airtable
 // Keywords: airtable
@@ -693,5 +693,102 @@ Procedure AddDataDescription(Val Data, Parameters)
     EndIf;
 
 EndProcedure
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ПолучитьСписокБаз(Val Токен, Val Отступ = "") Export
+	Return GetListOfBases(Токен, Отступ);
+EndFunction
+
+Function ПолучитьТаблицыБазы(Val Токен, Val База) Export
+	Return GetDatabaseTables(Токен, База);
+EndFunction
+
+Function СоздатьБазу(Val Токен, Val РабочееПространство, Val Наименование, Val КоллекцияТаблиц) Export
+	Return CreateDatabase(Токен, РабочееПространство, Наименование, КоллекцияТаблиц);
+EndFunction
+
+Function СоздатьТаблицу(Val Токен, Val База, Val Наименование, Val МассивПолей, Val Описание = "") Export
+	Return CreateTable(Токен, База, Наименование, МассивПолей, Описание);
+EndFunction
+
+Function ИзменитьТаблицу(Val Токен, Val База, Val Таблица, Val Наименование = "", Val Описание = "") Export
+	Return ModifyTable(Токен, База, Таблица, Наименование, Описание);
+EndFunction
+
+Function СоздатьПоле(Val Токен, Val База, Val Таблица, Val СтруктураПоля) Export
+	Return CreateField(Токен, База, Таблица, СтруктураПоля);
+EndFunction
+
+Function ИзменитьПоле(Val Токен, Val База, Val Таблица, Val Поле, Val Наименование = "", Val Описание = "") Export
+	Return ModifyField(Токен, База, Таблица, Поле, Наименование, Описание);
+EndFunction
+
+Function ПолучитьПолеСтроковое(Val Наименование) Export
+	Return GetStringField(Наименование);
+EndFunction
+
+Function ПолучитьПолеНомера(Val Наименование, Val Точность = 0) Export
+	Return GetNumberField(Наименование, Точность);
+EndFunction
+
+Function ПолучитьПолеВложения(Val Наименование) Export
+	Return GetAttachmentField(Наименование);
+EndFunction
+
+Function ПолучитьПолеФлажка(Val Наименование) Export
+	Return GetCheckboxField(Наименование);
+EndFunction
+
+Function ПолучитьПолеДаты(Val Наименование) Export
+	Return GetDateField(Наименование);
+EndFunction
+
+Function ПолучитьПолеПочты(Val Наименование) Export
+	Return GetEmailField(Наименование);
+EndFunction
+
+Function ПолучитьПолеТелефона(Val Наименование) Export
+	Return GetPhoneField(Наименование);
+EndFunction
+
+Function ПолучитьПолеСсылки(Val Наименование) Export
+	Return GetLinkField(Наименование);
+EndFunction
+
+Function ПолучитьСписокЗаписей(Val Токен, Val База, Val Таблица, Val Отступ = "") Export
+	Return GetListOfRecords(Токен, База, Таблица, Отступ);
+EndFunction
+
+Function ПолучитьЗапись(Val Токен, Val База, Val Таблица, Val Запись) Export
+	Return GetRecord(Токен, База, Таблица, Запись);
+EndFunction
+
+Function СоздатьЗаписи(Val Токен, Val База, Val Таблица, Val Данные) Export
+	Return CreatePosts(Токен, База, Таблица, Данные);
+EndFunction
+
+Function УдалитьЗаписи(Val Токен, Val База, Val Таблица, Val Записи) Export
+	Return DeleteRecords(Токен, База, Таблица, Записи);
+EndFunction
+
+Function ПолучитьКомментарии(Val Токен, Val База, Val Таблица, Val Запись, Val Отступ = "") Export
+	Return GetComments(Токен, База, Таблица, Запись, Отступ);
+EndFunction
+
+Function СоздатьКомментарий(Val Токен, Val База, Val Таблица, Val Запись, Val Текст) Export
+	Return CreateComment(Токен, База, Таблица, Запись, Текст);
+EndFunction
+
+Function ИзменитьКомментарий(Val Токен, Val База, Val Таблица, Val Запись, Val Комментарий, Val Текст) Export
+	Return EditComment(Токен, База, Таблица, Запись, Комментарий, Текст);
+EndFunction
+
+Function УдалитьКомментарий(Val Токен, Val База, Val Таблица, Val Запись, Val Комментарий) Export
+	Return DeleteComment(Токен, База, Таблица, Запись, Комментарий);
+EndFunction
 
 #EndRegion

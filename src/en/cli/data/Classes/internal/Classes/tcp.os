@@ -1,75 +1,75 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ProcessRequest";
-    NewLine.МетодПоиска = "PROCESSREQUEST";
-    NewLine.Параметр    = "--address";
-    NewLine.Описание    = "Address and port";
-    NewLine.Область     = "Client methods";
-    NewLine.ОписаниеМетода   = "Sends a single request to a specified address and receives a response using the default settings";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ProcessRequest";
-    NewLine.МетодПоиска = "PROCESSREQUEST";
-    NewLine.Параметр    = "--data";
-    NewLine.Описание    = "Data or text to be sent (optional, def. val. - Empty value)";
-    NewLine.Область     = "Client methods";
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "ProcessRequest";
+    NewLine.SearchMethod = "PROCESSREQUEST";
+    NewLine.Parameter    = "--address";
+    NewLine.Description    = "Address and port";
+    NewLine.Region     = "Client methods";
+    NewLine.MethodDescription   = "Sends a single request to a specified address and receives a response using the default settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ProcessRequest";
-    NewLine.МетодПоиска = "PROCESSREQUEST";
-    NewLine.Параметр    = "--string";
-    NewLine.Описание    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
-    NewLine.Область     = "Client methods";
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "ProcessRequest";
+    NewLine.SearchMethod = "PROCESSREQUEST";
+    NewLine.Parameter    = "--data";
+    NewLine.Description    = "Data or text to be sent (optional, def. val. - Empty value)";
+    NewLine.Region     = "Client methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "ProcessRequest";
-    NewLine.МетодПоиска = "PROCESSREQUEST";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Client methods";
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "ProcessRequest";
+    NewLine.SearchMethod = "PROCESSREQUEST";
+    NewLine.Parameter    = "--string";
+    NewLine.Description    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
+    NewLine.Region     = "Client methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "GetTlsSettings";
-    NewLine.МетодПоиска = "GETTLSSETTINGS";
-    NewLine.Параметр    = "--trust";
-    NewLine.Описание    = "Allows to work with invalid certificates, including self signed";
-    NewLine.Область     = "Client methods";
-    NewLine.ОписаниеМетода   = "Forms settings for using TLS";
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "ProcessRequest";
+    NewLine.SearchMethod = "PROCESSREQUEST";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Client methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "tcp";
-    NewLine.Модуль      = "OPI_TCP";
-    NewLine.Метод       = "GetTlsSettings";
-    NewLine.МетодПоиска = "GETTLSSETTINGS";
-    NewLine.Параметр    = "--cert";
-    NewLine.Описание    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
-    NewLine.Область     = "Client methods";
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "GetTlsSettings";
+    NewLine.SearchMethod = "GETTLSSETTINGS";
+    NewLine.Parameter    = "--trust";
+    NewLine.Description    = "Allows to work with invalid certificates, including self signed";
+    NewLine.Region     = "Client methods";
+    NewLine.MethodDescription   = "Forms settings for using TLS";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "tcp";
+    NewLine.Module      = "OPI_TCP";
+    NewLine.Method       = "GetTlsSettings";
+    NewLine.SearchMethod = "GETTLSSETTINGS";
+    NewLine.Parameter    = "--cert";
+    NewLine.Description    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
+    NewLine.Region     = "Client methods";
 
     Return CompositionTable;
 EndFunction

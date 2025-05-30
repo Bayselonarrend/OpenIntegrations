@@ -42,6 +42,28 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint ollama GetModelList \
+             --url "https://api.athenaeum.digital/ollama" \
+             --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint ollama GetModelList ^
+             --url "https://api.athenaeum.digital/ollama" ^
+             --headers "{'Authorization':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

@@ -38,14 +38,14 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "5822";
+    TaskID = "6074";
 
     Time = 3600;
 
     Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "139a1268006e9f06006b12e400000001000...";
+    Token = "4dee2c68006e9f06006b12e400000001000...";
 
     Text      = "Time spent on work";
     UserID    = 10;
@@ -63,11 +63,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 AddTaskTimeAccounting \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "5872" \
+             --task "6106" \
              --amount 7200 \
              --user 10 \
              --text "Time spent on work" \
-             --date "2025-04-01T16:24:56.1609416" \
+             --date "2025-04-21T09:35:59.0143619" \
              --token "***"
         ```
     </TabItem>
@@ -76,11 +76,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 AddTaskTimeAccounting ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "5872" ^
+             --task "6106" ^
              --amount 7200 ^
              --user 10 ^
              --text "Time spent on work" ^
-             --date "2025-04-01T16:24:56.1609416" ^
+             --date "2025-04-21T09:35:59.0143619" ^
              --token "***"
         ```
     </TabItem>

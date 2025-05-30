@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_TCP.os
+// OneScript: ./OInt/core/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
 // Keywords: tcp
@@ -306,5 +306,46 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 EndFunction
 
 #EndRegion
+
+#EndRegion
+
+
+#Region Alternate
+
+Function ОткрытьСоединение(Val Адрес, Val Tls = "") Export
+	Return CreateConnection(Адрес, Tls);
+EndFunction
+
+Function ЗакрытьСоединение(Val Соединение) Export
+	Return CloseConnection(Соединение);
+EndFunction
+
+Function ПрочитатьДвоичныеДанные(Val Соединение, Val МаксимальныйРазмер = 0, Val Маркер = "", Val Таймаут = 5000) Export
+	Return ReadBinaryData(Соединение, МаксимальныйРазмер, Маркер, Таймаут);
+EndFunction
+
+Function ПрочитатьСтроку(Val Соединение, Val Кодировка = "UTF-8", Val Маркер = "", Val Таймаут = 5000) Export
+	Return ReadLine(Соединение, Кодировка, Маркер, Таймаут);
+EndFunction
+
+Function ОтправитьДвоичныеДанные(Val Соединение, Val Данные, Val Таймаут = 5000) Export
+	Return SendBinaryData(Соединение, Данные, Таймаут);
+EndFunction
+
+Function ОтправитьСтроку(Val Соединение, Val Данные, Val Кодировка = "UTF-8", Val Таймаут = 5000) Export
+	Return SendLine(Соединение, Данные, Кодировка, Таймаут);
+EndFunction
+
+Function ОбработатьЗапрос(Val Адрес, Val Данные = "", Val ОтветСтрокой = True, Val Tls = "") Export
+	Return ProcessRequest(Адрес, Данные, ОтветСтрокой, Tls);
+EndFunction
+
+Function ПолучитьПоследнююОшибку(Val Соединение) Export
+	Return GetLastError(Соединение);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
 
 #EndRegion

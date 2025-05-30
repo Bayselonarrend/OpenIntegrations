@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexMetrika.os
+// OneScript: ./OInt/core/Modules/OPI_YandexMetrika.os
 // Lib: Yandex Metrika
 // CLI: metrika
 
@@ -585,5 +585,66 @@ Function GetActionsList(Val Token, Val CounterID) Export
 EndFunction
 
 #EndRegion
+
+#EndRegion
+
+
+#Region Alternate
+
+Function СоздатьМетку(Val Токен, Val Наименование) Export
+	Return CreateTag(Токен, Наименование);
+EndFunction
+
+Function ИзменитьМетку(Val Токен, Val IDМетки, Val Наименование) Export
+	Return UpdateTag(Токен, IDМетки, Наименование);
+EndFunction
+
+Function ПолучитьМетку(Val Токен, Val IDМетки) Export
+	Return GetTag(Токен, IDМетки);
+EndFunction
+
+Function УдалитьМетку(Val Токен, Val IDМетки) Export
+	Return DeleteTag(Токен, IDМетки);
+EndFunction
+
+Function ПолучитьСписокМеток(Val Токен) Export
+	Return GetTagsList(Токен);
+EndFunction
+
+Function СоздатьСчетчик(Val Токен, Val СтруктураСчетчика) Export
+	Return CreateCounter(Токен, СтруктураСчетчика);
+EndFunction
+
+Function ИзменитьСчетчик(Val Токен, Val IDСчетчика, Val СтруктураСчетчика) Export
+	Return UpdateCounter(Токен, IDСчетчика, СтруктураСчетчика);
+EndFunction
+
+Function ПолучитьСчетчик(Val Токен, Val IDСчетчика) Export
+	Return GetCounter(Токен, IDСчетчика);
+EndFunction
+
+Function УдалитьСчетчик(Val Токен, Val IDСчетчика) Export
+	Return DeleteCounter(Токен, IDСчетчика);
+EndFunction
+
+Function ВосстановитьСчетчик(Val Токен, Val IDСчетчика) Export
+	Return RestoreCounter(Токен, IDСчетчика);
+EndFunction
+
+Function ПолучитьСписокСчетчиков(Val Токен, Val Фильтр = Undefined) Export
+	Return GetCountersList(Токен, Фильтр);
+EndFunction
+
+Function ПолучитьСтруктуруСчетчика(Val Пустая = False) Export
+	Return GetCounterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраСчетчиков(Val Пустая = False) Export
+	Return GetCounterFilterStructure(Пустая);
+EndFunction
+
+Function ПолучитьСписокОпераций(Val Токен, Val IDСчетчика) Export
+	Return GetActionsList(Токен, IDСчетчика);
+EndFunction
 
 #EndRegion

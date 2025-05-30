@@ -6,4 +6,4 @@ oint greenapi ОтправитьФайл \
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" \
   --filename "vid.mp4" \
   --caption "Описание файла" \
-  --quoted "BAE51E1AC3CEBB09"
+  --quoted "BAE5A942D003C4E9"

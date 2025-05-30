@@ -1,0 +1,3 @@
+oint greenapi GetContactDescription \
+ --phone 79001234568 \
+ --company "Bicycle"

@@ -53,6 +53,32 @@ Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/S
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendLocation \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us" \
+             --loc "{'latitude':53.908522,'longitude':27.574821}" \
+             --quoted "BAE5D37FEB99D203"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SendLocation ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us" ^
+             --loc "{'latitude':53.908522,'longitude':27.574821}" ^
+             --quoted "BAE5D37FEB99D203"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

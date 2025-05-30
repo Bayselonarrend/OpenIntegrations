@@ -4,4 +4,4 @@ oint ollama LoadModelToMemory \
  --url "https://api.athenaeum.digital/ollama" \
  --model "tinyllama" \
  --keep 500 \
- --headers "{'Authorization':'Bearer ***'}"
+ --headers "{'Authorization':'***'}"

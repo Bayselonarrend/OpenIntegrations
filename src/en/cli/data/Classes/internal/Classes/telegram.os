@@ -1,495 +1,495 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetBotInformation";
-    NewLine.МетодПоиска = "GETBOTINFORMATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetUpdates";
-    NewLine.МетодПоиска = "GETUPDATES";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Executes a request, returning information about bot events. Used in polling mode";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetBotInformation";
+    NewLine.SearchMethod = "GETBOTINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data retrieval and settings";
+    NewLine.MethodDescription   = "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetUpdates";
-    NewLine.МетодПоиска = "GETUPDATES";
-    NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Waiting time for new events (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data retrieval and settings";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetUpdates";
+    NewLine.SearchMethod = "GETUPDATES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data retrieval and settings";
+    NewLine.MethodDescription   = "Executes a request, returning information about bot events. Used in polling mode";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetUpdates";
-    NewLine.МетодПоиска = "GETUPDATES";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset in the list of received messages (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data retrieval and settings";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetUpdates";
+    NewLine.SearchMethod = "GETUPDATES";
+    NewLine.Parameter    = "--timeout";
+    NewLine.Description    = "Waiting time for new events (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data retrieval and settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SetWebhook";
-    NewLine.МетодПоиска = "SETWEBHOOK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Set webhook URL for bot event handling in webhook mode";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetUpdates";
+    NewLine.SearchMethod = "GETUPDATES";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset in the list of received messages (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data retrieval and settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SetWebhook";
-    NewLine.МетодПоиска = "SETWEBHOOK";
-    NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Request handling address from Telegram (with https:)";
-    NewLine.Область     = "Data retrieval and settings";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SetWebhook";
+    NewLine.SearchMethod = "SETWEBHOOK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data retrieval and settings";
+    NewLine.MethodDescription   = "Set webhook URL for bot event handling in webhook mode";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteWebhook";
-    NewLine.МетодПоиска = "DELETEWEBHOOK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Deletes the bot event handler URL for webhook operation";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SetWebhook";
+    NewLine.SearchMethod = "SETWEBHOOK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Request handling address from Telegram (with https:)";
+    NewLine.Region     = "Data retrieval and settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DownloadFile";
-    NewLine.МетодПоиска = "DOWNLOADFILE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Download file from Telegram servers";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteWebhook";
+    NewLine.SearchMethod = "DELETEWEBHOOK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data retrieval and settings";
+    NewLine.MethodDescription   = "Deletes the bot event handler URL for webhook operation";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DownloadFile";
-    NewLine.МетодПоиска = "DOWNLOADFILE";
-    NewLine.Параметр    = "--fileid";
-    NewLine.Описание    = "File ID for downloading";
-    NewLine.Область     = "Data retrieval and settings";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Data retrieval and settings";
+    NewLine.MethodDescription   = "Download file from Telegram servers";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a text message to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File ID for downloading";
+    NewLine.Region     = "Data retrieval and settings";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a text message to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendTextMessage";
-    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
-    NewLine.Параметр    = "--reply";
-    NewLine.Описание    = "Reply to message ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends an image to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--reply";
+    NewLine.Description    = "Reply to message ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends an image to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "Image file";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Image file";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendImage";
-    NewLine.МетодПоиска = "SENDIMAGE";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a video to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a video to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--video";
-    NewLine.Описание    = "Video file";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--video";
+    NewLine.Description    = "Video file";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendVideo";
-    NewLine.МетодПоиска = "SENDVIDEO";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends an audio file to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendVideo";
+    NewLine.SearchMethod = "SENDVIDEO";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends an audio file to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--audio";
-    NewLine.Описание    = "Audio file";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--audio";
+    NewLine.Description    = "Audio file";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendAudio";
-    NewLine.МетодПоиска = "SENDAUDIO";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a document to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendAudio";
+    NewLine.SearchMethod = "SENDAUDIO";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a document to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--doc";
-    NewLine.Описание    = "Document file";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--doc";
+    NewLine.Description    = "Document file";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendDocument";
-    NewLine.МетодПоиска = "SENDDOCUMENT";
-    NewLine.Параметр    = "--filename";
-    NewLine.Описание    = "Custom displayed file name with extension, if necessary (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a GIF to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendDocument";
+    NewLine.SearchMethod = "SENDDOCUMENT";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "Custom displayed file name with extension, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a GIF to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--gif";
-    NewLine.Описание    = "GIF file";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--gif";
+    NewLine.Description    = "GIF file";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendGif";
-    NewLine.МетодПоиска = "SENDGIF";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a set of files to a chat or channel. Media types: audio, document, photo, video
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendGif";
+    NewLine.SearchMethod = "SENDGIF";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a set of files to a chat or channel. Media types: audio, document, photo, video
     |    Data structure for option --media:
     |    {
     |     ""FilePath"": ""TypeOfMedia"",
@@ -500,958 +500,958 @@
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--media";
-    NewLine.Описание    = "File collection: Key > File, Value > Media Type";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--media";
+    NewLine.Description    = "File collection: Key > File, Value > Media Type";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendMediaGroup";
-    NewLine.МетодПоиска = "SENDMEDIAGROUP";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendMediaGroup";
+    NewLine.SearchMethod = "SENDMEDIAGROUP";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends location by geographic latitude and longitude to a chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends location by geographic latitude and longitude to a chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--lat";
-    NewLine.Описание    = "Geographic latitude";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--lat";
+    NewLine.Description    = "Geographic latitude";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--long";
-    NewLine.Описание    = "Geographic longitude";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--long";
+    NewLine.Description    = "Geographic longitude";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendLocation";
-    NewLine.МетодПоиска = "SENDLOCATION";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a contact with name and phone number";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a contact with name and phone number";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Contact name";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Contact name";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--surname";
-    NewLine.Описание    = "Contact last name";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--surname";
+    NewLine.Description    = "Contact last name";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--phone";
-    NewLine.Описание    = "Contact phone number";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--phone";
+    NewLine.Description    = "Contact phone number";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendContact";
-    NewLine.МетодПоиска = "SENDCONTACT";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Sends a poll with answer options";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Sends a poll with answer options";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--question";
-    NewLine.Описание    = "Poll question";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--question";
+    NewLine.Description    = "Poll question";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--options";
-    NewLine.Описание    = "Array of answer options";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Array of answer options";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "SendPoll";
-    NewLine.МетодПоиска = "SENDPOLL";
-    NewLine.Параметр    = "--anonymous";
-    NewLine.Описание    = "Survey anonymity flag (optional, def. val. - Yes)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "SendPoll";
+    NewLine.SearchMethod = "SENDPOLL";
+    NewLine.Parameter    = "--anonymous";
+    NewLine.Description    = "Survey anonymity flag (optional, def. val. - Yes)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ForwardMessage";
-    NewLine.МетодПоиска = "FORWARDMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Forwards a message between chats or within a chat";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ForwardMessage";
+    NewLine.SearchMethod = "FORWARDMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Forwards a message between chats or within a chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ForwardMessage";
-    NewLine.МетодПоиска = "FORWARDMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Original message ID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ForwardMessage";
+    NewLine.SearchMethod = "FORWARDMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Original message ID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ForwardMessage";
-    NewLine.МетодПоиска = "FORWARDMESSAGE";
-    NewLine.Параметр    = "--from";
-    NewLine.Описание    = "Chat ID of the original message";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ForwardMessage";
+    NewLine.SearchMethod = "FORWARDMESSAGE";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Chat ID of the original message";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ForwardMessage";
-    NewLine.МетодПоиска = "FORWARDMESSAGE";
-    NewLine.Параметр    = "--to";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ForwardMessage";
+    NewLine.SearchMethod = "FORWARDMESSAGE";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Delete message from chat or channel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Delete message from chat or channel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteMessage";
-    NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of message to delete";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of message to delete";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageKeyboard";
-    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Replaces the message keyboard with a new one";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageKeyboard";
+    NewLine.SearchMethod = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Replaces the message keyboard with a new one";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageKeyboard";
-    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageKeyboard";
+    NewLine.SearchMethod = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageKeyboard";
-    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of message to delete";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageKeyboard";
+    NewLine.SearchMethod = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of message to delete";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageKeyboard";
-    NewLine.МетодПоиска = "REPLACEMESSAGEKEYBOARD";
-    NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageKeyboard";
+    NewLine.SearchMethod = "REPLACEMESSAGEKEYBOARD";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "Keyboard. See FormKeyboardFromButtonArray";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageText";
-    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Replaces the message text with a new one";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageText";
+    NewLine.SearchMethod = "REPLACEMESSAGETEXT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Replaces the message text with a new one";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageText";
-    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageText";
+    NewLine.SearchMethod = "REPLACEMESSAGETEXT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageText";
-    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of message to delete";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageText";
+    NewLine.SearchMethod = "REPLACEMESSAGETEXT";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of message to delete";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageText";
-    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
-    NewLine.Параметр    = "--text";
-    NewLine.Описание    = "New message text";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageText";
+    NewLine.SearchMethod = "REPLACEMESSAGETEXT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "New message text";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageText";
-    NewLine.МетодПоиска = "REPLACEMESSAGETEXT";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageText";
+    NewLine.SearchMethod = "REPLACEMESSAGETEXT";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageCaption";
-    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Replaces text in a message with media attachments";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageCaption";
+    NewLine.SearchMethod = "REPLACEMESSAGECAPTION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Replaces text in a message with media attachments";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageCaption";
-    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageCaption";
+    NewLine.SearchMethod = "REPLACEMESSAGECAPTION";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageCaption";
-    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "ID of message to delete";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageCaption";
+    NewLine.SearchMethod = "REPLACEMESSAGECAPTION";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "ID of message to delete";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageCaption";
-    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
-    NewLine.Параметр    = "--caption";
-    NewLine.Описание    = "New message description";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageCaption";
+    NewLine.SearchMethod = "REPLACEMESSAGECAPTION";
+    NewLine.Parameter    = "--caption";
+    NewLine.Description    = "New message description";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ReplaceMessageCaption";
-    NewLine.МетодПоиска = "REPLACEMESSAGECAPTION";
-    NewLine.Параметр    = "--parsemode";
-    NewLine.Описание    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ReplaceMessageCaption";
+    NewLine.SearchMethod = "REPLACEMESSAGECAPTION";
+    NewLine.Parameter    = "--parsemode";
+    NewLine.Description    = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "FormKeyboardFromButtonArray";
-    NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
-    NewLine.Параметр    = "--buttons";
-    NewLine.Описание    = "Array of buttons";
-    NewLine.Область     = "Data sending";
-    NewLine.ОписаниеМетода   = "Generates a simple JSON keyboard from an array of buttons for a message or bottom panel";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "FormKeyboardFromButtonArray";
+    NewLine.SearchMethod = "FORMKEYBOARDFROMBUTTONARRAY";
+    NewLine.Parameter    = "--buttons";
+    NewLine.Description    = "Array of buttons";
+    NewLine.Region     = "Data sending";
+    NewLine.MethodDescription   = "Generates a simple JSON keyboard from an array of buttons for a message or bottom panel";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "FormKeyboardFromButtonArray";
-    NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
-    NewLine.Параметр    = "--under";
-    NewLine.Описание    = "Keyboard under the message or on the bottom panel (optional, def. val. - No)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "FormKeyboardFromButtonArray";
+    NewLine.SearchMethod = "FORMKEYBOARDFROMBUTTONARRAY";
+    NewLine.Parameter    = "--under";
+    NewLine.Description    = "Keyboard under the message or on the bottom panel (optional, def. val. - No)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "FormKeyboardFromButtonArray";
-    NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
-    NewLine.Параметр    = "--column";
-    NewLine.Описание    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - Yes)";
-    NewLine.Область     = "Data sending";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "FormKeyboardFromButtonArray";
+    NewLine.SearchMethod = "FORMKEYBOARDFROMBUTTONARRAY";
+    NewLine.Parameter    = "--column";
+    NewLine.Description    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - Yes)";
+    NewLine.Region     = "Data sending";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Ban";
-    NewLine.МетодПоиска = "BAN";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Bans a user in the selected chat";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Ban";
+    NewLine.SearchMethod = "BAN";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Bans a user in the selected chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Ban";
-    NewLine.МетодПоиска = "BAN";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Ban";
+    NewLine.SearchMethod = "BAN";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Ban";
-    NewLine.МетодПоиска = "BAN";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "Target user ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Ban";
+    NewLine.SearchMethod = "BAN";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "Target user ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Unban";
-    NewLine.МетодПоиска = "UNBAN";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Unbans a previously banned user";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Unban";
+    NewLine.SearchMethod = "UNBAN";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Unbans a previously banned user";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Unban";
-    NewLine.МетодПоиска = "UNBAN";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Unban";
+    NewLine.SearchMethod = "UNBAN";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "Unban";
-    NewLine.МетодПоиска = "UNBAN";
-    NewLine.Параметр    = "--user";
-    NewLine.Описание    = "Target user ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "Unban";
+    NewLine.SearchMethod = "UNBAN";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "Target user ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateInvitationLink";
-    NewLine.МетодПоиска = "CREATEINVITATIONLINK";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Creates a link for joining a closed chat";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateInvitationLink";
+    NewLine.SearchMethod = "CREATEINVITATIONLINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Creates a link for joining a closed chat";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateInvitationLink";
-    NewLine.МетодПоиска = "CREATEINVITATIONLINK";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID or ChatID*TopicID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateInvitationLink";
+    NewLine.SearchMethod = "CREATEINVITATIONLINK";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID or ChatID*TopicID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateInvitationLink";
-    NewLine.МетодПоиска = "CREATEINVITATIONLINK";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Invitation title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateInvitationLink";
+    NewLine.SearchMethod = "CREATEINVITATIONLINK";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Invitation title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateInvitationLink";
-    NewLine.МетодПоиска = "CREATEINVITATIONLINK";
-    NewLine.Параметр    = "--expire";
-    NewLine.Описание    = "Link expiration date (permanent if not specified) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateInvitationLink";
+    NewLine.SearchMethod = "CREATEINVITATIONLINK";
+    NewLine.Parameter    = "--expire";
+    NewLine.Description    = "Link expiration date (permanent if not specified) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateInvitationLink";
-    NewLine.МетодПоиска = "CREATEINVITATIONLINK";
-    NewLine.Параметр    = "--limit";
-    NewLine.Описание    = "User limit (infinite if not specified) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateInvitationLink";
+    NewLine.SearchMethod = "CREATEINVITATIONLINK";
+    NewLine.Parameter    = "--limit";
+    NewLine.Description    = "User limit (infinite if not specified) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "PinMessage";
-    NewLine.МетодПоиска = "PINMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Pins a message in the chat header";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "PinMessage";
+    NewLine.SearchMethod = "PINMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Pins a message in the chat header";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "PinMessage";
-    NewLine.МетодПоиска = "PINMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "PinMessage";
+    NewLine.SearchMethod = "PINMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "PinMessage";
-    NewLine.МетодПоиска = "PINMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Target message ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "PinMessage";
+    NewLine.SearchMethod = "PINMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Target message ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "UnpinMessage";
-    NewLine.МетодПоиска = "UNPINMESSAGE";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Unpins a message in the chat header";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "UnpinMessage";
+    NewLine.SearchMethod = "UNPINMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Unpins a message in the chat header";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "UnpinMessage";
-    NewLine.МетодПоиска = "UNPINMESSAGE";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "UnpinMessage";
+    NewLine.SearchMethod = "UNPINMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "UnpinMessage";
-    NewLine.МетодПоиска = "UNPINMESSAGE";
-    NewLine.Параметр    = "--message";
-    NewLine.Описание    = "Target message ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "UnpinMessage";
+    NewLine.SearchMethod = "UNPINMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Target message ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetParticipantCount";
-    NewLine.МетодПоиска = "GETPARTICIPANTCOUNT";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Bot token";
-    NewLine.Область     = "Administration";
-    NewLine.ОписаниеМетода   = "Gets the total number of chat participants";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetParticipantCount";
+    NewLine.SearchMethod = "GETPARTICIPANTCOUNT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Administration";
+    NewLine.MethodDescription   = "Gets the total number of chat participants";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetParticipantCount";
-    NewLine.МетодПоиска = "GETPARTICIPANTCOUNT";
-    NewLine.Параметр    = "--chat";
-    NewLine.Описание    = "Target chat ID";
-    NewLine.Область     = "Administration";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetParticipantCount";
+    NewLine.SearchMethod = "GETPARTICIPANTCOUNT";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Target chat ID";
+    NewLine.Region     = "Administration";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "GetAvatarIconList";
-    NewLine.МетодПоиска = "GETAVATARICONLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Gets the mapping of Emoji IDs for setting as forum theme icons";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "GetAvatarIconList";
+    NewLine.SearchMethod = "GETAVATARICONLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Gets the mapping of Emoji IDs for setting as forum theme icons";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateForumThread";
-    NewLine.МетодПоиска = "CREATEFORUMTHREAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Creates a new thread in the group with theme functionality enabled";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateForumThread";
+    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Creates a new thread in the group with theme functionality enabled";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateForumThread";
-    NewLine.МетодПоиска = "CREATEFORUMTHREAD";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread creation chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateForumThread";
+    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread creation chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateForumThread";
-    NewLine.МетодПоиска = "CREATEFORUMTHREAD";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Thread title";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateForumThread";
+    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Thread title";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CreateForumThread";
-    NewLine.МетодПоиска = "CREATEFORUMTHREAD";
-    NewLine.Параметр    = "--icon";
-    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CreateForumThread";
+    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Parameter    = "--icon";
+    NewLine.Description    = "See GetAvatarIconList (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditForumTopic";
-    NewLine.МетодПоиска = "EDITFORUMTOPIC";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Creates a new thread in the group with theme functionality enabled";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditForumTopic";
+    NewLine.SearchMethod = "EDITFORUMTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Creates a new thread in the group with theme functionality enabled";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditForumTopic";
-    NewLine.МетодПоиска = "EDITFORUMTOPIC";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread creation chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditForumTopic";
+    NewLine.SearchMethod = "EDITFORUMTOPIC";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread creation chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditForumTopic";
-    NewLine.МетодПоиска = "EDITFORUMTOPIC";
-    NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditForumTopic";
+    NewLine.SearchMethod = "EDITFORUMTOPIC";
+    NewLine.Parameter    = "--topic";
+    NewLine.Description    = "Thread ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditForumTopic";
-    NewLine.МетодПоиска = "EDITFORUMTOPIC";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New title (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditForumTopic";
+    NewLine.SearchMethod = "EDITFORUMTOPIC";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New title (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditForumTopic";
-    NewLine.МетодПоиска = "EDITFORUMTOPIC";
-    NewLine.Параметр    = "--icon";
-    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditForumTopic";
+    NewLine.SearchMethod = "EDITFORUMTOPIC";
+    NewLine.Parameter    = "--icon";
+    NewLine.Description    = "See GetAvatarIconList (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CloseForumThread";
-    NewLine.МетодПоиска = "CLOSEFORUMTHREAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Closes the thread for new messages";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CloseForumThread";
+    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Closes the thread for new messages";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CloseForumThread";
-    NewLine.МетодПоиска = "CLOSEFORUMTHREAD";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CloseForumThread";
+    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "CloseForumThread";
-    NewLine.МетодПоиска = "CLOSEFORUMTHREAD";
-    NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "CloseForumThread";
+    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Parameter    = "--topic";
+    NewLine.Description    = "Thread ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "OpenForumThread";
-    NewLine.МетодПоиска = "OPENFORUMTHREAD";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Reopens a previously closed forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "OpenForumThread";
+    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Reopens a previously closed forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "OpenForumThread";
-    NewLine.МетодПоиска = "OPENFORUMTHREAD";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "OpenForumThread";
+    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "OpenForumThread";
-    NewLine.МетодПоиска = "OPENFORUMTHREAD";
-    NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "OpenForumThread";
+    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Parameter    = "--topic";
+    NewLine.Description    = "Thread ID (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteForumTopic";
-    NewLine.МетодПоиска = "DELETEFORUMTOPIC";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Deletes a forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteForumTopic";
+    NewLine.SearchMethod = "DELETEFORUMTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Deletes a forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteForumTopic";
-    NewLine.МетодПоиска = "DELETEFORUMTOPIC";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteForumTopic";
+    NewLine.SearchMethod = "DELETEFORUMTOPIC";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "DeleteForumTopic";
-    NewLine.МетодПоиска = "DELETEFORUMTOPIC";
-    NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "DeleteForumTopic";
+    NewLine.SearchMethod = "DELETEFORUMTOPIC";
+    NewLine.Parameter    = "--topic";
+    NewLine.Description    = "Thread ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "HideMainForumTopic";
-    NewLine.МетодПоиска = "HIDEMAINFORUMTOPIC";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Hides the main forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "HideMainForumTopic";
+    NewLine.SearchMethod = "HIDEMAINFORUMTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Hides the main forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "HideMainForumTopic";
-    NewLine.МетодПоиска = "HIDEMAINFORUMTOPIC";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "HideMainForumTopic";
+    NewLine.SearchMethod = "HIDEMAINFORUMTOPIC";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ShowMainForumTopic";
-    NewLine.МетодПоиска = "SHOWMAINFORUMTOPIC";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Shows a previously hidden main forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ShowMainForumTopic";
+    NewLine.SearchMethod = "SHOWMAINFORUMTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Shows a previously hidden main forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ShowMainForumTopic";
-    NewLine.МетодПоиска = "SHOWMAINFORUMTOPIC";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ShowMainForumTopic";
+    NewLine.SearchMethod = "SHOWMAINFORUMTOPIC";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditMainForumTopicName";
-    NewLine.МетодПоиска = "EDITMAINFORUMTOPICNAME";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Edits the name of the main forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditMainForumTopicName";
+    NewLine.SearchMethod = "EDITMAINFORUMTOPICNAME";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Edits the name of the main forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditMainForumTopicName";
-    NewLine.МетодПоиска = "EDITMAINFORUMTOPICNAME";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditMainForumTopicName";
+    NewLine.SearchMethod = "EDITMAINFORUMTOPICNAME";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "EditMainForumTopicName";
-    NewLine.МетодПоиска = "EDITMAINFORUMTOPICNAME";
-    NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New main thread name";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "EditMainForumTopicName";
+    NewLine.SearchMethod = "EDITMAINFORUMTOPICNAME";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New main thread name";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ClearThreadPinnedMessagesList";
-    NewLine.МетодПоиска = "CLEARTHREADPINNEDMESSAGESLIST";
-    NewLine.Параметр    = "--token";
-    NewLine.Описание    = "Token";
-    NewLine.Область     = "Forum topic management";
-    NewLine.ОписаниеМетода   = "Clears the list of pinned messages in the forum thread";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ClearThreadPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Forum topic management";
+    NewLine.MethodDescription   = "Clears the list of pinned messages in the forum thread";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ClearThreadPinnedMessagesList";
-    NewLine.МетодПоиска = "CLEARTHREADPINNEDMESSAGESLIST";
-    NewLine.Параметр    = "--forum";
-    NewLine.Описание    = "Thread chat ID";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ClearThreadPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Parameter    = "--forum";
+    NewLine.Description    = "Thread chat ID";
+    NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "telegram";
-    NewLine.Модуль      = "OPI_Telegram";
-    NewLine.Метод       = "ClearThreadPinnedMessagesList";
-    NewLine.МетодПоиска = "CLEARTHREADPINNEDMESSAGESLIST";
-    NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID. Main if not filled (optional, def. val. - Empty value)";
-    NewLine.Область     = "Forum topic management";
+    NewLine.Library  = "telegram";
+    NewLine.Module      = "OPI_Telegram";
+    NewLine.Method       = "ClearThreadPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Parameter    = "--topic";
+    NewLine.Description    = "Thread ID. Main if not filled (optional, def. val. - Empty value)";
+    NewLine.Region     = "Forum topic management";
 
     Return CompositionTable;
 EndFunction

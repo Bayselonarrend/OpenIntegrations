@@ -1,588 +1,588 @@
-﻿Function ПолучитьСостав() Export
+﻿Function GetComposition() Export
 
     CompositionTable = New ValueTable();
-    CompositionTable.Columns.Add("Библиотека");
-    CompositionTable.Columns.Add("Модуль");
-    CompositionTable.Columns.Add("Метод");
-    CompositionTable.Columns.Add("МетодПоиска");
-    CompositionTable.Columns.Add("Параметр");
-    CompositionTable.Columns.Add("Описание");
-    CompositionTable.Columns.Add("ОписаниеМетода");
-    CompositionTable.Columns.Add("Область");
+    CompositionTable.Columns.Add("Library");
+    CompositionTable.Columns.Add("Module");
+    CompositionTable.Columns.Add("Method");
+    CompositionTable.Columns.Add("SearchMethod");
+    CompositionTable.Columns.Add("Parameter");
+    CompositionTable.Columns.Add("Description");
+    CompositionTable.Columns.Add("MethodDescription");
+    CompositionTable.Columns.Add("Region");
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--sql";
-    NewLine.Описание    = "Database query text";
-    NewLine.Область     = "Common methods";
-    NewLine.ОписаниеМетода   = "Executes an arbitrary SQL query";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--params";
-    NewLine.Описание    = "Array of positional parameters of the request (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--sql";
+    NewLine.Description    = "Database query text";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Executes an arbitrary SQL query";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--force";
-    NewLine.Описание    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - No)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--params";
+    NewLine.Description    = "Array of positional parameters of the request (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--force";
+    NewLine.Description    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - No)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ExecuteSQLQuery";
-    NewLine.МетодПоиска = "EXECUTESQLQUERY";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GenerateConnectionString";
-    NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
-    NewLine.Параметр    = "--addr";
-    NewLine.Описание    = "IP address or domain name of the server";
-    NewLine.Область     = "Common methods";
-    NewLine.ОписаниеМетода   = "Forms a connection string from the passed data";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ExecuteSQLQuery";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GenerateConnectionString";
-    NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
-    NewLine.Параметр    = "--db";
-    NewLine.Описание    = "Name of the database to connect";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--addr";
+    NewLine.Description    = "IP address or domain name of the server";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Forms a connection string from the passed data";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GenerateConnectionString";
-    NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
-    NewLine.Параметр    = "--login";
-    NewLine.Описание    = "Postgres user login";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Name of the database to connect";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GenerateConnectionString";
-    NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
-    NewLine.Параметр    = "--pass";
-    NewLine.Описание    = "Postgres user password (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--login";
+    NewLine.Description    = "Postgres user login";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GenerateConnectionString";
-    NewLine.МетодПоиска = "GENERATECONNECTIONSTRING";
-    NewLine.Параметр    = "--port";
-    NewLine.Описание    = "Connection port (optional, def. val. - 5432)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--pass";
+    NewLine.Description    = "Postgres user password (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetTlsSettings";
-    NewLine.МетодПоиска = "GETTLSSETTINGS";
-    NewLine.Параметр    = "--trust";
-    NewLine.Описание    = "Allows to work with invalid certificates, including self signed";
-    NewLine.Область     = "Common methods";
-    NewLine.ОписаниеМетода   = "Forms settings for using TLS";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--port";
+    NewLine.Description    = "Connection port (optional, def. val. - 5432)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetTlsSettings";
-    NewLine.МетодПоиска = "GETTLSSETTINGS";
-    NewLine.Параметр    = "--cert";
-    NewLine.Описание    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
-    NewLine.Область     = "Common methods";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetTlsSettings";
+    NewLine.SearchMethod = "GETTLSSETTINGS";
+    NewLine.Parameter    = "--trust";
+    NewLine.Description    = "Allows to work with invalid certificates, including self signed";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Forms settings for using TLS";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateDatabase";
-    NewLine.МетодПоиска = "CREATEDATABASE";
-    NewLine.Параметр    = "--base";
-    NewLine.Описание    = "Database name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Creates a database with the specified name";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetTlsSettings";
+    NewLine.SearchMethod = "GETTLSSETTINGS";
+    NewLine.Parameter    = "--cert";
+    NewLine.Description    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateDatabase";
-    NewLine.МетодПоиска = "CREATEDATABASE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Creates a database with the specified name";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateDatabase";
-    NewLine.МетодПоиска = "CREATEDATABASE";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteDatabase";
-    NewLine.МетодПоиска = "DELETEDATABASE";
-    NewLine.Параметр    = "--base";
-    NewLine.Описание    = "Database name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes the database";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteDatabase";
-    NewLine.МетодПоиска = "DELETEDATABASE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteDatabase";
+    NewLine.SearchMethod = "DELETEDATABASE";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes the database";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteDatabase";
-    NewLine.МетодПоиска = "DELETEDATABASE";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteDatabase";
+    NewLine.SearchMethod = "DELETEDATABASE";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DisableAllDatabaseConnections";
-    NewLine.МетодПоиска = "DISABLEALLDATABASECONNECTIONS";
-    NewLine.Параметр    = "--base";
-    NewLine.Описание    = "Database name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Terminates all connections to the database except the current one";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteDatabase";
+    NewLine.SearchMethod = "DELETEDATABASE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DisableAllDatabaseConnections";
-    NewLine.МетодПоиска = "DISABLEALLDATABASECONNECTIONS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DisableAllDatabaseConnections";
+    NewLine.SearchMethod = "DISABLEALLDATABASECONNECTIONS";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Terminates all connections to the database except the current one";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DisableAllDatabaseConnections";
-    NewLine.МетодПоиска = "DISABLEALLDATABASECONNECTIONS";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DisableAllDatabaseConnections";
+    NewLine.SearchMethod = "DISABLEALLDATABASECONNECTIONS";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetTableInformation";
-    NewLine.МетодПоиска = "GETTABLEINFORMATION";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets information about the table";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DisableAllDatabaseConnections";
+    NewLine.SearchMethod = "DISABLEALLDATABASECONNECTIONS";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetTableInformation";
-    NewLine.МетодПоиска = "GETTABLEINFORMATION";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetTableInformation";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets information about the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetTableInformation";
-    NewLine.МетодПоиска = "GETTABLEINFORMATION";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetTableInformation";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Creates an empty table in the database";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetTableInformation";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--cols";
-    NewLine.Описание    = "Column structure: Key > Name, Value > Data type";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Creates an empty table in the database";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--cols";
+    NewLine.Description    = "Column structure: Key > Name, Value > Data type";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "CreateTable";
-    NewLine.МетодПоиска = "CREATETABLE";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Clears the database table";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ClearTable";
+    NewLine.SearchMethod = "CLEARTABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Clears the database table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "ClearTable";
-    NewLine.МетодПоиска = "CLEARTABLE";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ClearTable";
+    NewLine.SearchMethod = "CLEARTABLE";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes a table from the database";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "ClearTable";
+    NewLine.SearchMethod = "CLEARTABLE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTable";
+    NewLine.SearchMethod = "DELETETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes a table from the database";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteTable";
-    NewLine.МетодПоиска = "DELETETABLE";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTable";
+    NewLine.SearchMethod = "DELETETABLE";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Adds new rows to the table";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTable";
+    NewLine.SearchMethod = "DELETETABLE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--rows";
-    NewLine.Описание    = "An array of string data structures: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Adds new rows to the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--trn";
-    NewLine.Описание    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--rows";
+    NewLine.Description    = "An array of string data structures: Key > field, Value > field value";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--trn";
+    NewLine.Description    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "AddRecords";
-    NewLine.МетодПоиска = "ADDRECORDS";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets records from the selected table";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddRecords";
+    NewLine.SearchMethod = "ADDRECORDS";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--fields";
-    NewLine.Описание    = "Fields for selection (optional, def. val. - *)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets records from the selected table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--fields";
+    NewLine.Description    = "Fields for selection (optional, def. val. - *)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--order";
-    NewLine.Описание    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--limit";
-    NewLine.Описание    = "Limiting the number of received strings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--order";
+    NewLine.Description    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--limit";
+    NewLine.Description    = "Limiting the number of received strings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecords";
-    NewLine.МетодПоиска = "GETRECORDS";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Updates the value of records by selected criteria";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecords";
+    NewLine.SearchMethod = "GETRECORDS";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--values";
-    NewLine.Описание    = "Values structure: Key > field, Value > field value";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Updates the value of records by selected criteria";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--values";
+    NewLine.Description    = "Values structure: Key > field, Value > field value";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "UpdateRecords";
-    NewLine.МетодПоиска = "UPDATERECORDS";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--table";
-    NewLine.Описание    = "Table name";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Deletes records from the table";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "UpdateRecords";
+    NewLine.SearchMethod = "UPDATERECORDS";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--filter";
-    NewLine.Описание    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes records from the table";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--dbc";
-    NewLine.Описание    = "Connection or connection string (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--filter";
+    NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "DeleteRecords";
-    NewLine.МетодПоиска = "DELETERECORDS";
-    NewLine.Параметр    = "--tls";
-    NewLine.Описание    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Область     = "Orm";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
 
 
     NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "postgres";
-    NewLine.Модуль      = "OPI_PostgreSQL";
-    NewLine.Метод       = "GetRecordsFilterStrucutre";
-    NewLine.МетодПоиска = "GETRECORDSFILTERSTRUCUTRE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
-    NewLine.Область     = "Orm";
-    NewLine.ОписаниеМетода   = "Gets the template structure for filtering records in ORM queries";
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteRecords";
+    NewLine.SearchMethod = "DELETERECORDS";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "GetRecordsFilterStrucutre";
+    NewLine.SearchMethod = "GETRECORDSFILTERSTRUCUTRE";
+    NewLine.Parameter    = "--empty";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Gets the template structure for filtering records in ORM queries";
 
     Return CompositionTable;
 EndFunction
