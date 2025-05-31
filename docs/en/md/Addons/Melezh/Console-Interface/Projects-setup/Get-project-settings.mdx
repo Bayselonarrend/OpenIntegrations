@@ -32,14 +32,14 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             melezh  GetProjectSettings \
-              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\e5z2ie0a.hnw"
+              --proj "/proj.melezh"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             melezh  GetProjectSettings ^
-              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\e5z2ie0a.hnw"
+              --proj "/proj.melezh"
         ```
     </TabItem>
 </Tabs>
@@ -50,37 +50,50 @@ import TabItem from '@theme/TabItem';
   {
    "description": "Web console login Password",
    "name": "ui_password",
+   "type": "string",
    "value": "admin"
   },
   {
    "description": "Logs save path. To disable logging, set the value to empty",
    "name": "logs_path",
-   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/3860f582-26c5-490d-9cd3-5fd1d8c5adb1"
+   "type": "string",
+   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/2ee7082a-6e05-4e6b-a3a8-1b7d0823f9e9"
   },
   {
    "description": "Logging of incoming request headers",
    "name": "logs_req_headers",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Logging the body of incoming requests",
    "name": "logs_req_body",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Disable logging logs_req_body for requests over this size (in bytes). 0 - no limitation",
    "name": "logs_req_max_size",
-   "value": "104857600"
+   "type": "number",
+   "value": 104857600
   },
   {
    "description": "Logging the body of outgoing responses",
    "name": "logs_res_body",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Disable logging logs_res_body for requests over this size (in bytes). 0 - no limitation",
    "name": "logs_res_max_size",
-   "value": "104857600"
+   "type": "number",
+   "value": 104857600
+  },
+  {
+   "description": "The flag for using the Melezh {'result':true, 'data': <primary response>} wrapper over the original function responses (does not affect non-JSON responses))",
+   "name": "res_wrapper",
+   "type": "bool",
+   "value": true
   }
  ],
  "result": true
