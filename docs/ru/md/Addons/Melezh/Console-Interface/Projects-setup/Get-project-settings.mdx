@@ -32,14 +32,14 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             melezh  ПолучитьНастройкиПроекта \
-              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\k32uscuk.e2g"
+              --proj "/proj.melezh"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             melezh  ПолучитьНастройкиПроекта ^
-              --proj "C:\Users\bayselonarrend\AppData\Local\Temp\k32uscuk.e2g"
+              --proj "/proj.melezh"
         ```
     </TabItem>
 </Tabs>
@@ -50,37 +50,50 @@ import TabItem from '@theme/TabItem';
   {
    "description": "Пароль входа веб-консоли",
    "name": "ui_password",
+   "type": "string",
    "value": "admin"
   },
   {
    "description": "Путь сохранения логов. Для отключения логирования установите пустое значение",
    "name": "logs_path",
-   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/a603ceee-553d-4635-affa-61353a6f50ba"
+   "type": "string",
+   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/47536e82-60be-4e63-975a-67f42966127e"
   },
   {
    "description": "Логирование заголовков входящих запросов",
    "name": "logs_req_headers",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Логирование тела входящих запросов",
    "name": "logs_req_body",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Отключение логирования logs_req_body для запросов, свыше этого размер (в байтах). 0 - без ограничений",
    "name": "logs_req_max_size",
-   "value": "104857600"
+   "type": "number",
+   "value": 104857600
   },
   {
    "description": "Логирование тела исходящих ответов",
    "name": "logs_res_body",
-   "value": "true"
+   "type": "bool",
+   "value": true
   },
   {
    "description": "Отключение логирования logs_res_body для запросов, свыше этого размер (в байтах). 0 - без ограничений",
    "name": "logs_res_max_size",
-   "value": "104857600"
+   "type": "number",
+   "value": 104857600
+  },
+  {
+   "description": "Признак использования {'result':true, 'data': <основной ответ>} обертки Melezh над оригинальными ответами функций (не влияет на не-JSON ответы)",
+   "name": "res_wrapper",
+   "type": "bool",
+   "value": true
   }
  ],
  "result": true
