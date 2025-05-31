@@ -143,11 +143,22 @@ window.yaContextCb.push(() => {
             items: [
               {
                 label: 'English',
-                href: 'https://en.openintegrations.dev'  + (typeof window !== 'undefined' ? window.location.pathname : ''),
-              }
-              // ... more items
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                href: '#', // Заглушка для SSR
+                onClick: (e) => {
+                  e.preventDefault();
+                  const currentUrl = new URL(window.location.href);
+                  const newPath = currentUrl.pathname + currentUrl.search;
+
+                  // Меняем хост на en.openintegrations.dev
+                  const newUrl = new URL(newPath, 'https://en.openintegrations.dev');
+
+                  window.open(newUrl.toString(), '_blank');
+                },
+              },
             ],
-          },
+          }
         ],
       },
       footer: {
