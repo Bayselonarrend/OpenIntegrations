@@ -143,7 +143,7 @@ window.yaContextCb.push(() => {
             items: [
               {
                 label: 'English',
-                href: 'https://en.openintegrations.dev',
+                href: 'https://en.openintegrations.dev'  + (typeof window !== 'undefined' ? window.location.pathname : ''),
               }
               // ... more items
             ],
