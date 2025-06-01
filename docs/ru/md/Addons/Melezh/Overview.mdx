@@ -21,12 +21,12 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 В этом примере создается новый файл проекта с настройкой обработчика GET-запросов для функции `ОтправитьТекстовоеСообщение` из библиотеки работы с Telegram. Также в нем устанавливается значение по умолчанию для параметра `token` без возможности перезаписи ("строгий")
 
-```powershell
+```bash
 
-melezh СоздатьПроект                 --path R:\test_proj.melezh
-melezh ДобавитьОбработчикЗапросов    --proj R:\test_proj.melezh --lib telegram --func ОтправитьТекстовоеСообщение --method GET
-melezh УстановитьАргументОбработчика --proj R:\test_proj.melezh --handler 42281f11b --arg token --value "***" --strict true
-melezh ЗапуститьПроект               --proj R:\test_proj.melezh --port 7788
+melezh СоздатьПроект                 --path ./test_proj.melezh
+melezh ДобавитьОбработчикЗапросов    --proj ./test_proj.melezh --lib telegram --func ОтправитьТекстовоеСообщение --method GET
+melezh УстановитьАргументОбработчика --proj ./test_proj.melezh --handler 42281f11b --arg token --value "***" --strict true
+melezh ЗапуститьПроект               --proj ./test_proj.melezh --port 7788
 
 ```
 
