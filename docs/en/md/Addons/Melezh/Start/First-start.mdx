@@ -1,44 +1,39 @@
 ---
 id: First-start
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
-title: Первый запуск и создание проекта
+title: First Launch and Project Creation
 sidebar_position: 2
 ---
 
-В этом разделе описан запуск и первые шаги после установки Melezh на устройстве
+This section describes the initial launch and first steps after installing Melezh on your device.
 
-## Запуск
+## Launching
 
-Вне зависимости от операционной системы и способа установки, после ее завершения, Melezh должен быть доступен в терминале (командной строке) по команде `melezh`. 
+Regardless of the operating system or installation method, after completion, Melezh should be available in the terminal (command line) via the `melezh` command.
 
+> On Windows, a reboot might be required, but you can also launch it directly via the Start menu shortcut.
 
->На Windows может потребоваться перезагрузка, но также там присутствует возможность прямого запуска по ярлыку в меню "Пуск"
+When launched, you'll see the initial Melezh screen:
 
+![Launching Melezh](../../../../static/img/Docs/Melezh/en/3.gif)
 
-После вызова, будет показан начальный экран `melezh`:
+You can view all available Melezh methods by running `melezh --help`. Calling any Melezh method without parameters will display its purpose and argument list:
 
-![Запуск Melezh](../../../../static/img/Docs/Melezh/ru/3.gif)
+![Launching Melezh](../../../../static/img/Docs/Melezh/en/5.gif)
 
-Вы можете получить список всех доступных методов Melezh, вызвав команду `melezh --help`. Вызов любого метода Melezh без параметров, в свою очередь, возвращает справку о его назначении и наборе аргументов:
+## Creating a Project
 
-![Запуск Melezh](../../../../static/img/Docs/Melezh/ru/5.gif)
+To begin working with Melezh, you need to create a **project** - a file that will store main settings and handler information. Use the `CreateProject` command and specify the save path in the `--path` argument:
 
-## Создание проекта
-
-Для полноценного начала работы с Melezh необходимо создать **проект** - файл, в котором будут храниться основные настройки и данные об обработчиках. Для этого необходимо вызывать команду `СоздатьПроект` и указать путь для сохранения нового файла в аргументе `--path`
-
-![Запуск Melezh](../../../../static/img/Docs/Melezh/ru/4.gif)
+![Launching Melezh](../../../../static/img/Docs/Melezh/en/4.gif)
 
 <hr/>
 
-## Настройка проекта
+## Project Configuration
 
-Дальнейшая настройка проекта может осуществляться двумя способами:
+Further project configuration can be done in two ways:
 
-+ **С использованием консольного интерфейса** <br/>
-Настройка проекта может осуществляться дальнейшим вызовом команд `melezh` в терминале (командной строке). Список доступных команд и их аргументы перечислены в разделе *Консольный интерфейс* и встроенной справке приложения
++ **Using the Command Line Interface**  
+Configure the project by executing additional `melezh` commands in the terminal. Available commands and their arguments are listed in the *Command Line Interface* section and the built-in application help.
 
-+ **С использованием веб-интерфейса** <br/>
-Кроме консольного интерфейса, Melezh имеет встроенный Web UI, позволяющий управлять проектом в интерактивном режиме. Подробнее о работе через веб-интерфейс можно узнать в разделе *Web-интерфейс*
-
-
++ **Using the Web Interface**  
+In addition to the CLI, Melezh includes a built-in Web UI for interactive project management. Learn more about the web interface in the *Web Interface* section.
