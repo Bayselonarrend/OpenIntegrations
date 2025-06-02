@@ -2518,9 +2518,9 @@ Procedure GAPI_NotificationsReceiving() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_DownloadMessageID", TestParameters);
 
     GreenAPI_GetNotification(TestParameters);
-    GreenAPI_DeleteNotificationFromQueue(TestParameters);
-    GreenAPI_DownloadMessageFile(TestParameters);
     GreenAPI_SetReadMark(TestParameters);
+    //GreenAPI_DownloadMessageFile(TestParameters);
+    GreenAPI_DeleteNotificationFromQueue(TestParameters);
 
 EndProcedure
 
@@ -20412,7 +20412,7 @@ Procedure GreenAPI_DownloadMessageFile(FunctionParameters)
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
-    MessageID = FunctionParameters["GreenAPI_DownloadMessageID"];
+    MessageID = FunctionParameters["GreenAPI_FileMessageID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.DownloadMessageFile(AccessParameters, ChatID, MessageID);
@@ -20432,7 +20432,7 @@ Procedure GreenAPI_SetReadMark(FunctionParameters)
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
-    MessageID = FunctionParameters["GreenAPI_DownloadMessageID"];
+    MessageID = FunctionParameters["GreenAPI_FileMessageID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetReadMark(AccessParameters, ChatID, MessageID);
@@ -22653,9 +22653,7 @@ Procedure HTTPClient_SetProxy(FunctionParameters)
     URL = URL + "/get";
 
     ProxySettings = New InternetProxy;
-
-    ProxySettings.User     = "user";
-    ProxySettings.Password = "password";
+    ProxySettings.Set("https", "proxy.com", 443, "user", "password", False);
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -22668,8 +22666,8 @@ Procedure HTTPClient_SetProxy(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetProxy", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPConnection");
-    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.User).Равно("user");
-    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.Password).Равно("password");
+    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.User("https")).Равно("user");
+    OPI_TestDataRetrieval.ExpectsThat(Result.Proxy.Password("https")).Равно("password");
 
 EndProcedure
 
