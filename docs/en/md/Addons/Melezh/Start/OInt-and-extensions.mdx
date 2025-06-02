@@ -1,40 +1,42 @@
 ---
 id: Extensions
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
-title: Стандартная библиотека и расширения
+title: Standard Library and Extensions
 sidebar_position: 4
 ---
 
-В этом разделе описаны основные способы организации обработки входящих запросов: при помощи функций из набора Открытого пакета интеграций и при помощи функций из пользовательских расширений
+This section describes the primary methods for processing incoming requests: using functions from the Open Integration Package (OpenIntegrations) standard library and custom extension functions.
 
-## Методы ОПИ (стандартный набор)
+## OpenIntegrations Methods (Standard Library)
 
-Как уже рассматривалось в предыдущих разделах документации, каждый обработчик характеризуется функцией, отвечающей за формирование ответа на входящие запросы. По умолчанию, в Melezh встроен полный набор методов из библиотек Открытого пакета интеграций - эти методы могут быть выбраны в качестве функций обработки при настройке каждого конкретного обработчика
+As previously mentioned in the documentation, each handler is characterized by a function responsible for generating responses to incoming requests. By default, Melezh includes the complete set of methods from the Open Integration Package libraries - these methods can be selected as processing functions when configuring individual handlers.
 
-При настройке обработчиков в консольном режиме, для получения правильных имен библиотек (команд), функций и их аргументов можно воспользоваться документацией самого Открытого пакета интеграций. Также там приведены примеры возвращаемых значений, которые будут помещены в тела ответов на запросы
+When configuring handlers via the command line interface, you can refer to the Open Integration Package documentation for:
+- Correct library (command) names
+- Function names and their arguments
+- Examples of return values that will be included in response bodies
 
-![Документация ОПИ](../../../../static/img/Docs/Melezh/ru/3.png)
+![OpenIntegrations Documentation](../../../../static/img/Docs/Melezh/en/3.png)
 
 :::warning
-Имена библиотек указываются в форме CLI приложения. Например, `telegram` или `gdrive` (Google Drive)
+Library names must be specified in CLI application format. Examples: `telegram` or `gdrive` (Google Drive)
 :::
 
 <br/>
 
-При работе с использование веб-интерфейса, нужную библиотеку и функцию можно выбрать в выпадающем списке при настройке обработчика
+When using the web interface, you can select the desired library and function from dropdown menus during handler configuration:
 
-![Web консоль](../../../../static/img/Docs/Melezh/ru/4.png)
+![Web Console](../../../../static/img/Docs/Melezh/en/4.png)
 
 <hr/>
 
-## Расширения
+## Extensions
 
-Помимо стандартного набора функций из набора ОПИ, в качестве функций-обработчиков Melezh можно использовать методы из произвольных `.os` скриптов. Для их корректной интерпритации должно быть соблюдено три условия:
+In addition to the standard set of functions from the OpenIntegrations, Melezh can use methods from custom `.os` scripts as handler functions. For their correct interpretation, three conditions must be met:
 
-+ Метод должен быть функцией, возвращающей двоичные данные, строку или сериализуемую в JSON коллекцию (массив, структуру или соответствие без несериализуемых полей)
-+ Файл скрипта должен иметь корректное имя (без пробелов, желательно латинскими буквами), расширение `.os` и быть помещен в подкаталог `extensions/Modules` основного каталога Melezh:
++ The method must be a function that returns binary data, a string, or a JSON-serializable collection (array, structure, or mapping without non-serializable fields)
++ The script file must have a correct name (no spaces, preferably using Latin characters), `.os` extension, and be placed in the `extensions/Modules` subdirectory of the main Melezh directory
 
-	Windows (стандартная установка из exe установщика):
+	Windows (default):
 	```
 	C:\Program Files (x86)\OInt\share\oint\lib\melezh\extensions\Modules
 	```
@@ -44,60 +46,58 @@ sidebar_position: 4
 	share/oint/lib/melezh/extensions/Modules
 	```
 
-	OneScript, в качестве OPM пакета:
+	OneScript, as OPM package:
 	```
-	<каталог OneScript>/lib/melezh/extensions/Modules
+	<OneScript directory>/lib/melezh/extensions/Modules
 	```
 
-+ Метод должны иметь документирующий комментарий следующего вида:
++ The method must include a documentation comment in the following format:
 
 	```bsl
-	// Отображаемое имя метода
-	// Описание метода
+	// Method name
+	// Method description
 	//
-	// Параметры:
-	//  Поле1 - Строка  - Значение поля 1 - field1
-	//  Поле2 - Строка  - Значение поля 2 - field2
-	//  Поле3 - Строка  - Значение поля 3 - field3
+	// Parameters:
+	//  Field1 - String  - Field 1 value - field1
+	//  Field2 - String  - Field 2 value - field2
+	//  Field3 - String  - Field 3 value - field3
 	//
-	// Возвращаемое значение:
-	//  Структура Из КлючИЗначение - возвращаемое значение
+	// Return:
+	//  Structure Of KeyAndValue - Returned value
 	```
 
-	Это - стандартный формат комментария EDT, но с тремя отличительными особенностями: второй строкой является краткое описание функции (не обязательно), у параметров есть четвертый блок описания - имя аргумента в CLI стиле, в описании параметра нельзя использовать знак `-` кроме как для разделения его блоков
+This is the standard EDT comment format but with three distinctive features: the second line is a brief function description (optional), parameters have a fourth description block - CLI style argument name, the parameter description cannot use the `-` character except as block separators
 
-	:::warning
-	Использование `-` в тексте описания параметра приведет к ошибке 
-	:::
+:::warning
+Using `-` in parameter description text will cause an error
+:::
 
 <br/>
 
-В стандартной поставке, в каталоге `extensions/Modules` есть модуль `RequestsEcho.os`, который может быть использован в качестве примера для создания нового расширения:
+In the standard distribution, the `extensions/Modules` directory contains a `RequestsEcho.os` module that can be used as an example when creating new extensions:
 
 ```bsl title="RequestsEcho.os"
 
-// Эхо полей
-// Возвращает в ответе поля, отправленные в запросе
+// Fields echo
 //
-// Параметры:
-//  Поле1 - Строка  - Значение поля 1 - field1
-//  Поле2 - Строка  - Значение поля 2 - field2
-//  Поле3 - Строка  - Значение поля 3 - field3
+// Parameters:
+// Field1 - String - Field 1 value - field1
+// Field2 - String - Field 2 value - field2
+// Field3 - String - Field 3 value - field3
 //
-// Возвращаемое значение:
-//  Структура Из КлючИЗначение - Эхо
-Функция ЭхоПолей(Знач Поле1, Знач Поле2, Знач Поле3 = "") Экспорт
-	Возврат Новый Структура("field1,field2,field3", Поле1, Поле2, Поле3);
-КонецФункции
+// Returns:
+// Structure Of KeyAndValue - Echo
+Function FieldsEcho(Val Field1, Val Field2, Val Field3 = "") Export
+	Return New Structure("field1,field2,field3", Field1, Field2, Field3);
+EndFunction
 
 ```
 
-В списке выбора Web-консоли данный модуль будет отображен следующим образом
+In the Web console selection list, this module will be displayed as follows:
 
-![RequestsEcho](../../../../static/img/Docs/Melezh/ru/5.png)
-
+![RequestsEcho](../../../../static/img/Docs/Melezh/en/5.png)
 
 :::important
-Рекомендуется дополнительно сохранять копии модулей расширений в другом месте, так как в отдельных случаях обновления и удаления Melezh, а также при пересборке образа (если используется Docker), данные файлы могут быть удалены
+It is recommended to additionally keep backup copies of extension modules in another location, as these files may be deleted during certain Melezh updates and removals, or when rebuilding the image (if using Docker).
 :::
 
