@@ -2,9 +2,7 @@
     URL = URL + "/get";
 
     ProxySettings = New InternetProxy;
-
-    ProxySettings.User     = "user";
-    ProxySettings.Password = "password";
+    ProxySettings.Set("https", "proxy.com", 443, "user", "password", False);
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
