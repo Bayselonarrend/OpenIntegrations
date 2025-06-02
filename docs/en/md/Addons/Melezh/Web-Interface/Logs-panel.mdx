@@ -1,29 +1,27 @@
 ---
 id: Logs-panel
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
-title: Панель логов
+title: Logs Panel
 sidebar_position: 3
 ---
 
-После панели обработчиков идет **панель логов**
+Following the Handlers Panel is the **Logs Panel**.
 
-## Общий вид
+## Overview
 
-![Панель логов](../../../../static/img/Docs/Melezh/ru/16.png)
+![Logs Panel](../../../../static/img/Docs/Melezh/en/16.png)
 
-Функционал данной панели позволяет просматривать подробную информацию о всех обработанных запросах сервера с отбором по ключу обработчика и дате. Быстро перейти к истории запросов конкретного обработчика за сегодня также можно при помощи одной из кнопок действий на панели обработчиков (см. Панель обработчиков)
+This panel's functionality allows viewing detailed information about all processed server requests with filtering by handler key and date. You can quickly access today's request history for a specific handler using the action buttons in the Handlers Panel (see Handlers Panel).
 
-![Панель логов](../../../../static/img/Docs/Melezh/ru/17.png)
+![Logs Panel](../../../../static/img/Docs/Melezh/en/17.png)
 
+## Event Details
 
-## Подробности события
+After applying filters, a table with brief request information will be displayed. For more details, click the *Details* button on the right side of the event row:
 
-После заполнения отбора будет сформирована таблица с краткой информацией о запросах. Для получения более подробной информации необходимо нажать на кнопку *Подробнее* в правой части строки события:
+![Logs Panel](../../../../static/img/Docs/Melezh/en/18.png)
 
-![Панель логов](../../../../static/img/Docs/Melezh/ru/18.png)
+Clicking opens a page containing all details about the selected event: ID, date, method, Content-type, body size, and depending on logging settings - headers, URL parameters, request body, file list (for `multipart/form-data`), and response body.
 
-После нажатия будет открыта страница, содержащая все подробности о выбранном событии: идентификатор, дату, метод, Content-type, размер тела, а также, в зависимости от настроек логирования, состав заголовков, параметры URL, тело запроса, список файлов (для `multipart/form-data`) и тело ответа
+![Event Panel](../../../../static/img/Docs/Melezh/en/19.png)
 
-![Панель события](../../../../static/img/Docs/Melezh/ru/19.png)
-
-Подобную же страницу с подробностями можно быстро открыть из главной панели для любого из последних событий
+A similar details page can be quickly accessed from the main dashboard for any recent events.
