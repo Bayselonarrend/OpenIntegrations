@@ -118,8 +118,9 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 + Поставить ⭐ [этому репозиторию](https://github.com/Bayselonarrend/OpenIntegrations)
 + Поставить `+` на статьи про ОПИ [на Инфостарт](https://infostart.ru/profile/1793672/)
 
-При желании, вы также можете помочь проекту материально через Tribute или YooMoney, нажав на один из значков ниже или по ссылкам, которые находятся в правой части страницы репозитория на GitHub
+При желании, вы также можете помочь проекту материально через Boosty, Tribute или YooMoney, нажав на один из значков ниже или по ссылкам, которые находятся в правой части страницы репозитория на GitHub
 
+<a href="https://boosty.to/bayselonarrend"><img src={require('../../static/img/boosty.png').default} width='40px' /></a>
 <a href="https://t.me/tribute/app?startapp=dnje"><img src={require('../../static/img/tribute.png').default} width='40px' /></a>
 <a href="https://yoomoney.ru/to/4100117914332065"><img src={require('../../static/img/yoomoney.png').default} width='40px' /></a>
 
