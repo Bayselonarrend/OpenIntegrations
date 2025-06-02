@@ -1,37 +1,35 @@
 ---
 id: Handlers-panel
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI]
-title: Панель обработчиков
+title: Handlers Panel
 sidebar_position: 2
 ---
 
-Следующей, после главной панели, идет **панель обработчиков**. Она отвечает за показ и средства управления всеми обработчиками текущего проекта Melezh
+Following the main dashboard is the **Handlers Panel**, which displays and provides management tools for all handlers in the current Melezh project.
 
-## Общий вид
+## Overview
 
-![Панель обработчиков](../../../../static/img/Docs/Melezh/ru/10.png)
+![Handlers Panel](../../../../static/img/Docs/Melezh/en/10.png)
 
-В основной части панели находится таблица, отображающая информацию о существующих обработчиках. В первых четырех колонках расположена информация о ключе (пути) обработчика, HTTP-методе, библиотеке и функции обработки. После них расположен тумблер активности, позволяющий включать и отключать определенные обработчики без их полного удаления, а в крайней правой колонке - кнопки управления обработчиком: изменение, просмотр логов и удаление. Их назначение также отображается текстом при наведении:
+The panel's main section contains a table showing information about existing handlers. The first four columns display the handler's key (path), HTTP method, processing library, and function. These are followed by an activity toggle to enable/disable specific handlers without deletion, and management buttons in the far-right column: edit, view logs, and delete. Button functions are shown in tooltips:
 
-![Действия обработчиков](../../../../static/img/Docs/Melezh/ru/11.png)
+![Handler Actions](../../../../static/img/Docs/Melezh/en/11.png)
 
-В верхней части панели, справа от заголовка "Панель обработчиков", находятся кнопки добавления нового обработчика и обновления данных в основном списке:
+In the panel's upper section, to the right of the "Handlers Panel" title, are buttons for adding new handlers and refreshing the list:
 
-![Общие действия](../../../../static/img/Docs/Melezh/ru/12.png)
+![General Actions](../../../../static/img/Docs/Melezh/en/12.png)
 
-## Страница создания/редактирования обработчика
+## Handler Creation/Editing Page
 
-При переходе к добавлению нового или редактированию существующего обработчика, открывается **страница редактора**:
+When adding a new handler or editing an existing one, the **editor page** opens:
 
-![Редактор](../../../../static/img/Docs/Melezh/ru/13.png)
+![Editor](../../../../static/img/Docs/Melezh/en/13.png)
 
-На данной странице можно определить ключ, HTTP-метод, библиотеку и функцию для нового или уже существующего обработчика. Ключ может быть введен вручную или сгенерирован случайно (для последнего варианта необходимо нажать небольшую кнопку в правой части поля). Значения всех остальных полей выбираются из выпадающих списков:
+This page allows configuring the handler's key, HTTP method, library, and function. The key can be entered manually or generated randomly (via the small button to the right of the field). Other field values are selected from dropdown menus:
 
-![Списки](../../../../static/img/Docs/Melezh/ru/14.png)
+![Dropdowns](../../../../static/img/Docs/Melezh/en/14.png)
 
-После выбора функции становится доступен список ее аргументов. В нем можно указать стандартные значения параметров функции, которые будут использоваться в случае отсутствия таковых в запросе от клиента (нестрогие) или безусловно замещать их, вне зависимости от того, были переданы указанные поля внутри запроса или нет (строгие). Принцип заполнения и интерпретации этих полей совпадает с таковым у других поставок Открытого пакета интеграций: переданные значения по возможности будут приведены к необходимым типам, коллекции передаются в формате JSON-строки, двоичные данные могут быть также переданы как пути к файлам на сервере или URL и т.д. (см Основные положения)
+After selecting a function, its argument list becomes available. Here you can set default parameter values that will be used when not provided in client requests (non-strict) or unconditionally override them regardless of request contents (strict). The filling and interpretation principles match those in other Open Integration Package distributions: values are type-converted when possible, collections are passed as JSON strings, binary data can be server file paths or URLs, etc. (see Core Concepts)
 
-![Списки](../../../../static/img/Docs/Melezh/ru/15.png)
+![Dropdowns](../../../../static/img/Docs/Melezh/en/15.png)
 
-После завершение настройки, сохранить изменения можно при помощи кнопки *Сохранить*
-
+After configuration, click *Save* to apply changes.
