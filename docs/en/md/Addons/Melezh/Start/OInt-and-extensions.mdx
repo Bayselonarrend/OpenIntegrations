@@ -6,7 +6,7 @@ sidebar_position: 4
 
 This section describes the primary methods for processing incoming requests: using functions from the Open Integration Package (OpenIntegrations) standard library and custom extension functions.
 
-## OpenIntegrations Methods (Standard Library)
+## OpenIntegrations methods (standard library)
 
 As previously mentioned in the documentation, each handler is characterized by a function responsible for generating responses to incoming requests. By default, Melezh includes the complete set of methods from the Open Integration Package libraries - these methods can be selected as processing functions when configuring individual handlers.
 
@@ -97,7 +97,57 @@ In the Web console selection list, this module will be displayed as follows:
 
 ![RequestsEcho](../../../../static/img/Docs/Melezh/en/5.png)
 
+To use it as a library when working via the terminal (command line), specify the module file name without the extension as the `library` option.
+
 :::important
-It is recommended to additionally keep backup copies of extension modules in another location, as these files may be deleted during certain Melezh updates and removals, or when rebuilding the image (if using Docker).
+It is recommended to keep backup copies of extension modules in another location, as in certain cases, updates or removal of Melezh, as well as image rebuilding (if Docker is used), may result in the deletion of these files.
 :::
 
+## `--melezhcontext`
+
+In some cases, simply obtaining processed data and returning a response body is not sufficient. For low-level interaction — such as modifying the response status code and headers, as well as directly accessing request data — extensions can utilize the reserved option `melezhcontext`.
+
+To use this option, specify `melezhcontext` as the CLI name for any of the function's parameters within the documentation comment:
+
+
+```bsl title="Static.os (Melezh extension)"
+
+// Get file from folder
+//
+// Parameters:
+// Directory - String - Folder path - catalog
+// FileName - String - File name with extension - file
+// MIME - String - MIME type - mime
+// Context - Arbitrary - Request context - melezhcontext
+//
+// Returns:
+// Structure Of KeyAndValue, BinaryData - file data or error info
+Function GetFileFromFolder(Val Directory, Val FileName, Val MIME, Val Context) Export
+
+	Directory = StrReplace(Directory, "\", "/");
+	Directory = ?(StrEndsWith(Directory, "/"), Directory, Directory + "/");
+
+	FullPath = Directory + FileName;
+	PathFile = New File(FullPath);
+
+	If Not PathFile.Exist() Then
+
+		Context.Response.StatusCode = 404;
+		Context.Response.ContentType = "application/json";
+		Return New Structure("result,error", False, "Not Found");
+
+	Else
+		Context.Response.ContentType = MIME;
+		Return New BinaryData(FullPath);
+	EndIf;
+
+EndFunction
+
+
+```
+
+This option is not displayed in the list of arguments within the web interface and always contains a value of type `HTTPContext` (a native web server type in OneScript used for handling HTTP requests and responses). For more information on working with context, see the [OneScript repository](https://github.com/EvilBeaver/OneScript/tree/develop/src/OneScript.Web.Server). 
+
+:::important  
+When implementing custom extensions — particularly those involving `melezhcontext` — it is strongly recommended to use the OneScript version of Melezh during development. This enables running the project in debug mode (e.g., in VSCode) and setting breakpoints to inspect runtime values and context data.
+:::
