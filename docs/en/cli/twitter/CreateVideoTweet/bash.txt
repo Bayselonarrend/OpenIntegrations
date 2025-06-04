@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint twitter CreateVideoTweet \
- --text "TestTweet9ed98890-01f3-4487-bf9b-7a81fb81a595" \
- --videos "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4']" \
+ --text "TestTweet8fcf097f-0d05-4efc-9980-3a1802f07399" \
+ --videos "C:\Users\Administrator\AppData\Local\Temp\omexldywypm.tmp" \
  --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
