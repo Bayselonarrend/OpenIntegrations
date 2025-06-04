@@ -61,24 +61,20 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 AddKanbanStage \
-             --url "b24-ar17wx.bitrix24.by" \
-             --title "New stage 2" \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
+             --title "New stage" \
              --color "0026FF" \
-             --prevstage 2284 \
-             --admin true \
-             --token "***"
+             --prevstage 6
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 AddKanbanStage ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --title "New stage 2" ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+             --title "New stage" ^
              --color "0026FF" ^
-             --prevstage 2284 ^
-             --admin true ^
-             --token "***"
+             --prevstage 6
         ```
     </TabItem>
 </Tabs>
