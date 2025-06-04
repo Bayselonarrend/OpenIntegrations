@@ -1,3 +1,3 @@
 oint gcalendar GetEventList \
  --token "***" \
- --calendar "f566b930bdf9f4c165e10e97cd066f3fd921a8b7478f87d7e781f75a38a4b4bd@group.calendar.google.com"
+ --calendar "e92cfcd0838bab9ffeac2d27d570776442ee6483310d5506b01b87a3a6825130@group.calendar.google.com"
