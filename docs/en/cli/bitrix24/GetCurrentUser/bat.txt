@@ -1,3 +1,2 @@
 oint bitrix24 GetCurrentUser ^
- --url "b24-ar17wx.bitrix24.by" ^
- --token "***"
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/***"
