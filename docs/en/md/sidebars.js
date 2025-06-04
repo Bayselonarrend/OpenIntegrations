@@ -110,7 +110,7 @@
     {
       type: 'doc',
       id: 'Addons/About-Addons',
-      label: 'Об аддонах',
+      label: 'About addons',
       className: 'Addons',
     },
     {
