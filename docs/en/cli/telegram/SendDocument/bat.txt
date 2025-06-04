@@ -1,6 +1,5 @@
 oint telegram SendDocument ^
  --token "***" ^
- --chat "@testsichee" ^
+ --chat "461699897" ^
  --text "Строковое значение" ^
- --doc "C:\Users\Administrator\AppData\Local\Temp\pg5hyy0cwp1.docx" ^
- --filename "custom.docx"
+ --doc "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
