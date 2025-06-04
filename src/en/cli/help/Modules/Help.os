@@ -14,10 +14,10 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 	ExtraCharacters = 2;
 	CommandList  = Left(CommandList, StrLen(CommandList) - ExtraCharacters);
 
-	Console.TextColor = ConsoleColor.Green;
-	Console.WriteLine("");
+	Консоль.TextColor = ConsoleColor.Green;
+	Консоль.WriteLine("");
 
-	Console.TextColor = ConsoleColor.Yellow;
+	Консоль.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write("
 		|    _______ _____________  ___  _______
 		|    __  __ ___/__  _/_ /  |  / /___  __/
@@ -44,15 +44,15 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 		+ "(Value|#color=White)"
 		+ "(""|#color=Green) ");
 
-	Console.Write("
+	Консоль.Write("
 		|
 		| Call libraries without method or method without parameters returns help
 		| List available libraries: "); 
 		
-	Console.TextColor = ConsoleColor.White;
-	Console.Write(CommandList); 
+	Консоль.TextColor = ConsoleColor.White;
+	Консоль.Write(CommandList); 
 
-	Console.TextColor = ConsoleColor.White;
+	Консоль.TextColor = ConsoleColor.White;
 	ColorOutput.WriteLine("
 		|
 		| (Standard options:|#color=Yellow)
@@ -62,11 +62,11 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 		|  (--out|#color=Green)   - the path to the result saving file (particularly binary data)
 		|");
 	
-	Console.TextColor = ConsoleColor.Yellow;
+	Консоль.TextColor = ConsoleColor.Yellow;
 	ColorOutput.WriteLine(" Full documentation can be found at: (https://openintegrations.dev|#color=Cyan)" + Chars.LF);
 
-	Console.WriteLine("");
-	Console.TextColor = ConsoleColor.White;
+	Консоль.WriteLine("");
+	Консоль.TextColor = ConsoleColor.White;
 
 	Exit(0);
 	
@@ -74,13 +74,13 @@ EndProcedure
 
 Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
 
-	Console.TextColor = ConsoleColor.White;
+	Консоль.TextColor = ConsoleColor.White;
 	ColorOutput.WriteLine(Chars.LF + " (##|#color=Green) Library - (" + Command + "|#color=Cyan)");
 
 	ParametersTable.GroupBy("Method,Region");
 	
 	ColorOutput.WriteLine(" (##|#color=Green) Available methods: " + Chars.LF);
-	Console.TextColor = ConsoleColor.White;
+	Консоль.TextColor = ConsoleColor.White;
 
 	CurrentRegion       = "";
 	Counter              = 0;
@@ -119,7 +119,7 @@ Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
 	EndDo;
 
 	Message(Chars.LF);
-	Console.TextColor = ConsoleColor.White;
+	Консоль.TextColor = ConsoleColor.White;
 
 	Exit(0);
 
