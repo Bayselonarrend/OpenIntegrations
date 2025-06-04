@@ -1,3 +1,3 @@
 oint yadisk PublishObject \
  --token "***" \
- --path "/6160f205-23ce-4bef-8efa-b8a5afda3e0e.png"
+ --path "/8b10637d-c04d-46c2-94a4-4ef5c7897c4e.png"
