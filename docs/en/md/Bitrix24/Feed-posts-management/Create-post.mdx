@@ -64,11 +64,11 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
             # JSON data can also be passed as a path to a .json file
             
             oint bitrix24 CreatePost \
-             --url "b24-ar17wx.bitrix24.by" \
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
              --text "Text of post" \
              --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','2.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'}" \
              --title "Post title" \
-             --token "***"
+             --important true
         ```
     </TabItem>
   
@@ -77,11 +77,11 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
             :: JSON data can also be passed as a path to a .json file
             
             oint bitrix24 CreatePost ^
-             --url "b24-ar17wx.bitrix24.by" ^
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
              --text "Text of post" ^
              --files "{'1.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','2.png':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'}" ^
              --title "Post title" ^
-             --token "***"
+             --important true
         ```
     </TabItem>
 </Tabs>
