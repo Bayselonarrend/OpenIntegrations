@@ -132,11 +132,14 @@ OpenIntegrations has detailed documentation with examples available at [https://
 
 The CLI version of OpenIntegrations has its own built-in help for all methods. The help is displayed when calling the library without a method, a method without options, or by specifying the `--help` option.
 
-___
-<br>
+## Support the project
 
+![image](media/boosty.png)
 
-<img src="media/heartnstar.png?1" align="right" width="384">
+If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (regularly or one-time). With a subscription of 500 rubles (~6 dollars) or more, you'll get access to a private Telegram chat where you can ask questions about the project and receive direct assistance from me.
+
+**Thanks for your support!**
+
 
 <br>
 
