@@ -4,7 +4,7 @@ pipeline {
    	stages {
           stage('Prepare'){
              steps{
-                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.24.0.ospx; del oint-1.24.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.25.0.ospx; del oint-1.25.0.ospx'
                 powershell encoding: 'UTF-8', script:'oscript -make ./src/en/cli/core/Classes/app.os oint.exe'          
              }
           }
@@ -3294,7 +3294,7 @@ pipeline {
    stages {
       stage('Prepare'){
          steps{
-            powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.24.0.ospx; del oint-1.24.0.ospx'
+            powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.25.0.ospx; del oint-1.25.0.ospx'
             powershell encoding: 'UTF-8', script:'oscript -make ./src/en/cli/core/Classes/app.os oint.exe'          
          }
       }
