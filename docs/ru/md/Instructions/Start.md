@@ -107,23 +107,12 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 <hr/>
 
-<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
-
 ## Поддержать проект
 
-<img src={require('../../static/img/heartnstar.png').default} width='320px' align="right" class="hearthnstar"/>
+<img src={require('../../static/img/boosty.png').default}/>
 
-Если вам нравится проект OpenIntegrations и вы хотите его поддержать, то можете сделать это одним из следующих способов:
+Если вам нравится этот или другие мои проекты, то вы можете поддержать меня на Boosty (регулярно или единоразово). При подписке от 500 рублей открывается доступ в приватный Telegram-чат, где можно задать интересующие вопросы о проекте и получить помощь от меня напрямую
 
-+ Поставить ⭐ [этому репозиторию](https://github.com/Bayselonarrend/OpenIntegrations)
-+ Поставить `+` на статьи про ОПИ [на Инфостарт](https://infostart.ru/profile/1793672/)
-
-При желании, вы также можете помочь проекту материально через Boosty, Tribute или YooMoney, нажав на один из значков ниже или по ссылкам, которые находятся в правой части страницы репозитория на GitHub
-
-<a href="https://boosty.to/bayselonarrend"><img src={require('../../static/img/boosty.png').default} width='40px' /></a>
-<a href="https://t.me/tribute/app?startapp=dnje"><img src={require('../../static/img/tribute.png').default} width='40px' /></a>
-<a href="https://yoomoney.ru/to/4100117914332065"><img src={require('../../static/img/yoomoney.png').default} width='40px' /></a>
+Спасибо за вашу поддержку!
 
 **Спасибо за вашу поддержку!**
-
-</div>
