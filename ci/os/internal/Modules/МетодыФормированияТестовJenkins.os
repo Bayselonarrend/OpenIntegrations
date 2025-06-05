@@ -136,8 +136,8 @@
 	|   stages {
 	|      stage('Prepare'){
 	|         steps{
-	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.24.0.ospx; del oint-1.24.0.ospx'
-	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/cli; opm build; opm install oint-cli-1.24.0.ospx; del oint-cli-1.24.0.ospx'
+	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.25.0.ospx; del oint-1.25.0.ospx'
+	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/cli; opm build; opm install oint-cli-1.25.0.ospx; del oint-cli-1.25.0.ospx'
 	|            withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
     |               bat encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --quiet --batch --yes --decrypt --passphrase=""%GPGKEY%"" --output ./data.json ./data.json.gpg'
     |            }
