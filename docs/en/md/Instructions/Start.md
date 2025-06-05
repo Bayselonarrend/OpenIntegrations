@@ -107,22 +107,10 @@ Some features of this documentation that will help you use it more effectively a
 
 <hr/>
 
-<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
-
 ## Support the project
 
-<img src={require('../../static/img/heartnstar.png').default} width='320px' align="right" class="hearthnstar"/>
+<img src={require('../../static/img/boosty.png').default}/>
 
-If you like the OpenIntegrations project and want to support it, you can do so in one of the following ways:
+If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (regularly or one-time). With a subscription of 500 rubles (~6 dollars) or more, you'll get access to a private Telegram chat where you can ask questions about the project and receive direct assistance from me.
 
-+ Give a ⭐ to [this repository](https://github.com/Bayselonarrend/OpenIntegrations)
-+ Upvote OPI articles [on InfoStart](https://infostart.ru/profile/1793672/)
-
-If you'd like, you can also financially support the project via Tribute or YooMoney by clicking one of the icons below or using the links in the right-hand sidebar of repository page
-
-<a href="https://t.me/tribute/app?startapp=dnje"><img src={require('../../static/img/tribute.png').default} width='40px' /></a>
-<a href="https://yoomoney.ru/to/4100117914332065"><img src={require('../../static/img/yoomoney.png').default} width='40px' /></a>
-
-**Thanks for supporting our project!**
-
-</div>
+**Thanks for your support!**
