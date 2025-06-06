@@ -1,0 +1,8 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Инструкция = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
+    Модель     = "smolvlm-256m-instruct";
+    Имя        = "Math tutor";
+
+    Результат = OPI_OpenAI.СоздатьАссистента(URL, Токен, Модель, Имя, Инструкция);

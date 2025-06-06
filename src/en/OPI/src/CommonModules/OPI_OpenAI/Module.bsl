@@ -58,7 +58,7 @@
 // Token - String - OpenAI authorization token - token
 // Model - String - Models name - model
 // Messages - String, Array of String - Conversation messages. See GetMessageStructure - msgs
-// AdditionalParameters - Structure Of KeyAndValue - KeyValue collection of additional parameters - options
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -92,7 +92,7 @@ EndFunction
 // Token - String - OpenAI authorization token - token
 // Model - String - Models name - model
 // Text - Array Of String - String or array of request strings - input
-// AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetEmbeddingsParameterStructure - options
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -139,6 +139,142 @@ EndFunction
 
 #EndRegion
 
+#Region Assistants
+
+// Get assistants list
+// Retrieves a list of assistants with or without filtering
+//
+// Note
+// Method at API documentation: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Token - String - OpenAI authorization token - token
+// Count - Number - Maximum number of assistants returned - limit
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetAssistantsList(Val URL
+    , Val Token
+    , Val Count = 20
+    , Val AdditionalParameters = ""
+    , Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/assistants");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("limit", Count, "Number", Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Create assistant
+// Creates an assistant based on the model and instruction
+//
+// Note
+// Method at API documentation: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Token - String - OpenAI authorization token - token
+// Model - String - Models name - model
+// Name - String - Assistant name - name
+// Instruction - String - System instruction for the assistant - inst
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CreateAssistant(Val URL
+    , Val Token
+    , Val Model
+    , Val Name = ""
+    , Val Instruction = ""
+    , Val AdditionalParameters = ""
+    , Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/assistants");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("model"       , Model       , "String", Parameters);
+    OPI_Tools.AddField("name"        , Name        , "String", Parameters);
+    OPI_Tools.AddField("instructions", Instruction , "String", Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Retrieve assistant
+// Retrieves information about an assistant by ID
+//
+// Note
+// Method at API documentation: [Retrieve assistant](@platform.openai.com/docs/api-reference/assistants/getAssistant)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Token - String - OpenAI authorization token - token
+// AssistantID - String - Assistant ID - id
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(AssistantID);
+
+    CompleteURL(URL, StrTemplate("v1/assistants/%1", AssistantID));
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Delete assistant
+// Deletes a previously created assistant
+//
+// Note
+// Method at API documentation: [Delete assistant](@platform.openai.com/docs/api-reference/assistants/deleteAssistant)
+//
+// Parameters:
+// URL - String - Ollama server URL - url
+// Token - String - OpenAI authorization token - token
+// AssistantID - String - Assistant ID - id
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(AssistantID);
+
+    CompleteURL(URL, StrTemplate("v1/assistants/%1", AssistantID));
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Delete(URL, , AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -176,8 +312,10 @@ Procedure HeadersProcessing(AdditionalHeaders, Val Token)
         OPI_TypeConversion.GetKeyValueCollection(AdditionalHeaders, ErrorText);
     EndIf;
 
-    OPI_TypeConversion.GetLine(Token);
-    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+    If ValueIsFilled(Token) Then
+        OPI_TypeConversion.GetLine(Token);
+        AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+    EndIf;
 
 EndProcedure
 

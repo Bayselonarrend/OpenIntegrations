@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
+// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
 
@@ -143,7 +143,7 @@
 
 // Получить список ассистентов
 // Получает список ассистентов с отбором или без
-// 
+//
 // Примечание:
 // Метод в документации API: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
 //
@@ -174,12 +174,12 @@
     Ответ = OPI_ЗапросыHTTP.Get(URL, Параметры, ДопЗаголовки);
 
     Возврат Ответ;
-        
+
 КонецФункции
 
 // Создать ассистента
 // Создает ассистента по модели и инструкции
-// 
+//
 // Примечание:
 // Метод в документации API: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
 //
@@ -216,12 +216,12 @@
     Ответ = OPI_ЗапросыHTTP.PostСТелом(URL, Параметры, ДопЗаголовки);
 
     Возврат Ответ;
-        
+
 КонецФункции
 
 // Получить ассистента
 // Получает информацию об ассистенте по ID
-// 
+//
 // Примечание:
 // Метод в документации API: [Retrieve assistant](@platform.openai.com/docs/api-reference/assistants/getAssistant)
 //
@@ -230,25 +230,25 @@
 //  Токен        - Строка                        - Токен авторизации OpenAI                - token
 //  IDАссистента - Строка                        - ID ассистента                           - id
 //  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо - headers
-// 
+//
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
 Функция ПолучитьАссистента(Знач URL, Знач Токен, Знач IDАссистента, Знач ДопЗаголовки = "") Экспорт
-    
+
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDАссистента);
-    
+
     ДополнитьURL(URL, СтрШаблон("v1/assistants/%1", IDАссистента));
     ОбработатьЗаголовки(ДопЗаголовки, Токен);
 
     Ответ = OPI_ЗапросыHTTP.Get(URL, , ДопЗаголовки);
 
     Возврат Ответ;
-    
+
 КонецФункции
 
 // Удалить ассистента
 // Удаляет ранее созданного ассистента
-// 
+//
 // Примечание:
 // Метод в документации API: [Delete assistant](@platform.openai.com/docs/api-reference/assistants/deleteAssistant)
 //
@@ -257,20 +257,20 @@
 //  Токен        - Строка                        - Токен авторизации OpenAI                - token
 //  IDАссистента - Строка                        - ID ассистента                           - id
 //  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо - headers
-// 
+//
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
 Функция УдалитьАссистента(Знач URL, Знач Токен, Знач IDАссистента, Знач ДопЗаголовки = "") Экспорт
-    
+
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDАссистента);
-    
+
     ДополнитьURL(URL, СтрШаблон("v1/assistants/%1", IDАссистента));
     ОбработатьЗаголовки(ДопЗаголовки, Токен);
 
     Ответ = OPI_ЗапросыHTTP.Delete(URL, , ДопЗаголовки);
 
     Возврат Ответ;
-    
+
 КонецФункции
 
 #КонецОбласти
@@ -320,3 +320,36 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
+	Return ПолучитьСтруктуруСообщения(Role, Text, Name);
+EndFunction
+
+Function GetAssistantsList(Val URL, Val Token, Val Count = 20, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьСписокАссистентов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function CreateAssistant(Val URL, Val Token, Val Model, Val Name = "", Val Instruction = "", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return СоздатьАссистента(URL, Token, Model, Name, Instruction, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+	Return ПолучитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+EndFunction
+
+Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+	Return УдалитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+EndFunction
+
+#EndRegion

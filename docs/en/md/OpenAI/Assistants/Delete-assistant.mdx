@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 4
+description: Delete assistant and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete assistant
+ Deletes a previously created assistant
+
+
+
+`Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | AssistantID | --id | String | &#x2714; | Assistant ID |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Delete assistant](https://platform.openai.com/docs/api-reference/assistants/deleteAssistant)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    AssistantID = "asst_5";
+
+    Result = OPI_OpenAI.DeleteAssistant(URL, Token, AssistantID);
+```
+ 
+
+
+
+

@@ -6,6 +6,6 @@
     Сообщения.Добавить(OPI_OpenAI.ПолучитьСтруктуруСообщения("assistant", "1C:Enterprise is a full-stack, low-code platform"));
     Сообщения.Добавить(OPI_OpenAI.ПолучитьСтруктуруСообщения("user"     , "When the first version was released?"));
 
-    Модель = "openai/gpt-4o-mini";
+    Модель = "smolvlm-256m-instruct";
 
     Результат = OPI_OpenAI.ПолучитьОтвет(URL, Токен, Модель, Сообщения);
