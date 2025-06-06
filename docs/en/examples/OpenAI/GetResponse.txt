@@ -6,6 +6,6 @@
     Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
     Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "When the first version was released?"));
 
-    Model = "openai/gpt-4o-mini";
+    Model = "smolvlm-256m-instruct";
 
     Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);

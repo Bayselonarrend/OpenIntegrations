@@ -1,0 +1,8 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Instruction = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
+    Model       = "smolvlm-256m-instruct";
+    Name        = "Math tutor";
+
+    Result = OPI_OpenAI.CreateAssistant(URL, Token, Model, Name, Instruction);

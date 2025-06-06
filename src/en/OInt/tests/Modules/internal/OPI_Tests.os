@@ -2741,6 +2741,19 @@ Procedure OAI_RequestsProcessing() Export
 
 EndProcedure
 
+Procedure OAI_Assistants() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    OpenAI_CreateAssistant(TestParameters);
+    OpenAI_RetrieveAssistant(TestParameters);
+    OpenAI_GetAssistantsList(TestParameters);
+    OpenAI_DeleteAssistant(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -22797,7 +22810,7 @@ Procedure OpenAI_GetResponse(FunctionParameters)
     Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
     Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "When the first version was released?"));
 
-    Model = "openai/gpt-4o-mini";
+    Model = "smolvlm-256m-instruct";
 
     Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
 
@@ -22822,6 +22835,77 @@ Procedure OpenAI_GetEmbeddings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "OpenAI");
     OPI_TestDataRetrieval.Check_OpenAIEmbeddings(Result);
+
+EndProcedure
+
+Procedure OpenAI_CreateAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Instruction = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
+    Model       = "smolvlm-256m-instruct";
+    Name        = "Math tutor";
+
+    Result = OPI_OpenAI.CreateAssistant(URL, Token, Model, Name, Instruction);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistant(Result, Name);
+
+    AssistantID = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("OpenAI_Assistant", AssistantID);
+    OPI_Tools.AddField("OpenAI_Assistant", AssistantID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure OpenAI_DeleteAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
+
+    Result = OPI_OpenAI.DeleteAssistant(URL, Token, AssistantID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistantDeletion(Result, AssistantID);
+
+EndProcedure
+
+Procedure OpenAI_RetrieveAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
+
+    Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RetrieveAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistant(Result, "Math tutor");
+
+EndProcedure
+
+Procedure OpenAI_GetAssistantsList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Count                = 2;
+    AdditionalParameters = New Structure("after,order", "asst_2", "desc");
+
+    Result = OPI_OpenAI.GetAssistantsList(URL, Token, Count, AdditionalParameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAssistantsList", "OpenAI");
+    OPI_TestDataRetrieval.Check_Array(Result, 2);
 
 EndProcedure
 
