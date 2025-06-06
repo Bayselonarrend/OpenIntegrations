@@ -1891,6 +1891,22 @@ def test_openai(){
 					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСтруктуруСообщения --role "test" --text "test" --name "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСписокАссистентов --url "test" --token "test" --limit "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai СоздатьАссистента --url "test" --token "test" --model "test" --name "test" --inst "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьАссистента --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai УдалитьАссистента --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
 }
 
 
