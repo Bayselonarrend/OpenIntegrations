@@ -41,7 +41,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     Image   = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    GroupID = "120363398760686213@g.us";
+    GroupID = "120363418368696508@g.us";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);
@@ -56,7 +56,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             
             oint greenapi SetGroupPicture \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --group "120363417671815935@g.us" \
+             --group "120363419347634364@g.us" \
              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
         ```
     </TabItem>
@@ -67,7 +67,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             
             oint greenapi SetGroupPicture ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --group "120363417671815935@g.us" ^
+             --group "120363419347634364@g.us" ^
              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
         ```
     </TabItem>

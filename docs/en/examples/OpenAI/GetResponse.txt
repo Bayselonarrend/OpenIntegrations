@@ -1,0 +1,11 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Messages = New Array;
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "What is 1C:Enterprise?"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "When the first version was released?"));
+
+    Model = "openai/gpt-4o-mini";
+
+    Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);

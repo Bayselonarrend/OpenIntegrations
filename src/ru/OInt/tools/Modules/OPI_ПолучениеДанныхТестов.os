@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
@@ -2488,9 +2488,9 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-    
+
     Модуль = Вычислить(Имя);
-    
+
     Возврат Модуль;
 КонецФункции
 
@@ -2845,3 +2845,1088 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetTestingSectionMapping() Export
+	Return ПолучитьСоответствиеРазделовТестирования();
+EndFunction
+
+Function GetTestingSectionMappingGA() Export
+	Return ПолучитьСоответствиеРазделовТестированияGA();
+EndFunction
+
+Function GetTestTable() Export
+	Return ПолучитьТаблицуТестов();
+EndFunction
+
+Function ExpectsThat(Value) Export
+	Return ОжидаетЧто(Value);
+EndFunction
+
+Function FormYAXTests() Export
+	Return СформироватьТестыЯкс();
+EndFunction
+
+Function FormAssertsTests() Export
+	Return СформироватьТестыАссертс();
+EndFunction
+
+Function FormYAXTestsCLI() Export
+	Return СформироватьТестыЯксCLI();
+EndFunction
+
+Function FormAssertsTestsCLI() Export
+	Return СформироватьТестыАссертсCLI();
+EndFunction
+
+Function GetParameter(Parameter) Export
+	Return ПолучитьПараметр(Parameter);
+EndFunction
+
+Function GetBinary(Parameter) Export
+	Return ПолучитьДвоичные(Parameter);
+EndFunction
+
+Function GetFilePath(Val Path) Export
+	Return ПолучитьФайлПути(Path);
+EndFunction
+
+Procedure ParameterToCollection(Parameter, Collection) Export
+	ПараметрВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure BinaryToCollection(Parameter, Collection) Export
+	ДвоичныеВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure WriteParameter(Parameter, Value) Export
+	ЗаписатьПараметр(Parameter, Value);
+EndProcedure
+
+Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
+	ЗаписатьЛог(Result, Method, Library);
+EndProcedure
+
+Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Forced = False) Export
+	ЗаписатьФайлЛога(Data, Method, Library, Forced);
+EndProcedure
+
+Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
+	ЗаписатьЛогCLI(Result, Method, Library);
+EndProcedure
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+	Return ВыполнитьТестCLI(Library, Method, Options, Record);
+EndFunction
+
+Procedure Check_Empty(Val Result) Export
+	Проверка_Пусто(Result);
+EndProcedure
+
+Procedure Check_String(Val Result, Val ComparisonObject = "") Export
+	Проверка_Строка(Result, ComparisonObject);
+EndProcedure
+
+Procedure Check_BinaryData(Val Result, Val Size = Undefined) Export
+	Проверка_ДвоичныеДанные(Result, Size);
+EndProcedure
+
+Procedure Check_Array(Val Result, Val Count = Undefined) Export
+	Проверка_Массив(Result, Count);
+EndProcedure
+
+Procedure Check_Map(Val Result, Val Filling = True) Export
+	Проверка_Соответствие(Result, Filling);
+EndProcedure
+
+Procedure Check_Structure(Val Result) Export
+	Проверка_Структура(Result);
+EndProcedure
+
+Procedure Check_Filled(Val Result) Export
+	Проверка_Заполнено(Result);
+EndProcedure
+
+Procedure Check_True(Val Result) Export
+	Проверка_Истина(Result);
+EndProcedure
+
+Procedure Check_TelegramTrue(Val Result) Export
+	Проверка_ТелеграмИстина(Result);
+EndProcedure
+
+Procedure Check_TelegramBotInformation(Val Result) Export
+	Проверка_ТелеграмИнформацияБота(Result);
+EndProcedure
+
+Procedure Check_TelegramArray(Result) Export
+	Проверка_ТелеграмМассив(Result);
+EndProcedure
+
+Procedure Check_TelegramWebhookSetup(Val Result) Export
+	Проверка_ТелеграмУстановкаВебхук(Result);
+EndProcedure
+
+Procedure Check_TelegramWebhookDeletion(Val Result) Export
+	Проверка_ТелеграмУдалениеВебхук(Result);
+EndProcedure
+
+Procedure Check_TelegramMessage(Val Result, Val Text) Export
+	Проверка_ТелеграмСообщение(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramImage(Val Result, Val Text) Export
+	Проверка_ТелеграмКартинка(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramVideo(Val Result, Val Text) Export
+	Проверка_ТелеграмВидео(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramAudio(Val Result, Val Text) Export
+	Проверка_ТелеграмАудио(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramDocument(Val Result, Val Text) Export
+	Проверка_ТелеграмДокумент(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramGif(Val Result, Val Text) Export
+	Проверка_ТелеграмГифка(Result, Text);
+EndProcedure
+
+Procedure Check_TelegramMediaGroup(Val Result) Export
+	Проверка_ТелеграмМедиагруппа(Result);
+EndProcedure
+
+Procedure Check_TelegramLocation(Val Result) Export
+	Проверка_ТелеграмМестоположение(Result);
+EndProcedure
+
+Procedure Check_TelegramContact(Val Result, Val Name) Export
+	Проверка_ТелеграмКонтакт(Result, Name);
+EndProcedure
+
+Procedure Check_TelegramPoll(Val Result, Val Question) Export
+	Проверка_ТелеграмОпрос(Result, Question);
+EndProcedure
+
+Procedure Check_TelegramForward(Val Result, Val MessageID) Export
+	Проверка_ТелеграмПереслать(Result, MessageID);
+EndProcedure
+
+Procedure Check_TelegramBan(Val Result) Export
+	Проверка_ТелеграмБан(Result);
+EndProcedure
+
+Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration) Export
+	Проверка_ТелеграмПриглашение(Result, Title, UnixExpiration);
+EndProcedure
+
+Procedure Check_TelegramNumber(Val Result) Export
+	Проверка_ТелеграмЧисло(Result);
+EndProcedure
+
+Procedure Check_TelegramOk(Val Result) Export
+	Проверка_ТелеграмОк(Result);
+EndProcedure
+
+Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon) Export
+	Проверка_ТелеграмСозданиеТемы(Result, Name, Icon);
+EndProcedure
+
+Procedure Check_TelegramMessageKeyboard(Val Result, Val Keyboard) Export
+	Проверка_ТелеграмКлавиатураСообщения(Result, Keyboard);
+EndProcedure
+
+Procedure Check_VKPost(Val Result) Export
+	Проверка_ВКПост(Result);
+EndProcedure
+
+Procedure Check_VKTrue(Val Result) Export
+	Проверка_ВКИстина(Result);
+EndProcedure
+
+Procedure Check_VKElement(Val Result) Export
+	Проверка_ВКЭлементы(Result);
+EndProcedure
+
+Procedure Check_VKAlbum(Val Result, Val Description) Export
+	Проверка_ВКАльбом(Result, Description);
+EndProcedure
+
+Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID = "") Export
+	Проверка_ВККартинкаАльбома(Result, ImageDescription, AlbumID);
+EndProcedure
+
+Procedure Check_VKStory(Val Result) Export
+	Проверка_ВКИстория(Result);
+EndProcedure
+
+Procedure Check_VKDiscussion(Val Result) Export
+	Проверка_ВКОбсуждение(Result);
+EndProcedure
+
+Procedure Check_VKLike(Val Result) Export
+	Проверка_ВКЛайк(Result);
+EndProcedure
+
+Procedure Check_VKRepost(Val Result) Export
+	Проверка_ВКРепост(Result);
+EndProcedure
+
+Procedure Check_VKComment(Val Result) Export
+	Проверка_ВККомментарий(Result);
+EndProcedure
+
+Procedure Check_VKStatistic(Val Result) Export
+	Проверка_ВКСтатистика(Result);
+EndProcedure
+
+Procedure Check_VKPostsStatistic(Val Result) Export
+	Проверка_ВКСтатистикаПостов(Result);
+EndProcedure
+
+Procedure Check_VKNumber(Val Result) Export
+	Проверка_ВКЧисло(Result);
+EndProcedure
+
+Procedure Check_VKCollection(Val Result) Export
+	Проверка_ВКПодборка(Result);
+EndProcedure
+
+Procedure Check_VKProduct(Val Result) Export
+	Проверка_ВКТовар(Result);
+EndProcedure
+
+Procedure Check_VKProp(Val Result) Export
+	Проверка_ВКСвойство(Result);
+EndProcedure
+
+Procedure Check_VKPropVariant(Val Result) Export
+	Проверка_ВКВариантСвойства(Result);
+EndProcedure
+
+Procedure Check_VKProductData(Val Result) Export
+	Проверка_ВКИНформацияОТоварах(Result);
+EndProcedure
+
+Procedure Check_VKProductsGroup(Val Result) Export
+	Проверка_ВКГруппаТоваров(Result);
+EndProcedure
+
+Procedure Check_VKVideo(Val Result) Export
+	Проверка_ВКВидео(Result);
+EndProcedure
+
+Procedure Check_VKCategories(Val Result) Export
+	Проверка_ВККатегории(Result);
+EndProcedure
+
+Procedure Check_YaDiskDrive(Val Result) Export
+	Проверка_ЯДискДиск(Result);
+EndProcedure
+
+Procedure Check_YaDiskFolder(Val Result, Val Path) Export
+	Проверка_ЯДискКаталог(Result, Path);
+EndProcedure
+
+Procedure Check_YaDiskPath(Val Result, Val Path = "", Val Public = Undefined) Export
+	Проверка_ЯДискПуть(Result, Path, Public);
+EndProcedure
+
+Procedure Check_YaDiskLink(Val Result) Export
+	Проверка_ЯДискСсылка(Result);
+EndProcedure
+
+Procedure Check_YaDiskProc(Val Result) Export
+	Проверка_ЯДискПроцедура(Result);
+EndProcedure
+
+Procedure Check_YaDiskFilesList(Val Result, Val Count, Val Indent) Export
+	Проверка_ЯДискСписокФайлов(Result, Count, Indent);
+EndProcedure
+
+Procedure Check_GKObject(Val Result, Val Name, Val Description) Export
+	Проверка_ГКОбъект(Result, Name, Description);
+EndProcedure
+
+Procedure Check_TwitterText(Val Result, Val Text) Export
+	Проверка_ТвиттерТекст(Result, Text);
+EndProcedure
+
+Procedure Check_ViberOk(Val Result) Export
+	Проверка_ВайберОк(Result);
+EndProcedure
+
+Procedure Check_ViberUser(Val Result) Export
+	Проверка_ВайберПользователь(Result);
+EndProcedure
+
+Procedure Check_ViberOnline(Val Result) Export
+	Проверка_ВайберОнлайн(Result);
+EndProcedure
+
+Procedure Check_ViberMessage(Val Result) Export
+	Проверка_ВайберСообщение(Result);
+EndProcedure
+
+Procedure Check_GoogleToken(Val Result) Export
+	Проверка_ГуглТокен(Result);
+EndProcedure
+
+Procedure Check_GoogleCalendar(Val Result, Val Name) Export
+	Проверка_ГуглКалендарь(Result, Name);
+EndProcedure
+
+Procedure Check_GoogleCalendarColors(Val Result, Val PrimaryColor, Val SecondaryColor) Export
+	Проверка_ГуглЦветКалендаря(Result, PrimaryColor, SecondaryColor);
+EndProcedure
+
+Procedure Check_GoogleCatalogs(Val Result) Export
+	Проверка_ГуглКаталоги(Result);
+EndProcedure
+
+Procedure Check_GoogleCatalog(Val Result) Export
+	Проверка_ГуглКаталог(Result);
+EndProcedure
+
+Procedure Check_GoogleObject(Val Result, Val Description) Export
+	Проверка_ГуглОбъект(Result, Description);
+EndProcedure
+
+Procedure Check_GoogleComment(Val Result, Val Comment) Export
+	Проверка_ГуглКомментарий(Result, Comment);
+EndProcedure
+
+Procedure Check_GoogleSpreadsheet(Val Result, Val Name, Val SheetArray = "") Export
+	Проверка_ГуглКнига(Result, Name, SheetArray);
+EndProcedure
+
+Procedure Check_GoogleSheet(Val Result, Val Spreadsheet = "") Export
+	Проверка_ГуглЛист(Result, Spreadsheet);
+EndProcedure
+
+Procedure Check_GoogleSpreadsheetElement(Val Result, Val Spreadsheet) Export
+	Проверка_ГуглЭлементКниги(Result, Spreadsheet);
+EndProcedure
+
+Procedure Check_GoogleSheetTitle(Val Result, Val Name) Export
+	Проверка_ГуглИмяТаблицы(Result, Name);
+EndProcedure
+
+Procedure Check_GoogleCellUpdating(Val Result, Val Count) Export
+	Проверка_ГуглОбновлениеЯчеек(Result, Count);
+EndProcedure
+
+Procedure Check_GoogleCellValues(Val Result, Val Count) Export
+	Проверка_ГуглЗначенияЯчеек(Result, Count);
+EndProcedure
+
+Procedure Check_GoogleCellCleanning(Val Result, Val Count) Export
+	Проверка_ГуглОчисткаЯчеек(Result, Count);
+EndProcedure
+
+Procedure Check_TwitterToken(Val Result) Export
+	Проверка_ТвиттерТокен(Result);
+EndProcedure
+
+Procedure Check_NotionObject(Val Result, Val View = "page") Export
+	Проверка_НоушнОбъект(Result, View);
+EndProcedure
+
+Procedure Check_NotionBasePage(Val Result, Val Base) Export
+	Проверка_НоушнСтраницаБазы(Result, Base);
+EndProcedure
+
+Procedure Check_SlackOk(Val Result) Export
+	Проверка_СлакОк(Result);
+EndProcedure
+
+Procedure Check_SlackBot(Val Result) Export
+	Проверка_СлакБот(Result);
+EndProcedure
+
+Procedure Check_SlackUsers(Val Result) Export
+	Проверка_СлакПользователи(Result);
+EndProcedure
+
+Procedure Check_SlackWorkspaces(Val Result) Export
+	Проверка_СлакОбласти(Result);
+EndProcedure
+
+Procedure Check_SlackMessage(Val Result, Val Text, Val Channel) Export
+	Проверка_СлакСообщение(Result, Text, Channel);
+EndProcedure
+
+Procedure Check_SlackMessages(Val Result) Export
+	Проверка_СлакСообщения(Result);
+EndProcedure
+
+Procedure Check_SlackMessageLink(Val Result, Val Channel) Export
+	Проверка_СлакСсылкаСообщения(Result, Channel);
+EndProcedure
+
+Procedure Check_SlackSheduledMessage(Val Result, Val Channel) Export
+	Проверка_СлакОтложенноеСообщение(Result, Channel);
+EndProcedure
+
+Procedure Check_SlackEphemeral(Val Result) Export
+	Проверка_СлакЭфемерное(Result);
+EndProcedure
+
+Procedure Check_SlackSheduled(Val Result) Export
+	Проверка_СлакОтложенные(Result);
+EndProcedure
+
+Procedure Check_SlackChannel(Val Result, Val Name = "") Export
+	Проверка_СлакКанал(Result, Name);
+EndProcedure
+
+Procedure Check_SlackChannelTopic(Val Result, Val Topic) Export
+	Проверка_СлакТемаКанала(Result, Topic);
+EndProcedure
+
+Procedure Check_SlackChannelHistory(Val Result) Export
+	Проверка_СлакИсторияКанала(Result);
+EndProcedure
+
+Procedure Check_SlackChannelUsers(Val Result) Export
+	Проверка_СлакПользователиКанала(Result);
+EndProcedure
+
+Procedure Check_SlackChannelsList(Val Result) Export
+	Проверка_СлакСписокКаналов(Result);
+EndProcedure
+
+Procedure Check_SlackDialog(Val Result) Export
+	Проверка_СлакДиалог(Result);
+EndProcedure
+
+Procedure Check_SlackFilesList(Val Result) Export
+	Проверка_СлакСписокФайлов(Result);
+EndProcedure
+
+Procedure Check_SlackFile(Val Result, Val FileName) Export
+	Проверка_СлакФайл(Result, FileName);
+EndProcedure
+
+Procedure Check_SlackExternalFile(Val Result, Val Title) Export
+	Проверка_СлакВнешнийФайл(Result, Title);
+EndProcedure
+
+Procedure Check_ATBaseWithTable(Val Result, Val TableName) Export
+	Проверка_АТБазаСТаблицей(Result, TableName);
+EndProcedure
+
+Procedure Check_ATTablesList(Val Result) Export
+	Проверка_АТСписокТаблиц(Result);
+EndProcedure
+
+Procedure Check_ATBasesList(Val Result) Export
+	Проверка_АТСписокБаз(Result);
+EndProcedure
+
+Procedure Check_ATTable(Val Result, Val Name, Val Description) Export
+	Проверка_АТТаблица(Result, Name, Description);
+EndProcedure
+
+Procedure Check_ATField(Val Result, Val Name) Export
+	Проверка_АТПоле(Result, Name);
+EndProcedure
+
+Procedure Check_ATRecords(Val Result) Export
+	Проверка_АТЗаписи(Result);
+EndProcedure
+
+Procedure Check_ATRecordNumberAndString(Val Result, Val Numeric, Val StringType) Export
+	Проверка_АТЗаписьНомерСтрока(Result, Numeric, StringType);
+EndProcedure
+
+Procedure Check_ATRecord(Val Result, Val Record) Export
+	Проверка_АТЗапись(Result, Record);
+EndProcedure
+
+Procedure Check_ATText(Val Result, Val Text) Export
+	Проверка_АТТекст(Result, Text);
+EndProcedure
+
+Procedure Check_ATComments(Val Result) Export
+	Проверка_АТКомментарии(Result);
+EndProcedure
+
+Procedure Check_ATCommentDeleting(Val Result, Val Comment) Export
+	Проверка_АТУдалениеКомментария(Result, Comment);
+EndProcedure
+
+Procedure Check_DropboxFile(Val Result, Val Path) Export
+	Проверка_ДропБоксФайл(Result, Path);
+EndProcedure
+
+Procedure Check_DropboxMetadata(Val Result, Val Path) Export
+	Проверка_ДропБоксМетаданные(Result, Path);
+EndProcedure
+
+Procedure Check_DropboxArray(Val Result, Val Count = Undefined) Export
+	Проверка_ДропБоксМассив(Result, Count);
+EndProcedure
+
+Procedure Check_DropboxWork(Val Result) Export
+	Проверка_ДропБоксРабота(Result);
+EndProcedure
+
+Procedure Check_DropboxStatus(Val Result) Export
+	Проверка_ДропБоксСтатус(Result);
+EndProcedure
+
+Procedure Check_DropboxTags(Val Result, Val Count) Export
+	Проверка_ДропБоксТеги(Result, Count);
+EndProcedure
+
+Procedure Check_DropboxAccount(Val Result) Export
+	Проверка_ДропбоксАккаунт(Result);
+EndProcedure
+
+Procedure Check_DropboxSpace(Val Result) Export
+	Проверка_ДропбоксПространство(Result);
+EndProcedure
+
+Procedure Check_DropboxMember(Val Result, Val Email, Val ViewOnly) Export
+	Проверка_ДропбоксУчастник(Result, Email, ViewOnly);
+EndProcedure
+
+Procedure Check_DropboxPublicFolder(Val Result) Export
+	Проверка_ДропбоксПубличнаяПапка(Result);
+EndProcedure
+
+Procedure Check_BitrixTime(Val Result) Export
+	Проверка_БитриксВремя(Result);
+EndProcedure
+
+Procedure Check_BitrixAuth(Val Result) Export
+	Проверка_БитриксАвторизация(Result);
+EndProcedure
+
+Procedure Check_BitrixNumber(Val Result) Export
+	Проверка_БитриксЧисло(Result);
+EndProcedure
+
+Procedure Check_BitrixTrue(Val Result) Export
+	Проверка_БитриксИстина(Result);
+EndProcedure
+
+Procedure Check_BitrixBool(Val Result) Export
+	Проверка_БитриксБулево(Result);
+EndProcedure
+
+Procedure Check_BitrixString(Val Result, Val Value = "") Export
+	Проверка_БитриксСтрока(Result, Value);
+EndProcedure
+
+Procedure Check_BitrixArray(Val Result) Export
+	Проверка_БитриксМассив(Result);
+EndProcedure
+
+Procedure Check_BitrixMap(Val Result) Export
+	Проверка_БитриксСоответствие(Result);
+EndProcedure
+
+Procedure Check_BitrixList(Val Result) Export
+	Проверка_БитриксСписок(Result);
+EndProcedure
+
+Procedure Check_BitrixObjectsArray(Val Result) Export
+	Проверка_БитриксМассивОбъектов(Result);
+EndProcedure
+
+Procedure Check_BitrixFields(Val Result) Export
+	Проверка_БитриксПоля(Result);
+EndProcedure
+
+Procedure Check_BitrixTask(Val Result) Export
+	Проверка_БитриксЗадача(Result);
+EndProcedure
+
+Procedure Check_BitrixTasksList(Val Result) Export
+	Проверка_БитриксСписокЗадач(Result);
+EndProcedure
+
+Procedure Check_BitrixStorage(Val Result) Export
+	Проверка_БитриксХранилища(Result);
+EndProcedure
+
+Procedure Check_BitrixObject(Val Result) Export
+	Проверка_БитриксОбъект(Result);
+EndProcedure
+
+Procedure Check_BitrixLead(Val Result) Export
+	Проверка_БитриксЛид(Result);
+EndProcedure
+
+Procedure Check_BitrixDeal(Val Result) Export
+	Проверка_БитриксСделка(Result);
+EndProcedure
+
+Procedure Check_BitrixAttachment(Val Result) Export
+	Проверка_БитриксВложение(Result);
+EndProcedure
+
+Procedure Check_BitrixAvailableActions(Val Result, Val Count) Export
+	Проверка_БитриксДоступныеДействия(Result, Count);
+EndProcedure
+
+Procedure Check_BitrixComment(Val Result) Export
+	Проверка_БитриксКомментарий(Result);
+EndProcedure
+
+Procedure Check_BitrixResult(Val Result) Export
+	Проверка_БитриксРезультат(Result);
+EndProcedure
+
+Procedure Check_BitrixUndefined(Val Result) Export
+	Проверка_БитриксНеопределено(Result);
+EndProcedure
+
+Procedure Check_BitrixCommentsList(Val Result) Export
+	Проверка_БитриксСписокКомментариев(Result);
+EndProcedure
+
+Procedure Check_BitrixResultsList(Val Result) Export
+	Проверка_БитриксСписокРезультатов(Result);
+EndProcedure
+
+Procedure Check_BitrixMessages(Val Result) Export
+	Проверка_БитриксСообщения(Result);
+EndProcedure
+
+Procedure Check_BitrixDialog(Val Result) Export
+	Проверка_БитриксДиалог(Result);
+EndProcedure
+
+Procedure Check_BitrixMessage(Val Result) Export
+	Проверка_БитриксСообщение(Result);
+EndProcedure
+
+Procedure Check_BitrixFileMessage(Val Result) Export
+	Проверка_БитриксФайлСообщение(Result);
+EndProcedure
+
+Procedure Check_BitrixTimekeeping(Val Result) Export
+	Проверка_БитриксУчетВремени(Result);
+EndProcedure
+
+Procedure Check_BitrixTimekeepingSettings(Val Result) Export
+	Проверка_БитриксНастройкиУчетаВремени(Result);
+EndProcedure
+
+Procedure Check_VKTUser(Val Result) Export
+	Проверка_ВКТПользователь(Result);
+EndProcedure
+
+Procedure Check_VKTEvents(Val Result) Export
+	Проверка_ВКТСобытия(Result);
+EndProcedure
+
+Procedure Check_VKTMessage(Val Result) Export
+	Проверка_ВКТСообщение(Result);
+EndProcedure
+
+Procedure Check_VKTTrue(Val Result) Export
+	Проверка_ВКТИстина(Result);
+EndProcedure
+
+Procedure Check_VKTFile(Val Result) Export
+	Проверка_ВКТФайл(Result);
+EndProcedure
+
+Procedure Check_VKTList(Val Result, Val FieldName) Export
+	Проверка_ВКТСписок(Result, FieldName);
+EndProcedure
+
+Procedure Check_VKTChat(Val Result) Export
+	Проверка_ВКТЧат(Result);
+EndProcedure
+
+Procedure Check_VKTPending(Val Result) Export
+	Проверка_ВКТЗаявки(Result);
+EndProcedure
+
+Procedure Check_OzonCategoryList(Val Result) Export
+	Проверка_ОзонСписокКатегорий(Result);
+EndProcedure
+
+Procedure Check_OzonAttributesList(Val Result) Export
+	Проверка_ОзонСписокХарактеристик(Result);
+EndProcedure
+
+Procedure Check_OzonListOfAttributesValues(Val Result) Export
+	Проверка_ОзонСписокЗначенийХарактеристики(Result);
+EndProcedure
+
+Procedure Check_OzonUploadTask(Val Result, Val Embedded = True) Export
+	Проверка_ОзонЗаданиеЗагрузки(Result, Embedded);
+EndProcedure
+
+Procedure Check_OzonNewProducts(Val Result) Export
+	Проверка_ОзонНовыеТовары(Result);
+EndProcedure
+
+Procedure Check_OzonObjectsArray(Val Result) Export
+	Проверка_ОзонМассивОбъектов(Result);
+EndProcedure
+
+Procedure Check_OzonObjects(Val Result) Export
+	Проверка_ОзонОбъекты(Result);
+EndProcedure
+
+Procedure Check_OzonUpdatedArray(Val Result) Export
+	Проверка_ОзонМассивОбновлено(Result);
+EndProcedure
+
+Procedure Check_OzonRatingArray(Val Result) Export
+	Проверка_ОзонМассивРейтингов(Result);
+EndProcedure
+
+Procedure Check_OzonProduct(Val Result) Export
+	Проверка_ОзонТовар(Result);
+EndProcedure
+
+Procedure Check_OzonProducts(Val Result) Export
+	Проверка_ОзонТовары(Result);
+EndProcedure
+
+Procedure Check_OzonLimits(Val Result) Export
+	Проверка_ОзонЛимиты(Result);
+EndProcedure
+
+Procedure Check_OzonPictures(Val Result) Export
+	Проверка_ОзонКартинки(Result);
+EndProcedure
+
+Procedure Check_OzonNoErrors(Val Result) Export
+	Проверка_ОзонБезОшибок(Result);
+EndProcedure
+
+Procedure Check_OzonTrue(Val Result) Export
+	Проверка_ОзонИстина(Result);
+EndProcedure
+
+Procedure Check_OzonArray(Val Result, Val Field = "result") Export
+	Проверка_ОзонМассив(Result, Field);
+EndProcedure
+
+Procedure Check_OzonProductsDeleting(Val Result) Export
+	Проверка_ОзонУдалениеТовара(Result);
+EndProcedure
+
+Procedure Check_OzonNewCodes(Val Result) Export
+	Проверка_ОзонДобавлениеКодов(Result);
+EndProcedure
+
+Procedure Check_OzonSubscribers(Val Result) Export
+	Проверка_ОзонПодписчики(Result);
+EndProcedure
+
+Procedure Check_OzonSKU(Val Result) Export
+	Проверка_ОзонSKU(Result);
+EndProcedure
+
+Procedure Check_OzonDraft(Val Result) Export
+	Проверка_ОзонЧерновик(Result);
+EndProcedure
+
+Procedure Check_OzonSearch(Val Result) Export
+	Проверка_ОзонПоиск(Result);
+EndProcedure
+
+Procedure Check_OzonClusters(Val Result) Export
+	Проверка_ОзонКластеры(Result);
+EndProcedure
+
+Procedure Check_OzonReadyDraft(Val Result) Export
+	Проверка_ОзонГотовыйЧерновик(Result);
+EndProcedure
+
+Procedure Check_OzonTimeslots(Val Result) Export
+	Проверка_ОзонТаймслоты(Result);
+EndProcedure
+
+Procedure Check_NCSuccess(Val Result) Export
+	Проверка_НСУспех(Result);
+EndProcedure
+
+Procedure Check_NCFolderFiles(Val Result, Val Count) Export
+	Проверка_НСФайлыКаталога(Result, Count);
+EndProcedure
+
+Procedure Check_NCSync(Val Result) Export
+	Проверка_НССинхронизация(Result);
+EndProcedure
+
+Procedure Check_CdekToken(Val Result) Export
+	Проверка_СдэкТокен(Result);
+EndProcedure
+
+Procedure Check_CdekOrder(Val Result) Export
+	Проверка_СдэкЗаказ(Result);
+EndProcedure
+
+Procedure Check_CdekReceipt(Val Result) Export
+	Проверка_СдэкКвитанция(Result);
+EndProcedure
+
+Procedure Check_CdekOrderNumber(Val Result) Export
+	Проверка_СдэкДанныеЗаказа(Result);
+EndProcedure
+
+Procedure Check_CdekkDeliveryIntervals(Val Result) Export
+	Проверка_СдэкИнтервалыДоставки(Result);
+EndProcedure
+
+Procedure Check_CdekPassport(Val Result) Export
+	Проверка_СдэкПаспорт(Result);
+EndProcedure
+
+Procedure Check_CdekCheck(Val Result) Export
+	Проверка_СдэкЧек(Result);
+EndProcedure
+
+Procedure Check_YaMarketMarkets(Val Result) Export
+	Проверка_ЯМаркетМагазины(Result);
+EndProcedure
+
+Procedure Check_YaMarketCampaign(Val Result) Export
+	Проверка_ЯМаркетМагазин(Result);
+EndProcedure
+
+Procedure Check_YaMarketBusiness(Val Result) Export
+	Проверка_ЯМаркетКабинет(Result);
+EndProcedure
+
+Procedure Check_YaMarketOk(Val Result) Export
+	Проверка_ЯМаркетОк(Result);
+EndProcedure
+
+Procedure Check_MetrikaTags(Val Result) Export
+	Проверка_МетрикаМетки(Result);
+EndProcedure
+
+Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
+	Проверка_МетрикаМетка(Result, Name);
+EndProcedure
+
+Procedure Check_MetrikaSuccess(Val Result) Export
+	Проверка_МетрикаУспех(Result);
+EndProcedure
+
+Procedure Check_MetrikaCounter(Val Result) Export
+	Проверка_МетрикаСчетчик(Result);
+EndProcedure
+
+Procedure Check_MetrikaCounters(Val Result) Export
+	Проверка_МетрикаСчетчики(Result);
+EndProcedure
+
+Procedure Check_MetrikaActions(Val Result) Export
+	Проверка_МетрикаОперации(Result);
+EndProcedure
+
+Procedure Check_S3Success(Val Result) Export
+	Проверка_S3Успех(Result);
+EndProcedure
+
+Procedure Check_S3NotFound(Val Result) Export
+	Проверка_S3НеНайдено(Result);
+EndProcedure
+
+Procedure Check_S3NotImplemented(Val Result) Export
+	Проверка_S3НеПоддерживается(Result);
+EndProcedure
+
+Procedure Check_AddIn(Val Result, Val TypeName) Export
+	Проверка_Компонента(Result, TypeName);
+EndProcedure
+
+Procedure Check_Equality(Val Value1, Val Value2) Export
+	Проверка_Равенство(Value1, Value2);
+EndProcedure
+
+Procedure Check_Inequality(Val Value1, Val Value2) Export
+	Проверка_Неравенство(Value1, Value2);
+EndProcedure
+
+Procedure Check_SQLiteSuccess(Val Result) Export
+	Проверка_SQLiteУспех(Result);
+EndProcedure
+
+Procedure Check_SQLiteError(Val Result) Export
+	Проверка_SQLiteОшибка(Result);
+EndProcedure
+
+Procedure Check_SQLiteRows(Val Result, Val Count) Export
+	Проверка_SQLiteСтроки(Result, Count);
+EndProcedure
+
+Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
+	Проверка_SQLiteЗначенияПолей(Result, ValueStructure);
+EndProcedure
+
+Procedure Check_SQLiteNoRows(Val Result) Export
+	Проверка_SQLiteНетЗаписей(Result);
+EndProcedure
+
+Procedure Check_ResultTrue(Val Result) Export
+	Проверка_РезультатИстина(Result);
+EndProcedure
+
+Procedure Check_ResultFalse(Val Result) Export
+	Проверка_РезультатЛожь(Result);
+EndProcedure
+
+Procedure Check_GreenInstance(Val Result) Export
+	Проверка_ГринИнстанс(Result);
+EndProcedure
+
+Procedure Check_GreenSettingsSaving(Val Result) Export
+	Проверка_ГринСохранениеНастроек(Result);
+EndProcedure
+
+Procedure Check_GreenAuth(Val Result) Export
+	Проверка_ГринАвторизован(Result);
+EndProcedure
+
+Procedure Check_GreenReboot(Val Result) Export
+	Проверка_ГринПерезапуск(Result);
+EndProcedure
+
+Procedure Check_GreenUnlogin(Val Result) Export
+	Проверка_ГринРазлогин(Result);
+EndProcedure
+
+Procedure Check_GreenAva(Val Result) Export
+	Проверка_ГринАватар(Result);
+EndProcedure
+
+Procedure Check_GreenGroupPicture(Val Result) Export
+	Проверка_ГринКартинкаГруппы(Result);
+EndProcedure
+
+Procedure Check_GreenCode(Val Result) Export
+	Проверка_ГринКод(Result);
+EndProcedure
+
+Procedure Check_GreenProfile(Val Result) Export
+	Проверка_ГринПрофиль(Result);
+EndProcedure
+
+Procedure Check_GreenNewGroup(Val Result) Export
+	Проверка_ГринНоваяГруппа(Result);
+EndProcedure
+
+Procedure Check_GreenLeaveGroup(Val Result) Export
+	Проверка_ГринВыходГруппы(Result);
+EndProcedure
+
+Procedure Check_GreenGroup(Val Result) Export
+	Проверка_ГринГруппа(Result);
+EndProcedure
+
+Procedure Check_GreenGroupName(Val Result) Export
+	Проверка_ГринИмяГруппы(Result);
+EndProcedure
+
+Procedure Check_GreenAddMember(Val Result) Export
+	Проверка_ГринДобавлениеПользователя(Result);
+EndProcedure
+
+Procedure Check_GreenExcludeMember(Val Result) Export
+	Проверка_ГринИсключениеПользователя(Result);
+EndProcedure
+
+Procedure Check_GreenAdminSet(Val Result) Export
+	Проверка_ГринНазначениеАдминистратора(Result);
+EndProcedure
+
+Procedure Check_GreenAdminRemove(Val Result) Export
+	Проверка_ГринОтзывАдминистратора(Result);
+EndProcedure
+
+Procedure Check_GreenMessage(Val Result) Export
+	Проверка_ГринСообщение(Result);
+EndProcedure
+
+Procedure Check_GreenMessages(Val Result) Export
+	Проверка_ГринСообщения(Result);
+EndProcedure
+
+Procedure Check_GreenFile(Val Result) Export
+	Проверка_ГринФайл(Result);
+EndProcedure
+
+Procedure Check_GreenNotification(Val Result) Export
+	Проверка_ГринУведомление(Result);
+EndProcedure
+
+Procedure Check_GreenInputFile(Val Result) Export
+	Проверка_ГринВходнойФайл(Result);
+EndProcedure
+
+Procedure Check_GreenReading(Val Result) Export
+	Проверка_ГринПрочтение(Result);
+EndProcedure
+
+Procedure Check_GreenQueueClearing(Val Result) Export
+	Проверка_ГринОчисткаОчереди(Result);
+EndProcedure
+
+Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
+	Проверка_OllamaОтвет(Result, Completed);
+EndProcedure
+
+Procedure Check_OllamaEmbeddings(Val Result) Export
+	Проверка_OllamaПривязки(Result);
+EndProcedure
+
+Procedure Check_OllamaLoadUnload(Val Result, Val Unload) Export
+	Проверка_OllamaЗагрузкаВыгрузка(Result, Unload);
+EndProcedure
+
+Procedure Check_OllamaMessage(Val Result, Val Completed = True) Export
+	Проверка_OllamaСообщение(Result, Completed);
+EndProcedure
+
+Procedure Check_OllamaSuccess(Val Result) Export
+	Проверка_OllamaУспех(Result);
+EndProcedure
+
+Procedure Check_OllamaModels(Val Result) Export
+	Проверка_OllamaМодели(Result);
+EndProcedure
+
+Procedure Check_OllamaModelInfo(Val Result) Export
+	Проверка_OllamaИнформацияМодели(Result);
+EndProcedure
+
+Procedure Check_OllamaVersion(Val Result) Export
+	Проверка_OllamaВерсия(Result);
+EndProcedure
+
+Procedure Check_OllamaCode(Val Result) Export
+	Проверка_OllamaКод(Result);
+EndProcedure
+
+Procedure Check_OllamaError(Val Result) Export
+	Проверка_OllamaОшибка(Result);
+EndProcedure
+
+Procedure Check_OpenAIResponse(Val Result) Export
+	Проверка_OpenAIОтвет(Result);
+EndProcedure
+
+Procedure Check_OpenAIEmbeddings(Val Result) Export
+	Проверка_OpenAIПредставления(Result);
+EndProcedure
+
+#EndRegion

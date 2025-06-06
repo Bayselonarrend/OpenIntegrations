@@ -1,0 +1,7 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Text  = "What is 1C:Enterprise?";
+    Model = "text-embedding-ada-002";
+
+    Result = OPI_OpenAI.GetEmbeddings(URL, Token, Model, Text);

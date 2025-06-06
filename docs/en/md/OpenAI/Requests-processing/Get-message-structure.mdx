@@ -1,0 +1,38 @@
+﻿---
+sidebar_position: 3
+description: Get context message structure and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get context message structure
+ Receives the message structure for the request message list
+
+
+
+`Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Role | --role | String | &#x2714; | Message source: system, user, developer |
+  | Text | --text | String | &#x2714; | Message text |
+  | Name | --name | String | &#x2716; | Name of participant in conversation |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

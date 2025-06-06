@@ -35,14 +35,14 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "6070";
+    TaskID = "6188";
 
     Text = "Task impossible, let's split up";
 
     Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "4dee2c68006e9f06006b12e400000001000...";
+    Token = "50a94068006e9f06006b12e400000001000...";
 
     Text = "Task uninpossible, don't split up";
 
@@ -55,18 +55,20 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 AddTaskComment \
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-             --task "6168" \
-             --text "Task impossible, let's split up"
+             --url "b24-ar17wx.bitrix24.by" \
+             --task "6198" \
+             --text "Task uninpossible, don't split up" \
+             --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 AddTaskComment ^
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-             --task "6168" ^
-             --text "Task impossible, let's split up"
+             --url "b24-ar17wx.bitrix24.by" ^
+             --task "6198" ^
+             --text "Task uninpossible, don't split up" ^
+             --token "***"
         ```
     </TabItem>
 </Tabs>

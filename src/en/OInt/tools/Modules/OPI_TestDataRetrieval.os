@@ -78,6 +78,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("GreenAPI"       , 5);
     Sections.Insert("Ollama"         , 5);
     Sections.Insert("HTTPClient"     , 5);
+    Sections.Insert("OpenAI"         , 5);
 
     Return Sections;
 
@@ -117,6 +118,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("GreenAPI"       , StandardDependencies);
     Sections.Insert("Ollama"         , StandardDependencies);
     Sections.Insert("HTTPClient"     , StandardDependencies);
+    Sections.Insert("OpenAI"         , StandardDependencies);
 
     Return Sections;
 
@@ -152,6 +154,7 @@ Function GetTestTable() Export
     MySQL     = "MySQL";
     Ollama    = "Ollama";
     Http      = "HTTPClient";
+    OpenAI    = "OpenAI";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -310,6 +313,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "HTTP_Authorization"                   , "Authorization"                   , Http);
     NewTest(TestTable, "HTTP_RequestProcessing"               , "Request processing"              , Http);
     NewTest(TestTable, "HTTP_ResponseReceiving"               , "Response receiving"              , Http);
+    NewTest(TestTable, "OAI_RequestsProcessing"               , "Requests processing"             , OpenAI);
 
     Return TestTable;
 
@@ -2432,6 +2436,22 @@ Procedure Check_OllamaError(Val Result) Export
 
 EndProcedure
 
+Procedure Check_OpenAIResponse(Val Result) Export
+
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("chat.completion");
+    ExpectsThat(Result["choices"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_OpenAIEmbeddings(Val Result) Export
+
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("list");
+    ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -3899,6 +3919,14 @@ EndProcedure
 
 Procedure Проверка_OllamaОшибка(Val Результат) Export
 	Check_OllamaError(Результат);
+EndProcedure
+
+Procedure Проверка_OpenAIОтвет(Val Результат) Export
+	Check_OpenAIResponse(Результат);
+EndProcedure
+
+Procedure Проверка_OpenAIПредставления(Val Результат) Export
+	Check_OpenAIEmbeddings(Результат);
 EndProcedure
 
 #EndRegion

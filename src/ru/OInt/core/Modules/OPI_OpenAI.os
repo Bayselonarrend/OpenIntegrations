@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
+// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
 
@@ -49,7 +49,7 @@
 
 // Получить ответ
 // Генерирует ответ по заданному текстовому запросу
-// 
+//
 // Примечание:
 // Метод в документации API: [Create chat completion](@platform.openai.com/docs/api-reference/chat/create)
 //
@@ -132,7 +132,7 @@
     OPI_Инструменты.ДобавитьПоле("role"   , Роль , "Строка", СтруктураПолей);
     OPI_Инструменты.ДобавитьПоле("content", Текст, "Строка", СтруктураПолей);
     OPI_Инструменты.ДобавитьПоле("name"   , Имя  , "Строка", СтруктураПолей);
-    
+
     Возврат СтруктураПолей;
 
 КонецФункции
@@ -175,10 +175,27 @@
         ТекстОшибки  = "Передана некорректная коллекция доп. заголовков!";
         OPI_ПреобразованиеТипов.ПолучитьКоллекциюКлючИЗначение(ДопЗаголовки, ТекстОшибки);
     КонецЕсли;
-    
+
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
 
 КонецПроцедуры
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
+	Return ПолучитьСтруктуруСообщения(Role, Text, Name);
+EndFunction
+
+#EndRegion
