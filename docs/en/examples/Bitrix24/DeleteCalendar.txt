@@ -1,12 +1,12 @@
 ﻿    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "724";
+    CalendarID = "764";
     OwnerID    = 1;
     Type       = "user";
 
     Result = OPI_Bitrix24.DeleteCalendar(URL, CalendarID, OwnerID, Type);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "4dee2c68006e9f06006b12e400000001000...";
-    CalendarID = "726";
+    Token      = "50a94068006e9f06006b12e400000001000...";
+    CalendarID = "766";
 
     Result = OPI_Bitrix24.DeleteCalendar(URL, CalendarID, OwnerID, Type, Token);

@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 2
+description: Get embeddings and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get embeddings
+ Gets the embeddings for the given entries
+
+
+
+`Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | Model | --model | String | &#x2714; | Models name |
+  | Text | --input | Array Of String | &#x2714; | String or array of request strings |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetEmbeddingsParameterStructure |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Create embeddings](https://platform.openai.com/docs/api-reference/embeddings/create)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Text  = "What is 1C:Enterprise?";
+    Model = "text-embedding-ada-002";
+
+    Result = OPI_OpenAI.GetEmbeddings(URL, Token, Model, Text);
+```
+ 
+
+
+
+
