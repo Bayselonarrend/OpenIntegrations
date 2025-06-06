@@ -57,7 +57,7 @@
     NewLine.Method       = "GetResponse";
     NewLine.SearchMethod = "GETRESPONSE";
     NewLine.Parameter    = "--options";
-    NewLine.Description    = "KeyValue collection of additional parameters (optional, def. val. - Empty value)";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
 
 
@@ -118,7 +118,7 @@
     NewLine.Method       = "GetEmbeddings";
     NewLine.SearchMethod = "GETEMBEDDINGS";
     NewLine.Parameter    = "--options";
-    NewLine.Description    = "Additional parameters. See GetEmbeddingsParameterStructure (optional, def. val. - Empty value)";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
 
 
@@ -161,6 +161,210 @@
     NewLine.Parameter    = "--name";
     NewLine.Description    = "Name of participant in conversation (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantsList";
+    NewLine.SearchMethod = "GETASSISTANTSLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Assistants";
+    NewLine.MethodDescription   = "Retrieves a list of assistants with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantsList";
+    NewLine.SearchMethod = "GETASSISTANTSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantsList";
+    NewLine.SearchMethod = "GETASSISTANTSLIST";
+    NewLine.Parameter    = "--limit";
+    NewLine.Description    = "Maximum number of assistants returned (optional, def. val. - 20)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantsList";
+    NewLine.SearchMethod = "GETASSISTANTSLIST";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantsList";
+    NewLine.SearchMethod = "GETASSISTANTSLIST";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Assistants";
+    NewLine.MethodDescription   = "Creates an assistant based on the model and instruction";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Assistant name (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--inst";
+    NewLine.Description    = "System instruction for the assistant (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateAssistant";
+    NewLine.SearchMethod = "CREATEASSISTANT";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "RetrieveAssistant";
+    NewLine.SearchMethod = "RETRIEVEASSISTANT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Assistants";
+    NewLine.MethodDescription   = "Retrieves information about an assistant by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "RetrieveAssistant";
+    NewLine.SearchMethod = "RETRIEVEASSISTANT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "RetrieveAssistant";
+    NewLine.SearchMethod = "RETRIEVEASSISTANT";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Assistant ID";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "RetrieveAssistant";
+    NewLine.SearchMethod = "RETRIEVEASSISTANT";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteAssistant";
+    NewLine.SearchMethod = "DELETEASSISTANT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Ollama server URL";
+    NewLine.Region     = "Assistants";
+    NewLine.MethodDescription   = "Deletes a previously created assistant";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteAssistant";
+    NewLine.SearchMethod = "DELETEASSISTANT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteAssistant";
+    NewLine.SearchMethod = "DELETEASSISTANT";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Assistant ID";
+    NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteAssistant";
+    NewLine.SearchMethod = "DELETEASSISTANT";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Assistants";
 
     Return CompositionTable;
 EndFunction

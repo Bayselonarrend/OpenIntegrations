@@ -314,6 +314,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "HTTP_RequestProcessing"               , "Request processing"              , Http);
     NewTest(TestTable, "HTTP_ResponseReceiving"               , "Response receiving"              , Http);
     NewTest(TestTable, "OAI_RequestsProcessing"               , "Requests processing"             , OpenAI);
+    NewTest(TestTable, "OAI_Assistants"                       , "Assistants"                      , OpenAI);
 
     Return TestTable;
 
@@ -2447,6 +2448,33 @@ EndProcedure
 Procedure Check_OpenAIEmbeddings(Val Result) Export
 
     ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("list");
+    ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_OpenAIAssistant(Val Result, Val Name = "") Export
+
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("assistant");
+
+    If ValueIsFilled(Name) Then
+        ExpectsThat(Result["name"]).Равно(Name);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_OpenAIAssistantDeletion(Val Result, Val AssistantID) Export
+
+    ExpectsThat(Result["id"]).Равно(AssistantID);
+    ExpectsThat(Result["object"]).Равно("assistant.deleted");
+    ExpectsThat(Result["deleted"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OpenAIList(Val Result) Export
+
     ExpectsThat(Result["object"]).Равно("list");
     ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
 

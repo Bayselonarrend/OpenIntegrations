@@ -1,0 +1,50 @@
+﻿---
+sidebar_position: 1
+description: Get assistants list and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get assistants list
+ Retrieves a list of assistants with or without filtering
+
+
+
+`Function GetAssistantsList(Val URL, Val Token, Val Count = 20, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ollama server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | Count | --limit | Number | &#x2716; | Maximum number of assistants returned |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional request parameters, if necessary |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [List assistants](https://platform.openai.com/docs/api-reference/assistants/listAssistants)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Count                = 2;
+    AdditionalParameters = New Structure("after,order", "asst_2", "desc");
+
+    Result = OPI_OpenAI.GetAssistantsList(URL, Token, Count, AdditionalParameters);
+```
+ 
+
+
+
+
