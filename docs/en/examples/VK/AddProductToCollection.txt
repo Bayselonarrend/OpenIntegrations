@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    Product   = "11130820";
-    Selection = "139";
+    Product   = "11227856";
+    Selection = "137";
 
     Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);

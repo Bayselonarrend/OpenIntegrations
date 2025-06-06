@@ -118,17 +118,23 @@ When performing multiple requests within a single connection, it is better to co
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint sqlite ExecuteSQLQuery \
-             --sql "CREATE TABLE test_table (id INTEGER PRIMARY KEY,name TEXT,age INTEGER,salary REAL,is_active BOOLEAN,created_at DATETIME,data BLOB);" \
-             --db "C:\Users\Administrator\AppData\Local\Temp\atnsr22gawg.sqlite"
+             --sql "SELECT uuid4();" \
+             --db "C:\Users\Administrator\AppData\Local\Temp\x35shgfq5ap.sqlite" \
+             --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint sqlite ExecuteSQLQuery ^
-             --sql "CREATE TABLE test_table (id INTEGER PRIMARY KEY,name TEXT,age INTEGER,salary REAL,is_active BOOLEAN,created_at DATETIME,data BLOB);" ^
-             --db "C:\Users\Administrator\AppData\Local\Temp\atnsr22gawg.sqlite"
+             --sql "SELECT uuid4();" ^
+             --db "C:\Users\Administrator\AppData\Local\Temp\x35shgfq5ap.sqlite" ^
+             --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
         ```
     </TabItem>
 </Tabs>

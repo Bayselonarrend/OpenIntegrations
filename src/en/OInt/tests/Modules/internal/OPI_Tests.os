@@ -2728,6 +2728,21 @@ EndProcedure
 
 #EndRegion
 
+#Region OpenAI
+
+Procedure OAI_RequestsProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    OpenAI_GetResponse(TestParameters);
+    OpenAI_GetEmbeddings(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -22765,6 +22780,48 @@ Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
 
     CorrectVariant3 = "/page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3";
     OPI_TestDataRetrieval.ExpectsThat(SeparationPhp).Равно(CorrectVariant3);
+
+EndProcedure
+
+#EndRegion
+
+#Region OpenAI
+
+Procedure OpenAI_GetResponse(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Messages = New Array;
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "What is 1C:Enterprise?"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "When the first version was released?"));
+
+    Model = "openai/gpt-4o-mini";
+
+    Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetResponse", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIResponse(Result);
+
+EndProcedure
+
+Procedure OpenAI_GetEmbeddings(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Text  = "What is 1C:Enterprise?";
+    Model = "text-embedding-ada-002";
+
+    Result = OPI_OpenAI.GetEmbeddings(URL, Token, Model, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmbeddings", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIEmbeddings(Result);
 
 EndProcedure
 

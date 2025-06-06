@@ -37,14 +37,14 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
     Name      = "New file name.jpg";
     Filename2 = "New file name 2.jpg";
 
-    FileID2 = "33720";
+    FileID2 = "34304";
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
 
-    FileID = "33722";
+    FileID = "34306";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "4dee2c68006e9f06006b12e400000001000...";
+    Token  = "50a94068006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
 ```
@@ -56,7 +56,7 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
         ```bash
             oint bitrix24 RenameFile \
              --url "b24-ar17wx.bitrix24.by" \
-             --fileid 33834 \
+             --fileid 34358 \
              --title "New file name.jpg" \
              --token "***"
         ```
@@ -66,7 +66,7 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
         ```batch
             oint bitrix24 RenameFile ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fileid 33834 ^
+             --fileid 34358 ^
              --title "New file name.jpg" ^
              --token "***"
         ```

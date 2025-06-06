@@ -1,0 +1,7 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Текст  = "What is 1C:Enterprise?";
+    Модель = "text-embedding-ada-002";
+
+    Результат = OPI_OpenAI.ПолучитьПредставления(URL, Токен, Модель, Текст);

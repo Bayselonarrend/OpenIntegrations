@@ -36,7 +36,7 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
     Result = OPI_Bitrix24.GetStoragesList(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "4dee2c68006e9f06006b12e400000001000...";
+    Token = "50a94068006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetStoragesList(URL, Token);
 ```
@@ -47,14 +47,16 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 GetStoragesList \
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***"
+             --url "b24-ar17wx.bitrix24.by" \
+             --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 GetStoragesList ^
-             --url "https://b24-ar17wx.bitrix24.by/rest/1/***"
+             --url "b24-ar17wx.bitrix24.by" ^
+             --token "***"
         ```
     </TabItem>
 </Tabs>

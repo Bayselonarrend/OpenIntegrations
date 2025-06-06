@@ -2,7 +2,7 @@
 
     Image1    = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary or File path
     Image2    = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary or File path
-    Selection = "139";
+    Selection = "137";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
