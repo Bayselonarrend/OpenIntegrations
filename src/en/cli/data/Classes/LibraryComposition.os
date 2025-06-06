@@ -24,6 +24,7 @@ Procedure OnObjectCreate()
     ModuleCommandMapping.Insert("neocities", "OPI_Neocities");
     ModuleCommandMapping.Insert("notion", "OPI_Notion");
     ModuleCommandMapping.Insert("ollama", "OPI_Ollama");
+    ModuleCommandMapping.Insert("openai", "OPI_OpenAI");
     ModuleCommandMapping.Insert("ozon", "OPI_Ozon");
     ModuleCommandMapping.Insert("postgres", "OPI_PostgreSQL");
     ModuleCommandMapping.Insert("rcon", "OPI_RCON");

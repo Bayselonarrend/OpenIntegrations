@@ -81,6 +81,11 @@ pipeline {
                 test_ollama()
              }
           }
+          stage('openai'){
+             steps{
+                test_openai()
+             }
+          }
           stage('ozon'){
              steps{
                 test_ozon()
@@ -1871,6 +1876,24 @@ def test_ollama(){
 }
 
 
+def test_openai(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetResponse --url "test" --token "test" --model "test" --msgs "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetEmbeddings --url "test" --token "test" --model "test" --input "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetMessageStructure --role "test" --text "test" --name "test" --debug --test '
+               }
+
+}
+
+
 def test_ozon(){
 					
 
@@ -3314,6 +3337,7 @@ test_mysql()
 test_neocities()
 test_notion()
 test_ollama()
+test_openai()
 test_ozon()
 test_postgres()
 test_rcon()
