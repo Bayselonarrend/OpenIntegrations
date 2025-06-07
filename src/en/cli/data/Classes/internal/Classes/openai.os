@@ -16,7 +16,7 @@
     NewLine.Method       = "GetResponse";
     NewLine.SearchMethod = "GETRESPONSE";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Requests processing";
     NewLine.MethodDescription   = "Generates a response for a given text query";
 
@@ -77,7 +77,7 @@
     NewLine.Method       = "GetEmbeddings";
     NewLine.SearchMethod = "GETEMBEDDINGS";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Requests processing";
     NewLine.MethodDescription   = "Gets the embeddings for the given entries";
 
@@ -169,7 +169,7 @@
     NewLine.Method       = "GetAssistantsList";
     NewLine.SearchMethod = "GETASSISTANTSLIST";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Assistants";
     NewLine.MethodDescription   = "Retrieves a list of assistants with or without filtering";
 
@@ -220,7 +220,7 @@
     NewLine.Method       = "CreateAssistant";
     NewLine.SearchMethod = "CREATEASSISTANT";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Assistants";
     NewLine.MethodDescription   = "Creates an assistant based on the model and instruction";
 
@@ -291,7 +291,7 @@
     NewLine.Method       = "RetrieveAssistant";
     NewLine.SearchMethod = "RETRIEVEASSISTANT";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Assistants";
     NewLine.MethodDescription   = "Retrieves information about an assistant by ID";
 
@@ -332,7 +332,7 @@
     NewLine.Method       = "DeleteAssistant";
     NewLine.SearchMethod = "DELETEASSISTANT";
     NewLine.Parameter    = "--url";
-    NewLine.Description    = "Ollama server URL";
+    NewLine.Description    = "OpenAI server URL";
     NewLine.Region     = "Assistants";
     NewLine.MethodDescription   = "Deletes a previously created assistant";
 
@@ -365,6 +365,241 @@
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "Assistants";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Get a list of files with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--limit";
+    NewLine.Description    = "Maximum number of assistants returned (optional, def. val. - 10000)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Uploads a file for further use in other requests";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "File name with extension";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--data";
+    NewLine.Description    = "Path to file or data";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--purpose";
+    NewLine.Description    = "File purpose: assistants, batch, vision, user_data, evals";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Gets information about the file";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "File ID";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Get file data from the server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "File ID";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Deletes a previously uploaded file";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "File ID";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "File management";
 
     Return CompositionTable;
 EndFunction
