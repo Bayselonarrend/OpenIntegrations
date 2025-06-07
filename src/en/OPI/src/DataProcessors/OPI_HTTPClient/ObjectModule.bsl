@@ -796,6 +796,8 @@ Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val Dat
         If Not Multipart Then Return Error("AddMultipartFile: Multipart record not initialized"); EndIf;
 
         OPI_TypeConversion.GetBinaryData(Data);
+        OPI_TypeConversion.GetLine(FieldName);
+        OPI_TypeConversion.GetLine(FileName);
 
         AddLog("AddMultipartFile: writing the block header");
 
