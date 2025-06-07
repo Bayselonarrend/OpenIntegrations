@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 1
+description: Get list of files and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get list of files
+ Get a list of files with or without filtering
+
+
+
+`Function GetFilesList(Val URL, Val Token, Val Count = 10000, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | OpenAI server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | Count | --limit | Number | &#x2716; | Maximum number of assistants returned |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional request parameters, if necessary |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [List files](https://platform.openai.com/docs/api-reference/files/list)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Result = OPI_OpenAI.GetFilesList(URL, Token);
+```
+ 
+
+
+
+

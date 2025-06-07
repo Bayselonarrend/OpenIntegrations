@@ -1907,6 +1907,26 @@ def test_openai(){
 					powershell encoding: 'UTF-8', script:'./oint.exe openai DeleteAssistant --url "test" --token "test" --id "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetFilesList --url "test" --token "test" --limit "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai UploadFile --url "test" --token "test" --name "test" --data "test" --purpose "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetFileInformation --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai DownloadFile --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai DeleteFile --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
 }
 
 
