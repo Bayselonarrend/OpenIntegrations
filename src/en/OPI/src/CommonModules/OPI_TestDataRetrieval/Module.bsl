@@ -315,6 +315,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "HTTP_ResponseReceiving"               , "Response receiving"              , Http);
     NewTest(TestTable, "OAI_RequestsProcessing"               , "Requests processing"             , OpenAI);
     NewTest(TestTable, "OAI_Assistants"                       , "Assistants"                      , OpenAI);
+    NewTest(TestTable, "OAI_FileManagement"                   , "Files management"                , OpenAI);
 
     Return TestTable;
 
@@ -2477,6 +2478,36 @@ Procedure Check_OpenAIList(Val Result) Export
 
     ExpectsThat(Result["object"]).Равно("list");
     ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_OpenAIFile(Val Result
+    , Val FileName    = Undefined
+    , Val Size        = Undefined
+    , Val Destination = Undefined) Export
+
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("file");
+
+    If FileName <> Undefined Then
+        ExpectsThat(Result["filename"]).Равно(FileName);
+    EndIf;
+
+    If Size <> Undefined Then
+        ExpectsThat(Result["bytes"]).Равно(Size);
+    EndIf;
+
+    If Destination <> Undefined Then
+        ExpectsThat(Result["purpose"]).Равно(Destination);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_OpenAIFileDeletion(Val Result, Val FileID) Export
+
+    ExpectsThat(Result["id"]).Равно(FileID);
+    ExpectsThat(Result["object"]).Равно("file");
+    ExpectsThat(Result["deleted"]).Равно(True);
 
 EndProcedure
 

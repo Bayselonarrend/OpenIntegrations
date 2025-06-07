@@ -54,7 +54,7 @@
 // Method at API documentation: [Create chat completion](@platform.openai.com/docs/api-reference/chat/create)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // Model - String - Models name - model
 // Messages - String, Array of String - Conversation messages. See GetMessageStructure - msgs
@@ -77,7 +77,7 @@ Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val Additional
 
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
-    Return Response;
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -88,7 +88,7 @@ EndFunction
 // Method at API documentation: [Create embeddings](@platform.openai.com/docs/api-reference/embeddings/create)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // Model - String - Models name - model
 // Text - Array Of String - String or array of request strings - input
@@ -111,7 +111,7 @@ Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalPa
 
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
-    Return Response;
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -148,7 +148,7 @@ EndFunction
 // Method at API documentation: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // Count - Number - Maximum number of assistants returned - limit
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
@@ -173,7 +173,11 @@ Function GetAssistantsList(Val URL
 
     Response = OPI_HTTPRequests.Get(URL, Parameters, AdditionalHeaders);
 
-    Return Response;
+    If TypeOf(Response) = Type("Array") Then
+        Response        = New Structure("object,data", "list", Response);
+    EndIf;
+
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -184,7 +188,7 @@ EndFunction
 // Method at API documentation: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // Model - String - Models name - model
 // Name - String - Assistant name - name
@@ -215,7 +219,7 @@ Function CreateAssistant(Val URL
 
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
 
-    Return Response;
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -226,7 +230,7 @@ EndFunction
 // Method at API documentation: [Retrieve assistant](@platform.openai.com/docs/api-reference/assistants/getAssistant)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // AssistantID - String - Assistant ID - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
@@ -242,7 +246,7 @@ Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHe
 
     Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
 
-    Return Response;
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -253,7 +257,7 @@ EndFunction
 // Method at API documentation: [Delete assistant](@platform.openai.com/docs/api-reference/assistants/deleteAssistant)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL - String - OpenAI server URL - url
 // Token - String - OpenAI authorization token - token
 // AssistantID - String - Assistant ID - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
@@ -269,7 +273,167 @@ Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHead
 
     Response = OPI_HTTPRequests.Delete(URL, , AdditionalHeaders);
 
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+#EndRegion
+
+#Region FileManagement
+
+// Get list of files
+// Get a list of files with or without filtering
+//
+// Note
+// Method at API documentation: [List files](@platform.openai.com/docs/api-reference/files/list)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// Count - Number - Maximum number of assistants returned - limit
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetFilesList(Val URL
+    , Val Token
+    , Val Count = 10000
+    , Val AdditionalParameters = ""
+    , Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/files");
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("limit", Count, "Number", Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, Parameters, AdditionalHeaders);
+
+    If TypeOf(Response) = Type("Array") Then
+        Response        = New Structure("object,data", "list", Response);
+    EndIf;
+
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+
+// Upload file
+// Uploads a file for further use in other requests
+//
+// Note
+// Method at API documentation: [Upload file](@platform.openai.com/docs/api-reference/files/create)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// FileName - String - File name with extension - name
+// Data - String, BinaryData - Path to file or data - data
+// Destination - String - File purpose: assistants, batch, vision, user_data, evals - purpose
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function UploadFile(Val URL, Val Token, Val FileName, Val Data, Val Destination, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/files");
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file", FileName, Data)
+        .AddMultipartFormDataField("purpose", Destination)
+        .SetHeaders(AdditionalHeaders)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+     Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+// Get information about file
+// Gets information about the file
+//
+// Note
+// Method at API documentation: [Retrieve file](@platform.openai.com/docs/api-reference/files/retrieve)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// FileID - String - File ID - id
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetFileInformation(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(FileID);
+
+    CompleteURL(URL, StrTemplate("v1/files/%1", FileID));
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
+
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+// Download file
+// Get file data from the server
+//
+// Note
+// Method at API documentation: [Retrieve file content](@platform.openai.com/docs/api-reference/files/retrieve-contents)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// FileID - String - File ID - id
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// BinaryData - File data
+Function DownloadFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(FileID);
+
+    CompleteURL(URL, StrTemplate("v1/files/%1/content", FileID));
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
+
     Return Response;
+
+EndFunction
+
+// Delete file
+// Deletes a previously uploaded file
+//
+// Note
+// Method at API documentation: [Delete file](@platform.openai.com/docs/api-reference/files/delete)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// FileID - String - File ID - id
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(FileID);
+
+    CompleteURL(URL, StrTemplate("v1/files/%1", FileID));
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Delete(URL, , AdditionalHeaders);
+
+    Return ConvertKeysToLowerCase(Response);
 
 EndFunction
 
@@ -318,5 +482,22 @@ Procedure HeadersProcessing(AdditionalHeaders, Val Token)
     EndIf;
 
 EndProcedure
+
+Function ConvertKeysToLowerCase(Val Collection)
+
+    Try
+        Collection_ = New(TypeOf(Collection));
+
+        For Each KeyValue In Collection Do
+            Collection_.Insert(Lower(KeyValue.Key), KeyValue.Value)
+        EndDo;
+
+        Return Collection_;
+
+    Except
+        Return Collection;
+    EndTry;
+
+EndFunction
 
 #EndRegion

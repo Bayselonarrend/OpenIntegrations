@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | URL | --url | String | &#x2714; | Ollama server URL |
+  | URL | --url | String | &#x2714; | OpenAI server URL |
   | Token | --token | String | &#x2714; | OpenAI authorization token |
   | AssistantID | --id | String | &#x2714; | Assistant ID |
   | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
@@ -37,7 +37,7 @@ Method at API documentation: [Retrieve assistant](https://platform.openai.com/do
     URL   = "https://api.athenaeum.digital:1122/";
     Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    AssistantID = "asst_5";
+    AssistantID = "asst_19";
 
     Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);
 ```

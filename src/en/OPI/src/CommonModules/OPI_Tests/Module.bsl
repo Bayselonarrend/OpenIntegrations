@@ -2754,6 +2754,21 @@ Procedure OAI_Assistants() Export
 
 EndProcedure
 
+Procedure OAI_FileManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+
+    OpenAI_UploadFile(TestParameters);
+    OpenAI_GetFileInformation(TestParameters);
+    OpenAI_GetFilesList(TestParameters);
+    OpenAI_DownloadFile(TestParameters);
+    OpenAI_DeleteFile(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -22905,7 +22920,96 @@ Procedure OpenAI_GetAssistantsList(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetAssistantsList", "OpenAI");
-    OPI_TestDataRetrieval.Check_Array(Result, 2);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 2);
+
+EndProcedure
+
+Procedure OpenAI_UploadFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "picture3.png";
+    Destination = "assistants";
+
+    Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
+
+    // END
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result, FileName, File.Size() + 2, Destination);
+
+    FileID = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("OpenAI_File", FileID);
+    OPI_Tools.AddField("OpenAI_File", FileID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure OpenAI_DeleteFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Result = OPI_OpenAI.DeleteFile(URL, Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFileDeletion(Result, FileID);
+
+EndProcedure
+
+Procedure OpenAI_GetFileInformation(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Result = OPI_OpenAI.GetFileInformation(URL, Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result, "picture3.png");
+
+EndProcedure
+
+Procedure OpenAI_GetFilesList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Result = OPI_OpenAI.GetFilesList(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "OpenAI");
+    OPI_TestDataRetrieval.Check_Array(Result["data"]);
+
+EndProcedure
+
+Procedure OpenAI_DownloadFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Result = OPI_OpenAI.DownloadFile(URL, Token, FileID);
+
+    // END
+
+    File = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(File);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, File.Size() + 2);
 
 EndProcedure
 
