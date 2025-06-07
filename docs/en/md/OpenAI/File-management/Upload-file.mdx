@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 2
+description: Upload file and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Upload file
+ Uploads a file for further use in other requests
+
+
+
+`Function UploadFile(Val URL, Val Token, Val FileName, Val Data, Val Destination, Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | OpenAI server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | FileName | --name | String | &#x2714; | File name with extension |
+  | Data | --data | String, BinaryData | &#x2714; | Path to file or data |
+  | Destination | --purpose | String | &#x2714; | File purpose: assistants, batch, vision, user_data, evals |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Upload file](https://platform.openai.com/docs/api-reference/files/create)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    File        = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+    FileName    = "picture3.png";
+    Destination = "assistants";
+
+    Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
+```
+ 
+
+
+
+

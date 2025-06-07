@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
+// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
 
@@ -172,7 +172,7 @@
     ОбработатьЗаголовки(ДопЗаголовки, Токен);
 
     Ответ = OPI_ЗапросыHTTP.Get(URL, Параметры, ДопЗаголовки);
-    
+
     Если ТипЗнч(Ответ) = Тип("Массив") Тогда
         Ответ = Новый Структура("object,data", "list", Ответ);
     КонецЕсли;
@@ -316,7 +316,7 @@
     Если ТипЗнч(Ответ) = Тип("Массив") Тогда
         Ответ = Новый Структура("object,data", "list", Ответ);
     КонецЕсли;
-    
+
     Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
 
 КонецФункции
@@ -324,7 +324,7 @@
 
 // Загрузить файл
 // Загружает файл для дальнейшего использования в других запросах
-// 
+//
 // Примечание:
 // Метод в документации API: [Upload file](@platform.openai.com/docs/api-reference/files/create)
 //
@@ -342,7 +342,7 @@
 
     ДополнитьURL(URL, "v1/files");
     ОбработатьЗаголовки(ДопЗаголовки, Токен);
-    
+
     Ответ = OPI_ЗапросыHTTP.НовыйЗапрос()
         .Инициализировать(URL)
         .НачатьЗаписьТелаMultipart()
@@ -351,9 +351,9 @@
         .УстановитьЗаголовки(ДопЗаголовки)
         .ОбработатьЗапрос("POST")
         .ВернутьОтветКакJSONКоллекцию();
-        
+
      Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
-            
+
 КонецФункции
 
 // Получить информацию о файле
@@ -412,7 +412,7 @@
 
 // Удалить файл
 // Удаляет ранее загруженный файл
-// 
+//
 // Примечание:
 // Метод в документации API: [Delete file](@platform.openai.com/docs/api-reference/files/delete)
 //
@@ -434,7 +434,7 @@
     Ответ = OPI_ЗапросыHTTP.Delete(URL, , ДопЗаголовки);
 
     Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
-        
+
 КонецФункции
 
 #КонецОбласти
@@ -487,17 +487,70 @@
 
     Попытка
         Коллекция_ = Новый(ТипЗнч(Коллекция));
-        
+
         Для Каждого КлючЗначение Из Коллекция Цикл
             Коллекция_.Вставить(нРег(КлючЗначение.Ключ), КлючЗначение.Значение)
         КонецЦикла;
-        
+
         Возврат Коллекция_;
-        
+
     Исключение
         Возврат Коллекция;
     КонецПопытки;
-        
+
 КонецФункции
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
+	Return ПолучитьСтруктуруСообщения(Role, Text, Name);
+EndFunction
+
+Function GetAssistantsList(Val URL, Val Token, Val Count = 20, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьСписокАссистентов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function CreateAssistant(Val URL, Val Token, Val Model, Val Name = "", Val Instruction = "", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return СоздатьАссистента(URL, Token, Model, Name, Instruction, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+	Return ПолучитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+EndFunction
+
+Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
+	Return УдалитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+EndFunction
+
+Function GetFilesList(Val URL, Val Token, Val Count = 10000, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
+	Return ПолучитьСписокФайлов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function UploadFile(Val URL, Val Token, Val FileName, Val Data, Val Destination, Val AdditionalHeaders = "") Export
+	Return ЗагрузитьФайл(URL, Token, FileName, Data, Destination, AdditionalHeaders);
+EndFunction
+
+Function GetFileInformation(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+	Return ПолучитьИнформациюОФайле(URL, Token, FileID, AdditionalHeaders);
+EndFunction
+
+Function DownloadFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+	Return СкачатьФайл(URL, Token, FileID, AdditionalHeaders);
+EndFunction
+
+Function DeleteFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
+	Return УдалитьФайл(URL, Token, FileID, AdditionalHeaders);
+EndFunction
+
+#EndRegion
