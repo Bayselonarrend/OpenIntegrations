@@ -1,0 +1,21 @@
+﻿    {
+ "created": 1749314841,
+ "object": "chat.completion",
+ "id": "896f7b86-ec44-47f7-838e-636ea8e03af5",
+ "model": "smolvlm-256m-instruct",
+ "choices": [
+  {
+   "index": 0,
+   "finish_reason": "stop",
+   "message": {
+    "role": "assistant",
+    "content": "2020"
+   }
+  }
+ ],
+ "usage": {
+  "prompt_tokens": 53,
+  "completion_tokens": 5,
+  "total_tokens": 58
+ }
+}
