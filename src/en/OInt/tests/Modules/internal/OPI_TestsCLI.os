@@ -2610,6 +2610,49 @@ EndProcedure
 
 #EndRegion
 
+#Region OpenAI
+
+Procedure CLI_OAI_RequestsProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    CLI_OpenAI_GetResponse(TestParameters);
+    CLI_OpenAI_GetEmbeddings(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OAI_Assistants() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    CLI_OpenAI_CreateAssistant(TestParameters);
+    CLI_OpenAI_RetrieveAssistant(TestParameters);
+    CLI_OpenAI_GetAssistantsList(TestParameters);
+    CLI_OpenAI_DeleteAssistant(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OAI_FileManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+
+    CLI_OpenAI_UploadFile(TestParameters);
+    CLI_OpenAI_GetFileInformation(TestParameters);
+    CLI_OpenAI_GetFilesList(TestParameters);
+    CLI_OpenAI_DownloadFile(TestParameters);
+    CLI_OpenAI_DeleteFile(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -23682,6 +23725,247 @@ Procedure CLI_Ollama_CheckBlob(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CheckBlob (error)", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaError(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region OpenAI
+
+Procedure CLI_OpenAI_GetResponse(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Messages = New Array;
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "What is 1C:Enterprise?"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
+    Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "When the first version was released?"));
+
+    Model = "smolvlm-256m-instruct";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("model" , Model);
+    Options.Insert("msgs"  , Messages);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetResponse", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIResponse(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetEmbeddings(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Text  = "What is 1C:Enterprise?";
+    Model = "text-embedding-ada-002";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("model" , Model);
+    Options.Insert("input" , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetEmbeddings", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEmbeddings", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIEmbeddings(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_CreateAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Instruction = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
+    Model       = "smolvlm-256m-instruct";
+    Name        = "Math tutor";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("model" , Model);
+    Options.Insert("name"  , Name);
+    Options.Insert("inst"  , Instruction);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateAssistant", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistant(Result, Name);
+
+    AssistantID = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("OpenAI_Assistant", AssistantID);
+    OPI_Tools.AddField("OpenAI_Assistant", AssistantID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_OpenAI_DeleteAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("id"    , AssistantID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteAssistant", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistantDeletion(Result, AssistantID);
+
+EndProcedure
+
+Procedure CLI_OpenAI_RetrieveAssistant(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("id"    , AssistantID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "RetrieveAssistant", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RetrieveAssistant", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIAssistant(Result, "Math tutor");
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetAssistantsList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Count                = 2;
+    AdditionalParameters = New Structure("after,order", "asst_2", "desc");
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("token"  , Token);
+    Options.Insert("limit"  , Count);
+    Options.Insert("options", AdditionalParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantsList", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAssistantsList", "OpenAI");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 2);
+
+EndProcedure
+
+Procedure CLI_OpenAI_UploadFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "picture3.png";
+    Destination = "assistants";
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("token"  , Token);
+    Options.Insert("name"   , FileName);
+    Options.Insert("data"   , File);
+    Options.Insert("purpose", Destination);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result, FileName, File.Size() + 2, Destination);
+
+    FileID = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("OpenAI_File", FileID);
+    OPI_Tools.AddField("OpenAI_File", FileID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_OpenAI_DeleteFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("id"    , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteFile", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFileDeletion(Result, FileID);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetFileInformation(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("id"    , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFileInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFileInformation", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result, "picture3.png");
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetFilesList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFilesList", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFilesList", "OpenAI");
+    OPI_TestDataRetrieval.Check_Array(Result["data"]);
+
+EndProcedure
+
+Procedure CLI_OpenAI_DownloadFile(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    FileID = FunctionParameters["OpenAI_File"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("id"    , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DownloadFile", Options);
+
+    File = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(File);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "OpenAI");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, File.Size() + 2);
 
 EndProcedure
 
