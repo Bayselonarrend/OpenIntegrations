@@ -1907,6 +1907,26 @@ def test_openai(){
 					powershell encoding: 'UTF-8', script:'./oint.exe openai УдалитьАссистента --url "test" --token "test" --id "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСписокФайлов --url "test" --token "test" --limit "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ЗагрузитьФайл --url "test" --token "test" --name "test" --data "test" --purpose "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьИнформациюОФайле --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai СкачатьФайл --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai УдалитьФайл --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
 }
 
 
