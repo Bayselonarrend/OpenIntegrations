@@ -1,0 +1,21 @@
+﻿    {
+ "object": "list",
+ "data": [
+  {
+   "id": "asst_21",
+   "object": "assistant",
+   "created": 1749314849,
+   "model": "smolvlm-256m-instruct",
+   "name": "Math tutor",
+   "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
+  },
+  {
+   "id": "asst_4",
+   "object": "assistant",
+   "created": 1749242260,
+   "model": "smolvlm-256m-instruct",
+   "name": "Math tutor",
+   "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
+  }
+ ]
+}
