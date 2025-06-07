@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_Компоненты.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_Компоненты.os
 
 // MIT License
 
@@ -189,28 +189,3 @@
 КонецПроцедуры
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function GetAddIn(Val AddInName, Val Class = "Main") Export
-	Return ПолучитьКомпоненту(AddInName, Class);
-EndFunction
-
-Function IsAddIn(Val Value) Export
-	Return ЭтоКомпонента(Value);
-EndFunction
-
-Function SetTls(Val AddIn, Val Tls) Export
-	Return УстановитьTls(AddIn, Tls);
-EndFunction
-
-Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
-EndFunction
-
-Function AddInsFolderOS() Export
-	Return КаталогКомпонентOS();
-EndFunction
-
-#EndRegion
