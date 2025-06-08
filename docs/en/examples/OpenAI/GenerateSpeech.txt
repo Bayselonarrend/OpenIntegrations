@@ -1,0 +1,9 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
+    Model = "tts-1";
+
+    AdditionalParameters = New Structure("response_format", "wav");
+
+    Result = OPI_OpenAI.GenerateSpeech(URL, Token, Model, Text, , AdditionalParameters);

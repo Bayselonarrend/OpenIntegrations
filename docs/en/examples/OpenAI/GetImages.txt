@@ -1,0 +1,6 @@
+﻿    URL   = "https://api.vsegpt.ru/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Model       = "img2img-google/flash-edit";
+    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 2);
+    Result      = OPI_OpenAI.GetImages(URL, Token, Model, Description);

@@ -2,7 +2,7 @@
     Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
     File        = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    FileName    = "picture3.png";
+    FileName    = "picture4.png";
     Destination = "assistants";
 
     Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
