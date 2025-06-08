@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 2
+description: Create transcription and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create transcription
+ Creates a text transcription for the selected audio file
+
+
+
+`Function CreateTranscription(Val URL, Val Token, Val Model, Val Audio, Val MIME = "audio/mpeg", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | OpenAI server URL |
+  | Token | --token | String | &#x2714; | OpenAI authorization token |
+  | Model | --model | String | &#x2714; | Models name |
+  | Audio | --audio | String, BinaryData | &#x2714; | Audio file |
+  | MIME | --type | String | &#x2716; | MIME type of audio file |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional request parameters, if necessary |
+  | AdditionalHeaders | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Method at API documentation: [Create transcription](https://platform.openai.com/docs/api-reference/audio/createTranscription)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Audio = "C:\Users\Administrator\AppData\Local\Temp\v8_295D_36.wav";
+    Model = "whisper-1";
+
+    Result = OPI_OpenAI.CreateTranscription(URL, Token, Model, Audio, "audio/wav");
+```
+ 
+
+
+
+

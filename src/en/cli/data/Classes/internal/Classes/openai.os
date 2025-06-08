@@ -74,6 +74,57 @@
     NewLine = CompositionTable.Add();
     NewLine.Library  = "openai";
     NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImages";
+    NewLine.SearchMethod = "GETIMAGES";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Generates images based on the specified description";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImages";
+    NewLine.SearchMethod = "GETIMAGES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImages";
+    NewLine.SearchMethod = "GETIMAGES";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImages";
+    NewLine.SearchMethod = "GETIMAGES";
+    NewLine.Parameter    = "--descr";
+    NewLine.Description    = "Generation parameters. See GetImageDescriptionStructure";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImages";
+    NewLine.SearchMethod = "GETIMAGES";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
     NewLine.Method       = "GetEmbeddings";
     NewLine.SearchMethod = "GETEMBEDDINGS";
     NewLine.Parameter    = "--url";
@@ -160,6 +211,88 @@
     NewLine.SearchMethod = "GETMESSAGESTRUCTURE";
     NewLine.Parameter    = "--name";
     NewLine.Description    = "Name of participant in conversation (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageMessageStructure";
+    NewLine.SearchMethod = "GETIMAGEMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--role";
+    NewLine.Description    = "Message source: system, user, developer";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the message structure based on the image for the request message list";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageMessageStructure";
+    NewLine.SearchMethod = "GETIMAGEMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "Image file ID. See UploadFile";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageMessageStructure";
+    NewLine.SearchMethod = "GETIMAGEMESSAGESTRUCTURE";
+    NewLine.Parameter    = "--prompt";
+    NewLine.Description    = "Input text query for image processing (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageDescriptionStructure";
+    NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
+    NewLine.Parameter    = "--prompt";
+    NewLine.Description    = "Text description of the image for generation";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Get image description structure for generation";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageDescriptionStructure";
+    NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Number of images to generate";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageDescriptionStructure";
+    NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
+    NewLine.Parameter    = "--bg";
+    NewLine.Description    = "Generation background option: transparent, opaque, auto (optional, def. val. - auto)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageDescriptionStructure";
+    NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
+    NewLine.Parameter    = "--size";
+    NewLine.Description    = "Size option for generated images (optional, def. val. - auto)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetImageDescriptionStructure";
+    NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
 
 
@@ -600,6 +733,148 @@
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "Audio processing";
+    NewLine.MethodDescription   = "Generates audio with the specified text for speech synthesis";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--input";
+    NewLine.Description    = "Text for speech synthesis";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--voice";
+    NewLine.Description    = "Voice type: alloy, ash, ballad, coral, echo, etc.. (optional, def. val. - alloy)";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GenerateSpeech";
+    NewLine.SearchMethod = "GENERATESPEECH";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "Audio processing";
+    NewLine.MethodDescription   = "Creates a text transcription for the selected audio file";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--model";
+    NewLine.Description    = "Models name";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--audio";
+    NewLine.Description    = "Audio file";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "MIME type of audio file (optional, def. val. - audio/mpeg)";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Audio processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "CreateTranscription";
+    NewLine.SearchMethod = "CREATETRANSCRIPTION";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Audio processing";
 
     Return CompositionTable;
 EndFunction

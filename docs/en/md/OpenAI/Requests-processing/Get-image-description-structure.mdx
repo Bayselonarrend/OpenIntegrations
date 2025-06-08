@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 6
+description: Get image description structure and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get image description structure
+ Get image description structure for generation
+
+
+
+`Function GetImageDescriptionStructure(Val Prompt, Val Count, Val Background = "auto", Val Size = "auto", Val AdditionalParameters = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Prompt | --prompt | String | &#x2714; | Text description of the image for generation |
+  | Count | --amount | Number | &#x2714; | Number of images to generate |
+  | Background | --bg | String | &#x2716; | Generation background option: transparent, opaque, auto |
+  | Size | --size | String | &#x2716; | Size option for generated images |
+  | AdditionalParameters | --options | Structure Of KeyAndValue | &#x2716; | Additional request parameters, if necessary |
+
+  
+  Returns:  Structure - Fields structure
+
+<br/>
+
+:::tip
+The set of fields and their interpretation may vary depending on the model used
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

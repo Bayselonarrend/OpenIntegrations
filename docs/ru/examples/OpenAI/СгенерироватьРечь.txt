@@ -1,0 +1,9 @@
+﻿    URL   = "https://api.athenaeum.digital:1122/";
+    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
+    Модель = "tts-1";
+
+    ДопПараметры = Новый Структура("response_format", "wav");
+
+    Результат = OPI_OpenAI.СгенерироватьРечь(URL, Токен, Модель, Текст, , ДопПараметры);

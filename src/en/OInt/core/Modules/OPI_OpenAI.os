@@ -81,6 +81,42 @@ Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val Additional
 
 EndFunction
 
+// Get images
+// Generates images based on the specified description
+//
+// Note
+// Method at API documentation: [Create image](@platform.openai.com/docs/api-reference/images/create)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// Model - String - Models name - model
+// Description - Structure Of KeyAndValue - Generation parameters. See GetImageDescriptionStructure - descr
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetImages(Val URL, Val Token, Val Model, Val Description, Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetKeyValueCollection(Description);
+
+    CompleteURL(URL, "v1/images/generations");
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("model", Model, "String", Parameters);
+
+    For Each Field In Description Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
+
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
 // Get embeddings
 // Gets the embeddings for the given entries
 //
@@ -115,7 +151,7 @@ Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalPa
 
 EndFunction
 
-// Get context message structure
+// Get message structure
 // Receives the message structure for the request message list
 //
 // Parameters:
@@ -134,6 +170,70 @@ Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
     OPI_Tools.AddField("name"   , Name , "String", FieldsStructure);
 
     Return FieldsStructure;
+
+EndFunction
+
+// Get image message structure
+// Gets the message structure based on the image for the request message list
+//
+// Parameters:
+// Role - String - Message source: system, user, developer - role
+// FileID - String - Image file ID. See UploadFile - file
+// Text - String - Input text query for image processing - prompt
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetImageMessageStructure(Val Role, Val FileID, Val Text = "") Export
+
+    OPI_TypeConversion.GetLine(FileID);
+    OPI_TypeConversion.GetLine(Text);
+
+    FieldsStructure = New Structure;
+    ContentArray    = New Array;
+
+    ContentArray.Add(New Structure("type,file_id", "input_image", FileID));
+
+    If ValueIsFilled(Text) Then
+        ContentArray.Add(New Structure("type,text", "input_text", Text));
+    EndIf;
+
+    OPI_Tools.AddField("role"   , Role        , "String", FieldsStructure);
+    OPI_Tools.AddField("content", ContentArray, "Array" , FieldsStructure);
+
+    Return FieldsStructure;
+
+EndFunction
+
+// Get image description structure
+// Get image description structure for generation
+//
+// Note
+// The set of fields and their interpretation may vary depending on the model used
+//
+// Parameters:
+// Prompt - String - Text description of the image for generation - prompt
+// Count - Number - Number of images to generate - amount
+// Background - String - Generation background option: transparent, opaque, auto - bg
+// Size - String - Size option for generated images - size
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+//
+// Returns:
+// Structure - Fields structure
+Function GetImageDescriptionStructure(Val Prompt
+    , Val Count
+    , Val Background = "auto"
+    , Val Size = "auto"
+    , Val AdditionalParameters = "") Export
+
+    Description = New Structure;
+    OPI_Tools.AddField("prompt"    , Prompt     , "String" , Description);
+    OPI_Tools.AddField("n"         , Count      , "Number" , Description);
+    OPI_Tools.AddField("background", Background , "String" , Description);
+    OPI_Tools.AddField("size"      , Size       , "String" , Description);
+
+    ProcessParameters(Description, AdditionalParameters);
+
+    Return Description;
 
 EndFunction
 
@@ -321,7 +421,6 @@ Function GetFilesList(Val URL
 
 EndFunction
 
-
 // Upload file
 // Uploads a file for further use in other requests
 //
@@ -439,6 +538,97 @@ EndFunction
 
 #EndRegion
 
+#Region AudioProcessing
+
+// Generate speech
+// Generates audio with the specified text for speech synthesis
+//
+// Note
+// Method at API documentation: [Create speech](@platform.openai.com/docs/api-reference/audio/createSpeech)
+// Available voices may vary depending on the selected model
+// The audio file format of the response can be changed by adding `response_format` in additional parameters.^^
+// Available formats: mp3 (default), opus, aac, flac, wav, pcm
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// Model - String - Models name - model
+// Text - String - Text for speech synthesis - input
+// Voice - String - Voice type: alloy, ash, ballad, coral, echo, etc.. - voice
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GenerateSpeech(Val URL
+    , Val Token
+    , Val Model
+    , Val Text
+    , Val Voice = "alloy"
+    , Val AdditionalParameters = ""
+    , Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/audio/speech");
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("model", Model , "String", Parameters);
+    OPI_Tools.AddField("input", Text  , "String", Parameters);
+    OPI_Tools.AddField("voice", Voice , "String", Parameters);
+
+    ProcessParameters(Parameters, AdditionalParameters);
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, AdditionalHeaders);
+
+    Return Response;
+
+EndFunction
+
+// Create transcription
+// Creates a text transcription for the selected audio file
+//
+// Note
+// Method at API documentation: [Create transcription](@platform.openai.com/docs/api-reference/audio/createTranscription)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// Model - String - Models name - model
+// Audio - String, BinaryData - Audio file - audio
+// MIME - String - MIME type of audio file - type
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CreateTranscription(Val URL
+    , Val Token
+    , Val Model
+    , Val Audio
+    , Val MIME = "audio/mpeg"
+    , Val AdditionalParameters = ""
+    , Val AdditionalHeaders = "") Export
+
+    OPI_TypeConversion.GetLine(MIME);
+
+    CompleteURL(URL, "v1/audio/transcriptions");
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file", "audio.bin", Audio, MIME)
+        .AddMultipartFormDataField("model", Model)
+        .SetHeaders(AdditionalHeaders)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -509,12 +699,24 @@ Function ПолучитьОтвет(Val URL, Val Токен, Val Модель, V
 	Return GetResponse(URL, Токен, Модель, Сообщения, ДопПараметры, ДопЗаголовки);
 EndFunction
 
+Function ПолучитьКартинки(Val URL, Val Токен, Val Модель, Val Описание, Val ДопЗаголовки = "") Export
+	Return GetImages(URL, Токен, Модель, Описание, ДопЗаголовки);
+EndFunction
+
 Function ПолучитьПредставления(Val URL, Val Токен, Val Модель, Val Текст, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
 	Return GetEmbeddings(URL, Токен, Модель, Текст, ДопПараметры, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьСтруктуруСообщения(Val Роль, Val Текст, Val Имя = "") Export
 	Return GetMessageStructure(Роль, Текст, Имя);
+EndFunction
+
+Function ПолучитьСтруктуруСообщенияКартинки(Val Роль, Val IDФайла, Val Текст = "") Export
+	Return GetImageMessageStructure(Роль, IDФайла, Текст);
+EndFunction
+
+Function ПолучитьСтруктуруОписанияКартинок(Val Промпт, Val Количество, Val Фон = "auto", Val Размер = "auto", Val ДопПараметры = "") Export
+	Return GetImageDescriptionStructure(Промпт, Количество, Фон, Размер, ДопПараметры);
 EndFunction
 
 Function ПолучитьСписокАссистентов(Val URL, Val Токен, Val Количество = 20, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
@@ -551,6 +753,14 @@ EndFunction
 
 Function УдалитьФайл(Val URL, Val Токен, Val IDФайла, Val ДопЗаголовки = "") Export
 	Return DeleteFile(URL, Токен, IDФайла, ДопЗаголовки);
+EndFunction
+
+Function СгенерироватьРечь(Val URL, Val Токен, Val Модель, Val Текст, Val Голос = "alloy", Val ДопПараметры = "", Val ДопЗаголовки = "") Export
+	Return GenerateSpeech(URL, Токен, Модель, Текст, Голос, ДопПараметры, ДопЗаголовки);
+EndFunction
+
+Function СоздатьТранскрипцию(Val URL, Val Токен, Val Модель, Val Аудио, Val MIME = "audio/mpeg", Val ДопПараметры = "", Val ДопЗаголовки = "") Export
+	Return CreateTranscription(URL, Токен, Модель, Аудио, MIME, ДопПараметры, ДопЗаголовки);
 EndFunction
 
 #EndRegion
