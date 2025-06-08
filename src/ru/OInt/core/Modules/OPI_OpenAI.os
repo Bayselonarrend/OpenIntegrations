@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
+﻿// OneScript: ./OInt/core/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
 
@@ -81,6 +81,42 @@
 
 КонецФункции
 
+// Получить картинки
+// Генерирует картинки по указанному описанию
+// 
+// Примечание:
+// Метод в документации API: [Create image](@platform.openai.com/docs/api-reference/images/create)
+//
+// Параметры:
+//  URL          - Строка                        - URL сервера OpenAI                                         - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                                   - token
+//  Модель       - Строка                        - Имя модели                                                 - model
+//  Описание     - Структура Из КлючИЗначение    - Параметры генерации. См. ПолучитьСтруктуруОписанияКартинок - descr 
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо                    - headers
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат обработки
+Функция ПолучитьКартинки(Знач URL, Знач Токен, Знач Модель, Знач Описание, Знач ДопЗаголовки = "") Экспорт
+
+    OPI_ПреобразованиеТипов.ПолучитьКоллекциюКлючИЗначение(Описание);
+    
+    ДополнитьURL(URL, "v1/images/generations");
+
+    Параметры = Новый Структура;
+    OPI_Инструменты.ДобавитьПоле("model", Модель, "Строка", Параметры);
+
+    Для Каждого Поле Из Описание Цикл
+        Параметры.Вставить(Поле.Ключ, Поле.Значение);    
+    КонецЦикла;
+    
+    ОбработатьЗаголовки(ДопЗаголовки, Токен);
+
+    Ответ = OPI_ЗапросыHTTP.PostСТелом(URL, Параметры, ДопЗаголовки);
+
+    Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
+        
+КонецФункции
+
 // Получить представления
 // Получает представления (embeddings) для заданных вводных
 //
@@ -115,7 +151,7 @@
 
 КонецФункции
 
-// Получить структуру сообщения контекста
+// Получить структуру сообщения
 // Получает структуру сообщения для списка сообщений запроса
 //
 // Параметры:
@@ -135,6 +171,70 @@
 
     Возврат СтруктураПолей;
 
+КонецФункции
+
+// Получить структуру сообщения картинки
+// Получает структура сообщения на основе изображения для списка сообщений запроса
+// 
+// Параметры:
+//  Роль     - Строка - Источник сообщения: system, user, developer  - role
+//  IDФайла  - Строка - ID файла картинки. См. ЗагрузитьФайл         - file
+//  Текст    - Строка - Вводный текст запроса для обработки картинки - prompt 
+// 
+// Возвращаемое значение:
+//  Структура Из КлючИЗначение - Структура полей
+Функция ПолучитьСтруктуруСообщенияКартинки(Знач Роль, Знач IDФайла, Знач Текст = "") Экспорт
+
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDФайла);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
+    
+    СтруктураПолей = Новый Структура;
+    МассивКонтента = Новый Массив;
+
+    МассивКонтента.Добавить(Новый Структура("type,file_id", "input_image", IDФайла));
+    
+    Если ЗначениеЗаполнено(Текст) Тогда
+        МассивКонтента.Добавить(Новый Структура("type,text", "input_text", Текст));    
+    КонецЕсли;
+    
+    OPI_Инструменты.ДобавитьПоле("role"   , Роль          , "Строка", СтруктураПолей);
+    OPI_Инструменты.ДобавитьПоле("content", МассивКонтента, "Массив", СтруктураПолей);
+
+    Возврат СтруктураПолей;
+        
+КонецФункции
+
+// Получить структуру описания картинок
+// Получить структуру описания картинок для генерации
+// 
+// Примечание:
+// Набор полей и их интерпретация может отличаться в зависимости от используемой модели
+// 
+// Параметры:
+//  Промпт       - Строка                     - Текстовое описание картинки для генерации         - prompt
+//  Количество   - Число                      - Количество изображений для генерации              - amount
+//  Фон          - Строка                     - Вариант генерации фона: transparent, opaque, auto - bg
+//  Размер       - Строка                     - Вариант размера сгенерированных изображений       - size
+//  ДопПараметры - Структура Из КлючИЗначение - Доп. параметры запроса, если необходимо           - options
+// 
+// Возвращаемое значение:
+//  Структура -  Структура полей
+Функция ПолучитьСтруктуруОписанияКартинок(Знач Промпт
+    , Знач Количество
+    , Знач Фон = "auto"
+    , Знач Размер = "auto"
+    , Знач ДопПараметры = "") Экспорт
+    
+    Описание = Новый Структура;
+    OPI_Инструменты.ДобавитьПоле("prompt"    , Промпт    , "Строка", Описание);
+    OPI_Инструменты.ДобавитьПоле("n"         , Количество, "Число" , Описание);
+    OPI_Инструменты.ДобавитьПоле("background", Фон       , "Строка", Описание);
+    OPI_Инструменты.ДобавитьПоле("size"      , Размер    , "Строка", Описание);
+    
+    ОбработатьПараметры(Описание, ДопПараметры);
+
+    Возврат Описание;
+    
 КонецФункции
 
 #КонецОбласти
@@ -321,7 +421,6 @@
 
 КонецФункции
 
-
 // Загрузить файл
 // Загружает файл для дальнейшего использования в других запросах
 //
@@ -439,6 +538,97 @@
 
 #КонецОбласти
 
+#Область РаботаСАудио
+
+// Сгенерировать речь
+// Генерирует аудио с озвучиванием указанного текста
+// 
+// Примечание:
+// Метод в документации API: [Create speech](@platform.openai.com/docs/api-reference/audio/createSpeech)
+// Доступные голоса могут отличаться в зависимости от выбранной модели
+// Формат аудиофайла ответа можно изменить при помощи добавления `response_format` в доп. параметры.^^
+// Доступные форматы: mp3 (по умолчанию), opus, aac, flac, wav, pcm
+//
+// Параметры:
+//  URL          - Строка                        - URL сервера OpenAI                                - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                          - token
+//  Модель       - Строка                        - Имя модели                                        - model
+//  Текст        - Строка                        - Текст для озвучивания                             - input
+//  Голос        - Строка                        - Вид голоса: alloy, ash, ballad, coral, echo и др. - voice
+//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо           - options
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо           - headers
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат обработки
+Функция СгенерироватьРечь(Знач URL
+    , Знач Токен
+    , Знач Модель
+    , Знач Текст
+    , Знач Голос = "alloy"
+    , Знач ДопПараметры = ""
+    , Знач ДопЗаголовки = "") Экспорт
+
+    ДополнитьURL(URL, "v1/audio/speech");
+
+    Параметры = Новый Структура;
+    OPI_Инструменты.ДобавитьПоле("model", Модель, "Строка", Параметры);
+    OPI_Инструменты.ДобавитьПоле("input", Текст , "Строка", Параметры);
+    OPI_Инструменты.ДобавитьПоле("voice", Голос , "Строка", Параметры);
+
+    ОбработатьПараметры(Параметры, ДопПараметры);
+    ОбработатьЗаголовки(ДопЗаголовки, Токен);
+
+    Ответ = OPI_ЗапросыHTTP.PostСТелом(URL, Параметры, ДопЗаголовки);
+
+    Возврат Ответ;
+        
+КонецФункции 
+
+// Создать транскрипцию
+// Создает текстовую транскрипцию для выбранного аудио файла
+// 
+// Примечание:
+// Метод в документации API: [Create transcription](@platform.openai.com/docs/api-reference/audio/createTranscription)
+//
+// Параметры:
+//  URL          - Строка                        - URL сервера OpenAI                      - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                - token
+//  Модель       - Строка                        - Имя модели                              - model
+//  Аудио        - Строка, ДвоичныеДанные        - Аудио файл                              - audio
+//  MIME         - Строка                        - MIME тип аудио файла                    - type
+//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо - options
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо - headers
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат обработки
+Функция СоздатьТранскрипцию(Знач URL
+    , Знач Токен
+    , Знач Модель
+    , Знач Аудио
+    , Знач MIME = "audio/mpeg"
+    , Знач ДопПараметры = ""
+    , Знач ДопЗаголовки = "") Экспорт
+
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(MIME);
+    
+    ДополнитьURL(URL, "v1/audio/transcriptions");
+    ОбработатьЗаголовки(ДопЗаголовки, Токен);
+
+    Ответ = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать(URL)
+        .НачатьЗаписьТелаMultipart()
+        .ДобавитьФайлMultipartFormData("file", "audio.bin", Аудио, MIME)
+        .ДобавитьПолеMultipartFormData("model", Модель)
+        .УстановитьЗаголовки(ДопЗаголовки)
+        .ОбработатьЗапрос("POST")
+        .ВернутьОтветКакJSONКоллекцию();
+
+    Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
+        
+КонецФункции
+
+#КонецОбласти
+
 #КонецОбласти
 
 #Область СлужебныеПроцедурыИФункции
@@ -501,56 +691,3 @@
 КонецФункции
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
-EndFunction
-
-Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
-EndFunction
-
-Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
-	Return ПолучитьСтруктуруСообщения(Role, Text, Name);
-EndFunction
-
-Function GetAssistantsList(Val URL, Val Token, Val Count = 20, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокАссистентов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
-EndFunction
-
-Function CreateAssistant(Val URL, Val Token, Val Model, Val Name = "", Val Instruction = "", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return СоздатьАссистента(URL, Token, Model, Name, Instruction, AdditionalParameters, AdditionalHeaders);
-EndFunction
-
-Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
-	Return ПолучитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
-EndFunction
-
-Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
-	Return УдалитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
-EndFunction
-
-Function GetFilesList(Val URL, Val Token, Val Count = 10000, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокФайлов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
-EndFunction
-
-Function UploadFile(Val URL, Val Token, Val FileName, Val Data, Val Destination, Val AdditionalHeaders = "") Export
-	Return ЗагрузитьФайл(URL, Token, FileName, Data, Destination, AdditionalHeaders);
-EndFunction
-
-Function GetFileInformation(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return ПолучитьИнформациюОФайле(URL, Token, FileID, AdditionalHeaders);
-EndFunction
-
-Function DownloadFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return СкачатьФайл(URL, Token, FileID, AdditionalHeaders);
-EndFunction
-
-Function DeleteFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return УдалитьФайл(URL, Token, FileID, AdditionalHeaders);
-EndFunction
-
-#EndRegion
