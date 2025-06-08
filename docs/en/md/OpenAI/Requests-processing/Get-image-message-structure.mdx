@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 5
+description: Get image message structure and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get image message structure
+ Gets the message structure based on the image for the request message list
+
+
+
+`Function GetImageMessageStructure(Val Role, Val FileID, Val Text = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Role | --role | String | &#x2714; | Message source: system, user, developer |
+  | FileID | --file | String | &#x2714; | Image file ID. See UploadFile |
+  | Text | --prompt | String | &#x2716; | Input text query for image processing |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "https://api.athenaeum.digital:1122/";
+    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+    Image = "file-10";
+
+    Result = OPI_OpenAI.GetImageMessageStructure("user", Image, "What is in this image?");
+```
+ 
+
+
+
+

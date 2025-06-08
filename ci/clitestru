@@ -1884,11 +1884,23 @@ def test_openai(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьКартинки --url "test" --token "test" --model "test" --descr "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьПредставления --url "test" --token "test" --model "test" --input "test" --options "test" --headers "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСтруктуруСообщения --role "test" --text "test" --name "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСтруктуруСообщенияКартинки --role "test" --file "test" --prompt "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСтруктуруОписанияКартинок --prompt "test" --amount "test" --bg "test" --size "test" --options "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1925,6 +1937,14 @@ def test_openai(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe openai УдалитьФайл --url "test" --token "test" --id "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai СгенерироватьРечь --url "test" --token "test" --model "test" --input "test" --voice "test" --options "test" --headers "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai СоздатьТранскрипцию --url "test" --token "test" --model "test" --audio "test" --type "test" --options "test" --headers "test" --debug --test '
                }
 
 }

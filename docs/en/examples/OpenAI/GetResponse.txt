@@ -1,6 +1,8 @@
 ﻿    URL   = "https://api.athenaeum.digital:1122/";
     Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
+    // Text messages
+
     Messages = New Array;
     Messages.Add(OPI_OpenAI.GetMessageStructure("user"     , "What is 1C:Enterprise?"));
     Messages.Add(OPI_OpenAI.GetMessageStructure("assistant", "1C:Enterprise is a full-stack, low-code platform"));
@@ -9,3 +11,23 @@
     Model = "smolvlm-256m-instruct";
 
     Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
+
+    // Pictures
+
+    Model       = "moondream2-20250414";
+    File        = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+    FileName    = StrTemplate("%1.png", String(New UUID()));
+    Destination = "user_data";
+
+    Messages = New Array;
+
+    ImageUpload = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
+    ImageID     = ImageUpload["id"];
+
+    Description = OPI_OpenAI.GetImageMessageStructure("user", ImageID, "What is in this image?");
+
+    Messages.Add(Description);
+
+    Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
+
+    OPI_OpenAI.DeleteFile(URL, Token, ImageID);
