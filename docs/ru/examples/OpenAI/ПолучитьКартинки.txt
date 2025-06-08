@@ -1,0 +1,6 @@
+﻿    URL   = "https://api.vsegpt.ru/";
+    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+
+    Модель    = "img2img-google/flash-edit";
+    Описание  = OPI_OpenAI.ПолучитьСтруктуруОписанияКартинок("Yellow alpaca", 2);
+    Результат = OPI_OpenAI.ПолучитьКартинки(URL, Токен, Модель, Описание);
