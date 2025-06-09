@@ -257,6 +257,63 @@ Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
 
 EndFunction
 
+// Add table column
+// Adds a new column to an existing table
+//
+// Parameters:
+// Table - String - Table name - table
+// Name - String - Column name - name
+// DataType - String - Column data type - type
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.AddTableColumn(OPI_SQLite, Table, Name, DataType, Connection);
+    Return Result;
+
+EndFunction
+
+// Delete table column
+// Deletes a column from the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Name - String - Column name - name
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteTableColumn(Val Table, Val Name, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTableColumn(OPI_SQLite, Table, Name, Connection);
+    Return Result;
+
+EndFunction
+
+// Ensure table
+// Creates a new table if it does not exist or updates the composition of columns in an existing table
+//
+// Note
+// As a result of changing the table structure, data may be lost!^^
+// It is recommended to test this method on test data beforehand
+// This function does not update the data type of existing columns
+//
+// Parameters:
+// Table - String - Table name - table
+// ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.EnsureTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
+    Return Result;
+
+EndFunction
+
 // Add rows
 // Adds new rows to the table
 //
@@ -405,6 +462,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "?");
     Features.Insert("DBMS"               , "sqlite");
+    Features.Insert("ColumnField"        , "name");
 
     Return Features;
 

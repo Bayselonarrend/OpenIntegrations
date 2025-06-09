@@ -95,6 +95,154 @@ Function CreateTable(Val Module
 
 EndFunction
 
+Function AddTableColumn(Val Module
+    , Val Table
+    , Val Name
+    , Val DataType
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
+
+    Scheme = NewSQLScheme("ALTERTABLEADD", Module);
+
+    SetTableName(Scheme, Table);
+
+    SetCustomField(Scheme, "name" , Name    , "String");
+    SetCustomField(Scheme, "dtype", DataType, "String");
+
+    Request = FormSQLText(Scheme);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
+
+    Return Result;
+
+EndFunction
+
+Function DeleteTableColumn(Val Module
+    , Val Table
+    , Val Name
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
+
+    Scheme = NewSQLScheme("ALTERTABLEDROP", Module);
+
+    SetTableName(Scheme, Table);
+    SetCustomField(Scheme, "name", Name, "String");
+
+    Request = FormSQLText(Scheme);
+    Result  = ExecuteSQLQuery(Module, Request, , , Connection, Tls);
+
+    Return Result;
+
+EndFunction
+
+Function EnsureTable(Val Module
+    , Val Table
+    , Val ColoumnsStruct
+    , Val Connection = ""
+    , Val Tls        = Undefined) Export
+
+    ResultStrucutre = New Structure("result", True);
+
+    Connection  = CreateConnection(Module, Connection, Tls);
+    ProblemStep = ProcessRecordsStart(Module, True, Connection);
+
+    If ValueIsFilled(ProblemStep) Then
+        Return ProblemStep;
+    EndIf;
+
+    Try
+
+        TableDescription = GetTableStructure(Module, Table, Connection, Tls);
+
+        If Not TableDescription["result"] Then
+            Return TableDescription;
+        EndIf;
+
+        TableColumns = TableDescription["data"];
+
+        If Not ValueIsFilled(TableColumns) Then
+            ResultStrucutre = CreateTable(Module, Table, ColoumnsStruct, Connection, Tls);
+
+        Else
+
+            FoundMapping = New Map;
+            FieldName    = Module.GetFeatures()["ColumnField"];
+
+            DeleteCode = 0;
+            AddCode    = 1;
+            IgnoreCode = 2;
+
+            For Each Coloumn In TableColumns Do
+
+                ColumnName = Coloumn[FieldName];
+
+                If Not ValueIsFilled(ColumnName) Then
+                    Continue;
+                Else
+                    FoundMapping.Insert(ColumnName, DeleteCode);
+                EndIf;
+
+            EndDo;
+
+            If FoundMapping.Count() = 0 Then
+                ResponseMapping     = New Map;
+                ResponseMapping.Insert("result", "false");
+                ResponseMapping.Insert("error" , "Unsupported table schema type");
+                Return ResponseMapping;
+            EndIf;
+
+            For Each RequiredColumn In ColoumnsStruct Do
+
+                ColumnName = RequiredColumn.Key;
+                Exist      = FoundMapping.Get(ColumnName) <> Undefined;
+                Action     = ?(Exist, IgnoreCode, AddCode);
+
+                FoundMapping.Insert(ColumnName, Action);
+
+            EndDo;
+
+            For Each SchemaPart In FoundMapping Do
+
+                ActionCode = SchemaPart.Value;
+                ColumnName = SchemaPart.Key;
+
+                If ActionCode = 0 Then
+
+                    Result = DeleteTableColumn(Module, Table, ColumnName, Connection, Tls);
+
+                ElsIf ActionCode = 1 Then
+
+                    DataType = ColoumnsStruct[ColumnName];
+                    Result   = AddTableColumn(Module, Table, ColumnName, DataType, Connection, Tls);
+
+                Else
+                    Continue;
+                EndIf;
+
+                If Not Result["result"] Then
+                    Raise Result["error"];
+                EndIf;
+
+            EndDo;
+
+        EndIf;
+
+        Completion = Module.ExecuteSQLQuery("COMMIT;", , , Connection);
+        ResultStrucutre.Insert("commit", Completion);
+
+    Except
+
+        Rollback = Module.ExecuteSQLQuery("ROLLBACK;", , , Connection);
+
+        ResultStrucutre.Insert("result"  , False);
+        ResultStrucutre.Insert("error"   , ErrorDescription());
+        ResultStrucutre.Insert("rollback", Rollback);
+
+    EndTry;
+
+    Return ResultStrucutre;
+
+EndFunction
+
 Function AddRecords(Val Module
     , Val Table
     , Val DataArray
@@ -304,6 +452,14 @@ Function NewSQLScheme(Val Action, Val Module = Undefined)
 
         Scheme = EmptySchemeTableSchema();
 
+    ElsIf Action = "ALTERTABLEADD" Then
+
+        Scheme = EmptySchemeAlterTableAdd();
+
+    ElsIf Action = "ALTERTABLEDROP" Then
+
+        Scheme = EmptySchemeAlterTableDrop();
+
     Else
 
         Scheme = New Structure;
@@ -435,6 +591,29 @@ Function EmptySchemeTableSchema()
 
 EndFunction
 
+Function EmptySchemeAlterTableAdd()
+
+    Scheme = New Structure("type", "ALTERTABLEADD");
+
+    Scheme.Insert("table", "");
+    Scheme.Insert("name" , "");
+    Scheme.Insert("dtype", "");
+
+    Return Scheme;
+
+EndFunction
+
+Function EmptySchemeAlterTableDrop()
+
+    Scheme = New Structure("type", "ALTERTABLEDROP");
+
+    Scheme.Insert("table", "");
+    Scheme.Insert("name" , "");
+
+    Return Scheme;
+
+EndFunction
+
 #EndRegion
 
 #Region Processors
@@ -491,6 +670,14 @@ Function FormSQLText(Val Scheme)
     ElsIf SchemeType = "TABLESCHEMA" Then
 
         QueryText = FormTextTableSchema(Scheme);
+
+    ElsIf SchemeType = "ALTERTABLEADD" Then
+
+        QueryText = FormTextAlterTableAdd(Scheme);
+
+    ElsIf SchemeType = "ALTERTABLEDROP" Then
+
+        QueryText = FormTextAlterTableDrop(Scheme);
 
     Else
 
@@ -709,6 +896,33 @@ Function FormTextTableSchema(Val Scheme)
     EndIf;
 
     TextSQL = StrTemplate(SQLTemplate, Table);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextAlterTableAdd(Val Scheme)
+
+    Table    = Scheme["table"];
+    Name     = Scheme["name"];
+    DataType = Scheme["dtype"];
+
+    SQLTemplate = "ALTER TABLE %1 ADD %2 %3";
+
+    TextSQL = StrTemplate(SQLTemplate, Table, Name, DataType);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextAlterTableDrop(Val Scheme)
+
+    Table = Scheme["table"];
+    Name  = Scheme["name"];
+
+    SQLTemplate = "ALTER TABLE %1 DROP %2";
+
+    TextSQL = StrTemplate(SQLTemplate, Table, Name);
 
     Return TextSQL;
 
@@ -1171,6 +1385,18 @@ EndFunction
 
 Function СоздатьТаблицу(Val Модуль, Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = Undefined) Export
 	Return CreateTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
+EndFunction
+
+Function ДобавитьКолонкуТаблицы(Val Модуль, Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "", Val Tls = Undefined) Export
+	Return AddTableColumn(Модуль, Таблица, Имя, ТипДанных, Соединение, Tls);
+EndFunction
+
+Function УдалитьКолонкуТаблицы(Val Модуль, Val Таблица, Val Имя, Val Соединение = "", Val Tls = Undefined) Export
+	Return DeleteTableColumn(Модуль, Таблица, Имя, Соединение, Tls);
+EndFunction
+
+Function ГарантироватьТаблицу(Val Модуль, Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = Undefined) Export
+	Return EnsureTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
 EndFunction
 
 Function ДобавитьЗаписи(Val Модуль, Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = Undefined) Export

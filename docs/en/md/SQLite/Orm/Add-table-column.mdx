@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 3
+description: Add table column and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add table column
+ Adds a new column to an existing table
+
+
+
+`Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Name | --name | String | &#x2714; | Column name |
+  | DataType | --type | String | &#x2714; | Column data type |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Base     = "C:\Users\Administrator\AppData\Local\Temp\v8_2AA4_5a.sqlite";
+    Table    = "test";
+    Name     = "new_col";
+    DataType = "TEXT";
+
+    Result = OPI_SQLite.AddTableColumn(Table, Name, DataType, Base);
+```
+ 
+
+
+
+

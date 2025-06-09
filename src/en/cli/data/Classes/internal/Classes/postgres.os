@@ -301,6 +301,139 @@
     NewLine = CompositionTable.Add();
     NewLine.Library  = "postgres";
     NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddTableColumn";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Adds a new column to an existing table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddTableColumn";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Column name";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddTableColumn";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Column data type";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddTableColumn";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "AddTableColumn";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTableColumn";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Deletes a column from the table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTableColumn";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Column name";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTableColumn";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
+    NewLine.Parameter    = "--dbc";
+    NewLine.Description    = "Connection or connection string (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "DeleteTableColumn";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Creates a new table if it does not exist or updates the composition of columns in an existing table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--cols";
+    NewLine.Description    = "Column structure: Key > Name, Value > Data type";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "postgres";
+    NewLine.Module      = "OPI_PostgreSQL";
     NewLine.Method       = "ClearTable";
     NewLine.SearchMethod = "CLEARTABLE";
     NewLine.Parameter    = "--table";
