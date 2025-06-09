@@ -287,19 +287,19 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
             })
             .unwrap_or(Value::Null),
         "TIMESTAMP" => row.try_get::<_, Option<chrono::NaiveDateTime>>(column_name)?
-            .map(|timestamp| Value::String(timestamp.to_string()))
+            .map(|timestamp| Value::String(timestamp.format("%Y-%m-%dT%H:%M:%S").to_string()))
             .unwrap_or(Value::Null),
         "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<chrono::DateTime<FixedOffset>>>(column_name)?
-            .map(|timestamp| Value::String(timestamp.to_string()))
+            .map(|timestamp| Value::String(timestamp.to_rfc3339())) // RFC3339 - это профиль ISO8601
             .unwrap_or(Value::Null),
         "INET" => row.try_get::<_, Option<IpAddr>>(column_name)?
             .map(|ip| Value::String(ip.to_string()))
             .unwrap_or(Value::Null),
         "DATE" => row.try_get::<_, Option<NaiveDate>>(column_name)?
-            .map(|date| Value::String(date.to_string()))
+            .map(|date| Value::String(date.format("%Y-%m-%d").to_string()))
             .unwrap_or(Value::Null),
         "TIME" => row.try_get::<_, Option<NaiveTime>>(column_name)?
-            .map(|date| Value::String(date.to_string()))
+            .map(|time| Value::String(time.format("%H:%M:%S").to_string()))
             .unwrap_or(Value::Null),
         "JSON" | "JSONB" => {
             row.try_get::<_, Option<Value>>(column_name)?
