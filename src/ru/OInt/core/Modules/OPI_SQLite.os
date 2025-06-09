@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
@@ -257,6 +257,63 @@
 
 КонецФункции
 
+// Добавить колонку таблицы
+// Добавляет новую колонку в существующую таблицу
+// 
+// Параметры:
+//  Таблица    - Строка                - Имя таблицы                             - table
+//  Имя        - Строка                - Имя колонки                             - name
+//  ТипДанных  - Строка                - Тип данных колонки                      - type
+//  Соединение - Строка, Произвольный  - Существующее соединение или путь к базе - db
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция ДобавитьКолонкуТаблицы(Знач Таблица, Знач Имя, Знач ТипДанных, Знач Соединение = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.ДобавитьКолонкуТаблицы(OPI_SQLite, Таблица, Имя, ТипДанных, Соединение);
+    Возврат Результат;
+        
+КонецФункции
+
+// Удалить колонку таблицы
+// Удаляет колонку из таблицы
+// 
+// Параметры:
+//  Таблица    - Строка                - Имя таблицы                             - table
+//  Имя        - Строка                - Имя колонки                             - name
+//  Соединение - Строка, Произвольный  - Существующее соединение или путь к базе - db
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция УдалитьКолонкуТаблицы(Знач Таблица, Знач Имя, Знач Соединение = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.УдалитьКолонкуТаблицы(OPI_SQLite, Таблица, Имя, Соединение);
+    Возврат Результат;
+        
+КонецФункции
+
+// Гарантировать таблицу
+// Создает новую таблицу в случае отсутствия или обновляет состав колонок существующей таблицы
+// 
+// Примечание:
+// В результате изменения структуры таблицы данные могут быть утеряны!^^
+// Рекомендуется предварительно опробовать данный метод на тестовых данных 
+// Данная функция не обновляет тип данных существующих колонок
+//
+// Параметры:
+//  Таблица          - Строка                     - Имя таблицы                                          - table
+//  СтруктураКолонок - Структура Из КлючИЗначение - Структура колонок: Ключ > имя, Значение > Тип данных - cols
+//  Соединение       - Строка, Произвольный       - Существующее соединение или путь к базе              - db
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция ГарантироватьТаблицу(Знач Таблица, Знач СтруктураКолонок, Знач Соединение = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.ГарантироватьТаблицу(OPI_SQLite, Таблица, СтруктураКолонок, Соединение);
+    Возврат Результат;
+
+КонецФункции
+
 // Добавить записи
 // Добавляет записи в таблицу
 //
@@ -405,6 +462,7 @@
     Особенности.Вставить("НумерацияПараметров", Истина);
     Особенности.Вставить("МаркерПараметров"   , "?");
     Особенности.Вставить("СУБД"               , "sqlite");
+    Особенности.Вставить("ПолеКолонки"        , "name");
 
     Возврат Особенности;
 
@@ -473,68 +531,3 @@
 КонецФункции
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function CreateConnection(Val Base = "") Export
-	Return ОткрытьСоединение(Base);
-EndFunction
-
-Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
-EndFunction
-
-Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
-EndFunction
-
-Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Extensions = Undefined) Export
-	Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Extensions);
-EndFunction
-
-Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
-	Return ПодключитьРасширение(Extension, EntryPoint, Connection);
-EndFunction
-
-Function GetTableInformation(Val Table, Val Connection = "") Export
-	Return ПолучитьИнформациюОТаблице(Table, Connection);
-EndFunction
-
-Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
-	Return СоздатьТаблицу(Table, ColoumnsStruct, Connection);
-EndFunction
-
-Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
-	Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection);
-EndFunction
-
-Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "") Export
-	Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection);
-EndFunction
-
-Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
-	Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection);
-EndFunction
-
-Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
-	Return УдалитьЗаписи(Table, Filters, Connection);
-EndFunction
-
-Function DeleteTable(Val Table, Val Connection = "") Export
-	Return УдалитьТаблицу(Table, Connection);
-EndFunction
-
-Function ClearTable(Val Table, Val Connection = "") Export
-	Return ОчиститьТаблицу(Table, Connection);
-EndFunction
-
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
-	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
-EndFunction
-
-Function GetFeatures() Export
-	Return ПолучитьОсобенности();
-EndFunction
-
-#EndRegion

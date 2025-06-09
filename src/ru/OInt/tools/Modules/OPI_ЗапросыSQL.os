@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
 
 // MIT License
 
@@ -95,6 +95,154 @@
 
 КонецФункции
 
+Функция ДобавитьКолонкуТаблицы(Знач Модуль
+    , Знач Таблица
+    , Знач Имя
+    , Знач ТипДанных
+    , Знач Соединение = ""
+    , Знач Tls = Неопределено) Экспорт
+
+    Схема = ПустаяСхемаSQL("ALTERTABLEADD", Модуль);
+
+    УстановитьИмяТаблицы(Схема, Таблица);
+    
+    УстановитьПроизвольноеПоле(Схема, "name" , Имя      , "Строка");
+    УстановитьПроизвольноеПоле(Схема, "dtype", ТипДанных, "Строка");
+
+    Запрос    = СформироватьТекстSQL(Схема);
+    Результат = ВыполнитьЗапросSQL(Модуль, Запрос, , , Соединение, Tls);
+
+    Возврат Результат;
+            
+КонецФункции
+
+Функция УдалитьКолонкуТаблицы(Знач Модуль
+    , Знач Таблица
+    , Знач Имя
+    , Знач Соединение = ""
+    , Знач Tls = Неопределено) Экспорт
+
+    Схема = ПустаяСхемаSQL("ALTERTABLEDROP", Модуль);
+
+    УстановитьИмяТаблицы(Схема, Таблица); 
+    УстановитьПроизвольноеПоле(Схема, "name", Имя, "Строка");
+
+    Запрос    = СформироватьТекстSQL(Схема);
+    Результат = ВыполнитьЗапросSQL(Модуль, Запрос, , , Соединение, Tls);
+
+    Возврат Результат;
+            
+КонецФункции
+
+Функция ГарантироватьТаблицу(Знач Модуль
+    , Знач Таблица
+    , Знач СтруктураКолонок
+    , Знач Соединение = ""
+    , Знач Tls        = Неопределено) Экспорт
+    
+    СтруктураРезультата = Новый Структура("result", Истина);
+    
+    Соединение          = ОткрытьСоединение(Модуль, Соединение, Tls);
+    ПроблемныйЭтап      = ОбработатьНачалоЗаписи(Модуль, Истина, Соединение);
+
+    Если ЗначениеЗаполнено(ПроблемныйЭтап) Тогда
+        Возврат ПроблемныйЭтап;
+    КонецЕсли;
+    
+    Попытка
+        
+        ОписаниеТаблицы = ПолучитьСтруктуруТаблицы(Модуль, Таблица, Соединение, Tls);
+        
+        Если Не ОписаниеТаблицы["result"] Тогда
+            Возврат ОписаниеТаблицы;
+        КонецЕсли;
+            
+        КолонкиТаблицы = ОписаниеТаблицы["data"];
+        
+        Если Не ЗначениеЗаполнено(КолонкиТаблицы) Тогда
+            СтруктураРезультата = СоздатьТаблицу(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
+
+        Иначе
+            
+            СоответствиеНахождения = Новый Соответствие;
+            ИмяПоля                = Модуль.ПолучитьОсобенности()["ПолеКолонки"];
+            
+            КодУдаления      = 0;
+            КодДобавления    = 1;
+            КодИгнорирования = 2;
+            
+            Для Каждого Колонка Из КолонкиТаблицы Цикл
+                
+                ИмяКолонки = Колонка[ИмяПоля];
+                
+                Если Не ЗначениеЗаполнено(ИмяКолонки) Тогда
+                    Продолжить;
+                Иначе
+                    СоответствиеНахождения.Вставить(ИмяКолонки, КодУдаления);    
+                КонецЕсли;
+                
+            КонецЦикла;
+            
+            Если СоответствиеНахождения.Количество() = 0 Тогда
+                СоответствиеОтвета = Новый Соответствие;
+                СоответствиеОтвета.Вставить("result", "false");
+                СоответствиеОтвета.Вставить("error" , "Unsupported table schema type");
+                Возврат СоответствиеОтвета;
+            КонецЕсли;
+            
+            Для Каждого НеобходимаяКолонка Из СтруктураКолонок Цикл
+                
+                ИмяКолонки = НеобходимаяКолонка.Ключ;
+                Существует = СоответствиеНахождения.Получить(ИмяКолонки) <> Неопределено;
+                Действие   = ?(Существует, КодИгнорирования, КодДобавления);
+                
+                СоответствиеНахождения.Вставить(ИмяКолонки, Действие);
+                
+            КонецЦикла;
+            
+            Для Каждого ЧастьСхемы Из СоответствиеНахождения Цикл
+                
+                КодДействия = ЧастьСхемы.Значение;
+                ИмяКолонки  = ЧастьСхемы.Ключ;
+                
+                Если КодДействия = 0 Тогда
+                    
+                    Результат = УдалитьКолонкуТаблицы(Модуль, Таблица, ИмяКолонки, Соединение, Tls);
+                    
+                ИначеЕсли КодДействия = 1 Тогда
+                    
+                    ТипДанных = СтруктураКолонок[ИмяКолонки];
+                    Результат = ДобавитьКолонкуТаблицы(Модуль, Таблица, ИмяКолонки, ТипДанных, Соединение, Tls);
+                    
+                Иначе
+                    Продолжить;
+                КонецЕсли;
+                
+                Если Не Результат["result"] Тогда
+                    ВызватьИсключение Результат["error"];
+                КонецЕсли;
+                
+            КонецЦикла;
+            
+        КонецЕсли;
+        
+        Завершение = Модуль.ВыполнитьЗапросSQL("COMMIT;", , , Соединение);
+        СтруктураРезультата.Вставить("commit", Завершение);
+           
+    Исключение
+        
+        Откат = Модуль.ВыполнитьЗапросSQL("ROLLBACK;", , , Соединение);
+		
+		СтруктураРезультата.Вставить("result"  , Ложь);
+		СтруктураРезультата.Вставить("error"   , ОписаниеОшибки());
+		СтруктураРезультата.Вставить("rollback", Откат);
+       
+    КонецПопытки;
+    
+    Возврат СтруктураРезультата;
+    
+КонецФункции
+   
 Функция ДобавитьЗаписи(Знач Модуль
     , Знач Таблица
     , Знач МассивДанных
@@ -303,6 +451,14 @@
     ИначеЕсли Действие = "TABLESCHEMA" Тогда
 
         Схема = ПустаяСхемаTableSchema();
+        
+    ИначеЕсли Действие = "ALTERTABLEADD" Тогда
+        
+        Схема = ПустаяСхемAlterTableAdd();
+        
+    ИначеЕсли Действие = "ALTERTABLEDROP" Тогда
+        
+        Схема = ПустаяСхемAlterTableDrop();
 
     Иначе
 
@@ -435,6 +591,29 @@
 
 КонецФункции
 
+Функция ПустаяСхемAlterTableAdd()
+
+    Схема = Новый Структура("type", "ALTERTABLEADD");
+
+    Схема.Вставить("table", "");
+    Схема.Вставить("name" , "");
+    Схема.Вставить("dtype", "");
+
+    Возврат Схема;
+    
+КонецФункции
+
+Функция ПустаяСхемAlterTableDrop()
+
+    Схема = Новый Структура("type", "ALTERTABLEDROP");
+
+    Схема.Вставить("table", "");
+    Схема.Вставить("name" , "");
+
+    Возврат Схема;
+    
+КонецФункции
+
 #КонецОбласти
 
 #Область Процессоры
@@ -491,6 +670,14 @@
     ИначеЕсли ТипСхемы = "TABLESCHEMA" Тогда
 
         ТекстЗапроса = СформироватьТекстTableSchema(Схема);
+        
+    ИначеЕсли ТипСхемы = "ALTERTABLEADD" Тогда
+        
+        ТекстЗапроса = СформироватьТекстAlterTableAdd(Схема);
+        
+    ИначеЕсли ТипСхемы = "ALTERTABLEDROP" Тогда
+        
+        ТекстЗапроса = СформироватьТекстAlterTableDrop(Схема);
 
     Иначе
 
@@ -712,6 +899,33 @@
 
     Возврат ТекстSQL;
 
+КонецФункции
+
+Функция СформироватьТекстAlterTableAdd(Знач Схема)
+    
+    Таблица   = Схема["table"];
+    Имя       = Схема["name"];
+    ТипДанных = Схема["dtype"];
+    
+    ШаблонSQL = "ALTER TABLE %1 ADD %2 %3";
+    
+    ТекстSQL = СтрШаблон(ШаблонSQL, Таблица, Имя, ТипДанных);
+
+    Возврат ТекстSQL;
+    
+КонецФункции
+
+Функция СформироватьТекстAlterTableDrop(Знач Схема)
+    
+    Таблица   = Схема["table"];
+    Имя       = Схема["name"];
+    
+    ШаблонSQL = "ALTER TABLE %1 DROP %2";
+    
+    ТекстSQL = СтрШаблон(ШаблонSQL, Таблица, Имя);
+
+    Возврат ТекстSQL;
+    
 КонецФункции
 
 #КонецОбласти
@@ -1157,60 +1371,3 @@
 #КонецОбласти
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
-	Return СоздатьБазуДанных(Module, Base, Connection, Tls);
-EndFunction
-
-Function DeleteDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
-	Return УдалитьБазуДанных(Module, Base, Connection, Tls);
-EndFunction
-
-Function CreateTable(Val Module, Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = Undefined) Export
-	Return СоздатьТаблицу(Module, Table, ColoumnsStruct, Connection, Tls);
-EndFunction
-
-Function AddRecords(Val Module, Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = Undefined) Export
-	Return ДобавитьЗаписи(Module, Table, DataArray, Transaction, Connection, Tls);
-EndFunction
-
-Function GetRecords(Val Module, Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = Undefined) Export
-	Return ПолучитьЗаписи(Module, Table, Fields, Filters, Sort, Count, Connection, Tls);
-EndFunction
-
-Function UpdateRecords(Val Module, Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
-	Return ОбновитьЗаписи(Module, Table, ValueStructure, Filters, Connection, Tls);
-EndFunction
-
-Function DeleteRecords(Val Module, Val Table, Val Filters = "", Val Connection = "", Val Tls = Undefined) Export
-	Return УдалитьЗаписи(Module, Table, Filters, Connection, Tls);
-EndFunction
-
-Function DeleteTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
-	Return УдалитьТаблицу(Module, Table, Connection, Tls);
-EndFunction
-
-Function ClearTable(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
-	Return ОчиститьТаблицу(Module, Table, Connection, Tls);
-EndFunction
-
-Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls = Undefined) Export
-	Return ПолучитьСтруктуруТаблицы(Module, Table, Connection, Tls);
-EndFunction
-
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
-	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
-EndFunction
-
-Procedure AddColoumn(Scheme, Val Name, Val Type) Export
-	ДобавитьКолонку(Scheme, Name, Type);
-EndProcedure
-
-Procedure AddField(Scheme, Val Name) Export
-	ДобавитьПоле(Scheme, Name);
-EndProcedure
-
-#EndRegion
