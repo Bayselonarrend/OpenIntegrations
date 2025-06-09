@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
+﻿// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
 // Lib: PostgreSQL
 // CLI: postgres
 // Keywords: postgresql, postgre sql, postgres
@@ -327,6 +327,66 @@
 
 КонецФункции
 
+// Добавить колонку таблицы
+// Добавляет новую колонку в существующую таблицу
+// 
+// Параметры:
+//  Таблица    - Строка                     - Имя таблицы                                              - table
+//  Имя        - Строка                     - Имя колонки                                              - name
+//  ТипДанных  - Строка                     - Тип данных колонки                                       - type
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения                        - dbc
+//  Tls        - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls - tls
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция ДобавитьКолонкуТаблицы(Знач Таблица, Знач Имя, Знач ТипДанных, Знач Соединение = "", Знач Tls = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.ДобавитьКолонкуТаблицы(OPI_PostgreSQL, Таблица, Имя, ТипДанных, Соединение, Tls);
+    Возврат Результат;
+        
+КонецФункции
+
+// Удалить колонку таблицы
+// Удаляет колонку из таблицы
+// 
+// Параметры:
+//  Таблица    - Строка                     - Имя таблицы                                              - table
+//  Имя        - Строка                     - Имя колонки                                              - name
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения                        - dbc
+//  Tls        - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls - tls
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция УдалитьКолонкуТаблицы(Знач Таблица, Знач Имя, Знач Соединение = "", Знач Tls = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.УдалитьКолонкуТаблицы(OPI_PostgreSQL, Таблица, Имя, Соединение, Tls);
+    Возврат Результат;
+        
+КонецФункции
+
+// Гарантировать таблицу
+// Создает новую таблицу в случае отсутствия или обновляет состав колонок существующей таблицы
+// 
+// Примечание:
+// В результате изменения структуры таблицы данные могут быть утеряны!^^
+// Рекомендуется предварительно опробовать данный метод на тестовых данных 
+// Данная функция не обновляет тип данных существующих колонок
+//
+// Параметры:
+//  Таблица          - Строка                     - Имя таблицы                                              - table
+//  СтруктураКолонок - Структура Из КлючИЗначение - Структура колонок: Ключ > имя, Значение > Тип данных     - cols
+//  Соединение       - Строка, Произвольный       - Существующее соединение или путь к базе                  - db
+//  Tls              - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls - tls
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат выполнения запроса
+Функция ГарантироватьТаблицу(Знач Таблица, Знач СтруктураКолонок, Знач Соединение = "", Знач Tls = "") Экспорт
+
+    Результат = OPI_ЗапросыSQL.ГарантироватьТаблицу(OPI_PostgreSQL, Таблица, СтруктураКолонок, Соединение, Tls);
+    Возврат Результат;
+
+КонецФункции
+
 // Очистить таблицу
 // Очищает таблицу базы
 //
@@ -498,6 +558,7 @@
     Особенности.Вставить("НумерацияПараметров", Истина);
     Особенности.Вставить("МаркерПараметров"   , "$");
     Особенности.Вставить("СУБД"               , "postgres");
+    Особенности.Вставить("ПолеКолонки"        , "column_name");
 
     Возврат Особенности;
 
@@ -617,84 +678,3 @@
 КонецФункции
 
 #КонецОбласти
-
-
-#Region Alternate
-
-Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
-	Return ОткрытьСоединение(ConnectionString, Tls);
-EndFunction
-
-Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
-EndFunction
-
-Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
-EndFunction
-
-Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Tls = "") Export
-	Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Tls);
-EndFunction
-
-Function GenerateConnectionString(Val Address, Val Base, Val Login, Val Password = "", Val Port = "5432") Export
-	Return СформироватьСтрокуПодключения(Address, Base, Login, Password, Port);
-EndFunction
-
-Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
-EndFunction
-
-Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export
-	Return СоздатьБазуДанных(Base, Connection, Tls);
-EndFunction
-
-Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
-	Return УдалитьБазуДанных(Base, Connection, Tls);
-EndFunction
-
-Function DisableAllDatabaseConnections(Val Base, Val Connection = "", Val Tls = "") Export
-	Return ОтключитьВсеСоединенияБазыДанных(Base, Connection, Tls);
-EndFunction
-
-Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
-	Return ПолучитьИнформациюОТаблице(Table, Connection, Tls);
-EndFunction
-
-Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
-	Return СоздатьТаблицу(Table, ColoumnsStruct, Connection, Tls);
-EndFunction
-
-Function ClearTable(Val Table, Val Connection = "", Val Tls = "") Export
-	Return ОчиститьТаблицу(Table, Connection, Tls);
-EndFunction
-
-Function DeleteTable(Val Table, Val Connection = "", Val Tls = "") Export
-	Return УдалитьТаблицу(Table, Connection, Tls);
-EndFunction
-
-Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export
-	Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection, Tls);
-EndFunction
-
-Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = "") Export
-	Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection, Tls);
-EndFunction
-
-Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = "") Export
-	Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection, Tls);
-EndFunction
-
-Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export
-	Return УдалитьЗаписи(Table, Filters, Connection, Tls);
-EndFunction
-
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
-	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
-EndFunction
-
-Function GetFeatures() Export
-	Return ПолучитьОсобенности();
-EndFunction
-
-#EndRegion
