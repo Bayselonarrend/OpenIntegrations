@@ -1,0 +1,12 @@
+﻿    Base = "C:\Users\Administrator\AppData\Local\Temp\v8_2AA4_5a.sqlite";
+
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"   , "INTEGER");
+    ColoumnsStruct.Insert("code" , "INTEGER");
+    ColoumnsStruct.Insert("name" , "TEXT");
+    ColoumnsStruct.Insert("age"  , "INTEGER");
+    ColoumnsStruct.Insert("info" , "TEXT");
+
+    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
