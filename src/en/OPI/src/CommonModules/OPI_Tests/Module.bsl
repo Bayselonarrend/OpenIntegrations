@@ -2316,6 +2316,9 @@ Procedure SQLL_ORM() Export
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeleteRecords(TestParameters);
     SQLite_GetTableInformation(TestParameters);
+    SQLite_AddTableColumn(TestParameters);
+    SQLite_DeleteTableColumn(TestParameters);
+    SQLite_EnsureTable(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
     SQLite_GetRecordsFilterStrucutre(TestParameters);
@@ -2329,6 +2332,9 @@ Procedure SQLL_ORM() Export
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeleteRecords(TestParameters);
     SQLite_GetTableInformation(TestParameters);
+    SQLite_AddTableColumn(TestParameters);
+    SQLite_DeleteTableColumn(TestParameters);
+    SQLite_EnsureTable(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
     SQLite_GetRecordsFilterStrucutre(TestParameters);
@@ -17830,7 +17836,7 @@ Procedure SQLite_ClearTable(FunctionParameters)
     Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
-    OPI_TestDataRetrieval.Check_Array(Check["data"], 7);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 5);
 
     Check = OPI_SQLite.GetRecords(Table, , , , , Base);
 
@@ -17879,6 +17885,117 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     Except
         OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting extension file", "SQLite");
     EndTry;
+
+EndProcedure
+
+Procedure SQLite_AddTableColumn(FunctionParameters)
+
+    Base     = FunctionParameters["SQLite_DB"];
+    Table    = "test";
+    Name     = "new_col";
+    DataType = "TEXT";
+
+    Result = OPI_SQLite.AddTableColumn(Table, Name, DataType, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn (check))", "SQLite");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(DataType, Coloumn["type"]);
+            Found          = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure SQLite_DeleteTableColumn(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+    Name  = "new_col";
+
+    Result = OPI_SQLite.DeleteTableColumn(Table, Name, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (check))", "SQLite");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["name"] = Name Then
+            Found          = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure SQLite_EnsureTable(FunctionParameters)
+
+    Base = FunctionParameters["SQLite_DB"];
+
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"   , "INTEGER");
+    ColoumnsStruct.Insert("code" , "INTEGER");
+    ColoumnsStruct.Insert("name" , "TEXT");
+    ColoumnsStruct.Insert("age"  , "INTEGER");
+    ColoumnsStruct.Insert("info" , "TEXT");
+
+    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
+
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Coloumn["type"], ColoumnsStruct[Coloumn["name"]]);
+    EndDo;
+
+    Table = "test_new";
+
+    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (new))", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
+
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Coloumn["type"], ColoumnsStruct[Coloumn["name"]]);
+    EndDo;
 
 EndProcedure
 
@@ -19654,7 +19771,7 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "OPI_MySQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "MySQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
 
     Address = "api.athenaeum.digital";
@@ -19665,14 +19782,14 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
 
     Result = OPI_MySQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (TLS)", "OPI_MySQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
 
     Table = "heyho";
 
     Result = OPI_MySQL.GetTableInformation(Table, ConnectionString);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (error)", "OPI_MySQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (error)", "MySQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
 EndProcedure

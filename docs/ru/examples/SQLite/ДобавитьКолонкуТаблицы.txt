@@ -1,0 +1,6 @@
+﻿    База      = "C:\Users\Administrator\AppData\Local\Temp\v8_2AA4_5a.sqlite";
+    Таблица   = "test";
+    Имя       = "new_col";
+    ТипДанных = "TEXT";
+
+    Результат = OPI_SQLite.ДобавитьКолонкуТаблицы(Таблица, Имя, ТипДанных, База);
