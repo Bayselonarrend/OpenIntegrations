@@ -2335,12 +2335,15 @@ Procedure CLI_Postgres_ORM() Export
 
     CLI_PostgreSQL_CreateDatabase(TestParameters);
     CLI_PostgreSQL_CreateTable(TestParameters);
-    CLI_PostgreSQL_GetTableInformation(TestParameters);
     CLI_PostgreSQL_AddRecords(TestParameters);
     CLI_PostgreSQL_GetRecords(TestParameters);
     CLI_PostgreSQL_UpdateRecords(TestParameters);
     CLI_PostgreSQL_DeleteRecords(TestParameters);
     CLI_PostgreSQL_ClearTable(TestParameters);
+    CLI_PostgreSQL_GetTableInformation(TestParameters);
+    CLI_PostgreSQL_AddTableColumn(TestParameters);
+    CLI_PostgreSQL_DeleteTableColumn(TestParameters);
+    CLI_PostgreSQL_EnsureTable(TestParameters);
     CLI_PostgreSQL_DeleteTable(TestParameters);
     CLI_PostgreSQL_DisableAllDatabaseConnections(TestParameters);
     CLI_PostgreSQL_DeleteDatabase(TestParameters);
@@ -4313,21 +4316,21 @@ Procedure CLI_VK_AddProduct(FunctionParameters)
     ImageArray.Add(Image2);
 
     ProductDescription = New Map;
-    ProductDescription.Insert("Name"            , "TestProduct");
-    ProductDescription.Insert("Description"     , "Product description");
-    ProductDescription.Insert("Category"        , "20173");
-    ProductDescription.Insert("Price"           , 1);
-    ProductDescription.Insert("OldPrice"        , 15);
-    ProductDescription.Insert("MainPhoto"       , Image1);
-    ProductDescription.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
-    ProductDescription.Insert("AdditionalPhotos", ImageArray);
-    ProductDescription.Insert("MainInGroup"     , True);
-    ProductDescription.Insert("Width"           , 20);
-    ProductDescription.Insert("Height"          , 30);
-    ProductDescription.Insert("Depth"           , 40);
-    ProductDescription.Insert("Weight"          , 100);
-    ProductDescription.Insert("SKU"             , "12345");
-    ProductDescription.Insert("AvailableBalance", "10");
+    ProductDescription.Insert("Name"             , "TestProduct");
+    ProductDescription.Insert("Description"      , "Product description");
+    ProductDescription.Insert("Category"         , "20173");
+    ProductDescription.Insert("Price"            , 1);
+    ProductDescription.Insert("OldPrice"         , 15);
+    ProductDescription.Insert("MainPhoto"        , Image1);
+    ProductDescription.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
+    ProductDescription.Insert("AdditionalPhotos" , ImageArray);
+    ProductDescription.Insert("MainInGroup"      , True);
+    ProductDescription.Insert("Width"            , 20);
+    ProductDescription.Insert("Height"           , 30);
+    ProductDescription.Insert("Depth"            , 40);
+    ProductDescription.Insert("Weight"           , 100);
+    ProductDescription.Insert("SKU"              , "12345");
+    ProductDescription.Insert("AvailableBalance" , "10");
 
     Options = New Structure;
     Options.Insert("product", ProductDescription);
@@ -4562,23 +4565,23 @@ Procedure CLI_VK_CreateProductWithProp(FunctionParameters)
     ImageArray.Add(Image2);
 
     Product = New Map;
-    Product.Insert("Name"            , "Test product (with prop)");
-    Product.Insert("Description"     , "Product description");
-    Product.Insert("Category"        , "20173");
-    Product.Insert("Price"           , 1);
-    Product.Insert("OldPrice"        , 15);
-    Product.Insert("MainPhoto"       , Image1);
-    Product.Insert("URL"             , "https://github.com/Bayselonarrend/OpenIntegrations");
-    Product.Insert("AdditionalPhotos", ImageArray);
-    Product.Insert("MainInGroup"     , True);
-    Product.Insert("GroupNumber"     , Undefined);
-    Product.Insert("Width"           , 20);
-    Product.Insert("Height"          , 30);
-    Product.Insert("Depth"           , 40);
-    Product.Insert("Weight"          , 100);
-    Product.Insert("SKU"             , 12345);
-    Product.Insert("AvailableBalance", "10");
-    Product.Insert("PropertyValues"  , PropVariant1);
+    Product.Insert("Name"             , "Test product (with prop)");
+    Product.Insert("Description"      , "Product description");
+    Product.Insert("Category"         , "20173");
+    Product.Insert("Price"            , 1);
+    Product.Insert("OldPrice"         , 15);
+    Product.Insert("MainPhoto"        , Image1);
+    Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
+    Product.Insert("AdditionalPhotos" , ImageArray);
+    Product.Insert("MainInGroup"      , True);
+    Product.Insert("GroupNumber"      , Undefined);
+    Product.Insert("Width"            , 20);
+    Product.Insert("Height"           , 30);
+    Product.Insert("Depth"            , 40);
+    Product.Insert("Weight"           , 100);
+    Product.Insert("SKU"              , 12345);
+    Product.Insert("AvailableBalance" , "10");
+    Product.Insert("PropertyValues"   , PropVariant1);
 
     Options = New Structure;
     Options.Insert("product", Product);
@@ -6877,9 +6880,9 @@ Procedure CLI_Notion_CreateDatabase(FunctionParameters)
     Properties.Insert("User"        , "people");
 
     ValueSelection = New Map;
-    ValueSelection.Insert("New"       , "green");
-    ValueSelection.Insert("InProgress", "yellow");
-    ValueSelection.Insert("Remote"    , "red");
+    ValueSelection.Insert("New"        , "green");
+    ValueSelection.Insert("InProgress" , "yellow");
+    ValueSelection.Insert("Remote"     , "red");
 
     Properties.Insert("Status", ValueSelection);
 
@@ -8774,7 +8777,7 @@ Procedure CLI_Dropbox_GetTagList(FunctionParameters)
 
     For Each Tag In Result["paths_to_tags"][0]["tags"] Do
         If Tag["tag_text"] = "important" Then
-            HasTag            = True;
+            HasTag         = True;
         EndIf;
     EndDo;
 
@@ -14190,8 +14193,8 @@ Procedure CLI_Bitrix24_CreatePersonalNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Options = New Structure;
     Options.Insert("url"   , URL);
@@ -14241,8 +14244,8 @@ Procedure CLI_Bitrix24_CreateSystemNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Options = New Structure;
     Options.Insert("url"   , URL);
@@ -15298,8 +15301,8 @@ Procedure CLI_Bitrix24_EditMessage(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Options = New Structure;
     Options.Insert("url"    , URL);
@@ -19864,7 +19867,7 @@ Procedure CLI_SQLite_AddTableColumn(FunctionParameters)
 
         If Coloumn["name"] = Name Then
             OPI_TestDataRetrieval.Check_Equality(DataType, Coloumn["type"]);
-            Found             = True;
+            Found          = True;
         EndIf;
 
     EndDo;
@@ -19901,7 +19904,7 @@ Procedure CLI_SQLite_DeleteTableColumn(FunctionParameters)
     For Each Coloumn In Result["data"] Do
 
         If Coloumn["name"] = Name Then
-            Found             = True;
+            Found          = True;
         EndIf;
 
     EndDo;
@@ -20829,6 +20832,286 @@ Procedure CLI_PostgreSQL_GetTlsSettings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "PostgreSQL");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base     = "testbase1";
+    Table    = "testtable";
+    Name     = "new_field";
+    DataType = "TEXT";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("type" , DataType);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (check))", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(Coloumn["data_type"]));
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+
+    Options = New Structure;
+    Options.Insert("trust" , False);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("type" , DataType);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (TLS, check)", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(Coloumn["data_type"]));
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+    Name  = "new_field";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (check))", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+
+    Options = New Structure;
+    Options.Insert("trust" , False);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTableColumn", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (TLS, check)", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure CLI_PostgreSQL_EnsureTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("uuid_field"     , "uuid");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EnsureTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "EnsureTable (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
+
+    Table = "test_new";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EnsureTable (new))", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "EnsureTable (new, check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
 
 EndProcedure
 

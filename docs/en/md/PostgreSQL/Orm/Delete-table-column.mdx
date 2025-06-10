@@ -30,7 +30,17 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
+    Base  = "testbase1";
+    Table = "testtable";
+    Name  = "new_field";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, ConnectionString);
 ```
  
 
