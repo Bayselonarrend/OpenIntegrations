@@ -99,6 +99,10 @@ In the Web console selection list, this module will be displayed as follows:
 
 To use it as a library when working via the terminal (command line), specify the module file name without the extension as the `library` option.
 
+It is also important to note that when using extension functions, especially for handlers with the GET or POST + `form-data` types, values may arrive in unsuitable data types. Melezh does not automatically convert data into the required types, except for those that can be explicitly determined during JSON reading or parsing of `multipart/form-data` (binary or string).
+
+To convert values to the appropriate types, you can use custom converters or those already used in the core functions of the Open Integration Package. They can be found in the module [OPI_TypeConversion](github.com/Bayselonarrend/OpenIntegrations/blob/main/src/en/OInt/tools/Modules/OPI_TypeConversion.os) 
+
 :::important
 It is recommended to keep backup copies of extension modules in another location, as in certain cases, updates or removal of Melezh, as well as image rebuilding (if Docker is used), may result in the deletion of these files.
 :::

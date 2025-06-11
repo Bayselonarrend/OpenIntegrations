@@ -1,0 +1,12 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Base     = "testbase1";
+    Table    = "testtable";
+    Name     = "new_field";
+    DataType = "MEDIUMTEXT";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_MySQL.AddTableColumn(Table, Name, DataType, ConnectionString);
