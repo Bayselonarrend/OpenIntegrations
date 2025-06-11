@@ -1668,15 +1668,15 @@ def test_mysql(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ГарантироватьТаблицу --table "test" --cols "test" --db "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe mysql ОчиститьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe mysql УдалитьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe mysql ГарантироватьТаблицу --table "test" --cols "test" --db "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

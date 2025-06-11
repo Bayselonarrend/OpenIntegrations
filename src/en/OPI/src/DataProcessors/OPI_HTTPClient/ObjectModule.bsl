@@ -1308,6 +1308,9 @@ EndFunction
 // Return response as JSON object !NOCLI
 // Returns the response body as a collection from JSON
 //
+// Note
+// If it is not possible to obtain a collection from the body, binary data will be returned
+//
 // Parameters:
 // ToMap - Boolean - Use map instead of structure - map
 // ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
