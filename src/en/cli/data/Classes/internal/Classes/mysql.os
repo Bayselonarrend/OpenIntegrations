@@ -331,6 +331,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Library  = "mysql";
     NewLine.Module      = "OPI_MySQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table name";
+    NewLine.Region     = "Orm";
+    NewLine.MethodDescription   = "Creates a new table if it does not exist or updates the composition of columns in an existing table";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mysql";
+    NewLine.Module      = "OPI_MySQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--cols";
+    NewLine.Description    = "Column structure: Key > Name, Value > Data type";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mysql";
+    NewLine.Module      = "OPI_MySQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mysql";
+    NewLine.Module      = "OPI_MySQL";
+    NewLine.Method       = "EnsureTable";
+    NewLine.SearchMethod = "ENSURETABLE";
+    NewLine.Parameter    = "--tls";
+    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Region     = "Orm";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mysql";
+    NewLine.Module      = "OPI_MySQL";
     NewLine.Method       = "ClearTable";
     NewLine.SearchMethod = "CLEARTABLE";
     NewLine.Parameter    = "--table";
@@ -385,47 +426,6 @@
     NewLine.Module      = "OPI_MySQL";
     NewLine.Method       = "DeleteTable";
     NewLine.SearchMethod = "DELETETABLE";
-    NewLine.Parameter    = "--tls";
-    NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
-    NewLine.Region     = "Orm";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library  = "mysql";
-    NewLine.Module      = "OPI_MySQL";
-    NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ENSURETABLE";
-    NewLine.Parameter    = "--table";
-    NewLine.Description    = "Table name";
-    NewLine.Region     = "Orm";
-    NewLine.MethodDescription   = "Creates a new table if it does not exist or updates the composition of columns in an existing table";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library  = "mysql";
-    NewLine.Module      = "OPI_MySQL";
-    NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ENSURETABLE";
-    NewLine.Parameter    = "--cols";
-    NewLine.Description    = "Column structure: Key > Name, Value > Data type";
-    NewLine.Region     = "Orm";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library  = "mysql";
-    NewLine.Module      = "OPI_MySQL";
-    NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ENSURETABLE";
-    NewLine.Parameter    = "--db";
-    NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
-    NewLine.Region     = "Orm";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library  = "mysql";
-    NewLine.Module      = "OPI_MySQL";
-    NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ENSURETABLE";
     NewLine.Parameter    = "--tls";
     NewLine.Description    = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
