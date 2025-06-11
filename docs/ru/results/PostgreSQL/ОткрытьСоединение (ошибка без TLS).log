@@ -1,4 +1,0 @@
-﻿    {
- "error": "db error: FATAL: pg_hba.conf rejects connection for host \"93.125.42.204\", user \"bayselonarrend\", database \"postgres\", no encryption",
- "result": false
-}
