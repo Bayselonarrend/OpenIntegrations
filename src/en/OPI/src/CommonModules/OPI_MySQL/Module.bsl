@@ -332,7 +332,7 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection - String, Arbitrary - Existing connection or database path - dbc
 // Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:

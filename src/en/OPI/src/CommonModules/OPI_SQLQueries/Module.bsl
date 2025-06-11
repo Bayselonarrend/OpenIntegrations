@@ -140,6 +140,10 @@ Function EnsureTable(Val Module
     , Val Connection = ""
     , Val Tls        = Undefined) Export
 
+    ErrorText = "The column structure is not a valid key-value structure";
+    OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
+    OPI_TypeConversion.GetLine(Table);
+
     ResultStrucutre = New Structure("result", True);
 
     Connection  = CreateConnection(Module, Connection, Tls);
