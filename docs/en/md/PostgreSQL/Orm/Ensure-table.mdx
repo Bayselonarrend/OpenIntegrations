@@ -36,7 +36,22 @@ This function does not update the data type of existing columns
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
+    Base  = "testbase1";
+    Table = "testtable";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("uuid_field"     , "uuid");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
 ```
  
 
