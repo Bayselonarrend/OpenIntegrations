@@ -420,3 +420,7 @@ li > a.menu__link {
 .wp_logo{
   margin-right: 5px;
 }
+
+[class*='iconExternalLink_'] {
+  display: none;
+}
