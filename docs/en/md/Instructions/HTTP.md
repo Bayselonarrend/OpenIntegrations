@@ -67,10 +67,12 @@ During the client's operation, logging of its actions is performed. To retrieve 
         .SetURLParams(ParamsStructure)
         .ProcessRequest("GET");
 
-    If Not HTTPКлиент.Error Then
+    If Not HTTPClient.Error Then
         Response = HTTPClient.ReturnResponseAsJSONObject(); 
     Else
         Response = HTTPClient.GetLog();
     EndIf;
     
 ```
+
+> **Error** - an export field (Boolean type) that is set to True when a critical error occurs in the client
