@@ -130,14 +130,14 @@ window.yaContextCb.push(() => {
             label: 'Аддоны',
           },
           {
-            href: 'https://boosty.to/bayselonarrend',
+            to: 'https://boosty.to/bayselonarrend',
             label: 'Поддержать проект',
             position: 'right',
             className: 'navbar-boosty-link', // Класс для кастомизации
             'aria-label': 'Boosty',
           },
           {
-            href: 'https://github.com/Bayselonarrend/OpenIntegrations',
+            to: 'https://github.com/Bayselonarrend/OpenIntegrations',
             label: 'GitHub',
             position: 'right',
             className: 'navbar-github-link', // Класс для кастомизации
@@ -150,7 +150,7 @@ window.yaContextCb.push(() => {
             items: [
               {
                 label: 'English',
-                href: 'https://en.openintegrations.dev',
+                to: 'https://en.openintegrations.dev',
               }
               // ... more items
             ],
