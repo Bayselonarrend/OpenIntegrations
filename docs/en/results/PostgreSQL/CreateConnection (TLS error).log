@@ -1,4 +1,0 @@
-﻿ {
- "error": "error performing TLS handshake: CN-имя сертификата не совпадает с полученным значением. (os error -2146762481)",
- "result": false
-}
