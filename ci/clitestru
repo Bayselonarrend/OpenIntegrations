@@ -1668,7 +1668,7 @@ def test_mysql(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe mysql ГарантироватьТаблицу --table "test" --cols "test" --db "test" --tls "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe mysql ГарантироватьТаблицу --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2224,7 +2224,7 @@ def test_postgres(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe postgres ГарантироватьТаблицу --table "test" --cols "test" --db "test" --tls "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe postgres ГарантироватьТаблицу --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

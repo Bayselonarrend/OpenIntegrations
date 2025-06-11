@@ -2430,6 +2430,8 @@ Procedure MYS_ORM() Export
     MySQL_ClearTable(TestParameters);
     MySQL_GetTableInformation(TestParameters);
     MySQL_AddTableColumn(TestParameters);
+    MySQL_DeleteTableColumn(TestParameters);
+    MySQL_EnsureTable(TestParameters);
     MySQL_DeleteTable(TestParameters);
     MySQL_DeleteDatabase(TestParameters);
     MySQL_GetRecordsFilterStrucutre(TestParameters);
@@ -20075,6 +20077,149 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
     EndDo;
 
     OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure MySQL_DeleteTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+    Name  = "new_field";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_MySQL.DeleteTableColumn(Table, Name, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.GetTableInformation(Table, ConnectionString);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (check))", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.DeleteTableColumn(Table, Name, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MySQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS, check)", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure MySQL_EnsureTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("double_field"   , "DOUBLE");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Result = OPI_MySQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_MySQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
+
+    Table = "test_new";
+
+    Result = OPI_MySQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (new))", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_MySQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (new, check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    Table               = "testtable";
+    TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+
+    Result = OPI_MySQL.EnsureTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_MySQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (TLS, check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
 
 EndProcedure
 
