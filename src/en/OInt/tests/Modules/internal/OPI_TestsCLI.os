@@ -2293,10 +2293,11 @@ Procedure CLI_SQLL_ORM() Export
     CLI_SQLite_GetRecords(TestParameters);
     CLI_SQLite_UpdateRecords(TestParameters);
     CLI_SQLite_DeleteRecords(TestParameters);
+    CLI_SQLite_ClearTable(TestParameters);
     CLI_SQLite_GetTableInformation(TestParameters);
     CLI_SQLite_AddTableColumn(TestParameters);
     CLI_SQLite_DeleteTableColumn(TestParameters);
-    CLI_SQLite_ClearTable(TestParameters);
+    CLI_SQLite_EnsureTable(TestParameters);
     CLI_SQLite_DeleteTable(TestParameters);
     CLI_SQLite_GetRecordsFilterStrucutre(TestParameters);
 
@@ -2378,12 +2379,15 @@ Procedure CLI_MYS_ORM() Export
 
     CLI_MySQL_CreateDatabase(TestParameters);
     CLI_MySQL_CreateTable(TestParameters);
-    CLI_MySQL_GetTableInformation(TestParameters);
     CLI_MySQL_AddRecords(TestParameters);
     CLI_MySQL_GetRecords(TestParameters);
     CLI_MySQL_UpdateRecords(TestParameters);
     CLI_MySQL_DeleteRecords(TestParameters);
     CLI_MySQL_ClearTable(TestParameters);
+    CLI_MySQL_GetTableInformation(TestParameters);
+    CLI_MySQL_AddTableColumn(TestParameters);
+    CLI_MySQL_DeleteTableColumn(TestParameters);
+    CLI_MySQL_EnsureTable(TestParameters);
     CLI_MySQL_DeleteTable(TestParameters);
     CLI_MySQL_DeleteDatabase(TestParameters);
     CLI_MySQL_GetRecordsFilterStrucutre(TestParameters);
@@ -20270,6 +20274,36 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable (exists)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+
+    Options = New Structure;
+    Options.Insert("trust" , False);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
 EndProcedure
 
 Procedure CLI_PostgreSQL_GetTableInformation(FunctionParameters)
@@ -20852,7 +20886,9 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -20894,8 +20930,11 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
     Options.Insert("db"   , Base);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
 
-    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , False);
@@ -20954,7 +20993,9 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -20994,8 +21035,11 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
     Options.Insert("db"   , Base);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
 
-    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , False);
@@ -21053,7 +21097,9 @@ Procedure CLI_PostgreSQL_EnsureTable(FunctionParameters)
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -22125,8 +22171,7 @@ Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
-        False);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
     ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
 
     Table = "testtable";
@@ -22152,6 +22197,355 @@ Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTableInformation (error)", "MySQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base     = "testbase1";
+    Table    = "testtable";
+    Name     = "new_field";
+    DataType = "MEDIUMTEXT";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("type" , DataType);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "AddTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (check))", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+
+            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
+
+            Found = True;
+
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+
+    Options = New Structure;
+    Options.Insert("trust" , True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("type" , DataType);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "AddTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTableColumn (TLS, check)", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+
+            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
+
+            Found = True;
+
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+    Name  = "new_field";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (check))", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+
+    Options = New Structure;
+    Options.Insert("trust" , True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTableColumn", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS, check)", "MySQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["COLUMN_NAME"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure CLI_MySQL_EnsureTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("double_field"   , "DOUBLE");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EnsureTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "EnsureTable (check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
+
+    Table = "test_new";
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EnsureTable (new))", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , ConnectionString);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "EnsureTable (new, check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
+
+    Address = "api.athenaeum.digital";
+    Port    = "3307";
+
+    Table = "testtable";
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
+        False);
+    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+
+    Options = New Structure;
+    Options.Insert("trust" , True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EnsureTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc"  , TLSConnectionString);
+    Options.Insert("tls"  , TLSSettings);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "EnsureTable (TLS, check)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+    EndDo;
 
 EndProcedure
 

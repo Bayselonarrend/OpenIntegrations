@@ -416,7 +416,7 @@
     NewLine.Module      = "OPI_PostgreSQL";
     NewLine.Method       = "EnsureTable";
     NewLine.SearchMethod = "ENSURETABLE";
-    NewLine.Parameter    = "--db";
+    NewLine.Parameter    = "--dbc";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
 
