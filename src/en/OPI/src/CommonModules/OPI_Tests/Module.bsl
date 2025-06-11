@@ -1032,7 +1032,7 @@ Procedure TwitterAPI_Tweets() Export
     OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
 
-    //Twitter_CreateTextTweet(TestParameters);
+    Twitter_CreateTextTweet(TestParameters);
     Twitter_UploadAttachmentsArray(TestParameters);
     Twitter_CreateVideoTweet(TestParameters);
     Twitter_CreateImageTweet(TestParameters);
@@ -2377,12 +2377,15 @@ Procedure Postgres_ORM() Export
 
     PostgreSQL_CreateDatabase(TestParameters);
     PostgreSQL_CreateTable(TestParameters);
-    PostgreSQL_GetTableInformation(TestParameters);
     PostgreSQL_AddRecords(TestParameters);
     PostgreSQL_GetRecords(TestParameters);
     PostgreSQL_UpdateRecords(TestParameters);
     PostgreSQL_DeleteRecords(TestParameters);
     PostgreSQL_ClearTable(TestParameters);
+    PostgreSQL_GetTableInformation(TestParameters);
+    PostgreSQL_AddTableColumn(TestParameters);
+    PostgreSQL_DeleteTableColumn(TestParameters);
+    PostgreSQL_EnsureTable(TestParameters);
     PostgreSQL_DeleteTable(TestParameters);
     PostgreSQL_DisableAllDatabaseConnections(TestParameters);
     PostgreSQL_DeleteDatabase(TestParameters);
@@ -18926,6 +18929,213 @@ Procedure PostgreSQL_GetTlsSettings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "PostgreSQL");
     OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_AddTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base     = "testbase1";
+    Table    = "testtable";
+    Name     = "new_field";
+    DataType = "TEXT";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_PostgreSQL.AddTableColumn(Table, Name, DataType, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn (check))", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(Coloumn["data_type"]));
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.AddTableColumn(Table, Name, DataType, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn (TLS, check)", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(Coloumn["data_type"]));
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+    Name  = "new_field";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (check))", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, TLSConnectionString, TLSSettings);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_PostgreSQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS, check)", "PostgreSQL");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["column_name"] = Name Then
+            Found                 = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure PostgreSQL_EnsureTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Base  = "testbase1";
+    Table = "testtable";
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("uuid_field"     , "uuid");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
+
+    Table = "test_new";
+
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (new))", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_PostgreSQL.GetTableInformation(Table, ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (new, check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
+
+    Address = "api.athenaeum.digital";
+    Port    = "5433";
+
+    Table               = "testtable";
+    TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Check = OPI_PostgreSQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "EnsureTable (TLS, check)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
 
 EndProcedure
 
