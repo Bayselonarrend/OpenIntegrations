@@ -130,6 +130,13 @@ window.yaContextCb.push(() => {
             label: 'Аддоны',
           },
           {
+            href: 'https://boosty.to/bayselonarrend',
+            label: 'Поддержать проект',
+            position: 'right',
+            className: 'navbar-boosty-link', // Класс для кастомизации
+            'aria-label': 'Boosty',
+          },
+          {
             href: 'https://github.com/Bayselonarrend/OpenIntegrations',
             label: 'GitHub',
             position: 'right',

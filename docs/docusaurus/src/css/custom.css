@@ -51,16 +51,16 @@ p{
 
 }
 
-.navbar-github-link {
+.navbar-github-link, .navbar-boosty-link {
   display: flex;
   align-items: center; /* Вертикальное выравнивание */
   text-decoration: none; /* Убираем подчеркивание */
   color: inherit; /* Унаследовать цвет текста */
 }
 
-.navbar-github-link::before {
+.navbar-github-link::before, .navbar-boosty-link::before {
   content: '';
-  background-image: url('./../../static/img/github-logo.svg'); /* Замените на путь к вашему логотипу */
+ /* Замените на путь к вашему логотипу */
   background-size: contain;
   background-repeat: no-repeat;
   width: 20px; /* Ширина логотипа */
@@ -69,8 +69,16 @@ p{
 }
 
 /* Если хотите добавить эффект при наведении */
-.navbar-github-link:hover {
+.navbar-github-link:hover, .navbar-boosty-link:hover {
   opacity: 0.8; /* Легкая прозрачность при наведении */
+}
+
+.navbar-github-link::before{
+    background-image: url('./../../static/img/github-logo.svg');
+}
+
+.navbar-boosty-link::before{
+    background-image: url('./../../static/img/boosty-logo.svg');
 }
 
 .tipimage{
