@@ -1,0 +1,21 @@
+﻿    {
+ "created": 1749751725,
+ "object": "chat.completion",
+ "id": "41b6373f-3926-498d-a157-a4b551b1dc26",
+ "model": "moondream2-20250414",
+ "choices": [
+  {
+   "index": 0,
+   "finish_reason": "stop",
+   "message": {
+    "role": "assistant",
+    "content": "a) Yes"
+   }
+  }
+ ],
+ "usage": {
+  "prompt_tokens": 4,
+  "completion_tokens": 4,
+  "total_tokens": 8
+ }
+}
