@@ -1,7 +1,7 @@
 ﻿    URL   = "https://api.athenaeum.digital:1122/";
     Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    Аудио  = "C:\Users\Administrator\AppData\Local\Temp\v8_295D_36.wav";
+    Аудио  = "C:\Users\Administrator\AppData\Local\Temp\v8_8B35_20.wav";
     Модель = "whisper-1";
 
     Результат = OPI_OpenAI.СоздатьТранскрипцию(URL, Токен, Модель, Аудио, "audio/wav");

@@ -1,0 +1,9 @@
+﻿    URL = "https://httpbin.org";
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetTimeout(60) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();

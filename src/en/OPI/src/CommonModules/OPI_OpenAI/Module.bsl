@@ -221,8 +221,8 @@ EndFunction
 // Structure - Fields structure
 Function GetImageDescriptionStructure(Val Prompt
     , Val Count
-    , Val Background = "auto"
-    , Val Size = "auto"
+    , Val Background = ""
+    , Val Size = ""
     , Val AdditionalParameters = "") Export
 
     Description = New Structure;

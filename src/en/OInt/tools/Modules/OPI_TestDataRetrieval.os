@@ -2512,6 +2512,13 @@ Procedure Check_OpenAIFileDeletion(Val Result, Val FileID) Export
 
 EndProcedure
 
+Procedure Check_OpenAIImage(Val Result) Export
+
+    ExpectsThat(Result["data"]).Заполнено();
+    ExpectsThat(Result["created"]).Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -4007,6 +4014,10 @@ EndProcedure
 
 Procedure Проверка_OpenAIУдалениеФайла(Val Результат, Val IDФайла) Export
 	Check_OpenAIFileDeletion(Результат, IDФайла);
+EndProcedure
+
+Procedure Проверка_OpenAIКартинка(Val Результат) Export
+	Check_OpenAIImage(Результат);
 EndProcedure
 
 #EndRegion
