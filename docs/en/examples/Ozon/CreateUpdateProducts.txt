@@ -25,6 +25,7 @@
     ItemStructure.Insert("weight"                 , 100);
     ItemStructure.Insert("weight_unit"            , "g");
     ItemStructure.Insert("images"                 , ImageArray);
+    ItemStructure.Insert("type_id"                , 91565);
 
     // Video
 
