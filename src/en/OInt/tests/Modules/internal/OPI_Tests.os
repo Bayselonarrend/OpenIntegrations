@@ -14111,6 +14111,7 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     ItemStructure.Insert("weight"                 , 100);
     ItemStructure.Insert("weight_unit"            , "g");
     ItemStructure.Insert("images"                 , ImageArray);
+    ItemStructure.Insert("type_id"                , 91565);
 
     // Video
 
@@ -23588,7 +23589,7 @@ Procedure OpenAI_GetFileInformation(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "OpenAI");
-    OPI_TestDataRetrieval.Check_OpenAIFile(Result, "picture4.png");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result);
 
 EndProcedure
 
