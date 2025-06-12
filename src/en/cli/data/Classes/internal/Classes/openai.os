@@ -272,7 +272,7 @@
     NewLine.Method       = "GetImageDescriptionStructure";
     NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
     NewLine.Parameter    = "--bg";
-    NewLine.Description    = "Generation background option: transparent, opaque, auto (optional, def. val. - auto)";
+    NewLine.Description    = "Generation background option: transparent, opaque, auto (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
 
 
@@ -282,7 +282,7 @@
     NewLine.Method       = "GetImageDescriptionStructure";
     NewLine.SearchMethod = "GETIMAGEDESCRIPTIONSTRUCTURE";
     NewLine.Parameter    = "--size";
-    NewLine.Description    = "Size option for generated images (optional, def. val. - auto)";
+    NewLine.Description    = "Size option for generated images (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
 
 

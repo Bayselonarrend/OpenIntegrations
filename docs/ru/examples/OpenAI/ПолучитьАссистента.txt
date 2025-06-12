@@ -1,6 +1,6 @@
 ﻿    URL   = "https://api.athenaeum.digital:1122/";
     Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    IDАссистента = "asst_9";
+    IDАссистента = "asst_2";
 
     Результат = OPI_OpenAI.ПолучитьАссистента(URL, Токен, IDАссистента);

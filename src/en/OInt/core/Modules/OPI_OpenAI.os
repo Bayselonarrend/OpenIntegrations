@@ -221,8 +221,8 @@ EndFunction
 // Structure - Fields structure
 Function GetImageDescriptionStructure(Val Prompt
     , Val Count
-    , Val Background = "auto"
-    , Val Size = "auto"
+    , Val Background = ""
+    , Val Size = ""
     , Val AdditionalParameters = "") Export
 
     Description = New Structure;
@@ -715,7 +715,7 @@ Function ПолучитьСтруктуруСообщенияКартинки(Va
 	Return GetImageMessageStructure(Роль, IDФайла, Текст);
 EndFunction
 
-Function ПолучитьСтруктуруОписанияКартинок(Val Промпт, Val Количество, Val Фон = "auto", Val Размер = "auto", Val ДопПараметры = "") Export
+Function ПолучитьСтруктуруОписанияКартинок(Val Промпт, Val Количество, Val Фон = "", Val Размер = "", Val ДопПараметры = "") Export
 	Return GetImageDescriptionStructure(Промпт, Количество, Фон, Размер, ДопПараметры);
 EndFunction
 
