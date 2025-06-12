@@ -35,11 +35,11 @@ Method at API documentation: [Create image](https://platform.openai.com/docs/api
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://api.vsegpt.ru/";
-    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+    URL   = "https://bothub.chat/api/v2/openai/";
+    Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzYTUwNWFiLTdhYmEtNDkyNy05YmQ0LTZlNDFlZGEyZGRmYyIsImlzRGV2Z...";
 
-    Model       = "img2img-google/flash-edit";
-    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 2);
+    Model       = "dall-e-3";
+    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "1024x1024");
     Result      = OPI_OpenAI.GetImages(URL, Token, Model, Description);
 ```
  
