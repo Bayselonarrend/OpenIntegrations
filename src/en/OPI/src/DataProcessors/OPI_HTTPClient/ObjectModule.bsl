@@ -319,6 +319,40 @@ Function SetProxy(Val Settings) Export
 
 EndFunction
 
+// Set timeout !NOCLI
+// Sets the connection timeout
+//
+// Note
+// Default timeout is 3600 seconds
+//
+// Parameters:
+// Value - Number - Connection timeout - value
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SetTimeout(Val Value) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        OPI_TypeConversion.GetNumber(Value);
+
+        If Value           = 0 Then
+            AddLog("SetTimeout: incorrect value passed, timeout not changed");
+        Else
+            AddLog("SetTimeout: setting value");
+            RequestTimeout = Value;
+        EndIf;
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
 // Get log !NOCLI
 // Gets the execution log
 //

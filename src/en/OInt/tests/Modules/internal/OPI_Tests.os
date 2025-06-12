@@ -2655,6 +2655,7 @@ Procedure HTTP_Initialization() Export
     HTTPClient_SetDataType(TestParameters);
     HTTPClient_GetLog(TestParameters);
     HTTPClient_SetProxy(TestParameters);
+    HTTPClient_SetTimeout(TestParameters);
 
 EndProcedure
 
@@ -2745,10 +2746,12 @@ EndProcedure
 Procedure OAI_RequestsProcessing() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_File"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL2"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_File"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
 
     OpenAI_GetResponse(TestParameters);
     OpenAI_GetEmbeddings(TestParameters);
@@ -23276,6 +23279,26 @@ Procedure HTTPClient_SetProxy(FunctionParameters)
 
 EndProcedure
 
+Procedure HTTPClient_SetTimeout(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetTimeout(60) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetTimeout", "HTTPClient");
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPConnection");
+    OPI_TestDataRetrieval.ExpectsThat(Result.Timeout).Равно(60);
+
+EndProcedure
+
 Procedure HTTPClient_UseURLEncoding(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
@@ -23679,17 +23702,17 @@ EndProcedure
 
 Procedure OpenAI_GetImages(FunctionParameters)
 
-    URL   = "https://api.vsegpt.ru/";
-    Token = FunctionParameters["OpenAI_Token"];
+    URL   = FunctionParameters["OpenAI_URL2"];
+    Token = FunctionParameters["OpenAI_Token2"];
 
-    Model       = "img2img-google/flash-edit";
-    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 2);
+    Model       = "dall-e-3";
+    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "1024x1024");
     Result      = OPI_OpenAI.GetImages(URL, Token, Model, Description);
 
     // END
 
-    //OPI_TestDataRetrieval.WriteLog(Result, "GetImages", "OpenAI");
-    //OPI_TestDataRetrieval.Check_OpenAIAssistant(Result, Name);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetImages", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIImage(Result);
 
 EndProcedure
 
