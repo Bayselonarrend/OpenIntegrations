@@ -2616,6 +2616,30 @@ Procedure CLI_HTTP_Settings() Export
 
 EndProcedure
 
+Procedure CLI_HTTP_HeadersSetting() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_Authorization() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_RequestProcessing() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
+Procedure CLI_HTTP_ResponseReceiving() Export
+
+    TestParameters = New Structure;
+
+EndProcedure
+
 #EndRegion
 
 #Region OpenAI
@@ -23847,7 +23871,7 @@ Procedure CLI_GreenAPI_GetIncomingMessageLog(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetIncomingMessageLog", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetIncomingMessageLog", "GreenAPI");
-    OPI_TestDataRetrieval.Check_Array(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
