@@ -55,6 +55,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ГарантироватьТаблицу \
+              --table "test_new" \
+              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ГарантироватьТаблицу ^
+              --table "test_new" ^
+              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
