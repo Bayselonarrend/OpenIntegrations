@@ -1,4 +1,4 @@
 oint vkteams ПереслатьГолосовоеСообщение ^
   --token "***" ^
   --chatid "AoLI0egLWBSLR1Ngn2w" ^
-  --fileid "I000bugC6RSgSVGazXvgAf682cf5e61bd"
+  --fileid "I000bH1rKb9huoS5s0dBlC684bcd261bd"
