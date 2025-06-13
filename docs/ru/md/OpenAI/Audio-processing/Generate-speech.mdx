@@ -53,6 +53,34 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai СгенерироватьРечь \
+              --url "https://api.athenaeum.digital:1122/" \
+              --token "***" \
+              --model "tts-1" \
+              --input "Attack ships on fire off the shoulder of Orion bright as magnesium" \
+              --options "{'response_format':'wav'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai СгенерироватьРечь ^
+              --url "https://api.athenaeum.digital:1122/" ^
+              --token "***" ^
+              --model "tts-1" ^
+              --input "Attack ships on fire off the shoulder of Orion bright as magnesium" ^
+              --options "{'response_format':'wav'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

@@ -50,6 +50,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint openai ЗагрузитьФайл \
+              --url "https://api.athenaeum.digital:1122/" \
+              --token "***" \
+              --name "picture3.png" \
+              --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --purpose "assistants"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint openai ЗагрузитьФайл ^
+              --url "https://api.athenaeum.digital:1122/" ^
+              --token "***" ^
+              --name "picture3.png" ^
+              --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --purpose "assistants"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
