@@ -41,8 +41,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     URL   = "https://api.athenaeum.digital:1122/";
     Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    File        = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    FileName    = "picture4.png";
+    File = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";
 
     Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
