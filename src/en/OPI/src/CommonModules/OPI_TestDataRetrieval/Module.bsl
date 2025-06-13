@@ -317,6 +317,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OAI_Assistants"                       , "Assistants"                      , OpenAI);
     NewTest(TestTable, "OAI_FileManagement"                   , "Files management"                , OpenAI);
     NewTest(TestTable, "OAI_AudioProcessing"                  , "Audio processing"                , OpenAI);
+    NewTest(TestTable, "OAI_ModelsManagement"                 , "Models management"               , OpenAI);
 
     Return TestTable;
 

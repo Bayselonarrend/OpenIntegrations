@@ -629,6 +629,34 @@
 
 #КонецОбласти
 
+#Область РаботаСМоделями
+
+// Получить список моделей
+// Получает список доступных моделей
+//
+// Примечание:
+// Метод в документации API: [List models](@platform.openai.com/docs/api-reference/models/list)
+//
+// Параметры:
+//  URL          - Строка                        - URL сервера OpenAI                      - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                - token
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо - headers
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Результат обработки
+Функция ПолучитьСписокМоделей(Знач URL, Знач Токен, Знач ДопЗаголовки = "") Экспорт
+
+    ДополнитьURL(URL, "v1/models");
+    ОбработатьЗаголовки(ДопЗаголовки, Токен);
+
+    Ответ = OPI_ЗапросыHTTP.Get(URL, , ДопЗаголовки);
+
+    Возврат ПривестиКлючиКНижнемуРегистру(Ответ);
+
+КонецФункции
+
+#КонецОбласти
+
 #КонецОбласти
 
 #Область СлужебныеПроцедурыИФункции
@@ -761,6 +789,10 @@ EndFunction
 
 Function CreateTranscription(Val URL, Val Token, Val Model, Val Audio, Val MIME = "audio/mpeg", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
 	Return СоздатьТранскрипцию(URL, Token, Model, Audio, MIME, AdditionalParameters, AdditionalHeaders);
+EndFunction
+
+Function GetModelList(Val URL, Val Token, Val AdditionalHeaders = "") Export
+	Return ПолучитьСписокМоделей(URL, Token, AdditionalHeaders);
 EndFunction
 
 #EndRegion
