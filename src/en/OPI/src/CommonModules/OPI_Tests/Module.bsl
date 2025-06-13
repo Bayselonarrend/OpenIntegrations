@@ -2800,6 +2800,16 @@ Procedure OAI_AudioProcessing() Export
 
 EndProcedure
 
+Procedure OAI_ModelsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    OpenAI_GetModelList(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -23542,8 +23552,9 @@ Procedure OpenAI_UploadFile(FunctionParameters)
     URL   = FunctionParameters["OpenAI_URL"];
     Token = FunctionParameters["OpenAI_Token"];
 
-    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    FileName    = "picture4.png";
+    File = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";
 
     Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
@@ -23714,6 +23725,20 @@ Procedure OpenAI_GetImages(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetImages", "OpenAI");
     OPI_TestDataRetrieval.Check_OpenAIImage(Result);
+
+EndProcedure
+
+Procedure OpenAI_GetModelList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Result = OPI_OpenAI.GetModelList(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIList(Result);
 
 EndProcedure
 

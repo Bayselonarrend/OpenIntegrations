@@ -2628,6 +2628,9 @@ Procedure CLI_OAI_RequestsProcessing() Export
 
     CLI_OpenAI_GetResponse(TestParameters);
     CLI_OpenAI_GetEmbeddings(TestParameters);
+    CLI_OpenAI_GetMessageStructure(TestParameters);
+    CLI_OpenAI_GetImageMessageStructure(TestParameters);
+    CLI_OpenAI_GetImages(TestParameters);
 
 EndProcedure
 
@@ -2656,6 +2659,27 @@ Procedure CLI_OAI_FileManagement() Export
     CLI_OpenAI_GetFilesList(TestParameters);
     CLI_OpenAI_DownloadFile(TestParameters);
     CLI_OpenAI_DeleteFile(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OAI_AudioProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    CLI_OpenAI_GenerateSpeech(TestParameters);
+    CLI_OpenAI_CreateTranscription(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OAI_ModelsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
+
+    CLI_OpenAI_GetModelList(TestParameters);
 
 EndProcedure
 
@@ -24837,6 +24861,139 @@ Procedure CLI_OpenAI_DownloadFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "OpenAI");
     OPI_TestDataRetrieval.Check_BinaryData(Result, File.Size() + 2);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetMessageStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("role", "user");
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessageStructure", "OpenAI");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetImageMessageStructure(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+    Image = FunctionParameters["OpenAI_File"];
+
+    Options = New Structure;
+    Options.Insert("role"  , "user");
+    Options.Insert("file"  , Image);
+    Options.Insert("prompt", "What is in this image?");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageMessageStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetImageMessageStructure", "OpenAI");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GenerateSpeech(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
+    Model = "tts-1";
+
+    AdditionalParameters = New Structure("response_format", "wav");
+
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("token"  , Token);
+    Options.Insert("model"  , Model);
+    Options.Insert("input"  , Text);
+    Options.Insert("options", AdditionalParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GenerateSpeech", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GenerateSpeech", "OpenAI");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 137516);
+
+    //@skip-check missing-temporary-file-deletion
+    TFN = GetTempFileName("wav");
+    Result.Write(TFN);
+
+    OPI_TestDataRetrieval.WriteParameter("OpenAI_Speech", TFN);
+    OPI_Tools.AddField("OpenAI_Speech", TFN, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_OpenAI_CreateTranscription(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Audio = FunctionParameters["OpenAI_Speech"];
+    Model = "whisper-1";
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("model" , Model);
+    Options.Insert("audio" , Audio);
+    Options.Insert("type"  , "audio/wav");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateTranscription", Options);
+
+    Try
+        DeleteFiles(Audio);
+    Except
+        Message("Error deleting file after test");
+    EndTry;
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTranscription", "OpenAI");
+    OPI_TestDataRetrieval.Check_String(Lower(Result["text"]), "attack ships on fire off the shoulder of orion bright as magnesium.");
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetImages(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL2"];
+    Token = FunctionParameters["OpenAI_Token2"];
+
+    Model = "dall-e-3";
+
+    Options = New Structure;
+    Options.Insert("prompt", "Yellow alpaca");
+    Options.Insert("amount", 1);
+    Options.Insert("size"  , "1024x1024");
+
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageDescriptionStructure", Options);
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+    Options.Insert("model" , Model);
+    Options.Insert("descr" , Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImages", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetImages", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIImage(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetModelList(FunctionParameters)
+
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
+
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetModelList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "OpenAI");
+    OPI_TestDataRetrieval.Check_OpenAIList(Result);
 
 EndProcedure
 

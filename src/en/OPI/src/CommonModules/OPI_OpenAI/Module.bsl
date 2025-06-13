@@ -629,6 +629,34 @@ EndFunction
 
 #EndRegion
 
+#Region ModelsManagement
+
+// Get model list
+// Receives a list of available models
+//
+// Note
+// Method at API documentation: [List models](@platform.openai.com/docs/api-reference/models/list)
+//
+// Parameters:
+// URL - String - OpenAI server URL - url
+// Token - String - OpenAI authorization token - token
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetModelList(Val URL, Val Token, Val AdditionalHeaders = "") Export
+
+    CompleteURL(URL, "v1/models");
+    HeadersProcessing(AdditionalHeaders, Token);
+
+    Response = OPI_HTTPRequests.Get(URL, , AdditionalHeaders);
+
+    Return ConvertKeysToLowerCase(Response);
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private

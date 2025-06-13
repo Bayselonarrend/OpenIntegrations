@@ -1959,6 +1959,10 @@ def test_openai(){
 					powershell encoding: 'UTF-8', script:'./oint.exe openai CreateTranscription --url "test" --token "test" --model "test" --audio "test" --type "test" --options "test" --headers "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai GetModelList --url "test" --token "test" --headers "test" --debug --test '
+               }
+
 }
 
 

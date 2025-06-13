@@ -876,6 +876,37 @@
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
     NewLine.Region     = "Audio processing";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetModelList";
+    NewLine.SearchMethod = "GETMODELLIST";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "OpenAI server URL";
+    NewLine.Region     = "Models management";
+    NewLine.MethodDescription   = "Receives a list of available models";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetModelList";
+    NewLine.SearchMethod = "GETMODELLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "OpenAI authorization token";
+    NewLine.Region     = "Models management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetModelList";
+    NewLine.SearchMethod = "GETMODELLIST";
+    NewLine.Parameter    = "--headers";
+    NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Models management";
+
     Return CompositionTable;
 EndFunction
 
