@@ -1,0 +1,24 @@
+[package]
+name = "opi_mssql"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = "fat"       # Enable Link Time Optimization
+codegen-units = 1 # Reduce number of codegen units to increase optimizations.
+panic = "abort"   # Abort on panic
+strip = true      # Automatically strip symbols from the binary.
+opt-level = "z"
+
+[dependencies]
+addin1c = "0.5.0"
+tiberius = { version = "0.12", features = ["chrono"] }
+tokio = { version = "1.0", features = ["full"] }
+tokio-util = { version = "0.7", features = ["compat"] }
+serde_json = "1.0"
+chrono = "0.4"
+base64 = "0.21"
+uuid = "1.17.0"
