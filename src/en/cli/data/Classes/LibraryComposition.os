@@ -8,6 +8,12 @@ Var CompositionCache;
 Procedure OnObjectCreate()
 
     Version = "1.25.0";
+    InitializeCommonLists();
+
+EndProcedure
+
+Procedure InitializeCommonLists() Export
+
     CompositionCache       = New Map();
     ModuleCommandMapping = New Map();
     ModuleCommandMapping.Insert("tools", "Utils");
@@ -173,6 +179,10 @@ EndFunction
 
 
 #Region Alternate
+
+Procedure ИнициализироватьОсновныеСписки() Export
+	InitializeCommonLists();
+EndProcedure
 
 Function ПолучитьВерсию() Export
 	Return GetVersion();

@@ -180,6 +180,10 @@
 
 #Region Alternate
 
+Procedure InitializeCommonLists() Export
+	ИнициализироватьОсновныеСписки();
+EndProcedure
+
 Function GetVersion() Export
 	Return ПолучитьВерсию();
 EndFunction
