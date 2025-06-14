@@ -36,7 +36,7 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 
-	ЗапуститьПриложение("rmdir /S /Q Melezh");
+	ЗапуститьПриложение(СтрШаблон("rmdir /S /Q %1\Melezh", ПутьКРепозиторию));
 	ЗапуститьПриложение("git clone https://github.com/bayselonarrend/Melezh");
 	// ЗапуститьПриложение("git clone --depth=1 https://github.com/bayselonarrend/Melezh --branch 0.1.0");
 	
