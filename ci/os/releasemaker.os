@@ -36,7 +36,9 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 
-	ЗапуститьПриложение("git clone --depth=1 https://github.com/bayselonarrend/Melezh --branch 0.1.0");
+	ЗапуститьПриложение("rmdir /S /Q Melezh");
+	ЗапуститьПриложение("git clone https://github.com/bayselonarrend/Melezh");
+	// ЗапуститьПриложение("git clone --depth=1 https://github.com/bayselonarrend/Melezh --branch 0.1.0");
 	
 	МассивЛокализаций = Новый Массив();
 
