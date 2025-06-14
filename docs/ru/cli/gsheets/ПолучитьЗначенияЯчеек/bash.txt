@@ -1,4 +1,4 @@
 oint gsheets ПолучитьЗначенияЯчеек \
   --token "***" \
-  --spreadsheet "1NJVfVKMce0oZBGb7rwLS5J_3I1_T9fz0GIFQcHO73vw" \
+  --spreadsheet "1TZJ7WgKhUR4Z0_YvSEWhYm_28unwDoMy6ohPPib5Uuo" \
   --sheetname "Лист2"
