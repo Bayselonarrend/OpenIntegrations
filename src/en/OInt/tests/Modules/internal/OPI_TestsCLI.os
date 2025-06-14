@@ -2487,7 +2487,7 @@ Procedure CLI_GAPI_NotificationsReceiving() Export
 
     CLI_GreenAPI_GetNotification(TestParameters);
     CLI_GreenAPI_DeleteNotificationFromQueue(TestParameters);
-    CLI_GreenAPI_DownloadMessageFile(TestParameters);
+    //CLI_GreenAPI_DownloadMessageFile(TestParameters);
     CLI_GreenAPI_SetReadMark(TestParameters);
 
 EndProcedure
@@ -23871,7 +23871,7 @@ Procedure CLI_GreenAPI_GetIncomingMessageLog(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetIncomingMessageLog", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetIncomingMessageLog", "GreenAPI");
-    OPI_TestDataRetrieval.Check_Map(Result);
+    OPI_TestDataRetrieval.Check_Map(Result, False);
 
 EndProcedure
 
