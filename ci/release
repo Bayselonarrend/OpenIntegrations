@@ -4,6 +4,7 @@ pipeline {
 
         stage('Release') {
             steps {
+                    bat 'rmdir /s /q ./Melezh'
                     bat 'oscript ./ci/os/releasemaker.os'
                     archiveArtifacts artifacts: '1.25.0/*'
             }
