@@ -2,5 +2,5 @@
 
 oint gcalendar СоздатьСобытие \
   --token "***" \
-  --calendar "67fbaab4ebefa094da8932f5633aa867e1250040c11ad30663ffb13586ea626d@group.calendar.google.com" \
-  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2025-06-13T09:36:17.7709Z','ДатаОкончания':'2025-06-13T10:36:17.7709Z','МассивURLФайловВложений':{'Картинка1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Картинка2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+  --calendar "1bed44c1e29681df971b3fbf71052273e90a031b0c287dc4fb00bb5687568d23@group.calendar.google.com" \
+  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2025-06-14T20:45:58.3079939Z','ДатаОкончания':'2025-06-14T21:45:58.3079939Z','МассивURLФайловВложений':{'Картинка1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Картинка2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
