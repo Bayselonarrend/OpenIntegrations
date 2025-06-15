@@ -309,7 +309,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateConnection(Val Address, Val Tls = "") Export

@@ -2914,7 +2914,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetTestingSectionMapping() Export

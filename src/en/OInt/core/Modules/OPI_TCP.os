@@ -309,7 +309,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val Адрес, Val Tls = "") Export

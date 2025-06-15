@@ -163,11 +163,12 @@ EndFunction
 // Structure Of KeyAndValue - Fields structure
 Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
 
+    String_         = "String";
     FieldsStructure = New Structure;
 
-    OPI_Tools.AddField("role"   , Role , "String", FieldsStructure);
-    OPI_Tools.AddField("content", Text , "String", FieldsStructure);
-    OPI_Tools.AddField("name"   , Name , "String", FieldsStructure);
+    OPI_Tools.AddField("role"   , Role , String_, FieldsStructure);
+    OPI_Tools.AddField("content", Text , String_, FieldsStructure);
+    OPI_Tools.AddField("name"   , Name , String_, FieldsStructure);
 
     Return FieldsStructure;
 
@@ -225,11 +226,13 @@ Function GetImageDescriptionStructure(Val Prompt
     , Val Size = ""
     , Val AdditionalParameters = "") Export
 
+    String_     = "String";
     Description = New Structure;
-    OPI_Tools.AddField("prompt"    , Prompt     , "String" , Description);
-    OPI_Tools.AddField("n"         , Count      , "Number" , Description);
-    OPI_Tools.AddField("background", Background , "String" , Description);
-    OPI_Tools.AddField("size"      , Size       , "String" , Description);
+
+    OPI_Tools.AddField("prompt"    , Prompt     , String_ , Description);
+    OPI_Tools.AddField("n"         , Count      , "Number", Description);
+    OPI_Tools.AddField("background", Background , String_ , Description);
+    OPI_Tools.AddField("size"      , Size       , String_ , Description);
 
     ProcessParameters(Description, AdditionalParameters);
 
@@ -308,11 +311,12 @@ Function CreateAssistant(Val URL
 
     CompleteURL(URL, "v1/assistants");
 
+    String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("model"       , Model       , "String", Parameters);
-    OPI_Tools.AddField("name"        , Name        , "String", Parameters);
-    OPI_Tools.AddField("instructions", Instruction , "String", Parameters);
+    OPI_Tools.AddField("model"       , Model       , String_, Parameters);
+    OPI_Tools.AddField("name"        , Name        , String_, Parameters);
+    OPI_Tools.AddField("instructions", Instruction , String_, Parameters);
 
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders, Token);
@@ -570,10 +574,12 @@ Function GenerateSpeech(Val URL
 
     CompleteURL(URL, "v1/audio/speech");
 
+    String_    = "String";
     Parameters = New Structure;
-    OPI_Tools.AddField("model", Model , "String", Parameters);
-    OPI_Tools.AddField("input", Text  , "String", Parameters);
-    OPI_Tools.AddField("voice", Voice , "String", Parameters);
+
+    OPI_Tools.AddField("model", Model , String_, Parameters);
+    OPI_Tools.AddField("input", Text  , String_, Parameters);
+    OPI_Tools.AddField("voice", Voice , String_, Parameters);
 
     ProcessParameters(Parameters, AdditionalParameters);
     HeadersProcessing(AdditionalHeaders, Token);
@@ -707,7 +713,7 @@ Function ConvertKeysToLowerCase(Val Collection)
         Collection_ = New(TypeOf(Collection));
 
         For Each KeyValue In Collection Do
-            Collection_.Insert(Lower(KeyValue.Key), KeyValue.Value)
+            Collection_.Insert(Lower(KeyValue.Key), KeyValue.Value);
         EndDo;
 
         Return Collection_;
