@@ -656,7 +656,6 @@ EndProcedure
 
 #EndRegion
 
-
 #Region Alternate
 
 Function СоздатьКалендарь(Val Токен, Val Наименование) Export

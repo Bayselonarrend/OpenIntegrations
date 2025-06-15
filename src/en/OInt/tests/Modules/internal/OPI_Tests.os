@@ -44,6 +44,7 @@
 // BSLLS:UnusedLocalMethod-off
 // BSLLS:NestedFunctionInParameters-off
 
+
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
 //@skip-check module-structure-top-region
@@ -23088,7 +23089,6 @@ Procedure HTTPClient_ReturnRequest(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ReturnRequest", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("HTTPRequest");
-
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()

@@ -420,7 +420,6 @@ EndProcedure
 
 #EndRegion
 
-
 #Region Alternate
 
 Function СоздатьКнигу(Val Токен, Val Наименование, Val МассивИменЛистов) Export

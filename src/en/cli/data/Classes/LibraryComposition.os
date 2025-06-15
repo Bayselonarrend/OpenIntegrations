@@ -177,7 +177,6 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
 EndFunction
 
-
 #Region Alternate
 
 Procedure ИнициализироватьОсновныеСписки() Export

@@ -1911,7 +1911,6 @@ EndProcedure
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьДеревоКатегорийИТиповТоваров(Val IDКлиента, Val КлючAPI, Val Язык = "DEFAULT") Export

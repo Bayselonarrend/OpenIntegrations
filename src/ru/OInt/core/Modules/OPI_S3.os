@@ -1930,7 +1930,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
