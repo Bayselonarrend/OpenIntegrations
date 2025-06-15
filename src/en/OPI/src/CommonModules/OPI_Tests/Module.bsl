@@ -43,7 +43,7 @@
 // BSLLS:UnreachableCode-off
 // BSLLS:UnusedLocalMethod-off
 // BSLLS:NestedFunctionInParameters-off
-
+// BSLLS:MissingTemporaryFileDeletion-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
