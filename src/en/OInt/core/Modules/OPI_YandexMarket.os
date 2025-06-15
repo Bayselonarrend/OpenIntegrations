@@ -428,7 +428,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьСписокМагазинов(Val Токен, Val Страница = 1) Export

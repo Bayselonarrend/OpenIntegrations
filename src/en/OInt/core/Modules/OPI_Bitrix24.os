@@ -5237,7 +5237,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизацииПриложения(Val Домен, Val ClientID) Export

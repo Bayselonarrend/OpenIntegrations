@@ -972,7 +972,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПроверитьТокен(Val Токен) Export

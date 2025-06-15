@@ -894,7 +894,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreatePage(Val Token, Val Parent, Val Title) Export

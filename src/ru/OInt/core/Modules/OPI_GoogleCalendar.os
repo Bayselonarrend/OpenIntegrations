@@ -656,7 +656,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateCalendar(Val Token, Val Name) Export
