@@ -2186,7 +2186,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateTokenRetrievalLink(Val App_id) Export

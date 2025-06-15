@@ -1043,7 +1043,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьИнформациюОБоте(Val Токен) Export

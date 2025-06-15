@@ -177,7 +177,6 @@
 
 КонецФункции
 
-
 #Region Alternate
 
 Procedure InitializeCommonLists() Export

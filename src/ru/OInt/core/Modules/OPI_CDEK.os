@@ -1333,7 +1333,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetToken(Val Account, Val Password, TestAPI = False) Export

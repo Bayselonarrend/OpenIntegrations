@@ -144,7 +144,6 @@ Function ColoredSubstringPattern()
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Procedure Сообщить(Val ТекстСообщения = "", Val пСтатусСообщения = Undefined) Export

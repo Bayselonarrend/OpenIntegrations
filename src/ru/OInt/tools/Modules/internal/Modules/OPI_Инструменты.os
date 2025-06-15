@@ -736,7 +736,11 @@
     КонецПопытки;
 
     Если ЭтоОтладка = "YES" Тогда
+
+        // BSLLS:DeprecatedMessage-off
         Сообщить(Текст);
+        // BSLLS:DeprecatedMessage-on
+
     КонецЕсли;
 
 КонецПроцедуры
@@ -1144,7 +1148,6 @@
 КонецФункции
 
 #КонецОбласти
-
 
 #Region Alternate
 

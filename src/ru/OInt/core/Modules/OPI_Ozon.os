@@ -1911,7 +1911,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetCategoriesAndProductTypesTree(Val ClientID, Val APIKey, Val Lang = "DEFAULT") Export

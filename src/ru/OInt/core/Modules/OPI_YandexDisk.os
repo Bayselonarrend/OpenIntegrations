@@ -608,7 +608,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetDiskInformation(Val Token) Export

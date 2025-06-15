@@ -1903,7 +1903,9 @@ Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
 
     If ThisIsRedirection(Response) Then
 
-        If RedirectCount = 5 Then
+        MaximumNumberOfRedirects = 5;
+
+        If RedirectCount = MaximumNumberOfRedirects Then
             Error("ExecuteMethod: the number of redirects has been exceeded");
             Return ЭтотОбъект;
         EndIf;
@@ -2852,7 +2854,6 @@ EndProcedure
 #EndRegion
 
 // #EndIf
-
 
 #Region Alternate
 

@@ -431,7 +431,6 @@ Function AddCollectionParamToTable(Val Table, Val Name, Val Explanation)
 	Return StrParam;
 
 EndFunction
-
 #Region Alternate
 
 Function ДобавитьПараметр(Val ИмяПараметра, Val Пояснение = "") Export
