@@ -588,7 +588,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateTag(Val Token, Val Name) Export

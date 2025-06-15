@@ -778,7 +778,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetObjectInformation(Val Token, Val Identifier) Export
