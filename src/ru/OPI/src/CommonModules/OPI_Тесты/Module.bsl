@@ -44,6 +44,7 @@
 // BSLLS:UnusedLocalMethod-off
 // BSLLS:NestedFunctionInParameters-off
 
+
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
 //@skip-check module-structure-top-region
@@ -23088,7 +23089,6 @@
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВернутьЗапрос", "HTTPКлиент");
     OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("HTTPЗапрос");
-
 
     Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
         .Инициализировать()
