@@ -988,7 +988,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизации(Val КлючПриложения) Export

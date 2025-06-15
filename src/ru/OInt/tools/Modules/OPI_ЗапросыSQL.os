@@ -1376,7 +1376,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export

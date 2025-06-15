@@ -2914,7 +2914,6 @@ EndProcedure
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьСоответствиеРазделовТестирования() Export

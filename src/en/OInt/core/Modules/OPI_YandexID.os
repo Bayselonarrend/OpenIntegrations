@@ -131,7 +131,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьКодПодтверждения(Val ClientId) Export
