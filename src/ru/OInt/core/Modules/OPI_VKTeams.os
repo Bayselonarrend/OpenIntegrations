@@ -972,7 +972,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CheckToken(Val Token) Export

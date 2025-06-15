@@ -226,7 +226,7 @@ EndFunction
 
 // https://github.com/pintov/1c-jwt
 
-Function Base64UrlEncode(Val Value)
+Function Base64UrlEncode(Val Value) Export
 
     Output = Base64String(Value);
     Output = StrSplit(Output, "=")[0];
