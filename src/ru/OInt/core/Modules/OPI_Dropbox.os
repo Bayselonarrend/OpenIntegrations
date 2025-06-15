@@ -988,7 +988,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function GetAuthorizationLink(Val AppKey) Export

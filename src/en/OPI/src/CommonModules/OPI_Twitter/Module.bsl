@@ -292,7 +292,6 @@ Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
     Return Result;
 
-
 EndFunction
 
 // Create video tweet

@@ -736,7 +736,11 @@ Procedure DebugInfo(Val Text) Export
     EndTry;
 
     If IsDebug = "YES" Then
+
+        // BSLLS:DeprecatedMessage-off
         Message(Text);
+        // BSLLS:DeprecatedMessage-on
+
     EndIf;
 
 EndProcedure
@@ -1144,7 +1148,6 @@ Function GetEscapeSequencesMap()
 EndFunction
 
 #EndRegion
-
 
 #Region Alternate
 

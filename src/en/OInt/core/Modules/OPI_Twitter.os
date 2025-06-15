@@ -292,7 +292,6 @@ Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
     Return Result;
 
-
 EndFunction
 
 // Create video tweet
@@ -660,7 +659,6 @@ Function PostMultipart(Val URL, Val Fields, Val SecretData)
 EndFunction
 
 #EndRegion
-
 
 #Region Alternate
 

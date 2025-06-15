@@ -29,6 +29,7 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -243,7 +244,6 @@
 КонецФункции
 
 #КонецОбласти
-
 
 #Region Alternate
 

@@ -778,7 +778,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьИнформациюОбОбъекте(Val Токен, Val Идентификатор) Export

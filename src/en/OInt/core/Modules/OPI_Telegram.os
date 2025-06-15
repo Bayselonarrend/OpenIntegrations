@@ -1571,7 +1571,6 @@ EndProcedure
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьИнформациюБота(Val Токен) Export

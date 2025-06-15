@@ -608,7 +608,6 @@ EndFunction
 
 #EndRegion
 
-
 #Region Alternate
 
 Function ПолучитьИнформациюОДиске(Val Токен) Export
