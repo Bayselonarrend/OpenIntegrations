@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Main') {
+            steps {
+                echo 'Main (OpenIntegrations)'
+                build job: 'Main', wait: true
+            }
+        }
+
+        stage('Melezh_Release') {
+            steps {
+                echo 'Main + Release (Melezh)'
+                build job: 'Melezh_Release', wait: true
+            }
+        }
+
+        stage('Release') {
+            steps {
+                echo 'Release (OpenIntegrations)'
+                build job: 'Release', wait: true
+            }
+        }
+    }
+}
