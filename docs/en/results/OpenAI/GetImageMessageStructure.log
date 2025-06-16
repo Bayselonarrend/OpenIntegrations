@@ -1,0 +1,13 @@
+﻿ {
+ "role": "user",
+ "content": [
+  {
+   "type": "input_image",
+   "file_id": "file-17"
+  },
+  {
+   "type": "input_text",
+   "text": "What is in this image?"
+  }
+ ]
+}
