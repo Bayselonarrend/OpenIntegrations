@@ -3,4 +3,4 @@
 oint ozon ОбновитьКоличествоТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --stocks "{'offer_id':'143210610','product_id':1962166623,'stock':20,'warehouse_id':1}"
+  --stocks "{'offer_id':'143210610','product_id':1990417369,'stock':20,'warehouse_id':1}"
