@@ -1,4 +1,4 @@
-﻿    Token    = "ya29.a0AW4Xtxjy2T4evVSaQ2ueBHlGucx28X7k_4t63XiK5jTJ-jVAbNTzJAkE7LpDAgybZM3Z7Whw0WpzzJZKjwnTVkjC5ESUO3_hOaZgIfThx...";
-    Calendar = "6ed3de065944a83bd0243edcb9ccb62bb1b25fa8df3efb870b5cea179bae70cb@group.calendar.google.com";
+﻿    Token    = "ya29.a0AW4XtxhlXPB6DgA0Jp4p68Me-05frfv0NG6wcQ5umbeweKwSTJrAFwfHa8yFX_-RbplxpYEhGTBm-l2yGD53fKkf4CoBwRbj6ZLRfhocp...";
+    Calendar = "928137ad4c58ead6e2346466c3a2d25e5c71f116b9a800930bc63587c2602fc6@group.calendar.google.com";
 
     Result = OPI_GoogleCalendar.GetEventList(Token, Calendar);
