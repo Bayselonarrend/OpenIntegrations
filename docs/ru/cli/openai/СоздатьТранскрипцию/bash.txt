@@ -1,0 +1,6 @@
+oint openai СоздатьТранскрипцию \
+  --url "https://api.athenaeum.digital:1122/" \
+  --token "***" \
+  --model "whisper-1" \
+  --audio "C:\Users\Administrator\AppData\Local\Temp\g3xlngfunkg.wav" \
+  --type "audio/wav"
