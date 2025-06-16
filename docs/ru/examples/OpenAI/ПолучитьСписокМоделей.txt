@@ -1,4 +1,0 @@
-﻿    URL   = "https://api.athenaeum.digital:1122/";
-    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
-
-    Результат = OPI_OpenAI.ПолучитьСписокМоделей(URL, Токен);
