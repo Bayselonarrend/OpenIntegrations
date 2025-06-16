@@ -1,6 +1,6 @@
 ﻿    URL   = "https://api.athenaeum.digital:1122/";
     Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    FileID = "file-3";
+    FileID = "file-14";
 
     Result = OPI_OpenAI.DeleteFile(URL, Token, FileID);
