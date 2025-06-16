@@ -1,6 +1,6 @@
 ﻿    URL    = "https://api.athenaeum.digital/ollama";
     Токен  = "10KO-82..."; // Авторизация - не часть API Ollama
-    SHA256 = "eafd0486b147fb2d7266ef584e40fb36bbb48c685e93e31b2fcaa4a376e78b77";
+    SHA256 = "dc5ad534b4009758f0ed63edfe2d9ff319f6274f3493cb02f8e85365346637a5";
 
     ДопЗаголовки = Новый Соответствие;
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
