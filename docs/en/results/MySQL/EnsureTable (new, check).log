@@ -1,0 +1,41 @@
+﻿ {
+ "data": [
+  {
+   "CHARACTER_MAXIMUM_LENGTH": null,
+   "COLUMN_DEFAULT": null,
+   "COLUMN_NAME": "smallint_field",
+   "DATA_TYPE": {
+    "BYTES": "c21hbGxpbnQ="
+   },
+   "IS_NULLABLE": "YES"
+  },
+  {
+   "CHARACTER_MAXIMUM_LENGTH": null,
+   "COLUMN_DEFAULT": null,
+   "COLUMN_NAME": "double_field",
+   "DATA_TYPE": {
+    "BYTES": "ZG91Ymxl"
+   },
+   "IS_NULLABLE": "YES"
+  },
+  {
+   "CHARACTER_MAXIMUM_LENGTH": null,
+   "COLUMN_DEFAULT": null,
+   "COLUMN_NAME": "bigint_field",
+   "DATA_TYPE": {
+    "BYTES": "YmlnaW50"
+   },
+   "IS_NULLABLE": "YES"
+  },
+  {
+   "CHARACTER_MAXIMUM_LENGTH": 65535,
+   "COLUMN_DEFAULT": null,
+   "COLUMN_NAME": "custom_field",
+   "DATA_TYPE": {
+    "BYTES": "dGV4dA=="
+   },
+   "IS_NULLABLE": "YES"
+  }
+ ],
+ "result": true
+}

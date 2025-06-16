@@ -1,0 +1,40 @@
+﻿ {
+ "data": [
+  {
+   "bigint_field": 9999999,
+   "bigserial_field": 9999999,
+   "bool_field": true,
+   "bytea_field": {
+    "BYTEA": "/9j/4VTBRX..."
+   },
+   "char_field": "A",
+   "charn_field": "AAA",
+   "date_field": "2025-06-16",
+   "dp_field": 1.0002,
+   "int_field": 100,
+   "ip_field": "127.0.0.1",
+   "json_field": {
+    "key": "ItsKey",
+    "value": 10
+   },
+   "jsonb_field": {
+    "key": "ItsKey",
+    "value": 10
+   },
+   "name_field": "Vitaly",
+   "oid_field": 24576,
+   "oldchar_field": 1,
+   "real_field": 15.1999998092651,
+   "serial_field": 100,
+   "smallint_field": 5,
+   "smallserial_field": 6,
+   "text_field": "Some text",
+   "time_field": "20:52:18",
+   "ts_field": "2025-06-16T20:52:18",
+   "tswtz_field": "2025-06-16T18:52:18.280447+03:00",
+   "uuid_field": "0cf29094-a9d4-45ce-a133-39392dc2c588",
+   "varchar_field": "Some varchar"
+  }
+ ],
+ "result": true
+}

@@ -1,0 +1,21 @@
+﻿ {
+ "created": 1750098808,
+ "object": "chat.completion",
+ "id": "4e3c17dc-3d4d-4a24-ae7b-e992ea1c1614",
+ "model": "moondream2-20250414",
+ "choices": [
+  {
+   "index": 0,
+   "finish_reason": "stop",
+   "message": {
+    "role": "assistant",
+    "content": "A group of people is standing near a beach, watching a dog on a leash walking in the water."
+   }
+  }
+ ],
+ "usage": {
+  "prompt_tokens": 4,
+  "completion_tokens": 22,
+  "total_tokens": 26
+ }
+}
