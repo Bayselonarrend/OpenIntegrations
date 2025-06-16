@@ -1,0 +1,21 @@
+﻿ {
+ "created": 1750098805,
+ "object": "chat.completion",
+ "id": "39a36b68-de88-476a-a746-d379d12d30b7",
+ "model": "smolvlm-256m-instruct",
+ "choices": [
+  {
+   "index": 0,
+   "finish_reason": "stop",
+   "message": {
+    "role": "assistant",
+    "content": "2015"
+   }
+  }
+ ],
+ "usage": {
+  "prompt_tokens": 53,
+  "completion_tokens": 5,
+  "total_tokens": 58
+ }
+}
