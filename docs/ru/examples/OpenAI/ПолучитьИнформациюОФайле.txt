@@ -1,6 +1,6 @@
 ﻿    URL   = "https://api.athenaeum.digital:1122/";
     Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
 
-    IDФайла = "file-3";
+    IDФайла = "file-14";
 
     Результат = OPI_OpenAI.ПолучитьИнформациюОФайле(URL, Токен, IDФайла);
