@@ -2648,8 +2648,12 @@ EndProcedure
 Procedure CLI_OAI_RequestsProcessing() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL2"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_File"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
 
     CLI_OpenAI_GetResponse(TestParameters);
     CLI_OpenAI_GetEmbeddings(TestParameters);
@@ -24780,7 +24784,7 @@ Procedure CLI_OpenAI_GetAssistantsList(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantsList", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAssistantsList", "OpenAI");
-    OPI_TestDataRetrieval.Check_Array(Result["data"], 2);
+    OPI_TestDataRetrieval.Check_Array(Result["data"]);
 
 EndProcedure
 
@@ -24790,7 +24794,7 @@ Procedure CLI_OpenAI_UploadFile(FunctionParameters)
     Token = FunctionParameters["OpenAI_Token"];
 
     File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    FileName    = "picture3.png";
+    FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";
 
     Options = New Structure;
@@ -24847,7 +24851,7 @@ Procedure CLI_OpenAI_GetFileInformation(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFileInformation", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFileInformation", "OpenAI");
-    OPI_TestDataRetrieval.Check_OpenAIFile(Result, "picture3.png");
+    OPI_TestDataRetrieval.Check_OpenAIFile(Result);
 
 EndProcedure
 

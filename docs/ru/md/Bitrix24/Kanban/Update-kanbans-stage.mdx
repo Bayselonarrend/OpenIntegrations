@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Наименование = "Новое имя стадии стадии";
     Цвет         = "000000";
-    IDСтадии     = "2356";
+    IDСтадии     = "2376";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
@@ -47,10 +47,10 @@ import TabItem from '@theme/TabItem';
 
     Наименование = "Новое имя стадии стадии 2";
     Цвет         = "000000";
-    IDСтадии     = "2358";
+    IDСтадии     = "2378";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "9a145068006e9f06006b12e400000001000...";
+    Токен = "2b185168006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ИзменитьСтадиюКанбана(URL, Наименование, IDСтадии, Цвет, 6, Истина, Токен);
 ```
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ИзменитьСтадиюКанбана \
               --url "b24-ar17wx.bitrix24.by" \
               --title "Новое имя стадии стадии 2" \
-              --stage 2350 \
+              --stage 2370 \
               --color "000000" \
               --prevstage 6 \
               --admin true \
@@ -76,7 +76,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ИзменитьСтадиюКанбана ^
               --url "b24-ar17wx.bitrix24.by" ^
               --title "Новое имя стадии стадии 2" ^
-              --stage 2350 ^
+              --stage 2370 ^
               --color "000000" ^
               --prevstage 6 ^
               --admin true ^

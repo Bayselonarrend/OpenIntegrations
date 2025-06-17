@@ -1,4 +1,4 @@
-﻿    Токен        = "ya29.a0AW4XtxhlXPB6DgA0Jp4p68Me-05frfv0NG6wcQ5umbeweKwSTJrAFwfHa8yFX_-RbplxpYEhGTBm-l2yGD53fKkf4CoBwRbj6ZLRfhocp...";
+﻿    Токен        = "ya29.a0AW4XtxgOTUonqiJAYqYtxcBh8MI1VxhOH0B9hCii3RQaZlp1PVWulwBqV-y7CkKAad7Ofs4NlHXhJ3-Qe1lj4xEd-ubK_QpjEkbdCVoUW...";
     Книга        = "1mzZ4_JqvwJg8VmxpqhH2WZEZRxqn7cJEV4ytH9tTYqA";
     Наименование = "Тестовая таблица (изм.)";
 
