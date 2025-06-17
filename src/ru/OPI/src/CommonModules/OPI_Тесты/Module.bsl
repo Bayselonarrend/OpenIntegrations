@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -11291,8 +11291,8 @@
 Процедура Bitrix24_ОтметитьСообщениеКакПрочитанное(ПараметрыФункции)
 
     URL         = ПараметрыФункции["Bitrix24_URL"];
-	IDЧата      = ПараметрыФункции["Bitrix24_HookChatID"];
-	OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
+    IDЧата         = ПараметрыФункции["Bitrix24_HookChatID"];
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
     СтрокаЧата  = "chat" + IDЧата;
     IDСообщения = ПараметрыФункции["Bitrix24_ChatMessageID"];
 

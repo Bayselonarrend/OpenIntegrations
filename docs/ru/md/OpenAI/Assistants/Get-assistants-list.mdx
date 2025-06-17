@@ -45,6 +45,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai ПолучитьСписокАссистентов \
+              --url "https://api.athenaeum.digital:1122/" \
+              --token "***" \
+              --limit 2 \
+              --options "{'after':'asst_2','order':'desc'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai ПолучитьСписокАссистентов ^
+              --url "https://api.athenaeum.digital:1122/" ^
+              --token "***" ^
+              --limit 2 ^
+              --options "{'after':'asst_2','order':'desc'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
