@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьРезультатИзКомментария ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --comment 14762 ^
+  --comment 14784 ^
   --token "***"

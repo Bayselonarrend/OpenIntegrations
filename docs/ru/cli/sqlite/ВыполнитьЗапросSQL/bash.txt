@@ -2,5 +2,5 @@
 
 oint sqlite ВыполнитьЗапросSQL \
   --sql "SELECT uuid4();" \
-  --db "C:\Users\Administrator\AppData\Local\Temp\vnxpcsizfn2.sqlite" \
+  --db "C:\Users\Administrator\AppData\Local\Temp\l4a05qegq0h.sqlite" \
   --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
