@@ -11291,7 +11291,7 @@ EndProcedure
 Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
 
     URL        = FunctionParameters["Bitrix24_URL"];
-    ChatID        = FunctionParameters["Bitrix24_HookChatID"];
+    ChatID     = FunctionParameters["Bitrix24_HookChatID"];
     OPI_TypeConversion.GetLine(ChatID);
     ChatString = "chat" + ChatID;
     MessageID  = FunctionParameters["Bitrix24_ChatMessageID"];
