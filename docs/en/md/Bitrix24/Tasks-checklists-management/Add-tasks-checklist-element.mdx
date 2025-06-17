@@ -36,15 +36,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "6290";
+    TaskID = "6340";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "9a145068006e9f06006b12e400000001000...";
-    TaskID = "6292";
+    Token  = "2b185168006e9f06006b12e400000001000...";
+    TaskID = "6342";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```
