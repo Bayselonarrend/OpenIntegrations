@@ -1,0 +1,6 @@
+oint openai UploadFile ^
+ --url "https://api.athenaeum.digital:1122/" ^
+ --token "***" ^
+ --name "fac80cf7-501d-4616-8a39-ffc7a91692d2.png" ^
+ --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+ --purpose "assistants"

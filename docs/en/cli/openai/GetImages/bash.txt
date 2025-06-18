@@ -1,0 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
+oint openai GetImages \
+ --url "https://bothub.chat/api/v2/openai/" \
+ --token "***" \
+ --model "dall-e-3" \
+ --descr "{'prompt':'Yellow alpaca','n':1,'size':'1024x1024'}"
