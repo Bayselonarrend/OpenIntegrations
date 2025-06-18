@@ -2,5 +2,5 @@
 
 oint greenapi УстановитьКартинкуГруппы ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-  --group "120363418641913509@g.us" ^
+  --group "120363401748602848@g.us" ^
   --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"

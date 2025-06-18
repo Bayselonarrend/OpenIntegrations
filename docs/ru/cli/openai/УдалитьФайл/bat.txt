@@ -1,0 +1,4 @@
+oint openai УдалитьФайл ^
+  --url "https://api.athenaeum.digital:1122/" ^
+  --token "***" ^
+  --id "file-2"
