@@ -3,4 +3,4 @@ oint telegram EditForumTopic ^
  --forum "-1001971186208" ^
  --icon "5310132165583840589" ^
  --title "NewTestTitle" ^
- --topic "9765"
+ --topic "9974"
