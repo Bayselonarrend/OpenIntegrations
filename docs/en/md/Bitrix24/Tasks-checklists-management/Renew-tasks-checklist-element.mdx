@@ -35,16 +35,16 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "6340";
-    ElementID = "4502";
+    TaskID    = "6396";
+    ElementID = "4542";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "6342";
-    ElementID = "4506";
+    TaskID    = "6398";
+    ElementID = "4546";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "2b185168006e9f06006b12e400000001000...";
+    Token = "e0165368006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
@@ -56,8 +56,8 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
         ```bash
             oint bitrix24 RenewTasksChecklistElement \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "6196" \
-             --element 4394 \
+             --task "6382" \
+             --element 4538 \
              --token "***"
         ```
     </TabItem>
@@ -66,8 +66,8 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
         ```batch
             oint bitrix24 RenewTasksChecklistElement ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "6196" ^
-             --element 4394 ^
+             --task "6382" ^
+             --element 4538 ^
              --token "***"
         ```
     </TabItem>

@@ -38,6 +38,22 @@ Passing Tls settings together with passing an already created connection to the 
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint postgres GetTlsSettings \
+             --trust false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint postgres GetTlsSettings ^
+             --trust false
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

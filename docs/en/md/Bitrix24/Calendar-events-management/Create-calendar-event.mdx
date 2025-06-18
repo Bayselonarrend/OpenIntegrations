@@ -34,7 +34,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "820";
+    CalendarID = "844";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     Hour     = 3600;
@@ -96,8 +96,8 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
     Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "2b185168006e9f06006b12e400000001000...";
-    CalendarID = "822";
+    Token      = "e0165368006e9f06006b12e400000001000...";
+    CalendarID = "846";
 
     EventStucture.Insert("section", CalendarID);
 
@@ -113,7 +113,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'type':'user','ownerId':1,'from':'2025-05-22T09:41:40.3026948','to':'2025-05-22T10:41:40.3026948','section':734,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-06-01T09:41:40.3026948'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+             --fields "{'type':'user','ownerId':1,'from':'2025-06-19T20:48:05.4932959','to':'2025-06-19T21:48:05.4932959','section':838,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-06-29T20:48:05.4932959'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
              --token "***"
         ```
     </TabItem>
@@ -124,7 +124,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'type':'user','ownerId':1,'from':'2025-05-22T09:41:40.3026948','to':'2025-05-22T10:41:40.3026948','section':734,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-06-01T09:41:40.3026948'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
+             --fields "{'type':'user','ownerId':1,'from':'2025-06-19T20:48:05.4932959','to':'2025-06-19T21:48:05.4932959','section':838,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-06-29T20:48:05.4932959'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
              --token "***"
         ```
     </TabItem>
