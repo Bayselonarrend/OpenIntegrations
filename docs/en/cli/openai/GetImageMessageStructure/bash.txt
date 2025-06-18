@@ -1,0 +1,4 @@
+oint openai GetImageMessageStructure \
+ --role "user" \
+ --file "file-2" \
+ --prompt "What is in this image?"

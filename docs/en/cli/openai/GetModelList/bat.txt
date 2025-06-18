@@ -1,0 +1,3 @@
+oint openai GetModelList ^
+ --url "https://api.athenaeum.digital:1122/" ^
+ --token "***"

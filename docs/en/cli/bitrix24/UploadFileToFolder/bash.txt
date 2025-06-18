@@ -1,6 +1,5 @@
 oint bitrix24 UploadFileToFolder \
- --url "b24-ar17wx.bitrix24.by" \
- --title "Picture1.jpg" \
- --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
- --folderid 34364 \
- --token "***"
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
+ --title "Imortant doc.docx" \
+ --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+ --folderid 35416

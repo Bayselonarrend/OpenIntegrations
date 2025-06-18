@@ -3,4 +3,4 @@
 oint greenapi GetMessage ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
  --chat "120363410406221140@g.us" ^
- --msg "BAE5B99FA6E227D5"
+ --msg "BAE51C542B37B99B"

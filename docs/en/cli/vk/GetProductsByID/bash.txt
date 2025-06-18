@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk GetProductsByID \
- --items "[11227846,11227849]" \
+ --items "[11321331,11321333]" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
