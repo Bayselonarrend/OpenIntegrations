@@ -1,4 +1,5 @@
 oint bitrix24 ИзменитьКартинкуЧата \
-  --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-  --chat 2538 \
-  --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
+  --url "b24-ar17wx.bitrix24.by" \
+  --chat 2544 \
+  --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
+  --token "***"
