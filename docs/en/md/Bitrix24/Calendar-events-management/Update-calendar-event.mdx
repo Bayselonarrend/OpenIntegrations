@@ -35,7 +35,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "1398";
+    EventID = "1446";
 
     EventStucture = New Structure;
 
@@ -49,9 +49,9 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "2b185168006e9f06006b12e400000001000...";
-    EventID    = "1402";
-    CalendarID = "822";
+    Token      = "e0165368006e9f06006b12e400000001000...";
+    EventID    = "1450";
+    CalendarID = "846";
 
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
 ```
@@ -65,7 +65,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
             
             oint bitrix24 UpdateCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --event 1226 \
+             --event 1434 \
              --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
              --token "***"
         ```
@@ -77,7 +77,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
             
             oint bitrix24 UpdateCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --event 1226 ^
+             --event 1434 ^
              --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
              --token "***"
         ```

@@ -2,8 +2,8 @@
 
     Image1       = "https://api.athenaeum.digital/test_data/picture.jpg";
     Image2       = "https://api.athenaeum.digital/test_data/picture2.jpg";
-    PropVariant1 = "6538";
-    PropVariant2 = "6539";
+    PropVariant1 = "6564";
+    PropVariant2 = "6565";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
