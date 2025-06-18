@@ -1,0 +1,4 @@
+oint openai УдалитьАссистента ^
+  --url "https://api.athenaeum.digital:1122/" ^
+  --token "***" ^
+  --id "asst_1"
