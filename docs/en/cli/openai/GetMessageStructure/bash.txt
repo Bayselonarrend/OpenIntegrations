@@ -1,0 +1,3 @@
+oint openai GetMessageStructure \
+ --role "user" \
+ --text "What is 1C:Enterprise?"

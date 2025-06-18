@@ -1,4 +1,4 @@
 oint dropbox MoveObject ^
  --token "***" ^
- --from "/New/pic.png" ^
- --to "/pic.png"
+ --from "/pic.png" ^
+ --to "/New/pic.png"

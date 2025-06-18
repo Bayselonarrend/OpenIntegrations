@@ -1,5 +1,6 @@
 oint bitrix24 CreatePersonalNotification ^
- --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
- --user 1 ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --user 10 ^
  --text "Message text" ^
- --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"
+ --tag "New" ^
+ --token "***"

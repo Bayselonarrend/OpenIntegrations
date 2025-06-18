@@ -4,4 +4,4 @@ oint greenapi ForwardMessages ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
  --from "120363410406221140@g.us" ^
  --to "120363410406221140@g.us" ^
- --msgs "BAE5B99FA6E227D5"
+ --msgs "BAE51C542B37B99B"

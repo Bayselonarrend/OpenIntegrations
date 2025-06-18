@@ -1,0 +1,6 @@
+oint openai CreateTranscription ^
+ --url "https://api.athenaeum.digital:1122/" ^
+ --token "***" ^
+ --model "whisper-1" ^
+ --audio "C:\Users\Administrator\AppData\Local\Temp\bi04ndbxhxg.wav" ^
+ --type "audio/wav"
