@@ -35,14 +35,14 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "6344";
-    CommentID = "14738";
+    TaskID    = "6400";
+    CommentID = "14848";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "2b185168006e9f06006b12e400000001000...";
-    CommentID = "14740";
+    Token     = "e0165368006e9f06006b12e400000001000...";
+    CommentID = "14850";
 
     Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);
 ```
@@ -54,8 +54,8 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 DeleteTaskComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "6198" \
-             --comment 14404 \
+             --task "6384" \
+             --comment 14828 \
              --token "***"
         ```
     </TabItem>
@@ -64,8 +64,8 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 DeleteTaskComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "6198" ^
-             --comment 14404 ^
+             --task "6384" ^
+             --comment 14828 ^
              --token "***"
         ```
     </TabItem>

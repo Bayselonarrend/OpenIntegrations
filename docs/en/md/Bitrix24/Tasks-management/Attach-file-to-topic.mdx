@@ -35,14 +35,14 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "6340";
-    FileID = "35158";
+    TaskID = "6396";
+    FileID = "35498";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "2b185168006e9f06006b12e400000001000...";
-    TaskID = "6342";
+    Token  = "e0165368006e9f06006b12e400000001000...";
+    TaskID = "6398";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);
 ```
@@ -54,8 +54,8 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 AttachFileToTopic \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "6196" \
-             --fileid 34354 \
+             --task "6382" \
+             --fileid 35380 \
              --token "***"
         ```
     </TabItem>
@@ -64,8 +64,8 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 AttachFileToTopic ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "6196" ^
-             --fileid 34354 ^
+             --task "6382" ^
+             --fileid 35380 ^
              --token "***"
         ```
     </TabItem>
