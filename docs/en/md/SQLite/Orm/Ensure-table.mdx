@@ -35,7 +35,7 @@ This function does not update the data type of existing columns
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base = "C:\Users\Administrator\AppData\Local\Temp\v8_DC1B_150.sqlite";
+    Base = "C:\Users\Administrator\AppData\Local\Temp\v8_B4C9_162.sqlite";
 
     Table = "test";
 
@@ -50,6 +50,30 @@ This function does not update the data type of existing columns
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint sqlite EnsureTable \
+             --table "test_new" \
+             --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" \
+             --db "C:\Users\Administrator\AppData\Local\Temp\0rltbbruj1o.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint sqlite EnsureTable ^
+             --table "test_new" ^
+             --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" ^
+             --db "C:\Users\Administrator\AppData\Local\Temp\0rltbbruj1o.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

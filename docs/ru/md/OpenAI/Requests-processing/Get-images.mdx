@@ -44,6 +44,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai ПолучитьКартинки \
+              --url "https://bothub.chat/api/v2/openai/" \
+              --token "***" \
+              --model "dall-e-3" \
+              --descr "{'prompt':'Yellow alpaca','n':1,'size':'1024x1024'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint openai ПолучитьКартинки ^
+              --url "https://bothub.chat/api/v2/openai/" ^
+              --token "***" ^
+              --model "dall-e-3" ^
+              --descr "{'prompt':'Yellow alpaca','n':1,'size':'1024x1024'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

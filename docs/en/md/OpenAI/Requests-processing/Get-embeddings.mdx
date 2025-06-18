@@ -46,6 +46,28 @@ Method at API documentation: [Create embeddings](https://platform.openai.com/doc
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint openai GetEmbeddings \
+             --url "https://api.athenaeum.digital:1122/" \
+             --token "***" \
+             --model "text-embedding-ada-002" \
+             --input "What is 1C:Enterprise?"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint openai GetEmbeddings ^
+             --url "https://api.athenaeum.digital:1122/" ^
+             --token "***" ^
+             --model "text-embedding-ada-002" ^
+             --input "What is 1C:Enterprise?"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

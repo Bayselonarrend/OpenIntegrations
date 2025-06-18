@@ -48,6 +48,30 @@ Method at API documentation: [Create assistant](https://platform.openai.com/docs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint openai CreateAssistant \
+             --url "https://api.athenaeum.digital:1122/" \
+             --token "***" \
+             --model "smolvlm-256m-instruct" \
+             --name "Math tutor" \
+             --inst "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint openai CreateAssistant ^
+             --url "https://api.athenaeum.digital:1122/" ^
+             --token "***" ^
+             --model "smolvlm-256m-instruct" ^
+             --name "Math tutor" ^
+             --inst "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
