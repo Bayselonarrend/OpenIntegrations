@@ -15,7 +15,7 @@ opt-level = "z"
 
 [dependencies]
 addin1c = "0.5.0"
-tiberius = { version = "0.12", features = ["chrono"] }
+tiberius = { version = "0.12", features = ["chrono", "rust_decimal"] }
 tokio = { version = "1.0", features = ["full"] }
 tokio-util = { version = "0.7", features = ["compat"] }
 serde_json = "1.0"
