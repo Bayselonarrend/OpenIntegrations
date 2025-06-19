@@ -216,9 +216,9 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
                             }
                         },
                         "GUID" => {
-                            match value.as_str().and_then(|s| uuid::Uuid::parse_str(s).ok()) {
+                            match value.as_str().and_then(|s| Uuid::parse_str(s).ok()) {
                                 Some(uuid) => Box::new(uuid),
-                                None => Box::new(uuid::Uuid::nil())
+                                None => Box::new(Uuid::nil())
                             }
                         },
                         _ => Box::new(value.to_string())
