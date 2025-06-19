@@ -96,16 +96,17 @@ impl AddIn {
             Err(e) => return Self::process_error(&e.to_string()),
         };
 
-        if self.use_tls {
+        match self.use_tls {
+            true => {
+                config.encryption(EncryptionLevel::Required);
 
-            config.encryption(EncryptionLevel::Required);
-
-            if self.accept_invalid_certs {
-                config.trust_cert();
-            }else if self.ca_cert_path.is_empty() == false {
-                config.trust_cert_ca(&self.ca_cert_path);
+                if self.accept_invalid_certs {
+                    config.trust_cert();
+                }else if self.ca_cert_path.is_empty() == false {
+                    config.trust_cert_ca(&self.ca_cert_path);
+                }
             }
-
+            false => config.encryption(EncryptionLevel::Off)
         }
 
         let rt = match self.get_runtime() {
