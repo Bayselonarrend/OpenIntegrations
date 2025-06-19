@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
+// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
 // Lib: MS SQL
 // CLI: mssql
 // Keywords: mssql, ms sql
@@ -42,7 +42,7 @@
 //@skip-check doc-comment-collection-item-type
 
 // Uncomment if OneScript is executed
-// #Use "../../tools"
+#Use "../../tools"
 
 #Region Public
 
@@ -628,7 +628,7 @@ Procedure ProcessCollectionParameter(Val CurrentType, CurrentParameter, CurrentK
 
     If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
-        If OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTES") Then
+        If OPI_Tools.CollectionFieldExist(CurrentParameter, "BYTES") Then
 
             CurrentParameter = ProcessBlobStructure(CurrentParameter);
             CurrentKey       = "BYTES";
@@ -669,7 +669,7 @@ Function ProcessBlobStructure(Val Value)
 
         DataFile = New File(String(DataValue));
 
-        If DataFile.Exists() Then
+        If DataFile.Exist() Then
 
             CurrentData = New BinaryData(String(DataValue));
             Value       = Base64String(CurrentData);
@@ -680,6 +680,94 @@ Function ProcessBlobStructure(Val Value)
 
     Return Value;
 
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function ОткрытьСоединение(Val СтрокаПодключения = "", Val Tls = "") Export
+	Return CreateConnection(СтрокаПодключения, Tls);
+EndFunction
+
+Function ЗакрытьСоединение(Val Соединение) Export
+	Return CloseConnection(Соединение);
+EndFunction
+
+Function ЭтоКоннектор(Val Значение) Export
+	Return IsConnector(Значение);
+EndFunction
+
+Function ВыполнитьЗапросSQL(Val ТекстЗапроса, Val Параметры = "", Val ФорсироватьРезультат = False, Val Соединение = "", Val Tls = "") Export
+	Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Tls);
+EndFunction
+
+Function СформироватьСтрокуПодключения(Val Адрес, Val База = "", Val Логин = "", Val Пароль = "", Val АутентификацияWindows = False) Export
+	Return GenerateConnectionString(Адрес, База, Логин, Пароль, АутентификацияWindows);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function СоздатьБазуДанных(Val База, Val Соединение = "", Val Tls = "") Export
+	Return CreateDatabase(База, Соединение, Tls);
+EndFunction
+
+Function УдалитьБазуДанных(Val База, Val Соединение = "", Val Tls = "") Export
+	Return DeleteDatabase(База, Соединение, Tls);
+EndFunction
+
+Function СоздатьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = "") Export
+	Return CreateTable(Таблица, СтруктураКолонок, Соединение, Tls);
+EndFunction
+
+Function ДобавитьКолонкуТаблицы(Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "", Val Tls = "") Export
+	Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение, Tls);
+EndFunction
+
+Function УдалитьКолонкуТаблицы(Val Таблица, Val Имя, Val Соединение = "", Val Tls = "") Export
+	Return DeleteTableColumn(Таблица, Имя, Соединение, Tls);
+EndFunction
+
+Function ГарантироватьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = "") Export
+	Return EnsureTable(Таблица, СтруктураКолонок, Соединение, Tls);
+EndFunction
+
+Function ОчиститьТаблицу(Val Таблица, Val Соединение = "", Val Tls = "") Export
+	Return ClearTable(Таблица, Соединение, Tls);
+EndFunction
+
+Function УдалитьТаблицу(Val Таблица, Val Соединение = "", Val Tls = "") Export
+	Return DeleteTable(Таблица, Соединение, Tls);
+EndFunction
+
+Function ПолучитьИнформациюОТаблице(Val Таблица, Val Соединение = "", Val Tls = "") Export
+	Return GetTableInformation(Таблица, Соединение, Tls);
+EndFunction
+
+Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = "") Export
+	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
+EndFunction
+
+Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = "") Export
+	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
+EndFunction
+
+Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export
+	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
+EndFunction
+
+Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export
+	Return DeleteRecords(Таблица, Фильтры, Соединение, Tls);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
+	Return GetRecordsFilterStrucutre(Пустая);
+EndFunction
+
+Function ПолучитьОсобенности() Export
+	Return GetFeatures();
 EndFunction
 
 #EndRegion

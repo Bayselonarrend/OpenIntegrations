@@ -61,6 +61,11 @@ pipeline {
                 test_greenapi()
              }
           }
+          stage('mssql'){
+             steps{
+                test_mssql()
+             }
+          }
           stage('mysql'){
              steps{
                 test_mysql()
@@ -1627,6 +1632,80 @@ def test_greenapi(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi GetOutgoingMessageLog --access "test" --period "test" --debug --test '
+               }
+
+}
+
+
+def test_mssql(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ExecuteSQLQuery --sql "test" --params "test" --force "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql GenerateConnectionString --addr "test" --db "test" --login "test" --pass "test" --trust "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql GetTlsSettings --trust "test" --cert "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql CreateDatabase --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql DeleteDatabase --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql CreateTable --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql AddTableColumn --table "test" --name "test" --type "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql DeleteTableColumn --table "test" --name "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql EnsureTable --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ClearTable --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql DeleteTable --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql GetTableInformation --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql AddRecords --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql GetRecords --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql UpdateRecords --table "test" --values "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql DeleteRecords --table "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql GetRecordsFilterStrucutre --empty "test" --debug --test '
                }
 
 }
@@ -3429,6 +3508,7 @@ test_gdrive()
 test_gsheets()
 test_google()
 test_greenapi()
+test_mssql()
 test_mysql()
 test_neocities()
 test_notion()
