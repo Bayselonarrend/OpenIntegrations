@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 4
+description: Execute SQL query and other functions to work with MS SQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MS SQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Execute SQL query
+ Executes an arbitrary SQL query
+
+
+
+`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | QueryText | --sql | String | &#x2714; | Database query text |
+  | Parameters | --params | Array Of Arbitrary | &#x2716; | Array of positional parameters of the request |
+  | ForceResult | --force | Boolean | &#x2716; | Includes an attempt to retrieve the result, even for nonSELECT queries |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+:::tip
+Query parameters are specified as an array of structures of the following type: `{'Type': 'Value'}`. List of available types is described on the initial page of the MSSQL library documentation
+
+Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
