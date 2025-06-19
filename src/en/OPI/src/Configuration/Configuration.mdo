@@ -45,15 +45,17 @@
   <commonTemplates>CommonTemplate.OPI_SQLite</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_MSSQL</commonTemplates>
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_CDEK</commonModules>
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
-  <commonModules>CommonModule.OPI_GreenAPI</commonModules>
   <commonModules>CommonModule.OPI_GoogleCalendar</commonModules>
   <commonModules>CommonModule.OPI_GoogleDrive</commonModules>
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPI_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPI_MSSQL</commonModules>
   <commonModules>CommonModule.OPI_MySQL</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
