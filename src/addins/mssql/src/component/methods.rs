@@ -2,9 +2,12 @@ use serde_json::{Value, json, Number};
 use crate::component::{format_json_error, AddIn};
 use base64::{engine::general_purpose, Engine as _};
 use std::collections::HashMap;
+use std::f64;
 use chrono::*;
 use tiberius::{Column, Row, ToSql};
+use tiberius::numeric::Decimal;
 use tiberius::ColumnType;
+use tiberius::xml::XmlData;
 use uuid::Uuid;
 
 pub fn execute_query(
@@ -88,29 +91,46 @@ fn rows_to_json_array(rows: Vec<Row>) -> String {
 
 fn from_sql_to_json(row: &Row, index: usize, column: &Column) -> Value {
     match column.column_type() {
+        ColumnType::Null => Value::Null,
         ColumnType::Bit => {
             row.try_get::<bool, _>(index)
                 .ok()
                 .flatten()
                 .map(Value::Bool)
                 .unwrap_or(Value::Null)
+        },
+        ColumnType::Bitn => {
+            row.try_get::<u8, _>(index)
+                .ok()
+                .flatten()
+                .and_then(|n| Number::from_u128(n as u128))
+                .map(Value::Number)
+                .unwrap_or(Value::Null)
         }
-        ColumnType::Int1 | ColumnType::Int2 | ColumnType::Int4 | ColumnType::Int8 => {
+        ColumnType::Int1 | ColumnType::Int2 | ColumnType::Int4 | ColumnType::Int8 | ColumnType::Intn => {
             row.try_get::<i64, _>(index)
                 .ok()
                 .flatten()
                 .and_then(|n| Number::from_i128(n as i128))
                 .map(Value::Number)
                 .unwrap_or(Value::Null)
-        }
-        ColumnType::Float4 | ColumnType::Float8 | ColumnType::Money | ColumnType::Money4 | ColumnType::Decimaln | ColumnType::Numericn=> {
+        },
+        ColumnType::Float4 | ColumnType::Float8 | ColumnType::Floatn | ColumnType::Money | ColumnType::Money4 => {
             row.try_get::<f64, _>(index)
                 .ok()
                 .flatten()
                 .and_then(|f| Number::from_f64(f))
                 .map(Value::Number)
                 .unwrap_or(Value::Null)
-        }
+        },
+        ColumnType::Decimaln | ColumnType::Numericn => {
+          row.try_get::<Decimal, _>(index)
+              .ok()
+              .flatten()
+              .and_then(|f| Number::from_f64(f64::try_from(f).unwrap_or(0.0)))
+              .map(Value::Number)
+              .unwrap_or(Value::Null)
+        },
         ColumnType::Daten => {
             row.try_get::<NaiveDate, _>(index)
                 .ok()
@@ -153,13 +173,6 @@ fn from_sql_to_json(row: &Row, index: usize, column: &Column) -> Value {
                 .map(|u| Value::String(u.to_string()))
                 .unwrap_or(Value::Null)
         }
-        ColumnType::Xml => {
-            row.try_get::<&str, _>(index)
-                .ok()
-                .flatten()
-                .map(|s| Value::String(s.to_string()))
-                .unwrap_or(Value::Null)
-        }
         _ => {
             row.try_get::<&str, _>(index)
                 .ok()
@@ -186,12 +199,60 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
             Value::Bool(b) => Box::new(*b),
             Value::Number(n) if n.is_i64() => Box::new(n.as_i64().unwrap()),
             Value::Number(n) if n.is_f64() => Box::new(n.as_f64().unwrap()),
-            Value::Number(n) => Box::new(n.as_f64().unwrap()),
+            Value::Number(n) => Box::new(n.as_f64().unwrap_or(0.0)),
             Value::String(s) => Box::new(s.clone()),
             Value::Object(obj) => {
                 if let Some((key, value)) = obj.iter().next() {
                     match key.to_uppercase().as_str() {
-                        "BYTES" => {
+                        "TINYINT" => {
+                            match value.as_u64() {
+                                Some(num) => Box::new(num as u8),
+                                None => Box::new(0)
+                            }
+                        },
+                        "SMALLINT" => {
+                            match value.as_i64() {
+                                Some(num) => Box::new(num as i16),
+                                None => Box::new(0)
+                            }
+                        },
+                        "INT" => {
+                            match value.as_i64() {
+                                Some(num) => Box::new(num as i32),
+                                None => Box::new(0)
+                            }
+                        },
+                        "BIGINT" => {
+                            match value.as_i64() {
+                                Some(num) => Box::new(num),
+                                None => Box::new(0)
+                            }
+                        },
+                        "FLOAT24" => {
+                            match value.as_f64() {
+                                Some(num) => Box::new(num as f32),
+                                None => Box::new(0.0)
+                            }
+                        },
+                        "FLOAT53" => {
+                            match value.as_f64() {
+                                Some(num) => Box::new(num),
+                                None => Box::new(0.0)
+                            }
+                        },
+                        "BIT" => {
+                            match value.as_bool() {
+                                Some(b) => Box::new(b),
+                                None => Box::new(false)
+                            }
+                        },
+                        "NVARCHAR" => {
+                            match value.as_str() {
+                                Some(s) => Box::new(s.to_string()),
+                                None => Box::new(String::new())
+                            }
+                        },
+                        "VARBINARY" => {
                             match value.as_str() {
                                 Some(b64) => {
                                     let cleaned = b64.replace(&['\n', '\r', ' '][..], "");
@@ -203,22 +264,46 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
                                 None => Box::new("Not a Base64 value passed".as_bytes().to_vec())
                             }
                         },
+                        "UUID" => {
+                            match value.as_str().and_then(|s| Uuid::parse_str(s).ok()) {
+                                Some(uuid) => Box::new(uuid),
+                                None => Box::new(Uuid::nil())
+                            }
+                        },
+                        "NUMERIC" | "DECIMAL" => {
+                            match value.as_f64().and_then(|v| Decimal::from_f64_retain(v)) {
+                                Some(num) => Box::new(num),
+                                None => Box::new(Decimal::from(0))
+                            }
+                        },
+                        "XML" => {
+                            match value.as_str() {
+                                Some(xml) => Box::new(XmlData::new(xml)),
+                                None => Box::new(XmlData::new("".to_string()))
+                            }
+                        },
                         "DATE" => {
                             match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok()) {
                                 Some(date) => Box::new(date),
                                 None => Box::new(None::<NaiveDate>)
                             }
                         },
+                        "TIME" => {
+                            match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%H:%M:%S").ok()) {
+                                Some(date) => Box::new(date),
+                                None => Box::new(None::<NaiveDate>)
+                            }
+                        },
                         "DATETIME" => {
-                            match value.as_str().and_then(|s| NaiveDateTime::parse_from_str(s, "%Y-%m-%d %H:%M:%S%.f").ok()) {
+                            match value.as_str().and_then(|s| NaiveDateTime::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
                                 Some(dt) => Box::new(dt),
                                 None => Box::new(None::<NaiveDateTime>)
                             }
                         },
-                        "GUID" => {
-                            match value.as_str().and_then(|s| Uuid::parse_str(s).ok()) {
-                                Some(uuid) => Box::new(uuid),
-                                None => Box::new(Uuid::nil())
+                        "DATETIMEOFFSET" => {
+                            match value.as_str().and_then(|s| chrono::DateTime::parse_from_rfc3339(s).ok()) {
+                                Some(dt) => Box::new(dt),
+                                None => Box::new(None::<DateTime<Utc>>)
                             }
                         },
                         _ => Box::new(value.to_string())
