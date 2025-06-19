@@ -1,21 +1,29 @@
 use serde_json::{Value, json, Number};
-use crate::component::format_json_error;
+use crate::component::{format_json_error, AddIn};
 use base64::{engine::general_purpose, Engine as _};
 use std::collections::HashMap;
 use chrono::*;
-use tiberius::{Client, Column, Row, ToSql};
-use std::sync::{Arc, Mutex};
+use tiberius::{Column, Row, ToSql};
 use tiberius::ColumnType;
-use tokio::net::TcpStream;
-use tokio_util::compat::Compat;
+use uuid::Uuid;
 
 pub fn execute_query(
-    conn: Arc<Mutex<Client<Compat<TcpStream>>>>,
+    obj: &mut AddIn,
     query: String,
     params_json: String,
     force_result: bool
 ) -> String {
-    // Парсинг JSON параметров
+
+    let conn = match obj.get_connection() {
+        Ok(conn) => conn,
+        Err(e) => return e,
+    };
+
+    let rt = match obj.get_runtime() {
+        Ok(rt) => rt,
+        Err(e) => return e,
+    };
+
     let mut parsed_params: Value = match serde_json::from_str(&params_json) {
         Ok(params) => params,
         Err(e) => return format_json_error(e)
@@ -31,13 +39,12 @@ pub fn execute_query(
         Err(e) => return format_json_error(format!("Failed to lock connection: {}", e))
     };
 
-    // Определяем тип запроса
     if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
-        match tokio::runtime::Runtime::new().unwrap().block_on(async {
+        match rt.block_on(async {
             client.simple_query(query).await
         }) {
             Ok(stream) => {
-                let rows = match tokio::runtime::Runtime::new().unwrap().block_on(async {
+                let rows = match rt.block_on(async {
                     stream.into_results().await
                 }) {
                     Ok(rows) => rows.into_iter().flatten().collect(),
@@ -49,7 +56,7 @@ pub fn execute_query(
         }
     } else {
         let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
-        match tokio::runtime::Runtime::new().unwrap().block_on(async {
+        match rt.block_on(async {
             client.execute(query, &params_refs).await
         }) {
             Ok(_) => json!({"result": true}).to_string(),
@@ -64,12 +71,11 @@ fn rows_to_json_array(rows: Vec<Row>) -> String {
     for row in rows {
         let mut json_obj = HashMap::new();
         for (i, column) in row.columns().iter().enumerate() {
+
             let column_name = column.name().to_string();
-            let value = match row.get::<&str, _>(i) {
-                Some(value) => from_sql_to_json(value, column),
-                None => Value::Null,
-            };
+            let value = from_sql_to_json(&row, i, column);
             json_obj.insert(column_name, value);
+
         }
         match serde_json::to_value(json_obj) {
             Ok(json) => json_array.push(json),
@@ -80,74 +86,91 @@ fn rows_to_json_array(rows: Vec<Row>) -> String {
     json!({ "result": true, "data": json_array }).to_string()
 }
 
-fn from_sql_to_json(value: &str, column: &Column) -> Value {
+fn from_sql_to_json(row: &Row, index: usize, column: &Column) -> Value {
     match column.column_type() {
         ColumnType::Bit => {
-            value.parse::<bool>().map(Value::Bool).unwrap_or(Value::Null)
-        },
-        ColumnType::Int1 | ColumnType::Int2 | ColumnType::Int4 | ColumnType::Int8 => {
-            value.parse::<i64>()
+            row.try_get::<bool, _>(index)
                 .ok()
-                .and_then(|n| Number::from_f64(n as f64))
+                .flatten()
+                .map(Value::Bool)
+                .unwrap_or(Value::Null)
+        }
+        ColumnType::Int1 | ColumnType::Int2 | ColumnType::Int4 | ColumnType::Int8 => {
+            row.try_get::<i64, _>(index)
+                .ok()
+                .flatten()
+                .and_then(|n| Number::from_i128(n as i128))
                 .map(Value::Number)
                 .unwrap_or(Value::Null)
-        },
-        ColumnType::Float4 | ColumnType::Float8 => {
-            value.parse::<f64>()
+        }
+        ColumnType::Float4 | ColumnType::Float8 | ColumnType::Money | ColumnType::Money4 | ColumnType::Decimaln | ColumnType::Numericn=> {
+            row.try_get::<f64, _>(index)
                 .ok()
+                .flatten()
                 .and_then(|f| Number::from_f64(f))
                 .map(Value::Number)
                 .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::Daten => {
-            NaiveDate::parse_from_str(value, "%Y-%m-%d")
-                .map(|d| Value::String(d.to_string()))
+            row.try_get::<NaiveDate, _>(index)
+                .ok()
+                .flatten()
+                .map(|d| Value::String(d.format("%Y-%m-%d").to_string()))
                 .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::Datetime | ColumnType::Datetime2 | ColumnType::Datetime4 | ColumnType::Datetimen => {
-            NaiveDateTime::parse_from_str(value, "%Y-%m-%d %H:%M:%S%.f")
-                .map(|dt| Value::String(dt.to_string()))
+            row.try_get::<NaiveDateTime, _>(index)
+                .ok()
+                .flatten()
+                .map(|dt| Value::String(dt.format("%Y-%m-%dT%H:%M:%S").to_string()))
                 .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::Timen => {
-            NaiveTime::parse_from_str(value, "%H:%M:%S%.f")
-                .map(|t| Value::String(t.to_string()))
+            row.try_get::<NaiveTime, _>(index)
+                .ok()
+                .flatten()
+                .map(|t| Value::String(t.format("%H:%M:%S").to_string()))
                 .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::DatetimeOffsetn => {
-            DateTime::parse_from_rfc3339(value)
+            row.try_get::<DateTime<Utc>, _>(index)
+                .ok()
+                .flatten()
                 .map(|dt| Value::String(dt.to_rfc3339()))
                 .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::BigVarBin | ColumnType::BigBinary => {
-            encode_to_base64(value.as_bytes().to_vec())
-        },
+            row.try_get::<&[u8], _>(index)
+                .ok()
+                .flatten()
+                .map(encode_to_base64)
+                .unwrap_or(Value::Null)
+        }
         ColumnType::Guid => {
-            Value::String(value.to_string())
-        },
-        ColumnType::Money | ColumnType::Money4 => {
-            let cleaned = value.replace(',', "");
-            cleaned.parse::<f64>()
+            row.try_get::<Uuid, _>(index)
                 .ok()
-                .and_then(|f| Number::from_f64(f))
-                .map(Value::Number)
+                .flatten()
+                .map(|u| Value::String(u.to_string()))
                 .unwrap_or(Value::Null)
-        },
-        ColumnType::Decimaln | ColumnType::Numericn => {
-            value.parse::<f64>()
-                .ok()
-                .and_then(|f| Number::from_f64(f))
-                .map(Value::Number)
-                .unwrap_or(Value::Null)
-        },
+        }
         ColumnType::Xml => {
-            Value::String(value.to_string())
-        },
-        _ => Value::String(value.to_string())
+            row.try_get::<&str, _>(index)
+                .ok()
+                .flatten()
+                .map(|s| Value::String(s.to_string()))
+                .unwrap_or(Value::Null)
+        }
+        _ => {
+            row.try_get::<&str, _>(index)
+                .ok()
+                .flatten()
+                .map(|s| Value::String(s.to_string()))
+                .unwrap_or(Value::Null)
+        }
     }
 }
 
-fn encode_to_base64(bytes: Vec<u8>) -> Value {
+fn encode_to_base64(bytes: &[u8]) -> Value {
     let base64_string = general_purpose::STANDARD.encode(bytes);
     let mut blob_object = serde_json::Map::new();
     blob_object.insert("BYTES".to_string(), Value::String(base64_string));

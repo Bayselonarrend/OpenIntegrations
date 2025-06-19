@@ -3,10 +3,12 @@ mod methods;
 use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
-use tiberius::{Client, Config};
+use tiberius::{Client, Config, EncryptionLevel};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::{Arc, Mutex};
+use tokio::runtime::Runtime;
+
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -39,12 +41,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let params_json = params[1].get_string().unwrap_or("".to_string());
             let force_result = params[2].get_bool().unwrap_or(false);
 
-            match obj.get_connection() {
-                Ok(conn) => {
-                    Box::new(methods::execute_query(conn, query, params_json, force_result))
-                },
-                Err(e) => Box::new(e),
-            }
+            Box::new(methods::execute_query(obj, query, params_json, force_result))
+
         },
         3 => {
             let use_tls = params[0].get_bool().unwrap_or(false);
@@ -72,6 +70,7 @@ pub struct AddIn {
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
+    runtime: Option<Runtime>,
 }
 
 impl AddIn {
@@ -82,10 +81,12 @@ impl AddIn {
             use_tls: false,
             accept_invalid_certs: false,
             ca_cert_path: String::new(),
+            runtime: None
         }
     }
 
     pub fn initialize(&mut self) -> String {
+
         if self.connection_string.is_empty() {
             return Self::process_error("Empty connection string!");
         }
@@ -96,24 +97,39 @@ impl AddIn {
         };
 
         if self.use_tls {
-            config.trust_cert();
+
+            config.encryption(EncryptionLevel::Required);
+
+            if self.accept_invalid_certs {
+                config.trust_cert();
+            }else if self.ca_cert_path.is_empty() == false {
+                config.trust_cert_ca(&self.ca_cert_path);
+            }
+
         }
 
-        match tokio::runtime::Runtime::new().unwrap().block_on(async {
+        let rt = match self.get_runtime() {
+            Ok(rt) => rt,
+            Err(e) => return Self::process_error(&e),
+        };
+
+        let client = rt.block_on(async {
             let tcp = TcpStream::connect(config.get_addr()).await?;
             tcp.set_nodelay(true)?;
-            let compat = tcp.compat_write();
-            Client::connect(config, compat).await
-        }) {
-            Ok(client) => {
-                self.connection = Some(Arc::new(Mutex::new(client)));
+            Client::connect(config, tcp.compat_write()).await
+        });
+
+        match client {
+            Ok(cl) => {
+                self.connection = Some(Arc::new(Mutex::new(cl)));
                 json!({"result": true}).to_string()
             },
-            Err(e) => Self::process_error(&e.to_string()),
+            Err(e) => Self::process_error(&e.to_string())
         }
     }
 
     pub fn close_connection(&mut self) -> String {
+
         if self.connection.take().is_some() {
             json!({"result": true}).to_string()
         } else {
@@ -122,6 +138,7 @@ impl AddIn {
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+
         if self.connection.is_some() {
             return Self::process_error("TLS settings can only be set before the connection is established");
         }
@@ -133,10 +150,30 @@ impl AddIn {
         json!({"result": true}).to_string()
     }
 
-    fn get_connection(&mut self) -> Result<Arc<Mutex<Client<Compat<TcpStream>>>>, String> {
-        self.connection.clone().ok_or_else(|| "No active connection".to_string())
+    fn get_connection(&self) -> Result<Arc<Mutex<Client<Compat<TcpStream>>>>, String> {
+        self.connection.clone().ok_or_else(|| Self::process_error("No active connection").to_string())
     }
 
+    // TOKIO
+
+    pub fn get_runtime(&mut self) -> Result<&Runtime, String> {
+        if self.runtime.is_none() {
+            self.runtime = Some(
+                Runtime::new()
+                    .map_err(|e| Self::process_error(&e.to_string()))?
+            );
+        }
+        Ok(self.runtime.as_ref().unwrap())
+    }
+
+    pub fn shutdown(&mut self) {
+        if let Some(rt) = self.runtime.take() {
+            rt.shutdown_background();  // Неблокирующая остановка
+        }
+        self.connection = None;
+    }
+
+    // OTHER
     fn process_error(e: &str) -> String {
         json!({
             "result": false,
@@ -144,6 +181,7 @@ impl AddIn {
         }).to_string()
     }
 
+    // SERVICE
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
             0 => &self.connection_string as &dyn getset::ValueType as *const _,
@@ -165,4 +203,10 @@ pub fn format_json_error<E: ToString>(error: E) -> String {
         "error": error_message,
     });
     json_obj.to_string()
+}
+
+impl Drop for AddIn {
+    fn drop(&mut self) {
+        self.shutdown();
+    }
 }
