@@ -563,7 +563,7 @@ EndFunction
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
-// Map Of KeyAndValue - Processing result
+// BinaryData - Processing result
 Function GenerateSpeech(Val URL
     , Val Token
     , Val Model
