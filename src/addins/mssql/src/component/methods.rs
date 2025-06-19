@@ -252,7 +252,7 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
                                 None => Box::new(String::new())
                             }
                         },
-                        "VARBINARY" => {
+                        "BYTES" => {
                             match value.as_str() {
                                 Some(b64) => {
                                     let cleaned = b64.replace(&['\n', '\r', ' '][..], "");
@@ -316,6 +316,5 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
         };
         result.push(param);
     }
-
     result
 }
