@@ -61,6 +61,11 @@ pipeline {
                 test_greenapi()
              }
           }
+          stage('mssql'){
+             steps{
+                test_mssql()
+             }
+          }
           stage('mysql'){
              steps{
                 test_mysql()
@@ -1627,6 +1632,80 @@ def test_greenapi(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe greenapi ПолучитьЖурналИсходящихСообщений --access "test" --period "test" --debug --test '
+               }
+
+}
+
+
+def test_mssql(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ВыполнитьЗапросSQL --sql "test" --params "test" --force "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql СформироватьСтрокуПодключения --addr "test" --db "test" --login "test" --pass "test" --trust "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ПолучитьНастройкиTls --trust "test" --cert "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql СоздатьБазуДанных --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql УдалитьБазуДанных --base "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql СоздатьТаблицу --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ДобавитьКолонкуТаблицы --table "test" --name "test" --type "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql УдалитьКолонкуТаблицы --table "test" --name "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ГарантироватьТаблицу --table "test" --cols "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ОчиститьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql УдалитьТаблицу --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ПолучитьИнформациюОТаблице --table "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ДобавитьЗаписи --table "test" --rows "test" --trn "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ПолучитьЗаписи --table "test" --fields "test" --filter "test" --order "test" --limit "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ОбновитьЗаписи --table "test" --values "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql УдалитьЗаписи --table "test" --filter "test" --dbc "test" --tls "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql ПолучитьСтруктуруФильтраЗаписей --empty "test" --debug --test '
                }
 
 }
@@ -3429,6 +3508,7 @@ test_gdrive()
 test_gsheets()
 test_google()
 test_greenapi()
+test_mssql()
 test_mysql()
 test_neocities()
 test_notion()
