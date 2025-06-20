@@ -26,6 +26,7 @@ Procedure InitializeCommonLists() Export
     ModuleCommandMapping.Insert("gsheets", "OPI_GoogleSheets");
     ModuleCommandMapping.Insert("google", "OPI_GoogleWorkspace");
     ModuleCommandMapping.Insert("greenapi", "OPI_GreenAPI");
+    ModuleCommandMapping.Insert("mssql", "OPI_MSSQL");
     ModuleCommandMapping.Insert("mysql", "OPI_MySQL");
     ModuleCommandMapping.Insert("neocities", "OPI_Neocities");
     ModuleCommandMapping.Insert("notion", "OPI_Notion");
