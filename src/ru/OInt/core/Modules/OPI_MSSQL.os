@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
+// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
 // Lib: MS SQL
 // CLI: mssql
 // Keywords: mssql, ms sql
@@ -204,7 +204,7 @@
     OPI_ПреобразованиеТипов.ПолучитьБулево(АутентификацияWindows);
 
     Если АутентификацияWindows Тогда
-        ШаблонСтроки      = "Server=%1;Database=%2;Trusted_Connection=True;";
+        ШаблонСтроки      = "Server=%1;Database=%2;IntegratedSecurity=True;";
         СтрокаПодключения = СтрШаблон(ШаблонСтроки, Адрес, База);
     Иначе
         ШаблонСтроки = "Server=%1;Database=%2;User Id=%3;Password=%4;";
@@ -594,21 +594,21 @@
     ИначеЕсли ТекущийТип = Тип("УникальныйИдентификатор") Тогда
 
         ТекущийПараметр = Строка(ТекущийПараметр);
-        ТекущийКлюч     = "GUID";
+        ТекущийКлюч     = "UUID";
 
     ИначеЕсли ТекущийТип = Тип("Булево") Тогда
 
         ТекущийПараметр = ?(ТекущийПараметр, 1, 0);
-        ТекущийКлюч     = "INT";
+        ТекущийКлюч     = "BIT";
 
     ИначеЕсли ТекущийТип = Тип("Число") Тогда
 
-        ТекущийКлюч = "DOUBLE";
+        ТекущийКлюч = ?(Цел(ТекущийПараметр) = ТекущийПараметр, "DECIMAL", "INT");
 
     ИначеЕсли ТекущийТип = Тип("Дата") Тогда
 
         ТекущийПараметр = OPI_Инструменты.ДатаRFC3339(ТекущийПараметр);
-        ТекущийКлюч     = "DATETIME";
+        ТекущийКлюч     = "DATETIMEOFFSET";
 
     Иначе
 
@@ -651,7 +651,7 @@
     Иначе
 
         OPI_ПреобразованиеТипов.ПолучитьСтроку(ТекущийПараметр);
-        ТекущийКлюч = "TEXT";
+        ТекущийКлюч = "NVARCHAR";
 
     КонецЕсли;
 
@@ -683,3 +683,91 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
+	Return ОткрытьСоединение(ConnectionString, Tls);
+EndFunction
+
+Function CloseConnection(Val Connection) Export
+	Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function IsConnector(Val Value) Export
+	Return ЭтоКоннектор(Value);
+EndFunction
+
+Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Tls = "") Export
+	Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Tls);
+EndFunction
+
+Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val WindowsAuth = False) Export
+	Return СформироватьСтрокуПодключения(Address, Base, Login, Password, WindowsAuth);
+EndFunction
+
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export
+	Return СоздатьБазуДанных(Base, Connection, Tls);
+EndFunction
+
+Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
+	Return УдалитьБазуДанных(Base, Connection, Tls);
+EndFunction
+
+Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
+	Return СоздатьТаблицу(Table, ColoumnsStruct, Connection, Tls);
+EndFunction
+
+Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "", Val Tls = "") Export
+	Return ДобавитьКолонкуТаблицы(Table, Name, DataType, Connection, Tls);
+EndFunction
+
+Function DeleteTableColumn(Val Table, Val Name, Val Connection = "", Val Tls = "") Export
+	Return УдалитьКолонкуТаблицы(Table, Name, Connection, Tls);
+EndFunction
+
+Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
+	Return ГарантироватьТаблицу(Table, ColoumnsStruct, Connection, Tls);
+EndFunction
+
+Function ClearTable(Val Table, Val Connection = "", Val Tls = "") Export
+	Return ОчиститьТаблицу(Table, Connection, Tls);
+EndFunction
+
+Function DeleteTable(Val Table, Val Connection = "", Val Tls = "") Export
+	Return УдалитьТаблицу(Table, Connection, Tls);
+EndFunction
+
+Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
+	Return ПолучитьИнформациюОТаблице(Table, Connection, Tls);
+EndFunction
+
+Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export
+	Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection, Tls);
+EndFunction
+
+Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = "") Export
+	Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection, Tls);
+EndFunction
+
+Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = "") Export
+	Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection, Tls);
+EndFunction
+
+Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export
+	Return УдалитьЗаписи(Table, Filters, Connection, Tls);
+EndFunction
+
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
+EndFunction
+
+Function GetFeatures() Export
+	Return ПолучитьОсобенности();
+EndFunction
+
+#EndRegion
