@@ -180,7 +180,7 @@ EndFunction
 //
 // Note
 // This function allows you to quickly assemble a basic connection string.^^
-// In case you need more flexible configuration, you can also form (obtain) this connection string on your own
+// In case you need more flexible configuration, you can also form (obtain) this connection string on your own (ADO format)
 //
 // Parameters:
 // Address - String - Adress, instance, and port of the DBMS server - addr
