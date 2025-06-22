@@ -173,7 +173,7 @@ li > a.menu__link {
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
-.Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .AI a:before,
+.Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .MSSQL a::before, .AI a:before,
 .Ollama a::before, .Exchange a::before, .HTTP a::before, .OpenAI a::before, .Addons a::before, .Melezh a::before, .CL a::before, .WebUI a::before,
 .Info a::before {
   padding-right: 0.7rem;
@@ -266,6 +266,10 @@ li > a.menu__link {
 
 .MySQL > div > a::before{
   content: url(../../static/img/APIs/small/MySQL.png);
+}
+
+.MSSQL > div > a::before{
+  content: url(../../static/img/APIs/small/MSSQL.png);
 }
 
 .SQLite > div > a::before{
