@@ -2813,6 +2813,29 @@ EndProcedure
 
 #EndRegion
 
+#Region MSSQL
+
+Procedure MSS_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQL2"       , TestParameters);
+
+EndProcedure
+
+Procedure MSS_ORM() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -23741,6 +23764,103 @@ Procedure OpenAI_GetModelList(FunctionParameters)
     OPI_TestDataRetrieval.Check_OpenAIList(Result);
 
 EndProcedure
+
+#EndRegion
+
+#Region MSSQL
+
+Procedure MSSQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Result = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // END
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "MSSQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure MSSQL_CreateConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    Result           = OPI_MSSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main"); // SKIP
+
+    OPI_MSSQL.CloseConnection(Result);
+
+    // With TLS
+
+    Address = "api.athenaeum.digital";
+    Port    = "1434";
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(False);
+
+    Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_MSSQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
+
+    Result = OPI_MSSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "MSSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Address = FunctionParameters["PG_IP"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
+    Result           = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "MSSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    TLSSettings = OPI_MSSQL.GetTlsSettings(True);
+    Result      = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
+
+    Address          = "api.athenaeum.digital";
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
+
+    TLSSettings = OPI_MSSQL.GetTlsSettings(False);
+    Connection  = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main");
+
+    Result = OPI_MSSQL.CreateDatabase("test1", Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Result = OPI_MSSQL.DeleteDatabase(Base, Connection, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
 
 #EndRegion
 
