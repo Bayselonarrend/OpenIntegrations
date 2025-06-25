@@ -1645,7 +1645,7 @@ def test_mssql(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe mssql СформироватьСтрокуПодключения --addr "test" --db "test" --login "test" --pass "test" --trust "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe mssql СформироватьСтрокуПодключения --addr "test" --db "test" --login "test" --pass "test" --port "test" --trust "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1984,6 +1984,18 @@ def test_openai(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСтруктуруСообщения --role "test" --text "test" --name "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСообщениеПользователя --text "test" --name "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСообщениеАссистента --text "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe openai ПолучитьСообщениеСистемы --text "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

@@ -1,14 +1,9 @@
-﻿#Use oint
-#Use "../../tools"
-#Use "../../help"
-#Use "../../data"
-#Use "../../env"
-
-Var Debugging;           // Flag output debug information
+﻿Var Debugging;           // Flag output debug information
 Var Testing;      // Flag disconnection of sending data after processing
 
 Var Parser;            // Object parser incoming data 
 Var OPIObject;         // Object work with methods OPI
+Var Help;           // Object output reference information
 
 Var OutputFile;        // Path redirection output in file
 
@@ -24,8 +19,20 @@ Procedure MainHandler()
 	Debugging        = False;
 	Testing   = False;
 
-	Parser         = New CommandLineArgumentParser();
-	OPIObject      = New LibraryComposition();
+	CurrentDirectory = CurrentScript().Directory;
+	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
+
+	PathParts      = StrSplit(CurrentDirectory, "/");
+	PathParts.Delete(PathParts.UBound());
+	PathParts.Delete(PathParts.UBound());
+
+	AccessTemplate = StrConcat(PathParts, "/") + "/%1";
+
+	Parser         = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
+	OPIObject      = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
+
+	AttachScript(StrTemplate(AccessTemplate, "help/Classes/Help.os"), "Help");
+	Help = New Help(AccessTemplate);
 	
 	DetermineCurrentCommand();
 	FormCommand();
@@ -176,7 +183,7 @@ Procedure ProcessJSONOutput(Output)
 		Or TypeOf(Output) = Type("Map")
 		Or TypeOf(Output) = Type("Array") Then
 	
-		Output = OPI_Tools.JSONString(Output, , , False);
+		Output = JSONString(Output);
 
 	EndIf;
 
@@ -317,6 +324,34 @@ Function EmptyOutput(Output)
 	
 EndFunction
 
+
+Function JSONString(Val Data)
+
+    LineBreak = JSONLineBreak.Windows;
+
+    JSONParameters = New JSONWriterSettings(LineBreak
+        , " "
+        , False
+        , JSONCharactersEscapeMode["No"]
+        , False
+        , False
+        , False
+        , False);
+
+    Try
+
+        JSONWriter = New JSONWriter;
+        JSONWriter.SetString(JSONParameters);
+
+        WriteJSON(JSONWriter, Data);
+        Return JSONWriter.Close();
+
+    Except
+        Return "NOT JSON: " + String(Data);
+    EndTry;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -334,4 +369,3 @@ Except
 	Help.DisplayExceptionMessage(Information, OutputFile);
 
 EndTry;
-

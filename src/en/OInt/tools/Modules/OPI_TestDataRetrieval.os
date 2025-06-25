@@ -56,6 +56,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Twitter"        , 4);
     Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("MySQL"          , 5);
+    Sections.Insert("MSSQL"          , 5);
     Sections.Insert("SQLite"         , 5);
     Sections.Insert("RCON"           , 5);
     Sections.Insert("YandexDisk"     , 5);
@@ -96,6 +97,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Twitter"        , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("MySQL"          , StandardDependencies);
+    Sections.Insert("MSSQL"          , StandardDependencies);
     Sections.Insert("SQLite"         , StandardDependencies);
     Sections.Insert("RCON"           , StandardDependencies);
     Sections.Insert("YandexDisk"     , StandardDependencies);
@@ -155,6 +157,7 @@ Function GetTestTable() Export
     Ollama    = "Ollama";
     Http      = "HTTPClient";
     OpenAI    = "OpenAI";
+    MSSQL     = "MSSQL";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -296,6 +299,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
     NewTest(TestTable, "MYS_CommonMethods"                    , "Common methods"                  , MySQL);
     NewTest(TestTable, "MYS_ORM"                              , "ORM"                             , MySQL);
+    NewTest(TestTable, "MSS_CommonMethods"                    , "Common methods"                  , MSSQL);
+    NewTest(TestTable, "MSS_ORM"                              , "ORM"                             , MSSQL);
     NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);

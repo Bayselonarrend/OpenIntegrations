@@ -67,7 +67,7 @@
     NewLine.Method       = "GenerateConnectionString";
     NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
     NewLine.Parameter    = "--addr";
-    NewLine.Description    = "Adress, instance, and port of the DBMS server";
+    NewLine.Description    = "Database server address and instance";
     NewLine.Region     = "Common methods";
     NewLine.MethodDescription   = "Forms a connection string from the passed data";
 
@@ -99,6 +99,16 @@
     NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
     NewLine.Parameter    = "--pass";
     NewLine.Description    = "mssql user password (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mssql";
+    NewLine.Module      = "OPI_MSSQL";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--port";
+    NewLine.Description    = "Server port (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
 
 

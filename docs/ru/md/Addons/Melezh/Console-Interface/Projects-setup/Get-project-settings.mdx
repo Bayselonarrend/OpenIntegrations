@@ -54,10 +54,22 @@ import TabItem from '@theme/TabItem';
    "value": "admin"
   },
   {
+   "description": "Признак использования {'result':true, 'data': <основной ответ>} обертки Melezh над оригинальными ответами функций (не влияет на не-JSON ответы)",
+   "name": "res_wrapper",
+   "type": "bool",
+   "value": true
+  },
+  {
+   "description": "Максимальный размер тела запроса, при превышении которого он не будет обработан (в байтах). 0 - без ограничений",
+   "name": "req_max_size",
+   "type": "number",
+   "value": 209715200
+  },
+  {
    "description": "Путь сохранения логов. Для отключения логирования установите пустое значение",
    "name": "logs_path",
    "type": "string",
-   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/47536e82-60be-4e63-975a-67f42966127e"
+   "value": "C:/Users/bayselonarrend/AppData/Local/Temp/Melezh/decf6034-4b9e-4d08-a89f-04bef7e1f490"
   },
   {
    "description": "Логирование заголовков входящих запросов",
@@ -90,10 +102,16 @@ import TabItem from '@theme/TabItem';
    "value": 104857600
   },
   {
-   "description": "Признак использования {'result':true, 'data': <основной ответ>} обертки Melezh над оригинальными ответами функций (не влияет на не-JSON ответы)",
-   "name": "res_wrapper",
-   "type": "bool",
-   "value": true
+   "description": "Базовый путь API. Все маршруты будут доступны с указанного префикса. Например: /melezh",
+   "name": "base_path",
+   "type": "string",
+   "value": ""
+  },
+  {
+   "description": "Дополнительный каталог расширений (для применения требуется обновление кэша или перезагрузка)",
+   "name": "ext_path",
+   "type": "string",
+   "value": ""
   }
  ],
  "result": true
