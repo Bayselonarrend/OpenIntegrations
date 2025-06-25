@@ -1,7 +1,10 @@
-﻿#Use "../../tools"
-#Use "../../env"
+﻿Var ColorOutput;
 
 #Region Internal
+
+Procedure OnObjectCreate(AccessTemplate)
+	ColorOutput = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
+EndProcedure
 
 Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 	

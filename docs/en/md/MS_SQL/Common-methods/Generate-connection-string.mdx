@@ -12,14 +12,15 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val WindowsAuth = False) Export`
+`Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Port = "", Val WindowsAuth = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Address | --addr | String | &#x2714; | Adress, instance, and port of the DBMS server |
+  | Address | --addr | String | &#x2714; | Database server address and instance |
   | Base | --db | String | &#x2716; | Name of the database to connect |
   | Login | --login | String | &#x2716; | mssql user login |
   | Password | --pass | String | &#x2716; | mssql user password |
+  | Port | --port | Number | &#x2716; | Server port |
   | WindowsAuth | --trust | Boolean | &#x2716; | Use Windows authentication. The login and password will be ignored |
 
   
@@ -35,7 +36,12 @@ This function allows you to quickly assemble a basic connection string. In case 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "";
 
+    Result = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 ```
  
 
