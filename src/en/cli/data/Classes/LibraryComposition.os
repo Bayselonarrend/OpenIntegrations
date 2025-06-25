@@ -3,12 +3,22 @@
 Var ModuleCommandMapping;
 Var Version;
 Var CompositionCache;
+Var AccessTemplate;
+Var InitialScriptLoading;
 
 
 Procedure OnObjectCreate()
 
     Version = "1.26.0";
     InitializeCommonLists();
+
+    CurrentDirectory = CurrentScript().Path;
+    AccessTemplate  = CombinePath(CurrentDirectory, "internal", "Classes", "%1.os");
+
+    PackagesDirectory = StrReplace(GetSystemOptionValue("lib.system"), "\", "/");
+    ModuleDirectory = CombinePath(PackagesDirectory, "oint/core/Modules/%1.os");
+
+    InitialScriptLoading = StrTemplate("%%1 = LoadScript(""%1"");" + Chars.LF , ModuleDirectory);
 
 EndProcedure
 
@@ -65,9 +75,15 @@ Function GetComposition(Val Command) Export
     CurrentComposition = CompositionCache.Get(Command);
 
     If CurrentComposition = Undefined Then
-        CompositionObject = New(Command);
-        CurrentComposition = CompositionObject.GetComposition();
-        CompositionCache.Insert(Command, CurrentComposition);
+
+        Try
+            CompositionObject = LoadScript(StrTemplate(AccessTemplate, Command));
+            CurrentComposition = CompositionObject.GetComposition();
+            CompositionCache.Insert(Command, CurrentComposition);
+        Except
+            Raise StrTemplate("Invalid command name: %1", Command)
+        EndTry;
+
     EndIf;
 
     Return CurrentComposition;
@@ -111,7 +127,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
         Return New Structure("Error,Result", True, "Method");
     EndIf;
 
-    ExecutionText = "";
+    ExecutionText = StrTemplate(InitialScriptLoading, Module);
     CallString    = Module + "." + Method + "(";
     Counter         = 0;
 
@@ -119,6 +135,10 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
 
         ParameterName      = RequiredParameter.Parameter;
         ParameterValue = PassedParameters.Get(ParameterName);
+
+        If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
+            ReplaceEscapeSequences(ParameterValue);
+        EndIf;
 
         If ValueIsFilled(ParameterValue) Then
 
@@ -130,14 +150,6 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
                 + " = """ 
                 + StrReplace(ParameterValue, """", """""")
                 + """;";
-
-            If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
-
-                ExecutionText = ExecutionText + "
-                | OPI_Tools.ReplaceEscapeSequences(" + ParameterName + ");
-                |";
-
-            EndIf;
 
             CallString = CallString + ParameterName + ", ";
             Counter      = Counter + 1;
@@ -178,6 +190,34 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
 EndFunction
 
+Procedure ReplaceEscapeSequences(Text) Export
+
+    Text = String(Text);
+
+    CharacterMapping = GetEscapeSequencesMap();
+
+    For Each Symbol In CharacterMapping Do
+
+        Text = StrReplace(Text, Symbol.Key          , Symbol.Value);
+        Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
+
+    EndDo;
+
+EndProcedure
+
+Function GetEscapeSequencesMap()
+
+    CharacterMapping = New Map;
+
+    CharacterMapping.Insert("\n", Chars.LF);
+    CharacterMapping.Insert("\r", Chars.VK);
+    CharacterMapping.Insert("\f", Chars.FF);
+    CharacterMapping.Insert("\v", Chars.VTab);
+
+    Return CharacterMapping;
+
+EndFunction
+
 #Region Alternate
 
 Procedure ИнициализироватьОсновныеСписки() Export
@@ -207,5 +247,9 @@ EndFunction
 Function ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
 	Return CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndFunction
+
+Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
+	ReplaceEscapeSequences(Текст);
+EndProcedure
 
 #EndRegion

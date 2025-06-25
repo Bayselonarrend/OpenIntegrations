@@ -19,7 +19,7 @@ Procedure MainHandler()
 	Debugging        = False;
 	Testing   = False;
 
-	CurrentDirectory = CurrentScript().Directory;
+	CurrentDirectory = CurrentScript().Path;
 	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
 
 	PathParts      = StrSplit(CurrentDirectory, "/");
