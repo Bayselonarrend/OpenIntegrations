@@ -189,9 +189,9 @@
     NewLine.Method       = "GetMessageStructure";
     NewLine.SearchMethod = "GETMESSAGESTRUCTURE";
     NewLine.Parameter    = "--role";
-    NewLine.Description    = "Message source: system, user, developer";
+    NewLine.Description    = "Source of the message: system, user, assistant, etc..";
     NewLine.Region     = "Requests processing";
-    NewLine.MethodDescription   = "Receives the message structure for the request message list";
+    NewLine.MethodDescription   = "Gets the structure of an arbitrary message for the request message list";
 
 
     NewLine = CompositionTable.Add();
@@ -212,6 +212,49 @@
     NewLine.Parameter    = "--name";
     NewLine.Description    = "Name of participant in conversation (optional, def. val. - Empty value)";
     NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetUserMessage";
+    NewLine.SearchMethod = "GETUSERMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of a message from the user for use in a request";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetUserMessage";
+    NewLine.SearchMethod = "GETUSERMESSAGE";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Name of participant in conversation (optional, def. val. - Empty value)";
+    NewLine.Region     = "Requests processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetAssistantMessage";
+    NewLine.SearchMethod = "GETASSISTANTMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of a message from the assistant for use in a request";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "openai";
+    NewLine.Module      = "OPI_OpenAI";
+    NewLine.Method       = "GetSystemMessage";
+    NewLine.SearchMethod = "GETSYSTEMMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Requests processing";
+    NewLine.MethodDescription   = "Gets the structure of a system message for use in a request";
 
 
     NewLine = CompositionTable.Add();

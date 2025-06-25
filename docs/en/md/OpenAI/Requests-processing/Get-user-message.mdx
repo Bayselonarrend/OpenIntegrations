@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 5
+description: Get user message and other functions to work with OpenAI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, OpenAI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get user message
+ Gets the structure of a message from the user for use in a request
+
+
+
+`Function GetUserMessage(Val Text, Val Name = "") ExportReturn GetMessageStructure("user", Text, Name);EndFunction`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Message text |
+  | Name | --name | String | &#x2716; | Name of participant in conversation |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+<br/>
+
+:::tip
+Is a shorthand for the function `GetMessageStructure`
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

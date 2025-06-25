@@ -152,10 +152,10 @@ Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalPa
 EndFunction
 
 // Get message structure
-// Receives the message structure for the request message list
+// Gets the structure of an arbitrary message for the request message list
 //
 // Parameters:
-// Role - String - Message source: system, user, developer - role
+// Role - String - Source of the message: system, user, assistant, etc.. - role
 // Text - String - Message text - text
 // Name - String - Name of participant in conversation - name
 //
@@ -172,6 +172,52 @@ Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
 
     Return FieldsStructure;
 
+EndFunction
+
+// Get user message
+// Gets the structure of a message from the user for use in a request
+//
+// Note
+// Is a shorthand for the function `GetMessageStructure`
+//
+// Parameters:
+// Text - String - Message text - text
+// Name - String - Name of participant in conversation - name
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetUserMessage(Val Text, Val Name = "") Export
+    Return GetMessageStructure("user", Text, Name);
+EndFunction
+
+// Get assistant message
+// Gets the structure of a message from the assistant for use in a request
+//
+// Note
+// Is a shorthand for the function `GetMessageStructure`
+//
+// Parameters:
+// Text - String - Message text - text
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetAssistantMessage(Val Text) Export
+    Return GetMessageStructure("assistant", Text);
+EndFunction
+
+// Get system message
+// Gets the structure of a system message for use in a request
+//
+// Note
+// Is a shorthand for the function `GetMessageStructure`
+//
+// Parameters:
+// Text - String - Message text - text
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetSystemMessage(Val Text) Export
+    Return GetMessageStructure("system", Text);
 EndFunction
 
 // Get image message structure
@@ -742,6 +788,18 @@ EndFunction
 
 Function ПолучитьСтруктуруСообщения(Val Роль, Val Текст, Val Имя = "") Export
 	Return GetMessageStructure(Роль, Текст, Имя);
+EndFunction
+
+Function ПолучитьСообщениеПользователя(Val Текст, Val Имя = "") Export
+	Return GetUserMessage(Текст, Имя);
+EndFunction
+
+Function ПолучитьСообщениеАссистента(Val Текст) Export
+	Return GetAssistantMessage(Текст);
+EndFunction
+
+Function ПолучитьСообщениеСистемы(Val Текст) Export
+	Return GetSystemMessage(Текст);
 EndFunction
 
 Function ПолучитьСтруктуруСообщенияКартинки(Val Роль, Val IDФайла, Val Текст = "") Export

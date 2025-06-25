@@ -183,10 +183,11 @@ EndFunction
 // In case you need more flexible configuration, you can also form (obtain) this connection string on your own (ADO format)
 //
 // Parameters:
-// Address - String - Adress, instance, and port of the DBMS server - addr
+// Address - String - Database server address and instance - addr
 // Base - String - Name of the database to connect - db
 // Login - String - mssql user login - login
 // Password - String - mssql user password - pass
+// Port - Number - Server port - port
 // WindowsAuth - Boolean - Use Windows authentication. The login and password will be ignored - trust
 //
 // Returns:
@@ -195,20 +196,34 @@ Function GenerateConnectionString(Val Address
     , Val Base = ""
     , Val Login = ""
     , Val Password = ""
+    , Val Port = ""
     , Val WindowsAuth = False) Export
 
     OPI_TypeConversion.GetLine(Address);
+    OPI_TypeConversion.GetLine(Port);
     OPI_TypeConversion.GetLine(Login);
     OPI_TypeConversion.GetLine(Base);
     OPI_TypeConversion.GetLine(Password);
     OPI_TypeConversion.GetBoolean(WindowsAuth);
 
-    If WindowsAuth Then
-        StringTemplate = "Server=%1;Database=%2;IntegratedSecurity=True;";
-        ConnectionString = StrTemplate(StringTemplate, Address, Base);
+    If ValueIsFilled(Base) Then
+        DBBlock = StrTemplate("Database=%1;", Base);
     Else
-        StringTemplate = "Server=%1;Database=%2;User Id=%3;Password=%4;";
-        ConnectionString = StrTemplate(StringTemplate, Address, Base, Login, Password);
+        DBBlock = "";
+    EndIf;
+
+    If ValueIsFilled(Port) Then
+        PortBlock = StrTemplate(",%1", Port);
+    Else
+        PortBlock = "";
+    EndIf;
+
+    If WindowsAuth Then
+        StringTemplate = "Server=%1%2;%3IntegratedSecurity=True;";
+        ConnectionString = StrTemplate(StringTemplate, Address, PortBlock, DBBlock);
+    Else
+        StringTemplate = "Server=%1%2;%2User Id=%4;Password=%5;";
+        ConnectionString = StrTemplate(StringTemplate, Address, PortBlock, DBBlock, Login, Password);
     EndIf;
 
     Return ConnectionString;
