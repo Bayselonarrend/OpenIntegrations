@@ -97,7 +97,6 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
                    | INSERT INTO users (name, age) VALUES ('Alice', 30);
                    | INSERT INTO users (name, age) VALUES ('Bob', 25);
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   | COMMIT;
                    |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
