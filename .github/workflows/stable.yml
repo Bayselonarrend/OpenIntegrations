@@ -1,0 +1,30 @@
+name: Update Stable Branch on Release or Update
+
+on:
+  release:
+    types:
+      - published
+      - updated
+
+jobs:
+  update-stable:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0  # Полная история для force push
+
+      - name: Configure Git user
+        run: |
+          git config --local user.email "vitaly.the.alpaca@gmail.com"
+          git config --local user.name "Vitaly the Alpaca (bot)"
+
+      - name: Force update stable branch to match main
+        run: |
+          git checkout -B stable
+          git push --force origin stable
