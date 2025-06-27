@@ -37,10 +37,10 @@ Method at API documentation: [post /v3/product/import](https://docs.ozon.ru/api/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    Image1   = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Image2   = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Image1   = FunctionParameters["Picture"];
+    Image2   = FunctionParameters["Picture2"];
     Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     ImageArray = New Array;

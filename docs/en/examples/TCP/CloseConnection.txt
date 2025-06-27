@@ -1,4 +1,4 @@
-﻿    Address    = "45.79.112.203:4242";
+﻿    Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
 
     Result = OPI_TCP.CloseConnection(Connection);

@@ -1,5 +1,5 @@
-﻿    URL   = "https://api.athenaeum.digital/ollama";
-    Token = "10KO-82..."; // Authorization - not part API Ollama
+﻿    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
 
     Model = "bayselonarrend/tinyllama:latest";
 

@@ -1,5 +1,5 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
+﻿    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
     Cluster  = 2;
 
     Items = New Map;

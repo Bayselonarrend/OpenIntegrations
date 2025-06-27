@@ -37,8 +37,8 @@ Method at API documentation: [post /v1/description-category/tree](https://docs.o
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey, "EN");
 

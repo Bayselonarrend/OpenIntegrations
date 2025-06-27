@@ -1,4 +1,4 @@
-﻿    Token      = "ya29.a0AW4XtxgOTUonqiJAYqYtxcBh8MI1VxhOH0B9hCii3RQaZlp1PVWulwBqV-y7CkKAad7Ofs4NlHXhJ3-Qe1lj4xEd-ubK_QpjEkbdCVoUW...";
-    Identifier = "1zgLC2HdZ6oyp8XX57rPn0iuh12HGfUBi";
+﻿    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
 
     Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);

@@ -1,6 +1,6 @@
-﻿    URL   = "https://api.athenaeum.digital:1122/";
-    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+﻿    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
-    AssistantID = "asst_13";
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
 
     Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);

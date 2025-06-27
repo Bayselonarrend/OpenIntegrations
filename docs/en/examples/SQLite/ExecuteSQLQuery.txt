@@ -1,6 +1,6 @@
 ﻿    TFN = GetTempFileName("sqlite");
 
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     Connection = OPI_SQLite.CreateConnection(TFN);
@@ -59,7 +59,7 @@
 
     // With extension
 
-    Extension  = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Path or Binary Data
+    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
     EntryPoint = "sqlite3_uuid_init";
 
     ExtensionMap = New Map;

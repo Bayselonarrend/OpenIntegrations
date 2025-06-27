@@ -1,7 +1,7 @@
-﻿    Токен   = "ya29.a0AW4XtxgOTUonqiJAYqYtxcBh8MI1VxhOH0B9hCii3RQaZlp1PVWulwBqV-y7CkKAad7Ofs4NlHXhJ3-Qe1lj4xEd-ubK_QpjEkbdCVoUW...";
-    Событие = "kcplsvh7ed49ul7rbiuptfclp8";
+﻿    Токен   = ПараметрыФункции["Google_Token"];
+    Событие = ПараметрыФункции["Google_EventID"];
 
-    КалендарьИсточник = "55e81a5946198a88ffedb44a63f1500ef90f9463553cb0d15357b3f652c2afb7@group.calendar.google.com";
-    КалендарьПриемник = "bayselonarrend@gmail.com";
+    КалендарьИсточник = ПараметрыФункции["Google_NewCalendarID"];
+    КалендарьПриемник = ПараметрыФункции["Google_CalendarID"];
 
     Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);

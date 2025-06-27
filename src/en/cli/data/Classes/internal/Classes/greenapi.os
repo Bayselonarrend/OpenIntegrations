@@ -228,7 +228,7 @@
     NewLine.Method       = "GetInstanceSettingsStructure";
     NewLine.SearchMethod = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Account";
     NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
@@ -702,7 +702,7 @@
     NewLine.Method       = "SendPoll";
     NewLine.SearchMethod = "SENDPOLL";
     NewLine.Parameter    = "--multi";
-    NewLine.Description    = "Allows to select more than one answer choice (optional, def. val. - No)";
+    NewLine.Description    = "Allows to select more than one answer choice (optional, def. val. - False)";
     NewLine.Region     = "Message sending";
 
 
@@ -917,7 +917,7 @@
     NewLine.Method       = "DeleteMessage";
     NewLine.SearchMethod = "DELETEMESSAGE";
     NewLine.Parameter    = "--sender";
-    NewLine.Description    = "Delete for sender only (optional, def. val. - No)";
+    NewLine.Description    = "Delete for sender only (optional, def. val. - False)";
     NewLine.Region     = "Message sending";
 
 

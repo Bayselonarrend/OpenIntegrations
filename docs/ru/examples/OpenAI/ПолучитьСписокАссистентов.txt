@@ -1,5 +1,5 @@
-﻿    URL   = "https://api.athenaeum.digital:1122/";
-    Токен = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+﻿    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
     Количество   = 2;
     ДопПараметры = Новый Структура("after,order", "asst_2", "desc");

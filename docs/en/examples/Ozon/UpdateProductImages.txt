@@ -1,9 +1,9 @@
-﻿    ClientID  = "2479669";
-    APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "1989228106";
+﻿    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Image1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
 
     MarketingColor = "GREEN";
 

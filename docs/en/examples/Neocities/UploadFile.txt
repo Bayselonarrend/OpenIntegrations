@@ -1,5 +1,5 @@
-﻿    Token = "7419cd51de4037f7...";
-    Data  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+﻿    Token = FunctionParameters["NC_Token"];
+    Data  = FunctionParameters["Picture"]; // URL, Path or Binary Data
     Path  = "testfolder/test_pic.png";
 
     Result = OPI_Neocities.UploadFile(Token, Path, Data);

@@ -1,5 +1,5 @@
-﻿    Token     = "xoxb-6965308400114-696804637...";
-    Channel   = "C06UFNUTKUL";
-    Timestamp = "1750098629.337509";
+﻿    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
 
     Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);

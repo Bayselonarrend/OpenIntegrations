@@ -37,9 +37,9 @@ The list of available types is described on the initial page of the MySQL librar
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address  = "127.0.0.1";
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
-    Password = "12we...";
+    Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
@@ -47,7 +47,7 @@ The list of available types is described on the initial page of the MySQL librar
     Table        = "testtable";
     RecordsArray = New Array;
 
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     CurrentDate = OPI_Tools.GetCurrentDate();

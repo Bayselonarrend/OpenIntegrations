@@ -1,7 +1,7 @@
-﻿    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "21682aa7-fc4e-8105-8dc5-d7f61f4cf45d";
-    Icon    = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Cover   = "https://api.athenaeum.digital/test_data/picture2.jpg";
+﻿    Token   = FunctionParameters["Notion_Token"];
+    Page    = FunctionParameters["Notion_Page"];
+    Icon    = FunctionParameters["Picture"];
+    Cover   = FunctionParameters["Picture2"];
     Archive = False;
 
     Properties = New Map;
