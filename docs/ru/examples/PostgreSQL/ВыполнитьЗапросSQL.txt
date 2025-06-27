@@ -58,7 +58,6 @@
                    |    INSERT INTO users (name, age) VALUES ('Alice', 30);
                    |    INSERT INTO users (name, age) VALUES ('Bob', 25);
                    |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   |    COMMIT;
                    |END $$ LANGUAGE plpgsql;";
 
     Результат = OPI_PostgreSQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);
