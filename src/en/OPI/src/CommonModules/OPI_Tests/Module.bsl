@@ -17180,7 +17180,7 @@ Procedure TCP_CreateConnection(FunctionParameters)
     OPI_TCP.CloseConnection(Connection);
 
     Address    = "tcpbin.com:4243";
-    Tls        = OPI_TCP.GetTlsSettings(False);
+    Tls        = OPI_TCP.GetTlsSettings(True);
     Connection = OPI_TCP.CreateConnection(Address, TLS);
 
     // END
@@ -17291,7 +17291,7 @@ Procedure TCP_ProcessRequest(FunctionParameters)
     OPI_TestDataRetrieval.Check_String(Result, Data); // END
 
     Address = FunctionParameters["TCP_AddressTLS"];
-    Tls     = OPI_TCP.GetTlsSettings(False);
+    Tls     = OPI_TCP.GetTlsSettings(True);
 
     Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
 
@@ -17368,7 +17368,7 @@ EndProcedure
 
 Procedure TCP_GetTlsSettings(FunctionParameters)
 
-    Result = OPI_TCP.GetTlsSettings(False);
+    Result = OPI_TCP.GetTlsSettings(True);
 
     // END
 
@@ -18083,11 +18083,11 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
 
     // With TLS
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings      = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings      = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
@@ -18098,29 +18098,16 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
 
-    Result = OPI_PostgreSQL.CreateConnection(ConnectionString);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "PostgreSQL");
-    OPI_TestDataRetrieval.Check_Structure(Result);
-
-    Address = FunctionParameters["PG_IP"];
-
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    Result           = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "PostgreSQL");
-    OPI_TestDataRetrieval.Check_Structure(Result);
-
     TLSSettings = OPI_PostgreSQL.GetTlsSettings(True);
     Result      = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
 
-    Address          = "api.athenaeum.digital";
+    Address          = FunctionParameters["PG_IP"];
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
 
-    TLSSettings = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings = OPI_PostgreSQL.GetTlsSettings(True);
     Connection  = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "PostgreSQL");
@@ -18262,7 +18249,6 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
                    | INSERT INTO users (name, age) VALUES ('Alice', 30);
                    | INSERT INTO users (name, age) VALUES ('Bob', 25);
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   | COMMIT;
                    |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
@@ -18313,11 +18299,11 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.CreateDatabase(Base, TLSConnectionString, TLSSettings);
 
@@ -18395,11 +18381,11 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
 
@@ -18445,11 +18431,11 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
 
@@ -18525,11 +18511,11 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, TLSConnectionString, TLSSettings);
 
@@ -18606,11 +18592,11 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Table = "testtable";
 
@@ -18672,14 +18658,14 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
         OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     FieldsStructure = New Structure;
     FieldsStructure.Insert("bool_field", New Structure("bool", True));
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQl.UpdateRecords("testtable", FieldsStructure, , TLSConnectionString, TLSSettings);
 
@@ -18743,11 +18729,11 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.DeleteRecords("testtable", , TLSConnectionString, TLSSettings);
 
@@ -18778,11 +18764,11 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.DeleteTable(Table, TLSConnectionString, TLSSettings);
 
@@ -18854,11 +18840,11 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
     Base                = "testbase1";
 
     Result = OPI_PostgreSQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
@@ -18890,11 +18876,11 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.ClearTable(Table, TLSConnectionString, TLSSettings);
 
@@ -18929,11 +18915,11 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DisableAllDatabaseConnections", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.DisableAllDatabaseConnections(Base, TLSConnectionString, TLSSettings);
 
@@ -18964,7 +18950,7 @@ EndProcedure
 
 Procedure PostgreSQL_GetTlsSettings(FunctionParameters)
 
-    Result = OPI_PostgreSQL.GetTlsSettings(False);
+    Result = OPI_PostgreSQL.GetTlsSettings(True);
 
     // END
 
@@ -19009,11 +18995,11 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, True);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.AddTableColumn(Table, Name, DataType, TLSConnectionString, TLSSettings);
 
@@ -19072,11 +19058,11 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, False);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, TLSConnectionString, TLSSettings);
 
@@ -19155,12 +19141,12 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
         OPI_TestDataRetrieval.Check_Equality(Lower(Coloumn["data_type"]), Lower(ColoumnsStruct[Coloumn["column_name"]]));
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     Table               = "testtable";
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(False);
+    TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
 
     Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
 
@@ -19220,11 +19206,11 @@ Procedure MySQL_CreateConnection(FunctionParameters)
 
     // With TLS
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings      = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings      = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
@@ -19240,24 +19226,16 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "MySQL");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
-    Address = FunctionParameters["PG_IP"];
-
-    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    Result           = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "MySQL");
-    OPI_TestDataRetrieval.Check_Structure(Result);
-
     TLSSettings = OPI_MySQL.GetTlsSettings(True);
     Result      = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MySQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
 
-    Address          = "api.athenaeum.digital";
+    Address          = FunctionParameters["PG_IP"];
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
 
-    TLSSettings = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings = OPI_MySQL.GetTlsSettings(True);
     Connection  = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MySQL");
@@ -19390,7 +19368,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MySQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
-    OPI_MySQL.ExecuteSQLQuery("create table TEST_DATA (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
+    OPI_MySQL.ExecuteSQLQuery("create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
 
     // SQL query from file
 
@@ -19435,11 +19413,11 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "", Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     OPI_MySQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
     Result = OPI_MySQL.CreateDatabase(Base, TLSConnectionString, TLSSettings);
@@ -19513,11 +19491,11 @@ Procedure MySQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.CreateTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
 
@@ -19593,11 +19571,11 @@ Procedure MySQL_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.AddRecords(Table, RecordsArray, True, TLSConnectionString, TLSSettings);
 
@@ -19674,11 +19652,11 @@ Procedure MySQL_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Table = "testtable";
 
@@ -19740,14 +19718,14 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
         OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     FieldsStructure = New Structure;
     FieldsStructure.Insert("varchar_field", New Structure("VARCHAR", "Another varchar"));
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.UpdateRecords("testtable", FieldsStructure, , TLSConnectionString, TLSSettings);
 
@@ -19811,11 +19789,11 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "testbase1", Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.DeleteRecords("testtable", , TLSConnectionString, TLSSettings);
 
@@ -19846,11 +19824,11 @@ Procedure MySQL_DeleteTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.DeleteTable(Table, TLSConnectionString, TLSSettings);
 
@@ -19917,11 +19895,11 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "MySQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, "", Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
     Base                = "testbase1";
 
     Result = OPI_MySQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
@@ -19953,11 +19931,11 @@ Procedure MySQL_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.ClearTable(Table, TLSConnectionString, TLSSettings);
 
@@ -19994,7 +19972,7 @@ EndProcedure
 
 Procedure MySQL_GetTlsSettings(FunctionParameters)
 
-    Result = OPI_MySQL.GetTlsSettings(False);
+    Result = OPI_MySQL.GetTlsSettings(True);
 
     // END
 
@@ -20025,11 +20003,11 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "MySQL");
     OPI_TestDataRetrieval.Check_Array(Result["data"], 20);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.GetTableInformation(Table, TLSConnectionString, TLSSettings);
 
@@ -20085,11 +20063,11 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, True);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.AddTableColumn(Table, Name, DataType, TLSConnectionString, TLSSettings);
 
@@ -20152,11 +20130,11 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, False);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.DeleteTableColumn(Table, Name, TLSConnectionString, TLSSettings);
 
@@ -20235,12 +20213,12 @@ Procedure MySQL_EnsureTable(FunctionParameters)
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Table               = "testtable";
     TLSConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings         = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings         = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.EnsureTable(Table, ColoumnsStruct, TLSConnectionString, TLSSettings);
 
@@ -23804,11 +23782,11 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
 
     // With TLS
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "1434";
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
-    TLSSettings      = OPI_MSSQL.GetTlsSettings(False);
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
 
     Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
@@ -23838,10 +23816,10 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MSSQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
 
-    Address          = "api.athenaeum.digital";
+    Address          = FunctionParameters["PG_IP"];
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
 
-    TLSSettings = OPI_MSSQL.GetTlsSettings(False);
+    TLSSettings = OPI_MSSQL.GetTlsSettings(True);
     Connection  = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MSSQL");
