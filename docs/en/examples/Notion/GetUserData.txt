@@ -1,4 +1,4 @@
-﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    User  = "ed71865a-9891-46bc-86cd-a92aa499cfdb";
+﻿    Token = FunctionParameters["Notion_Token"];
+    User  = FunctionParameters["Notion_User"];
 
     Result = OPI_Notion.GetUserData(Token, User);

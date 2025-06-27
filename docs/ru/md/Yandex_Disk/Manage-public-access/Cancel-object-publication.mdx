@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/081dee89-a070-4a3a-b586-94655c7978a4.png";
+    Токен = ПараметрыФункции["YandexDisk_Token"];
+    Путь  = ПараметрыФункции["YandexDisk_OriginalFilePath"];
 
     Результат = OPI_YandexDisk.ОтменитьПубликациюОбъекта(Токен, Путь);
 ```

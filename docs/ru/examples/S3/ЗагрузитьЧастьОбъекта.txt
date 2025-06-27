@@ -1,6 +1,6 @@
-﻿    URL       = "storage-155.s3hoster.by";
-    AccessKey = "BRN5RKJE67...";
-    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+﻿    URL       = ПараметрыФункции["S3_URL"];
+    AccessKey = ПараметрыФункции["S3_AccessKey"];
+    SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
@@ -8,7 +8,7 @@
     Наименование = "fileChunked.mp3";
     Бакет        = "opi-gpbucket3";
 
-    Содержимое = "https://api.athenaeum.digital/test_data/song.mp3"; // URL, Путь или Двоичные данные
+    Содержимое = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
 
     Результат = OPI_S3.ИнициализироватьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные);

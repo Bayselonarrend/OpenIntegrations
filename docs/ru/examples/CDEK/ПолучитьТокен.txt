@@ -1,4 +1,4 @@
-﻿    Аккаунт = "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP";
-    Пароль  = "RmAmgvSgSl...";
+﻿    Аккаунт = ПараметрыФункции["CDEK_Account"];
+    Пароль  = ПараметрыФункции["CDEK_Password"];
 
     Результат = OPI_CDEK.ПолучитьТокен(Аккаунт, Пароль, Истина);

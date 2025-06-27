@@ -246,7 +246,7 @@
     NewLine.Method       = "EditListCalendar";
     NewLine.SearchMethod = "EDITLISTCALENDAR";
     NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden calendar (optional, def. val. - No)";
+    NewLine.Description    = "Hidden calendar (optional, def. val. - False)";
     NewLine.Region     = "Calendar list management";
 
 
@@ -256,7 +256,7 @@
     NewLine.Method       = "GetEventDescription";
     NewLine.SearchMethod = "GETEVENTDESCRIPTION";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Event management";
     NewLine.MethodDescription   = "Gets an empty layout to create the event";
 

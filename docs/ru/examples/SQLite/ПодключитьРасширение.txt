@@ -1,5 +1,5 @@
-﻿    База       = "C:\Users\Administrator\AppData\Local\Temp\v8_B4C9_162.sqlite";
-    Расширение = "https://api.athenaeum.digital/test_data/uuid.dll"; // URL, Путь или Двоичные данные
+﻿    База       = ПараметрыФункции["SQLite_DB"];
+    Расширение = ПараметрыФункции["SQLite_Ext"]; // URL, Путь или Двоичные данные
     ТочкаВхода = "sqlite3_uuid_init";
 
     Соединение = OPI_SQLite.ОткрытьСоединение(База);

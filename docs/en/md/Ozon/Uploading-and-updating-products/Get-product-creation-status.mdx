@@ -33,9 +33,9 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    TaskID   = "2197292782";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_TaskID"];
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
 ```

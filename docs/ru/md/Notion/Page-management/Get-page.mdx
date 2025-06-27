@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен    = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница = "21682aa7-fc4e-8105-8dc5-d7f61f4cf45d";
+    Токен    = ПараметрыФункции["Notion_Token"];
+    Страница = ПараметрыФункции["Notion_Page"];
 
     Результат = OPI_Notion.ПолучитьСтраницу(Токен, Страница);
 ```

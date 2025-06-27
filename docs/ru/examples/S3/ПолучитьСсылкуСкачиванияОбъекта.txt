@@ -1,6 +1,6 @@
-﻿    URL       = "storage-155.s3hoster.by";
-    AccessKey = "BRN5RKJE67...";
-    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+﻿    URL       = ПараметрыФункции["S3_URL"];
+    AccessKey = ПараметрыФункции["S3_AccessKey"];
+    SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
