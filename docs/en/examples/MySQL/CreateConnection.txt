@@ -10,11 +10,11 @@
 
     // With TLS
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings      = OPI_MySQL.GetTlsSettings(False);
+    TLSSettings      = OPI_MySQL.GetTlsSettings(True);
 
     Result = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
