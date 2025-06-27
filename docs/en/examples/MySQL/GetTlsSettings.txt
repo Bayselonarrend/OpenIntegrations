@@ -1,1 +1,1 @@
-﻿    Result = OPI_MySQL.GetTlsSettings(False);
+﻿    Result = OPI_MySQL.GetTlsSettings(True);
