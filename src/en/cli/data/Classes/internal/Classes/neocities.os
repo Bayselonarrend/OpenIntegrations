@@ -110,7 +110,7 @@
     NewLine.Method       = "UploadFiles";
     NewLine.SearchMethod = "UPLOADFILES";
     NewLine.Parameter    = "--singly";
-    NewLine.Description    = "True > sends files in separate requests (optional, def. val. - No)";
+    NewLine.Description    = "True > sends files in separate requests (optional, def. val. - False)";
     NewLine.Region     = "File management";
 
 

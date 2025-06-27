@@ -39,9 +39,9 @@ Method at API documentation: [post /v2/products/delete](https://docs.ozon.ru/api
 ```bsl title="1C:Enterprise/OneScript code example"
     OPI_Tools.Pause(30);
 
-    ClientID  = "2479669";
-    APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "1989228106";
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 

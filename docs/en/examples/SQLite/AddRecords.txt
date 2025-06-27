@@ -1,10 +1,10 @@
-﻿    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+﻿    Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_B4C9_162.sqlite";
+    Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
     DataArray = New Array;

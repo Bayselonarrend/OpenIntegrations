@@ -35,8 +35,8 @@ Method at API documentation: [List files](https://platform.openai.com/docs/api-r
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://api.athenaeum.digital:1122/";
-    Token = "sk-or-vv-c5884ebe9f13fb143194bb07ecb...";
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
     Result = OPI_OpenAI.GetFilesList(URL, Token);
 ```

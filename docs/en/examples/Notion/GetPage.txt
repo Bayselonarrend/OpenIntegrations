@@ -1,4 +1,4 @@
-﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page  = "21682aa7-fc4e-8105-8dc5-d7f61f4cf45d";
+﻿    Token = FunctionParameters["Notion_Token"];
+    Page  = FunctionParameters["Notion_Page"];
 
     Result = OPI_Notion.GetPage(Token, Page);
