@@ -1,6 +1,6 @@
-﻿    Token  = "001.3501506236.091...";
-    ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "aGZNk5X7haKONJE5SRGJ2C685009f31bd";
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_FileID"];
     Text   = "File caption";
 
     Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);

@@ -1,4 +1,4 @@
-﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+﻿    Token = FunctionParameters["Metrika_Token"];
 
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", True);

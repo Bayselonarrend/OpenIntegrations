@@ -1,10 +1,10 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
+﻿    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
     Day      = 86400;
 
     DateFrom  = OPI_Tools.GetCurrentDate();
     DateTo    = DateFrom + Day;
-    Draft     = "55152896";
-    Warehouse = "1020001649180000";
+    Draft     = FunctionParameters["Ozon_Draft"];
+    Warehouse = FunctionParameters["Ozon_FBOWarehouse"];
 
     Result = OPI_Ozon.GetFBOTimeslots(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouse);

@@ -39,16 +39,16 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL       = "storage-155.s3hoster.by";
-    AccessKey = "BRN5RKJE67...";
-    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    URL       = ПараметрыФункции["S3_URL"];
+    AccessKey = ПараметрыФункции["S3_AccessKey"];
+    SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Наименование = "pictureSmall.jpg";
     Бакет        = "opi-gpbucket3";
-    Содержимое   = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Содержимое   = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
 
     Результат = OPI_S3.ЗагрузитьОбъектЦеликом(Наименование, Бакет, Содержимое, ОсновныеДанные);
 ```

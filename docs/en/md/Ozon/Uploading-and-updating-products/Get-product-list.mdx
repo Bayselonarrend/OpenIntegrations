@@ -34,8 +34,8 @@ Method at API documentation: [post /v3/product/list](https://docs.ozon.ru/api/se
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     IDArray = New Array;
     IDArray.Add("143210609");

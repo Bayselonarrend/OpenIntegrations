@@ -30,8 +30,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Original = "/081dee89-a070-4a3a-b586-94655c7978a4.png";
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);

@@ -37,7 +37,7 @@
     NewLine.Method       = "ProcessRequest";
     NewLine.SearchMethod = "PROCESSREQUEST";
     NewLine.Parameter    = "--string";
-    NewLine.Description    = "An attribute of receiving the response as a string (optional, def. val. - Yes)";
+    NewLine.Description    = "An attribute of receiving the response as a string (optional, def. val. - True)";
     NewLine.Region     = "Client methods";
 
 

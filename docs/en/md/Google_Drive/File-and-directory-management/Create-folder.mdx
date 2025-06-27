@@ -29,8 +29,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token     = "ya29.a0AW4XtxgOTUonqiJAYqYtxcBh8MI1VxhOH0B9hCii3RQaZlp1PVWulwBqV-y7CkKAad7Ofs4NlHXhJ3-Qe1lj4xEd-ubK_QpjEkbdCVoUW...";
-    Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Token     = FunctionParameters["Google_Token"];
+    Directory = FunctionParameters["GD_Catalog"];
     Name      = "TestFolder";
 
     Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);

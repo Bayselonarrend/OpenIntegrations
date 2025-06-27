@@ -708,7 +708,7 @@
     NewLine.Method       = "SendPoll";
     NewLine.SearchMethod = "SENDPOLL";
     NewLine.Parameter    = "--anonymous";
-    NewLine.Description    = "Survey anonymity flag (optional, def. val. - Yes)";
+    NewLine.Description    = "Survey anonymity flag (optional, def. val. - True)";
     NewLine.Region     = "Data sending";
 
 
@@ -944,7 +944,7 @@
     NewLine.Method       = "FormKeyboardFromButtonArray";
     NewLine.SearchMethod = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter    = "--under";
-    NewLine.Description    = "Keyboard under the message or on the bottom panel (optional, def. val. - No)";
+    NewLine.Description    = "Keyboard under the message or on the bottom panel (optional, def. val. - False)";
     NewLine.Region     = "Data sending";
 
 
@@ -954,7 +954,7 @@
     NewLine.Method       = "FormKeyboardFromButtonArray";
     NewLine.SearchMethod = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter    = "--column";
-    NewLine.Description    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - Yes)";
+    NewLine.Description    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - True)";
     NewLine.Region     = "Data sending";
 
 

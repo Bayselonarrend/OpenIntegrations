@@ -37,10 +37,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDКлиента = "2479669";
-    КлючAPI   = "09f65e9f-262d-4aca...";
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    IDКлиента = ПараметрыФункции["Ozon_ClientID"];
+    КлючAPI   = ПараметрыФункции["Ozon_ApiKey"];
+    Картинка1 = ПараметрыФункции["Picture"];
+    Картинка2 = ПараметрыФункции["Picture2"];
     Видео     = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     МассивКартинок = Новый Массив;

@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\Administrator\AppData\Local\Temp\v8_B4C9_162.sqlite";
+﻿    Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
     Filters = New Array;

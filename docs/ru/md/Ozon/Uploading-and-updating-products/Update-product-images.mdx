@@ -42,12 +42,12 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDКлиента = "2479669";
-    КлючAPI   = "09f65e9f-262d-4aca...";
-    IDТовара  = "1989228106";
+    IDКлиента = ПараметрыФункции["Ozon_ClientID"];
+    КлючAPI   = ПараметрыФункции["Ozon_ApiKey"];
+    IDТовара  = ПараметрыФункции["Ozon_ProductID"];
 
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Картинка1 = ПараметрыФункции["Picture"];
+    Картинка2 = ПараметрыФункции["Picture2"];
 
     МаркетинговыйЦвет = "GREEN";
 

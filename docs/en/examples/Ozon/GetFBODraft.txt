@@ -1,6 +1,6 @@
-﻿    ClientID    = "2479669";
-    APIKey      = "09f65e9f-262d-4aca...";
-    OperationID = "019778a9-6d2c-72ba-aa17-46c8604a567d";
+﻿    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    OperationID = FunctionParameters["Ozon_FBOOperID"];
 
     Status = "CALCULATION_STATUS_IN_PROGRESS";
 

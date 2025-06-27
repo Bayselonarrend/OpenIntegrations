@@ -257,7 +257,7 @@
     NewLine.Method       = "GetCounterStructure";
     NewLine.SearchMethod = "GETCOUNTERSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Counters management";
     NewLine.MethodDescription   = "Gets the structure of standard fields for counter creation";
 
@@ -268,7 +268,7 @@
     NewLine.Method       = "GetCounterFilterStructure";
     NewLine.SearchMethod = "GETCOUNTERFILTERSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Counters management";
     NewLine.MethodDescription   = "Gets the structure of filter fields to get the list of counters";
 

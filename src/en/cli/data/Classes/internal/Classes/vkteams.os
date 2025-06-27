@@ -580,7 +580,7 @@
     NewLine.Method       = "AnswerButtonEvent";
     NewLine.SearchMethod = "ANSWERBUTTONEVENT";
     NewLine.Parameter    = "--showalert";
-    NewLine.Description    = "Display the answer as an alert) (optional, def. val. - No)";
+    NewLine.Description    = "Display the answer as an alert) (optional, def. val. - False)";
     NewLine.Region     = "Message sending";
 
 
@@ -839,7 +839,7 @@
     NewLine.Method       = "BlockChatUser";
     NewLine.SearchMethod = "BLOCKCHATUSER";
     NewLine.Parameter    = "--dellast";
-    NewLine.Description    = "Delete last messages before blocking (optional, def. val. - No)";
+    NewLine.Description    = "Delete last messages before blocking (optional, def. val. - False)";
     NewLine.Region     = "Chat management";
 
 

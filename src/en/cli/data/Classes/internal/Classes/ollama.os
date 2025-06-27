@@ -190,7 +190,7 @@
     NewLine.Method       = "GetRequestParameterStructure";
     NewLine.SearchMethod = "GETREQUESTPARAMETERSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for request processing";
 
@@ -201,7 +201,7 @@
     NewLine.Method       = "GetEmbeddingsParameterStructure";
     NewLine.SearchMethod = "GETEMBEDDINGSPARAMETERSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for processing embeddings requests";
 
@@ -212,7 +212,7 @@
     NewLine.Method       = "GetContextParameterStructure";
     NewLine.SearchMethod = "GETCONTEXTPARAMETERSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters to process the request in context";
 
@@ -327,7 +327,7 @@
     NewLine.Method       = "GetModelInformation";
     NewLine.SearchMethod = "GETMODELINFORMATION";
     NewLine.Parameter    = "--verbose";
-    NewLine.Description    = "Return full model information (optional, def. val. - Yes)";
+    NewLine.Description    = "Return full model information (optional, def. val. - True)";
     NewLine.Region     = "Models management";
 
 
@@ -553,7 +553,7 @@
     NewLine.Method       = "PushModel";
     NewLine.SearchMethod = "PUSHMODEL";
     NewLine.Parameter    = "--insecure";
-    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - False)";
     NewLine.Region     = "Models management";
 
 
@@ -594,7 +594,7 @@
     NewLine.Method       = "PullModel";
     NewLine.SearchMethod = "PULLMODEL";
     NewLine.Parameter    = "--insecure";
-    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - No)";
+    NewLine.Description    = "Allows an unsecured connection to the library (optional, def. val. - False)";
     NewLine.Region     = "Models management";
 
 
@@ -614,7 +614,7 @@
     NewLine.Method       = "GetModelSettingsStructure";
     NewLine.SearchMethod = "GETMODELSETTINGSSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Models management";
     NewLine.MethodDescription   = "Gets the settings structure for creating a new model";
 

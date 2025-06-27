@@ -1,5 +1,5 @@
-﻿    Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Parent = "5dd94c34fab04bff986b7511c0779f77";
+﻿    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
     Title  = "TestTitle";
 
     Properties = New Map;

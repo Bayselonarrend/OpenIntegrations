@@ -37,7 +37,7 @@
     NewLine.Method       = "ExecuteSQLQuery";
     NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--force";
-    NewLine.Description    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - No)";
+    NewLine.Description    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - False)";
     NewLine.Region     = "Common methods";
 
 
@@ -520,7 +520,7 @@
     NewLine.Method       = "AddRecords";
     NewLine.SearchMethod = "ADDRECORDS";
     NewLine.Parameter    = "--trn";
-    NewLine.Description    = "True > adding records to transactions with rollback on error (optional, def. val. - Yes)";
+    NewLine.Description    = "True > adding records to transactions with rollback on error (optional, def. val. - True)";
     NewLine.Region     = "Orm";
 
 
@@ -713,7 +713,7 @@
     NewLine.Method       = "GetRecordsFilterStrucutre";
     NewLine.SearchMethod = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Orm";
     NewLine.MethodDescription   = "Gets the template structure for filtering records in ORM queries";
 

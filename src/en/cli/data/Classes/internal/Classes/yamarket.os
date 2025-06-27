@@ -131,7 +131,7 @@
     NewLine.Method       = "AddUpdateProducts";
     NewLine.SearchMethod = "ADDUPDATEPRODUCTS";
     NewLine.Parameter    = "--pmedia";
-    NewLine.Description    = "A flag of using only your own product images (optional, def. val. - No)";
+    NewLine.Description    = "A flag of using only your own product images (optional, def. val. - False)";
     NewLine.Region     = "Product management";
 
 
@@ -223,7 +223,7 @@
     NewLine.Method       = "GetProductStructure";
     NewLine.SearchMethod = "GETPRODUCTSTRUCTURE";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Product management";
     NewLine.MethodDescription   = "Gets the structure of product standard fields";
 

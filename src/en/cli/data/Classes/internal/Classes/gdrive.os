@@ -58,7 +58,7 @@
     NewLine.Method       = "GetDirectoriesList";
     NewLine.SearchMethod = "GETDIRECTORIESLIST";
     NewLine.Parameter    = "--depth";
-    NewLine.Description    = "Adds a list of files to the directory fields (optional, def. val. - No)";
+    NewLine.Description    = "Adds a list of files to the directory fields (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 
@@ -303,7 +303,7 @@
     NewLine.Method       = "GetFileDescription";
     NewLine.SearchMethod = "GETFILEDESCRIPTION";
     NewLine.Parameter    = "--empty";
-    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
     NewLine.MethodDescription   = "Gets a blank description template for uploading a file";
 

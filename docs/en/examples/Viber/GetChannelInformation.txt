@@ -1,2 +1,2 @@
-﻿    Token  = "523b58ba82afffaa-7ef3b426...";
+﻿    Token  = FunctionParameters["Viber_ChannelToken"];
     Result = OPI_Viber.GetChannelInformation(Token);
