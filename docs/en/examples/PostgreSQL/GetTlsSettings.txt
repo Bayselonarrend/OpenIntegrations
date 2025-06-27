@@ -1,1 +1,1 @@
-﻿    Result = OPI_PostgreSQL.GetTlsSettings(False);
+﻿    Result = OPI_PostgreSQL.GetTlsSettings(True);
