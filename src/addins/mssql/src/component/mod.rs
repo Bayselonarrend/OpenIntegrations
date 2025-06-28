@@ -67,10 +67,11 @@ pub const PROPS: &[&[u16]] = &[
 pub struct AddIn {
     connection_string: String,
     connection: Option<Arc<Mutex<Client<Compat<TcpStream>>>>>,
+    runtime: Option<Runtime>,
+    initialized: bool,
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
-    runtime: Option<Runtime>,
 }
 
 impl AddIn {
@@ -78,10 +79,11 @@ impl AddIn {
         AddIn {
             connection_string: String::new(),
             connection: None,
+            runtime: None,
+            initialized: false,
             use_tls: false,
             accept_invalid_certs: false,
             ca_cert_path: String::new(),
-            runtime: None
         }
     }
 
@@ -89,6 +91,10 @@ impl AddIn {
 
         if self.connection_string.is_empty() {
             return Self::process_error("Empty connection string!");
+        }
+
+        if self.initialized {
+            return Self::process_error("Client already initialized!");
         }
 
         let mut config = match Config::from_ado_string(&self.connection_string) {
@@ -106,12 +112,18 @@ impl AddIn {
                     config.trust_cert_ca(&self.ca_cert_path);
                 }
             }
-            false => config.encryption(EncryptionLevel::Off)
+            false => {
+                config.trust_cert();
+                config.encryption(EncryptionLevel::Off)
+            }
         }
 
         let rt = match self.get_runtime() {
             Ok(rt) => rt,
-            Err(e) => return Self::process_error(&e),
+            Err(e) => {
+                self.shutdown();
+                return Self::process_error(&e)
+            },
         };
 
         let client = rt.block_on(async {
@@ -123,19 +135,19 @@ impl AddIn {
         match client {
             Ok(cl) => {
                 self.connection = Some(Arc::new(Mutex::new(cl)));
+                self.initialized = true;
                 json!({"result": true}).to_string()
             },
-            Err(e) => Self::process_error(&e.to_string())
+            Err(e) => {
+                self.shutdown();
+                Self::process_error(&e.to_string())
+            }
         }
     }
 
     pub fn close_connection(&mut self) -> String {
-
-        if self.connection.take().is_some() {
-            json!({"result": true}).to_string()
-        } else {
-            Self::process_error("Connection is already closed")
-        }
+        self.shutdown();
+        json!({"result": true}).to_string()
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
@@ -149,10 +161,6 @@ impl AddIn {
         self.ca_cert_path = ca_cert_path.to_string();
 
         json!({"result": true}).to_string()
-    }
-
-    fn get_connection(&self) -> Result<Arc<Mutex<Client<Compat<TcpStream>>>>, String> {
-        self.connection.clone().ok_or_else(|| Self::process_error("No active connection").to_string())
     }
 
     // TOKIO
@@ -171,7 +179,7 @@ impl AddIn {
         if let Some(rt) = self.runtime.take() {
             rt.shutdown_background();  // Неблокирующая остановка
         }
-        self.connection = None;
+        self.connection.take();
     }
 
     // OTHER

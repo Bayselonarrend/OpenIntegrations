@@ -197,8 +197,8 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
         let param: Box<dyn ToSql> = match item {
             Value::Null => Box::new(None::<i32>),
             Value::Bool(b) => Box::new(*b),
-            Value::Number(n) if n.is_i64() => Box::new(n.as_i64().unwrap()),
-            Value::Number(n) if n.is_f64() => Box::new(n.as_f64().unwrap()),
+            Value::Number(n) if n.is_i64() => Box::new(n.as_i64().unwrap_or(0)),
+            Value::Number(n) if n.is_f64() => Box::new(n.as_f64().unwrap_or(0.0)),
             Value::Number(n) => Box::new(n.as_f64().unwrap_or(0.0)),
             Value::String(s) => Box::new(s.clone()),
             Value::Object(obj) => {
@@ -283,15 +283,15 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
                             }
                         },
                         "DATE" => {
-                            match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%d").ok()) {
+                            match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
                                 Some(date) => Box::new(date),
                                 None => Box::new(None::<NaiveDate>)
                             }
                         },
                         "TIME" => {
-                            match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%H:%M:%S").ok()) {
+                            match value.as_str().and_then(|s| NaiveTime::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
                                 Some(date) => Box::new(date),
-                                None => Box::new(None::<NaiveDate>)
+                                None => Box::new(None::<NaiveTime>)
                             }
                         },
                         "DATETIME" => {
