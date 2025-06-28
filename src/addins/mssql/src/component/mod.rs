@@ -3,7 +3,7 @@ mod methods;
 use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
-use tiberius::{Client, Config, EncryptionLevel};
+use tiberius::{Client, Config};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::{Arc, Mutex};
@@ -102,20 +102,14 @@ impl AddIn {
             Err(e) => return Self::process_error(&e.to_string()),
         };
 
-        match self.use_tls {
-            true => {
-                config.encryption(EncryptionLevel::Required);
+        if self.use_tls {
 
-                if self.accept_invalid_certs {
-                    config.trust_cert();
-                }else if self.ca_cert_path.is_empty() == false {
-                    config.trust_cert_ca(&self.ca_cert_path);
-                }
-            }
-            false => {
+            if self.accept_invalid_certs {
                 config.trust_cert();
-                config.encryption(EncryptionLevel::Off)
+            }else if self.ca_cert_path.is_empty() == false {
+                config.trust_cert_ca(&self.ca_cert_path);
             }
+
         }
 
         let rt = match self.get_runtime() {
@@ -161,6 +155,10 @@ impl AddIn {
         self.ca_cert_path = ca_cert_path.to_string();
 
         json!({"result": true}).to_string()
+    }
+
+    fn get_connection(&self) -> Result<Arc<Mutex<Client<Compat<TcpStream>>>>, String> {
+        self.connection.clone().ok_or_else(|| Self::process_error("No active connection").to_string())
     }
 
     // TOKIO
