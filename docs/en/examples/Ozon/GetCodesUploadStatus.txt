@@ -1,5 +1,5 @@
-﻿    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
-    TaskID   = FunctionParameters["Ozon_CodesTaskID"];
+﻿    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
+    TaskID   = "1";
 
     Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);

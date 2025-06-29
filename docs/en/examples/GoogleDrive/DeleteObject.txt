@@ -1,4 +1,4 @@
-﻿    Token      = FunctionParameters["Google_Token"];
-    Identifier = FunctionParameters["GD_File"];
+﻿    Token      = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
+    Identifier = "1zWya_9PDkEpFOvKMZiLbTntP3VwfeXH8";
 
     Result = OPI_GoogleDrive.DeleteObject(Token, Identifier);

@@ -1,6 +1,6 @@
-﻿    Address  = FunctionParameters["PG_IP"];
+﻿    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
     Base     = "";
 
     Result = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);

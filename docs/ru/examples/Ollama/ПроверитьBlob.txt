@@ -1,6 +1,6 @@
-﻿    URL    = ПараметрыФункции["Ollama_URL"];
-    Токен  = ПараметрыФункции["Ollama_Token"]; // Авторизация - не часть API Ollama
-    SHA256 = ПараметрыФункции["Ollama_Blob"];
+﻿    URL    = "https://hut.openintegrations.dev/ollama";
+    Токен  = "12We34..."; // Авторизация - не часть API Ollama
+    SHA256 = "6f721f23bcce683da2d7d00ddf81d41fe7dc4266942702b7963c91de82ac17dc";
 
     ДопЗаголовки = Новый Соответствие;
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));

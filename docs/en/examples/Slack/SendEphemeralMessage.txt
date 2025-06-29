@@ -1,7 +1,7 @@
-﻿    Token   = FunctionParameters["Slack_Token"];
-    Channel = FunctionParameters["Slack_Channel"];
-    User    = FunctionParameters["Slack_User"];
-    Image   = FunctionParameters["Picture"];
+﻿    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
+    User    = "U06UABH3APP";
+    Image   = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Text    = "Ephemeral message";
 
     Block  = OPI_Slack.GenerateImageBlock(Image, "Image");

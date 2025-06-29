@@ -1,4 +1,4 @@
-﻿    URL = FunctionParameters["HTTP_URL"];
+﻿    URL = "https://httpbin.org";
     URL = URL + "/get";
 
     Headers = New Map;

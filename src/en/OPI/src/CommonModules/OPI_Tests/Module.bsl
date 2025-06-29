@@ -2823,6 +2823,13 @@ Procedure MSS_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("SQL2"       , TestParameters);
 
+    MSSQL_GenerateConnectionString(TestParameters);
+    MSSQL_CreateConnection(TestParameters);
+    MSSQL_CloseConnection(TestParameters);
+    MSSQL_IsConnector(TestParameters);
+    MSSQL_ExecuteSQLQuery(TestParameters);
+    MSSQL_GetTlsSettings(TestParameters);
+
 EndProcedure
 
 Procedure MSS_ORM() Export
@@ -23769,51 +23776,18 @@ EndProcedure
 Procedure MSSQL_CreateConnection(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
-    Login    = "bayselonarrend";
+    Login    = "SA";
     Password = FunctionParameters["PG_Password"];
+    Port     = 1434;
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
-    Result           = OPI_MSSQL.CreateConnection(ConnectionString);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MSSQL"); // SKIP
-    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main"); // SKIP
-
-    OPI_MSSQL.CloseConnection(Result);
-
-    // With TLS
-
-    Address = FunctionParameters["PG_IP"];
-    Port    = "1434";
-
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
     TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
 
     Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
-    OPI_MSSQL.CloseConnection(Result);
-
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "MSSQL");
-    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
-
-    Result = OPI_MSSQL.CreateConnection(ConnectionString);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "MSSQL");
-    OPI_TestDataRetrieval.Check_Structure(Result);
-
-    Address = FunctionParameters["PG_IP"];
-
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
-    Result           = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS error)", "MSSQL");
-    OPI_TestDataRetrieval.Check_Structure(Result);
-
-    TLSSettings = OPI_MSSQL.GetTlsSettings(True);
-    Result      = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MSSQL");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MSSQL");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
 
     Address          = FunctionParameters["PG_IP"];
@@ -23839,6 +23813,150 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
 
 EndProcedure
 
+Procedure MSSQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Port     = 1434;
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Result     = OPI_MSSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MSSQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString);
+    Result     = OPI_MSSQL.IsConnector(Connection);
+
+    OPI_MSSQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "MSSQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_MSSQL.CreateConnection(ConnectionString);
+
+    OPI_MSSQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_MSSQL.DeleteTable("test_data", Connection); // SKIP
+    Deletion = OPI_MSSQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "MSSQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data MEDIUMBLOB
+                   |);";
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , Image));
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    Blob = Result["data"][0]["data"]["BYTES"]; // SKIP
+
+    Result["data"][0]["data"]["BYTES"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+    OPI_MySQL.ExecuteSQLQuery("create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_MSSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MSSQL_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_MSSQL.GetTlsSettings(True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "MSSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
 
 #EndRegion
 

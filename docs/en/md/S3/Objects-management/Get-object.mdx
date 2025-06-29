@@ -38,9 +38,9 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = FunctionParameters["S3_URL"];
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
