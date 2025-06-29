@@ -22,6 +22,7 @@
 ПутьДокозавра = "./docs/docusaurus/";
 МассивФайлов = Новый Массив;
 МассивФайлов.Добавить(Новый Файл(ПутьДокозавра + "src/components/HomepageFeatures/index.js"));
+МассивФайлов.Добавить(Новый Файл(ПутьДокозавра + "src/components/AlternatingFeatures/index.js"));
 МассивФайлов.Добавить(Новый Файл(ПутьДокозавра + "src/pages/index.js"));
 МассивФайлов.Добавить(Новый Файл(ПутьДокозавра + "docusaurus.config.js"));
 
