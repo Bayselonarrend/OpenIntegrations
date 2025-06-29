@@ -6,7 +6,7 @@ pipeline {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') { 
                         bat encoding: 'UTF-8', script:'chcp 65001 & xcopy "docs/ru/md" "docs/docusaurus/docs" /s /e /i /y'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
-                        bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & "C:/Program Files (x86)/Yarn/bin/yarn" build'
+                        bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & yarn build'
                         withCredentials([string(credentialsId: 'neocities-test', variable: 'TOKEN')]) {
                             powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/Docs deploy (Test RU)/docs/docusaurus/build"'
                         }
