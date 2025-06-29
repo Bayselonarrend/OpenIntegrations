@@ -53,6 +53,7 @@
   align-items: left;
   justify-content: ltft;
   margin-left: -10px;
+  flex-wrap: wrap;
 }
 
 .button{
