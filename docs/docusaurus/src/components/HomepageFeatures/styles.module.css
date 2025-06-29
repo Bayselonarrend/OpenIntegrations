@@ -3,7 +3,7 @@ marquee{
 }
 
 .api{
-  margin-right: 200px;
+  margin-right: 300px;
 }
 
 .features {
@@ -11,7 +11,10 @@ marquee{
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  color: black;
+  margin-top: 23px;
 }
+
 
 .featureSvg {
   height: 80px;
@@ -33,6 +36,7 @@ marquee{
   height: clamp(3em, 10vw, 6em);
   overflow: hidden;
   font-family: sans-serif;
+  margin-top: 200px;
 
 
 }

@@ -1,0 +1,72 @@
+.features {
+  padding: 4rem 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.featureImage {
+  padding: 1rem;
+}
+
+.featureImageWrapper {
+  flex: 1;
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center; /* Выравнивание по горизонтали */
+  overflow: hidden;
+}
+
+.featureImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Сохраняет пропорции, обрезая если нужно */
+  transition: transform 0.3s ease;
+}
+
+.featureImg:hover {
+  transform: scale(1.02);
+}
+
+.featureContent {
+  padding: 1rem;
+}
+
+.featureTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.featureDesc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Обратный порядок для четных элементов */
+.reversed {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 996px) {
+  .featureItem,
+  .reversed {
+    flex-direction: column;
+  }
+  
+  .featureImage,
+  .featureContent {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .featureTitle {
+    margin-top: 1.5rem;
+  }
+}
