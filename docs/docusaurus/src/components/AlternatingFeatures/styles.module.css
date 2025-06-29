@@ -16,7 +16,7 @@
 .featureImageWrapper {
   flex: 1;
   min-width: 200px;
-  height: 200px;
+  min-height: 200px;
   display: flex;
   align-items: center; /* Выравнивание по вертикали */
   justify-content: center; /* Выравнивание по горизонтали */
