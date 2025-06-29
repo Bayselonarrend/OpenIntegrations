@@ -9,7 +9,7 @@ pipeline {
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & yarn build'
                         withCredentials([string(credentialsId: 'neocities-test', variable: 'TOKEN')]) {
-                            powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/Docs deploy (Test EN)/docs/docusaurus/build"'
+                            powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsTestEn/docs/docusaurus/build"'
                         }
                     }
                     
