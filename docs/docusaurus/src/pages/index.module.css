@@ -3,13 +3,39 @@
  * and scoped locally.
  */
 
+
+
 .heroBanner {
-  padding: 3rem 2rem 0;
-  text-align: center;
+  padding: 3rem 2rem 0 7rem;
+  text-align: left;
   position: relative;
   overflow: hidden;
   color: black;
-  margin-top: -50px;
+  margin-top: 20px;
+  
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(0, 63, 19, 0.452);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50px) translateX(20px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 996px) {
@@ -24,8 +50,9 @@
 
 .buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: ltft;
+  margin-left: -10px;
 }
 
 .button{
@@ -33,8 +60,10 @@
 }
 
 .biglogo{
-  width: 20%;
-  height: 20%;
+  width: 128px;
+  height: 128px;
+  margin-bottom: -15px;
+  margin-left: -15px;
 }
 
 .heroBanner_src-pages-index-module {
