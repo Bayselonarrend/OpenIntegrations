@@ -12,8 +12,8 @@ pipeline {
                         }
                     }
                     
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/Docs deploy (RU)/docs/docusaurus/build"'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/Docs deploy (RU)/docs/docusaurus/node_modules"'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsRu/docs/docusaurus/build"'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsRu/docs/docusaurus/node_modules"'
                     
             }
         }
