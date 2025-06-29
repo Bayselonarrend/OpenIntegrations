@@ -1,7 +1,7 @@
-﻿    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
-    Audio = FunctionParameters["OpenAI_Speech"];
+    Audio = "C:\Users\bayse\AppData\Local\Temp\v8_6B23_3d5.wav";
     Model = "whisper-1";
 
     Result = OPI_OpenAI.CreateTranscription(URL, Token, Model, Audio, "audio/wav");

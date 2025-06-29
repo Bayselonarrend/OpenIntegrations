@@ -1,4 +1,4 @@
-﻿    IDФайла = ПараметрыФункции["Telegram_FileID"];
-    Токен   = ПараметрыФункции["Telegram_Token"];
+﻿    IDФайла = "CQACAgIAAx0EcNsaZQACRi1oXWL_EqS8Tq__DcLchZYuFFI_mQACN3MAAmqh6Uq5yAABCl3B_C02BA";
+    Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);

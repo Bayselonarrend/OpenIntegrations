@@ -1,9 +1,9 @@
-﻿    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
-    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
-    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
-    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
+﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDЧата = ПараметрыФункции["GreenAPI_TestGroupID"];
+    IDЧата = "120363410406221140@g.us";
 
     Телефон  = 79001234568;
     Имя      = "Артем";

@@ -1,0 +1,10 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString);
+    Result     = OPI_MSSQL.IsConnector(Connection);
+
+    OPI_MSSQL.CloseConnection(Result);

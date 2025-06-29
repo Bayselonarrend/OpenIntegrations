@@ -36,14 +36,14 @@ Method at API documentation: [post /v1/draft/timeslot/info](https://docs.ozon.ru
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
     Day      = 86400;
 
     DateFrom  = OPI_Tools.GetCurrentDate();
     DateTo    = DateFrom + Day;
-    Draft     = FunctionParameters["Ozon_Draft"];
-    Warehouse = FunctionParameters["Ozon_FBOWarehouse"];
+    Draft     = "56559200";
+    Warehouse = "18044249781000";
 
     Result = OPI_Ozon.GetFBOTimeslots(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouse);
 ```

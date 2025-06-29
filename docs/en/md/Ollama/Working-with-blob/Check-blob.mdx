@@ -33,9 +33,9 @@ Method at API documentation: [Check if a Blob Exist](https://github.com/ollama/o
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL    = FunctionParameters["Ollama_URL"];
-    Token  = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
-    SHA256 = FunctionParameters["Ollama_Blob"];
+    URL    = "https://hut.openintegrations.dev/ollama";
+    Token  = "12We34..."; // Authorization - not part API Ollama
+    SHA256 = "6f721f23bcce683da2d7d00ddf81d41fe7dc4266942702b7963c91de82ac17dc";
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));

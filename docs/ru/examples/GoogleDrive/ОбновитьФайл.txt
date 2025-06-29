@@ -1,6 +1,6 @@
-﻿    Токен         = ПараметрыФункции["Google_Token"];
+﻿    Токен         = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = ПараметрыФункции["GD_File"];
-    Файл          = ПараметрыФункции["Picture2"]; // URL, Двоичные данные или Путь к файлу
+    Идентификатор = "1zWya_9PDkEpFOvKMZiLbTntP3VwfeXH8";
+    Файл          = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

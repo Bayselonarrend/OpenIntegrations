@@ -1,5 +1,5 @@
-﻿    Токен         = ПараметрыФункции["Google_Token"];
-    Идентификатор = ПараметрыФункции["GD_File"];
-    ИДКомментария = ПараметрыФункции["GD_Comment"];
+﻿    Токен         = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
+    Идентификатор = "1zWya_9PDkEpFOvKMZiLbTntP3VwfeXH8";
+    ИДКомментария = "AAABjf4_d3w";
 
     Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);

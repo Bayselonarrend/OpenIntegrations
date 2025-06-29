@@ -1,5 +1,5 @@
-﻿    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");

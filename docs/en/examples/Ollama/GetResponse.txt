@@ -1,5 +1,5 @@
-﻿    URL   = FunctionParameters["Ollama_URL"];
-    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+﻿    URL   = "https://hut.openintegrations.dev/ollama";
+    Token = "12We34..."; // Authorization - not part API Ollama
 
     Prompt = "What is 1C:Enterprise?";
     Model  = "tinyllama";
