@@ -33,8 +33,8 @@ Method at API documentation: [post /v1/product/rating-by-sku](https://docs.ozon.
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2479669";
+    APIKey   = "09f65e9f-262d-4aca...";
     SKU      = 1626044001;
 
     Result = OPI_Ozon.GetProductsContentRating(ClientID, APIKey, SKU);

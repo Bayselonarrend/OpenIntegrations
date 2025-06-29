@@ -1,4 +1,4 @@
-﻿    URL = ПараметрыФункции["HTTP_URL"];
+﻿    URL = "https://httpbin.org";
     URL = URL + "/get";
 
     Токен              = "***";

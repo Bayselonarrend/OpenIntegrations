@@ -35,8 +35,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = FunctionParameters["NC_Token"];
-    Data  = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Token = "7419cd51de4037f7...";
+    Data  = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
     Path  = "testfolder/test_pic.png";
 
     Result = OPI_Neocities.UploadFile(Token, Path, Data);

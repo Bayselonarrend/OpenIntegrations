@@ -1,5 +1,5 @@
-﻿    Token = FunctionParameters["Notion_Token"];
-    Base  = FunctionParameters["Notion_Base"];
+﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Base  = "21e82aa7-fc4e-8101-b818-cfc85b53ab4a";
 
     Title       = "TestTitle";
     Description = "TestDescription";

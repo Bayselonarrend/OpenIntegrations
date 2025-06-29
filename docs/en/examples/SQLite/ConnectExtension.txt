@@ -1,5 +1,5 @@
-﻿    Base       = FunctionParameters["SQLite_DB"];
-    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+﻿    Base       = "C:\Users\bayse\AppData\Local\Temp\v8_6B23_336.sqlite";
+    Extension  = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary Data
     EntryPoint = "sqlite3_uuid_init";
 
     Connection = OPI_SQLite.CreateConnection(Base);
