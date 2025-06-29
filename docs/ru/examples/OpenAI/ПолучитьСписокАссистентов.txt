@@ -1,5 +1,5 @@
-﻿    URL   = ПараметрыФункции["OpenAI_URL"];
-    Токен = ПараметрыФункции["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Токен = "12We...";
 
     Количество   = 2;
     ДопПараметры = Новый Структура("after,order", "asst_2", "desc");

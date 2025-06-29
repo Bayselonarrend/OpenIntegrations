@@ -1,5 +1,5 @@
-﻿    Token    = FunctionParameters["Google_Token"];
-    Calendar = FunctionParameters["Google_NewCalendarID"];
-    Event    = FunctionParameters["Google_EventID"];
+﻿    Token    = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
+    Calendar = "d98570b97b8f7acd2724ff3693ace760f9d5022ffe4903dcefeed3f362ce81ba@group.calendar.google.com";
+    Event    = "grp898u8b3rf9ujm0bree4644g";
 
     Result = OPI_GoogleCalendar.DeleteEvent(Token, Calendar, Event);

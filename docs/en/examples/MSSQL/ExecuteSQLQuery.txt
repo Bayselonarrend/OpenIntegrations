@@ -1,0 +1,59 @@
+﻿    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "test_data";
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Connection       = OPI_MSSQL.CreateConnection(ConnectionString);
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data MEDIUMBLOB
+                   |);";
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , Image));
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // SQL query from file
+
+    SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"; // Binary Data, URL or path to file
+
+    Result = OPI_MSSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+
+    Closing = OPI_MSSQL.CloseConnection(Connection);

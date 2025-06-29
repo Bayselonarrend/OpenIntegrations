@@ -1,4 +1,4 @@
-﻿    Токен = ПараметрыФункции["Notion_Token"];
-    Блок  = ПараметрыФункции["Notion_Block"];
+﻿    Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Блок  = "d7021bdd15b944ababcb02bd2b1a5f6a";
 
     Результат = OPI_Notion.ВернутьБлок(Токен, Блок);

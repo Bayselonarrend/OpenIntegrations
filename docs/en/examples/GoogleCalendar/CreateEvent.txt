@@ -1,12 +1,12 @@
 ﻿    CurrentDate = OPI_Tools.GetCurrentDate();
-    Token       = FunctionParameters["Google_Token"];
-    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Token       = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
+    Calendar    = "d98570b97b8f7acd2724ff3693ace760f9d5022ffe4903dcefeed3f362ce81ba@group.calendar.google.com";
     Name        = "New event";
     Description = "TestEventDescription";
     Hour        = 3600;
 
-    Image1      = FunctionParameters["Picture"]; // URL, Binary or File path
-    Image2      = FunctionParameters["Picture2"]; // URL, Binary or File path
+    Image1      = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary or File path
+    Image2      = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary or File path
     Attachments = New Map;
 
     Attachments.Insert("Image1", Image1);

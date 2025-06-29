@@ -1,8 +1,8 @@
 ﻿    OPI_Tools.Pause(30);
 
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey    = FunctionParameters["Ozon_ApiKey"];
-    ProductID = FunctionParameters["Ozon_ProductID"];
+    ClientID  = "2479669";
+    APIKey    = "09f65e9f-262d-4aca...";
+    ProductID = "2075130778";
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 

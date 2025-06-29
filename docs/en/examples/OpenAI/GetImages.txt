@@ -1,5 +1,5 @@
-﻿    URL   = FunctionParameters["OpenAI_URL2"];
-    Token = FunctionParameters["OpenAI_Token2"];
+﻿    URL   = "https://bothub.chat/api/v2/openai/";
+    Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzYTUwNWFiLTdhYmEtNDkyNy05YmQ0LTZlNDFlZGEyZGRmYyIsImlzRGV2Z...";
 
     Model       = "dall-e-3";
     Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "1024x1024");

@@ -29,8 +29,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Version = FunctionParameters["Dropbox_FileRevision"];
-    Token   = FunctionParameters["Dropbox_Token"];
+    Version = "6387eafeb2c0ebd841553";
+    Token   = "sl.u.AF2u0jJrW_SK10XagkkZ5L5bjzw8sb7clArwDhHprOJEY18V8Kr4HcW7AhIzK5MkETtxhKDO-DH2snp5Bxh1QNmgYpz_YHnaagV_SeSZc6dM6rSXArOEUZThCX17OGrgluUy3Apne71bjQ4ocsT0n-gzikTxjec9JY_scMNDmBAPlbPE5K0bDI2eJvocbU9V6dfgpo7EkKipNS_F27gjOnE2O5gH1WkX_pLdNOlqVw6W9vraDnD7liZywj-3PETjlkxaZutUzb2mJ1wpioehZoq4ffEtWyeARYOtvfzkyMgFEd7OCLmdj2K42r9tvyZJA9IqOO7sxfCP1Q442DnUb7ZXL_UXorNdWvPrJsDWBhn7s0JIvyAOLQRP0cOeXwzj7QRa94PotVEhhL0CnaLwoM-ZjKSMRNDlweSVgu82gndjrunenbCVejmI3Z_oaYRYf-duwp1OqWLM59iPA_QEaHEpOZKLNHUkpf_BrYa1iEw4VRSRGU2-gUK8RvhZSjZnCsrSyLt7_A4oEdH6TQ8uSp02GDJ6uUAra5e4iFSN5IRdJBD0RHLTW2riiYcqdn893HfHyP7FQClYTxH9Am82AGVGxYc-OEvD6Ki-elVgRDMx64OOMULEdDmPl_FWrQqAgvWEKIO092iI4dTJveUXxS_OB2sMlY5Ps_vmkikOAPapkMThIJHgaQRMe1YF48Ih07zY3zab2GL0Q5PIEyoCLcW9fHP385F...";
     Path    = "/New/pic.png";
 
     Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
