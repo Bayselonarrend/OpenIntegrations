@@ -16,14 +16,19 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: #004943;
   --ifm-tabs-color-active: #004943;
+  --ifm-pagination-nav-color-hover: black;
 }
 
 p{
   font-weight: lighter;
 }
 
-h3{
+h3,h2,h1{
   font-weight: 400;
+}
+
+strong{
+  font-weight: 500;
 }
 
 @media (min-width: 996px) {
@@ -134,26 +139,34 @@ h3{
 
 
 .menu__link{
-  font-weight: normal;
+  font-weight: 350;
 }
 
 .menu__link--active, .menu__link--active:hover, .navbar__link--active {
   color: black;
 }
 
-.table-of-contents__link, .table-of-contents__link:hover, .table-of-contents__link--active, .table-of-contents__link--active:hover{
-  color: black;
-  font-weight: normal;
+.table-of-contents__link{
+  color: grey;
+  font-weight: 400;
 }
 
-.navbar__item:hover, .navbar__link:hover, .navbar__brand:hover{
+.table-of-contents__link:hover, .table-of-contents__link--active, .table-of-contents__link--active:hover{
+  color: black;
+  font-weight: 450;
+}
+
+.navbar__item:hover, .navbar__link:hover, .navbar__brand:hover, .navbar__title:hover{
   color: #004943;
-  font-weight: 510;
+}
+
+.navbar__item, .navbar__link, .navbar__brand, .navbar__title{
+  font-weight: 350;
 }
 
 a{
-  color: #004943;
-  font-weight: bold;
+  color: #004943e8;
+  font-weight: 500;
 }
 
 a:hover, .navbar__title:hover{
@@ -165,7 +178,7 @@ a:hover, .navbar__title:hover{
 }
 
 .navbar__title{
-  font-weight: 510;
+  font-weight: 490;
 }
 
 li > a.menu__link {
