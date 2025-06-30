@@ -58,7 +58,7 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
         AddIn = AttachAddInOnServer(AddInName, Class, Error);
 
         If ValueIsFilled(Error) Then
-            FormAddInException();
+            FormAddInException(Error);
         EndIf;
 
     EndIf;
@@ -163,7 +163,7 @@ Function AddInsFolderOS() Export
 
 EndFunction
 
-Procedure FormAddInException()
+Procedure FormAddInException(Val Error)
 
     Text = "Failed to initialize an external component. It may not be compatible with your operating system.";
 
@@ -182,7 +182,11 @@ Procedure FormAddInException()
     Text = Text
         + Chars.LF
         + Chars.LF
-        + "Read more: https://en.openintegrations.dev/docs/Start/Component-requirements";
+        + "Read more: https://en.openintegrations.dev/docs/Start/Component-requirements"
+        + Chars.LF
+        + Chars.LF
+        + "System info:"
+        + Error;
 
     Raise Text;
 
