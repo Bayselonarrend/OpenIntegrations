@@ -1,6 +1,6 @@
 pipeline {
       agent { 
-      	docker { 
+      	dockerContainer { 
             	image 'centos:7' 
             	args '-v /tmp/jenkins-agent:/home/jenkins/agent --network openintegrations-internal'
             	label 'rpm-agent'
