@@ -576,7 +576,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     If OPI_Tools.IsWindows() Then
 
-        Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+        Oint = "oint";
 
     Else
 
