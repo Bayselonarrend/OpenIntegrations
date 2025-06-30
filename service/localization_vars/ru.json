@@ -10,5 +10,6 @@
     "codeExamplesSrc": "./docs/ru/examples/",
     "testValuesSrc": "./docs/ru/data/",
     "testsModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
+    "testsCliModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os",
     "testsRegionName":"АтомарныеТесты"
 }
