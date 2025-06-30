@@ -1,3 +1,11 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
 pipeline {
 	agent {
 		label 'windows'
