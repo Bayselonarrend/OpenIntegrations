@@ -1,6 +1,6 @@
 oint openai СоздатьТранскрипцию ^
-  --url "https://api.athenaeum.digital:1122/" ^
+  --url "https://hut.openintegrations.dev/localai/" ^
   --token "***" ^
   --model "whisper-1" ^
-  --audio "C:\Users\Administrator\AppData\Local\Temp\3muwt2ypgq0.wav" ^
+  --audio "C:\Users\bayse\AppData\Local\Temp\nwcpusfyb5u.wav" ^
   --type "audio/wav"

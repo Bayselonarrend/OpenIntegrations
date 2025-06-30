@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ЗагрузитьМодельВПамять ^
-  --url "https://api.athenaeum.digital/ollama" ^
+  --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
   --keep 500 ^
   --headers "{'Authorization':'***'}"

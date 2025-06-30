@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЦветЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 2542 \
+  --chat 2582 \
   --color "PURPLE" \
   --token "***"

@@ -5,4 +5,4 @@ oint slack ОтправитьЭфемерноеСообщение ^
   --channel "C06UFNUTKUL" ^
   --text "Эфимерное сообщение" ^
   --user "U06UABH3APP" ^
-  --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Картинка'}"
+  --blocks "{'type':'image','image_url':'https://hut.openintegrations.dev/test_data/picture.jpg','alt_text':'Картинка'}"
