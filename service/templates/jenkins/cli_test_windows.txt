@@ -3,6 +3,9 @@ pipeline {
 	stages {
 		stage('Prepare'){
 			steps{
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
+            		}
 				powershell encoding: 'UTF-8', script: '''
 					$batFile = ""C:\\Program Files\\OneScript\\bin\\oint.bat""
 					if (Test-Path $batFile) {
