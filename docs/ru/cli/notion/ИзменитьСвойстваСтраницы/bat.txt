@@ -2,8 +2,8 @@
 
 oint notion ИзменитьСвойстваСтраницы ^
   --token "***" ^
-  --page "21682aa7-fc4e-8193-9d3e-ccae32d0f195" ^
+  --page "22282aa7-fc4e-811f-8bda-c2082809a71f" ^
   --data "{'Активен':false,'Почта':'vector@mail.ru'}" ^
-  --icon "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
-  --cover "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
+  --icon "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+  --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" ^
   --archive false

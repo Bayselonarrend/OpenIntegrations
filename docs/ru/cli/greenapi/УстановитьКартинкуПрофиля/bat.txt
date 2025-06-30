@@ -2,4 +2,4 @@
 
 oint greenapi УстановитьКартинкуПрофиля ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-  --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+  --picture "https://hut.openintegrations.dev/test_data/picture.jpg"

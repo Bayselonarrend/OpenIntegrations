@@ -1,4 +1,4 @@
 oint openai ПолучитьАссистента ^
-  --url "https://api.athenaeum.digital:1122/" ^
+  --url "https://hut.openintegrations.dev/localai/" ^
   --token "***" ^
   --id "asst_1"
