@@ -11,7 +11,7 @@ pipeline {
          		}
       	}
 
-	%2
+%2
 
 	}
 	post{
