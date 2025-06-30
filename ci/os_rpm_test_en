@@ -1,11 +1,7 @@
 pipeline {
-      agent { 
-      	dockerContainer { 
-            	image 'centos:7' 
-            	args '-v /tmp/jenkins-agent:/home/jenkins/agent --network openintegrations-internal'
-            	label 'rpm-agent'
-            } 
-      }
+    agent {
+        label 'Agent1'  // Имя или метка агента
+    }
 	stages {
       	stage('Prepare'){
          		steps{
