@@ -1,0 +1,59 @@
+pipeline {
+	agent windows
+	stages {
+		stage('Prepare'){
+			steps{
+				powershell encoding: 'UTF-8', script: '''
+					$batFile = ""C:\\Program Files\\OneScript\\bin\\oint.bat""
+					if (Test-Path $batFile) {
+						Remove-Item -Path $batFile -Force
+						Write-Host ""Файл oint.bat удален.""
+					} else {
+						Write-Host ""Файл oint.bat не найден, пропускаем удаление.""
+					}
+				'''
+
+				// Создание директории для загрузки, если её нет
+				bat 'if not exist ""%%USERPROFILE%%\\Downloads"" mkdir ""%%USERPROFILE%%\\Downloads""'
+
+				// Скачивание инсталлера
+				powershell encoding: 'UTF-8', script: '''
+					$url = ""https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.26.0/oint_1.26.0_installer_%1.exe ""
+					$output = ""$env:USERPROFILE\\Downloads\\oint_installer.exe""
+					Invoke-WebRequest -Uri $url -OutFile $output
+					Write-Host ""Инсталлер скачан в: $output""
+				'''
+
+				// Запуск инсталляции (тихий режим для Inno Setup)
+				powershell encoding: 'UTF-8', script: '''
+					$installerPath = ""$env:USERPROFILE\\Downloads\\oint_installer.exe""
+					Write-Host ""Запускаем установку: $installerPath""
+					Start-Process -FilePath $installerPath -ArgumentList ""/VERYSILENT /NORESTART"" -Wait
+					Write-Host ""Установка завершена.""
+				'''        
+			}
+		}
+
+	%2
+
+	}
+	post{
+		always{
+			script {
+				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
+					bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
+					bat encoding: 'UTF-8', script:'del "./data.json"'
+				}
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					bat "git config user.email vitaly.the.alpaca@gmail.com"
+					bat 'git config user.name "Vitaly the Alpaca (bot)"'
+					bat "git config --global core.ignorecase true"
+					bat "git add ."
+					bat 'git commit -m "Test data update (Jenkins)"'
+					bat "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
