@@ -1,0 +1,636 @@
+pipeline {
+      agent { 
+      	docker { 
+            	image 'centos:7' 
+            	args '-v /tmp/jenkins-agent:/home/jenkins/agent --network openintegrations-internal'
+            	label 'rpm-agent'
+            } 
+      }
+	stages {
+      	stage('Prepare'){
+         		steps{
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%GPGKEY%" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+
+		stage('Testing-Telegram') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetUpdates"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SetWebhook"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendTextMessage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendImage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendVideo"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendAudio"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendDocument"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendGIF"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendMediaGroup"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendLocation"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendContact"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendPoll"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ForwardMessage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_BanUnban"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateInvitationLink"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_PinUnpinMessage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetMemberCount"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetForumAvatarsList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateDeleteForumTopic"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ChangeMainTopicName"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_HideShowMainTopic"'
+			}
+			}
+		}
+		stage('Testing-VK') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateDeletePost"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateCompositePost"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreatePoll"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SaveDeleteImage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateStory"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_DiscussionMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_LikeRepostComment"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetStatistics"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPostStatistics"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateAdCampaign"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SendMessage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductCategories"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductSelection"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductWithProperties"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetSelectionList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPropertyList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetOrderList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_UploadVideo"'
+			}
+			}
+		}
+		stage('Testing-Viber') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_MessagesSending"'
+			}
+			}
+		}
+		stage('Testing-Twitter') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TwitterAPI_AccountData"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TwitterAPI_Tweets"'
+			}
+			}
+		}
+		stage('Testing-PostgreSQL') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Postgres_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Postgres_ORM"'
+			}
+			}
+		}
+		stage('Testing-MySQL') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MYS_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MYS_ORM"'
+			}
+			}
+		}
+		stage('Testing-MSSQL') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MSS_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MSS_ORM"'
+			}
+			}
+		}
+		stage('Testing-SQLite') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SQLL_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SQLL_ORM"'
+			}
+			}
+		}
+		stage('Testing-RCON') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "RC_CommandsExecution"'
+			}
+			}
+		}
+		stage('Testing-YandexDisk') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateFolder"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadByUrlAndGetObject"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadDeleteFile"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateObjectCopy"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDownloadLink"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetFileList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_MoveObject"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_PublicObjectActions"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetPublishedList"'
+			}
+			}
+		}
+		stage('Testing-GoogleWorkspace') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"'
+			}
+			}
+		}
+		stage('Testing-GoogleCalendar') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetCalendarList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteCalendar"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteEvent"'
+			}
+			}
+		}
+		stage('Testing-GoogleDrive') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_GetCatalogList"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_UploadDeleteFile"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateDeleteComment"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateCatalog"'
+			}
+			}
+		}
+		stage('Testing-GoogleSheets') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_CreateTable"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_FillClearCells"'
+			}
+			}
+		}
+		stage('Testing-Notion') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NotionAPI_CreatePage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NotionAPI_CreateUpdateBase"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NotionAPI_CreateDeleteBlock"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NotionAPI_GetUsers"'
+			}
+			}
+		}
+		stage('Testing-Slack') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SlackGetData"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteMessage"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_OpenCloseDialog"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteExternalFile"'
+			}
+			}
+		}
+		stage('Testing-Airtable') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateTable"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateField"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDeleteRecords"'
+			}
+			}
+		}
+		stage('Testing-Dropbox') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFile"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFileByURL"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateFolder"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateDeleteTag"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetAccount"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_AccessManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetFolderFileList"'
+			}
+			}
+		}
+		stage('Testing-Bitrix24') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ServerTime"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_PostsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TaskManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CommentsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_WorkingWithDrive"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Kanban"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Timekeeping"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ChatManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_NotificationsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TasksFieldsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DepartmentsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B2_UsersManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_LeadsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DealsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CalendarsManagement"'
+			}
+			}
+		}
+		stage('Testing-VkTeams') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_ChatManagement"'
+			}
+			}
+		}
+		stage('Testing-Ozon') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_FBOScheme"'
+			}
+			}
+		}
+		stage('Testing-Neocities') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NC_FilesManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NC_DataRetrieving"'
+			}
+			}
+		}
+		stage('Testing-CDEK') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CdekAPI_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CDEKAPI_OrdersManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CdekAPI_CourierInvitationsManagement"'
+			}
+			}
+		}
+		stage('Testing-YandexMetrika') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_TagsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_CountersManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_ActionsManagement"'
+			}
+			}
+		}
+		stage('Testing-S3') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AWS_CommonMethods"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AWS_BucketsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AWS_ObjectsManagement"'
+			}
+			}
+		}
+		stage('Testing-TCP') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TC_Client"'
+			}
+			}
+		}
+		stage('Testing-GreenAPI') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_GroupManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_MessageSending"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_NotificationsReceiving"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_MessageQueue"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_MessageLogs"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_Account"'
+			}
+			}
+		}
+		stage('Testing-Ollama') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OLLM_RequestsProcessing"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OLLM_ModelsManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OLLM_WorkingWithBlob"'
+			}
+			}
+		}
+		stage('Testing-HTTPClient') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_Initialization"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_BodySet"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_Settings"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_HeadersSetting"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_Authorization"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_RequestProcessing"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_ResponseReceiving"'
+			}
+			}
+		}
+		stage('Testing-OpenAI') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_RequestsProcessing"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_Assistants"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_FileManagement"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_AudioProcessing"'
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_ModelsManagement"'
+			}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
+					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%GPGKEY%" ./data.json'
+					bat encoding: 'UTF-8', script:'del "./data.json"'
+				}
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					bat "git config user.email vitaly.the.alpaca@gmail.com"
+					bat 'git config user.name "Vitaly the Alpaca (bot)"'
+					bat "git config --global core.ignorecase true"
+					bat "git add ."
+					bat 'git commit -m "Test data update (Jenkins)"'
+					bat "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}

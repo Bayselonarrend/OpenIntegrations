@@ -576,7 +576,7 @@
 
     Если OPI_Инструменты.ЭтоWindows() Тогда
 
-        Oint = """C:/Program Files/OneScript/bin/oint.bat""";
+        Oint = "oint";
 
     Иначе
 
