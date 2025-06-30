@@ -8,7 +8,7 @@ pipeline {
             		powershell encoding: 'UTF-8', script:'cd ./src/%1/OInt; opm build; opm install oint-1.26.0.ospx; del oint-1.26.0.ospx'
             		powershell encoding: 'UTF-8', script:'cd ./src/%1/cli; opm build; opm install oint-cli-1.26.0.ospx; del oint-cli-1.26.0.ospx'
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-              			bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
+              			bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
             		}
          		}
       	}
@@ -21,7 +21,7 @@ pipeline {
 			script {
 				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
-					bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
+					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
 					bat encoding: 'UTF-8', script:'del "./data.json"'
 				}
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {

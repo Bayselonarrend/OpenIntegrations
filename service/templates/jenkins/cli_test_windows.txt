@@ -6,35 +6,35 @@ pipeline {
 		stage('Prepare'){
 			steps{
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-              			bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
+              			bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
             		}
 				powershell encoding: 'UTF-8', script: '''
-					$batFile = ""C:\\Program Files\\OneScript\\bin\\oint.bat""
+					$batFile = "C:\\Program Files\\OneScript\\bin\\oint.bat"
 					if (Test-Path $batFile) {
 						Remove-Item -Path $batFile -Force
-						Write-Host ""Файл oint.bat удален.""
+						Write-Host "Файл oint.bat удален."
 					} else {
-						Write-Host ""Файл oint.bat не найден, пропускаем удаление.""
+						Write-Host "Файл oint.bat не найден, пропускаем удаление."
 					}
 				'''
 
 				// Создание директории для загрузки, если её нет
-				bat 'if not exist ""%%USERPROFILE%%\\Downloads"" mkdir ""%%USERPROFILE%%\\Downloads""'
+				bat 'if not exist "%%USERPROFILE%%\\Downloads" mkdir "%%USERPROFILE%%\\Downloads"'
 
 				// Скачивание инсталлера
 				powershell encoding: 'UTF-8', script: '''
-					$url = ""https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.26.0/oint_1.26.0_installer_%1.exe ""
-					$output = ""$env:USERPROFILE\\Downloads\\oint_installer.exe""
+					$url = "https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.26.0/oint_1.26.0_installer_%1.exe "
+					$output = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
 					Invoke-WebRequest -Uri $url -OutFile $output
-					Write-Host ""Инсталлер скачан в: $output""
+					Write-Host "Инсталлер скачан в: $output"
 				'''
 
 				// Запуск инсталляции (тихий режим для Inno Setup)
 				powershell encoding: 'UTF-8', script: '''
-					$installerPath = ""$env:USERPROFILE\\Downloads\\oint_installer.exe""
-					Write-Host ""Запускаем установку: $installerPath""
-					Start-Process -FilePath $installerPath -ArgumentList ""/VERYSILENT /NORESTART"" -Wait
-					Write-Host ""Установка завершена.""
+					$installerPath = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
+					Write-Host "Запускаем установку: $installerPath"
+					Start-Process -FilePath $installerPath -ArgumentList "/VERYSILENT /NORESTART" -Wait
+					Write-Host "Установка завершена."
 				'''        
 			}
 		}
@@ -47,7 +47,7 @@ pipeline {
 			script {
 				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
-					bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
+					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
 					bat encoding: 'UTF-8', script:'del "./data.json"'
 				}
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
