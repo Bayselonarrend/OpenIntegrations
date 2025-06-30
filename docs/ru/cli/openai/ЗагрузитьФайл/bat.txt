@@ -1,6 +1,6 @@
 oint openai ЗагрузитьФайл ^
-  --url "https://api.athenaeum.digital:1122/" ^
+  --url "https://hut.openintegrations.dev/localai/" ^
   --token "***" ^
-  --name "f8127662-5704-4bfe-b516-8f8446382309.png" ^
-  --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+  --name "72bcf8aa-10ec-47dd-ba36-6788ece5c308.png" ^
+  --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --purpose "assistants"

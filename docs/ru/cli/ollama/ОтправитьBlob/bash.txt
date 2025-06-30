@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ОтправитьBlob \
-  --url "https://api.athenaeum.digital/ollama" \
-  --data "C:\Users\Administrator\AppData\Local\Temp\zaub4dqf54e.tmp" \
+  --url "https://hut.openintegrations.dev/ollama" \
+  --data "C:\Users\bayse\AppData\Local\Temp\g2d5wtdbhzg.tmp" \
   --headers "{'Authorization':'***'}"
