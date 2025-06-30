@@ -1,9 +1,9 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint rcon ВыполнитьКоманду ^
-  --url "93.125.42.204:25575" ^
+  --url "127.0.0.1:25575" ^
   --pass "***" ^
   --wtout 20 ^
   --rtout 20 ^
   --exec "list" ^
-  --conn "{'url':'93.125.42.204:25575','password':'***','read_timeout':20,'write_timeout':20}"
+  --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':20,'write_timeout':20}"

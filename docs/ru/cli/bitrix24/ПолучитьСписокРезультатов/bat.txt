@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокРезультатов ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "6374" ^
+  --task "6460" ^
   --token "***"

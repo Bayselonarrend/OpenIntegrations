@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint openai СгенерироватьРечь \
-  --url "https://api.athenaeum.digital:1122/" \
+  --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
   --model "tts-1" \
   --input "Attack ships on fire off the shoulder of Orion bright as magnesium" \

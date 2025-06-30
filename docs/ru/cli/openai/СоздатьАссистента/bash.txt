@@ -1,5 +1,5 @@
 oint openai СоздатьАссистента \
-  --url "https://api.athenaeum.digital:1122/" \
+  --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
   --model "smolvlm-256m-instruct" \
   --name "Math tutor" \

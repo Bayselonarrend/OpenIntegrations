@@ -3,5 +3,5 @@
 oint s3 ЗагрузитьОбъект \
   --name "pictureSmall.jpg" \
   --bucket "opi-gpbucket3" \
-  --data "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+  --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
