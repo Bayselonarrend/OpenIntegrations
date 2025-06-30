@@ -1,5 +1,5 @@
-stage('Testing-%1') {
-	steps {			
-		%2
-	}
-}
+		stage('Testing-%1') {
+			steps {			
+%2
+			}
+		}
