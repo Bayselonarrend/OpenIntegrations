@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('OpiMain') {
+            steps {
+                echo 'Main (OpenIntegrations)'
+                build job: 'OpiMain', wait: true
+            }
+        }
+
+        stage('MelezhRelease') {
+            steps {
+                echo 'Main + Release (Melezh)'
+                build job: 'MelezhRelease', wait: true
+            }
+        }
+
+        stage('OpiRelease') {
+            steps {
+                echo 'Release (OpenIntegrations)'
+                build job: 'OpiRelease', wait: true
+            }
+        }
+        stage('OpiCliTestRu') {
+            steps {
+                echo 'CLI Test (OpenIntegrations)'
+                build job: 'OpiCliTestRu', wait: true
+            }
+        }
+    }
+}
