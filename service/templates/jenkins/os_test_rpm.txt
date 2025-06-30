@@ -1,0 +1,40 @@
+pipeline {
+      agent { 
+      	docker { 
+            	image 'centos:7' 
+            	args '-v /tmp/jenkins-agent:/home/jenkins/agent --network openintegrations-internal'
+            	label 'rpm-agent'
+            } 
+      }
+	stages {
+      	stage('Prepare'){
+         		steps{
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%%GPGKEY%%" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+
+%2
+
+	}
+	post{
+		always{
+			script {
+				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
+					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%%GPGKEY%%" ./data.json'
+					bat encoding: 'UTF-8', script:'del "./data.json"'
+				}
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					bat "git config user.email vitaly.the.alpaca@gmail.com"
+					bat 'git config user.name "Vitaly the Alpaca (bot)"'
+					bat "git config --global core.ignorecase true"
+					bat "git add ."
+					bat 'git commit -m "Test data update (Jenkins)"'
+					bat "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
