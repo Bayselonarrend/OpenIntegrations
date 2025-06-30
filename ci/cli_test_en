@@ -33,7 +33,7 @@ pipeline {
 				powershell encoding: 'UTF-8', script: '''
 					$installerPath = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
 					Write-Host "Запускаем установку: $installerPath"
-					Start-Process -FilePath $installerPath -ArgumentList "/VERYSILENT /NORESTART" -Wait
+					psexec -s -i "$installerPat" /VERYSILENT /NORESTART
 					Write-Host "Установка завершена."
 				'''        
 			}
