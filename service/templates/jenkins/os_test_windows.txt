@@ -1,5 +1,7 @@
 pipeline {
-	agent windows
+	agent {
+		label 'windows'
+	}
 	stages {
       	stage('Prepare'){
          		steps{
