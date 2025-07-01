@@ -23,5 +23,6 @@ chrono = "0.4.39"
 uuid = "1.12.1"
 postgres-native-tls = "0.5"
 native-tls = "0.2.14"
+dateparser = "0.2.1"
 
 
