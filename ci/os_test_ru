@@ -11,7 +11,42 @@ pipeline {
 		label 'windows'
 	}
 	stages {
-      	stage('Prepare'){
+
+		stage('Remove OInt from OneScript Lib') {
+			steps {
+				script {
+					try {
+						// Удаление каталога C:\Program Files\OneScript\lib\oint, если существует
+						powershell encoding: 'UTF-8', script: '''
+							$dirPath = "C:\\Program Files\\OneScript\\lib\\oint"
+							if (Test-Path $dirPath) {
+								Write-Host "Каталог oint найден. Удаляем..."
+								Remove-Item -Path $dirPath -Recurse -Force
+								Write-Host "Каталог oint успешно удален."
+							} else {
+								Write-Host "Каталог oint не найден. Пропускаем удаление."
+							}
+						'''
+
+						// Проверяем, что каталог действительно удален
+						powershell encoding: 'UTF-8', script: '''
+							$dirPath = "C:\\Program Files\\OneScript\\lib\\oint"
+							if (Test-Path $dirPath) {
+								Write-Error "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
+								exit 1
+							} else {
+								Write-Host "Проверка: Каталог oint отсутствует после удаления."
+							}
+						'''
+					} catch (Exception e) {
+						echo "Произошла ошибка при удалении каталога oint: ${e.getMessage()}"
+						currentBuild.result = 'FAILURE'
+						error("Удаление каталога oint завершено с ошибкой.")
+					}
+				}
+			}
+		}
+      	stage('Build OInt from source and decrypt secret data'){
          		steps{
             		powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.26.0.ospx; del oint-1.26.0.ospx'
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
