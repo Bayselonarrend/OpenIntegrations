@@ -11,6 +11,43 @@ pipeline {
         label 'Rpm-Agent'  // Имя или метка агента
     }
 	stages {
+		stage('Remove OInt from OneScript Lib') {
+			steps {
+				script {
+					try {
+						// Удаление каталога /opt/onescript/lib/oint, если существует
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Каталог oint найден. Удаляем..."
+								rm -rf "$DIR_PATH"
+								echo "Каталог oint успешно удален."
+							else
+								echo "Каталог oint не найден. Пропускаем удаление."
+							fi
+						'''
+
+						// Проверяем, что каталог действительно удален
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
+								exit 1
+							else
+								echo "Проверка: Каталог oint отсутствует после удаления."
+							fi
+						'''
+					} catch (Exception e) {
+						echo "Произошла ошибка при удалении каталога oint: ${e.getMessage()}"
+						currentBuild.result = 'FAILURE'
+						error("Удаление каталога oint завершено с ошибкой.")
+					}
+				}
+			}
+		}
+
       	stage('Prepare'){
          		steps{
 					sh 'cd ./src/en/OInt && opm build && opm install oint-1.26.0.ospx && rm oint-1.26.0.ospx'
