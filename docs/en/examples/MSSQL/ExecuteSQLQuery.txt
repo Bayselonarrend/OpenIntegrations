@@ -1,4 +1,5 @@
-﻿    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+﻿    CurrentDate = OPI_Tools.GetCurrentDate();
+    Image       = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     Address  = "127.0.0.1";
@@ -6,47 +7,51 @@
     Password = "12we...";
     Base     = "test_data";
 
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
-    Connection       = OPI_MSSQL.CreateConnection(ConnectionString);
+    Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
     // CREATE
 
     QueryText = "
-                   |CREATE TABLE test_table (
-                   |id INT AUTO_INCREMENT PRIMARY KEY,
-                   |name VARCHAR(255),
-                   |age INT,
-                   |salary DOUBLE,
-                   |amount FLOAT,
-                   |type TINYINT UNSIGNED,
-                   |date DATE,
-                   |time TIME,
-                   |data MEDIUMBLOB
-                   |);";
+        |CREATE TABLE test_table (
+        | ID INT PRIMARY KEY,
+        | FirstName NVARCHAR(50),
+        | LastName NVARCHAR(50),
+        | BirthDate DATE,
+        | IsEmployed BIT,
+        | Salary DECIMAL(10, 2),
+        | CreatedAt DATETIME,
+        | Age SMALLINT,
+        | RowGuid UNIQUEIDENTIFIER,
+        | Data VARBINARY(MAX)
+        |);";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
     // INSERT with parameters
 
     QueryText = "
-                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
-                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data)
+        |VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10);";
 
     ParameterArray = New Array;
-    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
-    ParameterArray.Add(New Structure("INT"   , 25));
-    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
-    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
-    ParameterArray.Add(New Structure("UINT"  , 1));
-    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
-    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
-    ParameterArray.Add(New Structure("BYTES" , Image));
+    ParameterArray.Add(New Structure("INT"     , 1));
+    ParameterArray.Add(New Structure("NVARCHAR", "Vitaly"));
+    ParameterArray.Add(New Structure("NVARCHAR", "Alpaca"));
+    ParameterArray.Add(New Structure("DATE"    , CurrentDate));
+    ParameterArray.Add(New Structure("BIT"     , True));
+    ParameterArray.Add(New Structure("DECIMAL" , 10.30));
+    ParameterArray.Add(New Structure("DATETIME", CurrentDate));
+    ParameterArray.Add(New Structure("SMALLINT", 20));
+    ParameterArray.Add(New Structure("UUID"    , New UUID));
+    ParameterArray.Add(New Structure("BYTES"   , Image));
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
     // SELECT (The result of this query is shown in the Result block)
 
-    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+    QueryText = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
 

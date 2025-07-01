@@ -1,7 +1,6 @@
 ﻿    Address  = "127.0.0.1";
     Login    = "SA";
     Password = "12we...";
-    Port     = 1434;
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
     TLSSettings      = OPI_MSSQL.GetTlsSettings(True);

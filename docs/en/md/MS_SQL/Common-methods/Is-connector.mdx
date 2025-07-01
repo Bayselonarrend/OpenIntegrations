@@ -37,8 +37,9 @@ import TabItem from '@theme/TabItem';
     Password = "12we...";
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString);
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
     Result     = OPI_MSSQL.IsConnector(Connection);
 
     OPI_MSSQL.CloseConnection(Result);
