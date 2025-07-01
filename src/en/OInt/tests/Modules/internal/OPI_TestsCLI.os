@@ -2265,8 +2265,9 @@ Procedure CLI_SQLL_CommonMethods() Export
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_ExtLinux", TestParameters);
 
     CLI_SQLite_ExecuteSQLQuery(TestParameters);
 
@@ -15102,7 +15103,7 @@ Procedure CLI_Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "MarkMessageAsReaded (wh)", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+    OPI_TestDataRetrieval.Check_BitrixBool(Result);
 
     URL       = FunctionParameters["Bitrix24_Domain"];
     Token     = FunctionParameters["Bitrix24_Token"];
@@ -15118,7 +15119,7 @@ Procedure CLI_Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "MarkMessageAsReaded", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+    OPI_TestDataRetrieval.Check_BitrixBool(Result);
 
 EndProcedure
 
@@ -19460,7 +19461,12 @@ Procedure CLI_SQLite_ExecuteSQLQuery(FunctionParameters)
 
     // With extension
 
-    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    If OPI_Tools.IsWindows() Then
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    Else
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+    EndIf;
+
     EntryPoint = "sqlite3_uuid_init";
 
     ExtensionMap = New Map;
