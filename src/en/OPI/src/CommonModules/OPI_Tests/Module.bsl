@@ -23789,7 +23789,6 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
-    Port     = 1434;
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
     TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
@@ -23802,7 +23801,7 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
 
     Address          = FunctionParameters["PG_IP"];
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password, Port);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
 
     TLSSettings = OPI_MSSQL.GetTlsSettings(True);
     Connection  = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
@@ -23829,7 +23828,6 @@ Procedure MSSQL_CloseConnection(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
-    Port     = 1434;
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
     TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
@@ -23851,8 +23849,9 @@ Procedure MSSQL_IsConnector(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
 
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString);
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
     Result     = OPI_MSSQL.IsConnector(Connection);
 
     OPI_MSSQL.CloseConnection(Result);
@@ -23866,7 +23865,8 @@ EndProcedure
 
 Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
-    Image = FunctionParameters["Picture"];
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Image       = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     Address  = FunctionParameters["PG_IP"];
@@ -23874,8 +23874,9 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
-    Connection       = OPI_MSSQL.CreateConnection(ConnectionString);
+    Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_MSSQL.DeleteTable("users"    , Connection); // SKIP
     OPI_MSSQL.DeleteTable("test_data", Connection); // SKIP
@@ -23888,17 +23889,18 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     // CREATE
 
     QueryText = "
-                   |CREATE TABLE test_table (
-                   |id INT AUTO_INCREMENT PRIMARY KEY,
-                   |name VARCHAR(255),
-                   |age INT,
-                   |salary DOUBLE,
-                   |amount FLOAT,
-                   |type TINYINT UNSIGNED,
-                   |date DATE,
-                   |time TIME,
-                   |data MEDIUMBLOB
-                   |);";
+        |CREATE TABLE test_table (
+        | ID INT PRIMARY KEY,
+        | FirstName NVARCHAR(50),
+        | LastName NVARCHAR(50),
+        | BirthDate DATE,
+        | IsEmployed BIT,
+        | Salary DECIMAL(10, 2),
+        | CreatedAt DATETIME,
+        | Age SMALLINT,
+        | RowGuid UNIQUEIDENTIFIER,
+        | Data VARBINARY(MAX)
+        |);";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -23908,18 +23910,20 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     // INSERT with parameters
 
     QueryText = "
-                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
-                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data)
+        |VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10);";
 
     ParameterArray = New Array;
-    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
-    ParameterArray.Add(New Structure("INT"   , 25));
-    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
-    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
-    ParameterArray.Add(New Structure("UINT"  , 1));
-    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
-    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
-    ParameterArray.Add(New Structure("BYTES" , Image));
+    ParameterArray.Add(New Structure("INT"     , 1));
+    ParameterArray.Add(New Structure("NVARCHAR", "Vitaly"));
+    ParameterArray.Add(New Structure("NVARCHAR", "Alpaca"));
+    ParameterArray.Add(New Structure("DATE"    , CurrentDate));
+    ParameterArray.Add(New Structure("BIT"     , True));
+    ParameterArray.Add(New Structure("DECIMAL" , 10.30));
+    ParameterArray.Add(New Structure("DATETIME", CurrentDate));
+    ParameterArray.Add(New Structure("SMALLINT", 20));
+    ParameterArray.Add(New Structure("UUID"    , New UUID));
+    ParameterArray.Add(New Structure("BYTES"   , Image));
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
@@ -23928,17 +23932,21 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
     // SELECT (The result of this query is shown in the Result block)
 
-    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+    QueryText = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
 
-    Blob = Result["data"][0]["data"]["BYTES"]; // SKIP
+    Blob = Result["data"][0]["Data"]["BYTES"]; // SKIP
 
-    Result["data"][0]["data"]["BYTES"] = "Base64"; // SKIP
+    Result["data"][0]["Data"]["BYTES"] = "Base64"; // SKIP
     OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MSSQL"); // SKIP
     OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
     OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
-    OPI_MySQL.ExecuteSQLQuery("create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
+
+    QueryText = "create table test_data (id INT,first_name NVARCHAR(50),last_name NVARCHAR(50),email NVARCHAR(50),gender NVARCHAR(50),ip_address NVARCHAR(20));"; // SKIP
+    Result    = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (test_data)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
 
     // SQL query from file
 

@@ -23910,7 +23910,7 @@
     // INSERT с параметрами
 
     ТекстЗапроса = "
-        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data) 
+        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data)
         |VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10);";
 
     МассивПараметров = Новый Массив;
@@ -23924,7 +23924,7 @@
     МассивПараметров.Добавить(Новый Структура("SMALLINT", 20));
     МассивПараметров.Добавить(Новый Структура("UUID"    , Новый УникальныйИдентификатор));
     МассивПараметров.Добавить(Новый Структура("BYTES"   , Картинка));
-    
+
     Результат = OPI_MSSQL.ВыполнитьЗапросSQL(ТекстЗапроса, МассивПараметров, , Соединение);
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВыполнитьЗапросSQL (Insert)", "MSSQL"); // SKIP
@@ -23942,7 +23942,7 @@
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВыполнитьЗапросSQL", "MSSQL");                // SKIP
     OPI_ПолучениеДанныхТестов.Проверка_РезультатИстина(Результат);                                  // SKIP
     OPI_ПолучениеДанныхТестов.Проверка_Равенство(Base64Значение(Blob).Размер(), Картинка.Размер()); // SKIP
-    
+
     ТекстЗапроса = "create table test_data (id INT,first_name NVARCHAR(50),last_name NVARCHAR(50),email NVARCHAR(50),gender NVARCHAR(50),ip_address NVARCHAR(20));"; // SKIP
     Результат    = OPI_MSSQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);                                                                                       // SKIP
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВыполнитьЗапросSQL (test_data)", "MSSQL");                                                                     // SKIP
