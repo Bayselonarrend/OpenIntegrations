@@ -3,4 +3,4 @@
 oint sqlite СоздатьТаблицу ^
   --table "test" ^
   --cols "{'id':'INTEGER PRIMARY KEY','name':'TEXT','age':'INTEGER','salary':'REAL','is_active':'BOOLEAN','created_at':'DATETIME','data':'BLOB'}" ^
-  --db "C:\Users\bayse\AppData\Local\Temp\k0lmi0v1qsy.sqlite"
+  --db "C:\Users\bayse\AppData\Local\Temp\2ooqhl4dpkt.sqlite"
