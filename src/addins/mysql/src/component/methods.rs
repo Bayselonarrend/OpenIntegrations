@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use chrono::*;
 use mysql::PooledConn;
 use mysql_common::packets::Column;
+use dateparser::parse;
 
 pub fn execute_query(
     conn: &mut PooledConn,
@@ -187,13 +188,13 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
                         "FLOAT" => mysql::Value::Float(value.as_f64().unwrap_or(0.0) as f32),
                         "DOUBLE" => mysql::Value::Double(value.as_f64().unwrap_or(0.0)),
                         "DATE" => {
-                            match chrono::DateTime::parse_from_rfc3339(value.as_str().unwrap_or("")) {
+                            match parse(value.as_str().unwrap_or("")) {
                                 Ok(datetime) => mysql::Value::from(datetime.naive_utc()),
                                 Err(_) => mysql::Value::from(chrono::DateTime::from_timestamp(0, 0).unwrap().naive_utc())
                             }
                         },
                         "TIME" => {
-                            match chrono::DateTime::parse_from_rfc3339(value.as_str().unwrap_or("")) {
+                            match parse(value.as_str().unwrap_or("")) {
                                 Ok(datetime) => mysql::Value::from(datetime.time()),
                                 Err(_) => mysql::Value::from(chrono::DateTime::from_timestamp(0, 0).unwrap().time())
                             }
