@@ -1,6 +1,6 @@
 oint cdek СформироватьКвитанцию \
   --token "***" \
-  --uuids "9cec4685-7153-40cc-b093-ba99c05bf8a6" \
+  --uuids "e0de6390-9058-4230-98cb-6524342765a0" \
   --type "tpl_russia" \
   --count 1 \
   --testapi "***"

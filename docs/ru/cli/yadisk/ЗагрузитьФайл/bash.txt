@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл \
   --token "***" \
-  --path "/ab7d2b07-76e6-425b-876c-71c4dee46753.png" \
+  --path "/f22609f0-5447-4564-a3b5-22bef75d0aac.png" \
   --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --rewrite true

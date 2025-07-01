@@ -2,5 +2,5 @@
 
 oint ollama ПроверитьBlob \
   --url "https://hut.openintegrations.dev/ollama" \
-  --digest "74f0e4b3eb9ad75a8827e67d32a613c09bea3a51c52a9690d75db8284a30880b" \
+  --digest "yoyoyo" \
   --headers "{'Authorization':'***'}"
