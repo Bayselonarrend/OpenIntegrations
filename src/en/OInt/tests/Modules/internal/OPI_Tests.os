@@ -2283,8 +2283,9 @@ Procedure SQLL_CommonMethods() Export
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("SQLite_ExtLinux", TestParameters);
 
     SQLite_CreateConnection(TestParameters);
     SQLite_CloseConnection(TestParameters);
@@ -11329,7 +11330,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
     OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded (wh)", "Bitrix24"); // SKIP
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixBool(Result); // SKIP
 
     URL       = FunctionParameters["Bitrix24_Domain"];
     Token     = FunctionParameters["Bitrix24_Token"];
@@ -11341,7 +11342,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+    OPI_TestDataRetrieval.Check_BitrixBool(Result);
 
 EndProcedure
 
@@ -17537,7 +17538,12 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     // With extension
 
-    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    If OPI_Tools.IsWindows() Then
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    Else
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+    EndIf;
+
     EntryPoint = "sqlite3_uuid_init";
 
     ExtensionMap = New Map;
@@ -17898,8 +17904,13 @@ EndProcedure
 
 Procedure SQLite_ConnectExtension(FunctionParameters)
 
+    If OPI_Tools.IsWindows() Then
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    Else
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+    EndIf;
+
     Base       = FunctionParameters["SQLite_DB"];
-    Extension  = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
     EntryPoint = "sqlite3_uuid_init";
 
     Connection = OPI_SQLite.CreateConnection(Base);
