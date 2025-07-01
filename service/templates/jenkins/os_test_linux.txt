@@ -8,7 +8,7 @@ def runCommand(String command) {
 
 pipeline {
     agent {
-        label 'Rpm-Agent'  // Имя или метка агента
+        label '%3'  // Имя или метка агента
     }
 	stages {
       	stage('Prepare'){
