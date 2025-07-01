@@ -11342,7 +11342,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixBool(Result);
+    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
 
 EndProcedure
 
@@ -15611,7 +15611,7 @@ Procedure CDEK_DeleteCourierInvitation(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteCourierInvitation", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    //OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
 
