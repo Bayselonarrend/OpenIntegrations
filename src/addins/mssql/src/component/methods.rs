@@ -9,6 +9,7 @@ use tiberius::numeric::Decimal;
 use tiberius::ColumnType;
 use tiberius::xml::XmlData;
 use uuid::Uuid;
+use dateparser::parse;
 
 pub fn execute_query(
     obj: &mut AddIn,
@@ -283,25 +284,25 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
                             }
                         },
                         "DATE" => {
-                            match value.as_str().and_then(|s| NaiveDate::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
+                            match value.as_str().and_then(|s| parse(s).ok().map(|dt| dt.date_naive())) {
                                 Some(date) => Box::new(date),
                                 None => Box::new(None::<NaiveDate>)
                             }
                         },
                         "TIME" => {
-                            match value.as_str().and_then(|s| NaiveTime::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
-                                Some(date) => Box::new(date),
+                            match value.as_str().and_then(|s| parse(s).ok().map(|dt| dt.time())) {
+                                Some(time) => Box::new(time),
                                 None => Box::new(None::<NaiveTime>)
                             }
                         },
                         "DATETIME" => {
-                            match value.as_str().and_then(|s| NaiveDateTime::parse_from_str(s, "%Y-%m-%dT%H:%M:%S").ok()) {
+                            match value.as_str().and_then(|s| parse(s).ok().map(|dt| dt.naive_local())) {
                                 Some(dt) => Box::new(dt),
                                 None => Box::new(None::<NaiveDateTime>)
                             }
                         },
                         "DATETIMEOFFSET" => {
-                            match value.as_str().and_then(|s| chrono::DateTime::parse_from_rfc3339(s).ok()) {
+                            match value.as_str().and_then(|s| parse_date_tz(s).ok()) {
                                 Some(dt) => Box::new(dt),
                                 None => Box::new(None::<DateTime<Utc>>)
                             }
@@ -317,4 +318,13 @@ fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
         result.push(param);
     }
     result
+}
+
+fn parse_date_tz(input: &str) -> Result<DateTime<FixedOffset>, String> {
+    DateTime::parse_from_rfc3339(input)
+        .or_else(|_| {
+            parse(input)
+                .map(|dt| dt.fixed_offset())
+                .map_err(|e| format!("Failed to parse date: {}", e))
+        })
 }
