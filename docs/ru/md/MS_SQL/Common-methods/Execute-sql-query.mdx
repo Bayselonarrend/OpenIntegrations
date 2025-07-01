@@ -37,7 +37,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
+    Картинка    = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
 
     Адрес  = "127.0.0.1";
@@ -45,47 +46,51 @@ import TabItem from '@theme/TabItem';
     Пароль = "12we...";
     База   = "test_data";
 
+    НастройкиTLS      = OPI_MSSQL.ПолучитьНастройкиTls(Истина);
     СтрокаПодключения = OPI_MSSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль);
-    Соединение        = OPI_MSSQL.ОткрытьСоединение(СтрокаПодключения);
+    Соединение        = OPI_MSSQL.ОткрытьСоединение(СтрокаПодключения, НастройкиTLS);
 
     // CREATE
 
     ТекстЗапроса = "
-                   |CREATE TABLE test_table (
-                   |id INT AUTO_INCREMENT PRIMARY KEY,
-                   |name VARCHAR(255),
-                   |age INT,
-                   |salary DOUBLE,
-                   |amount FLOAT,
-                   |type TINYINT UNSIGNED,
-                   |date DATE,
-                   |time TIME,
-                   |data MEDIUMBLOB
-                   |);";
+        |CREATE TABLE test_table (
+        |    ID INT PRIMARY KEY,
+        |    FirstName NVARCHAR(50),
+        |    LastName NVARCHAR(50),
+        |    BirthDate DATE,
+        |    IsEmployed BIT,
+        |    Salary DECIMAL(10, 2),
+        |    CreatedAt DATETIME,
+        |    Age SMALLINT,
+        |    RowGuid UNIQUEIDENTIFIER,
+        |    Data VARBINARY(MAX)
+        |);";
 
     Результат = OPI_MSSQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);
 
     // INSERT с параметрами
 
     ТекстЗапроса = "
-                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
-                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data)
+        |VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10);";
 
     МассивПараметров = Новый Массив;
-    МассивПараметров.Добавить(Новый Структура("TEXT"  , "Vitaly"));
-    МассивПараметров.Добавить(Новый Структура("INT"   , 25));
-    МассивПараметров.Добавить(Новый Структура("DOUBLE", 1000.12));
-    МассивПараметров.Добавить(Новый Структура("FLOAT" , 1000.12));
-    МассивПараметров.Добавить(Новый Структура("UINT"  , 1));
-    МассивПараметров.Добавить(Новый Структура("DATE"  , OPI_Инструменты.ПолучитьТекущуюДату()));
-    МассивПараметров.Добавить(Новый Структура("TIME"  , OPI_Инструменты.ПолучитьТекущуюДату()));
-    МассивПараметров.Добавить(Новый Структура("BYTES" , Картинка));
+    МассивПараметров.Добавить(Новый Структура("INT"     , 1));
+    МассивПараметров.Добавить(Новый Структура("NVARCHAR", "Vitaly"));
+    МассивПараметров.Добавить(Новый Структура("NVARCHAR", "Alpaca"));
+    МассивПараметров.Добавить(Новый Структура("DATE"    , ТекущаяДата));
+    МассивПараметров.Добавить(Новый Структура("BIT"     , Истина));
+    МассивПараметров.Добавить(Новый Структура("DECIMAL" , 10.30));
+    МассивПараметров.Добавить(Новый Структура("DATETIME", ТекущаяДата));
+    МассивПараметров.Добавить(Новый Структура("SMALLINT", 20));
+    МассивПараметров.Добавить(Новый Структура("UUID"    , Новый УникальныйИдентификатор));
+    МассивПараметров.Добавить(Новый Структура("BYTES"   , Картинка));
 
     Результат = OPI_MSSQL.ВыполнитьЗапросSQL(ТекстЗапроса, МассивПараметров, , Соединение);
 
     // SELECT (Результат этого запроса приведен в следующем блоке)
 
-    ТекстЗапроса = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+    ТекстЗапроса = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
 
     Результат = OPI_MSSQL.ВыполнитьЗапросSQL(ТекстЗапроса, , , Соединение);
 
