@@ -23,7 +23,7 @@ function HomepageHeader() {
       particle.className = styles.particle;
       
       // Позиционирование внутри header
-      particle.style.left = `${50 + Math.random() * 50}%`;
+      particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
       particle.style.width = `${Math.random() * 3 + 1}px`;
       particle.style.height = particle.style.width;
