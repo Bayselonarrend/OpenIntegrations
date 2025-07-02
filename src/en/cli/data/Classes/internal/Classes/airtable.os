@@ -815,7 +815,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Airtable = LoadScript(""%1/oint/core/Modules/OPI_Airtable.os"");"  + Chars.LF;
+    Return "OPI_Airtable = LoadScript(""%1/oint/core/Modules/OPI_Airtable.os"");;"  + Chars.LF;
 
 
 EndFunction 

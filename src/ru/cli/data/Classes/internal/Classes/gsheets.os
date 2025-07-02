@@ -364,7 +364,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
+        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleSheets = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Контекст);" + Символы.ПС;

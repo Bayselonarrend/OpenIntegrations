@@ -310,7 +310,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"")
+        | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"");
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);
         | 
         | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Контекст);" + Символы.ПС;
