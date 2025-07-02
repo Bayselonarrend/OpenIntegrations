@@ -1806,7 +1806,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"")"  + Chars.LF;
+    Return "OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"");"  + Chars.LF;
 
 
 EndFunction 

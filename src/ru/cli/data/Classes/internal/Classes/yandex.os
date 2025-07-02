@@ -96,7 +96,7 @@
 Функция ПолучитьСтрокуПодключения() Экспорт
 
 
-    Возврат "OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"")"  + Символы.ПС;
+    Возврат "OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"");"  + Символы.ПС;
 
 
 КонецФункции 

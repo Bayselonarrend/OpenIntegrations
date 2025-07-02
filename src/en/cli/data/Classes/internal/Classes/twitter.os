@@ -433,7 +433,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"")"  + Chars.LF;
+    Return "OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"");"  + Chars.LF;
 
 
 EndFunction 

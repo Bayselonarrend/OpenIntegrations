@@ -161,7 +161,7 @@
 Функция ПолучитьСтрокуПодключения() Экспорт
 
 
-    Возврат "OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")"  + Символы.ПС;
+    Возврат "OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");"  + Символы.ПС;
 
 
 КонецФункции 

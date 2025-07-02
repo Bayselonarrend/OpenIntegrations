@@ -736,7 +736,7 @@
         | OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"")
         | Контекст.Вставить(""OPI_MSSQL"", OPI_MSSQL);
         | 
-        | OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст)" + Символы.ПС;
+        | OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст);" + Символы.ПС;
 
 
 КонецФункции 

@@ -251,7 +251,7 @@
         | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"")
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);
         | 
-        | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст)" + Символы.ПС;
+        | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);" + Символы.ПС;
 
 
 КонецФункции 

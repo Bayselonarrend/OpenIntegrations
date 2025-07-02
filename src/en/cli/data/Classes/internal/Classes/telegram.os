@@ -1467,7 +1467,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"")"  + Chars.LF;
+    Return "OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"");"  + Chars.LF;
 
 
 EndFunction 

@@ -757,7 +757,7 @@
         | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"")
         | Контекст.Вставить(""OPI_PostgreSQL"", OPI_PostgreSQL);
         | 
-        | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Контекст)" + Символы.ПС;
+        | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Контекст);" + Символы.ПС;
 
 
 КонецФункции 
