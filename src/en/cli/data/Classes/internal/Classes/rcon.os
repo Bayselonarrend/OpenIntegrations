@@ -75,7 +75,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"")"

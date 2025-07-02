@@ -954,7 +954,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_OpenAI = LoadScript(""%1/oint/core/Modules/OPI_OpenAI.os"")"

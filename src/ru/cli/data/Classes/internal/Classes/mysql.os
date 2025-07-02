@@ -719,7 +719,7 @@
         | OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"")
         | Контекст.Вставить(""OPI_MySQL"", OPI_MySQL);
         | 
-        |  OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"", Контекст)";
+        | OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"", Контекст)";
 
 
 КонецФункции 

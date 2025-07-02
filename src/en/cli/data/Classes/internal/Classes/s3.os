@@ -1605,7 +1605,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"")"

@@ -339,16 +339,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
-        | Khetext.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
-        |  OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Khetext)";
+        | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Context)";
 
 
 EndFunction 

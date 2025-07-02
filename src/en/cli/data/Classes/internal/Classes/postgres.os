@@ -721,16 +721,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"")
-        | Khetext.Insert(""OPI_PostgreSQL"", OPI_PostgreSQL);
+        | Context.Insert(""OPI_PostgreSQL"", OPI_PostgreSQL);
         | 
-        |  OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Khetext)";
+        | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Context)";
 
 
 EndFunction 

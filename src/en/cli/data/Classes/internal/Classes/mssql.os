@@ -700,16 +700,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"")
-        | Khetext.Insert(""OPI_MSSQL"", OPI_MSSQL);
+        | Context.Insert(""OPI_MSSQL"", OPI_MSSQL);
         | 
-        |  OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Khetext)";
+        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context)";
 
 
 EndFunction 

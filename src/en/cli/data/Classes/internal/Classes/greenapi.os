@@ -1246,7 +1246,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"")"
