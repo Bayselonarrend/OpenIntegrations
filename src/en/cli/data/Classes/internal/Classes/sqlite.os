@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -455,7 +462,7 @@ Function GetConnectionString() Export
         | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"")
         | Context.Insert(""OPI_SQLite"", OPI_SQLite);
         | 
-        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context)";
+        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context)" + Chars.LF;
 
 
 EndFunction 

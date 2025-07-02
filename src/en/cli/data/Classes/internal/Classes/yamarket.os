@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -240,7 +247,7 @@ Function GetConnectionString() Export
         | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"")
         | Context.Insert(""OPI_YandexID"", OPI_YandexID);
         | 
-        | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context)";
+        | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context)" + Chars.LF;
 
 
 EndFunction 

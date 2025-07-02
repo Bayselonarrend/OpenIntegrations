@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -6505,7 +6512,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"")"
+    Return "OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"")"  + Chars.LF;
 
 
 EndFunction 
