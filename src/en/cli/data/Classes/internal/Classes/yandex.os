@@ -96,7 +96,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"")"  + Chars.LF;
+    Return "OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"");"  + Chars.LF;
 
 
 EndFunction 

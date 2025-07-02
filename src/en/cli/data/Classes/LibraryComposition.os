@@ -2,7 +2,7 @@
 
 Var ModuleCommandMapping;
 Var Version;
-Var KэшandрoinанandеIndexoin;
+Var IndexCache;
 Var AccessTemplate;
 Var PackagesDirectory;
 
@@ -21,7 +21,7 @@ EndProcedure
 
 Procedure InitializeCommonLists() Export
 
-    KэшandрoinанandеIndexoin       = New Map();
+    IndexCache       = New Map();
     ModuleCommandMapping = New Map();
     ModuleCommandMapping.Insert("tools", "Utils");
     ModuleCommandMapping.Insert("airtable", "OPI_Airtable");
@@ -67,23 +67,23 @@ Function GetCommandModuleMapping() Export
 EndFunction
 
 
-Function GetDataIndexа(Val Command) Export
+Function GetIndexData(Val Command) Export
 
-    InformationIndexа = KэшandрoinанandеIndexoin.Get(Command);
+    IndexInformation = IndexCache.Get(Command);
 
-    If InformationIndexа = Undefined Then
+    If IndexInformation = Undefined Then
 
         Try
             CompositionObject = LoadScript(StrTemplate(AccessTemplate, Command));
 
-            Сowithтаin            = CompositionObject.GetComposition();
+            Composition            = CompositionObject.GetComposition();
             ConnectionString = CompositionObject.GetConnectionString();
 
-            InformationIndexа = New Structure;
-            InformationIndexа.Insert("Сowithтаin"           , Сowithтаin);
-            InformationIndexа.Insert("ConnectionString", ConnectionString);
+            IndexInformation = New Structure;
+            IndexInformation.Insert("Composition"           , Composition);
+            IndexInformation.Insert("ConnectionString", ConnectionString);
 
-            KэшandрoinанandеIndexoin.Insert(Command, InformationIndexа);
+            IndexCache.Insert(Command, IndexInformation);
 
         Except
             Raise StrTemplate("Invalid command name: %1", Command)
@@ -91,7 +91,7 @@ Function GetDataIndexа(Val Command) Export
 
     EndIf;
 
-    Return InformationIndexа;
+    Return IndexInformation;
 
 EndFunction
 
@@ -101,8 +101,8 @@ Function GetFullComposition() Export
 
     For Each Command In ModuleCommandMapping Do
 
-        ObjectIndexа  = GetDataIndexа(Command.Key);
-        CurrentTable = ObjectIndexа["Сowithтаin"];
+        IndexObject  = GetIndexData(Command.Key);
+        CurrentTable = IndexObject["Composition"];
         
         If CommonTable = Undefined Then
             CommonTable = CurrentTable;
@@ -121,15 +121,15 @@ EndFunction
 Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
 
     Module        = GetCommandModuleMapping().Get(Command);
-    ObjectIndexа = GetDataIndexа(Command);
+    IndexObject = GetIndexData(Command);
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
     EndIf;
     
     CommandSelection    = New Structure("SearchMethod", Upper(Method));
-    MethodParameters = ObjectIndexа["Сowithтаin"].FindRows(CommandSelection);
-    ExecutionText = StrTemplate(ObjectIndexа["ConnectionString"], PackagesDirectory);
+    MethodParameters = IndexObject["Composition"].FindRows(CommandSelection);
+    ExecutionText = StrTemplate(IndexObject["ConnectionString"], PackagesDirectory);
     
     If Not ValueIsFilled(MethodParameters) Then
         Return New Structure("Error,Result", True, "Method");
@@ -184,11 +184,11 @@ Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "
    Command           = ?(ValueIsFilled(Command), Command, Library);
    ConnectionString = "";
 
-   InformationIndexа = New Structure;
-   InformationIndexа.Insert("Сowithтаin"           , ParametersTable);
-   InformationIndexа.Insert("ConnectionString", ConnectionString);
+   IndexInformation = New Structure;
+   IndexInformation.Insert("Composition"           , ParametersTable);
+   IndexInformation.Insert("ConnectionString", ConnectionString);
 
-   KэшandрoinанandеIndexoin.Insert(Command, InformationIndexа);
+   IndexCache.Insert(Command, IndexInformation);
    ModuleCommandMapping.Insert(Command, Library);
 
 EndProcedure
@@ -248,7 +248,7 @@ Function ПолучитьСоответствиеКомандМодулей() Ex
 EndFunction
 
 Function ПолучитьИнформациюИндекса(Val Команда) Export
-	Return GetDataIndexа(Команда);
+	Return GetIndexData(Команда);
 EndFunction
 
 Function ПолучитьПолныйСостав() Export

@@ -66,7 +66,8 @@ Procedure FormCommand()
 	EndIf;
 	
 	Command           = Parser.CommandDescription(CurrentCommand);
-	ParametersTable = OPIObject.GetComposition(CurrentCommand);
+	CurrentIndex     = OPIObject.GetIndexData(CurrentCommand);
+	ParametersTable = CurrentIndex["Composition"];
 
 	If Not ParametersTable = Undefined Then
 
