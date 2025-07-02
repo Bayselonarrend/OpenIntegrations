@@ -2,6 +2,7 @@
 // Lib: Google Drive
 // CLI: gdrive
 // Keywords: google drive, googledrive, gdrive, google disk
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -777,6 +778,7 @@ Function CheckPartUpload(HttpClient, StrTotalSize, AdditionalHeaders, UploadURL,
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

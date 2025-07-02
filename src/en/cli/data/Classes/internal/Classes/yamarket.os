@@ -230,3 +230,17 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "
+        | Khetext = New Structure;
+        | 
+        | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"")
+        | Khetext.Insert(""OPI_YandexID"", OPI_YandexID);
+        | 
+        |  OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Khetext)";
+
+
+EndFunction 

@@ -2,6 +2,7 @@
 // Lib: Google Sheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -419,6 +420,7 @@
 КонецПроцедуры
 
 #КонецОбласти
+
 
 #Region Alternate
 

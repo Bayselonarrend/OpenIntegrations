@@ -1031,3 +1031,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"")"
+
+
+EndFunction 
