@@ -1604,3 +1604,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"")"
+
+
+EndFunction 

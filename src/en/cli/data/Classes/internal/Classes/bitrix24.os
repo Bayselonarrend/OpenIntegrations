@@ -6501,3 +6501,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"")"
+
+
+EndFunction 

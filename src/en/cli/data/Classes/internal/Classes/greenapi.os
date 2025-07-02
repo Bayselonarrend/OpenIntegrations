@@ -1245,3 +1245,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"")"
+
+
+EndFunction 

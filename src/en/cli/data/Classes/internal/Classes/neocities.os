@@ -189,3 +189,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Neocities = LoadScript(""%1/oint/core/Modules/OPI_Neocities.os"")"
+
+
+EndFunction 

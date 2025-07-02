@@ -2,6 +2,7 @@
 // Lib: Google Calendar
 // CLI: gcalendar
 // Keywords: google calendar, googlecalendar, gcalendar
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 

@@ -770,3 +770,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Dropbox = LoadScript(""%1/oint/core/Modules/OPI_Dropbox.os"")"
+
+
+EndFunction 

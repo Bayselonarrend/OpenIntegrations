@@ -689,3 +689,17 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "
+        | Khetext = New Structure;
+        | 
+        | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"")
+        | Khetext.Insert(""OPI_MySQL"", OPI_MySQL);
+        | 
+        |  OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"", Khetext)";
+
+
+EndFunction 

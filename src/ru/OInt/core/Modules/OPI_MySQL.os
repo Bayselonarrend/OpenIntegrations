@@ -2,6 +2,7 @@
 // Lib: MySQL
 // CLI: mysql
 // Keywords: mysql, my sql
+// Depends: OPI_MySQL
 
 // MIT License
 
@@ -672,6 +673,7 @@
 КонецФункции
 
 #КонецОбласти
+
 
 #Region Alternate
 

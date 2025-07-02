@@ -417,3 +417,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Viber = LoadScript(""%1/oint/core/Modules/OPI_Viber.os"")"
+
+
+EndFunction 
