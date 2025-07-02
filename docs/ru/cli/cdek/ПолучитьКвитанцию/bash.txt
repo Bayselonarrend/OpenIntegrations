@@ -1,6 +1,6 @@
 oint cdek ПолучитьКвитанцию \
   --token "***" \
-  --uuid "2716a6fa-2cc8-49b3-a12e-57cd92cf47fc" \
+  --uuid "89d2280b-25c5-4d82-9054-380ba57feb8e" \
   --getfile true \
   --testapi "***" \
-  --out "C:\Users\bayse\AppData\Local\Temp\fy3yygvrq3u.pdf"
+  --out "C:\Users\bayse\AppData\Local\Temp\iehklop1f0y.pdf"

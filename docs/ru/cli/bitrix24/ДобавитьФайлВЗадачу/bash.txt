@@ -1,5 +1,5 @@
 oint bitrix24 ДобавитьФайлВЗадачу \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "6852" \
-  --fileid 36446 \
+  --task "6862" \
+  --fileid 36464 \
   --token "***"
