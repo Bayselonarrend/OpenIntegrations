@@ -740,3 +740,17 @@
     Возврат ТаблицаСостава;
 КонецФункции
 
+
+Функция ПолучитьСтрокуПодключения() Экспорт
+
+
+    Возврат "
+        | Контекст = Новый Структура;
+        | 
+        | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"")
+        | Контекст.Вставить(""OPI_PostgreSQL"", OPI_PostgreSQL);
+        | 
+        |  OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Контекст)";
+
+
+КонецФункции 

@@ -74,3 +74,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_TCP = LoadScript(""%1/oint/core/Modules/OPI_TCP.os"")"
+
+
+EndFunction 

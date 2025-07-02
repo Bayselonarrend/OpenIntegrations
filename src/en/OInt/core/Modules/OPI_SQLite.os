@@ -2,6 +2,7 @@
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
+// Depends: OPI_SQLite
 
 // MIT License
 
@@ -531,6 +532,7 @@ Function ProcessBlobStructure(Val Value)
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

@@ -1456,3 +1456,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"")"
+
+
+EndFunction 

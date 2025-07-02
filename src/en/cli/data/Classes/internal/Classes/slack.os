@@ -1080,3 +1080,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Slack = LoadScript(""%1/oint/core/Modules/OPI_Slack.os"")"
+
+
+EndFunction 
