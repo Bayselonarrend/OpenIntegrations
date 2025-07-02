@@ -2,6 +2,7 @@
 // Lib: Google Sheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -420,5 +421,3 @@
 
 #КонецОбласти
 
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_GoogleWorkspace = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_GoogleWorkspace.os");

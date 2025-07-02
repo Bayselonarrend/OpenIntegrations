@@ -2,6 +2,7 @@
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
+// Depends: OPI_SQLite
 
 // MIT License
 
@@ -532,5 +533,3 @@
 
 #КонецОбласти
 
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_SQLite = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_SQLite.os");

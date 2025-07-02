@@ -2,6 +2,7 @@
 // Lib: Google Calendar
 // CLI: gcalendar
 // Keywords: google calendar, googlecalendar, gcalendar
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -655,6 +656,3 @@
 КонецПроцедуры
 
 #КонецОбласти
-
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_GoogleWorkspace = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_GoogleWorkspace.os");
