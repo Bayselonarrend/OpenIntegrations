@@ -1959,7 +1959,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"")"  + Chars.LF;
+    Return "OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"");"  + Chars.LF;
 
 
 EndFunction 

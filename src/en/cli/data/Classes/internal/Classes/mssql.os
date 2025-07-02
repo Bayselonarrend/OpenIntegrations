@@ -716,7 +716,7 @@ Function GetConnectionString() Export
         | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"")
         | Context.Insert(""OPI_MSSQL"", OPI_MSSQL);
         | 
-        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context)" + Chars.LF;
+        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context);" + Chars.LF;
 
 
 EndFunction 

@@ -470,7 +470,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"")"  + Chars.LF;
+    Return "OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"");"  + Chars.LF;
 
 
 EndFunction 

@@ -737,7 +737,7 @@ Function GetConnectionString() Export
         | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"")
         | Context.Insert(""OPI_PostgreSQL"", OPI_PostgreSQL);
         | 
-        | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Context)" + Chars.LF;
+        | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Context);" + Chars.LF;
 
 
 EndFunction 

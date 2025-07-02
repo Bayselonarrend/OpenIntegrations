@@ -827,7 +827,7 @@
 Функция ПолучитьСтрокуПодключения() Экспорт
 
 
-    Возврат "OPI_Airtable = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Airtable.os"")"  + Символы.ПС;
+    Возврат "OPI_Airtable = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Airtable.os"");"  + Символы.ПС;
 
 
 КонецФункции 
