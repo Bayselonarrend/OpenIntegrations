@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -1608,7 +1615,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"")"
+    Return "OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"")"  + Chars.LF;
 
 
 EndFunction 

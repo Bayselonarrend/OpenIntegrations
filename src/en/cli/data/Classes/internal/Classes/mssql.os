@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -709,7 +716,7 @@ Function GetConnectionString() Export
         | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"")
         | Context.Insert(""OPI_MSSQL"", OPI_MSSQL);
         | 
-        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context)";
+        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context)" + Chars.LF;
 
 
 EndFunction 
