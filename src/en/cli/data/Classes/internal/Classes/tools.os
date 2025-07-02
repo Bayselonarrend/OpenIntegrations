@@ -66,7 +66,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"")"

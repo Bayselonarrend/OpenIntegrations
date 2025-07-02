@@ -771,7 +771,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_Dropbox = LoadScript(""%1/oint/core/Modules/OPI_Dropbox.os"")"

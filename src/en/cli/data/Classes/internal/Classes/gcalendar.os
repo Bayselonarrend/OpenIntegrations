@@ -492,16 +492,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
-        | Khetext.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
-        |  OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Khetext)";
+        | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context)";
 
 
 EndFunction 

@@ -423,7 +423,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"")"
