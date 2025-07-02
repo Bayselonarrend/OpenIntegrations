@@ -65,3 +65,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"")"
+
+
+EndFunction 

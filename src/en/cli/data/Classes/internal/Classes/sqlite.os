@@ -445,3 +445,17 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "
+        | Khetext = New Structure;
+        | 
+        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"")
+        | Khetext.Insert(""OPI_SQLite"", OPI_SQLite);
+        | 
+        |  OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Khetext)";
+
+
+EndFunction 

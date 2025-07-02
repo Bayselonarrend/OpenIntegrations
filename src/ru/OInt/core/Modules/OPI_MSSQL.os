@@ -2,6 +2,7 @@
 // Lib: MS SQL
 // CLI: mssql
 // Keywords: mssql, ms sql
+// Depends: OPI_MSSQL
 
 // MIT License
 

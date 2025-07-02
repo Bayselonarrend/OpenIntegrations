@@ -491,3 +491,17 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "
+        | Khetext = New Structure;
+        | 
+        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
+        | Khetext.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | 
+        |  OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Khetext)";
+
+
+EndFunction 

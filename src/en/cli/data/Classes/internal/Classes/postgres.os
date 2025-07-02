@@ -720,3 +720,17 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "
+        | Khetext = New Structure;
+        | 
+        | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"")
+        | Khetext.Insert(""OPI_PostgreSQL"", OPI_PostgreSQL);
+        | 
+        |  OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Khetext)";
+
+
+EndFunction 

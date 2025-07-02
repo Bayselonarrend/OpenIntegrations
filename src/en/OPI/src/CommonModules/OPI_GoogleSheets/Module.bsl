@@ -2,6 +2,7 @@
 // Lib: Google Sheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -419,3 +420,4 @@ Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 EndProcedure
 
 #EndRegion
+

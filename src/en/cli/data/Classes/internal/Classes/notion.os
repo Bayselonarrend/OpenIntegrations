@@ -459,3 +459,11 @@
     Return CompositionTable;
 EndFunction
 
+
+Function GetLineToдtoлюченandя() Export
+
+
+    Return "OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"")"
+
+
+EndFunction 

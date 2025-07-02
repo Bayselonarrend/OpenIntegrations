@@ -424,3 +424,17 @@
     Возврат ТаблицаСостава;
 КонецФункции
 
+
+Функция ПолучитьСтрокуПодключения() Экспорт
+
+
+    Возврат "
+        | Контекст = Новый Структура;
+        | 
+        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
+        | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | 
+        |  OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Контекст)";
+
+
+КонецФункции 
