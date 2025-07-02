@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_YandexMetrika.os
 // Lib: Yandex Metrika
 // CLI: metrika
+// Depends: OPI_YandexID
 
 // MIT License
 
@@ -587,6 +588,3 @@
 #КонецОбласти
 
 #КонецОбласти
-
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_YandexID = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_YandexID.os");
