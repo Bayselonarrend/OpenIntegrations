@@ -462,7 +462,7 @@ Function GetConnectionString() Export
         | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"")
         | Context.Insert(""OPI_SQLite"", OPI_SQLite);
         | 
-        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context)" + Chars.LF;
+        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context);" + Chars.LF;
 
 
 EndFunction 

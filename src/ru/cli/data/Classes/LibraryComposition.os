@@ -247,7 +247,7 @@ Function GetCommandModuleMapping() Export
 	Return ПолучитьСоответствиеКомандМодулей();
 EndFunction
 
-Function GetDataIndexа(Val Command) Export
+Function GetIndexData(Val Command) Export
 	Return ПолучитьИнформациюИндекса(Command);
 EndFunction
 
