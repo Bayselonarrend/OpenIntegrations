@@ -1,4 +1,3 @@
 oint gdrive СоздатьПапку ^
   --token "***" ^
-  --title "Тестовая папка" ^
-  --catalog "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y"
+  --title "Тестовая папка"

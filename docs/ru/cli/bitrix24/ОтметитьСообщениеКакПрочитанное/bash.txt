@@ -1,4 +1,4 @@
 oint bitrix24 ОтметитьСообщениеКакПрочитанное \
   --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-  --chat "chat2634" \
+  --chat "chat2638" \
   --message 3850

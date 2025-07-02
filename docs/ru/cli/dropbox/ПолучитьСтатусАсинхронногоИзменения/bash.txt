@@ -1,3 +1,3 @@
 oint dropbox ПолучитьСтатусАсинхронногоИзменения \
   --token "***" \
-  --job "dbjid:AADSkXqWTJYRXmFEziRX1afmImL5Msa2J8Kbat5PsjvfbHJo0Xc2MBs_zovsf_dRODRa_PMa8QuWjMI1aZ0Ln9K-"
+  --job "dbjid:AAA_pPai9RrP1Qk7uNW-jE8a6E9yd5HZ5N21Xo8H4yAcr1lMP_ay3SMm82ECj39ZwzrO9jGms4aFGp_FoSYRPbGI"
