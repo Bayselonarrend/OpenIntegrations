@@ -723,7 +723,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"", Новый Структура("OPI_MySQL", Неопределено));
+        | OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"", Новый Структура(""OPI_MySQL"", Неопределено));
         | Контекст.Вставить(""OPI_MySQL"", OPI_MySQL);
         | 
         | OPI_MySQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MySQL.os"", Контекст);" + Символы.ПС;
