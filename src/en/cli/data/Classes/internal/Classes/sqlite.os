@@ -446,16 +446,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"")
-        | Khetext.Insert(""OPI_SQLite"", OPI_SQLite);
+        | Context.Insert(""OPI_SQLite"", OPI_SQLite);
         | 
-        |  OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Khetext)";
+        | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context)";
 
 
 EndFunction 

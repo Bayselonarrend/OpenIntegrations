@@ -690,16 +690,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"")
-        | Khetext.Insert(""OPI_MySQL"", OPI_MySQL);
+        | Context.Insert(""OPI_MySQL"", OPI_MySQL);
         | 
-        |  OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"", Khetext)";
+        | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"", Context)";
 
 
 EndFunction 
