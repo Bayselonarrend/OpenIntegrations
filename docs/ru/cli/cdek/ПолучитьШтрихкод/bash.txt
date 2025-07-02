@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод \
   --token "***" \
-  --uuid "cf35f9a7-dfe7-467e-9bee-9a16d66a4e7a" \
+  --uuid "1a610d3d-4900-4657-81a7-90d98331e3de" \
   --getfile true \
   --testapi "***" \
-  --out "C:\Users\bayse\AppData\Local\Temp\weoup232xc3.pdf"
+  --out "C:\Users\bayse\AppData\Local\Temp\idrubmmt5zm.pdf"
