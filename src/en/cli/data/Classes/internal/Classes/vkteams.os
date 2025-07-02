@@ -1042,7 +1042,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"");"  + Chars.LF;
+    Return "OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"");;"  + Chars.LF;
 
 
 EndFunction 

@@ -85,7 +85,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"");"  + Chars.LF;
+    Return "OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"");;"  + Chars.LF;
 
 
 EndFunction 
