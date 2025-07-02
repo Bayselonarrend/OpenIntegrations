@@ -2,6 +2,7 @@
 // Lib: MySQL
 // CLI: mysql
 // Keywords: mysql, my sql
+// Depends: OPI_MySQL
 
 // MIT License
 
@@ -673,5 +674,3 @@
 
 #КонецОбласти
 
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_MySQL = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_MySQL.os");

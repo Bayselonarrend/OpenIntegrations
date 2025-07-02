@@ -2,6 +2,7 @@
 // Lib: PostgreSQL
 // CLI: postgres
 // Keywords: postgresql, postgre sql, postgres
+// Depends: OPI_PostgreSQL
 
 // MIT License
 
@@ -678,6 +679,3 @@
 КонецФункции
 
 #КонецОбласти
-
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_PostgreSQL = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_PostgreSQL.os");

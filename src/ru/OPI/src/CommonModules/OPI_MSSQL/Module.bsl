@@ -2,6 +2,7 @@
 // Lib: MS SQL
 // CLI: mssql
 // Keywords: mssql, ms sql
+// Depends: OPI_MSSQL
 
 // MIT License
 
@@ -698,6 +699,3 @@
 КонецФункции
 
 #КонецОбласти
-
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_MSSQL = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_MSSQL.os");

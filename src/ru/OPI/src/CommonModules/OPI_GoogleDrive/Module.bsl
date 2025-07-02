@@ -2,6 +2,7 @@
 // Lib: Google Drive
 // CLI: gdrive
 // Keywords: google drive, googledrive, gdrive, google disk
+// Depends: OPI_GoogleWorkspace
 
 // MIT License
 
@@ -778,5 +779,3 @@
 
 #КонецОбласти
 
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_GoogleWorkspace = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_GoogleWorkspace.os");

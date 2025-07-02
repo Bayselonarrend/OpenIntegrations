@@ -2,6 +2,7 @@
 // Lib: Yandex Disk
 // CLI: yadisk
 // Keywords: yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk
+// Depends: OPI_YandexID
 
 // MIT License
 
@@ -607,6 +608,3 @@
 КонецФункции
 
 #КонецОбласти
-
-// !OInt ТекущийКаталог = ТекущийСценарий().Каталог;
-// !OInt OPI_YandexID = ЗагрузитьСценарий(ТекущийКаталог + "/OPI_YandexID.os");
