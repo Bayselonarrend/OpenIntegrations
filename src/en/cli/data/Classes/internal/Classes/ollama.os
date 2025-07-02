@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -687,7 +694,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"")"
+    Return "OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"")"  + Chars.LF;
 
 
 EndFunction 

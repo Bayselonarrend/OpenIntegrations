@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -69,7 +76,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"")"
+    Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"")"  + Chars.LF;
 
 
 EndFunction 
