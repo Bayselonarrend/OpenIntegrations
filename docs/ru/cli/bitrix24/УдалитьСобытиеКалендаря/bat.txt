@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьСобытиеКалендаря ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --event 1586 ^
+  --event 1602 ^
   --token "***"
