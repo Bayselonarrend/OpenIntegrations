@@ -204,7 +204,7 @@
 Функция ПолучитьСтрокуПодключения() Экспорт
 
 
-    Возврат "OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"");"  + Символы.ПС;
+    Возврат "OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"");;"  + Символы.ПС;
 
 
 КонецФункции 
