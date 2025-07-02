@@ -297,16 +297,16 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "
-        | Khetext = New Structure;
+        | Context = New Structure;
         | 
         | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"")
-        | Khetext.Insert(""OPI_YandexID"", OPI_YandexID);
+        | Context.Insert(""OPI_YandexID"", OPI_YandexID);
         | 
-        |  OPI_YandexMetrika = LoadScript(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Khetext)";
+        | OPI_YandexMetrika = LoadScript(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Context)";
 
 
 EndFunction 

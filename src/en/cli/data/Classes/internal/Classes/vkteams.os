@@ -1032,7 +1032,7 @@
 EndFunction
 
 
-Function GetLineToдtoлюченandя() Export
+Function GetConnectionString() Export
 
 
     Return "OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"")"
