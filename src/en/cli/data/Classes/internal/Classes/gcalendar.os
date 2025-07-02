@@ -1,4 +1,11 @@
-﻿Function GetComposition() Export
+﻿
+Var CompositionTable;
+
+Function GetComposition() Export
+
+    If CompositionTable <> Undefined Then
+        Return CompositionTable;
+    EndIf;
 
     CompositionTable = New ValueTable();
     CompositionTable.Columns.Add("Library");
@@ -501,7 +508,7 @@ Function GetConnectionString() Export
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"")
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
-        | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context)";
+        | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context)" + Chars.LF;
 
 
 EndFunction 

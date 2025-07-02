@@ -2,9 +2,9 @@
 
 Var ModuleCommandMapping;
 Var Version;
-Var CompositionCache;
+Var KэшandрoinанandеIndexoin;
 Var AccessTemplate;
-Var InitialScriptLoading;
+Var PackagesDirectory;
 
 
 Procedure OnObjectCreate()
@@ -16,15 +16,12 @@ Procedure OnObjectCreate()
     AccessTemplate  = CombinePath(CurrentDirectory, "internal", "Classes", "%1.os");
 
     PackagesDirectory = StrReplace(GetSystemOptionValue("lib.system"), "\", "/");
-    ModuleDirectory = CombinePath(PackagesDirectory, "oint/core/Modules/%1.os");
-
-    InitialScriptLoading = StrTemplate("%%1 = LoadScript(""%1"");" + Chars.LF , ModuleDirectory);
 
 EndProcedure
 
 Procedure InitializeCommonLists() Export
 
-    CompositionCache       = New Map();
+    KэшandрoinанandеIndexoin       = New Map();
     ModuleCommandMapping = New Map();
     ModuleCommandMapping.Insert("tools", "Utils");
     ModuleCommandMapping.Insert("airtable", "OPI_Airtable");
@@ -70,23 +67,31 @@ Function GetCommandModuleMapping() Export
 EndFunction
 
 
-Function GetComposition(Val Command) Export
+Function GetDataIndexа(Val Command) Export
 
-    CurrentComposition = CompositionCache.Get(Command);
+    InformationIndexа = KэшandрoinанandеIndexoin.Get(Command);
 
-    If CurrentComposition = Undefined Then
+    If InformationIndexа = Undefined Then
 
         Try
             CompositionObject = LoadScript(StrTemplate(AccessTemplate, Command));
-            CurrentComposition = CompositionObject.GetComposition();
-            CompositionCache.Insert(Command, CurrentComposition);
+
+            Сowithтаin            = CompositionObject.GetComposition();
+            ConnectionString = CompositionObject.GetConnectionString();
+
+            InformationIndexа = New Structure;
+            InformationIndexа.Insert("Сowithтаin"           , Сowithтаin);
+            InformationIndexа.Insert("ConnectionString", ConnectionString);
+
+            KэшandрoinанandеIndexoin.Insert(Command, InformationIndexа);
+
         Except
             Raise StrTemplate("Invalid command name: %1", Command)
         EndTry;
 
     EndIf;
 
-    Return CurrentComposition;
+    Return InformationIndexа;
 
 EndFunction
 
@@ -96,7 +101,8 @@ Function GetFullComposition() Export
 
     For Each Command In ModuleCommandMapping Do
 
-        CurrentTable = GetComposition(Command.Key);
+        ObjectIndexа  = GetDataIndexа(Command.Key);
+        CurrentTable = ObjectIndexа["Сowithтаin"];
         
         If CommonTable = Undefined Then
             CommonTable = CurrentTable;
@@ -114,20 +120,21 @@ EndFunction
 
 Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
 
-    Module = GetCommandModuleMapping().Get(Command);
+    Module        = GetCommandModuleMapping().Get(Command);
+    ObjectIndexа = GetDataIndexа(Command);
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
     EndIf;
     
-    CommandSelection      = New Structure("SearchMethod", Upper(Method));
-    MethodParameters   = GetComposition(Command).FindRows(CommandSelection);
+    CommandSelection    = New Structure("SearchMethod", Upper(Method));
+    MethodParameters = ObjectIndexа["Сowithтаin"].FindRows(CommandSelection);
+    ExecutionText = StrTemplate(ObjectIndexа["ConnectionString"], PackagesDirectory);
     
     If Not ValueIsFilled(MethodParameters) Then
         Return New Structure("Error,Result", True, "Method");
     EndIf;
 
-    ExecutionText = StrTemplate(InitialScriptLoading, Module);
     CallString    = Module + "." + Method + "(";
     Counter         = 0;
 
@@ -172,11 +179,19 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
 
 EndFunction
 
-Function CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
-   CompositionCache.Insert(Library, ParametersTable);
-   Command = ?(ValueIsFilled(Command), Command, Library);
+Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
+
+   Command           = ?(ValueIsFilled(Command), Command, Library);
+   ConnectionString = "";
+
+   InformationIndexа = New Structure;
+   InformationIndexа.Insert("Сowithтаin"           , ParametersTable);
+   InformationIndexа.Insert("ConnectionString", ConnectionString);
+
+   KэшandрoinанandеIndexoin.Insert(Command, InformationIndexа);
    ModuleCommandMapping.Insert(Command, Library);
-EndFunction
+
+EndProcedure
 
 Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterValue)
 
@@ -232,8 +247,8 @@ Function ПолучитьСоответствиеКомандМодулей() Ex
 	Return GetCommandModuleMapping();
 EndFunction
 
-Function ПолучитьСостав(Val Команда) Export
-	Return GetComposition(Команда);
+Function ПолучитьИнформациюИндекса(Val Команда) Export
+	Return GetDataIndexа(Команда);
 EndFunction
 
 Function ПолучитьПолныйСостав() Export
@@ -244,9 +259,9 @@ Function СформироватьСтрокуВызоваМетода(Val Пер
 	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
 EndFunction
 
-Function ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
-	Return CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
-EndFunction
+Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
+	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
+EndProcedure
 
 Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
 	ReplaceEscapeSequences(Текст);
