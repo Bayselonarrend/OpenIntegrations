@@ -76,7 +76,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"");"  + Chars.LF;
+    Return "Utils = LoadScript(""%1/oint-cli/tools/Modules/Utils.os"");;"  + Chars.LF;
 
 
 EndFunction 

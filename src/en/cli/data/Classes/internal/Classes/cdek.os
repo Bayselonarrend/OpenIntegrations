@@ -1093,7 +1093,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_CDEK = LoadScript(""%1/oint/core/Modules/OPI_CDEK.os"");"  + Chars.LF;
+    Return "OPI_CDEK = LoadScript(""%1/oint/core/Modules/OPI_CDEK.os"");;"  + Chars.LF;
 
 
 EndFunction 

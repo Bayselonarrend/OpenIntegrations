@@ -157,7 +157,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");"  + Chars.LF;
+    Return "OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");;"  + Chars.LF;
 
 
 EndFunction 

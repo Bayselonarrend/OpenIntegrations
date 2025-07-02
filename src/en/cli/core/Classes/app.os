@@ -114,7 +114,7 @@ EndProcedure
 
 Function GetProcessingResult(Val Command, Val Parameters)
 
-	Method     = Parameters["Method"];
+	Method     = TrimAll(Parameters["Method"]);
 	Response     = "Function Returned Empty Value";
 
 	NumberOfStandardParameters = 4;

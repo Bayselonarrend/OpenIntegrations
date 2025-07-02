@@ -694,7 +694,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"");"  + Chars.LF;
+    Return "OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"");;"  + Chars.LF;
 
 
 EndFunction 

@@ -6512,7 +6512,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"");"  + Chars.LF;
+    Return "OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"");;"  + Chars.LF;
 
 
 EndFunction 

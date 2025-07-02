@@ -85,7 +85,7 @@ EndFunction
 Function GetConnectionString() Export
 
 
-    Return "OPI_TCP = LoadScript(""%1/oint/core/Modules/OPI_TCP.os"");"  + Chars.LF;
+    Return "OPI_TCP = LoadScript(""%1/oint/core/Modules/OPI_TCP.os"");;"  + Chars.LF;
 
 
 EndFunction 
