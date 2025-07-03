@@ -11330,7 +11330,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
     OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded (wh)", "Bitrix24"); // SKIP
-    OPI_TestDataRetrieval.Check_BitrixBool(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Map(Result); // SKIP
 
     URL       = FunctionParameters["Bitrix24_Domain"];
     Token     = FunctionParameters["Bitrix24_Token"];
@@ -11342,7 +11342,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
