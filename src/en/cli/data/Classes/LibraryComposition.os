@@ -159,7 +159,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
                 ExecutionText = ExecutionText 
                     + Chars.LF 
                     + CurrentObjectName
-                    + "ReplaceEscapeSequences(" + ParameterName + ")";
+                    + "ReplaceEscapeSequences(" + ParameterName + ");";
             EndIf;
 
             CallString = CallString + ParameterName + ", ";
