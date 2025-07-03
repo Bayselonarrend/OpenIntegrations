@@ -576,7 +576,11 @@
 
     Если OPI_Инструменты.ЭтоWindows() Тогда
 
-        Oint = "oint";
+        Если OPI_Инструменты.ЭтоOneScript() Тогда
+            Oint = "oint";
+        Иначе
+            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        КонецЕсли;
 
     Иначе
 
