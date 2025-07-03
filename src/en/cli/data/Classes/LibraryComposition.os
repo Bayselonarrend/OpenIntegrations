@@ -118,10 +118,11 @@ Function GetFullComposition() Export
 
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val CurrentObjectName = "") Export
 
-    Module        = GetCommandModuleMapping().Get(Command);
-    IndexObject = GetIndexData(Command);
+    Module             = GetCommandModuleMapping().Get(Command);
+    IndexObject      = GetIndexData(Command);
+    CurrentObjectName = ?(ValueIsFilled(CurrentObjectName), CurrentObjectName + ".", "");
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
@@ -143,10 +144,6 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
         ParameterName      = RequiredParameter.Parameter;
         ParameterValue = PassedParameters.Get(ParameterName);
 
-        If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
-            ReplaceEscapeSequences(ParameterValue);
-        EndIf;
-
         If ValueIsFilled(ParameterValue) Then
 
             ParameterName = "Parameter" + StrReplace(ParameterName, "--", "_");
@@ -157,6 +154,13 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
                 + " = """ 
                 + StrReplace(ParameterValue, """", """""")
                 + """;";
+
+            If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
+                ExecutionText = ExecutionText 
+                    + Chars.LF 
+                    + CurrentObjectName
+                    + "ReplaceEscapeSequences(" + ParameterName + ")";
+            EndIf;
 
             CallString = CallString + ParameterName + ", ";
             Counter      = Counter + 1;
@@ -255,8 +259,8 @@ Function ПолучитьПолныйСостав() Export
 	Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val ИмяТекущегоОбъекта = "") Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, ИмяТекущегоОбъекта);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
