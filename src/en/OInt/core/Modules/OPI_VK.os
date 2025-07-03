@@ -42,8 +42,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-// Uncomment if OneScript is executed
-#Use "../../tools"
+
 
 #Region Public
 

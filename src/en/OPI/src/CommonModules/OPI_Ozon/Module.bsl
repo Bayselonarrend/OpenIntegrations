@@ -38,8 +38,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-// Uncomment if OneScript is executed
-// #Use "../../tools"
+
 
 #Region Public
 
