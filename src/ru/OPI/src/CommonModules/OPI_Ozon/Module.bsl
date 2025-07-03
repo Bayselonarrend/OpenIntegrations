@@ -38,8 +38,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+
 
 #Область ПрограммныйИнтерфейс
 
