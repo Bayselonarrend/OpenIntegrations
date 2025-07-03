@@ -40,8 +40,7 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+
 
 #Область ПрограммныйИнтерфейс
 
