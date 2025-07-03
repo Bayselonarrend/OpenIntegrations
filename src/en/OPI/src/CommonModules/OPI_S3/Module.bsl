@@ -40,8 +40,7 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-// Uncomment if OneScript is executed
-// #Use "../../tools"
+
 
 #Region Public
 
