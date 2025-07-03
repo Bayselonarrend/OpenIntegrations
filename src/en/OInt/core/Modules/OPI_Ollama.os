@@ -40,9 +40,6 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-// Uncomment if OneScript is executed
-#Use "../../tools"
-
 #Region Public
 
 #Region RequestsProcessing
