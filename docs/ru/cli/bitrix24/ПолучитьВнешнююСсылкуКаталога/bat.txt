@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьВнешнююСсылкуКаталога ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 35828 ^
+  --folderid 36504 ^
   --token "***"
