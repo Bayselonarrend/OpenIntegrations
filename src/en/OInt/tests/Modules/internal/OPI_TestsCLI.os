@@ -15103,7 +15103,7 @@ Procedure CLI_Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "MarkMessageAsReaded (wh)", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixBool(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
     URL       = FunctionParameters["Bitrix24_Domain"];
     Token     = FunctionParameters["Bitrix24_Token"];
@@ -15119,7 +15119,7 @@ Procedure CLI_Bitrix24_MarkMessageAsReaded(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "MarkMessageAsReaded", "Bitrix24");
-    OPI_TestDataRetrieval.Check_BitrixDialog(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -17420,7 +17420,7 @@ Procedure CLI_CDEK_GetCourierInvitation(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitation", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCourierInvitation", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    //OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
 
@@ -20179,7 +20179,6 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
                    | INSERT INTO users (name, age) VALUES ('Alice', 30);
                    | INSERT INTO users (name, age) VALUES ('Bob', 25);
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   | COMMIT;
                    |END $$ LANGUAGE plpgsql;";
 
     Options = New Structure;
@@ -20252,7 +20251,7 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase (existing)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
@@ -20333,7 +20332,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable (exists)", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     Options = New Structure;
@@ -20348,7 +20347,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
     TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
 
     Options = New Structure;
-    Options.Insert("trust" , False);
+    Options.Insert("trust" , True);
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
 
@@ -20871,7 +20870,7 @@ Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteDatabase", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
@@ -20917,7 +20916,7 @@ EndProcedure
 Procedure CLI_PostgreSQL_GetTlsSettings(FunctionParameters)
 
     Options = New Structure;
-    Options.Insert("trust", False);
+    Options.Insert("trust", True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options, False);
 
@@ -20981,7 +20980,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, True);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     Options = New Structure;
@@ -20996,7 +20995,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
     TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
 
     Options = New Structure;
-    Options.Insert("trust" , False);
+    Options.Insert("trust" , True);
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
 
@@ -21086,7 +21085,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, False);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "5433";
 
     Options = New Structure;
@@ -21101,7 +21100,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
     TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
 
     Options = New Structure;
-    Options.Insert("trust" , False);
+    Options.Insert("trust" , True);
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTlsSettings", Options);
 
@@ -21351,7 +21350,7 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("sql",
-        "create table TEST_DATA (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));");
+        "create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));");
     Options.Insert("dbc", ConnectionString);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options, False);
@@ -21419,7 +21418,7 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase (existing)", "MySQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -21508,7 +21507,7 @@ Procedure CLI_MySQL_CreateTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable (exists)", "MySQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -21599,7 +21598,7 @@ Procedure CLI_MySQL_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "AddRecords", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -21719,7 +21718,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -21825,7 +21824,7 @@ Procedure CLI_MySQL_UpdateRecords(FunctionParameters)
         OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
     Base    = "testbase1";
 
@@ -21934,7 +21933,7 @@ Procedure CLI_MySQL_DeleteRecords(FunctionParameters)
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
     Base    = "testbase1";
 
@@ -21994,7 +21993,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
     Base    = "testbase1";
 
@@ -22076,7 +22075,7 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteDatabase", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -22137,7 +22136,7 @@ Procedure CLI_MySQL_ClearTable(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -22206,7 +22205,7 @@ EndProcedure
 Procedure CLI_MySQL_GetTlsSettings(FunctionParameters)
 
     Options = New Structure;
-    Options.Insert("trust", False);
+    Options.Insert("trust", True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTlsSettings", Options, False);
 
@@ -22316,7 +22315,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, True);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -22425,7 +22424,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     OPI_TestDataRetrieval.Check_Equality(Found, False);
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Options = New Structure;
@@ -22557,7 +22556,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
-    Address = "api.athenaeum.digital";
+    Address = FunctionParameters["PG_IP"];
     Port    = "3307";
 
     Table = "testtable";

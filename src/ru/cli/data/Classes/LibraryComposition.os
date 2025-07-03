@@ -118,10 +118,11 @@
 
 КонецФункции
 
-Функция СформироватьСтрокуВызоваМетода(Знач ПереданныеПараметры, Знач Команда, Знач Метод) Экспорт
+Функция СформироватьСтрокуВызоваМетода(Знач ПереданныеПараметры, Знач Команда, Знач Метод, Знач ИмяТекущегоОбъекта = "") Экспорт
 
-    Модуль        = ПолучитьСоответствиеКомандМодулей().Получить(Команда);
-    ОбъектИндекса = ПолучитьИнформациюИндекса(Команда);
+    Модуль             = ПолучитьСоответствиеКомандМодулей().Получить(Команда);
+    ОбъектИндекса      = ПолучитьИнформациюИндекса(Команда);
+    ИмяТекущегоОбъекта = ?(ЗначениеЗаполнено(ИмяТекущегоОбъекта), ИмяТекущегоОбъекта + ".", "");
     
     Если Не ЗначениеЗаполнено(Модуль) Тогда
         Возврат Новый Структура("Ошибка,Результат", Истина, "Команда");
@@ -157,6 +158,7 @@
             Если ТребуетсяОбработкаУправляющихПоследовательностей(ИмяПараметра, ЗначениеПараметра) Тогда
                 ТекстВыполнения = ТекстВыполнения 
                     + Символы.ПС 
+                    + ИмяТекущегоОбъекта
                     + "ЗаменитьУправляющиеПоследовательности(" + ИмяПараметра + ")";
             КонецЕсли;
 
@@ -249,7 +251,7 @@ Function GetCommandModuleMapping() Export
 	Return ПолучитьСоответствиеКомандМодулей();
 EndFunction
 
-Function GetDataIndexа(Val Command) Export
+Function GetIndexData(Val Command) Export
 	Return ПолучитьИнформациюИндекса(Command);
 EndFunction
 
@@ -257,8 +259,8 @@ Function GetFullComposition() Export
 	Return ПолучитьПолныйСостав();
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
-	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method);
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val CurrentObjectName = "") Export
+	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method, CurrentObjectName);
 EndFunction
 
 Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export

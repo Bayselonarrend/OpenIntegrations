@@ -135,7 +135,7 @@ Function GetProcessingResult(Val Command, Val Parameters)
 		Help.DisplayParameterHelp(MethodParameters);
 	EndIf;
 
-	ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
+	ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method, "OPIObject");
 
 	If ExecutionStructure["Error"] Then
 		Help.DisplayExceptionMessage(ExecutionStructure["Result"], OutputFile);
