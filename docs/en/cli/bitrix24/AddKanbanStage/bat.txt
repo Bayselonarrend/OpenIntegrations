@@ -1,7 +1,5 @@
 oint bitrix24 AddKanbanStage ^
- --url "b24-ar17wx.bitrix24.by" ^
- --title "New stage 2" ^
+ --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+ --title "New stage" ^
  --color "0026FF" ^
- --prevstage 2392 ^
- --admin true ^
- --token "***"
+ --prevstage 6

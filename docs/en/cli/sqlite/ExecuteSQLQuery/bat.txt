@@ -1,6 +1,3 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint sqlite ExecuteSQLQuery ^
- --sql "SELECT uuid4();" ^
- --db "C:\Users\Administrator\AppData\Local\Temp\ez2hdqkekat.sqlite" ^
- --exts "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/uuid.dll':'sqlite3_uuid_init'}"
+ --sql "CREATE TABLE test_table (id INTEGER PRIMARY KEY,name TEXT,age INTEGER,salary REAL,is_active BOOLEAN,created_at DATETIME,data BLOB);" ^
+ --db "C:\Users\bayse\AppData\Local\Temp\holtrlqhemu.sqlite"
