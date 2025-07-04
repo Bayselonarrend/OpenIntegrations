@@ -1,5 +1,5 @@
 oint openai GetResponse \
- --url "https://api.athenaeum.digital:1122/" \
+ --url "https://hut.openintegrations.dev/localai/" \
  --token "***" \
  --model "smolvlm-256m-instruct" \
  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a full-stack, low-code platform'},{'role':'user','content':'When the first version was released?'}]"
