@@ -555,6 +555,7 @@
 
     Возврат "
         | Контекст = Новый Структура;
+        | Контекст.Вставить(""OPI_YandexID"", Неопределено);
         | 
         | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"");
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);

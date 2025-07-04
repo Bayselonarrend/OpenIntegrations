@@ -458,6 +458,7 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
+        | Context.Insert(""OPI_SQLite"", Undefined);
         | 
         | OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"");
         | Context.Insert(""OPI_SQLite"", OPI_SQLite);
