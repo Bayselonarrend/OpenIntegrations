@@ -1057,8 +1057,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_VKTeams = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VKTeams.os"");
-        | Контекст.Вставить(""OPI_VKTeams"", OPI_VKTeams);
+
         | 
         | OPI_VKTeams = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VKTeams.os"", Контекст);
         |" + Символы.ПС;

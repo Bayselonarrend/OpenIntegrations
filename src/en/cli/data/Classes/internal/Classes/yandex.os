@@ -99,8 +99,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"");
-        | Context.Insert(""OPI_YandexID"", OPI_YandexID);
+
         | 
         | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"", Context);
         |" + Chars.LF;
