@@ -439,8 +439,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Viber = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Viber.os"");
-        | Контекст.Вставить(""OPI_Viber"", OPI_Viber);
+
         | 
         | OPI_Viber = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Viber.os"", Контекст);
         |" + Символы.ПС;

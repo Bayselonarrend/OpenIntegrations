@@ -1618,8 +1618,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"");
-        | Context.Insert(""OPI_S3"", OPI_S3);
+
         | 
         | OPI_S3 = LoadScript(""%1/oint/core/Modules/OPI_S3.os"", Context);
         |" + Chars.LF;
