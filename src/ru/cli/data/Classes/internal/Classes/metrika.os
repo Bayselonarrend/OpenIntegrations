@@ -309,13 +309,13 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_YandexID"", Неопределено);
-        | Контекст.Вставить(""OPI_YandexMetrika"", Неопределено);
         | 
         | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"", Контекст);
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);
         | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Контекст);
         | Контекст.Вставить(""OPI_YandexMetrika"", OPI_YandexMetrika);
+        | 
+        | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Контекст);
         |" + Символы.ПС;
 
 

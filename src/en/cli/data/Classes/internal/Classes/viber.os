@@ -430,10 +430,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Viber"", Undefined);
         | 
         | OPI_Viber = LoadScript(""%1/oint/core/Modules/OPI_Viber.os"", Context);
         | Context.Insert(""OPI_Viber"", OPI_Viber);
+        | 
+        | OPI_Viber = LoadScript(""%1/oint/core/Modules/OPI_Viber.os"", Context);
         |" + Chars.LF;
 
 

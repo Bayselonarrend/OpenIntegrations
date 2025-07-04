@@ -459,10 +459,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Twitter"", Неопределено);
         | 
         | OPI_Twitter = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Twitter.os"", Контекст);
         | Контекст.Вставить(""OPI_Twitter"", OPI_Twitter);
+        | 
+        | OPI_Twitter = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Twitter.os"", Контекст);
         |" + Символы.ПС;
 
 

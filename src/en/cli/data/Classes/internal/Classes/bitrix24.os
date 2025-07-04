@@ -6514,10 +6514,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Bitrix24"", Undefined);
         | 
         | OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"", Context);
         | Context.Insert(""OPI_Bitrix24"", OPI_Bitrix24);
+        | 
+        | OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"", Context);
         |" + Chars.LF;
 
 

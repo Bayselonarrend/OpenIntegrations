@@ -1056,13 +1056,13 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_VK"", Неопределено);
-        | Контекст.Вставить(""OPI_VKTeams"", Неопределено);
         | 
         | OPI_VK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VK.os"", Контекст);
         | Контекст.Вставить(""OPI_VK"", OPI_VK);
         | OPI_VKTeams = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VKTeams.os"", Контекст);
         | Контекст.Вставить(""OPI_VKTeams"", OPI_VKTeams);
+        | 
+        | OPI_VKTeams = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VKTeams.os"", Контекст);
         |" + Символы.ПС;
 
 

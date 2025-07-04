@@ -206,10 +206,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Neocities"", Неопределено);
         | 
         | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);
         | Контекст.Вставить(""OPI_Neocities"", OPI_Neocities);
+        | 
+        | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);
         |" + Символы.ПС;
 
 

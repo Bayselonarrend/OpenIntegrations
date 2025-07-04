@@ -974,10 +974,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_OpenAI"", Неопределено);
         | 
         | OPI_OpenAI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_OpenAI.os"", Контекст);
         | Контекст.Вставить(""OPI_OpenAI"", OPI_OpenAI);
+        | 
+        | OPI_OpenAI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_OpenAI.os"", Контекст);
         |" + Символы.ПС;
 
 

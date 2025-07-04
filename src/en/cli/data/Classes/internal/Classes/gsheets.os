@@ -351,13 +351,13 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_GoogleSheets"", Undefined);
-        | Context.Insert(""OPI_GoogleWorkspace"", Undefined);
         | 
         | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Context);
         | Context.Insert(""OPI_GoogleSheets"", OPI_GoogleSheets);
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | 
+        | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Context);
         |" + Chars.LF;
 
 

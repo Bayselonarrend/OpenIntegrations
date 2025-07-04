@@ -78,10 +78,10 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""Utils"", Undefined);
+        | 
+
         | 
         | Utils = LoadScript(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiMain/src/en/cli/tools/Modules/Utils.os"", Context);
-        | Context.Insert(""Utils"", Utils);
         |" + Chars.LF;
 
 

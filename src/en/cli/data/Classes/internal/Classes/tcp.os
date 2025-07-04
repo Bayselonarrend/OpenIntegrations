@@ -87,10 +87,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_TCP"", Undefined);
         | 
         | OPI_TCP = LoadScript(""%1/oint/core/Modules/OPI_TCP.os"", Context);
         | Context.Insert(""OPI_TCP"", OPI_TCP);
+        | 
+        | OPI_TCP = LoadScript(""%1/oint/core/Modules/OPI_TCP.os"", Context);
         |" + Chars.LF;
 
 

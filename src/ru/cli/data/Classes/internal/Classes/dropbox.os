@@ -795,10 +795,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Dropbox"", Неопределено);
         | 
         | OPI_Dropbox = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Dropbox.os"", Контекст);
         | Контекст.Вставить(""OPI_Dropbox"", OPI_Dropbox);
+        | 
+        | OPI_Dropbox = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Dropbox.os"", Контекст);
         |" + Символы.ПС;
 
 

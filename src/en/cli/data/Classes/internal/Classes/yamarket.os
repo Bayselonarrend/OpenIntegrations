@@ -243,13 +243,13 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_YandexID"", Undefined);
-        | Context.Insert(""OPI_YandexMarket"", Undefined);
         | 
         | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"", Context);
         | Context.Insert(""OPI_YandexID"", OPI_YandexID);
         | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context);
         | Context.Insert(""OPI_YandexMarket"", OPI_YandexMarket);
+        | 
+        | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context);
         |" + Chars.LF;
 
 

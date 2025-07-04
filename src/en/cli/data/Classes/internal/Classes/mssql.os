@@ -712,10 +712,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_MSSQL"", Undefined);
         | 
         | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context);
         | Context.Insert(""OPI_MSSQL"", OPI_MSSQL);
+        | 
+        | OPI_MSSQL = LoadScript(""%1/oint/core/Modules/OPI_MSSQL.os"", Context);
         |" + Chars.LF;
 
 

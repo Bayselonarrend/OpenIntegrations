@@ -1044,13 +1044,13 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_VK"", Undefined);
-        | Context.Insert(""OPI_VKTeams"", Undefined);
         | 
         | OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
         | Context.Insert(""OPI_VK"", OPI_VK);
         | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);
         | Context.Insert(""OPI_VKTeams"", OPI_VKTeams);
+        | 
+        | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);
         |" + Chars.LF;
 
 

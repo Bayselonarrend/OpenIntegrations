@@ -78,10 +78,10 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""Utils"", Неопределено);
+        | 
+
         | 
         | Utils = ЗагрузитьСценарий(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiMain/src/ru/cli/tools/Modules/Utils.os"", Контекст);
-        | Контекст.Вставить(""Utils"", Utils);
         |" + Символы.ПС;
 
 
