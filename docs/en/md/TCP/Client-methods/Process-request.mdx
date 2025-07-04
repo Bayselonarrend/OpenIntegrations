@@ -45,23 +45,17 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint tcp ProcessRequest \
-             --address "tcpbin.com:4243" \
-             --data "Echo this!\n" \
-             --tls "{'use_tls':true,'accept_invalid_certs':false}"
+             --address "45.79.112.203:4242" \
+             --data "Echo this!\n"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint tcp ProcessRequest ^
-             --address "tcpbin.com:4243" ^
-             --data "Echo this!\n" ^
-             --tls "{'use_tls':true,'accept_invalid_certs':false}"
+             --address "45.79.112.203:4242" ^
+             --data "Echo this!\n"
         ```
     </TabItem>
 </Tabs>
