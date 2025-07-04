@@ -1095,6 +1095,7 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
+
         | 
 
         | 
