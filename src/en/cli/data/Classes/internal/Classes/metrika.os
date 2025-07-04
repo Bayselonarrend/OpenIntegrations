@@ -312,8 +312,6 @@ Function GetConnectionString() Export
         | 
         | OPI_YandexID = LoadScript(""%1/oint/core/Modules/OPI_YandexID.os"");
         | Context.Insert(""OPI_YandexID"", OPI_YandexID);
-        | OPI_YandexMetrika = LoadScript(""%1/oint/core/Modules/OPI_YandexMetrika.os"");
-        | Context.Insert(""OPI_YandexMetrika"", OPI_YandexMetrika);
         | 
         | OPI_YandexMetrika = LoadScript(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Context);
         |" + Chars.LF;

@@ -505,8 +505,6 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"");
-        | Context.Insert(""OPI_GoogleCalendar"", OPI_GoogleCalendar);
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 

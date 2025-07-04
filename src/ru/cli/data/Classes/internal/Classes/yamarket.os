@@ -248,8 +248,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"");
-        | Контекст.Вставить(""OPI_YandexMarket"", OPI_YandexMarket);
+
         | 
         | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);
         |" + Символы.ПС;
