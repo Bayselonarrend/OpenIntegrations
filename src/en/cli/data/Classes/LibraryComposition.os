@@ -1,6 +1,5 @@
 #Use "./internal"
 #Use "../../../oint/tools"
-#Use "../../../oint/tools/Modules/internal"
 
 Var ModuleCommandMapping;
 Var Version;
