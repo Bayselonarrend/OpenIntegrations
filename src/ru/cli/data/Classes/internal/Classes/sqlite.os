@@ -480,7 +480,7 @@
         | Контекст = Новый Структура;
         | Контекст.Вставить(""OPI_SQLite"", Неопределено);
         | 
-        | OPI_SQLite = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_SQLite.os"");
+        | OPI_SQLite = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_SQLite.os"", Контекст);
         | Контекст.Вставить(""OPI_SQLite"", OPI_SQLite);
         | 
         | OPI_SQLite = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_SQLite.os"", Контекст);
