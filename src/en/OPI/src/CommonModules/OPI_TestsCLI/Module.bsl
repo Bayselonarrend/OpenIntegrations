@@ -19345,7 +19345,11 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
-    Result = GetStringFromBinaryData(Result);
+    Try
+        Result = GetStringFromBinaryData(Result);
+    Except
+        Result = OPI_Tools.JSONString(Result);
+    EndTry;
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
