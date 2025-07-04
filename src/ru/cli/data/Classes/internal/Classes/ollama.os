@@ -708,10 +708,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Ollama"", Неопределено);
         | 
         | OPI_Ollama = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Ollama.os"", Контекст);
         | Контекст.Вставить(""OPI_Ollama"", OPI_Ollama);
+        | 
+        | OPI_Ollama = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Ollama.os"", Контекст);
         |" + Символы.ПС;
 
 

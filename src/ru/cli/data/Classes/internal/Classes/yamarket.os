@@ -247,13 +247,13 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_YandexID"", Неопределено);
-        | Контекст.Вставить(""OPI_YandexMarket"", Неопределено);
         | 
         | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"", Контекст);
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);
         | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);
         | Контекст.Вставить(""OPI_YandexMarket"", OPI_YandexMarket);
+        | 
+        | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);
         |" + Символы.ПС;
 
 
