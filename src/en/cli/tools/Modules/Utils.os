@@ -92,7 +92,7 @@ Function GetValuesRecursively(Val JSON, Val Prefix = "", Val CurrentNesting = 1,
 				EnvironmentVariable = Key;
 			Else
 				Counter         = duplicates + 1;
-				EnvironmentVariable = Key + StrReplace(String(duplicates), Chars.NPP, "");
+				EnvironmentVariable = Key + StrReplace(String(duplicates), Chars.NBSp, "");
 			EndIf;
 
 			FieldMapping.Insert(Key, Counter);
