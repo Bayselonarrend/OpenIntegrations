@@ -755,7 +755,7 @@
         | Контекст = Новый Структура;
         | Контекст.Вставить(""OPI_PostgreSQL"", Неопределено);
         | 
-        | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"");
+        | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Контекст);
         | Контекст.Вставить(""OPI_PostgreSQL"", OPI_PostgreSQL);
         | 
         | OPI_PostgreSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Контекст);

@@ -506,7 +506,7 @@
         | Контекст = Новый Структура;
         | Контекст.Вставить(""OPI_GoogleWorkspace"", Неопределено);
         | 
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
+        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
         | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleCalendar = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Контекст);
