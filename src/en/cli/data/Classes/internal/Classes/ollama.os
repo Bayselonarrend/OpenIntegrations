@@ -697,8 +697,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"");
-        | Context.Insert(""OPI_Ollama"", OPI_Ollama);
+
         | 
         | OPI_Ollama = LoadScript(""%1/oint/core/Modules/OPI_Ollama.os"", Context);
         |" + Chars.LF;

@@ -244,8 +244,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"");
-        | Context.Insert(""OPI_YandexMarket"", OPI_YandexMarket);
+
         | 
         | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context);
         |" + Chars.LF;

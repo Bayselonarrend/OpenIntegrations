@@ -818,8 +818,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_Airtable = LoadScript(""%1/oint/core/Modules/OPI_Airtable.os"");
-        | Context.Insert(""OPI_Airtable"", OPI_Airtable);
+
         | 
         | OPI_Airtable = LoadScript(""%1/oint/core/Modules/OPI_Airtable.os"", Context);
         |" + Chars.LF;

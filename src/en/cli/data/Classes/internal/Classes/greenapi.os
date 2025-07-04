@@ -1259,8 +1259,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"");
-        | Context.Insert(""OPI_GreenAPI"", OPI_GreenAPI);
+
         | 
         | OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"", Context);
         |" + Chars.LF;

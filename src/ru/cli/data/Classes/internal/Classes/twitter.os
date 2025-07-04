@@ -460,8 +460,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Twitter = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Twitter.os"");
-        | Контекст.Вставить(""OPI_Twitter"", OPI_Twitter);
+
         | 
         | OPI_Twitter = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Twitter.os"", Контекст);
         |" + Символы.ПС;

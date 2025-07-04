@@ -1124,8 +1124,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Slack = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Slack.os"");
-        | Контекст.Вставить(""OPI_Slack"", OPI_Slack);
+
         | 
         | OPI_Slack = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Slack.os"", Контекст);
         |" + Символы.ПС;
