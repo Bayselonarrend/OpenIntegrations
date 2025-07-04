@@ -1,8 +1,6 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint airtable CreateField ^
  --token "***" ^
- --base "appR5UuecMnWHjiem" ^
- --table "tblmZDemgr7m6s7I2" ^
- --title "d62f3dda-eaa6-48e6-b0d8-ec3aa1accee7" ^
- --fielddata "{'name':'d62f3dda-eaa6-48e6-b0d8-ec3aa1accee7','type':'number','options':{'precision':0}}"
+ --base "appvoHqBylat6KWZ3" ^
+ --table "tbl4uWfFqBNC10A1T" ^
+ --title "6a729555-8404-4d62-b272-a9815619acbe" ^
+ --fielddata "C:\Users\bayse\AppData\Local\Temp\4vvhoejibt4.tmp"
