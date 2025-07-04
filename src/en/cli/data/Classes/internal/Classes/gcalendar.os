@@ -506,29 +506,11 @@ Function GetConnectionString() Export
         | Context = New Structure;
         | Context.Insert(""OPI_GoogleCalendar"", Undefined);
         | Context.Insert(""OPI_GoogleWorkspace"", Undefined);
-        | Context.Insert(""OPI_HTTPRequests"", Undefined);
-        | Context.Insert(""OPI_TypeConversion"", Undefined);
-        | Context.Insert(""OPI_Tools"", Undefined);
-        | Context.Insert(""OPI_HTTPClient"", Undefined);
-        | Context.Insert(""OPI_Cryptography"", Undefined);
-        | Context.Insert(""OPI_AddIns"", Undefined);
         | 
         | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context);
         | Context.Insert(""OPI_GoogleCalendar"", OPI_GoogleCalendar);
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
-        | OPI_HTTPRequests = LoadScript(""%1/oint/tools/Modules/OPI_HTTPRequests.os"", Context);
-        | Context.Insert(""OPI_HTTPRequests"", OPI_HTTPRequests);
-        | OPI_TypeConversion = LoadScript(""%1/oint/tools/Modules/OPI_TypeConversion.os"", Context);
-        | Context.Insert(""OPI_TypeConversion"", OPI_TypeConversion);
-        | OPI_Tools = LoadScript(""%1/oint/tools/Modules/internal/Modules/OPI_Tools.os"", Context);
-        | Context.Insert(""OPI_Tools"", OPI_Tools);
-        | OPI_HTTPClient = LoadScript(""%1/oint/tools/Modules/internal/Classes/OPI_HTTPClient.os"", Context);
-        | Context.Insert(""OPI_HTTPClient"", OPI_HTTPClient);
-        | OPI_Cryptography = LoadScript(""%1/oint/tools/Modules/internal/Modules/OPI_Cryptography.os"", Context);
-        | Context.Insert(""OPI_Cryptography"", OPI_Cryptography);
-        | OPI_AddIns = LoadScript(""%1/oint/tools/Modules/OPI_AddIns.os"", Context);
-        | Context.Insert(""OPI_AddIns"", OPI_AddIns);
         |" + Chars.LF;
 
 
