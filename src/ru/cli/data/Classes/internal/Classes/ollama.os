@@ -709,7 +709,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Ollama = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Ollama.os"", Контекст);
+        | OPI_Ollama = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Ollama.os"");
         | Контекст.Вставить(""OPI_Ollama"", OPI_Ollama);
         | 
         | OPI_Ollama = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Ollama.os"", Контекст);

@@ -1809,7 +1809,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"", Context);
+        | OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"");
         | Context.Insert(""OPI_Ozon"", OPI_Ozon);
         | 
         | OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"", Context);

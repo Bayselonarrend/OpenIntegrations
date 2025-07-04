@@ -352,9 +352,9 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Context);
+        | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"");
         | Context.Insert(""OPI_GoogleSheets"", OPI_GoogleSheets);
-        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
+        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleSheets = LoadScript(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Context);

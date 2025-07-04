@@ -438,9 +438,9 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_GoogleDrive = LoadScript(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Context);
+        | OPI_GoogleDrive = LoadScript(""%1/oint/core/Modules/OPI_GoogleDrive.os"");
         | Context.Insert(""OPI_GoogleDrive"", OPI_GoogleDrive);
-        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
+        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleDrive = LoadScript(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Context);

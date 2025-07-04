@@ -310,9 +310,9 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"", Контекст);
+        | OPI_YandexID = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexID.os"");
         | Контекст.Вставить(""OPI_YandexID"", OPI_YandexID);
-        | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Контекст);
+        | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"");
         | Контекст.Вставить(""OPI_YandexMetrika"", OPI_YandexMetrika);
         | 
         | OPI_YandexMetrika = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMetrika.os"", Контекст);
