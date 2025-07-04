@@ -1045,9 +1045,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
-        | Context.Insert(""OPI_VK"", OPI_VK);
-        | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);
+        | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"");
         | Context.Insert(""OPI_VKTeams"", OPI_VKTeams);
         | 
         | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);

@@ -207,7 +207,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);
+        | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"");
         | Контекст.Вставить(""OPI_Neocities"", OPI_Neocities);
         | 
         | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);

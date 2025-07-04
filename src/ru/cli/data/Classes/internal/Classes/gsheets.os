@@ -364,9 +364,9 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_GoogleSheets = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Контекст);
+        | OPI_GoogleSheets = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleSheets.os"");
         | Контекст.Вставить(""OPI_GoogleSheets"", OPI_GoogleSheets);
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
+        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleSheets = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleSheets.os"", Контекст);

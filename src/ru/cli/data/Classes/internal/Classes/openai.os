@@ -975,7 +975,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_OpenAI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_OpenAI.os"", Контекст);
+        | OPI_OpenAI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_OpenAI.os"");
         | Контекст.Вставить(""OPI_OpenAI"", OPI_OpenAI);
         | 
         | OPI_OpenAI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_OpenAI.os"", Контекст);
