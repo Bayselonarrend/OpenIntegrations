@@ -1136,7 +1136,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_CDEK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_CDEK.os"", Контекст);
+        | OPI_CDEK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_CDEK.os"");
         | Контекст.Вставить(""OPI_CDEK"", OPI_CDEK);
         | 
         | OPI_CDEK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_CDEK.os"", Контекст);

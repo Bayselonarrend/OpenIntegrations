@@ -88,7 +88,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_RCON = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_RCON.os"", Контекст);
+        | OPI_RCON = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_RCON.os"");
         | Контекст.Вставить(""OPI_RCON"", OPI_RCON);
         | 
         | OPI_RCON = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_RCON.os"", Контекст);

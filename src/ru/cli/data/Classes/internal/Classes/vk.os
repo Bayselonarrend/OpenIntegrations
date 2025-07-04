@@ -2004,7 +2004,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_VK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VK.os"", Контекст);
+        | OPI_VK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VK.os"");
         | Контекст.Вставить(""OPI_VK"", OPI_VK);
         | 
         | OPI_VK = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_VK.os"", Контекст);

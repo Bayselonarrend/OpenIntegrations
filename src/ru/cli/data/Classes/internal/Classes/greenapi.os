@@ -1271,7 +1271,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_GreenAPI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GreenAPI.os"", Контекст);
+        | OPI_GreenAPI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GreenAPI.os"");
         | Контекст.Вставить(""OPI_GreenAPI"", OPI_GreenAPI);
         | 
         | OPI_GreenAPI = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GreenAPI.os"", Контекст);

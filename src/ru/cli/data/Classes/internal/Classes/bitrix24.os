@@ -6569,7 +6569,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Bitrix24 = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Bitrix24.os"", Контекст);
+        | OPI_Bitrix24 = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Bitrix24.os"");
         | Контекст.Вставить(""OPI_Bitrix24"", OPI_Bitrix24);
         | 
         | OPI_Bitrix24 = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Bitrix24.os"", Контекст);

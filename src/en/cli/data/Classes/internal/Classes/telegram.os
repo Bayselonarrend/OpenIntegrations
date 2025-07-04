@@ -1470,7 +1470,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"", Context);
+        | OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"");
         | Context.Insert(""OPI_Telegram"", OPI_Telegram);
         | 
         | OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"", Context);

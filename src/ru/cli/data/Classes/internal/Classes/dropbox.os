@@ -796,7 +796,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Dropbox = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Dropbox.os"", Контекст);
+        | OPI_Dropbox = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Dropbox.os"");
         | Контекст.Вставить(""OPI_Dropbox"", OPI_Dropbox);
         | 
         | OPI_Dropbox = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Dropbox.os"", Контекст);

@@ -438,9 +438,9 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Контекст);
+        | OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"");
         | Контекст.Вставить(""OPI_GoogleDrive"", OPI_GoogleDrive);
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
+        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"");
         | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
         | 
         | OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Контекст);

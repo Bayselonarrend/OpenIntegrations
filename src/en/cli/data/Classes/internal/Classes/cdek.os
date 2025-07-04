@@ -1096,7 +1096,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_CDEK = LoadScript(""%1/oint/core/Modules/OPI_CDEK.os"", Context);
+        | OPI_CDEK = LoadScript(""%1/oint/core/Modules/OPI_CDEK.os"");
         | Context.Insert(""OPI_CDEK"", OPI_CDEK);
         | 
         | OPI_CDEK = LoadScript(""%1/oint/core/Modules/OPI_CDEK.os"", Context);
