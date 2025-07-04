@@ -54,9 +54,9 @@
 //@skip-check module-unused-local-variable
 
 // Uncomment if OneScript is executed
-// #Use "../../../tools"
-// #Use "../../../core"
+// #Use oint
 // #Use asserts
+
 #Region Internal
 
 Procedure ИсполняемыеСценарии() Export
