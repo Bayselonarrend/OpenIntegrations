@@ -783,10 +783,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Dropbox"", Undefined);
         | 
         | OPI_Dropbox = LoadScript(""%1/oint/core/Modules/OPI_Dropbox.os"", Context);
         | Context.Insert(""OPI_Dropbox"", OPI_Dropbox);
+        | 
+        | OPI_Dropbox = LoadScript(""%1/oint/core/Modules/OPI_Dropbox.os"", Context);
         |" + Chars.LF;
 
 

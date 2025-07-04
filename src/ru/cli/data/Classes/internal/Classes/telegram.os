@@ -1483,10 +1483,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Telegram"", Неопределено);
         | 
         | OPI_Telegram = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Telegram.os"", Контекст);
         | Контекст.Вставить(""OPI_Telegram"", OPI_Telegram);
+        | 
+        | OPI_Telegram = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Telegram.os"", Контекст);
         |" + Символы.ПС;
 
 

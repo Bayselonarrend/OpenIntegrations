@@ -829,10 +829,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Airtable"", Неопределено);
         | 
         | OPI_Airtable = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Airtable.os"", Контекст);
         | Контекст.Вставить(""OPI_Airtable"", OPI_Airtable);
+        | 
+        | OPI_Airtable = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Airtable.os"", Контекст);
         |" + Символы.ПС;
 
 

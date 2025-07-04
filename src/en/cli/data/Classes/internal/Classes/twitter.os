@@ -435,10 +435,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Twitter"", Undefined);
         | 
         | OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"", Context);
         | Context.Insert(""OPI_Twitter"", OPI_Twitter);
+        | 
+        | OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"", Context);
         |" + Chars.LF;
 
 

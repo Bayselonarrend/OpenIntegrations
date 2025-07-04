@@ -1093,10 +1093,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Slack"", Undefined);
         | 
         | OPI_Slack = LoadScript(""%1/oint/core/Modules/OPI_Slack.os"", Context);
         | Context.Insert(""OPI_Slack"", OPI_Slack);
+        | 
+        | OPI_Slack = LoadScript(""%1/oint/core/Modules/OPI_Slack.os"", Context);
         |" + Chars.LF;
 
 

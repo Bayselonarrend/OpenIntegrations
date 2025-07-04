@@ -966,10 +966,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_OpenAI"", Undefined);
         | 
         | OPI_OpenAI = LoadScript(""%1/oint/core/Modules/OPI_OpenAI.os"", Context);
         | Context.Insert(""OPI_OpenAI"", OPI_OpenAI);
+        | 
+        | OPI_OpenAI = LoadScript(""%1/oint/core/Modules/OPI_OpenAI.os"", Context);
         |" + Chars.LF;
 
 
