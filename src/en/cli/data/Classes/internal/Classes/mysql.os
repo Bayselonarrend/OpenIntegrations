@@ -704,7 +704,7 @@ Function GetConnectionString() Export
         | Context = New Structure;
         | Context.Insert(""OPI_MySQL"", Undefined);
         | 
-        | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"");
+        | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"", Context);
         | Context.Insert(""OPI_MySQL"", OPI_MySQL);
         | 
         | OPI_MySQL = LoadScript(""%1/oint/core/Modules/OPI_MySQL.os"", Context);
