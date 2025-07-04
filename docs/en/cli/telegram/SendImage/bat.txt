@@ -1,5 +1,5 @@
 oint telegram SendImage ^
  --token "***" ^
- --chat "@testsichee" ^
+ --chat "461699897" ^
  --text "Строковое значение" ^
- --picture "C:\Users\Administrator\AppData\Local\Temp\awubow5n4vz.png"
+ --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
