@@ -1484,7 +1484,7 @@
     Возврат "
         | Контекст = Новый Структура;
         | 
-        | OPI_Telegram = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Telegram.os"", Контекст);
+        | OPI_Telegram = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Telegram.os"");
         | Контекст.Вставить(""OPI_Telegram"", OPI_Telegram);
         | 
         | OPI_Telegram = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Telegram.os"", Контекст);

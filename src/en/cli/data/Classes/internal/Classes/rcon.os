@@ -88,7 +88,7 @@ Function GetConnectionString() Export
     Return "
         | Context = New Structure;
         | 
-        | OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"", Context);
+        | OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"");
         | Context.Insert(""OPI_RCON"", OPI_RCON);
         | 
         | OPI_RCON = LoadScript(""%1/oint/core/Modules/OPI_RCON.os"", Context);
