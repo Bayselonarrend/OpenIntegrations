@@ -1469,10 +1469,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Telegram"", Undefined);
         | 
         | OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"", Context);
         | Context.Insert(""OPI_Telegram"", OPI_Telegram);
+        | 
+        | OPI_Telegram = LoadScript(""%1/oint/core/Modules/OPI_Telegram.os"", Context);
         |" + Chars.LF;
 
 

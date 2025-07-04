@@ -472,10 +472,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Notion"", Undefined);
         | 
         | OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"", Context);
         | Context.Insert(""OPI_Notion"", OPI_Notion);
+        | 
+        | OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"", Context);
         |" + Chars.LF;
 
 

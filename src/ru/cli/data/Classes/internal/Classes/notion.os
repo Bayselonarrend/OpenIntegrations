@@ -472,10 +472,11 @@
 
     Возврат "
         | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_Notion"", Неопределено);
         | 
         | OPI_Notion = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Notion.os"", Контекст);
         | Контекст.Вставить(""OPI_Notion"", OPI_Notion);
+        | 
+        | OPI_Notion = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Notion.os"", Контекст);
         |" + Символы.ПС;
 
 

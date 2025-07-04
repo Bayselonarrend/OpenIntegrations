@@ -504,13 +504,13 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_GoogleCalendar"", Undefined);
-        | Context.Insert(""OPI_GoogleWorkspace"", Undefined);
         | 
         | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context);
         | Context.Insert(""OPI_GoogleCalendar"", OPI_GoogleCalendar);
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | 
+        | OPI_GoogleCalendar = LoadScript(""%1/oint/core/Modules/OPI_GoogleCalendar.os"", Context);
         |" + Chars.LF;
 
 

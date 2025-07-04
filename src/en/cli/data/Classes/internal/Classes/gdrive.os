@@ -437,13 +437,13 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_GoogleDrive"", Undefined);
-        | Context.Insert(""OPI_GoogleWorkspace"", Undefined);
         | 
         | OPI_GoogleDrive = LoadScript(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Context);
         | Context.Insert(""OPI_GoogleDrive"", OPI_GoogleDrive);
         | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
         | Context.Insert(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        | 
+        | OPI_GoogleDrive = LoadScript(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Context);
         |" + Chars.LF;
 
 

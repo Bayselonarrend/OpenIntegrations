@@ -1961,10 +1961,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_VK"", Undefined);
         | 
         | OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
         | Context.Insert(""OPI_VK"", OPI_VK);
+        | 
+        | OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
         |" + Chars.LF;
 
 

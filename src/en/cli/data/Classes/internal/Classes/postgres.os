@@ -733,10 +733,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_PostgreSQL"", Undefined);
         | 
         | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Context);
         | Context.Insert(""OPI_PostgreSQL"", OPI_PostgreSQL);
+        | 
+        | OPI_PostgreSQL = LoadScript(""%1/oint/core/Modules/OPI_PostgreSQL.os"", Context);
         |" + Chars.LF;
 
 

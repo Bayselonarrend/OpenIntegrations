@@ -202,10 +202,11 @@ Function GetConnectionString() Export
 
     Return "
         | Context = New Structure;
-        | Context.Insert(""OPI_Neocities"", Undefined);
         | 
         | OPI_Neocities = LoadScript(""%1/oint/core/Modules/OPI_Neocities.os"", Context);
         | Context.Insert(""OPI_Neocities"", OPI_Neocities);
+        | 
+        | OPI_Neocities = LoadScript(""%1/oint/core/Modules/OPI_Neocities.os"", Context);
         |" + Chars.LF;
 
 
