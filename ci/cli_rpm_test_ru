@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Удаляем oint, если он установлен
-                    sh 'sudo rpm -e oint || echo "oint not installed"'
+                    sh 'rpm -e oint || echo "oint not installed"'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Устанавливаем скаченный пакет
-                    sh 'sudo rpm -ivh --replacepkgs oint-1.26.0-1.noarch_ru.rpm'
+                    sh 'rpm -ivh --replacepkgs oint-1.26.0-1.noarch_ru.rpm'
                 }
             }
         }
