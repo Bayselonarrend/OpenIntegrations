@@ -10,7 +10,7 @@ pipeline {
     agent {
         label 'Rpm-Agent'  // Имя или метка агента
     }
-
+	stages {
         stage('Remove oint') {
             steps {
                 script {
