@@ -1128,11 +1128,35 @@ EndProcedure
 
 Procedure Check_TwitterText(Val Result, Val Text) Export
 
-    ReplyText = Result["data"]["text"];
-    ReplyText = Left(ReplyText, StrLen(Text));
-
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(ReplyText).Равно(Text);
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+
+EndProcedure
+
+Procedure Check_TwitterArray(Val Result) Export
+
+    If Not TypeOf(Result) = Type("Array") Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    EndIf;
 
 EndProcedure
 
@@ -3232,6 +3256,10 @@ EndProcedure
 
 Procedure Проверка_ТвиттерТекст(Val Результат, Val Текст) Export
 	Check_TwitterText(Результат, Текст);
+EndProcedure
+
+Procedure Проверка_ТвиттерМассив(Val Результат) Export
+	Check_TwitterArray(Результат);
 EndProcedure
 
 Procedure Проверка_ВайберОк(Val Результат) Export

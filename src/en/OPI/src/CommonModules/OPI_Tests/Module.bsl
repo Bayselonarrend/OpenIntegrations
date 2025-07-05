@@ -7708,7 +7708,7 @@ Procedure Twitter_UploadAttachmentsArray(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadAttachmentsArray", "Twitter");
-    OPI_TestDataRetrieval.Check_Array(Result);
+    OPI_TestDataRetrieval.Check_TwitterArray(Result);
 
 EndProcedure
 
