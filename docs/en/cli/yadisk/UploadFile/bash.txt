@@ -1,5 +1,5 @@
 oint yadisk UploadFile \
  --token "***" \
- --path "/fae69a8d-4dc7-4d66-83e7-1710744dd76d.png" \
- --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
+ --path "/2fd05082-1486-4825-b7b5-6bc33b6e4df6.png" \
+ --file "C:\Users\bayse\AppData\Local\Temp\eyykrpbte4t.png" \
  --rewrite true

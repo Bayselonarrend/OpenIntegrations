@@ -1,4 +1,5 @@
 oint slack SendMessage ^
  --token "***" ^
  --channel "C06UFNUTKUL" ^
- --text "TestMessage1"
+ --text "Message with picture" ^
+ --blocks "[{'type':'image','image_url':'https://hut.openintegrations.dev/test_data/picture.jpg','alt_text':'Image'}]"

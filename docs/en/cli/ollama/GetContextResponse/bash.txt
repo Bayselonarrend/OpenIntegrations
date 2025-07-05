@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint ollama GetContextResponse \
- --url "https://api.athenaeum.digital/ollama" \
+ --url "https://hut.openintegrations.dev/ollama" \
  --model "tinyllama" \
- --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a comprehensive ERP (enterprise resource planning) system designed for midsize and large businesses. It provides automation, integration, customization, and financial management solutions to optimize operations and streamline processes across various departments. The system includes accounting, purchasing, inventory management, production planning, sales, human resources, customer relationship management, and other essential modules. 1C:Enterprise is designed for businesses with between 50-2000 employees and with revenue ranging from $10 million to $4 billion.'},{'role':'user','content':'When the first version was released?'}]" \
+ --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is an industry-specific ERP (Enterprise Resource Planning) system provided by 1C (formerly known as Caspian Software). It provides software solutions for various industries, including manufacturing and distribution, retail, wholesale, logistics, and more. The 1C:Enterprise system is known for its advanced features and functionalities that cater to the unique needs of each industry. It offers a wide range of modules such as financial management, supply chain management, inventory management, order management, customer relationship management (CRM), and more. 1C:Enterprise is available for licensing on a subscription basis, allowing you to scale up or down according to your business requirements.'},{'role':'user','content':'When the first version was released?'}]" \
  --headers "{'Authorization':'***'}"
