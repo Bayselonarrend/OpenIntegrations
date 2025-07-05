@@ -6889,7 +6889,7 @@ Procedure CLI_Twitter_UploadAttachmentsArray(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadAttachmentsArray", "Twitter");
-    OPI_TestDataRetrieval.Check_Array(Result);
+    OPI_TestDataRetrieval.Check_TwitterArray(Result);
 
 EndProcedure
 
