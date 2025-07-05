@@ -584,7 +584,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     Else
 
-        Oint = "sudo oint";
+        Oint = "oint";
 
     EndIf;
 
