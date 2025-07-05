@@ -13,4 +13,7 @@ src/en/cli/data/Classes/internal/Classes/** linguist-vendored
 *.iss linguist-vendored
 *.bat linguist-vendored
 
+* text=auto
+*.<> text eol=lf
+*.sh text eol=lf
 
