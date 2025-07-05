@@ -1,6 +1,6 @@
 oint airtable CreateField \
  --token "***" \
- --base "appvoHqBylat6KWZ3" \
- --table "tbl4uWfFqBNC10A1T" \
- --title "6a729555-8404-4d62-b272-a9815619acbe" \
- --fielddata "C:\Users\bayse\AppData\Local\Temp\4vvhoejibt4.tmp"
+ --base "appRcy8EFLtr6b7yZ" \
+ --table "tbloefx2yd28cWJIS" \
+ --title "0eb399b6-0ec7-45f1-acf0-44be25a42d69" \
+ --fielddata "C:\Users\bayse\AppData\Local\Temp\m2ortvrnixj.tmp"
