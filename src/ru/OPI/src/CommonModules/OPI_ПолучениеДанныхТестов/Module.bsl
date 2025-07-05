@@ -584,7 +584,7 @@
 
     Иначе
 
-        Oint = "sudo oint";
+        Oint = "oint";
 
     КонецЕсли;
 
