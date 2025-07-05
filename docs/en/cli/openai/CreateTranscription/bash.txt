@@ -1,6 +1,6 @@
 oint openai CreateTranscription \
- --url "https://api.athenaeum.digital:1122/" \
+ --url "https://hut.openintegrations.dev/localai/" \
  --token "***" \
  --model "whisper-1" \
- --audio "C:\Users\Administrator\AppData\Local\Temp\bi04ndbxhxg.wav" \
+ --audio "C:\Users\bayse\AppData\Local\Temp\nnzmvrjp2bv.wav" \
  --type "audio/wav"
