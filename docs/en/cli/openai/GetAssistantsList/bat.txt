@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint openai GetAssistantsList ^
- --url "https://api.athenaeum.digital:1122/" ^
+ --url "https://hut.openintegrations.dev/localai/" ^
  --token "***" ^
  --limit 2 ^
  --options "{'after':'asst_2','order':'desc'}"

@@ -1,2 +1,2 @@
 oint postgres GetTlsSettings ^
- --trust false
+ --trust true

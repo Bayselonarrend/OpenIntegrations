@@ -1,2 +1,4 @@
+# JSON data can also be passed as a path to a .json file
+
 oint greenapi GetNotification \
- --access "C:\Users\bayse\AppData\Local\Temp\ns4sxu5405x.tmp"
+ --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}"
