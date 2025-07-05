@@ -263,7 +263,7 @@ EndProcedure
 Procedure ReportResult(Val Text, Val Status = "")
 
 	If Not ValueIsFilled(Status) Then
-		Status = MessageStatus.NoStatus;
+		Status = MessageStatus.WithoutStatus;
 	EndIf;
 
 	If ValueIsFilled(OutputFile) Then
@@ -333,7 +333,7 @@ Function JSONString(Val Data)
     JSONParameters = New JSONWriterSettings(LineBreak
         , " "
         , False
-        , JSONCharactersEscapeMode["No"]
+        , JSONCharactersEscapeMode["None"]
         , False
         , False
         , False
