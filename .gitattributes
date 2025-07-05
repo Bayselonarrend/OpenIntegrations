@@ -11,6 +11,9 @@ src/ru/cli/data/Classes/internal/Classes/** linguist-vendored
 src/en/cli/data/Classes/internal/Classes/** linguist-vendored
 *.iss linguist-vendored
 *.bat linguist-vendored
+* text=auto
+*.<> text eol=lf
+*.sh text eol=lf
 media/** filter=lfs diff=lfs merge=lfs -text
 Media/** filter=lfs diff=lfs merge=lfs -text
 media/** !text !filter !merge !diff
