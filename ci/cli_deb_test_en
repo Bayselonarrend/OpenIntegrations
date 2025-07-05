@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Удаляем oint, если он установлен
-                    sh 'sudo dpkg -r oint || echo "oint not installed"'
+                    sh 'dpkg -r oint || echo "oint not installed"'
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Устанавливаем скаченный пакет
-                    sh 'sudo dpkg -i oint_1.26.0_all_en.deb'
+                    sh 'dpkg -i oint_1.26.0_all_en.deb'
                 }
             }
         }
