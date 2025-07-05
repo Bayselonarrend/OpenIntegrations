@@ -1,4 +1,4 @@
 oint openai DownloadFile \
- --url "https://api.athenaeum.digital:1122/" \
+ --url "https://hut.openintegrations.dev/localai/" \
  --token "***" \
- --id "file-4"
+ --id "file-38"
