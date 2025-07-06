@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод \
   --token "***" \
-  --uuid "e28a6ad4-c58b-4ea2-94a7-bc34f817fdaf" \
+  --uuid "bc53e39b-922a-42db-b7b9-c2d05974b9b5" \
   --getfile true \
   --testapi "***" \
-  --out "C:\Users\bayse\AppData\Local\Temp\5hgl5fmwsdn.pdf"
+  --out "/tmp/q5up1ntc.ugb.pdf"
