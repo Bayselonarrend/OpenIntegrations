@@ -20295,7 +20295,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("bool_field"       , "BOOL");
-    ColoumnsStruct.Insert("oldchar_field"    , """char""");
+    ColoumnsStruct.Insert("oldchar_field"    , "OLDCHAR");
     ColoumnsStruct.Insert("smallint_field"   , "SMALLINT");
     ColoumnsStruct.Insert("smallserial_field", "SMALLSERIAL");
     ColoumnsStruct.Insert("int_field"        , "INT");
