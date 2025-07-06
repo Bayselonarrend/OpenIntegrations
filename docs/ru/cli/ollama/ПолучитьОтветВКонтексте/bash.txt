@@ -3,5 +3,5 @@
 oint ollama ПолучитьОтветВКонтексте \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "tinyllama" \
-  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a software suite for manufacturing companies that helps improve productivity and efficiency through automation, data analysis, and supply chain management. It is an integrated set of applications that includes production planning, inventory management, order fulfillment, and financial management. The suite offers real-time data visualization and reporting capabilities, enabling manufacturers to make informed decisions based on detailed information about their operations.'},{'role':'user','content':'When the first version was released?'}]" \
+  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is an integrated accounting, payroll, and financial management software for small to medium-sized enterprises (SMEs). It offers a variety of features that are designed to help SME owners streamline their financial operations, manage cash flow, balance the books, and keep track of financial data. 1C:Enterprise is used by over 500,000 users in more than 190 countries worldwide.'},{'role':'user','content':'When the first version was released?'}]" \
   --headers "{'Authorization':'***'}"
