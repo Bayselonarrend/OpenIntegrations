@@ -1,3 +1,3 @@
 oint sqlite УдалитьТаблицу ^
   --table "test" ^
-  --db "/tmp/4hldobkh.0gk.sqlite"
+  --db "/tmp/tduxjxy3.zro.sqlite"
