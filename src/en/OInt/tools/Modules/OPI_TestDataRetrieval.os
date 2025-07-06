@@ -2629,7 +2629,14 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
             WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
             JSONWriter.SetString(WriterSettings);
             WriteJSON(JSONWriter, Value);
-            Value          = """" + JSONWriter.Close() + """";
+
+            Value = JSONWriter.Close();
+
+            If Not OPI_Tools.IsWindows() Then
+                Value = StrReplace(Value, "\""", "\\""");
+            EndIf;
+
+            Value = """" + Value + """";
 
         Else
 
