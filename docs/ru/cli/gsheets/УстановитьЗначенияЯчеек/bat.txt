@@ -2,6 +2,6 @@
 
 oint gsheets УстановитьЗначенияЯчеек ^
   --token "***" ^
-  --spreadsheet "1Wpr1x4fh0Snzw44y_sIa6jGCUwHyb00TUaD5LqLVl2s" ^
+  --spreadsheet "1ZMTCI5BEZ1tg7Xwy5jkXaXWi7KSmL8gVBczBLC3SjVY" ^
   --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" ^
   --sheetname "Лист2"
