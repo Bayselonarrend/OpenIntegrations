@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint gcalendar ИзменитьСобытие ^
-  --token '***' ^
-  --calendar '9d527259ce8af9209afd920958953ddd247ad99f0b282d9e00119e2df32dc81e@group.calendar.google.com' ^
-  --props '{"Описание":"Новое описание события"}' ^
-  --event 'bmubjsel4aaldta52gn8qum95k'
+  --token "***" ^
+  --calendar "86bc1a6f52bb07ed880e32e1120ee8a4914ecfa81eccb270409f157f280e669d@group.calendar.google.com" ^
+  --props "{'Описание':'Новое описание события'}" ^
+  --event "a27gkc34a39rvkbuq60irjcq44"

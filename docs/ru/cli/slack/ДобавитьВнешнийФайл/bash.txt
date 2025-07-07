@@ -1,4 +1,4 @@
 oint slack ДобавитьВнешнийФайл \
-  --token '***' \
-  --url 'https://hut.openintegrations.dev/test_data/document.docx' \
-  --title 'Новый файл'
+  --token "***" \
+  --url "https://hut.openintegrations.dev/test_data/document.docx" \
+  --title "Новый файл"

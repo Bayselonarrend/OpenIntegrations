@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi РазархивироватьЧат ^
-  --access '{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}' ^
-  --chat '120363410406221140@g.us'
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --chat "120363410406221140@g.us"
