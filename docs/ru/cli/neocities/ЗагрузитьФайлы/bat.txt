@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint neocities ЗагрузитьФайлы ^
-  --token "***" ^
-  --files "{'test/pic1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','test/gif.gif':'https://hut.openintegrations.dev/test_data/picture2.jpg','pic2.png':'https://hut.openintegrations.dev/test_data/animation.gif'}"
+  --token '***' ^
+  --files '{\"test/pic1.png\":\"https://hut.openintegrations.dev/test_data/picture.jpg\",\"test/gif.gif\":\"https://hut.openintegrations.dev/test_data/picture2.jpg\",\"pic2.png\":\"https://hut.openintegrations.dev/test_data/animation.gif\"}'

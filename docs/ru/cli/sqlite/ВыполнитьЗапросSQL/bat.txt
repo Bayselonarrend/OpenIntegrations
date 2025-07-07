@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ВыполнитьЗапросSQL ^
-  --sql "SELECT uuid4();" ^
-  --db "/tmp/vprkjqvz.ie4.sqlite" ^
-  --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
+  --sql 'INSERT INTO test_table (name, age, salary, is_active, created_at, data)VALUES (?1, ?2, ?3, ?4, ?5, ?6);' ^
+  --params '[\"Vitaly\",25,1000.12,true,\"2025-07-07T11:13:52.6428535Z\",{\"blob\":\"/tmp/ztpwpj3t.23y.png\"}]' ^
+  --db '/tmp/daio20t5.vvu.sqlite'
