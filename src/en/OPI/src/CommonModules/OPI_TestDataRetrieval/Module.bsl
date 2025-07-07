@@ -2633,7 +2633,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
             Value = JSONWriter.Close();
 
             If Not OPI_Tools.IsWindows() Then
-                Value = StrReplace(Value, "\""", """");
+                Value = StrReplace(Value, "\""", "'""'");
             EndIf;
 
             Value = """" + Value + """";
