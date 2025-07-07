@@ -2601,6 +2601,8 @@ EndFunction
 Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     CurrentType = TypeOf(Value);
+    IsWindows   = OPI_Tools.IsWindows();
+    Cover       = ?(IsWindows, """", "'");
 
     If CurrentType = Type("Number") Then
 
@@ -2611,12 +2613,12 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         Value = OPI_Tools.NumberToString(Value);
 
         If Not Embedded Then
-            Value = """" + Value + """";
+            Value = Cover + Value + Cover;
         EndIf;
 
     ElsIf CurrentType = Type("Date") Then
 
-        Value = """" + XMLString(Value) + """";
+        Value = Cover + XMLString(Value) + Cover;
 
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map")
@@ -2626,12 +2628,12 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
 
-            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , Not OPI_Tools.IsWindows());
+            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , Not IsWindows);
             JSONWriter.SetString(WriterSettings);
             WriteJSON(JSONWriter, Value);
 
             Value = JSONWriter.Close();
-            Value = """" + Value + """";
+            Value = Cover + Value + Cover;
 
         Else
 
@@ -2663,7 +2665,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
         Value.Write(TFN);
-        Value = """" + TFN + """";
+        Value = Cover + TFN + Cover;
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -2671,6 +2673,11 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         Raise "Invalid type " + String(CurrentType);
 
+    EndIf;
+
+    If Not IsWindows Then
+        Value = StrReplace(Value, "\""", """");
+        Value = StrReplace(Value, """" , "\""");
     EndIf;
 
     Return Value;
