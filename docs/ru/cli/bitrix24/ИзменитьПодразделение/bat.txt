@@ -1,7 +1,7 @@
 oint bitrix24 ИзменитьПодразделение ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --depid 2276 ^
-  --title "Новое подразделение" ^
+  --url 'b24-ar17wx.bitrix24.by' ^
+  --depid 2280 ^
+  --title 'Новое подразделение' ^
   --parentid 1 ^
   --headid 10 ^
-  --token "***"
+  --token '***'

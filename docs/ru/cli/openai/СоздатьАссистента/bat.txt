@@ -1,6 +1,6 @@
 oint openai СоздатьАссистента ^
-  --url "https://hut.openintegrations.dev/localai/" ^
-  --token "***" ^
-  --model "smolvlm-256m-instruct" ^
-  --name "Math tutor" ^
-  --inst "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
+  --url 'https://hut.openintegrations.dev/localai/' ^
+  --token '***' ^
+  --model 'smolvlm-256m-instruct' ^
+  --name 'Math tutor' ^
+  --inst 'You are a personal math tutor. When asked a question, write and run Python code to answer the question.'

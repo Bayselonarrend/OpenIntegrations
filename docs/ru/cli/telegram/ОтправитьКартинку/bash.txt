@@ -1,5 +1,5 @@
 oint telegram ОтправитьКартинку \
-  --token "***" \
-  --chat "@testsichee" \
-  --text "Строковое значение" \
-  --picture "/tmp/n4cgk04c.asu.png"
+  --token '***' \
+  --chat '@testsichee' \
+  --text 'Строковое значение' \
+  --picture '/tmp/qpivpubq.2df.png'

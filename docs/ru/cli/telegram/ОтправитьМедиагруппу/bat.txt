@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint telegram ОтправитьМедиагруппу ^
-  --token "***" ^
-  --chat "@testsichee" ^
-  --text "Строковое значение" ^
-  --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/ex5s0m2o.ttt.docx':'document'}"
+  --token '***' ^
+  --chat '461699897' ^
+  --text 'Строковое значение' ^
+  --media '{\"/tmp/ifnctlxv.1kb.png\":\"photo\",\"https://hut.openintegrations.dev/test_data/video.mp4\":\"video\"}'

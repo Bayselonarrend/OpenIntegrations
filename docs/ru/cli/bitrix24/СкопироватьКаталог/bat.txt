@@ -1,5 +1,5 @@
 oint bitrix24 СкопироватьКаталог ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 37108 ^
-  --tagetid 37110 ^
-  --token "***"
+  --url 'b24-ar17wx.bitrix24.by' ^
+  --folderid 37154 ^
+  --tagetid 37156 ^
+  --token '***'
