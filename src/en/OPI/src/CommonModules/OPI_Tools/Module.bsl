@@ -1138,10 +1138,11 @@ Function GetEscapeSequencesMap()
 
     CharacterMapping = New Map;
 
-    CharacterMapping.Insert("\n", Chars.LF);
-    CharacterMapping.Insert("\r", Chars.CR);
-    CharacterMapping.Insert("\f", Chars.FF);
-    CharacterMapping.Insert("\v", Chars.VTab);
+    CharacterMapping.Insert("\n"  , Chars.LF);
+    CharacterMapping.Insert("\r"  , Chars.CR);
+    CharacterMapping.Insert("\f"  , Chars.FF);
+    CharacterMapping.Insert("\v"  , Chars.VTab);
+    CharacterMapping.Insert("\x22", """");
 
     Return CharacterMapping;
 

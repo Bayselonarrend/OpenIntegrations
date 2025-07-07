@@ -65,8 +65,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint bitrix24 СоздатьЗадачу \
-              --url 'https://b24-ar17wx.bitrix24.by/rest/1/***' \
-              --fields '{\"TITLE\":\"Новая задача\",\"DESCRIPTION\":\"Новое описание задачи\",\"PRIORITY\":\"2\",\"DEADLINE\":\"2025-07-08T11:28:09.5790984Z\",\"RESPONSIBLE_ID\":1}'
+              --url 'b24-ar17wx.bitrix24.by' \
+              --fields '{"TITLE":"Новая задача","DESCRIPTION":"Новое описание задачи","PRIORITY":"2","DEADLINE":"2025-07-08T13:36:55.4004992Z","RESPONSIBLE_ID":1}' \
+              --token '***'
         ```
     </TabItem>
   
@@ -75,8 +76,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint bitrix24 СоздатьЗадачу ^
-              --url 'https://b24-ar17wx.bitrix24.by/rest/1/***' ^
-              --fields '{\"TITLE\":\"Новая задача\",\"DESCRIPTION\":\"Новое описание задачи\",\"PRIORITY\":\"2\",\"DEADLINE\":\"2025-07-08T11:28:09.5790984Z\",\"RESPONSIBLE_ID\":1}'
+              --url 'b24-ar17wx.bitrix24.by' ^
+              --fields '{"TITLE":"Новая задача","DESCRIPTION":"Новое описание задачи","PRIORITY":"2","DEADLINE":"2025-07-08T13:36:55.4004992Z","RESPONSIBLE_ID":1}' ^
+              --token '***'
         ```
     </TabItem>
 </Tabs>
