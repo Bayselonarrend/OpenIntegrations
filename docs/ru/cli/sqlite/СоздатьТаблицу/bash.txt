@@ -2,5 +2,5 @@
 
 oint sqlite СоздатьТаблицу \
   --table 'test' \
-  --cols '{\"id\":\"INTEGER PRIMARY KEY\",\"name\":\"TEXT\",\"age\":\"INTEGER\",\"salary\":\"REAL\",\"is_active\":\"BOOLEAN\",\"created_at\":\"DATETIME\",\"data\":\"BLOB\"}' \
-  --db '/tmp/dvbwsixs.mnp.sqlite'
+  --cols '{"id":"INTEGER PRIMARY KEY","name":"TEXT","age":"INTEGER","salary":"REAL","is_active":"BOOLEAN","created_at":"DATETIME","data":"BLOB"}' \
+  --db '/tmp/5hdxwmby.41v.sqlite'

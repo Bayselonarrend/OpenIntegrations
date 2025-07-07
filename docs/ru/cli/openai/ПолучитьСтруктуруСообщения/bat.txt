@@ -1,3 +1,3 @@
 oint openai ПолучитьСтруктуруСообщения ^
-  --role "user" ^
-  --text "What is 1C:Enterprise?"
+  --role 'user' ^
+  --text 'What is 1C:Enterprise?'

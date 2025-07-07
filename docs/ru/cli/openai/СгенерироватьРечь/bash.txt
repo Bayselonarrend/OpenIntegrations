@@ -5,4 +5,4 @@ oint openai СгенерироватьРечь \
   --token '***' \
   --model 'tts-1' \
   --input 'Attack ships on fire off the shoulder of Orion bright as magnesium' \
-  --options '{\"response_format\":\"wav\"}'
+  --options '{"response_format":"wav"}'
