@@ -2675,11 +2675,6 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     EndIf;
 
-    If Not IsWindows Then
-        Value = StrReplace(Value, "\""", """");
-        Value = StrReplace(Value, """" , "\""");
-    EndIf;
-
     Return Value;
 
 EndFunction
