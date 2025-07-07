@@ -1,5 +1,5 @@
 oint slack ОтправитьСообщение \
-  --token "***" \
-  --channel "C06UFNUTKUL" \
-  --text "Отложенное сообщение" \
-  --date "2025-07-08T07:00:44.9669619"
+  --token '***' \
+  --channel 'C06UFNUTKUL' \
+  --text 'Сообщение с картинкой' \
+  --blocks '[{\"type\":\"image\",\"image_url\":\"https://hut.openintegrations.dev/test_data/picture.jpg\",\"alt_text\":\"Картинка\"}]'

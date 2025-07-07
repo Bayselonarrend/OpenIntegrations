@@ -1,8 +1,8 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint airtable СоздатьПоле ^
-  --token "***" ^
-  --base "appz7OIMiivcLY6Ep" ^
-  --table "tbl5ca7qjoPaeTs2I" ^
-  --title "9e1b58b7-ebe3-4e8a-bb1b-480412623f4d" ^
-  --fielddata "{'name':'9e1b58b7-ebe3-4e8a-bb1b-480412623f4d','type':'number','options':{'precision':0}}"
+  --token '***' ^
+  --base 'appz7OIMiivcLY6Ep' ^
+  --table 'tbl5ca7qjoPaeTs2I' ^
+  --title 'd4e9ce0e-df47-4a53-9af5-1cbd2dd3faa5' ^
+  --fielddata '{\"name\":\"d4e9ce0e-df47-4a53-9af5-1cbd2dd3faa5\",\"type\":\"number\",\"options\":{\"precision\":0}}'

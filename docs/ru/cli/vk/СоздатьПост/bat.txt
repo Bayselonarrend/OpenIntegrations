@@ -1,8 +1,8 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СоздатьПост ^
-  --text "Пост из автотеста" ^
-  --pictures "/tmp/yhazzrvv.r5l.png" ^
+  --text 'Пост из автотеста' ^
+  --pictures '[\"https://hut.openintegrations.dev/test_data/picture.jpg\",\"/tmp/oqznwgap.ih5.png\"]' ^
   --ad true ^
-  --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --url 'https://github.com/Bayselonarrend/OpenIntegrations' ^
+  --auth '{\"access_token\":\"***\",\"owner_id\":\"-218861756\",\"app_id\":\"51694790\",\"group_id\":\"218861756\"}'

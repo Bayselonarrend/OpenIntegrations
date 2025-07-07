@@ -1,7 +1,7 @@
 oint vkteams ОтправитьТекстовоеСообщение ^
-  --token "***" ^
-  --chatid "689203963@chat.agent" ^
-  --text "<b>Полужирный текст сообщения</b>" ^
-  --reply "7524013551258711296" ^
-  --keyboard "[[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}]]" ^
-  --parsemod "HTML"
+  --token '***' ^
+  --chatid '689203963@chat.agent' ^
+  --text '<b>Полужирный текст сообщения</b>' ^
+  --reply '7524236674809738515' ^
+  --keyboard '[[{\"text\":\"Кнопка1\",\"callbackData\":\"НажатиеКнопки1\",\"style\":\"attention\"},{\"text\":\"Кнопка2\",\"url\":\"https://openintegrations.dev\",\"style\":\"base\"}],[{\"text\":\"Кнопка1\",\"callbackData\":\"НажатиеКнопки1\",\"style\":\"attention\"},{\"text\":\"Кнопка2\",\"url\":\"https://openintegrations.dev\",\"style\":\"base\"}]]' ^
+  --parsemod 'HTML'
