@@ -1,8 +1,8 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint slack ОтправитьЭфемерноеСообщение ^
-  --token "***" ^
-  --channel "C06UFNUTKUL" ^
-  --text "Эфимерное сообщение" ^
-  --user "U06UABH3APP" ^
-  --blocks "{'type':'image','image_url':'https://hut.openintegrations.dev/test_data/picture.jpg','alt_text':'Картинка'}"
+  --token '***' ^
+  --channel 'C06UFNUTKUL' ^
+  --text 'Эфимерное сообщение' ^
+  --user 'U06UABH3APP' ^
+  --blocks '{"type":"image","image_url":"https://hut.openintegrations.dev/test_data/picture.jpg","alt_text":"Картинка"}'

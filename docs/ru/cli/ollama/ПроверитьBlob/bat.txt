@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ПроверитьBlob ^
-  --url "https://hut.openintegrations.dev/ollama" ^
-  --digest "yoyoyo" ^
-  --headers "{'Authorization':'***'}"
+  --url 'https://hut.openintegrations.dev/ollama' ^
+  --digest 'yoyoyo' ^
+  --headers '{"Authorization":"***"}'

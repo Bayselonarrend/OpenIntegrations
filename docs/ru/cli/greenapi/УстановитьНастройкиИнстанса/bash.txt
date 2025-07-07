@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УстановитьНастройкиИнстанса \
-  --settings "{'pollMessageWebhook':'yes','incomingBlockWebhook':'no','incomingCallWebhook':'no','editedMessageWebhook':'yes','deletedMessageWebhook':'yes'}" \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}"
+  --settings '{"pollMessageWebhook":"yes","incomingBlockWebhook":"no","incomingCallWebhook":"no","editedMessageWebhook":"yes","deletedMessageWebhook":"yes"}' \
+  --access '{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}'
