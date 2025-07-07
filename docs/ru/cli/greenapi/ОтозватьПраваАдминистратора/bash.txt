@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтозватьПраваАдминистратора \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363419527505431@g.us" \
-  --user "123123123@c.us"
+  --access '{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}' \
+  --group '120363403138169377@g.us' \
+  --user '123123123@c.us'
