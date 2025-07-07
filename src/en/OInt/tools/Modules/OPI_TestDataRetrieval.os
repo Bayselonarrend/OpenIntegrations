@@ -2626,16 +2626,11 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
 
-            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
+            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , Not OPI_Tools.IsWindows());
             JSONWriter.SetString(WriterSettings);
             WriteJSON(JSONWriter, Value);
 
             Value = JSONWriter.Close();
-
-            If Not OPI_Tools.IsWindows() Then
-                Value = StrReplace(Value, "\""", "'""'");
-            EndIf;
-
             Value = """" + Value + """";
 
         Else
