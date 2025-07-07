@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint bitrix24 СоздатьЧат ^
-  --url 'b24-ar17wx.bitrix24.by' ^
-  --fields '{"TYPE":"CHAT","TITLE":"Закрытый чат","USERS":[10,1]}' ^
-  --token '***'
+  --url "b24-ar17wx.bitrix24.by" ^
+  --fields "{'TYPE':'CHAT','TITLE':'Закрытый чат','USERS':[10,1]}" ^
+  --token "***"

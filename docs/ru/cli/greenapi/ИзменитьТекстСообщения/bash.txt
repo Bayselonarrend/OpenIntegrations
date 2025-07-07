@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИзменитьТекстСообщения \
-  --access '{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}' \
-  --chat '120363410406221140@g.us' \
-  --message 'BAE5EA835E9950EB' \
-  --text 'Новый текст сообщения'
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --chat "120363410406221140@g.us" \
+  --message "BAE57B1F1D96ECA9" \
+  --text "Новый текст сообщения"

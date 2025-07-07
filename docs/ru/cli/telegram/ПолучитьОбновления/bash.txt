@@ -1,2 +1,2 @@
 oint telegram ПолучитьОбновления \
-  --token '***'
+  --token "***"

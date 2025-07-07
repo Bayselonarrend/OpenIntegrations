@@ -1,9 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ПолучитьЗаписи ^
-  --table 'test' ^
-  --fields '["name","salary"]' ^
-  --filter '[{"field":"name","type":"=","value":"Vitaly","union":"AND","raw":false},{"field":"age","type":"BETWEEN","value":"20 AND 30","raw":true}]' ^
-  --order '{"created_at":"DESC"}' ^
-  --limit 1 ^
-  --db '/tmp/5hdxwmby.41v.sqlite'
+  --table "test" ^
+  --db "/tmp/zotrxhi2.pb1.sqlite"
