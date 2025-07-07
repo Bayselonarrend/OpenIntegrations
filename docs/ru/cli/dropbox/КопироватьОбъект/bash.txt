@@ -1,4 +1,4 @@
 oint dropbox КопироватьОбъект \
-  --token '***' \
-  --from '/New/pic.png' \
-  --to '/New/pic_copy.png'
+  --token "***" \
+  --from "/New/pic.png" \
+  --to "/New/pic_copy.png"

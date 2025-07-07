@@ -1,4 +1,4 @@
 oint slack ПолучитьСписокОтветовНаСообщение \
-  --token '***' \
-  --channel 'C06UFNUTKUL' \
-  --stamp '1751894935.611629'
+  --token "***" \
+  --channel "C06UFNUTKUL" \
+  --stamp "1751917329.216009"

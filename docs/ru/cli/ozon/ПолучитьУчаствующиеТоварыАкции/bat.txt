@@ -1,4 +1,4 @@
 oint ozon ПолучитьУчаствующиеТоварыАкции ^
-  --clientid '***' ^
-  --apikey '***' ^
+  --clientid "***" ^
+  --apikey "***" ^
   --actionid 111111111
