@@ -2,5 +2,5 @@
 
 oint cdek ЗафиксироватьДоговоренностьОДоставке ^
   --token "***" ^
-  --appt "{'cdek_number':'1106207236','order_uuid':'f7f0e0ef-458a-4f8d-a741-c014f949a492','date':'2025-07-21','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" ^
+  --appt "{'cdek_number':'1106207236','order_uuid':'16345d70-a0f0-4a17-ba3c-845a407fe8e1','date':'2025-07-21','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" ^
   --testapi "***"
