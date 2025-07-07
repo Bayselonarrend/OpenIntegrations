@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi СоздатьГруппу \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --name "New group"
+  --access '{\"apiUrl\":\"***\",\"mediaUrl\":\"https://7105.media.greenapi.com\",\"idInstance\":\"7105187566\",\"apiTokenInstance\":\"***\"}' \
+  --name 'New group'

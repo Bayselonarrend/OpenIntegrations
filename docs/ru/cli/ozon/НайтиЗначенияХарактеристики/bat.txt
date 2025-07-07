@@ -1,7 +1,7 @@
 oint ozon НайтиЗначенияХарактеристики ^
-  --clientid "***" ^
-  --apikey "***" ^
+  --clientid '***' ^
+  --apikey '***' ^
   --categoryid 17054869 ^
   --typeid 97311 ^
   --attributeid 85 ^
-  --value "Sunshine"
+  --value 'Sunshine'

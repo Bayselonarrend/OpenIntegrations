@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint gcalendar СоздатьСобытие ^
-  --token "***" ^
-  --calendar "6f4a7839367f97d2de84183b962a11e8bf777ec18b9c5f8ea437ffaf8d8c82a3@group.calendar.google.com" ^
-  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2025-07-07T06:56:20.9498084Z','ДатаОкончания':'2025-07-07T07:56:20.9498084Z','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+  --token '***' ^
+  --calendar '739ad5c0b494b46297af6229561cc72dedd0c33b5c8d2fa0a90f137b157dda51@group.calendar.google.com' ^
+  --props '{\"Описание\":\"Описание тестового события\",\"Заголовок\":\"Новое событие\",\"МестоПроведения\":\"В офисе\",\"ДатаНачала\":\"2025-07-07T11:20:05.3112992Z\",\"ДатаОкончания\":\"2025-07-07T12:20:05.3112992Z\",\"МассивURLФайловВложений\":{\"Картинка1\":\"https://hut.openintegrations.dev/test_data/picture.jpg\",\"Картинка2\":\"https://hut.openintegrations.dev/test_data/picture2.jpg\"},\"ОтправлятьУведомления\":true}'

@@ -1,4 +1,4 @@
 oint ozon ПолучитьСписокСкладовОтгрузки \
-  --clientid "***" \
-  --apikey "***" \
-  --search "ТВЕРЬ"
+  --clientid '***' \
+  --apikey '***' \
+  --search 'ТВЕРЬ'
