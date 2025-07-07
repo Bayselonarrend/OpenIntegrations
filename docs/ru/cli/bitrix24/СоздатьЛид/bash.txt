@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint bitrix24 СоздатьЛид \
-  --url 'b24-ar17wx.bitrix24.by' \
-  --fields '{"ADDRESS":"ул. Пушкина, д. 10","ADDRESS_COUNTRY":"Россия","EMAIL":[{"VALUE":"yo@example.com","VALUE_TYPE":"HOME"},{"VALUE":"hi@example.com","VALUE_TYPE":"WORK"}],"NAME":"Иван","LAST_NAME":"Иванов","PHONE":[{"VALUE":"88005553535","VALUE_TYPE":"WORK"}],"TITLE":"Мегаклиент"}' \
-  --token '***'
+  --url "b24-ar17wx.bitrix24.by" \
+  --fields "{'ADDRESS':'ул. Пушкина, д. 10','ADDRESS_COUNTRY':'Россия','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Иван','LAST_NAME':'Иванов','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'Мегаклиент'}" \
+  --token "***"

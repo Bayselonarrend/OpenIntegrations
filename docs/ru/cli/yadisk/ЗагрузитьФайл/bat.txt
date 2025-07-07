@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл ^
-  --token '***' ^
-  --path '/138db5b0-13ce-471b-885e-d6d9c656090b.png' ^
-  --file '/tmp/sche0sd3.c2r.png' ^
+  --token "***" ^
+  --path "/72d37870-50ee-48ed-8031-3516b15feed7.png" ^
+  --file "/tmp/nh33fwjp.0ud.png" ^
   --rewrite true

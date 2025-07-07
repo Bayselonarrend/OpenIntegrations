@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama СоздатьМодель ^
-  --url 'https://hut.openintegrations.dev/ollama' ^
-  --model 'mario' ^
-  --settings '{"from":"tinyllama","system":"You are Mario from Super Mario Bros."}' ^
-  --headers '{"Authorization":"***"}'
+  --url "https://hut.openintegrations.dev/ollama" ^
+  --model "mario" ^
+  --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" ^
+  --headers "{'Authorization':'***'}"

@@ -1,2 +1,2 @@
 oint airtable ПолучитьСписокБаз \
-  --token '***'
+  --token "***"

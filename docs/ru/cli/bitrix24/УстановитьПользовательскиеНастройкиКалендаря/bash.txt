@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
-  --url 'b24-ar17wx.bitrix24.by' \
-  --settings '{"view":"month","showDeclined":"Y","collapseOffHours":"N","showCompletedTasks":"N"}' \
-  --token '***'
+  --url "b24-ar17wx.bitrix24.by" \
+  --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" \
+  --token "***"

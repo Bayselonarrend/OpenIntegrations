@@ -1,6 +1,6 @@
 oint slack ЗагрузитьФайл ^
-  --token '***' ^
-  --file 'https://hut.openintegrations.dev/test_data/document.docx' ^
-  --filename 'megadoc.docx' ^
-  --title 'Новый файл' ^
-  --channel 'C06UFNUTKUL'
+  --token "***" ^
+  --file "https://hut.openintegrations.dev/test_data/document.docx" ^
+  --filename "megadoc.docx" ^
+  --title "Новый файл" ^
+  --channel "C06UFNUTKUL"
