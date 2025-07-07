@@ -2601,8 +2601,7 @@ EndFunction
 Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     CurrentType = TypeOf(Value);
-    IsWindows   = OPI_Tools.IsWindows();
-    Cover       = ?(IsWindows, """", "'");
+    Cover       = False;
 
     If CurrentType = Type("Number") Then
 
@@ -2613,12 +2612,13 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         Value = OPI_Tools.NumberToString(Value);
 
         If Not Embedded Then
-            Value = Cover + Value + Cover;
+            Cover = True;
         EndIf;
 
     ElsIf CurrentType = Type("Date") Then
 
-        Value = Cover + XMLString(Value) + Cover;
+        Value = XMLString(Value);
+        Cover = True;
 
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map")
@@ -2628,12 +2628,12 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
 
-            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , Not IsWindows);
+            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
             JSONWriter.SetString(WriterSettings);
             WriteJSON(JSONWriter, Value);
 
             Value = JSONWriter.Close();
-            Value = Cover + Value + Cover;
+            Cover = True;
 
         Else
 
@@ -2651,6 +2651,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
             Stream.Close();
 
             Value = TFN;
+            Cover = True;
 
         EndIf;
 
@@ -2665,7 +2666,8 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
         Value.Write(TFN);
-        Value = Cover + TFN + Cover;
+        Value = TFN;
+        Cover = True;
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -2673,6 +2675,14 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         Raise "Invalid type " + String(CurrentType);
 
+    EndIf;
+
+    If Not OPI_Tools.IsWindows() Then
+        Value = StrReplace(Value, """", "\x22");
+    EndIf;
+
+    If Cover Then
+        Value = """" + Value + """";
     EndIf;
 
     Return Value;
