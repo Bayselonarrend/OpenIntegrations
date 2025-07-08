@@ -2,4 +2,4 @@
 
 oint greenapi ПолучитьИнформациюОГруппе \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363420746066204@g.us"
+  --group "120363402261235901@g.us"
