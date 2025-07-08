@@ -16275,7 +16275,11 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     // Directory bucket
 
-    Name   = "opi-dirbucket3";
+    Name = "opi-dirbucket3";
+
+    Result = OPI_S3.DeleteBucket(Name, BasicData, True); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket (Deleting, DB)", "S3"); // SKIP
+
     Result = OPI_S3.CreateBucket(Name, BasicData, True);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket (DB)", "S3"); // SKIP
@@ -16283,7 +16287,11 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     // General purpose bucket
 
-    Name   = "opi-gpbucket3";
+    Name = "opi-gpbucket3";
+
+    Result = OPI_S3.DeleteBucket(Name, BasicData);
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBucket (Deleting)", "S3");
+
     Result = OPI_S3.CreateBucket(Name, BasicData);
 
     // END
@@ -18321,6 +18329,9 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "postgres", Login, Password, Port);
     TLSSettings         = OPI_PostgreSQL.GetTlsSettings(True);
+
+    Deletion = OPI_PostgreSQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting, TLS)", "PostgreSQL");
 
     Result = OPI_PostgreSQL.CreateDatabase(Base, TLSConnectionString, TLSSettings);
 

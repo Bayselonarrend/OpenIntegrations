@@ -18236,6 +18236,8 @@ Procedure CLI_S3_CreateBucket(FunctionParameters)
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
 
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteBucket", Options);
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateBucket (deleting, DB)", "S3");
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CreateBucket", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateBucket (DB)", "S3");
@@ -18250,6 +18252,9 @@ Procedure CLI_S3_CreateBucket(FunctionParameters)
     Options.Insert("name" , Name);
     Options.Insert("basic", BasicData);
     Options.Insert("dir"  , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteBucket", Options);
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateBucket (deleting)", "S3");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CreateBucket", Options);
 
@@ -20266,6 +20271,9 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
     Options.Insert("base", Base);
     Options.Insert("dbc" , TLSConnectionString);
     Options.Insert("tls" , TLSSettings);
+
+    Deletion = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options, False);
+    OPI_TestDataRetrieval.WriteLogCLI(Deletion, "CreateDatabase (deleting, TLS)", "PostgreSQL");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
