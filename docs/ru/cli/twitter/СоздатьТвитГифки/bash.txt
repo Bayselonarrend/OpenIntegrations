@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьТвитГифки \
-  --text "Тестовый твитт4b48b12c-4ed0-4188-b991-4be58f9dd9ad" \
-  --gifs "/tmp/berxmpt0.dze" \
+  --text "Тестовый твиттf6295f10-d813-4792-8ada-e215d21ec211" \
+  --gifs "/tmp/ry5qstni.r0u" \
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
