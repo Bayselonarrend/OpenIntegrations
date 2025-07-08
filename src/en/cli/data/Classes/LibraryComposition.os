@@ -178,6 +178,8 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     CallString    = "Response = " + CallString;
     ExecutionText = ExecutionText + Chars.LF + CallString;
 
+    ReplaceEscapeSequences(ExecutionText, True);
+
     ReturnStructure = New Structure("Error,Result", False, ExecutionText);
 
     Return ReturnStructure;
@@ -210,29 +212,33 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
 EndFunction
 
-Procedure ReplaceEscapeSequences(Text) Export
+Procedure ReplaceEscapeSequences(Text, RequiredOnly = False) Export
 
     Text = String(Text);
 
-    CharacterMapping = GetEscapeSequencesMap();
+    CharacterMapping = GetEscapeSequencesMap(RequiredOnly);
 
     For Each Symbol In CharacterMapping Do
 
-        Text = StrReplace(Text, Symbol.Key          , Symbol.Value);
+        Text = StrReplace(Text, Symbol.Key, Symbol.Value);
         Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
 
     EndDo;
 
 EndProcedure
 
-Function GetEscapeSequencesMap()
+Function GetEscapeSequencesMap(RequiredOnly)
 
     CharacterMapping = New Map;
 
-    CharacterMapping.Insert("\n", Chars.LF);
-    CharacterMapping.Insert("\r", Chars.CR);
-    CharacterMapping.Insert("\f", Chars.FF);
-    CharacterMapping.Insert("\v", Chars.VTab);
+    If Not RequiredOnly Then
+        CharacterMapping.Insert("\n"  , Chars.LF);
+        CharacterMapping.Insert("\r"  , Chars.CR);
+        CharacterMapping.Insert("\f"  , Chars.FF);
+        CharacterMapping.Insert("\v"  , Chars.VTab);
+    EndIf;
+
+    CharacterMapping.Insert("\x22", """");
 
     Return CharacterMapping;
 
@@ -268,8 +274,8 @@ Procedure ДополнитьКэшСостава(Val Библиотека, Val �
 	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndProcedure
 
-Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
-	ReplaceEscapeSequences(Текст);
+Procedure ЗаменитьУправляющиеПоследовательности(Текст, ТолькоОбязательные = False) Export
+	ReplaceEscapeSequences(Текст, ТолькоОбязательные);
 EndProcedure
 
 #EndRegion
