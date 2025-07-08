@@ -1,3 +1,3 @@
 oint yadisk ПолучитьПубличныйОбъект \
   --token "***" \
-  --url "https://yadi.sk/i/5Kdp8o90yKa65g"
+  --url "https://yadi.sk/i/k9K1GdhN0aR7Fw"

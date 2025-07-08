@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьПроизвольныйТвит \
-  --text "Тестовый твитт685f64bd-702d-4ec4-a5bb-7bf77500e370" \
-  --media "['1942304965722095616','1942304977113718784']" \
+  --text "Тестовый твитт1b306f1a-e2ec-4d0d-a662-98325de31d17" \
+  --media "['1942472708735815680','1942472720358273024']" \
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
