@@ -1,6 +1,6 @@
 oint cdek ПолучитьКвитанцию ^
   --token "***" ^
-  --uuid "bf3a1e1e-1b9c-4328-b567-e40b073c905d" ^
+  --uuid "e9ff84f9-46e5-4c35-affe-782a93bb51d1" ^
   --getfile true ^
   --testapi "***" ^
-  --out "/tmp/ht5kbfps.xrm.pdf"
+  --out "/tmp/ofhcyfrc.tkj.pdf"
