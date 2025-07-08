@@ -178,8 +178,6 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     CallString    = "Response = " + CallString;
     ExecutionText = ExecutionText + Chars.LF + CallString;
 
-    ReplaceEscapeSequences(ExecutionText, True);
-
     ReturnStructure = New Structure("Error,Result", False, ExecutionText);
 
     Return ReturnStructure;
@@ -212,11 +210,11 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
 EndFunction
 
-Procedure ReplaceEscapeSequences(Text, RequiredOnly = False) Export
+Procedure ReplaceEscapeSequences(Text) Export
 
     Text = String(Text);
 
-    CharacterMapping = GetEscapeSequencesMap(RequiredOnly);
+    CharacterMapping = GetEscapeSequencesMap();
 
     For Each Symbol In CharacterMapping Do
 
@@ -227,18 +225,14 @@ Procedure ReplaceEscapeSequences(Text, RequiredOnly = False) Export
 
 EndProcedure
 
-Function GetEscapeSequencesMap(RequiredOnly)
+Function GetEscapeSequencesMap()
 
     CharacterMapping = New Map;
 
-    If Not RequiredOnly Then
-        CharacterMapping.Insert("\n"  , Chars.LF);
-        CharacterMapping.Insert("\r"  , Chars.CR);
-        CharacterMapping.Insert("\f"  , Chars.FF);
-        CharacterMapping.Insert("\v"  , Chars.VTab);
-    EndIf;
-
-    CharacterMapping.Insert("\x22", """");
+    CharacterMapping.Insert("\n"  , Chars.LF);
+    CharacterMapping.Insert("\r"  , Chars.CR);
+    CharacterMapping.Insert("\f"  , Chars.FF);
+    CharacterMapping.Insert("\v"  , Chars.VTab);
 
     Return CharacterMapping;
 
@@ -274,8 +268,8 @@ Procedure ДополнитьКэшСостава(Val Библиотека, Val �
 	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndProcedure
 
-Procedure ЗаменитьУправляющиеПоследовательности(Текст, ТолькоОбязательные = False) Export
-	ReplaceEscapeSequences(Текст, ТолькоОбязательные);
+Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
+	ReplaceEscapeSequences(Текст);
 EndProcedure
 
 #EndRegion
