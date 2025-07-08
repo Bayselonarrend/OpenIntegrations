@@ -1,6 +1,6 @@
 oint vkteams ИзменитьТекстСообщения ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --messageid "7524706432562771338" ^
+  --messageid "7524755137491907997" ^
   --text "<b>Новый полужирный текст сообщения</b>" ^
   --parsemod "HTML"
