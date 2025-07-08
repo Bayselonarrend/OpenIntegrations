@@ -1,4 +1,6 @@
 oint cdek ПолучитьКвитанцию ^
   --token "***" ^
-  --uuid "023a5a47-48da-4f6c-852f-233e91bb4811" ^
-  --testapi "***"
+  --uuid "fff13f34-c077-441d-8a71-66eb9954f3a5" ^
+  --getfile true ^
+  --testapi "***" ^
+  --out "/tmp/tf4qdlci.0cy.pdf"
