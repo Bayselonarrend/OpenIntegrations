@@ -1,6 +1,6 @@
 oint openai ЗагрузитьФайл \
   --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
-  --name "60518115-b950-4c15-b760-14f4103ff7f0.png" \
+  --name "ba413849-ae28-48e1-a009-7f6bef505d7f.png" \
   --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --purpose "assistants"

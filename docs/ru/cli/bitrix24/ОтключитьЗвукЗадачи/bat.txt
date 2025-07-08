@@ -1,4 +1,4 @@
 oint bitrix24 ОтключитьЗвукЗадачи ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "7018" ^
+  --task "7028" ^
   --token "***"

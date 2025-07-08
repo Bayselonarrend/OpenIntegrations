@@ -1,5 +1,5 @@
 oint bitrix24 ДелегироватьЗадачу ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "7018" ^
-  --user 2288 ^
+  --task "7028" ^
+  --user 2292 ^
   --token "***"
