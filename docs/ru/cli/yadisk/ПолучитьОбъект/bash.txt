@@ -1,3 +1,3 @@
 oint yadisk ПолучитьОбъект \
   --token "***" \
-  --path "/eb487f62-3961-47b4-bc53-ea8bf05a766f.png"
+  --path "/e56aebb8-e5c7-4bc0-8fa2-810063b4b425.png"

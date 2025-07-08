@@ -1,4 +1,4 @@
 oint cdek ПолучитьДоговоренностьОДоставке ^
   --token "***" ^
-  --uuid "f0b88721-9a73-4127-a092-a60b0ef74f04" ^
+  --uuid "d9cbf8bd-4783-4ab2-ac43-d658cecb3cab" ^
   --testapi "***"
