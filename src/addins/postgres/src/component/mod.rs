@@ -8,7 +8,7 @@ use postgres_native_tls::MakeTlsConnector;
 use native_tls::{TlsConnector, Certificate};
 use std::fs::File;
 use std::io::Read;
-
+use std::sync::{Arc, Mutex};
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -73,7 +73,7 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     connection_string: String,
-    client: Option<Client>,
+    client: Option<Arc<Mutex<Client>>>,
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
@@ -141,7 +141,7 @@ impl AddIn {
         // Обрабатываем результат с помощью вспомогательной функции
         let result_string = match result {
             Ok(client) => {
-                self.client = Some(client);
+                self.client = Some(Arc::new(Mutex::new(client)));
                 json!({"result": true}).to_string()
             }
             Err(e) => Self::process_error(e.to_string()),
@@ -162,8 +162,8 @@ impl AddIn {
         json!({"result": true}).to_string()
     }
 
-    pub fn get_connection(&mut self) -> Option<&mut Client> {
-        self.client.as_mut()
+    pub fn get_connection(&mut self) -> Option<Arc<Mutex<Client>>> {
+        self.client.clone()
     }
 
     pub fn close_connection(&mut self) -> String {

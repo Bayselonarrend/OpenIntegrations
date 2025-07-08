@@ -15,9 +15,14 @@ pub fn execute_query(
     force_result: bool,
 ) -> String {
 
-    let client = match add_in.get_connection() {
+    let client_arc = match add_in.get_connection() {
         Some(c) => c,
         None => return format_json_error("No connection initialized"),
+    };
+
+    let mut client = match client_arc.lock(){
+        Ok(c) => c,
+        Err(_) => return format_json_error("Cannot acquire client lock"),
     };
 
     // Парсинг JSON параметров
@@ -287,10 +292,10 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
                 Value::Object(map)
             })
             .unwrap_or(Value::Null),
-        "TIMESTAMP" => row.try_get::<_, Option<chrono::NaiveDateTime>>(column_name)?
+        "TIMESTAMP" => row.try_get::<_, Option<NaiveDateTime>>(column_name)?
             .map(|timestamp| Value::String(timestamp.format("%Y-%m-%dT%H:%M:%S").to_string()))
             .unwrap_or(Value::Null),
-        "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<chrono::DateTime<FixedOffset>>>(column_name)?
+        "TIMESTAMP WITH TIME ZONE" | "TIMESTAMPTZ" => row.try_get::<_, Option<DateTime<FixedOffset>>>(column_name)?
             .map(|timestamp| Value::String(timestamp.to_rfc3339())) // RFC3339 - это профиль ISO8601
             .unwrap_or(Value::Null),
         "INET" => row.try_get::<_, Option<IpAddr>>(column_name)?
