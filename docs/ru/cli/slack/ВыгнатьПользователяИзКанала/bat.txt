@@ -1,4 +1,4 @@
 oint slack ВыгнатьПользователяИзКанала ^
   --token "***" ^
-  --channel "C094FCD483Z" ^
+  --channel "C094PUST9U3" ^
   --user "U06UABH3APP"
