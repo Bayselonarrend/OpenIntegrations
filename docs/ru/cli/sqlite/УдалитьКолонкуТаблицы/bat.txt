@@ -1,4 +1,4 @@
 oint sqlite УдалитьКолонкуТаблицы ^
   --table "test" ^
   --name "new_col" ^
-  --db "/tmp/3c1raqs2.v2g.sqlite"
+  --db "/tmp/ki54qvuc.k3d.sqlite"
