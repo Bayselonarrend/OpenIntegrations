@@ -702,7 +702,7 @@ Function FormTextSelect(Val Scheme)
     Filters = Scheme["filter"];
     Sort    = Scheme["order"];
     Count   = Scheme["limit"];
-    DBMS       = Scheme["dbms"];
+    DBMS    = Scheme["dbms"];
 
     SQLTemplate = "SELECT %1 %2 FROM %3
     |%4
@@ -713,10 +713,10 @@ Function FormTextSelect(Val Scheme)
     SortingText = FormSortingText(Sort);
 
     If DBMS       = "mssql" Then
-        TopText      = FormTopText(Count);
-        LimitText    = "";
+        TopText   = FormTopText(Count);
+        LimitText = "";
     Else
-        TopText      = "";
+        TopText   = "";
         LimitText = FormCountText(Count);
     EndIf;
 
