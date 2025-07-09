@@ -1,0 +1,26 @@
+﻿    {
+ "status": 404,
+ "response": {
+  "Error": {
+   "Code": "NoSuchBucket",
+   "Message": "The specified bucket does not exist",
+   "BucketName": "opi-dirbucket3",
+   "Resource": "/opi-dirbucket3/",
+   "RequestId": "1850AD7F28A5B8BB",
+   "HostId": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Date": "Wed, 09 Jul 2025 19:56:56 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin, Accept-Encoding",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "1850AD7F28A5B8BB",
+  "X-Content-Type-Options": "nosniff",
+  "X-XSS-Protection": "1; mode=block",
+  "Content-Length": "329",
+  "Content-Type": "application/xml"
+ }
+}
