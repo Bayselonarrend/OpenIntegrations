@@ -559,6 +559,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterMarker"    , "$");
     Features.Insert("DBMS"               , "postgres");
     Features.Insert("ColumnField"        , "column_name");
+    Features.Insert("TransactionStart"   , "BEGIN");
 
     Return Features;
 

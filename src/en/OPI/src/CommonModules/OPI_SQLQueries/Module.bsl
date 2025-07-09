@@ -702,13 +702,31 @@ Function FormTextSelect(Val Scheme)
     Filters = Scheme["filter"];
     Sort    = Scheme["order"];
     Count   = Scheme["limit"];
+    DBMS       = Scheme["dbms"];
 
-    SQLTemplate = "SELECT %1 FROM %2
-    |%3;";
+    SQLTemplate = "SELECT %1 %2 FROM %3
+    |%4
+    |%5
+    |%6;";
 
-    OptionsBlock = ForSelectOptionsText(Filters, Sort, Count);
+    FilterText  = FormFilterText(Filters);
+    SortingText = FormSortingText(Sort);
 
-    TextSQL = StrTemplate(SQLTemplate, StrConcat(Fields, ", "), Table, OptionsBlock);
+    If DBMS       = "mssql" Then
+        TopText      = FormTopText(Count);
+        LimitText    = "";
+    Else
+        TopText      = "";
+        LimitText = FormCountText(Count);
+    EndIf;
+
+    TextSQL = StrTemplate(SQLTemplate
+        , TopText
+        , StrConcat(Fields, ", ")
+        , Table
+        , FilterText
+        , SortingText
+        , LimitText);
 
     Return TextSQL;
 
@@ -1017,7 +1035,8 @@ Function ProcessRecordsStart(Val Module, Val Transaction, Val Connection)
 
     If Transaction Then
 
-        Start = Module.ExecuteSQLQuery("BEGIN", , , Connection);
+        Text  = Module.GetFeatures()["TransactionStart"];
+        Start = Module.ExecuteSQLQuery(Text, , , Connection);
 
         If Not Start["result"] Then
             Return Start;
@@ -1079,22 +1098,6 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection)
     Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
 
     Return Result;
-
-EndFunction
-
-Function ForSelectOptionsText(Val Filters, Val Sort, Val Count)
-
-    BlockTemplate = "%1
-    |%2
-    |%3";
-
-    FilterText  = FormFilterText(Filters);
-    SortingText = FormSortingText(Sort);
-    CountText   = FormCountText(Count);
-
-    BlockText = StrTemplate(BlockTemplate, FilterText, SortingText, CountText);
-
-    Return BlockText;
 
 EndFunction
 
@@ -1167,6 +1170,19 @@ Function FormCountText(Val Count)
     EndIf;
 
     CountText = "LIMIT %1";
+    CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
+
+    Return CountText;
+
+EndFunction
+
+Function FormTopText(Val Count)
+
+    If Not ValueIsFilled(Count) Then
+        Return "";
+    EndIf;
+
+    CountText = "TOP %1";
     CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
 
     Return CountText;
