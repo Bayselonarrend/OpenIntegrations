@@ -33,7 +33,59 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
 
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // All records without filters
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
+
+    // Filter, selected fields, limit and sorting
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, "test_data", Login, Password);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Result = OPI_MSSQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString, TLSSettings);
 ```
  
 
