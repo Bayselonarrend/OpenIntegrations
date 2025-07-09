@@ -1,4 +1,4 @@
 oint ozon ПолучитьЧерновикЗаявкиFBO ^
   --clientid "***" ^
   --apikey "***" ^
-  --oper "0197eb79-6472-70f7-bf07-bc67039eb46b"
+  --oper "0197ede8-7871-70c7-b146-e18dfd371575"
