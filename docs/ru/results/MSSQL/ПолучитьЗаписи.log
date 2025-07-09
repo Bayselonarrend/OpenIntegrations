@@ -1,0 +1,25 @@
+﻿    {
+ "data": [
+  {
+   "bigint_field": 20000000000,
+   "bit_field": 0,
+   "date_field": "2025-07-09",
+   "datetime_field": "2025-07-09T19:33:52",
+   "dto_field": "2025-07-09T09:33:52.062438400+00:00",
+   "float24_field": 10.1234569549561,
+   "float53_field": 10.1234567891235,
+   "int_field": 200000,
+   "numeric_field": 5.333,
+   "nvarchar_field": "Some text",
+   "smallint_field": 2000,
+   "time_field": "19:33:52",
+   "tinyint_field": 5,
+   "uid_field": "25216af9-4b56-4efd-aff2-7608d10c4ff7",
+   "varbinary_field": {
+    "BYTES": "/9j/4VTBRX..."
+   },
+   "xml_field": "<root><element><name>Пример</name><value>123</value></element><element><name>Тест</name><value>456</value></element></root>"
+  }
+ ],
+ "result": true
+}
