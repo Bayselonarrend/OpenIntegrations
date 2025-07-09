@@ -2678,13 +2678,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
     EndIf;
 
     If Not OPI_Tools.IsWindows() Then
-
         Value = StrReplace(Value, """" , """'""");
-
-        If Not ValueIsFilled(Value) Then
-            Value = "''";
-        EndIf;
-
     EndIf;
 
     If Cover Then
