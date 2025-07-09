@@ -21264,11 +21264,9 @@ Procedure CLI_MySQL_GenerateConnectionString(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
-    Base     = "";
 
     Options = New Structure;
     Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
@@ -21417,11 +21415,9 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
-    Base     = "";
 
     Options = New Structure;
     Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
@@ -22088,11 +22084,9 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
-    Base     = "";
 
     Options = New Structure;
     Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
@@ -22116,7 +22110,6 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
     Options.Insert("port" , Port);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
