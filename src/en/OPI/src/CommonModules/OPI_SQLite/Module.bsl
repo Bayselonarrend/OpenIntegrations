@@ -463,6 +463,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterMarker"    , "?");
     Features.Insert("DBMS"               , "sqlite");
     Features.Insert("ColumnField"        , "name");
+    Features.Insert("TransactionStart"   , "BEGIN");
 
     Return Features;
 

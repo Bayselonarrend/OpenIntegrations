@@ -530,6 +530,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterMarker"    , "?");
     Features.Insert("DBMS"               , "mysql");
     Features.Insert("ColumnField"        , "COLUMN_NAME");
+    Features.Insert("TransactionStart"   , "BEGIN");
 
     Return Features;
 

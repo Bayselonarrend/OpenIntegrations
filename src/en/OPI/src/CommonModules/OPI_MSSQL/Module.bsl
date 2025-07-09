@@ -42,8 +42,6 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-
-
 #Region Public
 
 #Region CommonMethods
@@ -559,6 +557,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterMarker"    , "@P");
     Features.Insert("DBMS"               , "mssql");
     Features.Insert("ColumnField"        , "COLUMN_NAME");
+    Features.Insert("TransactionStart"   , "BEGIN TRAN");
 
     Return Features;
 

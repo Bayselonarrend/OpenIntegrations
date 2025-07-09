@@ -1,0 +1,33 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("tinyint_field"  , "tinyint");
+    ColoumnsStruct.Insert("smallint_field" , "smallint");
+    ColoumnsStruct.Insert("int_field"      , "int");
+    ColoumnsStruct.Insert("bigint_field"   , "bigint");
+    ColoumnsStruct.Insert("float24_field"  , "float(24)");
+    ColoumnsStruct.Insert("float53_field"  , "float(53)");
+    ColoumnsStruct.Insert("bit_field"      , "bit");
+    ColoumnsStruct.Insert("nvarchar_field" , "nvarchar(4000)");
+    ColoumnsStruct.Insert("varbinary_field", "varbinary(max)");
+    ColoumnsStruct.Insert("uid_field"      , "uniqueidentifier");
+    ColoumnsStruct.Insert("numeric_field"  , "numeric(5,3)"); // Or decimal
+    ColoumnsStruct.Insert("xml_field"      , "xml");
+    ColoumnsStruct.Insert("date_field"     , "date");
+    ColoumnsStruct.Insert("time_field"     , "time");
+    ColoumnsStruct.Insert("dto_field"      , "datetimeoffset");
+    ColoumnsStruct.Insert("datetime_field" , "datetime");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.CreateTable(Table, ColoumnsStruct, ConnectionString, TLSSettings);

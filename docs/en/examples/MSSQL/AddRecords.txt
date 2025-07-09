@@ -1,0 +1,54 @@
+﻿    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    XML = "<?xml version=""1.0""?>
+        |<root>
+        | <element>
+        | <name>Example</name>
+        | <value>123</value>
+        | </element>
+        | <element>
+        | <name>Test</name>
+        | <value>456</value>
+        | </element>
+        |</root>";
+
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+    CurrentDateTZ = OPI_Tools.DateRFC3339(CurrentDate, "+05:00");
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("tinyint_field"  , New Structure("TINYINT"       , 5));
+    RecordStructure.Insert("smallint_field" , New Structure("SMALLINT"      , 2000));
+    RecordStructure.Insert("int_field"      , New Structure("INT"           , 200000));
+    RecordStructure.Insert("bigint_field"   , New Structure("BIGINT"        , 20000000000));
+    RecordStructure.Insert("float24_field"  , New Structure("FLOAT24"       , 10.1234567));
+    RecordStructure.Insert("float53_field"  , New Structure("FLOAT53"       , 10.123456789123456));
+    RecordStructure.Insert("bit_field"      , New Structure("BIT"           , True));
+    RecordStructure.Insert("nvarchar_field" , New Structure("NVARCHAR"      , "Some text"));
+    RecordStructure.Insert("varbinary_field", New Structure("BYTES"         , Image));
+    RecordStructure.Insert("uid_field"      , New Structure("UUID"          , New UUID));
+    RecordStructure.Insert("numeric_field"  , New Structure("NUMERIC"       , 5.333));
+    RecordStructure.Insert("xml_field"      , New Structure("XML"           , XML));
+    RecordStructure.Insert("date_field"     , New Structure("DATE"          , CurrentDate));
+    RecordStructure.Insert("time_field"     , New Structure("TIME"          , CurrentDate));
+    RecordStructure.Insert("dto_field"      , New Structure("DATETIMEOFFSET", CurrentDateTZ));
+    RecordStructure.Insert("datetime_field" , New Structure("DATETIME"      , CurrentDate));
+
+    RecordsArray.Add(RecordStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.AddRecords(Table, RecordsArray, True, ConnectionString, TLSSettings);
