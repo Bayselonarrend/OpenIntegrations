@@ -1,4 +1,4 @@
 oint openai ПолучитьИнформациюОФайле ^
   --url "https://hut.openintegrations.dev/localai/" ^
   --token "***" ^
-  --id "file-69"
+  --id "file-71"
