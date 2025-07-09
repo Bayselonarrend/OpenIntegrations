@@ -169,8 +169,11 @@ impl MSSQLBackend {
             None => return Self::format_json_error("Parameters must be a JSON array"),
         };
 
-        if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
-            match client.simple_query(query).await {
+        let normalized_query = query.trim_start().to_uppercase();
+        let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
+
+        if normalized_query.starts_with("SELECT") || force_result {
+            match client.query(query, &params_refs).await {
                 Ok(stream) => {
                     let rows = match stream.into_results().await {
                         Ok(rows) => rows.into_iter().flatten().collect(),
@@ -180,8 +183,18 @@ impl MSSQLBackend {
                 },
                 Err(e) => Self::format_json_error(&e.to_string()),
             }
+        } else if normalized_query == "BEGIN TRAN"
+            || normalized_query == "COMMIT;"
+            || normalized_query == "ROLLBACK;"
+            || normalized_query == "BEGIN TRANSACTION"{
+
+            match client.simple_query(query).await {
+                Ok(_) => json!({"result": true}).to_string(),
+                Err(e) => Self::format_json_error(&e.to_string()),
+            }
+
         } else {
-            let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
+
             match client.execute(query, &params_refs).await {
                 Ok(_) => json!({"result": true}).to_string(),
                 Err(e) => Self::format_json_error(&e.to_string()),
@@ -215,43 +228,30 @@ impl MSSQLBackend {
     fn from_sql_to_json(row: &Row, index: usize, column: &Column) -> Value {
         match column.column_type() {
             ColumnType::Null => Value::Null,
-            ColumnType::Bit => {
-                row.try_get::<bool, _>(index)
-                    .ok()
-                    .flatten()
-                    .map(Value::Bool)
-                    .unwrap_or(Value::Null)
+            ColumnType::Bit | ColumnType::Bitn => {
+                match try_get_any_bit(row, index){
+                    Some(i) => Value::Number(i.into()),
+                    None => Value::Null,
+                }
             },
-            ColumnType::Bitn => {
-                row.try_get::<u8, _>(index)
-                    .ok()
-                    .flatten()
-                    .and_then(|n| Number::from_u128(n as u128))
-                    .map(Value::Number)
-                    .unwrap_or(Value::Null)
-            }
             ColumnType::Int1 | ColumnType::Int2 | ColumnType::Int4 | ColumnType::Int8 | ColumnType::Intn => {
-                row.try_get::<i64, _>(index)
-                    .ok()
-                    .flatten()
-                    .and_then(|n| Number::from_i128(n as i128))
-                    .map(Value::Number)
-                    .unwrap_or(Value::Null)
+                match try_get_any_int(row, index){
+                    Some(i) => Value::Number(i.into()),
+                    None => Value::Null,
+                }
             },
             ColumnType::Float4 | ColumnType::Float8 | ColumnType::Floatn | ColumnType::Money | ColumnType::Money4 => {
-                row.try_get::<f64, _>(index)
-                    .ok()
-                    .flatten()
-                    .and_then(|f| Number::from_f64(f))
-                    .map(Value::Number)
-                    .unwrap_or(Value::Null)
+                match try_get_any_float(row, index) {
+                    Some(i) => Number::from_f64(i).map(Value::Number).unwrap_or(Value::Null),
+                    None => Value::Null,
+                }
             },
             ColumnType::Decimaln | ColumnType::Numericn => {
                 row.try_get::<Decimal, _>(index)
                     .ok()
                     .flatten()
                     .and_then(|f| Number::from_f64(f64::try_from(f).unwrap_or(0.0)))
-                    .map(Value::Number)
+                    .map(|num| Value::Number(num))
                     .unwrap_or(Value::Null)
             },
             ColumnType::Daten => {
@@ -294,6 +294,13 @@ impl MSSQLBackend {
                     .ok()
                     .flatten()
                     .map(|u| Value::String(u.to_string()))
+                    .unwrap_or(Value::Null)
+            },
+            ColumnType::Xml => {
+                row.try_get::<&XmlData, _>(index)
+                    .ok()
+                    .flatten()
+                    .map(|d| Value::String(d.clone().into_string()))
                     .unwrap_or(Value::Null)
             }
             _ => {
@@ -450,6 +457,30 @@ impl MSSQLBackend {
         blob_object.insert("BYTES".to_string(), Value::String(base64_string));
         Value::Object(blob_object)
     }
+}
+
+fn try_get_any_int(row: &Row, index: usize) -> Option<i64> {
+    row.try_get::<i64, _>(index)
+        .or_else(|_| row.try_get::<i64, _>(index).map(|v| v.map(|x| x)))
+        .or_else(|_| row.try_get::<i32, _>(index).map(|v| v.map(|x| x as i64)))
+        .or_else(|_| row.try_get::<i16, _>(index).map(|v| v.map(|x| x as i64)))
+        .or_else(|_| row.try_get::<u8, _>(index).map(|v| v.map(|x| x as i64)))
+        .ok()
+        .flatten()
+}
+
+fn try_get_any_bit(row: &Row, index: usize) -> Option<u8> {
+    row.try_get::<u8, _>(index)
+        .or_else(|_| row.try_get::<bool, _>(index).map(|v| v.map(|x| x as u8)))
+        .ok()
+        .flatten()
+}
+
+fn try_get_any_float(row: &Row, index: usize) -> Option<f64> {
+    row.try_get::<f64, _>(index)
+        .or_else(|_| row.try_get::<f32, _>(index).map(|v| v.map(|x| x as f64)))
+        .ok()
+        .flatten()
 }
 
 impl Drop for MSSQLBackend {
