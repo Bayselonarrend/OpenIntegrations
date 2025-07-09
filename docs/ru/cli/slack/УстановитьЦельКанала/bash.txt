@@ -1,4 +1,4 @@
 oint slack УстановитьЦельКанала \
   --token "***" \
-  --channel "C094V9TGUF7" \
+  --channel "C095C5L529X" \
   --purpose "Тестовая цель"
