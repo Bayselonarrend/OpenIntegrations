@@ -10,35 +10,6 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
 
-  useEffect(() => {
-    // Создаем частицы только для header
-    const header = document.querySelector(`.${styles.heroBanner}`);
-    if (!header) return;
-
-    const particleCount = 30;
-    const particles = [];
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = styles.particle;
-      
-      // Позиционирование внутри header
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.width = `${Math.random() * 3 + 1}px`;
-      particle.style.height = particle.style.width;
-      particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-      particle.style.animationDelay = `${Math.random() * 2}s`;
-      
-      header.appendChild(particle);
-      particles.push(particle);
-    }
-
-    return () => {
-      particles.forEach(p => p.remove());
-    };
-  }, []);
-
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
