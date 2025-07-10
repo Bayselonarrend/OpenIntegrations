@@ -612,8 +612,7 @@ Function ProcessParameter(CurrentParameter, AsObject = True)
 
     ElsIf CurrentType = Type("Boolean") Then
 
-        CurrentParameter = ?(CurrentParameter, 1, 0);
-        CurrentKey       = "BIT";
+        CurrentKey = "BIT";
 
     ElsIf CurrentType = Type("Number") Then
 
