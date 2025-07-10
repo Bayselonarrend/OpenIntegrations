@@ -1,36 +1,4 @@
-﻿---
-sidebar_position: 13
-description: Delete records and other functions to work with MSSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
-keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MSSQL]
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-# Delete records
- Deletes records from the table
-
-
-
-`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export`
-
-  | Parameter | CLI option | Type | Required | Description |
-  |-|-|-|-|-|
-  | Table | --table | String | &#x2714; | Table name |
-  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStrucutre |
-  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
-  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
-
-  
-  Returns:  Map Of KeyAndValue - Result of query execution
-
-<br/>
-
-
-
-
-```bsl title="1C:Enterprise/OneScript code example"
-    Address  = "127.0.0.1";
+﻿    Address  = "127.0.0.1";
     Login    = "SA";
     Password = "12we...";
     Base     = "test_data";
@@ -64,9 +32,3 @@ import TabItem from '@theme/TabItem';
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
     Result = OPI_MSSQL.DeleteRecords(Table, Filters, ConnectionString, TLSSettings);
-```
- 
-
-
-
-
