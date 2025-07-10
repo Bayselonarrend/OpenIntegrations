@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
 
 // MIT License
 
@@ -941,11 +941,11 @@
 
     Таблица = Схема["table"];
     Имя     = Схема["name"];
-	СУБД    = Схема["dbms"];
+    СУБД       = Схема["dbms"];
 
     ШаблонSQL = "ALTER TABLE %1 DROP %2 %3";
-	Уточнение = ?(СУБД = "mssql", "COLUMN", "");
-	
+    Уточнение    = ?(СУБД = "mssql", "COLUMN", "");
+
     ТекстSQL = СтрШаблон(ШаблонSQL, Таблица, Уточнение, Имя);
 
     Возврат ТекстSQL;

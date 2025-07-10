@@ -8,4 +8,8 @@
 
     ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
 
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
     Result = OPI_MySQL.DeleteTableColumn(Table, Name, ConnectionString);

@@ -941,10 +941,12 @@ Function FormTextAlterTableDrop(Val Scheme)
 
     Table = Scheme["table"];
     Name  = Scheme["name"];
+    DBMS     = Scheme["dbms"];
 
-    SQLTemplate = "ALTER TABLE %1 DROP %2";
+    SQLTemplate = "ALTER TABLE %1 DROP %2 %3";
+    Clarification  = ?(DBMS = "mssql", "COLUMN", "");
 
-    TextSQL = StrTemplate(SQLTemplate, Table, Name);
+    TextSQL = StrTemplate(SQLTemplate, Table, Clarification, Name);
 
     Return TextSQL;
 
