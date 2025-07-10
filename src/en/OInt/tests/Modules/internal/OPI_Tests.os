@@ -2843,6 +2843,8 @@ Procedure MSS_ORM() Export
     MSSQL_CreateTable(TestParameters);
     MSSQL_AddRecords(TestParameters);
     MSSQL_GetRecords(TestParameters);
+    MSSQL_UpdateRecords(TestParameters);
+    MSSQL_DeleteRecords(TestParameters);
 
 EndProcedure
 
@@ -24230,6 +24232,117 @@ Procedure MSSQL_GetRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (filters)", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 5);
+
+EndProcedure
+
+Procedure MSSQL_UpdateRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ip_address", New Structure("VARCHAR", "127.0.0.1"));
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("NVARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Count = OPI_MSSQL.GetRecords(Table, , Filters, , , ConnectionString, TLSSettings); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Count, "UpdateRecords (amount)", "MSSQL"); // SKIP
+    Count = Count["data"].Count(); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString, TLSSettings);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Check = OPI_MSSQL.GetRecords(Table, "['ip_address']", Filters, , , ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "UpdateRecords (check)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], Count);
+
+    For N = 0 To Check["data"].UBound() Do
+        OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][N], FieldsStructure);
+    EndDo;
+
+EndProcedure
+
+Procedure MSSQL_DeleteRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("NVARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
+
+    Filters.Add(FilterStructure);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("NVARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Obtaining = OPI_MSSQL.GetRecords(Table, , Filters, , , ConnectionString, TLSSettings); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.DeleteRecords(Table, Filters, ConnectionString, TLSSettings);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Obtaining, "DeleteRecords (get)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Count   = Obtaining["data"].Count();
+    Residue = 100 - Count;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_MSSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (check)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], Residue);
 
 EndProcedure
 
