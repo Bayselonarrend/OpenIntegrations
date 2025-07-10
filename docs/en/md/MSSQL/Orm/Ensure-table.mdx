@@ -36,7 +36,27 @@ This function does not update the data type of existing columns
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
 
+    Base  = "testbase1";
+    Table = "testtable";
+
+    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "smallint");
+    ColoumnsStruct.Insert("double_field"   , "real");
+    ColoumnsStruct.Insert("bigint_field"   , "bigint");
+    ColoumnsStruct.Insert("custom_field"   , "nvarchar");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString, TLSSettings);
 ```
  
 

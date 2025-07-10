@@ -556,7 +556,7 @@ Function GetFeatures() Export
     Features.Insert("ParameterNumeration", True);
     Features.Insert("ParameterMarker"    , "@P");
     Features.Insert("DBMS"               , "mssql");
-    Features.Insert("ColumnField"        , "COLUMN_NAME");
+    Features.Insert("ColumnField"        , "column_name");
     Features.Insert("TransactionStart"   , "BEGIN TRAN");
 
     Return Features;
