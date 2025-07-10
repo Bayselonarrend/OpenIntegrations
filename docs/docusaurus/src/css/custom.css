@@ -459,9 +459,9 @@ li > a.menu__link {
 @keyframes fall {
   0% {
     transform: translateY(-100px);
-    opacity: 0.15;
+    opacity: 0.25;
   }
-  28% {
+  27% {
     opacity: 0;
   }
   100% {
