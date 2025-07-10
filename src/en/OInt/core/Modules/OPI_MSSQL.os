@@ -282,7 +282,17 @@ EndFunction
 // Map Of KeyAndValue - Result of query execution
 Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
 
-    Result = OPI_SQLQueries.DeleteDatabase(OPI_MSSQL, Base, Connection, Tls);
+    OPI_TypeConversion.GetLine(Base);
+
+    RequestTemplate = "USE master;
+        |ALTER DATABASE [%1]
+        |SET SINGLE_USER
+        |WITH ROLLBACK IMMEDIATE;
+        |DROP DATABASE [%1];";
+
+    QueryText = StrTemplate(RequestTemplate, Base);
+
+    Result = ExecuteSQLQuery(QueryText, , , Connection, Tls);
     Return Result;
 
 EndFunction

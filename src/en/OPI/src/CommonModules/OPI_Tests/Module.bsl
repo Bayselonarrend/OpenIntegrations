@@ -23844,6 +23844,7 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MSSQL");
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main");
 
+    OPI_MSSQL.DeleteDatabase("test1", Connection);
     Result = OPI_MSSQL.CreateDatabase("test1", Connection);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "MSSQL");
