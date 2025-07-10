@@ -38,14 +38,16 @@ const iconList = [
 ];
 
 const FallingIcons = () => {
-  const iconCount = 60; // количество падающих иконок
+
+  const baseIconCount = 350; 
+  const iconCount = Math.round(baseIconCount * (window.innerWidth / 1000));
   const icons = [];
 
   for (let i = 0; i < iconCount; i++) {
     const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
     const left = (i / (iconCount - 1)) * 100; // равномерное распределение по ширине
-    const duration = Math.random() + 20;// случайная длительность от 6 до 10 секунд
-    const delay = Math.random() * 20; // случайная задержка от 0 до 5 секунд
+    const duration = Math.random() + 40;// случайная длительность от 6 до 10 секунд
+    const delay = Math.random() * 40; // случайная задержка от 0 до 5 секунд
 
     icons.push(
       <img
