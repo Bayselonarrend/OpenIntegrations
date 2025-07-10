@@ -445,3 +445,27 @@ li > a.menu__link {
 [class*='iconExternalLink_'] {
   display: none;
 }
+
+.falling-icon {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  opacity: 0;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0.25;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
