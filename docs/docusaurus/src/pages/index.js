@@ -81,7 +81,7 @@ const FallingIcons = () => {
     const positionInColumn = columnCounts[column];
     const left = (column / columns) * 100 + (Math.random() * 100 / columns) - 5;
     const duration = 15 + Math.random() * 10;
-    const delay = (positionInColumn / maxIconsPerColumn) * duration * 0.8;
+    const delay = (positionInColumn / maxIconsPerColumn) * duration * 0.1;
 
     icons.push(
       <img
