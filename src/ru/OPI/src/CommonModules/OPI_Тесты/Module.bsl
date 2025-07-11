@@ -46,6 +46,7 @@
 // BSLLS:MissingTemporaryFileDeletion-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
+// BSLLS:MagicDate-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -24182,7 +24183,6 @@
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьЗаписи", "MSSQL");
     OPI_ПолучениеДанныхТестов.Проверка_РезультатИстина(Результат);
 
-
 КонецПроцедуры
 
 Процедура MSSQL_ПолучитьЗаписи(ПараметрыФункции)
@@ -24449,7 +24449,6 @@
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьБазуДанных (ошибка подключения)", "MSSQL");
     OPI_ПолучениеДанныхТестов.Проверка_РезультатЛожь(Результат);
-
 
 КонецПроцедуры
 
