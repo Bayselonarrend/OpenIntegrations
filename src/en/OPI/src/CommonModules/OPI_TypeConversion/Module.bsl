@@ -105,6 +105,8 @@ Procedure GetCollection(Value) Export
 
     Try
 
+        // BSLLS:ExternalAppStarting-off
+
         InitialValue = Value;
 
         If ThisIsCollection(Value) Then
@@ -154,6 +156,8 @@ Procedure GetCollection(Value) Export
             EndIf;
 
         EndIf;
+
+        // BSLLS:ExternalAppStarting-on
 
     Except
 
