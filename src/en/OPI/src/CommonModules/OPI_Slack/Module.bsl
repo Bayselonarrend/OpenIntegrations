@@ -873,17 +873,17 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Slack
 Function AddExternalFile(Val Token, Val URL, Val Title) Export
 
-    String_ = "String";
-    URL     = "https://slack.com/api/files.remote.add";
-    Headers = GetAuthorizationHeader(Token);
-    UID     = String(New UUID());
+    String_    = "String";
+    RequestURL = "https://slack.com/api/files.remote.add";
+    Headers    = GetAuthorizationHeader(Token);
+    UID        = String(New UUID());
 
     Parameters = New Structure;
     OPI_Tools.AddField("external_url", URL   , String_, Parameters);
     OPI_Tools.AddField("external_id" , UID   , String_, Parameters);
     OPI_Tools.AddField("title"       , Title , String_, Parameters);
 
-    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
+    Response = OPI_HTTPRequests.Get(RequestURL, Parameters, Headers);
 
     Return Response;
 
