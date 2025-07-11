@@ -34,6 +34,7 @@
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:MagicNumber-off
 // BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
