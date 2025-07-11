@@ -14039,8 +14039,10 @@
 
     МассивСтрокиКнопок.Добавить(OPI_VKTeams.СформироватьКнопкуДействия("Кнопка2", , "https://openintegrations.dev"));
 
+    // BSLLS:DuplicatedInsertionIntoCollection-off // SKIP
     Клавиатура.Добавить(МассивСтрокиКнопок);
     Клавиатура.Добавить(МассивСтрокиКнопок);
+    // BSLLS:DuplicatedInsertionIntoCollection-on // SKIP
 
     // END
 
