@@ -14039,8 +14039,10 @@ Procedure VKTeams_MakeActionButton(FunctionParameters)
 
     ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
 
+    // BSLLS:DuplicatedInsertionIntoCollection-off // SKIP
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
+    // BSLLS:DuplicatedInsertionIntoCollection-on // SKIP
 
     // END
 

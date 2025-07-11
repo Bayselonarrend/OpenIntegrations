@@ -265,7 +265,7 @@
     ЧтениеJSON = Новый ЧтениеJSON;
     ЧтениеJSON.ОткрытьФайл(Путь);
     Значения   = ПрочитатьJSON(ЧтениеJSON);
-    
+
     // BSLLS:ExternalAppStarting-on
 
     ЧтениеJSON.Закрыть();
