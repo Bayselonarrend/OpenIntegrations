@@ -260,9 +260,13 @@ EndFunction
 
 Function ReadJSONFile(Val Path) Export
 
+    // BSLLS:ExternalAppStarting-off
+
     JSONReader = New JSONReader;
     JSONReader.OpenFile(Path);
     Values     = ReadJSON(JSONReader);
+
+    // BSLLS:ExternalAppStarting-on
 
     JSONReader.Close();
 

@@ -146,7 +146,9 @@ Function EnsureTable(Val Module
     OPI_TypeConversion.GetKeyValueCollection(ColoumnsStruct, ErrorText);
     OPI_TypeConversion.GetLine(Table);
 
-    ResultStrucutre = New Structure("result", True);
+    Result_ = "result";
+
+    ResultStrucutre = New Structure(Result_, True);
 
     Connection  = CreateConnection(Module, Connection, Tls);
     ProblemStep = ProcessRecordsStart(Module, True, Connection);
@@ -159,7 +161,7 @@ Function EnsureTable(Val Module
 
         TableDescription = GetTableStructure(Module, Table, Connection, Tls);
 
-        If Not TableDescription["result"] Then
+        If Not TableDescription[Result_] Then
             Return TableDescription;
         EndIf;
 
@@ -184,7 +186,7 @@ Function EnsureTable(Val Module
 
         Rollback = Module.ExecuteSQLQuery("ROLLBACK;", , , Connection);
 
-        ResultStrucutre.Insert("result"  , False);
+        ResultStrucutre.Insert(Result_   , False);
         ResultStrucutre.Insert("error"   , ErrorDescription());
         ResultStrucutre.Insert("rollback", Rollback);
 
