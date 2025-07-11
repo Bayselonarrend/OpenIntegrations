@@ -506,7 +506,7 @@ Function AnswerButtonEvent(Val Token
 
     String_ = "String";
 
-    URL        = "/messages/answerCallbackQuery";
+    RequestURL = "/messages/answerCallbackQuery";
     Parameters = NormalizeMain(URL, Token);
 
     OPI_Tools.AddField("queryId"  , EventID , String_  , Parameters);
@@ -514,7 +514,7 @@ Function AnswerButtonEvent(Val Token
     OPI_Tools.AddField("url"      , URL     , String_  , Parameters);
     OPI_Tools.AddField("showAlert", AsAlert , "Boolean", Parameters);
 
-    Response = OPI_HTTPRequests.Get(URL, Parameters);
+    Response = OPI_HTTPRequests.Get(RequestURL, Parameters);
 
     Return Response;
 

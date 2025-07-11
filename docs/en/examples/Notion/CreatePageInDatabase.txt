@@ -9,7 +9,6 @@
     Properties.Insert("Name"        , "LLC Vector");
     Properties.Insert("Description" , "OurFirstClient");
     Properties.Insert("Number"      , 1);
-    Properties.Insert("Status"      , "Regular");
     Properties.Insert("CreationDate", OPI_Tools.GetCurrentDate());
     Properties.Insert("Image"       , Image);
     Properties.Insert("Active"      , True);

@@ -45,6 +45,7 @@
 // BSLLS:NestedFunctionInParameters-off
 // BSLLS:MissingTemporaryFileDeletion-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:MagicNumber-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -7761,7 +7762,6 @@ Procedure Notion_CreateDatabase(FunctionParameters)
     Properties.Insert("Name"        , "title");
     Properties.Insert("Description" , "rich_text");
     Properties.Insert("Number"      , "number");
-    Properties.Insert("Status"      , "status");
     Properties.Insert("CreationDate", "date");
     Properties.Insert("Image"       , "files");
     Properties.Insert("Active"      , "checkbox");
@@ -7852,7 +7852,6 @@ Procedure Notion_CreatePageInDatabase(FunctionParameters)
     Properties.Insert("Name"        , "LLC Vector");
     Properties.Insert("Description" , "OurFirstClient");
     Properties.Insert("Number"      , 1);
-    Properties.Insert("Status"      , "Regular");
     Properties.Insert("CreationDate", OPI_Tools.GetCurrentDate());
     Properties.Insert("Image"       , Image);
     Properties.Insert("Active"      , True);
@@ -13481,15 +13480,16 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
 
+    // BSLLS:DuplicatedInsertionIntoCollection-off // SKIP
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
+    // BSLLS:DuplicatedInsertionIntoCollection-on // SKIP
 
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "VkTeams");
-
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
     MessageID = Result["msgId"];
