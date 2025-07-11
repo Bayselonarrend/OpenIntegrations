@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -34,29 +34,67 @@ const iconList = [
   '/img/APIs/SQLite.png',
   '/img/APIs/TCP.png',
   '/img/APIs/VKTeams.png',
-  // ... добавьте все свои иконки
 ];
 
 const FallingIcons = () => {
-  const iconCount = 60; // количество падающих иконок
+  const [columns, setColumns] = useState(12);
+  const [iconCount, setIconCount] = useState(60);
+  const [iconDensity] = useState(0.6); // Плотность иконок (0.1-1.0)
+
+  useEffect(() => {
+    const updateLayout = () => {
+      // Адаптивное количество колонок
+      const width = window.innerWidth;
+      const newColumns = width < 768 ? 6 : width < 1024 ? 9 : 12;
+      setColumns(newColumns);
+
+      // Адаптивное количество иконок на основе плотности
+      const area = width * window.innerHeight;
+      const newIconCount = Math.floor(area / (2000 * (1.1 - iconDensity)));
+      setIconCount(Math.min(newIconCount, 100)); // Ограничиваем максимум 100 иконками
+    };
+
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
+  }, [iconDensity]);
+
+  const maxIconsPerColumn = Math.ceil(iconCount / columns);
   const icons = [];
+  const columnCounts = Array(columns).fill(0);
 
   for (let i = 0; i < iconCount; i++) {
     const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
-    const left = (i / (iconCount - 1)) * 100; // равномерное распределение по ширине
-    const duration = Math.random() + 20;// случайная длительность от 6 до 10 секунд
-    const delay = Math.random() * 20; // случайная задержка от 0 до 5 секунд
+    
+    // Выбираем колонку с наименьшим количеством иконок
+    let column = 0;
+    let minCount = columnCounts[0];
+    for (let c = 1; c < columns; c++) {
+      if (columnCounts[c] < minCount) {
+        minCount = columnCounts[c];
+        column = c;
+      }
+    }
+    columnCounts[column]++;
+    
+    // Распределяем иконки внутри колонки
+    const positionInColumn = columnCounts[column];
+    const left = (column / columns) * 100 + (Math.random() * 100 / columns) - 5;
+    const duration = 15 + Math.random() * 10;
+    const delay = (positionInColumn / maxIconsPerColumn) * duration * 0.8;
 
     icons.push(
       <img
         key={i}
         src={randomIcon}
-        alt="falling icon"
+        alt="API icon"
         className="falling-icon"
         style={{
           left: `${left}%`,
           animationDuration: `${duration}s`,
           animationDelay: `${delay}s`,
+          opacity: 0.7 + Math.random() * 0.3,
+          transform: `scale(${0.8 + Math.random() * 0.4})`
         }}
       />
     );

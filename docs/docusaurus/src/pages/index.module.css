@@ -37,11 +37,9 @@
 .fallingIconsContainer {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 5;
+  width: 95%;
   height: 100%;
-  overflow: hidden;
-  pointer-events: none;
   z-index: -1;
 }
 
