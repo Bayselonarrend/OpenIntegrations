@@ -46,6 +46,7 @@
 // BSLLS:MissingTemporaryFileDeletion-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
+// BSLLS:MagicDate-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content

@@ -46,6 +46,7 @@
 // BSLLS:MissingTemporaryFileDeletion-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
+// BSLLS:MagicDate-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -24182,7 +24183,6 @@ Procedure MSSQL_AddRecords(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-
 EndProcedure
 
 Procedure MSSQL_GetRecords(FunctionParameters)
@@ -24449,7 +24449,6 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
-
 
 EndProcedure
 
