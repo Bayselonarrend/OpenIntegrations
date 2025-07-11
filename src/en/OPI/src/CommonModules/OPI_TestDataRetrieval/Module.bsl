@@ -605,7 +605,9 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     EndDo;
 
+    // BSLLS:ExternalAppStarting-off
     RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
+    // BSLLS:ExternalAppStarting-on
 
     Result = ReadCLIResponse(ResultFile);
 
@@ -2592,7 +2594,6 @@ EndFunction
 Function GetCommonModule(Val Name)
     SetSafeMode(True);
     Module = Eval(Name);
-    SetSafeMode(False);
     Return Module;
 EndFunction
 
@@ -2770,10 +2771,12 @@ Function ReadCLIResponse(Val ResultFile)
 
     Try
 
+        // BSLLS:ExternalAppStarting-off
         JSONReader = New JSONReader();
         JSONReader.OpenFile(ResultFile);
-        Result     = ReadJSON(JSONReader, True);
+        Result = ReadJSON(JSONReader, True);
         JSONReader.Close();
+        // BSLLS:ExternalAppStarting-on
 
     Except
 
@@ -2805,11 +2808,13 @@ Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
     Values = OPI_Tools.ReadJSONFile(Path);
     Values.Insert(Parameter, Value);
 
-    Record             = New JSONWriter;
+    // BSLLS:ExternalAppStarting-off
+    Record = New JSONWriter;
     JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
     Record.OpenFile(Path, , , JSONWriterSettings);
     WriteJSON(Record, Values);
     Record.Close();
+    // BSLLS:ExternalAppStarting-on
 
 EndProcedure
 
