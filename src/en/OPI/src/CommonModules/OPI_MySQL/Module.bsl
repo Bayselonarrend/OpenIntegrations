@@ -671,4 +671,3 @@ Function ProcessBlobStructure(Val Value)
 EndFunction
 
 #EndRegion
-
