@@ -419,7 +419,6 @@
 
 #КонецОбласти
 
-
 #Region Alternate
 
 Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export

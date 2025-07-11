@@ -1147,7 +1147,6 @@ Procedure Check_TwitterText(Val Result, Val Text) Export
 
     EndIf;
 
-
 EndProcedure
 
 Procedure Check_TwitterArray(Val Result) Export

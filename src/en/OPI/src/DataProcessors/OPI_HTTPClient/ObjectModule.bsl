@@ -2137,6 +2137,8 @@ EndProcedure
 //
 // Requirements: 1C platform version 8.3.10 and above
 
+// BSLLS:MagicNumber-off
+
 Function UnpackResponse(Response)
 
     Try
@@ -2306,6 +2308,8 @@ Function ZipEOCD(CompressedDataSize)
     Return Buffer;
 
 EndFunction
+
+// BSLLS:MagicNumber-on
 
 #EndRegion
 
