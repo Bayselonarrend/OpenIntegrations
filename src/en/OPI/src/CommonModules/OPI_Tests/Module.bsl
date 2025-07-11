@@ -2852,6 +2852,7 @@ Procedure MSS_ORM() Export
     MSSQL_EnsureTable(TestParameters);
     MSSQL_DeleteTable(TestParameters);
     MSSQL_DeleteDatabase(TestParameters);
+    MSSQL_GetRecordsFilterStrucutre(TestParameters);
 
 EndProcedure
 
@@ -24659,6 +24660,26 @@ Procedure MSSQL_EnsureTable(FunctionParameters)
     For Each Coloumn In Check["data"] Do
         CurrentType = Coloumn["data_type"];
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["column_name"]]));
+    EndDo;
+
+EndProcedure
+
+Procedure MSSQL_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Result = OPI_MSSQL.GetRecordsFilterStrucutre();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "MSSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_MSSQL.GetRecordsFilterStrucutre(True);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "MSSQL");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
     EndDo;
 
 EndProcedure
