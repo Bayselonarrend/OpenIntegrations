@@ -29,6 +29,7 @@
 
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
