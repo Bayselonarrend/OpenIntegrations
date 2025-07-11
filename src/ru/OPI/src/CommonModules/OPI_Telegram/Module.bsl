@@ -35,12 +35,11 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:NumberOfParams-off
 // BSLLS:LineLength-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
-
-
 
 #Область ПрограммныйИнтерфейс
 
@@ -236,8 +235,8 @@
     Хэш          = "";
     КлючДвоичные = ПолучитьДвоичныеДанныеИзСтроки(КлючСтрокой);
 
-    Результат = OPI_Криптография.HMACSHA(КлючДвоичные, ПолучитьДвоичныеДанныеИзСтроки(Токен), "SHA256");
-
+    Результат = OPI_Криптография.HMAC(КлючДвоичные, ПолучитьДвоичныеДанныеИзСтроки(Токен), "SHA256");
+    
     ТЗнач = Новый ТаблицаЗначений;
     ТЗнач.Колонки.Добавить("Ключ");
     ТЗнач.Колонки.Добавить("Значение");
