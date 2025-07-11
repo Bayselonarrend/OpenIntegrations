@@ -30,12 +30,11 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
-
-
 
 #Область ПрограммныйИнтерфейс
 

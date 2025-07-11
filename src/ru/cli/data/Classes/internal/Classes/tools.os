@@ -82,7 +82,7 @@
         | 
 
         | 
-        | Utils = ЗагрузитьСценарий(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiSonar/src/ru/cli/tools/Modules/Utils.os"", Контекст);
+        | Utils = ЗагрузитьСценарий(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiMain/src/ru/cli/tools/Modules/Utils.os"", Контекст);
         |" + Символы.ПС;
 
 

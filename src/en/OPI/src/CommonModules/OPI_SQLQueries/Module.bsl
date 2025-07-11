@@ -33,6 +33,7 @@
 // BSLLS:QueryParseError-off
 // BSLLS:AssignAliasFieldsInQuery-off
 // BSLLS:NumberOfParams-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -165,68 +166,13 @@ Function EnsureTable(Val Module
 
         If Not ValueIsFilled(TableColumns) Then
             ResultStrucutre = CreateTable(Module, Table, ColoumnsStruct, Connection, Tls);
-
         Else
 
-            FoundMapping = New Map;
-            FieldName    = Module.GetFeatures()["ColumnField"];
+            Error = NormalizeTable(Module, Table, ColoumnsStruct, TableColumns, Connection, Tls);
 
-            DeleteCode = 0;
-            AddCode    = 1;
-            IgnoreCode = 2;
-
-            For Each Coloumn In TableColumns Do
-
-                ColumnName = Coloumn[FieldName];
-
-                If Not ValueIsFilled(ColumnName) Then
-                    Continue;
-                Else
-                    FoundMapping.Insert(ColumnName, DeleteCode);
-                EndIf;
-
-            EndDo;
-
-            If FoundMapping.Count() = 0 Then
-                ResponseMapping     = New Map;
-                ResponseMapping.Insert("result", "false");
-                ResponseMapping.Insert("error" , "Unsupported table schema type");
-                Return ResponseMapping;
+            If Error <> Undefined Then
+                Return Error;
             EndIf;
-
-            For Each RequiredColumn In ColoumnsStruct Do
-
-                ColumnName = RequiredColumn.Key;
-                Exists     = FoundMapping.Get(ColumnName) <> Undefined;
-                Action     = ?(Exists, IgnoreCode, AddCode);
-
-                FoundMapping.Insert(ColumnName, Action);
-
-            EndDo;
-
-            For Each SchemaPart In FoundMapping Do
-
-                ActionCode = SchemaPart.Value;
-                ColumnName = SchemaPart.Key;
-
-                If ActionCode = 0 Then
-
-                    Result = DeleteTableColumn(Module, Table, ColumnName, Connection, Tls);
-
-                ElsIf ActionCode = 1 Then
-
-                    DataType = ColoumnsStruct[ColumnName];
-                    Result   = AddTableColumn(Module, Table, ColumnName, DataType, Connection, Tls);
-
-                Else
-                    Continue;
-                EndIf;
-
-                If Not Result["result"] Then
-                    Raise Result["error"];
-                EndIf;
-
-            EndDo;
 
         EndIf;
 
@@ -1100,6 +1046,77 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection)
     Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
 
     Return Result;
+
+EndFunction
+
+Function NormalizeTable(Val Module
+    , Val Table
+    , Val ColoumnsStruct
+    , TableColumns
+    , Val Connection
+    , Val Tls)
+
+    FoundMapping = New Map;
+    FieldName    = Module.GetFeatures()["ColumnField"];
+
+    DeleteCode = 0;
+    AddCode    = 1;
+    IgnoreCode = 2;
+
+    For Each Coloumn In TableColumns Do
+
+        ColumnName = Coloumn[FieldName];
+
+        If Not ValueIsFilled(ColumnName) Then
+            Continue;
+        Else
+            FoundMapping.Insert(ColumnName, DeleteCode);
+        EndIf;
+
+    EndDo;
+
+    If FoundMapping.Count() = 0 Then
+        ResponseMapping     = New Map;
+        ResponseMapping.Insert("result", "false");
+        ResponseMapping.Insert("error" , "Unsupported table schema type");
+        Return ResponseMapping;
+    EndIf;
+
+    For Each RequiredColumn In ColoumnsStruct Do
+
+        ColumnName = RequiredColumn.Key;
+        Exists     = FoundMapping.Get(ColumnName) <> Undefined;
+        Action     = ?(Exists, IgnoreCode, AddCode);
+
+        FoundMapping.Insert(ColumnName, Action);
+
+    EndDo;
+
+    For Each SchemaPart In FoundMapping Do
+
+        ActionCode = SchemaPart.Value;
+        ColumnName = SchemaPart.Key;
+
+        If ActionCode = 0 Then
+
+            Result = DeleteTableColumn(Module, Table, ColumnName, Connection, Tls);
+
+        ElsIf ActionCode = 1 Then
+
+            DataType = ColoumnsStruct[ColumnName];
+            Result   = AddTableColumn(Module, Table, ColumnName, DataType, Connection, Tls);
+
+        Else
+            Continue;
+        EndIf;
+
+        If Not Result["result"] Then
+            Raise Result["error"];
+        EndIf;
+
+    EndDo;
+
+    Return Undefined;
 
 EndFunction
 
