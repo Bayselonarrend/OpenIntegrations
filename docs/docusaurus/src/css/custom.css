@@ -448,7 +448,7 @@ li > a.menu__link {
 
 .falling-icon {
   position: absolute;
-  top: -100px;
+  top: -20px;
   width: 40px;
   height: auto;
   opacity: 0;
@@ -460,7 +460,7 @@ li > a.menu__link {
 
 @keyframes falling {
   0% {
-    transform: translateY(-100px) ;
+    transform: translateY(-20px) ;
     opacity: 0.3;
   }
   31% {
