@@ -18,5 +18,4 @@
 
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
-
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
