@@ -448,24 +448,33 @@ li > a.menu__link {
 
 .falling-icon {
   position: absolute;
+  top: -100px;
   width: 40px;
   height: auto;
   opacity: 0;
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: falling linear infinite;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
 }
 
-@keyframes fall {
+@keyframes falling {
   0% {
-    transform: translateY(-100px);
-    opacity: 0.25;
+    transform: translateY(-100px) ;
+    opacity: 0.3;
   }
-  27% {
+  31% {
     opacity: 0;
   }
   100% {
-    transform: translateY(100vh);
+    transform: translateY(calc(100vh + 100px));
     opacity: 0;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .falling-icon {
+    width: 30px !important;
   }
 }
