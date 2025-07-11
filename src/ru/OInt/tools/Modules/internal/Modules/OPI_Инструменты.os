@@ -30,6 +30,7 @@
 // BSLLS:UnusedLocalVariable-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingSynchronousCalls-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
