@@ -1960,12 +1960,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
+        |
+        |OPI_VK = LoadScript(""%1/oint/core/Modules/OPI_VK.os"", Context);
         |" + Chars.LF;
 
 

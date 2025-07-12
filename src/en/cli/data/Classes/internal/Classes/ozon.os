@@ -1807,12 +1807,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"", Context);
+        |
+        |OPI_Ozon = LoadScript(""%1/oint/core/Modules/OPI_Ozon.os"", Context);
         |" + Chars.LF;
 
 

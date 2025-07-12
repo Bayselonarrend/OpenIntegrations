@@ -242,12 +242,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context);
+        |
+        |OPI_YandexMarket = LoadScript(""%1/oint/core/Modules/OPI_YandexMarket.os"", Context);
         |" + Chars.LF;
 
 

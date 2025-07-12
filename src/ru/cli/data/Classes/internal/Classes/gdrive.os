@@ -436,13 +436,13 @@
 
 
     Возврат "
-        | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_GoogleWorkspace"", Неопределено);
-        | 
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
-        | Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
-        | 
-        | OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Контекст);
+        |Контекст = Новый Структура;
+        |Контекст.Вставить(""OPI_GoogleWorkspace"", Неопределено);
+        |
+        |OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
+        |Контекст.Вставить(""OPI_GoogleWorkspace"", OPI_GoogleWorkspace);
+        |
+        |OPI_GoogleDrive = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleDrive.os"", Контекст);
         |" + Символы.ПС;
 
 

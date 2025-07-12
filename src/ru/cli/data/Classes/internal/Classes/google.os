@@ -162,12 +162,12 @@
 
 
     Возврат "
-        | Контекст = Новый Структура;
+        |Контекст = Новый Структура;
 
-        | 
+        |
 
-        | 
-        | OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
+        |
+        |OPI_GoogleWorkspace = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Контекст);
         |" + Символы.ПС;
 
 

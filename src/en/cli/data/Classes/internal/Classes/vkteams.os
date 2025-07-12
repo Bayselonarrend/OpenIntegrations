@@ -1043,12 +1043,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);
+        |
+        |OPI_VKTeams = LoadScript(""%1/oint/core/Modules/OPI_VKTeams.os"", Context);
         |" + Chars.LF;
 
 

@@ -246,12 +246,12 @@
 
 
     Возврат "
-        | Контекст = Новый Структура;
+        |Контекст = Новый Структура;
 
-        | 
+        |
 
-        | 
-        | OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);
+        |
+        |OPI_YandexMarket = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_YandexMarket.os"", Контекст);
         |" + Символы.ПС;
 
 
