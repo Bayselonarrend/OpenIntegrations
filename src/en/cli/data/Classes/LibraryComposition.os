@@ -1,5 +1,4 @@
 #Use "./internal"
-#Use "../../../oint/tools"
 
 Var ModuleCommandMapping;
 Var Version;
