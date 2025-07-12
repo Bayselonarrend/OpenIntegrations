@@ -1055,7 +1055,7 @@ EndFunction
 Function NormalizeTable(Val Module
     , Val Table
     , Val ColoumnsStruct
-    , TableColumns
+    , Val TableColumns
     , Val Connection
     , Val Tls)
 
