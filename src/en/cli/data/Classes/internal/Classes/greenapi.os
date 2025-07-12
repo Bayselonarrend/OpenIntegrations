@@ -1257,12 +1257,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"", Context);
+        |
+        |OPI_GreenAPI = LoadScript(""%1/oint/core/Modules/OPI_GreenAPI.os"", Context);
         |" + Chars.LF;
 
 

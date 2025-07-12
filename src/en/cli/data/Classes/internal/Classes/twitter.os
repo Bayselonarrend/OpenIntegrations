@@ -434,12 +434,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"", Context);
+        |
+        |OPI_Twitter = LoadScript(""%1/oint/core/Modules/OPI_Twitter.os"", Context);
         |" + Chars.LF;
 
 

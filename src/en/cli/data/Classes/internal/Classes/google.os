@@ -158,12 +158,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
+        |
+        |OPI_GoogleWorkspace = LoadScript(""%1/oint/core/Modules/OPI_GoogleWorkspace.os"", Context);
         |" + Chars.LF;
 
 

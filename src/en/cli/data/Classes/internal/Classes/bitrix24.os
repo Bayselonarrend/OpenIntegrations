@@ -6513,12 +6513,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"", Context);
+        |
+        |OPI_Bitrix24 = LoadScript(""%1/oint/core/Modules/OPI_Bitrix24.os"", Context);
         |" + Chars.LF;
 
 
