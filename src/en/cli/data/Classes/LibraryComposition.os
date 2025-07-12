@@ -119,11 +119,10 @@ Function GetFullComposition() Export
 
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val CurrentObjectName = "") Export
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
 
     Module             = GetCommandModuleMapping().Get(Command);
     IndexObject      = GetIndexData(Command);
-    CurrentObjectName = ?(ValueIsFilled(CurrentObjectName), CurrentObjectName + ".", "");
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
@@ -159,8 +158,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
             If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
                 ExecutionText = ExecutionText 
                     + Chars.LF 
-                    + CurrentObjectName
-                    + "ReplaceEscapeSequences(" + ParameterName + ");";
+                    + "OPI_Tools.ReplaceEscapeSequences(" + ParameterName + ");";
             EndIf;
 
             CallString = CallString + ParameterName + ", ";
@@ -210,34 +208,6 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
 EndFunction
 
-Procedure ReplaceEscapeSequences(Text) Export
-
-    Text = String(Text);
-
-    CharacterMapping = GetEscapeSequencesMap();
-
-    For Each Symbol In CharacterMapping Do
-
-        Text = StrReplace(Text, Symbol.Key, Symbol.Value);
-        Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
-
-    EndDo;
-
-EndProcedure
-
-Function GetEscapeSequencesMap()
-
-    CharacterMapping = New Map;
-
-    CharacterMapping.Insert("\n"  , Chars.LF);
-    CharacterMapping.Insert("\r"  , Chars.CR);
-    CharacterMapping.Insert("\f"  , Chars.FF);
-    CharacterMapping.Insert("\v"  , Chars.VTab);
-
-    Return CharacterMapping;
-
-EndFunction
-
 #Region Alternate
 
 Procedure ИнициализироватьОсновныеСписки() Export
@@ -260,16 +230,12 @@ Function ПолучитьПолныйСостав() Export
 	Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val ИмяТекущегоОбъекта = "") Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, ИмяТекущегоОбъекта);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
 	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
-EndProcedure
-
-Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
-	ReplaceEscapeSequences(Текст);
 EndProcedure
 
 #EndRegion
