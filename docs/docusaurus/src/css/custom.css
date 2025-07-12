@@ -463,7 +463,7 @@ li > a.menu__link {
     transform: translateY(-30px) ;
     opacity: 0.3;
   }
-  28% {
+  27% {
     opacity: 0;
   }
   100% {
