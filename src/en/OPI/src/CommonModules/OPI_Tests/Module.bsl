@@ -23922,7 +23922,7 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     OPI_MSSQL.DeleteTable("users"    , Connection); // SKIP
     OPI_MSSQL.DeleteTable("test_data", Connection); // SKIP
     Deletion = OPI_MSSQL.DeleteTable("test_table", Connection); // SKIP
-    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "ExecuteSQLQuery (deleting 1)", "MSSQL"); // SKIP
 
     OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "MSSQL"); // SKIP
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main"); // SKIP
