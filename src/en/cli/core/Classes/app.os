@@ -1,4 +1,6 @@
-﻿Var Debugging;           // Flag output debug information
+﻿#Use "../../../oint/tools"
+
+Var Debugging;           // Flag output debug information
 Var Testing;      // Flag disconnection of sending data after processing
 
 Var Parser;            // Object parser incoming data 
