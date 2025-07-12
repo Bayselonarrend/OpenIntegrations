@@ -731,13 +731,13 @@
 
 
     Возврат "
-        | Контекст = Новый Структура;
-        | Контекст.Вставить(""OPI_MSSQL"", Неопределено);
-        | 
-        | OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст);
-        | Контекст.Вставить(""OPI_MSSQL"", OPI_MSSQL);
-        | 
-        | OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст);
+        |Контекст = Новый Структура;
+        |Контекст.Вставить(""OPI_MSSQL"", Неопределено);
+        |
+        |OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст);
+        |Контекст.Вставить(""OPI_MSSQL"", OPI_MSSQL);
+        |
+        |OPI_MSSQL = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_MSSQL.os"", Контекст);
         |" + Символы.ПС;
 
 

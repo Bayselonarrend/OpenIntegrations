@@ -471,12 +471,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"", Context);
+        |
+        |OPI_Notion = LoadScript(""%1/oint/core/Modules/OPI_Notion.os"", Context);
         |" + Chars.LF;
 
 

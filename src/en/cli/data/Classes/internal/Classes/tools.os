@@ -77,12 +77,12 @@ Function GetConnectionString() Export
 
 
     Return "
-        | Context = New Structure;
+        |Context = New Structure;
 
-        | 
+        |
 
-        | 
-        | Utils = LoadScript(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiMain/src/en/cli/tools/Modules/Utils.os"", Context);
+        |
+        |Utils = LoadScript(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiMain/src/en/cli/tools/Modules/Utils.os"", Context);
         |" + Chars.LF;
 
 

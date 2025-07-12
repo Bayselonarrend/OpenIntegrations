@@ -205,12 +205,12 @@
 
 
     Возврат "
-        | Контекст = Новый Структура;
+        |Контекст = Новый Структура;
 
-        | 
+        |
 
-        | 
-        | OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);
+        |
+        |OPI_Neocities = ЗагрузитьСценарий(""%1/oint/core/Modules/OPI_Neocities.os"", Контекст);
         |" + Символы.ПС;
 
 
