@@ -1,6 +1,6 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Токен = "12We...";
 
-    IDАссистента = "asst_4";
+    IDАссистента = "asst_5";
 
     Результат = OPI_OpenAI.УдалитьАссистента(URL, Токен, IDАссистента);
