@@ -1,4 +1,4 @@
 oint sqlite ДобавитьЗаписи \
   --table "test" \
-  --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-09T06:03:37.6180401Z','data':{'blob':'/tmp/sqmrxyj0.tms.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-09T06:03:37.6180817Z','data':{'blob':'/tmp/sqmrxyj0.tms.png'}}]" \
-  --db "/tmp/bnef51bk.h0t.sqlite"
+  --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-13T12:35:46.1422695Z','data':{'blob':'/tmp/dvmkuys1.z52.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-13T12:35:46.1423112Z','data':{'blob':'/tmp/dvmkuys1.z52.png'}}]" \
+  --db "/tmp/3koqmccu.uv3.sqlite"
