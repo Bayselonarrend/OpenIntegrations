@@ -1,6 +1,6 @@
 oint cdek ПолучитьКвитанцию \
   --token "***" \
-  --uuid "f7311712-9a64-4c04-a512-81f1e1e6e0af" \
+  --uuid "f9444952-866e-4136-9090-c72217fd70ed" \
   --getfile true \
   --testapi "***" \
-  --out "/tmp/1k0h4rit.wdd.pdf"
+  --out "/tmp/5cvhyoc3.0zh.pdf"
