@@ -35,6 +35,27 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint openai ПолучитьСообщениеАссистента \
+              --text "What is 1C:Enterprise?"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint openai ПолучитьСообщениеАссистента ^
+              --text "What is 1C:Enterprise?"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "role": "assistant",
+ "content": "What is 1C:Enterprise?"
+}
+```
