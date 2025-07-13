@@ -35,6 +35,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint mssql ПолучитьСтруктуруФильтраЗаписей \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint mssql ПолучитьСтруктуруФильтраЗаписей ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "field": "<имя поля для отбора>",
+ "type": "<тип сравнения>",
+ "value": "<значение для сравнения>",
+ "union": "<связь со следующим условием: AND, OR и пр.>",
+ "raw": "<истина - значение будет вставлено текстом, как есть, ложь - через параметр>"
+}
+```
