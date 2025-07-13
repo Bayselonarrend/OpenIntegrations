@@ -104,6 +104,49 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ВыполнитьЗапросSQL \
+              --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" \
+              --dbc "Server=127.0.0.1;Database=test_data;User Id=SA;Password=12we3456!2154;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ВыполнитьЗапросSQL ^
+              --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" ^
+              --dbc "Server=127.0.0.1;Database=test_data;User Id=SA;Password=12we3456!2154;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "data": [
+  {
+   "Age": 20,
+   "BirthDate": "2025-07-13",
+   "CreatedAt": "2025-07-13T10:08:30",
+   "Data": {
+    "BYTES": "Base64"
+   },
+   "FirstName": "Vitaly",
+   "IsEmployed": 1,
+   "LastName": "Alpaca",
+   "RowGuid": "294c7714-7c70-413b-a605-8f2f7ce4d4dd",
+   "Salary": 10.3
+  }
+ ],
+ "result": true
+}
+```

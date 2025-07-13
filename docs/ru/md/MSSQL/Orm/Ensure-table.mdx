@@ -60,6 +60,39 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ГарантироватьТаблицу \
+              --table "testtable" \
+              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" \
+              --dbc "Server=127.0.0.1;Database=testbase1;User Id=SA;Password=12we3456!2154;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ГарантироватьТаблицу ^
+              --table "testtable" ^
+              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" ^
+              --dbc "Server=127.0.0.1;Database=testbase1;User Id=SA;Password=12we3456!2154;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "result": true,
+ "commit": {
+  "result": true
+ }
+}
+```

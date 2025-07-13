@@ -23812,8 +23812,12 @@ Procedure OpenAI_GetAssistantMessage(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetAssistantMessage", "OpenAI");
-    OPI_TestDataRetrieval.Check_Equality(Result
-        , OPI_OpenAI.GetMessageStructure("assistant", "What is 1C:Enterprise?"));
+
+    Check  = OPI_OpenAI.GetMessageStructure("assistant", "What is 1C:Enterprise?");
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
 
@@ -23824,8 +23828,12 @@ Procedure OpenAI_GetUserMessage(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetUserMessage", "OpenAI");
-    OPI_TestDataRetrieval.Check_Equality(Result
-        , OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?", "Vitaly"));
+
+    Check  = OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?", "Vitaly");
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
 
@@ -23836,8 +23844,12 @@ Procedure OpenAI_GetSystemMessage(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetSystemMessage", "OpenAI");
-    OPI_TestDataRetrieval.Check_Equality(Result
-        , OPI_OpenAI.GetMessageStructure("system", "What is 1C:Enterprise?"));
+
+    Check  = OPI_OpenAI.GetMessageStructure("system", "What is 1C:Enterprise?");
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
 
