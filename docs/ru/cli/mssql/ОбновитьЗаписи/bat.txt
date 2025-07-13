@@ -1,0 +1,8 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint mssql ОбновитьЗаписи ^
+  --table "test_data" ^
+  --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
+  --filter "{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false}" ^
+  --dbc "Server=127.0.0.1;Database=test_data;User Id=SA;Password=12we3456!2154;" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

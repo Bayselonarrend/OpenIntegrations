@@ -1,0 +1,2 @@
+oint openai ПолучитьСообщениеАссистента ^
+  --text "What is 1C:Enterprise?"
