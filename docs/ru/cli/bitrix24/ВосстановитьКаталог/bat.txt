@@ -1,4 +1,4 @@
 oint bitrix24 ВосстановитьКаталог ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 37680 ^
+  --folderid 38096 ^
   --token "***"
