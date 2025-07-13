@@ -89,6 +89,56 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ПолучитьЗаписи \
+              --table "testtable" \
+              --dbc "Server=127.0.0.1;Database=testbase1;User Id=SA;Password=12we3456!2154;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ПолучитьЗаписи ^
+              --table "testtable" ^
+              --dbc "Server=127.0.0.1;Database=testbase1;User Id=SA;Password=12we3456!2154;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "data": [
+  {
+   "bigint_field": 20000000000,
+   "bit_field": 1,
+   "date_field": "2025-07-13",
+   "datetime_field": "2025-07-13T10:08:37",
+   "dto_field": "2025-07-13T00:08:37.551219200+00:00",
+   "float24_field": 10.1234569549561,
+   "float53_field": 10.1234567891235,
+   "int_field": 200000,
+   "numeric_field": 5.333,
+   "nvarchar_field": "Some text",
+   "smallint_field": 2000,
+   "time_field": "10:08:37",
+   "tinyint_field": 5,
+   "uid_field": "f3d80f1f-853e-4664-97b1-5fb23bda3a55",
+   "varbinary_field": {
+    "BYTES": "/9j/4VTBRX..."
+   },
+   "xml_field": "<root><element><name>Пример</name><value>123</value></element><element><name>Тест</name><value>456</value></element></root>"
+  }
+ ],
+ "result": true
+}
+```

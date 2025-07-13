@@ -25099,6 +25099,10 @@ Procedure CLI_OpenAI_GetAssistantMessage(FunctionParameters)
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAssistantMessage", "OpenAI");
+
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
     OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
@@ -25119,6 +25123,10 @@ Procedure CLI_OpenAI_GetUserMessage(FunctionParameters)
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserMessage", "OpenAI");
+
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
     OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
@@ -25137,6 +25145,10 @@ Procedure CLI_OpenAI_GetSystemMessage(FunctionParameters)
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetSystemMessage", "OpenAI");
+
+    Check  = OPI_Tools.JSONString(Check);
+    Result = OPI_Tools.JSONString(Result);
+
     OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
