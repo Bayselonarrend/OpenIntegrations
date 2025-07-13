@@ -2665,6 +2665,9 @@ Procedure CLI_OAI_RequestsProcessing() Export
     CLI_OpenAI_GetMessageStructure(TestParameters);
     CLI_OpenAI_GetImageMessageStructure(TestParameters);
     CLI_OpenAI_GetImages(TestParameters);
+    CLI_OpenAI_GetAssistantMessage(TestParameters);
+    CLI_OpenAI_GetUserMessage(TestParameters);
+    CLI_OpenAI_GetSystemMessage(TestParameters);
 
 EndProcedure
 
@@ -25079,6 +25082,62 @@ Procedure CLI_OpenAI_GetModelList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "OpenAI");
     OPI_TestDataRetrieval.Check_OpenAIList(Result);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetAssistantMessage(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantMessage", Options);
+
+    Options = New Structure;
+    Options.Insert("role", "assistant");
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAssistantMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetUserMessage(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("text", "What is 1C:Enterprise?");
+    Options.Insert("name", "Vitaly");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetUserMessage", Options);
+
+    Options = New Structure;
+    Options.Insert("role", "user");
+    Options.Insert("text", "What is 1C:Enterprise?");
+    Options.Insert("name", "Vitaly");
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
+
+EndProcedure
+
+Procedure CLI_OpenAI_GetSystemMessage(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetSystemMessage", Options);
+
+    Options = New Structure;
+    Options.Insert("role", "system");
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSystemMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result, Check);
 
 EndProcedure
 

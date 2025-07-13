@@ -2762,6 +2762,9 @@ Procedure OAI_RequestsProcessing() Export
     OpenAI_GetMessageStructure(TestParameters);
     OpenAI_GetImageMessageStructure(TestParameters);
     OpenAI_GetImages(TestParameters);
+    OpenAI_GetAssistantMessage(TestParameters);
+    OpenAI_GetUserMessage(TestParameters);
+    OpenAI_GetSystemMessage(TestParameters);
 
 EndProcedure
 
@@ -23799,6 +23802,42 @@ Procedure OpenAI_GetModelList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "OpenAI");
     OPI_TestDataRetrieval.Check_OpenAIList(Result);
+
+EndProcedure
+
+Procedure OpenAI_GetAssistantMessage(FunctionParameters)
+
+    Result = OPI_OpenAI.GetAssistantMessage("What is 1C:Enterprise?");
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAssistantMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result
+        , OPI_OpenAI.GetMessageStructure("assistant", "What is 1C:Enterprise?"));
+
+EndProcedure
+
+Procedure OpenAI_GetUserMessage(FunctionParameters)
+
+    Result = OPI_OpenAI.GetUserMessage("What is 1C:Enterprise?", "Vitaly");
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result
+        , OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?", "Vitaly"));
+
+EndProcedure
+
+Procedure OpenAI_GetSystemMessage(FunctionParameters)
+
+    Result = OPI_OpenAI.GetSystemMessage("What is 1C:Enterprise?");
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSystemMessage", "OpenAI");
+    OPI_TestDataRetrieval.Check_Equality(Result
+        , OPI_OpenAI.GetMessageStructure("system", "What is 1C:Enterprise?"));
 
 EndProcedure
 
