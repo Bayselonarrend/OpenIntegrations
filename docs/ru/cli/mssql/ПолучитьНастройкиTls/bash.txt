@@ -1,0 +1,2 @@
+oint mssql ПолучитьНастройкиTls \
+  --trust true
