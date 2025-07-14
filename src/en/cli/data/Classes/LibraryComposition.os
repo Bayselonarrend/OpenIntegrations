@@ -118,7 +118,8 @@ Function GetFullComposition() Export
 
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
+
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Дandtoмandчеwithtoand = True) Export
 
     Module             = GetCommandModuleMapping().Get(Command);
     IndexObject      = GetIndexData(Command);
@@ -129,7 +130,12 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
     
     CommandSelection    = New Structure("SearchMethod", Upper(Method));
     MethodParameters = IndexObject["Composition"].FindRows(CommandSelection);
-    ExecutionText = StrTemplate(IndexObject["ConnectionString"], PackagesDirectory);
+    
+    If Дandtoмandчеwithtoand Then
+       ExecutionText = StrTemplate(IndexObject["ConnectionString"], PackagesDirectory);
+    Else
+       ExecutionText = "";
+    EndIf;
     
     If Not ValueIsFilled(MethodParameters) Then
         Return New Structure("Error,Result", True, "Method");
@@ -229,8 +235,8 @@ Function ПолучитьПолныйСостав() Export
 	Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True) Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
