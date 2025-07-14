@@ -1,0 +1,4 @@
+﻿ {
+ "error": "Token error: 'Incorrect syntax near 'DEF'.' on server 7562d9747c2a executing  on line 1 (code: 102, state: 1, class: 15)",
+ "result": false
+}
