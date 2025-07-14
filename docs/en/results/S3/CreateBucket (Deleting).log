@@ -1,0 +1,26 @@
+﻿ {
+ "status": 404,
+ "response": {
+  "Error": {
+   "Code": "NoSuchBucket",
+   "Message": "The specified bucket does not exist",
+   "BucketName": "opi-gpbucket3",
+   "Resource": "/",
+   "RequestId": "1852113D2DFCA9AB",
+   "HostId": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa"
+  }
+ },
+ "headers": {
+  "Accept-Ranges": "bytes",
+  "Content-Length": "313",
+  "Content-Type": "application/xml",
+  "Date": "Mon, 14 Jul 2025 08:35:59 GMT",
+  "Server": "MinIO",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Vary": "Origin,Accept-Encoding",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "1852113D2DFCA9AB",
+  "X-Content-Type-Options": "nosniff",
+  "X-Xss-Protection": "1; mode=block"
+ }
+}

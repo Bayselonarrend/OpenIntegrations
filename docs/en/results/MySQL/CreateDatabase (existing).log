@@ -1,0 +1,4 @@
+﻿ {
+ "error": "MySqlError { ERROR 1007 (HY000): Can't create database 'testbase2'; database exists }",
+ "result": false
+}
