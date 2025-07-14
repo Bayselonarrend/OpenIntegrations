@@ -1,5 +1,5 @@
 ﻿    URL      = "https://hut.openintegrations.dev/localai/";
     Токен    = "12We...";
-    Картинка = "file-8";
+    Картинка = "file-15";
 
     Результат = OPI_OpenAI.ПолучитьСтруктуруСообщенияКартинки("user", Картинка, "What is in this image?");
