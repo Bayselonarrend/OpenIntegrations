@@ -25435,7 +25435,7 @@ Procedure CLI_MSSQL_CreateTable(FunctionParameters)
     Options.Insert("dbc"  , ConnectionString);
     Options.Insert("tls"  , TLSSettings);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateTable", Options, False);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateTable", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -25539,7 +25539,7 @@ Procedure CLI_MSSQL_AddRecords(FunctionParameters)
     Options.Insert("dbc"  , ConnectionString);
     Options.Insert("tls"  , TLSSettings);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "AddRecords", Options, False);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "AddRecords", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "AddRecords", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);

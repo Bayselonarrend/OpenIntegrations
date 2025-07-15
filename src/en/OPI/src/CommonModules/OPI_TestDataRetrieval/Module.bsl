@@ -2899,6 +2899,10 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
         ProcessSecretsMySQL(Option, Value);
 
+    ElsIf Library = "mssql" Then
+
+        ProcessSecretsMSSQL(Option, Value);
+
     ElsIf Library = "ollama" Then
 
         ProcessSecretsMySQLOllama(Option, Value);
@@ -2942,6 +2946,22 @@ Procedure ProcessSecretsMySQL(Val Option, Value)
     If Option = "dbc" Then
 
         Value = "mysql://bayselonarrend:***@127.0.0.1:3306/";
+
+    ElsIf Option = "addr" Then
+
+        Value = "127.0.0.1";
+
+    Else
+        Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsMSSQL(Val Option, Value)
+
+    If Option = "dbc" Then
+
+        Value = "Server=127.0.0.1;Database=***;User Id=SA;Password=***;";
 
     ElsIf Option = "addr" Then
 
