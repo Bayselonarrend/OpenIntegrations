@@ -1,6 +1,6 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    FileID = "file-15";
+    FileID = "file-65";
 
     Result = OPI_OpenAI.DownloadFile(URL, Token, FileID);
