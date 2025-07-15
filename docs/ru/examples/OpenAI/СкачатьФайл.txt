@@ -1,6 +1,6 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Токен = "12We...";
 
-    IDФайла = "file-15";
+    IDФайла = "file-65";
 
     Результат = OPI_OpenAI.СкачатьФайл(URL, Токен, IDФайла);
