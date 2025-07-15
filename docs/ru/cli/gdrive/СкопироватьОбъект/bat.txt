@@ -1,5 +1,5 @@
 oint gdrive СкопироватьОбъект ^
   --token "***" ^
-  --object "18sy7kImWY8edyhoY-uea4CWowa2MF9mT" ^
+  --object "13DJyZp4H-Y9cN135GKOY2XXT5mvm1pv8" ^
   --title "Скопированный файл.jpeg" ^
   --catalog "root"
