@@ -1,4 +1,4 @@
 oint yadisk UploadFileByURL ^
  --token "***" ^
- --path "/aed189bb-8edb-4eac-a826-947cda724c09.png" ^
+ --path "/ea5e7a0d-9a57-44db-abc0-cfad2aeeeab0.png" ^
  --url "https://hut.openintegrations.dev/test_data/picture.jpg"

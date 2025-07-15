@@ -1,5 +1,5 @@
 oint slack EditMessage \
  --token "***" \
  --channel "C06UFNUTKUL" \
- --stamp "1752583795.838819" \
+ --stamp "1752599856.357499" \
  --text "TestMessage2"

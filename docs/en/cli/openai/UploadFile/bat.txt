@@ -1,6 +1,6 @@
 oint openai UploadFile ^
  --url "https://hut.openintegrations.dev/localai/" ^
  --token "***" ^
- --name "dc26bc11-e33c-42be-b80b-49a0833914bd.png" ^
+ --name "8acecdde-bf76-48c9-92a8-68d1a494e111.png" ^
  --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
  --purpose "assistants"
