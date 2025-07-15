@@ -1,4 +1,4 @@
 oint openai DownloadFile \
  --url "https://hut.openintegrations.dev/localai/" \
  --token "***" \
- --id "file-55"
+ --id "file-62"

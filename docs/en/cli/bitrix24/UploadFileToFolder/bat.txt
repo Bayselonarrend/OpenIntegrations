@@ -2,4 +2,4 @@ oint bitrix24 UploadFileToFolder ^
  --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
  --title "Imortant doc.docx" ^
  --file "https://hut.openintegrations.dev/test_data/document.docx" ^
- --folderid 38962
+ --folderid 39142
