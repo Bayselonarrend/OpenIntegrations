@@ -1,4 +1,4 @@
 oint gsheets GetCellValues \
  --token "***" \
- --spreadsheet "1jg_oE0l47fs9PkIPLGxhQsPZbPOPqYEjSnyMMKCCrq4" \
+ --spreadsheet "1dPRCBG9fy22tslJqnfsUzrem-ukBr0Xgfrl1zJ0G13w" \
  --sheetname "Sheet2"
