@@ -119,7 +119,7 @@ Function GetFullComposition() Export
 EndFunction
 
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Дandtoмandчеwithtoand = True) Export
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
 
     Module             = GetCommandModuleMapping().Get(Command);
     IndexObject      = GetIndexData(Command);
@@ -131,7 +131,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     CommandSelection    = New Structure("SearchMethod", Upper(Method));
     MethodParameters = IndexObject["Composition"].FindRows(CommandSelection);
     
-    If Дandtoмandчеwithtoand Then
+    If Dynamically Then
        ExecutionText = StrTemplate(IndexObject["ConnectionString"], PackagesDirectory);
     Else
        ExecutionText = "";

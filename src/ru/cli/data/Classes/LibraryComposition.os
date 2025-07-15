@@ -235,8 +235,8 @@ Function GetFullComposition() Export
 	Return ПолучитьПолныйСостав();
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Дandtoмandчеwithtoand = True) Export
-	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method, Дandtoмandчеwithtoand);
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
+	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method, Dynamically);
 EndFunction
 
 Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
