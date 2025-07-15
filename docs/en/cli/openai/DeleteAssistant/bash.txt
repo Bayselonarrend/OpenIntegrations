@@ -1,4 +1,4 @@
 oint openai DeleteAssistant \
  --url "https://hut.openintegrations.dev/localai/" \
  --token "***" \
- --id "asst_54"
+ --id "asst_61"
