@@ -1,6 +1,6 @@
 oint bitrix24 SendFile \
  --url "b24-ar17wx.bitrix24.by" \
- --chat 2798 \
- --fileid 38968 \
+ --chat 2810 \
+ --fileid 39148 \
  --description "Very important file" \
  --token "***"
