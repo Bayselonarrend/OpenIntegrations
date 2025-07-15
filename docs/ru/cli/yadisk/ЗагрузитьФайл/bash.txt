@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл \
   --token "***" \
-  --path "/2c455097-35d8-4792-9ac9-7b0998579c27.png" \
-  --file "/tmp/obtuyr5u.h2g.png" \
+  --path "/dd2ad360-835d-493e-99bf-a281e2e62b7a.png" \
+  --file "C:\Users\bayse\AppData\Local\Temp\weutcbnawtn.png" \
   --rewrite true
