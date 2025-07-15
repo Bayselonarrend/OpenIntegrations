@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint twitter CreateCustomTweet \
- --text "TestTweetb4ea1886-7b01-4fdf-b0c1-d01ef807db71" \
- --media "['1871819002059579392','1871819023580598272']" \
- --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+ --text "TestTweet51a8ae81-cfcb-424f-8164-c5619383fa0f" \
+ --media "['1945099440953417728','1945099450633920512']" \
+ --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

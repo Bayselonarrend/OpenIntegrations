@@ -5,4 +5,4 @@ oint slack SendEphemeralMessage ^
  --channel "C06UFNUTKUL" ^
  --text "Ephemeral message" ^
  --user "U06UABH3APP" ^
- --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Image'}"
+ --blocks "{'type':'image','image_url':'https://hut.openintegrations.dev/test_data/picture.jpg','alt_text':'Image'}"

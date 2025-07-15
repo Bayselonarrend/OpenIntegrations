@@ -1,0 +1,2 @@
+oint openai GetSystemMessage ^
+ --text "What is 1C:Enterprise?"
