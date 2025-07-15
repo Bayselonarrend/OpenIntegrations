@@ -36,6 +36,7 @@
   <a href="https://openintegrations.dev/docs/Instructions/S3/"><img src="media/S3.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/PostgreSQL/"><img src="media/PostgreSQL.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/SQLite/"><img src="media/SQLite.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/MSSQL/"><img src="media/MSSQL.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/MySQL/"><img src="media/MySQL.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Twitter/"><img src="media/Twitter.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Notion/"><img src="media/Notion.png" width="40"></a>
