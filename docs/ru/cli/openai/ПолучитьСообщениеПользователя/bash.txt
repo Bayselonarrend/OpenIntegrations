@@ -1,0 +1,3 @@
+oint openai ПолучитьСообщениеПользователя \
+  --text "What is 1C:Enterprise?" \
+  --name "Vitaly"

@@ -1,5 +1,5 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --file "/tmp/a5hgih3o.luw.m4a" ^
-  --reply "7526552022959535673"
+  --file "C:\Users\bayse\AppData\Local\Temp\mrvknqipi2o.m4a" ^
+  --reply "7527255405458634556"
