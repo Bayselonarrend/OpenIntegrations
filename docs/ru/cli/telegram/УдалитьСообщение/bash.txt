@@ -1,4 +1,4 @@
 oint telegram УдалитьСообщение \
   --token "***" \
   --chat "@testsichee" \
-  --message "19073"
+  --message "19105"

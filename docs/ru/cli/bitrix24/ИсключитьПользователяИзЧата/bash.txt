@@ -1,5 +1,5 @@
 oint bitrix24 ИсключитьПользователяИзЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 2794 \
+  --chat 2802 \
   --user 10 \
   --token "***"
