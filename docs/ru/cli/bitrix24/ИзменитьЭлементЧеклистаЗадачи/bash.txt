@@ -1,6 +1,6 @@
 oint bitrix24 ИзменитьЭлементЧеклистаЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "7288" \
-  --element 5040 \
+  --task "7318" \
+  --element 5064 \
   --text "Новый текст пункта чек-листа" \
   --token "***"

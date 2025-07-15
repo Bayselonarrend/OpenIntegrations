@@ -2,7 +2,7 @@
 
 oint airtable СоздатьПоле \
   --token "***" \
-  --base "appFBCjyodFqGKQ8H" \
-  --table "tblN5A73fw4Jt1DsH" \
-  --title "9c5cdbe9-e120-4dbb-9c8b-c473aa014643" \
-  --fielddata "{'name':'9c5cdbe9-e120-4dbb-9c8b-c473aa014643','type':'number','options':{'precision':0}}"
+  --base "appZn0KvfLL5O9dXR" \
+  --table "tblqZoCYuMU5S9FQA" \
+  --title "3063d2d5-519a-4c46-92d1-e8e66e02a24f" \
+  --fielddata "{'name':'3063d2d5-519a-4c46-92d1-e8e66e02a24f','type':'number','options':{'precision':0}}"

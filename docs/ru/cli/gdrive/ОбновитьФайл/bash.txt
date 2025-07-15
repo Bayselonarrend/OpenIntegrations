@@ -1,5 +1,5 @@
 oint gdrive ОбновитьФайл \
   --token "***" \
-  --object "1jaSJDpjxGq5Wx-JHmoizOva0qc0u2g9m" \
+  --object "1l_rtyAcfueJtiF0mAh71GRiCV6Fj-iZR" \
   --file "https://hut.openintegrations.dev/test_data/picture2.jpg" \
   --title "Обновленный файл.jpg"
