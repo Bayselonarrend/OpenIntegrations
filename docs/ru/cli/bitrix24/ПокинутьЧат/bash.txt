@@ -1,4 +1,4 @@
 oint bitrix24 ПокинутьЧат \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 2794 \
+  --chat 2802 \
   --token "***"
