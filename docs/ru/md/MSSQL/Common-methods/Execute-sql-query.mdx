@@ -112,7 +112,7 @@ import TabItem from '@theme/TabItem';
             
             oint mssql ВыполнитьЗапросSQL \
               --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" \
-              --dbc "Server=127.0.0.1;Database=test_data;User Id=SA;Password=***;" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
               --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
@@ -123,7 +123,7 @@ import TabItem from '@theme/TabItem';
             
             oint mssql ВыполнитьЗапросSQL ^
               --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" ^
-              --dbc "Server=127.0.0.1;Database=test_data;User Id=SA;Password=***;" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
               --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
