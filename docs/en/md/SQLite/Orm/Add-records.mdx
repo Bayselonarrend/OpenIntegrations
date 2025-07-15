@@ -40,7 +40,7 @@ Binary data can also be transferred as a structure `{'blob':File path}`
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_6B23_336.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_2968_1e2.sqlite";
     Table = "test";
 
     DataArray = New Array;
@@ -74,8 +74,8 @@ Binary data can also be transferred as a structure `{'blob':File path}`
         ```bash
             oint sqlite AddRecords \
              --table "test" \
-             --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-05T12:17:19.2072742Z','data':{'blob':'C:\\Users\\bayse\\AppData\\Local\\Temp\\dzpaqp4d1yi.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-05T12:17:19.2072742Z','data':{'blob':'C:\\Users\\bayse\\AppData\\Local\\Temp\\dzpaqp4d1yi.png'}}]" \
-             --db "C:\Users\bayse\AppData\Local\Temp\xrh2hbc2k0h.sqlite"
+             --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-15T17:06:33.7176009Z','data':{'blob':'/tmp/ec0whswb.kxy.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-15T17:06:33.7176556Z','data':{'blob':'/tmp/ec0whswb.kxy.png'}}]" \
+             --db "/tmp/1h5u01yu.rt1.sqlite"
         ```
     </TabItem>
   
@@ -83,8 +83,8 @@ Binary data can also be transferred as a structure `{'blob':File path}`
         ```batch
             oint sqlite AddRecords ^
              --table "test" ^
-             --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-05T12:17:19.2072742Z','data':{'blob':'C:\\Users\\bayse\\AppData\\Local\\Temp\\dzpaqp4d1yi.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-05T12:17:19.2072742Z','data':{'blob':'C:\\Users\\bayse\\AppData\\Local\\Temp\\dzpaqp4d1yi.png'}}]" ^
-             --db "C:\Users\bayse\AppData\Local\Temp\xrh2hbc2k0h.sqlite"
+             --rows "[{'name':'Vitaly','age':25,'salary':1000.12,'is_active':true,'created_at':'2025-07-15T17:06:33.7176009Z','data':{'blob':'/tmp/ec0whswb.kxy.png'}},{'name':'Lesha','age':20,'salary':200.20,'is_active':false,'created_at':'2025-07-15T17:06:33.7176556Z','data':{'blob':'/tmp/ec0whswb.kxy.png'}}]" ^
+             --db "/tmp/1h5u01yu.rt1.sqlite"
         ```
     </TabItem>
 </Tabs>

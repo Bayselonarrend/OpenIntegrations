@@ -1,6 +1,6 @@
 ﻿    ТекущаяДата  = OPI_Инструменты.ПолучитьТекущуюДату();
-    Токен        = "ya29.a0AS3H6NxB7WbMUyy-yHnfRFo_Sv93kSJ3qRUtm2Iz4ECHVXn6mxSdB_skIS4UjiiI5q31PT-HL6O-1hC-8T_AgNAMsGHBh28RbM4ISAvKK...";
-    Календарь    = "d98570b97b8f7acd2724ff3693ace760f9d5022ffe4903dcefeed3f362ce81ba@group.calendar.google.com";
+    Токен        = "ya29.a0AS3H6Nw6rTG3pFXv17ZLXkvuvtNl_DHHXbxe2yDRIB09Sq-BA7xPQj9V7OKAaAiHRZAsVqI0UD6026Q_3gklXjU-kam0kzFCe2adXI3lS...";
+    Календарь    = "b4cd7b78fa45f2448bc045fe33639a9322a4851ff48d6eaa6dfbc2f95a6410d5@group.calendar.google.com";
     Наименование = "Новое событие";
     Описание     = "Описание тестового события";
     Час          = 3600;
