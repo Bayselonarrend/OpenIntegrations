@@ -1,6 +1,6 @@
 oint vkteams ОтправитьФайл ^
   --token "***" ^
   --chatid "AoLI0egLWBSLR1Ngn2w" ^
-  --file "/tmp/blso1vdl.w34" ^
+  --file "/tmp/gr0o0vug.lu5" ^
   --text "Подпись к файлу" ^
   --filename "ВажныйДокумент.docx"
