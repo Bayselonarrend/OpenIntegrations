@@ -1,0 +1,2 @@
+oint openai GetAssistantMessage \
+ --text "What is 1C:Enterprise?"

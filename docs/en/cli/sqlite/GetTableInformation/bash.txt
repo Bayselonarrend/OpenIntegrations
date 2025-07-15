@@ -1,3 +1,3 @@
 oint sqlite GetTableInformation \
  --table "test" \
- --db "C:\Users\bayse\AppData\Local\Temp\xrh2hbc2k0h.sqlite"
+ --db "C:\Users\bayse\AppData\Local\Temp\1jc1yzmhslp.sqlite"

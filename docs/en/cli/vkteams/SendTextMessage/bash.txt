@@ -2,6 +2,6 @@ oint vkteams SendTextMessage \
  --token "***" \
  --chatid "689203963@chat.agent" \
  --text "<b>Bold text</b>" \
- --reply "7523347887162406028" \
+ --reply "7527255405458634556" \
  --keyboard "[[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}]]" \
  --parsemod "HTML"
