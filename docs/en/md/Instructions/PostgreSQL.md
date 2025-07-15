@@ -72,6 +72,10 @@ The PostgreSQL connector supports the use of positional parameters. All values p
 
 A similar list of types is also available to retrieve as query results from PostgreSQL
 
+## Retrieving Binary Data
+
+Binary data retrieved from the database will be represented as an object (structure) of the form `{"BYTES": "Base64 string"}` and must be manually converted from Base64
+
 ## TLS
 
 The library supports operation in TLS mode. To enable it, you need to configure TLS settings using the `GetTlsSettings` function and pass them as the corresponding parameter to the `CreateConnection` function or one of the ORM functions that support this parameter. If the TLS parameter is not provided when calling these functions, the connection will be initialized in an unsecured mode.

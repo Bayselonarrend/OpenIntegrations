@@ -30,6 +30,36 @@ This library has two parts: basic methods, like connecting and executing SQL que
 
 By default, all SELECT queries return an array of selected data, while other queries return only `true` in the `result` field on success, or `false` and error text in the `result` and `error` fields, respectively. To execute queries that require data to be returned but are not SELECT queries, the `ExecuteSQLQuery()` function has a `ForceResult` parameter
 
+## Query parameters
+
+The MSSQL connector supports the use of positional parameters. All values passed both when executing queries directly through the `ExecuteRequestSQL()` function and in ORM methods with value setting, such as `AddRecords` and `UpdateRecords`, must be a structure of the form `{'Data Type': 'Value'}`. The following data types are supported\*:
+
+> \* The MSSQL type list lists only a few suitable types
+
+  | Имя типа (ключ структуры) | Тип значения 1С | Подходит для типов MSSQL |
+  |-|-|-|
+  | TINYINT | Number  | tinyint |
+  | SMALLINT | Number  | smallint |
+  | INT | Number  | int |
+  | BIGINT | Number  | bigint |
+  | FLOAT24 | Number  | float(24), real |
+  | FLOAT53 | Number  | float(53) |
+  | NUMERIC | Number  | decimal, numeric |
+  | DECIMAL | Number  | decimal, numeric |
+  | BIT | Bool | bit |
+  | NVARCHAR | String | nvarchar, varchar, nchar, char, ntext, text |
+  | UUID | String, UUID | uniqueidentifier |
+  | XML | String | xml |
+  | DATE | Date, String | date |
+  | TIME | Date, String | time |
+  | DATETIME | Date, String | datetime, datetime2 |
+  | DATETIMEOFFSET | Date, String | datetimeoffset |
+  | BYTES | BinaryData | varbinary |
+
+## Retrieving Binary Data
+
+Binary data retrieved from the database will be represented as an object (structure) of the form `{"BYTES": "Base64 string"}` and must be manually converted from Base64
+
 ## TLS
 
 The library supports operation in TLS mode. To enable it, you need to configure TLS settings using the `GetTlsSettings` function and pass them as the corresponding parameter to the `CreateConnection` function or one of the ORM functions that support this parameter. If the TLS parameter is not provided when calling these functions, the connection will be initialized in an unsecured mode.
