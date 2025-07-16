@@ -35,6 +35,15 @@ impl FtpClient {
         }
 
     }
+
+    pub fn get_welcome_msg(&self) -> String {
+        let msg = match self {
+            FtpClient::Secure(stream) => stream.get_welcome_msg().unwrap_or(""),
+            FtpClient::Insecure(stream) => stream.get_welcome_msg().unwrap_or(""),
+        };
+
+        json!({"result": true, "data": msg}).to_string()
+    }
 }
 
 fn format_json_error<E: ToString>(error: E) -> String {
