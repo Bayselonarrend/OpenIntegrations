@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_1.26.0_all_%1.deb https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.26.0/oint_1.26.0_all_%1.deb '
+                    sh 'wget -O oint_1.27.0_all_%1.deb https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint_1.27.0_all_%1.deb '
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Устанавливаем скаченный пакет
-                    sh 'dpkg -i oint_1.26.0_all_%1.deb'
+                    sh 'dpkg -i oint_1.27.0_all_%1.deb'
                 }
             }
         }
