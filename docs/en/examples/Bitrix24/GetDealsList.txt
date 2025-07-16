@@ -3,7 +3,7 @@
     Result = OPI_Bitrix24.GetDealsList(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "11ae5d68006e9f06006b12e400000001000...";
+    Token = "4cc87668006e9f06006b12e400000001000...";
 
     Filter = New Structure;
     Filter.Insert("TITLE"      , "Sale in RUB");

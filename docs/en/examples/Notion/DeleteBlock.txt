@@ -1,4 +1,4 @@
 ﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Block = "21e82aa7-fc4e-8121-b32f-c587af04e80e";
+    Block = "23182aa7-fc4e-818f-ad1b-d2e194ac77da";
 
     Result = OPI_Notion.DeleteBlock(Token, Block);
