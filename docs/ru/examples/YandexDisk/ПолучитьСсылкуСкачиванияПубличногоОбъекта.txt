@@ -1,4 +1,4 @@
 ﻿    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/i/ZKZUU2iixdVa4Q";
+    URL   = "https://yadi.sk/i/Aqbd1agAdb5rrw";
 
     Результат = OPI_YandexDisk.ПолучитьСсылкуСкачиванияПубличногоОбъекта(Токен, URL);
