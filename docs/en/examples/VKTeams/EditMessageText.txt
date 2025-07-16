@@ -1,6 +1,6 @@
 ﻿    Token     = "001.3501506236.091...";
     ChatID    = "689203963@chat.agent";
-    MessageID = "7520342230393959123";
+    MessageID = "7527406648436996046";
     Text      = "New message text";
 
     Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);

@@ -1,7 +1,7 @@
 ﻿    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base   = "app4XRXnjhsxGaERx";
-    Table  = "tblDt5eujvrMRX7pq";
-    Record = "recUQq4GFFXb0ajup";
+    Base   = "appz0vDkZj4zWcwC4";
+    Table  = "tblZfIqdXzJwgw98C";
+    Record = "recJKjaKgbqJEVj0w";
     Text   = "TestComment";
 
     Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
