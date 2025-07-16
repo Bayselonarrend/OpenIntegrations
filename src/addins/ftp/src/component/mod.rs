@@ -9,7 +9,8 @@ use suppaftp::types::Mode;
 use serde::Deserialize;
 use crate::component::ftp_client::FtpClient;
 use std::net::TcpStream;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, MutexGuard};
+use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
@@ -19,7 +20,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("UpdateSettings"),
     name!("UpdateProxy"),
-    name!("SetTLS")
+    name!("SetTLS"),
+    name!("GetWelcomeMsg")
 ];
 
 // Число параметров функций компоненты
@@ -56,6 +58,12 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
 
+        },
+        4 => {
+            Box::new(match obj.get_client(){
+                Ok(c) => c.get_welcome_msg(),
+                Err(e) => process_error(e.as_str())
+            })
         }
         _ => Box::new(false), // Неверный номер команды
     }
@@ -71,8 +79,8 @@ pub const PROPS: &[&[u16]] = &[];
 
 #[derive(Deserialize, Debug)]
 struct FtpProxySettings {
-    server: String,
-    port: u16,
+    server: Option<String>,
+    port: Option<u16>,
     login: Option<String>,
     password: Option<String>,
     proxy_type: Option<String>, // "http", "socks4", "socks5"
@@ -85,7 +93,8 @@ struct FtpSettings {
     login: Option<String>,
     password: Option<String>,
     passive: Option<bool>,
-    timeout: Option<u64>,
+    read_timeout: Option<u64>,
+    write_timeout: Option<u64>,
 }
 
 pub struct AddIn {
@@ -94,7 +103,8 @@ pub struct AddIn {
     login: Option<String>,
     password: Option<String>,
     passive: bool,
-    timeout: u64,
+    read_timeout: u64,
+    write_timeout: u64,
     // TLS
     use_tls: bool,
     accept_invalid_certs: bool,
@@ -118,11 +128,11 @@ impl AddIn {
             login: None,
             password: None,
             passive: true,
-            timeout: 120,
+            read_timeout: 120,
+            write_timeout: 120,
             use_tls: false,
             accept_invalid_certs: false,
             ca_cert_path: String::new(),
-            // Инициализация полей прокси
             proxy_server: None,
             proxy_port: None,
             proxy_login: None,
@@ -135,7 +145,7 @@ impl AddIn {
 
         let json_struct: FtpSettings = match serde_json::from_str(json_data){
             Ok(s) => s,
-            Err(e) => return Self::process_error(&e.to_string()),
+            Err(e) => return process_error(&e.to_string()),
         };
 
         if let Some(domain) = json_struct.domain {
@@ -150,12 +160,16 @@ impl AddIn {
             self.passive = passive;
         }
 
-        if let Some(timeout) = json_struct.timeout {
-            self.timeout = timeout;
+        if let Some(read_timeout) = json_struct.read_timeout {
+            self.read_timeout = read_timeout;
         }
 
-        self.login = json_struct.login.or(self.login.clone());
-        self.password = json_struct.password.or(self.password.clone());
+        if let Some(write_timeout) = json_struct.write_timeout {
+            self.write_timeout = write_timeout;
+        }
+
+        self.login = json_struct.login;
+        self.password = json_struct.password;
 
         json!({"result": true}).to_string()
 
@@ -165,11 +179,12 @@ impl AddIn {
 
         let json_struct: FtpProxySettings = match serde_json::from_str(json_data){
             Ok(s) => s,
-            Err(e) => return Self::process_error(&e.to_string()),
+            Err(e) => return process_error(&e.to_string()),
         };
 
-        self.proxy_server = Some(json_struct.server);
-        self.proxy_port = Some(json_struct.port);
+
+        self.proxy_server = json_struct.server;
+        self.proxy_port = json_struct.port;
         self.proxy_login = json_struct.login;
         self.proxy_password = json_struct.password;
         self.proxy_type = json_struct.proxy_type;
@@ -181,13 +196,26 @@ impl AddIn {
     pub fn initialize(&mut self) -> String {
 
         if self.domain.is_empty() {
-            return Self::process_error("Address must be initialized");
+            return process_error("Address must be initialized");
         }
 
         let tcp_stream = match self.create_tcp_connection() {
             Ok(stream) => stream,
             Err(e) => return e,
         };
+
+        let w_timeout = Some(Duration::from_secs(self.write_timeout));
+        let r_timeout = Some(Duration::from_secs(self.read_timeout));
+
+        match tcp_stream.set_write_timeout(w_timeout){
+            Ok(_) => (),
+            Err(e) => return process_error(&e.to_string()),
+        }
+
+        match tcp_stream.set_read_timeout(r_timeout) {
+            Ok(_) => (),
+            Err(e) => return process_error(&e.to_string()),
+        }
 
         let client = match self.configure_ftp_client(tcp_stream) {
             Ok(client) => client,
@@ -199,7 +227,7 @@ impl AddIn {
 
         self.client = match client.login(login, password) {
             Ok(auth) => Some(Arc::new(Mutex::new(auth))),
-            Err(e) => return Self::process_error(&e.to_string()),
+            Err(e) => return process_error(&e.to_string()),
         };
 
         json!({"result": true}).to_string()
@@ -217,11 +245,11 @@ impl AddIn {
             let tls_connector = self.get_tls_connector()?;
 
             let ftp_stream = NativeTlsFtpStream::connect_with_stream(tcp_stream)
-                .map_err(|e| Self::process_error(&e.to_string()))?;
+                .map_err(|e| process_error(&e.to_string()))?;
 
             let mut secure_stream = ftp_stream
                 .into_secure(NativeTlsConnector::from(tls_connector), &self.domain)
-                .map_err(|e| Self::process_error(&e.to_string()))?;
+                .map_err(|e| process_error(&e.to_string()))?;
 
             secure_stream.set_mode(mode);
             secure_stream.set_passive_nat_workaround(true);
@@ -230,7 +258,7 @@ impl AddIn {
         } else {
 
             let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
-                .map_err(|e| Self::process_error(&e.to_string()))?;
+                .map_err(|e| process_error(&e.to_string()))?;
 
             ftp_stream.set_mode(mode);
             ftp_stream.set_passive_nat_workaround(true);
@@ -250,7 +278,7 @@ impl AddIn {
             match proxy_type.to_lowercase().as_str() {
                 "socks5" => self.connect_via_socks5(&proxy_addr, target_addr),
                 "socks4" => self.connect_via_socks4(&proxy_addr, target_addr),
-                _ => Err(Self::process_error("Unsupported proxy type")),
+                _ => Err(process_error("Unsupported proxy type")),
             }
         } else {
             self.connect_direct()
@@ -266,7 +294,7 @@ impl AddIn {
         };
 
         stream.map(|s| s.into_inner())
-            .map_err(|e| Self::process_error(&format!("SOCKS5 error: {}", e)))
+            .map_err(|e| process_error(&format!("SOCKS5 error: {}", e)))
     }
 
     fn connect_via_socks4(&self, proxy_addr: &str, target_addr: (&str, u16)) -> Result<TcpStream, String> {
@@ -278,12 +306,12 @@ impl AddIn {
         };
 
         stream.map(|s| s.into_inner())
-            .map_err(|e| Self::process_error(&format!("SOCKS4 error: {}", e)))
+            .map_err(|e| process_error(&format!("SOCKS4 error: {}", e)))
     }
 
     fn connect_direct(&self) -> Result<TcpStream, String> {
         let addr = format!("{}:{}", &self.domain, &self.port);
-        TcpStream::connect(&addr).map_err(|e| Self::process_error(&format!("Direct connection error: {}", e)))
+        TcpStream::connect(&addr).map_err(|e| process_error(&format!("Direct connection error: {}", e)))
     }
 
     pub fn close_connection(&mut self) -> String {
@@ -295,7 +323,7 @@ impl AddIn {
                         FtpClient::Insecure(stream) => _ = stream.quit(),
                     }
                 }
-                Err(e) => return Self::process_error(&format!("Failed to lock client: {}", e)),
+                Err(e) => return process_error(&format!("Failed to lock client: {}", e)),
             }
         }
         json!({"result": true}).to_string()
@@ -304,7 +332,7 @@ impl AddIn {
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
 
         if self.client.is_some(){
-            return Self::process_error("TLS settings can only be set before the connection is established");
+            return process_error("TLS settings can only be set before the connection is established");
         };
 
         self.accept_invalid_certs = accept_invalid_certs;
@@ -323,25 +351,25 @@ impl AddIn {
         if !self.ca_cert_path.is_empty() {
 
             let cert_data = std::fs::read(&self.ca_cert_path)
-                .map_err(|e| Self::process_error(&e.to_string()))?;
+                .map_err(|e| process_error(&e.to_string()))?;
 
             let cert = native_tls::Certificate::from_pem(&cert_data)
-                .map_err(|e| Self::process_error(&e.to_string()))?;
+                .map_err(|e| process_error(&e.to_string()))?;
 
             tls_builder.add_root_certificate(cert);
         }
 
         match tls_builder.build(){
             Ok(connector) => Ok(connector),
-            Err(e) => Err(Self::process_error(&e.to_string())),
+            Err(e) => Err(process_error(&e.to_string())),
         }
     }
 
-    fn process_error(e: &str) -> String{
-        json!({
-            "result": false,
-            "error": e
-        }).to_string()
+    fn get_client(&self) -> Result<MutexGuard<'_, FtpClient>, String> {
+        self.client
+            .as_ref()
+            .ok_or_else(|| process_error("FTP client is not initialized"))
+            .and_then(|arc| arc.lock().map_err(|_|  process_error("Failed to lock FTP client mutex")))
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
@@ -350,6 +378,13 @@ impl AddIn {
         }
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
+}
+
+pub fn process_error(e: &str) -> String{
+    json!({
+            "result": false,
+            "error": e
+        }).to_string()
 }
 
 
