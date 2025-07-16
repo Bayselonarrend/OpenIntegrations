@@ -1,4 +1,4 @@
 ﻿    Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F093XGMRWG0";
+    FileID = "F095XFT1621";
 
     Result = OPI_Slack.MakeFilePrivate(Token, FileID);

@@ -1,4 +1,4 @@
-﻿    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
+﻿    ApiUrl           = "https://7105.api.greenapi.com";
     MediaUrl         = "https://7105.media.greenapi.com";
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";

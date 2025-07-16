@@ -2893,7 +2893,14 @@ Procedure CLI_Telegram_SendTextMessage(FunctionParameters)
     OPI_Tools.AddField("Telegram_ChannelMessageID", MessageID, "String", FunctionParameters);
 
     // Additional test 1
-    Options.Insert("text", "<b>Text html %%F0%%9F%%93%%9E 10%%</b>");
+
+    If OPI_Tools.IsWindows() Then
+        Text = "<b>Text html %%F0%%9F%%93%%9E 10%%</b>";
+    Else
+        Text = "<b>Text html %F0%9F%93%9E 10%</b>";
+    EndIf;
+
+    Options.Insert("text"     , Text);
     Options.Insert("parsemode", "HTML");
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
@@ -2902,7 +2909,14 @@ Procedure CLI_Telegram_SendTextMessage(FunctionParameters)
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     // Additional test 2
-    Options.Insert("text", "%%F0%%9F%%A4%%BC");
+
+    If OPI_Tools.IsWindows() Then
+        Text = "%%F0%%9F%%A4%%BC";
+    Else
+        Text = "%F0%9F%A4%BC";
+    EndIf;
+
+    Options.Insert("text"     , Text);
     Options.Insert("parsemode", "Markdown");
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
@@ -2911,7 +2925,14 @@ Procedure CLI_Telegram_SendTextMessage(FunctionParameters)
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     // Additional test 3
-    Options.Insert("text", "Text %%F0%%9F%%A5%%9D and emoji \(10%%\)");
+
+    If OPI_Tools.IsWindows() Then
+        Text = "Text %%F0%%9F%%A5%%9D and emoji \(10%%\)";
+    Else
+        Text = "Text %F0%9F%A5%9D and emoji \(10%\)";
+    EndIf;
+
+    Options.Insert("text"     , "Text %%F0%%9F%%A5%%9D and emoji \(10%%\)");
     Options.Insert("parsemode", "MarkdownV2");
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
