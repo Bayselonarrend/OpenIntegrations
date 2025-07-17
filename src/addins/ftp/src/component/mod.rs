@@ -1,4 +1,5 @@
 mod ftp_client;
+mod tcp_establish;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
@@ -11,13 +12,13 @@ use crate::component::ftp_client::FtpClient;
 use std::net::TcpStream;
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::time::Duration;
-use socks::{Socks4Stream, Socks5Stream};
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
+    name!("Close"),
     name!("UpdateSettings"),
     name!("UpdateProxy"),
     name!("SetTLS"),
@@ -28,9 +29,11 @@ pub const METHODS: &[&[u16]] = &[
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
-        1 => 1,
+        1 => 0,
         2 => 1,
-        3 => 3,
+        3 => 1,
+        4 => 3,
+        5 => 0,
         _ => 0,
     }
 }
@@ -42,15 +45,16 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     match num {
 
         0 => Box::new(obj.initialize()),
-        1 => {
+        1 => Box::new(obj.close_connection()),
+        2 => {
             let json_string = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.update_settings(&json_string))
         },
-        2 => {
+        3 => {
             let json_string = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.update_proxy(&json_string))
         },
-        3 => {
+        4 => {
 
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
@@ -59,7 +63,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
 
         },
-        4 => {
+        5 => {
             Box::new(match obj.get_client(){
                 Ok(c) => c.get_welcome_msg(),
                 Err(e) => process_error(e.as_str())
@@ -182,7 +186,6 @@ impl AddIn {
             Err(e) => return process_error(&e.to_string()),
         };
 
-
         self.proxy_server = json_struct.server;
         self.proxy_port = json_struct.port;
         self.proxy_login = json_struct.login;
@@ -199,7 +202,7 @@ impl AddIn {
             return process_error("Address must be initialized");
         }
 
-        let tcp_stream = match self.create_tcp_connection() {
+        let tcp_stream = match tcp_establish::create_tcp_connection(self) {
             Ok(stream) => stream,
             Err(e) => return e,
         };
@@ -266,53 +269,7 @@ impl AddIn {
         }
     }
 
-    fn create_tcp_connection(&self) -> Result<TcpStream, String> {
 
-        if let (Some(proxy_server), Some(proxy_port), Some(proxy_type)) =
-            (&self.proxy_server, &self.proxy_port, &self.proxy_type)
-        {
-
-            let target_addr = (self.domain.as_str(), self.port);
-            let proxy_addr = format!("{}:{}", proxy_server, proxy_port);
-
-            match proxy_type.to_lowercase().as_str() {
-                "socks5" => self.connect_via_socks5(&proxy_addr, target_addr),
-                "socks4" => self.connect_via_socks4(&proxy_addr, target_addr),
-                _ => Err(process_error("Unsupported proxy type")),
-            }
-        } else {
-            self.connect_direct()
-        }
-    }
-
-    fn connect_via_socks5(&self, proxy_addr: &str, target_addr: (&str, u16)) -> Result<TcpStream, String> {
-
-        let stream = if let (Some(user), Some(pass)) = (&self.proxy_login, &self.proxy_password) {
-            Socks5Stream::connect_with_password(proxy_addr, target_addr, user, pass)
-        } else {
-            Socks5Stream::connect(proxy_addr, target_addr)
-        };
-
-        stream.map(|s| s.into_inner())
-            .map_err(|e| process_error(&format!("SOCKS5 error: {}", e)))
-    }
-
-    fn connect_via_socks4(&self, proxy_addr: &str, target_addr: (&str, u16)) -> Result<TcpStream, String> {
-
-        let stream = if let Some(user) = &self.proxy_login {
-            Socks4Stream::connect(proxy_addr, target_addr, user)
-        } else {
-            Socks4Stream::connect(proxy_addr, target_addr, "")
-        };
-
-        stream.map(|s| s.into_inner())
-            .map_err(|e| process_error(&format!("SOCKS4 error: {}", e)))
-    }
-
-    fn connect_direct(&self) -> Result<TcpStream, String> {
-        let addr = format!("{}:{}", &self.domain, &self.port);
-        TcpStream::connect(&addr).map_err(|e| process_error(&format!("Direct connection error: {}", e)))
-    }
 
     pub fn close_connection(&mut self) -> String {
         if let Some(client) = self.client.take() {
@@ -394,6 +351,8 @@ pub fn process_error(e: &str) -> String{
 
 // Обработка удаления объекта
 impl Drop for AddIn {
-    fn drop(&mut self) {}
+    fn drop(&mut self) {
+        self.close_connection();
+    }
 }
 
