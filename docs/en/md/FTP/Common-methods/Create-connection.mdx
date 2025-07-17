@@ -1,0 +1,61 @@
+﻿---
+sidebar_position: 1
+description: Create Connection  and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create Connection 
+ Creates an FTP connection with the specified settings
+
+
+
+`Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | FTPSettings | - | Structure Of KeyAndValue | &#x2714; | FTP settings. See GetConnectionSettings |
+  | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
+  | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Arbitrary - Client object or map with error information
+
+<br/>
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Domain   = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    // Simple connection
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
+    Result      = OPI_FTP.CreateConnection(FTPSettings);
+
+    // TLS connection through proxy
+
+    FTPDomain    = "172.33.0.11";
+    ProxyAddress = "127.0.0.1";
+
+    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPDomain, 21, Login, "12we3456!2154");
+    ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
+    TLSSettings   = OPI_FTP.GetTlsSettings(True);
+
+    Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+```
+ 
+
+
+
+

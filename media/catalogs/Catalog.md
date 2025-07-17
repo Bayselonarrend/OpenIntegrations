@@ -4,6 +4,7 @@
 |![Bitrix24](../Bitrix24.png)| `Bitrix24`| bitrix24, b24, bitrix |
 |![CDEK](../CDEK.png)| `CDEK`| cdek |
 |![Dropbox](../Dropbox.png)| `Dropbox`| dropbox |
+|![FTP](../FTP.png)| `FTP`| ftp, ftps |
 |![Google Calendar](../GoogleCalendar.png)| `Google Calendar`| google calendar, googlecalendar, gcalendar |
 |![Google Drive](../GoogleDrive.png)| `Google Drive`| google drive, googledrive, gdrive, google disk |
 |![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
@@ -25,4 +26,3 @@
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
-|![FTP](../FTP.png)| `FTP`| ftp, ftps |

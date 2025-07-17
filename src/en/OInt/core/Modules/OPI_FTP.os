@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_FTP.os
+// OneScript: ./OInt/core/Modules/OPI_FTP.os
 // Lib: FTP
 // CLI: ftp
 // Keywords: ftp, ftps
@@ -348,7 +348,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
     EndTry;
 
-    If Not OPI_Tools.CollectionFieldExists(ConfigurationStructure, "set") Then
+    If Not OPI_Tools.CollectionFieldExist(ConfigurationStructure, "set") Then
 
         Result = New Map;
         Result.Insert("result", False);
@@ -376,6 +376,42 @@ Function CheckCreateConnection(Connection)
 
     Return CloseConnection;
 
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function ОткрытьСоединение(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
+	Return CreateConnection(НастройкиFTP, Прокси, Tls);
+EndFunction
+
+Function ПолучитьКонфигурациюСоединиения(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
+	Return GetConnectionConfiguration(НастройкиFTP, Прокси, Tls);
+EndFunction
+
+Function ЗакрытьСоединение(Val Соединение) Export
+	Return CloseConnection(Соединение);
+EndFunction
+
+Function ПолучитьПриветственноеСообщение(Val Соединение) Export
+	Return GetWelcomeMessage(Соединение);
+EndFunction
+
+Function ЭтоКоннектор(Val Значение) Export
+	Return IsConnector(Значение);
+EndFunction
+
+Function ПолучитьНастройкиСоединения(Val Домен, Val Порт = 21, Val Логин = Undefined, Val Пароль = Undefined, Val Пассивный = True, Val ТаймаутЧтения = 120, Val ТаймаутЗаписи = 120) Export
+	Return GetConnectionSettings(Домен, Порт, Логин, Пароль, Пассивный, ТаймаутЧтения, ТаймаутЗаписи);
+EndFunction
+
+Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
+	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
+EndFunction
+
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
 EndFunction
 
 #EndRegion
