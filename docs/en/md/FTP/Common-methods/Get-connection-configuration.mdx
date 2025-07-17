@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 2
+description: Get connection configuration and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection configuration
+ Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
+
+
+
+`Function GetConnectionConfiguration(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | FTPSettings | --set | Structure Of KeyAndValue | &#x2714; | FTP settings. See GetConnectionSettings |
+  | Proxy | --proxy | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Structure Of KeyAndValue - Connection settings structure
+
+<br/>
+
+:::tip
+Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
+
+At the same time, a new connection will be opened and closed within the called function
+
+Using the connection configuration is not recommended for multiple requests to the FTP server. This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+

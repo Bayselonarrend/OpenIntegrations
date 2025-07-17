@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 5
+description: Get connection settings and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection settings
+ Creates a structure of FTP connection settings
+
+
+
+`Function GetConnectionSettings(Val Domain, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Domain | --host | String | &#x2714; | Server domain |
+  | Port | --port | Number | &#x2716; | Server port |
+  | Login | --login | String, Undefined | &#x2716; | Username for authorization, if required |
+  | Password | --pass | String, Undefined | &#x2716; | User password for authorization, if required |
+  | Passive | --passive | Boolean | &#x2716; | Passive connection mode |
+  | ReadTimeout | --rtout | Number | &#x2716; | Read timeout |
+  | WriteTimeout | --wtout | Number | &#x2716; | Write timeout |
+
+  
+  Returns:  Structure Of KeyAndValue - Connection settings structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
