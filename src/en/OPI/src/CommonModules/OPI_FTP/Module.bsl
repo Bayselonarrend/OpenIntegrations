@@ -128,11 +128,20 @@ Function CloseConnection(Val Connection) Export
 
     CheckCreateConnection(Connection);
     Result = Connection.Close();
+    Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
 
 EndFunction
 
+// Get welcome message
+// Receives the FTP servers welcome message
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
 Function GetWelcomeMessage(Val Connection) Export
 
     CloseConnection = CheckCreateConnection(Connection);
@@ -140,8 +149,8 @@ Function GetWelcomeMessage(Val Connection) Export
     If Not IsConnector(Connection) Then
         Result = Connection;
     Else
-        Result       = Connection.GetWelcomeMsg();
-        Result       = OPI_Tools.JsonToStructure(Result);
+        Result = Connection.GetWelcomeMsg();
+        Result = OPI_Tools.JsonToStructure(Result);
     EndIf;
 
     If CloseConnection Then

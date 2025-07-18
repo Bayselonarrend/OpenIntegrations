@@ -161,7 +161,7 @@
     Http      = "HTTPКлиент";
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
-    FTP          = "FTP";
+    FTP       = "FTP";
 
     ТаблицаТестов = Новый ТаблицаЗначений;
     ТаблицаТестов.Колонки.Добавить("Метод");
@@ -700,6 +700,12 @@
 Процедура Проверка_Истина(Знач Результат) Экспорт
 
     ОжидаетЧто(Результат).Равно(Истина);
+
+КонецПроцедуры
+
+Процедура Проверка_Ложь(Знач Результат) Экспорт
+
+    ОжидаетЧто(Результат).Равно(Ложь);
 
 КонецПроцедуры
 
@@ -3095,6 +3101,10 @@ EndProcedure
 
 Procedure Check_True(Val Result) Export
 	Проверка_Истина(Result);
+EndProcedure
+
+Procedure Check_False(Val Result) Export
+	Проверка_Ложь(Result);
 EndProcedure
 
 Procedure Check_TelegramTrue(Val Result) Export

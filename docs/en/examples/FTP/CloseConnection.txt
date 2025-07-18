@@ -1,0 +1,8 @@
+﻿    Domain   = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
+    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+
+    Result = OPI_FTP.CloseConnection(Connection);
