@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 description: Is connector  and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
@@ -32,7 +32,14 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
+    Domain   = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
+    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+
+    Result = OPI_FTP.IsConnector(Connection);
 ```
  
 
