@@ -1,5 +1,5 @@
 oint bitrix24 СменитьВладельцаЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 2814 \
+  --chat 2826 \
   --user 10 \
   --token "***"

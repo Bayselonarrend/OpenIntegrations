@@ -1,4 +1,4 @@
 oint openai ПолучитьСтруктуруСообщенияКартинки \
   --role "user" \
-  --file "file-62" \
+  --file "file-67" \
   --prompt "What is in this image?"

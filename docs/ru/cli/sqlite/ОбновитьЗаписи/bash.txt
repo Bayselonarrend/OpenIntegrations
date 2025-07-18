@@ -4,4 +4,4 @@ oint sqlite ОбновитьЗаписи \
   --table "test" \
   --values "{'name':'Vitaly A.','salary':'999999'}" \
   --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}]" \
-  --db "/tmp/usskxkle.34q.sqlite"
+  --db "/tmp/0xls23eq.j2r.sqlite"
