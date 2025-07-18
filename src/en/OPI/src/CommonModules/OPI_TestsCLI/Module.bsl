@@ -2764,6 +2764,24 @@ EndProcedure
 
 #EndRegion
 
+#Region FTP
+
+Procedure CLI_FT_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+
+    CLI_FTP_GetWelcomeMessage(TestParameters);
+    CLI_FTP_GetConnectionConfiguration(TestParameters);
+    CLI_FTP_GetConnectionSettings(TestParameters);
+    CLI_FTP_GetProxySettings(TestParameters);
+    CLI_FTP_GetTlsSettings(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -26246,6 +26264,178 @@ Procedure CLI_MSSQL_GetRecordsFilterStrucutre(FunctionParameters)
         OPI_TestDataRetrieval.Check_Empty(Element.Value);
 
     EndDo;
+
+EndProcedure
+
+#EndRegion
+
+#Region FTP
+
+Procedure CLI_FTP_GetWelcomeMessage(FunctionParameters)
+
+    Domain   = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , 21);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetWelcomeMessage", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Filled(Result["data"]);
+
+EndProcedure
+
+Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
+
+    FTPDomain    = "172.33.0.11";
+    ProxyAddress = FunctionParameters["PG_IP"];
+    Login        = "bayselonarrend";
+    Password     = FunctionParameters["PG_Password"];
+
+    Options = New Structure;
+    Options.Insert("host" , FTPDomain);
+    Options.Insert("port" , 21);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("addr" , ProxyAddress);
+    Options.Insert("port" , 1080);
+    Options.Insert("type" , "socks5");
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration", "FTP");
+    OPI_TestDataRetrieval.Check_True(Result.Property("set"));
+    OPI_TestDataRetrieval.Check_True(Result.Property("tls"));
+    OPI_TestDataRetrieval.Check_True(Result.Property("proxy"));
+
+    Options = New Structure;
+    Options.Insert("conn", Result);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "GetConnectionConfiguration (check 1)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Filled(Check["data"]);
+    OPI_TestDataRetrieval.Check_True(Check["close_connection"]["result"]);
+
+
+    Options = New Structure;
+    Options.Insert("host" , ProxyAddress);
+    Options.Insert("port" , 21);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("set" , FTPSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration (simple)", "FTP");
+    OPI_TestDataRetrieval.Check_True(Result.Property("set"));
+    OPI_TestDataRetrieval.Check_False(Result.Property("tls"));
+    OPI_TestDataRetrieval.Check_False(Result.Property("proxy"));
+
+    Options = New Structure;
+    Options.Insert("conn", Result);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "GetConnectionConfiguration (check 2)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Filled(Check["data"]);
+
+EndProcedure
+
+Procedure CLI_FTP_GetConnectionSettings(FunctionParameters)
+
+    Domain   = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , 21);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionSettings", "FTP");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_FTP_GetProxySettings(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "proxyuser";
+    Password = FunctionParameters["PG_Password"];
+    Type     = "socks5";
+    Port     = 1080;
+
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("port" , Port);
+    Options.Insert("type" , Type);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionSettings", "FTP");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_FTP_GetTlsSettings(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "FTP");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 

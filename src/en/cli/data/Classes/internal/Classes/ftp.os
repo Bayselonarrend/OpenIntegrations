@@ -51,6 +51,17 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetWelcomeMessage";
+    NewLine.SearchMethod = "GETWELCOMEMESSAGE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Receives the FTP servers welcome message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "GetConnectionSettings";
     NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
     NewLine.Parameter    = "--host";

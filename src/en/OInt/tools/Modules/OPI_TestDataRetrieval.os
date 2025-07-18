@@ -55,7 +55,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
     Sections.Insert("Twitter"        , 4);
-    Sections.Insert("FTP" , 5);
+    Sections.Insert("FTP"            , 5);
     Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("MySQL"          , 5);
     Sections.Insert("MSSQL"          , 5);
@@ -97,7 +97,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("VK"             , StandardDependencies);
     Sections.Insert("Viber"          , StandardDependencies);
     Sections.Insert("Twitter"        , StandardDependencies);
-    Sections.Insert("FTP" , StandardDependencies);
+    Sections.Insert("FTP"            , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("MySQL"          , StandardDependencies);
     Sections.Insert("MSSQL"          , StandardDependencies);
@@ -161,7 +161,7 @@ Function GetTestTable() Export
     Http      = "HTTPClient";
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
-    FTP          = "FTP";
+    FTP       = "FTP";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -327,7 +327,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OAI_FileManagement"                   , "Files management"                , OpenAI);
     NewTest(TestTable, "OAI_AudioProcessing"                  , "Audio processing"                , OpenAI);
     NewTest(TestTable, "OAI_ModelsManagement"                 , "Models management"               , OpenAI);
-    NewTest(TestTable, "FT_CommonMethods" , "Common methods" , FTP);
+    NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
 
     Return TestTable;
 
@@ -700,6 +700,12 @@ EndProcedure
 Procedure Check_True(Val Result) Export
 
     ExpectsThat(Result).Равно(True);
+
+EndProcedure
+
+Procedure Check_False(Val Result) Export
+
+    ExpectsThat(Result).Равно(False);
 
 EndProcedure
 
@@ -3095,6 +3101,10 @@ EndProcedure
 
 Procedure Проверка_Истина(Val Результат) Export
 	Check_True(Результат);
+EndProcedure
+
+Procedure Проверка_Ложь(Val Результат) Export
+	Check_False(Результат);
 EndProcedure
 
 Procedure Проверка_ТелеграмИстина(Val Результат) Export

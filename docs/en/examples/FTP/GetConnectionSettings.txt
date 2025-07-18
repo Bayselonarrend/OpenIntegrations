@@ -1,0 +1,5 @@
+﻿    Domain   = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Result = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
