@@ -4,15 +4,15 @@
 
     // Simple connection
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
     Result      = OPI_FTP.CreateConnection(FTPSettings);
 
     // TLS connection through proxy
 
-    FTPDomain    = "172.33.0.11";
-    ProxyAddress = "127.0.0.1";
+    FTPInternalAddress = "172.33.0.11";
+    ProxyAddress       = "127.0.0.1";
 
-    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPDomain, 21, Login, "12we3456!2154");
+    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPInternalAddress, 21, Login, Password);
     ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
     TLSSettings   = OPI_FTP.GetTlsSettings(True);
 

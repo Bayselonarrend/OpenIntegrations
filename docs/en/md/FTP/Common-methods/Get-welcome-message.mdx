@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 4
+description: Get welcome message and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get welcome message
+ Receives the FTP servers welcome message
+
+
+
+`Function GetWelcomeMessage(Val Connection) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Domain   = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
+    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+
+    Result = OPI_FTP.GetWelcomeMessage(Connection);
+```
+ 
+
+
+
+
