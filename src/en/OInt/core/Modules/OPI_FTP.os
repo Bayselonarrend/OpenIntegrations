@@ -147,7 +147,7 @@ Function GetWelcomeMessage(Val Connection) Export
     CloseConnection = CheckCreateConnection(Connection);
 
     If Not IsConnector(Connection) Then
-        Result = Connection;
+        Return Connection;
     Else
         Result = Connection.GetWelcomeMsg();
         Result = OPI_Tools.JsonToStructure(Result);
