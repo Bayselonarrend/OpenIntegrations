@@ -1,5 +1,5 @@
 oint bitrix24 ВыполнитьЭлементЧеклистаЗадачи ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "7348" ^
-  --element 5088 ^
+  --task "7358" ^
+  --element 5096 ^
   --token "***"
