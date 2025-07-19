@@ -1,2 +1,2 @@
 oint ftp ПолучитьПриветственноеСообщение ^
-  --conn "/tmp/nodj4c5o.rl3"
+  --conn "/tmp/k4r5nwue.d0k"
