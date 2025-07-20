@@ -104,7 +104,7 @@
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура настроек соединения
-Функция ПолучитьКонфигурациюСоединиения(Знач НастройкиFTP, Знач Прокси = Неопределено, Знач Tls = Неопределено) Экспорт
+Функция ПолучитьКонфигурациюСоединения(Знач НастройкиFTP, Знач Прокси = Неопределено, Знач Tls = Неопределено) Экспорт
 
     СтруктураКонфигурации = Новый Структура;
 
@@ -396,7 +396,7 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
 EndFunction
 
 Function GetConnectionConfiguration(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
-	Return ПолучитьКонфигурациюСоединиения(FTPSettings, Proxy, Tls);
+	Return ПолучитьКонфигурациюСоединения(FTPSettings, Proxy, Tls);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
