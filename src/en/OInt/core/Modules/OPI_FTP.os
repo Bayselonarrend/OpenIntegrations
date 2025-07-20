@@ -395,7 +395,7 @@ Function ОткрытьСоединение(Val НастройкиFTP, Val Пр�
 	Return CreateConnection(НастройкиFTP, Прокси, Tls);
 EndFunction
 
-Function ПолучитьКонфигурациюСоединиения(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
+Function ПолучитьКонфигурациюСоединения(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
 	Return GetConnectionConfiguration(НастройкиFTP, Прокси, Tls);
 EndFunction
 
