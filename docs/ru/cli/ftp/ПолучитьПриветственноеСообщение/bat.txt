@@ -1,2 +1,4 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint ftp ПолучитьПриветственноеСообщение ^
-  --conn "/tmp/2fypofvz.phv"
+  --conn "{'set':{'domain':'127.0.0.1','port':21,'passive':'***','read_timeout':120,'write_timeout':120,'login':'bayselonarrend','password':'***'}}"
