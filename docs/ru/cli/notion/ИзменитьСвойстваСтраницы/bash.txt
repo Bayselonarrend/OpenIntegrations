@@ -2,7 +2,7 @@
 
 oint notion ИзменитьСвойстваСтраницы \
   --token "***" \
-  --page "23682aa7-fc4e-815a-b371-f33cc49fca0c" \
+  --page "23682aa7-fc4e-819a-903c-ecc0d321a472" \
   --data "{'Активен':false,'Почта':'vector@mail.ru'}" \
   --icon "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" \

@@ -1,4 +1,4 @@
 oint vkteams УдалитьСообщение ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --messageid "7529125335435065352"
+  --messageid "7529281788208756763"
