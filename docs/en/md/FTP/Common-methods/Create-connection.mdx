@@ -47,7 +47,6 @@ import TabItem from '@theme/TabItem';
 
     FTPInternalAddress = "172.33.0.11";
     ProxyAddress       = "127.0.0.1";
-
     FTPSettings   = OPI_FTP.GetConnectionSettings(FTPInternalAddress, 21, Login, Password);
     ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
     TLSSettings   = OPI_FTP.GetTlsSettings(True);
