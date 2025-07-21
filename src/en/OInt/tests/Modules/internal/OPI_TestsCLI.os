@@ -26277,6 +26277,7 @@ EndProcedure
 Procedure CLI_FTP_GetWelcomeMessage(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -26308,6 +26309,7 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
 
     FTPDomain    = "172.33.0.11";
     ProxyAddress = FunctionParameters["PG_IP"];
+    ProxyAddress = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login        = "bayselonarrend";
     Password     = FunctionParameters["PG_Password"];
 
@@ -26390,6 +26392,7 @@ EndProcedure
 Procedure CLI_FTP_GetConnectionSettings(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -26411,6 +26414,7 @@ EndProcedure
 Procedure CLI_FTP_GetProxySettings(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
+    Address  = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "proxyuser";
     Password = FunctionParameters["PG_Password"];
     Type     = "socks5";
