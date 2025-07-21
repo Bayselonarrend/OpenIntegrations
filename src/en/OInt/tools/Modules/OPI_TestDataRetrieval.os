@@ -2725,7 +2725,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
 
-    ReplaceStructure = New Structure;
+    ReplaceStructure = New Map;
     ReplaceStructure.Insert("host.docker.internal", "127.0.0.1");
 
     If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
