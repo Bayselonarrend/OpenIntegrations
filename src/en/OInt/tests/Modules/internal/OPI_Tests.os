@@ -24765,6 +24765,7 @@ EndProcedure
 Procedure FTP_CreateConnection(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -24780,6 +24781,7 @@ Procedure FTP_CreateConnection(FunctionParameters)
 
     FTPInternalAddress = "172.33.0.11";
     ProxyAddress       = FunctionParameters["PG_IP"];
+    ProxyAddress       = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
 
     FTPSettings   = OPI_FTP.GetConnectionSettings(FTPInternalAddress, 21, Login, Password);
     ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
@@ -24797,6 +24799,7 @@ EndProcedure
 Procedure FTP_GetWelcomeMessage(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -24817,6 +24820,7 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
 
     FTPDomain    = "172.33.0.11";
     ProxyAddress = FunctionParameters["PG_IP"];
+    ProxyAddress = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login        = "bayselonarrend";
     Password     = FunctionParameters["PG_Password"];
 
@@ -24860,6 +24864,7 @@ EndProcedure
 Procedure FTP_CloseConnection(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -24881,6 +24886,7 @@ EndProcedure
 Procedure FTP_IsConnector(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -24902,6 +24908,7 @@ EndProcedure
 Procedure FTP_GetConnectionSettings(FunctionParameters)
 
     Domain   = FunctionParameters["PG_IP"];
+    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
@@ -24917,6 +24924,7 @@ EndProcedure
 Procedure FTP_GetProxySettings(FunctionParameters)
 
     Address  = FunctionParameters["PG_IP"];
+    Address  = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
     Login    = "proxyuser";
     Password = FunctionParameters["PG_Password"];
     Type     = "socks5";
