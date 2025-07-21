@@ -484,6 +484,18 @@ Function GetFilePath(Val Path) Export
 
 EndFunction
 
+Function GetLocalhost() Export
+
+    If OPI_Tools.IsWindows() Then
+        Result = "127.0.0.1";
+    Else
+        Result = "host.docker.internal";
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Procedure ParameterToCollection(Parameter, Collection) Export
 
     Value = GetParameter(Parameter);
@@ -2714,6 +2726,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     SecretsArray.Add("refresh");
 
     ReplaceStructure = New Structure;
+    ReplaceStructure.Insert("host.docker.internal", "127.0.0.1");
 
     If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
 
@@ -2733,12 +2746,8 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
 
         EndDo;
 
-        For Each ReplacedKey In ReplaceStructure Do
-
-            If Lower(Name) = ReplacedKey.Key Then
-                Value      = ReplacedKey.Value;
-            EndIf;
-
+        For Each ReplaceValue In ReplaceStructure Do
+            Value = StrReplace(Value, ReplaceValue.Key, ReplaceValue.Value);
         EndDo;
 
     EndIf;
