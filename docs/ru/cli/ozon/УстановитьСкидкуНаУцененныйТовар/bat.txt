@@ -1,5 +1,5 @@
 oint ozon УстановитьСкидкуНаУцененныйТовар ^
   --clientid "***" ^
   --apikey "***" ^
-  --productid 1156646653 ^
-  --discount 10
+  --productid "1156646653" ^
+  --discount "10"

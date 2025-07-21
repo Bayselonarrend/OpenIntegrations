@@ -3,5 +3,5 @@
 oint sqlite ОбновитьЗаписи \
   --table "test" \
   --values "{'name':'Vitaly A.','salary':'999999'}" \
-  --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}]" \
-  --db "/tmp/zx0gosuw.fn3.sqlite"
+  --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':'False'}]" \
+  --db "/tmp/it25lsuc.qsc.sqlite"
