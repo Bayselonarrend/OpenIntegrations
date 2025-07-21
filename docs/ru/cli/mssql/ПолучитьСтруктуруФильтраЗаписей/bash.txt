@@ -1,2 +1,2 @@
 oint mssql ПолучитьСтруктуруФильтраЗаписей \
-  --empty true
+  --empty "True"

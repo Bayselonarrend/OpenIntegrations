@@ -4,4 +4,4 @@ oint s3 ОтменитьЗагрузкуЧастями \
   --name "fileChunked.mp3" \
   --bucket "opi-gpbucket3" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjIzZmY3ZDg2LWQ5MjMtNDNkOS1hYzI1LWQ3NTE1NjVjYzhmOQ"
+  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmFkYWY3NjZmLTlkZmMtNDRiZC1iOWQ5LWY0YTFjZTg1NmU2NQ"
