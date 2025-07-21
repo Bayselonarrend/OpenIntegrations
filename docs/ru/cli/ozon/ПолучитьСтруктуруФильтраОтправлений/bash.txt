@@ -1,2 +1,2 @@
 oint ozon ПолучитьСтруктуруФильтраОтправлений \
-  --empty false
+  --empty "False"

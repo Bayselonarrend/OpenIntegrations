@@ -1,2 +1,2 @@
 oint ozon ПолучитьСтруктуруТовара \
-  --empty false
+  --empty "False"
