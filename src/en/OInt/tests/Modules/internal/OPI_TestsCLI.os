@@ -26345,9 +26345,9 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration", "FTP");
-    OPI_TestDataRetrieval.Check_True(Result.Property("set"));
-    OPI_TestDataRetrieval.Check_True(Result.Property("tls"));
-    OPI_TestDataRetrieval.Check_True(Result.Property("proxy"));
+    OPI_TestDataRetrieval.Check_True(Result["set"] <> Undefined);
+    OPI_TestDataRetrieval.Check_True(Result["tls"] <> Undefined);
+    OPI_TestDataRetrieval.Check_True(Result["proxy"] <> Undefined);
 
     Options = New Structure;
     Options.Insert("conn", Result);
@@ -26374,9 +26374,9 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration (simple)", "FTP");
-    OPI_TestDataRetrieval.Check_True(Result.Property("set"));
-    OPI_TestDataRetrieval.Check_False(Result.Property("tls"));
-    OPI_TestDataRetrieval.Check_False(Result.Property("proxy"));
+    OPI_TestDataRetrieval.Check_True(Result["set"] <> Undefined);
+    OPI_TestDataRetrieval.Check_False(Result["tls"] <> Undefined);
+    OPI_TestDataRetrieval.Check_False(Result["proxy"] <> Undefined);
 
     Options = New Structure;
     Options.Insert("conn", Result);
