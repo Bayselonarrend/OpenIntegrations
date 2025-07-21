@@ -1,2 +1,2 @@
 oint mysql ПолучитьНастройкиTls ^
-  --trust true
+  --trust "True"
