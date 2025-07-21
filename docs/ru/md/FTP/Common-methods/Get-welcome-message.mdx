@@ -42,15 +42,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint ftp ПолучитьПриветственноеСообщение \
-              --conn "/tmp/2fypofvz.phv"
+              --conn "{'set':{'domain':'127.0.0.1','port':21,'passive':'***','read_timeout':120,'write_timeout':120,'login':'bayselonarrend','password':'***'}}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint ftp ПолучитьПриветственноеСообщение ^
-              --conn "/tmp/2fypofvz.phv"
+              --conn "{'set':{'domain':'127.0.0.1','port':21,'passive':'***','read_timeout':120,'write_timeout':120,'login':'bayselonarrend','password':'***'}}"
         ```
     </TabItem>
 </Tabs>

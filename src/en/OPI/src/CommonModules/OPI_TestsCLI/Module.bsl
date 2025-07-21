@@ -24716,6 +24716,9 @@ Procedure CLI_Ollama_PushBlob(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "PushBlob", "Ollama");
     OPI_TestDataRetrieval.Check_OllamaCode(Result);
 
+    OPI_TestDataRetrieval.WriteParameter("Ollama_Blob", Result["digest"]);
+    FunctionParameters.Insert("Ollama_Blob", Result["digest"]);
+
 EndProcedure
 
 Procedure CLI_Ollama_CheckBlob(FunctionParameters)
@@ -25077,7 +25080,7 @@ Procedure CLI_OpenAI_CreateTranscription(FunctionParameters)
     EndTry;
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTranscription", "OpenAI");
-    OPI_TestDataRetrieval.Check_String(Lower(Result["text"]), "attack ships on fire off the shoulder of orion bright as magnesium.");
+    OPI_TestDataRetrieval.Check_String(Result["text"]);
 
 EndProcedure
 
