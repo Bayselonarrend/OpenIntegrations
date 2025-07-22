@@ -44,6 +44,32 @@ impl FtpClient {
 
         json!({"result": true, "data": msg}).to_string()
     }
+
+    pub fn make_directory(&mut self, path: &str) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.mkdir(path),
+            FtpClient::Insecure(stream) => stream.mkdir(path),
+        };
+
+        match result {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    pub fn remove_directory(&mut self, path: &str) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.rmdir(path),
+            FtpClient::Insecure(stream) => stream.rmdir(path),
+        };
+
+        match result {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
 }
 
 fn format_json_error<E: ToString>(error: E) -> String {

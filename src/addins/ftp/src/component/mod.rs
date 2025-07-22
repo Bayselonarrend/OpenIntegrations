@@ -12,7 +12,6 @@ use crate::component::ftp_client::FtpClient;
 use std::net::TcpStream;
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::time::Duration;
-
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -22,7 +21,9 @@ pub const METHODS: &[&[u16]] = &[
     name!("UpdateSettings"),
     name!("UpdateProxy"),
     name!("SetTLS"),
-    name!("GetWelcomeMsg")
+    name!("GetWelcomeMsg"),
+    name!("MakeDirectory"),
+    name!("RemoveDirectory"),
 ];
 
 // Число параметров функций компоненты
@@ -34,6 +35,8 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 1,
         4 => 3,
         5 => 0,
+        6 => 1,
+        7 => 1,
         _ => 0,
     }
 }
@@ -69,6 +72,25 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Err(e) => process_error(e.as_str())
             })
         }
+        6 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.make_directory(&path),
+                Err(e) => process_error(e.as_str())
+            })
+
+        },
+        7 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.remove_directory(&path),
+                Err(e) => process_error(e.as_str())
+            })
+
+        },
+
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -81,7 +103,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[];
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize)]
 struct FtpProxySettings {
     server: Option<String>,
     port: Option<u16>,
@@ -90,7 +112,7 @@ struct FtpProxySettings {
     proxy_type: Option<String>, // "http", "socks4", "socks5"
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize)]
 struct FtpSettings {
     domain: Option<String>,
     port: Option<u16>,
@@ -102,6 +124,7 @@ struct FtpSettings {
 }
 
 pub struct AddIn {
+    client: Option<Arc<Mutex<FtpClient>>>,
     domain: String,
     port: u16,
     login: Option<String>,
@@ -113,7 +136,6 @@ pub struct AddIn {
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
-    client: Option<Arc<Mutex<FtpClient>>>,
     // Proxy
     proxy_server: Option<String>,
     proxy_port: Option<u16>,
@@ -204,7 +226,7 @@ impl AddIn {
 
         let tcp_stream = match tcp_establish::create_tcp_connection(self) {
             Ok(stream) => stream,
-            Err(e) => return e,
+            Err(e) => return process_error(&e),
         };
 
         let w_timeout = Some(Duration::from_secs(self.write_timeout));
@@ -230,7 +252,7 @@ impl AddIn {
 
         self.client = match client.login(login, password) {
             Ok(auth) => Some(Arc::new(Mutex::new(auth))),
-            Err(e) => return process_error(&e.to_string()),
+            Err(e) => return e,
         };
 
         json!({"result": true}).to_string()
@@ -268,8 +290,6 @@ impl AddIn {
             Ok(FtpClient::Insecure(ftp_stream))
         }
     }
-
-
 
     pub fn close_connection(&mut self) -> String {
         if let Some(client) = self.client.take() {
