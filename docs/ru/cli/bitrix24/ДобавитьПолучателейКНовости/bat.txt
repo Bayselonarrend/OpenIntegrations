@@ -1,5 +1,5 @@
 oint bitrix24 ДобавитьПолучателейКНовости ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --postid "2800" ^
+  --postid "2804" ^
   --vision "UA" ^
   --token "***"
