@@ -78,12 +78,16 @@ impl AddIn {
             return Self::error("Client already initialized!");
         }
 
-        let result = self.backend.lock().unwrap().connect(
-            self.connection_string.clone(),
-            self.use_tls,
-            self.accept_invalid_certs,
-            self.ca_cert_path.clone(),
-        );
+        let result = match self.backend.lock(){
+            Ok(b) => {
+                b.connect(
+                self.connection_string.clone(),
+                self.use_tls,
+                self.accept_invalid_certs,
+                self.ca_cert_path.clone(),
+            )},
+            Err(e) => Self::error(&e.to_string())
+        };
 
         if result.contains("\"result\":true") {
             self.initialized = true;
@@ -98,7 +102,10 @@ impl AddIn {
     }
 
     pub fn execute_query(&self, query: String, params_json: String, force_result: bool) -> String {
-        self.backend.lock().unwrap().execute_query(query, params_json, force_result)
+        match self.backend.lock(){
+            Ok(backend) => {backend.execute_query(query, params_json, force_result)},
+            Err(e) => Self::error(&e.to_string()),
+        }
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
