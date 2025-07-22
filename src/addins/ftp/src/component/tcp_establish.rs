@@ -1,7 +1,6 @@
 use std::io::{BufRead, BufReader, Write};
 use std::net::TcpStream;
 use crate::component::AddIn;
-use crate::component::process_error;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
 
@@ -18,7 +17,7 @@ pub fn create_tcp_connection(obj: &AddIn) -> Result<TcpStream, String> {
             "socks5" => connect_via_socks5(obj, &proxy_addr, target_addr),
             "socks4" => connect_via_socks4(obj, &proxy_addr, target_addr),
             "http" => connect_via_http_proxy(obj, &proxy_addr, target_addr),
-            _ => Err(process_error("Unsupported proxy type")),
+            _ => Err("Unsupported proxy type".to_string()),
         }
     } else {
         connect_direct(obj)
@@ -34,7 +33,7 @@ fn connect_via_socks5(obj: &AddIn, proxy_addr: &str, target_addr: (&str, u16)) -
     };
 
     stream.map(|s| s.into_inner())
-        .map_err(|e| process_error(&format!("SOCKS5 error: {}", e)))
+        .map_err(|e| format!("SOCKS5 error: {}", e))
 }
 
 fn connect_via_socks4(obj: &AddIn, proxy_addr: &str, target_addr: (&str, u16)) -> Result<TcpStream, String> {
@@ -46,7 +45,7 @@ fn connect_via_socks4(obj: &AddIn, proxy_addr: &str, target_addr: (&str, u16)) -
     };
 
     stream.map(|s| s.into_inner())
-        .map_err(|e| process_error(&format!("SOCKS4 error: {}", e)))
+        .map_err(|e| format!("SOCKS4 error: {}", e))
 }
 
 fn connect_via_http_proxy(
@@ -54,70 +53,61 @@ fn connect_via_http_proxy(
     proxy_addr: &str,
     target_addr: (&str, u16),
 ) -> Result<TcpStream, String> {
-
     let mut stream = TcpStream::connect(proxy_addr)
-        .map_err(|e| process_error(&format!("Failed to connect to HTTP proxy: {}", e)))?;
+        .map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
 
-    // CONNECT
     let host_port = format!("{}:{}", target_addr.0, target_addr.1);
     let request = format!(
         "CONNECT {} HTTP/1.1\r\nHost: {}\r\n",
         host_port, host_port
     );
 
-    // Auth
-    if let (Some(user), Some(pass)) = (&obj.proxy_login, &obj.proxy_password) {
-
+    let request = if let (Some(user), Some(pass)) = (&obj.proxy_login, &obj.proxy_password) {
         let auth = general_purpose::STANDARD.encode(&format!("{}:{}", user, pass));
-        let auth_line = format!("Proxy-Authorization: Basic {}\r\n", auth);
-        let request = request + &auth_line + "\r\n";
-
-        stream.write_all(request.as_bytes())
-            .map_err(|e| process_error(&format!("Failed to send CONNECT request: {}", e)))?;
+        format!("{}Proxy-Authorization: Basic {}\r\n\r\n", request, auth)
     } else {
-
-        stream.write_all(request.as_bytes())
-            .map_err(|e| process_error(&format!("Failed to send CONNECT request: {}", e)))?;
-        stream.write_all(b"\r\n")
-            .map_err(|e| process_error(&format!("Failed to send CONNECT end: {}", e)))?;
-    }
-
-    // Response
-    let reader = BufReader::new(&stream);
-    let mut lines = reader.lines();
-
-    // Первая строка: статус
-    let status_line = match lines.next() {
-        Some(Ok(line)) => line,
-        _ => return Err(process_error("Empty or invalid response from proxy")),
+        request + "\r\n"
     };
 
+    stream.write_all(request.as_bytes())
+        .map_err(|e| format!("Failed to send CONNECT request: {}", e))?;
+
+    let mut reader = BufReader::new(stream);
+
+    let mut status_line = String::new();
+    reader.read_line(&mut status_line)
+        .map_err(|e| format!("Failed to read status line: {}", e))?;
+
     if !status_line.starts_with("HTTP/") {
-        return Err(process_error(&format!("Invalid HTTP response: {}", status_line)));
+        return Err(format!("Invalid response: {}", status_line));
     }
 
-    let parts: Vec<&str> = status_line.split_whitespace().collect();
-    if parts.len() < 2 {
-        return Err(process_error("Malformed HTTP status line"));
-    }
+    let status_code = status_line.split_whitespace().nth(1)
+        .ok_or_else(|| "Malformed status line")?;
 
-    match parts[1] {
+    match status_code {
         "200" => {}
-        "407" => return Err(process_error("Proxy authentication required")),
-        code => return Err(process_error(&format!("Unexpected HTTP proxy response code: {}", code))),
+        "407" => return Err("Proxy authentication required".to_string()),
+        code => return Err(format!("Proxy error: {}", code)),
     }
 
-    for line in lines {
-        let line = line.map_err(|e| process_error(&format!("Error reading header: {}", e)))?;
-        if line.is_empty() {
+    // Пропускаем заголовки
+    let mut header_line = String::new();
+    loop {
+        header_line.clear();
+        reader.read_line(&mut header_line)
+            .map_err(|e| format!("Failed to read header: {}", e))?;
+
+        if header_line.trim().is_empty() {
             break;
         }
     }
 
+    let stream = reader.into_inner();
     Ok(stream)
 }
 
 fn connect_direct(obj: &AddIn) -> Result<TcpStream, String> {
     let addr = format!("{}:{}", &obj.domain, &obj.port);
-    TcpStream::connect(&addr).map_err(|e| process_error(&format!("Direct connection error: {}", e)))
+    TcpStream::connect(&addr).map_err(|e| format!("Direct connection error: {}", e))
 }
