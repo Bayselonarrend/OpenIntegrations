@@ -2,4 +2,4 @@ oint telegram ОтправитьГифку \
   --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --gif "/tmp/uyxfnsuh.l4p.gif"
+  --gif "/tmp/2kmutm2v.2h1.gif"

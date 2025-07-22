@@ -2,5 +2,5 @@ oint ftp ПолучитьНастройкиПрокси ^
   --addr "127.0.0.1" ^
   --port "1080" ^
   --type "socks5" ^
-  --login "bayselonarrend" ^
+  --login "proxyuser" ^
   --pass "***"
