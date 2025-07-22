@@ -26325,7 +26325,7 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
     Options.Insert("addr" , ProxyAddress);
     Options.Insert("port" , 1080);
     Options.Insert("type" , "socks5");
-    Options.Insert("login", Login);
+    Options.Insert("login", "proxyuser");
     Options.Insert("pass" , Password);
 
     ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
