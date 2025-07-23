@@ -24,6 +24,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetWelcomeMsg"),
     name!("MakeDirectory"),
     name!("RemoveDirectory"),
+    name!("ListDirectory"),
 ];
 
 // Число параметров функций компоненты
@@ -37,6 +38,7 @@ pub fn get_params_amount(num: usize) -> usize {
         5 => 0,
         6 => 1,
         7 => 1,
+        8 => 1,
         _ => 0,
     }
 }
@@ -86,6 +88,16 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(match &mut obj.get_client(){
                 Ok(c) => c.remove_directory(&path),
+                Err(e) => process_error(e.as_str())
+            })
+
+        },
+
+        8 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.list_directory(&path),
                 Err(e) => process_error(e.as_str())
             })
 
