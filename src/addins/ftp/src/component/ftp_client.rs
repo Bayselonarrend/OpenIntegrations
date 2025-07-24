@@ -1,5 +1,5 @@
 use serde_json::json;
-use suppaftp::{FtpStream, NativeTlsFtpStream};
+use suppaftp::{FtpStream, RustlsFtpStream};
 use suppaftp::list::File;
 use std::str::FromStr;
 use chrono::{DateTime, Utc};
@@ -7,7 +7,7 @@ use serde::Serialize;
 use std::string::String;
 
 pub enum FtpClient {
-    Secure(NativeTlsFtpStream),
+    Secure(RustlsFtpStream),
     Insecure(FtpStream),
 }
 
