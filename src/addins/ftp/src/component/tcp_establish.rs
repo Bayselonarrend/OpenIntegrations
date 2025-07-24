@@ -1,28 +1,52 @@
 use std::io::{BufRead, BufReader, Write};
-use std::net::TcpStream;
+use std::net::{SocketAddr, TcpStream};
 use crate::component::AddIn;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
 
 pub fn create_tcp_connection(obj: &AddIn) -> Result<TcpStream, String> {
+    let target_addr = (obj.domain.as_str(), obj.port);
+    connect(obj, target_addr)
+}
+
+pub fn create_tcp_connection_for_passive(obj: &AddIn, addr: SocketAddr) -> Result<TcpStream, String> {
+
+    let ip = addr.ip().to_string();
+    let target_addr = (ip.as_str(), addr.port());
+    connect(obj, target_addr)
+
+}
+
+fn connect(
+    obj: &AddIn,
+    target_addr: (&str, u16)
+) -> Result<TcpStream, String> {
 
     if let (Some(proxy_server), Some(proxy_port), Some(proxy_type)) =
-        (&obj.proxy_server, &obj.proxy_port, &obj.proxy_type)
-    {
+        (&obj.proxy_server, &obj.proxy_port, &obj.proxy_type) {
 
-        let target_addr = (obj.domain.as_str(), obj.port);
         let proxy_addr = format!("{}:{}", proxy_server, proxy_port);
+        connect_via_proxy(obj, proxy_type, &proxy_addr, target_addr)
 
-        match proxy_type.to_lowercase().as_str() {
-            "socks5" => connect_via_socks5(obj, &proxy_addr, target_addr),
-            "socks4" => connect_via_socks4(obj, &proxy_addr, target_addr),
-            "http" => connect_via_http_proxy(obj, &proxy_addr, target_addr),
-            _ => Err("Unsupported proxy type".to_string()),
-        }
     } else {
-        connect_direct(obj)
+        connect_direct(target_addr)
     }
 }
+
+fn connect_via_proxy(
+    obj: &AddIn,
+    proxy_type: &str,
+    proxy_addr: &str,
+    target_addr: (&str, u16)
+) -> Result<TcpStream, String> {
+    match proxy_type.to_lowercase().as_str() {
+        "socks5" => connect_via_socks5(obj, proxy_addr, target_addr),
+        "socks4" => connect_via_socks4(obj, proxy_addr, target_addr),
+        "http" => connect_via_http_proxy(obj, proxy_addr, target_addr),
+        _ => Err("Unsupported proxy type".to_string()),
+    }
+}
+
 
 fn connect_via_socks5(obj: &AddIn, proxy_addr: &str, target_addr: (&str, u16)) -> Result<TcpStream, String> {
 
@@ -107,7 +131,7 @@ fn connect_via_http_proxy(
     Ok(stream)
 }
 
-fn connect_direct(obj: &AddIn) -> Result<TcpStream, String> {
-    let addr = format!("{}:{}", &obj.domain, &obj.port);
-    TcpStream::connect(&addr).map_err(|e| format!("Direct connection error: {}", e))
+fn connect_direct(addr: (&str, u16)) -> Result<TcpStream, String> {
+    let target_addr = format!("{}:{}", addr.0, addr.1);
+    TcpStream::connect(&target_addr).map_err(|e| format!("Direct connection error: {}", e))
 }
