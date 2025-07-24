@@ -29,6 +29,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("MakeDirectory"),
     name!("RemoveDirectory"),
     name!("ListDirectory"),
+    name!("UploadData"),
+    name!("UploadFile"),
 ];
 
 // Число параметров функций компоненты
@@ -43,6 +45,8 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 1,
         7 => 1,
         8 => 1,
+        9 => 2,
+        10 => 2,
         _ => 0,
     }
 }
@@ -75,7 +79,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         5 => {
             Box::new(match obj.get_client(){
                 Ok(c) => c.get_welcome_msg(),
-                Err(e) => process_error(e.as_str())
+                Err(e) => e.to_string()
             })
         }
         6 => {
@@ -83,7 +87,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(match &mut obj.get_client(){
                 Ok(c) => c.make_directory(&path),
-                Err(e) => process_error(e.as_str())
+                Err(e) => e.to_string()
             })
 
         },
@@ -92,7 +96,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(match &mut obj.get_client(){
                 Ok(c) => c.remove_directory(&path),
-                Err(e) => process_error(e.as_str())
+                Err(e) => e.to_string()
             })
 
         },
@@ -102,10 +106,35 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(match &mut obj.get_client(){
                 Ok(c) => c.list_directory(&path),
-                Err(e) => process_error(e.as_str())
+                Err(e) => e.to_string()
             })
 
         },
+
+        9 => {
+            let data = match params[0].get_blob(){
+                Ok(b) => b,
+                Err(e) => return Box::new(process_error(format!("Blob error: {}", e.to_string()).as_str()))
+            };
+
+            let path = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.upload_data(&path, data),
+                Err(e) => e.to_string()
+            })
+        },
+
+        10 => {
+            let filepath = params[0].get_string().unwrap_or("".to_string());
+            let path = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.upload_file(&path, &filepath),
+                Err(e) => e.to_string()
+            })
+
+        }
 
         _ => Box::new(false), // Неверный номер команды
     }
