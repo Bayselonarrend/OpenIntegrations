@@ -15,10 +15,12 @@ opt-level = "z"
 
 [dependencies]
 addin1c = "0.5.0"
-suppaftp = { version = "6.3.0", features = ["native-tls", "secure"] }
+suppaftp = { version = "6.3.0", features = ["rustls", "secure"] }
 serde_json = "1.0"
 serde = { version = "1.0.217", features = ["derive"] }
-native-tls = "0.2.14"
 socks = "0.3.4"
 base64 = "0.22.1"
 chrono = { version = "0.4", features = ["serde"] }
+webpki-roots = "1.0.1"
+rustls = "0.23.29"
+rustls-pemfile = "2.2.0"
