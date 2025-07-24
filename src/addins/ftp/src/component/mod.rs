@@ -1,17 +1,21 @@
 mod ftp_client;
 mod tcp_establish;
+mod cert_provider;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
-use suppaftp::{FtpStream, NativeTlsConnector, NativeTlsFtpStream};
-use suppaftp::native_tls::TlsConnector;
+use suppaftp::{FtpError, FtpStream};
+use suppaftp::rustls::ClientConfig;
+use suppaftp::{rustls, RustlsConnector, RustlsFtpStream};
 use suppaftp::types::Mode;
 use serde::Deserialize;
 use crate::component::ftp_client::FtpClient;
-use std::net::TcpStream;
+use std::net::{SocketAddr, TcpStream};
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::time::Duration;
+use crate::component::cert_provider::NoCertificateVerification;
+use crate::component::tcp_establish::create_tcp_connection_for_passive;
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -135,6 +139,7 @@ struct FtpSettings {
     write_timeout: Option<u64>,
 }
 
+#[derive(Clone)]
 pub struct AddIn {
     client: Option<Arc<Mutex<FtpClient>>>,
     domain: String,
@@ -276,20 +281,32 @@ impl AddIn {
     ) -> Result<FtpClient, String> {
 
         let mode = if self.passive { Mode::Passive } else { Mode::Active };
+        let passive_proxy = self.passive && self.has_proxy_config();
 
         if self.use_tls {
 
-            let tls_connector = self.get_tls_connector()?;
-
-            let ftp_stream = NativeTlsFtpStream::connect_with_stream(tcp_stream)
+            let tls_connector = self.get_tls_connector()
                 .map_err(|e| process_error(&e.to_string()))?;
+
+            let mut ftp_stream = RustlsFtpStream::connect_with_stream(tcp_stream)
+                .map_err(|e| process_error(&e.to_string()))?;
+
+            ftp_stream.set_mode(mode);
+            ftp_stream.set_passive_nat_workaround(true);
 
             let mut secure_stream = ftp_stream
-                .into_secure(NativeTlsConnector::from(tls_connector), &self.domain)
+                .into_secure(RustlsConnector::from(tls_connector), &self.domain)
                 .map_err(|e| process_error(&e.to_string()))?;
 
-            secure_stream.set_mode(mode);
-            secure_stream.set_passive_nat_workaround(true);
+            secure_stream = if passive_proxy {
+                let self_clone = self.clone();
+                secure_stream.passive_stream_builder(move |addr: SocketAddr| {
+                    self_clone.make_passive_proxy_stream(addr)
+                })
+            }else{
+                secure_stream
+            };
+
             Ok(FtpClient::Secure(secure_stream))
 
         } else {
@@ -299,8 +316,40 @@ impl AddIn {
 
             ftp_stream.set_mode(mode);
             ftp_stream.set_passive_nat_workaround(true);
+
+            ftp_stream = if passive_proxy {
+                let self_clone = self.clone();
+                ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
+                    self_clone.make_passive_proxy_stream(addr)
+                })
+            }else{
+                ftp_stream
+            };
+
             Ok(FtpClient::Insecure(ftp_stream))
         }
+    }
+
+    fn make_passive_proxy_stream(&self, addr: SocketAddr) -> Result<TcpStream, FtpError> {
+
+        let corrected_addr = if addr.ip().is_loopback() {
+            match self.domain.parse::<std::net::IpAddr>() {
+                Ok(ftp_ip) => {
+                    SocketAddr::new(ftp_ip, addr.port())
+                },
+                Err(e) => {
+                    return Err(FtpError::ConnectionError(
+                        std::io::Error::new(std::io::ErrorKind::Other, format!("Invalid FTP server IP '{}': {}", self.domain, e))
+                    ));
+                }
+            }
+        } else {
+            addr
+        };
+
+        create_tcp_connection_for_passive(&self, corrected_addr)
+            .map_err(|e| FtpError::ConnectionError(
+                std::io::Error::new(std::io::ErrorKind::Other, e)))
     }
 
     pub fn close_connection(&mut self) -> String {
@@ -331,27 +380,39 @@ impl AddIn {
         json!({"result": true}).to_string()
     }
 
-    fn get_tls_connector(&mut self) -> Result<TlsConnector, String> {
+    fn get_tls_connector(&mut self) -> Result<RustlsConnector, String> {
 
-        let mut tls_builder = TlsConnector::builder();
+        let _ = rustls::crypto::ring::default_provider()
+            .install_default();
 
-        tls_builder.danger_accept_invalid_certs(self.accept_invalid_certs);
+        let mut root_store =
+            rustls::RootCertStore::from_iter(webpki_roots::TLS_SERVER_ROOTS.iter().cloned());
 
         if !self.ca_cert_path.is_empty() {
-
             let cert_data = std::fs::read(&self.ca_cert_path)
-                .map_err(|e| process_error(&e.to_string()))?;
+                .map_err(|e| format!("Failed to read CA cert file: {}", e))?;
 
-            let cert = native_tls::Certificate::from_pem(&cert_data)
-                .map_err(|e| process_error(&e.to_string()))?;
+            let mut cursor = std::io::Cursor::new(cert_data);
+            let certs = rustls_pemfile::certs(&mut cursor)
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| format!("Failed to parse PEM certificates: {}", e))?;
 
-            tls_builder.add_root_certificate(cert);
+            for cert in certs {
+                root_store
+                    .add(cert)
+                    .map_err(|e| format!("Failed to add CA cert: {}", e))?;
+            }
         }
 
-        match tls_builder.build(){
-            Ok(connector) => Ok(connector),
-            Err(e) => Err(process_error(&e.to_string())),
+        let mut config = ClientConfig::builder()
+            .with_root_certificates(root_store)
+            .with_no_client_auth();
+
+        if self.accept_invalid_certs {
+            config.dangerous().set_certificate_verifier(Arc::new(NoCertificateVerification));
         }
+
+        Ok(RustlsConnector::from(Arc::new(config)))
     }
 
     fn get_client(&self) -> Result<MutexGuard<'_, FtpClient>, String> {
@@ -359,6 +420,12 @@ impl AddIn {
             .as_ref()
             .ok_or_else(|| process_error("FTP client is not initialized"))
             .and_then(|arc| arc.lock().map_err(|_|  process_error("Failed to lock FTP client mutex")))
+    }
+
+    fn has_proxy_config(&self) -> bool {
+        self.proxy_server.is_some() &&
+            self.proxy_port.is_some() &&
+            self.proxy_type.is_some()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
