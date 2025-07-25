@@ -3,19 +3,21 @@ mod tcp_establish;
 mod cert_provider;
 
 use addin1c::{name, Variant};
-use crate::core::getset;
+
 use serde_json::json;
-use suppaftp::{FtpError, FtpStream};
 use suppaftp::rustls::ClientConfig;
-use suppaftp::{rustls, RustlsConnector, RustlsFtpStream};
+use suppaftp::{rustls, RustlsConnector, RustlsFtpStream, FtpError, FtpStream};
 use suppaftp::types::Mode;
 use serde::Deserialize;
-use crate::component::ftp_client::FtpClient;
 use std::net::{SocketAddr, TcpStream};
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::time::Duration;
+
+use crate::core::getset;
 use crate::component::cert_provider::NoCertificateVerification;
 use crate::component::tcp_establish::create_tcp_connection_for_passive;
+use crate::component::ftp_client::FtpClient;
+
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -31,6 +33,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListDirectory"),
     name!("UploadData"),
     name!("UploadFile"),
+    name!("RemoveFile"),
 ];
 
 // Число параметров функций компоненты
@@ -47,6 +50,7 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 1,
         9 => 2,
         10 => 2,
+        11 => 1,
         _ => 0,
     }
 }
@@ -134,6 +138,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Err(e) => e.to_string()
             })
 
+        },
+
+        11 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.remove_file(&path),
+                Err(e) => e.to_string()
+            })
         }
 
         _ => Box::new(false), // Неверный номер команды
