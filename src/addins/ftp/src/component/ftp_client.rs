@@ -1,6 +1,6 @@
 use std::io::{copy, BufReader, Cursor};
 use serde_json::json;
-use suppaftp::{FtpError, FtpStream, RustlsFtpStream};
+use suppaftp::{FtpStream, RustlsFtpStream};
 use suppaftp::list::File;
 use std::str::FromStr;
 use chrono::{DateTime, Utc};
@@ -152,50 +152,67 @@ impl FtpClient {
     }
 
     pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
-
-        let mut cursor = std::io::Cursor::new(data);
-
-        let result = match self {
-            FtpClient::Secure(stream) => stream.put_file(path, &mut cursor),
-            FtpClient::Insecure(stream) => stream.put_file(path, &mut cursor),
-        };
-
-        match result {
-            Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-            Err(e) => format_json_error(format!("Data upload error: {}", &e.to_string()))
+        let mut cursor = Cursor::new(data);
+        match self.upload_from_reader(path, &mut cursor) {
+            Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
+            Err(e) => format_json_error(e)
         }
     }
 
     pub fn upload_file(&mut self, path: &str, filepath: &str) -> String {
-
-        let file = match std::fs::File::open(filepath){
+        let file = match std::fs::File::open(filepath) {
             Ok(f) => f,
-            Err(e) => return format_json_error(format!("File error: {}", &e.to_string()))
+            Err(e) => return format_json_error(format!("File error: {}", e))
         };
 
         let mut buf_reader = BufReader::new(file);
+        match self.upload_from_reader(path, &mut buf_reader) {
+            Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
+            Err(e) => format_json_error(e)
+        }
+    }
 
+    pub fn remove_file(&mut self, path: &str) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.rm(path),
+            FtpClient::Insecure(stream) => stream.rm(path),
+        };
+
+        match result {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    fn upload_from_reader<R: std::io::Read>(
+        &mut self,
+        path: &str,
+        reader: &mut R
+    ) -> Result<u64, String> {
         match self {
-
-
             FtpClient::Secure(stream) => {
 
-                match stream.put_file(path, &mut buf_reader){
-                    Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-                    Err(e) => format_json_error(format!("File error: {}", &e.to_string()))
-                }
+                let mut data_stream = stream.put_with_stream(path)
+                    .map_err(|e| format!("Data stream error: {}", e))?;
 
+                let bytes = copy(reader, &mut data_stream)
+                    .map_err(|e| format!("Upload error: {}", e))?;
+
+                let _ = std::io::Write::flush(&mut data_stream);
+                std::thread::sleep(std::time::Duration::from_millis(150));
+
+                stream.finalize_put_stream(data_stream)
+                    .map(|_| bytes)
+                    .map_err(|e| format!("Finalize error: {}", e))
             },
-
             FtpClient::Insecure(stream) => {
-                match stream.put_file(path, &mut buf_reader){
-                    Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-                    Err(e) => format_json_error(format!("File error: {}", &e.to_string()))
-                }
-            },
+                stream.put_file(path, reader)
+                    .map_err(|e| format!("File error: {}", e))
+            }
         }
-
     }
+
 }
 
 fn format_json_error<E: ToString>(error: E) -> String {
