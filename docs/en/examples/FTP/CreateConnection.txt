@@ -1,18 +1,31 @@
-﻿    Domain   = "127.0.0.1";
+﻿    Domain   = "172.33.0.10";
+    Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
 
-    // Simple connection
+    UseProxy = True;
+    FTPS     = True;
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
-    Result      = OPI_FTP.CreateConnection(FTPSettings);
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
 
-    // TLS connection through proxy
+    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
 
-    FTPInternalAddress = "172.33.0.11";
-    ProxyAddress       = "127.0.0.1";
-    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPInternalAddress, 21, Login, Password);
-    ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
-    TLSSettings   = OPI_FTP.GetTlsSettings(True);
+    If UseProxy Then
+
+        ProxyType = "http"; // http, socks5, socks4
+
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
 
     Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);

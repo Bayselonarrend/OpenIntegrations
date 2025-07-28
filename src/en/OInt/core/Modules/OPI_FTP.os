@@ -130,6 +130,7 @@ Function CloseConnection(Val Connection) Export
     Result = Connection.Close();
     Result = OPI_Tools.JsonToStructure(Result);
 
+    //@skip-check constructor-function-return-section
     Return Result;
 
 EndFunction
@@ -278,6 +279,232 @@ EndFunction
 
 #EndRegion
 
+#Region DirectoryManagement
+
+// List objects
+// Gets information about the contents of a directory at the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to search directory - path
+// Recursively - Boolean - Get information about elements in nested directories - rcv
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ListObjects(Val Connection, Val Path, Val Recursively = False) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Recursively);
+
+    Result = Connection.ListDirectory(Path);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Result["result"] Then
+
+        ElementList = Result["data"];
+
+        For Each Element In ElementList Do
+
+            ElementName = Element["name"];
+
+            If ValueIsFilled(Path) Then
+                ElementPath = StrTemplate("%1/%2", Path, ElementName);
+            Else
+                ElementPath = ElementName;
+            EndIf;
+
+            Element.Insert("path", ElementPath);
+
+            If Recursively Then
+                If Element["is_directory"] Then
+
+                    ResultSubdirectory = ListObjects(Connection, ElementPath, True);
+
+                    If Not ResultSubdirectory["result"] Then
+                        Result = ResultSubdirectory;
+                        Break;
+                    Else
+                        Element.Insert("elements", ResultSubdirectory["data"]);
+                    EndIf;
+
+                EndIf;
+            EndIf;
+
+        EndDo;
+
+        Result = New Map;
+        Result.Insert("result", True);
+        Result.Insert("data"  , ElementList);
+
+    EndIf;
+
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Create directory
+// Creates a directory at the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to new directory - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CreateDirectory(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.MakeDirectory(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Delete directory
+// Deletes an existing directory
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to directory to delete - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteDirectory(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        Result = DeleteDirectoryRecursively(Connection, Path);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region FileManagement
+
+// Upload file
+// Uploads a file from disk or binary data to the FTP server
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// File - String, BinaryData - File on disk or file data - file
+// Path - String - Path to save file on server - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function UploadFile(Val Connection, Val File, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        ProcessingConnection = GetConnectionForFileOperation(Connection, CloseConnection);
+
+        If Not IsConnector(ProcessingConnection) Then
+            Return ProcessingConnection;
+        EndIf;
+
+        If TypeOf(File)  = Type("String") Then
+            FileOnDisk   = New File(File);
+            IsFileOnDisk = FileOnDisk.Exist();
+        Else
+            IsFileOnDisk = False;
+        EndIf;
+
+        If Not IsFileOnDisk Then
+
+            OPI_TypeConversion.GetBinaryData(File);
+            Result = ProcessingConnection.UploadData(File, Path);
+
+        Else
+            Result = ProcessingConnection.UploadFile(File, Path);
+        EndIf;
+
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Delete file
+// Delete file from server
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to save file on server - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteFile(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.RemoveFile(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -344,7 +571,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
         Return ConfigurationStructure;
     EndIf;
 
-    ErrorText = "Unexpected connection configuration";
+    ErrorPattern = "Incorrect connection configuration provided: %1";
 
     Try
         OPI_TypeConversion.GetKeyValueCollection(ConfigurationStructure);
@@ -352,7 +579,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
         Result = New Map;
         Result.Insert("result", False);
-        Result.Insert("error" , ErrorText);
+        Result.Insert("error" , StrTemplate(ErrorPattern, ErrorDescription()));
         Return Result;
 
     EndTry;
@@ -361,7 +588,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
         Result = New Map;
         Result.Insert("result", False);
-        Result.Insert("error" , ErrorText);
+        Result.Insert("error" , StrTemplate(ErrorPattern, "missing main connection parameters"));
         Return Result;
 
     EndIf;
@@ -384,6 +611,83 @@ Function CheckCreateConnection(Connection)
     EndIf;
 
     Return CloseConnection;
+
+EndFunction
+
+Function DeleteDirectoryRecursively(Val Connection, Val Path, DeletedArray = Undefined)
+
+    If DeletedArray  = Undefined Then
+        DeletedArray = New Array;
+        Primary      = True;
+    Else
+        Primary      = False;
+    EndIf;
+
+    NestedItems = ListObjects(Connection, Path, True);
+
+    If NestedItems["result"] Then
+        For Each Element In NestedItems["data"] Do
+
+            ElementPath = Element["path"];
+
+            If Element["is_directory"] Then
+                Deletion = DeleteDirectoryRecursively(Connection, ElementPath, DeletedArray);
+            Else
+                Deletion = DeleteFile(Connection, ElementPath);
+            EndIf;
+
+            Deletion.Insert("path", ElementPath);
+            DeletedArray.Add(Deletion);
+
+        EndDo;
+    EndIf;
+
+    Result = Connection.RemoveDirectory(Path);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Primary Then
+        Result.Insert("deleted_elements", DeletedArray);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function GetConnectionForFileOperation(Val Connection, Val CloseConnection)
+
+    If CloseConnection Then
+        Return Connection;
+    EndIf;
+
+    IsTls = Connection.IsTls();
+
+    If IsTls Then
+        // Avoiding the not always correctly functioning TLS Session reuse for multiple data streams
+        ProcessingConnection = GetConnectionCopy(Connection);
+    Else
+        ProcessingConnection = Connection;
+    EndIf;
+
+    Return ProcessingConnection;
+
+EndFunction
+
+Function GetConnectionCopy(Val Connection)
+
+    Configuration = Connection.GetConfiguration();
+    Configuration = OPI_Tools.JSONToStructure(Configuration);
+
+    If Not Configuration["result"] Then
+        Return Configuration;
+    EndIf;
+
+    Configuration = OPI_Tools.JSONToStructure(Configuration["data"]);
+
+    FTPSettings = Configuration["ftp_settings"];
+    Proxy       = Configuration["proxy_settings"];
+    TLS         = Configuration["tls_settings"];
+
+    Return CreateConnection(FTPSettings, Proxy, TLS);
 
 EndFunction
 
@@ -421,6 +725,26 @@ EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
 	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function ПолучитьСписокОбъектов(Val Соединение, Val Путь, Val Рекурсивно = False) Export
+	Return ListObjects(Соединение, Путь, Рекурсивно);
+EndFunction
+
+Function СоздатьДиректорию(Val Соединение, Val Путь) Export
+	Return CreateDirectory(Соединение, Путь);
+EndFunction
+
+Function УдалитьДиректорию(Val Соединение, Val Путь) Export
+	Return DeleteDirectory(Соединение, Путь);
+EndFunction
+
+Function ЗагрузитьФайл(Val Соединение, Val Файл, Val Путь) Export
+	Return UploadFile(Соединение, Файл, Путь);
+EndFunction
+
+Function УдалитьФайл(Val Соединение, Val Путь) Export
+	Return DeleteFile(Соединение, Путь);
 EndFunction
 
 #EndRegion
