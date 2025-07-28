@@ -30,6 +30,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("UploadData"),
     name!("UploadFile"),
     name!("RemoveFile"),
+    name!("GetConfiguration"),
+    name!("IsTls")
 ];
 
 // Число параметров функций компоненты
@@ -47,6 +49,8 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 2,
         10 => 2,
         11 => 1,
+        12 => 0,
+        13 => 0,
         _ => 0,
     }
 }
@@ -143,8 +147,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Ok(c) => c.remove_file(&path),
                 Err(e) => e.to_string()
             })
-        }
+        },
 
+        12 => Box::new(obj.get_configurations()),
+        13 => Box::new(obj.is_tls()),
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -163,7 +169,7 @@ pub struct AddIn {
     #[serde(skip)]
     client: Option<Arc<Mutex<FtpClient>>>,
     ftp_settings: Option<FtpSettings>,
-    tls_setting: Option<FtpTlsSettings>,
+    tls_settings: Option<FtpTlsSettings>,
     proxy_settings: Option<FtpProxySettings>,
 }
 
@@ -173,7 +179,7 @@ impl AddIn {
         AddIn {
             client: None,
             ftp_settings: None,
-            tls_setting: None,
+            tls_settings: None,
             proxy_settings: None,
         }
     }
@@ -190,7 +196,7 @@ impl AddIn {
         };
 
         let proxy_settings = &self.proxy_settings;
-        let tls_settings = &self.tls_setting;
+        let tls_settings = &self.tls_settings;
 
         let tcp_stream = match tcp_establish::create_tcp_connection(&ftp_settings, proxy_settings) {
             Ok(stream) => stream,
@@ -276,13 +282,29 @@ impl AddIn {
 
         let ca_path = if ca_cert_path.is_empty() { None } else { Some(ca_cert_path.to_string()) };
 
-        self.tls_setting = Some(FtpTlsSettings{
+        self.tls_settings = Some(FtpTlsSettings{
             use_tls,
             accept_invalid_certs,
             ca_cert_path: ca_path
         });
 
         json!({"result": true}).to_string()
+    }
+
+    pub fn get_configurations(&self) -> String {
+
+        match serde_json::to_string_pretty(&self){
+            Ok(s) => json!({"result": true, "data": s}).to_string(),
+            Err(e) => process_error(&e.to_string())
+        }
+
+    }
+
+    pub fn is_tls(&self) -> bool {
+        match &self.tls_settings {
+            Some(s) => s.use_tls,
+            None => false
+        }
     }
 
     fn get_client(&self) -> Result<MutexGuard<'_, FtpClient>, String> {
