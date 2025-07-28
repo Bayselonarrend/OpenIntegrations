@@ -201,6 +201,131 @@ Function GetComposition() Export
     NewLine.Description    = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ListObjects";
+    NewLine.SearchMethod = "LISTOBJECTS";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Directory management";
+    NewLine.MethodDescription   = "Gets information about the contents of a directory at the specified path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ListObjects";
+    NewLine.SearchMethod = "LISTOBJECTS";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to search directory";
+    NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ListObjects";
+    NewLine.SearchMethod = "LISTOBJECTS";
+    NewLine.Parameter    = "--rcv";
+    NewLine.Description    = "Get information about elements in nested directories (optional, def. val. - False)";
+    NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "CreateDirectory";
+    NewLine.SearchMethod = "CREATEDIRECTORY";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Directory management";
+    NewLine.MethodDescription   = "Creates a directory at the specified path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "CreateDirectory";
+    NewLine.SearchMethod = "CREATEDIRECTORY";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to new directory";
+    NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "DeleteDirectory";
+    NewLine.SearchMethod = "DELETEDIRECTORY";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Directory management";
+    NewLine.MethodDescription   = "Deletes an existing directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "DeleteDirectory";
+    NewLine.SearchMethod = "DELETEDIRECTORY";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to directory to delete";
+    NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Uploads a file from disk or binary data to the FTP server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File on disk or file data";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to save file on server";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Delete file from server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to save file on server";
+    NewLine.Region     = "File management";
+
     Return CompositionTable;
 EndFunction
 
