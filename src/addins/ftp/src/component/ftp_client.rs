@@ -231,9 +231,7 @@ pub fn configure_ftp_client(
     let passive_proxy = ftp_settings.passive && proxy_settings.is_some();
 
     if tls_settings.is_some_and(|s| s.use_tls) {
-
         let tls = tls_settings.unwrap();
-
         let tls_connector = tls_establish::get_tls_connector(tls)
             .map_err(|e| format_json_error(&e.to_string()))?;
 
@@ -247,49 +245,31 @@ pub fn configure_ftp_client(
             .into_secure(RustlsConnector::from(tls_connector), &ftp_settings.domain)
             .map_err(|e| format_json_error(&e.to_string()))?;
 
-
-
-        secure_stream = if passive_proxy {
-
+        if passive_proxy {
             let ftp_settings_clone = ftp_settings.clone();
-            let proxy_settings_clone = match proxy_settings {
-                Some(s) => Some(s.clone()),
-                None => None
-            };
+            let proxy_settings_clone = proxy_settings.cloned();
 
-            secure_stream.passive_stream_builder(move |addr: SocketAddr| {
+            secure_stream = secure_stream.passive_stream_builder(move |addr: SocketAddr| {
                 tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
-            })
-
-        }else{
-            secure_stream
-        };
+            });
+        }
 
         Ok(FtpClient::Secure(secure_stream))
-
     } else {
-
         let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
             .map_err(|e| format_json_error(&e.to_string()))?;
 
         ftp_stream.set_mode(mode);
         ftp_stream.set_passive_nat_workaround(true);
 
-        ftp_stream = if passive_proxy {
-
+        if passive_proxy {
             let ftp_settings_clone = ftp_settings.clone();
-            let proxy_settings_clone = match proxy_settings {
-                Some(s) => Some(s.clone()),
-                None => None
-            };
+            let proxy_settings_clone = proxy_settings.cloned();
 
-            ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
+            ftp_stream = ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
                 tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
-            })
-
-        }else{
-            ftp_stream
-        };
+            });
+        }
 
         Ok(FtpClient::Insecure(ftp_stream))
     }
