@@ -1,5 +1,5 @@
-﻿    Token          = "ya29.a0AS3H6NwHOdgzuHM2BJzqNlazILJ-ybYnI9jGKERrU7MOa8IQFt9pNQonv_qA7vy-kRNoWMYrSy6ERg3WmsA_HvBc1PlSkscXSc37jj0xx...";
-    Calendar       = "3729939255d3dae30d7ac9a3636c9e1840f376c74419a7bc41921a525cb07717@group.calendar.google.com";
+﻿    Token          = "ya29.a0AS3H6NydFfzli6DWKnwXS3lfjB3ObN9w_XScfyjZg0Veg-B_xx2EnHC93EO6ALhsjgLXncLAUQ2UbsuK3McdWLnQN2-Fyei9PDyo2vf5c...";
+    Calendar       = "c8819f720b61b7b4ae0a783d8c1d3b698f1bd5751522a0d948635f1441a5fac5@group.calendar.google.com";
     PrimaryColor   = "#000000";
     SecondaryColor = "#ffd800";
     Hidden         = False;

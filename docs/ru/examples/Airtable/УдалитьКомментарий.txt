@@ -1,7 +1,7 @@
 ﻿    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "appz0vDkZj4zWcwC4";
-    Таблица     = "tblZfIqdXzJwgw98C";
-    Запись      = "recJKjaKgbqJEVj0w";
-    Комментарий = "comYQ4HW2JJuIXdnG";
+    База        = "appS0xAXVPSCbldXo";
+    Таблица     = "tblbQ4RX4OqSmJ70n";
+    Запись      = "recqafWj0BcOrrTOx";
+    Комментарий = "comz2DSgevbPp7ge6";
 
     Результат = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, Запись, Комментарий);
