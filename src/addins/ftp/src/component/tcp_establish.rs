@@ -10,8 +10,17 @@ pub fn make_passive_proxy_stream(
     proxy_settings: &Option<FtpProxySettings>,
     addr: SocketAddr) -> Result<TcpStream, FtpError> {
 
-    let corrected_addr = if addr.ip().is_loopback() {
-        match ftp_settings.domain.parse::<std::net::IpAddr>() {
+    let redirect = match ftp_settings.advanced_resolve{
+        true => {
+            if proxy_settings.is_some() || addr.ip().is_loopback() {
+                Some(&ftp_settings.domain)
+            }else { None }
+        },
+        false => None
+    };
+
+    let corrected_addr = if redirect.is_some() {
+        match redirect.unwrap().parse::<std::net::IpAddr>() {
             Ok(ftp_ip) => {
                 SocketAddr::new(ftp_ip, addr.port())
             },
