@@ -2,5 +2,5 @@
 
 oint sqlite ВыполнитьЗапросSQL ^
   --sql "SELECT uuid4();" ^
-  --db "/tmp/esrkcgyi.zyq.sqlite" ^
+  --db "/tmp/d04e3crm.puv.sqlite" ^
   --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
