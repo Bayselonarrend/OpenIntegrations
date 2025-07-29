@@ -69,6 +69,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ftp ПолучитьСписокОбъектов \
+              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}}" \
+              --path "." \
+              --rcv "True"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ftp ПолучитьСписокОбъектов ^
+              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}}" ^
+              --path "." ^
+              --rcv "True"
+        ```
+    </TabItem>
+</Tabs>
 
 
 
