@@ -1,6 +1,6 @@
 oint airtable ИзменитьТаблицу \
   --token "***" \
-  --base "appACIexh0TsM7R4c" \
-  --table "tblCG1uv3ACUS14NW" \
+  --base "appkO9aNPlE1lelT5" \
+  --table "tbl6tRzSLVJFKHLka" \
   --title "Тестовая таблица 2 (изм.)" \
   --description "Новая таблица (изм.)"

@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ftp ЗагрузитьФайл \
-  --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','login':'bayselonarrend','password':'***'}}" \
-  --file "/tmp/3xxbquco.iei.png" \
+  --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}}" \
+  --file "/tmp/nobqia05.y0d.png" \
   --path "pic_from_binary.png"
