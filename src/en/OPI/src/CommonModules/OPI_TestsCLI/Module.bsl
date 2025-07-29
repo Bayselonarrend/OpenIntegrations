@@ -17817,7 +17817,7 @@ Procedure CLI_CDEK_GetPrealert(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetPrealert", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPrealert", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    OPI_TestDataRetrieval.Check_CdekPrealert(Result);
 
 EndProcedure
 
