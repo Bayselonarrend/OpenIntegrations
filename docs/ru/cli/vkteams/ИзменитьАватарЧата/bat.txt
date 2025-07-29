@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата ^
   --token "***" ^
   --chatid "AoLI0egLWBSLR1Ngn2w" ^
-  --file "/tmp/klt3qy2y.stm.png"
+  --file "/tmp/v3hsd3ko.ri1.png"

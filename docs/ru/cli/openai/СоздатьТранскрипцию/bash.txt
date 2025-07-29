@@ -2,5 +2,5 @@ oint openai СоздатьТранскрипцию \
   --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
   --model "whisper-1" \
-  --audio "/tmp/0pzkccjc.vfc.wav" \
+  --audio "/tmp/ejccpst1.4gy.wav" \
   --type "audio/wav"
