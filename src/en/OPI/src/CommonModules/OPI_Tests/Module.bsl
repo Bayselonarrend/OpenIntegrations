@@ -2868,7 +2868,7 @@ EndProcedure
 
 Procedure FT_CommonMethods() Export
 
-    OptionArray = GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
@@ -2887,7 +2887,7 @@ EndProcedure
 
 Procedure FT_DirecotryManagement() Export
 
-    OptionArray = GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
@@ -2901,7 +2901,7 @@ EndProcedure
 
 Procedure FT_FileOperations() Export
 
-    OptionArray = GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
@@ -2913,151 +2913,6 @@ Procedure FT_FileOperations() Export
 EndProcedure
 
 #EndRegion
-
-#EndRegion
-
-#Region Miscellaneous
-
-Function GetFTPParameterOptions() Export
-
-    OptionArray = New Array;
-
-    TestParametersMain = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("FTP_IP"        , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("FTP_Port"      , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("FTPS_IP"       , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("FTPS_Port"     , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("FTP_User"      , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("FTP_Password"  , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_User"    , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_Password", TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Socks5_IP"     , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Socks5_Port"   , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_IP"      , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_Port"    , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParametersMain);
-    OPI_TestDataRetrieval.ParameterToCollection("Big"           , TestParametersMain);
-
-
-    Localhost = OPI_TestDataRetrieval.GetLocalhost();
-
-    Socks5IP                        = TestParametersMain["Socks5_IP"];
-    TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
-
-    HttpProxyIP                    = TestParametersMain["Proxy_IP"];
-    TestParametersMain["Proxy_IP"] = ?(HttpProxyIP = "127.0.0.1", Localhost, HttpProxyIP);
-
-    // FTP
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTP)");
-    ParametersStructure.Insert("FTP_IP", Localhost);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "socks5");
-    ParametersStructure.Insert("Proxy", False);
-    ParametersStructure.Insert("TLS", False);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    // FTPS
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTPS)");
-    ParametersStructure.Insert("FTP_IP", Localhost);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTPS_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "socks5");
-    ParametersStructure.Insert("Proxy", False);
-    ParametersStructure.Insert("TLS", True);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    // FTP + Socks5
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTP, Socks5)");
-    ParametersStructure.Insert("FTP_IP", TestParametersMain["FTP_IP"]);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "socks5");
-    ParametersStructure.Insert("Proxy", True);
-    ParametersStructure.Insert("TLS", False);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    // FTP + HTTP
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTP, HTTP)");
-    ParametersStructure.Insert("FTP_IP", TestParametersMain["FTP_IP"]);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Proxy_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Proxy_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "http");
-    ParametersStructure.Insert("Proxy", True);
-    ParametersStructure.Insert("TLS", False);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    // FTPS + Socks5
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTPS, Socks5)");
-    ParametersStructure.Insert("FTP_IP", TestParametersMain["FTPS_IP"]);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "socks5");
-    ParametersStructure.Insert("Proxy", True);
-    ParametersStructure.Insert("TLS", True);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    // FTPS + HTTP
-    ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", "");
-    ParametersStructure.Insert("FTP_IP", TestParametersMain["FTPS_IP"]);
-    ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
-    ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
-    ParametersStructure.Insert("FTP_Password", TestParametersMain["FTP_Password"]);
-    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
-    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
-    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Proxy_IP"]);
-    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Proxy_Port"]);
-    ParametersStructure.Insert("Proxy_Type", "http");
-    ParametersStructure.Insert("Proxy", True);
-    ParametersStructure.Insert("TLS", True);
-    ParametersStructure.Insert("Picture", TestParametersMain["Picture"]);
-    ParametersStructure.Insert("Big", TestParametersMain["Big"]);
-    OptionArray.Add(ParametersStructure);
-
-    Return OptionArray;
-
-EndFunction
 
 #EndRegion
 
@@ -25327,7 +25182,7 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Array(Check["data"], 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
     OPI_TestDataRetrieval.Check_Array(Check["data"][0]["elements"], 1);
 
 EndProcedure
