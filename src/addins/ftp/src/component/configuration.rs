@@ -9,6 +9,7 @@ pub struct FtpSettings {
     pub write_timeout: u64,
     pub login: Option<String>,
     pub password: Option<String>,
+    pub advanced_resolve: bool
 }
 
 #[derive(Deserialize,Serialize,Clone)]
