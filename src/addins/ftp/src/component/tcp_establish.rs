@@ -24,11 +24,7 @@ pub fn make_passive_proxy_stream(
             Ok(ftp_ip) => {
                 SocketAddr::new(ftp_ip, addr.port())
             },
-            Err(e) => {
-                return Err(FtpError::ConnectionError(
-                    std::io::Error::new(std::io::ErrorKind::Other, format!("Invalid FTP server IP '{}': {}", ftp_settings.domain, e))
-                ));
-            }
+            Err(_) => addr,
         }
     } else {
         addr
