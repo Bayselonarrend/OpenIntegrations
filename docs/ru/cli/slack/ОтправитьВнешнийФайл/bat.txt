@@ -1,4 +1,4 @@
 oint slack ОтправитьВнешнийФайл ^
   --token "***" ^
-  --fileid "F097W20NXLM" ^
+  --fileid "F097XG9C4A1" ^
   --channels "C06UFNUTKUL"

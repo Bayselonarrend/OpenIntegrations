@@ -1,5 +1,5 @@
 oint ftp ПолучитьНастройкиСоединения ^
   --host "127.0.0.1" ^
-  --port "" ^
-  --login "" ^
+  --port "21" ^
+  --login "bayselonarrend" ^
   --pass "***"

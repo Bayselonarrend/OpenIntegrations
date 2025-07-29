@@ -2,5 +2,5 @@
 
 oint metrika ИзменитьСчетчик \
   --token "***" \
-  --counter "103520180" \
+  --counter "103525343" \
   --fields "{'autogoals_enabled':'True','counter_flags':{'collect_first_party_data':'False','measurement_enabled':'False','use_in_benchmarks':'False','direct_allow_use_goals_without_access':'False'},'favorite':'0','filter_robots':'1'}"
