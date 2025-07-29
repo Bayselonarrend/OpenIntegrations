@@ -754,6 +754,10 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     For Each Option In Options Do
 
+        If Option.Value = Undefined Then
+            Continue;
+        EndIf;
+
         CurrentValue = GetCLIFormedValue(Option.Value);
 
         LaunchString = LaunchString
@@ -3024,10 +3028,14 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         EndIf;
 
         CurrentOption = Option.Value;
-        ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
-        CurrentOption = FormOption(CurrentOption, Option.Key);
 
-        OptionsArray.Add(CurrentOption);
+        If CurrentOption <> Undefined Then
+
+            ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
+            CurrentOption = FormOption(CurrentOption, Option.Key);
+            OptionsArray.Add(CurrentOption);
+
+        EndIf;
 
     EndDo;
 
