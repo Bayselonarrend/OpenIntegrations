@@ -2234,6 +2234,17 @@
 
 КонецПроцедуры
 
+Процедура Проверка_СдэкПреалерт(Знач Результат) Экспорт
+
+    ОжидаетЧто(Результат["entity"]["shipment_point"]).Заполнено();
+    ОжидаетЧто(Результат["requests"]).ИмеетТип("Массив").Заполнено();
+
+    Статус = Результат["requests"][0]["state"];
+
+    ОжидаетЧто(Статус = "ACCEPTED" Или Статус = "SUCCESSFUL").Равно(Истина);
+
+КонецПроцедуры
+
 Процедура Проверка_СдэкКвитанция(Знач Результат) Экспорт
 
     URL = Результат["entity"]["url"];
@@ -3989,6 +4000,10 @@ EndProcedure
 
 Procedure Check_CdekOrder(Val Result) Export
 	Проверка_СдэкЗаказ(Result);
+EndProcedure
+
+Procedure Check_CdekPrealert(Val Result) Export
+	Проверка_СдэкПреалерт(Result);
 EndProcedure
 
 Procedure Check_CdekReceipt(Val Result) Export
