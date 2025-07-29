@@ -15896,7 +15896,7 @@ Procedure CDEK_GetPrealert(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetPrealert", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    OPI_TestDataRetrieval.Check_CdekPrealert(Result);
 
 EndProcedure
 
