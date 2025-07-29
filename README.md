@@ -88,8 +88,8 @@
  
 ## Установка и варианты релизов ##
 
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)
-![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)
+[![GitHub Downloads](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
+[![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)](https://sourceforge.net/projects/openintegrations/)
 
 <img src="media/icons.png" align="right">
 
