@@ -179,6 +179,10 @@ EndFunction
 // Get connection settings
 // Creates a structure of FTP connection settings
 //
+// Note
+// When ResolveIP = True, the connection address returned by the server in passive mode after PASV will be replaced with the^^
+// proxy server's IP if a proxy is used, or with the primary connection's IP if the server returns 127.0.0.1
+//
 // Parameters:
 // Domain - String - Server domain - host
 // Port - Number - Server port - port
@@ -187,6 +191,7 @@ EndFunction
 // Passive - Boolean - Passive connection mode - passive
 // ReadTimeout - Number - Read timeout - rtout
 // WriteTimeout - Number - Write timeout - wtout
+// IPResolve - Boolean - Advanced passive mode address resolution - ipresl
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -196,14 +201,16 @@ Function GetConnectionSettings(Val Domain
     , Val Password = Undefined
     , Val Passive = True
     , Val ReadTimeout = 120
-    , Val WriteTimeout = 120) Export
+    , Val WriteTimeout = 120
+    , Val IPResolve = True) Export
 
     SettingsStructure = New Structure;
-    OPI_Tools.AddField("domain"       , Domain       , "String" , SettingsStructure);
-    OPI_Tools.AddField("port"         , Port         , "Number" , SettingsStructure);
-    OPI_Tools.AddField("passive"      , Passive      , "Boolean", SettingsStructure);
-    OPI_Tools.AddField("read_timeout" , ReadTimeout  , "Number" , SettingsStructure);
-    OPI_Tools.AddField("write_timeout", WriteTimeout , "Number" , SettingsStructure);
+    OPI_Tools.AddField("domain"          , Domain       , "String" , SettingsStructure);
+    OPI_Tools.AddField("port"            , Port         , "Number" , SettingsStructure);
+    OPI_Tools.AddField("passive"         , Passive      , "Boolean", SettingsStructure);
+    OPI_Tools.AddField("read_timeout"    , ReadTimeout  , "Number" , SettingsStructure);
+    OPI_Tools.AddField("write_timeout"   , WriteTimeout , "Number" , SettingsStructure);
+    OPI_Tools.AddField("advanced_resolve", WriteTimeout , "Boolean", SettingsStructure);
 
     If Not Login = Undefined Then
         OPI_TypeConversion.GetLine(Login);
