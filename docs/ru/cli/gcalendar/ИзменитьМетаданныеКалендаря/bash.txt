@@ -1,5 +1,5 @@
 oint gcalendar ИзменитьМетаданныеКалендаря \
   --token "***" \
-  --calendar "398390b64118f1f9e9c1d323c5ff7cfaa3f000bfc8d07cc560a3f8a58697a316@group.calendar.google.com" \
+  --calendar "b79115252ac1cd2a54da49df58b07a529518e7acb9479ffdcf4818fcf70331ce@group.calendar.google.com" \
   --title "Новое наименование" \
   --description "Новое описание"
