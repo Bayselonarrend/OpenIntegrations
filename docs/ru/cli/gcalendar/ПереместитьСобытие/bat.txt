@@ -1,5 +1,5 @@
 oint gcalendar ПереместитьСобытие ^
   --token "***" ^
-  --from "24f12a9815d691707f261e7dd16347d3d9c79253cef2116b361d67f0e3782cdb@group.calendar.google.com" ^
+  --from "b1813130c42bf4eb0beae1704f1b3de02d682f93bc6cf93ace34d3cace54cbc9@group.calendar.google.com" ^
   --to "bayselonarrend@gmail.com" ^
-  --event "ql1471vcmh7a4v0ohqcakqakck"
+  --event "4j7q9ievv257ogdsval0d4s69c"
