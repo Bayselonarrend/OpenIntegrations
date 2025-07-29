@@ -2768,7 +2768,7 @@ EndProcedure
 
 Procedure CLI_FT_CommonMethods() Export
 
-    OptionArray = OPI_Tests.GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
@@ -2784,7 +2784,7 @@ EndProcedure
 
 Procedure CLI_FT_DirecotryManagement() Export
 
-    OptionArray = OPI_Tests.GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
@@ -2798,7 +2798,7 @@ EndProcedure
 
 Procedure CLI_FT_FileOperations() Export
 
-    OptionArray = OPI_Tests.GetFTPParameterOptions();
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
     For Each TestParameters In OptionArray Do
 
