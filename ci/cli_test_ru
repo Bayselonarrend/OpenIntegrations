@@ -285,6 +285,12 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_ОсновныеМетоды"')
 			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_РаботаСДиректориями"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_РаботаСФайлами"')
+			}
 			}
 		}
 		stage('Testing-PostgreSQL') {
