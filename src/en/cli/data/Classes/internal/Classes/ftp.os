@@ -133,6 +133,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetConnectionSettings";
+    NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
+    NewLine.Parameter    = "--ipresl";
+    NewLine.Description    = "Advanced passive mode address resolution (optional, def. val. - True)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "GetProxySettings";
     NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--addr";

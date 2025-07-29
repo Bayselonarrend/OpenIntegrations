@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetConnectionSettings(Val Domain, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120) Export`
+`Function GetConnectionSettings(Val Domain, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120, Val IPResolve = True) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -23,12 +23,17 @@ import TabItem from '@theme/TabItem';
   | Passive | --passive | Boolean | &#x2716; | Passive connection mode |
   | ReadTimeout | --rtout | Number | &#x2716; | Read timeout |
   | WriteTimeout | --wtout | Number | &#x2716; | Write timeout |
+  | IPResolve | --ipresl | Boolean | &#x2716; | Advanced passive mode address resolution |
 
   
   Returns:  Structure Of KeyAndValue - Connection settings structure
 
 <br/>
 
+:::tip
+When ResolveIP = True, the connection address returned by the server in passive mode after PASV will be replaced with the proxy server's IP if a proxy is used, or with the primary connection's IP if the server returns 127.0.0.1
+:::
+<br/>
 
 
 
