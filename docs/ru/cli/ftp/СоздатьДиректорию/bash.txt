@@ -2,4 +2,4 @@
 
 oint ftp СоздатьДиректорию \
   --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
-  --path "second_dir/another_one"
+  --path "new_dir"
