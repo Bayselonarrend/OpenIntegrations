@@ -65,7 +65,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetConnectionSettings";
     NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
     NewLine.Parameter    = "--host";
-    NewLine.Description    = "Server domain";
+    NewLine.Description    = "Host addres";
     NewLine.Region     = "Common methods";
     NewLine.MethodDescription   = "Creates a structure of FTP connection settings";
 
@@ -229,7 +229,7 @@ Function GetComposition() Export
     NewLine.Method       = "ListObjects";
     NewLine.SearchMethod = "LISTOBJECTS";
     NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to search directory";
+    NewLine.Description    = "Path to search directory (optional, def. val. - Empty value)";
     NewLine.Region     = "Directory management";
 
 
