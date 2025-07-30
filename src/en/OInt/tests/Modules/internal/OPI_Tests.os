@@ -17302,7 +17302,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
-    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+    Data       = GetBinaryDataFromString(Message);
 
     OPI_TCP.SendBinaryData(Connection, Data);
 
@@ -17315,7 +17315,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     // END
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -17326,7 +17326,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -17337,7 +17337,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
-    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+    Data       = GetBinaryDataFromString(Message);
 
     Result = OPI_TCP.SendBinaryData(Connection, Data);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17350,7 +17350,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     // END
 
-    Response = ПолучитьСтрокуИзДвоичныхДанных(Response);
+    Response = GetStringFromBinaryData(Response);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData", "TCP");
     OPI_TestDataRetrieval.Check_String(Response, Message);
 
@@ -17361,7 +17361,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -20156,7 +20156,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -20187,7 +20187,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -20302,7 +20302,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -20321,7 +20321,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -20345,7 +20345,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -21921,7 +21921,7 @@ Procedure Ollama_PushBlob(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
-    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Random = GetBinaryDataFromString(String(New UUID)); // SKIP
     Image  = OPI_Tools.MergeData(Image, Random); // SKIP
 
     AdditionalHeaders = New Map;
@@ -21986,7 +21986,7 @@ Procedure HTTPClient_Initialize(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22048,7 +22048,7 @@ Procedure HTTPClient_SetURL(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22106,7 +22106,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22289,7 +22289,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     OPI_TestDataRetrieval.ExpectsThat(BodyFile.Size()).Равно(CheckResult.Size());
 
-    CheckResultAsString = ПолучитьСтрокуИзДвоичныхДанных(CheckResult);
+    CheckResultAsString = GetStringFromBinaryData(CheckResult);
 
     OPI_TestDataRetrieval.WriteLog(CheckResultAsString, "SetResponseFile (body)", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(OPI_Tools.JsonToStructure(CheckResultAsString)).ИмеетТип("Map");
@@ -22325,7 +22325,7 @@ Procedure HTTPClient_SetDataType(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22377,7 +22377,7 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22416,14 +22416,14 @@ Procedure HTTPClient_SetStringBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
 
-    TextBD = ПолучитьДвоичныеДанныеИзСтроки(Text, Encoding);
+    TextBD = GetBinaryDataFromString(Text, Encoding);
     Size   = TextBD.Size();
     OPI_TypeConversion.GetLine(Size);
 
@@ -22463,7 +22463,7 @@ Procedure HTTPClient_SetJsonBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22504,7 +22504,7 @@ Procedure HTTPClient_SetFormBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22544,7 +22544,7 @@ Procedure HTTPClient_StartMultipartBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22589,7 +22589,7 @@ Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22634,7 +22634,7 @@ Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22680,7 +22680,7 @@ Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22713,7 +22713,7 @@ Procedure HTTPClient_UseEncoding(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22789,7 +22789,7 @@ Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22839,7 +22839,7 @@ Procedure HTTPClient_SetHeaders(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22886,7 +22886,7 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22958,12 +22958,12 @@ Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddBasicAuthorization", "HTTPClient");
-    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(ПолучитьДвоичныеДанныеИзСтроки("user:password")));
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
 
 EndProcedure
 
@@ -22988,7 +22988,7 @@ Procedure HTTPClient_AddBearerAuthorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23022,7 +23022,7 @@ Procedure HTTPClient_AddAWS4Authorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23059,7 +23059,7 @@ Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23096,7 +23096,7 @@ Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23125,7 +23125,7 @@ Procedure HTTPClient_ProcessRequest(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23157,7 +23157,7 @@ Procedure HTTPClient_ExecuteRequest(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23282,7 +23282,7 @@ Procedure HTTPClient_ReturnResponseAsJSONObject(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23338,7 +23338,7 @@ Procedure HTTPClient_ReturnResponseAsString(FunctionParameters)
         Try
             Message(ResultJSON.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(ResultJSON));
+            Message(GetStringFromBinaryData(ResultJSON));
         EndTry;
     EndTry;
 
