@@ -1,5 +1,5 @@
 {
-"Domain": "172.33.0.10",
+"Host": "172.33.0.10",
 "Port": 21,
 "Login": "bayselonarrend",
 "Password": "12we...",
@@ -7,5 +7,6 @@
 "ProxyAddress": "127.0.0.1",
 "ProxyPort": 8071,
 "ProxyLogin": "proxyuser",
-"ProxyPassword": "12we..."
+"ProxyPassword": "12we...",
+"Domain": "172.33.0.10"
 }

@@ -1,4 +1,4 @@
-﻿    Domain   = "172.33.0.10";
+﻿    Host     = "172.33.0.10";
     Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
@@ -9,7 +9,7 @@
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 

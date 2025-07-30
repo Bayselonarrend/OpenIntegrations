@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
     КартинкаДД = Новый ДвоичныеДанные(Картинка);
 
-    Домен  = "172.33.0.10";
+    Хост   = "172.33.0.10";
     Порт   = "21";
     Логин  = "bayselonarrend";
     Пароль = "12we...";
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
     НастройкиПрокси = Неопределено;
     НастройкиTls    = Неопределено; // FTPS
 
-    НастройкиFTP = OPI_FTP.ПолучитьНастройкиСоединения(Домен, Порт, Логин, Пароль, , 1000, 1000);
+    НастройкиFTP = OPI_FTP.ПолучитьНастройкиСоединения(Хост, Порт, Логин, Пароль, , 1000, 1000);
 
     Если ИспользоватьПрокси Тогда
 
@@ -88,7 +88,7 @@ import TabItem from '@theme/TabItem';
             
             oint ftp ЗагрузитьФайл \
               --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}}" \
-              --file "/tmp/nobqia05.y0d.png" \
+              --file "/tmp/myjtk5mn.gg0.png" \
               --path "pic_from_binary.png"
         ```
     </TabItem>
@@ -99,7 +99,7 @@ import TabItem from '@theme/TabItem';
             
             oint ftp ЗагрузитьФайл ^
               --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}}" ^
-              --file "/tmp/nobqia05.y0d.png" ^
+              --file "/tmp/myjtk5mn.gg0.png" ^
               --path "pic_from_binary.png"
         ```
     </TabItem>

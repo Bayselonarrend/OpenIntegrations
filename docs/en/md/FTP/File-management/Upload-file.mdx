@@ -37,7 +37,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     ImageDD = New BinaryData(Image);
 
-    Domain   = "172.33.0.10";
+    Host     = "172.33.0.10";
     Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
@@ -48,7 +48,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password, , 1000, 1000);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password, , 1000, 1000);
 
     If UseProxy Then
 
