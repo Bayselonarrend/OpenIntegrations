@@ -1,6 +1,1 @@
-{
-"Image": "https://hut.openintegrations.dev/test_data/picture.jpg",
-"Address": "127.0.0.1",
-"Password": "12we...",
-"SQLFile": "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"
-}
+{"Image":"https://hut.openintegrations.dev/test_data/picture.jpg","Address":"127.0.0.1","Password":"12we...","SQLFile":"https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"}
