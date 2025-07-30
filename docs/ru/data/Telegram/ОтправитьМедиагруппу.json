@@ -1,8 +1,1 @@
-{
-"Токен": "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ",
-"IDЧата": "461699897",
-"Текст": "Строковое значение",
-"Картинка": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
-"Видео": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4",
-"Описание": "Группа картинок"
-}
+{"Токен":"111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ","IDЧата":"461699897","Текст":"Строковое значение","Картинка":"https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg","Видео":"https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4","Описание":"Группа картинок"}
