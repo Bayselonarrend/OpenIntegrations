@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Функция ПолучитьСписокОбъектов(Знач Соединение, Знач Путь, Знач Рекурсивно = Ложь) Экспорт`
+`Функция ПолучитьСписокОбъектов(Знач Соединение, Знач Путь = "", Знач Рекурсивно = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Соединение | --conn | Произвольный | &#x2714; | Существующее соединение или конфигурация соединения |
-  | Путь | --path | Строка | &#x2714; | Путь к директории поиска |
+  | Путь | --path | Строка | &#x2716; | Путь к директории поиска |
   | Рекурсивно | --rcv | Булево | &#x2716; | Получать информацию об элементах во вложенных директориях |
 
   
@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Домен  = "172.33.0.10";
+    Хост   = "172.33.0.10";
     Порт   = "21";
     Логин  = "bayselonarrend";
     Пароль = "12we...";
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
     НастройкиПрокси = Неопределено;
     НастройкиTls    = Неопределено; // FTPS
 
-    НастройкиFTP = OPI_FTP.ПолучитьНастройкиСоединения(Домен, Порт, Логин, Пароль);
+    НастройкиFTP = OPI_FTP.ПолучитьНастройкиСоединения(Хост, Порт, Логин, Пароль);
 
     Если ИспользоватьПрокси Тогда
 
@@ -76,7 +76,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов \
-              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
+              --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}}" \
               --path "." \
               --rcv "True"
         ```
@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов ^
-              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
+              --conn "{'set':{'domain':'127.0.0.1','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}}" ^
               --path "." ^
               --rcv "True"
         ```

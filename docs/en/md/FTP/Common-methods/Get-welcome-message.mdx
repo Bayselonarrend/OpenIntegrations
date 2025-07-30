@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Domain   = "172.33.0.10";
+    Host     = "172.33.0.10";
     Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
