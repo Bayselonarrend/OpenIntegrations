@@ -1,6 +1,6 @@
 oint cdek ПолучитьШтрихкод ^
   --token "***" ^
-  --uuid "699e1ada-3192-4b33-83f8-a64f3762361b" ^
+  --uuid "b99f911a-9abf-4493-8e51-0793063d6a94" ^
   --getfile "True" ^
   --testapi "***" ^
-  --out "/tmp/btkxnrlu.rch.pdf"
+  --out "/tmp/5z4v25xx.idl.pdf"
