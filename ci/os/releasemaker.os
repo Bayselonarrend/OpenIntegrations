@@ -21,7 +21,7 @@
 	ОСкрипт           = "C:\Program Files\OneScript\";
 	ПутьДвижка        = "/mnt/c/engine/linux/";
 
-	ПутьКРепозиторию  = "C:\ProgramData\Jenkins\.jenkins\workspace\OpiRelease";
+	ПутьКРепозиторию  = "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiRelease";
 	//ПутьКРепозиторию  = "C:\Repos\OPI";
 	ПутьВыгрузки      = ПутьКРепозиторию + "\" + Версия + "\";
 	ПутьMelezh        = ПутьКРепозиторию + "\Melezh";
