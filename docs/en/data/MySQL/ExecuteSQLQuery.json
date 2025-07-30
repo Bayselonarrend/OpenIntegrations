@@ -1,6 +1,1 @@
-{
-"Image": "https://api.athenaeum.digital/test_data/picture.jpg",
-"Address": "127.0.0.1",
-"Password": "12we...",
-"SQLFile": "https://api.athenaeum.digital/test_data/TEST_DATA2.sql"
-}
+{"Image":"https://api.athenaeum.digital/test_data/picture.jpg","Address":"127.0.0.1","Password":"12we...","SQLFile":"https://api.athenaeum.digital/test_data/TEST_DATA2.sql"}
