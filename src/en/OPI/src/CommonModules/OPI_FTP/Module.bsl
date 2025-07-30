@@ -130,6 +130,7 @@ Function CloseConnection(Val Connection) Export
     Result = Connection.Close();
     Result = OPI_Tools.JsonToStructure(Result);
 
+    //@skip-check constructor-function-return-section
     Return Result;
 
 EndFunction
@@ -178,31 +179,38 @@ EndFunction
 // Get connection settings
 // Creates a structure of FTP connection settings
 //
+// Note
+// When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP^^
+// from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
+//
 // Parameters:
-// Domain - String - Server domain - host
+// Host - String - Host addres - host
 // Port - Number - Server port - port
 // Login - String, Undefined - Username for authorization, if required - login
 // Password - String, Undefined - User password for authorization, if required - pass
 // Passive - Boolean - Passive connection mode - passive
 // ReadTimeout - Number - Read timeout - rtout
 // WriteTimeout - Number - Write timeout - wtout
+// IPResolve - Boolean - Advanced passive mode address resolution - ipresl
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
-Function GetConnectionSettings(Val Domain
+Function GetConnectionSettings(Val Host
     , Val Port = 21
     , Val Login = Undefined
     , Val Password = Undefined
     , Val Passive = True
     , Val ReadTimeout = 120
-    , Val WriteTimeout = 120) Export
+    , Val WriteTimeout = 120
+    , Val IPResolve = True) Export
 
     SettingsStructure = New Structure;
-    OPI_Tools.AddField("domain"       , Domain       , "String" , SettingsStructure);
-    OPI_Tools.AddField("port"         , Port         , "Number" , SettingsStructure);
-    OPI_Tools.AddField("passive"      , Passive      , "Boolean", SettingsStructure);
-    OPI_Tools.AddField("read_timeout" , ReadTimeout  , "Number" , SettingsStructure);
-    OPI_Tools.AddField("write_timeout", WriteTimeout , "Number" , SettingsStructure);
+    OPI_Tools.AddField("domain"          , Host         , "String" , SettingsStructure);
+    OPI_Tools.AddField("port"            , Port         , "Number" , SettingsStructure);
+    OPI_Tools.AddField("passive"         , Passive      , "Boolean", SettingsStructure);
+    OPI_Tools.AddField("read_timeout"    , ReadTimeout  , "Number" , SettingsStructure);
+    OPI_Tools.AddField("write_timeout"   , WriteTimeout , "Number" , SettingsStructure);
+    OPI_Tools.AddField("advanced_resolve", WriteTimeout , "Boolean", SettingsStructure);
 
     If Not Login = Undefined Then
         OPI_TypeConversion.GetLine(Login);
@@ -278,6 +286,234 @@ EndFunction
 
 #EndRegion
 
+#Region DirectoryManagement
+
+// List objects
+// Gets information about the contents of a directory at the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to search directory - path
+// Recursively - Boolean - Get information about elements in nested directories - rcv
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Recursively);
+
+    Path = ?(Path = ".", "", Path);
+
+    Result = Connection.ListDirectory(Path);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Result["result"] Then
+
+        ElementList = Result["data"];
+
+        For Each Element In ElementList Do
+
+            ElementName = Element["name"];
+
+            If ValueIsFilled(Path) Then
+                ElementPath = StrTemplate("%1/%2", Path, ElementName);
+            Else
+                ElementPath = ElementName;
+            EndIf;
+
+            Element.Insert("path", ElementPath);
+
+            If Recursively Then
+                If Element["is_directory"] Then
+
+                    ResultSubdirectory = ListObjects(Connection, ElementPath, True);
+
+                    If Not ResultSubdirectory["result"] Then
+                        Result = ResultSubdirectory;
+                        Break;
+                    Else
+                        Element.Insert("elements", ResultSubdirectory["data"]);
+                    EndIf;
+
+                EndIf;
+            EndIf;
+
+        EndDo;
+
+        Result = New Map;
+        Result.Insert("result", True);
+        Result.Insert("data"  , ElementList);
+
+    EndIf;
+
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Create directory
+// Creates a directory at the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to new directory - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CreateDirectory(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.MakeDirectory(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Delete directory
+// Deletes an existing directory
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to directory to delete - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteDirectory(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        Result = DeleteDirectoryRecursively(Connection, Path);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region FileManagement
+
+// Upload file
+// Uploads a file from disk or binary data to the FTP server
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// File - String, BinaryData - File on disk or file data - file
+// Path - String - Path to save file on server - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function UploadFile(Val Connection, Val File, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        ProcessingConnection = GetConnectionForFileOperation(Connection, CloseConnection);
+
+        If Not IsConnector(ProcessingConnection) Then
+            Return ProcessingConnection;
+        EndIf;
+
+        If TypeOf(File)  = Type("String") Then
+            FileOnDisk   = New File(File);
+            IsFileOnDisk = FileOnDisk.Exists();
+        Else
+            IsFileOnDisk = False;
+        EndIf;
+
+        If Not IsFileOnDisk Then
+
+            OPI_TypeConversion.GetBinaryData(File);
+            Result = ProcessingConnection.UploadData(File, Path);
+
+        Else
+            Result = ProcessingConnection.UploadFile(File, Path);
+        EndIf;
+
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Delete file
+// Delete file from server
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to save file on server - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function DeleteFile(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.RemoveFile(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -344,7 +580,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
         Return ConfigurationStructure;
     EndIf;
 
-    ErrorText = "Unexpected connection configuration";
+    ErrorPattern = "Incorrect connection configuration provided: %1";
 
     Try
         OPI_TypeConversion.GetKeyValueCollection(ConfigurationStructure);
@@ -352,7 +588,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
         Result = New Map;
         Result.Insert("result", False);
-        Result.Insert("error" , ErrorText);
+        Result.Insert("error" , StrTemplate(ErrorPattern, ErrorDescription()));
         Return Result;
 
     EndTry;
@@ -361,7 +597,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
         Result = New Map;
         Result.Insert("result", False);
-        Result.Insert("error" , ErrorText);
+        Result.Insert("error" , StrTemplate(ErrorPattern, "missing main connection parameters"));
         Return Result;
 
     EndIf;
@@ -384,6 +620,83 @@ Function CheckCreateConnection(Connection)
     EndIf;
 
     Return CloseConnection;
+
+EndFunction
+
+Function DeleteDirectoryRecursively(Val Connection, Val Path, DeletedArray = Undefined)
+
+    If DeletedArray  = Undefined Then
+        DeletedArray = New Array;
+        Primary      = True;
+    Else
+        Primary      = False;
+    EndIf;
+
+    NestedItems = ListObjects(Connection, Path, True);
+
+    If NestedItems["result"] Then
+        For Each Element In NestedItems["data"] Do
+
+            ElementPath = Element["path"];
+
+            If Element["is_directory"] Then
+                Deletion = DeleteDirectoryRecursively(Connection, ElementPath, DeletedArray);
+            Else
+                Deletion = DeleteFile(Connection, ElementPath);
+            EndIf;
+
+            Deletion.Insert("path", ElementPath);
+            DeletedArray.Add(Deletion);
+
+        EndDo;
+    EndIf;
+
+    Result = Connection.RemoveDirectory(Path);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Primary Then
+        Result.Insert("deleted_elements", DeletedArray);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function GetConnectionForFileOperation(Val Connection, Val CloseConnection)
+
+    If CloseConnection Then
+        Return Connection;
+    EndIf;
+
+    IsTls = Connection.IsTls();
+
+    If IsTls Then
+        // Avoiding the not always correctly functioning TLS Session reuse for multiple data streams
+        ProcessingConnection = GetConnectionCopy(Connection);
+    Else
+        ProcessingConnection = Connection;
+    EndIf;
+
+    Return ProcessingConnection;
+
+EndFunction
+
+Function GetConnectionCopy(Val Connection)
+
+    Configuration = Connection.GetConfiguration();
+    Configuration = OPI_Tools.JSONToStructure(Configuration);
+
+    If Not Configuration["result"] Then
+        Return Configuration;
+    EndIf;
+
+    Configuration = OPI_Tools.JSONToStructure(Configuration["data"]);
+
+    FTPSettings = Configuration["ftp_settings"];
+    Proxy       = Configuration["proxy_settings"];
+    TLS         = Configuration["tls_settings"];
+
+    Return CreateConnection(FTPSettings, Proxy, TLS);
 
 EndFunction
 

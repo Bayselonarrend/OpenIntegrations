@@ -566,17 +566,17 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
         OPI_TypeConversion.GetBinaryData(Data, True, False);
         OPI_TypeConversion.GetBoolean(SetIfEmpty);
 
-        Data   = ?(Data = Undefined, ПолучитьДвоичныеДанныеИзСтроки(""), Data);
+        Data   = ?(Data = Undefined, GetBinaryDataFromString(""), Data);
         IsData = Data.Size() > 0;
 
         If IsData Or SetIfEmpty Then
 
             If Not IsData Then
-                Data = ПолучитьДвоичныеДанныеИзСтроки("");
+                Data = GetBinaryDataFromString("");
             EndIf;
 
             AddLog("SetBinaryBody: beginning of body setting");
-            SetBodyFromBinary(Data);
+            SetBodyFromBinaryData(Data);
             AddLog(StrTemplate("SetBinaryBody: body set, size %1", RequestBody.Size()));
 
         Else
@@ -1431,7 +1431,7 @@ Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False
 
     Try
         BodyAsString = Undefined;
-        BodyAsString = ПолучитьСтрокуИзДвоичныхДанных(GetResponseBody());
+        BodyAsString = GetStringFromBinaryData(GetResponseBody());
     Except
 
         Error = True;
@@ -1535,7 +1535,7 @@ Function ConvertParameterToString(Val Value)
 
 EndFunction
 
-Function SetBodyFromBinary(Val Value)
+Function SetBodyFromBinaryData(Val Value)
 
     OPI_TypeConversion.GetBinaryData(Value, True, False);
     RequestBody = Value;
@@ -1557,7 +1557,7 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
         OPI_TypeConversion.GetLine(Value);
         OPI_TypeConversion.GetBoolean(WriteBOM);
 
-        RequestBody = ПолучитьДвоичныеДанныеИзСтроки(Value, Encoding, WriteBOM);
+        RequestBody = GetBinaryDataFromString(Value, Encoding, WriteBOM);
 
     EndIf;
 
@@ -1878,7 +1878,7 @@ Function SetRequestBody()
     Else
 
         If TypeOf(RequestBody) = Type("BinaryData") Then
-            Request.SetBodyFromBinary(RequestBody);
+            Request.SetBodyFromBinaryData(RequestBody);
         EndIf;
 
     EndIf;
@@ -1975,7 +1975,7 @@ Function GetResponseBodyAsBinaryData()
     BodyStream = Response.GetBodyAsStream();
 
     If BodyStream = Undefined Then
-        Return ПолучитьДвоичныеДанныеИзСтроки("");
+        Return GetBinaryDataFromString("");
     EndIf;
 
     DataReader    = New DataReader(BodyStream);
@@ -2010,7 +2010,7 @@ Function GetRequestBodyAsBinaryData()
     EndIf;
 
     If Data  = Undefined Then
-        Data = ПолучитьДвоичныеДанныеИзСтроки("");
+        Data = GetBinaryDataFromString("");
     EndIf;
 
     Return Data;
@@ -2244,7 +2244,7 @@ Function ZipLFH()
     Buffer.WriteInt32(22, 0); // uncompressed size
     Buffer.WriteInt16(26, 4); // filename legth - "data"
     Buffer.WriteInt16(28, 0); // extra field length
-    Buffer.Write(30, ПолучитьБуферДвоичныхДанныхИзСтроки("data", "ascii", False));
+    Buffer.Write(30, GetBinaryDataBufferFromString("data", "ascii", False));
 
     Return Buffer;
 
@@ -2284,7 +2284,7 @@ Function ZipCDH(CRC32, CompressedDataSize, UncompressedDataSize)
     Buffer.WriteInt16(36, 0); // internal file attributes
     Buffer.WriteInt32(38, 2176057344); // external file attributes
     Buffer.WriteInt32(42, 0); // relative offset of local header
-    Buffer.Write(46, ПолучитьБуферДвоичныхДанныхИзСтроки("data", "ascii", False));
+    Buffer.Write(46, GetBinaryDataBufferFromString("data", "ascii", False));
 
     Return Buffer;
 
@@ -2357,7 +2357,7 @@ Function GetMainSignatureParts(Val CurrentDate)
     StringToSign     = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
 
     Signature = OPI_Cryptography.HMAC(SignKey, StringToSign, "SHA256");
-    Signature = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Signature));
+    Signature = Lower(GetHexStringFromBinaryData(Signature));
 
     HeadersKeys = GetHeadersKeysString();
 
@@ -2386,11 +2386,11 @@ EndFunction
 
 Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate)
 
-    SecretKey  = ПолучитьДвоичныеДанныеИзСтроки("AWS4" + SecretKey);
-    DateData = ПолучитьДвоичныеДанныеИзСтроки(Format(CurrentDate, "DF=yyyyMMdd;"));
-    Region     = ПолучитьДвоичныеДанныеИзСтроки(Region);
-    Service    = ПолучитьДвоичныеДанныеИзСтроки(Service);
-    AWSRequest = ПолучитьДвоичныеДанныеИзСтроки("aws4_request");
+    SecretKey  = GetBinaryDataFromString("AWS4" + SecretKey);
+    DateData = GetBinaryDataFromString(Format(CurrentDate, "DF=yyyyMMdd;"));
+    Region     = GetBinaryDataFromString(Region);
+    Service    = GetBinaryDataFromString(Service);
+    AWSRequest = GetBinaryDataFromString("aws4_request");
     SHA256_    = "SHA256";
 
     DataKey    = OPI_Cryptography.HMAC(SecretKey, DateData, SHA256_);
@@ -2410,7 +2410,7 @@ Function CreateCanonicalRequest()
     HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
     PartsAmount     = 6;
 
-    Request.Headers.Insert("x-amz-content-sha256", Lower(ПолучитьHexСтрокуИзДвоичныхДанных(HashSum)));
+    Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
 
     For N = 1 To PartsAmount Do
 
@@ -2424,7 +2424,7 @@ Function CreateCanonicalRequest()
     HeadersString   = GetHeadersString();
     KeysString      = GetHeadersKeysString();
 
-    HashString = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(HashSum));
+    HashString = Lower(GetHexStringFromBinaryData(HashSum));
 
     CanonicalRequest = StrTemplate(RequestTemplate
         , Method
@@ -2461,9 +2461,9 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     DateISO        = OPI_Tools.ISOTimestamp(CurrentDate);
     PartsAmount    = 4;
 
-    CanonicalRequest = ПолучитьДвоичныеДанныеИзСтроки(CanonicalRequest);
+    CanonicalRequest = GetBinaryDataFromString(CanonicalRequest);
     CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
-    CanonicalRequest = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(CanonicalRequest));
+    CanonicalRequest = Lower(GetHexStringFromBinaryData(CanonicalRequest));
 
     For N = 1 To PartsAmount Do
 
@@ -2472,7 +2472,7 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     EndDo;
 
     SignatureString = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
-    SignatureString = ПолучитьДвоичныеДанныеИзСтроки(SignatureString);
+    SignatureString = GetBinaryDataFromString(SignatureString);
 
     Return SignatureString;
 
@@ -2711,8 +2711,8 @@ Function AddOAuthV1Header()
         + "&"
         + EncodeString(OAuthSecret, StringEncodingMethod.URLencoding);
 
-    SignBD      = ПолучитьДвоичныеДанныеИзСтроки(Signature);
-    SignatureBD = ПолучитьДвоичныеДанныеИзСтроки(SignatureString);
+    SignBD      = GetBinaryDataFromString(Signature);
+    SignatureBD = GetBinaryDataFromString(SignatureString);
 
     AddLog("AddOAuthV1Header: ");
 

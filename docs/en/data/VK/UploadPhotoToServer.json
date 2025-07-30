@@ -1,4 +1,1 @@
-{
-"Image": "https://openintegrations.dev/test_data/picture.jpg // URL, Path or Binary Data",
-"TFN": "GetTempFileName(png)"
-}
+{"Image":"https://openintegrations.dev/test_data/picture.jpg // URL, Path or Binary Data","TFN":"GetTempFileName(png)"}

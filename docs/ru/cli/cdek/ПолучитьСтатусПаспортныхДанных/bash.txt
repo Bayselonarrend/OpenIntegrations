@@ -1,4 +1,4 @@
 oint cdek ПолучитьСтатусПаспортныхДанных \
   --token "***" \
-  --uuid "b49adf2a-ecfd-4bc7-b64e-5f8a6f22fa11" \
+  --uuid "b9423d2e-fee0-4f21-b9b7-a8505c1e5793" \
   --testapi "***"

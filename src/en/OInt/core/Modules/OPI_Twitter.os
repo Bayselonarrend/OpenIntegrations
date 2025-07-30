@@ -405,7 +405,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Size    = File.Size();
 
     ChunkSize    = Count * Unit * Unit;
-    ArrayReading = РазделитьДвоичныеДанные(File, ChunkSize);
+    ArrayReading = SplitBinaryData(File, ChunkSize);
 
     Fields = New Structure;
     Fields.Insert(Command         , "INIT");
@@ -613,7 +613,7 @@ Function Post(Val URL, Val Fields, Val SecretData, Val JSON = False, Val IsV2 = 
 
     Else
 
-        ActionWithAttachment = OPI_Tools.CollectionFieldExist(Fields, "media");
+        ActionWithAttachment = OPI_Tools.CollectionFieldExists(Fields, "media");
 
         HttpClient.AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
             .SetOAuthV1Algorithm("HMAC", "SHA1")

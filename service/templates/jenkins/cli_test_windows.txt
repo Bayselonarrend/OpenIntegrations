@@ -79,7 +79,7 @@ pipeline {
         stage('Download Installer') {
             steps {
                 powershell encoding: 'UTF-8', script: '''
-                    $url = "https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint_1.27.0_installer_%1.exe "
+                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint_1.27.0_installer_%1.exe "
                     $output = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
                     Invoke-WebRequest -Uri $url -OutFile $output
                     Write-Host "Инсталлер скачан в: $output"

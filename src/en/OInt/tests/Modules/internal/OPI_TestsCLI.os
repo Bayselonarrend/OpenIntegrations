@@ -2265,7 +2265,7 @@ Procedure CLI_SQLL_CommonMethods() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    ПолучитьДвоичныеДанныеИзСтроки("").Write(Base);
+    GetBinaryDataFromString("").Write(Base);
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
@@ -2288,7 +2288,7 @@ Procedure CLI_SQLL_ORM() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    ПолучитьДвоичныеДанныеИзСтроки("").Write(Base);
+    GetBinaryDataFromString("").Write(Base);
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
@@ -2768,15 +2768,44 @@ EndProcedure
 
 Procedure CLI_FT_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
-    CLI_FTP_GetWelcomeMessage(TestParameters);
-    CLI_FTP_GetConnectionConfiguration(TestParameters);
-    CLI_FTP_GetConnectionSettings(TestParameters);
-    CLI_FTP_GetProxySettings(TestParameters);
-    CLI_FTP_GetTlsSettings(TestParameters);
+    For Each TestParameters In OptionArray Do
+
+        CLI_FTP_GetWelcomeMessage(TestParameters);
+        CLI_FTP_GetConnectionConfiguration(TestParameters);
+        CLI_FTP_GetConnectionSettings(TestParameters);
+        CLI_FTP_GetProxySettings(TestParameters);
+        CLI_FTP_GetTlsSettings(TestParameters);
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_FT_DirecotryManagement() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+        CLI_FTP_ListObjects(TestParameters);
+        CLI_FTP_CreateDirectory(TestParameters);
+        CLI_FTP_DeleteDirectory(TestParameters);
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_FT_FileOperations() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+        CLI_FTP_UploadFile(TestParameters);
+        CLI_FTP_DeleteFile(TestParameters);
+
+    EndDo
 
 EndProcedure
 
@@ -3734,7 +3763,7 @@ Procedure CLI_VK_CreateTokenRetrievalLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateTokenRetrievalLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTokenRetrievalLink", "VK");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -4187,7 +4216,7 @@ Procedure CLI_VK_ShortenLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "ShortenLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ShortenLink", "VK");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -5671,7 +5700,7 @@ Procedure CLI_GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
     Options.Insert("id", ClientID);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.Check_String(Result);
     OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
@@ -6679,7 +6708,7 @@ Procedure CLI_Twitter_GetAuthorizationLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Twitter");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -8511,7 +8540,7 @@ Procedure CLI_Dropbox_GetAuthorizationLink(FunctionParameters)
     Options.Insert("appkey", AppKey);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Dropbox");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
@@ -11253,7 +11282,7 @@ Procedure CLI_Bitrix24_GetAppAuthLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAppAuthLink", "Bitrix24");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -17788,7 +17817,7 @@ Procedure CLI_CDEK_GetPrealert(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetPrealert", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPrealert", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    OPI_TestDataRetrieval.Check_CdekPrealert(Result);
 
 EndProcedure
 
@@ -18540,7 +18569,7 @@ Procedure CLI_S3_PutBucketEncryption(FunctionParameters)
                       | </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    XmlConfig = ПолучитьДвоичныеДанныеИзСтроки(XmlConfig);
+    XmlConfig = GetBinaryDataFromString(XmlConfig);
     TFN       = GetTempFileName("xml");
     XmlConfig.Write(TFN);
 
@@ -19364,7 +19393,7 @@ Procedure CLI_S3_GetObjectDownloadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectDownloadLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectDownloadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -19404,7 +19433,7 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -19439,7 +19468,7 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
     Try
-        Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+        Result = GetStringFromBinaryData(Result);
     Except
         Result = OPI_Tools.JSONString(Result);
     EndTry;
@@ -19458,7 +19487,7 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest (TLS)", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
@@ -20156,7 +20185,7 @@ Procedure CLI_PostgreSQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -20187,7 +20216,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("dbc", ConnectionString);
@@ -20323,7 +20352,7 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -20384,7 +20413,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20444,7 +20473,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -20479,7 +20508,7 @@ Procedure CLI_PostgreSQL_GetTableInformation(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20522,7 +20551,7 @@ Procedure CLI_PostgreSQL_AddRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -20600,7 +20629,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     // All records without filters
 
@@ -20630,7 +20659,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20693,7 +20722,7 @@ Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20765,7 +20794,7 @@ Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20839,7 +20868,7 @@ Procedure CLI_PostgreSQL_ClearTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20879,7 +20908,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20902,7 +20931,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -20929,7 +20958,7 @@ Procedure CLI_PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -20957,7 +20986,7 @@ Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -21046,7 +21075,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -21092,7 +21121,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -21153,7 +21182,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -21197,7 +21226,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -21257,7 +21286,7 @@ Procedure CLI_PostgreSQL_EnsureTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -21335,7 +21364,7 @@ Procedure CLI_MySQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -21365,7 +21394,7 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("dbc", ConnectionString);
@@ -21487,7 +21516,7 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -21525,7 +21554,7 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21562,7 +21591,7 @@ Procedure CLI_MySQL_CreateTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -21615,7 +21644,7 @@ Procedure CLI_MySQL_CreateTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21650,7 +21679,7 @@ Procedure CLI_MySQL_AddRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -21706,7 +21735,7 @@ Procedure CLI_MySQL_AddRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21742,7 +21771,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -21768,7 +21797,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -21826,7 +21855,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21863,7 +21892,7 @@ Procedure CLI_MySQL_UpdateRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -21936,7 +21965,7 @@ Procedure CLI_MySQL_UpdateRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21971,7 +22000,7 @@ Procedure CLI_MySQL_DeleteRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -22042,7 +22071,7 @@ Procedure CLI_MySQL_DeleteRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22076,7 +22105,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22102,7 +22131,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22130,7 +22159,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22156,7 +22185,7 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -22180,7 +22209,7 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22216,7 +22245,7 @@ Procedure CLI_MySQL_ClearTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22241,7 +22270,7 @@ Procedure CLI_MySQL_ClearTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22323,7 +22352,7 @@ Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22370,7 +22399,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22397,7 +22426,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -22420,7 +22449,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22454,7 +22483,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -22485,7 +22514,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22529,7 +22558,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22554,7 +22583,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (TLS, check)", "MySQL");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTableColumn (TLS, check)", "MySQL");
 
     Found = False;
 
@@ -22587,7 +22616,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -22617,7 +22646,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -22645,7 +22674,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -22663,7 +22692,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22694,7 +22723,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -24700,7 +24729,7 @@ Procedure CLI_Ollama_PushBlob(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
-    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Random = GetBinaryDataFromString(String(New UUID)); // SKIP
     Image  = OPI_Tools.MergeData(Image, Random); // SKIP
 
     AdditionalHeaders = New Map;
@@ -25122,7 +25151,7 @@ Procedure CLI_OpenAI_GetModelList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetModelList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetModelList", "OpenAI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetModelList", "OpenAI");
     OPI_TestDataRetrieval.Check_OpenAIList(Result);
 
 EndProcedure
@@ -25186,7 +25215,7 @@ Procedure CLI_OpenAI_GetSystemMessage(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetSystemMessage", "OpenAI");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetSystemMessage", "OpenAI");
 
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
@@ -25211,7 +25240,7 @@ Procedure CLI_MSSQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -25241,7 +25270,7 @@ Procedure CLI_MSSQL_ExecuteSQLQuery(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25396,7 +25425,7 @@ Procedure CLI_MSSQL_CreateDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25425,7 +25454,7 @@ Procedure CLI_MSSQL_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "MSSQL");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase (existing)", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure
@@ -25444,7 +25473,7 @@ Procedure CLI_MSSQL_CreateTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25525,7 +25554,7 @@ Procedure CLI_MSSQL_AddRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25608,7 +25637,7 @@ Procedure CLI_MSSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25640,7 +25669,7 @@ Procedure CLI_MSSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -25703,7 +25732,7 @@ Procedure CLI_MSSQL_UpdateRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25781,7 +25810,7 @@ Procedure CLI_MSSQL_DeleteRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25861,7 +25890,7 @@ Procedure CLI_MSSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25890,7 +25919,7 @@ Procedure CLI_MSSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table" , Table);
@@ -25916,7 +25945,7 @@ Procedure CLI_MSSQL_DeleteDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25961,7 +25990,7 @@ Procedure CLI_MSSQL_ClearTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25987,7 +26016,7 @@ Procedure CLI_MSSQL_ClearTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (check)", "MSSQL");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearTable (check)", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
@@ -26007,7 +26036,7 @@ Procedure CLI_MSSQL_GetTableInformation(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26058,7 +26087,7 @@ Procedure CLI_MSSQL_AddTableColumn(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26121,7 +26150,7 @@ Procedure CLI_MSSQL_DeleteTableColumn(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26172,7 +26201,7 @@ Procedure CLI_MSSQL_EnsureTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26276,21 +26305,64 @@ EndProcedure
 
 Procedure CLI_FTP_GetWelcomeMessage(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
 
     Options = New Structure;
     Options.Insert("host" , Domain);
-    Options.Insert("port" , 21);
+    Options.Insert("port" , Port);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
     FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
     Options = New Structure;
     Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
 
     Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
 
@@ -26299,7 +26371,9 @@ Procedure CLI_FTP_GetWelcomeMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetWelcomeMessage", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetWelcomeMessage" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Filled(Result["data"]);
 
@@ -26307,33 +26381,59 @@ EndProcedure
 
 Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
 
-    FTPDomain    = "172.33.0.11";
-    ProxyAddress = FunctionParameters["PG_IP"];
-    ProxyAddress = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login        = "bayselonarrend";
-    Password     = FunctionParameters["PG_Password"];
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
 
     Options = New Structure;
-    Options.Insert("host" , FTPDomain);
-    Options.Insert("port" , 21);
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
     FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
     Options = New Structure;
-    Options.Insert("addr" , ProxyAddress);
-    Options.Insert("port" , 1080);
-    Options.Insert("type" , "socks5");
-    Options.Insert("login", "proxyuser");
-    Options.Insert("pass" , Password);
-
-    ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
-
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+    Options.Insert("set", FTPSettings);
 
     Options = New Structure;
     Options.Insert("set"  , FTPSettings);
@@ -26346,8 +26446,8 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration", "FTP");
     OPI_TestDataRetrieval.Check_True(Result["set"] <> Undefined);
-    OPI_TestDataRetrieval.Check_True(Result["tls"] <> Undefined);
-    OPI_TestDataRetrieval.Check_True(Result["proxy"] <> Undefined);
+    OPI_TestDataRetrieval.Check_True(Result["tls"] <> Undefined   = FTPS);
+    OPI_TestDataRetrieval.Check_True(Result["proxy"] <> Undefined = UseProxy);
 
     Options = New Structure;
     Options.Insert("conn", Result);
@@ -26360,45 +26460,19 @@ Procedure CLI_FTP_GetConnectionConfiguration(FunctionParameters)
     OPI_TestDataRetrieval.Check_True(Check["close_connection"]["result"]);
 
 
-    Options = New Structure;
-    Options.Insert("host" , ProxyAddress);
-    Options.Insert("port" , 21);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
-
-    Options = New Structure;
-    Options.Insert("set" , FTPSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetConnectionConfiguration (simple)", "FTP");
-    OPI_TestDataRetrieval.Check_True(Result["set"] <> Undefined);
-    OPI_TestDataRetrieval.Check_False(Result["tls"] <> Undefined);
-    OPI_TestDataRetrieval.Check_False(Result["proxy"] <> Undefined);
-
-    Options = New Structure;
-    Options.Insert("conn", Result);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Check, "GetConnectionConfiguration (check 2)", "FTP");
-    OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Filled(Check["data"]);
-
 EndProcedure
 
 Procedure CLI_FTP_GetConnectionSettings(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
 
     Options = New Structure;
     Options.Insert("host" , Domain);
-    Options.Insert("port" , 21);
+    Options.Insert("port" , Port);
     Options.Insert("login", Login);
     Options.Insert("pass" , Password);
 
@@ -26413,19 +26487,19 @@ EndProcedure
 
 Procedure CLI_FTP_GetProxySettings(FunctionParameters)
 
-    Address  = FunctionParameters["PG_IP"];
-    Address  = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "proxyuser";
-    Password = FunctionParameters["PG_Password"];
-    Type     = "socks5";
-    Port     = 1080;
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
 
     Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("port" , Port);
-    Options.Insert("type" , Type);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
+    Options.Insert("addr" , ProxyAddress);
+    Options.Insert("port" , ProxyPort);
+    Options.Insert("type" , ProxyType);
+    Options.Insert("login", ProxyLogin);
+    Options.Insert("pass" , ProxyPassword);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
@@ -26443,6 +26517,545 @@ Procedure CLI_FTP_GetTlsSettings(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTlsSettings", "FTP");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_FTP_ListObjects(FunctionParameters)
+
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", ".");
+    Options.Insert("rcv" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ListObjects" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "Dir1/Dir3/Git-2.50.0-64-bit.exe");
+    Options.Insert("rcv" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ListObjects (file)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure CLI_FTP_CreateDirectory(FunctionParameters)
+
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir");
+
+    Deletion = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteDirectory", Options);
+    OPI_TestDataRetrieval.WriteLogCLI(Deletion, "CreateDirectory (delete)", "FTP");
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateDirectory", Options);
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir/another_one");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateDirectory", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDirectory (nested)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "second_dir/another_one");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateDirectory", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDirectory (double)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_Tools.Pause(5);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir");
+    Options.Insert("rcv" , True);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "CreateDirectory (check 1)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 1);
+    OPI_TestDataRetrieval.Check_Equality(Check["data"][0]["name"], "another_one");
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", ".");
+    Options.Insert("rcv" , True);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Check, "CreateDirectory (check 2)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["elements"], 1);
+
+EndProcedure
+
+Procedure CLI_FTP_DeleteDirectory(FunctionParameters)
+
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir/another_one");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteDirectory", Options);
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure CLI_FTP_UploadFile(FunctionParameters)
+
+    Image = FunctionParameters["Picture"]; // SKIP
+    TFN   = GetTempFileName("png"); // SKIP
+    CopyFile(Image, TFN); // SKIP
+    Image = TFN; // SKIP
+
+    ImageDD = New BinaryData(TFN);
+
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("file", Image);
+    Options.Insert("path", "new_dir/pic_from_disk.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("file", Image);
+    Options.Insert("path", "pic_from_binary.png");
+
+    Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile" + Postfix     , "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (bd)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+    OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    For N = 1 To 20 Do
+
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("file", Image);
+        Options.Insert("path", "new_dir/pic_from_disk.png");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("file", Image);
+        Options.Insert("path", "pic_from_binary.png");
+
+        Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+
+        If Not Result["result"] Then
+            OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (multiple)" + Postfix, "FTP");
+        EndIf;
+
+        If Not Result2["result"] Then
+            OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (multiple, bd)" + Postfix, "FTP");
+        EndIf;
+
+        OPI_TestDataRetrieval.Check_ResultTrue(Result);
+        OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+        OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+        OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    EndDo;
+
+    BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("file", BigData);
+    Options.Insert("path", "new_dir/big.bin");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (big)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"], BigData.Size());
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLogCLI(ErrorDescription(), "Error deleting a picture file", "FTP");
+    EndTry;
+
+EndProcedure
+
+Procedure CLI_FTP_DeleteFile(FunctionParameters)
+
+    Domain   = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("host" , Domain);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+
+    EndIf;
+
+    If FTPS Then
+
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTlsSettings", Options);
+
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Options = New Structure;
+    Options.Insert("set"  , FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls"  , TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "pic_from_binary.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteFile", Options);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "pic_from_binary.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteFile", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile (nonexistent)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", ".");
+    Options.Insert("rcv" , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile (check)", "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
 
 EndProcedure
 

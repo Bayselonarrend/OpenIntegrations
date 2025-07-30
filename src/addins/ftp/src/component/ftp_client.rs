@@ -1,11 +1,16 @@
 use std::io::{copy, BufReader, Cursor};
+use std::net::{SocketAddr, TcpStream};
 use serde_json::json;
-use suppaftp::{FtpStream, RustlsFtpStream};
+use suppaftp::{FtpStream, Mode, RustlsConnector, RustlsFtpStream};
 use suppaftp::list::File;
 use std::str::FromStr;
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
+
+use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
+use crate::component::tls_establish;
+use crate::component::tcp_establish;
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),
@@ -213,6 +218,61 @@ impl FtpClient {
         }
     }
 
+}
+
+pub fn configure_ftp_client(
+    ftp_settings: &FtpSettings,
+    tls_settings: Option<&FtpTlsSettings>,
+    proxy_settings: Option<&FtpProxySettings>,
+    tcp_stream: TcpStream,
+) -> Result<FtpClient, String> {
+
+    let mode = if ftp_settings.passive { Mode::Passive } else { Mode::Active };
+    let passive_proxy = ftp_settings.passive && proxy_settings.is_some();
+
+    if tls_settings.is_some_and(|s| s.use_tls) {
+        let tls = tls_settings.unwrap();
+        let tls_connector = tls_establish::get_tls_connector(tls)
+            .map_err(|e| format_json_error(&e.to_string()))?;
+
+        let mut ftp_stream = RustlsFtpStream::connect_with_stream(tcp_stream)
+            .map_err(|e| format_json_error(&e.to_string()))?;
+
+        ftp_stream.set_mode(mode);
+        ftp_stream.set_passive_nat_workaround(true);
+
+        let mut secure_stream = ftp_stream
+            .into_secure(RustlsConnector::from(tls_connector), &ftp_settings.domain)
+            .map_err(|e| format_json_error(&e.to_string()))?;
+
+        if passive_proxy {
+            let ftp_settings_clone = ftp_settings.clone();
+            let proxy_settings_clone = proxy_settings.cloned();
+
+            secure_stream = secure_stream.passive_stream_builder(move |addr: SocketAddr| {
+                tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
+            });
+        }
+
+        Ok(FtpClient::Secure(secure_stream))
+    } else {
+        let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
+            .map_err(|e| format_json_error(&e.to_string()))?;
+
+        ftp_stream.set_mode(mode);
+        ftp_stream.set_passive_nat_workaround(true);
+
+        if passive_proxy {
+            let ftp_settings_clone = ftp_settings.clone();
+            let proxy_settings_clone = proxy_settings.cloned();
+
+            ftp_stream = ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
+                tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
+            });
+        }
+
+        Ok(FtpClient::Insecure(ftp_stream))
+    }
 }
 
 fn format_json_error<E: ToString>(error: E) -> String {

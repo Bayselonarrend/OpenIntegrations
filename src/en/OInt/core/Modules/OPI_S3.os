@@ -221,7 +221,7 @@ Function PutBucketEncryption(Val Name
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     OPI_TypeConversion.GetLine(XmlConfig, True);
-    XmlConfig = ПолучитьДвоичныеДанныеИзСтроки(XmlConfig);
+    XmlConfig = GetBinaryDataFromString(XmlConfig);
 
     URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
@@ -329,7 +329,7 @@ Function PutBucketTagging(Val Name
 
     Tags    = FormTagsStructure(Tags);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
-    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+    TagsXML = GetBinaryDataFromString(TagsXML);
 
     URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
@@ -436,7 +436,7 @@ Function PutBucketVersioning(Val Name
 
     Tags    = FormVersioningStructure(Status, MFADelete);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
-    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+    TagsXML = GetBinaryDataFromString(TagsXML);
 
     URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Name, Directory);
@@ -564,7 +564,7 @@ Function PutObject(Val Name
     MinPartSize = Max(MinPartSize, 5242880);
     Half        = 0.5;
 
-    If OPI_Tools.CollectionFieldExist(BasicData_, "ChunkSize") Then
+    If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
         OPI_TypeConversion.GetNumber(MaxSize);
     Else
@@ -745,7 +745,7 @@ Function FinishPartsUpload(Val Name
 
     FinishStructure = New Structure("CompleteMultipartUpload", PartsArray);
     FinishXML       = OPI_Tools.GetXML(FinishStructure, "http://s3.amazonaws.com/doc/2006-03-01/");
-    FinishXML       = ПолучитьДвоичныеДанныеИзСтроки(FinishXML);
+    FinishXML       = GetBinaryDataFromString(FinishXML);
 
     Response = SendRequestWithBody("POST", BasicData_, FinishXML, , Headers);
 
@@ -848,14 +848,14 @@ Function GetObject(Val Name
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
     ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version);
 
-    If OPI_Tools.CollectionFieldExist(BasicData_, "ChunkSize") Then
+    If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
         OPI_TypeConversion.GetNumber(MaxSize);
     Else
         MaxSize = 20971520;
     EndIf;
 
-    If Not OPI_Tools.CollectionFieldExist(ObjectInfo, "headers.Content-Length") Then
+    If Not OPI_Tools.CollectionFieldExists(ObjectInfo, "headers.Content-Length") Then
         Return ObjectInfo;
     EndIf;
 
@@ -994,7 +994,7 @@ Function PutObjectTagging(Val Name
 
     Tags    = FormTagsStructure(Tags);
     TagsXML = OPI_Tools.GetXML(Tags, "http://s3.amazonaws.com/doc/2006-03-01/");
-    TagsXML = ПолучитьДвоичныеДанныеИзСтроки(TagsXML);
+    TagsXML = GetBinaryDataFromString(TagsXML);
 
     URL = GetServiceURL(BasicData_);
     URL = FormBucketURL(URL, Bucket, False);
@@ -1309,7 +1309,7 @@ Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Heade
 
     StringToSign = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
     Signature    = OPI_Cryptography.HMAC(SignKey, StringToSign, "SHA256");
-    Signature    = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Signature));
+    Signature    = Lower(GetHexStringFromBinaryData(Signature));
 
     OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Signature", Signature);
 
@@ -1321,11 +1321,11 @@ EndFunction
 
 Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate)
 
-    SecretKey  = ПолучитьДвоичныеДанныеИзСтроки("AWS4" + SecretKey);
-    DateData = ПолучитьДвоичныеДанныеИзСтроки(Format(CurrentDate, "DF=yyyyMMdd;"));
-    Region     = ПолучитьДвоичныеДанныеИзСтроки(Region);
-    Service    = ПолучитьДвоичныеДанныеИзСтроки(Service);
-    AWSRequest = ПолучитьДвоичныеДанныеИзСтроки("aws4_request");
+    SecretKey  = GetBinaryDataFromString("AWS4" + SecretKey);
+    DateData = GetBinaryDataFromString(Format(CurrentDate, "DF=yyyyMMdd;"));
+    Region     = GetBinaryDataFromString(Region);
+    Service    = GetBinaryDataFromString(Service);
+    AWSRequest = GetBinaryDataFromString("aws4_request");
     Sha256_    = "SHA256";
 
     DataKey    = OPI_Cryptography.HMAC(SecretKey, DateData, Sha256_);
@@ -1361,9 +1361,9 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     DateISO        = OPI_Tools.ISOTimestamp(CurrentDate);
     PartsAmount    = 4;
 
-    CanonicalRequest = ПолучитьДвоичныеДанныеИзСтроки(CanonicalRequest);
+    CanonicalRequest = GetBinaryDataFromString(CanonicalRequest);
     CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
-    CanonicalRequest = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(CanonicalRequest));
+    CanonicalRequest = Lower(GetHexStringFromBinaryData(CanonicalRequest));
 
     For N = 1 To PartsAmount Do
 
@@ -1372,7 +1372,7 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     EndDo;
 
     SignatureString = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
-    SignatureString = ПолучитьДвоичныеДанныеИзСтроки(SignatureString);
+    SignatureString = GetBinaryDataFromString(SignatureString);
 
     Return SignatureString;
 
@@ -1623,7 +1623,7 @@ Function UploadObjectInParts(Val Name
     BytesRead  = 0;
     PartNumber = 1;
 
-    If Not OPI_Tools.CollectionFieldExist(UploadStart, FieldID, UploadID) Then
+    If Not OPI_Tools.CollectionFieldExists(UploadStart, FieldID, UploadID) Then
         Return UploadStart;
     EndIf;
 
@@ -1742,7 +1742,7 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
         ResponseData.Insert("headers" , Headers);
 
     Else
-        ResponseData = Response.ПолучитьТелоКакДвоичныеДанные();
+        ResponseData = Response.GetBodyAsBinaryData();
     EndIf;
 
     Return ResponseData;

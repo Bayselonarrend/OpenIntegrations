@@ -2868,18 +2868,47 @@ EndProcedure
 
 Procedure FT_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
 
-    FTP_CreateConnection(TestParameters);
-    FTP_GetWelcomeMessage(TestParameters);
-    FTP_GetConnectionConfiguration(TestParameters);
-    FTP_CloseConnection(TestParameters);
-    FTP_IsConnector(TestParameters);
-    FTP_GetConnectionSettings(TestParameters);
-    FTP_GetProxySettings(TestParameters);
-    FTP_GetTlsSettings(TestParameters);
+    For Each TestParameters In OptionArray Do
+
+        FTP_CreateConnection(TestParameters);
+        FTP_GetWelcomeMessage(TestParameters);
+        FTP_GetConnectionConfiguration(TestParameters);
+        FTP_CloseConnection(TestParameters);
+        FTP_IsConnector(TestParameters);
+        FTP_GetConnectionSettings(TestParameters);
+        FTP_GetProxySettings(TestParameters);
+        FTP_GetTlsSettings(TestParameters);
+
+    EndDo;
+
+EndProcedure
+
+Procedure FT_DirecotryManagement() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+        FTP_ListObjects(TestParameters);
+        FTP_CreateDirectory(TestParameters);
+        FTP_DeleteDirectory(TestParameters);
+
+    EndDo;
+
+EndProcedure
+
+Procedure FT_FileOperations() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetFTPParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+        FTP_UploadFile(TestParameters);
+        FTP_DeleteFile(TestParameters);
+
+    EndDo
 
 EndProcedure
 
@@ -15867,7 +15896,7 @@ Procedure CDEK_GetPrealert(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetPrealert", "CDEK");
-    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+    OPI_TestDataRetrieval.Check_CdekPrealert(Result);
 
 EndProcedure
 
@@ -17273,7 +17302,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
-    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+    Data       = GetBinaryDataFromString(Message);
 
     OPI_TCP.SendBinaryData(Connection, Data);
 
@@ -17286,7 +17315,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     // END
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -17297,7 +17326,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -17308,7 +17337,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
-    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+    Data       = GetBinaryDataFromString(Message);
 
     Result = OPI_TCP.SendBinaryData(Connection, Data);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17321,7 +17350,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     // END
 
-    Response = ПолучитьСтрокуИзДвоичныхДанных(Response);
+    Response = GetStringFromBinaryData(Response);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData", "TCP");
     OPI_TestDataRetrieval.Check_String(Response, Message);
 
@@ -17332,7 +17361,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
     OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData (timeout)", "TCP");
     OPI_TestDataRetrieval.Check_String(Result, Message);
 
@@ -20127,7 +20156,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -20158,7 +20187,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -20273,7 +20302,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -20292,7 +20321,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -20316,7 +20345,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -21892,7 +21921,7 @@ Procedure Ollama_PushBlob(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
-    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Random = GetBinaryDataFromString(String(New UUID)); // SKIP
     Image  = OPI_Tools.MergeData(Image, Random); // SKIP
 
     AdditionalHeaders = New Map;
@@ -21957,7 +21986,7 @@ Procedure HTTPClient_Initialize(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22019,7 +22048,7 @@ Procedure HTTPClient_SetURL(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22077,7 +22106,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22260,7 +22289,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     OPI_TestDataRetrieval.ExpectsThat(BodyFile.Size()).Равно(CheckResult.Size());
 
-    CheckResultAsString = ПолучитьСтрокуИзДвоичныхДанных(CheckResult);
+    CheckResultAsString = GetStringFromBinaryData(CheckResult);
 
     OPI_TestDataRetrieval.WriteLog(CheckResultAsString, "SetResponseFile (body)", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(OPI_Tools.JsonToStructure(CheckResultAsString)).ИмеетТип("Map");
@@ -22296,7 +22325,7 @@ Procedure HTTPClient_SetDataType(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22348,7 +22377,7 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22387,14 +22416,14 @@ Procedure HTTPClient_SetStringBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetStringBody", "HTTPClient");
     OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
 
-    TextBD = ПолучитьДвоичныеДанныеИзСтроки(Text, Encoding);
+    TextBD = GetBinaryDataFromString(Text, Encoding);
     Size   = TextBD.Size();
     OPI_TypeConversion.GetLine(Size);
 
@@ -22434,7 +22463,7 @@ Procedure HTTPClient_SetJsonBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22475,7 +22504,7 @@ Procedure HTTPClient_SetFormBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22515,7 +22544,7 @@ Procedure HTTPClient_StartMultipartBody(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22560,7 +22589,7 @@ Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22605,7 +22634,7 @@ Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22651,7 +22680,7 @@ Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22684,7 +22713,7 @@ Procedure HTTPClient_UseEncoding(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22760,7 +22789,7 @@ Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22810,7 +22839,7 @@ Procedure HTTPClient_SetHeaders(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22857,7 +22886,7 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22929,12 +22958,12 @@ Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
     OPI_TestDataRetrieval.WriteLog(Result, "AddBasicAuthorization", "HTTPClient");
-    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(ПолучитьДвоичныеДанныеИзСтроки("user:password")));
+    OPI_TestDataRetrieval.ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
 
 EndProcedure
 
@@ -22959,7 +22988,7 @@ Procedure HTTPClient_AddBearerAuthorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -22993,7 +23022,7 @@ Procedure HTTPClient_AddAWS4Authorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23030,7 +23059,7 @@ Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23067,7 +23096,7 @@ Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23096,7 +23125,7 @@ Procedure HTTPClient_ProcessRequest(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23128,7 +23157,7 @@ Procedure HTTPClient_ExecuteRequest(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23253,7 +23282,7 @@ Procedure HTTPClient_ReturnResponseAsJSONObject(FunctionParameters)
         Try
             Message(Result.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(Result));
+            Message(GetStringFromBinaryData(Result));
         EndTry;
     EndTry;
 
@@ -23309,7 +23338,7 @@ Procedure HTTPClient_ReturnResponseAsString(FunctionParameters)
         Try
             Message(ResultJSON.GetLog(True));
         Except
-            Message(ПолучитьСтрокуИзДвоичныхДанных(ResultJSON));
+            Message(GetStringFromBinaryData(ResultJSON));
         EndTry;
     EndTry;
 
@@ -24764,53 +24793,98 @@ EndProcedure
 
 Procedure FTP_CreateConnection(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    // Simple connection
+    UseProxy = True;
+    FTPS     = True;
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
-    Result      = OPI_FTP.CreateConnection(FTPSettings);
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "FTP"); // SKIP
-    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_FTP.Main"); // SKIP
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    // TLS connection through proxy
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
-    FTPInternalAddress = "172.33.0.11";
-    ProxyAddress       = FunctionParameters["PG_IP"];
-    ProxyAddress       = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
+    If UseProxy Then
 
-    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPInternalAddress, 21, Login, Password);
-    ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
-    TLSSettings   = OPI_FTP.GetTlsSettings(True);
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
 
     Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (proxy + tls)", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_FTP.Main");
 
 EndProcedure
 
 Procedure FTP_GetWelcomeMessage(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
-    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+    UseProxy = True;
+    FTPS     = True;
 
-    Result = OPI_FTP.GetWelcomeMessage(Connection);
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetWelcomeMessage(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetWelcomeMessage", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWelcomeMessage" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Filled(Result["data"]);
 
@@ -24818,24 +24892,55 @@ EndProcedure
 
 Procedure FTP_GetConnectionConfiguration(FunctionParameters)
 
-    FTPDomain    = "172.33.0.11";
-    ProxyAddress = FunctionParameters["PG_IP"];
-    ProxyAddress = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login        = "bayselonarrend";
-    Password     = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    FTPSettings   = OPI_FTP.GetConnectionSettings(FTPDomain, 21, Login, Password);
-    ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, 1080, "socks5", "proxyuser", Password);
-    TLSSettings   = OPI_FTP.GetTlsSettings(True);
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
 
     Result = OPI_FTP.GetConnectionConfiguration(FTPSettings, ProxySettings, TLSSettings);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionConfiguration", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionConfiguration" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_True(Result.Property("set"));
-    OPI_TestDataRetrieval.Check_True(Result.Property("tls"));
-    OPI_TestDataRetrieval.Check_True(Result.Property("proxy"));
+
+    If FTPS Then
+        OPI_TestDataRetrieval.Check_True(Result.Property("tls"));
+    EndIf;
+
+    If UseProxy Then
+        OPI_TestDataRetrieval.Check_True(Result.Property("proxy"));
+    EndIf;
 
     Check = OPI_FTP.GetWelcomeMessage(Result);
 
@@ -24844,32 +24949,44 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
     OPI_TestDataRetrieval.Check_Filled(Check["data"]);
     OPI_TestDataRetrieval.Check_True(Check["close_connection"]["result"]);
 
-
-    FTPSettings = OPI_FTP.GetConnectionSettings(ProxyAddress, 21, Login, Password);
-    Result      = OPI_FTP.GetConnectionConfiguration(FTPSettings);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionConfiguration (simple)", "FTP");
-    OPI_TestDataRetrieval.Check_True(Result.Property("set"));
-    OPI_TestDataRetrieval.Check_False(Result.Property("tls"));
-    OPI_TestDataRetrieval.Check_False(Result.Property("proxy"));
-
-    Check = OPI_FTP.GetWelcomeMessage(Result);
-
-    OPI_TestDataRetrieval.WriteLog(Check, "GetConnectionConfiguration (check 2)", "FTP");
-    OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Filled(Check["data"]);
-
 EndProcedure
 
 Procedure FTP_CloseConnection(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
-    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "CloseConnection (creation)", "FTP"); // SKIP
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_FTP.Main"); // SKIP
@@ -24878,20 +24995,49 @@ Procedure FTP_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 
 Procedure FTP_IsConnector(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, 21);
-    Connection  = OPI_FTP.CreateConnection(FTPSettings);
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     OPI_TestDataRetrieval.WriteLog(Connection, "IsConnector (creation)", "FTP"); // SKIP
     OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_FTP.Main"); // SKIP
@@ -24900,41 +25046,47 @@ Procedure FTP_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_True(Result);
 
 EndProcedure
 
 Procedure FTP_GetConnectionSettings(FunctionParameters)
 
-    Domain   = FunctionParameters["PG_IP"];
-    Domain   = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-    Result = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
+    Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 
 Procedure FTP_GetProxySettings(FunctionParameters)
 
-    Address  = FunctionParameters["PG_IP"];
-    Address  = OPI_TestDataRetrieval.GetLocalhost(); // SKIP
-    Login    = "proxyuser";
-    Password = FunctionParameters["PG_Password"];
-    Type     = "socks5";
-    Port     = 1080;
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
 
-    Result = OPI_FTP.GetProxySettings(Address, Port, Type, Login, Password);;
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Result = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
@@ -24945,8 +25097,372 @@ Procedure FTP_GetTlsSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "FTP");
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure FTP_CreateDirectory(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
+        OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDirectory (delete)", "FTP"); // SKIP
+
+        Result = OPI_FTP.CreateDirectory(Connection, "new_dir");
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_FTP.CreateDirectory(Connection, "new_dir/another_one");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory (nested)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_FTP.CreateDirectory(Connection, "second_dir/another_one");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory (double)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_Tools.Pause(5);
+
+    Check = OPI_FTP.ListObjects(Connection, "new_dir", True);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 1)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 1);
+    OPI_TestDataRetrieval.Check_Equality(Check["data"][0]["name"], "another_one");
+
+    Check = OPI_FTP.ListObjects(Connection, "", True);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["elements"], 1);
+
+EndProcedure
+
+Procedure FTP_ListObjects(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.ListObjects(Connection, "", True);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListObjects" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_FTP.ListObjects(Connection, "Dir1/Dir3/Git-2.50.0-64-bit.exe", True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListObjects (file)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure FTP_UploadFile(FunctionParameters)
+
+    ImagePath = "C:\pic.png";
+
+    Image = FunctionParameters["Picture"]; // SKIP
+    TFN   = GetTempFileName("png"); // SKIP
+    CopyFile(Image, TFN); // SKIP
+    Image = TFN; // SKIP
+
+    ImageDD = New BinaryData(Image);
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password, , 1000, 1000);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
+        Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile" + Postfix     , "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (bd)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+    OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    For N = 1 To 20 Do
+
+        Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
+        Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
+
+        If Not Result["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (multiple)" + Postfix, "FTP");
+        EndIf;
+
+        If Not Result2["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (multiple, bd)" + Postfix, "FTP");
+        EndIf;
+
+        OPI_TestDataRetrieval.Check_ResultTrue(Result);
+        OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+        OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+        OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    EndDo;
+
+    BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
+    Result  = OPI_FTP.UploadFile(Connection, BigData, "new_dir/big.bin");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (big)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"], BigData.Size());
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "FTP");
+    EndTry;
+
+EndProcedure
+
+Procedure FTP_DeleteFile(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.DeleteFile(Connection, "pic_from_binary.png");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_FTP.DeleteFile(Connection, "pic_from_binary.png");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (nonexistent)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Result = OPI_FTP.ListObjects(Connection, "", True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (check)", "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+
+EndProcedure
+
+Procedure FTP_DeleteDirectory(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.DeleteDirectory(Connection, "new_dir/another_one");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 

@@ -639,7 +639,7 @@ Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
     CompleteURL(URL, "api/blobs/sha256:%1");
 
     Hash = OPI_Cryptography.Hash(Data, HashFunction.SHA256);
-    Hash = Lower(ПолучитьHexСтрокуИзДвоичныхДанных(Hash));
+    Hash = Lower(GetHexStringFromBinaryData(Hash));
 
     URL = StrTemplate(URL, Hash);
 
@@ -661,7 +661,7 @@ EndFunction
 // Checks the existence of a BLOB by its SHA256 digest
 //
 // Note
-// Method at API documentation: [Check if a Blob Exist](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
+// Method at API documentation: [Check if a Blob Exists](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
 //
 // Parameters:
 // URL - String - Ollama server URL - url

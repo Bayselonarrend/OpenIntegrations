@@ -578,7 +578,7 @@ Function FormSQLText(Val Scheme)
 
     SchemeType = "";
 
-    If Not OPI_Tools.CollectionFieldExist(Scheme, "type", SchemeType) Then
+    If Not OPI_Tools.CollectionFieldExists(Scheme, "type", SchemeType) Then
         Raise ErrorText;
     EndIf;
 
@@ -1088,8 +1088,8 @@ Function NormalizeTable(Val Module
     For Each RequiredColumn In ColoumnsStruct Do
 
         ColumnName = RequiredColumn.Key;
-        Exist      = FoundMapping.Get(ColumnName) <> Undefined;
-        Action     = ?(Exist, IgnoreCode, AddCode);
+        Exists     = FoundMapping.Get(ColumnName) <> Undefined;
+        Action     = ?(Exists, IgnoreCode, AddCode);
 
         FoundMapping.Insert(ColumnName, Action);
 
@@ -1251,10 +1251,10 @@ Procedure FillFilters(Scheme, Val Filters)
 
         AddFilter(Scheme
             , Filter["field"]
-            , ?(OPI_Tools.CollectionFieldExist(Filter, "type"), Filter["type"], "=")
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "type"), Filter["type"], "=")
             , Filter["value"]
-            , ?(OPI_Tools.CollectionFieldExist(Filter, "union"), Filter["union"], "AND")
-            , ?(OPI_Tools.CollectionFieldExist(Filter, "raw"), Filter["raw"], False));
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "union"), Filter["union"], "AND")
+            , ?(OPI_Tools.CollectionFieldExists(Filter, "raw"), Filter["raw"], False));
 
     EndDo;
 

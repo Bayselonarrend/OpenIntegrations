@@ -484,7 +484,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     EndDo;
 
     If TypeOf(Response) <> Type("Map") Then
-        Return ПолучитьСтрокуИзДвоичныхДанных(Response);
+        Return GetStringFromBinaryData(Response);
     EndIf;
 
     FillPhotoUploadParameters(Method, Response, Parameters);
