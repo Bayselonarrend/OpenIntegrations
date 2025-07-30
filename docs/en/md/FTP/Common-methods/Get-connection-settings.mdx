@@ -12,32 +12,38 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetConnectionSettings(Val Domain, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120) Export`
+`Function GetConnectionSettings(Val Host, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120, Val IPResolve = True) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Domain | --host | String | &#x2714; | Server domain |
+  | Host | --host | String | &#x2714; | Host addres |
   | Port | --port | Number | &#x2716; | Server port |
   | Login | --login | String, Undefined | &#x2716; | Username for authorization, if required |
   | Password | --pass | String, Undefined | &#x2716; | User password for authorization, if required |
   | Passive | --passive | Boolean | &#x2716; | Passive connection mode |
   | ReadTimeout | --rtout | Number | &#x2716; | Read timeout |
   | WriteTimeout | --wtout | Number | &#x2716; | Write timeout |
+  | IPResolve | --ipresl | Boolean | &#x2716; | Advanced passive mode address resolution |
 
   
   Returns:  Structure Of KeyAndValue - Connection settings structure
 
 <br/>
 
+:::tip
+When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
+:::
+<br/>
 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Domain   = "127.0.0.1";
+    Host     = "172.33.0.10";
+    Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
 
-    Result = OPI_FTP.GetConnectionSettings(Domain, 21, Login, Password);
+    Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 ```
  
 

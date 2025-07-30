@@ -196,7 +196,7 @@ Function JsonToStructure(Val Text, Val ToMap = True) Export
 
     If TextType = Type("BinaryData") Then
 
-        Text = ПолучитьСтрокуИзДвоичныхДанных(Text);
+        Text = GetStringFromBinaryData(Text);
         JSONReader.SetString(Text);
 
     ElsIf TextType = Type("Stream") Or TextType = Type("MemoryStream") Or TextType = Type("FileStream") Then
@@ -207,7 +207,7 @@ Function JsonToStructure(Val Text, Val ToMap = True) Export
             ReadingResult = DataReader.Read();
             JSONBinary    = ReadingResult.GetBinaryData();
 
-            JSONReader.SetString(ПолучитьСтрокуИзДвоичныхДанных(JSONBinary));
+            JSONReader.SetString(GetStringFromBinaryData(JSONBinary));
             DataReader.Close();
 
         Else
@@ -428,18 +428,18 @@ EndProcedure
 
 Procedure AddKeyValue(Table, Val Key, Val Value) Export
 
-    KeyExist   = False;
-    ValueExist = False;
+    KeyExists   = False;
+    ValueExists = False;
 
     For Each Coloumn In Table.Columns Do
 
         If Coloumn.Name = "Key" Then
 
-            KeyExist = True;
+            KeyExists = True;
 
         ElsIf Coloumn.Name = "Value" Then
 
-            ValueExist = True;
+            ValueExists = True;
 
         Else
             Continue;
@@ -447,11 +447,11 @@ Procedure AddKeyValue(Table, Val Key, Val Value) Export
 
     EndDo;
 
-    If Not KeyExist Then
+    If Not KeyExists Then
         Table.Columns.Add("Key");
     EndIf;
 
-    If Not ValueExist Then
+    If Not ValueExists Then
         Table.Columns.Add("Value");
     EndIf;
 
@@ -497,7 +497,7 @@ Procedure ValueToArray(Value) Export
 
 EndProcedure
 
-Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined) Export
+Function CollectionFieldExists(Val Collection, Val Field, FieldValue = Undefined) Export
 
     CollectionType = TypeOf(Collection);
 
@@ -510,7 +510,7 @@ Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined)
         FieldParts   = StrSplit(Field, ".");
         CurrentField = FieldParts[0];
 
-        If Not CollectionFieldExist(Collection, CurrentField, FieldValue) Then
+        If Not CollectionFieldExists(Collection, CurrentField, FieldValue) Then
 
             Return False;
 
@@ -520,7 +520,7 @@ Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined)
             NextCollection = Collection[CurrentField];
             NextField      = StrConcat(FieldParts, ".");
 
-            Return CollectionFieldExist(NextCollection, NextField, FieldValue);
+            Return CollectionFieldExists(NextCollection, NextField, FieldValue);
 
         EndIf;
 
@@ -547,9 +547,9 @@ Function FindMissingCollectionFields(Val Collection, Val Fields) Export
 
     For Each Field In Fields Do
 
-        Exist = CollectionFieldExist(Collection, Field);
+        Exists = CollectionFieldExists(Collection, Field);
 
-        If Not Exist Then
+        If Not Exists Then
             MissingFieldsArray.Add(Field);
         EndIf;
 
@@ -648,9 +648,9 @@ EndFunction
 Function GetOr(Val Collection, Val Field, Val DefaultValue) Export
 
     FieldValue = Undefined;
-    Exist      = CollectionFieldExist(Collection, Field, FieldValue);
+    Exists     = CollectionFieldExists(Collection, Field, FieldValue);
 
-    If Not Exist Then
+    If Not Exists Then
         FieldValue = DefaultValue;
     EndIf;
 
@@ -891,7 +891,7 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
         FileOnDisk = New File(Data);
 
-        If FileOnDisk.Exist() Then
+        If FileOnDisk.Exists() Then
             Size = FileOnDisk.Size();
         Else
             OPI_TypeConversion.GetBinaryData(Data);
@@ -1033,8 +1033,8 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
         ConsoleColor = New Map;
     EndIf;
 
-    Encoding      = Консоль.КодировкаВыходногоПотока;
-    OutputStream  = Консоль.OpenStandardOutput();
+    Encoding      = Console.OutputEncoding;
+    OutputStream  = Console.OpenStandardOutput();
     OutputWriting = New DataWriter(OutputStream, Encoding);
 
     If Not ValueIsFilled(Color) Then
@@ -1042,9 +1042,9 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
     EndIf;
 
     If TypeOf(Color)      = Type("String") Then
-        Консоль.TextColor = ConsoleColor[Color];
+        Console.TextColor = ConsoleColor[Color];
     Else
-        Консоль.TextColor = Color;
+        Console.TextColor = Color;
     EndIf;
 
     If ToStart Then
@@ -1210,7 +1210,7 @@ Procedure ЗначениеВМассив(Значение) Export
 EndProcedure
 
 Function ПолеКоллекцииСуществует(Val Коллекция, Val Поле, ЗначениеПоля = Undefined) Export
-	Return CollectionFieldExist(Коллекция, Поле, ЗначениеПоля);
+	Return CollectionFieldExists(Коллекция, Поле, ЗначениеПоля);
 EndFunction
 
 Function НайтиОтсутствующиеПоляКоллекции(Val Коллекция, Val Поля) Export

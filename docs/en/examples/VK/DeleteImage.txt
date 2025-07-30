@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    ImageID    = "457257730";
+    ImageID    = "457257894";
 
     Result = OPI_VK.DeleteImage(ImageID, Parameters);
