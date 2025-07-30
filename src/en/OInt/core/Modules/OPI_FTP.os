@@ -454,7 +454,7 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
 
         If TypeOf(File)  = Type("String") Then
             FileOnDisk   = New File(File);
-            IsFileOnDisk = FileOnDisk.Exist();
+            IsFileOnDisk = FileOnDisk.Exists();
         Else
             IsFileOnDisk = False;
         EndIf;
@@ -593,7 +593,7 @@ Function CreateConnectionByConfiguration(Val ConfigurationStructure)
 
     EndTry;
 
-    If Not OPI_Tools.CollectionFieldExist(ConfigurationStructure, "set") Then
+    If Not OPI_Tools.CollectionFieldExists(ConfigurationStructure, "set") Then
 
         Result = New Map;
         Result.Insert("result", False);

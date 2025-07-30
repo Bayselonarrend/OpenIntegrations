@@ -2265,7 +2265,7 @@ Procedure CLI_SQLL_CommonMethods() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    ПолучитьДвоичныеДанныеИзСтроки("").Write(Base);
+    GetBinaryDataFromString("").Write(Base);
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
@@ -2288,7 +2288,7 @@ Procedure CLI_SQLL_ORM() Export
     TestParameters = New Structure;
 
     Base = GetTempFileName("sqlite");
-    ПолучитьДвоичныеДанныеИзСтроки("").Write(Base);
+    GetBinaryDataFromString("").Write(Base);
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
 
@@ -3763,7 +3763,7 @@ Procedure CLI_VK_CreateTokenRetrievalLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateTokenRetrievalLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTokenRetrievalLink", "VK");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -4216,7 +4216,7 @@ Procedure CLI_VK_ShortenLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "ShortenLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ShortenLink", "VK");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -5700,7 +5700,7 @@ Procedure CLI_GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
     Options.Insert("id", ClientID);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.Check_String(Result);
     OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
@@ -6708,7 +6708,7 @@ Procedure CLI_Twitter_GetAuthorizationLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Twitter");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -8540,7 +8540,7 @@ Procedure CLI_Dropbox_GetAuthorizationLink(FunctionParameters)
     Options.Insert("appkey", AppKey);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Dropbox");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
@@ -11282,7 +11282,7 @@ Procedure CLI_Bitrix24_GetAppAuthLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAppAuthLink", "Bitrix24");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -18569,7 +18569,7 @@ Procedure CLI_S3_PutBucketEncryption(FunctionParameters)
                       | </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    XmlConfig = ПолучитьДвоичныеДанныеИзСтроки(XmlConfig);
+    XmlConfig = GetBinaryDataFromString(XmlConfig);
     TFN       = GetTempFileName("xml");
     XmlConfig.Write(TFN);
 
@@ -19393,7 +19393,7 @@ Procedure CLI_S3_GetObjectDownloadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectDownloadLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectDownloadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -19433,7 +19433,7 @@ Procedure CLI_S3_GetObjectUploadLink(FunctionParameters)
     Options.Insert("expires", 7200);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectUploadLink", "S3");
     OPI_TestDataRetrieval.Check_String(Result);
@@ -19468,7 +19468,7 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
     Try
-        Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+        Result = GetStringFromBinaryData(Result);
     Except
         Result = OPI_Tools.JSONString(Result);
     EndTry;
@@ -19487,7 +19487,7 @@ Procedure CLI_TCP_ProcessRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ProcessRequest (TLS)", "TCP");
     OPI_TestDataRetrieval.Check_String(StrReplace(Result, Chars.LF, "\n"), Data);
@@ -20185,7 +20185,7 @@ Procedure CLI_PostgreSQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -20216,7 +20216,7 @@ Procedure CLI_PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("dbc", ConnectionString);
@@ -20352,7 +20352,7 @@ Procedure CLI_PostgreSQL_CreateDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -20413,7 +20413,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20473,7 +20473,7 @@ Procedure CLI_PostgreSQL_CreateTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -20508,7 +20508,7 @@ Procedure CLI_PostgreSQL_GetTableInformation(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20551,7 +20551,7 @@ Procedure CLI_PostgreSQL_AddRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -20629,7 +20629,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     // All records without filters
 
@@ -20659,7 +20659,7 @@ Procedure CLI_PostgreSQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20722,7 +20722,7 @@ Procedure CLI_PostgreSQL_UpdateRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20794,7 +20794,7 @@ Procedure CLI_PostgreSQL_DeleteRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -20868,7 +20868,7 @@ Procedure CLI_PostgreSQL_ClearTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20908,7 +20908,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -20931,7 +20931,7 @@ Procedure CLI_PostgreSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -20958,7 +20958,7 @@ Procedure CLI_PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -20986,7 +20986,7 @@ Procedure CLI_PostgreSQL_DeleteDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -21075,7 +21075,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -21121,7 +21121,7 @@ Procedure CLI_PostgreSQL_AddTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -21182,7 +21182,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -21226,7 +21226,7 @@ Procedure CLI_PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -21286,7 +21286,7 @@ Procedure CLI_PostgreSQL_EnsureTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -21364,7 +21364,7 @@ Procedure CLI_MySQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -21394,7 +21394,7 @@ Procedure CLI_MySQL_ExecuteSQLQuery(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("dbc", ConnectionString);
@@ -21516,7 +21516,7 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -21554,7 +21554,7 @@ Procedure CLI_MySQL_CreateDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21591,7 +21591,7 @@ Procedure CLI_MySQL_CreateTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -21644,7 +21644,7 @@ Procedure CLI_MySQL_CreateTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21679,7 +21679,7 @@ Procedure CLI_MySQL_AddRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -21735,7 +21735,7 @@ Procedure CLI_MySQL_AddRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21771,7 +21771,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -21797,7 +21797,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -21855,7 +21855,7 @@ Procedure CLI_MySQL_GetRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -21892,7 +21892,7 @@ Procedure CLI_MySQL_UpdateRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -21965,7 +21965,7 @@ Procedure CLI_MySQL_UpdateRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22000,7 +22000,7 @@ Procedure CLI_MySQL_DeleteRecords(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -22071,7 +22071,7 @@ Procedure CLI_MySQL_DeleteRecords(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22105,7 +22105,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22131,7 +22131,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22159,7 +22159,7 @@ Procedure CLI_MySQL_DeleteTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22185,7 +22185,7 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Base = "testbase1";
 
@@ -22209,7 +22209,7 @@ Procedure CLI_MySQL_DeleteDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22245,7 +22245,7 @@ Procedure CLI_MySQL_ClearTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22270,7 +22270,7 @@ Procedure CLI_MySQL_ClearTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -22352,7 +22352,7 @@ Procedure CLI_MySQL_GetTableInformation(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "testtable";
 
@@ -22399,7 +22399,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22426,7 +22426,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -22449,7 +22449,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22483,7 +22483,7 @@ Procedure CLI_MySQL_AddTableColumn(FunctionParameters)
 
         If Coloumn["COLUMN_NAME"] = Name Then
 
-            CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
             OPI_TestDataRetrieval.Check_Equality(Lower(DataType), Lower(CurrentType));
 
             Found = True;
@@ -22514,7 +22514,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -22558,7 +22558,7 @@ Procedure CLI_MySQL_DeleteTableColumn(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22616,7 +22616,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -22646,7 +22646,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -22674,7 +22674,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -22692,7 +22692,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
 
     TLSConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options,
         False);
-    TLSConnectionString = ПолучитьСтрокуИзДвоичныхДанных(TLSConnectionString);
+    TLSConnectionString = GetStringFromBinaryData(TLSConnectionString);
 
     Options = New Structure;
     Options.Insert("trust" , True);
@@ -22723,7 +22723,7 @@ Procedure CLI_MySQL_EnsureTable(FunctionParameters)
     OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
 
     For Each Coloumn In Check["data"] Do
-        CurrentType = ПолучитьСтрокуИзДвоичныхДанных(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+        CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
         OPI_TestDataRetrieval.Check_Equality(Lower(CurrentType), Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
     EndDo;
 
@@ -24729,7 +24729,7 @@ Procedure CLI_Ollama_PushBlob(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
-    Random = ПолучитьДвоичныеДанныеИзСтроки(String(New UUID)); // SKIP
+    Random = GetBinaryDataFromString(String(New UUID)); // SKIP
     Image  = OPI_Tools.MergeData(Image, Random); // SKIP
 
     AdditionalHeaders = New Map;
@@ -25240,7 +25240,7 @@ Procedure CLI_MSSQL_GenerateConnectionString(FunctionParameters)
     Options.Insert("pass" , Password);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
-    Result = ПолучитьСтрокуИзДвоичныхДанных(Result);
+    Result = GetStringFromBinaryData(Result);
 
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
@@ -25270,7 +25270,7 @@ Procedure CLI_MSSQL_ExecuteSQLQuery(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25425,7 +25425,7 @@ Procedure CLI_MSSQL_CreateDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25473,7 +25473,7 @@ Procedure CLI_MSSQL_CreateTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25554,7 +25554,7 @@ Procedure CLI_MSSQL_AddRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25637,7 +25637,7 @@ Procedure CLI_MSSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25669,7 +25669,7 @@ Procedure CLI_MSSQL_GetRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Table = "test_data";
 
@@ -25732,7 +25732,7 @@ Procedure CLI_MSSQL_UpdateRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25810,7 +25810,7 @@ Procedure CLI_MSSQL_DeleteRecords(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25890,7 +25890,7 @@ Procedure CLI_MSSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25919,7 +25919,7 @@ Procedure CLI_MSSQL_DeleteTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("table" , Table);
@@ -25945,7 +25945,7 @@ Procedure CLI_MSSQL_DeleteDatabase(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -25990,7 +25990,7 @@ Procedure CLI_MSSQL_ClearTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26036,7 +26036,7 @@ Procedure CLI_MSSQL_GetTableInformation(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26087,7 +26087,7 @@ Procedure CLI_MSSQL_AddTableColumn(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26150,7 +26150,7 @@ Procedure CLI_MSSQL_DeleteTableColumn(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);
@@ -26201,7 +26201,7 @@ Procedure CLI_MSSQL_EnsureTable(FunctionParameters)
     Options.Insert("pass" , Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options, False);
-    ConnectionString = ПолучитьСтрокуИзДвоичныхДанных(ConnectionString);
+    ConnectionString = GetStringFromBinaryData(ConnectionString);
 
     Options = New Structure;
     Options.Insert("trust", True);

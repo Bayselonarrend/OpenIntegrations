@@ -792,7 +792,7 @@ Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
 
     If InHeaders Then
         Headers  = GetRequestHeaders(Token, Parameters);
-        Response = PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
+        Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
     Else
         Headers  = GetRequestHeaders(Token);
         Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
@@ -922,7 +922,7 @@ Function OpenSession(Val Token)
     URL       = "https://content.dropboxapi.com/2/files/upload_session/start";
     Headers   = GetRequestHeaders(Token);
 
-    Response = PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
+    Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
 
     Session = Response[SessionId];
 
@@ -947,7 +947,7 @@ Function CloseSession(Val Token, Val Path, Val Mode, Val TotalSize, Val Session)
     Parameters = New Structure("commit,cursor", Commit, Cursor);
     Headers    = GetRequestHeaders(Token, Parameters);
 
-    Response = PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Headers);
+    Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
 
     Return Response;
 

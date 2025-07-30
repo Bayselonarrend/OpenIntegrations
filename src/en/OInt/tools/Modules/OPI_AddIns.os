@@ -149,9 +149,9 @@ EndFunction
 
 Function AddInsFolderOS() Export
 
-    ProgramDirectory = StrReplace(ProgramDirectory(), "\", "/");
+    BinDir = StrReplace(BinDir(), "\", "/");
 
-    PathParts = StrSplit(ProgramDirectory, "/");
+    PathParts = StrSplit(BinDir, "/");
     PathParts.Delete(PathParts.UBound());
 
     // BSLLS:UsingHardcodePath-off

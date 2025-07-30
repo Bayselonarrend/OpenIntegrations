@@ -40,7 +40,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Address    = "45.79.112.203:4242";
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
-    Data       = ПолучитьДвоичныеДанныеИзСтроки(Message);
+    Data       = GetBinaryDataFromString(Message);
 
     Result = OPI_TCP.SendBinaryData(Connection, Data);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
