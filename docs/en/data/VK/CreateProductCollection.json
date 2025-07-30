@@ -1,7 +1,1 @@
-{
-"Image": "https://openintegrations.dev/test_data/picture.jpg",
-"Parameters": "GetVKParameters()",
-"Name": "TestCollection",
-"Main": "True",
-"Hidden": "False"
-}
+{"Image":"https://openintegrations.dev/test_data/picture.jpg","Parameters":"GetVKParameters()","Name":"TestCollection","Main":"True","Hidden":"False"}

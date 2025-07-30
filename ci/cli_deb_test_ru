@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_1.27.0_all_ru.deb https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint_1.27.0_all_ru.deb '
+                    sh 'wget -O oint_1.27.0_all_ru.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint_1.27.0_all_ru.deb '
                 }
             }
         }
@@ -205,6 +205,12 @@ pipeline {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_ОсновныеМетоды"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_РаботаСДиректориями"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_FT_РаботаСФайлами"')
 			}
 			}
 		}

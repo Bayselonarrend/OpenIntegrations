@@ -488,7 +488,7 @@ Function ProcessParameters(Val Parameters)
 
             CurrentParameter = New Structure("blob", Base64String(CurrentParameter));
 
-        ElsIf OPI_Tools.CollectionFieldExist(CurrentParameter, "blob") Then
+        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "blob") Then
 
             CurrentParameter = ProcessBlobStructure(CurrentParameter);
 
@@ -519,7 +519,7 @@ Function ProcessBlobStructure(Val Value)
     DataValue = Value["blob"];
     DataFile  = New File(String(DataValue));
 
-    If DataFile.Exist() Then
+    If DataFile.Exists() Then
 
         CurrentData = New BinaryData(String(DataValue));
         Value       = New Structure("blob", Base64String(CurrentData));

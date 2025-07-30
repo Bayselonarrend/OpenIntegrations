@@ -612,7 +612,7 @@ Function ProcessParameter(CurrentParameter)
 
         CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
 
-    ElsIf OPI_Tools.CollectionFieldExist(CurrentParameter, "BYTEA") Then
+    ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
 
         CurrentParameter = ProcessBlobStructure(CurrentParameter);
 
@@ -658,7 +658,7 @@ Function ProcessBlobStructure(Val Value)
 
         DataFile = New File(String(DataValue));
 
-        If DataFile.Exist() Then
+        If DataFile.Exists() Then
 
             CurrentData = New BinaryData(String(DataValue));
             Value       = New Structure(Bytea_, Base64String(CurrentData));

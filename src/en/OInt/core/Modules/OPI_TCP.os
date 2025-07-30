@@ -123,7 +123,7 @@ Function ReadBinaryData(Val Connection
     OPI_TypeConversion.GetNumber(MaxSize);
 
     If TypeOf(Marker) = Type("String") Then
-        Marker        = ПолучитьДвоичныеДанныеИзСтроки(Marker);
+        Marker        = GetBinaryDataFromString(Marker);
     Else
         OPI_TypeConversion.GetBinaryData(Marker);
     EndIf;
@@ -156,7 +156,7 @@ Function ReadLine(Val Connection
     OPI_TypeConversion.GetLine(Encoding);
 
     Data = ReadBinaryData(Connection, , Marker, Timeout);
-    Data = ПолучитьСтрокуИзДвоичныхДанных(Data, Encoding);
+    Data = GetStringFromBinaryData(Data, Encoding);
 
     Return Data;
 
@@ -199,7 +199,7 @@ Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout 
     OPI_TypeConversion.GetLine(Data);
     OPI_TypeConversion.GetLine(Encoding);
 
-    DataBD = ПолучитьДвоичныеДанныеИзСтроки(Data, Encoding);
+    DataBD = GetBinaryDataFromString(Data, Encoding);
 
     Result = SendBinaryData(Connection, DataBD, Timeout);
 
@@ -241,19 +241,19 @@ Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, V
 
             If ValueIsFilled(Error) Then
                 Response = OPI_Tools.JSONString(Error);
-                Response = ПолучитьДвоичныеДанныеИзСтроки(Response);
+                Response = GetBinaryDataFromString(Response);
             EndIf;
 
         EndIf;
 
-        Response = ?(ResponseString, ПолучитьСтрокуИзДвоичныхДанных(Response), Response);
+        Response = ?(ResponseString, GetStringFromBinaryData(Response), Response);
 
     Else
 
         Response = GetLastError(Connection);
         Response = ?(ValueIsFilled(Response), OPI_Tools.JSONString(Response), "OPI: Failed to send message");
 
-        Response = ?(ResponseString, Response, ПолучитьДвоичныеДанныеИзСтроки(Response));
+        Response = ?(ResponseString, Response, GetBinaryDataFromString(Response));
 
     EndIf;
 

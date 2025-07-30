@@ -1209,7 +1209,7 @@ Procedure ValueToArray(Value) Export
 	ЗначениеВМассив(Value);
 EndProcedure
 
-Function CollectionFieldExist(Val Collection, Val Field, FieldValue = Undefined) Export
+Function CollectionFieldExists(Val Collection, Val Field, FieldValue = Undefined) Export
 	Return ПолеКоллекцииСуществует(Collection, Field, FieldValue);
 EndFunction
 

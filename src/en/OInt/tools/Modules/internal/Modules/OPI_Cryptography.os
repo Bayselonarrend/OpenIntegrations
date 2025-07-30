@@ -114,14 +114,14 @@ Function JWT(Val Payload, Val SignKey, Val Method, Val AdditionalHeaders = "") E
     PayloadAsString = OPI_Tools.JSONString(Payload, , False);
     HeadersAsString = OPI_Tools.JSONString(Headers, , False);
 
-    PayloadBinary = ПолучитьДвоичныеДанныеИзСтроки(PayloadAsString);
-    HeadersBinary = ПолучитьДвоичныеДанныеИзСтроки(HeadersAsString);
+    PayloadBinary = GetBinaryDataFromString(PayloadAsString);
+    HeadersBinary = GetBinaryDataFromString(HeadersAsString);
 
     PayloadBase64 = Base64UrlEncode(PayloadBinary);
     HeadersBase64 = Base64UrlEncode(HeadersBinary);
 
     Token       = StrTemplate("%1.%2", HeadersBase64, PayloadBase64);
-    TokenBinary = ПолучитьДвоичныеДанныеИзСтроки(Token);
+    TokenBinary = GetBinaryDataFromString(Token);
 
     Signature       = CreateSignature(SignKey, TokenBinary, Algorithm, HashFunc);
     SignatureBase64 = Base64UrlEncode(Signature);
@@ -153,20 +153,20 @@ Function HMAC(Val Key, Val Data, Val HashFunc) Export
     EndIf;
 
     If Key.Size() <= BlockSize Then
-        Key        = ПолучитьHexСтрокуИзДвоичныхДанных(Key);
+        Key        = GetHexStringFromBinaryData(Key);
         Key        = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
 
-    Key = ПолучитьБуферДвоичныхДанныхИзДвоичныхДанных(ПолучитьДвоичныеДанныеИзHexСтроки(Key));
+    Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
 
-    Ipad = ПолучитьБуферДвоичныхДанныхИзHexСтроки(RepeatString("36", BlockSize));
-    Opad = ПолучитьБуферДвоичныхДанныхИзHexСтроки(RepeatString("5c", BlockSize));
+    Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
+    Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
 
     Ipad.WriteBitwiseXor(0, Key);
-    Ikeypad = ПолучитьДвоичныеДанныеИзБуфераДвоичныхДанных(ipad);
+    Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
 
     Opad.WriteBitwiseXor(0, Key);
-    Okeypad = ПолучитьДвоичныеДанныеИзБуфераДвоичныхДанных(opad);
+    Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
 
     Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashType)), HashType);
 
@@ -187,7 +187,7 @@ Function UniteBinaryData(BinaryData1, BinaryData2) Export
     BinaryDataArray.Add(BinaryData1);
     BinaryDataArray.Add(BinaryData2);
 
-    Return СоединитьДвоичныеДанные(BinaryDataArray);
+    Return ConcatBinaryData(BinaryDataArray);
 
 EndFunction
 
