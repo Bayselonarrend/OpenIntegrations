@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый rpm-пакет oint
-                    sh 'wget -O oint-1.27.0-1.noarch_ru.rpm https://jenkins.openintegrations.dev/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint-1.27.0-1.noarch_ru.rpm '
+                    sh 'wget -O oint-1.27.0-1.noarch_ru.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint-1.27.0-1.noarch_ru.rpm '
                 }
             }
         }
