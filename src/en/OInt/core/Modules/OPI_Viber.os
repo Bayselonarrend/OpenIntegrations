@@ -371,7 +371,7 @@ Function SendMessage(Val Token
     Response = OPI_HTTPRequests.PostWithBody(URL, ParametersStructure, TokenInHeaders(Token));
 
     Try
-        Return OPI_Tools.JsonToStructure(Response.ПолучитьТелоКакДвоичныеДанные());
+        Return OPI_Tools.JsonToStructure(Response.GetBodyAsBinaryData());
     Except
         Return Response;
     EndTry;
