@@ -180,11 +180,11 @@ EndFunction
 // Creates a structure of FTP connection settings
 //
 // Note
-// When ResolveIP = True, the connection address returned by the server in passive mode after PASV will be replaced with the^^
-// proxy server's IP if a proxy is used, or with the primary connection's IP if the server returns 127.0.0.1
+// When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP^^
+// from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
 //
 // Parameters:
-// Domain - String - Server domain - host
+// Host - String - Host addres - host
 // Port - Number - Server port - port
 // Login - String, Undefined - Username for authorization, if required - login
 // Password - String, Undefined - User password for authorization, if required - pass
@@ -195,7 +195,7 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
-Function GetConnectionSettings(Val Domain
+Function GetConnectionSettings(Val Host
     , Val Port = 21
     , Val Login = Undefined
     , Val Password = Undefined
@@ -205,7 +205,7 @@ Function GetConnectionSettings(Val Domain
     , Val IPResolve = True) Export
 
     SettingsStructure = New Structure;
-    OPI_Tools.AddField("domain"          , Domain       , "String" , SettingsStructure);
+    OPI_Tools.AddField("domain"          , Host         , "String" , SettingsStructure);
     OPI_Tools.AddField("port"            , Port         , "Number" , SettingsStructure);
     OPI_Tools.AddField("passive"         , Passive      , "Boolean", SettingsStructure);
     OPI_Tools.AddField("read_timeout"    , ReadTimeout  , "Number" , SettingsStructure);
@@ -298,7 +298,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function ListObjects(Val Connection, Val Path, Val Recursively = False) Export
+Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export
 
     CloseConnection = CheckCreateConnection(Connection);
 
@@ -308,6 +308,8 @@ Function ListObjects(Val Connection, Val Path, Val Recursively = False) Export
 
     OPI_TypeConversion.GetLine(Path);
     OPI_TypeConversion.GetBoolean(Recursively);
+
+    Path = ?(Path = ".", "", Path);
 
     Result = Connection.ListDirectory(Path);
     Result = OPI_Tools.JsonToStructure(Result);

@@ -24793,7 +24793,7 @@ EndProcedure
 
 Procedure FTP_CreateConnection(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -24807,7 +24807,7 @@ Procedure FTP_CreateConnection(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -24839,7 +24839,7 @@ EndProcedure
 
 Procedure FTP_GetWelcomeMessage(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -24853,7 +24853,7 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -24892,7 +24892,7 @@ EndProcedure
 
 Procedure FTP_GetConnectionConfiguration(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -24906,7 +24906,7 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -24953,7 +24953,7 @@ EndProcedure
 
 Procedure FTP_CloseConnection(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -24967,7 +24967,7 @@ Procedure FTP_CloseConnection(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -25004,7 +25004,7 @@ EndProcedure
 
 Procedure FTP_IsConnector(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25018,7 +25018,7 @@ Procedure FTP_IsConnector(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -25055,12 +25055,12 @@ EndProcedure
 
 Procedure FTP_GetConnectionSettings(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
 
-    Result = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     // END
 
@@ -25106,7 +25106,7 @@ EndProcedure
 
 Procedure FTP_CreateDirectory(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25120,7 +25120,7 @@ Procedure FTP_CreateDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -25189,7 +25189,7 @@ EndProcedure
 
 Procedure FTP_ListObjects(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25203,7 +25203,7 @@ Procedure FTP_ListObjects(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -25256,7 +25256,7 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     ImageDD = New BinaryData(Image);
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25270,7 +25270,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password, , 1000, 1000);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password, , 1000, 1000);
 
     If UseProxy Then
 
@@ -25352,7 +25352,7 @@ EndProcedure
 
 Procedure FTP_DeleteFile(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25366,7 +25366,7 @@ Procedure FTP_DeleteFile(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -25416,7 +25416,7 @@ EndProcedure
 
 Procedure FTP_DeleteDirectory(FunctionParameters)
 
-    Domain   = FunctionParameters["FTP_IP"];
+    Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
@@ -25430,7 +25430,7 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 

@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ListObjects(Val Connection, Val Path, Val Recursively = False) Export`
+`Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
-  | Path | --path | String | &#x2714; | Path to search directory |
+  | Path | --path | String | &#x2716; | Path to search directory |
   | Recursively | --rcv | Boolean | &#x2716; | Get information about elements in nested directories |
 
   
@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Domain   = "172.33.0.10";
+    Host     = "172.33.0.10";
     Port     = "21";
     Login    = "bayselonarrend";
     Password = "12we...";
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Domain, Port, Login, Password);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
