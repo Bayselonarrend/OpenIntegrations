@@ -209,7 +209,7 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
 
     Return Not StrStartsWith(ParamValueTrim, "{")
                 And Not StrStartsWith(ParamValueTrim, "[") 
-                And Not ParamFile.Exist() 
+                And Not ParamFile.Exists() 
                 And Not ParameterName = "Parameter_out";
 
 EndFunction

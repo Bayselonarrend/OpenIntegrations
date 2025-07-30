@@ -700,20 +700,20 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Forced = False) Ex
 
         LogDirectory = New File(LogPath);
 
-        If Not LogDirectory.Exist() Then
+        If Not LogDirectory.Exists() Then
             CreateDirectory(LogPath);
         EndIf;
 
         LibraryLogCatalog = New File(LibraryLogPath);
 
-        If Not LibraryLogCatalog.Exist() Then
+        If Not LibraryLogCatalog.Exists() Then
             CreateDirectory(LibraryLogPath);
         EndIf;
 
         FilePath = LibraryLogPath + "/" + Method + ".log";
         LogFile  = New File(FilePath);
 
-        If Not LogFile.Exist() Or Forced Then
+        If Not LogFile.Exists() Or Forced Then
             LogDocument = New TextDocument;
             LogDocument.SetText(Data);
             LogDocument.Write(FilePath);
@@ -2760,7 +2760,7 @@ Function DataFilePath()
 
         RepositoryFile = New File(PossiblePath);
 
-        If RepositoryFile.Exist() Then
+        If RepositoryFile.Exists() Then
             Path = PossiblePath;
             Break;
         EndIf;
@@ -3004,14 +3004,14 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     CatalogExample = "./docs/en/cli/" + Library;
     FileExample    = New File(CatalogExample);
 
-    If Not FileExample.Exist() Then
+    If Not FileExample.Exists() Then
         CreateDirectory(CatalogExample);
     EndIf;
 
     MethodCatalog = CatalogExample + "/" + Method;
     MethodFile    = New File(MethodCatalog);
 
-    If Not MethodFile.Exist() Then
+    If Not MethodFile.Exists() Then
         CreateDirectory(MethodCatalog);
     EndIf;
 
@@ -3061,8 +3061,8 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     BatString  = StartBat + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
     BashString = StartBash + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);
 
-    ПолучитьДвоичныеДанныеИзСтроки(BatString).Write(MethodCatalog + "/bat.txt");
-    ПолучитьДвоичныеДанныеИзСтроки(BashString).Write(MethodCatalog + "/bash.txt");
+    GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
+    GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
 

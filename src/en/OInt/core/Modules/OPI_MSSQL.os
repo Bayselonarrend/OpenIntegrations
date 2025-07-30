@@ -652,7 +652,7 @@ Procedure ProcessCollectionParameter(Val CurrentType, CurrentParameter, CurrentK
 
     If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
-        If OPI_Tools.CollectionFieldExist(CurrentParameter, "BYTES") Then
+        If OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTES") Then
 
             CurrentParameter = ProcessBlobStructure(CurrentParameter);
             CurrentKey       = "BYTES";
@@ -693,7 +693,7 @@ Function ProcessBlobStructure(Val Value)
 
         DataFile = New File(String(DataValue));
 
-        If DataFile.Exist() Then
+        If DataFile.Exists() Then
 
             CurrentData = New BinaryData(String(DataValue));
             Value       = Base64String(CurrentData);

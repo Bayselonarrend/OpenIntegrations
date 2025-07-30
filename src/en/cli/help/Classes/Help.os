@@ -184,7 +184,7 @@ Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
 
 	If ValueIsFilled(OutputFile) Then
 
-		TextBD = ПолучитьДвоичныеДанныеИзСтроки(Text);
+		TextBD = GetBinaryDataFromString(Text);
 
 		Try
 			TextBD.Write(OutputFile);

@@ -1009,7 +1009,7 @@ Function AddProductVideo(ItemStructure, Val URL, Val Name) Export
     CompleteComplexAttribute(VideoObject, 21841, 100001, URLStructure);
     CompleteComplexAttribute(VideoObject, 21837, 100001, NameStructure);
 
-    If Not OPI_Tools.CollectionFieldExist(ItemStructure, Complex_attributes_) Then
+    If Not OPI_Tools.CollectionFieldExists(ItemStructure, Complex_attributes_) Then
         ItemStructure.Insert(Complex_attributes_, New Array);
     EndIf;
 
@@ -1044,7 +1044,7 @@ Function AddProductVideoCover(ItemStructure, Val URL) Export
 
     CompleteComplexAttribute(CoverObject, 21845, 100002, URLStructure);
 
-    If Not OPI_Tools.CollectionFieldExist(ItemStructure, Complex_attributes_) Then
+    If Not OPI_Tools.CollectionFieldExists(ItemStructure, Complex_attributes_) Then
         ItemStructure.Insert(Complex_attributes_, New Array);
     EndIf;
 
@@ -1078,7 +1078,7 @@ Function CompleteComplexAttribute(Collection, Val AttributeID, Val ComplexID, Va
 
     AttributeStructure = New Structure("id,complex_id,values", AttributeID, ComplexID, Values);
 
-    If Not OPI_Tools.CollectionFieldExist(Collection, Attributes_) Then
+    If Not OPI_Tools.CollectionFieldExists(Collection, Attributes_) Then
         Collection.Insert(Attributes_, New Array);
     EndIf;
 
