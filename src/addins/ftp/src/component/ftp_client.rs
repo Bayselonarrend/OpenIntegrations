@@ -205,7 +205,7 @@ impl FtpClient {
                     .map_err(|e| format!("Upload error: {}", e))?;
 
                 let _ = std::io::Write::flush(&mut data_stream);
-                std::thread::sleep(std::time::Duration::from_millis(150));
+                std::thread::sleep(std::time::Duration::from_millis(300));
 
                 stream.finalize_put_stream(data_stream)
                     .map(|_| bytes)

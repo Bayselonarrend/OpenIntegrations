@@ -1,5 +1,6 @@
 use std::io::{BufRead, BufReader, Write};
 use std::net::{SocketAddr, TcpStream};
+use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
 use suppaftp::FtpError;
@@ -30,9 +31,23 @@ pub fn make_passive_proxy_stream(
         addr
     };
 
-    create_tcp_connection_for_passive(&proxy_settings, corrected_addr)
+    match create_tcp_connection_for_passive(&proxy_settings, corrected_addr)
         .map_err(|e| FtpError::ConnectionError(
-            std::io::Error::new(std::io::ErrorKind::Other, e)))
+            std::io::Error::new(std::io::ErrorKind::Other, e))){
+
+        Ok(tcp_connection) => {
+
+            let w_timeout = Some(Duration::from_secs(ftp_settings.write_timeout));
+            let r_timeout = Some(Duration::from_secs(ftp_settings.read_timeout));
+
+            let _ = tcp_connection.set_write_timeout(w_timeout);
+            let _ = tcp_connection.set_read_timeout(r_timeout);
+
+            Ok(tcp_connection)
+
+        },
+        Err(e) => Err(e)
+    }
 }
 
 pub fn create_tcp_connection(
