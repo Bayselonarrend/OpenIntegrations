@@ -1,6 +1,1 @@
-{
-"Image": "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data",
-"Parameters": "GetVKParameters()",
-"URL": "https://github.com/Bayselonarrend/OpenIntegrations",
-"TFN": "GetTempFileName(png)"
-}
+{"Image":"https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data","Parameters":"GetVKParameters()","URL":"https://github.com/Bayselonarrend/OpenIntegrations","TFN":"GetTempFileName(png)"}

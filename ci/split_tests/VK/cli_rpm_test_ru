@@ -1,0 +1,134 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Rpm-Agent'  // Имя или метка агента
+    }
+	stages {
+        stage('Remove oint') {
+            steps {
+                script {
+                    // Удаляем oint, если он установлен
+                    sh 'rpm -e oint || echo "oint not installed"'
+                }
+            }
+        }
+
+        stage('Download oint package') {
+            steps {
+                script {
+                    // Скачиваем новый rpm-пакет oint
+                    sh 'wget -O oint-1.27.0-1.noarch_ru.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.27.0/oint-1.27.0-1.noarch_ru.rpm '
+                }
+            }
+        }
+
+        stage('Install oint package') {
+            steps {
+                script {
+                    // Устанавливаем скаченный пакет
+                    sh 'rpm -ivh --replacepkgs oint-1.27.0-1.noarch_ru.rpm'
+                }
+            }
+        }
+
+      	stage('Prepare'){
+         		steps{
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+
+		stage('Testing-VK') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьСсылкуТокена"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьУдалитьПост"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьСоставнойПост"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьОпрос"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СохранитьУдалитьКартинку"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьИсторию"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_МетодыОбсуждений"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ЛайкРепостКоммент"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСтатистику"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСтатистикуПостов"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьРекламнуюКампанию"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ОтправитьСообщение"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьКатегорииТоваров"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьТоварПодборку"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_СоздатьТоварСоСвойствами"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСписокТоваров"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСписокПодборок"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСписокСвойств"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ПолучитьСписокЗаказов"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ВК_ЗагрузитьВидео"')
+			}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+					sh 'rm "./data.json.gpg"'
+					sh 'gpg --batch --symmetric --cipher-algo AES256 --passphrase="$GPGKEY" ./data.json'
+					sh 'rm "./data.json"'
+				}
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}

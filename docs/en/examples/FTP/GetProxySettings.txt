@@ -1,7 +1,8 @@
-﻿    Address  = "127.0.0.1";
-    Login    = "proxyuser";
-    Password = "12we...";
-    Type     = "socks5";
-    Port     = 1080;
+﻿    ProxyType = "http"; // http, socks5, socks4
 
-    Result = OPI_FTP.GetProxySettings(Address, Port, Type, Login, Password);;
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "8071";
+    ProxyLogin    = "proxyuser";
+    ProxyPassword = "12we...";
+
+    Result = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
