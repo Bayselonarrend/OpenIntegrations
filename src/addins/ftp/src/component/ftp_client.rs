@@ -112,6 +112,8 @@ impl FtpClient {
             FtpClient::Insecure(stream) => stream.mkdir(path),
         };
 
+        sleep(Duration::from_millis(100));
+
         match result {
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(&e.to_string())
