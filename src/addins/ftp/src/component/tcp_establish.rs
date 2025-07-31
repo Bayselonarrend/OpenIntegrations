@@ -3,6 +3,7 @@ use std::net::{SocketAddr, TcpStream};
 use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
+use socket2::Socket;
 use suppaftp::FtpError;
 use crate::component::configuration::{FtpProxySettings, FtpSettings};
 
@@ -42,6 +43,15 @@ pub fn make_passive_proxy_stream(
 
             let _ = tcp_connection.set_write_timeout(w_timeout);
             let _ = tcp_connection.set_read_timeout(r_timeout);
+
+            let socket = Socket::from(tcp_connection);
+            match socket.set_linger(Some(Duration::from_secs(10))){
+                Ok(_) => {},
+                Err(e) => return Err(FtpError::ConnectionError(
+                    std::io::Error::new(std::io::ErrorKind::Unsupported, e)))
+            };
+
+            let tcp_connection = TcpStream::from(socket);
 
             Ok(tcp_connection)
 
