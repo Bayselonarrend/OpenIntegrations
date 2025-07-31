@@ -41,7 +41,7 @@ pub fn get_params_amount(num: usize) -> usize {
         1 => 0,
         2 => 1,
         3 => 1,
-        4 => 3,
+        4 => 4,
         5 => 0,
         6 => 1,
         7 => 1,
@@ -76,8 +76,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
+            let shutdown_delay = params[3].get_i32().unwrap_or(0);
 
-            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path, shutdown_delay as u64))
 
         },
         5 => {
@@ -123,8 +124,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             let path = params[1].get_string().unwrap_or("".to_string());
 
+            let tls_delay = match &obj.tls_settings{
+                Some(s) => s.shutdown_delay,
+                None => 0
+            };
+
             Box::new(match &mut obj.get_client(){
-                Ok(c) => c.upload_data(&path, data),
+                Ok(c) => c.upload_data(&path, data, tls_delay),
                 Err(e) => e.to_string()
             })
         },
@@ -133,8 +139,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let filepath = params[0].get_string().unwrap_or("".to_string());
             let path = params[1].get_string().unwrap_or("".to_string());
 
+            let tls_delay = match &obj.tls_settings{
+                Some(s) => s.shutdown_delay,
+                None => 0
+            };
+
             Box::new(match &mut obj.get_client(){
-                Ok(c) => c.upload_file(&path, &filepath),
+                Ok(c) => c.upload_file(&path, &filepath, tls_delay),
                 Err(e) => e.to_string()
             })
 
@@ -274,7 +285,11 @@ impl AddIn {
 
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+    pub fn set_tls(&mut self
+                   , use_tls: bool
+                   , accept_invalid_certs: bool
+                   , ca_cert_path: &str
+                   , shutdown_delay: u64) -> String {
 
         if self.client.is_some(){
             return process_error("TLS settings can only be set before the connection is established");
@@ -285,7 +300,8 @@ impl AddIn {
         self.tls_settings = Some(FtpTlsSettings{
             use_tls,
             accept_invalid_certs,
-            ca_cert_path: ca_path
+            ca_cert_path: ca_path,
+            shutdown_delay
         });
 
         json!({"result": true}).to_string()

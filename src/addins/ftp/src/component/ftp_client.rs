@@ -1,4 +1,4 @@
-use std::io::{copy, BufReader, Cursor};
+use std::io::{copy, BufReader, Cursor, Write};
 use std::net::{SocketAddr, TcpStream};
 use serde_json::json;
 use suppaftp::{FtpStream, Mode, RustlsConnector, RustlsFtpStream};
@@ -7,7 +7,8 @@ use std::str::FromStr;
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
-
+use std::thread::sleep;
+use std::time::Duration;
 use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
 use crate::component::tls_establish;
 use crate::component::tcp_establish;
@@ -156,22 +157,22 @@ impl FtpClient {
         }
     }
 
-    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
+    pub fn upload_data(&mut self, path: &str, data: &[u8], tls_delay: u64) -> String {
         let mut cursor = Cursor::new(data);
-        match self.upload_from_reader(path, &mut cursor) {
+        match self.upload_from_reader(path, &mut cursor, tls_delay) {
             Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
             Err(e) => format_json_error(e)
         }
     }
 
-    pub fn upload_file(&mut self, path: &str, filepath: &str) -> String {
+    pub fn upload_file(&mut self, path: &str, filepath: &str, tls_delay: u64) -> String {
         let file = match std::fs::File::open(filepath) {
             Ok(f) => f,
             Err(e) => return format_json_error(format!("File error: {}", e))
         };
 
         let mut buf_reader = BufReader::new(file);
-        match self.upload_from_reader(path, &mut buf_reader) {
+        match self.upload_from_reader(path, &mut buf_reader, tls_delay) {
             Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
             Err(e) => format_json_error(e)
         }
@@ -193,7 +194,8 @@ impl FtpClient {
     fn upload_from_reader<R: std::io::Read>(
         &mut self,
         path: &str,
-        reader: &mut R
+        reader: &mut R,
+        tls_delay: u64
     ) -> Result<u64, String> {
         match self {
             FtpClient::Secure(stream) => {
@@ -204,8 +206,8 @@ impl FtpClient {
                 let bytes = copy(reader, &mut data_stream)
                     .map_err(|e| format!("Upload error: {}", e))?;
 
-                let _ = std::io::Write::flush(&mut data_stream);
-                std::thread::sleep(std::time::Duration::from_millis(300));
+                let _ = data_stream.flush();
+                sleep(Duration::from_millis(tls_delay));
 
                 stream.finalize_put_stream(data_stream)
                     .map(|_| bytes)
