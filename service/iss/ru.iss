@@ -3,9 +3,9 @@
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.bat"
-#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\OpiRelease"
+#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiRelease"
 #define Engine "C:\engine"
-#define Melezh "C:\ProgramData\Jenkins\.jenkins\workspace\OpiRelease\Melezh"
+#define Melezh "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiRelease\Melezh"
 
 [Setup]
 DisableWelcomePage      = no
