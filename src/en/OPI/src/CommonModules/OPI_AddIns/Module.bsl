@@ -92,7 +92,17 @@ Function SetTls(Val AddIn, Val Tls) Export
         OPI_TypeConversion.GetBoolean(DisableValidation);
         OPI_TypeConversion.GetLine(CertFilepath);
 
-        Result = AddIn.SetTLS(UseTls, DisableValidation, CertFilepath);
+        Delay = Undefined;
+
+        If OPI_Tools.CollectionFieldExists(Tls, "shutdown_delay", Delay) Then
+
+            OPI_TypeConversion.GetNumber(Delay);
+            Result = AddIn.SetTLS(UseTls, DisableValidation, CertFilepath, Delay);
+
+        Else
+            Result = AddIn.SetTLS(UseTls, DisableValidation, CertFilepath);
+        EndIf;
+
         Result = OPI_Tools.JsonToStructure(Result);
 
     EndIf;
@@ -101,12 +111,15 @@ Function SetTls(Val AddIn, Val Tls) Export
 
 EndFunction
 
-Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+Function GetTlsSettings(Val DisableCertVerification
+    , Val CertFilepath = ""
+    , Val Delay        = Undefined) Export
 
     CertStructure = New Structure;
     OPI_Tools.AddField("use_tls"             , True                   , "Boolean", CertStructure);
     OPI_Tools.AddField("accept_invalid_certs", DisableCertVerification, "Boolean", CertStructure);
     OPI_Tools.AddField("ca_cert_path"        , CertFilepath           , "String" , CertStructure);
+    OPI_Tools.AddField("shutdown_delay"      , Delay                  , "Number" , CertStructure);
 
     Return CertStructure;
 
