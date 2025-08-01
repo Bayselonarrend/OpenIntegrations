@@ -8,6 +8,7 @@ use addin1c::{name, Variant};
 use serde_json::json;
 use serde::{Deserialize, Serialize};
 use std::sync::{Arc, Mutex, MutexGuard};
+use std::thread::sleep;
 use std::time::Duration;
 
 use crate::core::getset;
@@ -59,7 +60,7 @@ pub fn get_params_amount(num: usize) -> usize {
 // Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
-    match num {
+    let result: Box<dyn getset::ValueType> = match num {
 
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
@@ -163,7 +164,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         12 => Box::new(obj.get_configurations()),
         13 => Box::new(obj.is_tls()),
         _ => Box::new(false), // Неверный номер команды
-    }
+    };
+
+    sleep(Duration::from_millis(150));
+
+    result
 
 }
 
