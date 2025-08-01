@@ -298,6 +298,27 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ClearDirectory";
+    NewLine.SearchMethod = "CLEARDIRECTORY";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Directory management";
+    NewLine.MethodDescription   = "Deletes all objects in the selected directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ClearDirectory";
+    NewLine.SearchMethod = "CLEARDIRECTORY";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the directory to be cleaned";
+    NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "UploadFile";
     NewLine.SearchMethod = "UPLOADFILE";
     NewLine.Parameter    = "--conn";
