@@ -407,22 +407,22 @@ EndFunction
 // Map Of KeyAndValue - Processing result
 Function DeleteDirectory(Val Connection, Val Path) Export
 
-    CloseConnection = CheckCreateConnection(Connection);
+    Return ClearDeleteDirectory(Connection, Path, True);
 
-    If Not IsConnector(Connection) Then
-        Return Connection;
-    Else
+EndFunction
 
-        OPI_TypeConversion.GetLine(Path);
-        Result = DeleteDirectoryRecursively(Connection, Path);
+// Clear directory
+// Deletes all objects in the selected directory
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to the directory to be cleaned - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ClearDirectory(Val Connection, Val Path) Export
 
-    EndIf;
-
-    If CloseConnection Then
-        Result.Insert("close_connection", CloseConnection(Connection));
-    EndIf;
-
-    Return Result;
+    Return ClearDeleteDirectory(Connection, Path, False);
 
 EndFunction
 
@@ -625,7 +625,28 @@ Function CheckCreateConnection(Connection)
 
 EndFunction
 
-Function DeleteDirectoryRecursively(Val Connection, Val Path, DeletedArray = Undefined)
+Function ClearDeleteDirectory(Val Connection, Val Path, Val DeleteCurrent)
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        Result = DeleteDirectoryRecursively(Connection, Path, DeleteCurrent);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function DeleteDirectoryRecursively(Val Connection, Val Path, Val DeleteCurrent = True, DeletedArray = Undefined)
 
     If DeletedArray  = Undefined Then
         DeletedArray = New Array;
@@ -642,7 +663,7 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, DeletedArray = Und
             ElementPath = Element["path"];
 
             If Element["is_directory"] Then
-                Deletion = DeleteDirectoryRecursively(Connection, ElementPath, DeletedArray);
+                Deletion = DeleteDirectoryRecursively(Connection, ElementPath, DeleteCurrent, DeletedArray);
             Else
                 Deletion = DeleteFile(Connection, ElementPath);
             EndIf;
@@ -653,8 +674,13 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, DeletedArray = Und
         EndDo;
     EndIf;
 
-    Result = Connection.RemoveDirectory(Path);
-    Result = OPI_Tools.JsonToStructure(Result);
+    If Not Primary Or DeleteCurrent Then
+        Result = Connection.RemoveDirectory(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+    Else
+        Result = New Map;
+        Result.Insert("result", True);
+    EndIf;
 
     If Primary Then
         Result.Insert("deleted_elements", DeletedArray);
