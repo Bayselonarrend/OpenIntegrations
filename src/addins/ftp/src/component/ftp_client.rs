@@ -1,7 +1,7 @@
 use std::io::{copy, BufReader, Cursor, Write};
 use std::net::{SocketAddr, TcpStream};
 use serde_json::json;
-use suppaftp::{FtpStream, Mode, RustlsConnector, RustlsFtpStream};
+use suppaftp::{FtpResult, FtpStream, Mode, RustlsConnector, RustlsFtpStream};
 use suppaftp::list::File;
 use std::str::FromStr;
 use chrono::{DateTime, Utc};
@@ -19,7 +19,7 @@ pub enum FtpClient {
 }
 
 #[derive(Serialize)]
-struct FtpElement{
+struct FtpObject{
     name: String,
     is_directory: bool,
     is_symlink: bool,
@@ -29,8 +29,8 @@ struct FtpElement{
     list_string: String
 }
 
-impl FtpElement {
-     fn from_file_object(file: &File, list_string: &str) -> FtpElement {
+impl FtpObject {
+     fn from_file_object(file: &File, list_string: &str) -> FtpObject {
 
          let symlink = match file.symlink(){
              Some(p) => p.to_str().unwrap_or(""),
@@ -40,7 +40,7 @@ impl FtpElement {
          let modified_date: DateTime<Utc> = file.modified().into();
          let modified_string = modified_date.to_rfc3339();
 
-         FtpElement{
+         FtpObject{
              name: file.name().to_string(),
              is_directory: file.is_directory(),
              is_symlink: file.is_symlink(),
@@ -51,9 +51,9 @@ impl FtpElement {
          }
      }
 
-    fn from_list_string(list_string: &str) -> FtpElement {
+    fn from_list_string(list_string: &str) -> FtpObject {
 
-        FtpElement{
+        FtpObject{
             name: "".to_string(),
             is_directory: false,
             is_symlink: false,
@@ -112,6 +112,23 @@ impl FtpClient {
             FtpClient::Insecure(stream) => stream.mkdir(path),
         };
 
+        let mut processed = false;
+        let mut tries = 0;
+
+        while !processed{
+            match self.get_size(path){
+                Ok(_) => processed = true,
+                Err(_) => {
+                    if tries < 5 {
+                        tries += 1;
+                        sleep(Duration::from_millis(100));
+                    } else {
+                        processed = true;
+                    }
+                }
+            }
+        }
+
         match result {
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(&e.to_string())
@@ -124,6 +141,23 @@ impl FtpClient {
             FtpClient::Secure(stream) => stream.rmdir(path),
             FtpClient::Insecure(stream) => stream.rmdir(path),
         };
+
+        let mut processed = false;
+        let mut tries = 0;
+
+        while !processed{
+            match self.get_size(path){
+                Ok(_) => {
+                    if tries < 5 {
+                        tries += 1;
+                        sleep(Duration::from_millis(100));
+                    } else {
+                        processed = true;
+                    }
+                },
+                Err(_) => processed = true,
+            }
+        }
 
         match result {
             Ok(_) => json!({"result": true}).to_string(),
@@ -141,17 +175,17 @@ impl FtpClient {
         match result {
             Ok(d) => {
 
-                let mut elements = Vec::new();
+                let mut objects = Vec::new();
 
                 for path in d {
-                    elements.push(
+                    objects.push(
                         match File::from_str(&path){
-                            Ok (f) => FtpElement::from_file_object(&f, &path),
-                            Err(_) => FtpElement::from_list_string(&path)
+                            Ok (f) => FtpObject::from_file_object(&f, &path),
+                            Err(_) => FtpObject::from_list_string(&path)
                         }
                     )
                 }
-                json!({"result": true, "data": elements}).to_string()
+                json!({"result": true, "data": objects}).to_string()
             },
             Err(e) => format_json_error(&e.to_string())
         }
@@ -191,6 +225,15 @@ impl FtpClient {
         }
     }
 
+    pub fn object_size(&mut self, path: &str) -> String {
+
+        match self.get_size(path) {
+            Ok(b) => json!({"result": true, "bytes": b}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+
+    }
+
     fn upload_from_reader<R: std::io::Read>(
         &mut self,
         path: &str,
@@ -217,6 +260,13 @@ impl FtpClient {
                 stream.put_file(path, reader)
                     .map_err(|e| format!("File error: {}", e))
             }
+        }
+    }
+
+    fn get_size(&mut self, path: &str) -> FtpResult<usize> {
+        match self {
+            FtpClient::Secure(stream) => stream.size(path),
+            FtpClient::Insecure(stream) => stream.size(path),
         }
     }
 
