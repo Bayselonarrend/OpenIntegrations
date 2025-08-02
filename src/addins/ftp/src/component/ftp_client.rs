@@ -176,6 +176,7 @@ impl FtpClient {
             Ok(d) => {
 
                 let mut objects = Vec::new();
+                let count = d.len();
 
                 for path in d {
                     objects.push(
@@ -185,7 +186,7 @@ impl FtpClient {
                         }
                     )
                 }
-                json!({"result": true, "data": objects}).to_string()
+                json!({"result": true, "count": count, "data": objects}).to_string()
             },
             Err(e) => format_json_error(&e.to_string())
         }
