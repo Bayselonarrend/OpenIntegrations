@@ -370,8 +370,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
                     ResultSubdirectory = ListObjects(Connection, ObjectPath, True);
 
                     If Not ResultSubdirectory["result"] Then
-                        Result = ResultSubdirectory;
-                        Break;
+                        Return ResultSubdirectory;
                     Else
                         Object.Insert("objects", ResultSubdirectory["data"]);
                     EndIf;
@@ -386,7 +385,6 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
         Result.Insert("data"  , ObjectList);
 
     EndIf;
-
 
     If CloseConnection Then
         Result.Insert("close_connection", CloseConnection(Connection));
