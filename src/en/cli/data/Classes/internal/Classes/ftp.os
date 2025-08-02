@@ -62,6 +62,27 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetObjectSize";
+    NewLine.SearchMethod = "GETOBJECTSIZE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Get the size of a file or directory if it exists";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetObjectSize";
+    NewLine.SearchMethod = "GETOBJECTSIZE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the object";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "GetConnectionSettings";
     NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
     NewLine.Parameter    = "--host";
@@ -249,7 +270,7 @@ Function GetComposition() Export
     NewLine.Method       = "ListObjects";
     NewLine.SearchMethod = "LISTOBJECTS";
     NewLine.Parameter    = "--rcv";
-    NewLine.Description    = "Get information about elements in nested directories (optional, def. val. - False)";
+    NewLine.Description    = "Get information about objects in nested directories (optional, def. val. - False)";
     NewLine.Region     = "Directory management";
 
 
