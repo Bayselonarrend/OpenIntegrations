@@ -162,6 +162,38 @@ Function GetWelcomeMessage(Val Connection) Export
 
 EndFunction
 
+// Get object size
+// Get the size of a file or directory if it exists
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to the object - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetObjectSize(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.GetObjectSize(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 // Is connector !NOCLI
 // Checks that the value is an AddIn object for working with FTP
 //
@@ -296,7 +328,7 @@ EndFunction
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
 // Path - String - Path to search directory - path
-// Recursively - Boolean - Get information about elements in nested directories - rcv
+// Recursively - Boolean - Get information about objects in nested directories - rcv
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -318,30 +350,30 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 
     If Result["result"] Then
 
-        ElementList = Result["data"];
+        ObjectList = Result["data"];
 
-        For Each Element In ElementList Do
+        For Each Object In ObjectList Do
 
-            ElementName = Element["name"];
+            ObjectName = Object["name"];
 
             If ValueIsFilled(Path) Then
-                ElementPath = StrTemplate("%1/%2", Path, ElementName);
+                ObjectPath = StrTemplate("%1/%2", Path, ObjectName);
             Else
-                ElementPath = ElementName;
+                ObjectPath = ObjectName;
             EndIf;
 
-            Element.Insert("path", ElementPath);
+            Object.Insert("path", ObjectPath);
 
             If Recursively Then
-                If Element["is_directory"] Then
+                If Object["is_directory"] Then
 
-                    ResultSubdirectory = ListObjects(Connection, ElementPath, True);
+                    ResultSubdirectory = ListObjects(Connection, ObjectPath, True);
 
                     If Not ResultSubdirectory["result"] Then
                         Result = ResultSubdirectory;
                         Break;
                     Else
-                        Element.Insert("elements", ResultSubdirectory["data"]);
+                        Object.Insert("objects", ResultSubdirectory["data"]);
                     EndIf;
 
                 EndIf;
@@ -351,7 +383,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 
         Result = New Map;
         Result.Insert("result", True);
-        Result.Insert("data"  , ElementList);
+        Result.Insert("data"  , ObjectList);
 
     EndIf;
 
@@ -655,20 +687,20 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, Val DeleteCurrent 
         Primary      = False;
     EndIf;
 
-    NestedItems = ListObjects(Connection, Path, True);
+    NeedParts = ListObjects(Connection, Path, True);
 
-    If NestedItems["result"] Then
-        For Each Element In NestedItems["data"] Do
+    If NeedParts["result"] Then
+        For Each Object In NeedParts["data"] Do
 
-            ElementPath = Element["path"];
+            ObjectPath = Object["path"];
 
-            If Element["is_directory"] Then
-                Deletion = DeleteDirectoryRecursively(Connection, ElementPath, DeleteCurrent, DeletedArray);
+            If Object["is_directory"] Then
+                Deletion = DeleteDirectoryRecursively(Connection, ObjectPath, DeleteCurrent, DeletedArray);
             Else
-                Deletion = DeleteFile(Connection, ElementPath);
+                Deletion = DeleteFile(Connection, ObjectPath);
             EndIf;
 
-            Deletion.Insert("path", ElementPath);
+            Deletion.Insert("path", ObjectPath);
             DeletedArray.Add(Deletion);
 
         EndDo;
@@ -683,7 +715,7 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, Val DeleteCurrent 
     EndIf;
 
     If Primary Then
-        Result.Insert("deleted_elements", DeletedArray);
+        Result.Insert("deleted_objects", DeletedArray);
     EndIf;
 
     Return Result;
