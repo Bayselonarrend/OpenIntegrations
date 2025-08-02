@@ -1,33 +1,29 @@
 ﻿---
-sidebar_position: 6
-description: Is connector  and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_position: 5
+description: Get object size and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Is connector 
- Checks that the value is an AddIn object for working with FTP
+# Get object size
+ Get the size of a file or directory if it exists
 
 
 
-`Function IsConnector(Val Value) Export`
+`Function GetObjectSize(Val Connection, Val Path) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Value | - | Arbitrary | &#x2714; | Value to check |
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+  | Path | --path | String | &#x2714; | Path to the object |
 
   
-  Returns:  Boolean - Is connector
+  Returns:  Map Of KeyAndValue - Processing result
 
 <br/>
 
-
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
-<br/>
 
 
 
@@ -64,7 +60,11 @@ import TabItem from '@theme/TabItem';
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    Result = OPI_FTP.IsConnector(Connection);
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
 ```
  
 
