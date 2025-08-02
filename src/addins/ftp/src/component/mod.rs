@@ -32,7 +32,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("UploadFile"),
     name!("RemoveFile"),
     name!("GetConfiguration"),
-    name!("IsTls")
+    name!("IsTls"),
+    name!("GetObjectSize")
 ];
 
 // Число параметров функций компоненты
@@ -52,6 +53,7 @@ pub fn get_params_amount(num: usize) -> usize {
         11 => 1,
         12 => 0,
         13 => 0,
+        14 => 1,
         _ => 0,
     }
 }
@@ -163,6 +165,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
         12 => Box::new(obj.get_configurations()),
         13 => Box::new(obj.is_tls()),
+
+        14 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.object_size(&path),
+                Err(e) => e.to_string()
+            })
+        },
         _ => Box::new(false), // Неверный номер команды
     };
 
