@@ -68,6 +68,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ftp ПолучитьРазмерОбъекта \
+              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}}" \
+              --file "/tmp/zilxgrhv.xhx.png" \
+              --path "pic_from_binary.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ftp ПолучитьРазмерОбъекта ^
+              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}}" ^
+              --file "/tmp/zilxgrhv.xhx.png" ^
+              --path "pic_from_binary.png"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

@@ -26733,8 +26733,8 @@ Procedure CLI_FTP_CreateDirectory(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "CreateDirectory (check 2)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Array(Check["data"]              , 1);
-    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"], 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"] , 1);
 
 EndProcedure
 
@@ -27237,7 +27237,10 @@ Procedure CLI_FTP_GetObjectSize(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectSize" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_FTP.GetObjectSize(Connection, "new_dir/another.bin");
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "new_dir/another.bin");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectSize (notexisted)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
