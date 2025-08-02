@@ -2880,6 +2880,7 @@ Procedure FT_CommonMethods() Export
         FTP_GetConnectionSettings(TestParameters);
         FTP_GetProxySettings(TestParameters);
         FTP_GetTlsSettings(TestParameters);
+        FTP_GetObjectSize(TestParameters);
 
     EndDo;
 
@@ -25183,8 +25184,8 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
-    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["elements"], 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]              , 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"], 1);
 
 EndProcedure
 
@@ -25305,14 +25306,24 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"];
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile" + Postfix     , "FTP");
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (bd)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile" + Postfix            , "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (bd)" + Postfix       , "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (file size)" + Postfix, "FTP");
 
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_ResultTrue(Result2);
 
     OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
     OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    Result  = OPI_FTP.GetObjectSize(Connection, "new_dir/pic_from_disk.png");
+    Result2 = OPI_FTP.GetObjectSize(Connection, "pic_from_binary.png");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (size 1)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+
+    OPI_TestDataRetrieval.WriteLog(Result2, "UploadFile (size 2)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(Result2["bytes"] , ImageDD.Size());
 
     For N = 1 To 7 Do
 
@@ -25522,6 +25533,63 @@ Procedure FTP_ClearDirectory(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ClearDirectory (check)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure FTP_GetObjectSize(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectSize" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Result = OPI_FTP.GetObjectSize(Connection, "new_dir/another.bin");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectSize (notexisted)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure
 
