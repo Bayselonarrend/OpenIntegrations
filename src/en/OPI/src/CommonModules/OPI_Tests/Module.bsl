@@ -25184,8 +25184,8 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
-    OPI_TestDataRetrieval.Check_Array(Check["data"]              , 1);
-    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"], 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
+    OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"] , 1);
 
 EndProcedure
 
