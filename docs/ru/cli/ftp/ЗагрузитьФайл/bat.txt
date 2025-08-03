@@ -2,5 +2,5 @@
 
 oint ftp ЗагрузитьФайл ^
   --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
-  --file "/tmp/kza3ckt2.byd.png" ^
+  --file "/tmp/stmr2e0n.inl.png" ^
   --path "pic_from_binary.png"
