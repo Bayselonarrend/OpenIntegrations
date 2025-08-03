@@ -2,5 +2,5 @@
 
 oint ftp ПолучитьРазмерОбъекта \
   --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}}" \
-  --file "/tmp/3dchpohs.k3h.png" \
+  --file "/tmp/mobbvpu5.kx1.png" \
   --path "pic_from_binary.png"
