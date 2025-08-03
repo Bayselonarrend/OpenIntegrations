@@ -1,0 +1,16 @@
+﻿    {
+ "result": true,
+ "data": [
+  {
+   "is_directory": true,
+   "is_symlink": false,
+   "list_string": "drwxr-sr-x    2 1000     1000         4096 Aug 03 19:41 another_one",
+   "modified": "2025-08-03T19:41:00+00:00",
+   "name": "another_one",
+   "size": 4096,
+   "symlink_path": "",
+   "path": "new_dir/another_one",
+   "objects": []
+  }
+ ]
+}
