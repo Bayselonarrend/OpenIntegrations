@@ -112,23 +112,6 @@ impl FtpClient {
             FtpClient::Insecure(stream) => stream.mkdir(path),
         };
 
-        let mut processed = false;
-        let mut tries = 0;
-
-        while !processed{
-            match self.get_size(path){
-                Ok(_) => processed = true,
-                Err(_) => {
-                    if tries < 5 {
-                        tries += 1;
-                        sleep(Duration::from_millis(100));
-                    } else {
-                        processed = true;
-                    }
-                }
-            }
-        }
-
         match result {
             Ok(_) => json!({"result": true}).to_string(),
             Err(e) => format_json_error(&e.to_string())
@@ -141,23 +124,6 @@ impl FtpClient {
             FtpClient::Secure(stream) => stream.rmdir(path),
             FtpClient::Insecure(stream) => stream.rmdir(path),
         };
-
-        let mut processed = false;
-        let mut tries = 0;
-
-        while !processed{
-            match self.get_size(path){
-                Ok(_) => {
-                    if tries < 5 {
-                        tries += 1;
-                        sleep(Duration::from_millis(100));
-                    } else {
-                        processed = true;
-                    }
-                },
-                Err(_) => processed = true,
-            }
-        }
 
         match result {
             Ok(_) => json!({"result": true}).to_string(),
