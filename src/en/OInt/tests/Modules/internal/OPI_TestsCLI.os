@@ -2778,6 +2778,7 @@ Procedure CLI_FT_CommonMethods() Export
         CLI_FTP_GetProxySettings(TestParameters);
         CLI_FTP_GetTlsSettings(TestParameters);
         CLI_FTP_GetObjectSize(TestParameters);
+        OPI_Tools.Pause(5);
 
     EndDo;
 
@@ -2793,6 +2794,7 @@ Procedure CLI_FT_DirecotryManagement() Export
         CLI_FTP_CreateDirectory(TestParameters);
         CLI_FTP_ListObjects(TestParameters);
         CLI_FTP_DeleteDirectory(TestParameters);
+        OPI_Tools.Pause(5);
 
     EndDo;
 
@@ -2806,6 +2808,7 @@ Procedure CLI_FT_FileOperations() Export
 
         CLI_FTP_UploadFile(TestParameters);
         CLI_FTP_DeleteFile(TestParameters);
+        OPI_Tools.Pause(5);
 
     EndDo
 
@@ -26591,6 +26594,7 @@ Procedure CLI_FTP_ListObjects(FunctionParameters)
     Options.Insert("rcv" , True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     Postfix = FunctionParameters["Postfix"];
 
@@ -26603,6 +26607,7 @@ Procedure CLI_FTP_ListObjects(FunctionParameters)
     Options.Insert("rcv" , True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ListObjects (file)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -26686,6 +26691,7 @@ Procedure CLI_FTP_CreateDirectory(FunctionParameters)
     Options.Insert("path", "new_dir");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateDirectory", Options);
+    OPI_Tools.Pause(5);
 
     Postfix = FunctionParameters["Postfix"];
 
@@ -26697,6 +26703,7 @@ Procedure CLI_FTP_CreateDirectory(FunctionParameters)
     Options.Insert("path", "new_dir/another_one");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateDirectory", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDirectory (nested)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -26710,14 +26717,13 @@ Procedure CLI_FTP_CreateDirectory(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDirectory (double)", "FTP");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    OPI_Tools.Pause(5);
-
     Options = New Structure;
     Options.Insert("conn", Connection);
     Options.Insert("path", "new_dir");
     Options.Insert("rcv" , True);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "CreateDirectory (check 1)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
@@ -26730,6 +26736,7 @@ Procedure CLI_FTP_CreateDirectory(FunctionParameters)
     Options.Insert("rcv" , True);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "CreateDirectory (check 2)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
@@ -26892,6 +26899,7 @@ Procedure CLI_FTP_ClearDirectory(FunctionParameters)
     Options.Insert("rcv" , True);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Check, "ClearDirectory (check)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Check);
@@ -27156,6 +27164,7 @@ Procedure CLI_FTP_DeleteFile(FunctionParameters)
     Options.Insert("rcv" , True);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
+    OPI_Tools.Pause(5);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile (check)", "FTP");
 
