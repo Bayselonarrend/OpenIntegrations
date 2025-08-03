@@ -1,0 +1,9 @@
+﻿    {
+ "result": true,
+ "deleted_objects": [
+  {
+   "result": true,
+   "path": "new_dir"
+  }
+ ]
+}
