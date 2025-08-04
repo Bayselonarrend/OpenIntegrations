@@ -26,5 +26,4 @@ pub struct FtpTlsSettings {
     pub use_tls: bool,
     pub accept_invalid_certs: bool,
     pub ca_cert_path: Option<String>,
-    pub shutdown_delay: u64,
 }

@@ -24,4 +24,3 @@ chrono = { version = "0.4", features = ["serde"] }
 webpki-roots = "1.0.1"
 rustls = { version = "0.23.28", features = ["ring"] }
 rustls-pemfile = "2.2.0"
-socket2 = "0.5.10"
