@@ -236,16 +236,6 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "GetTlsSettings";
-    NewLine.SearchMethod = "GETTLSSETTINGS";
-    NewLine.Parameter    = "--delay";
-    NewLine.Description    = "Delay before closing the connection for proper TLS termination (ms)) (optional, def. val. - 250)";
-    NewLine.Region     = "Common methods";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library  = "ftp";
-    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "ListObjects";
     NewLine.SearchMethod = "LISTOBJECTS";
     NewLine.Parameter    = "--conn";
