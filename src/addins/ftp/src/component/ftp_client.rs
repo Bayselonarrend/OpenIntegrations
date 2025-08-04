@@ -1,4 +1,4 @@
-use std::io::{copy, BufReader, Cursor, Write};
+use std::io::{copy, BufReader, Cursor, ErrorKind, Write};
 use std::net::{SocketAddr, TcpStream};
 use serde_json::json;
 use suppaftp::{FtpResult, FtpStream, Mode, RustlsConnector, RustlsFtpStream};
@@ -7,8 +7,7 @@ use std::str::FromStr;
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
-use std::thread::sleep;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
 use crate::component::tls_establish;
 use crate::component::tcp_establish;
@@ -158,22 +157,22 @@ impl FtpClient {
         }
     }
 
-    pub fn upload_data(&mut self, path: &str, data: &[u8], tls_delay: u64) -> String {
+    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
         let mut cursor = Cursor::new(data);
-        match self.upload_from_reader(path, &mut cursor, tls_delay) {
+        match self.upload_from_reader(path, &mut cursor) {
             Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
             Err(e) => format_json_error(e)
         }
     }
 
-    pub fn upload_file(&mut self, path: &str, filepath: &str, tls_delay: u64) -> String {
+    pub fn upload_file(&mut self, path: &str, filepath: &str) -> String {
         let file = match std::fs::File::open(filepath) {
             Ok(f) => f,
             Err(e) => return format_json_error(format!("File error: {}", e))
         };
 
         let mut buf_reader = BufReader::new(file);
-        match self.upload_from_reader(path, &mut buf_reader, tls_delay) {
+        match self.upload_from_reader(path, &mut buf_reader) {
             Ok(bytes) => json!({"result": true, "bytes": bytes}).to_string(),
             Err(e) => format_json_error(e)
         }
@@ -204,8 +203,7 @@ impl FtpClient {
     fn upload_from_reader<R: std::io::Read>(
         &mut self,
         path: &str,
-        reader: &mut R,
-        tls_delay: u64
+        reader: &mut R
     ) -> Result<u64, String> {
         match self {
             FtpClient::Secure(stream) => {
@@ -213,11 +211,16 @@ impl FtpClient {
                 let mut data_stream = stream.put_with_stream(path)
                     .map_err(|e| format!("Data stream error: {}", e))?;
 
-                let bytes = copy(reader, &mut data_stream)
-                    .map_err(|e| format!("Upload error: {}", e))?;
-
-                let _ = data_stream.flush();
-                sleep(Duration::from_millis(tls_delay));
+                let bytes = match copy(reader, &mut data_stream) {
+                    Ok(b) => {
+                        match wait_for_writable(&mut data_stream, Duration::from_secs(5)){
+                            Ok(_) => {},
+                            Err(e) => return Err(e)
+                        };
+                        b
+                    },
+                    Err(e) => return Err(format!("Upload error: {}", &e.to_string()))
+                };
 
                 stream.finalize_put_stream(data_stream)
                     .map(|_| bytes)
@@ -301,4 +304,24 @@ fn format_json_error<E: ToString>(error: E) -> String {
         "error": error_message,
     });
     json_obj.to_string()
+}
+
+fn wait_for_writable<S>(stream: &mut S, timeout: Duration) -> Result<(), String>
+where
+    S: Write
+{
+    let start = Instant::now();
+
+    loop {
+        match stream.write(&[]) {
+            Ok(_) => return Ok(()),
+            Err(e) if e.kind() == ErrorKind::WouldBlock => {
+                if start.elapsed() > timeout {
+                    return Err("Check error: Write timed out".to_string());
+                }
+                std::thread::yield_now();
+            }
+            Err(e) => return Err(format!("Check error: {}", e.to_string())),
+        }
+    }
 }

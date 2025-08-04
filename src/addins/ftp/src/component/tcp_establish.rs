@@ -3,7 +3,6 @@ use std::net::{SocketAddr, TcpStream};
 use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
-use socket2::Socket;
 use suppaftp::FtpError;
 use crate::component::configuration::{FtpProxySettings, FtpSettings};
 
