@@ -12,13 +12,12 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "", Val Delay = 250) Export`
+`Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | DisableCertVerification | --trust | Boolean | &#x2714; | Allows to work with invalid certificates, including self signed |
   | CertFilepath | --cert | String | &#x2716; | Path to the root PEM file of the certificate if it is not in the system repository |
-  | Delay | --delay | Number | &#x2716; | Delay before closing the connection for proper TLS termination (ms)) |
 
   
   Returns:  Structure Of KeyAndValue - Structure of TLS connection settings
@@ -27,8 +26,6 @@ import TabItem from '@theme/TabItem';
 
 :::tip
 Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function or implicit, when passing settings
-
-The `Delay` can be increased for slow connections to avoid issues with proper TLS termination
 :::
 <br/>
 
