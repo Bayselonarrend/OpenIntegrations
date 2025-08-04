@@ -700,6 +700,8 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, Val DeleteCurrent 
             DeletedArray.Add(Deletion);
 
         EndDo;
+    Else
+        Return NeedParts;
     EndIf;
 
     If Not Primary Or DeleteCurrent Then
