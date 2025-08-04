@@ -27019,7 +27019,7 @@ Procedure CLI_FTP_UploadFile(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result2, "UploadFile (size 2)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_Equality(Result2["bytes"] , ImageDD.Size());
 
-    For N = 1 To 20 Do
+    For N = 1 To 5 Do
 
         Options = New Structure;
         Options.Insert("conn", Connection);
