@@ -303,18 +303,16 @@ EndFunction
 // Note
 // Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function^^
 // or implicit, when passing settings
-// The `Delay` can be increased for slow connections to avoid issues with proper TLS termination
 //
 // Parameters:
 // DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
 // CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
-// Delay - Number - Delay before closing the connection for proper TLS termination (ms)) - delay
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
-Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "", Val Delay = 250) Export
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 
-    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath, Delay);
+    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
 
 EndFunction
 
@@ -794,8 +792,8 @@ Function ПолучитьНастройкиПрокси(Val Адрес, Val По
 	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
-Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "", Val Задержка = 250) Export
-	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату, Задержка);
+Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
+	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
 EndFunction
 
 Function ПолучитьСписокОбъектов(Val Соединение, Val Путь = "", Val Рекурсивно = False) Export

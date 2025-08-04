@@ -76,7 +76,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов \
-              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}}" \
+              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
               --path "." \
               --rcv "True"
         ```
@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов ^
-              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}}" ^
+              --conn "{'set':{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
               --path "." ^
               --rcv "True"
         ```
@@ -95,4 +95,33 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 
-
+```json title="Результат"
+{
+ "result": true,
+ "data": [
+  {
+   "is_directory": true,
+   "is_symlink": false,
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Aug 03 19:42 new_dir",
+   "modified": "2025-08-03T19:42:00+00:00",
+   "name": "new_dir",
+   "size": 4096,
+   "symlink_path": "",
+   "path": "new_dir",
+   "objects": [
+    {
+     "is_directory": true,
+     "is_symlink": false,
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Aug 03 19:42 another_one",
+     "modified": "2025-08-03T19:42:00+00:00",
+     "name": "another_one",
+     "size": 4096,
+     "symlink_path": "",
+     "path": "new_dir/another_one",
+     "objects": []
+    }
+   ]
+  }
+ ]
+}
+```

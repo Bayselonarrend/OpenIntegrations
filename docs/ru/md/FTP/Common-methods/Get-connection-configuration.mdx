@@ -76,9 +76,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьКонфигурациюСоединения \
-              --set "{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}" \
-              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}" \
-              --tls "{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}"
+              --set "{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}" \
+              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
   
@@ -87,12 +86,36 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьКонфигурациюСоединения ^
-              --set "{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}" ^
-              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}" ^
-              --tls "{'use_tls':'True','accept_invalid_certs':'True','shutdown_delay':'250'}"
+              --set "{'domain':'172.33.0.10','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'}" ^
+              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Результат"
+{
+ "set": {
+  "domain": "172.33.0.11",
+  "port": 21,
+  "passive": true,
+  "read_timeout": 120,
+  "write_timeout": 120,
+  "advanced_resolve": true,
+  "login": "bayselonarrend",
+  "password": "12we3456!2154"
+ },
+ "proxy": {
+  "server": "host.docker.internal",
+  "port": 8071,
+  "proxy_type": "http",
+  "login": "proxyuser",
+  "password": "12we3456!2154"
+ },
+ "tls": {
+  "use_tls": true,
+  "accept_invalid_certs": true,
+  "shutdown_delay": 250
+ }
+}
+```
