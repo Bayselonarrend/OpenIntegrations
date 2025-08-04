@@ -125,59 +125,69 @@ fn connect_via_socks4(proxy_settings: &FtpProxySettings, target_addr: (&str, u16
 
 pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
     let proxy_addr = format!("{}:{}", proxy_settings.server, proxy_settings.port);
+    let max_retries = 5;
 
-    let mut stream = TcpStream::connect(
-        proxy_addr.to_socket_addrs()
-            .map_err(|e| format!("Failed to resolve proxy address: {}", e))?
-            .next()
-            .ok_or_else(|| "Proxy address resolution returned no results".to_string())?
-    ).map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
+    for attempt in 1..=max_retries {
+        let mut stream = TcpStream::connect(
+            proxy_addr.to_socket_addrs()
+                .map_err(|e| format!("Failed to resolve proxy address: {}", e))?
+                .next()
+                .ok_or_else(|| "Proxy address resolution returned no results".to_string())?
+        ).map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
 
-    // Установим таймауты для стабильности
-    stream.set_read_timeout(Some(Duration::from_secs(10))).ok();
-    stream.set_write_timeout(Some(Duration::from_secs(10))).ok();
+        stream.set_read_timeout(Some(Duration::from_secs(10))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(10))).ok();
 
-    // Формируем CONNECT-запрос
-    let host_port = format!("{}:{}", target_addr.0, target_addr.1);
-    let mut request = format!(
-        "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
-        host_port, host_port
-    );
+        let host_port = format!("{}:{}", target_addr.0, target_addr.1);
+        let mut request = format!(
+            "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
+            host_port, host_port
+        );
 
-    // Добавляем Proxy-Authorization при необходимости
-    if let (Some(user), Some(pass)) = (&proxy_settings.login, &proxy_settings.password) {
-        let auth = general_purpose::STANDARD.encode(format!("{}:{}", user, pass));
-        write!(request, "Proxy-Authorization: Basic {}\r\n", auth).unwrap();
-    }
-    request.push_str("\r\n");
+        if let (Some(user), Some(pass)) = (&proxy_settings.login, &proxy_settings.password) {
+            let auth = general_purpose::STANDARD.encode(format!("{}:{}", user, pass));
+            write!(request, "Proxy-Authorization: Basic {}\r\n", auth).unwrap();
+        }
+        request.push_str("\r\n");
 
-    // Отправляем запрос
-    stream.write_all(request.as_bytes())
-        .map_err(|e| format!("Failed to send CONNECT request: {}", e))?;
+        stream.write_all(request.as_bytes())
+            .map_err(|e| format!("Failed to send CONNECT request: {}", e))?;
 
-    // Читаем ответ прокси
-    let mut buf = [0u8; 4096];
-    let n = stream.read(&mut buf)
-        .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+        let mut buf = [0u8; 4096];
+        let n = stream.read(&mut buf)
+            .map_err(|e| format!("Failed to read proxy response: {}", e))?;
 
-    let mut headers = [httparse::EMPTY_HEADER; 16];
-    let mut response = httparse::Response::new(&mut headers);
-    match response.parse(&buf[..n]) {
-        Ok(httparse::Status::Complete(_)) => {},
-        Ok(httparse::Status::Partial) => return Err("Incomplete proxy response".to_string()),
-        Err(e) => return Err(format!("Failed to parse proxy response: {:?}", e)),
-    }
+        let mut headers = [httparse::EMPTY_HEADER; 16];
+        let mut response = httparse::Response::new(&mut headers);
+        match response.parse(&buf[..n]) {
+            Ok(httparse::Status::Complete(_)) => {},
+            Ok(httparse::Status::Partial) => return Err("Incomplete proxy response".to_string()),
+            Err(e) => return Err(format!("Failed to parse proxy response: {:?}", e)),
+        }
 
-    let code = response.code.ok_or_else(|| "Missing HTTP status code in proxy response".to_string())?;
-    match code {
-        200 => Ok(stream),
-        407 => Err("Proxy authentication required (HTTP 407)".to_string()),
-        _ => {
-            let resp_str = String::from_utf8_lossy(&buf[..n]);
-            Err(format!("Proxy error: HTTP {}\nFull response:\n{}", code, resp_str))
+        let code = response.code.ok_or_else(|| "Missing HTTP status code in proxy response".to_string())?;
+        match code {
+            200 => return Ok(stream),
+            407 => return Err("Proxy authentication required (HTTP 407)".to_string()),
+            500 => {
+                if attempt < max_retries {
+                    std::thread::sleep(Duration::from_millis(200));
+                    continue;
+                } else {
+                    let resp_str = String::from_utf8_lossy(&buf[..n]);
+                    return Err(format!("Proxy error: HTTP 500 after {} retries\nFull response:\n{}", max_retries, resp_str));
+                }
+            }
+            _ => {
+                let resp_str = String::from_utf8_lossy(&buf[..n]);
+                return Err(format!("Proxy error: HTTP {}\nFull response:\n{}", code, resp_str));
+            }
         }
     }
+
+    Err("Unexpected proxy connection loop exit".to_string())
 }
+
 
 fn connect_direct(addr: (&str, u16)) -> Result<TcpStream, String> {
     let target_addr = format!("{}:{}", addr.0, addr.1);
