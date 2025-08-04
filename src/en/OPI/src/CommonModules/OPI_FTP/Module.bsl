@@ -368,10 +368,12 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
                     ResultSubdirectory = ListObjects(Connection, ObjectPath, True);
 
                     If Not ResultSubdirectory["result"] Then
-                        Return ResultSubdirectory;
+                        Subfolders = ResultSubdirectory;
                     Else
-                        Object.Insert("objects", ResultSubdirectory["data"]);
+                        Subfolders = ResultSubdirectory["data"];
                     EndIf;
+
+                    Object.Insert("objects", Subfolders);
 
                 EndIf;
             EndIf;
