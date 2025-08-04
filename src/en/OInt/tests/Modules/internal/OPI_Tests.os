@@ -25335,7 +25335,7 @@ Procedure FTP_UploadFile(FunctionParameters)
         EndIf;
 
         If Not Result2["result"] Then
-            OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (multiple, bd)" + Postfix, "FTP");
+            OPI_TestDataRetrieval.WriteLog(Result2, "UploadFile (multiple, bd)" + Postfix, "FTP");
         EndIf;
 
         OPI_TestDataRetrieval.Check_ResultTrue(Result);
