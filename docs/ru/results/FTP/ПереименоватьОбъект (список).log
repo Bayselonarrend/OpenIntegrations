@@ -1,0 +1,37 @@
+﻿    {
+ "result": true,
+ "data": [
+  {
+   "is_directory": true,
+   "is_symlink": false,
+   "list_string": "drwxr-xr-x    2 1000     1000         4096 Aug 05 19:01 brand_new_dir",
+   "modified": "2025-08-05T19:01:00+00:00",
+   "name": "brand_new_dir",
+   "size": 4096,
+   "symlink_path": "",
+   "path": "brand_new_dir",
+   "objects": [
+    {
+     "is_directory": false,
+     "is_symlink": false,
+     "list_string": "-rw-r--r--    1 1000     1000     335944730 Aug 05 17:53 giant.bin",
+     "modified": "2025-08-05T17:53:00+00:00",
+     "name": "giant.bin",
+     "size": 335944730,
+     "symlink_path": "",
+     "path": "brand_new_dir/giant.bin"
+    },
+    {
+     "is_directory": false,
+     "is_symlink": false,
+     "list_string": "-rw-r--r--    1 1000     1000      2114023 Aug 05 17:52 pic_from_disk.png",
+     "modified": "2025-08-05T17:52:00+00:00",
+     "name": "pic_from_disk.png",
+     "size": 2114023,
+     "symlink_path": "",
+     "path": "brand_new_dir/pic_from_disk.png"
+    }
+   ]
+  }
+ ]
+}
