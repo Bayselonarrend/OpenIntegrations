@@ -33,7 +33,10 @@ pub const METHODS: &[&[u16]] = &[
     name!("RemoveFile"),
     name!("GetConfiguration"),
     name!("IsTls"),
-    name!("GetObjectSize")
+    name!("GetObjectSize"),
+    name!("RenameObject"),
+    name!("DownloadToFile"),
+    name!("DownloadToBuffer"),
 ];
 
 // Число параметров функций компоненты
@@ -54,6 +57,9 @@ pub fn get_params_amount(num: usize) -> usize {
         12 => 0,
         13 => 0,
         14 => 1,
+        15 => 2,
+        16 => 2,
+        17 => 1,
         _ => 0,
     }
 }
@@ -162,6 +168,41 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Ok(c) => c.object_size(&path),
                 Err(e) => e.to_string()
             })
+        },
+
+        15 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let new_path = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.rename_object(&path, &new_path),
+                Err(e) => e.to_string()
+            })
+
+        },
+
+        16 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let filepath = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.download_to_file(&path, &filepath),
+                Err(e) => e.to_string()
+            })
+        },
+
+        17 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            match &mut obj.get_client(){
+                Ok(c) => {
+                    match c.download_to_vec(&path){
+                        Ok(v) => Box::new(v),
+                        Err(e) => Box::new(e)
+                    }
+                },
+                Err(e) => Box::new(e.to_string())
+            }
         },
         _ => Box::new(false), // Неверный номер команды
     };
