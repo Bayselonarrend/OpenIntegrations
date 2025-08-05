@@ -1,0 +1,37 @@
+﻿    {
+ "result": true,
+ "data": [
+  {
+   "is_directory": true,
+   "is_symlink": false,
+   "list_string": "drwxr-xr-x    2 1000     1000         4096 Aug 05 19:01 new_dir",
+   "modified": "2025-08-05T19:01:00+00:00",
+   "name": "new_dir",
+   "size": 4096,
+   "symlink_path": "",
+   "path": "new_dir",
+   "objects": [
+    {
+     "is_directory": false,
+     "is_symlink": false,
+     "list_string": "-rw-r--r--    1 1000     1000     335944730 Aug 05 17:53 big.bin",
+     "modified": "2025-08-05T17:53:00+00:00",
+     "name": "big.bin",
+     "size": 335944730,
+     "symlink_path": "",
+     "path": "new_dir/big.bin"
+    },
+    {
+     "is_directory": false,
+     "is_symlink": false,
+     "list_string": "-rw-r--r--    1 1000     1000      2114023 Aug 05 17:52 pic_from_disk.png",
+     "modified": "2025-08-05T17:52:00+00:00",
+     "name": "pic_from_disk.png",
+     "size": 2114023,
+     "symlink_path": "",
+     "path": "new_dir/pic_from_disk.png"
+    }
+   ]
+  }
+ ]
+}
