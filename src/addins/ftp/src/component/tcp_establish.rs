@@ -6,26 +6,28 @@ use base64::{Engine as _, engine::general_purpose};
 use suppaftp::FtpError;
 use crate::component::configuration::{FtpProxySettings, FtpSettings};
 use std::fmt::Write as FmtWrite;
+use std::vec::IntoIter;
 
 pub fn make_passive_proxy_stream(
     ftp_settings: &FtpSettings,
     proxy_settings: &Option<FtpProxySettings>,
     addr: SocketAddr) -> Result<TcpStream, FtpError> {
 
-    let redirect = match ftp_settings.advanced_resolve{
+    let redirect = match ftp_settings.advanced_resolve {
         true => {
-            if proxy_settings.is_some() || addr.ip().is_loopback() {
+            if proxy_settings.is_some() || addr.ip().is_loopback()   {
                 Some(&ftp_settings.domain)
-            }else { None }
-        },
-        false => None
+            } else {
+                None
+            }
+        }
+        false => None,
     };
 
-    let corrected_addr = if redirect.is_some() {
-        match redirect.unwrap().parse::<std::net::IpAddr>() {
-            Ok(ftp_ip) => {
-                SocketAddr::new(ftp_ip, addr.port())
-            },
+    let corrected_addr = if let Some(domain) = redirect {
+
+        match get_socket_addr(domain, addr.port()) {
+            Ok(mut addrs) => addrs.next().unwrap_or(addr),
             Err(_) => addr,
         }
     } else {
@@ -188,6 +190,11 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
     Err("Unexpected proxy connection loop exit".to_string())
 }
 
+
+fn get_socket_addr(host: &str, port: u16) -> Result<IntoIter<SocketAddr>, String> {
+    let host_and_port = format!("{}:{}", host, port);
+    host_and_port.to_socket_addrs().map_err(|e| e.to_string())
+}
 
 fn connect_direct(addr: (&str, u16)) -> Result<TcpStream, String> {
     let target_addr = format!("{}:{}", addr.0, addr.1);
