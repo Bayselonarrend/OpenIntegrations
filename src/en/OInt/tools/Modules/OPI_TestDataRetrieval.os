@@ -327,9 +327,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "OAI_FileManagement"                   , "Files management"                , OpenAI);
     NewTest(TestTable, "OAI_AudioProcessing"                  , "Audio processing"                , OpenAI);
     NewTest(TestTable, "OAI_ModelsManagement"                 , "Models management"               , OpenAI);
-    NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
     NewTest(TestTable, "FT_DirecotryManagement"               , "Directory management"            , FTP);
     NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
+    NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
 
     Return TestTable;
 

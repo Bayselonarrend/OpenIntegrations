@@ -1,33 +1,30 @@
 ﻿---
-sidebar_position: 7
-description: Is connector  and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_position: 3
+description: Save file and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Is connector 
- Checks that the value is an AddIn object for working with FTP
+# Save file
+ Saves the file from the server to the specified path
 
 
 
-`Function IsConnector(Val Value) Export`
+`Function SaveFile(Val Connection, Val Path, Val FileName) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Value | - | Arbitrary | &#x2714; | Value to check |
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+  | Path | --path | String | &#x2714; | Path to file on server |
+  | FileName | --file | String | &#x2714; | Path to save file on disk |
 
   
-  Returns:  Boolean - Is connector
+  Returns:  Map Of KeyAndValue - Processing result
 
 <br/>
 
-
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
-<br/>
 
 
 
@@ -64,7 +61,16 @@ import TabItem from '@theme/TabItem';
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    Result = OPI_FTP.IsConnector(Connection);
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Path     = "new_dir/big.bin";
+        FileName = GetTempFileName("bin");
+
+        Result = OPI_FTP.SaveFile(Connection, Path, FileName);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
 ```
  
 
