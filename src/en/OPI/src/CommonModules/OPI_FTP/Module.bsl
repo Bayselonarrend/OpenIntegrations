@@ -194,6 +194,43 @@ Function GetObjectSize(Val Connection, Val Path) Export
 
 EndFunction
 
+// Rename object
+// Changes the object's path to the specified one
+//
+// Note
+// The ability to move an object from one directory to another using renaming depends on the server settings
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Current path to object - old
+// NewPath - String - New path to object - new
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function RenameObject(Val Connection, Val Path, Val NewPath) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        OPI_TypeConversion.GetLine(NewPath);
+
+        Result = Connection.RenameObject(Path, NewPath);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 // Is connector !NOCLI
 // Checks that the value is an AddIn object for working with FTP
 //
@@ -532,6 +569,40 @@ Function DeleteFile(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.RemoveFile(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Save file
+// Saves the file from the server to the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+// FileName - String - Path to save file on disk - file
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function SaveFile(Val Connection, Val Path, Val FileName) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        OPI_TypeConversion.GetLine(FileName);
+
+        Result = Connection.DownloadToFile(Path, FileName);
         Result = OPI_Tools.JsonToStructure(Result);
 
     EndIf;

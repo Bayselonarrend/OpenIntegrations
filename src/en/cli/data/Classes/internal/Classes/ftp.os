@@ -83,6 +83,37 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "RenameObject";
+    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Changes the object's path to the specified one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "RenameObject";
+    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Parameter    = "--old";
+    NewLine.Description    = "Current path to object";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "RenameObject";
+    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Parameter    = "--new";
+    NewLine.Description    = "New path to object";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "GetConnectionSettings";
     NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
     NewLine.Parameter    = "--host";
@@ -376,6 +407,37 @@ Function GetComposition() Export
     NewLine.SearchMethod = "DELETEFILE";
     NewLine.Parameter    = "--path";
     NewLine.Description    = "Path to save file on server";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Saves the file from the server to the specified path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to file on server";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "Path to save file on disk";
     NewLine.Region     = "File management";
 
     Return CompositionTable;
