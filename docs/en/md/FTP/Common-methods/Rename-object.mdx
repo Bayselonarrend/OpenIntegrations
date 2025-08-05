@@ -1,31 +1,32 @@
 ﻿---
-sidebar_position: 7
-description: Is connector  and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_position: 6
+description: Rename object and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Is connector 
- Checks that the value is an AddIn object for working with FTP
+# Rename object
+ Changes the object's path to the specified one
 
 
 
-`Function IsConnector(Val Value) Export`
+`Function RenameObject(Val Connection, Val Path, Val NewPath) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Value | - | Arbitrary | &#x2714; | Value to check |
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+  | Path | --old | String | &#x2714; | Current path to object |
+  | NewPath | --new | String | &#x2714; | New path to object |
 
   
-  Returns:  Boolean - Is connector
+  Returns:  Map Of KeyAndValue - Processing result
 
 <br/>
 
-
-:::caution
-**NOCLI:** this method is not available in CLI version
+:::tip
+The ability to move an object from one directory to another using renaming depends on the server settings
 :::
 <br/>
 
@@ -64,7 +65,11 @@ import TabItem from '@theme/TabItem';
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    Result = OPI_FTP.IsConnector(Connection);
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.RenameObject(Connection, "new_dir/big.bin", "new_dir/giant.bin");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
 ```
  
 
