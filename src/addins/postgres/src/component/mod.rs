@@ -16,12 +16,13 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
     name!("Execute"),
-    name!("SetTLS")
+    name!("SetTLS"),
 
 ];
 
 // Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
+
     match num {
         0 => 0,
         1 => 0,
