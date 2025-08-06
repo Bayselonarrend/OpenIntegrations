@@ -1,18 +1,18 @@
 ﻿---
 sidebar_position: 6
-description: Rename object and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Update path and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Rename object
+# Update path
  Changes the object's path to the specified one
 
 
 
-`Function RenameObject(Val Connection, Val Path, Val NewPath) Export`
+`Function UpdatePath(Val Connection, Val Path, Val NewPath) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -66,7 +66,7 @@ The ability to move an object from one directory to another using renaming depen
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.RenameObject(Connection, "new_dir/big.bin", "new_dir/giant.bin");
+        Result = OPI_FTP.UpdatePath(Connection, "new_dir/big.bin", "new_dir/giant.bin");
     Else
         Result = Connection; // Error of connection
     EndIf;
