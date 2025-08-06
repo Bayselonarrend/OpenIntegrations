@@ -2889,6 +2889,7 @@ Procedure FT_FileOperations() Export
 
         FTP_UploadFile(TestParameters);
         FTP_SaveFile(TestParameters);
+        FTP_GetFileData(TestParameters);
         FTP_DeleteFile(TestParameters);
 
     EndDo
@@ -2910,7 +2911,7 @@ Procedure FT_CommonMethods() Export
         FTP_GetProxySettings(TestParameters);
         FTP_GetTlsSettings(TestParameters);
         FTP_GetObjectSize(TestParameters);
-        FTP_RenameObject(TestParameters);
+        FTP_UpdatePath(TestParameters);
 
     EndDo;
 
@@ -25595,7 +25596,7 @@ Procedure FTP_GetObjectSize(FunctionParameters)
 
 EndProcedure
 
-Procedure FTP_RenameObject(FunctionParameters)
+Procedure FTP_UpdatePath(FunctionParameters)
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -25633,7 +25634,7 @@ Procedure FTP_RenameObject(FunctionParameters)
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.RenameObject(Connection, "new_dir/big.bin", "new_dir/giant.bin");
+        Result = OPI_FTP.UpdatePath(Connection, "new_dir/big.bin", "new_dir/giant.bin");
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -25642,45 +25643,45 @@ Procedure FTP_RenameObject(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"];
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Result = OPI_FTP.GetObjectSize(Connection, "new_dir/giant.bin");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (check, new)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (check, new)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (check, old)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (check, old)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
-    Result = OPI_FTP.RenameObject(Connection, "new_dir", "brand_new_dir");
+    Result = OPI_FTP.UpdatePath(Connection, "new_dir", "brand_new_dir");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (directory)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (directory)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Result = OPI_FTP.ListObjects(Connection, ".", True);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (list)", "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (list)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
     OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["path"]              , "brand_new_dir");
     OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["objects"][0]["path"], "brand_new_dir/giant.bin");
 
-    Result = OPI_FTP.RenameObject(Connection, "brand_new_dir", "new_dir");
+    Result = OPI_FTP.UpdatePath(Connection, "brand_new_dir", "new_dir");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (directory, back)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (directory, back)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
-    Result = OPI_FTP.RenameObject(Connection, "new_dir/giant.bin", "new_dir/big.bin");
+    Result = OPI_FTP.UpdatePath(Connection, "new_dir/giant.bin", "new_dir/big.bin");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (back)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (back)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Result = OPI_FTP.ListObjects(Connection, ".", True);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameObject (list, back)", "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (list, back)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
     OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["path"]              , "new_dir");
@@ -25759,6 +25760,19 @@ Procedure FTP_SaveFile(FunctionParameters)
     OPI_TestDataRetrieval.Check_Equality(FileSize, ResultSize);
     OPI_TestDataRetrieval.Check_Equality(FileSize, CheckSize);
 
+    Path = "new_dir/pic_from_disk.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_FTP.SaveFile(Connection, Path, FileName);
+
+        If Not Result["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result, "SaveFile (multiple)" + Postfix, "FTP");
+            OPI_TestDataRetrieval.Check_ResultTrue(Result);
+        EndIf;
+
+    EndDo;
+
     Try
         DeleteFiles(FileName);
     Except
@@ -25767,6 +25781,85 @@ Procedure FTP_SaveFile(FunctionParameters)
 
 EndProcedure
 
+Procedure FTP_GetFileData(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Path   = "new_dir/big.bin";
+        Result = OPI_FTP.GetFileData(Connection, Path);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileData" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_BinaryData(Result);
+
+    Size = OPI_FTP.GetObjectSize(Connection, Path);
+
+    OPI_TestDataRetrieval.WriteLog(Size, "GetFileData (size)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Size);
+
+    FileSize  = Result.Size();
+    CheckSize = Size["bytes"];
+
+    OPI_TestDataRetrieval.WriteLog(FileSize, "GetFileData (file size)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(FileSize, CheckSize);
+
+    Path = "new_dir/pic_from_disk.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_FTP.GetFileData(Connection, Path);
+
+        If Not TypeOf(Result) = Type("BinaryData") Then
+            OPI_TestDataRetrieval.WriteLog(Result, "GetFileData (multiple)" + Postfix, "FTP");
+            OPI_TestDataRetrieval.Check_BinaryData(Result);
+        EndIf;
+
+    EndDo;
+
+
+EndProcedure
 
 #EndRegion
 

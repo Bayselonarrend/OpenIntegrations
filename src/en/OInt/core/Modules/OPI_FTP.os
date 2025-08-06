@@ -194,7 +194,7 @@ Function GetObjectSize(Val Connection, Val Path) Export
 
 EndFunction
 
-// Rename object
+// Update path
 // Changes the object's path to the specified one
 //
 // Note
@@ -207,7 +207,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function RenameObject(Val Connection, Val Path, Val NewPath) Export
+Function UpdatePath(Val Connection, Val Path, Val NewPath) Export
 
     CloseConnection = CheckCreateConnection(Connection);
 
@@ -615,6 +615,43 @@ Function SaveFile(Val Connection, Val Path, Val FileName) Export
 
 EndFunction
 
+// Get file data !NOCLI
+// Gets file from server as binary data
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+//
+// Returns:
+// Map Of KeyAndValue, BinaryData - File data or error information
+Function GetFileData(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Data = Connection.DownloadToBuffer(Path);
+
+        If TypeOf(Data) = Type("String") Then
+            Result      = OPI_Tools.JsonToStructure(Data);
+        Else
+            Return Data;
+        EndIf;
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -855,8 +892,8 @@ Function ПолучитьРазмерОбъекта(Val Соединение, Va
 	Return GetObjectSize(Соединение, Путь);
 EndFunction
 
-Function ПереименоватьОбъект(Val Соединение, Val Путь, Val НовыйПуть) Export
-	Return RenameObject(Соединение, Путь, НовыйПуть);
+Function ИзменитьПуть(Val Соединение, Val Путь, Val НовыйПуть) Export
+	Return UpdatePath(Соединение, Путь, НовыйПуть);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
@@ -901,6 +938,10 @@ EndFunction
 
 Function СохранитьФайл(Val Соединение, Val Путь, Val ИмяФайла) Export
 	Return SaveFile(Соединение, Путь, ИмяФайла);
+EndFunction
+
+Function ПолучитьДанныеФайла(Val Соединение, Val Путь) Export
+	Return GetFileData(Соединение, Путь);
 EndFunction
 
 #EndRegion
