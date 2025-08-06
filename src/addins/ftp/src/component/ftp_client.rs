@@ -8,6 +8,8 @@ use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
 use std::time::{Duration, Instant};
+use base64::{encode, Engine};
+use base64::engine::general_purpose;
 use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
 use crate::component::tls_establish;
 use crate::component::tcp_establish;
@@ -223,6 +225,34 @@ impl FtpClient {
 
         match result {
             Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    pub fn execute_custom_command(&mut self, command: &str) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.site(command),
+            FtpClient::Insecure(stream) => stream.site(command),
+        };
+
+        match result {
+            Ok(r) => {
+                let code = r.status.code();
+                let body = r.body;
+
+                let body_json = match String::from_utf8(body) {
+                    Ok(text) => {
+                        json!(text)
+                    }
+                    Err(original_bytes) => {
+                        let base64 = general_purpose::STANDARD.encode(&original_bytes.into_bytes());
+                        json!({ "BYTES": base64 })
+                    }
+                };
+
+                json!({"result": true, "data": body_json, "status": code}).to_string()
+            },
             Err(e) => format_json_error(&e.to_string())
         }
     }
