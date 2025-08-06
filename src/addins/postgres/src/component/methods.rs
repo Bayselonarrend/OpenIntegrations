@@ -4,8 +4,6 @@ use base64::{engine::general_purpose, Engine as _};
 use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
-use std::panic;
-use std::panic::AssertUnwindSafe;
 use chrono::{NaiveDate, NaiveTime, FixedOffset, NaiveDateTime, DateTime};
 use uuid::Uuid;
 use dateparser::parse;
@@ -16,58 +14,43 @@ pub fn execute_query(
     params_json: String,
     force_result: bool,
 ) -> String {
-    let result = panic::catch_unwind(AssertUnwindSafe(|| {
 
-        let client_arc = match add_in.get_connection() {
-            Some(c) => c,
-            None => return format_json_error("No connection initialized"),
-        };
+    let client_arc = match add_in.get_connection() {
+        Some(c) => c,
+        None => return format_json_error("No connection initialized"),
+    };
 
-        let mut client = match client_arc.lock() {
-            Ok(c) => c,
-            Err(_) => return format_json_error("Cannot acquire client lock"),
-        };
+    let mut client = match client_arc.lock(){
+        Ok(c) => c,
+        Err(_) => return format_json_error("Cannot acquire client lock"),
+    };
 
-        let params: Vec<Value> = match serde_json::from_str(&params_json) {
-            Ok(params) => params,
-            Err(e) => return format_json_error(&e.to_string()),
-        };
+    // Парсинг JSON параметров
+    let params: Vec<Value> = match serde_json::from_str(&params_json) {
+        Ok(params) => params,
+        Err(e) => return format_json_error(&e.to_string()),
+    };
 
-        let params_ref = match process_params(&params) {
-            Ok(params) => params,
-            Err(e) => return format_json_error(&e.to_string()),
-        };
+    let params_ref = match process_params(&params){
+        Ok(params) => params,
+        Err(e) => return format_json_error(&e.to_string()),
+    };
 
-        let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
+    let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
 
-        if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
-            match client.query(&query, &params_unboxed) {
-                Ok(rows) => rows_to_json(rows),
-                Err(e) => format_json_error(&e.to_string()),
+    if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
+        match client.query(&query, &params_unboxed) {
+            Ok(rows) => {
+                rows_to_json(rows)
             }
-        } else {
-            match client.execute(&query, &params_unboxed.as_slice()) {
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e.to_string()),
-            }
+            Err(e) => format_json_error(&e.to_string()),
         }
-    }));
-
-    result.unwrap_or_else(|payload| {
-        let message = match payload.downcast_ref::<&str>() {
-            Some(s) => *s,
-            None => match payload.downcast_ref::<String>() {
-                Some(s) => &s[..],
-                None => "Unknown panic (non-string payload)",
-            },
-        };
-
-        let backtrace = std::backtrace::Backtrace::capture();
-
-        let panic_info = format!("Panic: {}\nBacktrace:\n{}", message, backtrace);
-
-        format_json_error(&panic_info)
-    })
+    } else {
+        match client.execute(&query, &params_unboxed.as_slice()) {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string()),
+        }
+    }
 }
 
 /// Конвертирует JSON-параметры в Postgres-совместимые типы
