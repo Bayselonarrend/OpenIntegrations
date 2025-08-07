@@ -8,7 +8,7 @@ use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
 use std::time::{Duration, Instant};
-use base64::{encode, Engine};
+use base64::Engine;
 use base64::engine::general_purpose;
 use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
 use crate::component::tls_establish;
@@ -266,7 +266,7 @@ impl FtpClient {
 
         match result {
             Ok(_) => true,
-            Err(e) => false
+            Err(_) => false
         }
 
     }
