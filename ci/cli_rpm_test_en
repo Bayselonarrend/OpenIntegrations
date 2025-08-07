@@ -203,13 +203,13 @@ pipeline {
 		stage('Testing-FTP') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_FT_CommonMethods"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_FT_DirecotryManagement"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_FT_FileOperations"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_FT_CommonMethods"')
 			}
 			}
 		}
