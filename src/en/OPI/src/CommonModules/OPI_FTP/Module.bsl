@@ -380,7 +380,12 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 
     Path = ?(Path = ".", "", Path);
 
+    Message("A: " + Path);
+
     Result = Connection.ListDirectory(Path);
+
+    Message("B: " + Result);
+
     Result = OPI_Tools.JsonToStructure(Result);
 
     If Result["result"] Then
@@ -397,6 +402,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
                 ObjectPath = ObjectName;
             EndIf;
 
+            Message("C: " + ObjectPath);
             Object.Insert("path", ObjectPath);
 
             If Recursively Then
