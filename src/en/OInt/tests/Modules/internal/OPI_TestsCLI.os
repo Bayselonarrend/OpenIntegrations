@@ -2778,7 +2778,7 @@ Procedure CLI_FT_CommonMethods() Export
         CLI_FTP_GetProxySettings(TestParameters);
         CLI_FTP_GetTlsSettings(TestParameters);
         CLI_FTP_GetObjectSize(TestParameters);
-        CLI_FTP_RenameObject(TestParameters);
+        CLI_FTP_UpdatePath(TestParameters);
 
         OPI_Tools.Pause(5);
 
@@ -27261,7 +27261,7 @@ Procedure CLI_FTP_GetObjectSize(FunctionParameters)
 
 EndProcedure
 
-Procedure CLI_FTP_RenameObject(FunctionParameters)
+Procedure CLI_FTP_UpdatePath(FunctionParameters)
 
     Domain   = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -27328,11 +27328,11 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
     Options.Insert("old" , "new_dir/big.bin");
     Options.Insert("new" , "new_dir/giant.bin");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "RenameObject", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
     Postfix = FunctionParameters["Postfix"];
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Options.Insert("conn", Connection);
@@ -27340,7 +27340,7 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (check, new)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (check, new)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Options.Insert("conn", Connection);
@@ -27348,16 +27348,16 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (check, old)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (check, old)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
     Options.Insert("conn", Connection);
     Options.Insert("old" , "new_dir");
     Options.Insert("new" , "brand_new_dir");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "RenameObject", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (directory)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (directory)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Options.Insert("conn", Connection);
@@ -27366,7 +27366,7 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (list)", "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (list)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
     OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["path"]              , "brand_new_dir");
@@ -27376,18 +27376,18 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
     Options.Insert("new" , "new_dir");
     Options.Insert("old" , "brand_new_dir");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "RenameObject", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (directory, back)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (directory, back)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Options.Insert("conn", Connection);
     Options.Insert("new" , "new_dir/big.bin");
     Options.Insert("old" , "new_dir/giant.bin");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "RenameObject", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (back)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (back)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Options.Insert("conn", Connection);
@@ -27396,7 +27396,7 @@ Procedure CLI_FTP_RenameObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameObject (list, back)", "FTP");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdatePath (list, back)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
     OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["path"]              , "new_dir");
