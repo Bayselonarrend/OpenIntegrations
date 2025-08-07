@@ -5,7 +5,6 @@ use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
 use suppaftp::FtpError;
 use crate::component::configuration::{FtpProxySettings, FtpSettings};
-use std::fmt::Write as FmtWrite;
 use std::vec::IntoIter;
 
 pub fn make_passive_proxy_stream(
@@ -125,30 +124,35 @@ fn connect_via_socks4(proxy_settings: &FtpProxySettings, target_addr: (&str, u16
         .map_err(|e| format!("SOCKS4 error: {}", e))
 }
 
-pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
+pub fn connect_via_http_proxy(
+    proxy_settings: &FtpProxySettings,
+    target_addr: (&str, u16),
+) -> Result<TcpStream, String> {
     let proxy_addr = format!("{}:{}", proxy_settings.server, proxy_settings.port);
     let max_retries = 5;
+    let connect_timeout = Duration::from_secs(10);
 
     for attempt in 1..=max_retries {
-        let mut stream = TcpStream::connect(
-            proxy_addr.to_socket_addrs()
+        let mut stream = TcpStream::connect_timeout(
+            &proxy_addr.to_socket_addrs()
                 .map_err(|e| format!("Failed to resolve proxy address: {}", e))?
                 .next()
-                .ok_or_else(|| "Proxy address resolution returned no results".to_string())?
+                .ok_or_else(|| "Proxy address resolution returned no results".to_string())?,
+            connect_timeout,
         ).map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
 
-        stream.set_read_timeout(Some(Duration::from_secs(20))).ok();
-        stream.set_write_timeout(Some(Duration::from_secs(20))).ok();
+        stream.set_read_timeout(Some(Duration::from_secs(5))).map_err(|e| format!("Failed to set read timeout: {}", e))?;
+        stream.set_write_timeout(Some(Duration::from_secs(5))).map_err(|e| format!("Failed to set write timeout: {}", e))?;
 
         let host_port = format!("{}:{}", target_addr.0, target_addr.1);
         let mut request = format!(
-            "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
+            "CONNECT {} HTTP/1.1\r\nHost: {}\r\n",
             host_port, host_port
         );
 
         if let (Some(user), Some(pass)) = (&proxy_settings.login, &proxy_settings.password) {
             let auth = general_purpose::STANDARD.encode(format!("{}:{}", user, pass));
-            write!(request, "Proxy-Authorization: Basic {}\r\n", auth).unwrap();
+            request.push_str(&format!("Proxy-Authorization: Basic {}\r\n", auth));
         }
         request.push_str("\r\n");
 
@@ -156,38 +160,59 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
             .map_err(|e| format!("Failed to send CONNECT request: {}", e))?;
 
         let mut buf = [0u8; 4096];
-        let n = stream.read(&mut buf)
-            .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+        let mut total_read = 0;
+        let mut response_code = None;
 
-        let mut headers = [httparse::EMPTY_HEADER; 16];
-        let mut response = httparse::Response::new(&mut headers);
-        match response.parse(&buf[..n]) {
-            Ok(httparse::Status::Complete(_)) => {},
-            Ok(httparse::Status::Partial) => return Err("Incomplete proxy response".to_string()),
-            Err(e) => return Err(format!("Failed to parse proxy response: {:?}", e)),
+        // Read until we get complete headers or buffer is full
+        while total_read < buf.len() && response_code.is_none() {
+            let n = stream.read(&mut buf[total_read..])
+                .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+
+            if n == 0 {
+                return Err("Proxy closed connection prematurely".to_string());
+            }
+
+            total_read += n;
+
+            // Parse HTTP response
+            let mut headers = [httparse::EMPTY_HEADER; 16];
+            let mut resp = httparse::Response::new(&mut headers);
+            match resp.parse(&buf[..total_read]) {
+                Ok(httparse::Status::Complete(parsed_len)) => {
+                    response_code = resp.code;
+                    // Consume any additional data in the buffer
+                    if total_read > parsed_len {
+                        // TODO: Handle any additional data if needed
+                    }
+                }
+                Ok(httparse::Status::Partial) => continue, // Need more data
+                Err(e) => return Err(format!("Failed to parse proxy response: {:?}", e)),
+            }
         }
 
-        let code = response.code.ok_or_else(|| "Missing HTTP status code in proxy response".to_string())?;
+        let code = response_code.ok_or_else(|| "Failed to parse HTTP status code".to_string())?;
+
         match code {
             200 => return Ok(stream),
             407 => return Err("Proxy authentication required (HTTP 407)".to_string()),
-            500 => {
+            500..=599 => {
                 if attempt < max_retries {
-                    std::thread::sleep(Duration::from_millis(200));
+                    std::thread::sleep(Duration::from_millis(200 * attempt));
                     continue;
                 } else {
-                    let resp_str = String::from_utf8_lossy(&buf[..n]);
-                    return Err(format!("Proxy error: HTTP 500 after {} retries\nFull response:\n{}", max_retries, resp_str));
+                    let resp_str = String::from_utf8_lossy(&buf[..total_read]);
+                    return Err(format!("Proxy error: HTTP {} after {} retries\nFull response:\n{}",
+                                       code, max_retries, resp_str));
                 }
             }
             _ => {
-                let resp_str = String::from_utf8_lossy(&buf[..n]);
+                let resp_str = String::from_utf8_lossy(&buf[..total_read]);
                 return Err(format!("Proxy error: HTTP {}\nFull response:\n{}", code, resp_str));
             }
         }
     }
 
-    Err("Unexpected proxy connection loop exit".to_string())
+    Err(format!("Failed to connect via proxy after {} attempts", max_retries))
 }
 
 
