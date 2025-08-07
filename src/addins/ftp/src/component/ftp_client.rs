@@ -257,6 +257,20 @@ impl FtpClient {
         }
     }
 
+    pub fn ping(&mut self) -> bool {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.noop(),
+            FtpClient::Insecure(stream) => stream.noop(),
+        };
+
+        match result {
+            Ok(_) => true,
+            Err(e) => false
+        }
+
+    }
+
     fn upload_from_reader<R: Read>(
         &mut self,
         path: &str,
