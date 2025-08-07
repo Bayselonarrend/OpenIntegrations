@@ -37,6 +37,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("RenameObject"),
     name!("DownloadToFile"),
     name!("DownloadToBuffer"),
+    name!("Ping"),
 ];
 
 // Число параметров функций компоненты
@@ -60,6 +61,7 @@ pub fn get_params_amount(num: usize) -> usize {
         15 => 2,
         16 => 2,
         17 => 1,
+        18 => 0,
         _ => 0,
     }
 }
@@ -204,6 +206,12 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Err(e) => Box::new(e.to_string())
             }
         },
+        18 => {
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.ping(),
+                Err(_) => false
+            })
+        }
         _ => Box::new(false), // Неверный номер команды
     };
 
