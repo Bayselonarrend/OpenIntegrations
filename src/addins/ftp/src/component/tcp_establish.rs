@@ -137,6 +137,9 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
                 .ok_or_else(|| "Proxy address resolution returned no results".to_string())?
         ).map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
 
+        stream.set_read_timeout(Some(Duration::from_secs(20))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(20))).ok();
+
         let host_port = format!("{}:{}", target_addr.0, target_addr.1);
         let mut request = format!(
             "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
