@@ -142,7 +142,7 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
 
         let host_port = format!("{}:{}", target_addr.0, target_addr.1);
         let mut request = format!(
-            "CONNECT {} HTTP/1.1\r\nHost: {}\r\n\r\n",
+            "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
             host_port, host_port
         );
 
