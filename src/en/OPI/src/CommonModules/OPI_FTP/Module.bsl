@@ -194,7 +194,7 @@ Function GetObjectSize(Val Connection, Val Path) Export
 
 EndFunction
 
-// Rename object
+// Update path
 // Changes the object's path to the specified one
 //
 // Note
@@ -207,7 +207,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function RenameObject(Val Connection, Val Path, Val NewPath) Export
+Function UpdatePath(Val Connection, Val Path, Val NewPath) Export
 
     CloseConnection = CheckCreateConnection(Connection);
 
@@ -604,6 +604,43 @@ Function SaveFile(Val Connection, Val Path, Val FileName) Export
 
         Result = Connection.DownloadToFile(Path, FileName);
         Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get file data !NOCLI
+// Gets file from server as binary data
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+//
+// Returns:
+// Map Of KeyAndValue, BinaryData - File data or error information
+Function GetFileData(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Data = Connection.DownloadToBuffer(Path);
+
+        If TypeOf(Data) = Type("String") Then
+            Result      = OPI_Tools.JsonToStructure(Data);
+        Else
+            Return Data;
+        EndIf;
 
     EndIf;
 

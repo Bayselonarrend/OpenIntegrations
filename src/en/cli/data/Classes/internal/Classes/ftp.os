@@ -83,8 +83,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "RenameObject";
-    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
     NewLine.Parameter    = "--conn";
     NewLine.Description    = "Existing connection or connection configuration";
     NewLine.Region     = "Common methods";
@@ -94,8 +94,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "RenameObject";
-    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
     NewLine.Parameter    = "--old";
     NewLine.Description    = "Current path to object";
     NewLine.Region     = "Common methods";
@@ -104,8 +104,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "RenameObject";
-    NewLine.SearchMethod = "RENAMEOBJECT";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
     NewLine.Parameter    = "--new";
     NewLine.Description    = "New path to object";
     NewLine.Region     = "Common methods";
