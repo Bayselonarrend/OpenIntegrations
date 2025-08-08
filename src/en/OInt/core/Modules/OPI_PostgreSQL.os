@@ -145,14 +145,6 @@ Function ExecuteSQLQuery(Val QueryText
     , Val Connection = ""
     , Val Tls = "") Export
 
-    OPI_TypeConversion.GetLine(QueryText, True);
-    OPI_TypeConversion.GetBoolean(ForceResult);
-
-    Parameters_ = ProcessParameters(Parameters);
-
-    QueryText   = GetBinaryDataFromString(QueryText);
-    Parameters_ = GetBinaryDataFromString(Parameters_);
-
     If IsConnector(Connection) Then
         CloseConnection = False;
         Connector       = Connection;
@@ -165,14 +157,15 @@ Function ExecuteSQLQuery(Val QueryText
         Return Connector;
     EndIf;
 
-    Result = Connector.Execute(QueryText, Parameters_, ForceResult);
-    Result = GetStringFromBinaryData(Result);
+    OPI_TypeConversion.GetLine(QueryText, True);
+    OPI_TypeConversion.GetBoolean(ForceResult);
+
+    Parameters_ = ProcessParameters(Parameters);
+    Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
 
     If CloseConnection Then
         CloseConnection(Connector);
     EndIf;
-
-    Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
 
@@ -575,32 +568,33 @@ EndFunction
 Function ProcessParameters(Val Parameters)
 
     If Not ValueIsFilled(Parameters) Then
-        Return "[]";
+        Return New Array;
     EndIf;
 
+    Parameters_ = New Array;
     OPI_TypeConversion.GetArray(Parameters);
 
-    For N = 0 To Parameters.UBound() Do
+    Counter = 0;
+    For Each Parameter In Parameters Do
 
-        CurrentParameter = Parameters[N];
+        CurrentParameter = ProcessParameter(Parameter);
+        CurrentParameter = OPI_Tools.JSONString(CurrentParameter, , False);
 
-        CurrentParameter = ProcessParameter(CurrentParameter);
+        If StrStartsWith(CurrentParameter, "NOT JSON") Then
+            Raise StrTemplate("JSON validation error for parameter. Array position %1", Counter);
+        Else
+            Parameters_.Add(CurrentParameter);
+        EndIf;
 
-        Parameters[N] = CurrentParameter;
+        Counter = Counter + 1;
 
     EndDo;
-
-    Parameters_ = OPI_Tools.JSONString(Parameters, , False);
-
-    If StrStartsWith(Parameters_, "NOT JSON") Then
-        Raise "JSON parameter array validation error!";
-    EndIf;
 
     Return Parameters_;
 
 EndFunction
 
-Function ProcessParameter(CurrentParameter)
+Function ProcessParameter(CurrentParameter, Embedded = False)
 
     CurrentType = TypeOf(CurrentParameter);
 
@@ -611,10 +605,12 @@ Function ProcessParameter(CurrentParameter)
     ElsIf CurrentType = Type("UUID") Then
 
         CurrentParameter = String(CurrentParameter);
+        CurrentParameter = ?(Embedded, CurrentParameter, New Structure("UUID", CurrentParameter));
 
     ElsIf CurrentType = Type("Date") Then
 
         CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
+        CurrentParameter = ?(Embedded, CurrentParameter, New Structure("TIMESTAMP", CurrentParameter));
 
     ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
 
@@ -634,14 +630,17 @@ Function ProcessParameter(CurrentParameter)
                 Continue;
             EndIf;
 
-            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue);
+            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue, True);
 
         EndDo;
 
     Else
 
         If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
+
             OPI_TypeConversion.GetLine(CurrentParameter);
+            CurrentParameter = ?(Embedded, CurrentParameter, New Structure("VARCHAR", CurrentParameter));
+
         EndIf;
 
     EndIf;
