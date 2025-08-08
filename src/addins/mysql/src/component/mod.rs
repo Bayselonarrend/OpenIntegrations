@@ -1,11 +1,12 @@
 mod methods;
+mod dataset;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
 use mysql::*;
 use std::path::PathBuf;
-
+use crate::component::dataset::Datasets;
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -13,7 +14,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
     name!("Execute"),
-    name!("SetTLS")
+    name!("SetTLS"),
+    name!("GetQueryResultRow"),
+    name!("GetQueryResultLength"),
+    name!("RemoveQuery"),
+    name!("InitQuery"),
+    name!("AddQueryParam"),
 
 ];
 
@@ -22,8 +28,13 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
-        2 => 3,
+        2 => 1,
         3 => 3,
+        4 => 2,
+        5 => 1,
+        6 => 1,
+        7 => 2,
+        8 => 2,
         _ => 0,
     }
 }
@@ -38,24 +49,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         1 => Box::new(obj.close_connection()),
         2 => {
 
-            let query = params[0].get_string().unwrap_or("".to_string());
-            let params_json = params[1].get_string().unwrap_or("".to_string());
-            let force_result = params[2].get_bool().unwrap_or(false);
+            let key = params[0].get_string().unwrap_or("".to_string());
+            Box::new(methods::execute_query(obj, &key))
 
-            match obj.get_connection(){
-                Ok(mut conn) => {
-
-                    let result = Box::new(methods::execute_query(&mut conn, query, params_json, force_result));
-
-                    match conn.as_mut().ping(){
-                        Ok(_) => obj.connection = Some(conn),
-                        Err(_) => drop(conn)
-                    }
-
-                    result
-                },
-                Err(e) => Box::new(e),
-            }
         },
         3 => {
 
@@ -64,6 +60,41 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
 
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+
+        },
+        4 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            let index = params[1].get_i32().unwrap_or(0);
+
+            Box::new(obj.datasets.get_row(&key, index as usize).unwrap_or_else(|| "".to_string()))
+        },
+        5 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+
+            match obj.datasets.len(&key){
+                Some(len) => Box::new(len as i32),
+                None => Box::new(json!(
+                    {"result": false, "error": format!("Dataset {} not found", key)}
+                ).to_string()),
+            }
+        },
+        6 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            obj.datasets.remove(&key);
+            Box::new(json!({"result": true}).to_string())
+        },
+        7 => {
+
+            let text = params[0].get_string().unwrap_or("".to_string());
+            let force = params[1].get_bool().unwrap_or(false);
+
+            Box::new(methods::init_query(obj, &text, force))
+        },
+        8 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            let param = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(methods::add_query_param(obj, &key, param))
 
         }
         _ => Box::new(false), // Неверный номер команды
@@ -88,6 +119,7 @@ pub struct AddIn {
     use_tls: bool,
     accept_invalid_certs: bool,
     ca_cert_path: String,
+    datasets: Datasets,
 }
 
 impl AddIn {
@@ -100,6 +132,7 @@ impl AddIn {
             use_tls: false,
             accept_invalid_certs: false,
             ca_cert_path: String::new(),
+            datasets: Datasets::new(),
         }
     }
 

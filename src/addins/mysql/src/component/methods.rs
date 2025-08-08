@@ -1,56 +1,91 @@
 use serde_json::{Value, json};
-use crate::component::format_json_error;
+use crate::component::{format_json_error, AddIn};
 use base64::{engine::general_purpose, Engine as _};
 use mysql::prelude::Queryable;
 use std::collections::HashMap;
 use chrono::*;
-use mysql::PooledConn;
 use mysql_common::packets::Column;
 use dateparser::parse;
 
+pub fn init_query(add_in: &mut AddIn, text: &str, force_result: bool) -> String {
+
+    let key = add_in.datasets.init_query();
+    add_in.datasets.set_text(&key, text);
+    add_in.datasets.set_force_result(&key, force_result);
+
+    key
+}
+
+pub fn add_query_param(add_in: &mut AddIn, key: &str, param: String) -> String {
+
+    let value: Value = match serde_json::from_str(&param) {
+        Ok(param) => param,
+        Err(e) => return format_json_error(&e.to_string()),
+    };
+
+    add_in.datasets.add_param(key, value);
+    json!({"result": true}).to_string()
+
+}
+
 pub fn execute_query(
-    conn: &mut PooledConn,
-    query: String,
-    params_json: String,
-    force_result: bool
+    add_in: &mut AddIn,
+    key: &str
 ) -> String {
 
-    // Парсинг JSON параметров
-    let mut parsed_params: Value = match serde_json::from_str(&params_json) {
-        Ok(params) => params,
-        Err(e) => return format_json_error(e)
+    let mut conn = match add_in.get_connection(){
+        Ok(conn) => conn,
+        Err(e) => return format_json_error(e.to_string()),
     };
 
-    let params_array = match parsed_params.as_array_mut() {
-        Some(array) => process_mysql_params(array),
-        None => return format_json_error("Parameters must be a JSON array")
+    let query = match add_in.datasets.get_query(key){
+        Some(q) => q,
+        None => return format_json_error(format!("No query found by key: {}", key).as_str()),
     };
 
-    // Определяем тип запроса
-    if query.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
+    let mut params = query.params;
+    let text = query.text;
+    let force_result = query.force_result;
 
-        let mut rows: Vec<mysql::Row> = match conn.exec(query, params_array){
+    let params_array = process_mysql_params(&mut params);
+
+    let result = if text.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
+
+        let mut rows: Vec<mysql::Row> = match conn.exec(text, params_array){
             Ok(rows) => rows,
             Err(e) => return format_json_error(e)
         };
 
-        rows_to_json_array(&mut rows)
+        match rows_to_json_array(&mut rows){
+            Ok(json) => {
+                add_in.datasets.set_results(&key, json);
+                json!({"result": true, "data": true}).to_string()
+            },
+            Err(e) => return format_json_error(e)
+        }
 
     } else {
 
         let exec_result = match params_array.len() == 0 {
-            true => conn.query_drop(query),
-            false => conn.exec_drop(query, params_array)
+            true => conn.query_drop(text),
+            false => conn.exec_drop(text, params_array)
         };
 
         match exec_result{
-            Ok(_) => json!({"result": true}).to_string(),
+            Ok(_) => json!({"result": true, "data": false}).to_string(),
             Err(e) => format_json_error(e)
         }
-    }
+    };
+
+    match conn.as_mut().ping(){
+        Ok(_) => add_in.connection = Some(conn),
+        Err(_) => drop(conn)
+    };
+
+    result
 }
 
-fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
+fn rows_to_json_array(rows: &mut Vec<mysql::Row>) ->  Result<Vec<Value>, String> {
 
     let mut json_array = Vec::new();
 
@@ -72,12 +107,13 @@ fn rows_to_json_array(rows: &mut Vec<mysql::Row>) -> String {
         }
         match serde_json::to_value(json_obj){
             Ok(json) => json_array.push(json),
-            Err(e) => return format_json_error(e)
+            Err(e) => return Err(e.to_string())
         }
 
     }
 
-    json!({ "result": true, "data": json_array }).to_string()
+    Ok(json_array)
+
 }
 
 fn from_sql_to_json(value: mysql::Value, column: &Column) -> Value {
