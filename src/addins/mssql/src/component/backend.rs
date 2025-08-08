@@ -29,9 +29,9 @@ enum BackendCommand {
     },
     Execute {
         query: String,
-        params_json: String,
+        params_json: Vec<Value>,
         force_result: bool,
-        response: Sender<String>,
+        response: Sender<Result<Option<Vec<Value>>, String>>,
     },
     Shutdown,
 }
@@ -95,10 +95,10 @@ impl MSSQLBackend {
                     BackendCommand::Execute { query, params_json, force_result, response } => {
                         let result = if let Some(client) = &mut client {
                             rt.block_on(async {
-                                Self::execute_query_internal(client, &query, &params_json, force_result).await
+                                Self::execute_query_internal(client, &query, params_json, force_result).await
                             })
                         } else {
-                            json!({"result": false, "error": "Not connected"}).to_string()
+                            Err("Not connected".to_string())
                         };
 
                         let _ = response.send(result);
@@ -116,6 +116,7 @@ impl MSSQLBackend {
     }
 
     pub fn connect(&self, conn_str: String, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: String) -> String {
+
         let (response_tx, response_rx) = mpsc::channel();
         let sending = self.tx.send(BackendCommand::Connect {
             conn_str,
@@ -133,9 +134,9 @@ impl MSSQLBackend {
         response_rx.recv().unwrap_or_else(|e| format!("Response receiver error: {}", e.to_string()))
     }
 
-    pub fn execute_query(&self, query: String, params_json: String, force_result: bool) -> String {
+    pub fn execute_query(&self, query: String, params_json: Vec<Value>, force_result: bool) -> Result<Option<Vec<Value>>, String> {
 
-        let (response_tx, response_rx) = mpsc::channel();
+        let (response_tx, response_rx) = mpsc::channel::<Result<Option<Vec<Value>>, String>>();
 
         let sending = self.tx.send(BackendCommand::Execute {
             query,
@@ -144,30 +145,30 @@ impl MSSQLBackend {
             response: response_tx,
         });
 
-        match sending{
-            Err(e) => {return format!("Sending error: {}", e.to_string())}
+        match sending {
+            Err(e) => {
+                let error = format!("Sending error: {}", e.to_string());
+                return Err(error)
+            }
             _ => {}
-        };
+        }
 
-        response_rx.recv().unwrap_or_else(|e| format!("Response receiver error: {}", e.to_string()))
+        response_rx.recv().unwrap_or_else(|e| {
+            let error = format!("Response receiver error: {}", e.to_string());
+            Err(error)
+        })
 
     }
 
     async fn execute_query_internal(
         client: &mut Client<Compat<TcpStream>>,
         query: &str,
-        params_json: &str,
+        params_json: Vec<Value>,
         force_result: bool,
-    ) -> String {
-        let mut parsed_params: Value = match serde_json::from_str(params_json) {
-            Ok(params) => params,
-            Err(e) => return Self::format_json_error(&e.to_string()),
-        };
+    ) -> Result<Option<Vec<Value>>, String> {
 
-        let params_array = match parsed_params.as_array_mut() {
-            Some(array) => Self::process_mssql_params(array),
-            None => return Self::format_json_error("Parameters must be a JSON array"),
-        };
+        let mut params = params_json;
+        let params_array = Self::process_mssql_params(&mut params);
 
         let normalized_query = query.trim_start().to_uppercase();
         let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
@@ -177,11 +178,11 @@ impl MSSQLBackend {
                 Ok(stream) => {
                     let rows = match stream.into_results().await {
                         Ok(rows) => rows.into_iter().flatten().collect(),
-                        Err(e) => return Self::format_json_error(&e.to_string()),
+                        Err(e) => return Err(e.to_string()),
                     };
-                    Self::rows_to_json_array(rows)
+                    Ok(Some(Self::rows_to_json_array(rows)))
                 },
-                Err(e) => Self::format_json_error(&e.to_string()),
+                Err(e) => Err(e.to_string()),
             }
         } else if normalized_query == "BEGIN TRAN"
             || normalized_query == "COMMIT;"
@@ -189,27 +190,20 @@ impl MSSQLBackend {
             || normalized_query == "BEGIN TRANSACTION"{
 
             match client.simple_query(query).await {
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => Self::format_json_error(&e.to_string()),
+                Ok(_) => Ok(None),
+                Err(e) => Err(e.to_string()),
             }
 
         } else {
 
             match client.execute(query, &params_refs).await {
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => Self::format_json_error(&e.to_string()),
+                Ok(_) => Ok(None),
+                Err(e) => Err(e.to_string()),
             }
         }
     }
 
-    fn format_json_error(error: &str) -> String {
-        json!({
-            "result": false,
-            "error": error
-        }).to_string()
-    }
-
-    fn rows_to_json_array(rows: Vec<Row>) -> String {
+    fn rows_to_json_array(rows: Vec<Row>) -> Vec<Value> {
         let mut json_array = Vec::new();
 
         for row in rows {
@@ -222,7 +216,7 @@ impl MSSQLBackend {
             json_array.push(Value::Object(json_obj));
         }
 
-        json!({ "result": true, "data": json_array }).to_string()
+        json_array
     }
 
     fn from_sql_to_json(row: &Row, index: usize, column: &Column) -> Value {
