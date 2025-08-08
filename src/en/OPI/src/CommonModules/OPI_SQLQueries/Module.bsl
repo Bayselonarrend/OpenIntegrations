@@ -353,6 +353,28 @@ Function GetRecordsFilterStrucutre(Val Clear = False) Export
 
 EndFunction
 
+Function ExecuteQueryWithProcessing(Connector, Val QueryText, Val ForceResult, Val Parameters) Export
+
+    QueryKey = Connector.InitQuery(QueryText, ForceResult);
+
+    For Each Parameter In Parameters Do
+
+        Adding = Connector.AddQueryParam(QueryKey, Parameter);
+        Adding = OPI_Tools.JsonToStructure(Adding);
+
+        If Not Adding["result"] Then
+            Return Adding;
+        EndIf;
+
+    EndDo;
+
+    Result = Connector.Execute(QueryKey);
+    Result = ProcessQueryResult(Connector, QueryKey, Result);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region Private
@@ -1208,6 +1230,45 @@ Function FormTopText(Val Count)
     CountText = StrTemplate(CountText, OPI_Tools.NumberToString(Count));
 
     Return CountText;
+
+EndFunction
+
+Function ProcessQueryResult(Val Connector, Val QueryKey, Val Result)
+
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If Result["result"] Then
+
+        If Not Result["data"] Then
+            Result.Delete("data");
+            Return Result;
+        EndIf;
+
+        RowsAmount = Connector.GetQueryResultLength(QueryKey);
+
+        If Not TypeOf(RowsAmount) = Type("Number") Then
+            Return OPI_Tools.JsonToStructure(RowsAmount);
+        EndIf;
+
+        StingsArray = New Array;
+
+        For N = 0 To RowsAmount Do
+
+            CurrentRow = Connector.GetQueryResultRow(QueryKey, N);
+            StingsArray.Add(CurrentRow);
+
+        EndDo;
+
+        If StingsArray.Count() > 0 Then
+            TextJSON    = StrTemplate("[%1]", StrConcat(StingsArray, "," + Chars.LF));
+            StingsArray = OPI_Tools.JSONToStructure(TextJSON);
+        EndIf;
+
+        Result.Insert("data", StingsArray);
+
+    EndIf;
+
+    Return Result;
 
 EndFunction
 
