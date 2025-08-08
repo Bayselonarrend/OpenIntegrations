@@ -13,7 +13,7 @@ pub fn execute_query(
     query: String,
     params_json: String,
     force_result: bool,
-) -> String {
+) -> Vec<u8> {
 
     let client_arc = match add_in.get_connection() {
         Some(c) => c,
@@ -41,13 +41,13 @@ pub fn execute_query(
     if query.trim_start().to_uppercase().starts_with("SELECT") || force_result {
         match client.query(&query, &params_unboxed) {
             Ok(rows) => {
-                rows_to_json(rows)
+                rows_to_json(rows).into_bytes()
             }
             Err(e) => format_json_error(&e.to_string()),
         }
     } else {
         match client.execute(&query, &params_unboxed.as_slice()) {
-            Ok(_) => json!({"result": true}).to_string(),
+            Ok(_) => json!({"result": true}).to_string().into_bytes(),
             Err(e) => format_json_error(&e.to_string()),
         }
     }
@@ -326,12 +326,12 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
     Ok(value)
 }
 
-fn format_json_error(error: &str) -> String {
+fn format_json_error(error: &str) -> Vec<u8> {
     json!({
         "result": false,
         "error": error
     })
-        .to_string()
+        .to_string().into_bytes()
 }
 
 fn parse_date(input: &str) -> Result<NaiveDateTime, String> {
