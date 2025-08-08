@@ -150,6 +150,9 @@ Function ExecuteSQLQuery(Val QueryText
 
     Parameters_ = ProcessParameters(Parameters);
 
+    QueryText   = GetBinaryDataFromString(QueryText);
+    Parameters_ = GetBinaryDataFromString(Parameters_);
+
     If IsConnector(Connection) Then
         CloseConnection = False;
         Connector       = Connection;
@@ -163,6 +166,7 @@ Function ExecuteSQLQuery(Val QueryText
     EndIf;
 
     Result = Connector.Execute(QueryText, Parameters_, ForceResult);
+    Result = GetStringFromBinaryData(Result);
 
     If CloseConnection Then
         CloseConnection(Connector);
