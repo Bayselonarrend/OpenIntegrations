@@ -41,8 +41,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         1 => Box::new(obj.close_connection()),
         2 => {
 
-            let query = params[0].get_string().unwrap_or("".to_string());
-            let params_json = params[1].get_string().unwrap_or("".to_string());
+            let query = String::from_utf8_lossy(params[0].get_blob().unwrap_or(&[])).to_string();
+            let params_json = String::from_utf8_lossy(params[1].get_blob().unwrap_or(&[])).to_string();
             let force_result = params[2].get_bool().unwrap_or(false);
 
             Box::new(methods::execute_query(obj, query, params_json, force_result))
