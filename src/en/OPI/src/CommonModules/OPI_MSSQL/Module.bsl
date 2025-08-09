@@ -160,7 +160,7 @@ Function ExecuteSQLQuery(Val QueryText
     OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
 
-    Parameters_ = ProcessParameters(Parameters);
+    Parameters_ = OPI_SQLQueries.ProcessParameters(Parameters, GetTypesStructure());
     Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
 
     If CloseConnection Then
@@ -571,136 +571,20 @@ Function GetFeatures() Export
 
 EndFunction
 
-#EndRegion
+Function GetTypesStructure() Export
 
-#Region Private
+    TypesStructure = New Map;
+    TypesStructure.Insert("BinaryData"   , "BYTES");
+    TypesStructure.Insert("UUID"         , "UUID");
+    TypesStructure.Insert("Boolean"      , "BIT");
+    TypesStructure.Insert("Float"        , "DECIMAL");
+    TypesStructure.Insert("Whole"        , "INT");
+    TypesStructure.Insert("Date"         , "DATETIMEOFFSET");
+    TypesStructure.Insert("String"       , "NVARCHAR");
+    TypesStructure.Insert("Collections"  , New ValueList);
+    TypesStructure.Insert("BoolAsNumber" , False);
 
-Function ProcessParameters(Val Parameters)
-
-    If Not ValueIsFilled(Parameters) Then
-        Return New Array;
-    EndIf;
-
-    Parameters_ = New Array;
-    OPI_TypeConversion.GetArray(Parameters);
-
-    Counter = 0;
-    For Each Parameter In Parameters Do
-
-        CurrentParameter = ProcessParameter(Parameter);
-        CurrentParameter = OPI_Tools.JSONString(CurrentParameter, , False);
-
-        If StrStartsWith(CurrentParameter, "NOT JSON") Then
-            Raise StrTemplate("JSON validation error for parameter. Array position %1", Counter);
-        Else
-            Parameters_.Add(CurrentParameter);
-        EndIf;
-
-        Counter = Counter + 1;
-
-    EndDo;
-
-    Return Parameters_;
-
-EndFunction
-
-Function ProcessParameter(CurrentParameter, AsObject = True)
-
-    CurrentType = TypeOf(CurrentParameter);
-    CurrentKey  = "";
-
-    If CurrentType = Type("BinaryData") Then
-
-        CurrentParameter = Base64String(CurrentParameter);
-        CurrentKey       = "BYTES";
-
-    ElsIf CurrentType = Type("UUID") Then
-
-        CurrentParameter = String(CurrentParameter);
-        CurrentKey       = "UUID";
-
-    ElsIf CurrentType = Type("Boolean") Then
-
-        CurrentKey = "BIT";
-
-    ElsIf CurrentType = Type("Number") Then
-
-        CurrentKey = ?(Int(CurrentParameter) = CurrentParameter, "DECIMAL", "INT");
-
-    ElsIf CurrentType = Type("Date") Then
-
-        CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
-        CurrentKey       = "DATETIMEOFFSET";
-
-    Else
-
-        ProcessCollectionParameter(CurrentType, CurrentParameter, CurrentKey);
-
-    EndIf;
-
-    If AsObject Then
-        CurrentParameter = New Structure(CurrentKey, CurrentParameter);
-    EndIf;
-
-    Return CurrentParameter;
-
-EndFunction
-
-Procedure ProcessCollectionParameter(Val CurrentType, CurrentParameter, CurrentKey)
-
-    If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
-
-        If OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTES") Then
-
-            CurrentParameter = ProcessBlobStructure(CurrentParameter);
-            CurrentKey       = "BYTES";
-
-        Else
-
-            For Each ParamElement In CurrentParameter Do
-
-                CurrentKey   = Upper(ParamElement.Key);
-                CurrentValue = ParamElement.Value;
-
-                CurrentParameter = ProcessParameter(CurrentValue, False);
-
-                Break;
-
-            EndDo;
-
-        EndIf;
-
-    Else
-
-        OPI_TypeConversion.GetLine(CurrentParameter);
-        CurrentKey = "NVARCHAR";
-
-    EndIf;
-
-EndProcedure
-
-Function ProcessBlobStructure(Val Value)
-
-    Bytea_ = "BYTES";
-
-    DataValue = Value[Bytea_];
-
-    If TypeOf(DataValue) = Type("BinaryData") Then
-        Value            = Base64String(DataValue);
-    Else
-
-        DataFile = New File(String(DataValue));
-
-        If DataFile.Exists() Then
-
-            CurrentData = New BinaryData(String(DataValue));
-            Value       = Base64String(CurrentData);
-
-        EndIf;
-
-    EndIf;
-
-    Return Value;
+    Return TypesStructure;
 
 EndFunction
 
