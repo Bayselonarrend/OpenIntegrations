@@ -2,11 +2,31 @@ use rusqlite::{LoadExtensionGuard, types::ValueRef, types::Value as SqlValue, pa
 use serde_json::{Value, json, Map};
 use crate::component;
 use base64::{engine::general_purpose, Engine as _};
+use crate::component::AddIn;
 
+pub fn init_query(add_in: &mut AddIn, text: &str, force_result: bool) -> String {
 
+    let key = add_in.datasets.init_query();
+    add_in.datasets.set_text(&key, text);
+    add_in.datasets.set_force_result(&key, force_result);
+
+    key
+}
+
+pub fn add_query_param(add_in: &mut AddIn, key: &str, param: String) -> String {
+
+    let value: Value = match serde_json::from_str(&param) {
+        Ok(param) => param,
+        Err(e) => return format_json_error(&e.to_string()),
+    };
+
+    add_in.datasets.add_param(key, value);
+    json!({"result": true}).to_string()
+
+}
 
 pub fn execute_query(
-    client: &mut component::AddIn,
+    client: &mut AddIn,
     query: String,
     params_json: String,
     force_result: bool
@@ -33,7 +53,10 @@ pub fn execute_query(
         None => return format_json_error("Parameters must be a JSON array")
     };
 
-    let convert = process_blobs(params_array);
+    let convert = match process_blobs(params_array){
+        Ok(v) => v,
+        Err(e) => return format_json_error(e)
+    };
 
     // Определяем тип запроса
     if query.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
@@ -155,41 +178,73 @@ fn from_sql_to_json(value: ValueRef) -> Value {
     }
 }
 
-fn process_blobs(json_array: &mut Vec<Value>) -> ParamsFromIter<Vec<SqlValue>> {
+fn process_blobs(json_array: &mut Vec<Value>) -> Result<ParamsFromIter<Vec<SqlValue>>, String> {
 
     let mut result = Vec::new();
 
     for item in json_array.iter_mut() {
-        match item {
-            Value::Null => { result.push(SqlValue::Null); },
-            Value::Bool(b) => { result.push(SqlValue::from(*b)); }
-            Value::String(s) => { result.push(SqlValue::from(s.clone())); }
+        let processed: SqlValue = match item {
+            Value::Null => SqlValue::Null,
+            Value::Bool(b) => SqlValue::from(*b),
+            Value::String(s) => SqlValue::from(s.clone()),
             Value::Number(num) => {
                 if let Some(int_val) = num.as_i64() {
-                    result.push(SqlValue::from(int_val));
+                    SqlValue::from(int_val)
                 } else if let Some(float_val) = num.as_f64() {
-                    result.push(SqlValue::from(float_val));
+                    SqlValue::from(float_val)
                 } else {
-                    result.push(SqlValue::from(0));
+                    SqlValue::from(0)
                 }
             }
-            Value::Object(obj) => {
+            Value::Object(obj) => process_object(obj)?,
+            _ => SqlValue::Null
+        };
 
-                if let Some(Value::String(blob_str)) = obj.get("blob") {
-
-                    let cleaned_base64 = blob_str.replace(&['\n', '\r', ' '][..], "");
-
-                    match general_purpose::STANDARD.decode(cleaned_base64) {
-                        Ok(decoded_blob) => result.push(SqlValue::Blob(decoded_blob)),
-                        Err(e) => result.push(SqlValue::Blob(e.to_string().into_bytes()))
-                    }
-                } else { result.push(SqlValue::Blob([].to_vec())) }
-
-            }
-            _ => { result.push(SqlValue::Null) }
-        }
+        result.push(processed);
     }
-   params_from_iter(result)
+
+   Ok(params_from_iter(result))
+}
+
+fn process_object(object: &Map<String, Value>) -> Result<SqlValue, String> {
+    if object.len() != 1 {
+        return Err("Object must have exactly one key-value pair specifying the type and value".to_string());
+    }
+
+    let (key, value) = object.iter().next()
+        .ok_or_else(|| "Empty object: expected one key-value pair".to_string())?;
+
+    let key_upper = key.as_str().to_uppercase();
+
+    let processed = match key_upper.as_str() {
+        "BOOL" => value
+            .as_bool()
+            .map(|v| SqlValue::from(*v))
+            .unwrap_or(SqlValue::from(false)),
+        "INTEGER" => value
+            .as_i64()
+            .map(|v| SqlValue::from(*v))
+            .unwrap_or(SqlValue::from(0)),
+        "REAL" => value
+            .as_f64()
+            .map(|v| SqlValue::from(*v))
+            .unwrap_or(SqlValue::from(0)),
+        "BLOB" => {
+
+            let cleaned_base64 = value.to_string().replace(&['\n', '\r', ' '][..], "");
+
+            match general_purpose::STANDARD.decode(cleaned_base64) {
+                Ok(decoded_blob) => SqlValue::Blob(decoded_blob),
+                Err(e) => SqlValue::Blob(e.to_string().into_bytes())
+            }
+        }
+        _ => value
+            .to_string()
+            .map(|v| SqlValue::from(*v))
+            .unwrap_or(SqlValue::from("")),
+    };
+
+    Ok(processed)
 }
 
 pub fn format_json_error<E: ToString>(error: E) -> String {
