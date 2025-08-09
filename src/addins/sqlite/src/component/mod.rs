@@ -1,11 +1,12 @@
 mod methods;
+mod dataset;
 
 use addin1c::{name, Variant};
 use std::sync::{Mutex, Arc};
 use crate::core::getset;
 use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
-
+use crate::component::dataset::Datasets;
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
@@ -13,7 +14,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
     name!("Execute"),
-    name!("LoadExtension")
+    name!("LoadExtension"),
+    name!("GetQueryResultRow"),
+    name!("GetQueryResultLength"),
+    name!("RemoveQuery"),
+    name!("InitQuery"),
+    name!("AddQueryParam"),
 
 ];
 
@@ -24,6 +30,11 @@ pub fn get_params_amount(num: usize) -> usize {
         1 => 0,
         2 => 3,
         3 => 2,
+        4 => 2,
+        5 => 1,
+        6 => 1,
+        7 => 2,
+        8 => 2,
         _ => 0,
     }
 }
@@ -50,6 +61,41 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(methods::load_extension(obj, path, point))
         },
+        4 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            let index = params[1].get_i32().unwrap_or(0);
+
+            Box::new(obj.datasets.get_row(&key, index as usize).unwrap_or_else(|| "".to_string()))
+        },
+        5 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+
+            match obj.datasets.len(&key){
+                Some(len) => Box::new(len as i32),
+                None => Box::new(json!(
+                    {"result": false, "error": format!("Dataset {} not found", key)}
+                ).to_string()),
+            }
+        },
+        6 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            obj.datasets.remove(&key);
+            Box::new(json!({"result": true}).to_string())
+        },
+        7 => {
+
+            let text = params[0].get_string().unwrap_or("".to_string());
+            let force = params[1].get_bool().unwrap_or(false);
+
+            Box::new(methods::init_query(obj, &text, force))
+        },
+        8 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            let param = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(methods::add_query_param(obj, &key, param))
+
+        }
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -68,6 +114,7 @@ pub const PROPS: &[&[u16]] = &[
 pub struct AddIn {
     connection_string: String,
     connection: Option<Arc<Mutex<Connection>>>,
+    datasets: Datasets,
 }
 
 impl AddIn {
@@ -76,6 +123,7 @@ impl AddIn {
         AddIn {
             connection_string: String::new(),
             connection: None,
+            datasets: Datasets::new(),
         }
     }
 
