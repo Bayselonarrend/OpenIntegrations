@@ -160,7 +160,7 @@ Function ExecuteSQLQuery(Val QueryText
     OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
 
-    Parameters_ = ProcessParameters(Parameters);
+    Parameters_ = OPI_SQLQueries.ProcessParameters(Parameters, GetTypesStructure());
     Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
 
     If CloseConnection Then
@@ -561,122 +561,25 @@ Function GetFeatures() Export
 
 EndFunction
 
-#EndRegion
+Function GetTypesStructure() Export
 
-#Region Private
+    CollectionsTypes = New ValueList();
+    CollectionsTypes.Add("JSONB");
+    CollectionsTypes.Add("JSON");
+    CollectionsTypes.Add("HSTORE");
 
-Function ProcessParameters(Val Parameters)
+    TypesStructure = New Map;
+    TypesStructure.Insert("BinaryData"   , "BYTEA");
+    TypesStructure.Insert("UUID"         , "UUID");
+    TypesStructure.Insert("Boolean"      , "BOOL");
+    TypesStructure.Insert("Float"        , "REAL");
+    TypesStructure.Insert("Whole"        , "INT");
+    TypesStructure.Insert("Date"         , "TIMESTAMP");
+    TypesStructure.Insert("String"       , "VARCHAR");
+    TypesStructure.Insert("Collections"  , CollectionsTypes);
+    TypesStructure.Insert("BoolAsNumber" , False);
 
-    If Not ValueIsFilled(Parameters) Then
-        Return New Array;
-    EndIf;
-
-    Parameters_ = New Array;
-    OPI_TypeConversion.GetArray(Parameters);
-
-    Counter = 0;
-    For Each Parameter In Parameters Do
-
-        CurrentParameter = ProcessParameter(Parameter);
-        CurrentParameter = OPI_Tools.JSONString(CurrentParameter, , False);
-
-        If StrStartsWith(CurrentParameter, "NOT JSON") Then
-            Raise StrTemplate("JSON validation error for parameter. Array position %1", Counter);
-        Else
-            Parameters_.Add(CurrentParameter);
-        EndIf;
-
-        Counter = Counter + 1;
-
-    EndDo;
-
-    Return Parameters_;
-
-EndFunction
-
-Function ProcessParameter(CurrentParameter, Embedded = False)
-
-    CurrentType = TypeOf(CurrentParameter);
-
-    If CurrentType = Type("BinaryData") Then
-
-        CurrentParameter = New Structure("BYTEA", Base64String(CurrentParameter));
-
-    ElsIf CurrentType = Type("UUID") Then
-
-        CurrentParameter = String(CurrentParameter);
-        CurrentParameter = ?(Embedded, CurrentParameter, New Structure("UUID", CurrentParameter));
-
-    ElsIf CurrentType = Type("Date") Then
-
-        CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
-        CurrentParameter = ?(Embedded, CurrentParameter, New Structure("TIMESTAMP", CurrentParameter));
-
-    ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "BYTEA") Then
-
-        CurrentParameter = ProcessBlobStructure(CurrentParameter);
-
-    ElsIf CurrentType  = Type("Structure")
-        Or CurrentType = Type("Map") Then
-
-        CurrentParameter_ = OPI_Tools.CopyCollection(CurrentParameter);
-
-        For Each ParamElement In CurrentParameter_ Do
-
-            CurrentKey   = Upper(ParamElement.Key);
-            CurrentValue = ParamElement.Value;
-
-            If IsCollectionType(CurrentKey) Then
-                Continue;
-            EndIf;
-
-            CurrentParameter[ParamElement.Key] = ProcessParameter(CurrentValue, True);
-
-        EndDo;
-
-    Else
-
-        If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
-
-            OPI_TypeConversion.GetLine(CurrentParameter);
-            CurrentParameter = ?(Embedded, CurrentParameter, New Structure("VARCHAR", CurrentParameter));
-
-        EndIf;
-
-    EndIf;
-
-    Return CurrentParameter;
-
-EndFunction
-
-Function ProcessBlobStructure(Val Value)
-
-    Bytea_ = "BYTEA";
-
-    DataValue = Value[Bytea_];
-
-    If TypeOf(DataValue) = Type("BinaryData") Then
-        Value            = New Structure(Bytea_, Base64String(DataValue));
-    Else
-
-        DataFile = New File(String(DataValue));
-
-        If DataFile.Exists() Then
-
-            CurrentData = New BinaryData(String(DataValue));
-            Value       = New Structure(Bytea_, Base64String(CurrentData));
-
-        EndIf;
-
-    EndIf;
-
-    Return Value;
-
-EndFunction
-
-Function IsCollectionType(Val CheckedType)
-
-    Return CheckedType = "JSONB" Or CheckedType = "JSON" Or CheckedType = "HSTORE";
+    Return TypesStructure;
 
 EndFunction
 

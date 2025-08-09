@@ -375,6 +375,35 @@ Function ExecuteQueryWithProcessing(Connector, Val QueryText, Val ForceResult, V
 
 EndFunction
 
+Function ProcessParameters(Val Parameters, Val TypesStructure) Export
+
+    If Not ValueIsFilled(Parameters) Then
+        Return New Array;
+    EndIf;
+
+    Parameters_ = New Array;
+    OPI_TypeConversion.GetArray(Parameters);
+
+    Counter = 0;
+    For Each Parameter In Parameters Do
+
+        CurrentParameter = ProcessParameter(Parameter, TypesStructure);
+        CurrentParameter = OPI_Tools.JSONString(CurrentParameter, , False);
+
+        If StrStartsWith(CurrentParameter, "NOT JSON") Then
+            Raise StrTemplate("JSON validation error for parameter. Array position %1", Counter);
+        Else
+            Parameters_.Add(CurrentParameter);
+        EndIf;
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    Return Parameters_;
+
+EndFunction
+
 #EndRegion
 
 #Region Private
@@ -1473,6 +1502,138 @@ EndProcedure
 
 #EndRegion
 
+#Region ParamsProcessing
+
+Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
+
+    CurrentType = DefineParameterType(CurrentParameter);
+    CurrentKey  = TypesStructure.Get(CurrentType);
+
+    If CurrentType = "BinaryData" Then
+
+        CurrentParameter = Base64String(CurrentParameter);
+
+    ElsIf CurrentType = "UUID" Then
+
+        CurrentParameter = String(CurrentParameter);
+
+    ElsIf CurrentType = "Date" Then
+
+        CurrentParameter = OPI_Tools.DateRFC3339(CurrentParameter);
+
+    ElsIf OPI_Tools.ThisIsCollection(CurrentParameter) Then
+
+        ProcessCollectionParameter(CurrentType, TypesStructure, CurrentParameter, CurrentKey);
+
+    ElsIf CurrentType = "Whole" Or CurrentType = "Float" Then
+
+        OPI_TypeConversion.GetNumber(CurrentParameter);
+
+    ElsIf CurrentType = "Boolean" Then
+
+        OPI_TypeConversion.GetBoolean(CurrentParameter);
+
+        If TypesStructure.Get("BoolAsNumber") Then
+            CurrentParameter = ?(CurrentParameter, 1, 0);
+        EndIf;
+
+    Else
+
+        OPI_TypeConversion.GetLine(CurrentParameter);
+
+    EndIf;
+
+    If AsObject Then
+        CurrentParameter = New Structure(CurrentKey, CurrentParameter);
+    EndIf;
+
+    Return CurrentParameter;
+
+EndFunction
+
+Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, CurrentParameter, CurrentKey)
+
+    CollectionsTypes = TypesStructure.Get("Collections");
+    BinaryType       = TypesStructure.Get("BinaryData");
+    TypeString       = TypesStructure.Get("String");
+
+    If CurrentType = "Structure" Or CurrentType = "Map" Then
+
+        For Each ParamElement In CurrentParameter Do
+
+            CurrentKey   = Upper(ParamElement.Key);
+            CurrentValue = ParamElement.Value;
+
+            If CollectionsTypes.FindByValue(CurrentKey) <> Undefined Then
+                CurrentParameter = CurrentValue;
+
+            ElsIf CurrentKey     = BinaryType Then
+                CurrentParameter = ProcessBlob(CurrentValue)
+
+            Else
+                CurrentParameter = ProcessParameter(CurrentValue, TypesStructure, False);
+            EndIf;
+
+            Break;
+
+        EndDo;
+
+    Else
+
+        OPI_TypeConversion.GetLine(CurrentParameter);
+        CurrentKey = TypeString;
+
+    EndIf;
+
+EndProcedure
+
+Function ProcessBlob(Val Value)
+
+    If TypeOf(Value) = Type("BinaryData") Then
+        Value        = Base64String(Value);
+    Else
+
+        DataFile = New File(String(Value));
+
+        If DataFile.Exists() Then
+
+            CurrentData = New BinaryData(String(Value));
+            Value       = Base64String(CurrentData);
+
+        EndIf;
+
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
+Function DefineParameterType(Val CurrentParameter)
+
+    CurrentType = TypeOf(CurrentParameter);
+
+    If CurrentType = Type("Number") Then
+
+        CurrentType = ?(Int(CurrentParameter) = CurrentParameter, "Whole", "Float");
+
+    ElsIf CurrentType = Type("BinaryData") Then
+
+        CurrentType = "BinaryData";
+
+    ElsIf CurrentType = Type("UUID") Then
+
+        CurrentType = "UUID";
+
+    Else
+        CurrentType = String(CurrentType);
+    EndIf;
+
+    Return CurrentType;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Alternate
@@ -1535,6 +1696,10 @@ EndFunction
 
 Function ВыполнитьЗапросСОбработкой(Коннектор, Val ТекстЗапроса, Val ФорсироватьРезультат, Val Параметры) Export
 	Return ExecuteQueryWithProcessing(Коннектор, ТекстЗапроса, ФорсироватьРезультат, Параметры);
+EndFunction
+
+Function ОбработатьПараметры(Val Параметры, Val СтруктураТипов) Export
+	Return ProcessParameters(Параметры, СтруктураТипов);
 EndFunction
 
 Procedure ДобавитьКолонку(Схема, Val Имя, Val Тип) Export
