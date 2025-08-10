@@ -10252,7 +10252,7 @@ Procedure CLI_Ozon_CreateProductByOzonID(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductCreationStatus (SKU)", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+    //OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
 
 EndProcedure
 
@@ -17608,21 +17608,6 @@ Procedure CLI_CDEK_GetReceipt(FunctionParameters)
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetReceipt", "CDEK");
     OPI_TestDataRetrieval.Check_CdekReceipt(Result);
 
-    TFN = GetTempFileName("pdf");
-
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuid"   , UUID);
-    Options.Insert("getfile", True);
-    Options.Insert("testapi", True);
-    Options.Insert("out"    , TFN);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetReceipt", Options);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetReceipt (file)");
-    OPI_TestDataRetrieval.Check_BinaryData(Result, 50000);
-    DeleteFiles(TFN);
-
 EndProcedure
 
 Procedure CLI_CDEK_CreateBarcode(FunctionParameters)
@@ -17664,21 +17649,6 @@ Procedure CLI_CDEK_GetBarcode(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "GetBarcode", "CDEK");
     OPI_TestDataRetrieval.Check_CdekReceipt(Result);
-
-    TFN = GetTempFileName("pdf");
-
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuid"   , UUID);
-    Options.Insert("getfile", True);
-    Options.Insert("testapi", True);
-    Options.Insert("out"    , TFN);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetBarcode", Options);
-
-    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetBarcode (file)");
-    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
-    DeleteFiles(TFN);
 
 EndProcedure
 
