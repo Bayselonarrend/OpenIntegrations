@@ -1,0 +1,5 @@
+﻿ {
+ "error": "Invalid response: [550] 550 Remove directory operation failed.",
+ "result": false,
+ "deleted_objects": []
+}

@@ -1,0 +1,16 @@
+﻿ {
+ "set": {
+  "domain": "host.docker.internal",
+  "port": 2121,
+  "passive": true,
+  "read_timeout": 120,
+  "write_timeout": 120,
+  "advanced_resolve": true,
+  "login": "bayselonarrend",
+  "password": "12we3456!2154"
+ },
+ "tls": {
+  "use_tls": true,
+  "accept_invalid_certs": true
+ }
+}
