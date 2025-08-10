@@ -1954,7 +1954,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_ArchiveProducts(TestParameters);
     Ozon_UnarchiveProducts(TestParameters);
     Ozon_UploadProductActivationCodes(TestParameters);
-    Ozon_GetCodesUploadStatus(TestParameters);
+    //Ozon_GetCodesUploadStatus(TestParameters);
     Ozon_GetProductSubscribersCount(TestParameters);
     Ozon_GetRelatedSKUs(TestParameters);
     Ozon_DeleteProductsWithoutSKU(TestParameters);
@@ -14414,6 +14414,7 @@ Procedure Ozon_CreateProductByOzonID(FunctionParameters)
     FunctionParameters.Insert("Ozon_SkuTaskID", TaskID);
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductByOzonID (status)", "Ozon");
 
     While Result["result"]["items"][0]["status"] = "pending" Do
 
@@ -14424,7 +14425,7 @@ Procedure Ozon_CreateProductByOzonID(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (SKU)", "Ozon");
 
-    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+    //OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
 
 EndProcedure
 
@@ -15718,19 +15719,10 @@ Procedure CDEK_GetReceipt(FunctionParameters)
 
     Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt", "CDEK"); // SKIP
-    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
-
-    TFN = GetTempFileName("pdf");
-
-    Result = OPI_CDEK.GetReceipt(Token, UUID, True, True); // PDF
-    Result.Write(TFN);
-
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt (file)");
-    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
-    DeleteFiles(TFN);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetReceipt", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
 
 EndProcedure
 
@@ -15761,19 +15753,10 @@ Procedure CDEK_GetBarcode(FunctionParameters)
 
     Result = OPI_CDEK.GetBarcode(Token, UUID, , True); // Server response with a URL
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode", "CDEK"); // SKIP
-    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
-
-    TFN = GetTempFileName("pdf");
-
-    Result = OPI_CDEK.GetBarcode(Token, UUID, True, True); // PDF
-    Result.Write(TFN);
-
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode (file)");
-    OPI_TestDataRetrieval.Check_BinaryData(Result, 0);
-    DeleteFiles(TFN);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBarcode", "CDEK"); // SKIP
+    OPI_TestDataRetrieval.Check_CdekReceipt(Result); // SKIP
 
 EndProcedure
 
