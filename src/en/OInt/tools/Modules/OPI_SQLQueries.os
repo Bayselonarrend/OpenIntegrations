@@ -1612,23 +1612,31 @@ Function DefineParameterType(Val CurrentParameter)
 
     CurrentType = TypeOf(CurrentParameter);
 
-    If CurrentType = Type("Number") Then
+    SimpleComparison = New Array;
+    SimpleComparison.Add("BinaryData");
+    SimpleComparison.Add("UUID");
+    SimpleComparison.Add("Structure");
+    SimpleComparison.Add("Map");
+    SimpleComparison.Add("Array");
+    SimpleComparison.Add("Boolean");
+    SimpleComparison.Add("Date");
+    SimpleComparison.Add("String");
 
-        CurrentType = ?(Int(CurrentParameter) = CurrentParameter, "Whole", "Float");
-
-    ElsIf CurrentType = Type("BinaryData") Then
-
-        CurrentType = "BinaryData";
-
-    ElsIf CurrentType = Type("UUID") Then
-
-        CurrentType = "UUID";
-
+    If CurrentType                     = Type("Number") Then
+        Return ?(Int(CurrentParameter) = CurrentParameter, "Whole", "Float");
     Else
-        CurrentType = String(CurrentType);
+
+        For Each TypeName In SimpleComparison Do
+
+            If CurrentType = Type(TypeName) Then
+                Return TypeName;
+            EndIf;
+
+        EndDo;
+
     EndIf;
 
-    Return CurrentType;
+    Raise StrTemplate("Parameter type not supported: %1", String(CurrentType));
 
 EndFunction
 
