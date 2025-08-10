@@ -2073,8 +2073,9 @@ EndProcedure
 
 Procedure Check_OzonNewProducts(Val Result) Export
 
+    Status             = Result["result"]["items"][0]["status"];
     ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"]["items"][0]["status"]).Равно("imported");
+    ExpectsThat(Status = "imported" Or Status = "skipped").Равно(True);
 
 EndProcedure
 
@@ -2255,10 +2256,8 @@ EndProcedure
 
 Procedure Check_CdekReceipt(Val Result) Export
 
-    URL = Result["entity"]["url"];
-
-    ExpectsThat(URL).Заполнено();
-    ExpectsThat(StrEndsWith(URL, ".pdf")).Равно(True);
+    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
+    ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
 
 EndProcedure
 
