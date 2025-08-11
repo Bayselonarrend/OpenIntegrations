@@ -7,27 +7,6 @@ use chrono::*;
 use mysql_common::packets::Column;
 use dateparser::parse;
 
-pub fn init_query(add_in: &mut AddIn, text: &str, force_result: bool) -> String {
-
-    let key = add_in.datasets.init_query();
-    add_in.datasets.set_text(&key, text);
-    add_in.datasets.set_force_result(&key, force_result);
-
-    key
-}
-
-pub fn add_query_param(add_in: &mut AddIn, key: &str, param: String) -> String {
-
-    let value: Value = match serde_json::from_str(&param) {
-        Ok(param) => param,
-        Err(e) => return format_json_error(&e.to_string()),
-    };
-
-    add_in.datasets.add_param(key, value);
-    json!({"result": true}).to_string()
-
-}
-
 pub fn execute_query(
     add_in: &mut AddIn,
     key: &str
