@@ -1,5 +1,6 @@
+use std::fs;
 use dashmap::DashMap;
-use serde_json::Value;
+use serde_json::{json, Value};
 use std::sync::Arc;
 use uuid::Uuid;
 
@@ -22,11 +23,18 @@ impl Datasets {
         }
     }
 
-    pub fn init_query(&self) -> String {
+    pub fn init_query(&self, text: &str, force_result: bool, from_file: bool) -> Result<String, String> {
+
+        let content = read_input(text, from_file)?;
+
         let key = Uuid::new_v4().to_string();
         let query = QueryData::new();
         self.data.insert(key.clone(), query);
-        key
+
+        self.set_text(&key, &content);
+        self.set_force_result(&key, force_result);
+
+        Ok(key)
     }
 
     pub fn get_query(&self, key: &str) -> Option<QueryData> {
@@ -39,36 +47,82 @@ impl Datasets {
         }
     }
 
-    pub fn add_param(&self, key: &str, value: Value) {
-        if let Some(mut entry) = self.data.get_mut(key) {
-            entry.params.push(value);
-        }
+    pub fn result_as_string(&self, key: &str) -> Result<String, String> {
+        let query_data = self.data.get(key)
+            .ok_or_else(|| format!("Key '{}' not found", key))?;
+
+        let response = json!({
+            "result": true,
+            "data": query_data.results
+        });
+
+        serde_json::to_string(&response)
+            .map_err(|e| format!("Serialization failed: {}", e))
     }
 
-    pub fn set_text(&self, key: &str, text: &str) {
-        if let Some(mut entry) = self.data.get_mut(key) {
-            entry.text = text.to_string();
-        }
+    pub fn result_as_file(&self, key: &str, filepath: &str) -> Result<(), String> {
+
+        let json_data = self.result_as_string(key)?;
+
+        fs::write(filepath, json_data)
+            .map_err(|e| format!("Failed to write file: {}", e))?;
+
+        Ok(())
     }
 
-    pub fn set_force_result(&self, key: &str, enabled: bool) {
-        if let Some(mut entry) = self.data.get_mut(key) {
-            entry.force_result = enabled;
-        }
+    pub fn params_from_file(&self, key: &str, filepath: &str) -> Result<(), String> {
+        let content = fs::read_to_string(filepath)
+            .map_err(|e| format!("Failed to read file '{}': {}", filepath, e))?;
+
+        let value = serde_json::from_str(&content)
+            .map_err(|e| format!("Invalid JSON in file '{}': {}", filepath, e))?;
+
+        self.set_params(key, value)
     }
 
-    pub fn len(&self, key: &str) -> Option<usize> {
-        self.data.get(key).map(|entry| entry.results.len())
+    pub fn params_from_string(&self, key: &str, json_str: &str) -> Result<(), String> {
+        let value = serde_json::from_str(json_str)
+            .map_err(|e| format!("Invalid JSON string: {}", e))?;
+
+        self.set_params(key, value)
     }
 
     pub fn remove(&self, key: &str) {
         self.data.remove(key);
     }
 
-    pub fn get_row(&self, key: &str, index: usize) -> Option<String> {
-        let entry = self.data.get(key)?;
-        let value = entry.results.get(index)?;
-        serde_json::to_string(value).ok()
+    fn set_text(&self, key: &str, text: &str) {
+        if let Some(mut entry) = self.data.get_mut(key) {
+            entry.text = text.to_string();
+        }
+    }
+
+    fn set_force_result(&self, key: &str, enabled: bool) {
+        if let Some(mut entry) = self.data.get_mut(key) {
+            entry.force_result = enabled;
+        }
+    }
+
+    fn set_params(&self, key: &str, value: Value) -> Result<(), String> {
+        if let Some(mut entry) = self.data.get_mut(key) {
+            match value {
+                Value::Array(arr) => entry.params = arr,
+                Value::Object(obj) => entry.params = vec![Value::Object(obj)],
+                _ => return Err("Expected JSON array or object".to_string()),
+            }
+            Ok(())
+        } else {
+            Err(format!("Key '{}' not found", key))
+        }
+    }
+}
+
+fn read_input(input: &str, from_file: bool) -> Result<String, String> {
+    if from_file {
+        fs::read_to_string(input)
+            .map_err(|e| format!("Failed to read file '{}': {}", input, e))
+    } else {
+        Ok(input.to_string())
     }
 }
 
