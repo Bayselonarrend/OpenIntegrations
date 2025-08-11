@@ -2,37 +2,11 @@ use rusqlite::{LoadExtensionGuard, types::ValueRef, types::Value as SqlValue, pa
 use serde_json::{Value, json, Map};
 use crate::component;
 use base64::{engine::general_purpose, Engine as _};
-use crate::component::AddIn;
+use crate::component::{format_json_error, AddIn};
 
-pub fn init_query(add_in: &mut AddIn, text: &str, force_result: bool) -> String {
+pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
 
-    let key = add_in.datasets.init_query();
-    add_in.datasets.set_text(&key, text);
-    add_in.datasets.set_force_result(&key, force_result);
-
-    key
-}
-
-pub fn add_query_param(add_in: &mut AddIn, key: &str, param: String) -> String {
-
-    let value: Value = match serde_json::from_str(&param) {
-        Ok(param) => param,
-        Err(e) => return format_json_error(&e.to_string()),
-    };
-
-    add_in.datasets.add_param(key, value);
-    json!({"result": true}).to_string()
-
-}
-
-pub fn execute_query(
-    client: &mut AddIn,
-    query: String,
-    params_json: String,
-    force_result: bool
-) -> String {
-
-    let conn_arc = match client.get_connection() {
+    let conn_arc = match add_in.get_connection() {
         Some(c) => c,
         None => return format_json_error("No connection initialized"),
     };
@@ -42,26 +16,23 @@ pub fn execute_query(
         Err(_) => return format_json_error("Failed to acquire connection lock"),
     };
 
-    // Парсинг JSON параметров
-    let mut parsed_params: Value = match serde_json::from_str(&params_json) {
-        Ok(params) => params,
-        Err(e) => return format_json_error(e)
+    let query = match add_in.datasets.get_query(key){
+        Some(q) => q,
+        None => return format_json_error(format!("No query found by key: {}", key).as_str()),
     };
 
-    let params_array = match parsed_params.as_array_mut() {
-        Some(array) => array,
-        None => return format_json_error("Parameters must be a JSON array")
-    };
+    let params = query.params;
+    let text = query.text;
+    let force_result = query.force_result;
 
-    let convert = match process_blobs(params_array){
+    let convert = match process_blobs(&params){
         Ok(v) => v,
-        Err(e) => return format_json_error(e)
+        Err(e) => return format_json_error(&e.to_string())
     };
 
-    // Определяем тип запроса
-    if query.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
-        // Выполняем SELECT
-        match conn.prepare(&query) {
+    if text.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
+
+        match conn.prepare(&text) {
             Ok(mut query_result) => {
 
                 let cols: Vec<String> = query_result
@@ -70,21 +41,25 @@ pub fn execute_query(
                     .map(|name| name.to_string())
                     .collect();
 
-                let res = query_result.query(convert);
+                match query_result.query(convert){
+                    Ok(mut rows) =>  {
 
-                match res{
-                    Ok(mut rows) =>  rows_to_json_array(&mut rows, &cols),
-                    Err(e) => format_json_error(e)
+                        let processed_rows = rows_to_json_array(&mut rows, &cols);
+                        add_in.datasets.set_results(&key, processed_rows);
+                        json!({"result": true, "data": true}).to_string()
+
+                    },
+                    Err(e) => format_json_error(&e.to_string())
                 }
 
             }
-            Err(e) => format_json_error(e)
+            Err(e) => format_json_error(&e.to_string())
         }
     } else {
 
-        match conn.execute(&query, convert) {
-            Ok(_) => r#"{"result": true}"#.to_string(),
-            Err(e) => format_json_error(e),
+        match conn.execute(&text, convert) {
+            Ok(_) => json!({"result": true, "data": false}).to_string(),
+            Err(e) => format_json_error(&e.to_string()),
         }
     }
 }
@@ -109,23 +84,23 @@ pub fn load_extension(client: &mut component::AddIn, path: String, point: String
         // Здесь мы берем ссылку на Connection из MutexGuard
         let _guard = match LoadExtensionGuard::new(&*conn) {
             Ok(g) => g,
-            Err(e) => return format_json_error(e),
+            Err(e) => return format_json_error(&e.to_string()),
         };
 
         match conn.load_extension(path, entry_point) {
             Ok(_) => r#"{"result": true}"#.to_string(),
-            Err(e) => format_json_error(e)
+            Err(e) => format_json_error(&e.to_string())
         }
     }
 }
 
-fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> String {
+fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<Value> {
 
     let mut json_array = Vec::new();
 
     loop {
 
-        let mut current: Map<String, Value> = Map::new();
+        let mut row_map = Map::new();
 
         match rows.next() {
 
@@ -133,32 +108,26 @@ fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> String {
 
                 for i in 0..cols.len() {
 
+                    let key = cols[i].to_string();
                     let val = match row.get_ref(i) {
-                        Ok(v) => v,
-                        Err(e) => {
-                            current.insert("error".to_string(), Value::String(e.to_string()));
-                            continue;
-                        }
+                        Ok(v) => from_sql_to_json(v),
+                        Err(e) => json!({"error": e.to_string()})
                     };
 
-                    let json_val = from_sql_to_json(val);
+                    row_map.insert(key, val);
 
-                    current.insert(cols[i].to_string(), json_val);
                 };
-
-                json_array.push(current);
-
             }
-
+            Err(e) => { row_map.insert("ROW_ERR".to_string(), Value::String(e.to_string())); },
             Ok(None) => break,
-            Err(e) => {
-                current.insert("error".to_string(), Value::String(e.to_string()));
-            }
 
         }
+
+        json_array.push(Value::Object(row_map));
+
     }
 
-    json!({ "result": true, "data": json_array }).to_string()
+    json_array
 }
 
 fn from_sql_to_json(value: ValueRef) -> Value {
@@ -178,11 +147,11 @@ fn from_sql_to_json(value: ValueRef) -> Value {
     }
 }
 
-fn process_blobs(json_array: &mut Vec<Value>) -> Result<ParamsFromIter<Vec<SqlValue>>, String> {
+fn process_blobs(json_array: &Vec<Value>) -> Result<ParamsFromIter<Vec<SqlValue>>, String> {
 
     let mut result = Vec::new();
 
-    for item in json_array.iter_mut() {
+    for item in json_array.iter() {
         let processed: SqlValue = match item {
             Value::Null => SqlValue::Null,
             Value::Bool(b) => SqlValue::from(*b),
@@ -219,39 +188,30 @@ fn process_object(object: &Map<String, Value>) -> Result<SqlValue, String> {
     let processed = match key_upper.as_str() {
         "BOOL" => value
             .as_bool()
-            .map(|v| SqlValue::from(*v))
+            .map(|v| SqlValue::from(v))
             .unwrap_or(SqlValue::from(false)),
         "INTEGER" => value
             .as_i64()
-            .map(|v| SqlValue::from(*v))
+            .map(|v| SqlValue::from(v))
             .unwrap_or(SqlValue::from(0)),
         "REAL" => value
             .as_f64()
-            .map(|v| SqlValue::from(*v))
+            .map(|v| SqlValue::from(v))
             .unwrap_or(SqlValue::from(0)),
         "BLOB" => {
 
-            let cleaned_base64 = value.to_string().replace(&['\n', '\r', ' '][..], "");
+            let cleaned_base64 = value
+                .as_str()
+                .unwrap_or("")
+                .replace(&['\n', '\r', ' '][..], "");
 
             match general_purpose::STANDARD.decode(cleaned_base64) {
                 Ok(decoded_blob) => SqlValue::Blob(decoded_blob),
                 Err(e) => SqlValue::Blob(e.to_string().into_bytes())
             }
         }
-        _ => value
-            .to_string()
-            .map(|v| SqlValue::from(*v))
-            .unwrap_or(SqlValue::from("")),
+        _ => SqlValue::from(value.as_str().unwrap_or("").to_string())
     };
 
     Ok(processed)
-}
-
-pub fn format_json_error<E: ToString>(error: E) -> String {
-    let error_message = error.to_string();
-    let json_obj = json!({
-        "result": false,
-        "error": error_message,
-    });
-    json_obj.to_string()
 }

@@ -1,33 +1,12 @@
 use postgres::types::{ToSql};
 use serde_json::{Value, json, Map};
 use base64::{engine::general_purpose, Engine as _};
-use crate::component::AddIn;
+use crate::component::{format_json_error, AddIn};
 use std::collections::HashMap;
 use std::net::IpAddr;
 use chrono::{NaiveDate, NaiveTime, FixedOffset, NaiveDateTime, DateTime};
 use uuid::Uuid;
 use dateparser::parse;
-
-pub fn init_query(add_in: &mut AddIn, text: &str, force_result: bool) -> String {
-
-    let key = add_in.datasets.init_query();
-    add_in.datasets.set_text(&key, text);
-    add_in.datasets.set_force_result(&key, force_result);
-
-    key
-}
-
-pub fn add_query_param(add_in: &mut AddIn, key: &str, param: String) -> String {
-
-    let value: Value = match serde_json::from_str(&param) {
-        Ok(param) => param,
-        Err(e) => return format_json_error(&e.to_string()),
-    };
-
-    add_in.datasets.add_param(key, value);
-    json!({"result": true}).to_string()
-
-}
 
 pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
 
@@ -347,13 +326,6 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
     Ok(value)
 }
 
-fn format_json_error(error: &str) -> String {
-    json!({
-        "result": false,
-        "error": error
-    })
-        .to_string()
-}
 
 fn parse_date(input: &str) -> Result<NaiveDateTime, String> {
     parse(input)
