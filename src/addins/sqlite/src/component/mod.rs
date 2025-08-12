@@ -20,7 +20,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetResultAsString"),
     name!("SetParamsFromFile"),
     name!("SetParamsFromString"),
-    name!("RemoveQueryDataset")
+    name!("RemoveQueryDataset"),
+    name!("BatchQuery")
 
 ];
 
@@ -37,6 +38,7 @@ pub fn get_params_amount(num: usize) -> usize {
         7 => 2,
         8 => 2,
         9 => 1,
+        10 => 2,
         _ => 0,
     }
 }
@@ -124,6 +126,17 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let key = params[0].get_string().unwrap_or("".to_string());
             obj.datasets.remove(&key);
             Box::new(json!({"result": true}).to_string())
+        },
+        10 => {
+            let input = params[0].get_string().unwrap_or("".to_string());
+            let output = params[1].get_string().unwrap_or("".to_string());
+
+            let result = match obj.datasets.batch_query_init(&input, &output){
+                Ok(_) => json!({"result": true}).to_string(),
+                Err(e) => format_json_error(&e)
+            };
+
+            Box::new(result)
         },
         _ => Box::new(false), // Неверный номер команды
     }
