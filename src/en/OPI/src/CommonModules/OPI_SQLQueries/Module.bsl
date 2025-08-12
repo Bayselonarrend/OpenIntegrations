@@ -981,44 +981,182 @@ EndFunction
 
 Function ProcessRecords(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
 
-    ErrorsArray     = New Array;
-    CollectionError = "Invalid data";
-    Counter         = 0;
-    SuccessCount    = 0;
+    If OPI_AddIns.FileTransferRequired() Then
+        Result = AddRecordsBatch(Module, Table, DataArray, Transaction, Connection);
+    Else
+        Result = AddRecordsSeparately(Module, Table, DataArray, Transaction, Connection);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function AddRecordsSeparately(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+
+    ErrorsArray  = New Array;
+    Counter      = 0;
+    SuccessCount = 0;
 
     For Each Record In DataArray Do
 
         Counter = Counter + 1;
 
-        Try
-            OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
-        Except
-
-            ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
-
+        If Not CheckRecordCorrectness(Record, ErrorsArray, Counter) Then
             If Transaction Then
                 Break;
             Else
                 Continue;
             EndIf;
-
-        EndTry;
+        EndIf;
 
         Result = AddRow(Module, Table, Record, Connection);
 
         If Result["result"] Then
-
             SuccessCount = SuccessCount + 1;
-
         Else
 
             ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+
+            If Transaction Then
+                Break;
+            EndIf;
 
         EndIf;
 
     EndDo;
 
     Result = New Structure("ErrorsArray,SuccessCount", ErrorsArray, SuccessCount);
+
+    Return Result;
+
+EndFunction
+
+Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+
+    BlanksArray = New Array;
+    ErrorsArray = New Array;
+
+    //@skip-check missing-temporary-file-deletion
+    BlanksPath = GetTempFileName();
+    //@skip-check missing-temporary-file-deletion
+    KeysPath = GetTempFileName();
+
+    Counter      = 0;
+    SuccessCount = 0;
+
+    For Each Record In DataArray Do
+
+        Counter = Counter + 1;
+
+        If Not CheckRecordCorrectness(Record, ErrorsArray, Counter) Then
+            If Transaction Then
+                Break;
+            Else
+                Continue;
+            EndIf;
+        EndIf;
+
+        Result = AddRow(Module, Table, Record, Connection, False);
+        BlanksArray.Add(Result);
+
+    EndDo;
+
+    Try
+
+        OPI_Tools.WriteJSONFile(BlanksPath, BlanksArray);
+
+        Initialization = Connection.BatchQuery(BlanksPath, KeysPath);
+        Initialization = OPI_Tools.JsonToStructure(Initialization);
+
+        OPI_Tools.RemoveFileWithTry(BlanksPath, "Failed to delete query package file after installation");
+
+        If Not Initialization["result"] Then
+            Raise Initialization["error"];
+        EndIf;
+
+        Keys = OPI_Tools.ReadJSONFile(KeysPath, True);
+
+        OPI_Tools.RemoveFileWithTry(KeysPath, "Failed to delete key file after initialization");
+
+    Except
+
+        Error = StrTemplate("Batch query error: %1", ErrorDescription());
+        ErrorsArray.Add(New Structure("row,error", -1, Error));
+
+        Return New Structure("ErrorsArray,SuccessCount", ErrorsArray, 0);
+
+    EndTry;
+
+    For Each Key In Keys Do
+
+        Result = Connection.Execute(Key);
+        Result = ProcessQueryResult(Connection, Key, Result);
+
+        If Result["result"] Then
+            SuccessCount = SuccessCount + 1;
+        Else
+
+            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+
+            If Transaction Then
+                Break;
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    Result = New Structure("ErrorsArray,SuccessCount", ErrorsArray, SuccessCount);
+
+    Return Result;
+
+EndFunction
+
+Function CheckRecordCorrectness(Record, ErrorsArray, Val Counter)
+
+    CollectionError = "Invalid data";
+    Correct         = True;
+
+    Try
+        OPI_TypeConversion.GetKeyValueCollection(Record, CollectionError);
+    Except
+        ErrorsArray.Add(New Structure("row,error", Counter, CollectionError));
+        Correct = False;
+    EndTry;
+
+    Return Correct;
+
+EndFunction
+
+Function AddRow(Val Module, Val Table, Val Record, Val Connection, Val ExecuteNow = True)
+
+    FieldArray  = New Array;
+    ValuesArray = New Array;
+
+    Scheme = NewSQLScheme("INSERT", Module);
+    SetTableName(Scheme, Table);
+
+    SplitDataCollection(Record, FieldArray, ValuesArray);
+
+    For Each Field In FieldArray Do
+        AddField(Scheme, Field);
+    EndDo;
+
+    Request = FormSQLText(Scheme);
+
+    If ExecuteNow Then
+        Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
+    Else
+
+        Parameters = ProcessParameters(ValuesArray, Module.GetTypesStructure());
+
+        Result = New Map;
+        Result.Insert("text"        , Request);
+        Result.Insert("params"      , Parameters);
+        Result.Insert("force_result", False);
+
+    EndIf;
+
     Return Result;
 
 EndFunction
@@ -1072,28 +1210,6 @@ Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, 
     ResultStrucutre.Insert("errors", ErrorsArray);
 
     Return ResultStrucutre;
-
-EndFunction
-
-Function AddRow(Val Module, Val Table, Val Record, Val Connection)
-
-    FieldArray  = New Array;
-    ValuesArray = New Array;
-
-    Scheme = NewSQLScheme("INSERT", Module);
-    SetTableName(Scheme, Table);
-
-    SplitDataCollection(Record, FieldArray, ValuesArray);
-
-    For Each Field In FieldArray Do
-        AddField(Scheme, Field);
-    EndDo;
-
-    Request = FormSQLText(Scheme);
-
-    Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
-
-    Return Result;
 
 EndFunction
 
@@ -1461,20 +1577,16 @@ EndProcedure
 
 Function InitializeQuery(Val Connector, Val QueryText, Val ForceResult)
 
-    If OPI_AddIns.FileTransferRequired() Then
+    If OPI_AddIns.FileTransferRequired() And StrLen(QueryText) > 1000 Then
 
-        TFN    = GetTempFileName();
+        //@skip-check missing-temporary-file-deletion
+        TFN = GetTempFileName();
         TextBD = GetBinaryDataFromString(QueryText);
         TextBD.Write(TFN);
 
         Key = Connector.InitQuery(TFN, ForceResult, True);
 
-        Try
-            DeleteFiles(TFN);
-        Except
-            //@skip-check use-non-recommended-method
-            Message("Failed to delete query file after execution");
-        EndTry;
+        OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query file after execution");
 
     Else
         Key = Connector.InitQuery(QueryText, ForceResult, False);
@@ -1488,29 +1600,22 @@ EndFunction
 
 Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
 
-    If OPI_AddIns.FileTransferRequired() Then
+    If OPI_AddIns.FileTransferRequired() And ValueIsFilled(Parameters) Then
 
+        //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
 
         Try
-            JSONWriter = New JSONWriter();
-            JSONWriter.OpenFile(TFN, , False);
-            WriteJSON(JSONWriter, Parameters);
-            JSONWriter.Close();
+            OPI_Tools.WriteJSONFile(TFN, Parameters);
         Except
-            ErrInfo          = ErrorDescription();
+            ErrInfo = ErrorDescription();
             Raise StrTemplate("JSON parameter array validation error: %1", ErrInfo);
         EndTry;
 
         JSONWriter = Undefined;
         Adding     = Connector.SetParamsFromFile(QueryKey, TFN);
 
-        Try
-            DeleteFiles(TFN);
-        Except
-            //@skip-check use-non-recommended-method
-            Message("Failed to delete query parameters file after execution");
-        EndTry;
+        OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query parameters file after execution");
 
     Else
         Parameters_ = OPI_Tools.JSONString(Parameters);
@@ -1540,7 +1645,8 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
 
         If OPI_AddIns.FileTransferRequired() Then
 
-            TFN    = GetTempFileName();
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName();
             Result = Connector.GetResultAsFile(QueryKey, TFN);
             Result = OPI_Tools.JsonToStructure(Result);
 
@@ -1548,12 +1654,8 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
                 Result = OPI_Tools.ReadJSONFile(TFN, True);
             EndIf;
 
-            Try
-                DeleteFiles(TFN);
-            Except
-                //@skip-check use-non-recommended-method
-                Message("Failed to delete result file after execution");
-            EndTry;
+            OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete result file after execution");
+
 
         Else
             Result = Connector.GetResultAsString(QueryKey);

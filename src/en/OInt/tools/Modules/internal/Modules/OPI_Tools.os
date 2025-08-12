@@ -274,6 +274,15 @@ Function ReadJSONFile(Val Path, Val ToMap = False) Export
 
 EndFunction
 
+Procedure WriteJSONFile(Val Path, Val Data) Export
+
+    JSONWriter = New JSONWriter();
+    JSONWriter.OpenFile(Path, , False);
+    WriteJSON(JSONWriter, Data);
+    JSONWriter.Close();
+
+EndProcedure
+
 #EndRegion
 
 #Region XML
@@ -837,6 +846,17 @@ Procedure StreamToStart(CurrentStream) Export
 
 EndProcedure
 
+Procedure RemoveFileWithTry(Val Path, Val MessageText) Export
+
+    Try
+        DeleteFiles(Path);
+    Except
+        //@skip-check use-non-recommended-method
+        Message(MessageText);
+    EndTry;
+
+EndProcedure
+
 Function NumberToString(Val Value) Export
 
     If TypeOf(Value) = Type("Number") Then
@@ -1185,6 +1205,10 @@ Function ПрочитатьJSONФайл(Val Путь, Val ВСоответств
 	Return ReadJSONFile(Путь, ВСоответствие);
 EndFunction
 
+Procedure ЗаписатьJSONФайл(Val Путь, Val Данные) Export
+	WriteJSONFile(Путь, Данные);
+EndProcedure
+
 Function ОбработатьXML(XML) Export
 	Return ProcessXML(XML);
 EndFunction
@@ -1259,6 +1283,10 @@ EndProcedure
 
 Procedure ПотокВНачало(ТекущийПоток) Export
 	StreamToStart(ТекущийПоток);
+EndProcedure
+
+Procedure УдалитьФайлВПопытке(Val Путь, Val ТекстСообщения) Export
+	RemoveFileWithTry(Путь, ТекстСообщения);
 EndProcedure
 
 Function ЧислоВСтроку(Val Значение) Export
