@@ -258,13 +258,13 @@ Function JSONString(Val Data
 
 EndFunction
 
-Function ReadJSONFile(Val Path) Export
+Function ReadJSONFile(Val Path, Val ToMap = False) Export
 
     // BSLLS:ExternalAppStarting-off
 
     JSONReader = New JSONReader;
     JSONReader.OpenFile(Path);
-    Values     = ReadJSON(JSONReader);
+    Values     = ReadJSON(JSONReader, ToMap);
 
     // BSLLS:ExternalAppStarting-on
 
@@ -1181,8 +1181,8 @@ Function JSONСтрокой(Val Данные, Val Экранирование = "
 	Return JSONString(Данные, Экранирование, ПереносСтрок, ДвойныеКавычки);
 EndFunction
 
-Function ПрочитатьJSONФайл(Val Путь) Export
-	Return ReadJSONFile(Путь);
+Function ПрочитатьJSONФайл(Val Путь, Val ВСоответствие = False) Export
+	Return ReadJSONFile(Путь, ВСоответствие);
 EndFunction
 
 Function ОбработатьXML(XML) Export

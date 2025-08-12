@@ -112,6 +112,12 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 
 EndFunction
 
+Function FileTransferRequired() Export
+
+    Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
+
+EndFunction
+
 #EndRegion
 
 #Region Private
