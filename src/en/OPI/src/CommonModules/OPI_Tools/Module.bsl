@@ -258,13 +258,13 @@ Function JSONString(Val Data
 
 EndFunction
 
-Function ReadJSONFile(Val Path) Export
+Function ReadJSONFile(Val Path, Val ToMap = False) Export
 
     // BSLLS:ExternalAppStarting-off
 
     JSONReader = New JSONReader;
     JSONReader.OpenFile(Path);
-    Values     = ReadJSON(JSONReader);
+    Values     = ReadJSON(JSONReader, ToMap);
 
     // BSLLS:ExternalAppStarting-on
 
