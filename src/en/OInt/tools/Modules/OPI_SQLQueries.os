@@ -355,18 +355,19 @@ EndFunction
 
 Function ExecuteQueryWithProcessing(Connector, Val QueryText, Val ForceResult, Val Parameters) Export
 
-    QueryKey = Connector.InitQuery(QueryText, ForceResult);
+    QueryKey = InitializeQuery(Connector, QueryText, ForceResult);
 
-    For Each Parameter In Parameters Do
+    If Not QueryKey["result"] Then
+        Return QueryKey;
+    Else
+        QueryKey = QueryKey["key"];
+    EndIf;
 
-        Adding = Connector.AddQueryParam(QueryKey, Parameter);
-        Adding = OPI_Tools.JsonToStructure(Adding);
+    Adding = SetQueryParams(Connector, QueryKey, Parameters);
 
-        If Not Adding["result"] Then
-            Return Adding;
-        EndIf;
-
-    EndDo;
+    If Not Adding["result"] Then
+        Return Adding;
+    EndIf;
 
     Result = Connector.Execute(QueryKey);
     Result = ProcessQueryResult(Connector, QueryKey, Result);
@@ -381,26 +382,19 @@ Function ProcessParameters(Val Parameters, Val TypesStructure) Export
         Return New Array;
     EndIf;
 
-    Parameters_ = New Array;
     OPI_TypeConversion.GetArray(Parameters);
 
-    Counter = 0;
-    For Each Parameter In Parameters Do
+    For N = 0 To Parameters.UBound() Do
 
-        CurrentParameter = ProcessParameter(Parameter, TypesStructure);
-        CurrentParameter = OPI_Tools.JSONString(CurrentParameter, , False);
+        CurrentParameter = Parameters[N];
 
-        If StrStartsWith(CurrentParameter, "NOT JSON") Then
-            Raise StrTemplate("JSON validation error for parameter. Array position %1", Counter);
-        Else
-            Parameters_.Add(CurrentParameter);
-        EndIf;
+        CurrentParameter = ProcessParameter(CurrentParameter, TypesStructure);
 
-        Counter = Counter + 1;
+        Parameters[N] = CurrentParameter;
 
     EndDo;
 
-    Return Parameters_;
+    Return Parameters;
 
 EndFunction
 
@@ -1262,45 +1256,6 @@ Function FormTopText(Val Count)
 
 EndFunction
 
-Function ProcessQueryResult(Val Connector, Val QueryKey, Val Result)
-
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    If Result["result"] Then
-
-        If Not Result["data"] Then
-            Result.Delete("data");
-            Return Result;
-        EndIf;
-
-        RowsAmount = Connector.GetQueryResultLength(QueryKey);
-
-        If Not TypeOf(RowsAmount) = Type("Number") Then
-            Return OPI_Tools.JsonToStructure(RowsAmount);
-        EndIf;
-
-        StingsArray = New Array;
-
-        For N = 0 To RowsAmount Do
-
-            CurrentRow = Connector.GetQueryResultRow(QueryKey, N);
-            StingsArray.Add(CurrentRow);
-
-        EndDo;
-
-        If StingsArray.Count() > 0 Then
-            TextJSON    = StrTemplate("[%1]", StrConcat(StingsArray, "," + Chars.LF));
-            StingsArray = OPI_Tools.JSONToStructure(TextJSON);
-        EndIf;
-
-        Result.Insert("data", StingsArray);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
 Procedure SplitDataCollection(Val Record, FieldArray, ValuesArray)
 
     ErrorText = "Incorrect data set for updating";
@@ -1504,6 +1459,113 @@ EndProcedure
 
 #Region ParamsProcessing
 
+Function InitializeQuery(Val Connector, Val QueryText, Val ForceResult)
+
+    If OPI_AddIns.FileTransferRequired() Then
+
+        TFN    = GetTempFileName();
+        TextBD = GetBinaryDataFromString(QueryText);
+        TextBD.Write(TFN);
+
+        Key = Connector.InitQuery(TFN, ForceResult, True);
+
+        Try
+            DeleteFiles(TFN);
+        Except
+            //@skip-check use-non-recommended-method
+            Message("Failed to delete query file after execution");
+        EndTry;
+
+    Else
+        Key = Connector.InitQuery(QueryText, ForceResult, False);
+    EndIf;
+
+    Key = OPI_Tools.JSONToStructure(Key);
+
+    Return Key;
+
+EndFunction
+
+Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
+
+    If OPI_AddIns.FileTransferRequired() Then
+
+        TFN = GetTempFileName();
+
+        Try
+            JSONWriter = New JSONWriter();
+            JSONWriter.OpenFile(TFN, , False);
+            WriteJSON(JSONWriter, Parameters);
+            JSONWriter.Close();
+        Except
+            ErrInfo          = ErrorDescription();
+            Raise StrTemplate("JSON parameter array validation error: %1", ErrInfo);
+        EndTry;
+
+        JSONWriter = Undefined;
+        Adding     = Connector.SetParamsFromFile(QueryKey, TFN);
+
+        Try
+            DeleteFiles(TFN);
+        Except
+            //@skip-check use-non-recommended-method
+            Message("Failed to delete query parameters file after execution");
+        EndTry;
+
+    Else
+        Parameters_ = OPI_Tools.JSONString(Parameters);
+        Adding      = Connector.SetParamsFromString(QueryKey, Parameters_);
+    EndIf;
+
+    Adding = OPI_Tools.JsonToStructure(Adding);
+
+    Return Adding;
+
+EndFunction
+
+Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
+
+    ExecutionResult = OPI_Tools.JsonToStructure(ExecutionResult);
+
+    If Not ExecutionResult["result"] Then
+
+        Return ExecutionResult;
+
+    ElsIf ExecutionResult["data"] = False Then
+
+        ExecutionResult.Delete("data");
+        Return ExecutionResult;
+
+    Else
+
+        If OPI_AddIns.FileTransferRequired() Then
+
+            TFN    = GetTempFileName();
+            Result = Connector.GetResultAsFile(QueryKey, TFN);
+            Result = OPI_Tools.JsonToStructure(Result);
+
+            If Result["result"] Then
+                Result = OPI_Tools.ReadJSONFile(TFN, True);
+            EndIf;
+
+            Try
+                DeleteFiles(TFN);
+            Except
+                //@skip-check use-non-recommended-method
+                Message("Failed to delete result file after execution");
+            EndTry;
+
+        Else
+            Result = Connector.GetResultAsString(QueryKey);
+            Result = OPI_Tools.JsonToStructure(Result);
+        EndIf;
+
+        Return Result;
+
+    EndIf;
+
+EndFunction
+
 Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
 
     CurrentType = DefineParameterType(CurrentParameter);
@@ -1550,42 +1612,6 @@ Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
     Return CurrentParameter;
 
 EndFunction
-
-Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, CurrentParameter, CurrentKey)
-
-    CollectionsTypes = TypesStructure.Get("Collections");
-    BinaryType       = TypesStructure.Get("BinaryData");
-    TypeString       = TypesStructure.Get("String");
-
-    If CurrentType = "Structure" Or CurrentType = "Map" Then
-
-        For Each ParamElement In CurrentParameter Do
-
-            CurrentKey   = Upper(ParamElement.Key);
-            CurrentValue = ParamElement.Value;
-
-            If CollectionsTypes.FindByValue(CurrentKey) <> Undefined Then
-                CurrentParameter = CurrentValue;
-
-            ElsIf CurrentKey     = BinaryType Then
-                CurrentParameter = ProcessBlob(CurrentValue)
-
-            Else
-                CurrentParameter = ProcessParameter(CurrentValue, TypesStructure, False);
-            EndIf;
-
-            Break;
-
-        EndDo;
-
-    Else
-
-        OPI_TypeConversion.GetLine(CurrentParameter);
-        CurrentKey = TypeString;
-
-    EndIf;
-
-EndProcedure
 
 Function ProcessBlob(Val Value)
 
@@ -1639,6 +1665,42 @@ Function DefineParameterType(Val CurrentParameter)
     Raise StrTemplate("Parameter type not supported: %1", String(CurrentType));
 
 EndFunction
+
+Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, CurrentParameter, CurrentKey)
+
+    CollectionsTypes = TypesStructure.Get("Collections");
+    BinaryType       = TypesStructure.Get("BinaryData");
+    TypeString       = TypesStructure.Get("String");
+
+    If CurrentType = "Structure" Or CurrentType = "Map" Then
+
+        For Each ParamElement In CurrentParameter Do
+
+            CurrentKey   = Upper(ParamElement.Key);
+            CurrentValue = ParamElement.Value;
+
+            If CollectionsTypes.FindByValue(CurrentKey) <> Undefined Then
+                CurrentParameter = CurrentValue;
+
+            ElsIf CurrentKey     = BinaryType Then
+                CurrentParameter = ProcessBlob(CurrentValue)
+
+            Else
+                CurrentParameter = ProcessParameter(CurrentValue, TypesStructure, False);
+            EndIf;
+
+            Break;
+
+        EndDo;
+
+    Else
+
+        OPI_TypeConversion.GetLine(CurrentParameter);
+        CurrentKey = TypeString;
+
+    EndIf;
+
+EndProcedure
 
 #EndRegion
 
