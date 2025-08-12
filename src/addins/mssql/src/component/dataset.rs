@@ -48,7 +48,8 @@ impl Datasets {
     }
 
     pub fn result_as_string(&self, key: &str) -> Result<String, String> {
-        let query_data = self.data.get(key)
+
+        let (_, query_data) = self.data.remove(key)
             .ok_or_else(|| format!("Key '{}' not found", key))?;
 
         let response = json!({
