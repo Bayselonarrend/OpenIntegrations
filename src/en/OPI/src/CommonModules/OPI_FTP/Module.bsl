@@ -531,7 +531,20 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
         If Not IsFileOnDisk Then
 
             OPI_TypeConversion.GetBinaryData(File);
-            Result = ProcessingConnection.UploadData(File, Path);
+
+            If OPI_AddIns.FileTransferRequired() Then
+
+                //@skip-check missing-temporary-file-deletion
+                TFN = GetTempFileName();
+                File.Write(TFN);
+
+                Result = ProcessingConnection.UploadFile(TFN, Path);
+
+                OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete temporary file after upload");
+
+            Else
+                Result = ProcessingConnection.UploadData(File, Path);
+            EndIf;
 
         Else
             Result = ProcessingConnection.UploadFile(File, Path);
@@ -634,12 +647,31 @@ Function GetFileData(Val Connection, Val Path) Export
 
         OPI_TypeConversion.GetLine(Path);
 
-        Data = Connection.DownloadToBuffer(Path);
+        If OPI_AddIns.FileTransferRequired() Then
 
-        If TypeOf(Data) = Type("String") Then
-            Result      = OPI_Tools.JsonToStructure(Data);
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName();
+            Result = Connection.DownloadToFile(Path, TFN);
+            Result = OPI_Tools.JsonToStructure(Result);
+
+            If Result["result"] Then
+
+                Data = New BinaryData(TFN);
+                OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete temporary file after upload");
+                Return Data;
+
+            EndIf;
+
         Else
-            Return Data;
+
+            Data = Connection.DownloadToBuffer(Path);
+
+            If TypeOf(Data) = Type("String") Then
+                Result      = OPI_Tools.JsonToStructure(Data);
+            Else
+                Return Data;
+            EndIf;
+
         EndIf;
 
     EndIf;
