@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_Компоненты.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_Компоненты.os
 
 // MIT License
 
@@ -115,7 +115,7 @@
 Функция ТребуетсяПередачаЧерезФайл() Экспорт
 
     Возврат Не OPI_Инструменты.ЭтоWindows() И Не OPI_Инструменты.ЭтоOneScript();
-         
+
 КонецФункции
 
 #КонецОбласти
