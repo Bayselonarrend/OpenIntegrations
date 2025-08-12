@@ -258,13 +258,13 @@
 
 КонецФункции
 
-Функция ПрочитатьJSONФайл(Знач Путь) Экспорт
+Функция ПрочитатьJSONФайл(Знач Путь, Знач ВСоответствие = Ложь) Экспорт
 
     // BSLLS:ExternalAppStarting-off
 
     ЧтениеJSON = Новый ЧтениеJSON;
     ЧтениеJSON.ОткрытьФайл(Путь);
-    Значения   = ПрочитатьJSON(ЧтениеJSON);
+    Значения   = ПрочитатьJSON(ЧтениеJSON, ВСоответствие);
 
     // BSLLS:ExternalAppStarting-on
 
@@ -1181,8 +1181,8 @@ Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val 
 	Return JSONСтрокой(Data, Escaping, LineBreaks, DoubleQuotes);
 EndFunction
 
-Function ReadJSONFile(Val Path) Export
-	Return ПрочитатьJSONФайл(Path);
+Function ReadJSONFile(Val Path, Val ToMap = False) Export
+	Return ПрочитатьJSONФайл(Path, ToMap);
 EndFunction
 
 Function ProcessXML(XML) Export
