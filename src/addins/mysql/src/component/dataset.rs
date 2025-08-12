@@ -88,6 +88,49 @@ impl Datasets {
         self.set_params(key, value)
     }
 
+    pub fn batch_query_init(&self, input_file: &str, output_file: &str) -> Result<(), String> {
+
+        let content = fs::read_to_string(input_file)
+            .map_err(|e| format!("Failed to read file '{}': {}", input_file, e))?;
+
+        let queries: Vec<Value> = serde_json::from_str(&content)
+            .map_err(|e| format!("Invalid JSON in file '{}': {}", input_file, e))?;
+
+        let mut keys = Vec::new();
+
+        for query in queries.into_iter() {
+            let obj = query.as_object()
+                .ok_or_else(|| "Each query should be a JSON object".to_string())?;
+
+            let text = obj.get("text")
+                .and_then(Value::as_str)
+                .ok_or_else(|| "Missing or invalid 'text' field".to_string())?;
+
+            let force_result = obj.get("force_result")
+                .and_then(Value::as_bool)
+                .unwrap_or(false);
+
+            let params = obj.get("params")
+                .cloned()
+                .unwrap_or_else(|| Value::Array(Vec::new()));
+
+            let key = self.init_query(text, force_result, false)?;
+
+            self.set_params(&key, params)?;
+
+            keys.push(key);
+        }
+
+        let keys_json = serde_json::to_string(&keys)
+            .map_err(|e| format!("Failed to serialize keys: {}", e))?;
+
+        fs::write(output_file, keys_json)
+            .map_err(|e| format!("Failed to write keys to '{}': {}", output_file, e))?;
+
+        Ok(())
+    }
+
+
     pub fn remove(&self, key: &str) {
         self.data.remove(key);
     }
