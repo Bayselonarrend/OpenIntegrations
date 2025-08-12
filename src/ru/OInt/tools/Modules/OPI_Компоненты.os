@@ -112,6 +112,12 @@
 
 КонецФункции
 
+Функция ТребуетсяПередачаЧерезФайл() Экспорт
+
+    Возврат Не OPI_Инструменты.ЭтоWindows() И Не OPI_Инструменты.ЭтоOneScript();
+
+КонецФункции
+
 #КонецОбласти
 
 #Область СлужебныеПроцедурыИФункции
@@ -211,6 +217,10 @@ EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function FileTransferRequired() Export
+	Return ТребуетсяПередачаЧерезФайл();
 EndFunction
 
 Function AddInsFolderOS() Export
