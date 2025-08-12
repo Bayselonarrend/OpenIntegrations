@@ -139,15 +139,20 @@ Function ExecuteSQLQuery(Val QueryText
     , Val Connection = ""
     , Val Extensions = Undefined) Export
 
-    OPI_TypeConversion.GetLine(QueryText, True);
-    OPI_TypeConversion.GetBoolean(ForceResult);
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection);
+    EndIf;
 
-    Parameters_ = ProcessParameters(Parameters);
-    Connector   = CreateConnection(Connection);
-
-    If TypeOf(Connector) <> Type("AddIn.OPI_SQLite.Main") Then
+    If Not IsConnector(Connector) Then
         Return Connector;
     EndIf;
+
+    OPI_TypeConversion.GetLine(QueryText, True);
+    OPI_TypeConversion.GetBoolean(ForceResult);
 
     If ValueIsFilled(Extensions) Then
 
@@ -165,8 +170,12 @@ Function ExecuteSQLQuery(Val QueryText
 
     EndIf;
 
-    Result = Connector.Execute(QueryText, Parameters_, ForceResult);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Parameters_ = OPI_SQLQueries.ProcessParameters(Parameters, GetTypesStructure());
+    Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
 
     Return Result;
 
@@ -468,65 +477,20 @@ Function GetFeatures() Export
 
 EndFunction
 
-#EndRegion
+Function GetTypesStructure() Export
 
-#Region Private
+    TypesStructure = New Map;
+    TypesStructure.Insert("BinaryData"   , "BLOB");
+    TypesStructure.Insert("UUID"         , "TEXT");
+    TypesStructure.Insert("Boolean"      , "BOOL");
+    TypesStructure.Insert("Float"        , "REAL");
+    TypesStructure.Insert("Whole"        , "INTEGER");
+    TypesStructure.Insert("Date"         , "TEXT");
+    TypesStructure.Insert("String"       , "TEXT");
+    TypesStructure.Insert("Collections"  , New ValueList);
+    TypesStructure.Insert("BoolAsNumber" , False);
 
-Function ProcessParameters(Val Parameters)
-
-    If Not ValueIsFilled(Parameters) Then
-        Return "[]";
-    EndIf;
-
-    OPI_TypeConversion.GetArray(Parameters);
-
-    For N = 0 To Parameters.UBound() Do
-
-        CurrentParameter = Parameters[N];
-
-        If TypeOf(CurrentParameter) = Type("BinaryData") Then
-
-            CurrentParameter = New Structure("blob", Base64String(CurrentParameter));
-
-        ElsIf OPI_Tools.CollectionFieldExists(CurrentParameter, "blob") Then
-
-            CurrentParameter = ProcessBlobStructure(CurrentParameter);
-
-        ElsIf TypeOf(CurrentParameter) = Type("Date") Then
-
-            CurrentParameter = Format(CurrentParameter, "DF='yyyy-MM-dd HH:MM:ss");
-
-        Else
-
-            If Not OPI_Tools.IsPrimitiveType(CurrentParameter) Then
-                OPI_TypeConversion.GetLine(CurrentParameter);
-            EndIf;
-
-        EndIf;
-
-        Parameters[N] = CurrentParameter;
-
-    EndDo;
-
-    Parameters_ = OPI_Tools.JSONString(Parameters, , False);
-
-    Return Parameters_;
-
-EndFunction
-
-Function ProcessBlobStructure(Val Value)
-
-    DataValue = Value["blob"];
-    DataFile  = New File(String(DataValue));
-
-    If DataFile.Exists() Then
-
-        CurrentData = New BinaryData(String(DataValue));
-        Value       = New Structure("blob", Base64String(CurrentData));
-
-    EndIf;
-
-    Return Value;
+    Return TypesStructure;
 
 EndFunction
 
