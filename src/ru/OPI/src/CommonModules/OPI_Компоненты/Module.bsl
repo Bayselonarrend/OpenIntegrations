@@ -116,7 +116,7 @@
 
     // Компоненты в 1С на Linux не могут стабильно отдавать и принимать данные свыше 30 КБ
     // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
-     
+
     Возврат Не OPI_Инструменты.ЭтоWindows() И Не OPI_Инструменты.ЭтоOneScript();
 
 КонецФункции

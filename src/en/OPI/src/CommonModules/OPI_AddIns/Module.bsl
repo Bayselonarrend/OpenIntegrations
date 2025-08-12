@@ -114,6 +114,9 @@ EndFunction
 
 Function FileTransferRequired() Export
 
+    // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB
+    // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
+
     Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
 
 EndFunction
