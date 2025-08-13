@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "") Export`
+`Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "", Val Directory = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -22,6 +22,7 @@ import TabItem from '@theme/TabItem';
   | Version | --ver | String | &#x2716; | Token for receiving a specific version of an object |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
   | SavePath | --out | String | &#x2716; | Path to directly write a file to disk |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
 
   
   Returns:  BinaryData, String - object content or file path, if a save path is specified

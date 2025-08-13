@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function PutObjectTagging(Val Name, Val Bucket, Val BasicData, Val Tags, Val Headers = Undefined) Export`
+`Function PutObjectTagging(Val Name, Val Bucket, Val BasicData, Val Tags, Val Headers = Undefined, Val Directory = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -21,6 +21,7 @@ import TabItem from '@theme/TabItem';
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
   | Tags | --tagset | Structure Of KeyAndValue | &#x2714; | Set of tags (key and value) |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
 
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage

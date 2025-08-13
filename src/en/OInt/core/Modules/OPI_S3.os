@@ -606,6 +606,7 @@ EndFunction
 // Entity - String, BinaryData - File path or binary data of the object - data
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -613,11 +614,12 @@ Function UploadFullObject(Val Name
     , Val Bucket
     , Val Entity
     , Val BasicData
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     Response = SendRequest("PUT", BasicData_, Entity, , Headers);
 
@@ -638,17 +640,19 @@ EndFunction
 // Bucket - String - Name of the bucket to put the object - bucket
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
 Function InitPartsUpload(Val Name
     , Val Bucket
     , Val BasicData
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     BasicData_.Insert("URL", BasicData_["URL"] + "?uploads");
 
@@ -672,6 +676,7 @@ EndFunction
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // PartNumber - Number, String - Number of the object part from 1 to 10000 - part
 // Data - BinaryData, String - Part content for uploading - content
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -680,11 +685,12 @@ Function UploadObjectPart(Val Name
     , Val BasicData
     , Val UploadID
     , Val PartNumber
-    , Val Data) Export
+    , Val Data
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     Parameters = New Structure;
     OPI_Tools.AddField("partNumber", PartNumber, "String", Parameters);
@@ -714,6 +720,7 @@ EndFunction
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // TagsArray - Array Of String - An array of tags (Etag) from the uploads responses of each part - tags
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -722,12 +729,13 @@ Function FinishPartsUpload(Val Name
     , Val BasicData
     , Val UploadID
     , Val TagsArray
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     OPI_TypeConversion.GetArray(TagsArray);
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
 
@@ -766,6 +774,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // UploadID - String - Upload ID. See InitPartsUpload - upload
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -773,11 +782,12 @@ Function AbortMultipartUpload(Val Name
     , Val Bucket
     , Val BasicData
     , Val UploadID
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     BasicData_.Insert("URL", BasicData_["URL"] + "?uploadId=" + String(UploadID));
 
@@ -800,6 +810,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for receiving a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -807,10 +818,11 @@ Function HeadObject(Val Name
     , Val Bucket
     , Val BasicData
     , Val Version = Undefined
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
-    FillObjectURL(BasicData_, Name, Bucket, Version);
+    FillObjectURL(BasicData_, Name, Bucket, Version, Directory);
 
     Response             = SendRequestWithoutBody("HEAD", BasicData_, , Headers);
     Response["response"] = New Structure;
@@ -835,6 +847,7 @@ EndFunction
 // Version - String - Token for receiving a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
 // SavePath - String - Path to directly write a file to disk - out
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // BinaryData, String - object content or file path, if a save path is specified
@@ -843,7 +856,8 @@ Function GetObject(Val Name
     , Val BasicData
     , Val Version = ""
     , Val Headers = Undefined
-    , Val SavePath = "") Export
+    , Val SavePath = ""
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
     ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version);
@@ -864,7 +878,7 @@ Function GetObject(Val Name
 
     OPI_TypeConversion.GetNumber(MaxSize);
     OPI_TypeConversion.GetNumber(ObjectSize);
-    FillObjectURL(BasicData_, Name, Bucket, Version);
+    FillObjectURL(BasicData_, Name, Bucket, Version, Directory);
 
     If ObjectSize > MaxSize Then
 
@@ -893,6 +907,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for deleting a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -900,14 +915,15 @@ Function DeleteObject(Val Name
     , Val Bucket
     , Val BasicData
     , Val Version = Undefined
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     OPI_TypeConversion.GetLine(Name);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + Name;
 
     If ValueIsFilled(Version) Then
@@ -979,6 +995,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Tags - Structure Of KeyAndValue - Set of tags (key and value) - tagset
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -986,7 +1003,8 @@ Function PutObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
     , Val Tags
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
@@ -997,7 +1015,7 @@ Function PutObjectTagging(Val Name
     TagsXML = GetBinaryDataFromString(TagsXML);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + Name + "?tagging";
 
     BasicData_.Insert("URL", URL);
@@ -1020,6 +1038,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for retrieving data of a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1027,7 +1046,8 @@ Function GetObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
     , Val Version = ""
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
@@ -1035,7 +1055,7 @@ Function GetObjectTagging(Val Name
     OPI_TypeConversion.GetLine(Version);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + Name + "?tagging";
 
     If ValueIsFilled(Version) Then
@@ -1062,6 +1082,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Version - String - Token for deleting data of a specific version of an object - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1069,7 +1090,8 @@ Function DeleteObjectTagging(Val Name
     , Val Bucket
     , Val BasicData
     , Val Version = ""
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
@@ -1077,7 +1099,7 @@ Function DeleteObjectTagging(Val Name
     OPI_TypeConversion.GetLine(Version);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + Name + "?tagging";
 
     If ValueIsFilled(Version) Then
@@ -1104,6 +1126,7 @@ EndFunction
 // Prefix - String - Filtering by prefix, if necessary - prefix
 // PageToken - String - Page token if pagination is used - ctoken
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1111,14 +1134,15 @@ Function ListObjects(Val Bucket
     , Val BasicData
     , Val Prefix = ""
     , Val PageToken = ""
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     String_ = "String";
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
 
     Parameters = New Map;
     OPI_Tools.AddField("list-type"         , 2        , String_, Parameters);
@@ -1147,6 +1171,7 @@ EndFunction
 // Prefix - String - Filtering by prefix, if necessary - prefix
 // Version - String - Version ID for the beginning of the list - ver
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1154,14 +1179,15 @@ Function ListObjectVersions(Val Bucket
     , Val BasicData
     , Val Prefix = ""
     , Val Version = ""
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     String_ = "String";
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     URL = GetServiceURL(BasicData_);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + "?versions";
 
     Parameters = New Map;
@@ -1191,6 +1217,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // String - URL for object retrieving
@@ -1198,12 +1225,13 @@ Function GetObjectDownloadLink(Val Name
     , Val Bucket
     , Val BasicData
     , Val Expire = 3600
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     CheckBasicData(BasicData_);
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     Signature = CreateURLSignature(BasicData_, "GET", Expire, Headers);
     URL       = BasicData_["URL"] + Signature;
@@ -1225,6 +1253,7 @@ EndFunction
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
 // Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
 // Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Directory - Boolean - True > Directory Bucket, False > General Purpose Bucket - dir
 //
 // Returns:
 // String - URL for object retrieving
@@ -1232,12 +1261,13 @@ Function GetObjectUploadLink(Val Name
     , Val Bucket
     , Val BasicData
     , Val Expire = 3600
-    , Val Headers = Undefined) Export
+    , Val Headers = Undefined
+    , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
 
     CheckBasicData(BasicData_);
-    FillObjectURL(BasicData_, Name, Bucket);
+    FillObjectURL(BasicData_, Name, Bucket, , Directory);
 
     Signature = CreateURLSignature(BasicData_, "PUT", Expire, Headers);
     URL       = BasicData_["URL"] + Signature;
@@ -1906,12 +1936,12 @@ Procedure AddAdditionalHeaders(Receiver, Val Headers)
 
 EndProcedure
 
-Procedure FillObjectURL(BasicData, Name, Bucket, Version = "")
+Procedure FillObjectURL(BasicData, Name, Bucket, Version = "", Directory = False)
 
     OPI_TypeConversion.GetLine(Name);
 
     URL = GetServiceURL(BasicData);
-    URL = FormBucketURL(URL, Bucket, False);
+    URL = FormBucketURL(URL, Bucket, Directory);
     URL = URL + Name;
 
     If ValueIsFilled(Version) Then
@@ -1995,68 +2025,68 @@ Function ЗагрузитьОбъект(Val Наименование, Val Бак
 	Return PutObject(Наименование, Бакет, Содержимое, ОсновныеДанные, Заголовки);
 EndFunction
 
-Function ЗагрузитьОбъектЦеликом(Val Наименование, Val Бакет, Val Содержимое, Val ОсновныеДанные, Val Заголовки = Undefined) Export
-	Return UploadFullObject(Наименование, Бакет, Содержимое, ОсновныеДанные, Заголовки);
+Function ЗагрузитьОбъектЦеликом(Val Наименование, Val Бакет, Val Содержимое, Val ОсновныеДанные, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return UploadFullObject(Наименование, Бакет, Содержимое, ОсновныеДанные, Заголовки, Каталог);
 EndFunction
 
-Function ИнициализироватьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Заголовки = Undefined) Export
-	Return InitPartsUpload(Наименование, Бакет, ОсновныеДанные, Заголовки);
+Function ИнициализироватьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return InitPartsUpload(Наименование, Бакет, ОсновныеДанные, Заголовки, Каталог);
 EndFunction
 
-Function ЗагрузитьЧастьОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val НомерЧасти, Val Данные) Export
-	Return UploadObjectPart(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, НомерЧасти, Данные);
+Function ЗагрузитьЧастьОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val НомерЧасти, Val Данные, Val Каталог = False) Export
+	Return UploadObjectPart(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, НомерЧасти, Данные, Каталог);
 EndFunction
 
-Function ЗавершитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val МассивТегов, Val Заголовки = Undefined) Export
-	Return FinishPartsUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, МассивТегов, Заголовки);
+Function ЗавершитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val МассивТегов, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return FinishPartsUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, МассивТегов, Заголовки, Каталог);
 EndFunction
 
-Function ОтменитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val Заголовки = Undefined) Export
-	Return AbortMultipartUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, Заголовки);
+Function ОтменитьЗагрузкуЧастями(Val Наименование, Val Бакет, Val ОсновныеДанные, Val IDЗагрузки, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return AbortMultipartUpload(Наименование, Бакет, ОсновныеДанные, IDЗагрузки, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьОписаниеОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined) Export
-	Return HeadObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+Function ПолучитьОписаниеОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return HeadObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined, Val ПутьСохранения = "") Export
-	Return GetObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, ПутьСохранения);
+Function ПолучитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined, Val ПутьСохранения = "", Val Каталог = False) Export
+	Return GetObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, ПутьСохранения, Каталог);
 EndFunction
 
-Function УдалитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined) Export
-	Return DeleteObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+Function УдалитьОбъект(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = Undefined, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return DeleteObject(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, Каталог);
 EndFunction
 
 Function КопироватьОбъект(Val ПутьИсточник, Val БакетИсточник, Val ПутьПриемник, Val БакетПриемник, Val ОсновныеДанные, Val Заголовки = Undefined) Export
 	Return CopyObject(ПутьИсточник, БакетИсточник, ПутьПриемник, БакетПриемник, ОсновныеДанные, Заголовки);
 EndFunction
 
-Function УстановитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Теги, Val Заголовки = Undefined) Export
-	Return PutObjectTagging(Наименование, Бакет, ОсновныеДанные, Теги, Заголовки);
+Function УстановитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Теги, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return PutObjectTagging(Наименование, Бакет, ОсновныеДанные, Теги, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined) Export
-	Return GetObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+Function ПолучитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined, Val Каталог = False) Export
+	Return GetObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, Каталог);
 EndFunction
 
-Function УдалитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined) Export
-	Return DeleteObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки);
+Function УдалитьТегиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val Версия = "", Val Заголовки = Undefined, Val Каталог = False) Export
+	Return DeleteObjectTagging(Наименование, Бакет, ОсновныеДанные, Версия, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьСписокОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val ТокенСтраницы = "", Val Заголовки = Undefined) Export
-	Return ListObjects(Бакет, ОсновныеДанные, Префикс, ТокенСтраницы, Заголовки);
+Function ПолучитьСписокОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val ТокенСтраницы = "", Val Заголовки = Undefined, Val Каталог = False) Export
+	Return ListObjects(Бакет, ОсновныеДанные, Префикс, ТокенСтраницы, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьСписокВерсийОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val Версия = "", Val Заголовки = Undefined) Export
-	Return ListObjectVersions(Бакет, ОсновныеДанные, Префикс, Версия, Заголовки);
+Function ПолучитьСписокВерсийОбъектов(Val Бакет, Val ОсновныеДанные, Val Префикс = "", Val Версия = "", Val Заголовки = Undefined, Val Каталог = False) Export
+	Return ListObjectVersions(Бакет, ОсновныеДанные, Префикс, Версия, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьСсылкуСкачиванияОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined) Export
-	Return GetObjectDownloadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки);
+Function ПолучитьСсылкуСкачиванияОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return GetObjectDownloadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки, Каталог);
 EndFunction
 
-Function ПолучитьСсылкуЗагрузкиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined) Export
-	Return GetObjectUploadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки);
+Function ПолучитьСсылкуЗагрузкиОбъекта(Val Наименование, Val Бакет, Val ОсновныеДанные, Val ВремяЖизни = 3600, Val Заголовки = Undefined, Val Каталог = False) Export
+	Return GetObjectUploadLink(Наименование, Бакет, ОсновныеДанные, ВремяЖизни, Заголовки, Каталог);
 EndFunction
 
 #EndRegion
