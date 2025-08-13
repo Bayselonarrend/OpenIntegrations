@@ -187,7 +187,7 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
         //@skip-check module-unused-local-variable
         ConnectionType = AddInConnectionType.NoIsolated;
-        SetSafeMode(True);
+        //@skip-check server-execution-safe-mode
         Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
 
     EndIf;
