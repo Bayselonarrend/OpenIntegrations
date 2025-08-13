@@ -817,6 +817,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "UploadFullObject";
+    NewLine.SearchMethod = "UPLOADFULLOBJECT";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "InitPartsUpload";
     NewLine.SearchMethod = "INITPARTSUPLOAD";
     NewLine.Parameter    = "--name";
@@ -852,6 +862,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "INITPARTSUPLOAD";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "InitPartsUpload";
+    NewLine.SearchMethod = "INITPARTSUPLOAD";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
 
@@ -919,6 +939,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "UploadObjectPart";
+    NewLine.SearchMethod = "UPLOADOBJECTPART";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "FinishPartsUpload";
     NewLine.SearchMethod = "FINISHPARTSUPLOAD";
     NewLine.Parameter    = "--name";
@@ -980,6 +1010,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "FinishPartsUpload";
+    NewLine.SearchMethod = "FINISHPARTSUPLOAD";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "AbortMultipartUpload";
     NewLine.SearchMethod = "ABORTMULTIPARTUPLOAD";
     NewLine.Parameter    = "--name";
@@ -1031,6 +1071,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "AbortMultipartUpload";
+    NewLine.SearchMethod = "ABORTMULTIPARTUPLOAD";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "HeadObject";
     NewLine.SearchMethod = "HEADOBJECT";
     NewLine.Parameter    = "--name";
@@ -1076,6 +1126,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "HEADOBJECT";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "HeadObject";
+    NewLine.SearchMethod = "HEADOBJECT";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
 
@@ -1143,6 +1203,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "GetObject";
+    NewLine.SearchMethod = "GETOBJECT";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "DeleteObject";
     NewLine.SearchMethod = "DELETEOBJECT";
     NewLine.Parameter    = "--name";
@@ -1188,6 +1258,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "DELETEOBJECT";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "DeleteObject";
+    NewLine.SearchMethod = "DELETEOBJECT";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
 
@@ -1306,6 +1386,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "PutObjectTagging";
+    NewLine.SearchMethod = "PUTOBJECTTAGGING";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "GetObjectTagging";
     NewLine.SearchMethod = "GETOBJECTTAGGING";
     NewLine.Parameter    = "--name";
@@ -1351,6 +1441,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "GETOBJECTTAGGING";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "GetObjectTagging";
+    NewLine.SearchMethod = "GETOBJECTTAGGING";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
 
@@ -1408,6 +1508,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "DeleteObjectTagging";
+    NewLine.SearchMethod = "DELETEOBJECTTAGGING";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "ListObjects";
     NewLine.SearchMethod = "LISTOBJECTS";
     NewLine.Parameter    = "--bucket";
@@ -1453,6 +1563,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "LISTOBJECTS";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "ListObjects";
+    NewLine.SearchMethod = "LISTOBJECTS";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
 
@@ -1510,6 +1630,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "ListObjectVersions";
+    NewLine.SearchMethod = "LISTOBJECTVERSIONS";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "GetObjectDownloadLink";
     NewLine.SearchMethod = "GETOBJECTDOWNLOADLINK";
     NewLine.Parameter    = "--name";
@@ -1561,6 +1691,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "s3";
     NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "GetObjectDownloadLink";
+    NewLine.SearchMethod = "GETOBJECTDOWNLOADLINK";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
     NewLine.Method       = "GetObjectUploadLink";
     NewLine.SearchMethod = "GETOBJECTUPLOADLINK";
     NewLine.Parameter    = "--name";
@@ -1606,6 +1746,16 @@ Function GetComposition() Export
     NewLine.SearchMethod = "GETOBJECTUPLOADLINK";
     NewLine.Parameter    = "--headers";
     NewLine.Description    = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Objects management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "s3";
+    NewLine.Module      = "OPI_S3";
+    NewLine.Method       = "GetObjectUploadLink";
+    NewLine.SearchMethod = "GETOBJECTUPLOADLINK";
+    NewLine.Parameter    = "--dir";
+    NewLine.Description    = "True > Directory Bucket, False > General Purpose Bucket (optional, def. val. - False)";
     NewLine.Region     = "Objects management";
 
     Return CompositionTable;
