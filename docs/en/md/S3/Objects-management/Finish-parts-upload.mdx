@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function FinishPartsUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val TagsArray, Val Headers = Undefined) Export`
+`Function FinishPartsUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val TagsArray, Val Headers = Undefined, Val Directory = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -22,6 +22,7 @@ import TabItem from '@theme/TabItem';
   | UploadID | --upload | String | &#x2714; | Upload ID. See InitPartsUpload |
   | TagsArray | --tags | Array Of String | &#x2714; | An array of tags (Etag) from the uploads responses of each part |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
 
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage
