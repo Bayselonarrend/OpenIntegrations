@@ -3714,7 +3714,7 @@ Procedure Telegram_CreateInviteLink(FunctionParameters)
     Опции.Вставить("", ChannelID);
     Опции.Вставить("", Title);
     Опции.Вставить("", Expiration);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 200);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "CreateInvitationLink", Опции);
 
@@ -8285,7 +8285,7 @@ Procedure Twitter_CreatePollTweet(FunctionParameters)
     Опции = Новый Структура;
     Опции.Вставить("", Text);
     Опции.Вставить("", AnswersArray);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 60);
     Опции.Вставить("", Parameters);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreatePollTweet", Опции);
@@ -8943,7 +8943,7 @@ Procedure Dropbox_GetObjectVersionList(FunctionParameters)
     Опции = Новый Структура;
     Опции.Вставить("", Token);
     Опции.Вставить("", Path);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 1);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetObjectVersionList", Опции);
 
@@ -11440,7 +11440,7 @@ Procedure Bitrix24_AddKanbanStage(FunctionParameters)
     Опции.Вставить("", URL);
     Опции.Вставить("", Name);
     Опции.Вставить("", Color);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 6);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddKanbanStage", Опции);
 
@@ -11596,7 +11596,7 @@ Procedure Bitrix24_UpdateKanbansStage(FunctionParameters)
     Опции.Вставить("", Name);
     Опции.Вставить("", StageID);
     Опции.Вставить("", Color);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 6);
     Опции.Вставить("", Истина);
     Опции.Вставить("", Token);
 
@@ -12461,7 +12461,7 @@ Procedure Bitrix24_GetChatMessagesList(FunctionParameters)
     Опции = Новый Структура;
     Опции.Вставить("", URL);
     Опции.Вставить("", UserID);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 0);
     Опции.Вставить("", Token);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatMessagesList", Опции);
@@ -19815,7 +19815,7 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
     Опции.Вставить("", Name);
     Опции.Вставить("", Bucket);
     Опции.Вставить("", BasicData);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 7200);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObjectDownloadLink", Опции);
 
@@ -19856,7 +19856,7 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
     Опции.Вставить("", Name);
     Опции.Вставить("", Bucket);
     Опции.Вставить("", BasicData);
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 7200);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObjectUploadLink", Опции);
 
@@ -19892,6 +19892,1754 @@ EndProcedure
 
 Procedure TCP_CreateConnection(FunctionParameters)
 
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    Result = String(Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "TCP"); // SKIP
+    OPI_TestDataRetrieval.Check_Filled(Result); // SKIP
+
+    OPI_TCP.CloseConnection(Connection);
+
+    Address    = "tcpbin.com:4243";
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Tls = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTlsSettings", Опции);
+    Connection = OPI_TCP.CreateConnection(Address, TLS);
+
+    // END
+
+    If TypeOf(Connection) = Type("Map") Then
+        Result            = Connection;
+    Else
+        Result            = String(Connection);
+    EndIf;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure TCP_CloseConnection(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    Result = OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "TCP");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure TCP_ReadBinaryData(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = GetBinaryDataFromString(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    Result = GetStringFromBinaryData(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    Result = GetStringFromBinaryData(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadBinaryData (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+EndProcedure
+
+Procedure TCP_SendBinaryData(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Message    = "Hello server!" + Chars.LF;
+    Data       = GetBinaryDataFromString(Message);
+
+    Result = OPI_TCP.SendBinaryData(Connection, Data);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Response = OPI_TCP.ReadBinaryData(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    Response = GetStringFromBinaryData(Response);
+    OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData", "TCP");
+    OPI_TestDataRetrieval.Check_String(Response, Message);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    Result = GetStringFromBinaryData(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "SendBinaryData (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Message);
+
+EndProcedure
+
+Procedure TCP_ProcessRequest(FunctionParameters)
+
+    Address = FunctionParameters["TCP_Address"];
+    Data    = "Echo this!" + Chars.LF;
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Data);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "ProcessRequest", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest", "TCP"); // END
+    OPI_TestDataRetrieval.Check_String(Result, Data); // END
+
+    Address = FunctionParameters["TCP_AddressTLS"];
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Tls = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Data);
+    Опции.Вставить("", Tls);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "ProcessRequest", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProcessRequest (TLS)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_ReadLine(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    OPI_TCP.SendLine(Connection, Data);
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Result = OPI_TCP.ReadLine(Connection, , Marker);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadLine", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendLine(Connection, Data);
+    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReadLine (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_SendLine(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    Result = OPI_TCP.SendLine(Connection, Data);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // End of message marker to avoid waiting for the end of timeout
+    Marker = Chars.LF;
+    Response = OPI_TCP.ReadLine(Connection, , Marker);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLine", "TCP");
+    OPI_TestDataRetrieval.Check_String(Response, Data);
+
+    Connection = OPI_TCP.CreateConnection(Address);
+
+    OPI_TCP.SendLine(Connection, Data);
+    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+
+    OPI_TCP.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLine (timeout)", "TCP");
+    OPI_TestDataRetrieval.Check_String(Result, Data);
+
+EndProcedure
+
+Procedure TCP_GetTlsSettings(FunctionParameters)
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTlsSettings", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "TCP");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure TCP_GetLastError(FunctionParameters)
+
+    Address    = FunctionParameters["TCP_Address"];
+    Connection = OPI_TCP.CreateConnection(Address);
+    Data       = "Hello server!" + Chars.LF;
+
+    Sending = OPI_TCP.SendLine(Connection, Data);
+    Result  = OPI_TCP.GetLastError(Connection); // SKIP
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLastError", "TCP");
+
+EndProcedure
+
+#EndRegion
+
+#Region SQLite
+
+Procedure SQLite_CreateConnection(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    LocalBase    = OPI_SQLite.CreateConnection(TFN);
+    InMemoryBase = OPI_SQLite.CreateConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(LocalBase, "CreateConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_AddIn(LocalBase, "AddIn.OPI_SQLite.Main");
+
+    OPI_TestDataRetrieval.WriteLog(InMemoryBase, "CreateConnection (im)", "SQLite");
+    OPI_TestDataRetrieval.Check_AddIn(InMemoryBase, "AddIn.OPI_SQLite.Main");
+
+    Closing = OPI_SQLite.CloseConnection(LocalBase);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "CloseConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry;
+
+EndProcedure
+
+Procedure SQLite_CloseConnection(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (closing)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_SQLite.Main"); // SKIP
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "CloseConnection", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Closing);
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry;
+
+EndProcedure
+
+Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
+
+    TFN = GetTempFileName("sqlite");
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (query)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_SQLite.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INTEGER PRIMARY KEY,
+                   |name TEXT,
+                   |age INTEGER,
+                   |salary REAL,
+                   |is_active BOOLEAN,
+                   |created_at DATETIME,
+                   |data BLOB
+                   |);";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add("Vitaly"); // TEXT
+    ParameterArray.Add(25); // INTEGER
+    ParameterArray.Add(1000.12); // REAL
+    ParameterArray.Add(True); // BOOL
+    ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
+    ParameterArray.Add(Image); // BLOB
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", ParameterArray);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+
+    Blob = Result["data"][0]["data"]["blob"]; // SKIP
+
+    Result["data"][0]["data"]["blob"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    // Transaction
+
+    QueryText = "BEGIN TRANSACTION;
+                   | CREATE TABLE IF NOT EXISTS users (
+                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   | name TEXT NOT NULL,
+                   | age INTEGER NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+
+    // With extension
+
+    If OPI_Tools.IsWindows() Then
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    Else
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+    EndIf;
+
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", ExtensionMap);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (extension)", "SQLite"); // SKIP
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1); // SKIP
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+    EndTry;
+
+EndProcedure
+
+Procedure SQLite_IsConnector(FunctionParameters)
+
+    Connection = OPI_SQLite.CreateConnection();
+    Result     = OPI_SQLite.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "SQLite");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure SQLite_CreateTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"        , "INTEGER PRIMARY KEY");
+    ColoumnsStruct.Insert("name"      , "TEXT");
+    ColoumnsStruct.Insert("age"       , "INTEGER");
+    ColoumnsStruct.Insert("salary"    , "REAL");
+    ColoumnsStruct.Insert("is_active" , "BOOLEAN");
+    ColoumnsStruct.Insert("created_at", "DATETIME");
+    ColoumnsStruct.Insert("data"      , "BLOB");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "CreateTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    ColoumnsMap = New Map;
+    ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
+    ColoumnsMap.Insert("[An obscure column]", "TEXT");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", ColoumnsMap);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (obscure column)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
+Procedure SQLite_AddRecords(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    PictureFile = GetTempFileName("png");
+    Image.Write(PictureFile); // PictureFile - File to disk
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("name"      , "Vitaly"); // TEXT
+    RowStructure2.Insert("age"       , 25); // INTEGER
+    RowStructure2.Insert("salary"    , 1000.12); // REAL
+    RowStructure2.Insert("is_active" , True); // BOOL
+    RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStructure2.Insert("data"      , Image); // BLOB
+
+    RowStrucutre1 = New Structure;
+    RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
+    RowStrucutre1.Insert("age"       , 20); // INTEGER
+    RowStrucutre1.Insert("salary"    , 200.20); // REAL
+    RowStrucutre1.Insert("is_active" , False); // BOOL
+    RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStrucutre1);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", DataArray);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", DataArray);
+    Опции.Вставить("", Ложь);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (no tr)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    RowStrucutre1.Insert("error", "Lesha");
+    DataArray.Add(RowStrucutre1);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", DataArray);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", DataArray);
+    Опции.Вставить("", Ложь);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (field error without tr)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteRows(Result, 1);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", "not valid json");
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (json error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    RowMap = New Map;
+    RowMap.Insert("[An obscure column]", "yo");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", RowMap);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (obscure column)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Try
+        DeleteFiles(PictureFile);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
+    EndTry;
+
+EndProcedure
+
+Procedure SQLite_GetRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Fields = New Array;
+    Fields.Add("name");
+    Fields.Add("salary");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "name");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Vitaly");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "age");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 30");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("created_at", "DESC");
+    Count = 1;
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Fields);
+    Опции.Вставить("", Filters);
+    Опции.Вставить("", Sort);
+    Опции.Вставить("", Count);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", "['name','age','salary','is_active','created_at']");
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (no params)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    FilterStructure2.Insert("type", "BEETWEEN");
+    Filters.Add(FilterStructure2);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", "['name','age','salary','is_active','created_at']");
+    Опции.Вставить("", Filters);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (error)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteError(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords (obscure column)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
+Procedure SQLite_UpdateRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("name"  , "Vitaly A.");
+    FieldsStructure.Insert("salary", "999999");
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", FieldsStructure);
+    Опции.Вставить("", FilterStructure);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "UpdateRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    FilterStructure.Insert("value", "Vitaly A.");
+
+    Filters = New Array;
+    Filters.Add(FilterStructure);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", "['name','salary']");
+    Опции.Вставить("", Filters);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_SQLiteFieldsValues(Check["data"][0], FieldsStructure);
+
+EndProcedure
+
+Procedure SQLite_DeleteRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly A.");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", FilterStructure);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", "['name','salary']");
+    Опции.Вставить("", Filters);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteNoRows(Check);
+
+EndProcedure
+
+Procedure SQLite_GetTableInformation(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+EndProcedure
+
+Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
+
+    Опции = Новый Структура;
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecordsFilterStrucutre", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre", "SQLite");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecordsFilterStrucutre", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecordsFilterStrucutre (empty)", "SQLite");
+
+    For Each Element In Result Do
+
+        OPI_TestDataRetrieval.Check_Empty(Element.Value);
+
+    EndDo;
+
+EndProcedure
+
+Procedure SQLite_DeleteTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+    OPI_SQLite.DeleteTable("test1", Base);
+
+EndProcedure
+
+Procedure SQLite_ClearTable(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ClearTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 5);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "Check", "SQLite");
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 0);
+
+EndProcedure
+
+Procedure SQLite_ConnectExtension(FunctionParameters)
+
+    If OPI_Tools.IsWindows() Then
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+    Else
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+    EndIf;
+
+    Base       = FunctionParameters["SQLite_DB"];
+    EntryPoint = "sqlite3_uuid_init";
+
+    Connection = OPI_SQLite.CreateConnection(Base);
+    Result     = OPI_SQLite.ConnectExtension(Extension, EntryPoint, Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    TFN = GetTempFileName("dll");
+    CopyFile(Extension, TFN);
+
+    Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (path)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Result = OPI_SQLite.ConnectExtension(New BinaryData(TFN), EntryPoint, Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (binary)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "select uuid4();");
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (check)", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+
+    Result = OPI_SQLite.CloseConnection(Connection);
+    OPI_TestDataRetrieval.WriteLog(Result, "ConnectExtension (closing)", "SQLite");
+
+    Try
+        DeleteFiles(TFN);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting extension file", "SQLite");
+    EndTry;
+
+EndProcedure
+
+Procedure SQLite_AddTableColumn(FunctionParameters)
+
+    Base     = FunctionParameters["SQLite_DB"];
+    Table    = "test";
+    Name     = "new_col";
+    DataType = "TEXT";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Name);
+    Опции.Вставить("", DataType);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddTableColumn", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTableColumn (check))", "SQLite");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["name"] = Name Then
+            OPI_TestDataRetrieval.Check_Equality(DataType, Coloumn["type"]);
+            Found          = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, True);
+
+EndProcedure
+
+Procedure SQLite_DeleteTableColumn(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test";
+    Name  = "new_col";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Name);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteTableColumn", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTableColumn (check))", "SQLite");
+
+    Found = False;
+
+    For Each Coloumn In Result["data"] Do
+
+        If Coloumn["name"] = Name Then
+            Found          = True;
+        EndIf;
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_Equality(Found, False);
+
+EndProcedure
+
+Procedure SQLite_EnsureTable(FunctionParameters)
+
+    Base = FunctionParameters["SQLite_DB"];
+
+    Table = "test";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"   , "INTEGER");
+    ColoumnsStruct.Insert("code" , "INTEGER");
+    ColoumnsStruct.Insert("name" , "TEXT");
+    ColoumnsStruct.Insert("age"  , "INTEGER");
+    ColoumnsStruct.Insert("info" , "TEXT");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "EnsureTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Coloumn["type"], ColoumnsStruct[Coloumn["name"]]);
+    EndDo;
+
+    Table = "test_new";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", Base);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "EnsureTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnsureTable (new))", "SQLite");
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Result);
+    OPI_TestDataRetrieval.Check_True(Result["commit"]["result"]);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", Base);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.Check_SQLiteSuccess(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], ColoumnsStruct.Count());
+
+    For Each Coloumn In Check["data"] Do
+        OPI_TestDataRetrieval.Check_Equality(Coloumn["type"], ColoumnsStruct[Coloumn["name"]]);
+    EndDo;
+
+EndProcedure
+
+#EndRegion
+
+#Region PostgreSQL
+
+Procedure PostgreSQL_GenerateConnectionString(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    // END
+
+    Result = StrReplace(Result, Password, "***");
+    Result = StrReplace(Result, Address , "127.0.0.1");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateConnectionString", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_CreateConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Result           = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_PostgreSQL.CloseConnection(Result);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main"); // SKIP
+
+    // With TLS
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+
+    Result = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_PostgreSQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+    Result      = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_PostgreSQL.Main");
+
+    Address          = FunctionParameters["PG_IP"];
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+    Connection  = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    Result           = OPI_PostgreSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    Result     = OPI_PostgreSQL.IsConnector(Connection);
+
+    OPI_PostgreSQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_PostgreSQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_PostgreSQL.DeleteTable("test_data", Connection); // SKIP
+    Deletion = OPI_PostgreSQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "PostgreSQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id SERIAL PRIMARY KEY,
+                   |name NAME,
+                   |age INT,
+                   |salary REAL,
+                   |is_active BOOL,
+                   |created_at DATE,
+                   |data BYTEA
+                   |);";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES ($1, $2, $3, $4, $5, $6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("NAME" , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"  , 25));
+    ParameterArray.Add(New Structure("REAL" , 1000.12));
+    ParameterArray.Add(New Structure("BOOL" , True));
+    ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTEA", Image));
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", ParameterArray);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+
+    Blob = Result["data"][0]["data"]["BYTEA"]; // SKIP
+
+    Result["data"][0]["data"]["BYTEA"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    // DO + Transaction
+
+    QueryText = "DO $$
+                   |BEGIN
+                   | CREATE TABLE users (
+                   | id SMALLSERIAL,
+                   | name TEXT NOT NULL,
+                   | age INT NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   |END $$ LANGUAGE plpgsql;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Transaction)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
+
+    Опции = Новый Структура;
+    Опции.Вставить("", SQLFile);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", "postgres");
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Deletion = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting, TLS)", "PostgreSQL");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+    OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString);
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateDatabase (open)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (connect)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_PostgreSQL.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure PostgreSQL_CreateTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("bool_field"       , "BOOL");
+    ColoumnsStruct.Insert("oldchar_field"    , """char""");
+    ColoumnsStruct.Insert("smallint_field"   , "SMALLINT");
+    ColoumnsStruct.Insert("smallserial_field", "SMALLSERIAL");
+    ColoumnsStruct.Insert("int_field"        , "INT");
+    ColoumnsStruct.Insert("serial_field"     , "SERIAL");
+    ColoumnsStruct.Insert("oid_field"        , "OID");
+    ColoumnsStruct.Insert("bigint_field"     , "BIGINT");
+    ColoumnsStruct.Insert("bigserial_field"  , "BIGSERIAL");
+    ColoumnsStruct.Insert("real_field"       , "REAL");
+    ColoumnsStruct.Insert("dp_field"         , "DOUBLE PRECISION");
+    ColoumnsStruct.Insert("text_field"       , "TEXT");
+    ColoumnsStruct.Insert("varchar_field"    , "VARCHAR");
+    ColoumnsStruct.Insert("charn_field"      , "CHAR(3)");
+    ColoumnsStruct.Insert("char_field"       , "CHAR");
+    ColoumnsStruct.Insert("name_field"       , "NAME");
+    ColoumnsStruct.Insert("bytea_field"      , "BYTEA");
+    ColoumnsStruct.Insert("ts_field"         , "TIMESTAMP");
+    ColoumnsStruct.Insert("tswtz_field"      , "TIMESTAMP WITH TIME ZONE");
+    ColoumnsStruct.Insert("ip_field"         , "INET");
+    ColoumnsStruct.Insert("json_field"       , "JSON");
+    ColoumnsStruct.Insert("jsonb_field"      , "JSONB");
+    ColoumnsStruct.Insert("date_field"       , "DATE");
+    ColoumnsStruct.Insert("time_field"       , "TIME");
+    ColoumnsStruct.Insert("uuid_field"       , "UUID");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Table = "ABC DEF";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (name error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Table = "somename";
+    ColoumnsStruct.Insert("wtf_field", "WTF");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (type error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_GetTableInformation(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 25);
+
+    Table = "heyho";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTableInformation (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
+
+EndProcedure
+
+Procedure PostgreSQL_AddRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    CasualStructure = New Structure("key,value", "ItsKey", 10);
+
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+    CurrentDateTZ = OPI_Tools.DateRFC3339(CurrentDate, "+05:00");
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("bool_field"       , New Structure("BOOL"                    , True));
+    RecordStructure.Insert("oldchar_field"    , New Structure("OLDCHAR"                 , 1)); // or "char"
+    RecordStructure.Insert("smallint_field"   , New Structure("SMALLINT"                , 5));
+    RecordStructure.Insert("smallserial_field", New Structure("SMALLSERIAL"             , 6));
+    RecordStructure.Insert("int_field"        , New Structure("INT"                     , 100));
+    RecordStructure.Insert("serial_field"     , New Structure("SERIAL"                  , 100));
+    RecordStructure.Insert("oid_field"        , New Structure("OID"                     , 24576));
+    RecordStructure.Insert("bigint_field"     , New Structure("BIGINT"                  , 9999999));
+    RecordStructure.Insert("bigserial_field"  , New Structure("BIGSERIAL"               , 9999999));
+    RecordStructure.Insert("real_field"       , New Structure("REAL"                    , 15.2));
+    RecordStructure.Insert("dp_field"         , New Structure("DOUBLE_PRECISION"        , 1.0002)); // or DOUBLE PRECISION
+    RecordStructure.Insert("text_field"       , New Structure("TEXT"                    , "Some text"));
+    RecordStructure.Insert("varchar_field"    , New Structure("VARCHAR"                 , "Some varchar"));
+    RecordStructure.Insert("charn_field"      , New Structure("CHAR"                    , "AAA"));
+    RecordStructure.Insert("char_field"       , New Structure("CHAR"                    , "A"));
+    RecordStructure.Insert("name_field"       , New Structure("NAME"                    , "Vitaly"));
+    RecordStructure.Insert("bytea_field"      , New Structure("BYTEA"                   , Image));
+    RecordStructure.Insert("ts_field"         , New Structure("TIMESTAMP"               , CurrentDate));
+    RecordStructure.Insert("tswtz_field"      , New Structure("TIMESTAMP_WITH_TIME_ZONE", CurrentDateTZ)); // or TIMESTAMP WITH TIME ZONE
+    RecordStructure.Insert("ip_field"         , New Structure("INET"                    , "127.0.0.1"));
+    RecordStructure.Insert("json_field"       , New Structure("JSON"                    , CasualStructure));
+    RecordStructure.Insert("jsonb_field"      , New Structure("JSONB"                   , CasualStructure));
+    RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
+    RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
+    RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID));
+
+    RecordsArray.Add(RecordStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", RecordsArray);
+    Опции.Вставить("", Истина);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "AddRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "PostgreSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Address = FunctionParameters["PG_IP"];
@@ -20308,11 +22056,11 @@ EndProcedure
 
 Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
 
-    Address = FunctionParameters["PG_IP"];
-    Port    = "5433";
-
-    Опции = Новый Структура;
     Опции = Новый Структура;
     Опции.Вставить("", Address);
     Опции.Вставить("", Base);
@@ -20320,6 +22068,138 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     Опции.Вставить("", Password);
 
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "DeleteDatabase (open)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_PostgreSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DisableAllDatabaseConnections", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (Shutdown)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "DeleteDatabase (close)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Closing);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", "postgres");
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
+    Base                = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (TLS)", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure PostgreSQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ClearTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "PostgreSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "5433";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
     Опции.Вставить("", Base);
     Опции.Вставить("", Login);
     Опции.Вставить("", Password);
@@ -20327,11 +22207,7 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
     Опции = Новый Структура;
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    Опции.Вставить("", Истина);
 
     TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTlsSettings", Опции);
 
@@ -20811,10 +22687,10 @@ EndProcedure
 
 Procedure MySQL_CreateConnection(FunctionParameters)
 
-    Fields = New Array;
-    Fields.Add("first_name");
-    Fields.Add("last_name");
-    Fields.Add("email");
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
 
     Опции = Новый Структура;
     Опции.Вставить("", Address);
@@ -20823,6 +22699,613 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     Опции.Вставить("", Password);
 
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Result           = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main"); // SKIP
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // With TLS
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "3307";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+
+    Result = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
+
+    Result = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (error without TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+    Result      = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (TLS ignore)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MySQL.Main");
+
+    Address          = FunctionParameters["PG_IP"];
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+    Connection  = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Connection       = OPI_MySQL.CreateConnection(ConnectionString);
+    Result           = OPI_MySQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+    Result     = OPI_MySQL.IsConnector(Connection);
+
+    OPI_MySQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "MySQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Connection       = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_MySQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_MySQL.DeleteTable("test_data", Connection); // SKIP
+    Deletion = OPI_MySQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (deleting 1)", "MySQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INT AUTO_INCREMENT PRIMARY KEY,
+                   |name VARCHAR(255),
+                   |age INT,
+                   |salary DOUBLE,
+                   |amount FLOAT,
+                   |type TINYINT UNSIGNED,
+                   |date DATE,
+                   |time TIME,
+                   |data MEDIUMBLOB
+                   |);";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, amount, type, date, time, data)
+                   |VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("TEXT"  , "Vitaly"));
+    ParameterArray.Add(New Structure("INT"   , 25));
+    ParameterArray.Add(New Structure("DOUBLE", 1000.12));
+    ParameterArray.Add(New Structure("FLOAT" , 1000.12));
+    ParameterArray.Add(New Structure("UINT"  , 1));
+    ParameterArray.Add(New Structure("DATE"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
+    ParameterArray.Add(New Structure("BYTES" , Image));
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", ParameterArray);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+
+    Blob = Result["data"][0]["data"]["BYTES"]; // SKIP
+
+    Result["data"][0]["data"]["BYTES"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+    OPI_MySQL.ExecuteSQLQuery("create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+
+    Опции = Новый Структура;
+    Опции.Вставить("", SQLFile);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_MySQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    Deletion = OPI_MySQL.DeleteDatabase(Base, ConnectionString); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "MySQL"); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "3307";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", "");
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+
+    OPI_MySQL.DeleteDatabase(Base, TLSConnectionString, TLSSettings);
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+    OPI_MySQL.DeleteDatabase(Base, ConnectionString);
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateDatabase (open)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (connect)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_MySQL.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure MySQL_CreateTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("char_field"      , "CHAR(5)");
+    ColoumnsStruct.Insert("varchar_field"   , "VARCHAR(255)");
+    ColoumnsStruct.Insert("tinytext_field"  , "TINYTEXT");
+    ColoumnsStruct.Insert("text_field"      , "TEXT");
+    ColoumnsStruct.Insert("mediumtext_field", "MEDIUMTEXT");
+    ColoumnsStruct.Insert("longtext_field"  , "LONGTEXT");
+    ColoumnsStruct.Insert("tinyint_field"   , "TINYINT");
+    ColoumnsStruct.Insert("smallint_field"  , "SMALLINT");
+    ColoumnsStruct.Insert("mediumint_field" , "MEDIUMINT");
+    ColoumnsStruct.Insert("int_field"       , "INT");
+    ColoumnsStruct.Insert("uint_field"      , "INT UNSIGNED");
+    ColoumnsStruct.Insert("bigint_field"    , "BIGINT");
+    ColoumnsStruct.Insert("float_field"     , "FLOAT");
+    ColoumnsStruct.Insert("double_field"    , "DOUBLE");
+    ColoumnsStruct.Insert("date_field"      , "DATE");
+    ColoumnsStruct.Insert("time_field"      , "TIME");
+    ColoumnsStruct.Insert("datetime_field"  , "DATETIME");
+    ColoumnsStruct.Insert("timestamp_field" , "TIMESTAMP");
+    ColoumnsStruct.Insert("mediumblob_field", "MEDIUMBLOB");
+    ColoumnsStruct.Insert("set_field"       , "SET('one','two','three')");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "3307";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Table = "ABC DEF";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (name error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Table = "somename";
+    ColoumnsStruct.Insert("wtf_field", "WTF");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable (type error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure MySQL_AddRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Table        = "testtable";
+    RecordsArray = New Array;
+
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    RecordStructure = New Structure;
+    RecordStructure.Insert("char_field"      , New Structure("TEXT"  , "AAAAA"));
+    RecordStructure.Insert("varchar_field"   , New Structure("TEXT"  , "Some varchar"));
+    RecordStructure.Insert("tinytext_field"  , New Structure("TEXT"  , "Some tiny text"));
+    RecordStructure.Insert("text_field"      , New Structure("TEXT"  , "Some text"));
+    RecordStructure.Insert("mediumtext_field", New Structure("TEXT"  , "Some medium text"));
+    RecordStructure.Insert("longtext_field"  , New Structure("TEXT"  , "Some looooooong text"));
+    RecordStructure.Insert("tinyint_field"   , New Structure("INT"   , 127));
+    RecordStructure.Insert("smallint_field"  , New Structure("INT"   , -32767));
+    RecordStructure.Insert("mediumint_field" , New Structure("INT"   , 8388607));
+    RecordStructure.Insert("int_field"       , New Structure("INT"   , -2147483647));
+    RecordStructure.Insert("uint_field"      , New Structure("UINT"  , 4294967295));
+    RecordStructure.Insert("bigint_field"    , New Structure("INT"   , 9223372036854775807));
+    RecordStructure.Insert("float_field"     , New Structure("FLOAT" , 100.50));
+    RecordStructure.Insert("double_field"    , New Structure("FLOAT" , 100.512123));
+    RecordStructure.Insert("date_field"      , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("time_field"      , New Structure("TIME"  , CurrentDate));
+    RecordStructure.Insert("datetime_field"  , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("timestamp_field" , New Structure("DATE"  , CurrentDate));
+    RecordStructure.Insert("mediumblob_field", New Structure("BYTES" , Image));
+    RecordStructure.Insert("set_field"       , New Structure("TEXT"  , "one"));
+
+    RecordsArray.Add(RecordStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", RecordsArray);
+    Опции.Вставить("", Истина);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "AddRecords", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "3307";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", RecordsArray);
+    Опции.Вставить("", Истина);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "AddRecords", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddRecords (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_GetRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    // All records without filters
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+
+    If ValueIsFilled(Result["data"]) Then // SKIP
+        Result["data"][0]["mediumblob_field"]["BYTES"] = Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "..."; // SKIP
+    EndIf; // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecords", "MySQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // Filter, selected fields, limit and sorting
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", "test_data");
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
 
     FilterStructure1 = New Structure;
 
@@ -21171,6 +23654,134 @@ EndProcedure
 
 Procedure MySQL_DeleteDatabase(FunctionParameters)
 
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "DeleteDatabase (open)", "MySQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MySQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Closing = OPI_MySQL.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "DeleteDatabase (close)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Closing);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Address = FunctionParameters["PG_IP"];
+    Port    = "3307";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", "");
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", Port);
+
+    TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
+    Base                = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", TLSConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (TLS)", "MySQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MySQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ClearTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "MySQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
     Address = FunctionParameters["PG_IP"];
@@ -21181,20 +23792,10 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
     Опции.Вставить("", Base);
     Опции.Вставить("", Login);
     Опции.Вставить("", Password);
-
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
     Опции.Вставить("", Port);
 
     TLSConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
     Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
     Опции.Вставить("", Истина);
 
     TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTlsSettings", Опции);
@@ -23206,11 +25807,34 @@ EndProcedure
 
 Procedure RCON_CreateConnection(FunctionParameters)
 
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Опции = Новый Структура;
+    Опции.Вставить("", URL);
+    Опции.Вставить("", Password);
+    Опции.Вставить("", ReadTimeout);
+    Опции.Вставить("", WriteTimeout);
+
+    ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    Result           = OPI_RCON.CreateConnection(ConnectionParams);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "RCON");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_RCON.Main");
+
 EndProcedure
 
 Procedure RCON_ExecuteCommand(FunctionParameters)
 
-    Опции.Вставить("", Command);
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
     Опции = Новый Структура;
     Опции.Вставить("", URL);
     Опции.Вставить("", Password);
@@ -23218,27 +25842,39 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
     Опции.Вставить("", WriteTimeout);
 
     ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+
+    Command = "list";
+    Опции = Новый Структура;
+    Опции.Вставить("", Command);
+    Опции.Вставить("", Connection);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "ExecuteCommand", Опции);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", ReadTimeout);
-    Опции.Вставить("", WriteTimeout);
+    // END
 
-    ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand", "RCON");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Command = "list";
+    Опции = Новый Структура;
+    Опции.Вставить("", Command);
+    Опции.Вставить("", ConnectionParams);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "ExecuteCommand", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteCommand (no connection)", "RCON");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
 EndProcedure
 
 Procedure RCON_IsConnector(FunctionParameters)
 
-    AdditionalHeaders = New Map;
-    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
     Опции = Новый Структура;
     Опции.Вставить("", URL);
     Опции.Вставить("", Password);
@@ -23246,6 +25882,34 @@ Procedure RCON_IsConnector(FunctionParameters)
     Опции.Вставить("", WriteTimeout);
 
     ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+    Result           = OPI_RCON.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "RCON");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Ollama
+
+Procedure Ollama_GetResponse(FunctionParameters)
+
+    URL   = FunctionParameters["Ollama_URL"];
+    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+
+    Prompt = "What is 1C:Enterprise?";
+    Model  = "tinyllama";
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
+
+    Опции = Новый Структура;
+    Опции.Вставить("", URL);
+    Опции.Вставить("", Model);
     Опции.Вставить("", Prompt);
     Опции.Вставить("", AdditionalHeaders);
 
@@ -25898,7 +28562,7 @@ Procedure OpenAI_GetImages(FunctionParameters)
     Model       = "dall-e-3";
     Опции = Новый Структура;
     Опции.Вставить("", "Yellow alpaca");
-    Опции.Вставить("", Число);
+    Опции.Вставить("", 1);
     Опции.Вставить("", "1024x1024");
 
     Description = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetImageDescriptionStructure", Опции);
@@ -26035,10 +28699,10 @@ EndProcedure
 
 Procedure MSSQL_CreateConnection(FunctionParameters)
 
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
 
-    Table = "ABC DEF";
-
-    Опции = Новый Структура;
     Опции = Новый Структура;
     Опции.Вставить("", Address);
     Опции.Вставить("", Login);
@@ -26049,6 +28713,383 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     Опции.Вставить("", Истина);
 
     TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+
+    Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_MSSQL.Main");
+
+    Address          = FunctionParameters["PG_IP"];
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+    Connection  = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateConnection (before base)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main");
+
+    OPI_MSSQL.DeleteDatabase("test1", Connection);
+    Опции = Новый Структура;
+    Опции.Вставить("", "test1");
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "test1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection (base deleting)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MSSQL_CloseConnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Result     = OPI_MSSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MSSQL_IsConnector(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Result     = OPI_MSSQL.IsConnector(Connection);
+
+    OPI_MSSQL.CloseConnection(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector", "MSSQL");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Image       = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "test_data";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_MSSQL.DeleteTable("users"    , Connection); // SKIP
+    OPI_MSSQL.DeleteTable("test_data", Connection); // SKIP
+    Deletion = OPI_MSSQL.DeleteTable("test_table", Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "ExecuteSQLQuery (deleting 1)", "MSSQL"); // SKIP
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "ExecuteSQLQuery (connect)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main"); // SKIP
+
+    // CREATE
+
+    QueryText = "
+        |CREATE TABLE test_table (
+        | ID INT PRIMARY KEY,
+        | FirstName NVARCHAR(50),
+        | LastName NVARCHAR(50),
+        | BirthDate DATE,
+        | IsEmployed BIT,
+        | Salary DECIMAL(10, 2),
+        | CreatedAt DATETIME,
+        | Age SMALLINT,
+        | RowGuid UNIQUEIDENTIFIER,
+        | Data VARBINARY(MAX)
+        |);";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Create)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // INSERT with parameters
+
+    QueryText = "
+        |INSERT INTO test_table (ID, FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data)
+        |VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("INT"     , 1));
+    ParameterArray.Add(New Structure("NVARCHAR", "Vitaly"));
+    ParameterArray.Add(New Structure("NVARCHAR", "Alpaca"));
+    ParameterArray.Add(New Structure("DATE"    , CurrentDate));
+    ParameterArray.Add(New Structure("BIT"     , True));
+    ParameterArray.Add(New Structure("DECIMAL" , 10.30));
+    ParameterArray.Add(New Structure("DATETIME", CurrentDate));
+    ParameterArray.Add(New Structure("SMALLINT", 20));
+    ParameterArray.Add(New Structure("UUID"    , New UUID));
+    ParameterArray.Add(New Structure("BYTES"   , Image));
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", ParameterArray);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (Insert)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", QueryText);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+
+    Blob = Result["data"][0]["Data"]["BYTES"]; // SKIP
+
+    Result["data"][0]["Data"]["BYTES"] = "Base64"; // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+    OPI_TestDataRetrieval.Check_Equality(Base64Value(Blob).Size(), Image.Size()); // SKIP
+
+    QueryText = "create table test_data (id INT,first_name NVARCHAR(50),last_name NVARCHAR(50),email NVARCHAR(50),gender NVARCHAR(50),ip_address NVARCHAR(20));"; // SKIP
+    Result    = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (test_data)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    // SQL query from file
+
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+
+    Опции = Новый Структура;
+    Опции.Вставить("", SQLFile);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ExecuteSQLQuery (file)", "MSSQL"); // SKIP
+    OPI_TestDataRetrieval.Check_ResultTrue(Result); // SKIP
+
+    Closing = OPI_MSSQL.CloseConnection(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection (query)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure MSSQL_GetTlsSettings(FunctionParameters)
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings", "MSSQL");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure MSSQL_CreateDatabase(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    Deletion = OPI_MSSQL.DeleteDatabase(Base, ConnectionString, TLSSettings); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "MSSQL"); // SKIP
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+    OPI_MSSQL.DeleteDatabase(Base, ConnectionString, TLSSettings);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CreateDatabase (open)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (connect)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase (existing)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_MSSQL.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure MSSQL_CreateTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("tinyint_field"  , "tinyint");
+    ColoumnsStruct.Insert("smallint_field" , "smallint");
+    ColoumnsStruct.Insert("int_field"      , "int");
+    ColoumnsStruct.Insert("bigint_field"   , "bigint");
+    ColoumnsStruct.Insert("float24_field"  , "float(24)");
+    ColoumnsStruct.Insert("float53_field"  , "float(53)");
+    ColoumnsStruct.Insert("bit_field"      , "bit");
+    ColoumnsStruct.Insert("nvarchar_field" , "nvarchar(4000)");
+    ColoumnsStruct.Insert("varbinary_field", "varbinary(max)");
+    ColoumnsStruct.Insert("uid_field"      , "uniqueidentifier");
+    ColoumnsStruct.Insert("numeric_field"  , "numeric(5,3)"); // Or decimal
+    ColoumnsStruct.Insert("xml_field"      , "xml");
+    ColoumnsStruct.Insert("date_field"     , "date");
+    ColoumnsStruct.Insert("time_field"     , "time");
+    ColoumnsStruct.Insert("dto_field"      , "datetimeoffset");
+    ColoumnsStruct.Insert("datetime_field" , "datetime");
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
+    Опции.Вставить("", ConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Table = "ABC DEF";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ColoumnsStruct);
     Опции.Вставить("", ConnectionString);
     Опции.Вставить("", TLSSettings);
 
@@ -26468,9 +29509,9 @@ EndProcedure
 
 Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "MSSQL");
-    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
 
     Опции = Новый Структура;
     Опции.Вставить("", Истина);
@@ -26482,6 +29523,105 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
     Опции.Вставить("", Password);
 
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+
+    Base = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", ConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Base = "testbase2";
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "DeleteDatabase (open)", "MSSQL");
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_MSSQL.Main");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (error)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Closing = OPI_MSSQL.CloseConnection(Connection);
+
+    OPI_TestDataRetrieval.WriteLog(Closing, "DeleteDatabase (close)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Closing);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDatabase (connect error)", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+EndProcedure
+
+Procedure MSSQL_ClearTable(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTlsSettings", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Address);
+    Опции.Вставить("", Base);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
+    Опции.Вставить("", ConnectionString);
+    Опции.Вставить("", TLSSettings);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ClearTable", Опции);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearTable", "MSSQL");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Table);
     Опции.Вставить("", ConnectionString);
     Опции.Вставить("", TLSSettings);
 
@@ -26489,12 +29629,7 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ClearTable (check)", "MSSQL");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
-
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 0);
 
 EndProcedure
 
@@ -26801,9 +29936,112 @@ EndProcedure
 
 Procedure FTP_CreateConnection(FunctionParameters)
 
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateConnection" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_AddIn(Result, "AddIn.OPI_FTP.Main");
+
 EndProcedure
 
 Procedure FTP_GetWelcomeMessage(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetWelcomeMessage(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWelcomeMessage" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Filled(Result["data"]);
 
 EndProcedure
 
@@ -26815,23 +30053,11 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
     Password = FunctionParameters["FTP_Password"];
 
     UseProxy = True;
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPS     = True;
 
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
@@ -26896,7 +30122,20 @@ EndProcedure
 
 Procedure FTP_CloseConnection(FunctionParameters)
 
-    OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
     Опции = Новый Структура;
     Опции.Вставить("", Host);
     Опции.Вставить("", Port);
@@ -26904,12 +30143,287 @@ Procedure FTP_CloseConnection(FunctionParameters)
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "CloseConnection (creation)", "FTP"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_FTP.Main"); // SKIP
+
+    Result = OPI_FTP.CloseConnection(Connection);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseConnection" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
+Procedure FTP_IsConnector(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    OPI_TestDataRetrieval.WriteLog(Connection, "IsConnector (creation)", "FTP"); // SKIP
+    OPI_TestDataRetrieval.Check_AddIn(Connection, "AddIn.OPI_FTP.Main"); // SKIP
+
+    Result = OPI_FTP.IsConnector(Connection);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "IsConnector" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_True(Result);
+
+EndProcedure
+
+Procedure FTP_GetConnectionSettings(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure FTP_GetProxySettings(FunctionParameters)
+
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetConnectionSettings" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure FTP_GetTlsSettings(FunctionParameters)
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTlsSettings", Опции);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTlsSettings" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure FTP_CreateDirectory(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
+        OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDirectory (delete)", "FTP"); // SKIP
+
+        Result = OPI_FTP.CreateDirectory(Connection, "new_dir");
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/another_one");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory (nested)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "second_dir/another_one");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDirectory (double)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    OPI_Tools.Pause(5);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir");
+    Опции.Вставить("", Истина);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 1)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
+    OPI_TestDataRetrieval.Check_Array(Check["data"], 1);
+    OPI_TestDataRetrieval.Check_Equality(Check["data"][0]["name"], "another_one");
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "");
+    Опции.Вставить("", Истина);
+
+    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Check, "CreateDirectory (check 2)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Check);
     OPI_TestDataRetrieval.Check_Array(Check["data"]               , 1);
     OPI_TestDataRetrieval.Check_Array(Check["data"][0]["objects"] , 1);
 
 EndProcedure
 
 Procedure FTP_ListObjects(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
     Опции = Новый Структура;
     Опции.Вставить("", Host);
     Опции.Вставить("", Port);
@@ -26917,6 +30431,45 @@ Procedure FTP_ListObjects(FunctionParameters)
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.ListObjects(Connection, "", True);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ListObjects" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "Dir1/Dir3/Git-2.50.0-64-bit.exe");
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
 
     OPI_TestDataRetrieval.WriteLog(Result, "ListObjects (file)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -26926,18 +30479,131 @@ EndProcedure
 
 Procedure FTP_UploadFile(FunctionParameters)
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
+    ImagePath = "C:\pic.png";
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (big)" + Postfix, "FTP");
+    Image = FunctionParameters["Picture"]; // SKIP
+    TFN   = GetTempFileName("png"); // SKIP
+    CopyFile(Image, TFN); // SKIP
+    Image = TFN; // SKIP
 
-    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    ImageDD = New BinaryData(Image);
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
     Опции = Новый Структура;
     Опции.Вставить("", Host);
     Опции.Вставить("", Port);
     Опции.Вставить("", Login);
     Опции.Вставить("", Password);
+    Опции.Вставить("", 1000);
+    Опции.Вставить("", 1000);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
+        Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile" + Postfix            , "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (bd)" + Postfix       , "FTP");
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (file size)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+    OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/pic_from_disk.png");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "pic_from_binary.png");
+
+    Result2 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (size 1)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+
+    OPI_TestDataRetrieval.WriteLog(Result2, "UploadFile (size 2)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(Result2["bytes"] , ImageDD.Size());
+
+    For N = 1 To 7 Do
+
+        Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
+        Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
+
+        If Not Result["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (multiple)" + Postfix, "FTP");
+        EndIf;
+
+        If Not Result2["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result2, "UploadFile (multiple, bd)" + Postfix, "FTP");
+        EndIf;
+
+        OPI_TestDataRetrieval.Check_ResultTrue(Result);
+        OPI_TestDataRetrieval.Check_ResultTrue(Result2);
+
+        OPI_TestDataRetrieval.Check_Equality(Result["bytes"] , ImageDD.Size());
+        OPI_TestDataRetrieval.Check_Equality(Result2["bytes"], ImageDD.Size());
+
+    EndDo;
+
+    BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", BigData);
+    Опции.Вставить("", "new_dir/big.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (big)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Equality(Result["bytes"], BigData.Size());
 
     Try
         DeleteFiles(TFN);
@@ -26949,28 +30615,99 @@ EndProcedure
 
 Procedure FTP_DeleteFile(FunctionParameters)
 
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.DeleteFile(Connection, "pic_from_binary.png");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "pic_from_binary.png");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteFile", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (nonexistent)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "");
     Опции.Вставить("", Истина);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (check)", "FTP");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Число);
-    Опции.Вставить("", Число);
-
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
     OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
 
 EndProcedure
 
 Procedure FTP_DeleteDirectory(FunctionParameters)
 
-EndProcedure
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
     Опции = Новый Структура;
     Опции.Вставить("", Host);
     Опции.Вставить("", Port);
@@ -26978,8 +30715,103 @@ EndProcedure
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.DeleteDirectory(Connection, "new_dir/another_one");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+EndProcedure
+
 Procedure FTP_ClearDirectory(FunctionParameters)
 
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.ClearDirectory(Connection, "");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearDirectory" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "");
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
 
     OPI_TestDataRetrieval.WriteLog(Result, "ClearDirectory (check)", "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
@@ -26989,6 +30821,19 @@ EndProcedure
 
 Procedure FTP_GetObjectSize(FunctionParameters)
 
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
 
     Опции = Новый Структура;
     Опции.Вставить("", Host);
@@ -26997,9 +30842,66 @@ Procedure FTP_GetObjectSize(FunctionParameters)
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectSize" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/another.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectSize (notexisted)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultFalse(Result);
 
 EndProcedure
+
+Procedure FTP_UpdatePath(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
     Опции = Новый Структура;
     Опции.Вставить("", Host);
     Опции.Вставить("", Port);
@@ -27007,7 +30909,79 @@ EndProcedure
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
-Procedure FTP_UpdatePath(FunctionParameters)
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.UpdatePath(Connection, "new_dir/big.bin", "new_dir/giant.bin");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/giant.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (check, new)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/big.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (check, old)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultFalse(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir");
+    Опции.Вставить("", "brand_new_dir");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (directory)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", ".");
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (list)", "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+    OPI_TestDataRetrieval.Check_Array(Result["data"], 1);
+    OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["path"]              , "brand_new_dir");
+    OPI_TestDataRetrieval.Check_Equality(Result["data"][0]["objects"][0]["path"], "brand_new_dir/giant.bin");
 
     Опции = Новый Структура;
     Опции.Вставить("", Connection);
@@ -27015,13 +30989,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
     Опции.Вставить("", "new_dir");
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
     OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (directory, back)" + Postfix, "FTP");
     OPI_TestDataRetrieval.Check_ResultTrue(Result);
 
@@ -27029,13 +30997,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
     Опции.Вставить("", Connection);
     Опции.Вставить("", "new_dir/giant.bin");
     Опции.Вставить("", "new_dir/big.bin");
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
 
     OPI_TestDataRetrieval.WriteLog(Result, "UpdatePath (back)" + Postfix, "FTP");
@@ -27058,19 +31020,19 @@ EndProcedure
 
 Procedure FTP_SaveFile(FunctionParameters)
 
-    Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "FTP");
-    EndTry;
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
-EndProcedure
+    UseProxy = True;
+    FTPS     = True;
 
-Procedure FTP_GetFileData(FunctionParameters)
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
 
-
-    EndDo;
-
-
-EndProcedure
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
 
     Опции = Новый Структура;
     Опции.Вставить("", Host);
@@ -27079,6 +31041,176 @@ EndProcedure
     Опции.Вставить("", Password);
 
     FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Path     = "new_dir/big.bin";
+        FileName = GetTempFileName("bin");
+
+        Result = OPI_FTP.SaveFile(Connection, Path, FileName);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SaveFile" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", Path);
+
+    Size = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Size, "SaveFile (size)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Size);
+
+    FileObject = New File(FileName);
+
+    FileSize   = FileObject.Size();
+    ResultSize = Result["bytes"];
+    CheckSize  = Size["bytes"];
+
+    OPI_TestDataRetrieval.WriteLog(FileSize, "SaveFile (file size)" + Postfix, "FTP");
+
+    OPI_TestDataRetrieval.Check_Equality(FileSize, ResultSize);
+    OPI_TestDataRetrieval.Check_Equality(FileSize, CheckSize);
+
+    Path = "new_dir/pic_from_disk.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_FTP.SaveFile(Connection, Path, FileName);
+
+        If Not Result["result"] Then
+            OPI_TestDataRetrieval.WriteLog(Result, "SaveFile (multiple)" + Postfix, "FTP");
+            OPI_TestDataRetrieval.Check_ResultTrue(Result);
+        EndIf;
+
+    EndDo;
+
+    Try
+        DeleteFiles(FileName);
+    Except
+        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "FTP");
+    EndTry;
+
+EndProcedure
+
+Procedure FTP_GetFileData(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTlsSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        Path   = "new_dir/big.bin";
+        Result = OPI_FTP.GetFileData(Connection, Path);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileData" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_BinaryData(Result);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", Path);
+
+    Size = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+
+    OPI_TestDataRetrieval.WriteLog(Size, "GetFileData (size)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_ResultTrue(Size);
+
+    FileSize  = Result.Size();
+    CheckSize = Size["bytes"];
+
+    OPI_TestDataRetrieval.WriteLog(FileSize, "GetFileData (file size)" + Postfix, "FTP");
+    OPI_TestDataRetrieval.Check_Equality(FileSize, CheckSize);
+
+    Path = "new_dir/pic_from_disk.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_FTP.GetFileData(Connection, Path);
+
+        If Not TypeOf(Result) = Type("BinaryData") Then
+            OPI_TestDataRetrieval.WriteLog(Result, "GetFileData (multiple)" + Postfix, "FTP");
+            OPI_TestDataRetrieval.Check_BinaryData(Result);
+        EndIf;
+
+    EndDo;
+
+
+EndProcedure
+
+#EndRegion
 
 #EndRegion
 
