@@ -894,7 +894,9 @@ EndFunction
 
 Function Check_Telegram_FormKeyboardFromButtonArray(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    TypeResult = TypeOf(Result);
+
+    ExpectsThat(TypeResult = Type("String") Or TypeResult = Type("Map")).Равно(True);
     Return Result;
 
 EndFunction
@@ -1297,7 +1299,12 @@ EndFunction
 
 Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
 
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result           = GetStringFromBinaryData(Result);
+    EndIf;
+
     ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://oauth.vk.com")).Равно(True);
 
     Return Result;
 
@@ -1560,7 +1567,9 @@ EndFunction
 
 Function Check_VK_FormKeyboard(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    TypeResult = TypeOf(Result);
+
+    ExpectsThat(TypeResult = Type("String") Or TypeResult = Type("Map")).Равно(True);
 
     Return Result;
 
@@ -2219,7 +2228,13 @@ EndFunction
 
 Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
 
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result           = GetStringFromBinaryData(Result);
+    EndIf;
+
     ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+
     WriteParameter("Google_Link", Result);
 
     OPI_Tools.Pause(5);
@@ -3221,7 +3236,8 @@ EndFunction
 
 Function Check_Airtable_GetNumberField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3229,7 +3245,7 @@ EndFunction
 
 Function Check_Airtable_GetStringField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3237,7 +3253,7 @@ EndFunction
 
 Function Check_Airtable_GetAttachmentField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3245,7 +3261,7 @@ EndFunction
 
 Function Check_Airtable_GetCheckboxField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3253,7 +3269,7 @@ EndFunction
 
 Function Check_Airtable_GetDateField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3261,7 +3277,7 @@ EndFunction
 
 Function Check_Airtable_GetPhoneField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3269,7 +3285,7 @@ EndFunction
 
 Function Check_Airtable_GetEmailField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3277,7 +3293,7 @@ EndFunction
 
 Function Check_Airtable_GetLinkField(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
 
@@ -3424,7 +3440,13 @@ EndFunction
 
 Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result           = GetStringFromBinaryData(Result);
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://twitter.com/i/oauth2/")).Равно(True);
+
 
     WriteParameter("Twitter_URL", Result);
 
@@ -3760,7 +3782,13 @@ EndFunction
 
 Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result           = GetStringFromBinaryData(Result);
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
+
 
     Return Result;
 
@@ -6873,6 +6901,10 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         Value = OPI_Tools.NumberToString(Value);
 
+        If OPI_Tools.IsWindows() Then
+            Value = StrReplace(Value, "%", "%%");
+        EndIf;
+
         If Not Embedded Then
             Cover = True;
         EndIf;
@@ -6885,6 +6917,43 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map")
         Or CurrentType = Type("Array") Then
+
+
+        If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
+
+            For Each KeyValue In Value Do
+                If TypeOf(KeyValue.Value) = Type("BinaryData") Then
+
+                    TFN                    = GetTempFileName();
+                    KeyValue.Value.Write(TFN);
+                    KeyValue[KeyValue.Key] = TFN;
+
+                EndIf;
+            EndDo;
+
+        EndIf;
+
+        If CurrentType = Type("Map") Then
+
+            Value_ = New Map;
+
+            For Each KeyValue In Value Do
+
+                If TypeOf(KeyValue.Key) = Type("BinaryData") Then
+                    CurrentKey             = GetTempFileName();
+                    KeyValue.Key.Write(CurrentKey);
+                Else
+                    CurrentKey             = KeyValue.Key;
+                EndIf;
+
+                Value_.Insert(CurrentKey, KeyValue.Value);
+
+            EndDo;
+
+            Value = Value_;
+
+        EndIf;
+
 
         JSONWriter = New JSONWriter();
 
