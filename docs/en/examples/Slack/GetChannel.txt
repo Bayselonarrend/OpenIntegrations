@@ -1,4 +1,4 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C09AQDCTMQC";
+    Channel = "C09BQ9CQK7S";
 
     Result = OPI_Slack.GetChannel(Token, Channel);
