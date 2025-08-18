@@ -46,7 +46,6 @@
 // Uncomment if OneScript is executed
 #Use "./internal"
 #Use asserts
-#Use "../../core"
 
 #Region Internal
 
@@ -405,10 +404,10 @@ Function FormYAXTestsCLI() Export
         Filter       = New Structure("Section", CurrentSection);
         SectionTests = TestTable.FindRows(Filter);
 
-        Set = Module.ДобавитьТестовыйНабор("CLI_" + CurrentSection);
+        Set = Module.ДобавитьТестовыйНабор(CurrentSection + " (CLI)");
 
         For Each Test In SectionTests Do
-            Set.ДобавитьСерверныйТест("CLI_" + Test.Method, Test.Synonym);
+            Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
         EndDo;
 
     EndDo;
@@ -1316,10 +1315,6 @@ Function Check_VK_CreatePost(Val Result, Val Option, Parameters = "")
         OPI_Tools.AddField("VK_PostID", PostID, "String", Parameters);
         WriteParameter("VK_PostID", Parameters["VK_PostID"]);
 
-    Else
-
-        OPI_VK.DeletePost(PostID, Parameters);
-
     EndIf;
 
     OPI_Tools.Pause(5);
@@ -1348,15 +1343,10 @@ Function Check_VK_CreateCompositePost(Val Result, Val Option)
 
 EndFunction
 
-Function Check_VK_CreatePoll(Val Result, Val Option, Parameters = "")
+Function Check_VK_CreatePoll(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
-
-    PostID = Result["response"]["post_id"];
-    OPI_VK.DeletePost(PostID, Parameters);
-
-    OPI_Tools.Pause(5);
 
     Return Result;
 
@@ -1388,10 +1378,6 @@ Function Check_VK_SavePictureToAlbum(Val Result, Val Option, Parameters = "", De
         Parameters.Insert("VK_PictureID", ImageID);
         WriteParameter("VK_PictureID", ImageID);
 
-    Else
-
-        ImageID = Result["response"][0]["id"];
-        Result  = OPI_VK.DeleteImage(ImageID, Parameters);
     EndIf;
 
     OPI_Tools.Pause(5);
@@ -1917,8 +1903,6 @@ Function Check_YandexDisk_CreateFolder(Val Result, Val Option, Token = "", Path 
     ExpectsThat(Result["type"]).Равно("dir");
     ExpectsThat(Result["path"]).Равно("disk:" + Path);
 
-    OPI_YandexDisk.DeleteObject(Token, Path, False);
-
     OPI_Tools.Pause(5);
 
     Return Result;
@@ -1962,19 +1946,13 @@ Function Check_YandexDisk_DeleteObject(Val Result, Val Option)
 
 EndFunction
 
-Function Check_YandexDisk_UploadFile(Val Result, Val Option, Token = "", Path = "")
+Function Check_YandexDisk_UploadFile(Val Result, Val Option)
 
     If Not Lower(String(Result)) = "null" Then
         ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
     OPI_Tools.Pause(5);
-
-    Deletion = OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-    If Not Lower(String(Deletion)) = "null" Then
-        ExpectsThat(ValueIsFilled(Deletion)).Равно(False);
-    EndIf;
 
     Return Result;
 
@@ -2640,13 +2618,10 @@ Function Check_GoogleDrive_DeleteComment(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GoogleDrive_CreateFolder(Val Result, Val Option, Token = "")
+Function Check_GoogleDrive_CreateFolder(Val Result, Val Option)
 
     ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
     ExpectsThat(Result["name"]).Заполнено();
-
-    CatalogID = Result["id"];
-    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
 
     Return Result;
 
@@ -2828,16 +2803,7 @@ Function Check_Slack_SendMessage(Val Result, Val Option, Parameters = "", Text =
 
     EndIf;
 
-    If Option = "Sheduled" Then
-
-        Token     = Parameters["Slack_Token"];
-        Timestamp = Result["scheduled_message_id"];
-
-        Deletion = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
-
-        ExpectsThat(Deletion["ok"]).Равно(True);
-
-    Else
+    If Not Option = "Sheduled" Then
 
         ExpectsThat(Result["ts"]).Заполнено();
 
@@ -3119,8 +3085,6 @@ Function Check_Slack_UploadFile(Val Result, Val Option, Parameters = "", FileNam
         WriteParameter("Slack_FileID", UploadedFile);
         OPI_Tools.AddField("Slack_FileID", UploadedFile, "String", Parameters);
 
-    Else
-        OPI_Slack.DeleteFile(Parameters["Slack_Token"], Result["files"][0]["id"]);
     EndIf;
 
     Return Result;
@@ -3368,23 +3332,6 @@ Function Check_Airtable_CreatePosts(Val Result, Val Option, Parameters = "", Num
 
         ExpectsThat(Result["records"]).ИмеетТип("Array");
         ExpectsThat(Result["records"]).Заполнено();
-
-        Token = Parameters["Airtable_Token"];
-        Base  = Parameters["Airtable_Base"];
-        Table = Parameters["Airtable_Table"];
-
-        OPI_TestDataRetrieval.Check_ATRecords(Result);
-
-        ArrayOfDeletions = New Array;
-
-        For Each Record In Result["records"] Do
-
-            CurrentRecord = Record["id"];
-            ArrayOfDeletions.Add(CurrentRecord);
-
-        EndDo;
-
-        OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
 
     Else
 
@@ -3894,20 +3841,18 @@ Function Check_Dropbox_UploadFileByURL(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Parameters = "")
+Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Path)
 
     If Not ValueIsFilled(Option) Then
 
         ExpectsThat(Result[".tag"]).Равно("complete");
 
-        Token  = Parameters["Dropbox_Token"];
-        Path   = "/New/url_doc.docx";
-        Result = OPI_Dropbox.DeleteObject(Token, Path);
-
-        ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
-
         OPI_Tools.Pause(5);
 
+    EndIf;
+
+    If Option = "Deletion" Then
+        ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
     EndIf;
 
     Return Result;
@@ -3924,16 +3869,9 @@ Function Check_Dropbox_DeleteObject(Val Result, Val Option, Path = "")
 
 EndFunction
 
-Function Check_Dropbox_CopyObject(Val Result, Val Option, Parameters = "", Path = "")
-
-    Token = Parameters["Dropbox_Token"];
+Function Check_Dropbox_CopyObject(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
-
-    Result = OPI_Dropbox.DeleteObject(Token, Path);
-
-    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
-
 
     OPI_Tools.Pause(5);
 
@@ -3941,15 +3879,9 @@ Function Check_Dropbox_CopyObject(Val Result, Val Option, Parameters = "", Path 
 
 EndFunction
 
-Function Check_Dropbox_MoveObject(Val Result, Val Option, Parameters = "", TargetPath = "", OriginalPath = "")
+Function Check_Dropbox_MoveObject(Val Result, Val Option, Path = "")
 
-    Token = Parameters["Dropbox_Token"];
-
-    ExpectsThat(Result["metadata"]["path_display"]).Равно(TargetPath);
-
-    Result = OPI_Dropbox.MoveObject(Token, TargetPath, OriginalPath);
-
-    ExpectsThat(Result["metadata"]["path_display"]).Равно(OriginalPath);
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
     OPI_Tools.Pause(5);
 
@@ -3957,13 +3889,7 @@ Function Check_Dropbox_MoveObject(Val Result, Val Option, Parameters = "", Targe
 
 EndFunction
 
-Function Check_Dropbox_CreateFolder(Val Result, Val Option, Parameters = "", Path = "")
-
-    Token = Parameters["Dropbox_Token"];
-
-    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
-
-    Result = OPI_Dropbox.DeleteObject(Token, Path);
+Function Check_Dropbox_CreateFolder(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
@@ -4037,21 +3963,6 @@ Function Check_Dropbox_GetTagList(Val Result, Val Option, Parameters = "", Paths
 
     ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
     ExpectsThat(Result["paths_to_tags"].Count()).Равно(PathsArray.Count());
-
-    Result2 = OPI_Dropbox.GetTagList(Token, "/New/mydoc.docx");
-
-    ExpectsThat(Result2["paths_to_tags"]).ИмеетТип("Array");
-    ExpectsThat(Result2["paths_to_tags"].Count()).Равно(1);
-
-    HasTag = False;
-
-    For Each Tag In Result2["paths_to_tags"][0]["tags"] Do
-        If Tag["tag_text"] = "important" Then
-            HasTag         = True;
-        EndIf;
-    EndDo;
-
-    ExpectsThat(HasTag).Равно(True);
 
     OPI_Tools.Pause(5);
 
@@ -4664,14 +4575,6 @@ Function Check_Bitrix24_UploadFileToFolder(Val Result, Val Option, URL = "", Tok
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["ID"]).Заполнено();
 
-    FileID = Result["result"]["ID"];
-
-    If ValueIsFilled(Token) Then
-        OPI_Bitrix24.DeleteFile(URL, FileID, Token);
-    Else
-        OPI_Bitrix24.DeleteFile(URL, FileID);
-    EndIf;
-
     Return Result;
 
 EndFunction
@@ -4853,32 +4756,9 @@ Function Check_Bitrix24_UpdateTaskComment(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Bitrix24_CreateTasksDependencies(Val Result, Val Option, Parameters = "")
+Function Check_Bitrix24_CreateTasksDependencies(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-    If Option = "Hook" Then
-
-        FromID        = Parameters["Bitrix24_HookTaskID"];
-        DestinationID = Parameters["Bitrix24_TaskID"];
-        LinkType      = 0;
-
-        URL = Parameters["Bitrix24_URL"];
-
-        OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
-
-    Else
-
-        FromID        = Parameters["Bitrix24_TaskID"];
-        DestinationID = Parameters["Bitrix24_HookTaskID"];
-        LinkType      = 2;
-
-        URL   = Parameters["Bitrix24_Domain"];
-        Token = Parameters["Bitrix24_Token"];
-
-        OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token)
-
-    EndIf;
 
     Return Result;
 
