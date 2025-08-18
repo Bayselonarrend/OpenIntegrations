@@ -3771,11 +3771,17 @@ Procedure VK_CreatePost(FunctionParameters)
 
     Process(Result, "VK", "CreatePost", , Parameters); // SKIP
 
+    PostID = Result["response"]["post_id"]; // SKIP
+    OPI_VK.DeletePost(PostID, Parameters); // SKIP
+
     Result = OPI_VK.CreatePost(Text, Image, False, , Parameters);
 
     // END
 
     Process(Result, "VK", "CreatePost", "Image", Parameters);
+
+    PostID = Result["response"]["post_id"];
+    OPI_VK.DeletePost(PostID, Parameters);
 
     Result = OPI_VK.CreatePost(Text, TFN, True, URL, Parameters);
 
@@ -3847,7 +3853,12 @@ Procedure VK_CreatePoll()
 
     // END
 
-   Process(Result, "VK", "CreateCompositePost");
+    Process(Result, "VK", "CreatePoll");
+
+    PostID = Result["response"]["post_id"];
+    OPI_VK.DeletePost(PostID, Parameters);
+
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
@@ -3873,6 +3884,7 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
     TFN   = GetTempFileName("png");
+
     CopyFile(Image, TFN);
 
     Image = New BinaryData(TFN);
@@ -3880,6 +3892,9 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
 
     Process(Result, "VK", "SaveImageToAlbum", , Parameters, ImageDescription, AlbumID); // SKIP
+
+    ImageID = Result["response"][0]["id"]; // SKIP
+    Result  = OPI_VK.DeleteImage(ImageID, Parameters); // SKIP
 
     Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
 
@@ -4643,6 +4658,8 @@ Procedure YandexDisk_CreateFolder(FunctionParameters)
 
     Process(Result, "YandexDisk", "CreateFolder", , Token, Path);
 
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+
 EndProcedure
 
 Procedure YandexDisk_UploadFileByURL(FunctionParameters)
@@ -4698,7 +4715,9 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
 
-    Process(Result, "YandexDisk", "UploadFile", "URL", Token, Path1); // SKIP
+    Process(Result, "YandexDisk", "UploadFile", "URL"); // SKIP
+
+    OPI_YandexDisk.DeleteObject(Token, Path1, False); // SKIP
 
     Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
 
@@ -4706,6 +4725,8 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     DeleteFiles(TFN);
     Process(Result, "YandexDisk", "UploadFile", , Token, Path2);
+
+    OPI_YandexDisk.DeleteObject(Token, Path2, False); // SKIP
 
 EndProcedure
 
@@ -5635,11 +5656,17 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
 
     // END
 
-    Process(Result, "GoogleDrive", "CreateFolder", , Token);
+    Process(Result, "GoogleDrive", "CreateFolder");
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
 
     Result = OPI_GoogleDrive.CreateFolder(Token, Name);
 
-    Process(Result, "GoogleDrive", "CreateFolder", "Root", Token);
+    Process(Result, "GoogleDrive", "CreateFolder", "Root");
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
 
 EndProcedure
 
@@ -5892,6 +5919,11 @@ Procedure Slack_SendMessage(FunctionParameters)
     // END
 
     Process(Result, "Slack", "SendMessage", "Sheduled", FunctionParameters, Text, Channel);
+
+    Token     = FunctionParameters["Slack_Token"];
+    Timestamp = Result["scheduled_message_id"];
+
+    OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
 
 EndProcedure
 
@@ -6235,6 +6267,7 @@ Procedure Slack_UploadFile(FunctionParameters)
     // END
 
     Process(Result, "Slack", "UploadFile", "Channel", FunctionParameters, FileName);
+    OPI_Slack.DeleteFile(FunctionParameters["Slack_Token"], Result["files"][0]["id"]);
 
 EndProcedure
 
@@ -6591,6 +6624,17 @@ Procedure Airtable_CreatePosts(FunctionParameters)
     // END
 
     Process(Result, "Airtable", "CreatePosts", , FunctionParameters);
+
+    ArrayOfDeletions = New Array;
+
+    For Each Record In Result["records"] Do
+
+        CurrentRecord = Record["id"];
+        ArrayOfDeletions.Add(CurrentRecord);
+
+    EndDo;
+
+    OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
 
     // Single
 
@@ -7263,13 +7307,19 @@ Procedure Dropbox_GetUploadStatusByURL(FunctionParameters)
 
         OPI_Tools.Pause(5);
 
-        Process(Result, "Dropbox", "GetUploadStatusByURL", "Progress", FunctionParameters); // SKIP
+        Process(Result, "Dropbox", "GetUploadStatusByURL", "Progress"); // SKIP
 
     EndDo;
 
     // END
 
-    Process(Result, "Dropbox", "GetUploadStatusByURL", , FunctionParameters);
+    Process(Result, "Dropbox", "GetUploadStatusByURL");
+
+    Token  = FunctionParameters["Dropbox_Token"];
+    Path   = "/New/url_doc.docx";
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
+
+    Process(Result, "Dropbox", "GetUploadStatusByURL", "Deletion", Path);
 
 EndProcedure
 
@@ -7296,7 +7346,11 @@ Procedure Dropbox_CopyObject(FunctionParameters)
 
     // END
 
-    Process(Result, "Dropbox", "CopyObject", , FunctionParameters, Copy);
+    Process(Result, "Dropbox", "CopyObject", , Copy);
+
+    Result = OPI_Dropbox.DeleteObject(Token, Copy);
+
+    Process(Result, "Dropbox", "CopyObject", "Deletion", Original);
 
 EndProcedure
 
@@ -7310,7 +7364,11 @@ Procedure Dropbox_MoveObject(FunctionParameters)
 
     // END
 
-    Process(Result, "Dropbox", "MoveObject", , FunctionParameters, TargetPath, OriginalPath);
+    Process(Result, "Dropbox", "MoveObject", , TargetPath);
+
+    Result = OPI_Dropbox.MoveObject(Token, TargetPath, OriginalPath);
+
+    Process(Result, "Dropbox", "MoveObject", "Deletion", OriginalPath);
 
 EndProcedure
 
@@ -7323,7 +7381,9 @@ Procedure Dropbox_CreateFolder(FunctionParameters)
 
     // END
 
-    Process(Result, "Dropbox", "CreateFolder", , FunctionParameters, Path);
+    Process(Result, "Dropbox", "CreateFolder", , Path);
+
+    OPI_Dropbox.DeleteObject(Token, Path);
 
 EndProcedure
 
@@ -8629,6 +8689,9 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
     Process(Result, "Bitrix24", "UploadFileToFolder", "Hook", URL); // SKIP
 
+    FileID = Result["result"]["ID"]; // SKIP
+    OPI_Bitrix24.DeleteFile(URL, FileID); // SKIP
+
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
@@ -8637,6 +8700,10 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
     // END
 
     Process(Result, "Bitrix24", "UploadFileToFolder", , URL, Token);
+
+    FileID = Result["result"]["ID"];
+
+    OPI_Bitrix24.DeleteFile(URL, FileID, Token);
 
 EndProcedure
 
@@ -9069,7 +9136,9 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    Process(Result, "Bitrix24", "CreateTasksDependencies", "Hook", FunctionParameters); // SKIP
+    Process(Result, "Bitrix24", "CreateTasksDependencies", "Hook"); // SKIP
+
+    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType); // SKIP
 
     FromID        = FunctionParameters["Bitrix24_TaskID"];
     DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
@@ -9082,7 +9151,9 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
 
     // END
 
-    Process(Result, "Bitrix24", "CreateTasksDependencies", , FunctionParameters);
+    Process(Result, "Bitrix24", "CreateTasksDependencies");
+
+    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token)
 
 EndProcedure
 
