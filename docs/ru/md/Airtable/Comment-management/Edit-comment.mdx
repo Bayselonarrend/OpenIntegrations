@@ -33,15 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "appS0xAXVPSCbldXo";
-    Таблица     = "tblbQ4RX4OqSmJ70n";
-    Запись      = "recqafWj0BcOrrTOx";
-    Комментарий = "comz2DSgevbPp7ge6";
+    База        = "app5NvHkX9zG8DaAc";
+    Таблица     = "tblBdeKTR1pkzf5mQ";
+    Запись      = "recSN3hV7bFqcFcOq";
+    Комментарий = "comlnW8ujCDlX7Iep";
 
     Текст     = "Тестовый комментарий (изм.)";
     Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);
-
-    OPI_ПолучениеДанныхТестов.Проверка_АТТекст(Результат, Текст);
 ```
     
 

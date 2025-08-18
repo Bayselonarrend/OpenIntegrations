@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "7336";
+    TaskID = "7552";
 
     Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "4cc87668006e9f06006b12e400000001000...";
-    TaskID = "7338";
+    Token  = "9c04a368006e9f06006b12e400000001000...";
+    TaskID = "7554";
 
     Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID, Token);
