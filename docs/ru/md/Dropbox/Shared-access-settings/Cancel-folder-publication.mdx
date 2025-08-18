@@ -28,10 +28,19 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "sl.u.AF3iaCN8VmSh1Hu8B07GAavAn8ZRC4nWJJywSnjjAGWZXs0H9eah7RQIl5Ki2xOPwulonZFhyH2WPMfEy3ROwxH3klQOwcWU21kX5g6FrJ4WEf8N0IxKlYtKYqSkfhsgFo9mKQN1guGyyXSpp_igF08H78gSeKYq2WEqgxUyKgocr1ix-WmfKm55khFx2PJ_6WhAmQHh42lwBhvS0bjMRGYtXd1jDir3OkdfR-z6AwSQJna-Szm6Th_JLGfrieOKrzWjjtjwjo2w05x1uMyGmFIuAX_sTF83OqFxxqFh8Ms426vtRtxTZXjg4nXuG2fG1WUTxkm7YwAqv69GY1vclSX33uBznmbspsao6H4DLALaBWWeThcJQm1abglYj_v6yC5WBBU4cc_ZldaK8gGkq2iu6bjze_T-JWV2vPiUgotItzPirf3smK1LAS9hrjOxdnhZeL_V3bi5AzuatOxC6cv_M37vwX7L2gTFZNv1IpJaBcMz3YRA9AW9y7tJ6nBuCMmTXn2kDkRbmqbyJnjoYbpyhJF5NhGPZqOf5VTqbgFo09ydhRJ7HHsORVDTpNqmt6OIg613uzvdr5CMnWFhRra7iikzriTWJN96WiSD_m73iiy91WkpvQpKQE9K1O5fMZYFoPZoOOMtxNfB3cjc-04Oo1g8wicK2dyJwNIpYWuXaY3ln2dOts8WN3RPksLdoF5Ko7otdO68Pl7G0lXbS6NX-OWZc3X...";
-    Папка = "12726716689";
+    Токен = "sl.u.AF6TUJY99kQGPaL42fiAlTqiSXFFkcFy_JI4IywuqbJWWJLt_8EkHrGrO5nUfc87VkF4OYiEUw3pfWdUWxoMbpR9Wr_zXkvnNuJnd5_YnSBexWpntYlROt_CghzDjBJi9zz-iiCXGEp5taE7dq9_SBR2LN_2aFkr0pMb-ygSoV_2ynL75B4pr2bPZjlTOAL_c-EuthqJPTl_5EB-rq-q1O4w1ukNN_Ii-l9COn9kSPMkKPaZeWybauk0kYOkXxy_yKUGy5a27TsKR9jjLc80pKNEgo-mLTnxSmnxN7LH8tESdbABdOTfLJvZt13d-xEg9vvSKC6smcpZSGlRYMihHFgy20bEd0GN0uxHT0LWzYd-bH-GhfconoCUyDkFOwi180BJ90SM3462vstnsvXQ0U_XMHB-jB-j7JlkP62b7FcZ3JJSFRJ4cWuqqvqNO-_TYVKr7GaQdpTPQFgBMBCG6l4FI59QDqdgfdZ8LHrSXcP1pzCt8SrzZSWesFYYOj9odK9oU6V_Ul63-37MX9GH9ebDSQV8U5F3gsrvq4UIiCfnJaLn0d-04DZ5JmL4jONXdJnTh1d9-BsEXQ1cFJCnEPnf_PORK7rGW5K00DJsTHJd5Qlr1mfjAnUCF4iP8w4HkrgwKg8Uc5eeJSCKngVhCq_jWuRtvDaBuXiFNRwFzfG2pylnsbUceukTPk_rLgm-WEeAOAkzB4ZfRyKt2hrk5f0qvRSlB4-...";
+    Папка = "12916431155";
 
     Результат = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
+
+    ТекущийСтатус = "in_progress";
+    IDРаботы      = Результат["async_job_id"];
+
+    Пока ТекущийСтатус = "in_progress" Цикл
+        Результат     = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
+        ТекущийСтатус = Результат[".tag"];
+        OPI_Инструменты.Пауза(3);
+    КонецЦикла;
 ```
     
 

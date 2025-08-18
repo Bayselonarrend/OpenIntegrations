@@ -2,8 +2,8 @@
 
     Image1       = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Image2       = "https://hut.openintegrations.dev/test_data/picture2.jpg";
-    PropVariant1 = "7209";
-    PropVariant2 = "7210";
+    PropVariant1 = "7484";
+    PropVariant2 = "7485";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
@@ -29,22 +29,3 @@
     Product.Insert("PropertyValues"   , PropVariant1);
 
     Result = OPI_VK.AddProduct(Product, , Parameters);
-
-    OPI_TestDataRetrieval.Check_VKProduct(Result);
-
-    ProductID = Result["response"]["market_item_id"];
-    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID2", ProductID);
-    FunctionParameters.Insert("VK_MarketItemID2", ProductID);
-
-    Product.Insert("Name"          , "Test product (another)");
-    Product.Insert("PropertyValues", PropVariant2);
-
-    Result = OPI_VK.AddProduct(Product, , Parameters);
-
-    OPI_TestDataRetrieval.Check_VKProduct(Result);
-
-    ProductID = Result["response"]["market_item_id"];
-    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID3", ProductID);
-    FunctionParameters.Insert("VK_MarketItemID3", ProductID);
-
-    OPI_Tools.Pause(5);
