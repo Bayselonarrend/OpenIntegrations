@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/c28623da-8bef-4593-9307-182d3fd2ed37.png";
+    Path  = "/79f847c6-aca6-4b1b-8185-bed9cd85625e.png";
 
     Result = OPI_YandexDisk.DownloadFile(Token, Path);

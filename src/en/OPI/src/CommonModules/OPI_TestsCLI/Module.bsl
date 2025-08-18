@@ -59,7 +59,7 @@
 // Uncomment if OneScript is executed
 // #Use "../../../tools"
 // #Use "../../../core"
-#Use asserts
+// #Use asserts
 
 #Region Internal
 
@@ -7374,9 +7374,11 @@ Procedure Slack_OpenDialog(FunctionParameters)
 
     Process(Result, "Slack", "OpenDialog", , FunctionParameters);
 
+    Channel = Result["channel"]["id"];
+
     Опции = Новый Структура;
     Опции.Вставить("", Token);
-    Опции.Вставить("", Result);
+    Опции.Вставить("", Channel);
     Опции.Вставить("", "Test dialog");
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendMessage", Опции);

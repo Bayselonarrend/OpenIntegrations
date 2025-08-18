@@ -1,6 +1,6 @@
 ﻿    Токен        = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База         = "app5NvHkX9zG8DaAc";
-    Таблица      = "tblBdeKTR1pkzf5mQ";
+    База         = "appJ8UTPc1lbqn5k2";
+    Таблица      = "tblIs64NPnSCEJM7u";
     Наименование = "Тестовая таблица 2 (изм.)";
     Описание     = "Новая таблица (изм.)";
 
