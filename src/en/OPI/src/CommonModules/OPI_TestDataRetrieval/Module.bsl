@@ -41,6 +41,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
+//@skip-check module-unused-method
 
 // Uncomment if OneScript is executed
 // #Use "./internal"
@@ -664,7 +665,7 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
+Procedure WriteLog(Val Result, Val Method, Val Library = "") Export // DEPRECATED
 
     Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
 
@@ -692,40 +693,6 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
         EndTry;
 
     EndIf;
-
-EndProcedure
-
-Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Forced = False) Export
-
-    Try
-
-        LogPath        = "./docs/en/results";
-        LibraryLogPath = LogPath + "/" + Library;
-
-        LogDirectory = New File(LogPath);
-
-        If Not LogDirectory.Exists() Then
-            CreateDirectory(LogPath);
-        EndIf;
-
-        LibraryLogCatalog = New File(LibraryLogPath);
-
-        If Not LibraryLogCatalog.Exists() Then
-            CreateDirectory(LibraryLogPath);
-        EndIf;
-
-        FilePath = LibraryLogPath + "/" + Method + ".log";
-        LogFile  = New File(FilePath);
-
-        If Not LogFile.Exists() Or Forced Then
-            LogDocument = New TextDocument;
-            LogDocument.SetText(Data);
-            LogDocument.Write(FilePath);
-        EndIf;
-
-    Except
-        Message("Failed to write log file!: " + ErrorDescription());
-    EndTry;
 
 EndProcedure
 
@@ -792,7 +759,5150 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
 EndFunction
 
+Procedure ProcessTestingResult(Val Result
+    , Val Method
+    , Val Library
+    , Val Option = ""
+    , AddParam1  = Undefined
+    , AddParam2  = Undefined
+    , AddParam3  = Undefined) Export
+
+    LogsMethod = ?(ValueIsFilled(Option), StrTemplate("%1 (%2)", Method, Option), Method);
+
+    Try
+
+        ParameterArray = New Array;
+        ParameterArray.Add("Result");
+        ParameterArray.Add("Option");
+
+        If AddParam1 <> Undefined Then
+            ParameterArray.Add("AddParam1");
+        EndIf;
+
+        If AddParam2 <> Undefined Then
+            ParameterArray.Add("AddParam2");
+        EndIf;
+
+        If AddParam3 <> Undefined Then
+            ParameterArray.Add("AddParam3");
+        EndIf;
+
+        CheckTemplate = "CheckResult = Check_%1_%2(%3)";
+
+        CheckCall   = StrTemplate(CheckTemplate, Library, Method, StrConcat(ParameterArray, ", "));
+        CheckResult = Undefined;
+
+        //@skip-check server-execution-safe-mode
+        Execute(CheckCall);
+
+        PrintLog(Result, LogsMethod, Library);
+
+        If Not ValueIsFilled(Option) And ValueIsFilled(CheckResult) Then
+            WriteLogFile(CheckResult, Method, Library);
+        EndIf
+
+    Except
+        ErrInfo = ErrorDescription();
+        PrintLog(Result, Method, Library);
+        Raise ErrInfo;
+    EndTry;
+
+EndProcedure
+
 #Region Checks
+
+Function Check_Telegram_GetBotInformation(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["username"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_GetUpdates(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SetWebhook(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["description"]).Равно("Webhook was set");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_DeleteWebhook(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["description"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendTextMessage(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+
+        ParameterName = "Telegram_MessageID";
+        ExpectsThat(Result["result"]["text"]).Равно(Text);
+
+    ElsIf Option = "Channel" Then
+
+        ParameterName = "Telegram_ChannelMessageID";
+        ExpectsThat(Result["result"]["text"]).Равно(Text);
+
+    Else
+        ParameterName = "";
+    EndIf;
+
+    If ValueIsFilled(ParameterName) Then
+
+        MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
+        WriteParameter(ParameterName, MessageID);
+        OPI_Tools.AddField(ParameterName, MessageID, "String", Parameters);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_FormKeyboardFromButtonArray(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendPicture(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
+
+    If Not ValueIsFilled(Option) Then
+
+        MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
+        WriteParameter("Telegram_PicMessageID", MessageID);
+        OPI_Tools.AddField("Telegram_PicMessageID", MessageID, "String", Parameters);
+
+    EndIf;
+
+    If Option = "Keyboard collection" Then
+
+        FileID = Result["result"]["photo"][0]["file_id"];
+        WriteParameter("Telegram_FileID", FileID);
+        Parameters.Insert("Telegram_FileID", FileID);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendVideo(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["video"]["mime_type"]).Равно("video/mp4");
+
+    If Option = "Binary" Then
+
+        FileID = Result["result"]["video"]["file_id"];
+        WriteParameter("Telegram_FileID", FileID);
+        Parameters.Insert("Telegram_FileID", FileID);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendAudio(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
+
+    If Option = "Binary" Then
+
+        FileID = Result["result"]["audio"]["file_id"];
+        WriteParameter("Telegram_FileID", FileID);
+        Parameters.Insert("Telegram_FileID", FileID);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendDocument(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["document"]).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendGif(Val Result, Val Option, Parameters = "", Text = "")
+
+    Result_ = "result";
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result[Result_]["caption"]).Равно(Text);
+    ExpectsThat(Result[Result_]["document"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result[Result_]["animation"]["mime_type"]).Равно("video/mp4");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendMediaGroup(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendLocation(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["location"]).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendContact(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["result"]["contact"]["first_name"]).Равно(Name);
+
+    OPI_Tools.Pause(15);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_SendPoll(Val Result, Val Option, Question = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["poll"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["result"]["poll"]["question"]).Равно(Question);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_DownloadFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ForwardMessage(Val Result, Val Option, MessageID = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_Ban(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_Unban(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_CreateInviteLink(Val Result, Val Option, Title = "", UnixExpiration = "")
+
+    Result_ = "result";
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result[Result_]["member_limit"]).Равно(200);
+    ExpectsThat(Result[Result_]["name"]).Равно(Title);
+    ExpectsThat(Result[Result_]["expire_date"]).Равно(Number(UnixExpiration));
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_PinMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_UnpinMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_GetParticipantCount(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Number");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_GetAvatarIconList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_CreateForumTopic(Val Result, Val Option, Parameters = "", NameOrText = "", Icon = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["ok"]).Равно(True);
+        ExpectsThat(Result["result"]["name"]).Равно(NameOrText);
+        ExpectsThat(Result["result"]["icon_custom_emoji_id"]).Равно(Icon);
+
+        Topic = Result["result"]["message_thread_id"];
+
+        OPI_Tools.AddField("Telegram_TopicID", Topic, "String", Parameters);
+        OPI_TestDataRetrieval.WriteParameter("Telegram_TopicID", Parameters["Telegram_TopicID"]);
+
+    Else
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["ok"]).Равно(True);
+        ExpectsThat(Result["result"]["text"]).Равно(NameOrText);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_EditForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_CloseForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_OpenForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_DeleteForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ClearPinnedMessagesList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_HideMainForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ShowMainForumTopic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ChangeMainTopicName(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_DeleteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ReplaceMessageText(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["text"]).Равно(Text);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ReplaceMessageKeyboard(Val Result, Val Option, Keyboard = "")
+
+    MessageKeyboard = Result["result"]["reply_markup"];
+
+    Keyboard_ = OPI_Tools.JsonToStructure(Keyboard);
+    Keyboard_.Delete("rows");
+    Keyboard_ = OPI_Tools.JSONString(Keyboard_);
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(StrLen(OPI_Tools.JSONString(MessageKeyboard))).Равно(StrLen(Keyboard_));
+
+    Return Result;
+
+EndFunction
+
+Function Check_Telegram_ReplaceMessageCaption(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreatePost(Val Result, Val Option, Parameters = "")
+
+    PostID = Result["response"]["post_id"];
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(PostID).ИмеетТип("Number").Заполнено();
+
+    If Option = "Path" Then
+
+        OPI_Tools.AddField("VK_PostID", PostID, "String", Parameters);
+        WriteParameter("VK_PostID", Parameters["VK_PostID"]);
+
+    Else
+
+        OPI_VK.DeletePost(PostID, Parameters);
+
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+EndFunction
+
+Function Check_VK_DeletePost(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateCompositePost(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreatePoll(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
+
+    PostID = Result["response"]["post_id"];
+    OPI_VK.DeletePost(PostID, Parameters);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateAlbum(Val Result, Val Option, Parameters = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["description"]).Равно(Description);
+
+    AlbumID = Result["response"]["id"];
+    Parameters.Insert("VK_AlbumID", AlbumID);
+    WriteParameter("VK_AlbumID", AlbumID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_SavePictureToAlbum(Val Result, Val Option, Parameters = "", Description = "", AlbumID = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"][0]["text"]).Равно(Description);
+    ExpectsThat(Result["response"][0]["album_id"]).Равно(AlbumID);
+
+
+    If Option = "Path" Then
+
+        ImageID = Result["response"][0]["id"];
+        Parameters.Insert("VK_PictureID", ImageID);
+        WriteParameter("VK_PictureID", ImageID);
+
+    Else
+
+        ImageID = Result["response"][0]["id"];
+        Result  = OPI_VK.DeleteImage(ImageID, Parameters);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteImage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteAlbum(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateStory(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateDiscussion(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+    DiscussionID = Result["response"];
+    Parameters.Insert("VK_ConvID", DiscussionID);
+    WriteParameter("VK_ConvID", DiscussionID);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CloseDiscussion(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_OpenDiscussion(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_PostToDiscussion(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_LikePost(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["likes"]).ИмеетТип("Number").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_MakeRepost(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["success"]).ИмеетТип("Number").Равно(1);
+    ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number").Равно(1);
+
+    Parameters.Insert("Repost", Result["response"]["post_id"]);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_WriteComment(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["comment_id"]).ИмеетТип("Number").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetStatistics(Val Result, Val Option)
+
+    TypeMap = "Map";
+
+    ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
+    ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
+    ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetPostStatistics(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateAdCampaign(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    CampaignID = Result["response"][0]["id"];
+    WriteParameter("VK_AdsCampaignID", CampaignID);
+    Parameters.Insert("VK_AdsCampaignID", CampaignID);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_VK_CreateAd(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    AnnouncementID = Result["response"][0]["id"];
+    WriteParameter("VK_AdsPostID", AnnouncementID);
+    Parameters.Insert("VK_AdsPostID", AnnouncementID);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_VK_PauseAdvertising(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_VK_FormKeyboard(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_WriteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetProductCategoryList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateProductCollection(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["albums_count"]).ИмеетТип("Number").Заполнено();
+    ExpectsThat(Result["response"]["market_album_id"]).ИмеетТип("Number").Заполнено();
+
+    SelectionID = Result["response"]["market_album_id"];
+    WriteParameter("VK_MarketAlbumID", SelectionID);
+    Parameters.Insert("VK_MarketAlbumID", SelectionID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_EditProductCollection(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetSelectionsByID(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_AddProduct(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["market_item_id"]).ИмеетТип("Number").Заполнено();
+
+    ProductID = Result["response"]["market_item_id"];
+    WriteParameter("VK_MarketItemID", ProductID);
+    Parameters.Insert("VK_MarketItemID", ProductID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_EditProduct(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_AddProductToCollection(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_RemoveProductFromCollection(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteProduct(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteCollection(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateProductProperty(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["property_id"]).ИмеетТип("Number").Заполнено();
+
+    Property = Result["response"]["property_id"];
+    Property = OPI_Tools.NumberToString(Property);
+
+    OPI_TestDataRetrieval.WriteParameter("VK_PropID", Property);
+    Parameters.Insert("VK_PropID", Property);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_EditProductProperty(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_AddProductPropertyVariant(Val Result, Val Option, Parameters = "", Counter = 0)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["variant_id"]).ИмеетТип("Number").Заполнено();
+
+    VariantID     = Result["response"]["variant_id"];
+    ParameterName = "VK_PropVarID" + String(Counter);
+
+    OPI_TestDataRetrieval.WriteParameter(ParameterName, VariantID);
+    Parameters.Insert(ParameterName, VariantID);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_EditProductPropertyVariant(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_CreateProductWithProp(Val Result, Val Option, Parameters = "", Counter = 0)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["market_item_id"]).ИмеетТип("Number").Заполнено();
+
+    ProductID = Result["response"]["market_item_id"];
+    FieldName = "VK_MarketItemID" + String(Counter);
+
+    OPI_TestDataRetrieval.WriteParameter(FieldName, ProductID);
+    Parameters.Insert(FieldName, ProductID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetProductsByID(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").ИмеетДлину(2);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GroupProducts(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["item_group_id"]).ИмеетТип("Number").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteProductPropertyVariant(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_DeleteProductProperty(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetProductList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetSelectionList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetPropertyList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetOrderList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_UploadVideoToServer(Val Result, Val Option)
+
+    ExpectsThat(Result["video_id"]).Заполнено();
+    ExpectsThat(Result["video_hash"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_UploadPhotoToServer(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"][0]["text"]).Равно("");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_ShortenLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetAdvertisingCategoryList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["v2"]).ИмеетТип("Array").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VK_GetProductDescription(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetDiskInfo(Val Result, Val Option)
+
+    Map_ = "Map";
+
+    ExpectsThat(Result).ИмеетТип(Map_).Заполнено();
+    ExpectsThat(Result["system_folders"]).ИмеетТип(Map_);
+    ExpectsThat(Result["user"]).ИмеетТип(Map_);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_CreateFolder(Val Result, Val Option, Token = "", Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("dir");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_UploadFileByURL(Val Result, Val Option, Parameters = "", Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["href"]).Заполнено();
+    ExpectsThat(Result["method"]).Заполнено();
+
+    WriteParameter("YandexDisk_FileByURLPath", Path);
+    Parameters.Insert("YandexDisk_FileByURLPath", Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetObject(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_DeleteObject(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_UploadFile(Val Result, Val Option, Token = "", Path = "")
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Deletion = OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    If Not Lower(String(Deletion)) = "null" Then
+        ExpectsThat(ValueIsFilled(Deletion)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_CreateObjectCopy(Val Result, Val Option, Parameters = "", Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+    WriteParameter("YandexDisk_CopyFilePath", Path);
+    Parameters.Insert("YandexDisk_CopyFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetDownloadLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["method"]).Равно("GET");
+    ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_DownloadFile(Val Result, Val Option)
+
+    MinimumSize = 500000;
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() > MinimumSize).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetFilesList(Val Result, Val Option, Count = 0, Indent = 0)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["limit"]).Равно(Count);
+    ExpectsThat(Result["offset"]).Равно(Indent);
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_MoveObject(Val Result, Val Option, Parameters = "", Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+    WriteParameter("YandexDisk_NewFilePath", Path);
+    Parameters.Insert("YandexDisk_NewFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetPublishedObjectsList(Val Result, Val Option, Count = 0, Indent = 0)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["limit"]).Равно(Count);
+    ExpectsThat(Result["offset"]).Равно(Indent);
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_PublishObject(Val Result, Val Option, Parameters = "", Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    ExpectsThat(Result["public_url"]).ИмеетТип("String").Заполнено();
+
+    URL = Result["public_url"];
+    WriteParameter("YandexDisk_PublicURL", URL);
+    Parameters.Insert("YandexDisk_PublicURL", URL);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetDownloadLinkForPublicObject(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["method"]).Равно("GET");
+    ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_GetPublicObject(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Заполнено();
+    ExpectsThat(Result["public_url"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_SavePublicObjectToDisk(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Заполнено();
+    ExpectsThat(Result["public_url"]).ИмеетТип("Undefined");
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_CancelObjectPublication(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    ExpectsThat(Result["public_url"]).ИмеетТип("Undefined");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SetWebhook(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_GetChannelInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_GetUserData(Val Result, Val Option)
+
+    ExpectsThat(Result["chat_hostname"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_GetOnlineUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+    ExpectsThat(Result["users"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_CreateKeyboardFromArrayButton(Val Result, Val Option)
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendTextMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendImage(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendFile(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendContact(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendLocation(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Viber_SendLink(Val Result, Val Option)
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String");
+    WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleWorkspace_GetTokenByCode(Val Result, Val Option)
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Google_Token"  , Result["access_token"]);
+        WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleWorkspace_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleWorkspace_GetServiceAccountToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_ServiceToken", Result["access_token"]);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetCalendarList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_CreateCalendar(Val Result, Val Option, Parameters = "", Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Calendar = Result["id"];
+    WriteParameter("Google_NewCalendarID", Calendar);
+    OPI_Tools.AddField("Google_NewCalendarID", Calendar, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_EditCalendarMetadata(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetCalendarMetadata(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_AddCalendarToList(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_EditListCalendar(Val Result, Val Option, PrimaryColor = "", SecondaryColor = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
+    ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetListCalendar(Val Result, Val Option, PrimaryColor = "", SecondaryColor = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
+    ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_ClearMainCalendar(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_DeleteCalendarFromList(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_DeleteCalendar(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_CreateEvent(Val Result, Val Option, Parameters = "", Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Event = Result["id"];
+    WriteParameter("Google_EventID", Event);
+    OPI_Tools.AddField("Google_EventID", Event, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_EditEvent(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetEvent(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_MoveEvent(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_DeleteEvent(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetEventList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetEventDescription(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetDirectoriesList(Val Result, Val Option, Parameters = "")
+
+    Result = Result[0];
+
+    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
+    ExpectsThat(Result["name"]).Заполнено();
+
+    Identifier = Result["id"];
+    WriteParameter("GD_Catalog", Identifier);
+    OPI_Tools.AddField("GD_Catalog", Identifier, "String", Parameters);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetObjectInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
+    ExpectsThat(Result["name"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_UploadFile(Val Result, Val Option, Parameters = "", Description = "")
+
+    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+    ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+    Identifier = Result["id"];
+
+    If Not ValueIsFilled(Option) Then
+
+        WriteParameter("GD_File", Identifier);
+        OPI_Tools.AddField("GD_File", Identifier, "String", Parameters);
+
+    Else
+
+        ArrayOfDeletions = Parameters["ArrayOfDeletions"];
+        ArrayOfDeletions.Add(Identifier);
+        Parameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_CopyObject(Val Result, Val Option, Parameters = "", NewName = "")
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+
+    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+    ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+    Identifier = Result["id"];
+
+    ArrayOfDeletions = Parameters["ArrayOfDeletions"];
+    ArrayOfDeletions.Add(Identifier);
+    Parameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_DownloadFile(Val Result, Val Option, Parameters = "")
+
+    Size = OPI_HTTPRequests.Get(Parameters["Picture"]).Size();
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= Size).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_UpdateFile(Val Result, Val Option, NewName = "")
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+
+    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+    ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetFilesList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_DeleteObject(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetFileDescription(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_CreateComment(Val Result, Val Option, Parameters = "", Comment = "")
+
+    ExpectsThat(Result["content"]).Равно(Comment);
+    ExpectsThat(Result["kind"]).Равно("drive#comment");
+
+    Identifier = Result["id"];
+
+    WriteParameter("GD_Comment", Identifier);
+    OPI_Tools.AddField("GD_Comment", Identifier, "String", Parameters);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetComment(Val Result, Val Option)
+
+    ExpectsThat(Result["content"]).Равно("Comment text");
+    ExpectsThat(Result["kind"]).Равно("drive#comment");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetCommentList(Val Result, Val Option)
+
+    Comments      = Result["comments"];
+    CommentObject = Comments[Comments.UBound()];
+
+    ExpectsThat(CommentObject["content"]).Равно("Comment text");
+    ExpectsThat(CommentObject["kind"]).Равно("drive#comment");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_DeleteComment(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_CreateFolder(Val Result, Val Option, Token = "")
+
+    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
+    ExpectsThat(Result["name"]).Заполнено();
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_CreateSpreadsheet(Val Result, Val Option, Parameters = "", Name = "", SheetArray = "")
+
+    ExpectsThat(Result["properties"]["title"]).Равно(Name);
+
+    If ValueIsFilled(SheetArray) Then
+
+        For N = 0 To SheetArray.UBound() Do
+
+            SheetName = Result["sheets"][N]["properties"]["title"];
+            ExpectsThat(SheetName).Равно(SheetArray[N]);
+
+        EndDo;
+
+    EndIf;
+
+    Spreadsheet = Result["spreadsheetId"];
+
+    If Not ValueIsFilled(Option) Then
+
+        Sheet = Result["sheets"][0]["properties"]["sheetId"];
+        Sheet = OPI_Tools.NumberToString(Sheet);
+
+        WriteParameter("GS_Spreadsheet", Spreadsheet);
+        WriteParameter("GS_Sheet"      , Sheet);
+
+        OPI_Tools.AddField("GS_Spreadsheet", Spreadsheet, "String", Parameters);
+        OPI_Tools.AddField("GS_Sheet"      , Sheet      , "String", Parameters);
+
+    Else
+
+        OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet2", Spreadsheet);
+        OPI_Tools.AddField("GS_Spreadsheet2", Spreadsheet, "String", Parameters);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_GetSpreadsheet(Val Result, Val Option, Token = "")
+
+    Name = "TestTable";
+
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
+
+    ExpectsThat(Result["properties"]["title"]).Равно(Name);
+
+    For N = 0 To SheetArray.UBound() Do
+
+        SheetName = Result["sheets"][N]["properties"]["title"];
+        ExpectsThat(SheetName).Равно(SheetArray[N]);
+
+    EndDo;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_CopySheet(Val Result, Val Option)
+
+    ExpectsThat(Result["title"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_AddSheet(Val Result, Val Option)
+
+    NewSheet = Result["replies"][0]["addSheet"]["properties"];
+    ExpectsThat(NewSheet["title"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_DeleteSheet(Val Result, Val Option, Spreadsheet = "")
+
+    ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_EditSpreadsheetTitle(Val Result, Val Option, Spreadsheet = "")
+
+    ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_GetTable(Val Result, Val Option)
+
+    Name = "Test table (changed.)";
+    ExpectsThat(Result["properties"]["title"]).Равно(Name);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_SetCellValues(Val Result, Val Option, Count = 0)
+
+    ExpectsThat(Result["totalUpdatedCells"]).Равно(Count);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_GetCellValues(Val Result, Val Option, BookOrAmount = 0)
+
+    If Option = "All" Then
+        ExpectsThat(Result["spreadsheetId"]).Равно(BookOrAmount);
+    Else
+        ExpectsThat(Result["valueRanges"].Count()).Равно(BookOrAmount);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_ClearCells(Val Result, Val Option, Count = 0)
+
+    ExpectsThat(Result["clearedRanges"].Count()).Равно(Count);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetBotInformation(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["bot_id"]).Заполнено();
+    ExpectsThat(Result["user_id"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetUserList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["members"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetWorkspaceList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["teams"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_SendMessage(Val Result, Val Option, Parameters = "", Text = "", Channel = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["message"]["text"]).Равно(Text);
+
+    If Not ValueIsFilled(Option) Then
+
+        Timestamp = Result["ts"];
+        WriteParameter("Slack_MessageTS", Timestamp);
+        OPI_Tools.AddField("Slack_MessageTS", Timestamp, "String", Parameters);
+
+    EndIf;
+
+    If Option = "Sheduled" Then
+
+        Token     = Parameters["Slack_Token"];
+        Timestamp = Result["scheduled_message_id"];
+
+        Deletion = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
+
+        ExpectsThat(Deletion["ok"]).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["ts"]).Заполнено();
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GenerateImageBlock(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_EditMessage(Val Result, Val Option, Text = "", Channel = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["ts"]).Заполнено();
+    ExpectsThat(Result["message"]["text"]).Равно(Text);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetMessageReplyList(Val Result, Val Option)
+
+    ExpectsThat(Result["messages"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetMessageLink(Val Result, Val Option, Channel = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["permalink"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_DeleteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_SendEphemeralMessage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["message_ts"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetDelayedMessageList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_CreateChannel(Val Result, Val Option, Parameters = "", Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["name"]).Равно(Name);
+
+    Channel = Result["channel"]["id"];
+    WriteParameter("Slack_NewChannel", Channel);
+    OPI_Tools.AddField("Slack_NewChannel", Channel, "String", Parameters);
+
+    WriteParameter("Slack_NewChannelName", Name);
+    OPI_Tools.AddField("Slack_NewChannelName", Name, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_SetChannelTopic(Val Result, Val Option, Topic = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["topic"]["value"]).Равно(Topic);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_SetChannelGoal(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetChannel(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["name"]).Равно(Name);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_InviteUsersToChannel(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["name"]).Равно(Name);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_KickUserFromChannel(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetChannelHistory(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["messages"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetChannelUserList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["members"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_LeaveChannel(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_JoinChannel(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["name"]).Равно(Name);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_RenameChannel(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Data = Result["channel"];
+    ExpectsThat(Data["name"]).Равно(Name);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_ArchiveChannel(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetChannelList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["channels"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_OpenDialog(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+
+        Dialog = Result["channel"]["id"];
+
+        ExpectsThat(Result["channel"]).ИмеетТип("Map");
+        ExpectsThat(Dialog).Заполнено();
+
+        WriteParameter("Slack_Dialog", Dialog);
+        OPI_Tools.AddField("Slack_Dialog", Dialog, "String", Parameters);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_CloseDialog(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetFilesList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["files"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_UploadFile(Val Result, Val Option, Parameters = "", FileName = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    If ValueIsFilled(Result["files"]) Then
+        UploadedFile = Result["files"][0];
+    Else
+        UploadedFile = Result["file"];
+    EndIf;
+
+    ExpectsThat(UploadedFile["name"]).Равно(FileName);
+
+    If Not ValueIsFilled(Option) Then
+
+        UploadedFile = Result["files"][0]["id"];
+        WriteParameter("Slack_FileID", UploadedFile);
+        OPI_Tools.AddField("Slack_FileID", UploadedFile, "String", Parameters);
+
+    Else
+        OPI_Slack.DeleteFile(Parameters["Slack_Token"], Result["files"][0]["id"]);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_MakeFilePublic(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Slack_MakeFilePrivate(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Slack_GetFileData(Val Result, Val Option, FileName = "")
+
+    If ValueIsFilled(Result["files"]) Then
+        UploadedFile = Result["files"][0];
+    Else
+        UploadedFile = Result["file"];
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(UploadedFile["name"]).Равно(FileName);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_DeleteFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetExternalFileList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["files"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_AddExternalFile(Val Result, Val Option, Parameters = "", Title = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    UploadedFile = Result["file"];
+    ExpectsThat(UploadedFile["title"]).Равно(Title);
+
+    UploadedFile = Result["file"]["id"];
+    WriteParameter("Slack_ExtFileID", UploadedFile);
+    OPI_Tools.AddField("Slack_ExtFileID", UploadedFile, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_GetExternalFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    UploadedFile = Result["file"];
+    ExpectsThat(UploadedFile["title"]).Равно("NewFile");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_SendExternalFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Slack_DeleteExternalFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_CreateDatabase(Val Result, Val Option, Parameters = "", TableName = "")
+
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["tables"][0]["name"]).Равно(TableName);
+
+    Base = Result["id"];
+    WriteParameter("Airtable_Base", Base);
+    OPI_Tools.AddField("Airtable_Base", Base, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetDatabaseTables(Val Result, Val Option)
+
+    ExpectsThat(Result["tables"]).Заполнено();
+    ExpectsThat(Result["tables"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetListOfBases(Val Result, Val Option)
+
+    ExpectsThat(Result["bases"]).Заполнено();
+    ExpectsThat(Result["bases"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetNumberField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetStringField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetAttachmentField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetCheckboxField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetDateField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetPhoneField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetEmailField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetLinkField(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_CreateTable(Val Result, Val Option, Parameters = "", Name = "", Description = "")
+
+    ExpectsThat(Result["name"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+
+    Table = Result["id"];
+    WriteParameter("Airtable_Table", Table);
+    OPI_Tools.AddField("Airtable_Table", Table, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_ModifyTable(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result["name"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_CreateField(Val Result, Val Option, Parameters = "", Name = "")
+
+    ExpectsThat(Result["name"]).Равно(Name);
+
+    Field = Result["id"];
+    WriteParameter("Airtable_Field", Field);
+    OPI_Tools.AddField("Airtable_Field", Field, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_ModifyField(Val Result, Val Option, Name = "", Description = "")
+
+    ExpectsThat(Result["name"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_CreatePosts(Val Result, Val Option, Parameters = "", Numeric = "", StringType = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["records"]).ИмеетТип("Array");
+        ExpectsThat(Result["records"]).Заполнено();
+
+        Token = Parameters["Airtable_Token"];
+        Base  = Parameters["Airtable_Base"];
+        Table = Parameters["Airtable_Table"];
+
+        OPI_TestDataRetrieval.Check_ATRecords(Result);
+
+        ArrayOfDeletions = New Array;
+
+        For Each Record In Result["records"] Do
+
+            CurrentRecord = Record["id"];
+            ArrayOfDeletions.Add(CurrentRecord);
+
+        EndDo;
+
+        OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
+
+    Else
+
+        SingleRecord = Result["id"];
+        ExpectsThat(SingleRecord).Заполнено();
+        ExpectsThat(Result["createdTime"]).Заполнено();
+        ExpectsThat(Result["fields"]["Number"]).Равно(Numeric);
+        ExpectsThat(TrimAll(Result["fields"]["String"])).Равно(StringType);
+
+        Record = Result["id"];
+        WriteParameter("Airtable_Record", Record);
+        OPI_Tools.AddField("Airtable_Record", Record, "String", Parameters);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetRecord(Val Result, Val Option, Record = "")
+
+    ExpectsThat(Result["id"]).Равно(Record);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_CreateComment(Val Result, Val Option, Parameters = "", Text = "")
+
+    ExpectsThat(Result["text"]).Равно(Text);
+
+    Comment = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Comment", Comment);
+    OPI_Tools.AddField("Airtable_Comment", Comment, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_EditComment(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result["text"]).Равно(Text);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetComments(Val Result, Val Option)
+
+    ExpectsThat(Result["comments"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_DeleteComment(Val Result, Val Option, Comment = "")
+
+    ExpectsThat(Result["deleted"]).Равно(True);
+    ExpectsThat(Result["id"]).Равно(Comment);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_GetListOfRecords(Val Result, Val Option, Comment = "")
+
+    ExpectsThat(Result["records"]).ИмеетТип("Array");
+    ExpectsThat(Result["records"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Airtable_DeleteRecords(Val Result, Val Option, Comment = "")
+
+    ExpectsThat(Result["records"]).ИмеетТип("Array");
+    ExpectsThat(Result["records"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_GetToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    WriteParameter("Twitter_URL", Result);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["refresh_token"]).Заполнено();
+
+    Refresh = Result["refresh_token"];
+    Token   = Result["access_token"];
+
+    If ValueIsFilled(Refresh) And Not Refresh = "null" Then
+        WriteParameter("Twitter_Refresh", Refresh);
+    EndIf;
+
+    If ValueIsFilled(Token) And Not Token = "null" Then
+        WriteParameter("Twitter_Token", Token);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Twitter_CreateTextTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_CreateImageTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_CreateVideoTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_CreateGifTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_CreatePollTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_CreateCustomTweet(Val Result, Val Option, Text = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Data = Result["data"];
+
+    If Data = Undefined Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    Else
+
+        ReplyText = Result["data"]["text"];
+        ReplyText = Left(ReplyText, StrLen(Text));
+
+        ExpectsThat(ReplyText).Равно(Text);
+
+    EndIf;
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Twitter_UploadAttachmentsArray(Val Result, Val Option)
+
+    If Not TypeOf(Result) = Type("Array") Then
+
+        Status = Result["status"];
+        ExpectsThat(Status).Равно(429);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_CreatePage(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("page");
+
+    Page = Result["id"];
+    WriteParameter("Notion_Page", Page);
+    OPI_Tools.AddField("Notion_Page", Page, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_CreateDatabase(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("database");
+
+    Base = Result["id"];
+    WriteParameter("Notion_Base", Base);
+    OPI_Tools.AddField("Notion_Base", Base, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_EditDatabaseProperties(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("database");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_GetPage(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("page");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_GetDatabase(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("database");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_CreatePageInDatabase(Val Result, Val Option, Base = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("page");
+
+    Parent = Result["parent"]["database_id"];
+    ExpectsThat(Parent).Равно(Base);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_EditPageProperties(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("page");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_ReturnBlock(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("block");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_CreateBlock(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("list");
+
+    Block = Result["results"][0]["id"];
+    WriteParameter("Notion_NewBlock", Block);
+    OPI_Tools.AddField("Notion_NewBlock", Block, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_ReturnChildBlocks(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("list");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_DeleteBlock(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("block");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_UserList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("list");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Notion_GetUserData(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно("user");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Token   = Result["access_token"];
+    Refresh = Result["refresh_token"];
+
+    If ValueIsFilled(Token) Then
+        WriteParameter("Dropbox_Token", Token);
+    EndIf;
+
+    If ValueIsFilled(Refresh) Then
+        WriteParameter("Dropbox_Refresh", Refresh);
+    EndIf;
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Dropbox_UpdateToken(Val Result, Val Option)
+
+    Token = Result["access_token"];
+
+    ExpectsThat(Token).ИмеетТип("String").Заполнено();
+    WriteParameter("Dropbox_Token", Token);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Dropbox_GetObjectInformation(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result["path_display"]).Равно(Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetPreview(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= 1200).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_UploadFile(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result["path_display"]).Равно(Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_UploadFileByURL(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["async_job_id"]).Заполнено();
+
+    Work = Result["async_job_id"];
+    Parameters.Insert("Dropbox_Job", Work);
+    WriteParameter("Dropbox_Job", Work);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Parameters = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result[".tag"]).Равно("complete");
+
+        Token  = Parameters["Dropbox_Token"];
+        Path   = "/New/url_doc.docx";
+        Result = OPI_Dropbox.DeleteObject(Token, Path);
+
+        ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+        OPI_Tools.Pause(5);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_DeleteObject(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_CopyObject(Val Result, Val Option, Parameters = "", Path = "")
+
+    Token = Parameters["Dropbox_Token"];
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_MoveObject(Val Result, Val Option, Parameters = "", TargetPath = "", OriginalPath = "")
+
+    Token = Parameters["Dropbox_Token"];
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(TargetPath);
+
+    Result = OPI_Dropbox.MoveObject(Token, TargetPath, OriginalPath);
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(OriginalPath);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_CreateFolder(Val Result, Val Option, Parameters = "", Path = "")
+
+    Token = Parameters["Dropbox_Token"];
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_DownloadFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= 2000000).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_DownloadFolder(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= 200000).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetFolderFileList(Val Result, Val Option)
+
+    ExpectsThat(Result["entries"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetObjectVersionList(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entries"]).ИмеетТип("Array");
+    ExpectsThat(Result["entries"].Count()).Равно(1);
+
+    Revision = Result["entries"][0]["rev"];
+
+    Parameters.Insert("Dropbox_FileRevision", Revision);
+    WriteParameter("Dropbox_FileRevision", Revision);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_RestoreObjectToVersion(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result["path_display"]).Равно(Path);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetTagList(Val Result, Val Option, Parameters = "", PathsArray = "")
+
+    Token = Parameters["Dropbox_Token"];
+
+    ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
+    ExpectsThat(Result["paths_to_tags"].Count()).Равно(PathsArray.Count());
+
+    Result2 = OPI_Dropbox.GetTagList(Token, "/New/mydoc.docx");
+
+    ExpectsThat(Result2["paths_to_tags"]).ИмеетТип("Array");
+    ExpectsThat(Result2["paths_to_tags"].Count()).Равно(1);
+
+    HasTag = False;
+
+    For Each Tag In Result2["paths_to_tags"][0]["tags"] Do
+        If Tag["tag_text"] = "important" Then
+            HasTag         = True;
+        EndIf;
+    EndDo;
+
+    ExpectsThat(HasTag).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_AddTag(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_DeleteTag(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetAccountInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["account_id"]).Заполнено();
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetSpaceUsageData(Val Result, Val Option)
+
+    ExpectsThat(Result["used"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_AddUsersToFile(Val Result, Val Option, Email = "", ViewOnly = "")
+
+    ExpectsThat(Result[0]["result"][".tag"]).Равно("success");
+    ExpectsThat(Result[0]["member"]["email"]).Равно(Email);
+    ExpectsThat(Result[0]["result"]["success"][".tag"]).Равно(?(ViewOnly, "viewer", "editor"));
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_PublishFolder(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["shared_folder_id"]).Заполнено();
+
+    FolderID = Result["shared_folder_id"];
+
+    Parameters.Insert("Dropbox_SharedFolder", FolderID);
+    WriteParameter("Dropbox_SharedFolder", FolderID);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_CancelFolderPublication(Val Result, Val Option, Parameters = "", JobID = "")
+
+    If ValueIsFilled(Option) Then
+
+        ExpectsThat(Result[".tag"]).Равно("complete");
+
+        Parameters.Insert("Dropbox_NewJobID", JobID);
+        WriteParameter("Dropbox_NewJobID", JobID);
+
+        OPI_Tools.Pause(5);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_GetAsynchronousChangeStatus(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_AddUsersToFolder(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Dropbox_CancelFilePublication(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetAppAuthLink(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String");
+
+    WriteParameter("Bitrix24_AuthURL", Result);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetToken(Val Result, Val Option)
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Bitrix24_Token"  , Result["access_token"]);
+        WriteParameter("Bitrix24_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Bitrix24_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["refresh_token"]).Заполнено();
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Bitrix24_Token"  , Result["access_token"]);
+        WriteParameter("Bitrix24_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Bitrix24_ServerTime(Val Result, Val Option)
+
+    Time = Result["result"];
+
+    If Not TypeOf(Time) = Type("Date") Then
+       Time             = XMLValue(Type("Date"), Time);
+    EndIf;
+
+    ExpectsThat(Time).ИмеетТип("Date").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreatePost(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookPostID";
+    Else
+        ParameterName = "Bitrix24_PostID";
+    EndIf;
+
+    PostID = Result["result"];
+
+    WriteParameter(ParameterName, PostID);
+    Parameters.Insert(ParameterName, PostID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdatePost(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeletePost(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetImportantPostViewers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetPosts(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddPostComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddPostRecipients(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskFieldsStructure(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["fields"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateTask(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookTaskID";
+    Else
+        ParameterName = "Bitrix24_TaskID";
+    EndIf;
+
+    TaskID = Result["result"]["task"]["id"];
+
+    WriteParameter(ParameterName, TaskID);
+    Parameters.Insert(ParameterName, TaskID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ApproveTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DisapproveTask(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Bitrix24_CompleteTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RenewTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeferTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_StartTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_StartWatchingTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_StopWatchingTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_PauseTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DelegateTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddTaskToFavorites(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RemoveTaskFromFavorites(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskHistory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["list"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTasksList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["tasks"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetStoragesList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["total"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetAppStorage(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    StorageID = Result["result"]["ID"];
+    WriteParameter("Bitrix24_StorageID", StorageID);
+    Parameters.Insert("Bitrix24_StorageID", StorageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UploadFileToStorage(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookFileID";
+    Else
+        ParameterName = "Bitrix24_FileID";
+    EndIf;
+
+    FileID = Result["result"]["ID"];
+
+    WriteParameter(ParameterName, FileID);
+    Parameters.Insert(ParameterName, FileID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteFile(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateStorageFolder(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookFolderID";
+    Else
+        ParameterName = "Bitrix24_FolderID";
+    EndIf;
+
+    FolderID = Result["result"]["ID"];
+
+    WriteParameter(ParameterName, FolderID);
+    Parameters.Insert(ParameterName, FolderID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetStorage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetStorageObjects(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RenameStorage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFolderInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateSubfolder(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookSubfolderID";
+    Else
+        ParameterName = "Bitrix24_SubfolderID";
+    EndIf;
+
+    SubfolderID = Result["result"]["ID"];
+
+    WriteParameter(ParameterName, SubfolderID);
+    Parameters.Insert(ParameterName, SubfolderID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MakeFolderCopy(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFolderExternalLink(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFolderFilterStructure(Val Result, Val Option)
+
+    ResultType = TypeOf(Result);
+
+    ExpectsThat(ResultType = Type("Structure") Or ResultType = Type("Map")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFolderItems(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MarkFolderAsDeleted(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RestoreFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MoveFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RenameFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UploadFileToFolder(Val Result, Val Option, URL = "", Token = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    FileID = Result["result"]["ID"];
+
+    If ValueIsFilled(Token) Then
+        OPI_Bitrix24.DeleteFile(URL, FileID, Token);
+    Else
+        OPI_Bitrix24.DeleteFile(URL, FileID);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MakeFileCopy(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFileInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFileExternalLink(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Bitrix24_MarkFileAsDeleted(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RestoreFile(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RenameFile(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MoveFileToFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AttachFileToTopic(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CheckTaskAccesses(Val Result, Val Option, Count = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Actions = Result["result"]["allowedActions"];
+    ExpectsThat(Actions).ИмеетТип("Map");
+    ExpectsThat(Actions.Count()).Равно(Count);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MuteTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UnmuteTask(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddTaskComment(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookCommentID";
+    Else
+        ParameterName = "Bitrix24_CommentID";
+    EndIf;
+
+    CommentID = Result["result"];
+
+    WriteParameter(ParameterName, CommentID);
+    Parameters.Insert(ParameterName, CommentID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteTaskComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateResultFromComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["text"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteResultFromComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
+    ExpectsThat(Result["time"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetResultsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["text"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskCommentsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["POST_MESSAGE"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateTaskComment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateTasksDependencies(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    If Option = "Hook" Then
+
+        FromID        = Parameters["Bitrix24_HookTaskID"];
+        DestinationID = Parameters["Bitrix24_TaskID"];
+        LinkType      = 0;
+
+        URL = Parameters["Bitrix24_URL"];
+
+        OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
+
+    Else
+
+        FromID        = Parameters["Bitrix24_TaskID"];
+        DestinationID = Parameters["Bitrix24_HookTaskID"];
+        LinkType      = 2;
+
+        URL   = Parameters["Bitrix24_Domain"];
+        Token = Parameters["Bitrix24_Token"];
+
+        OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token)
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteTasksDependencies(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddKanbanStage(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookStageID";
+    Else
+        ParameterName = "Bitrix24_StageID";
+    EndIf;
+
+    StageID = Result["result"];
+
+    WriteParameter(ParameterName, StageID);
+    Parameters.Insert(ParameterName, StageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteKanbanStage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetKanbanStages(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MoveTaskToKanbanStage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateKanbansStage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddTasksChecklistElement(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookCheckElementID";
+    Else
+        ParameterName = "Bitrix24_CheckElementID";
+    EndIf;
+
+    ElementID = Result["result"];
+
+    WriteParameter(ParameterName, ElementID);
+    Parameters.Insert(ParameterName, ElementID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateTasksChecklistElement(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
+    ExpectsThat(Result["time"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteTasksChecklistElement(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTasksChecklist(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTasksChecklistElement(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CompleteTasksChecklistElement(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_RenewTasksChecklistElement(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddTaskTimeAccounting(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookTimeID";
+    Else
+        ParameterName = "Bitrix24_TimeID";
+    EndIf;
+
+    SpendingID = Result["result"];
+
+    WriteParameter(ParameterName, SpendingID);
+    Parameters.Insert(ParameterName, SpendingID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateTaskTimeAccounting(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
+    ExpectsThat(Result["time"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteTaskTimeAccounting(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
+    ExpectsThat(Result["time"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskTimeAccounting(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTaskTimeAccountingList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDailyPlan(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateChat(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookChatID";
+    Else
+        ParameterName = "Bitrix24_ChatID";
+    EndIf;
+
+    ChatID = Result["result"];
+
+    WriteParameter(ParameterName, ChatID);
+    Parameters.Insert(ParameterName, ChatID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetChatUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_LeaveChat(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteUserFromChat(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_AddUsersToChat(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ChangeChatTitle(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ChangeChatColor(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    OPI_Tools.Pause(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ChangeChatPicture(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DisableChatNotifications(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_EnableChatNotifications(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ChangeChatOwner(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetChatMessagesList(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]["messages"]).ИмеетТип("Array");
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_ChatMessageID";
+    Else
+        ParameterName = "Bitrix24_UserMessageID";
+    EndIf;
+
+    MessageID = Result["result"]["messages"][0]["id"];
+
+    WriteParameter(ParameterName, MessageID);
+    Parameters.Insert(ParameterName, MessageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_MarkMessageAsReaded(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Bitrix24_MarkMessageAsUnreaded(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDialog(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["id"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetChatMembersList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SendWritingNotification(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ReadAll(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SendMessage(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_ChatMessageID";
+    Else
+        ParameterName = "Bitrix24_UserMessageID";
+    EndIf;
+
+    MessageID = Result["result"];
+
+    WriteParameter(ParameterName, MessageID);
+    Parameters.Insert(ParameterName, MessageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_EditMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SetMessageReaction(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetChatFilesFolder(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SendFile(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["MESSAGE_ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUserStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SetUserStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreatePersonalNotification(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_PersoalHookNotifyID";
+    Else
+        ParameterName = "Bitrix24_PersoalNotifyID";
+    EndIf;
+
+    MessageID = Result["result"];
+
+    WriteParameter(ParameterName, MessageID);
+    Parameters.Insert(ParameterName, MessageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateSystemNotification(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_SystemHookNotifyID";
+    Else
+        ParameterName = "Bitrix24_SystemNotifyID";
+    EndIf;
+
+    MessageID = Result["result"];
+
+    WriteParameter(ParameterName, MessageID);
+    Parameters.Insert(ParameterName, MessageID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteNotification(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateDepartment(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookDepID";
+    Else
+        ParameterName = "Bitrix24_DepID";
+    EndIf;
+
+    DepartmentID = Result["result"];
+
+    WriteParameter(ParameterName, DepartmentID);
+    Parameters.Insert(ParameterName, DepartmentID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateDepartment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteDepartment(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDepartments(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCurrentUser(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUserFieldsStructure(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateUser(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookUserID";
+    Else
+        ParameterName = "Bitrix24_UserID";
+    EndIf;
+
+    UserID = Result["result"];
+
+    WriteParameter(ParameterName, UserID);
+    Parameters.Insert(ParameterName, UserID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateUser(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_ChangeUserStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUser(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_FindUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetLeadFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetLeadStructure(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["PHONE"]).Заполнено();
+    ExpectsThat(Result["result"]["NAME"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateLead(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookLeadID";
+    Else
+        ParameterName = "Bitrix24_LeadID";
+    EndIf;
+
+    LeadID = Result["result"];
+
+    WriteParameter(ParameterName, LeadID);
+    Parameters.Insert(ParameterName, LeadID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateLead(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteLead(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetLead(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["PHONE"]).Заполнено();
+    ExpectsThat(Result["result"]["NAME"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetLeadsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDealsFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDealStructure(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+    ExpectsThat(Result["result"]["BEGINDATE"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateDeal(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookDealID";
+    Else
+        ParameterName = "Bitrix24_DealID";
+    EndIf;
+
+    DealID = Result["result"];
+
+    WriteParameter(ParameterName, DealID);
+    Parameters.Insert(ParameterName, DealID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateDeal(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDeal(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+    ExpectsThat(Result["result"]["BEGINDATE"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteDeal(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetDealsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetTasksFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCommentStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetChatStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetPictureBlock(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetFileBlock(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUserFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateCalendar(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookCalendarID";
+    Else
+        ParameterName = "Bitrix24_CalendarID";
+    EndIf;
+
+    CalendarID = Result["result"];
+
+    WriteParameter(ParameterName, CalendarID);
+    Parameters.Insert(ParameterName, CalendarID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateCalendar(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+EndFunction
+
+Function Check_Bitrix24_DeleteCalendar(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalednarCustomSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCustomCalendarSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SetCustomCalendarSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUserBusy(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_CreateCalendarEvent(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookCEventID";
+    Else
+        ParameterName = "Bitrix24_CEventID";
+    EndIf;
+
+    EventID = Result["result"];
+
+    WriteParameter(ParameterName, EventID);
+    Parameters.Insert(ParameterName, EventID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_UpdateCalendarEvent(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+
+    If Option         = "Hook" Then
+        ParameterName = "Bitrix24_HookCEventID";
+    Else
+        ParameterName = "Bitrix24_CEventID";
+    EndIf;
+
+    EventID = Result["result"];
+
+    WriteParameter(ParameterName, EventID);
+    Parameters.Insert(ParameterName, EventID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_DeleteCalendarEvent(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarEvent(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarEvents(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_SetUserParticipationStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetUserParticipationStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarEventsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Bitrix24_GetCalendarEventsFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 
 Procedure Check_Empty(Val Result) Export
 
@@ -870,919 +5980,6 @@ Procedure Check_False(Val Result) Export
 
     ExpectsThat(Result).Равно(False);
 
-EndProcedure
-
-Procedure Check_TelegramTrue(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_TelegramBotInformation(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["username"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_TelegramArray(Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_TelegramWebhookSetup(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["description"]).Равно("Webhook was set");
-
-EndProcedure
-
-Procedure Check_TelegramWebhookDeletion(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["description"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_TelegramMessage(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["text"]).Равно(Text);
-
-EndProcedure
-
-Procedure Check_TelegramImage(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_TelegramVideo(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    ExpectsThat(Result["result"]["video"]["mime_type"]).Равно("video/mp4");
-
-EndProcedure
-
-Procedure Check_TelegramAudio(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    ExpectsThat(Result["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
-
-EndProcedure
-
-Procedure Check_TelegramDocument(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    ExpectsThat(Result["result"]["document"]).ИмеетТип("Map").Заполнено();
-
-EndProcedure
-
-Procedure Check_TelegramGif(Val Result, Val Text) Export
-
-    Result_ = "result";
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result[Result_]["caption"]).Равно(Text);
-    ExpectsThat(Result[Result_]["document"]).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result[Result_]["animation"]["mime_type"]).Равно("video/mp4");
-
-EndProcedure
-
-Procedure Check_TelegramMediaGroup(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_TelegramLocation(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["location"]).ИмеетТип("Map").Заполнено();
-
-EndProcedure
-
-Procedure Check_TelegramContact(Val Result, Val Name) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["result"]["contact"]["first_name"]).Равно(Name);
-
-EndProcedure
-
-Procedure Check_TelegramPoll(Val Result, Val Question) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["poll"]).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["result"]["poll"]["question"]).Равно(Question);
-
-EndProcedure
-
-Procedure Check_TelegramForward(Val Result, Val MessageID) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
-
-EndProcedure
-
-Procedure Check_TelegramBan(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
-
-EndProcedure
-
-Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration) Export
-
-    Result_ = "result";
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result[Result_]["member_limit"]).Равно(200);
-    ExpectsThat(Result[Result_]["name"]).Равно(Title);
-    ExpectsThat(Result[Result_]["expire_date"]).Равно(Number(UnixExpiration));
-
-EndProcedure
-
-Procedure Check_TelegramNumber(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]).ИмеетТип("Number");
-
-EndProcedure
-
-Procedure Check_TelegramOk(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["name"]).Равно(Name);
-    ExpectsThat(Result["result"]["icon_custom_emoji_id"]).Равно(Icon);
-
-EndProcedure
-
-Procedure Check_TelegramMessageKeyboard(Val Result, Val Keyboard) Export
-
-    MessageKeyboard = Result["result"]["reply_markup"];
-
-    Keyboard_ = OPI_Tools.JsonToStructure(Keyboard);
-    Keyboard_.Delete("rows");
-    Keyboard_ = OPI_Tools.JSONString(Keyboard_);
-
-    ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(StrLen(OPI_Tools.JSONString(MessageKeyboard))).Равно(StrLen(Keyboard_));
-
-EndProcedure
-
-Procedure Check_VKPost(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKTrue(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
-
-EndProcedure
-
-Procedure Check_VKElement(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKAlbum(Val Result, Val Description) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["description"]).Равно(Description);
-
-EndProcedure
-
-Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID = "") Export
-
-    Response = "response";
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result[Response][0]["text"]).Равно(ImageDescription);
-
-    If ValueIsFilled(AlbumID) Then
-        ExpectsThat(Result[Response][0]["album_id"]).Равно(AlbumID);
-    Else
-        ExpectsThat(Result[Response][0]["album_id"]).Заполнено();
-    EndIf;
-
-EndProcedure
-
-Procedure Check_VKStory(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
-    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKDiscussion(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKLike(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["likes"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKRepost(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["success"]).ИмеетТип("Number").Равно(1);
-    ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number").Равно(1);
-
-EndProcedure
-
-Procedure Check_VKComment(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["response"]["comment_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKStatistic(Val Result) Export
-
-    TypeMap = "Map";
-
-    ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
-    ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
-    ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
-
-EndProcedure
-
-Procedure Check_VKPostsStatistic(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
-
-EndProcedure
-
-Procedure Check_VKNumber(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKCollection(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["albums_count"]).ИмеетТип("Number").Заполнено();
-    ExpectsThat(Result["response"]["market_album_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKProduct(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["market_item_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKProp(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["property_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKPropVariant(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["variant_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKProductData(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").ИмеетДлину(2);
-
-EndProcedure
-
-Procedure Check_VKProductsGroup(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["item_group_id"]).ИмеетТип("Number").Заполнено();
-
-EndProcedure
-
-Procedure Check_VKVideo(Val Result) Export
-
-    ExpectsThat(Result["video_id"]).Заполнено();
-    ExpectsThat(Result["video_hash"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_VKCategories(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["response"]["v2"]).ИмеетТип("Array").Заполнено();
-
-EndProcedure
-
-Procedure Check_YaDiskDrive(Val Result) Export
-
-    Map_ = "Map";
-
-    ExpectsThat(Result).ИмеетТип(Map_).Заполнено();
-    ExpectsThat(Result["system_folders"]).ИмеетТип(Map_);
-    ExpectsThat(Result["user"]).ИмеетТип(Map_);
-
-EndProcedure
-
-Procedure Check_YaDiskFolder(Val Result, Val Path) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["type"]).Равно("dir");
-    ExpectsThat(Result["path"]).Равно("disk:" + Path);
-
-EndProcedure
-
-Procedure Check_YaDiskPath(Val Result, Val Path = "", Val Public = Undefined) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["type"]).Равно("file");
-
-    If ValueIsFilled(Path) Then
-        ExpectsThat(Result["path"]).Равно("disk:" + Path);
-    Else
-        ExpectsThat(Result["path"]).Заполнено();
-    EndIf;
-
-    If Not Public = Undefined Then
-
-        If Public Then
-             ExpectsThat(Result["public_url"]).ИмеетТип("String").Заполнено();
-        Else
-            ExpectsThat(Result["public_url"]).ИмеетТип("Undefined");
-        EndIf;
-
-    EndIf;
-
-EndProcedure
-
-Procedure Check_YaDiskLink(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["method"]).Равно("GET");
-    ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
-
-EndProcedure
-
-Procedure Check_YaDiskProc(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["href"]).Заполнено();
-    ExpectsThat(Result["method"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_YaDiskFilesList(Val Result, Val Count, Val Indent) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["limit"]).Равно(Count);
-    ExpectsThat(Result["offset"]).Равно(Indent);
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_GKObject(Val Result, Val Name, Val Description) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["summary"]).Равно(Name);
-    ExpectsThat(Result["description"]).Равно(Description);
-    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
-
-EndProcedure
-
-Procedure Check_TwitterText(Val Result, Val Text) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-EndProcedure
-
-Procedure Check_TwitterArray(Val Result) Export
-
-    If Not TypeOf(Result) = Type("Array") Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    EndIf;
-
-EndProcedure
-
-Procedure Check_ViberOk(Val Result) Export
-
-    ExpectsThat(Result["status_message"]).Равно("ok");
-    ExpectsThat(Result["status"]).Равно(0);
-
-EndProcedure
-
-Procedure Check_ViberUser(Val Result) Export
-
-    ExpectsThat(Result["chat_hostname"]).Заполнено();
-    ExpectsThat(Result["status_message"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_ViberOnline(Val Result) Export
-
-    ExpectsThat(Result["status_message"]).Равно("ok");
-    ExpectsThat(Result["status"]).Равно(0);
-    ExpectsThat(Result["users"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_ViberMessage(Val Result) Export
-
-    ExpectsThat(Result["message_token"]).Заполнено();
-    ExpectsThat(Result["status_message"]).Равно("ok");
-    ExpectsThat(Result["status"]).Равно(0);
-
-EndProcedure
-
-Procedure Check_GoogleToken(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["access_token"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_GoogleCalendar(Val Result, Val Name) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["summary"]).Равно(Name);
-    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
-
-EndProcedure
-
-Procedure Check_GoogleCalendarColors(Val Result, Val PrimaryColor, Val SecondaryColor) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-    ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
-    ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
-
-EndProcedure
-
-Procedure Check_GoogleCatalogs(Val Result) Export
-
-    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
-    ExpectsThat(Result["name"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_GoogleCatalog(Val Result) Export
-
-    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
-    ExpectsThat(Result["name"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_GoogleObject(Val Result, Val Description) Export
-
-    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
-    ExpectsThat(Result["name"]).Равно(Description["Name"]);
-
-EndProcedure
-
-Procedure Check_GoogleComment(Val Result, Val Comment) Export
-
-    ExpectsThat(Result["content"]).Равно(Comment);
-    ExpectsThat(Result["kind"]).Равно("drive#comment");
-
-EndProcedure
-
-Procedure Check_GoogleSpreadsheet(Val Result, Val Name, Val SheetArray = "") Export
-
-    ExpectsThat(Result["properties"]["title"]).Равно(Name);
-
-    If ValueIsFilled(SheetArray) Then
-
-        For N = 0 To SheetArray.UBound() Do
-
-            SheetName = Result["sheets"][N]["properties"]["title"];
-            ExpectsThat(SheetName).Равно(SheetArray[N]);
-
-        EndDo;
-
-    EndIf;
-
-EndProcedure
-
-Procedure Check_GoogleSheet(Val Result, Val Spreadsheet = "") Export
-
-    ExpectsThat(Result["title"]).Заполнено();
-
-    If ValueIsFilled(Spreadsheet) Then
-
-        ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-    EndIf;
-
-EndProcedure
-
-Procedure Check_GoogleSpreadsheetElement(Val Result, Val Spreadsheet) Export
-
-    ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-EndProcedure
-
-Procedure Check_GoogleSheetTitle(Val Result, Val Name) Export
-
-    ExpectsThat(Result["properties"]["title"]).Равно(Name);
-
-EndProcedure
-
-Procedure Check_GoogleCellUpdating(Val Result, Val Count) Export
-
-    ExpectsThat(Result["totalUpdatedCells"]).Равно(Count);
-
-EndProcedure
-
-Procedure Check_GoogleCellValues(Val Result, Val Count) Export
-
-    ExpectsThat(Result["valueRanges"].Count()).Равно(Count);
-
-EndProcedure
-
-Procedure Check_GoogleCellCleanning(Val Result, Val Count) Export
-
-    ExpectsThat(Result["clearedRanges"].Count()).Равно(Count);
-
-EndProcedure
-
-Procedure Check_TwitterToken(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["access_token"]).Заполнено();
-    ExpectsThat(Result["refresh_token"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_NotionObject(Val Result, Val View = "page") Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["object"]).Равно(View);
-
-EndProcedure
-
-Procedure Check_NotionBasePage(Val Result, Val Base) Export
-
-    Check_NotionObject(Result);
-
-    Parent = Result["parent"]["database_id"];
-    ExpectsThat(Parent).Равно(Base);
-
-EndProcedure
-
-Procedure Check_SlackOk(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["ok"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_SlackBot(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["bot_id"]).Заполнено();
-    ExpectsThat(Result["user_id"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_SlackUsers(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["members"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackWorkspaces(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["teams"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackMessage(Val Result, Val Text, Val Channel) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["channel"]).Равно(Channel);
-    ExpectsThat(Result["ts"]).Заполнено();
-    ExpectsThat(Result["message"]["text"]).Равно(Text);
-
-EndProcedure
-
-Procedure Check_SlackMessages(Val Result) Export
-
-    ExpectsThat(Result["messages"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackMessageLink(Val Result, Val Channel) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["channel"]).Равно(Channel);
-    ExpectsThat(Result["permalink"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_SlackSheduledMessage(Val Result, Val Channel) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["channel"]).Равно(Channel);
-    ExpectsThat(Result["scheduled_message_id"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_SlackEphemeral(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["message_ts"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_SlackSheduled(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackChannel(Val Result, Val Name = "") Export
-
-    Data = Result["channel"];
-
-    Check_SlackOk(Result);
-
-    If ValueIsFilled(Name) Then
-        ExpectsThat(Data["name"]).Равно(Name);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_SlackChannelTopic(Val Result, Val Topic) Export
-
-    Data = Result["channel"];
-
-    Check_SlackOk(Result);
-    ExpectsThat(Data["topic"]["value"]).Равно(Topic);
-
-EndProcedure
-
-Procedure Check_SlackChannelHistory(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["messages"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackChannelUsers(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["members"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackChannelsList(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["channels"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackDialog(Val Result) Export
-
-    Dialog = Result["channel"]["id"];
-    Check_SlackOk(Result);
-    ExpectsThat(Result["channel"]).ИмеетТип("Map");
-    ExpectsThat(Dialog).Заполнено();
-
-EndProcedure
-
-Procedure Check_SlackFilesList(Val Result) Export
-
-    Check_SlackOk(Result);
-    ExpectsThat(Result["files"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_SlackFile(Val Result, Val FileName) Export
-
-    If ValueIsFilled(Result["files"]) Then
-        UploadedFile = Result["files"][0];
-    Else
-        UploadedFile = Result["file"];
-    EndIf;
-
-    Check_SlackOk(Result);
-    ExpectsThat(UploadedFile["name"]).Равно(FileName);
-
-EndProcedure
-
-Procedure Check_SlackExternalFile(Val Result, Val Title) Export
-
-    UploadedFile = Result["file"];
-
-    Check_SlackOk(Result);
-    ExpectsThat(UploadedFile["title"]).Равно(Title);
-
-EndProcedure
-
-Procedure Check_ATBaseWithTable(Val Result, Val TableName) Export
-
-    ExpectsThat(Result["id"]).Заполнено();
-    ExpectsThat(Result["tables"][0]["name"]).Равно(TableName);
-
-EndProcedure
-
-Procedure Check_ATTablesList(Val Result) Export
-
-    ExpectsThat(Result["tables"]).Заполнено();
-    ExpectsThat(Result["tables"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_ATBasesList(Val Result) Export
-
-    ExpectsThat(Result["bases"]).Заполнено();
-    ExpectsThat(Result["bases"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_ATTable(Val Result, Val Name, Val Description) Export
-
-    ExpectsThat(Result["name"]).Равно(Name);
-    ExpectsThat(Result["description"]).Равно(Description);
-
-EndProcedure
-
-Procedure Check_ATField(Val Result, Val Name) Export
-
-    ExpectsThat(Result["name"]).Равно(Name);
-
-EndProcedure
-
-Procedure Check_ATRecords(Val Result) Export
-
-    ExpectsThat(Result["records"]).ИмеетТип("Array");
-    ExpectsThat(Result["records"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_ATRecordNumberAndString(Val Result, Val Numeric, Val StringType) Export
-
-    SingleRecord = Result["id"];
-    ExpectsThat(SingleRecord).Заполнено();
-    ExpectsThat(Result["createdTime"]).Заполнено();
-    ExpectsThat(Result["fields"]["Number"]).Равно(Numeric);
-    ExpectsThat(TrimAll(Result["fields"]["String"])).Равно(StringType);
-
-EndProcedure
-
-Procedure Check_ATRecord(Val Result, Val Record) Export
-
-    ExpectsThat(Result["id"]).Равно(Record);
-
-EndProcedure
-
-Procedure Check_ATText(Val Result, Val Text) Export
-
-    ExpectsThat(Result["text"]).Равно(Text);
-
-EndProcedure
-
-Procedure Check_ATComments(Val Result) Export
-
-    ExpectsThat(Result["comments"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_ATCommentDeleting(Val Result, Val Comment) Export
-
-    ExpectsThat(Result["deleted"]).Равно(True);
-    ExpectsThat(Result["id"]).Равно(Comment);
-
-EndProcedure
-
-Procedure Check_DropboxFile(Val Result, Val Path) Export
-
-    ExpectsThat(Result["path_display"]).Равно(Path);
-
-EndProcedure
-
-Procedure Check_DropboxMetadata(Val Result, Val Path) Export
-
-    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
-
-EndProcedure
-
-Procedure Check_DropboxArray(Val Result, Val Count = Undefined) Export
-
-    ExpectsThat(Result["entries"]).ИмеетТип("Array");
-
-    If Not Count = Undefined Then
-        ExpectsThat(Result["entries"].Count()).Равно(Count);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_DropboxWork(Val Result) Export
-    ExpectsThat(Result["async_job_id"]).Заполнено();
-EndProcedure
-
-Procedure Check_DropboxStatus(Val Result) Export
-    ExpectsThat(Result[".tag"]).Равно("complete");
-EndProcedure
-
-Procedure Check_DropboxTags(Val Result, Val Count) Export
-
-    ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
-    ExpectsThat(Result["paths_to_tags"].Count()).Равно(Count);
-
-EndProcedure
-
-Procedure Check_DropboxAccount(Val Result) Export
-    ExpectsThat(Result["account_id"]).Заполнено();
-EndProcedure
-
-Procedure Check_DropboxSpace(Val Result) Export
-    ExpectsThat(Result["used"]).Заполнено();
-EndProcedure
-
-Procedure Check_DropboxMember(Val Result, Val Email, Val ViewOnly) Export
-    ExpectsThat(Result[0]["result"][".tag"]).Равно("success");
-    ExpectsThat(Result[0]["member"]["email"]).Равно(Email);
-    ExpectsThat(
-        Result[0]["result"]["success"][".tag"]).Равно(?(ViewOnly, "viewer", "editor"));
-EndProcedure
-
-Procedure Check_DropboxPublicFolder(Val Result) Export
-    ExpectsThat(Result["shared_folder_id"]).Заполнено();
 EndProcedure
 
 Procedure Check_BitrixTime(Val Result) Export
@@ -3066,6 +7263,58 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
     GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
+
+EndProcedure
+
+Procedure PrintLog(Val Result, Val Method, Val Library)
+
+    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
+
+    Try
+        Data = OPI_Tools.JSONString(Result);
+    Except
+        Data = "Not JSON: " + String(Result);
+    EndTry;
+
+    Data = " " + Data;
+
+    Message(Header);
+    Message(Chars.LF);
+    Message(Data);
+    Message(Chars.LF);
+    Message("---------------------------------");
+    Message(Chars.LF);
+
+EndProcedure
+
+Procedure WriteLogFile(Val Data, Val Method, Val Library)
+
+    Try
+
+        LogPath        = "./docs/en/results";
+        LibraryLogPath = LogPath + "/" + Library;
+
+        LogDirectory = New File(LogPath);
+
+        If Not LogDirectory.Exists() Then
+            CreateDirectory(LogPath);
+        EndIf;
+
+        LibraryLogCatalog = New File(LibraryLogPath);
+
+        If Not LibraryLogCatalog.Exists() Then
+            CreateDirectory(LibraryLogPath);
+        EndIf;
+
+        FilePath = LibraryLogPath + "/" + Method + ".log";
+
+        LogDocument = New TextDocument;
+        LogDocument.SetText(Data);
+        LogDocument.Write(FilePath);
+
+    Except
+        Message("Failed to write log file!: " + ErrorDescription());
+    EndTry;
 
 EndProcedure
 
