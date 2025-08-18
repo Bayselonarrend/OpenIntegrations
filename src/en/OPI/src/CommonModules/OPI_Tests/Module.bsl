@@ -6211,7 +6211,9 @@ Procedure Slack_OpenDialog(FunctionParameters)
 
     Process(Result, "Slack", "OpenDialog", , FunctionParameters);
 
-    Result = OPI_Slack.SendMessage(Token, Result["channel"]["id"], "Test dialog");
+    Channel = Result["channel"]["id"];
+
+    Result = OPI_Slack.SendMessage(Token, Channel, "Test dialog");
 
     Process(Result, "Slack", "OpenDialog", "Message", FunctionParameters);
 
