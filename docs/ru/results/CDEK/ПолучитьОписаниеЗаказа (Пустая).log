@@ -1,73 +1,23 @@
 ﻿    {
- "tariff_code": "",
- "recipient": {
-  "company": "",
-  "name": "",
-  "passport_series": "",
-  "passport_number": "",
-  "passport_date_of_issue": "",
-  "passport_organization": "",
-  "tin": "",
-  "passport_date_of_birth": "",
-  "email": "",
-  "contragent_type": "",
-  "phones": [
-   {
-    "number": "",
-    "additional": ""
-   }
-  ]
- },
- "packages": [
-  {
-   "number": "",
-   "weight": "",
-   "length": "",
-   "width": "",
-   "height": "",
-   "comment": "",
-   "items": [
-    {
-     "name": "",
-     "ware_key": "",
-     "marking": "",
-     "payment": {
-      "value": "",
-      "vat_sum": "",
-      "vat_rate": ""
-     },
-     "cost": "",
-     "weight": "",
-     "weight_gross": "",
-     "amount": "",
-     "name_i18n": "",
-     "brand": "",
-     "country_code": "",
-     "material": "",
-     "wifi_gsm": "",
-     "url": ""
-    }
-   ]
-  }
- ],
- "additional_order_types": "",
+ "intake_date": "",
+ "intake_time_from": "",
+ "intake_time_to": "",
+ "cdek_number": "",
+ "order_uuid": "",
+ "lunch_time_from": "",
+ "lunch_time_to": "",
+ "name": "",
+ "weight": "",
+ "length": "",
+ "width": "",
+ "height": "",
  "comment": "",
- "developer_key": "",
- "shipment_point": "",
- "delivery_point": "",
- "date_invoice": "",
- "shipper_name": "",
- "shipper_address": "",
+ "need_call": "",
+ "courier_power_of_attorney": "",
+ "courier_identity_card": "",
  "sender": {
   "company": "",
   "name": "",
-  "email": "",
-  "passport_series": "",
-  "passport_number": "",
-  "passport_date_of_issue": "",
-  "passport_organization": "",
-  "tin": "",
-  "passport_date_of_birth": "",
   "contragent_type": "",
   "phones": [
    {
@@ -89,27 +39,5 @@
   "city": "",
   "kladr_code": "",
   "address": ""
- },
- "to_location": {
-  "code": "",
-  "fias_guid": "",
-  "postal_code": "",
-  "longitude": "",
-  "latitude": "",
-  "country_code": "",
-  "region": "",
-  "region_code": "",
-  "sub_region": "",
-  "city": "",
-  "kladr_code": "",
-  "address": ""
- },
- "services": {
-  "code": "",
-  "parameter": ""
- },
- "print": "",
- "is_client_return": "",
- "accompanying_number": "",
- "widget_token": ""
+ }
 }
