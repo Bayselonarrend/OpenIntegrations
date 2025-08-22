@@ -66,6 +66,7 @@
   <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPI_RCON</commonModules>
+  <commonModules>CommonModule.OPI_ReportPortal</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
   <commonModules>CommonModule.OPI_SQLite</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>
