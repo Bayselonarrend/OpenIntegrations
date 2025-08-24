@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
 
 // MIT License
 
@@ -1004,6 +1004,10 @@
         Или ТипЗначения  = Тип("Структура")
         Или ТипЗначения  = Тип("Соответствие");
 
+КонецФункции
+
+Функция ВерсияОПИ() Экспорт
+	Возврат "1.27.0";
 КонецФункции
 
 #КонецОбласти
