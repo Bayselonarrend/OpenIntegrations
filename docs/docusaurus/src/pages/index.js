@@ -141,14 +141,66 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+
+  // Данные спонсоров: логотип, название, описание, ссылка
+  const sponsors = [
+    {
+      name: 'GreenAPI',
+      description: 'Стабильный шлюз WhatsApp API',
+      logo: '/img/Sponsors/GreenAPI.png',
+      url: 'https://green-api.com/',
+    },
+
+  ];
+
   return (
     <Layout
       title={`Открытый пакет интеграций`}
-      description="ОПИ - пакет интеграций с популярными API для 1С:Enterprise и OneScript">
+      description="ОПИ - пакет интеграций с популярными API для 1С:Enterprise и OneScript"
+    >
       <HomepageHeader />
       <main>
-        <br /><hr />
+        <br />
+        <hr />
         <AlternatingFeatures />
+        <hr/>
+
+        {/* === Спонсоры === */}
+        <section className={styles.sponsorsSection}>
+          <div className="container">
+            <Heading as="h2" className={clsx('text--center', styles.sponsorsTitle)}>
+              Наши спонсоры
+            </Heading>
+            <p className="text--center margin-bottom--lg">
+              Благодарим наших спонсоров за поддержку проекта
+            </p>
+            <br/>
+            <div className={styles.sponsorsGrid}>
+              {sponsors.map((sponsor, index) => (
+                <a
+                  key={index}
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.sponsorLink}
+                  aria-label={`${sponsor.name} - ${sponsor.description}`}
+                >
+                  <div className={styles.sponsorCard}>
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className={styles.sponsorLogo}
+                    />
+                    <div className={styles.sponsorTooltip}>
+                      <div>{sponsor.name}</div>
+                      <small>{sponsor.description}</small>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
