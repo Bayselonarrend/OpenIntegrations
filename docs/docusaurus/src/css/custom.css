@@ -181,6 +181,10 @@ a:hover, .navbar__title:hover{
   font-weight: 490;
 }
 
+.footer__title{
+  font-weight: 390;
+}
+
 li > a.menu__link {
   justify-content: flex-start;
 }

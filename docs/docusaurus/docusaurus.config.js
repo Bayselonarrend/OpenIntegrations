@@ -179,7 +179,7 @@ window.yaContextCb.push(() => {
             ],
           },
         ],
-        copyright: `${new Date().getFullYear()} OpenItegrations by Bayselonarrend`,
+
       },
       prism: {
         theme: prismThemes.github,
