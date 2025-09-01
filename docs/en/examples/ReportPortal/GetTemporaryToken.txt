@@ -1,0 +1,5 @@
+﻿    URL      = "tests.openintegrations.dev";
+    Login    = "superadmin";
+    Password = "Rit2...";
+
+    Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);

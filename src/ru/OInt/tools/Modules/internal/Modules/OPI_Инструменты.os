@@ -1006,6 +1006,10 @@
 
 КонецФункции
 
+Функция ВерсияОПИ() Экспорт
+    Возврат "1.27.0";
+КонецФункции
+
 #КонецОбласти
 
 #КонецОбласти
@@ -1327,6 +1331,10 @@ EndFunction
 
 Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 	Return ЭтоКоллекция(Value, KeyValue);
+EndFunction
+
+Function OPIVersion() Export
+	Return ВерсияОПИ();
 EndFunction
 
 Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export

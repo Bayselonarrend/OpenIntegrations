@@ -1,0 +1,5 @@
+﻿    URL    = "tests.openintegrations.dev";
+    Логин  = "superadmin";
+    Пароль = "Rit2...";
+
+    Результат = OPI_ReportPortal.ПолучитьВременныйТокен(URL, Логин, Пароль);

@@ -1,11 +1,19 @@
 ﻿    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
     Password = "12we...";
+    Base        = "testbase1";
 
-    Base  = "testbase1";
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
     Table = "testtable";
-
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
@@ -13,4 +21,4 @@
     ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
     ColoumnsStruct.Insert("custom_field"   , "TEXT");
 
-    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString);
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString, TLSSettings);

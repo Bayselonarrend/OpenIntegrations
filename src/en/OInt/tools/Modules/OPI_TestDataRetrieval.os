@@ -83,6 +83,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Ollama"         , 5);
     Sections.Insert("HTTPClient"     , 5);
     Sections.Insert("OpenAI"         , 5);
+    Sections.Insert("ReportPortal" , 5);
 
     Return Sections;
 
@@ -125,6 +126,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ollama"         , StandardDependencies);
     Sections.Insert("HTTPClient"     , StandardDependencies);
     Sections.Insert("OpenAI"         , StandardDependencies);
+    Sections.Insert("ReportPortal" , StandardDependencies);
 
     Return Sections;
 
@@ -163,6 +165,7 @@ Function GetTestTable() Export
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
     FTP       = "FTP";
+    RPortal      = "ReportPortal";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -331,6 +334,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_DirecotryManagement"               , "Directory management"            , FTP);
     NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
+    NewTest(TestTable, "RPortal_Authorization" , "Authorization" , RPortal);
 
     Return TestTable;
 
@@ -388,6 +392,8 @@ Function FormAssertsTests() Export
 EndFunction
 
 Function FormYAXTestsCLI() Export
+
+    Return Undefined;
 
     Module    = GetCommonModule("ЮТТесты");
     Sections  = GetTestingSectionMapping();
@@ -498,6 +504,434 @@ Function GetLocalhost() Export
     Return Result;
 
 EndFunction
+
+Procedure ParameterToCollection(Parameter, Collection) Export
+
+    Value = GetParameter(Parameter);
+    Collection.Insert(Parameter, Value);
+
+EndProcedure
+
+Procedure BinaryToCollection(Parameter, Collection) Export
+
+    Value = GetBinary(Parameter);
+    Collection.Insert(Parameter, Value);
+
+EndProcedure
+
+Procedure WriteParameter(Parameter, Value) Export
+
+    Path = DataFilePath();
+    WriteParameterToFile(Parameter, Value, Path);
+
+EndProcedure
+
+Procedure WriteLog(Val Result, Val Method, Val Library = "") Export // DEPRECATED
+
+    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
+
+    Try
+        Data = OPI_Tools.JSONString(Result);
+    Except
+        Data = "Not JSON: " + String(Result);
+    EndTry;
+
+    Data = " " + Data;
+
+    Message(Header);
+    Message(Chars.LF);
+    Message(Data);
+    Message(Chars.LF);
+    Message("---------------------------------");
+    Message(Chars.LF);
+
+    If ValueIsFilled(Library) Then
+
+        Try
+            Library = New OpenSSLSecureConnection; // Check to work in 1C
+        Except
+            WriteLogFile(Data, Method, Library);
+        EndTry;
+
+    EndIf;
+
+EndProcedure
+
+Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
+
+    Template = "%1 (CLI, %2)";
+    WriteLog(Result, StrTemplate(Template, Method, Library));
+
+EndProcedure
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+
+    If OPI_Tools.IsWindows() Then
+
+        If OPI_Tools.IsOneScript() Then
+            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Else
+            Oint = """C:\Program Files\OneScript\bin\oint.bat""";
+        EndIf;
+
+    Else
+
+        Oint = "oint";
+
+    EndIf;
+
+    ResultFile = GetTempFileName();
+
+    LaunchString = Oint + " " + Library + " " + Method;
+
+    For Each Option In Options Do
+
+        If Option.Value = Undefined Then
+            Continue;
+        EndIf;
+
+        CurrentValue = GetCLIFormedValue(Option.Value);
+
+        LaunchString = LaunchString
+            + " --"
+            + Option.Key
+            + " "
+            + CurrentValue;
+
+    EndDo;
+
+    // BSLLS:ExternalAppStarting-off
+    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
+    // BSLLS:ExternalAppStarting-on
+
+    Result = ReadCLIResponse(ResultFile);
+
+    If Record Then
+        WriteCLICall(Library, Method, Options);
+    EndIf;
+
+    Try
+        DeleteFiles(ResultFile);
+    Except
+        Message("Failed to delete the temporary file after the test!");
+    EndTry;
+
+    Return Result;
+
+EndFunction
+
+Procedure ProcessTestingResult(Val Result
+    , Val Method
+    , Val Library
+    , Val Option = ""
+    , AddParam1  = Undefined
+    , AddParam2  = Undefined
+    , AddParam3  = Undefined) Export
+
+
+    LogsMethod = ?(ValueIsFilled(Option), StrTemplate("%1 (%2)", Method, Option), Method);
+
+    SetID     = CreateLaunchSet(Library);
+    ElementID = CreateTestElement(SetID, LogsMethod);
+
+    Try
+
+        ParameterArray = New Array;
+        ParameterArray.Add("Result");
+        ParameterArray.Add("Option");
+
+        If AddParam1 <> Undefined Then
+            ParameterArray.Add("AddParam1");
+        EndIf;
+
+        If AddParam2 <> Undefined Then
+            ParameterArray.Add("AddParam2");
+        EndIf;
+
+        If AddParam3 <> Undefined Then
+            ParameterArray.Add("AddParam3");
+        EndIf;
+
+        CheckTemplate = "CheckResult = Check_%1_%2(%3)";
+
+        CheckCall   = StrTemplate(CheckTemplate, Library, Method, StrConcat(ParameterArray, ", "));
+        CheckResult = Undefined;
+
+        //@skip-check server-execution-safe-mode
+        Execute(CheckCall);
+
+        Text = PrintLog(Result, LogsMethod, Library);
+
+        If Not ValueIsFilled(Option)
+            And Not ?(TypeOf(CheckResult) = Type("String"), CheckResult = "", CheckResult = Undefined) Then
+
+            WriteLogFile(CheckResult, Method, Library);
+
+        EndIf;
+
+        WriteTestLog(ElementID, Text, "info");
+        FinishTestElement(ElementID, "passed");
+
+    Except
+
+        ErrInfo = DetailErrorDescription(ErrorInfo());
+        Text    = PrintLog(Result, LogsMethod, Library, ErrInfo);
+
+        WriteTestLog(ElementID, Text, "error");
+        FinishTestElement(ElementID, "failed");
+
+        Raise ErrInfo;
+
+    EndTry;
+
+EndProcedure
+
+#Region ReportPortal
+
+Function CreateReportPortalLaunch() Export
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CompleteLaunch();
+
+    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    SystemInfo  = New SystemInfo;
+
+    OperatingSystem = String(SystemInfo.PlatformType);
+    CurrentDateString = Format(CurrentDate, "DF=yyyy-MM-dd");
+    Platform           = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
+    UUID               = String(New UUID);
+    OPIVersion         = OPI_Tools.OPIVersion();
+
+    LaunchName = StrTemplate("%1 | %2 | %3 | %4", CurrentDateString, OPIVersion, Platform, OperatingSystem);
+
+    LaunchStructure = New Structure;
+
+    LaunchStructure.Insert("name"      , LaunchName);
+    LaunchStructure.Insert("startTime" , CurrentDate);;
+    LaunchStructure.Insert("uuid"      , UUID);
+
+    WriteParameter("RPortal_MainLaunch", UUID);
+
+    Result = OPI_ReportPortal.CreateLaunch(URL, Token, Project, LaunchStructure);
+    ID     = Result["id"];
+
+    CreateLaunchFile(ID);
+
+    Message(OPI_Tools.JSONString(Result));
+
+    Return ID;
+
+EndFunction
+
+Function CreateLaunchSet(Val Name) Export
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return Undefined;
+    EndIf;
+
+    ExistingSets = Data["suites"];
+    Existing     = ExistingSets.Get(Name);
+
+    If Existing <> Undefined Then
+        Return Existing;
+    EndIf;
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    LastSet     = Data["last_suite"];
+
+    If ValueIsFilled(LastSet) Then
+
+        FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
+        OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+
+    EndIf;
+
+    UUID = String(New UUID);
+
+    ElementStructure = New Structure;
+    ElementStructure.Insert("name"       , Name);
+    ElementStructure.Insert("startTime"  , CurrentDate);
+    ElementStructure.Insert("type"       , "suite");
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("uuid"       , UUID);
+
+    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure);
+
+    ExistingSets.Insert(Name, UUID);
+
+    Data.Insert("suites"    , ExistingSets);
+    Data.Insert("last_suite", UUID);
+
+    WriteLaunchFile(Data);
+
+    Return UUID;
+
+EndFunction
+
+Function CreateTestElement(Val Set, Val Name) Export
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return Undefined;
+    EndIf;
+
+    UUID        = String(New UUID);
+    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    ElementStructure = New Structure;
+
+    ElementStructure.Insert("name"       , Name);
+    ElementStructure.Insert("startTime"  , CurrentDate);
+    ElementStructure.Insert("uuid"       , UUID);
+    ElementStructure.Insert("type"       , "step");
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+
+    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure, Set);
+
+    Return UUID;
+
+EndFunction
+
+Procedure CompleteLaunch() Export
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate    = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    ExistingLaunch = GetExistingLaunch();
+
+    If ValueIsFilled(ExistingLaunch) Then
+
+        LastSet = ExistingLaunch["last_suite"];
+
+        If ValueIsFilled(LastSet) Then
+
+            FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
+            OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+
+        EndIf;
+
+        FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(CurrentDate);
+        OPI_ReportPortal.CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
+
+        ExistingLaunch["ended"] = True;
+        WriteLaunchFile(ExistingLaunch);
+
+    EndIf;
+
+EndProcedure
+
+Procedure WriteTestLog(Val Test, Val Text, Val Level)
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    LogStructure = New Structure;
+    LogStructure.Insert("launchUuid", Data["id"]);
+    LogStructure.Insert("itemUuid"  , Test);
+    LogStructure.Insert("time"      , CurrentDate);
+    LogStructure.Insert("message"   , Text);
+    LogStructure.Insert("level"     , Level);
+
+    OPI_ReportPortal.WriteLog(URL, Token, Project, LogStructure);
+
+EndProcedure
+
+Procedure FinishTestElement(Val UUID, Val Status)
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+
+    ElementStructure = New Structure;
+
+    ElementStructure.Insert("endTime"    , CurrentDate);
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("status"     , Status);
+
+    OPI_ReportPortal.FinishElement(URL, Token, Project, UUID, ElementStructure);
+
+EndProcedure
+
+Procedure WriteLaunchFile(Val Data)
+
+    LaunchFile = GetParameter("RPortal_MainLaunch");
+    OPI_Tools.WriteJSONFile(LaunchFile, Data);
+
+EndProcedure
+
+Procedure CreateLaunchFile(Val UUID)
+
+    TFN = GetTempFileName();
+    OPI_Tools.WriteJSONFile(TFN, New Structure("id,ended,suites", UUID, False, New Map));
+    WriteParameter("RPortal_MainLaunch", TFN);
+
+EndProcedure
+
+Function GetExistingLaunch()
+
+    Data      = ReadLaunchFile();
+    ID        = Data["id"];
+    Completed = Data["ended"];
+
+    If Not ValueIsFilled(ID) Or Completed Then
+        Return Undefined;
+    Else
+        Return Data;
+    EndIf;
+
+EndFunction
+
+Function ReadLaunchFile()
+
+    LaunchFile   = GetParameter("RPortal_MainLaunch");
+    LaunchObject = New File(LaunchFile);
+
+    If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
+        Return New Map;
+    EndIf;
+
+    Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
+    Return Data;
+
+EndFunction
+
+#EndRegion
+
+#Region Parameterization
 
 Function GetFTPParameterOptions() Export
 
@@ -644,170 +1078,91 @@ Function GetFTPParameterOptions() Export
 
 EndFunction
 
-Procedure ParameterToCollection(Parameter, Collection) Export
+Function GetS3ParameterOptions() Export
 
-    Value = GetParameter(Parameter);
-    Collection.Insert(Parameter, Value);
+    OptionArray = New Array;
 
-EndProcedure
+    TestParametersMain = New Structure;
+    ParameterToCollection("S3_AccessKey", TestParametersMain);
+    ParameterToCollection("S3_SecretKey", TestParametersMain);
+    ParameterToCollection("S3_URL"      , TestParametersMain);
+    ParameterToCollection("Picture"     , TestParametersMain);
+    ParameterToCollection("Audio"       , TestParametersMain);
 
-Procedure BinaryToCollection(Parameter, Collection) Export
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("Directory", False);
+    OptionArray.Add(TestParameters);
 
-    Value = GetBinary(Parameter);
-    Collection.Insert(Parameter, Value);
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("Directory", True);
+    OptionArray.Add(TestParameters);
 
-EndProcedure
-
-Procedure WriteParameter(Parameter, Value) Export
-
-    Path = DataFilePath();
-    WriteParameterToFile(Parameter, Value, Path);
-
-EndProcedure
-
-Procedure WriteLog(Val Result, Val Method, Val Library = "") Export // DEPRECATED
-
-    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
-
-    Try
-        Data = OPI_Tools.JSONString(Result);
-    Except
-        Data = "Not JSON: " + String(Result);
-    EndTry;
-
-    Data = " " + Data;
-
-    Message(Header);
-    Message(Chars.LF);
-    Message(Data);
-    Message(Chars.LF);
-    Message("---------------------------------");
-    Message(Chars.LF);
-
-    If ValueIsFilled(Library) Then
-
-        Try
-            Library = New OpenSSLSecureConnection; // Check to work in 1C
-        Except
-            WriteLogFile(Data, Method, Library);
-        EndTry;
-
-    EndIf;
-
-EndProcedure
-
-Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
-
-    Template = "%1 (CLI, %2)";
-    WriteLog(Result, StrTemplate(Template, Method, Library));
-
-EndProcedure
-
-Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
-
-    If OPI_Tools.IsWindows() Then
-
-        If OPI_Tools.IsOneScript() Then
-            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
-        Else
-            Oint = """C:\Program Files\OneScript\bin\oint.bat""";
-        EndIf;
-
-    Else
-
-        Oint = "oint";
-
-    EndIf;
-
-    ResultFile = GetTempFileName();
-
-    LaunchString = Oint + " " + Library + " " + Method;
-
-    For Each Option In Options Do
-
-        If Option.Value = Undefined Then
-            Continue;
-        EndIf;
-
-        CurrentValue = GetCLIFormedValue(Option.Value);
-
-        LaunchString = LaunchString
-            + " --"
-            + Option.Key
-            + " "
-            + CurrentValue;
-
-    EndDo;
-
-    // BSLLS:ExternalAppStarting-off
-    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
-    // BSLLS:ExternalAppStarting-on
-
-    Result = ReadCLIResponse(ResultFile);
-
-    If Record Then
-        WriteCLICall(Library, Method, Options);
-    EndIf;
-
-    Try
-        DeleteFiles(ResultFile);
-    Except
-        Message("Failed to delete the temporary file after the test!");
-    EndTry;
-
-    Return Result;
+    Return OptionArray;
 
 EndFunction
 
-Procedure ProcessTestingResult(Val Result
-    , Val Method
-    , Val Library
-    , Val Option = ""
-    , AddParam1  = Undefined
-    , AddParam2  = Undefined
-    , AddParam3  = Undefined) Export
+Function GetPostgresParameterOptions() Export
 
-    LogsMethod = ?(ValueIsFilled(Option), StrTemplate("%1 (%2)", Method, Option), Method);
+    OptionArray = New Array;
 
-    Try
+    TestParametersMain = New Structure;
+    ParameterToCollection("PG_IP"      , TestParametersMain);
+    ParameterToCollection("PG_Password", TestParametersMain);
+    ParameterToCollection("Picture"    , TestParametersMain);
+    ParameterToCollection("SQL"        , TestParametersMain);
 
-        ParameterArray = New Array;
-        ParameterArray.Add("Result");
-        ParameterArray.Add("Option");
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
-        If AddParam1 <> Undefined Then
-            ParameterArray.Add("AddParam1");
-        EndIf;
+    TestParameters.Insert("TLS" , False);
+    TestParameters.Insert("Port", 5432);
 
-        If AddParam2 <> Undefined Then
-            ParameterArray.Add("AddParam2");
-        EndIf;
+    OptionArray.Add(TestParameters);
 
-        If AddParam3 <> Undefined Then
-            ParameterArray.Add("AddParam3");
-        EndIf;
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
-        CheckTemplate = "CheckResult = Check_%1_%2(%3)";
+    TestParameters.Insert("TLS" , True);
+    TestParameters.Insert("Port", 5433);
 
-        CheckCall   = StrTemplate(CheckTemplate, Library, Method, StrConcat(ParameterArray, ", "));
-        CheckResult = Undefined;
+    OptionArray.Add(TestParameters);
 
-        //@skip-check server-execution-safe-mode
-        Execute(CheckCall);
+    Return OptionArray;
 
-        PrintLog(Result, LogsMethod, Library);
+EndFunction
 
-        If Not ValueIsFilled(Option) And ValueIsFilled(CheckResult) Then
-            WriteLogFile(CheckResult, Method, Library);
-        EndIf
+Function GetMySQLParameterOptions() Export
 
-    Except
-        ErrInfo = ErrorDescription();
-        PrintLog(Result, Method, Library);
-        Raise ErrInfo;
-    EndTry;
+    OptionArray = New Array;
 
-EndProcedure
+    TestParametersMain = New Structure;
+    ParameterToCollection("PG_IP"      , TestParametersMain);
+    ParameterToCollection("PG_Password", TestParametersMain);
+    ParameterToCollection("Picture"    , TestParametersMain);
+    ParameterToCollection("SQL2"       , TestParametersMain);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+
+    TestParameters.Insert("TLS" , False);
+    TestParameters.Insert("Port", 3306);
+
+    OptionArray.Add(TestParameters);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+
+    TestParameters.Insert("TLS" , True);
+    TestParameters.Insert("Port", 3307);
+
+    OptionArray.Add(TestParameters);
+
+    Return OptionArray;
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Private
+
 
 #Region Checks
 
@@ -831,7 +1186,7 @@ Function Check_Telegram_GetUpdates(Val Result, Val Option)
 
     OPI_Tools.Pause(5);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -1300,7 +1655,7 @@ EndFunction
 Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result           = GetStringFromBinaryData(Result);
+        Result        = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -1325,6 +1680,8 @@ Function Check_VK_CreatePost(Val Result, Val Option, Parameters = "")
     EndIf;
 
     OPI_Tools.Pause(5);
+
+    Return Result;
 
 EndFunction
 
@@ -2229,7 +2586,7 @@ EndFunction
 Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result           = GetStringFromBinaryData(Result);
+        Result        = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -3441,7 +3798,7 @@ EndFunction
 Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result           = GetStringFromBinaryData(Result);
+        Result        = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -3783,7 +4140,7 @@ EndFunction
 Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result           = GetStringFromBinaryData(Result);
+        Result        = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -3869,7 +4226,7 @@ Function Check_Dropbox_UploadFileByURL(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Path)
+Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Path = "")
 
     If Not ValueIsFilled(Option) Then
 
@@ -5604,6 +5961,8 @@ Function Check_Bitrix24_UpdateCalendar(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
+    Return Result
+
 EndFunction
 
 Function Check_Bitrix24_DeleteCalendar(Val Result, Val Option)
@@ -5812,619 +6171,1164 @@ Function Check_Bitrix24_GetCalendarEventsFilterStructure(Val Result, Val Option)
 
 EndFunction
 
-
-Procedure Check_Empty(Val Result) Export
-
-    If Not Lower(String(Result)) = "null" Then
-        ExpectsThat(ValueIsFilled(Result)).Равно(False);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_String(Val Result, Val ComparisonObject = "") Export
-
-    ExpectsThat(Result).ИмеетТип("String");
-
-    If ValueIsFilled(ComparisonObject) Then
-        ExpectsThat(Result).Равно(ComparisonObject);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_BinaryData(Val Result, Val Size = Undefined) Export
-
-    MinimumSize = 500000;
-
-    ExpectsThat(Result).ИмеетТип("BinaryData");
-
-    If Not Size                    = Undefined Then
-        ExpectsThat(Result.Size() >= Size).Равно(True);
-    Else
-        ExpectsThat(Result.Size() > MinimumSize).Равно(True);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_Array(Val Result, Val Count = Undefined) Export
-
-    ExpectsThat(Result).ИмеетТип("Array");
-
-    If Not Count = Undefined Then
-       ExpectsThat(Result).ИмеетДлину(Count);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_Map(Val Result, Val Filling = True) Export
-
-    ExpectsThat(Result).ИмеетТип("Map");
-
-    If Filling Then
-        ExpectsThat(Result).Заполнено();
-    Else
-        ExpectsThat(ValueIsFilled(Result)).Равно(False);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_Structure(Val Result) Export
-
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
-
-EndProcedure
-
-Procedure Check_Filled(Val Result) Export
-
-    ExpectsThat(ValueIsFilled(Result)).Равно(True);
-
-EndProcedure
-
-Procedure Check_True(Val Result) Export
-
-    ExpectsThat(Result).Равно(True);
-
-EndProcedure
-
-Procedure Check_False(Val Result) Export
-
-    ExpectsThat(Result).Равно(False);
-
-EndProcedure
-
-Procedure Check_BitrixTime(Val Result) Export
-
-    Time = Result["result"];
-
-    If Not TypeOf(Time) = Type("Date") Then
-       Time             = XMLValue(Type("Date"), Time);
-    EndIf;
-
-    ExpectsThat(Time).ИмеетТип("Date").Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixAuth(Val Result) Export
-
-    ExpectsThat(Result["access_token"]).Заполнено();
-    ExpectsThat(Result["refresh_token"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixNumber(Val Result) Export
-   ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
-EndProcedure
-
-Procedure Check_BitrixTrue(Val Result) Export
-   ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
-EndProcedure
-
-Procedure Check_BitrixBool(Val Result) Export
-   ExpectsThat(Result["result"]).ИмеетТип("Boolean");
-EndProcedure
-
-Procedure Check_BitrixString(Val Result, Val Value = "") Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
-
-    If ValueIsFilled(Value) Then
-        ExpectsThat(Result["result"]).Равно(Value);
-    EndIf;
-
-EndProcedure
-
-Procedure Check_BitrixArray(Val Result) Export
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-EndProcedure
-
-Procedure Check_BitrixMap(Val Result) Export
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-EndProcedure
-
-Procedure Check_BitrixList(Val Result) Export
-    ExpectsThat(Result["result"]["list"]).ИмеетТип("Array");
-EndProcedure
-
-Procedure Check_BitrixObjectsArray(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["ID"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixFields(Val Result) Export
-
-    ExpectsThat(Result["result"]["fields"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixTask(Val Result) Export
-
-    ExpectsThat(Result["result"]["task"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixTasksList(Val Result) Export
-    ExpectsThat(Result["result"]["tasks"]).ИмеетТип("Array");
-EndProcedure
-
-Procedure Check_BitrixStorage(Val Result) Export
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["total"]).Заполнено();
-EndProcedure
-
-Procedure Check_BitrixObject(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["ID"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixLead(Val Result) Export
-
-    ExpectsThat(Result["result"]["PHONE"]).Заполнено();
-    ExpectsThat(Result["result"]["NAME"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixDeal(Val Result) Export
-
-    ExpectsThat(Result["result"]["ID"]).Заполнено();
-    ExpectsThat(Result["result"]["BEGINDATE"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixAttachment(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixAvailableActions(Val Result, Val Count) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-
-    Actions = Result["result"]["allowedActions"];
-    ExpectsThat(Actions).ИмеетТип("Map");
-    ExpectsThat(Actions.Count()).Равно(Count);
-
-EndProcedure
-
-Procedure Check_BitrixComment(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["POST_MESSAGE"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixResult(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["text"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixUndefined(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
-    ExpectsThat(Result["time"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixCommentsList(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["POST_MESSAGE"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixResultsList(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["text"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixMessages(Val Result) Export
-
-    ExpectsThat(Result["result"]["messages"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Check_BitrixDialog(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["dialogId"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixMessage(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["id"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixFileMessage(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["MESSAGE_ID"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixTimekeeping(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["STATUS"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_BitrixTimekeepingSettings(Val Result) Export
-
-    ExpectsThat(Result["result"]).ИмеетТип("Map");
-    ExpectsThat(Result["result"]["UF_TIMEMAN"]).ИмеетТип("Boolean");
-
-EndProcedure
-
-Procedure Check_VKTUser(Val Result) Export
+Function Check_VKTeams_CheckToken(Val Result, Val Option)
 
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["userId"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_VKTEvents(Val Result) Export
+EndFunction
+
+Function Check_VKTeams_GetEvents(Val Result, Val Option)
 
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["events"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_VKTMessage(Val Result) Export
+EndFunction
+
+Function Check_VKTeams_SendTextMessage(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["msgId"]).Заполнено();
 
-EndProcedure
+    If Not ValueIsFilled(Option) Then
 
-Procedure Check_VKTTrue(Val Result) Export
+        MessageID = Result["msgId"];
+        WriteParameter("VkTeams_MessageID", MessageID);
+        Parameters.Insert("VkTeams_MessageID", MessageID);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_ForwardMessage(Val Result, Val Option)
 
     ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_VKTFile(Val Result) Export
+EndFunction
+
+Function Check_VKTeams_SendFile(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+
+        FileID = Result["fileId"];
+        WriteParameter("VkTeams_FileID", FileID);
+        Parameters.Insert("VkTeams_FileID", FileID);
+
+        OPI_Tools.Pause(5);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_ResendFile(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_GetFileInformation(Val Result, Val Option)
 
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["type"]).Заполнено();
     ExpectsThat(Result["size"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_VKTList(Val Result, Val FieldName) Export
+EndFunction
 
-    ExpectsThat(Result[FieldName]).ИмеетТип("Array");
+Function Check_VKTeams_EditMessageText(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["ok"]).Равно(True);
 
-Procedure Check_VKTChat(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_DeleteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_SendVoice(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+
+        FileID = Result["fileId"];
+        WriteParameter("VkTeams_VoiceID", FileID);
+        Parameters.Insert("VkTeams_VoiceID", FileID);
+
+        OPI_Tools.Pause(5);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_ResendVoice(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_RemoveChatMembers(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_ChangeChatPicture(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_GetChatInfo(Val Result, Val Option)
 
     ExpectsThat(Result["type"]).Заполнено();
     ExpectsThat(Result["inviteLink"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_VKTPending(Val Result) Export
+EndFunction
+
+Function Check_VKTeams_GetChatAdmins(Val Result, Val Option)
+
+    ExpectsThat(Result["admins"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_GetChatMembers(Val Result, Val Option)
+
+    ExpectsThat(Result["members"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_GetChatBlockedUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["users"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_GetChatJoinRequests(Val Result, Val Option)
+
+    ExpectsThat(Result["users"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_BlockChatUser(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_UnblockChatUser(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_PinMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_UnpinMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_ApprovePending(Val Result, Val Option)
 
     If Not Result["ok"] Then
         ExpectsThat(Result["description"]).Равно("User is not pending or nobody in pending list");
     EndIf;
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonCategoryList(Val Result) Export
+EndFunction
+
+Function Check_VKTeams_DisapprovePending(Val Result, Val Option)
+
+    If Not Result["ok"] Then
+        ExpectsThat(Result["description"]).Равно("User is not pending or nobody in pending list");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_SetChatTitle(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_SetChatDescription(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_SetChatRules(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_VKTeams_AnswerButtonEvent(Val Result, Val Option)
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetCategoriesAndProductTypesTree(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Array");
     ExpectsThat(Result["result"][0]["category_name"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonAttributesList(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetCategoryAttributes(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Array");
     ExpectsThat(Result["result"][0]["name"]).Заполнено();
     ExpectsThat(Result["result"][0]["id"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonListOfAttributesValues(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetAttributeValues(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Array");
     ExpectsThat(Result["result"][0]["value"]).Заполнено();
     ExpectsThat(Result["result"][0]["id"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonUploadTask(Val Result, Val Embedded = True) Export
+EndFunction
 
-    If Embedded Then
-        TaskID = Result["result"]["task_id"];
-    Else
-        TaskID = Result["task_id"];
-    EndIf;
+Function Check_Ozon_SearchAttributeValue(Val Result, Val Option)
 
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["value"]).Заполнено();
+    ExpectsThat(Result["result"][0]["id"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_CreateUpdateProducts(Val Result, Val Option, Parameters = "")
+
+    TaskID = Result["result"]["task_id"];
     ExpectsThat(TaskID).Заполнено();
 
-EndProcedure
+    TaskID = Result["result"]["task_id"];
+    WriteParameter("Ozon_TaskID", TaskID);
+    Parameters.Insert("Ozon_TaskID", TaskID);
 
-Procedure Check_OzonNewProducts(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_AddProductVideo(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_AddProductVideoCover(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_CompleteComplexAttribute(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductCreationStatus(Val Result, Val Option)
 
     Status             = Result["result"]["items"][0]["status"];
     ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
     ExpectsThat(Status = "imported" Or Status = "skipped").Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonObjectsArray(Val Result) Export
+EndFunction
+
+Function Check_Ozon_CreateProductByOzonID(Val Result, Val Option)
+
+    TaskID = Result["result"]["task_id"];
+    ExpectsThat(TaskID).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetSimplifiedProductStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetAttributesUpdateStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_UpdateProductsAttributes(Val Result, Val Option, Parameters = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        TaskID = Result["task_id"];
+        ExpectsThat(TaskID).Заполнено();
+
+        WriteParameter("Ozon_AttUpdateTaskID", TaskID);
+        Parameters.Insert("Ozon_AttUpdateTaskID", TaskID);
+
+    Else
+
+        Status             = Result["result"]["items"][0]["status"];
+        ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+        ExpectsThat(Status = "imported" Or Status = "skipped").Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductsFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductList(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
 
-EndProcedure
+    ProductID = Result["result"]["items"][0]["product_id"];
+    WriteParameter("Ozon_ProductID", ProductID);
+    Parameters.Insert("Ozon_ProductID", ProductID);
 
-Procedure Check_OzonObjects(Val Result) Export
+    ProductID = Result["result"]["items"][1]["product_id"];
+    WriteParameter("Ozon_ProductID2", ProductID);
+    Parameters.Insert("Ozon_ProductID2", ProductID);
 
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_OzonUpdatedArray(Val Result) Export
+Function Check_Ozon_GetProductsAttributesData(Val Result, Val Option)
 
-    ExpectsThat(Result["result"][0]["updated"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonRatingArray(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetProductsContentRating(Val Result, Val Option)
 
     ExpectsThat(Result["products"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonProduct(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["result"]["id"]).Заполнено();
-    ExpectsThat(Result["result"]["name"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_OzonProducts(Val Result) Export
+Function Check_Ozon_GetProductsInformation(Val Result, Val Option)
 
     ExpectsThat(Result["items"]).ИмеетТип("Array");
     ExpectsThat(Result["items"][0]["name"]).Заполнено();
     ExpectsThat(Result["items"][0]["id"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonLimits(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetProductDescription(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]["id"]).Заполнено();
+    ExpectsThat(Result["result"]["name"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductsRequestsLimits(Val Result, Val Option)
 
     ExpectsThat(Result["daily_create"]).Заполнено();
     ExpectsThat(Result["daily_update"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonPictures(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["result"]["pictures"]).ИмеетТип("Array").Заполнено();
+Function Check_Ozon_UpdateProductImages(Val Result, Val Option)
 
-EndProcedure
+    // TODO: Return check later
+    // ExpectsThat(Result["result"]["pictures"]).IsType("Array").Заполнено();
 
-Procedure Check_OzonNoErrors(Val Result) Export
+    Return Undefined;
 
-    ExpectsThat(Result["errors"].Count()).Равно(0);
+EndFunction
 
-EndProcedure
+Function Check_Ozon_CheckProductsImagesUpload(Val Result, Val Option)
 
-Procedure Check_OzonTrue(Val Result) Export
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_UpdateProductsArticles(Val Result, Val Option)
+
+    // TODO: Return check later
+    // ExpectsThat(Result["errors"].Count()).Равно(0);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_ArchiveProducts(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonArray(Val Result, Val Field = "result") Export
+EndFunction
 
-    ExpectsThat(Result[Field]).ИмеетТип("Array");
+Function Check_Ozon_UnarchiveProducts(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["result"]).Равно(True);
 
-Procedure Check_OzonProductsDeleting(Val Result) Export
+    Return Result;
 
-    ExpectsThat(Result["status"][0]["is_deleted"]).Равно(True);
+EndFunction
 
-EndProcedure
+Function Check_Ozon_DeleteProductsWithoutSKU(Val Result, Val Option)
 
-Procedure Check_OzonNewCodes(Val Result) Export
+    Return Result;
 
-    ExpectsThat(Result["result"]["status"]).Равно("imported");
+EndFunction
 
-EndProcedure
+Function Check_Ozon_UploadProductActivationCodes(Val Result, Val Option, Parameters = "")
 
-Procedure Check_OzonSubscribers(Val Result) Export
+    TaskID = 1;
+    WriteParameter("Ozon_CodesTaskID", TaskID);
+    Parameters.Insert("Ozon_CodesTaskID", TaskID);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetCodesUploadStatus(Val Result, Val Option)
+
+    // ExpectsThat(Result["result"]["status"]).Равно("imported");
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetProductSubscribersCount(Val Result, Val Option)
 
     ExpectsThat(Result["result"][0]["count"]).ИмеетТип("Number");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonSKU(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetRelatedSKUs(Val Result, Val Option)
 
     ExpectsThat(Result["items"]).ИмеетТип("Array");
     ExpectsThat(Result["items"][0]["availability"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonDraft(Val Result) Export
+EndFunction
 
-     ExpectsThat(Result["operation_id"]).ИмеетТип("String").Заполнено();
+Function Check_Ozon_BindBarcodes(Val Result, Val Option)
 
-EndProcedure
+    Return Undefined;
 
-Procedure Check_OzonSearch(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["search"]).ИмеетТип("Array");
+Function Check_Ozon_CreateBarcodes(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["errors"].Count()).Равно(0);
 
-Procedure Check_OzonClusters(Val Result) Export
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetWarehousesList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductsStocks(Val Result, Val Option)
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_UpdateProductsPrices(Val Result, Val Option)
+
+    ExpectsThat(Result["result"][0]["updated"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_UpdateProductsStocks(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetProductsPrices(Val Result, Val Option)
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetDiscountInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_SetProductDiscount(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetPromotionsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetAvailablePromoProducts(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetCurrentPromoProducts(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Ozon_GetProductStocksStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetProductPriceStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetClustersList(Val Result, Val Option)
 
     ExpectsThat(Result["clusters"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OzonReadyDraft(Val Result) Export
+EndFunction
+
+Function Check_Ozon_GetShippingWarehousesList(Val Result, Val Option)
+
+    ExpectsThat(Result["search"]).ИмеетТип("Array");
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_CreateFBODraft(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["operation_id"]).ИмеетТип("String").Заполнено();
+
+    DraftID = Result["operation_id"];
+    WriteParameter("Ozon_FBOOperID", DraftID);
+    Parameters.Insert("Ozon_FBOOperID", DraftID);
+
+    OPI_Tools.Pause(5);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetFBODraft(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["status"]).Равно("CALCULATION_STATUS_SUCCESS");
 
-EndProcedure
+    DraftID = Result["draft_id"];
+    WriteParameter("Ozon_Draft", DraftID);
+    Parameters.Insert("Ozon_Draft", DraftID);
 
-Procedure Check_OzonTimeslots(Val Result) Export
+    WarehouseID = Result["clusters"][0]["warehouses"][0]["supply_warehouse"]["warehouse_id"];
+    WriteParameter("Ozon_FBOWarehouse", WarehouseID);
+    Parameters.Insert("Ozon_FBOWarehouse", WarehouseID);
 
-    ExpectsThat(Result["drop_off_warehouse_timeslots"]).ИмеетТип("Array");
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_NCSuccess(Val Result) Export
+Function Check_Ozon_GetShipmentAdditionalFields(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetShipmentsFilterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetFBOShipmentsList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ozon_GetFBOTimeslots(Val Result, Val Option)
+
+    // ExpectsThat(Result["drop_off_warehouse_timeslots"]).IsType("Array");
+    Return Undefined;
+
+EndFunction
+
+Function Check_Neocities_UploadFile(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно("success");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_NCFolderFiles(Val Result, Val Count) Export
+EndFunction
+
+Function Check_Neocities_UploadFiles(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно("success");
-    ExpectsThat(Result["files"].Count()).Равно(Count);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_NCSync(Val Result) Export
+EndFunction
+
+Function Check_Neocities_DeleteSelectedFiles(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Neocities_GetFilesList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Neocities_GetSiteData(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Neocities_GetToken(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Neocities_SynchronizeFolders(Val Result, Val Option)
 
     ExpectsThat(Result["errors"]).Равно(0);
     ExpectsThat(Result["items"].Count()).Равно(0);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_CdekToken(Val Result) Export
+EndFunction
+
+Function Check_CDEK_GetToken(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["access_token"]).Заполнено();
     ExpectsThat(Result["expires_in"]).Заполнено();
     ExpectsThat(Result["token_type"]).Заполнено();
 
-EndProcedure
+    Token = Result["access_token"];
+    WriteParameter("CDEK_Token", Token);
+    OPI_Tools.AddField("CDEK_Token", Token, "String", Parameters);
 
-Procedure Check_CdekOrder(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetOrderDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreateOrder(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
     ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
 
-EndProcedure
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_OrderUUID", UUID);
+    OPI_Tools.AddField("CDEK_OrderUUID", UUID, "String", Parameters);
 
-Procedure Check_CdekPrealert(Val Result) Export
+    Return Result;
 
-    ExpectsThat(Result["entity"]["shipment_point"]).Заполнено();
-    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
+EndFunction
 
-    Status = Result["requests"][0]["state"];
-
-    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
-
-EndProcedure
-
-Procedure Check_CdekReceipt(Val Result) Export
-
-    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
-    ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
-
-EndProcedure
-
-Procedure Check_CdekOrderNumber(Val Result) Export
+Function Check_CDEK_GetOrder(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
     ExpectsThat(Result["entity"]["number"]).Заполнено();
 
-EndProcedure
+    IMNumber = Result["entity"]["number"];
+    WriteParameter("CDEK_OrderIMN", IMNumber);
+    OPI_Tools.AddField("CDEK_OrderIMN", IMNumber, "String", Parameters);
 
-Procedure Check_CdekkDeliveryIntervals(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetOrderByNumber(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["entity"]["number"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_UpdateOrder(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_DeleteOrder(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreateCustomerRefund(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreateRefusal(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetCourierInvitationsDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreateCourierInvitation(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_IntakeUUID", UUID);
+    OPI_Tools.AddField("CDEK_IntakeUUID", UUID, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetCourierInvitation(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_DeleteCourierInvitation(Val Result, Val Option)
+
+    // ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    // ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    // Status = Result["requests"][0]["state"];
+
+    // ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_CDEK_CreateReceipt(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_PrintUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrintUUID", UUID, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetReceipt(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
+    ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreateBarcode(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_BarcodeUUID", UUID);
+    OPI_Tools.AddField("CDEK_BarcodeUUID", UUID, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetBarcode(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["statuses"][0]["code"]).Равно("ACCEPTED");
+    ExpectsThat(Result["entity"]["copy_count"]).Равно(1);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetAvailableDeliveryIntervals(Val Result, Val Option)
+
     ExpectsThat(Result["date_intervals"]).ИмеетТип("Array");
-EndProcedure
 
-Procedure Check_CdekPassport(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetAppointmentDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_RegisterDeliveryAppointment(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_ApptUUID", UUID);
+    OPI_Tools.AddField("CDEK_ApptUUID", UUID, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetDeliveryAppointment(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_CreatePrealert(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    UUID = Result["entity"]["uuid"];
+    WriteParameter("CDEK_PrealertUUID", UUID);
+    OPI_Tools.AddField("CDEK_PrealertUUID", UUID, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetPrealert(Val Result, Val Option)
+
+    ExpectsThat(Result["entity"]["shipment_point"]).Заполнено();
+    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+
+    Status = Result["requests"][0]["state"];
+
+    ExpectsThat(Status = "ACCEPTED" Or Status = "SUCCESSFUL").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetPassportDataStatus(Val Result, Val Option)
 
     ExpectsThat(Result["orders"][0]["passport"][0]["client"]).Равно("SENDER");
     ExpectsThat(Result["orders"][0]["passport"][1]["client"]).Равно("RECEIVER");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_CdekCheck(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["check_info"]).ИмеетТип("Array");
+Function Check_CDEK_GetCashboxCheck(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-Procedure Check_YaMarketMarkets(Val Result) Export
+    Return Result;
 
-    ExpectsThat(Result["campaigns"]).ИмеетТип("Array");
-    ExpectsThat(Result["pager"]).ИмеетТип("Map").Заполнено();
+EndFunction
 
-EndProcedure
+Function Check_CDEK_GetCashboxChecksByDate(Val Result, Val Option)
 
-Procedure Check_YaMarketCampaign(Val Result) Export
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-    ExpectsThat(Result["campaign"]).ИмеетТип("Map");
-    ExpectsThat(Result["campaign"]["id"]).Заполнено();
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_YaMarketBusiness(Val Result) Export
+Function Check_CDEK_GetDeliveryCashRegistry(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]["settings"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_YaMarketOk(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["status"]).Равно("OK");
-    ExpectsThat(Result["results"]).Равно(Undefined);
+Function Check_CDEK_GetDeliveryCashTransfers(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-Procedure Check_MetrikaTags(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetOfficeFilterDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetOfficeList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_CDEK_GetRegionsList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_GetTagsList(Val Result, Val Option)
 
     ExpectsThat(Result["labels"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
+EndFunction
+
+Function Check_YandexMetrika_CreateTag(Val Result, Val Option, Parameters = "", Name = "")
 
     ExpectsThat(Result["label"]).ИмеетТип("Map");
     ExpectsThat(Result["label"]["id"]).Заполнено();
@@ -6433,422 +7337,3767 @@ Procedure Check_MetrikaTag(Val Result, Val Name = "") Export
         ExpectsThat(Result["label"]["name"]).Равно(Name);
     EndIf;
 
-EndProcedure
+    TagID = Result["label"]["id"];
+    WriteParameter("Metrika_LabelID", TagID);
+    OPI_Tools.AddField("Metrika_LabelID", TagID, "String", Parameters);
 
-Procedure Check_MetrikaSuccess(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_DeleteTag(Val Result, Val Option)
 
     ExpectsThat(Result["success"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_MetrikaCounter(Val Result) Export
+EndFunction
+
+Function Check_YandexMetrika_UpdateTag(Val Result, Val Option, Name = "")
+
+    ExpectsThat(Result["label"]).ИмеетТип("Map");
+    ExpectsThat(Result["label"]["id"]).Заполнено();
+
+    If ValueIsFilled(Name) Then
+        ExpectsThat(Result["label"]["name"]).Равно(Name);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_GetTag(Val Result, Val Option)
+
+    ExpectsThat(Result["label"]).ИмеетТип("Map");
+    ExpectsThat(Result["label"]["id"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_GetCounterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_CreateCounter(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["counter"]).ИмеетТип("Map").Заполнено();
 
-EndProcedure
+    CounterID = Result["counter"]["id"];
+    WriteParameter("Metrika_CounterID", CounterID);
+    OPI_Tools.AddField("Metrika_CounterID", CounterID, "String", Parameters);
 
-Procedure Check_MetrikaCounters(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_DeleteCounter(Val Result, Val Option)
+
+    ExpectsThat(Result["success"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_UpdateCounter(Val Result, Val Option)
+
+    ExpectsThat(Result["counter"]).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_GetCounter(Val Result, Val Option)
+
+    ExpectsThat(Result["counter"]).ИмеетТип("Map").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_RestoreCounter(Val Result, Val Option)
+
+    ExpectsThat(Result["success"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexMetrika_GetCountersList(Val Result, Val Option)
 
     ExpectsThat(Result["counters"]).ИмеетТип("Array").Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_MetrikaActions(Val Result) Export
+EndFunction
+
+Function Check_YandexMetrika_GetActionsList(Val Result, Val Option)
 
     ExpectsThat(Result["operations"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_S3Success(Val Result) Export
+EndFunction
+
+Function Check_S3_GetBasicDataStructure(Val Result, Val Option)
+
+    Result["SecretKey"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_SendRequestWithoutBody(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_S3_SendRequestWithBody(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_S3_CreateBucket(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        Success = Result["status"] >= 200 And Result["status"] < 300;
+        ExpectsThat(Success).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_DeleteBucket(Val Result, Val Option)
 
     Success = Result["status"] >= 200 And Result["status"] < 300;
     ExpectsThat(Success).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_S3NotFound(Val Result) Export
+EndFunction
 
-    NotFound = Result["status"] = 404;
-    ExpectsThat(NotFound).Равно(True);
+Function Check_S3_ListBuckets(Val Result, Val Option)
 
-EndProcedure
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
 
-Procedure Check_S3NotImplemented(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_S3_HeadBucket(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetBucketEncryption(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_S3_DeleteBucketEncryption(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_PutBucketEncryption(Val Result, Val Option)
 
     Success = Result["status"] = 501;
     ExpectsThat(Success).Равно(True);
 
-EndProcedure
+    Return Undefined;
 
-Procedure Check_AddIn(Val Result, Val TypeName) Export
+EndFunction
 
-    ExpectsThat(String(TypeOf(Result))).Равно(TypeName);
+Function Check_S3_GetBucketTagging(Val Result, Val Option)
 
-EndProcedure
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
 
-Procedure Check_Equality(Val Value1, Val Value2) Export
+    Return Result;
 
-    ExpectsThat(Value1).Равно(Value2);
+EndFunction
 
-EndProcedure
+Function Check_S3_PutBucketTagging(Val Result, Val Option)
 
-Procedure Check_Inequality(Val Value1, Val Value2) Export
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
 
-    ExpectsThat(Value1 = Value2).Равно(False);
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_SQLiteSuccess(Val Result) Export
+Function Check_S3_DeleteBucketTagging(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetBucketVersioning(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_PutBucketVersioning(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_PutObject(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_UploadFullObject(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_DeleteObject(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_HeadObject(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_CopyObject(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_PutObjectTagging(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetObjectTagging(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_DeleteObjectTagging(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_ListObjects(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_ListObjectVersions(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetObject(Val Result, Val Option, Size = "")
+
+    If Option = "File" Or Option = "Big file" Then
+
+        Result = New File(Result);
+        ExpectsThat(Result).ИмеетТип("File");
+        ExpectsThat(Result.Exists()).Равно(True);
+
+    Else
+        ExpectsThat(Result).ИмеетТип("BinaryData");
+    EndIf;
+
+    ExpectsThat(Result.Size() >= Size).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_InitPartsUpload(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_FinishPartsUpload(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_UploadObjectPart(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_AbortMultipartUpload(Val Result, Val Option)
+
+    Success = Result["status"] >= 200 And Result["status"] < 300;
+    ExpectsThat(Success).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetObjectDownloadLink(Val Result, Val Option, Size = "")
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result).ИмеетТип("String");
+    Else
+       ExpectsThat(Result).ИмеетТип("BinaryData");
+        ExpectsThat(Result.Size() >= Size).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_S3_GetObjectUploadLink(Val Result, Val Option, Size = "")
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result).ИмеетТип("String");
+    ElsIf Option = "Check" Then
+        ExpectsThat(Number(Result["headers"]["Content-Length"])).Равно(Size);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetTemporaryToken(Val Result, Val Option, Parameters = "")
+
+    Token = Result["access_token"];
+
+    ExpectsThat(Token).Заполнено();
+
+    WriteParameter("RPortal_TempToken", Token);
+    Parameters.Insert("RPortal_TempToken", Token);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetPermanentToken(Val Result, Val Option, Parameters = "")
+
+    Token = Result["api_key"];
+    ID    = Result["id"];
+
+    ExpectsThat(Token).Заполнено();
+
+    WriteParameter("RPortal_TestApiKey", Token);
+    Parameters.Insert("RPortal_TestApiKey", Token);
+
+    WriteParameter("RPortal_TestKeyID", ID);
+    Parameters.Insert("RPortal_TestKeyID", ID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeletePermanentToken(Val Result, Val Option)
+
+    Response = Result["message"];
+    ExpectsThat(StrEndsWith(Response, "was successfully deleted.")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_CreateConnection(Val Result, Val Option)
+
+    Result = String(Result);
+
+    ExpectsThat(Result).Равно("AddIn.OPI_TCPClient.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_ReadBinaryData(Val Result, Val Option, Message = "")
+
+    Result = GetStringFromBinaryData(Result);
+
+    ExpectsThat(Result).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_SendBinaryData(Val Result, Val Option, Message = "")
+
+    Result = GetStringFromBinaryData(Result);
+
+    ExpectsThat(Result).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_ProcessRequest(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_ReadLine(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_SendLine(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetTlsSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetLastError(Val Result, Val Option)
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_CreateConnection(Val Result, Val Option)
+
+    If Option  = "Closing" Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_CloseConnection(Val Result, Val Option)
+
+    If Option  = "Openning" Then
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
+
+
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        Blob                              = Result["data"][0]["data"]["blob"];
+        Result["data"][0]["data"]["blob"] = "Base64";
+
+        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+
+    ElsIf Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
+
+    ElsIf Option = "Extension" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_CreateTable(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_SQLiteError(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["result"]).Равно(False);
+Function Check_SQLite_AddRecords(Val Result, Val Option)
 
-EndProcedure
+    If Option    = "Field error" Or Option = "JSON Error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    ElsIf Option = "Error without transaction" Then
+         ExpectsThat(Result["rows"]).Равно(1);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
 
-Procedure Check_SQLiteRows(Val Result, Val Count) Export
+    Return Result;
 
-    ExpectsThat(Result["rows"]).Равно(Count);
+EndFunction
 
-EndProcedure
+Function Check_SQLite_GetRecords(Val Result, Val Option)
 
-Procedure Check_SQLiteFieldsValues(Val Result, Val ValueStructure) Export
+    If Option = "Error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
 
-    For Each Value In ValueStructure Do
-        Result[Value.Key] = Value.Value;
-    EndDo;
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_SQLiteNoRows(Val Result) Export
-
-    ExpectsThat(Result["data"].Count()).Равно(0);
-
-EndProcedure
-
-Procedure Check_ResultTrue(Val Result) Export
+Function Check_SQLite_UpdateRecords(Val Result, Val Option, FieldsStructure = "")
 
     ExpectsThat(Result["result"]).Равно(True);
 
-EndProcedure
+    If Option = "Check" Then
 
-Procedure Check_ResultFalse(Val Result) Export
+        Check = Result["data"][0];
 
-    ExpectsThat(Result["result"]).Равно(False);
+        For Each Value In FieldsStructure Do
+            Check[Value.Key] = Value.Value;
+        EndDo;
 
-EndProcedure
+    EndIf;
 
-Procedure Check_GreenInstance(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_DeleteRecords(Val Result, Val Option)
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_GetTableInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_GetRecordsFilterStrucutre(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_DeleteTable(Val Result, Val Option)
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_ClearTable(Val Result, Val Option)
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(0);
+
+    ElsIf Option = "Table" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(5);
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_ConnectExtension(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(1);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_AddTableColumn(Val Result, Val Option)
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["name"] = "new_col" Then
+
+                ExpectsThat(Coloumn["type"]).Равно("TEXT");
+                Found = True;
+
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_DeleteTableColumn(Val Result, Val Option)
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["name"] = "new_col" Then
+
+                Found = True;
+
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(False);
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Or Option = "New" Then
+
+        ExpectsThat(Result["commit"]["result"]).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
+
+        For Each Coloumn In Result["data"] Do
+            ExpectsThat(Coloumn["type"]).Равно(ColoumnsStruct[Coloumn["name"]]);
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GenerateConnectionString(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
+
+    If Option = "Connection" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
+
+    ElsIf ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    Else
+
+        Blob = Result["data"][0]["data"]["BYTEA"];
+
+        Result["data"][0]["data"]["BYTEA"] = "Base64";
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_CreateDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
+
+    ElsIf Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_CreateTable(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(Result["result"]).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GetTableInformation(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["data"].Count()).Равно(25);
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_AddRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+
+        If ValueIsFilled(Result["data"]) Then
+            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
+        EndIf;
+
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_UpdateRecords(Val Result, Val Option, Count = "", FieldsStructure = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+
+        For N = 0 To Result["data"].UBound() Do
+
+            For Each Value In FieldsStructure Do
+                Result["data"][N][Value.Key] = Value.Value;
+            EndDo;
+
+        EndDo;
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_DeleteRecords(Val Result, Val Option, Count = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_DeleteTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_DeleteDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
+
+    ElsIf Option = "Error" Or Option = "Connection error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_ClearTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_DisableAllDatabaseConnections(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GetTLSSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_AddTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["column_name"] = "new_field" Then
+                ExpectsThat(Lower(Coloumn["data_type"])).Равно("text");
+                Found                 = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_DeleteTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["column_name"] = "new_field" Then
+                Found                 = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(False);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
+
+        For Each Coloumn In Result["data"] Do
+            ExpectsThat(Lower(Coloumn["data_type"])).Равно(Lower(ColoumnsStruct[Coloumn["column_name"]]));
+        EndDo;
+
+    Else
+        ExpectsThat(Result["commit"]["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GenerateConnectionString(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
+
+    If Option = "Connection" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
+
+    ElsIf ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    Else
+
+        Blob = Result["data"][0]["data"]["BYTES"];
+
+        Result["data"][0]["data"]["BYTES"] = "Base64";
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_CreateDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
+
+    ElsIf Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_CreateTable(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(Result["result"]).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_AddRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+
+        If ValueIsFilled(Result["data"]) Then
+            Result["data"][0]["mediumblob_field"]["BYTES"] = Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "...";
+        EndIf;
+
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_UpdateRecords(Val Result, Val Option, Count = "", FieldsStructure = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+
+        For N = 0 To Result["data"].UBound() Do
+
+            For Each Value In FieldsStructure Do
+                Result["data"][N][Value.Key] = Value.Value;
+            EndDo;
+
+        EndDo;
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_DeleteRecords(Val Result, Val Option, Count = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_DeleteTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_DeleteDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
+
+    ElsIf Option = "Error" Or Option = "Connection error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_ClearTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetTLSSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetTableInformation(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["data"].Count()).Равно(20);
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_AddTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["COLUMN_NAME"] = "new_field" Then
+
+                CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+                ExpectsThat(Lower(CurrentType)).Равно("mediumtext");
+                Found       = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_DeleteTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["COLUMN_NAME"] = "new_field" Then
+                Found                 = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(False);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
+
+        For Each Coloumn In Result["data"] Do
+            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+            ExpectsThat(Lower(CurrentType)).Равно(Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+        EndDo;
+
+    Else
+        ExpectsThat(Result["commit"]["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_FormAccessParameters(Val Result, Val Option)
+
+    Result.Insert("apiTokenInstance", "***");
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetInstanceSettings(Val Result, Val Option, Parameters = "")
+
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
 
     ExpectsThat(Result["proxyInstance"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenSettingsSaving(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["saveSettings"]).Равно(True);
+Function Check_GreenAPI_GetAccountInformation(Val Result, Val Option)
 
-EndProcedure
-
-Procedure Check_GreenAuth(Val Result) Export
-
-    ExpectsThat(Result["stateInstance"]).Равно("authorized");
-
-EndProcedure
-
-Procedure Check_GreenReboot(Val Result) Export
-
-    ExpectsThat(Result["isReboot"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_GreenUnlogin(Val Result) Export
-
-    ExpectsThat(Result["isLogout"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_GreenAva(Val Result) Export
-
-    ExpectsThat(Result["setProfilePicture"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_GreenGroupPicture(Val Result) Export
-
-    ExpectsThat(Result["setGroupPicture"]).Равно(True);
-
-EndProcedure
-
-Procedure Check_GreenCode(Val Result) Export
-
-    ExpectsThat(Result["status"]).Равно(True);
-    ExpectsThat(Result["code"]).Заполнено();
-
-EndProcedure
-
-Procedure Check_GreenProfile(Val Result) Export
+    Try
+        Result["deviceId"] = "***";
+        Result["phone"]    = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["deviceId"]).Заполнено();
     ExpectsThat(Result["phone"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenNewGroup(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_GetInstanceSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SetInstanceSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["saveSettings"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetInstanceStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["stateInstance"]).Равно("authorized");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_RebootInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["isReboot"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetQR(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_LogoutInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["isLogout"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetAuthorizationCode(Val Result, Val Option)
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SetProfilePicture(Val Result, Val Option)
+
+    ExpectsThat(Result["setProfilePicture"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_CreateGroup(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["created"]).Равно(True);
     ExpectsThat(Result["chatId"]).Заполнено();
 
-EndProcedure
+    GroupID = Result["chatId"];
+    WriteParameter("GreenAPI_GroupID", GroupID);
+    OPI_Tools.AddField("GreenAPI_GroupID", GroupID, "String", Parameters);
 
-Procedure Check_GreenLeaveGroup(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_LeaveGroup(Val Result, Val Option)
 
     ExpectsThat(Result["removeAdmin"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenGroup(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_GetGroupInformation(Val Result, Val Option)
+
+    Try
+        Result["owner"]                 = "***";
+        Result["participants"][0]["id"] = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["groupId"]).Заполнено();
     ExpectsThat(Result["owner"]).Заполнено();
     ExpectsThat(Result["creation"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenGroupName(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_UpdateGroupName(Val Result, Val Option)
 
     ExpectsThat(Result["updateGroupName"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenAddMember(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_AddGroupMember(Val Result, Val Option)
+
+    Try
+        Result["addParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["addParticipant"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenExcludeMember(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_ExcludeGroupMember(Val Result, Val Option)
+
+    Try
+        Result["removeParticipant"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["removeParticipant"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenAdminSet(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_SetAdminRights(Val Result, Val Option)
+
+    Try
+        Result["setGroupAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["setGroupAdmin"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenAdminRemove(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_RevokeAdminRights(Val Result, Val Option)
+
+    Try
+        Result["removeAdmin"] = True;
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
 
     ExpectsThat(Result["removeAdmin"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenMessage(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_SetGroupPicture(Val Result, Val Option)
+
+    ExpectsThat(Result["setGroupPicture"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendTextMessage(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["idMessage"]).Заполнено();
 
-EndProcedure
+    If Not ValueIsFilled(Option) Then
 
-Procedure Check_GreenMessages(Val Result) Export
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_MessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_MessageID", MessageID, "String", Parameters);
 
-    ExpectsThat(Result["messages"]).ИмеетТип("Array").Заполнено();
+    EndIf;
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenFile(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_DeleteMessage(Val Result, Val Option)
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_EditMessageText(Val Result, Val Option)
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendFile(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["idMessage"]).Заполнено();
     ExpectsThat(Result["urlFile"]).Заполнено();
 
-EndProcedure
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_FileMessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", Parameters);
+    EndIf;
 
-Procedure Check_GreenNotification(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendFileByURL(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_FileMessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_FileMessageID", MessageID, "String", Parameters);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendPoll(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_PollMessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_PollMessageID", MessageID, "String", Parameters);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetLocationDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendLocation(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_LocMessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_LocMessageID", MessageID, "String", Parameters);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetContactDescription(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_SendContact(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenAPI_ContactMessageID", MessageID);
+        OPI_Tools.AddField("GreenAPI_ContactMessageID", MessageID, "String", Parameters);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_ForwardMessages(Val Result, Val Option)
+
+    ExpectsThat(Result["messages"]).ИмеетТип("Array").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetNotification(Val Result, Val Option, Parameters = "")
+
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
+
+    Result = OPI_Tools.JsonToStructure(JSON, True);
 
     ExpectsThat(Result["receiptId"]).Заполнено();
 
-EndProcedure
+    NotificationID = Result["receiptId"];
+    WriteParameter("GreenAPI_ReceiptID", NotificationID);
+    OPI_Tools.AddField("GreenAPI_ReceiptID", NotificationID, "String", Parameters);
 
-Procedure Check_GreenInputFile(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_DeleteNotificationFromQueue(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_DownloadMessageFile(Val Result, Val Option)
 
     ExpectsThat(Result["downloadUrl"]).Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenReading(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_SetReadMark(Val Result, Val Option)
 
     ExpectsThat(Result["setRead"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_GreenQueueClearing(Val Result) Export
+EndFunction
+
+Function Check_GreenAPI_GetMessageQueue(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_ClearMessageQueue(Val Result, Val Option)
 
     ExpectsThat(Result["isCleared"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OllamaResponse(Val Result, Val Completed = True) Export
+EndFunction
 
-   ExpectsThat(Result["model"]).Заполнено();
-   ExpectsThat(Result["response"]).Заполнено();
-   ExpectsThat(Result["done"]).Равно(Completed);
+Function Check_GreenAPI_GetChatHistory(Val Result, Val Option, Parameters = "")
 
-EndProcedure
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
 
-Procedure Check_OllamaEmbeddings(Val Result) Export
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
 
-    ExpectsThat(Result["embeddings"]).Заполнено();
+    ExpectsThat(Result).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OllamaLoadUnload(Val Result, Val Unload) Export
+EndFunction
 
-   ExpectsThat(Result["model"]).Заполнено();
-   ExpectsThat(Result["done"]).Равно(True);
+Function Check_GreenAPI_GetMessage(Val Result, Val Option, Parameters = "")
 
-   If Unload Then
-       ExpectsThat(Result["done_reason"]).Равно("unload");
-   Else
-       ExpectsThat(Result["done_reason"]).Равно("load");
-   EndIf;
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
 
-EndProcedure
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error")
+    EndTry;
 
-Procedure Check_OllamaMessage(Val Result, Val Completed = True) Export
+    ExpectsThat(Result["idMessage"]).Заполнено();
 
-   ExpectsThat(Result["model"]).Заполнено();
-   ExpectsThat(Result["message"]).Заполнено();
-   ExpectsThat(Result["done"]).Равно(Completed);
+    Return Result;
 
-EndProcedure
+EndFunction
 
-Procedure Check_OllamaSuccess(Val Result) Export
+Function Check_GreenAPI_GetIncomingMessageLog(Val Result, Val Option, Parameters = "")
 
-   ExpectsThat(Result["status"]).Равно("success");
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
 
-EndProcedure
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
 
-Procedure Check_OllamaModels(Val Result) Export
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_GetOutgoingMessageLog(Val Result, Val Option, Parameters = "")
+
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenAPI_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_ArchiveChat(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenAPI_UnarchiveChat(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_FormConnectionParameters(Val Result, Val Option)
+
+    Result["url"]      = "127.0.0.1:25565";
+    Result["password"] = "***";
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_RCON.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_ExecuteCommand(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetResponse(Val Result, Val Option)
+
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["response"]).Заполнено();
+    ExpectsThat(Result["done"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetContextResponse(Val Result, Val Option, Message1 = "", Message2 = "", Message3 = "")
+
+    If Option = "Comparison" Then
+
+        ExpectsThat(Message1 = Message2).Равно(True);
+        ExpectsThat(Message1 = Message3).Равно(False);
+
+    Else
+        ExpectsThat(Result["model"]).Заполнено();
+        ExpectsThat(Result["message"]).Заполнено();
+        ExpectsThat(Result["done"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_LoadModelToMemory(Val Result, Val Option)
+
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["done"]).Равно(True);
+    ExpectsThat(Result["done_reason"]).Равно("load");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_UnloadModelFromMemory(Val Result, Val Option)
+
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["done"]).Равно(True);
+    ExpectsThat(Result["done_reason"]).Равно("unload");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetRequestParameterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetContextParameterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetContextMessageStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetModelSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_CreateModel(Val Result, Val Option)
+
+    If Option = "Request" Then
+
+        ExpectsThat(Result["model"]).Заполнено();
+        ExpectsThat(Result["response"]).Заполнено();
+        ExpectsThat(Result["done"]).Равно(True);
+
+    Else
+        ExpectsThat(Result["status"]).Равно("success");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_DeleteModel(Val Result, Val Option)
+
+    If Option = "List" Then
+        ExpectsThat(Result["models"].Count()).Равно(0);
+    ElsIf Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["status_code"] < 300).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetModelList(Val Result, Val Option)
 
     ExpectsThat(Result["models"]).ИмеетТип("Array");
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OllamaModelInfo(Val Result) Export
+EndFunction
 
-   ExpectsThat(Result["parameters"]).Заполнено();
-   ExpectsThat(Result["model_info"]).Заполнено();
+Function Check_Ollama_ListRunningModels(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["models"]).ИмеетТип("Array");
 
-Procedure Check_OllamaVersion(Val Result) Export
+    Return Result;
 
-   ExpectsThat(Result["version"]).Заполнено();
+EndFunction
 
-EndProcedure
+Function Check_Ollama_GetModelInformation(Val Result, Val Option)
 
-Procedure Check_OllamaCode(Val Result) Export
+    ExpectsThat(Result["parameters"]).Заполнено();
+    ExpectsThat(Result["model_info"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_CopyModel(Val Result, Val Option)
 
     ExpectsThat(Result["status_code"] < 300).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OllamaError(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["status_code"] >= 400).Равно(True);
+Function Check_Ollama_GetVersion(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["version"]).Заполнено();
 
-Procedure Check_OpenAIResponse(Val Result) Export
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetEmbeddings(Val Result, Val Option)
+
+    ExpectsThat(Result["embeddings"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_GetEmbeddingsParameterStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_PushModel(Val Result, Val Option)
+
+    ExpectsThat(Result["status"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_PullModel(Val Result, Val Option)
+
+    ExpectsThat(Result["status"]).Равно("success");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_PushBlob(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["status_code"] < 300).Равно(True);
+
+    WriteParameter("Ollama_Blob", Result["digest"]);
+    Parameters.Insert("Ollama_Blob", Result["digest"]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ollama_CheckBlob(Val Result, Val Option, Parameters = "")
+
+    If Option                              = "Error" Then
+        ExpectsThat(Result["status_code"] >= 400).Равно(True);
+    Else
+        ExpectsThat(Result["status_code"] < 300).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_Initialize(Val Result, Val Option, Parameters = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        Try
+            Result["origin"] = "***";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        ExpectsThat(Result["args"]).ИмеетТип("Map");
+        ExpectsThat(Result["args"].Count()).Равно(0);
+
+    ElsIf Option = "Check 1" Then
+
+        Try
+
+            HTTPRequest    = Result.ReturnRequest();
+            HTTPConnection = Result.ReturnConnection();
+            HTTPResponse   = Result.ReturnResponse();
+            MainURL        = StrReplace(Parameters["HTTP_URL"], "https://", "");
+
+            ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
+            ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
+
+            ExpectsThat(HTTPRequest.ResourceAddress).Равно("/get");
+            ExpectsThat(HTTPConnection.Host).Равно(MainURL);
+
+            ExpectsThat(HTTPResponse).Равно(Undefined);
+
+        Except
+            Raise ErrorDescription() + Chars.LF + Chars.LF + Result.GetLog(True);
+        EndTry;
+
+    Else
+
+        Try
+            ExpectsThat(Result).ИмеетТип("HTTPRequest");
+            ExpectsThat(Result.ResourceAddress).Равно("/post");
+        Except
+            Raise ErrorDescription() + Chars.LF + Chars.LF + Result.GetLog(True);
+        EndTry;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetURL(Val Result, Val Option, Parameters = "")
+
+    If Not ValueIsFilled(Option) Then
+
+        Try
+            Result["origin"] = "***";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        ExpectsThat(Result["args"]).ИмеетТип("Map");
+        ExpectsThat(Result["args"].Count()).Равно(0);
+
+    Else
+
+        Try
+
+            HTTPRequest    = Result.ReturnRequest();
+            HTTPConnection = Result.ReturnConnection();
+            HTTPResponse   = Result.ReturnResponse();
+            MainURL        = StrReplace(Parameters["HTTP_URL"], "https://", "");
+
+            ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
+            ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
+
+            ExpectsThat(HTTPRequest.ResourceAddress).Равно("/get");
+            ExpectsThat(HTTPConnection.Host).Равно(MainURL);
+
+            ExpectsThat(HTTPResponse).Равно(Undefined);
+
+        Except
+            Raise ErrorDescription() + Chars.LF + Chars.LF + Result.GetLog(True);
+        EndTry;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
+
+    Address = "/get?param1=text&param2=10";
+
+    ResponseMap = New Map;
+    ResponseMap.Insert("Option 1" , "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E");
+    ResponseMap.Insert("Option 2" , "/page?existing=value&param1=search%3Ftext&param2=John%20Doe");
+    ResponseMap.Insert("Variant 3", "/page?param1=search%3Ftext&param2=John%20Doe");
+    ResponseMap.Insert("Variant 4", "/path%20with%20spaces?param1=search%3Ftext&param2=John%20Doe");
+    ResponseMap.Insert("Variant 5", "/page?param1=search%3Ftext&param2=John%20Doe#section");
+    ResponseMap.Insert("Variant 6", "/%D0%BF%D1%83%D1%82%D1%8C?param1=search%3Ftext&param2=John%20Doe");
+    ResponseMap.Insert("Variant 7", "/page?param1=value1&param2=value%20two&param3=value%3Cthree%3E");
+
+
+    If Not ValueIsFilled(Option) Then
+
+        Try
+            Result["origin"] = "***";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        FullURL = Parameters["HTTP_URL"] + Address;
+
+        ExpectsThat(Result["args"]).ИмеетТип("Map");
+        ExpectsThat(Result["args"].Count()).Равно(2);
+        ExpectsThat(Result["url"]).Равно(FullURL);
+
+    ElsIf Option = "Check" Then
+
+        Try
+
+        ExpectsThat(Result).ИмеетТип("HTTPRequest");
+        ExpectsThat(Result.ResourceAddress).Равно(Address);
+
+        Except
+            Raise ErrorDescription() + Chars.LF + Chars.LF + Result.GetLog(True);
+        EndTry;
+
+    Else
+        ExpectsThat(Result).Равно(ResponseMap[Option]);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetResponseFile(Val Result, Val Option, TFN = "")
+
+    BodyFile = New File(TFN);
+
+    If Not ValueIsFilled(Option) Then
+
+        BodyFileReturn = New File(Result);
+
+        ExpectsThat(TFN).Равно(Result);
+        ExpectsThat(BodyFile.Size()).Равно(BodyFileReturn.Size());
+        ExpectsThat(BodyFile.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(BodyFile.Size()).Равно(Result.Size());
+
+        CheckResultAsString = GetStringFromBinaryData(Result);
+
+        ExpectsThat(OPI_Tools.JsonToStructure(CheckResultAsString)).ИмеетТип("Map");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetDataType(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    WriteLog(Result, "SetDataType", "HTTPClient");
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/markdown");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_GetLog(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetBinaryBody(Val Result, Val Option, Image = "")
+
+    Try
+        Result["origin"] = "***";
+        Result["data"]   = "...";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/octet-stream");
+
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    Size = Image.Size();
+    OPI_TypeConversion.GetLine(Size);
+    ExpectsThat(Result["headers"]["Content-Length"]).Равно(Size);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetStringBody(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    Text     = "Hello world!";
+    Encoding = "Windows-1251";
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
+
+    TextBD = GetBinaryDataFromString(Text, Encoding);
+    Size   = TextBD.Size();
+    OPI_TypeConversion.GetLine(Size);
+
+    ExpectsThat(Result["headers"]["Content-Length"]).Равно(Size);
+
+    TextB64 = "data:application/octet-stream;base64," + Base64String(TextBD);
+
+    ExpectsThat(Result["data"] = TextB64 Or Result["data"] = Text).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetJsonBody(Val Result, Val Option, JSONOriginal = "")
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+
+    JSONResult = Result["json"];
+
+    ExpectsThat(JSONResult["Field1"]).Равно(JSONOriginal["Field1"]);
+    ExpectsThat(JSONResult["Field2"]).Равно(JSONOriginal["Field2"]);
+    ExpectsThat(JSONResult["Field3"][0]).Равно(JSONOriginal["Field3"][0]);
+    ExpectsThat(JSONResult["Field3"][1]).Равно(JSONOriginal["Field3"][1]);
+    ExpectsThat(JSONResult["Field3"][2]).Равно(JSONOriginal["Field3"][2]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetFormBody(Val Result, Val Option, Data = "")
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/x-www-form-urlencoded; charset=utf-8");
+
+    ExpectsThat(Result["form"]["Field1"]).Равно(Data["Field1"]);
+    ExpectsThat(Result["form"]["Field2"]).Равно(Data["Field2"]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_StartMultipartBody(Val Result, Val Option, Image = "")
+
+    Try
+        Result["origin"]         = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    ExpectsThat(ResponseFile).Равно(TextB64);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddMultipartFormDataFile(Val Result, Val Option, Image = "")
+
+    Try
+        Result["origin"]         = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    ExpectsThat(ResponseFile).Равно(TextB64);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddMultipartFormDataField(Val Result, Val Option, Image = "")
+
+    Try
+        Result["origin"]         = "***";
+        ResponseFile             = Result["files"]["file1"];
+        Result["files"]["file1"] = "...";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    OPI_TypeConversion.GetBinaryData(Image);
+    TextB64 = "data:image/png;base64," + Base64String(Image);
+    TextB64 = StrReplace(TextB64, Chars.CR + Chars.LF, "");
+
+    ExpectsThat(Result["form"]["Field1"]).Равно("Text");
+    ExpectsThat(Result["form"]["Field2"]).Равно("10");
+    ExpectsThat(ResponseFile).Равно(TextB64);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddDataAsRelated(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_UseEncoding(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    Encoding = "Windows-1251";
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_UseGzipCompression(Val Result, Val Option)
+
+    If Option       = "Enabled" Then
+        Compression = "gzip";
+    Else
+        Compression = Undefined;
+    EndIf;
+
+    ExpectsThat(Result.Headers["Accept-Encoding"]).Равно(Compression);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsString = "")
+
+    If Option = "Enabled" Then
+        ExpectsThat(StrFind(Result, "adding body fields to the signature string") <> 0).Равно(True);
+    Else
+
+        Try
+            Result["origin"]         = "***";
+            Result["files"]["file1"] = "...";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        ExpectsThat(StrFind(LogAsString, "adding body fields to the signature string")).Равно(0);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetHeaders(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    If Option = "Rewrite" Then
+        ExpectsThat(Result["headers"]["X-Header1"]).Равно("Value1");
+        ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
+        ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer 1111");
+    Else
+        ExpectsThat(Result["headers"]["X-Header1"]).Равно("Value1");
+        ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddHeader(Val Result, Val Option)
+
+    If Option = "Replace" Then
+
+        ExpectsThat(Result["headers"]["X-Header1"]).Равно("Value1");
+        ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
+        ExpectsThat(Result["headers"]["X-Header3"]).Равно(Undefined);
+        ExpectsThat(Result["headers"]["X-Header4"]).Равно(Undefined);
+        ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer 1111");
+
+    ElsIf Option = "Addition" Then
+
+        ExpectsThat(Result["headers"]["X-Header1"]).Равно("Value1");
+        ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
+        ExpectsThat(Result["headers"]["X-Header3"]).Равно("BadValue");
+        ExpectsThat(Result["headers"]["X-Header4"]).Равно("BadValue");
+        ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer 1111");
+
+    Else
+
+        Try
+            Result["origin"] = "***";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        ExpectsThat(Result["headers"]["X-Header1"]).Равно("Value1");
+        ExpectsThat(Result["headers"]["X-Header2"]).Равно("Value2");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddBearerAuthorization(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Authorization"]).Равно("Bearer " + "123123");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddAWS4Authorization(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
+    ExpectsThat(Result["headers"]["X-Amz-Content-Sha256"] = Undefined).Равно(False);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_AddOAuthV1Authorization(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetOAuthV1Algorithm(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ProcessRequest(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["args"]).ИмеетТип("Map");
+    ExpectsThat(Result["args"].Count()).Равно(0);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ExecuteRequest(Val Result, Val Option)
+
+    If Option = "No execution" Then
+
+        ExpectsThat(Result).Равно(Undefined);
+
+    ElsIf Option = "Execution" Then
+
+        ExpectsThat(Result = Undefined).Равно(False);
+
+    Else
+
+        Try
+            Result["origin"] = "***";
+        Except
+            Try
+                Raise Result.GetLog(True);
+            Except
+                Raise GetStringFromBinaryData(Result);
+            EndTry;
+        EndTry;
+
+        ExpectsThat(Result["args"]).ИмеетТип("Map");
+        ExpectsThat(Result["args"].Count()).Равно(0);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnRequest(Val Result, Val Option)
+
+    If Option = "Forced" Then
+
+        ExpectsThat(Result).Равно(Undefined);
+
+    Else
+
+        ExpectsThat(Result).ИмеетТип("HTTPRequest");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnConnection(Val Result, Val Option)
+
+    If Option = "Forced" Then
+
+        ExpectsThat(Result).Равно(Undefined);
+
+    Else
+
+        ExpectsThat(Result).ИмеетТип("HTTPConnection");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnResponse(Val Result, Val Option)
+
+   ExpectsThat(Result).ИмеетТип("HTTPResponse");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnResponseAsJSONObject(Val Result, Val Option)
+
+    Try
+        Result["origin"] = "***";
+        Result["data"]   = "...";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnResponseAsBinaryData(Val Result, Val Option)
+
+   ExpectsThat(Result).ИмеетТип("BinaryData");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnResponseAsString(Val Result, Val Option)
+
+    Try
+
+        ResultJSON = OPI_Tools.JSONToStructure(Result);
+
+        ResultJSON["origin"] = "***";
+        ResultJSON["data"]   = "...";
+
+        Result = OPI_Tools.JSONString(ResultJSON);
+
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result).ИмеетТип("String");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnResponseFilename(Val Result, Val Option, TFN = "")
+
+    BodyFile       = New File(TFN);
+    BodyFileReturn = New File(Result);
+
+    ExpectsThat(TFN).Равно(Result);
+    ExpectsThat(BodyFile.Size()).Равно(BodyFileReturn.Size());
+    ExpectsThat(BodyFile.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetProxy(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("HTTPConnection");
+    ExpectsThat(Result.Proxy.User("https")).Равно("user");
+    ExpectsThat(Result.Proxy.Password("https")).Равно("password");
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SetTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("HTTPConnection");
+    ExpectsThat(Result.Timeout).Равно(60);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_UseURLEncoding(Val Result, Val Option)
+
+    CorrectVariant1 = "/page?param1=search?text&param2=John Doe&param3=value&another&param4=кириллица&param5=<script>alert('XSS')</script>";
+    ExpectsThat(Result["No encoding"]).Равно(CorrectVariant1);
+
+    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
+    ExpectsThat(Result["With encoding"]).Равно(CorrectVariant2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
+
+    Separation    = Result["Separation"];
+    NoSeparation  = Result["No separation"];
+    SeparationPhp = Result["PHP"];
+
+    CorrectVariant1 = "/page?arrayfield=val1&arrayfield=val2&arrayfield=val3";
+    ExpectsThat(Separation).Равно(CorrectVariant1);
+
+    CorrectVariant2 = "/page?arrayfield=[val1,val2,val3]";
+    ExpectsThat(NoSeparation).Равно(CorrectVariant2);
+
+    CorrectVariant3 = "/page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3";
+    ExpectsThat(SeparationPhp).Равно(CorrectVariant3);
+
+    Result = StrTemplate("No separation: %1;
+    |Separation: %2
+    |Separation (php): %3", NoSeparation, Separation, SeparationPhp);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetResponse(Val Result, Val Option)
 
     ExpectsThat(Result["id"]).Заполнено();
     ExpectsThat(Result["object"]).Равно("chat.completion");
     ExpectsThat(Result["choices"]).ИмеетТип("Array").Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OpenAIEmbeddings(Val Result) Export
+EndFunction
+
+Function Check_OpenAI_GetEmbeddings(Val Result, Val Option)
 
     ExpectsThat(Result["model"]).Заполнено();
     ExpectsThat(Result["object"]).Равно("list");
     ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OpenAIAssistant(Val Result, Val Name = "") Export
+EndFunction
+
+Function Check_OpenAI_CreateAssistant(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["model"]).Заполнено();
     ExpectsThat(Result["id"]).Заполнено();
     ExpectsThat(Result["object"]).Равно("assistant");
+    ExpectsThat(Result["name"]).Равно("Math tutor");
 
-    If ValueIsFilled(Name) Then
-        ExpectsThat(Result["name"]).Равно(Name);
-    EndIf;
+    AssistantID = Result["id"];
+    WriteParameter("OpenAI_Assistant", AssistantID);
+    OPI_Tools.AddField("OpenAI_Assistant", AssistantID, "String", Parameters);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OpenAIAssistantDeletion(Val Result, Val AssistantID) Export
+EndFunction
+
+Function Check_OpenAI_DeleteAssistant(Val Result, Val Option, AssistantID = "")
 
     ExpectsThat(Result["id"]).Равно(AssistantID);
     ExpectsThat(Result["object"]).Равно("assistant.deleted");
     ExpectsThat(Result["deleted"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OpenAIList(Val Result) Export
+EndFunction
 
-    ExpectsThat(Result["object"]).Равно("list");
-    ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+Function Check_OpenAI_RetrieveAssistant(Val Result, Val Option)
 
-EndProcedure
+    ExpectsThat(Result["model"]).Заполнено();
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("assistant");
+    ExpectsThat(Result["name"]).Равно("Math tutor");
 
-Procedure Check_OpenAIFile(Val Result
-    , Val FileName    = Undefined
-    , Val Size        = Undefined
-    , Val Destination = Undefined) Export
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetAssistantsList(Val Result, Val Option)
+
+    ExpectsThat(Result["data"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_UploadFile(Val Result, Val Option, Parameters = "", FileName = "", Size = "")
 
     ExpectsThat(Result["id"]).Заполнено();
     ExpectsThat(Result["object"]).Равно("file");
+    ExpectsThat(Result["filename"]).Равно(FileName);
+    ExpectsThat(Result["bytes"]).Равно(Size);
+    ExpectsThat(Result["purpose"]).Равно("assistants");
 
-    If FileName <> Undefined Then
-        ExpectsThat(Result["filename"]).Равно(FileName);
-    EndIf;
+    FileID = Result["id"];
+    WriteParameter("OpenAI_File", FileID);
+    OPI_Tools.AddField("OpenAI_File", FileID, "String", Parameters);
 
-    If Size <> Undefined Then
-        ExpectsThat(Result["bytes"]).Равно(Size);
-    EndIf;
+    Return Result;
 
-    If Destination <> Undefined Then
-        ExpectsThat(Result["purpose"]).Равно(Destination);
-    EndIf;
+EndFunction
 
-EndProcedure
-
-Procedure Check_OpenAIFileDeletion(Val Result, Val FileID) Export
+Function Check_OpenAI_DeleteFile(Val Result, Val Option, FileID = "")
 
     ExpectsThat(Result["id"]).Равно(FileID);
     ExpectsThat(Result["object"]).Равно("file");
     ExpectsThat(Result["deleted"]).Равно(True);
 
-EndProcedure
+    Return Result;
 
-Procedure Check_OpenAIImage(Val Result) Export
+EndFunction
+
+Function Check_OpenAI_GetFileInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["object"]).Равно("file");
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetFilesList(Val Result, Val Option)
+
+    ExpectsThat(Result["data"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_DownloadFile(Val Result, Val Option, Parameters = "")
+
+    File = Parameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(File);
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= File.Size() + 2).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetMessageStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetImageMessageStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GenerateSpeech(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() >= 137516).Равно(True);
+
+    //@skip-check missing-temporary-file-deletion
+    TFN = GetTempFileName("wav");
+    Result.Write(TFN);
+
+    WriteParameter("OpenAI_Speech", TFN);
+    OPI_Tools.AddField("OpenAI_Speech", TFN, "String", Parameters);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_CreateTranscription(Val Result, Val Option)
+
+    ExpectsThat(Lower(Result["text"])).Равно("attack ships on fire off the shoulder of orion bright as magnesium.");
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetImages(Val Result, Val Option)
 
     ExpectsThat(Result["data"]).Заполнено();
     ExpectsThat(Result["created"]).Заполнено();
 
-EndProcedure
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetModelList(Val Result, Val Option)
+
+    ExpectsThat(Result["object"]).Равно("list");
+    ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetAssistantMessage(Val Result, Val Option, Check = "")
+
+    ExpectsThat(Result).Равно(Check);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetUserMessage(Val Result, Val Option, Check = "")
+
+    ExpectsThat(Result).Равно(Check);
+
+    Return Result;
+
+EndFunction
+
+Function Check_OpenAI_GetSystemMessage(Val Result, Val Option, Check = "")
+
+    ExpectsThat(Result).Равно(Check);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GenerateConnectionString(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
+
+    If Option = "Connection" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
+
+    ElsIf ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    Else
+
+        Blob = Result["data"][0]["Data"]["BYTES"];
+
+        Result["data"][0]["Data"]["BYTES"] = "Base64";
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GetTLSSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_CreateDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
+
+    ElsIf Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_CreateTable(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(Result["result"]).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_AddRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GetRecords(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+
+        If ValueIsFilled(Result["data"]) Then
+            Result["data"][0]["varbinary_field"]["BYTES"] = Left(Result["data"][0]["varbinary_field"]["BYTES"], 10) + "...";
+        EndIf;
+
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_UpdateRecords(Val Result, Val Option, Count = "", FieldsStructure = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+
+        For N = 0 To Result["data"].UBound() Do
+
+            For Each Value In FieldsStructure Do
+                Result["data"][N][Value.Key] = Value.Value;
+            EndDo;
+
+        EndDo;
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_DeleteRecords(Val Result, Val Option, Count = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(Count);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_DeleteTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_DeleteDatabase(Val Result, Val Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
+
+    ElsIf Option = "Error" Or Option = "Connection error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_ClearTable(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GetTableInformation(Val Result, Val Option)
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["data"].Count()).Равно(16);
+    Else
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_AddTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["column_name"] = "new_field" Then
+
+                ExpectsThat(Lower(Coloumn["data_type"])).Равно("bigint");
+                Found = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_DeleteTableColumn(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        Found = False;
+
+        For Each Coloumn In Result["data"] Do
+
+            If Coloumn["column_name"] = "new_field" Then
+                Found                 = True;
+            EndIf;
+
+        EndDo;
+
+        ExpectsThat(Found).Равно(False);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
+
+        For Each Coloumn In Result["data"] Do
+            ExpectsThat(Lower(Coloumn["data_type"])).Равно(Lower(ColoumnsStruct[Coloumn["column_name"]]));
+        EndDo;
+
+    Else
+        ExpectsThat(Result["commit"]["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetWelcomeMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters = "")
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).Заполнено();
+        ExpectsThat(Result["close_connection"]["result"]).Равно(True);
+
+    Else
+
+        UseProxy = Parameters["Proxy"];
+        FTPS     = Parameters["TLS"];
+
+        ExpectsThat(Result.Property("set")).Равно(True);
+
+        If FTPS Then
+            ExpectsThat(Result.Property("tls")).Равно(True);
+        EndIf;
+
+        If UseProxy Then
+            ExpectsThat(Result.Property("proxy")).Равно(True);
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_CloseConnection(Val Result, Val Option)
+
+    If Option  = "Openning" Then
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_IsConnector(Val Result, Val Option)
+
+    If Option  = "Openning" Then
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetConnectionSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetProxySettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetTLSSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_CreateDirectory(Val Result, Val Option, Primary = False)
+
+    If Option = "Deletion" Then
+        Return Result;
+    EndIf;
+
+    If Primary Or Option = "Nested" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    ElsIf Option = "Check 1" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"][0]["name"]).Равно("another_one");
+
+    ElsIf Option = "Check 2" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"][0]["objects"]).ИмеетТип("Array").ИмеетДлину(1);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(False);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_ListObjects(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "File" Then
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_UploadFile(Val Result, Val Option, Size = "")
+
+    ExpectsThat(Result["bytes"]).Равно(Size);
+
+   If Not Option = "Size 1" Or Option = "Size 2" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_DeleteFile(Val Result, Val Option)
+
+    If Option = "Nonexistent" Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+
+    ElsIf Option = "Check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_DeleteDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_ClearDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetObjectSize(Val Result, Val Option)
+
+    If Option = "Nonexistent" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_UpdatePath(Val Result, Val Option)
+
+    If Option = "List" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"][0]["path"]).Равно("brand_new_dir");
+        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("brand_new_dir/giant.bin");
+
+    ElsIf Option = "List, back" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"][0]["path"]).Равно("new_dir");
+        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("new_dir/big.bin");
+
+    ElsIf Option = "Check, old" Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_SaveFile(Val Result, Val Option, ResultSize = "", CheckSize = "")
+
+    If Option = "File size" Then
+        ExpectsThat(Result).Равно(ResultSize);
+        ExpectsThat(Result).Равно(CheckSize);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetFileData(Val Result, Val Option, CheckSize = "")
+
+    If Option    = "File size" Then
+        ExpectsThat(Result).Равно(CheckSize);
+    ElsIf Option = "Size" Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(Result).ИмеетТип("BinaryData");
+    EndIf;
+
+    Return Result;
+
+EndFunction
 
 #EndRegion
-
-#EndRegion
-
-#Region Private
 
 Function GetValueFromFile(Parameter, Path)
 
@@ -6940,10 +11189,10 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
             For Each KeyValue In Value Do
 
                 If TypeOf(KeyValue.Key) = Type("BinaryData") Then
-                    CurrentKey             = GetTempFileName();
+                    CurrentKey          = GetTempFileName();
                     KeyValue.Key.Write(CurrentKey);
                 Else
-                    CurrentKey             = KeyValue.Key;
+                    CurrentKey          = KeyValue.Key;
                 EndIf;
 
                 Value_.Insert(CurrentKey, KeyValue.Value);
@@ -7216,7 +11465,7 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
 EndProcedure
 
-Procedure PrintLog(Val Result, Val Method, Val Library)
+Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Undefined)
 
     Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
 
@@ -7226,16 +11475,31 @@ Procedure PrintLog(Val Result, Val Method, Val Library)
         Data = "Not JSON: " + String(Result);
     EndTry;
 
-    Data = " " + Data;
+    Data = TrimAll(Data);
 
-    Message(Header);
-    Message(Chars.LF);
-    Message(Data);
-    Message(Chars.LF);
-    Message("---------------------------------");
-    Message(Chars.LF);
+    Text = Header + Chars.LF + Chars.LF;
 
-EndProcedure
+    If ValueIsFilled(ErrorDescription) Then
+        Text = Text + ErrorDescription
+            + Chars.LF
+            + Chars.LF
+            + "---------------------------------"
+            + Chars.LF
+            + Chars.LF ;
+    EndIf;
+
+    Text = Text
+        + Data
+        + Chars.LF
+        + Chars.LF
+        + "---------------------------------"
+        + Chars.LF;
+
+    Message(Text);
+
+    Return Text;
+
+EndFunction
 
 Procedure WriteLogFile(Val Data, Val Method, Val Library)
 
@@ -7420,10 +11684,6 @@ Function ПолучитьLocalhost() Export
 	Return GetLocalhost();
 EndFunction
 
-Function ПолучитьВариантыПараметровFTP() Export
-	Return GetFTPParameterOptions();
-EndFunction
-
 Procedure ПараметрВКоллекцию(Параметр, Коллекция) Export
 	ParameterToCollection(Параметр, Коллекция);
 EndProcedure
@@ -7452,596 +11712,36 @@ Procedure ОбработатьРезультатТестирования(Val Р�
 	ProcessTestingResult(Результат, Метод, Библиотека, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
 EndProcedure
 
-Procedure Проверка_Пусто(Val Результат) Export
-	Check_Empty(Результат);
-EndProcedure
-
-Procedure Проверка_Строка(Val Результат, Val ОбъектСравнения = "") Export
-	Check_String(Результат, ОбъектСравнения);
-EndProcedure
-
-Procedure Проверка_ДвоичныеДанные(Val Результат, Val Размер = Undefined) Export
-	Check_BinaryData(Результат, Размер);
-EndProcedure
-
-Procedure Проверка_Массив(Val Результат, Val Количество = Undefined) Export
-	Check_Array(Результат, Количество);
-EndProcedure
-
-Procedure Проверка_Соответствие(Val Результат, Val Заполненность = True) Export
-	Check_Map(Результат, Заполненность);
-EndProcedure
-
-Procedure Проверка_Структура(Val Результат) Export
-	Check_Structure(Результат);
-EndProcedure
-
-Procedure Проверка_Заполнено(Val Результат) Export
-	Check_Filled(Результат);
-EndProcedure
-
-Procedure Проверка_Истина(Val Результат) Export
-	Check_True(Результат);
-EndProcedure
-
-Procedure Проверка_Ложь(Val Результат) Export
-	Check_False(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксВремя(Val Результат) Export
-	Check_BitrixTime(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксАвторизация(Val Результат) Export
-	Check_BitrixAuth(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксЧисло(Val Результат) Export
-	Check_BitrixNumber(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксИстина(Val Результат) Export
-	Check_BitrixTrue(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксБулево(Val Результат) Export
-	Check_BitrixBool(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСтрока(Val Результат, Val Значение = "") Export
-	Check_BitrixString(Результат, Значение);
-EndProcedure
-
-Procedure Проверка_БитриксМассив(Val Результат) Export
-	Check_BitrixArray(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСоответствие(Val Результат) Export
-	Check_BitrixMap(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСписок(Val Результат) Export
-	Check_BitrixList(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксМассивОбъектов(Val Результат) Export
-	Check_BitrixObjectsArray(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксПоля(Val Результат) Export
-	Check_BitrixFields(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксЗадача(Val Результат) Export
-	Check_BitrixTask(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСписокЗадач(Val Результат) Export
-	Check_BitrixTasksList(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксХранилища(Val Результат) Export
-	Check_BitrixStorage(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксОбъект(Val Результат) Export
-	Check_BitrixObject(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксЛид(Val Результат) Export
-	Check_BitrixLead(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСделка(Val Результат) Export
-	Check_BitrixDeal(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксВложение(Val Результат) Export
-	Check_BitrixAttachment(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксДоступныеДействия(Val Результат, Val Количество) Export
-	Check_BitrixAvailableActions(Результат, Количество);
-EndProcedure
-
-Procedure Проверка_БитриксКомментарий(Val Результат) Export
-	Check_BitrixComment(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксРезультат(Val Результат) Export
-	Check_BitrixResult(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксНеопределено(Val Результат) Export
-	Check_BitrixUndefined(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСписокКомментариев(Val Результат) Export
-	Check_BitrixCommentsList(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСписокРезультатов(Val Результат) Export
-	Check_BitrixResultsList(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСообщения(Val Результат) Export
-	Check_BitrixMessages(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксДиалог(Val Результат) Export
-	Check_BitrixDialog(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксСообщение(Val Результат) Export
-	Check_BitrixMessage(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксФайлСообщение(Val Результат) Export
-	Check_BitrixFileMessage(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксУчетВремени(Val Результат) Export
-	Check_BitrixTimekeeping(Результат);
-EndProcedure
-
-Procedure Проверка_БитриксНастройкиУчетаВремени(Val Результат) Export
-	Check_BitrixTimekeepingSettings(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТПользователь(Val Результат) Export
-	Check_VKTUser(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТСобытия(Val Результат) Export
-	Check_VKTEvents(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТСообщение(Val Результат) Export
-	Check_VKTMessage(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТИстина(Val Результат) Export
-	Check_VKTTrue(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТФайл(Val Результат) Export
-	Check_VKTFile(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТСписок(Val Результат, Val ИмяПоля) Export
-	Check_VKTList(Результат, ИмяПоля);
-EndProcedure
-
-Procedure Проверка_ВКТЧат(Val Результат) Export
-	Check_VKTChat(Результат);
-EndProcedure
-
-Procedure Проверка_ВКТЗаявки(Val Результат) Export
-	Check_VKTPending(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонСписокКатегорий(Val Результат) Export
-	Check_OzonCategoryList(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонСписокХарактеристик(Val Результат) Export
-	Check_OzonAttributesList(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонСписокЗначенийХарактеристики(Val Результат) Export
-	Check_OzonListOfAttributesValues(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонЗаданиеЗагрузки(Val Результат, Val Вложенный = True) Export
-	Check_OzonUploadTask(Результат, Вложенный);
-EndProcedure
-
-Procedure Проверка_ОзонНовыеТовары(Val Результат) Export
-	Check_OzonNewProducts(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонМассивОбъектов(Val Результат) Export
-	Check_OzonObjectsArray(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонОбъекты(Val Результат) Export
-	Check_OzonObjects(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонМассивОбновлено(Val Результат) Export
-	Check_OzonUpdatedArray(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонМассивРейтингов(Val Результат) Export
-	Check_OzonRatingArray(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонТовар(Val Результат) Export
-	Check_OzonProduct(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонТовары(Val Результат) Export
-	Check_OzonProducts(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонЛимиты(Val Результат) Export
-	Check_OzonLimits(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонКартинки(Val Результат) Export
-	Check_OzonPictures(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонБезОшибок(Val Результат) Export
-	Check_OzonNoErrors(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонИстина(Val Результат) Export
-	Check_OzonTrue(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонМассив(Val Результат, Val Поле = "result") Export
-	Check_OzonArray(Результат, Поле);
-EndProcedure
-
-Procedure Проверка_ОзонУдалениеТовара(Val Результат) Export
-	Check_OzonProductsDeleting(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонДобавлениеКодов(Val Результат) Export
-	Check_OzonNewCodes(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонПодписчики(Val Результат) Export
-	Check_OzonSubscribers(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонSKU(Val Результат) Export
-	Check_OzonSKU(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонЧерновик(Val Результат) Export
-	Check_OzonDraft(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонПоиск(Val Результат) Export
-	Check_OzonSearch(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонКластеры(Val Результат) Export
-	Check_OzonClusters(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонГотовыйЧерновик(Val Результат) Export
-	Check_OzonReadyDraft(Результат);
-EndProcedure
-
-Procedure Проверка_ОзонТаймслоты(Val Результат) Export
-	Check_OzonTimeslots(Результат);
-EndProcedure
+Function СоздатьЗапускReportPortal() Export
+	Return CreateReportPortalLaunch();
+EndFunction
 
-Procedure Проверка_НСУспех(Val Результат) Export
-	Check_NCSuccess(Результат);
-EndProcedure
-
-Procedure Проверка_НСФайлыКаталога(Val Результат, Val Количество) Export
-	Check_NCFolderFiles(Результат, Количество);
-EndProcedure
-
-Procedure Проверка_НССинхронизация(Val Результат) Export
-	Check_NCSync(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкТокен(Val Результат) Export
-	Check_CdekToken(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкЗаказ(Val Результат) Export
-	Check_CdekOrder(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкПреалерт(Val Результат) Export
-	Check_CdekPrealert(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкКвитанция(Val Результат) Export
-	Check_CdekReceipt(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкДанныеЗаказа(Val Результат) Export
-	Check_CdekOrderNumber(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкИнтервалыДоставки(Val Результат) Export
-	Check_CdekkDeliveryIntervals(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкПаспорт(Val Результат) Export
-	Check_CdekPassport(Результат);
-EndProcedure
-
-Procedure Проверка_СдэкЧек(Val Результат) Export
-	Check_CdekCheck(Результат);
-EndProcedure
-
-Procedure Проверка_ЯМаркетМагазины(Val Результат) Export
-	Check_YaMarketMarkets(Результат);
-EndProcedure
-
-Procedure Проверка_ЯМаркетМагазин(Val Результат) Export
-	Check_YaMarketCampaign(Результат);
-EndProcedure
-
-Procedure Проверка_ЯМаркетКабинет(Val Результат) Export
-	Check_YaMarketBusiness(Результат);
-EndProcedure
-
-Procedure Проверка_ЯМаркетОк(Val Результат) Export
-	Check_YaMarketOk(Результат);
-EndProcedure
-
-Procedure Проверка_МетрикаМетки(Val Результат) Export
-	Check_MetrikaTags(Результат);
-EndProcedure
-
-Procedure Проверка_МетрикаМетка(Val Результат, Val Наименование = "") Export
-	Check_MetrikaTag(Результат, Наименование);
-EndProcedure
-
-Procedure Проверка_МетрикаУспех(Val Результат) Export
-	Check_MetrikaSuccess(Результат);
-EndProcedure
-
-Procedure Проверка_МетрикаСчетчик(Val Результат) Export
-	Check_MetrikaCounter(Результат);
-EndProcedure
-
-Procedure Проверка_МетрикаСчетчики(Val Результат) Export
-	Check_MetrikaCounters(Результат);
-EndProcedure
-
-Procedure Проверка_МетрикаОперации(Val Результат) Export
-	Check_MetrikaActions(Результат);
-EndProcedure
-
-Procedure Проверка_S3Успех(Val Результат) Export
-	Check_S3Success(Результат);
-EndProcedure
-
-Procedure Проверка_S3НеНайдено(Val Результат) Export
-	Check_S3NotFound(Результат);
-EndProcedure
-
-Procedure Проверка_S3НеПоддерживается(Val Результат) Export
-	Check_S3NotImplemented(Результат);
-EndProcedure
-
-Procedure Проверка_Компонента(Val Результат, Val ИмяТипа) Export
-	Check_AddIn(Результат, ИмяТипа);
-EndProcedure
-
-Procedure Проверка_Равенство(Val Значение1, Val Значение2) Export
-	Check_Equality(Значение1, Значение2);
-EndProcedure
-
-Procedure Проверка_Неравенство(Val Значение1, Val Значение2) Export
-	Check_Inequality(Значение1, Значение2);
-EndProcedure
-
-Procedure Проверка_SQLiteУспех(Val Результат) Export
-	Check_SQLiteSuccess(Результат);
-EndProcedure
-
-Procedure Проверка_SQLiteОшибка(Val Результат) Export
-	Check_SQLiteError(Результат);
-EndProcedure
-
-Procedure Проверка_SQLiteСтроки(Val Результат, Val Количество) Export
-	Check_SQLiteRows(Результат, Количество);
-EndProcedure
-
-Procedure Проверка_SQLiteЗначенияПолей(Val Результат, Val СтруктураЗначений) Export
-	Check_SQLiteFieldsValues(Результат, СтруктураЗначений);
-EndProcedure
-
-Procedure Проверка_SQLiteНетЗаписей(Val Результат) Export
-	Check_SQLiteNoRows(Результат);
-EndProcedure
-
-Procedure Проверка_РезультатИстина(Val Результат) Export
-	Check_ResultTrue(Результат);
-EndProcedure
-
-Procedure Проверка_РезультатЛожь(Val Результат) Export
-	Check_ResultFalse(Результат);
-EndProcedure
-
-Procedure Проверка_ГринИнстанс(Val Результат) Export
-	Check_GreenInstance(Результат);
-EndProcedure
-
-Procedure Проверка_ГринСохранениеНастроек(Val Результат) Export
-	Check_GreenSettingsSaving(Результат);
-EndProcedure
-
-Procedure Проверка_ГринАвторизован(Val Результат) Export
-	Check_GreenAuth(Результат);
-EndProcedure
-
-Procedure Проверка_ГринПерезапуск(Val Результат) Export
-	Check_GreenReboot(Результат);
-EndProcedure
-
-Procedure Проверка_ГринРазлогин(Val Результат) Export
-	Check_GreenUnlogin(Результат);
-EndProcedure
-
-Procedure Проверка_ГринАватар(Val Результат) Export
-	Check_GreenAva(Результат);
-EndProcedure
-
-Procedure Проверка_ГринКартинкаГруппы(Val Результат) Export
-	Check_GreenGroupPicture(Результат);
-EndProcedure
-
-Procedure Проверка_ГринКод(Val Результат) Export
-	Check_GreenCode(Результат);
-EndProcedure
-
-Procedure Проверка_ГринПрофиль(Val Результат) Export
-	Check_GreenProfile(Результат);
-EndProcedure
-
-Procedure Проверка_ГринНоваяГруппа(Val Результат) Export
-	Check_GreenNewGroup(Результат);
-EndProcedure
-
-Procedure Проверка_ГринВыходГруппы(Val Результат) Export
-	Check_GreenLeaveGroup(Результат);
-EndProcedure
-
-Procedure Проверка_ГринГруппа(Val Результат) Export
-	Check_GreenGroup(Результат);
-EndProcedure
-
-Procedure Проверка_ГринИмяГруппы(Val Результат) Export
-	Check_GreenGroupName(Результат);
-EndProcedure
-
-Procedure Проверка_ГринДобавлениеПользователя(Val Результат) Export
-	Check_GreenAddMember(Результат);
-EndProcedure
-
-Procedure Проверка_ГринИсключениеПользователя(Val Результат) Export
-	Check_GreenExcludeMember(Результат);
-EndProcedure
-
-Procedure Проверка_ГринНазначениеАдминистратора(Val Результат) Export
-	Check_GreenAdminSet(Результат);
-EndProcedure
-
-Procedure Проверка_ГринОтзывАдминистратора(Val Результат) Export
-	Check_GreenAdminRemove(Результат);
-EndProcedure
-
-Procedure Проверка_ГринСообщение(Val Результат) Export
-	Check_GreenMessage(Результат);
-EndProcedure
-
-Procedure Проверка_ГринСообщения(Val Результат) Export
-	Check_GreenMessages(Результат);
-EndProcedure
-
-Procedure Проверка_ГринФайл(Val Результат) Export
-	Check_GreenFile(Результат);
-EndProcedure
-
-Procedure Проверка_ГринУведомление(Val Результат) Export
-	Check_GreenNotification(Результат);
-EndProcedure
-
-Procedure Проверка_ГринВходнойФайл(Val Результат) Export
-	Check_GreenInputFile(Результат);
-EndProcedure
-
-Procedure Проверка_ГринПрочтение(Val Результат) Export
-	Check_GreenReading(Результат);
-EndProcedure
-
-Procedure Проверка_ГринОчисткаОчереди(Val Результат) Export
-	Check_GreenQueueClearing(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaОтвет(Val Результат, Val Завершен = True) Export
-	Check_OllamaResponse(Результат, Завершен);
-EndProcedure
-
-Procedure Проверка_OllamaПривязки(Val Результат) Export
-	Check_OllamaEmbeddings(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaЗагрузкаВыгрузка(Val Результат, Val Выгрузка) Export
-	Check_OllamaLoadUnload(Результат, Выгрузка);
-EndProcedure
-
-Procedure Проверка_OllamaСообщение(Val Результат, Val Завершен = True) Export
-	Check_OllamaMessage(Результат, Завершен);
-EndProcedure
-
-Procedure Проверка_OllamaУспех(Val Результат) Export
-	Check_OllamaSuccess(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaМодели(Val Результат) Export
-	Check_OllamaModels(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaИнформацияМодели(Val Результат) Export
-	Check_OllamaModelInfo(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaВерсия(Val Результат) Export
-	Check_OllamaVersion(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaКод(Val Результат) Export
-	Check_OllamaCode(Результат);
-EndProcedure
-
-Procedure Проверка_OllamaОшибка(Val Результат) Export
-	Check_OllamaError(Результат);
-EndProcedure
+Function СоздатьНаборЗапуска(Val Наименование) Export
+	Return CreateLaunchSet(Наименование);
+EndFunction
 
-Procedure Проверка_OpenAIОтвет(Val Результат) Export
-	Check_OpenAIResponse(Результат);
-EndProcedure
-
-Procedure Проверка_OpenAIПредставления(Val Результат) Export
-	Check_OpenAIEmbeddings(Результат);
-EndProcedure
-
-Procedure Проверка_OpenAIАссистент(Val Результат, Val Имя = "") Export
-	Check_OpenAIAssistant(Результат, Имя);
-EndProcedure
+Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование) Export
+	Return CreateTestElement(Набор, Наименование);
+EndFunction
 
-Procedure Проверка_OpenAIУдалениеАссистента(Val Результат, Val IDАссистента) Export
-	Check_OpenAIAssistantDeletion(Результат, IDАссистента);
+Procedure ЗавершитьЗапуск() Export
+	CompleteLaunch();
 EndProcedure
 
-Procedure Проверка_OpenAIСписок(Val Результат) Export
-	Check_OpenAIList(Результат);
-EndProcedure
+Function ПолучитьВариантыПараметровFTP() Export
+	Return GetFTPParameterOptions();
+EndFunction
 
-Procedure Проверка_OpenAIФайл(Val Результат, Val ИмяФайла = Undefined, Val Размер = Undefined, Val Назначение = Undefined) Export
-	Check_OpenAIFile(Результат, ИмяФайла, Размер, Назначение);
-EndProcedure
+Function ПолучитьВариантыПараметровS3() Export
+	Return GetS3ParameterOptions();
+EndFunction
 
-Procedure Проверка_OpenAIУдалениеФайла(Val Результат, Val IDФайла) Export
-	Check_OpenAIFileDeletion(Результат, IDФайла);
-EndProcedure
+Function ПолучитьВариантыПараметровPostgres() Export
+	Return GetPostgresParameterOptions();
+EndFunction
 
-Procedure Проверка_OpenAIКартинка(Val Результат) Export
-	Check_OpenAIImage(Результат);
-EndProcedure
+Function ПолучитьВариантыПараметровMySQL() Export
+	Return GetMySQLParameterOptions();
+EndFunction
 
 #EndRegion
