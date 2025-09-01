@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
@@ -393,8 +393,6 @@
 
 Функция СформироватьТестыЯксCLI() Экспорт
 
-    Возврат Неопределено;
-
     Модуль        = ПолучитьОбщийМодуль("ЮТТесты");
     Разделы       = ПолучитьСоответствиеРазделовТестирования();
     ТаблицаТестов = ПолучитьТаблицуТестов();
@@ -715,7 +713,7 @@
 
     ЗаписатьПараметр("RPortal_MainLaunch", UUID);
 
-    Результат = OPI_ReportPortal.СоздатьЗапуск(URL, Токен, Проект, СтруктураЗапуска);
+    Результат = ReportPortal().СоздатьЗапуск(URL, Токен, Проект, СтруктураЗапуска);
     ID        = Результат["id"];
 
     СоздатьФайлЗапуска(ID);
@@ -751,7 +749,7 @@
     Если ЗначениеЗаполнено(ПоследнийНабор) Тогда
 
         СтруктураЗавершения = Новый Структура("endTime,launchUuid", ТекущаяДата, ПоследнийНабор);
-        OPI_ReportPortal.ЗавершитьЭлемент(URL, Токен, Проект, ПоследнийНабор, СтруктураЗавершения);
+        ReportPortal().ЗавершитьЭлемент(URL, Токен, Проект, ПоследнийНабор, СтруктураЗавершения);
 
     КонецЕсли;
 
@@ -764,7 +762,7 @@
     СтруктураЭлемента.Вставить("launchUuid" , Данные["id"]);
     СтруктураЭлемента.Вставить("uuid"       , UUID);
 
-    OPI_ReportPortal.СоздатьЭлемент(URL, Токен, Проект, СтруктураЭлемента);
+    ReportPortal().СоздатьЭлемент(URL, Токен, Проект, СтруктураЭлемента);
 
     СуществующиеНаборы.Вставить(Наименование, UUID);
 
@@ -801,7 +799,7 @@
     СтруктураЭлемента.Вставить("type"       , "step");
     СтруктураЭлемента.Вставить("launchUuid" , Данные["id"]);
 
-    OPI_ReportPortal.СоздатьЭлемент(URL, Токен, Проект, СтруктураЭлемента, Набор);
+    ReportPortal().СоздатьЭлемент(URL, Токен, Проект, СтруктураЭлемента, Набор);
 
     Возврат UUID;
 
@@ -823,12 +821,12 @@
         Если ЗначениеЗаполнено(ПоследнийНабор) Тогда
 
             СтруктураЗавершения = Новый Структура("endTime,launchUuid", ТекущаяДата, ПоследнийНабор);
-            OPI_ReportPortal.ЗавершитьЭлемент(URL, Токен, Проект, ПоследнийНабор, СтруктураЗавершения);
+            ReportPortal().ЗавершитьЭлемент(URL, Токен, Проект, ПоследнийНабор, СтруктураЗавершения);
 
         КонецЕсли;
 
-        СтруктураЗавершения = OPI_ReportPortal.ПолучитьСтруктуруЗавершенияЗапуска(ТекущаяДата);
-        OPI_ReportPortal.ЗавершитьЗапуск(URL, Токен, Проект, СуществующийЗапуск["id"], СтруктураЗавершения);
+        СтруктураЗавершения = ReportPortal().ПолучитьСтруктуруЗавершенияЗапуска(ТекущаяДата);
+        ReportPortal().ЗавершитьЗапуск(URL, Токен, Проект, СуществующийЗапуск["id"], СтруктураЗавершения);
 
         СуществующийЗапуск["ended"] = Истина;
         ЗаписатьФайлЗапуска(СуществующийЗапуск);
@@ -858,7 +856,7 @@
     СтруктураЛога.Вставить("message"   , Текст);
     СтруктураЛога.Вставить("level"     , Уровень);
 
-    OPI_ReportPortal.ЗаписатьЛог(URL, Токен, Проект, СтруктураЛога);
+    ReportPortal().ЗаписатьЛог(URL, Токен, Проект, СтруктураЛога);
 
 КонецПроцедуры
 
@@ -882,7 +880,7 @@
     СтруктураЭлемента.Вставить("launchUuid" , Данные["id"]);
     СтруктураЭлемента.Вставить("status"     , Статус);
 
-    OPI_ReportPortal.ЗавершитьЭлемент(URL, Токен, Проект, UUID, СтруктураЭлемента);
+    ReportPortal().ЗавершитьЭлемент(URL, Токен, Проект, UUID, СтруктураЭлемента);
 
 КонецПроцедуры
 
@@ -927,6 +925,22 @@
     Данные = OPI_Инструменты.ПрочитатьJSONФайл(ФайлЗапуска, Истина);
     Возврат Данные;
 
+КонецФункции
+
+Функция ReportPortal()
+    
+    // !OInt ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+    // !OInt МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+    // !OInt МассивПути.Удалить(МассивПути.ВГраница());
+    // !OInt МассивПути.Удалить(МассивПути.ВГраница());  
+    // !OInt МассивПути.Добавить("core");
+    // !OInt МассивПути.Добавить("Modules");
+    // !OInt МассивПути.Добавить("OPI_ReportPortal.os"); 
+    // !OInt ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
+    // !OInt OPI_ReportPortal = Новый("ReportPortal");
+    
+    Возврат OPI_ReportPortal;
+    
 КонецФункции
 
 #КонецОбласти
@@ -11130,7 +11144,7 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-
+    УстановитьБезопасныйРежим(Истина);
     Модуль = Вычислить(Имя);
     Возврат Модуль;
 КонецФункции
@@ -11633,115 +11647,3 @@
 КонецПроцедуры
 
 #КонецОбласти
-
-#Region Alternate
-
-Function GetTestingSectionMapping() Export
-	Return ПолучитьСоответствиеРазделовТестирования();
-EndFunction
-
-Function GetTestingSectionMappingGA() Export
-	Return ПолучитьСоответствиеРазделовТестированияGA();
-EndFunction
-
-Function GetTestTable() Export
-	Return ПолучитьТаблицуТестов();
-EndFunction
-
-Function ExpectsThat(Value) Export
-	Return ОжидаетЧто(Value);
-EndFunction
-
-Function FormYAXTests() Export
-	Return СформироватьТестыЯкс();
-EndFunction
-
-Function FormAssertsTests() Export
-	Return СформироватьТестыАссертс();
-EndFunction
-
-Function FormYAXTestsCLI() Export
-	Return СформироватьТестыЯксCLI();
-EndFunction
-
-Function FormAssertsTestsCLI() Export
-	Return СформироватьТестыАссертсCLI();
-EndFunction
-
-Function GetParameter(Parameter) Export
-	Return ПолучитьПараметр(Parameter);
-EndFunction
-
-Function GetBinary(Parameter) Export
-	Return ПолучитьДвоичные(Parameter);
-EndFunction
-
-Function GetFilePath(Val Path) Export
-	Return ПолучитьФайлПути(Path);
-EndFunction
-
-Function GetLocalhost() Export
-	Return ПолучитьLocalhost();
-EndFunction
-
-Procedure ParameterToCollection(Parameter, Collection) Export
-	ПараметрВКоллекцию(Parameter, Collection);
-EndProcedure
-
-Procedure BinaryToCollection(Parameter, Collection) Export
-	ДвоичныеВКоллекцию(Parameter, Collection);
-EndProcedure
-
-Procedure WriteParameter(Parameter, Value) Export
-	ЗаписатьПараметр(Parameter, Value);
-EndProcedure
-
-Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
-	ЗаписатьЛог(Result, Method, Library);
-EndProcedure
-
-Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
-	ЗаписатьЛогCLI(Result, Method, Library);
-EndProcedure
-
-Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
-	Return ВыполнитьТестCLI(Library, Method, Options, Record);
-EndFunction
-
-Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
-	ОбработатьРезультатТестирования(Result, Method, Library, Option, AddParam1, AddParam2, AddParam3);
-EndProcedure
-
-Function CreateReportPortalLaunch() Export
-	Return СоздатьЗапускReportPortal();
-EndFunction
-
-Function CreateLaunchSet(Val Name) Export
-	Return СоздатьНаборЗапуска(Name);
-EndFunction
-
-Function CreateTestElement(Val Set, Val Name) Export
-	Return СоздатьТестовыйЭлемент(Set, Name);
-EndFunction
-
-Procedure CompleteLaunch() Export
-	ЗавершитьЗапуск();
-EndProcedure
-
-Function GetFTPParameterOptions() Export
-	Return ПолучитьВариантыПараметровFTP();
-EndFunction
-
-Function GetS3ParameterOptions() Export
-	Return ПолучитьВариантыПараметровS3();
-EndFunction
-
-Function GetPostgresParameterOptions() Export
-	Return ПолучитьВариантыПараметровPostgres();
-EndFunction
-
-Function GetMySQLParameterOptions() Export
-	Return ПолучитьВариантыПараметровMySQL();
-EndFunction
-
-#EndRegion
