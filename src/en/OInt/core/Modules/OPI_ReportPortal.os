@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
 // Lib: ReportPortal
-// CLI: none
+// CLI: rportal
 // Keywords: reportportal
 
 // MIT License
