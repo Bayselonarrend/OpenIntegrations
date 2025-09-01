@@ -13,7 +13,7 @@
         TLSSettings = Undefined;
     EndIf;
 
-    Table   = "testtable";
-    Name = "new_field";
+    Table = "testtable";
+    Name  = "new_field";
 
     Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, ConnectionString, TLSSettings);
