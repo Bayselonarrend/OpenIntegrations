@@ -11738,7 +11738,7 @@ Function CreateTestElement(Val Set, Val Name) Export
 	Return СоздатьТестовыйЭлемент(Set, Name);
 EndFunction
 
-Procedure CompleteLaunch() Export
+Procedure FinishLaunch() Export
 	ЗавершитьЗапуск();
 EndProcedure
 

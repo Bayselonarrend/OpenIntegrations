@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 2
+description: Get log structure and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get log structure
+ Gets the parameter structure for log entry
+
+
+
+`Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | LaunchID | --launch | String | &#x2714; | Launch ID to which the test item belongs |
+  | ElementID | --id | String | &#x2714; | Test item ID |
+  | Time | --time | Date | &#x2714; | Log entry date and time |
+  | Text | --text | String | &#x2716; | Log text information |
+  | Level | --level | String | &#x2716; | Information level: error, warn, info, debug, trace, fatal, unknown |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
