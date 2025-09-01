@@ -83,7 +83,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Ollama"         , 5);
     Sections.Insert("HTTPClient"     , 5);
     Sections.Insert("OpenAI"         , 5);
-    Sections.Insert("ReportPortal" , 5);
+    Sections.Insert("ReportPortal"   , 5);
 
     Return Sections;
 
@@ -126,7 +126,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ollama"         , StandardDependencies);
     Sections.Insert("HTTPClient"     , StandardDependencies);
     Sections.Insert("OpenAI"         , StandardDependencies);
-    Sections.Insert("ReportPortal" , StandardDependencies);
+    Sections.Insert("ReportPortal"   , StandardDependencies);
 
     Return Sections;
 
@@ -165,7 +165,7 @@ Function GetTestTable() Export
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
     FTP       = "FTP";
-    RPortal      = "ReportPortal";
+    RPortal   = "ReportPortal";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -334,7 +334,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_DirecotryManagement"               , "Directory management"            , FTP);
     NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
-    NewTest(TestTable, "RPortal_Authorization" , "Authorization" , RPortal);
+    NewTest(TestTable, "RPortal_Authorization"                , "Authorization"                   , RPortal);
 
     Return TestTable;
 
@@ -392,8 +392,6 @@ Function FormAssertsTests() Export
 EndFunction
 
 Function FormYAXTestsCLI() Export
-
-    Return Undefined;
 
     Module    = GetCommonModule("ЮТТесты");
     Sections  = GetTestingSectionMapping();
@@ -701,9 +699,9 @@ Function CreateReportPortalLaunch() Export
 
     OperatingSystem = String(SystemInfo.PlatformType);
     CurrentDateString = Format(CurrentDate, "DF=yyyy-MM-dd");
-    Platform           = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
-    UUID               = String(New UUID);
-    OPIVersion         = OPI_Tools.OPIVersion();
+    Platform        = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
+    UUID            = String(New UUID);
+    OPIVersion      = OPI_Tools.OPIVersion();
 
     LaunchName = StrTemplate("%1 | %2 | %3 | %4", CurrentDateString, OPIVersion, Platform, OperatingSystem);
 
@@ -837,22 +835,6 @@ Procedure CompleteLaunch() Export
 
 EndProcedure
 
-Функция ReportPortal()
-    
-    ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
-    МассивПути     = СтрРазделить(ТекущийКаталог, "/");
-    МассивПути.Удалить(МассивПути.ВГраница());
-    МассивПути.Удалить(МассивПути.ВГраница());  
-    МассивПути.Добавить("core");
-    МассивПути.Добавить("Modules");
-    МассивПути.Добавить("OPI_ReportPortal.os"); 
-    ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
-    OPI_ReportPortal = Новый("ReportPortal");
-    
-    Возврат OPI_ReportPortal;
-    
-КонецФункции
-
 Procedure WriteTestLog(Val Test, Val Text, Val Level)
 
     Data = GetExistingLaunch();
@@ -942,6 +924,22 @@ Function ReadLaunchFile()
 
     Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
     Return Data;
+
+EndFunction
+
+Function ReportPortal()
+
+    CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
+    PathArray        = StrSplit(CurrentDirectory, "/");
+    PathArray.Delete(PathArray.UBound());
+    PathArray.Delete(PathArray.UBound());
+    PathArray.Add("core");
+    PathArray.Add("Modules");
+    PathArray.Add("OPI_ReportPortal.os");
+    AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
+    OPI_ReportPortal = New("ReportPortal");
+
+    Return OPI_ReportPortal;
 
 EndFunction
 
