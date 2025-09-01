@@ -29139,7 +29139,12 @@ Procedure ReportPortal_GetTemporaryToken(FunctionParameters)
     Login    = FunctionParameters["RPortal_Login"];
     Password = FunctionParameters["RPortal_Password"];
 
-    Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);
+    Опции = Новый Структура;
+    Опции.Вставить("", URL);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "GetTemporaryToken", Опции);
 
     // END
 
@@ -29154,7 +29159,13 @@ Procedure ReportPortal_GetPermanentToken(FunctionParameters)
     UserID  = FunctionParameters["RPortal_UserID"];
     KeyName = "test_key";
 
-    Result = OPI_ReportPortal.GetPermanentToken(URL, Token, UserID, KeyName);
+    Опции = Новый Структура;
+    Опции.Вставить("", URL);
+    Опции.Вставить("", Token);
+    Опции.Вставить("", UserID);
+    Опции.Вставить("", KeyName);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "GetPermanentToken", Опции);
 
     // END
 
@@ -29169,7 +29180,13 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
     UserID = FunctionParameters["RPortal_UserID"];
     KeyID  = FunctionParameters["RPortal_TestKeyID"];
 
-    Result = OPI_ReportPortal.DeletePermanentToken(URL, Token, UserID, KeyID);
+    Опции = Новый Структура;
+    Опции.Вставить("", URL);
+    Опции.Вставить("", Token);
+    Опции.Вставить("", UserID);
+    Опции.Вставить("", KeyID);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "DeletePermanentToken", Опции);
 
     // END
 

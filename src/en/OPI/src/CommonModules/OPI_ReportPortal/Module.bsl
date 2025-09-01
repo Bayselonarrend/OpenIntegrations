@@ -46,6 +46,16 @@
 
 #Region Authorization
 
+// Get temporary token
+// Gets a temporary token based on login and password
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Login - String - Users login - login
+// Password - String - Users password - pass
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function GetTemporaryToken(Val URL, Val Login, Val Password) Export
 
     OPI_TypeConversion.GetLine(Login);
@@ -65,6 +75,17 @@ Function GetTemporaryToken(Val URL, Val Login, Val Password) Export
 
 EndFunction
 
+// Get permanent token
+// Creates a permanent ReportPortal user token
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// UserID - String - User ID - user
+// KeyName - String - Token name - name
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function GetPermanentToken(Val URL, Val Token, Val UserID, Val KeyName) Export
 
     OPI_TypeConversion.GetLine(UserID);
@@ -81,6 +102,17 @@ Function GetPermanentToken(Val URL, Val Token, Val UserID, Val KeyName) Export
 
 EndFunction
 
+// Delete permanent token
+// Deletes a previously created user token
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// UserID - String - User ID - user
+// KeyID - String - Token ID - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function DeletePermanentToken(Val URL, Val Token, Val UserID, Val KeyID) Export
 
     OPI_TypeConversion.GetLine(UserID);
@@ -100,6 +132,17 @@ EndFunction
 
 #Region ResultsManagement
 
+// Create launch
+// Starts a new test execution session
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// Project - String - Project ID - proj
+// LaunchStructure - Structure Of KeyAndValue - Launch parameters. See GetLaunchStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Export
 
     ErrorText = "Launch structure is not a valid KeyValue collection";
@@ -117,7 +160,19 @@ Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Expo
 
 EndFunction
 
-Function CreateElement(Val URL, Val Token, Val Project, Val ElementStructure, Val Parent = "") Export
+// Create item
+// Creates a new test item
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// Project - String - Project ID - proj
+// ElementStructure - Structure Of KeyAndValue - Item parameters. See GetItemStructure - params
+// Parent - String - ID of the parent item, if necessary - parent
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function CreateItem(Val URL, Val Token, Val Project, Val ElementStructure, Val Parent = "") Export
 
     ErrorText = "Element structure is not a valid KeyValue collection";
 
@@ -137,7 +192,19 @@ Function CreateElement(Val URL, Val Token, Val Project, Val ElementStructure, Va
 
 EndFunction
 
-Function CompleteLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val FinishStructure) Export
+// Finish launch
+// Ends a previously started test execution session
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// Project - String - Project ID - proj
+// LaunchID - String - Launch ID - id
+// FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetLaunchCompletionStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function FinishLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val FinishStructure) Export
 
     ErrorText = "Completion structure is not a valid KeyValue collection";
 
@@ -155,7 +222,19 @@ Function CompleteLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val Finis
 
 EndFunction
 
-Function FinishElement(Val URL, Val Token, Val Project, Val ElementID, Val FinishStructure) Export
+// Finish item
+// Ends a previously created test item
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// Project - String - Project ID - proj
+// ElementID - String - Element ID - id
+// FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetItemCompletionStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function FinishItem(Val URL, Val Token, Val Project, Val ElementID, Val FinishStructure) Export
 
     ErrorText = "Completion structure is not a valid KeyValue collection";
 
@@ -173,6 +252,15 @@ Function FinishElement(Val URL, Val Token, Val Project, Val ElementID, Val Finis
 
 EndFunction
 
+// Get launch structure
+// Gets the launch parameters structure
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns the filter fields as a map - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
 Function GetLaunchStructure(Val Clear = False, Val AsMap = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
@@ -202,7 +290,16 @@ Function GetLaunchStructure(Val Clear = False, Val AsMap = False) Export
 
 EndFunction
 
-Function GetElementStructure(Val Clear = False, Val AsMap = False) Export
+// Get item structure
+// Gets the test item parameter structure
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns the filter fields as a map - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetItemStructure(Val Clear = False, Val AsMap = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
     OPI_TypeConversion.GetBoolean(AsMap);
@@ -233,7 +330,16 @@ Function GetElementStructure(Val Clear = False, Val AsMap = False) Export
 
 EndFunction
 
-Function GetElementCompletionStructure(Val Clear = False, Val AsMap = False) Export
+// Get item completion structure
+// Gets the parameter structure for completing the test item execution
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns the filter fields as a map - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetItemCompletionStructure(Val Clear = False, Val AsMap = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
     OPI_TypeConversion.GetBoolean(AsMap);
@@ -261,6 +367,17 @@ Function GetElementCompletionStructure(Val Clear = False, Val AsMap = False) Exp
 
 EndFunction
 
+// Get launch completion structure
+// Gets the parameter structure for completing a test session
+//
+// Parameters:
+// Time - Date - Launch end date and time - end
+// Status - String - Completion status: passed, failed, stopped, skipped, interrupted, cancelled - status
+// Description - String - Launch description. Overwrites the one specified during creation - descr
+// Attributes - String - Launch attributes. Overwrites the one specified during creation - attr
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
 Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export
 
     FinishStructure = New Structure;
@@ -277,6 +394,17 @@ EndFunction
 
 #Region LogRecording
 
+// Write log
+// Adds execution information for the test item
+//
+// Parameters:
+// URL - String - ReportPortal server URL - url
+// Token - String - Access token - token
+// Project - String - Project ID - proj
+// LogStructure - Structure Of KeyAndValue - Execution information. See GetLogStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
 
     ErrorText = "Log structure is not a valid KeyValue collection";
@@ -294,6 +422,18 @@ Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
 
 EndFunction
 
+// Get log structure
+// Gets the parameter structure for log entry
+//
+// Parameters:
+// LaunchID - String - Launch ID to which the test item belongs - launch
+// ElementID - String - Test item ID - id
+// Time - Date - Log entry date and time - time
+// Text - String - Log text information - text
+// Level - String - Information level: error, warn, info, debug, trace, fatal, unknown - level
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
 Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export
 
     LogStructure = New Structure;

@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 3
+description: Delete permanent token and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete permanent token
+ Deletes a previously created user token
+
+
+
+`Function DeletePermanentToken(Val URL, Val Token, Val UserID, Val KeyID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | UserID | --user | String | &#x2714; | User ID |
+  | KeyID | --id | String | &#x2714; | Token ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL    = "tests.openintegrations.dev";
+    Token  = "test-key_0EadN7hpR7KacTw1XqZk6t783S6...";
+    UserID = "1";
+    KeyID  = "...";
+
+    Result = OPI_ReportPortal.DeletePermanentToken(URL, Token, UserID, KeyID);
+```
+ 
+
+
+
+

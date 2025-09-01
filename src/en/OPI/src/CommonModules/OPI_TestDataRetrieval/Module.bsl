@@ -692,7 +692,7 @@ Function CreateReportPortalLaunch() Export
     Project = GetParameter("RPortal_MainProject");
     URL     = GetParameter("RPortal_URL");
 
-    CompleteLaunch();
+    FinishLaunch();
 
     CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
     SystemInfo  = New SystemInfo;
@@ -749,7 +749,7 @@ Function CreateLaunchSet(Val Name) Export
     If ValueIsFilled(LastSet) Then
 
         FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-        ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
+        ReportPortal().FinishItem(URL, Token, Project, LastSet, FinishStructure);
 
     EndIf;
 
@@ -762,7 +762,7 @@ Function CreateLaunchSet(Val Name) Export
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("uuid"       , UUID);
 
-    ReportPortal().CreateElement(URL, Token, Project, ElementStructure);
+    ReportPortal().CreateItem(URL, Token, Project, ElementStructure);
 
     ExistingSets.Insert(Name, UUID);
 
@@ -799,13 +799,13 @@ Function CreateTestElement(Val Set, Val Name) Export
     ElementStructure.Insert("type"       , "step");
     ElementStructure.Insert("launchUuid" , Data["id"]);
 
-    ReportPortal().CreateElement(URL, Token, Project, ElementStructure, Set);
+    ReportPortal().CreateItem(URL, Token, Project, ElementStructure, Set);
 
     Return UUID;
 
 EndFunction
 
-Procedure CompleteLaunch() Export
+Procedure FinishLaunch() Export
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -821,12 +821,12 @@ Procedure CompleteLaunch() Export
         If ValueIsFilled(LastSet) Then
 
             FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-            ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
+            ReportPortal().FinishItem(URL, Token, Project, LastSet, FinishStructure);
 
         EndIf;
 
         FinishStructure = ReportPortal().GetLaunchCompletionStructure(CurrentDate);
-        ReportPortal().CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
+        ReportPortal().FinishLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
 
         ExistingLaunch["ended"] = True;
         WriteLaunchFile(ExistingLaunch);
@@ -880,7 +880,7 @@ Procedure FinishTestElement(Val UUID, Val Status)
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("status"     , Status);
 
-    ReportPortal().FinishElement(URL, Token, Project, UUID, ElementStructure);
+    ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
 
 EndProcedure
 
