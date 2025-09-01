@@ -715,7 +715,7 @@ Function CreateReportPortalLaunch() Export
 
     WriteParameter("RPortal_MainLaunch", UUID);
 
-    Result = OPI_ReportPortal.CreateLaunch(URL, Token, Project, LaunchStructure);
+    Result = ReportPortal().CreateLaunch(URL, Token, Project, LaunchStructure);
     ID     = Result["id"];
 
     CreateLaunchFile(ID);
@@ -751,7 +751,7 @@ Function CreateLaunchSet(Val Name) Export
     If ValueIsFilled(LastSet) Then
 
         FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-        OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+        ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
 
     EndIf;
 
@@ -764,7 +764,7 @@ Function CreateLaunchSet(Val Name) Export
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("uuid"       , UUID);
 
-    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure);
+    ReportPortal().CreateElement(URL, Token, Project, ElementStructure);
 
     ExistingSets.Insert(Name, UUID);
 
@@ -801,7 +801,7 @@ Function CreateTestElement(Val Set, Val Name) Export
     ElementStructure.Insert("type"       , "step");
     ElementStructure.Insert("launchUuid" , Data["id"]);
 
-    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure, Set);
+    ReportPortal().CreateElement(URL, Token, Project, ElementStructure, Set);
 
     Return UUID;
 
@@ -823,12 +823,12 @@ Procedure CompleteLaunch() Export
         If ValueIsFilled(LastSet) Then
 
             FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-            OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+            ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
 
         EndIf;
 
-        FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(CurrentDate);
-        OPI_ReportPortal.CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
+        FinishStructure = ReportPortal().GetLaunchCompletionStructure(CurrentDate);
+        ReportPortal().CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
 
         ExistingLaunch["ended"] = True;
         WriteLaunchFile(ExistingLaunch);
@@ -836,6 +836,22 @@ Procedure CompleteLaunch() Export
     EndIf;
 
 EndProcedure
+
+Функция ReportPortal()
+    
+    ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+    МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+    МассивПути.Удалить(МассивПути.ВГраница());
+    МассивПути.Удалить(МассивПути.ВГраница());  
+    МассивПути.Добавить("core");
+    МассивПути.Добавить("Modules");
+    МассивПути.Добавить("OPI_ReportPortal.os"); 
+    ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
+    OPI_ReportPortal = Новый("ReportPortal");
+    
+    Возврат OPI_ReportPortal;
+    
+КонецФункции
 
 Procedure WriteTestLog(Val Test, Val Text, Val Level)
 
@@ -858,7 +874,7 @@ Procedure WriteTestLog(Val Test, Val Text, Val Level)
     LogStructure.Insert("message"   , Text);
     LogStructure.Insert("level"     , Level);
 
-    OPI_ReportPortal.WriteLog(URL, Token, Project, LogStructure);
+    ReportPortal().WriteLog(URL, Token, Project, LogStructure);
 
 EndProcedure
 
@@ -882,7 +898,7 @@ Procedure FinishTestElement(Val UUID, Val Status)
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("status"     , Status);
 
-    OPI_ReportPortal.FinishElement(URL, Token, Project, UUID, ElementStructure);
+    ReportPortal().FinishElement(URL, Token, Project, UUID, ElementStructure);
 
 EndProcedure
 
