@@ -83,7 +83,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Ollama"         , 5);
     Sections.Insert("HTTPClient"     , 5);
     Sections.Insert("OpenAI"         , 5);
-    Sections.Insert("ReportPortal" , 5);
+    Sections.Insert("ReportPortal"   , 5);
 
     Return Sections;
 
@@ -126,7 +126,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Ollama"         , StandardDependencies);
     Sections.Insert("HTTPClient"     , StandardDependencies);
     Sections.Insert("OpenAI"         , StandardDependencies);
-    Sections.Insert("ReportPortal" , StandardDependencies);
+    Sections.Insert("ReportPortal"   , StandardDependencies);
 
     Return Sections;
 
@@ -165,7 +165,7 @@ Function GetTestTable() Export
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
     FTP       = "FTP";
-    RPortal      = "ReportPortal";
+    RPortal   = "ReportPortal";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -334,7 +334,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_DirecotryManagement"               , "Directory management"            , FTP);
     NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
-    NewTest(TestTable, "RPortal_Authorization" , "Authorization" , RPortal);
+    NewTest(TestTable, "RPortal_Authorization"                , "Authorization"                   , RPortal);
 
     Return TestTable;
 
@@ -392,8 +392,6 @@ Function FormAssertsTests() Export
 EndFunction
 
 Function FormYAXTestsCLI() Export
-
-    Return Undefined;
 
     Module    = GetCommonModule("ЮТТесты");
     Sections  = GetTestingSectionMapping();
@@ -701,9 +699,9 @@ Function CreateReportPortalLaunch() Export
 
     OperatingSystem = String(SystemInfo.PlatformType);
     CurrentDateString = Format(CurrentDate, "DF=yyyy-MM-dd");
-    Platform           = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
-    UUID               = String(New UUID);
-    OPIVersion         = OPI_Tools.OPIVersion();
+    Platform        = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
+    UUID            = String(New UUID);
+    OPIVersion      = OPI_Tools.OPIVersion();
 
     LaunchName = StrTemplate("%1 | %2 | %3 | %4", CurrentDateString, OPIVersion, Platform, OperatingSystem);
 
@@ -715,7 +713,7 @@ Function CreateReportPortalLaunch() Export
 
     WriteParameter("RPortal_MainLaunch", UUID);
 
-    Result = OPI_ReportPortal.CreateLaunch(URL, Token, Project, LaunchStructure);
+    Result = ReportPortal().CreateLaunch(URL, Token, Project, LaunchStructure);
     ID     = Result["id"];
 
     CreateLaunchFile(ID);
@@ -751,7 +749,7 @@ Function CreateLaunchSet(Val Name) Export
     If ValueIsFilled(LastSet) Then
 
         FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-        OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+        ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
 
     EndIf;
 
@@ -764,7 +762,7 @@ Function CreateLaunchSet(Val Name) Export
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("uuid"       , UUID);
 
-    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure);
+    ReportPortal().CreateElement(URL, Token, Project, ElementStructure);
 
     ExistingSets.Insert(Name, UUID);
 
@@ -801,7 +799,7 @@ Function CreateTestElement(Val Set, Val Name) Export
     ElementStructure.Insert("type"       , "step");
     ElementStructure.Insert("launchUuid" , Data["id"]);
 
-    OPI_ReportPortal.CreateElement(URL, Token, Project, ElementStructure, Set);
+    ReportPortal().CreateElement(URL, Token, Project, ElementStructure, Set);
 
     Return UUID;
 
@@ -823,12 +821,12 @@ Procedure CompleteLaunch() Export
         If ValueIsFilled(LastSet) Then
 
             FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-            OPI_ReportPortal.FinishElement(URL, Token, Project, LastSet, FinishStructure);
+            ReportPortal().FinishElement(URL, Token, Project, LastSet, FinishStructure);
 
         EndIf;
 
-        FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(CurrentDate);
-        OPI_ReportPortal.CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
+        FinishStructure = ReportPortal().GetLaunchCompletionStructure(CurrentDate);
+        ReportPortal().CompleteLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
 
         ExistingLaunch["ended"] = True;
         WriteLaunchFile(ExistingLaunch);
@@ -858,7 +856,7 @@ Procedure WriteTestLog(Val Test, Val Text, Val Level)
     LogStructure.Insert("message"   , Text);
     LogStructure.Insert("level"     , Level);
 
-    OPI_ReportPortal.WriteLog(URL, Token, Project, LogStructure);
+    ReportPortal().WriteLog(URL, Token, Project, LogStructure);
 
 EndProcedure
 
@@ -882,7 +880,7 @@ Procedure FinishTestElement(Val UUID, Val Status)
     ElementStructure.Insert("launchUuid" , Data["id"]);
     ElementStructure.Insert("status"     , Status);
 
-    OPI_ReportPortal.FinishElement(URL, Token, Project, UUID, ElementStructure);
+    ReportPortal().FinishElement(URL, Token, Project, UUID, ElementStructure);
 
 EndProcedure
 
@@ -926,6 +924,22 @@ Function ReadLaunchFile()
 
     Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
     Return Data;
+
+EndFunction
+
+Function ReportPortal()
+
+    // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
+    // !OInt PathArray = StrSplit(CurrentDirectory, "/");
+    // !OInt PathArray.Delete(PathArray.UBound());
+    // !OInt PathArray.Delete(PathArray.UBound());
+    // !OInt PathArray.Add("core");
+    // !OInt PathArray.Add("Modules");
+    // !OInt PathArray.Add("OPI_ReportPortal.os");
+    // !OInt AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
+    // !OInt OPI_ReportPortal = New("ReportPortal");
+
+    Return OPI_ReportPortal;
 
 EndFunction
 

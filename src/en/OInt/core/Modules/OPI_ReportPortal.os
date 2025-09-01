@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
+// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
 // Lib: ReportPortal
 // CLI: none
 // Keywords: reportportal
@@ -331,6 +331,62 @@ Function GetAuthorizationHeader(Val Token)
 
     Return Headers;
 
+EndFunction
+
+#EndRegion
+
+#Region Alternate
+
+Function ПолучитьВременныйТокен(Val URL, Val Логин, Val Пароль) Export
+	Return GetTemporaryToken(URL, Логин, Пароль);
+EndFunction
+
+Function ПолучитьПостоянныйТокен(Val URL, Val Токен, Val IDПользователя, Val ИмяКлюча) Export
+	Return GetPermanentToken(URL, Токен, IDПользователя, ИмяКлюча);
+EndFunction
+
+Function УдалитьПостоянныйТокен(Val URL, Val Токен, Val IDПользователя, Val IDКлюча) Export
+	Return DeletePermanentToken(URL, Токен, IDПользователя, IDКлюча);
+EndFunction
+
+Function СоздатьЗапуск(Val URL, Val Токен, Val Проект, Val СтруктураЗапуска) Export
+	Return CreateLaunch(URL, Токен, Проект, СтруктураЗапуска);
+EndFunction
+
+Function СоздатьЭлемент(Val URL, Val Токен, Val Проект, Val СтруктураЭлемента, Val Родитель = "") Export
+	Return CreateElement(URL, Токен, Проект, СтруктураЭлемента, Родитель);
+EndFunction
+
+Function ЗавершитьЗапуск(Val URL, Val Токен, Val Проект, Val IDЗапуска, Val СтруктураЗавершения) Export
+	Return CompleteLaunch(URL, Токен, Проект, IDЗапуска, СтруктураЗавершения);
+EndFunction
+
+Function ЗавершитьЭлемент(Val URL, Val Токен, Val Проект, Val IDЭлемента, Val СтруктураЗавершения) Export
+	Return FinishElement(URL, Токен, Проект, IDЭлемента, СтруктураЗавершения);
+EndFunction
+
+Function ПолучитьСтруктуруЗапуска(Val Пустая = False, Val КакСоответствие = False) Export
+	Return GetLaunchStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСтруктуруЭлемента(Val Пустая = False, Val КакСоответствие = False) Export
+	Return GetElementStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСтруктуруЗавершенияЭлемента(Val Пустая = False, Val КакСоответствие = False) Export
+	Return GetElementCompletionStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСтруктуруЗавершенияЗапуска(Val Время, Val Статус = "", Val Описание = "", Val Артибуты = "") Export
+	Return GetLaunchCompletionStructure(Время, Статус, Описание, Артибуты);
+EndFunction
+
+Function ЗаписатьЛог(Val URL, Val Токен, Val Проект, Val СтруктураЛога) Export
+	Return WriteLog(URL, Токен, Проект, СтруктураЛога);
+EndFunction
+
+Function ПолучитьСтруктуруЛога(Val IDЗапуска, Val IDЭлемента, Val Время, Val Текст = "", Val Уровень = "info") Export
+	Return GetLogStructure(IDЗапуска, IDЭлемента, Время, Текст, Уровень);
 EndFunction
 
 #EndRegion

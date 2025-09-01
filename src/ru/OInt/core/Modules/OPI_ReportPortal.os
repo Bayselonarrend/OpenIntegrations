@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
+// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
 // Lib: ReportPortal
 // CLI: none
 // Keywords: reportportal
@@ -334,3 +334,59 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetTemporaryToken(Val URL, Val Login, Val Password) Export
+	Return ПолучитьВременныйТокен(URL, Login, Password);
+EndFunction
+
+Function GetPermanentToken(Val URL, Val Token, Val UserID, Val KeyName) Export
+	Return ПолучитьПостоянныйТокен(URL, Token, UserID, KeyName);
+EndFunction
+
+Function DeletePermanentToken(Val URL, Val Token, Val UserID, Val KeyID) Export
+	Return УдалитьПостоянныйТокен(URL, Token, UserID, KeyID);
+EndFunction
+
+Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Export
+	Return СоздатьЗапуск(URL, Token, Project, LaunchStructure);
+EndFunction
+
+Function CreateElement(Val URL, Val Token, Val Project, Val ElementStructure, Val Parent = "") Export
+	Return СоздатьЭлемент(URL, Token, Project, ElementStructure, Parent);
+EndFunction
+
+Function CompleteLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val FinishStructure) Export
+	Return ЗавершитьЗапуск(URL, Token, Project, LaunchID, FinishStructure);
+EndFunction
+
+Function FinishElement(Val URL, Val Token, Val Project, Val ElementID, Val FinishStructure) Export
+	Return ЗавершитьЭлемент(URL, Token, Project, ElementID, FinishStructure);
+EndFunction
+
+Function GetLaunchStructure(Val Clear = False, Val AsMap = False) Export
+	Return ПолучитьСтруктуруЗапуска(Clear, AsMap);
+EndFunction
+
+Function GetElementStructure(Val Clear = False, Val AsMap = False) Export
+	Return ПолучитьСтруктуруЭлемента(Clear, AsMap);
+EndFunction
+
+Function GetElementCompletionStructure(Val Clear = False, Val AsMap = False) Export
+	Return ПолучитьСтруктуруЗавершенияЭлемента(Clear, AsMap);
+EndFunction
+
+Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export
+	Return ПолучитьСтруктуруЗавершенияЗапуска(Time, Status, Description, Attributes);
+EndFunction
+
+Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
+	Return ЗаписатьЛог(URL, Token, Project, LogStructure);
+EndFunction
+
+Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export
+	Return ПолучитьСтруктуруЛога(LaunchID, ElementID, Time, Text, Level);
+EndFunction
+
+#EndRegion

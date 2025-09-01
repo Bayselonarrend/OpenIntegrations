@@ -665,6 +665,13 @@ pipeline {
 			}
 			}
 		}
+		stage('Testing-ReportPortal') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "RPortal_Authorization"')
+			}
+			}
+		}
 
 	}
 	post{

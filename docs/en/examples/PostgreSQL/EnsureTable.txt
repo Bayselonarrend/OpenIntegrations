@@ -1,7 +1,7 @@
 ﻿    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
     Password = "12we...";
-    Base        = "testbase1";
+    Base     = "testbase1";
 
     TLS = True;
     Port = 5432;

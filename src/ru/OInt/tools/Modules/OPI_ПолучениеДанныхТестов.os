@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
@@ -165,7 +165,7 @@
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
     FTP       = "FTP";
-    RPortal      = "ReportPortal";
+    RPortal   = "ReportPortal";
 
     ТаблицаТестов = Новый ТаблицаЗначений;
     ТаблицаТестов.Колонки.Добавить("Метод");
@@ -699,9 +699,9 @@
 
     ОперационнаяСистема = Строка(СистемнаяИнформация.ТипПлатформы);
     ТекущаяДатаСтрока   = Формат(ТекущаяДата, "ДФ=yyyy-MM-dd");
-    Платформа              = ?(OPI_Инструменты.ЭтоOneScript(), "OneScript", "1C:Enterprise");
-    UUID                   = Строка(Новый УникальныйИдентификатор);
-    ВерсияОПИ              = OPI_Инструменты.ВерсияОПИ();
+    Платформа           = ?(OPI_Инструменты.ЭтоOneScript(), "OneScript", "1C:Enterprise");
+    UUID                = Строка(Новый УникальныйИдентификатор);
+    ВерсияОПИ           = OPI_Инструменты.ВерсияОПИ();
 
     ИмяЗапуска = СтрШаблон("%1 | %2 | %3 | %4", ТекущаяДатаСтрока, ВерсияОПИ, Платформа, ОперационнаяСистема);
 
@@ -928,19 +928,19 @@
 КонецФункции
 
 Функция ReportPortal()
-    
-    ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
-    МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+
+    ТекущийКаталог   = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+    МассивПути       = СтрРазделить(ТекущийКаталог, "/");
     МассивПути.Удалить(МассивПути.ВГраница());
-    МассивПути.Удалить(МассивПути.ВГраница());  
+    МассивПути.Удалить(МассивПути.ВГраница());
     МассивПути.Добавить("core");
     МассивПути.Добавить("Modules");
-    МассивПути.Добавить("OPI_ReportPortal.os"); 
+    МассивПути.Добавить("OPI_ReportPortal.os");
     ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
     OPI_ReportPortal = Новый("ReportPortal");
-    
+
     Возврат OPI_ReportPortal;
-    
+
 КонецФункции
 
 #КонецОбласти
@@ -11144,6 +11144,7 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
+
     Модуль = Вычислить(Имя);
     Возврат Модуль;
 КонецФункции
@@ -11646,3 +11647,115 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetTestingSectionMapping() Export
+	Return ПолучитьСоответствиеРазделовТестирования();
+EndFunction
+
+Function GetTestingSectionMappingGA() Export
+	Return ПолучитьСоответствиеРазделовТестированияGA();
+EndFunction
+
+Function GetTestTable() Export
+	Return ПолучитьТаблицуТестов();
+EndFunction
+
+Function ExpectsThat(Value) Export
+	Return ОжидаетЧто(Value);
+EndFunction
+
+Function FormYAXTests() Export
+	Return СформироватьТестыЯкс();
+EndFunction
+
+Function FormAssertsTests() Export
+	Return СформироватьТестыАссертс();
+EndFunction
+
+Function FormYAXTestsCLI() Export
+	Return СформироватьТестыЯксCLI();
+EndFunction
+
+Function FormAssertsTestsCLI() Export
+	Return СформироватьТестыАссертсCLI();
+EndFunction
+
+Function GetParameter(Parameter) Export
+	Return ПолучитьПараметр(Parameter);
+EndFunction
+
+Function GetBinary(Parameter) Export
+	Return ПолучитьДвоичные(Parameter);
+EndFunction
+
+Function GetFilePath(Val Path) Export
+	Return ПолучитьФайлПути(Path);
+EndFunction
+
+Function GetLocalhost() Export
+	Return ПолучитьLocalhost();
+EndFunction
+
+Procedure ParameterToCollection(Parameter, Collection) Export
+	ПараметрВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure BinaryToCollection(Parameter, Collection) Export
+	ДвоичныеВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure WriteParameter(Parameter, Value) Export
+	ЗаписатьПараметр(Parameter, Value);
+EndProcedure
+
+Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
+	ЗаписатьЛог(Result, Method, Library);
+EndProcedure
+
+Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
+	ЗаписатьЛогCLI(Result, Method, Library);
+EndProcedure
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+	Return ВыполнитьТестCLI(Library, Method, Options, Record);
+EndFunction
+
+Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+	ОбработатьРезультатТестирования(Result, Method, Library, Option, AddParam1, AddParam2, AddParam3);
+EndProcedure
+
+Function CreateReportPortalLaunch() Export
+	Return СоздатьЗапускReportPortal();
+EndFunction
+
+Function CreateLaunchSet(Val Name) Export
+	Return СоздатьНаборЗапуска(Name);
+EndFunction
+
+Function CreateTestElement(Val Set, Val Name) Export
+	Return СоздатьТестовыйЭлемент(Set, Name);
+EndFunction
+
+Procedure CompleteLaunch() Export
+	ЗавершитьЗапуск();
+EndProcedure
+
+Function GetFTPParameterOptions() Export
+	Return ПолучитьВариантыПараметровFTP();
+EndFunction
+
+Function GetS3ParameterOptions() Export
+	Return ПолучитьВариантыПараметровS3();
+EndFunction
+
+Function GetPostgresParameterOptions() Export
+	Return ПолучитьВариантыПараметровPostgres();
+EndFunction
+
+Function GetMySQLParameterOptions() Export
+	Return ПолучитьВариантыПараметровMySQL();
+EndFunction
+
+#EndRegion

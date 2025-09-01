@@ -2932,7 +2932,7 @@ Procedure RPortal_Authorization() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Login", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Login"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("RPortal_Password", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("RPortal_UserID"  , TestParameters);
 
@@ -21843,8 +21843,8 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Table   = "testtable";
-    Name = "new_field";
+    Table = "testtable";
+    Name  = "new_field";
 
     Опции = Новый Структура;
     Опции.Вставить("", Table);
@@ -21874,7 +21874,7 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
-    Base        = "testbase1";
+    Base     = "testbase1";
 
     TLS = True;
     TLS = FunctionParameters["TLS"]; // SKIP

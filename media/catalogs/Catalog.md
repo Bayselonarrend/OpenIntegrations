@@ -16,6 +16,7 @@
 |![Ozon](../Ozon.png)| `Ozon`| ozon, seller api |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
+|![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![S3](../S3.png)| `S3`| s3, minio, aws, simple storage service |
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
@@ -26,4 +27,3 @@
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
-|![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
