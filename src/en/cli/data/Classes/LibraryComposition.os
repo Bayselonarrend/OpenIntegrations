@@ -43,6 +43,7 @@ Procedure InitializeCommonLists() Export
     ModuleCommandMapping.Insert("ozon", "OPI_Ozon");
     ModuleCommandMapping.Insert("postgres", "OPI_PostgreSQL");
     ModuleCommandMapping.Insert("rcon", "OPI_RCON");
+    ModuleCommandMapping.Insert("rportal", "OPI_ReportPortal");
     ModuleCommandMapping.Insert("s3", "OPI_S3");
     ModuleCommandMapping.Insert("slack", "OPI_Slack");
     ModuleCommandMapping.Insert("sqlite", "OPI_SQLite");
