@@ -38,6 +38,11 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Data    = "Echo this!" + Chars.LF;
 
     Result = OPI_TCP.ProcessRequest(Address, Data);
+
+    Address = "tcpbin.com:4243";
+    Tls     = OPI_TCP.GetTLSSettings(True);
+
+    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
 ```
  
 

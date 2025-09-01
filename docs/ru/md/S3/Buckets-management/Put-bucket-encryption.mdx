@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
   | Наименование | --name | Строка | &#x2714; | Наименование бакета |
   | ОсновныеДанные | --basic | Структура Из КлючИЗначение | &#x2714; | Основные данные запроса. См. ПолучитьСтруктуруДанных |
   | XMLКонфигурация | --conf | Строка | &#x2714; | XML строка или файл конфигурации шифрования |
-  | Каталог | --dir | Булево | &#x2716; | Истина > Directory Bucket, Ложь > General Purpose Bucket |
+  | Каталог | --dir | Булево | &#x2716; | Истина > Path style URL, Ложь > Virtual hosted style URL |
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
 
   
@@ -41,7 +41,9 @@ import TabItem from '@theme/TabItem';
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-    Наименование   = "opi-newbucket2";
+
+    Каталог = Истина; // Формирование URL в path-style
+    Наименование = "opi-dirbucket3";
     XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
                       |    <Rule>
                       |        <ApplyServerSideEncryptionByDefault>
@@ -50,7 +52,7 @@ import TabItem from '@theme/TabItem';
                       |    </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация);
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация, Каталог);
 ```
     
 

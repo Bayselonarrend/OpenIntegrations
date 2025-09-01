@@ -5,7 +5,7 @@
     Base  = "testbase1";
     Table = "testtable";
 
-    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     ColoumnsStruct = New Structure;

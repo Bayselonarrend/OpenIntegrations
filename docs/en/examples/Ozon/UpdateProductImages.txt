@@ -1,6 +1,6 @@
 ﻿    ClientID  = "2479669";
     APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "2434065492";
+    ProductID = "2621214812";
 
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg";

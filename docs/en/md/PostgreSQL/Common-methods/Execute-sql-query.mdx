@@ -45,8 +45,17 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     Password = "12we...";
     Base     = "test_data";
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
-    Connection       = OPI_PostgreSQL.CreateConnection(ConnectionString);
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
     // CREATE
 

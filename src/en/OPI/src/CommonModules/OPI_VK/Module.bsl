@@ -186,38 +186,20 @@ EndFunction
 // Parameters:
 // Question - String - Poll question - question
 // AnswersArray - Array of String - Array of answer options - options
-// Image - String, BinaryData - Poll image - picture
-// Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
+// Image - String, BinaryData - Poll image. Required if there is no text - picture
+// Text - String - Post text. Required if there is no picture - text
+// Parameters - Structure Of String - See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK
-Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export
+Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Text = "", Val Parameters = "") Export
 
     OPI_TypeConversion.GetLine(Question);
+    OPI_TypeConversion.GetLine(Text);
     OPI_TypeConversion.GetCollection(AnswersArray);
 
     Parameters_ = GetStandardParameters(Parameters);
     Response_   = "response";
-
-    If ValueIsFilled(Image) Then
-
-        Response = UploadPhotoToServer(Image, Parameters_, "Poll");
-
-        Photo = Response.Get(Response_);
-
-        If ValueIsFilled(Photo) Then
-
-            PhotoID = Photo["id"];
-
-            If Not ValueIsFilled(PhotoID) Then
-                Return Response;
-            EndIf;
-
-        Else
-            Return Response;
-        EndIf;
-
-    EndIf;
 
     Parameters_.Insert("is_anonymous", 1);
     Parameters_.Insert("is_multiple" , 0);
@@ -226,7 +208,6 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
     Answers = "[""" + Answers + """]";
 
     Parameters_.Insert("add_answers", Answers);
-    Parameters_.Insert("photo_id"   , OPI_Tools.NumberToString(PhotoID));
     Parameters_.Insert("question"   , Question);
 
     Poll    = OPI_HTTPRequests.Get("api.vk.com/method/polls.create", Parameters_);
@@ -243,12 +224,41 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
         Return Poll;
     EndIf;
 
-    PollID = "poll"
-    + OPI_Tools.NumberToString(OwnerId)
-    + "_"
-    + OPI_Tools.NumberToString(ObjectId);
+    OPI_TypeConversion.GetLine(OwnerId);
+    OPI_TypeConversion.GetLine(ObjectId);
 
-    Parameters_.Insert("attachments", PollID);
+    AttachmentsArray = New Array;
+
+    PollID = StrTemplate("poll%1_%2", OwnerId, ObjectId);
+    AttachmentsArray.Add(PollID);
+
+    If ValueIsFilled(Image) Then
+
+        OPI_TypeConversion.GetBinaryData(Image);
+
+        ResponseMap = GetImageMap(Image, Parameters_, "Post");
+
+        OwnerId  = ResponseMap.Get("owner_id");
+        ObjectId = ResponseMap.Get("id");
+
+        If Not ValueIsFilled(OwnerId) Or Not ValueIsFilled(ObjectId) Then
+            Return ResponseMap;
+        EndIf;
+
+        OwnerId  = OPI_Tools.NumberToString(OwnerId);
+        ObjectId = OPI_Tools.NumberToString(ObjectId);
+
+        PhotoID = "photo" + OwnerId + "_" + ObjectId;
+
+        AttachmentsArray.Add(PhotoID);
+
+    EndIf;
+
+    If ValueIsFilled(Text) Then
+        Parameters_.Insert("message", Text);
+    EndIf;
+
+    Parameters_.Insert("attachments", StrConcat(AttachmentsArray, ","));
 
     Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.post", Parameters_);
 

@@ -1,4 +1,4 @@
 ﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "25382aa7-fc4e-81d9-bf98-f33dece93ccd";
+    Base  = "26182aa7-fc4e-81e3-a3fa-c7dd1bd496ea";
 
     Result = OPI_Notion.GetDatabase(Token, Base);

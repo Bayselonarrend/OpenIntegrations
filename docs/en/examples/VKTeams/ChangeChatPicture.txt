@@ -10,6 +10,10 @@
 
     Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, File);
 
+    Process(Result, "VKTeams", "ChangeChatPicture", "URL");
+
     Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FilePath);
+
+    Process(Result, "VKTeams", "ChangeChatPicture", "Path");
 
     Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FileBD);

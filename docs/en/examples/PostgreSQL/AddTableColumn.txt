@@ -1,12 +1,20 @@
 ﻿    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
     Password = "12we...";
-
     Base     = "testbase1";
+
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
     Table    = "testtable";
     Name     = "new_field";
     DataType = "TEXT";
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
-
-    Result = OPI_PostgreSQL.AddTableColumn(Table, Name, DataType, ConnectionString);
+    Result = OPI_PostgreSQL.AddTableColumn(Table, Name, DataType, ConnectionString, TLSSettings);

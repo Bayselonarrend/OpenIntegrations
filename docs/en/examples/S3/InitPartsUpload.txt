@@ -5,13 +5,14 @@
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name   = "fileChunked.mp3";
-    Bucket = "opi-gpbucket3";
+    Name = "fileChunked.mp3";
 
+    Directory = True; // Formation URL in path-style
+    Bucket = "opi-dirbucket3";
     Entity = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
 
-    Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+    Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
@@ -33,8 +34,13 @@
             Break;
         EndIf;
 
-        Result = OPI_S3.UploadObjectPart(Name, Bucket, BasicData, UploadID, PartNumber,
-            CurrentData);
+        Result = OPI_S3.UploadObjectPart(Name
+            , Bucket
+            , BasicData
+            , UploadID
+            , PartNumber
+            , CurrentData
+            , Directory);
 
         BytesRead = SourceStream.CurrentPosition();
 
@@ -47,4 +53,4 @@
 
     EndDo;
 
-    Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray);
+    Result = OPI_S3.FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray, , Directory);

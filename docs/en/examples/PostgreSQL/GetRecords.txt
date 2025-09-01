@@ -3,7 +3,15 @@
     Password = "12we...";
     Base     = "testbase1";
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
 
     // All records without filters
 
@@ -13,11 +21,11 @@
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString);
+    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
 
     // Filter, selected fields, limit and sorting
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "test_data", Login, Password);
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "test_data", Login, Password, Port);
 
     Table = "test_data";
 
@@ -49,4 +57,10 @@
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Result = OPI_PostgreSQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString);
+    Result = OPI_PostgreSQL.GetRecords(Table
+        , Fields
+        , Filters
+        , Sort
+        , Count
+        , ConnectionString
+        , TLSSettings);

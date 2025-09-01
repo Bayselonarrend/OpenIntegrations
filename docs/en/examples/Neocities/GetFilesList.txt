@@ -2,5 +2,3 @@
     Path  = "test";
 
     Result = OPI_Neocities.GetFilesList(Token, Path);
-
-    Result = OPI_Neocities.GetFilesList(Token);

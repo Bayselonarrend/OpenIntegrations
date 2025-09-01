@@ -33,18 +33,26 @@ import TabItem from '@theme/TabItem';
     Address  = "127.0.0.1";
     Login    = "bayselonarrend";
     Password = "12we...";
+    Base     = "testbase1";
 
-    Base  = "testbase1";
+    TLS = True;
+    Port = 3306;
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
     Table = "testtable";
     Name  = "new_field";
-
-    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_MySQL.DeleteTableColumn(Table, Name, ConnectionString);
+    Result = OPI_MySQL.DeleteTableColumn(Table, Name, ConnectionString, TLSSettings);
 ```
  
 

@@ -42,7 +42,7 @@ List of available types is described on the initial page of the MSSQL library do
     Password = "12we...";
     Base     = "test_data";
 
-    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "test_data";

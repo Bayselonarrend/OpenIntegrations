@@ -5,10 +5,10 @@
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
+    Directory = True; // Formation URL in path-style
     SourcePath        = "picture.jpg";
-    DestinationBucket = "opi-gpbucket3";
+    DestinationBucket = "newbucket2";
 
     DestinationPath = "new_picture.jpg";
     SourceBucket    = "opi-dirbucket3";
-
-    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData);
+    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, , Directory);
