@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 2
+description: Получить постоянный токен и другие функции для работы с ReportPortal в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить постоянный токен
+ Создает постоянный токен пользователя ReportPortal
+
+
+
+`Функция ПолучитьПостоянныйТокен(Знач URL, Знач Токен, Знач IDПользователя, Знач ИмяКлюча) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера ReportPortal |
+  | Токен | --token | Строка | &#x2714; | Токен доступа |
+  | IDПользователя | --user | Строка | &#x2714; | ID пользователя |
+  | ИмяКлюча | --name | Строка | &#x2714; | Имя токена |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+
+<br/>
+
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL            = "tests.openintegrations.dev";
+    Токен          = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc1NjgwNzI5MCwiaWF0IjoxNzU2NzIwODkwLCJqdGkiOiJjNjJjYjM3Mi1kM2...";
+    IDПользователя = "1";
+    ИмяКлюча       = "test_key";
+
+    Результат = OPI_ReportPortal.ПолучитьПостоянныйТокен(URL, Токен, IDПользователя, ИмяКлюча);
+```
+    
+
+
+
+
