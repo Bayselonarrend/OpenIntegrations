@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 1
+description: Get temporary token and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get temporary token
+ Gets a temporary token based on login and password
+
+
+
+`Function GetTemporaryToken(Val URL, Val Login, Val Password) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Login | --login | String | &#x2714; | Users login |
+  | Password | --pass | String | &#x2714; | Users password |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL      = "tests.openintegrations.dev";
+    Login    = "superadmin";
+    Password = "Rit2...";
+
+    Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);
+```
+ 
+
+
+
+

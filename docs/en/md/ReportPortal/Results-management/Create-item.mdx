@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 2
+description: Create item and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create item
+ Creates a new test item
+
+
+
+`Function CreateItem(Val URL, Val Token, Val Project, Val ElementStructure, Val Parent = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | Project | --proj | String | &#x2714; | Project ID |
+  | ElementStructure | --params | Structure Of KeyAndValue | &#x2714; | Item parameters. See GetItemStructure |
+  | Parent | --parent | String | &#x2716; | ID of the parent item, if necessary |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+<br/>
+
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+
+```
+ 
+
+
+
+
