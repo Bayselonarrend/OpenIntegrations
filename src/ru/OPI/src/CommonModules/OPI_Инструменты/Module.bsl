@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
+﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
 
 // MIT License
 
@@ -1007,7 +1007,7 @@
 КонецФункции
 
 Функция ВерсияОПИ() Экспорт
-	Возврат "1.27.0";
+    Возврат "1.27.0";
 КонецФункции
 
 #КонецОбласти

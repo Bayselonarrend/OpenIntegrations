@@ -4,7 +4,9 @@
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
-    Name      = "opi-newbucket2";
+
+    Directory = True; // Formation URL in path-style
+    Name = "opi-dirbucket3";
     XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
                       | <Rule>
                       | <ApplyServerSideEncryptionByDefault>
@@ -13,4 +15,4 @@
                       | </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig);
+    Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig, Directory);

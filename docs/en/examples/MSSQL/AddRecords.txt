@@ -3,7 +3,7 @@
     Password = "12we...";
     Base     = "testbase1";
 
-    TLSSettings      = OPI_MSSQL.GetTlsSettings(True);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
     ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table        = "testtable";

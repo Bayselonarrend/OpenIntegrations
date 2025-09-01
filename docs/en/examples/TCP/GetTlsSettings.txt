@@ -1,1 +1,1 @@
-﻿    Result = OPI_TCP.GetTlsSettings(True);
+﻿    Result = OPI_TCP.GetTLSSettings(True);

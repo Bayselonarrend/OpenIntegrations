@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
   | Status | --status | Boolean | &#x2716; | Enable and disable versioning, if necessary |
   | MFADelete | --mfad | Boolean | &#x2716; | Enable and disable MFA deletion, if necessary |
-  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -44,14 +44,8 @@ Method at AWS documentation: [PutBucketVersioning](https://docs.aws.amazon.com/A
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
     Status    = True;
 
-    // Directory bucket
-
-    Name   = "opi-dirbucket3";
-    Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status, , True);
-
-    // General purpose bucket
-
-    Name   = "opi-gpbucket3";
+    Directory = True; // Formation URL in path-style
+    Name = "opi-dirbucket3";
     Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
 ```
  

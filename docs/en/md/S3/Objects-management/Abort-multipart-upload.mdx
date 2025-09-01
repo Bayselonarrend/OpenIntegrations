@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
   | UploadID | --upload | String | &#x2714; | Upload ID. See InitPartsUpload |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
-  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
 
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage
@@ -45,13 +45,14 @@ This is a service method. A `PutObject` method is intended for the common scenar
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    Name   = "fileChunked.mp3";
-    Bucket = "opi-gpbucket3";
+    Name = "fileChunked.mp3";
 
-    Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData);
+    Directory = True; // Formation URL in path-style
+    Bucket = "opi-dirbucket3";
+    Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);
     UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
 
-    Result = OPI_S3.AbortMultipartUpload(Name, Bucket, BasicData, UploadID);
+    Result = OPI_S3.AbortMultipartUpload(Name, Bucket, BasicData, UploadID, , Directory);
 ```
  
 
