@@ -4,7 +4,9 @@
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
-    Наименование   = "opi-newbucket2";
+
+    Каталог = Истина; // Формирование URL в path-style
+    Наименование = "opi-dirbucket3";
     XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
                       |    <Rule>
                       |        <ApplyServerSideEncryptionByDefault>
@@ -13,4 +15,4 @@
                       |    </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация);
+    Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация, Каталог);

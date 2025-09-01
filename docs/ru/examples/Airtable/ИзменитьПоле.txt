@@ -1,7 +1,7 @@
 ﻿    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appJ8UTPc1lbqn5k2";
-    Таблица = "tblIs64NPnSCEJM7u";
-    Поле    = "fld8OKzTdefP5ISnK";
+    База    = "app6iAjLW6FyzuWRZ";
+    Таблица = "tblQLSgX8ksTpqiSA";
+    Поле    = "fldeby5IQEdcsBoRk";
 
     Имя      = Строка(Новый УникальныйИдентификатор) + "(изм.)";
     Описание = "Новое описание";

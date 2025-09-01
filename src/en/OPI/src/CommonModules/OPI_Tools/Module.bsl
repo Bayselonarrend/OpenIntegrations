@@ -1006,6 +1006,10 @@ Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 
 EndFunction
 
+Function OPIVersion() Export
+    Return "1.27.0";
+EndFunction
+
 #EndRegion
 
 #EndRegion

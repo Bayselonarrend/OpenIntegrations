@@ -4,7 +4,7 @@
 
     DateFrom  = OPI_Tools.GetCurrentDate();
     DateTo    = DateFrom + Day;
-    Draft     = "65252770";
-    Warehouse = "1020001649180000";
+    Draft     = "67058201";
+    Warehouse = "18044249781000";
 
     Result = OPI_Ozon.GetFBOTimeslots(ClientID, APIKey, DateFrom, DateTo, Draft, Warehouse);

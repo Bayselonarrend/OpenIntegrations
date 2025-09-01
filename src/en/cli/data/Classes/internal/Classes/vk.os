@@ -211,7 +211,17 @@ Function GetComposition() Export
     NewLine.Method       = "CreatePoll";
     NewLine.SearchMethod = "CREATEPOLL";
     NewLine.Parameter    = "--picture";
-    NewLine.Description    = "Poll image (optional, def. val. - Empty value)";
+    NewLine.Description    = "Poll image. Required if there is no text (optional, def. val. - Empty value)";
+    NewLine.Region     = "Community management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "vk";
+    NewLine.Module      = "OPI_VK";
+    NewLine.Method       = "CreatePoll";
+    NewLine.SearchMethod = "CREATEPOLL";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Post text. Required if there is no picture (optional, def. val. - Empty value)";
     NewLine.Region     = "Community management";
 
 
@@ -221,7 +231,7 @@ Function GetComposition() Export
     NewLine.Method       = "CreatePoll";
     NewLine.SearchMethod = "CREATEPOLL";
     NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description    = "See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Region     = "Community management";
 
 

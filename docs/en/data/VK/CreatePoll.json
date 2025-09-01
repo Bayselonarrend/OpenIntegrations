@@ -1,4 +1,1 @@
-{
-"Parameters": "GetVKParameters()",
-"Question": "What's your favorite color?"
-}
+{"Image":"https://hut.openintegrations.dev/test_data/picture.jpg","Parameters":"GetVKParameters()","Question":"What's your favorite color?"}

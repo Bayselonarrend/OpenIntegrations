@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CopyObject(Val SourcePath, Val DestinationBucket, Val DestinationPath, Val SourceBucket, Val BasicData, Val Headers = Undefined) Export`
+`Function CopyObject(Val SourcePath, Val DestinationBucket, Val DestinationPath, Val SourceBucket, Val BasicData, Val Headers = Undefined, Val Directory = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -22,6 +22,7 @@ import TabItem from '@theme/TabItem';
   | SourceBucket | --bucket | String | &#x2714; | Destination bucket name |
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
+  | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
 
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage
@@ -43,13 +44,13 @@ Method at AWS documentation: [CopyObject](https://docs.aws.amazon.com/AmazonS3/l
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
+    Directory = True; // Formation URL in path-style
     SourcePath        = "picture.jpg";
-    DestinationBucket = "opi-gpbucket3";
+    DestinationBucket = "newbucket2";
 
     DestinationPath = "new_picture.jpg";
     SourceBucket    = "opi-dirbucket3";
-
-    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData);
+    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, , Directory);
 ```
  
 

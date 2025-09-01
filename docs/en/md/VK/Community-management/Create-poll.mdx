@@ -12,14 +12,15 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export`
+`Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Text = "", Val Parameters = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Question | --question | String | &#x2714; | Poll question |
   | AnswersArray | --options | Array of String | &#x2714; | Array of answer options |
-  | Image | --picture | String, BinaryData | &#x2716; | Poll image |
-  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
+  | Image | --picture | String, BinaryData | &#x2716; | Poll image. Required if there is no text |
+  | Text | --text | String | &#x2716; | Post text. Required if there is no picture |
+  | Parameters | --auth | Structure Of String | &#x2716; | See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
@@ -42,7 +43,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     OptionArray.Add("Yellow");
     OptionArray.Add("Green");
 
-    Result = OPI_VK.CreatePoll(Question, OptionArray, , Parameters);
+    Result = OPI_VK.CreatePoll(Question, OptionArray, , "Post text", Parameters);
+
+    // With picture
+
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
+
+    Result = OPI_VK.CreatePoll(Question, OptionArray, Image, , Parameters);
 ```
  
 

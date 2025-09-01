@@ -1,6 +1,6 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Токен = "12We...";
 
-    IDАссистента = "asst_69";
+    IDАссистента = "asst_5";
 
     Результат = OPI_OpenAI.ПолучитьАссистента(URL, Токен, IDАссистента);

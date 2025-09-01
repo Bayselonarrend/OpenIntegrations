@@ -29,7 +29,7 @@
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTlsSettings(True);
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);

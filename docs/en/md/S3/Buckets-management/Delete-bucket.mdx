@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | Name | --name | String | &#x2714; | Bucket name |
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
-  | Directory | --dir | Boolean | &#x2716; | True > Directory Bucket, False > General Purpose Bucket |
+  | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
   
@@ -41,15 +41,9 @@ Method at AWS documentation: [DeleteBucket](https://docs.aws.amazon.com/AmazonS3
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
-    // Directory bucket
-
-    Name   = "opi-dirbucket3";
-    Result = OPI_S3.DeleteBucket(Name, BasicData, True);
-
-    // General purpose bucket
-
-    Name   = "opi-gpbucket3";
-    Result = OPI_S3.DeleteBucket(Name, BasicData);
+    Directory = True; // Formation URL in path-style
+    Name = "opi-dirbucket3";
+    Result = OPI_S3.DeleteBucket(Name, BasicData, Directory);
 ```
  
 

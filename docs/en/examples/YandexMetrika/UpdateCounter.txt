@@ -1,5 +1,5 @@
 ﻿    Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    CounterID = "103345450";
+    CounterID = "103966350";
 
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", True);

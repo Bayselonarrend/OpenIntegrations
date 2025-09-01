@@ -1006,6 +1006,10 @@ Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 
 EndFunction
 
+Function OPIVersion() Export
+    Return "1.27.0";
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -1327,6 +1331,10 @@ EndFunction
 
 Function ЭтоКоллекция(Val Значение, Val КлючЗначение = False) Export
 	Return ThisIsCollection(Значение, КлючЗначение);
+EndFunction
+
+Function ВерсияОПИ() Export
+	Return OPIVersion();
 EndFunction
 
 Procedure ВывестиТекстВТекущуюСтроку(Val Текст, Val Цвет = "", Val ВНачало = False) Export

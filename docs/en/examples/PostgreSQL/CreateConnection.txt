@@ -3,19 +3,14 @@
     Password = "12we...";
     Base     = "postgres";
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password);
-    Result           = OPI_PostgreSQL.CreateConnection(ConnectionString);
-
-    OPI_PostgreSQL.CloseConnection(Result);
-
-    // With TLS
-
-    Address = "127.0.0.1";
-    Port    = "5433";
-
+    TLS = True;
+    Port = 5432;
     ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
-    TLSSettings      = OPI_PostgreSQL.GetTlsSettings(True);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
 
     Result = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
-
-    OPI_PostgreSQL.CloseConnection(Result);

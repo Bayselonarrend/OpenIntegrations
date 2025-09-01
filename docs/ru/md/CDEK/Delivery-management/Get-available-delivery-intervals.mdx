@@ -33,8 +33,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTQ4NDE1ODQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "45e1578b-b2bb-4d98-a2c3-5dadf965932c";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTY3MjMyMTAsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "6b24557d-24df-4379-ba05-d0a8d4c68b5c";
 
     Результат = OPI_CDEK.ПолучитьДоступныеИнтервалыДоставки(Токен, UUID, Истина);
 ```
@@ -64,133 +64,20 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "date_intervals": [
+ "requests": [
   {
-   "date": "2024-10-23",
-   "time_intervals": [
+   "type": "GET",
+   "date_time": "2025-08-19T18:36:52+00:00",
+   "state": "INVALID",
+   "errors": [
     {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
-   "date": "2024-10-30",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
-   "date": "2024-11-06",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
-   "date": "2024-11-13",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
-   "date": "2024-11-20",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
-   "date": "2024-11-27",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
+     "code": "v2_order_invalid",
+     "additional_code": "0x1E0EBE20",
+     "message": "Order is invalid 8ff62733-f524-4f66-a693-51db6554ea0e"
     }
    ]
   }
- ]
+ ],
+ "related_entities": []
 }
 ```

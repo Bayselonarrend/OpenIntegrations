@@ -1,1 +1,1 @@
-﻿    Result = OPI_FTP.GetTlsSettings(True);
+﻿    Result = OPI_FTP.GetTLSSettings(True);
