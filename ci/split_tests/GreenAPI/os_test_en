@@ -87,6 +87,9 @@ pipeline {
 	post{
 		always{
 			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os')
+			    }
 				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
 					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%GPGKEY%" ./data.json'
@@ -99,8 +102,7 @@ pipeline {
 					bat "git add ."
 					bat 'git commit -m "Test data update (Jenkins)"'
 					bat "git push origin HEAD:main"
-				}
-				bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_stop.os'		
+				}	
 			}
 		}
 	}

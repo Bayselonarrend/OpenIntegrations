@@ -176,6 +176,7 @@ EndFunction
 // Text - String - File caption - text
 // FileName - String - Displayed file name - filename
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+// ContentType - String - Content type for sending - type
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -184,7 +185,8 @@ Function SendFile(Val Token
     , Val File
     , Val Text = ""
     , Val FileName = ""
-    , Val Markup = "MarkdownV2") Export
+    , Val Markup = "MarkdownV2"
+    , Val ContentType = "image/jpeg") Export
 
     String_ = "String";
 
@@ -208,7 +210,7 @@ Function SendFile(Val Token
     Files = New Map;
     Files.Insert("file|" + DisplayedName, File);
 
-    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, "");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, ContentType);
 
     Return Response;
 
