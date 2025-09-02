@@ -205,6 +205,16 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "vkteams";
     NewLine.Module      = "OPI_VKTeams";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Content type for sending (optional, def. val. - image/jpeg)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "vkteams";
+    NewLine.Module      = "OPI_VKTeams";
     NewLine.Method       = "SendVoice";
     NewLine.SearchMethod = "SENDVOICE";
     NewLine.Parameter    = "--token";
