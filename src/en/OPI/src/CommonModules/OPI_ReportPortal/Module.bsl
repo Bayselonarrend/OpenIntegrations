@@ -412,7 +412,7 @@ Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
     OPI_TypeConversion.GetKeyValueCollection(LogStructure, ErrorText);
     OPI_TypeConversion.GetLine(Project);
 
-    CompleteURL(URL, StrTemplate("/api/v1/%1/log", Project));
+    CompleteURL(URL, StrTemplate("api/v1/%1/log", Project));
 
     Headers = GetAuthorizationHeader(Token);
 
