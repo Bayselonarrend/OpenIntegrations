@@ -929,13 +929,14 @@ EndFunction
 
 Function ReadLaunchFile()
 
-    LaunchFile   = GetParameter("RPortal_MainLaunch");
+    LaunchFile = GetParameter("RPortal_MainLaunch");
+
+    Message("FILE: " + String(LaunchFile));
+
     LaunchObject = New File(LaunchFile);
 
     If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
         Return New Map;
-    Else
-        Message(LaunchFile);
     EndIf;
 
     Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
