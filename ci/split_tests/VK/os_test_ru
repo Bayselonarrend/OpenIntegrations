@@ -54,6 +54,11 @@ pipeline {
             		}
          		}
       	}
+		stage('Create ReportPortal launch'){
+				steps{
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os'
+				}
+		}
 
 		stage('Testing-VK') {
 			steps {			
@@ -137,6 +142,7 @@ pipeline {
 					bat 'git commit -m "Test data update (Jenkins)"'
 					bat "git push origin HEAD:main"
 				}
+				bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_stop.os'		
 			}
 		}
 	}

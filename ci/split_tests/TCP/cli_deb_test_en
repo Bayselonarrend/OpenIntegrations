@@ -46,6 +46,11 @@ pipeline {
             		}
          		}
       	}
+        stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/rp_start.os "CLI"'
+				}
+		}
 
 		stage('Testing-TCP') {
 			steps {			
@@ -72,6 +77,7 @@ pipeline {
 					sh 'git commit -m "Test data update (Jenkins)"'
 					sh "git push origin HEAD:main"
 				}
+                sh 'oscript ./ci/os/rp_stop.os'
 			}
 		}
 	}
