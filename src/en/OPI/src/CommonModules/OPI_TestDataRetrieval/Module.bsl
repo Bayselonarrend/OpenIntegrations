@@ -686,7 +686,7 @@ EndProcedure
 
 #Region ReportPortal
 
-Function CreateReportPortalLaunch() Export
+Function CreateReportPortalLaunch(Val Platform = "") Export
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -699,9 +699,12 @@ Function CreateReportPortalLaunch() Export
 
     OperatingSystem = String(SystemInfo.PlatformType);
     CurrentDateString = Format(CurrentDate, "DF=yyyy-MM-dd");
-    Platform        = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
     UUID            = String(New UUID);
     OPIVersion      = OPI_Tools.OPIVersion();
+
+    If Not ValueIsFilled(Platform) Then
+        Platform = ?(OPI_Tools.IsOneScript(), "OneScript", "1C:Enterprise");
+    EndIf;
 
     LaunchName = StrTemplate("%1 | %2 | %3 | %4", CurrentDateString, OPIVersion, Platform, OperatingSystem);
 
