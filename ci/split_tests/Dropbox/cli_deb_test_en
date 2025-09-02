@@ -56,28 +56,28 @@ pipeline {
 		stage('Testing-Dropbox') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_GetUpdateToken"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_GetUpdateToken"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_UploadFile"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_UploadFile"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_UploadFileByURL"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_UploadFileByURL"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_CreateFolder"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_CreateFolder"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_CreateDeleteTag"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_CreateDeleteTag"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_GetAccount"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_GetAccount"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_AccessManagement"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_AccessManagement"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_DropboxAPI_GetFolderFileList"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "DropboxAPI_GetFolderFileList"')
 			}
 			}
 		}

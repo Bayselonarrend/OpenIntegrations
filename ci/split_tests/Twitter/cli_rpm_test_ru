@@ -55,10 +55,10 @@ pipeline {
 		stage('Testing-Twitter') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_Твиттер_ДанныеАккаунта"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Твиттер_ДанныеАккаунта"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_Твиттер_Твиты"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Твиттер_Твиты"')
 			}
 			}
 		}

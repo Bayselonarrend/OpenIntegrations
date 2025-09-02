@@ -56,22 +56,22 @@ pipeline {
 		stage('Testing-GreenAPI') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_УправлениеГруппами"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_УправлениеГруппами"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_ОтправкаСообщений"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_ОтправкаСообщений"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_ПолучениеУведомлений"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_ПолучениеУведомлений"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_ОчередьСообщений"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_ОчередьСообщений"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_ЖурналыСообщений"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_ЖурналыСообщений"')
 			}
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_GAPI_Аккаунт"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "GAPI_Аккаунт"')
 			}
 			}
 		}

@@ -135,7 +135,7 @@ pipeline {
 		stage('Testing-ReportPortal') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "CLI_RPortal_Authorization"')
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "RPortal_Authorization"')
 			}
 			}
 		}
