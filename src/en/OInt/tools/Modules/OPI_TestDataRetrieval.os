@@ -933,8 +933,8 @@ EndFunction
 Function ReportPortal()
 
     Try
-        Return OPI_ReportPortal;
-    Except
+
+        OPI_ReportPortal = undefined;
 
         CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
         PathArray        = StrSplit(CurrentDirectory, "/");
@@ -948,6 +948,8 @@ Function ReportPortal()
 
         Return OPI_ReportPortal;
 
+    Except
+        Return OPI_ReportPortal;
     EndTry;
 
 EndFunction
