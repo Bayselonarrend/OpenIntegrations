@@ -686,7 +686,7 @@
 
 #Область ReportPortal
 
-Функция СоздатьЗапускReportPortal() Экспорт
+Функция СоздатьЗапускReportPortal(Знач Платформа = "") Экспорт
 
     Токен  = ПолучитьПараметр("RPortal_Token");
     Проект = ПолучитьПараметр("RPortal_MainProject");
@@ -699,9 +699,12 @@
 
     ОперационнаяСистема = Строка(СистемнаяИнформация.ТипПлатформы);
     ТекущаяДатаСтрока   = Формат(ТекущаяДата, "ДФ=yyyy-MM-dd");
-    Платформа           = ?(OPI_Инструменты.ЭтоOneScript(), "OneScript", "1C:Enterprise");
     UUID                = Строка(Новый УникальныйИдентификатор);
     ВерсияОПИ           = OPI_Инструменты.ВерсияОПИ();
+
+    Если Не ЗначениеЗаполнено(Платформа) Тогда
+        Платформа = ?(OPI_Инструменты.ЭтоOneScript(), "OneScript", "1C:Enterprise");
+    КонецЕсли;
 
     ИмяЗапуска = СтрШаблон("%1 | %2 | %3 | %4", ТекущаяДатаСтрока, ВерсияОПИ, Платформа, ОперационнаяСистема);
 
@@ -11726,8 +11729,8 @@ Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option =
 	ОбработатьРезультатТестирования(Result, Method, Library, Option, AddParam1, AddParam2, AddParam3);
 EndProcedure
 
-Function CreateReportPortalLaunch() Export
-	Return СоздатьЗапускReportPortal();
+Function CreateReportPortalLaunch(Val Platform = "") Export
+	Return СоздатьЗапускReportPortal(Platform);
 EndFunction
 
 Function CreateLaunchSet(Val Name) Export
