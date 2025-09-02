@@ -931,8 +931,6 @@ Function ReadLaunchFile()
 
     LaunchFile = GetParameter("RPortal_MainLaunch");
 
-    Message("FILE: " + String(LaunchFile));
-
     LaunchObject = New File(LaunchFile);
 
     If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
@@ -7830,7 +7828,7 @@ EndFunction
 
 Function Check_TCP_CreateConnection(Val Result, Val Option)
 
-    Result = String(Result);
+    Result = String(TypeOf(Result));
 
     ExpectsThat(Result).Равно("AddIn.OPI_TCPClient.Main");
 
