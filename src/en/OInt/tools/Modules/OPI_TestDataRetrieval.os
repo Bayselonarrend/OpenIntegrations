@@ -934,7 +934,8 @@ Function ReportPortal()
 
     Try
 
-        OPI_ReportPortal = undefined;
+        //@skip-check property-not-writable
+        OPI_ReportPortal = Undefined;
 
         CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
         PathArray        = StrSplit(CurrentDirectory, "/");
@@ -949,7 +950,9 @@ Function ReportPortal()
         Return OPI_ReportPortal;
 
     Except
+
         Return OPI_ReportPortal;
+
     EndTry;
 
 EndFunction
