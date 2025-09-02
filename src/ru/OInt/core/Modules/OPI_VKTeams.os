@@ -170,12 +170,13 @@
 // Метод в документации API: [POST /messages/sendFile](@teams.vk.com/botapi/#/messages/post_messages_sendFile)
 //
 // Параметры:
-//  Токен    - Строка                 - Токен бота                                             - token
-//  IDЧата   - Строка, Число          - ID чата для отправки файла                             - chatid
-//  Файл     - ДвоичныеДанные, Строка - Файл для отправки                                      - file
-//  Текст    - Строка                 - Подпись к файлу                                        - text
-//  ИмяФайла - Строка                 - Отображаемое имя файла                                 - filename
-//  Разметка - Строка                 - Вид разметки для текста сообщения: MarkdownV2 или HTML - parsemod
+//  Токен       - Строка                 - Токен бота                                             - token
+//  IDЧата      - Строка, Число          - ID чата для отправки файла                             - chatid
+//  Файл        - ДвоичныеДанные, Строка - Файл для отправки                                      - file
+//  Текст       - Строка                 - Подпись к файлу                                        - text
+//  ИмяФайла    - Строка                 - Отображаемое имя файла                                 - filename
+//  Разметка    - Строка                 - Вид разметки для текста сообщения: MarkdownV2 или HTML - parsemod
+//  ТипКонтента - Строка                 - Тип файла для отправки                                 - type
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -184,7 +185,8 @@
     , Знач Файл
     , Знач Текст = ""
     , Знач ИмяФайла = ""
-    , Знач Разметка = "MarkdownV2") Экспорт
+    , Знач Разметка = "MarkdownV2"
+    , Знач ТипКонтента = "image/jpeg") Экспорт
 
     Строка_ = "Строка";
 
@@ -208,7 +210,7 @@
     Файлы = Новый Соответствие;
     Файлы.Вставить("file|" + ИспользуемоеИмя, Файл);
 
-    Ответ = OPI_ЗапросыHTTP.PostMultipart(URL, Параметры, Файлы, "");
+    Ответ = OPI_ЗапросыHTTP.PostMultipart(URL, Параметры, Файлы, ТипКонтента);
 
     Возврат Ответ;
 
@@ -988,8 +990,8 @@ Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val K
 	Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, ReplyID, Keyboard, Markup);
 EndFunction
 
-Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export
-	Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup);
+Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2", Val ContentType = "image/jpeg") Export
+	Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup, ContentType);
 EndFunction
 
 Function SendVoice(Val Token, Val ChatID, Val File, Val FileType = "m4a", Val ReplyID = 0, Val Keyboard = "") Export
