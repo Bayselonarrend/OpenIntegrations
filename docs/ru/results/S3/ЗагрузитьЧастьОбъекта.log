@@ -1,18 +1,1 @@
-﻿    {
- "status": 200,
- "response": {},
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Content-Length": "0",
-  "Content-Type": "text/plain; charset=utf-8",
-  "Date": "Fri, 22 Nov 2024 09:35:11 GMT",
-  "Etag": "\"566e2d464b39b91eb8b5d89fb9f1a318\"",
-  "Server": "MinIO",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "180A40AB2385B158",
-  "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
- }
-}
+﻿Структура
