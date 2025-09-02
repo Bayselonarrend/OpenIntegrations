@@ -932,17 +932,23 @@ EndFunction
 
 Function ReportPortal()
 
-    // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
-    // !OInt PathArray = StrSplit(CurrentDirectory, "/");
-    // !OInt PathArray.Delete(PathArray.UBound());
-    // !OInt PathArray.Delete(PathArray.UBound());
-    // !OInt PathArray.Add("core");
-    // !OInt PathArray.Add("Modules");
-    // !OInt PathArray.Add("OPI_ReportPortal.os");
-    // !OInt AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
-    // !OInt OPI_ReportPortal = New("ReportPortal");
+    Try
+        Return OPI_ReportPortal;
+    Except
 
-    Return OPI_ReportPortal;
+        // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
+        // !OInt PathArray = StrSplit(CurrentDirectory, "/");
+        // !OInt PathArray.Delete(PathArray.UBound());
+        // !OInt PathArray.Delete(PathArray.UBound());
+        // !OInt PathArray.Add("core");
+        // !OInt PathArray.Add("Modules");
+        // !OInt PathArray.Add("OPI_ReportPortal.os");
+        // !OInt AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
+        // !OInt OPI_ReportPortal = New("ReportPortal");
+
+        Return OPI_ReportPortal;
+
+    EndTry;
 
 EndFunction
 
