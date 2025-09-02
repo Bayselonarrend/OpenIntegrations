@@ -135,7 +135,7 @@ pipeline {
 		stage('Testing-GoogleWorkspace') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "CLI_ГВ_Авторизация"')
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ГВ_Авторизация"')
 			}
 			}
 		}
