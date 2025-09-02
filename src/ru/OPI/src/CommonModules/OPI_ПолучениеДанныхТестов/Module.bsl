@@ -933,9 +933,10 @@
 Функция ReportPortal()
 
     Попытка
-        Возврат OPI_ReportPortal;
-    Исключение
-
+        
+        //@skip-check property-not-writable
+        OPI_ReportPortal = Неопределено;
+        
         // !OInt ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
         // !OInt МассивПути     = СтрРазделить(ТекущийКаталог, "/");
         // !OInt МассивПути.Удалить(МассивПути.ВГраница());
@@ -945,6 +946,10 @@
         // !OInt МассивПути.Добавить("OPI_ReportPortal.os");
         // !OInt ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
         // !OInt OPI_ReportPortal = Новый("ReportPortal");
+        
+        Возврат OPI_ReportPortal;
+        
+    Исключение
 
         Возврат OPI_ReportPortal;
 
