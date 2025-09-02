@@ -933,8 +933,9 @@ EndFunction
 Function ReportPortal()
 
     Try
-        Return OPI_ReportPortal;
-    Except
+
+        //@skip-check property-not-writable
+        OPI_ReportPortal = Undefined;
 
         // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
         // !OInt PathArray = StrSplit(CurrentDirectory, "/");
@@ -945,6 +946,10 @@ Function ReportPortal()
         // !OInt PathArray.Add("OPI_ReportPortal.os");
         // !OInt AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
         // !OInt OPI_ReportPortal = New("ReportPortal");
+
+        Return OPI_ReportPortal;
+
+    Except
 
         Return OPI_ReportPortal;
 
