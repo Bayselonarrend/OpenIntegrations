@@ -173,7 +173,6 @@ EndFunction
 // Token - String - Bot token - token
 // ChatID - String, Number - Chat ID for sending - chatid
 // File - BinaryData, String - File for sending - file
-// ContentType - String - Content type for sending - text
 // Text - String - File caption - text
 // FileName - String - Displayed file name - filename
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
@@ -183,7 +182,6 @@ EndFunction
 Function SendFile(Val Token
     , Val ChatID
     , Val File
-    , Val ContentType = "image/jpeg"
     , Val Text = ""
     , Val FileName = ""
     , Val Markup = "MarkdownV2") Export
@@ -210,7 +208,7 @@ Function SendFile(Val Token
     Files = New Map;
     Files.Insert("file|" + DisplayedName, File);
 
-    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, ContentType);
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files, "");
 
     Return Response;
 
