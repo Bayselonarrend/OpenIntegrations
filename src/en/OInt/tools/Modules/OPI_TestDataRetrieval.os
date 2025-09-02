@@ -439,7 +439,7 @@ Function FormAssertsTestsCLI() Export
         SectionTests = TestTable.FindRows(Filter);
 
         For Each Test In SectionTests Do
-            ArrayOfTests.Add("CLI_" + Test.Method);
+            ArrayOfTests.Add(Test.Method);
         EndDo;
 
     EndDo;
