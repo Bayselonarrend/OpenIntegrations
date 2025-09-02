@@ -694,7 +694,7 @@ Function CreateReportPortalLaunch(Val Platform = "") Export
 
     FinishLaunch();
 
-    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    CurrentDate = GetLaunchTime();
     SystemInfo  = New SystemInfo;
 
     OperatingSystem = String(SystemInfo.PlatformType);
@@ -746,7 +746,7 @@ Function CreateLaunchSet(Val Name) Export
     Project = GetParameter("RPortal_MainProject");
     URL     = GetParameter("RPortal_URL");
 
-    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    CurrentDate = GetLaunchTime();
     LastSet     = Data["last_suite"];
 
     If ValueIsFilled(LastSet) Then
@@ -787,7 +787,7 @@ Function CreateTestElement(Val Set, Val Name) Export
     EndIf;
 
     UUID        = String(New UUID);
-    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    CurrentDate = GetLaunchTime();
 
 
     Token   = GetParameter("RPortal_Token");
@@ -814,7 +814,8 @@ Procedure FinishLaunch() Export
     Project = GetParameter("RPortal_MainProject");
     URL     = GetParameter("RPortal_URL");
 
-    CurrentDate    = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    CurrentDate = GetLaunchTime();
+
     ExistingLaunch = GetExistingLaunch();
 
     If ValueIsFilled(ExistingLaunch) Then
@@ -846,7 +847,8 @@ Procedure WriteTestLog(Val Test, Val Text, Val Level)
         Return;
     EndIf;
 
-    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    Shift       = ?(OPI_Tools.IsWindows(), 3600 * 3, 0);
+    CurrentDate = GetLaunchTime();
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -875,7 +877,7 @@ Procedure FinishTestElement(Val UUID, Val Status)
     Project = GetParameter("RPortal_MainProject");
     URL     = GetParameter("RPortal_URL");
 
-    CurrentDate = OPI_Tools.GetCurrentDate() - 3600 * 3;
+    CurrentDate = GetLaunchTime();
 
     ElementStructure = New Structure;
 
@@ -916,6 +918,15 @@ Function GetExistingLaunch()
 
 EndFunction
 
+Function GetLaunchTime()
+
+    Shift       = ?(OPI_Tools.IsWindows(), 3600 * 3, 0);
+    CurrentDate = OPI_Tools.GetCurrentDate() - Shift;
+
+    Return CurrentDate;
+
+EndFunction
+
 Function ReadLaunchFile()
 
     LaunchFile   = GetParameter("RPortal_MainLaunch");
@@ -923,6 +934,8 @@ Function ReadLaunchFile()
 
     If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
         Return New Map;
+    Else
+        Message(LaunchFile);
     EndIf;
 
     Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
