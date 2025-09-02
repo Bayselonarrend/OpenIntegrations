@@ -945,7 +945,6 @@
         // !OInt МассивПути.Добавить("OPI_ReportPortal.os");
         // !OInt ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
         // !OInt OPI_ReportPortal = Новый("ReportPortal");
-        // !OInt КонецЕсли;
 
         Возврат OPI_ReportPortal;
         
