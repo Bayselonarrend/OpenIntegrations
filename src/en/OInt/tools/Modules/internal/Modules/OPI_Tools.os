@@ -1010,6 +1010,11 @@ Function OPIVersion() Export
     Return "1.27.0";
 EndFunction
 
+Function OPILanguage() Export
+    CurrentOPILanguage = "en";
+    Return CurrentOPILanguage;
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -1335,6 +1340,10 @@ EndFunction
 
 Function ВерсияОПИ() Export
 	Return OPIVersion();
+EndFunction
+
+Function ЯзыкОПИ() Export
+	Return OPILanguage();
 EndFunction
 
 Procedure ВывестиТекстВТекущуюСтроку(Val Текст, Val Цвет = "", Val ВНачало = False) Export
