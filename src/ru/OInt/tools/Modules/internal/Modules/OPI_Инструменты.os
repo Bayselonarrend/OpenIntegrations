@@ -1010,6 +1010,11 @@
     Возврат "1.27.0";
 КонецФункции
 
+Функция ЯзыкОПИ() Экспорт
+    ТекущийЯзыкОПИ = "ru";
+    Возврат ТекущийЯзыкОПИ;
+КонецФункции
+
 #КонецОбласти
 
 #КонецОбласти
@@ -1335,6 +1340,10 @@ EndFunction
 
 Function OPIVersion() Export
 	Return ВерсияОПИ();
+EndFunction
+
+Function OPILanguage() Export
+	Return ЯзыкОПИ();
 EndFunction
 
 Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export

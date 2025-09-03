@@ -11308,7 +11308,7 @@ Procedure Bitrix24_CreateResultFromComment(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix24_DeleteResultFromComment(FunctionParameters) Export
+Procedure Bitrix24_DeleteResultFromComment(FunctionParameters)
 
     URL       = FunctionParameters["Bitrix24_URL"];
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
