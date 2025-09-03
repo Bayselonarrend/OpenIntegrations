@@ -870,7 +870,7 @@ Function GetFullTestList() Export
 
     OPI_TypeConversion.GetCollection(Tests);
 
-    If Tests.Count() = 1 Then
+    If Tests.Count() = 1 Or Not OPI_Tools.ThisIsCollection(Tests[0], True) Then
         Return New Array;
     Else
         Return Tests;
