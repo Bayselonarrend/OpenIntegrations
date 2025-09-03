@@ -755,7 +755,7 @@ pipeline {
 		always{
 			script {
                 catchError() {   
-				    runCommand('oscript ./ci/os/rp_stop.os')
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
 			    }
 				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'

@@ -630,7 +630,7 @@ Procedure ProcessTestingResult(Val Result
     LogsMethod = ?(ValueIsFilled(Option), StrTemplate("%1 (%2)", Method, Option), Method);
 
     SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, LogsMethod);
+    ElementID = CreateTestElement(SetID, LogsMethod, Library);
 
     Try
 
@@ -778,7 +778,7 @@ Function CreateLaunchSet(Val Name) Export
 
 EndFunction
 
-Function CreateTestElement(Val Set, Val Name) Export
+Function CreateTestElement(Val Set, Val Name, Val Library) Export
 
     Data = GetExistingLaunch();
 
@@ -803,6 +803,10 @@ Function CreateTestElement(Val Set, Val Name) Export
     ElementStructure.Insert("launchUuid" , Data["id"]);
 
     ReportPortal().CreateItem(URL, Token, Project, ElementStructure, Set);
+
+    Data["items"].Insert(UUID, StrTemplate("%1_%2", Library, Name));
+
+    WriteLaunchFile(Data);
 
     Return UUID;
 
@@ -836,6 +840,40 @@ Procedure FinishLaunch() Export
         WriteLaunchFile(ExistingLaunch);
 
     EndIf;
+
+EndProcedure
+
+Function GetExecutedTestsList() Export
+
+    Tests          = ReadLaunchFile()["tests"];
+    Return ?(Tests = Undefined, New Array, Tests);
+
+EndFunction
+
+Procedure WriteMissingTest(Val Library, Val Name);
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    SetID     = CreateLaunchSet(Library);
+    ElementID = CreateTestElement(SetID, Name, Library);
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate = GetLaunchTime();
+
+    ElementStructure = New Structure;
+
+    ElementStructure.Insert("endTime"    , CurrentDate);
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("status"     , "skipped");
+
+    ReportPortal().FinishItem(URL, Token, Project, ElementID, ElementStructure);
 
 EndProcedure
 
@@ -887,6 +925,14 @@ Procedure FinishTestElement(Val UUID, Val Status)
 
     ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
 
+    FoundTest = Data["items"].Get(UUID);
+
+    If ValueIsFilled(FoundTest) Then
+        Data["tests"].Add(FoundTest);
+    EndIf;
+
+    WriteLaunchFile(Data);
+
 EndProcedure
 
 Procedure WriteLaunchFile(Val Data)
@@ -899,7 +945,15 @@ EndProcedure
 Procedure CreateLaunchFile(Val UUID)
 
     TFN = GetTempFileName();
-    OPI_Tools.WriteJSONFile(TFN, New Structure("id,ended,suites", UUID, False, New Map));
+
+    DataStructure = New Structure;
+    DataStructure.Insert("id"    , UUID);
+    DataStructure.Insert("ended" , False);
+    DataStructure.Insert("suites", New Map);
+    DataStructure.Insert("tests" , New Array);
+    DataStructure.Insert("items" , New Map);
+
+    OPI_Tools.WriteJSONFile(TFN, DataStructure);
     WriteParameter("RPortal_MainLaunch", TFN);
 
 EndProcedure
@@ -11760,13 +11814,17 @@ Function СоздатьНаборЗапуска(Val Наименование) Ex
 	Return CreateLaunchSet(Наименование);
 EndFunction
 
-Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование) Export
-	Return CreateTestElement(Набор, Наименование);
+Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование, Val Библиотека) Export
+	Return CreateTestElement(Набор, Наименование, Библиотека);
 EndFunction
 
 Procedure ЗавершитьЗапуск() Export
 	FinishLaunch();
 EndProcedure
+
+Function ПолучитьСпискоВыполненныхТестов() Export
+	Return GetExecutedTestsList();
+EndFunction
 
 Function ПолучитьВариантыПараметровFTP() Export
 	Return GetFTPParameterOptions();
