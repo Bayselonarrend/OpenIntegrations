@@ -56,7 +56,7 @@ pipeline {
       	}
 		stage('Create ReportPortal launch'){
 				steps{
-					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os'
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os "en"'
 				}
 		}
 
