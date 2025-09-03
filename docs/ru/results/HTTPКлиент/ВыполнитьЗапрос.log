@@ -1,13 +1,1 @@
-﻿    {
- "args": {},
- "headers": {
-  "Accept": "*/*",
-  "Accept-Charset": "utf-8",
-  "Accept-Encoding": "gzip",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
-  "X-Amzn-Trace-Id": "Root=1-68223040-233ff6e60cf18d2f613535d4"
- },
- "origin": "***",
- "url": "https://httpbin.org/get"
-}
+﻿Соответствие
