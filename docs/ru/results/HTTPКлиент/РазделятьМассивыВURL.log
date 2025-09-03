@@ -1,1 +1,3 @@
-﻿    "Без разделения: /page?arrayfield=[val1,val2,val3];\nРазделение: /page?arrayfield=val1&arrayfield=val2&arrayfield=val3\nРазделение (php): /page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3"
+﻿Без разделения: /page?arrayfield=[val1,val2,val3];
+Разделение: /page?arrayfield=val1&arrayfield=val2&arrayfield=val3
+Разделение (php): /page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3
