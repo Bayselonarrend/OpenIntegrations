@@ -1010,6 +1010,11 @@ Function OPIVersion() Export
     Return "1.27.0";
 EndFunction
 
+Function OPILanguage() Export
+    CurrentOPILanguage = "en";
+    Return CurrentOPILanguage;
+EndFunction
+
 #EndRegion
 
 #EndRegion
