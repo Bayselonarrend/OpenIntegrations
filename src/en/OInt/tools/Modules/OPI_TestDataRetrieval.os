@@ -839,6 +839,19 @@ Procedure FinishLaunch() Export
         ExistingLaunch["ended"] = True;
         WriteLaunchFile(ExistingLaunch);
 
+        ExecutedTests = New ValueList();
+        ExecutedTests = ExecutedTests.LoadValues(GetExecutedTestsList());
+
+        For Each Test In GetFullTestList() Do
+
+            TestFunctionName = StrTemplate("%1_%2", Test["lib"], Test["name"]);
+
+            If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
+                WriteMissingTest(Test["lib"], Test["name"]);
+            EndIf;
+
+        EndDo;
+
     EndIf;
 
 EndProcedure
@@ -847,6 +860,21 @@ Function GetExecutedTestsList() Export
 
     Tests          = ReadLaunchFile()["tests"];
     Return ?(Tests = Undefined, New Array, Tests);
+
+EndFunction
+
+Function GetFullTestList() Export
+
+    Lang  = OPI_Tools.OPILanguage();
+    Tests = StrTemplate("https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/tests_%1.json", Lang);
+
+    OPI_TypeConversion.GetCollection(Tests);
+
+    If Tests.Count() = 1 Then
+        Return New Array;
+    Else
+        Return Tests;
+    EndIf;
 
 EndFunction
 
@@ -885,7 +913,6 @@ Procedure WriteTestLog(Val Test, Val Text, Val Level)
         Return;
     EndIf;
 
-    Shift       = ?(OPI_Tools.IsWindows(), 3600 * 3, 0);
     CurrentDate = GetLaunchTime();
 
     Token   = GetParameter("RPortal_Token");
@@ -11824,6 +11851,10 @@ EndProcedure
 
 Function ПолучитьСпискоВыполненныхТестов() Export
 	Return GetExecutedTestsList();
+EndFunction
+
+Function ПолучитьПолныйСписокТестов() Export
+	Return GetFullTestList();
 EndFunction
 
 Function ПолучитьВариантыПараметровFTP() Export
