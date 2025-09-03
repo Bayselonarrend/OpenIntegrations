@@ -840,7 +840,7 @@ Procedure FinishLaunch() Export
         WriteLaunchFile(ExistingLaunch);
 
         ExecutedTests = New ValueList();
-        ExecutedTests = ExecutedTests.LoadValues(GetExecutedTestsList());
+        ExecutedTests.LoadValues(GetExecutedTestsList());
 
         For Each Test In GetFullTestList() Do
 
