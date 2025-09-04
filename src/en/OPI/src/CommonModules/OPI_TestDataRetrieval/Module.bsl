@@ -581,7 +581,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
     ResultFile = GetTempFileName();
 
     LaunchString = Oint + " " + Library + " " + Method;
-    AddOptions      = New Structure;
+    AddOptions   = New Structure;
 
     For Each Option In Options Do
 
@@ -11338,11 +11338,11 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         JSONWriter = New JSONWriter();
 
-        If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Or Embedded Then
+        If CurrentType = Type("Array") Or Embedded Then
 
-            If CurrentType = Type("Array") Then
-                For N         = 0 To Value.UBound() Do
-                    Value[N]     = GetCLIFormedValue(Value[N], True, AddOptions);
+            If CurrentType   = Type("Array") Then
+                For N        = 0 To Value.UBound() Do
+                    Value[N] = GetCLIFormedValue(Value[N], True, AddOptions);
                 EndDo;
             EndIf;
 
