@@ -11,7 +11,7 @@
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1f76b568006e9f06006b12e400000001000...";
+    Token  = "4f8db968006e9f06006b12e400000001000...";
     UserID = "2516";
     Email  = String(New UUID) + "@exepmple.org";
 
