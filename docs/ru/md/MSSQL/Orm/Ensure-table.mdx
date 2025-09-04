@@ -67,10 +67,10 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint mssql ГарантироватьТаблицу \
-              --table "testtable" \
-              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" \
+              --table "test_new" \
+              --cols "/tmp/dko0oogw.moe.json" \
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --tls "/tmp/cnq3w1u1.swn.json"
         ```
     </TabItem>
   
@@ -79,15 +79,15 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint mssql ГарантироватьТаблицу ^
-              --table "testtable" ^
-              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" ^
+              --table "test_new" ^
+              --cols "/tmp/dko0oogw.moe.json" ^
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --tls "/tmp/cnq3w1u1.swn.json"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-Структура
+Соответствие
 ```
