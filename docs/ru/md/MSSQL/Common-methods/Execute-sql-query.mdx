@@ -108,23 +108,17 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mssql ВыполнитьЗапросSQL \
-              --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" \
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mssql ВыполнитьЗапросSQL ^
-              --sql "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;" ^
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;"
         ```
     </TabItem>
 </Tabs>
