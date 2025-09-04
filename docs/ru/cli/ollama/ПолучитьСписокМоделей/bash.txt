@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокМоделей \
   --url "https://hut.openintegrations.dev/ollama" \
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/ocazabve.fxs.json"

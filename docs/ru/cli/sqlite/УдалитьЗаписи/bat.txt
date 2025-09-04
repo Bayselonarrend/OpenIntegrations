@@ -2,5 +2,5 @@
 
 oint sqlite УдалитьЗаписи ^
   --table "test" ^
-  --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':'False'}" ^
-  --db "/tmp/202zrcx5.wz4.sqlite"
+  --filter "/tmp/dj14jojg.v1l.json" ^
+  --db "/tmp/k3iiyrfw.zvv.sqlite"

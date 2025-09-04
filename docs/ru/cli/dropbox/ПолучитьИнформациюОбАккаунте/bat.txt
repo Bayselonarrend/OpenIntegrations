@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint dropbox ПолучитьИнформациюОбАккаунте ^
   --token "***" ^
-  --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
+  --account "/tmp/nsnvx1so.yzm.json"

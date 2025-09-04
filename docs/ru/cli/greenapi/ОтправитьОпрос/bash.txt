@@ -1,9 +1,9 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьОпрос \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --access "/tmp/l3cafziq.tku.json" \
   --chat "120363410406221140@g.us" \
   --text "Какой ваш любимый цвет?" \
   --options "['Красный','Желтый','Зеленый']" \
   --multi "True" \
-  --quoted "BAE5338B5670E79F"
+  --quoted "BAE5722DBE1EE09D"

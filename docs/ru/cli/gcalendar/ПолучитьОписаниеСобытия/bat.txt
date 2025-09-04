@@ -1,2 +1,2 @@
 oint gcalendar ПолучитьОписаниеСобытия ^
-  --empty "False"
+  

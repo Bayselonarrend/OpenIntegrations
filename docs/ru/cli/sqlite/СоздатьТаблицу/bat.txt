@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint sqlite СоздатьТаблицу ^
-  --table "test" ^
-  --cols "{'id':'INTEGER PRIMARY KEY','name':'TEXT','age':'INTEGER','salary':'REAL','is_active':'BOOLEAN','created_at':'DATETIME','data':'BLOB'}" ^
-  --db "/tmp/202zrcx5.wz4.sqlite"
+  --table "test1" ^
+  --cols "/tmp/2gdznk4d.fwx.json" ^
+  --db "/tmp/k3iiyrfw.zvv.sqlite"
