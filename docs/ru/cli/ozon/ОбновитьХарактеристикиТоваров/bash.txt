@@ -3,4 +3,4 @@
 oint ozon ОбновитьХарактеристикиТоваров \
   --clientid "***" \
   --apikey "***" \
-  --items "/tmp/yihokek2.txr.json"
+  --items "/tmp/rmbgmxya.amq.json"

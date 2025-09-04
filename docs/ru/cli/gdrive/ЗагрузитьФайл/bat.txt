@@ -3,4 +3,4 @@
 oint gdrive ЗагрузитьФайл ^
   --token "***" ^
   --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --props "/tmp/mtwgdoqi.soc.json"
+  --props "/tmp/ynwygovr.bwa.json"

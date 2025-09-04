@@ -2,7 +2,7 @@
 
 oint vk СоздатьПост ^
   --text "Пост из автотеста" ^
-  --pictures "/tmp/seavwp2p.qfs.png" ^
+  --pictures "/tmp/3ihtgzuk.3o1.png" ^
   --ad "True" ^
   --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
-  --auth "/tmp/5nnjjrjk.pbb.json"
+  --auth "/tmp/ihzagfhu.ief.json"

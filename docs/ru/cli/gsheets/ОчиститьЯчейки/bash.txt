@@ -1,5 +1,5 @@
 oint gsheets ОчиститьЯчейки \
   --token "***" \
-  --spreadsheet "1noZVOL31lgCcrIe-T0GGdCpOS9YX5dG-spu4yENl1aw" \
+  --spreadsheet "1ReF3js4ixD32LfmIgi5xL_fjzEzE7JUON7RmnPRd5VI" \
   --cells "['B2','A3','B4']" \
   --sheetname "Лист2"

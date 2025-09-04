@@ -2,8 +2,8 @@
 
 oint notion ИзменитьСвойстваСтраницы \
   --token "***" \
-  --page "26482aa7-fc4e-817c-86cf-d47e058a8137" \
-  --data "/tmp/vdns2d2w.z1x.json" \
+  --page "26482aa7-fc4e-8156-a872-c0e28f79f1e8" \
+  --data "/tmp/jlnt3v2v.423.json" \
   --icon "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" \
   --archive "False"
