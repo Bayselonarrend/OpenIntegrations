@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi НазначитьПраваАдминистратора \
-  --access "/tmp/yxzlkuw5.vew.json" \
-  --group "120363423213727135@g.us" \
+  --access "/tmp/50kd3vxo.y4j.json" \
+  --group "120363420033964628@g.us" \
   --user "123123123@c.us"

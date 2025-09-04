@@ -2,6 +2,6 @@
 
 oint cdek ИзменитьЗаказ ^
   --token "***" ^
-  --uuid "377e944f-1720-4845-9945-45d87a451e17" ^
-  --order "/tmp/wuzubz4n.ybd.json" ^
+  --uuid "3b51a660-dbef-4f98-9a0f-6ddaeb18fc14" ^
+  --order "/tmp/yr2yt3jf.s3v.json" ^
   --testapi "***"

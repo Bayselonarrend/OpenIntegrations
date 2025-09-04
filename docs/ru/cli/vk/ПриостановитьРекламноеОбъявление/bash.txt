@@ -3,4 +3,4 @@
 oint vk ПриостановитьРекламноеОбъявление \
   --cabinet "1607951446" \
   --adv "0" \
-  --auth "/tmp/5z0nbarc.5oh.json"
+  --auth "/tmp/2hqt4s3h.hoy.json"

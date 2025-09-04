@@ -2,5 +2,5 @@
 
 oint s3 ОтправитьЗапросСТелом \
   --method "PUT" \
-  --basic "/tmp/uqyoudfy.nlx.json" \
+  --basic "/tmp/jlyoayki.gfg.json" \
   --body "C:\test_data\document.docx"

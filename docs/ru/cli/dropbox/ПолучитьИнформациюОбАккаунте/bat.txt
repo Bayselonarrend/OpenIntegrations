@@ -2,4 +2,4 @@
 
 oint dropbox ПолучитьИнформациюОбАккаунте ^
   --token "***" ^
-  --account "/tmp/nsnvx1so.yzm.json"
+  --account "/tmp/phpibcuz.wxh.json"

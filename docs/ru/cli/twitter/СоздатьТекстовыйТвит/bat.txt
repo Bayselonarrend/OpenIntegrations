@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter СоздатьТекстовыйТвит ^
-  --text "Тестовый твиттc32d866a-7568-43d9-9894-2270002544a7" ^
-  --auth "/tmp/zsv40cch.sct.json"
+  --text "Тестовый твиттd02d7402-878e-43cc-9c66-07e6c7baf8ab" ^
+  --auth "/tmp/pftgadfe.u0j.json"

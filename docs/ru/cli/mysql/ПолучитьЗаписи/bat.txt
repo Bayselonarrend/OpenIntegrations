@@ -1,3 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint mysql ПолучитьЗаписи ^
   --table "testtable" ^
-  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+  --tls "/tmp/vo4fmws1.2bu.json"
