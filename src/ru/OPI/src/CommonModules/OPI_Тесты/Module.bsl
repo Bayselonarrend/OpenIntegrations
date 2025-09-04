@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -15276,7 +15276,7 @@
     Адрес  = ПараметрыФункции["TCP_Address"];
     Данные = "Echo this!\n";
 
-    Результат = OPI_TCP.ОбработатьЗапрос(Адрес, Данные);                                                                   
+    Результат = OPI_TCP.ОбработатьЗапрос(Адрес, Данные);
 
     Обработать(Результат, "TCP", "ОбработатьЗапрос", , "Echo this!" + Символы.ПС); // SKIP
 

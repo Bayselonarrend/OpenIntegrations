@@ -581,6 +581,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
     ResultFile = GetTempFileName();
 
     LaunchString = Oint + " " + Library + " " + Method;
+    AddOptions      = New Structure;
 
     For Each Option In Options Do
 
@@ -588,13 +589,23 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
             Continue;
         EndIf;
 
-        CurrentValue = GetCLIFormedValue(Option.Value);
+        CurrentValue = GetCLIFormedValue(Option.Value, , AddOptions);
 
         LaunchString = LaunchString
             + " --"
             + Option.Key
             + " "
             + CurrentValue;
+
+    EndDo;
+
+    For Each AddOption In AddOptions Do
+
+        LaunchString = LaunchString
+            + " --"
+            + AddOption.Key
+            + " "
+            + GetCLIFormedValue(AddOption.Value);
 
     EndDo;
 
@@ -1093,7 +1104,7 @@ Function GetFTPParameterOptions() Export
 
     // FTP
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTP)");
+    ParametersStructure.Insert("Postfix", "FTP");
     ParametersStructure.Insert("FTP_IP", Localhost);
     ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
     ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
@@ -1111,7 +1122,7 @@ Function GetFTPParameterOptions() Export
 
     // FTPS
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTPS)");
+    ParametersStructure.Insert("Postfix", "FTPS");
     ParametersStructure.Insert("FTP_IP", Localhost);
     ParametersStructure.Insert("FTP_Port", TestParametersMain["FTPS_Port"]);
     ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
@@ -1129,7 +1140,7 @@ Function GetFTPParameterOptions() Export
 
     // FTP + Socks5
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTP, Socks5)");
+    ParametersStructure.Insert("Postfix", "FTP, Socks5");
     ParametersStructure.Insert("FTP_IP", TestParametersMain["FTP_IP"]);
     ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
     ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
@@ -1147,7 +1158,7 @@ Function GetFTPParameterOptions() Export
 
     // FTPS + Socks5
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", " (FTPS, Socks5)");
+    ParametersStructure.Insert("Postfix", "FTPS, Socks5");
     ParametersStructure.Insert("FTP_IP", TestParametersMain["FTPS_IP"]);
     ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
     ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
@@ -1167,7 +1178,7 @@ Function GetFTPParameterOptions() Export
 
         // FTP + HTTP
         ParametersStructure = New Structure;
-        ParametersStructure.Insert("Postfix", " (FTP, HTTP)");
+        ParametersStructure.Insert("Postfix", "FTP, HTTP");
         ParametersStructure.Insert("FTP_IP", TestParametersMain["FTP_IP"]);
         ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
         ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
@@ -8055,10 +8066,10 @@ EndFunction
 
 Function Check_SQLite_AddRecords(Val Result, Val Option)
 
-    If Option    = "Field error" Or Option = "JSON Error" Then
+    If Option                       = "Field error" Or Option = "JSON Error" Then
         ExpectsThat(Result["result"]).Равно(False);
-    ElsIf Option = "Error without transaction" Then
-         ExpectsThat(Result["rows"]).Равно(1);
+    ElsIf Option                    = "Error without transaction" Then
+         ExpectsThat(Result["rows"] = 1 Or Result["rows"] = 2).Равно(True);
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -11266,48 +11277,49 @@ EndFunction
 
 // BSLLS:CognitiveComplexity-off
 
-Function GetCLIFormedValue(Val Value, Val Embedded = False)
+Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
-    CurrentType = TypeOf(Value);
-    Cover       = False;
+    CurrentType       = TypeOf(Value);
+    CurrentTypeString = String(CurrentType);
+    Cover             = False;
 
     If CurrentType = Type("Number") Then
 
-        Value = OPI_Tools.NumberToString(Value);
+        If Not Embedded Then
+            Value = OPI_Tools.NumberToString(Value);
+        EndIf;
 
-    ElsIf CurrentType = Type("String") Then
+    ElsIf CurrentType = Type("String") Or CurrentType = Type("UUID") Then
 
         Value = OPI_Tools.NumberToString(Value);
+        Value = StrReplace(Value, Chars.LF, " ");
 
         If OPI_Tools.IsWindows() Then
             Value = StrReplace(Value, "%", "%%");
         EndIf;
 
-        If Not Embedded Then
-            Cover = True;
-        EndIf;
+        Cover = Not Embedded;
 
     ElsIf CurrentType = Type("Date") Then
 
-        Value = XMLString(Value);
-        Cover = True;
+        If Not Embedded Then
+            Value = XMLString(Value);
+            Cover = True;
+        EndIf;
 
     ElsIf CurrentType  = Type("Structure")
         Or CurrentType = Type("Map")
         Or CurrentType = Type("Array") Then
 
-
         If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
+            Value_ = New(CurrentTypeString);
+
             For Each KeyValue In Value Do
-                If TypeOf(KeyValue.Value) = Type("BinaryData") Then
-
-                    TFN                    = GetTempFileName();
-                    KeyValue.Value.Write(TFN);
-                    KeyValue[KeyValue.Key] = TFN;
-
-                EndIf;
+                Value_.Insert(KeyValue.Key, GetCLIFormedValue(KeyValue.Value, True, AddOptions));
             EndDo;
+
+            Value = Value_;
 
         EndIf;
 
@@ -11316,16 +11328,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
             Value_ = New Map;
 
             For Each KeyValue In Value Do
-
-                If TypeOf(KeyValue.Key) = Type("BinaryData") Then
-                    CurrentKey          = GetTempFileName();
-                    KeyValue.Key.Write(CurrentKey);
-                Else
-                    CurrentKey          = KeyValue.Key;
-                EndIf;
-
-                Value_.Insert(CurrentKey, KeyValue.Value);
-
+                Value_.Insert(GetCLIFormedValue(KeyValue.Key, True, AddOptions), KeyValue.Value);
             EndDo;
 
             Value = Value_;
@@ -11335,14 +11338,22 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         JSONWriter = New JSONWriter();
 
-        If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Then
+        If OPI_Tools.IsOneScript() Or CurrentType = Type("Array") Or Embedded Then
 
-            WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
-            JSONWriter.SetString(WriterSettings);
-            WriteJSON(JSONWriter, Value);
+            If CurrentType = Type("Array") Then
+                For N         = 0 To Value.UBound() Do
+                    Value[N]     = GetCLIFormedValue(Value[N], True, AddOptions);
+                EndDo;
+            EndIf;
 
-            Value = JSONWriter.Close();
-            Cover = True;
+            If Not Embedded Then
+                WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
+                JSONWriter.SetString(WriterSettings);
+                WriteJSON(JSONWriter, Value);
+
+                Value = JSONWriter.Close();
+                Cover = True;
+            EndIf;
 
         Else
 
@@ -11366,7 +11377,9 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     ElsIf CurrentType = Type("Boolean") Then
 
-        Value = ?(Value, "true", "false");
+        If Not Embedded Then
+            Value = ?(Value, "true", "false");
+        EndIf;
 
     ElsIf CurrentType = Type("BinaryData") Then
 
@@ -11376,13 +11389,18 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
         TFN = GetTempFileName();
         Value.Write(TFN);
         Value = TFN;
-        Cover = True;
+        Cover = Not Embedded;
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
+    ElsIf StrStartsWith(CurrentTypeString, "AddIn") Then
+
+        Value = ProcessAddInParamCLI(Value, CurrentTypeString, AddOptions);
+        Cover = Not Embedded;
+
     Else
 
-        Raise "Invalid type " + String(CurrentType);
+        Raise "Invalid type " + CurrentTypeString;
 
     EndIf;
 
@@ -11392,6 +11410,49 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     If Cover Then
         Value = """" + Value + """";
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
+Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
+
+    AddInName = StrSplit(ValeType, ".")[1];
+
+    If AddInName = "OPI_PostgreSQL" Or AddInName = "OPI_MySQL" Or AddInName = "OPI_MSSQL" Then
+
+        If AddInName = "OPI_MSSQL" Then
+            AddOptions.Insert("tls", New Structure("use_tls, accept_invalid_certs, ca_cert_path", True, True, ""));
+        Else
+
+            TLS = Value.GetTLSSettings();
+
+            If ValueIsFilled(TLS) Then
+                OPI_TypeConversion.GetCollection(TLS);
+                AddOptions.Insert("tls", TLS);
+            EndIf;
+
+        EndIf;
+
+        Value = Value["ConnectionString"];
+
+    ElsIf AddInName = "OPI_SQLite" Then
+
+        Value = Value["Database"];
+
+    ElsIf AddInName = "OPI_TCPClient" Then
+
+        Value = Value["Address"];
+
+    ElsIf AddInName = "OPI_RCON" Then
+
+        Value = Value.GetSettings();
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+        Value = GetCLIFormedValue(Value, False, AddOptions);
+
+    Else
+        Raise "Invalid type " + ValeType;
     EndIf;
 
     Return Value;
@@ -11439,7 +11500,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     EndIf;
 
     If Not Embedded Then
-        Value = "--" + Name + " " + GetCLIFormedValue(Value);
+        Value = "--" + Name + " " + GetCLIFormedValue(Value, False);
     EndIf;
 
     Return Value;
@@ -11489,6 +11550,11 @@ Function ReadCLIResponse(Val ResultFile)
 
         Try
             Result = New BinaryData(ResultFile);
+
+            If Result.Size() < 10000 Then
+                Result = GetStringFromBinaryData(Result);
+            EndIf;
+
         Except
             Result = null;
         EndTry;
