@@ -11363,12 +11363,9 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
             TFN = GetTempFileName("json");
             // BSLLS:MissingTemporaryFileDeletion-on
 
-            Stream = New FileStream(TFN, FileOpenMode.Create);
-
-            JSONWriter.OpenStream(Stream);
+            JSONWriter.OpenFile(TFN);
             WriteJSON(JSONWriter, Value);
             JSONWriter.Close();
-            Stream.Close();
 
             Value = TFN;
             Cover = True;
