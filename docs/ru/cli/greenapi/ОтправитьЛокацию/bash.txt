@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьЛокацию \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --access "/tmp/1mp202ec.yug.json" \
   --chat "120363410406221140@g.us" \
-  --loc "{'latitude':'53.908522','longitude':'27.574821'}" \
-  --quoted "BAE511348A2E060B"
+  --loc "/tmp/chboqe2j.w1a.json" \
+  --quoted "BAE574BC8AB98A09"

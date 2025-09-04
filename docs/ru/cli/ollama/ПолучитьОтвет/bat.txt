@@ -4,4 +4,4 @@ oint ollama ПолучитьОтвет ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "mario" ^
   --prompt "How are you?" ^
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/hmm1sifu.23b.json"

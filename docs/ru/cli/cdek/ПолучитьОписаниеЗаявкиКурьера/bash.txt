@@ -1,2 +1,2 @@
 oint cdek ПолучитьОписаниеЗаявкиКурьера \
-  --empty "False"
+  --empty "True"

@@ -3,5 +3,5 @@
 oint ozon ПолучитьСписокОтправленийFBO \
   --clientid "***" \
   --apikey "***" \
-  --filter "{'since':'2023-01-01T00:00:00Z','to':'2024-01-01T00:00:00Z'}" \
-  --with "{'analytics_data':'True','financial_data':'True'}"
+  --filter "/tmp/0xwoeaqv.rt4.json" \
+  --with "/tmp/oupgbpom.qbt.json"

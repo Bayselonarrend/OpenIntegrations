@@ -3,5 +3,6 @@
 oint ollama ПолучитьОтветВКонтексте ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
-  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a leading manufacturing software solution provided by Avidyne Systems Inc. It is designed to help manufacturers streamline and optimize their operations, including manufacturing processes, inventory management, supply chain management, and financial accounting. The software offers customizable modules for different departments and industries, making it versatile and user-friendly for small, medium, and large-scale manufacturers alike. It is known for its powerful features, advanced analytics, and comprehensive reporting capabilities that allow manufacturing organizations to make informed business decisions quickly and efficiently.'},{'role':'user','content':'When the first version was released?'}]" ^
-  --headers "{'Authorization':'***'}"
+  --msgs "[{'role':'user','content':'Hello!'}]" ^
+  --options "/tmp/cwwgqxew.qew.json" ^
+  --headers "/tmp/2iysxpan.g3h.json"

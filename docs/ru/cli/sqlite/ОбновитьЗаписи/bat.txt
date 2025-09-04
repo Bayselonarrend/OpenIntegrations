@@ -2,6 +2,6 @@
 
 oint sqlite ОбновитьЗаписи ^
   --table "test" ^
-  --values "{'name':'Vitaly A.','salary':'999999'}" ^
-  --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':'False'}]" ^
-  --db "/tmp/202zrcx5.wz4.sqlite"
+  --values "/tmp/d0k1hkb0.w4l.json" ^
+  --filter "/tmp/khk4l1c4.5c1.json" ^
+  --db "/tmp/k3iiyrfw.zvv.sqlite"

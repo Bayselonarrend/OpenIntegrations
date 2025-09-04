@@ -5,4 +5,4 @@ oint vk СоздатьПодборкуТоваров \
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --main "True" \
   --hidden "False" \
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --auth "/tmp/pv3k1jmk.bk3.json"

@@ -4,4 +4,4 @@ oint ollama ПолучитьИнформациюОМодели ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "mario" ^
   --verbose "False" ^
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/u1wtu4sl.gav.json"
