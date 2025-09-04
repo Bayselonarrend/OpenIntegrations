@@ -1,4 +1,4 @@
 ﻿    {
- "error": "db error: ERROR: database \"testbase1\" does not exist",
+ "error": "db error: ОШИБКА: база данных \"testbase1\" не существует",
  "result": false
 }
