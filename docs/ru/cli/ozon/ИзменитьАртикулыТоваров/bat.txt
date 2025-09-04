@@ -3,4 +3,4 @@
 oint ozon ИзменитьАртикулыТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --offers "/tmp/ivhqgk0n.3r2.json"
+  --offers "/tmp/tvnzgntm.hc0.json"

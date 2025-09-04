@@ -3,4 +3,4 @@
 oint ozon ПолучитьКоличествоТоваров \
   --clientid "***" \
   --apikey "***" \
-  --filter "/tmp/u5kxhqty.e5k.json"
+  --filter "/tmp/gc1ufbkf.mui.json"

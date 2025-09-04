@@ -3,4 +3,4 @@
 oint ollama ВыгрузитьМодельИзПамяти \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "tinyllama" \
-  --headers "/tmp/kxgtbarx.2dh.json"
+  --headers "/tmp/hdi2pza3.psm.json"

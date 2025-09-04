@@ -4,4 +4,4 @@ oint ollama ЗагрузитьМодельВПамять ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
   --keep "500" ^
-  --headers "/tmp/q4351x2h.opk.json"
+  --headers "/tmp/az1sidh1.en4.json"

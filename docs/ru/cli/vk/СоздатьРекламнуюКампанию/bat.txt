@@ -3,4 +3,4 @@
 oint vk СоздатьРекламнуюКампанию ^
   --cabinet "1607951446" ^
   --title "Новая кампания" ^
-  --auth "/tmp/ce5vxwvg.b4e.json"
+  --auth "/tmp/alwjvznj.wpf.json"

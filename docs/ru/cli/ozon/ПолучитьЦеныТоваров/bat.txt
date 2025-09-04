@@ -3,4 +3,4 @@
 oint ozon ПолучитьЦеныТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --filter "/tmp/xxosocka.ghk.json"
+  --filter "/tmp/k0vunxya.in2.json"

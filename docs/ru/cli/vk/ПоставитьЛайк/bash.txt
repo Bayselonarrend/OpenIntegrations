@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ПоставитьЛайк \
-  --post "9336" \
-  --auth "/tmp/refk40hq.gpk.json"
+  --post "9346" \
+  --auth "/tmp/3pmqdfxz.hoa.json"

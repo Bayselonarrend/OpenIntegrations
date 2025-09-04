@@ -4,4 +4,4 @@ oint vk ЗагрузитьВидеоНаСервер ^
   --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
   --title "Новое видео" ^
   --description "Описание видео" ^
-  --auth "/tmp/l10lhsfx.asd.json"
+  --auth "/tmp/unszw00b.hz4.json"

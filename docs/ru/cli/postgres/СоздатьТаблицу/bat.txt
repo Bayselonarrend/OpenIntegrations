@@ -2,6 +2,6 @@
 
 oint postgres СоздатьТаблицу ^
   --table "somename" ^
-  --cols "/tmp/kqiamsku.bxw.json" ^
+  --cols "/tmp/kivbvga2.flz.json" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls "/tmp/uum5acx3.vdh.json"
+  --tls "/tmp/q33jy5j5.5iz.json"

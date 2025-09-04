@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьТовар \
-  --item "11783027" \
-  --auth "/tmp/aa2zr5i4.vjp.json"
+  --item "11783484" \
+  --auth "/tmp/ayfah2py.v5u.json"

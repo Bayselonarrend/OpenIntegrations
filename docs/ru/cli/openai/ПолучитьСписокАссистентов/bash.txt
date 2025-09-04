@@ -4,4 +4,4 @@ oint openai ПолучитьСписокАссистентов \
   --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
   --limit "2" \
-  --options "/tmp/wgthp2qo.qvr.json"
+  --options "/tmp/4rixf54h.yb4.json"
