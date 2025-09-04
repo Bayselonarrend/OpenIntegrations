@@ -3,4 +3,4 @@
 oint ollama ВыгрузитьМодельИзПамяти \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "tinyllama" \
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/kxgtbarx.2dh.json"

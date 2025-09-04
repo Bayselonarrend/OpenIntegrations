@@ -4,4 +4,4 @@ oint openai ПолучитьКартинки ^
   --url "https://bothub.chat/api/v2/openai/" ^
   --token "***" ^
   --model "dall-e-3" ^
-  --descr "{'prompt':'Yellow alpaca','n':'1','size':'1024x1024'}"
+  --descr "/tmp/kkfljqux.eck.json"

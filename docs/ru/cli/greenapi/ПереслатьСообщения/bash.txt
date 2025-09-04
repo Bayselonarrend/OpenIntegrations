@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПереслатьСообщения \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --access "/tmp/drzivxf1.3me.json" \
   --from "120363410406221140@g.us" \
   --to "120363410406221140@g.us" \
-  --msgs "BAE54140317CC0DC"
+  --msgs "BAE5519028D943E3"

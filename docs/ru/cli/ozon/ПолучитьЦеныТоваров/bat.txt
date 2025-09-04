@@ -1,3 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint ozon ПолучитьЦеныТоваров ^
   --clientid "***" ^
-  --apikey "***"
+  --apikey "***" ^
+  --filter "/tmp/xxosocka.ghk.json"

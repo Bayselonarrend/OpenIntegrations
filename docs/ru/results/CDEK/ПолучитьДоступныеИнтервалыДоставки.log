@@ -1,17 +1,1 @@
-﻿    {
- "requests": [
-  {
-   "type": "GET",
-   "date_time": "2025-08-19T18:36:52+00:00",
-   "state": "INVALID",
-   "errors": [
-    {
-     "code": "v2_order_invalid",
-     "additional_code": "0x1E0EBE20",
-     "message": "Order is invalid 8ff62733-f524-4f66-a693-51db6554ea0e"
-    }
-   ]
-  }
- ],
- "related_entities": []
-}
+﻿Соответствие

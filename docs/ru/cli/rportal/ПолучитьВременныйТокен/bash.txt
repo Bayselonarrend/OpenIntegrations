@@ -1,0 +1,4 @@
+oint rportal ПолучитьВременныйТокен \
+  --url "tests.openintegrations.dev" \
+  --login "superadmin" \
+  --pass "***"

@@ -3,4 +3,4 @@
 oint vk СоздатьРекламнуюКампанию \
   --cabinet "1607951446" \
   --title "Новая кампания" \
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --auth "/tmp/ce5vxwvg.b4e.json"

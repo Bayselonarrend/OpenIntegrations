@@ -1,3 +1,2 @@
 oint neocities ПолучитьСписокФайлов ^
-  --token "***" ^
-  --path "test"
+  --token "***"

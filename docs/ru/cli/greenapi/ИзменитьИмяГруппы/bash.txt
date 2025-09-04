@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИзменитьИмяГруппы \
-  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363417979380205@g.us" \
+  --access "/tmp/qe2rwff1.2uj.json" \
+  --group "120363423213727135@g.us" \
   --name "New name"

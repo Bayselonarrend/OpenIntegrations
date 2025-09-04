@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокЗапущенныхМоделей ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/zvfh0hlr.myl.json"
