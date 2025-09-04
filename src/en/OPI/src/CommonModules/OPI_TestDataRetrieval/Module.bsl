@@ -627,7 +627,7 @@ Procedure ProcessTestingResult(Val Result
     , AddParam3  = Undefined) Export
 
 
-    IsVariant     = ValueIsFilled(Option);
+    IsVariant  = ValueIsFilled(Option);
     LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
 
     SetID     = CreateLaunchSet(Library);
@@ -836,7 +836,7 @@ Procedure FinishLaunch() Export
 
         EndIf;
 
-        AllTests            = GetFullTestList();
+        AllTests      = GetFullTestList();
         ExecutedTests = New ValueList();
         ExecutedTests.LoadValues(GetExecutedTestsList());
 
