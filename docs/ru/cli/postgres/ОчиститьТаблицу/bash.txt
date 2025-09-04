@@ -1,3 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint postgres ОчиститьТаблицу \
   --table "testtable" \
-  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+  --tls "/tmp/ns0wde2k.jgz.json"

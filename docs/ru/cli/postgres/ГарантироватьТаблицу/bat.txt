@@ -2,5 +2,6 @@
 
 oint postgres ГарантироватьТаблицу ^
   --table "test_new" ^
-  --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
-  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+  --cols "/tmp/qgsaotlv.lk4.json" ^
+  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+  --tls "/tmp/0s5qwput.azc.json"
