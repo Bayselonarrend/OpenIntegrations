@@ -3,4 +3,4 @@ oint mysql СформироватьСтрокуПодключения ^
   --db "" ^
   --login "bayselonarrend" ^
   --pass "***" ^
-  --port "3306"
+  --port "3307"

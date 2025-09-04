@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint mysql ПолучитьИнформациюОТаблице \
-  --table "testtable" \
+  --table "test_new" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+  --tls "/tmp/zse4cfln.kio.json"

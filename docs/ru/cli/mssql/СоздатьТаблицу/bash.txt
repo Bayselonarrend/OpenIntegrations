@@ -2,6 +2,6 @@
 
 oint mssql СоздатьТаблицу \
   --table "somename" \
-  --cols "/tmp/ciqcnxmr.ucq.json" \
+  --cols "/tmp/q1ahrfjk.lk5.json" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/r5yujuot.vpl.json"
+  --tls "/tmp/irqyzn51.0xc.json"

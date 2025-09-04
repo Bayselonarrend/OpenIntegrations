@@ -3,4 +3,4 @@
 oint vk СоздатьАльбом ^
   --title "Альбом из автотеста" ^
   --description "Новый альбом из автотеста" ^
-  --auth "/tmp/gnl0pd33.5wp.json"
+  --auth "/tmp/mhlnoxzi.us1.json"

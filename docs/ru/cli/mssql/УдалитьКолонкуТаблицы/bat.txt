@@ -4,4 +4,4 @@ oint mssql УдалитьКолонкуТаблицы ^
   --table "testtable" ^
   --name "new_field" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/avewnmfk.cq3.json"
+  --tls "/tmp/dcvbapuu.fd4.json"

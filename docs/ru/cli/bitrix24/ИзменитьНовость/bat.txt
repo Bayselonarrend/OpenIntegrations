@@ -2,8 +2,8 @@
 
 oint bitrix24 ИзменитьНовость ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --postid "2890" ^
+  --postid "2894" ^
   --text "Новый текст новости" ^
-  --files "/tmp/jmswa22e.1s0.json" ^
+  --files "/tmp/wpd34vtb.vue.json" ^
   --title "Новый заголовок новости" ^
   --token "***"

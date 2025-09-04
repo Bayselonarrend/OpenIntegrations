@@ -2,4 +2,4 @@
 
 oint vk СократитьСсылку ^
   --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
-  --auth "/tmp/1k3b4e14.yzr.json"
+  --auth "/tmp/dzw0so4x.sjf.json"

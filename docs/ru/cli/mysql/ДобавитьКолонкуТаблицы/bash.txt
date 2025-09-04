@@ -5,4 +5,4 @@ oint mysql ДобавитьКолонкуТаблицы \
   --name "new_field" \
   --type "MEDIUMTEXT" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+  --tls "/tmp/utennc1p.pes.json"

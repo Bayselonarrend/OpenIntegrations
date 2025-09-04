@@ -1,6 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql УдалитьБазуДанных ^
-  --base "testbase1" ^
-  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+  --base "testbase2" ^
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
