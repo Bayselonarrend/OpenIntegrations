@@ -11404,7 +11404,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
     EndIf;
 
-    If Not OPI_Tools.IsWindows() Then
+    If Not OPI_Tools.IsWindows() And Not Embedded Then
         Value = StrReplace(Value, """" , """'""");
     EndIf;
 
