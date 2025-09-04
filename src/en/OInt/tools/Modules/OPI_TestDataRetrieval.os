@@ -627,10 +627,11 @@ Procedure ProcessTestingResult(Val Result
     , AddParam3  = Undefined) Export
 
 
-    LogsMethod = ?(ValueIsFilled(Option), StrTemplate("%1 (%2)", Method, Option), Method);
+    IsVariant  = ValueIsFilled(Option);
+    LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
 
     SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, LogsMethod, Library);
+    ElementID = CreateTestElement(SetID, LogsMethod, Library, IsVariant);
 
     Try
 
@@ -778,7 +779,7 @@ Function CreateLaunchSet(Val Name) Export
 
 EndFunction
 
-Function CreateTestElement(Val Set, Val Name, Val Library) Export
+Function CreateTestElement(Val Set, Val Name, Val Library, Val IsVariant = False) Export
 
     Data = GetExistingLaunch();
 
@@ -804,7 +805,9 @@ Function CreateTestElement(Val Set, Val Name, Val Library) Export
 
     ReportPortal().CreateItem(URL, Token, Project, ElementStructure, Set);
 
-    Data["items"].Insert(UUID, StrTemplate("%1_%2", Library, Name));
+    If Not IsVariant Then
+        Data["items"].Insert(UUID, StrTemplate("%1_%2", Library, Name));
+    EndIf;
 
     WriteLaunchFile(Data);
 
@@ -833,24 +836,29 @@ Procedure FinishLaunch() Export
 
         EndIf;
 
+        AllTests      = GetFullTestList();
+        ExecutedTests = New ValueList();
+        ExecutedTests.LoadValues(GetExecutedTestsList());
+
+        If ExecutedTests.Count() / AllTests.Count() > 0.8 Then
+
+            For Each Test In AllTests Do
+
+                TestFunctionName = StrTemplate("%1_%2", Test["lib"], Test["name"]);
+
+                If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
+                    WriteMissingTest(Test["lib"], Test["name"]);
+                EndIf;
+
+            EndDo;
+
+        EndIf;
+
         FinishStructure = ReportPortal().GetLaunchCompletionStructure(CurrentDate);
         ReportPortal().FinishLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
 
         ExistingLaunch["ended"] = True;
         WriteLaunchFile(ExistingLaunch);
-
-        ExecutedTests = New ValueList();
-        ExecutedTests.LoadValues(GetExecutedTestsList());
-
-        For Each Test In GetFullTestList() Do
-
-            TestFunctionName = StrTemplate("%1_%2", Test["lib"], Test["name"]);
-
-            If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
-                WriteMissingTest(Test["lib"], Test["name"]);
-            EndIf;
-
-        EndDo;
 
     EndIf;
 
@@ -11841,8 +11849,8 @@ Function СоздатьНаборЗапуска(Val Наименование) Ex
 	Return CreateLaunchSet(Наименование);
 EndFunction
 
-Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование, Val Библиотека) Export
-	Return CreateTestElement(Набор, Наименование, Библиотека);
+Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование, Val Библиотека, Val ЭтоВариант = False) Export
+	Return CreateTestElement(Набор, Наименование, Библиотека, ЭтоВариант);
 EndFunction
 
 Procedure ЗавершитьЗапуск() Export
