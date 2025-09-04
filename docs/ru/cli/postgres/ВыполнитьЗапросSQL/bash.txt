@@ -1,3 +1,4 @@
 oint postgres ВыполнитьЗапросSQL \
-  --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" \
+  --sql " INSERT INTO test_table (name, age, salary, is_active, created_at, data) VALUES ($1, $2, $3, $4, $5, $6);" \
+  --params "['Структура','Структура','Структура','Структура','Структура','Структура']" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
