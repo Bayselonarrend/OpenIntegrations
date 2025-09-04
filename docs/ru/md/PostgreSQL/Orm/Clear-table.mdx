@@ -58,17 +58,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint postgres ОчиститьТаблицу \
               --table "testtable" \
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "/tmp/d2w50quu.o0s.json"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint postgres ОчиститьТаблицу ^
               --table "testtable" ^
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "/tmp/d2w50quu.o0s.json"
         ```
     </TabItem>
 </Tabs>

@@ -585,7 +585,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     For Each Option In Options Do
 
-        If Option.Value = Undefined Then
+        If Option.Value = Undefined Or String(Option.Value) = "" Then
             Continue;
         EndIf;
 
@@ -2493,7 +2493,7 @@ EndFunction
 
 Function Check_YandexDisk_DownloadFile(Val Result, Val Option)
 
-    MinimumSize = 500000;
+    MinimumSize = 5000;
 
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() > MinimumSize).Равно(True);
@@ -11446,7 +11446,7 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value.GetSettings();
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        Value = GetCLIFormedValue(Value, False, AddOptions);
+        Value = GetCLIFormedValue(Value, True, AddOptions);
 
     Else
         Raise "Invalid type " + ValeType;

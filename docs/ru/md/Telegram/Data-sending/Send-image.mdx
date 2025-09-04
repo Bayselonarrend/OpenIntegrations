@@ -61,21 +61,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint telegram ОтправитьКартинку \
               --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \
-              --picture "/tmp/oax20ydc.1k5.png"
+              --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
+              --keyboard "/tmp/idjlfzqq.sfu.json"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint telegram ОтправитьКартинку ^
               --token "***" ^
               --chat "@testsichee" ^
               --text "Строковое значение" ^
-              --picture "/tmp/oax20ydc.1k5.png"
+              --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+              --keyboard "/tmp/idjlfzqq.sfu.json"
         ```
     </TabItem>
 </Tabs>
