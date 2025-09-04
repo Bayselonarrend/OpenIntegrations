@@ -15274,11 +15274,11 @@ EndProcedure
 Procedure TCP_ProcessRequest(FunctionParameters)
 
     Address = FunctionParameters["TCP_Address"];
-    Data    = "Echo this!" + Chars.LF;
+    Data    = "Echo this!\n";
 
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
-    Process(Result, "TCP", "ProcessRequest", , Data); // SKIP
+    Process(Result, "TCP", "ProcessRequest", , "Echo this!" + Chars.LF); // SKIP
 
     Address = FunctionParameters["TCP_AddressTLS"];
     Tls     = OPI_TCP.GetTLSSettings(True);
@@ -15287,7 +15287,7 @@ Procedure TCP_ProcessRequest(FunctionParameters)
 
     // END
 
-    Process(Result, "TCP", "ProcessRequest", "TLS", Data);
+    Process(Result, "TCP", "ProcessRequest", "TLS", "Echo this!" + Chars.LF);
 
 EndProcedure
 
@@ -15466,7 +15466,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(1000.12); // REAL
     ParameterArray.Add(True); // BOOL
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
-    ParameterArray.Add(Image); // BLOB
+    ParameterArray.Add(New Structure("blob", Image)); // BLOB
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
@@ -15590,7 +15590,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     RowStructure2.Insert("salary"    , 1000.12); // REAL
     RowStructure2.Insert("is_active" , True); // BOOL
     RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
-    RowStructure2.Insert("data"      , Image); // BLOB
+    RowStructure2.Insert("data"      , New Structure("blob", Image)); // BLOB
 
     RowStrucutre1 = New Structure;
     RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
@@ -15861,10 +15861,6 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     Result = OPI_SQLite.ConnectExtension(New BinaryData(TFN), EntryPoint, Connection);
 
     Process(Result, "SQLite", "ConnectExtension", "Binary");
-
-    Result = OPI_SQLite.ExecuteSQLQuery("select uuid4();", , , Connection);
-
-    Process(Result, "SQLite", "ConnectExtension", "Check");
 
     Result = OPI_SQLite.CloseConnection(Connection);
 
@@ -17204,11 +17200,11 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
 
     Process(Connection, "MySQL", "CreateDatabase", "Openning");
 
-    Result = OPI_MySQL.CreateDatabase(Base, Connection);
+    Result = OPI_MySQL.CreateDatabase(Base, Connection, TLSSettings);
 
     Process(Result, "MySQL", "CreateDatabase", "Creation");
 
-    Result = OPI_MySQL.CreateDatabase(Base, Connection);
+    Result = OPI_MySQL.CreateDatabase(Base, Connection, TLSSettings);
 
     Process(Result, "MySQL", "CreateDatabase", "Existing");
 

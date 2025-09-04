@@ -4,7 +4,7 @@
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_8358_27d.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_6371_2a2.sqlite";
     Table = "test";
 
     DataArray = New Array;
@@ -15,7 +15,7 @@
     RowStructure2.Insert("salary"    , 1000.12); // REAL
     RowStructure2.Insert("is_active" , True); // BOOL
     RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
-    RowStructure2.Insert("data"      , Image); // BLOB
+    RowStructure2.Insert("data"      , New Structure("blob", Image)); // BLOB
 
     RowStrucutre1 = New Structure;
     RowStrucutre1.Insert("name"      , "Lesha"); // TEXT

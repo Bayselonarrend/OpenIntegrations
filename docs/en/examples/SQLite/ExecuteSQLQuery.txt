@@ -32,7 +32,7 @@
     ParameterArray.Add(1000.12); // REAL
     ParameterArray.Add(True); // BOOL
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
-    ParameterArray.Add(Image); // BLOB
+    ParameterArray.Add(New Structure("blob", Image)); // BLOB
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
