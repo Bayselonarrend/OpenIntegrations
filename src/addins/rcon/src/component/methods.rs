@@ -3,13 +3,23 @@ use rcon_client::{AuthRequest, RCONClient, RCONConfig, RCONRequest};
 use serde_json;
 use serde_json::json;
 
-pub fn connect(obj: &mut AddIn, url: &str, password: &str, read_timeout: i32, write_timeout: i32) -> String {
+pub fn connect(obj: &mut AddIn) -> String {
+
+    let settings = match &obj.settings{
+        Some(s) => s,
+        None => return process_error("No connection settings found".to_string()),
+    };
+
+    let url = &settings.url;
+    let password = &settings.password;
+    let read_timeout = &settings.read_timeout;
+    let write_timeout = &settings.write_timeout;
 
     let mut client = match RCONClient::new(RCONConfig {
 
         url: url.to_string(),
-        read_timeout: Some(read_timeout as u64),
-        write_timeout: Some(write_timeout as u64),
+        read_timeout: Some(*read_timeout as u64),
+        write_timeout: Some(*write_timeout as u64),
 
     }){
         Ok(client) => client,
