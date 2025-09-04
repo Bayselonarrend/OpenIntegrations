@@ -1,3 +1,4 @@
 ﻿    {
- "result": true
+ "error": "db error: ERROR: database \"testbase1\" does not exist",
+ "result": false
 }
