@@ -25,7 +25,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromFile"),
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
-    name!("BatchQuery")
+    name!("BatchQuery"),
+    name!("GetTLSSettings")
 ];
 
 // Число параметров функций компоненты
@@ -42,6 +43,7 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 2,
         9 => 1,
         10 => 2,
+        11 => 0,
         _ => 0,
     }
 }
@@ -65,7 +67,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
 
-            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+            if obj.get_connection().is_some(){
+                return  Box::new(format_json_error("TLS settings can only be set before the connection is established"));
+            };
+
+            obj.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, &ca_cert_path));
+
+            Box::new(json!({"result": true}).to_string())
 
         },
        4 => {
@@ -145,6 +153,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             };
 
             Box::new(result)
+        },
+        11 => {
+
+            let result = match &obj.tls{
+                Some(tls) => tls.get_settings(),
+                None => "".to_string()
+            };
+
+            Box::new(result)
         }
         _ => Box::new(false), // Неверный номер команды
     }
@@ -164,9 +181,7 @@ pub const PROPS: &[&[u16]] = &[
 pub struct AddIn {
     connection_string: String,
     client: Option<Arc<Mutex<Client>>>,
-    use_tls: bool,
-    accept_invalid_certs: bool,
-    ca_cert_path: String,
+    tls: Option<TlsSettings>,
     datasets: Datasets,
 }
 
@@ -176,49 +191,28 @@ impl AddIn {
         AddIn {
             connection_string: String::new(),
             client: None,
-            use_tls: false,
-            accept_invalid_certs: false,
-            ca_cert_path: String::new(),
+            tls: None,
             datasets: Datasets::new(),
         }
     }
 
     pub fn initialize(&mut self) -> String {
 
-        let result = if self.use_tls {
+        let tls = match &self.tls {
+            Some(tls) => Some(tls),
+            None => None,
+        };
 
-            let mut builder = TlsConnector::builder();
+        let use_tls = match tls{
+            Some(tls) => tls.use_tls,
+            None => false,
+        };
 
-            if !self.ca_cert_path.is_empty() {
+        let result = if use_tls {
 
-                let mut cert_data = Vec::new();
-                let mut cert_file = match File::open(&self.ca_cert_path){
-                    Ok(file) => file,
-                    Err(e) => return format_json_error(&e.to_string())
-                };
-
-                match cert_file.read_to_end(&mut cert_data){
-                    Ok(_) => {},
-                    Err(e) => return format_json_error(&e.to_string())
-                };
-
-                let cert_data = match Certificate::from_pem(&cert_data){
-                    Ok(cert) => cert,
-                    Err(e) => return format_json_error(&e.to_string())
-                };
-
-                builder.add_root_certificate(cert_data);
-
-            };
-
-            // Если нужно отключить проверку сертификатов
-            if self.accept_invalid_certs {
-                builder.danger_accept_invalid_certs(true);
-            }
-
-            let tls_connector = match builder.build(){
+            let tls_connector = match tls.unwrap().get_connector(){
                 Ok(connector) => connector,
-                Err(e) => return format_json_error(&e.to_string())
+                Err(e) => return e
             };
 
             let tls_connector = MakeTlsConnector::new(tls_connector);
@@ -241,18 +235,6 @@ impl AddIn {
         result_string
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
-
-        if self.get_connection().is_some(){
-            return format_json_error("TLS settings can only be set before the connection is established");
-        };
-
-        self.accept_invalid_certs = accept_invalid_certs;
-        self.ca_cert_path = ca_cert_path.to_string();
-        self.use_tls = use_tls;
-
-        json!({"result": true}).to_string()
-    }
 
     pub fn get_connection(&mut self) -> Option<Arc<Mutex<Client>>> {
         self.client.clone()
@@ -281,6 +263,63 @@ impl AddIn {
 
 pub fn format_json_error(error: &str) -> String {
     json!({"result": false, "error": error}).to_string()
+}
+
+struct TlsSettings{
+    use_tls: bool,
+    accept_invalid_certs: bool,
+    ca_cert_path: String,
+}
+
+impl TlsSettings {
+    fn new(use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> Self {
+        TlsSettings{
+            use_tls,
+            accept_invalid_certs,
+            ca_cert_path: ca_cert_path.to_string(),
+        }
+    }
+
+    pub fn get_connector(&self) -> Result<TlsConnector, String> {
+
+        let mut builder = TlsConnector::builder();
+
+        if !self.ca_cert_path.is_empty() {
+
+            let mut cert_data = Vec::new();
+            let mut cert_file = match File::open(&self.ca_cert_path){
+                Ok(file) => file,
+                Err(e) => return Err(format_json_error(&e.to_string()))
+            };
+
+            match cert_file.read_to_end(&mut cert_data){
+                Ok(_) => {},
+                Err(e) => return Err(format_json_error(&e.to_string()))
+            };
+
+            let cert_data = match Certificate::from_pem(&cert_data){
+                Ok(cert) => cert,
+                Err(e) => return Err(format_json_error(&e.to_string()))
+            };
+
+            builder.add_root_certificate(cert_data);
+
+        };
+
+        // Если нужно отключить проверку сертификатов
+        if self.accept_invalid_certs {
+            builder.danger_accept_invalid_certs(true);
+        }
+
+        match builder.build(){
+            Ok(connector) => Ok(connector),
+            Err(e) => Err(format_json_error(&e.to_string()))
+        }
+    }
+
+    pub fn get_settings(&self) -> String{
+        json!({"use_tls": self.use_tls, "ca_cert_path": self.ca_cert_path, "accept_invalid_certs": self.accept_invalid_certs}).to_string()
+    }
 }
 // -------------------------------------------------------------------------------------------------
 

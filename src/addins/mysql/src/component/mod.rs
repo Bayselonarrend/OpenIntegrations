@@ -21,7 +21,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromFile"),
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
-    name!("BatchQuery")
+    name!("BatchQuery"),
+    name!("GetTLSSettings")
 ];
 
 // Число параметров функций компоненты
@@ -38,6 +39,7 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 2,
         9 => 1,
         10 => 2,
+        11 => 0,
         _ => 0,
     }
 }
@@ -62,7 +64,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
 
-            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+            if obj.connections.is_some(){
+                return  Box::new(format_json_error("TLS settings can only be set before the connection is established"));
+            };
+
+            obj.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, &ca_cert_path));
+
+            Box::new(json!({"result": true}).to_string())
 
         },
         4 => {
@@ -143,6 +151,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(result)
         },
+        11 => {
+
+            let result = match &obj.tls{
+                Some(tls) => tls.get_settings(),
+                None => "".to_string()
+            };
+
+            Box::new(result)
+        }
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -161,10 +178,8 @@ pub const PROPS: &[&[u16]] = &[
 pub struct AddIn {
     connection_string: String,
     connections: Option<Pool>,
+    tls: Option<TlsSettings>,
     connection: Option<PooledConn>,
-    use_tls: bool,
-    accept_invalid_certs: bool,
-    ca_cert_path: String,
     datasets: Datasets,
 }
 
@@ -174,10 +189,8 @@ impl AddIn {
         AddIn {
             connection_string: String::new(),
             connections: None,
+            tls: None,
             connection: None,
-            use_tls: false,
-            accept_invalid_certs: false,
-            ca_cert_path: String::new(),
             datasets: Datasets::new(),
         }
     }
@@ -197,13 +210,25 @@ impl AddIn {
 
         let mut opts_builder = OptsBuilder::from_opts(opts);
 
-        if self.use_tls {
+        let tls = match &self.tls {
+            Some(tls) => Some(tls),
+            None => None,
+        };
+
+        let use_tls = match tls{
+            Some(tls) => tls.use_tls,
+            None => false,
+        };
+
+        if use_tls {
+
+            let tls = tls.unwrap();
 
             let mut ssl_opts = SslOpts::default()
-                .with_danger_accept_invalid_certs(self.accept_invalid_certs);
+                .with_danger_accept_invalid_certs(tls.accept_invalid_certs);
 
-            if !self.ca_cert_path.is_empty() {
-                let cert_path: PathBuf = self.ca_cert_path.clone().into();
+            if !tls.ca_cert_path.is_empty() {
+                let cert_path: PathBuf = tls.ca_cert_path.clone().into();
                 ssl_opts = ssl_opts.with_root_cert_path(Some(cert_path));
             };
 
@@ -245,19 +270,6 @@ impl AddIn {
         } else {
             Self::process_error("All connections are already closed")
         }
-    }
-
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
-
-        if self.connections.is_some(){
-            return Self::process_error("TLS settings can only be set before the connection is established");
-        };
-
-        self.accept_invalid_certs = accept_invalid_certs;
-        self.ca_cert_path = ca_cert_path.to_string();
-        self.use_tls = use_tls;
-
-        json!({"result": true}).to_string()
     }
 
     fn get_connection(&mut self) -> Result<PooledConn, String>{
@@ -304,6 +316,26 @@ impl AddIn {
 // Обработка удаления объекта
 impl Drop for AddIn {
     fn drop(&mut self) {}
+}
+
+struct TlsSettings{
+    use_tls: bool,
+    accept_invalid_certs: bool,
+    ca_cert_path: String,
+}
+
+impl TlsSettings {
+    fn new(use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> Self {
+        TlsSettings{
+            use_tls,
+            accept_invalid_certs,
+            ca_cert_path: ca_cert_path.to_string(),
+        }
+    }
+
+    pub fn get_settings(&self) -> String{
+        json!({"use_tls": self.use_tls, "ca_cert_path": self.ca_cert_path, "accept_invalid_certs": self.accept_invalid_certs}).to_string()
+    }
 }
 
 pub fn format_json_error<E: ToString>(error: E) -> String {
