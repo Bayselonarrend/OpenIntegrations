@@ -1,2 +1,2 @@
 oint gdrive ПолучитьОписаниеФайла \
-  --empty "False"
+  

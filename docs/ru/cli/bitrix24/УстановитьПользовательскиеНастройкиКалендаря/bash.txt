@@ -2,5 +2,5 @@
 
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
   --url "b24-ar17wx.bitrix24.by" \
-  --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" \
+  --settings "/tmp/q0zbzaos.4yy.json" \
   --token "***"

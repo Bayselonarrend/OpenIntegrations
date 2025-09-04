@@ -3,4 +3,4 @@
 oint ollama ПроверитьBlob \
   --url "https://hut.openintegrations.dev/ollama" \
   --digest "yoyoyo" \
-  --headers "{'Authorization':'***'}"
+  --headers "/tmp/n2ichhzn.xmf.json"
