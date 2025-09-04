@@ -71,8 +71,9 @@ import TabItem from '@theme/TabItem';
             
             oint postgres ГарантироватьТаблицу \
               --table "test_new" \
-              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" \
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --cols "/tmp/w2dt0mvi.5me.json" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "/tmp/ot3rswq5.kx4.json"
         ```
     </TabItem>
   
@@ -82,13 +83,14 @@ import TabItem from '@theme/TabItem';
             
             oint postgres ГарантироватьТаблицу ^
               --table "test_new" ^
-              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --cols "/tmp/w2dt0mvi.5me.json" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "/tmp/ot3rswq5.kx4.json"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-Структура
+Соответствие
 ```
