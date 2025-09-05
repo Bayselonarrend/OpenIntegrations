@@ -2,5 +2,5 @@
 
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
   --url "b24-ar17wx.bitrix24.by" \
-  --settings "/tmp/1kwklzup.ksh.json" \
+  --settings "/tmp/kr1k3jx4.i2u.json" \
   --token "***"

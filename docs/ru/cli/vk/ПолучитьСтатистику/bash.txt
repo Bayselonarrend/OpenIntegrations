@@ -3,4 +3,4 @@
 oint vk ПолучитьСтатистику \
   --datefrom "09/05/2025 00:00:00" \
   --dateto "09/05/2025 23:59:59" \
-  --auth "/tmp/et0bceib.rar.json"
+  --auth "/tmp/x2vkdsyl.tls.json"

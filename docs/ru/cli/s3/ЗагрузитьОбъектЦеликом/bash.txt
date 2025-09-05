@@ -2,7 +2,7 @@
 
 oint s3 ЗагрузитьОбъектЦеликом \
   --name "pictureSmall.jpg" \
-  --bucket "opi-gpbucket3" \
+  --bucket "opi-dirbucket3" \
   --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
-  --basic "/tmp/5fuoms3y.rce.json" \
-  --dir "False"
+  --basic "/tmp/tpfgdy3u.fjg.json" \
+  --dir "True"

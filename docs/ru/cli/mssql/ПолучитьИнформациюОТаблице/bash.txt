@@ -3,4 +3,4 @@
 oint mssql ПолучитьИнформациюОТаблице \
   --table "test_new" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/jhjhwqmm.t1y.json"
+  --tls "/tmp/qewl215v.uoh.json"

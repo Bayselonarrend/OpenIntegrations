@@ -2,6 +2,6 @@
 
 oint s3 ПолучитьТегиОбъекта ^
   --name "picture.jpg" ^
-  --bucket "opi-gpbucket3" ^
-  --basic "/tmp/neoz1mq1.0jo.json" ^
-  --dir "False"
+  --bucket "opi-dirbucket3" ^
+  --basic "/tmp/3lyz13qt.ky2.json" ^
+  --dir "True"

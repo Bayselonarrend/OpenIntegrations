@@ -2,5 +2,5 @@
 
 oint vk ИзменитьПодборкуТоваров \
   --title "Измененная подборка" \
-  --sel "137" \
-  --auth "/tmp/5hivani5.20z.json"
+  --sel "138" \
+  --auth "/tmp/asgv2twv.00y.json"

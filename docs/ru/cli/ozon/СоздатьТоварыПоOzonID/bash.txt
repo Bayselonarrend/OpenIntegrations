@@ -3,4 +3,4 @@
 oint ozon СоздатьТоварыПоOzonID \
   --clientid "***" \
   --apikey "***" \
-  --items "/tmp/2znzi1jf.3bm.json"
+  --items "/tmp/2rk0izj0.uye.json"

@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УстановитьОтметкуПрочтения ^
-  --access "/tmp/5n4oki4j.5fk.json" ^
+  --access "/tmp/q2nkbsop.rtf.json" ^
   --chat "120363410406221140@g.us" ^
-  --message "BAE521C8C3149FB0"
+  --message "BAE5A09DF72095A3"

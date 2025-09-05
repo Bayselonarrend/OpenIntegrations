@@ -1,4 +1,4 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ПолучитьСписокПодборок ^
-  --auth "/tmp/wphqjhdb.cx5.json"
+  --auth "/tmp/vohwmxu3.hhq.json"

@@ -4,4 +4,4 @@ oint postgres УдалитьКолонкуТаблицы \
   --table "testtable" \
   --name "new_field" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "/tmp/1cgo00r4.qhr.json"
+  --tls "/tmp/mmbhlib2.43n.json"

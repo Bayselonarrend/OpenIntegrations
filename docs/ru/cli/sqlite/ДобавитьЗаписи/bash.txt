@@ -2,5 +2,5 @@
 
 oint sqlite ДобавитьЗаписи \
   --table "test1" \
-  --rows "/tmp/4mik3pjs.gl0.json" \
-  --db "/tmp/t0uoynjw.lre.sqlite"
+  --rows "/tmp/py4krbhh.yc3.json" \
+  --db "/tmp/vgtn0czi.ghh.sqlite"

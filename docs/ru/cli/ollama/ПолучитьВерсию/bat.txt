@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьВерсию ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --headers "/tmp/3a335ntr.p3p.json"
+  --headers "/tmp/ppppkkai.uts.json"

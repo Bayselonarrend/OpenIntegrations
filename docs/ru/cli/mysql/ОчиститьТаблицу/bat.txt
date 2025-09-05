@@ -3,4 +3,4 @@
 oint mysql ОчиститьТаблицу ^
   --table "testtable" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/r3tuqiec.4jm.json"
+  --tls "/tmp/csiu5suy.v33.json"

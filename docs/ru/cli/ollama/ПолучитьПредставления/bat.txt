@@ -4,4 +4,4 @@ oint ollama ПолучитьПредставления ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
   --input "['Why is the sky blue?','Why is the grass green?']" ^
-  --headers "/tmp/yiqffw1z.201.json"
+  --headers "/tmp/sdzzhwsy.vks.json"

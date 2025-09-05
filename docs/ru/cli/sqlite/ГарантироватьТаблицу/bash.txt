@@ -2,5 +2,5 @@
 
 oint sqlite ГарантироватьТаблицу \
   --table "test_new" \
-  --cols "/tmp/4vbgnkh2.egn.json" \
-  --db "/tmp/t0uoynjw.lre.sqlite"
+  --cols "/tmp/t5bbdbwi.04g.json" \
+  --db "/tmp/vgtn0czi.ghh.sqlite"

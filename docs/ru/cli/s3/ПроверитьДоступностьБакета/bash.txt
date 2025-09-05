@@ -2,6 +2,6 @@
 
 oint s3 ПроверитьДоступностьБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/wyufyawq.stc.json" \
+  --basic "/tmp/mrwz30sl.fyn.json" \
   --dir "True" \
   --account "1234"
