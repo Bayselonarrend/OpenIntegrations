@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПолучитьИнформациюОГруппе ^
-  --access "/tmp/groccehl.hpm.json" ^
-  --group "120363403203102220@g.us"
+  --access "/tmp/sctdnnzd.4z3.json" ^
+  --group "120363420579645917@g.us"

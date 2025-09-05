@@ -2,7 +2,7 @@
 
 oint mssql ОбновитьЗаписи ^
   --table "test_data" ^
-  --values "/tmp/a54lqjqe.pru.json" ^
-  --filter "/tmp/eszaz3f4.qsj.json" ^
+  --values "/tmp/veio2vpi.owd.json" ^
+  --filter "/tmp/jtggfipv.4qs.json" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/tzpypbfi.14u.json"
+  --tls "/tmp/qo1fm1nh.igy.json"

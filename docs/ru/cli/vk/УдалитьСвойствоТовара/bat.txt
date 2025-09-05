@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьСвойствоТовара ^
-  --prop "4180" ^
-  --auth "/tmp/c21d3a33.rar.json"
+  --prop "4181" ^
+  --auth "/tmp/5kdc4oja.ct3.json"
