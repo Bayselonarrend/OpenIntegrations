@@ -4,4 +4,4 @@ oint openai ПолучитьКартинки ^
   --url "https://bothub.chat/api/v2/openai/" ^
   --token "***" ^
   --model "dall-e-3" ^
-  --descr "/tmp/d25fznay.u04.json"
+  --descr "/tmp/ys3xd3pz.wyo.json"

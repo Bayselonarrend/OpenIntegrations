@@ -1,3 +1,3 @@
 oint yadisk СохранитьПубличныйОбъектНаДиск \
   --token "***" \
-  --url "https://yadi.sk/i/eVsz-YPuZAIAfg"
+  --url "https://yadi.sk/i/_G2VbsA9V5Ebgg"

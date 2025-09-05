@@ -4,4 +4,4 @@ oint ollama ПолучитьИнформациюОМодели \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "mario" \
   --verbose "False" \
-  --headers "/tmp/0k1kqjkt.qlr.json"
+  --headers "/tmp/fjks4s50.ljg.json"
