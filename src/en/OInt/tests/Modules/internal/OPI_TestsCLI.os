@@ -16722,7 +16722,6 @@ Procedure Ozon_GetProductsPrices(FunctionParameters)
     Опции = Новый Структура;
     Опции.Вставить("", ClientID);
     Опции.Вставить("", APIKey);
-    Опции.Вставить("", Новый Structure);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsPrices", Опции);
 
@@ -24480,8 +24479,7 @@ Procedure GreenAPI_ArchiveChat(FunctionParameters)
 
     AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
 
-    Result = OPI_GreenAPI.UnarchiveChat(AccessParameters, ChatID); // SKIP
-    Process(Result, "GreenAPI", "ArchiveChat", "Unzip"); // SKIP
+    OPI_GreenAPI.UnarchiveChat(AccessParameters, ChatID); // SKIP
 
     Опции = Новый Структура;
     Опции.Вставить("", AccessParameters);
