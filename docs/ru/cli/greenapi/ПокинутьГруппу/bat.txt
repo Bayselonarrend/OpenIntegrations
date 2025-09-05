@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПокинутьГруппу ^
-  --access "/tmp/q43kfyc1.q3g.json" ^
-  --group "120363420033964628@g.us"
+  --access "/tmp/jmlvegbo.ihl.json" ^
+  --group "120363403203102220@g.us"
