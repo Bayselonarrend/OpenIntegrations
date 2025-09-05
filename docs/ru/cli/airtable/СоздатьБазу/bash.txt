@@ -4,4 +4,4 @@ oint airtable СоздатьБазу \
   --token "***" \
   --ws "wspdf8yl1yZz3PmWZ" \
   --title "Тестовая база" \
-  --tablesdata "/tmp/y2uqzceb.b4n.json"
+  --tablesdata "/tmp/chqxjz32.ffh.json"
