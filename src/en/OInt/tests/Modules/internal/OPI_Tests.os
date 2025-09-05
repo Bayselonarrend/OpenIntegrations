@@ -4463,7 +4463,6 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
     Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
     Product.Insert("AdditionalPhotos" , ImageArray);
     Product.Insert("MainInGroup"      , True);
-    Product.Insert("GroupNumber"      , Undefined);
     Product.Insert("Width"            , 20);
     Product.Insert("Height"           , 30);
     Product.Insert("Depth"            , 40);
@@ -7541,7 +7540,8 @@ Procedure Dropbox_GetAccountInformation(FunctionParameters)
 
     Process(Result, "Dropbox", "GetAccountInformation");
 
-    Result = OPI_Dropbox.GetAccountInformation(Token, Result["account_id"]);
+    AccountID = Result["account_id"];
+    Result    = OPI_Dropbox.GetAccountInformation(Token, AccountID);
 
     Process(Result, "Dropbox", "GetAccountInformation", "By ID");
 

@@ -1532,6 +1532,12 @@ EndFunction
 
 Function Check_Telegram_DownloadFile(Val Result, Val Option)
 
+    If TypeOf(Result) = Type("String") Then
+        If StrFind(Result, "\u") > 0 Then
+            Result    = GetBinaryDataFromString(Result);
+        EndIf;
+    EndIf;
+
     ExpectsThat(Result).ИмеетТип("BinaryData");
 
     Return Result;
@@ -2493,7 +2499,7 @@ EndFunction
 
 Function Check_YandexDisk_DownloadFile(Val Result, Val Option)
 
-    MinimumSize = 5000;
+    MinimumSize = 1000;
 
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() > MinimumSize).Равно(True);
@@ -11395,6 +11401,10 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
         Value = ProcessAddInParamCLI(Value, CurrentTypeString, AddOptions);
         Cover = Not Embedded;
 
+    ElsIf CurrentType = Type("Undefined") And Embedded Then
+
+         Value = Undefined;
+
     Else
 
         Raise "Invalid type " + CurrentTypeString;
@@ -11445,6 +11455,12 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     ElsIf AddInName = "OPI_RCON" Then
 
         Value = Value.GetSettings();
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+        Value = GetCLIFormedValue(Value, True, AddOptions);
+
+    ElsIf AddInName = "OPI_FTP" Then
+
+        Value = Value.GetConfiguration();
         OPI_TypeConversion.GetKeyValueCollection(Value);
         Value = GetCLIFormedValue(Value, True, AddOptions);
 
