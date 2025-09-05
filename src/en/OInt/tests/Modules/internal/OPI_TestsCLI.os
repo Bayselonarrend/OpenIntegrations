@@ -4330,11 +4330,6 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     AlbumID          = FunctionParameters["VK_AlbumID"];
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
-    TFN   = GetTempFileName("png");
-
-    CopyFile(Image, TFN);
-
-    Image = New BinaryData(TFN);
 
     Опции = Новый Структура;
     Опции.Вставить("", AlbumID);
@@ -4344,23 +4339,9 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "SaveImageToAlbum", Опции);
 
-    Process(Result, "VK", "SaveImageToAlbum", , Parameters, ImageDescription, AlbumID); // SKIP
-
-    ImageID = Result["response"][0]["id"]; // SKIP
-    Result  = OPI_VK.DeleteImage(ImageID, Parameters); // SKIP
-
-    Опции = Новый Структура;
-    Опции.Вставить("", AlbumID);
-    Опции.Вставить("", TFN);
-    Опции.Вставить("", ImageDescription);
-    Опции.Вставить("", Parameters);
-
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "SaveImageToAlbum", Опции);
-
     // END
 
-    Process(Result, "VK", "SaveImageToAlbum", "Path", FunctionParameters, ImageDescription, AlbumID);
-    DeleteFiles(TFN);
+    Process(Result, "VK", "SaveImageToAlbum", , FunctionParameters, ImageDescription, AlbumID);
 
 EndProcedure
 

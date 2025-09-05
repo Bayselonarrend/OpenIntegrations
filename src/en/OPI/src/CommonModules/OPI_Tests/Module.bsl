@@ -3915,25 +3915,12 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     AlbumID          = FunctionParameters["VK_AlbumID"];
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
-    TFN   = GetTempFileName("png");
-
-    FileCopy(Image, TFN);
-
-    Image = New BinaryData(TFN);
 
     Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
 
-    Process(Result, "VK", "SaveImageToAlbum", , Parameters, ImageDescription, AlbumID); // SKIP
-
-    ImageID = Result["response"][0]["id"]; // SKIP
-    Result  = OPI_VK.DeleteImage(ImageID, Parameters); // SKIP
-
-    Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
-
     // END
 
-    Process(Result, "VK", "SaveImageToAlbum", "Path", FunctionParameters, ImageDescription, AlbumID);
-    DeleteFiles(TFN);
+    Process(Result, "VK", "SaveImageToAlbum", , FunctionParameters, ImageDescription, AlbumID);
 
 EndProcedure
 

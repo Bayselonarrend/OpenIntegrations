@@ -279,7 +279,7 @@ Function GetConnectionSettings(Val Host
     OPI_Tools.AddField("passive"         , Passive      , "Boolean", SettingsStructure);
     OPI_Tools.AddField("read_timeout"    , ReadTimeout  , "Number" , SettingsStructure);
     OPI_Tools.AddField("write_timeout"   , WriteTimeout , "Number" , SettingsStructure);
-    OPI_Tools.AddField("advanced_resolve", WriteTimeout , "Boolean", SettingsStructure);
+    OPI_Tools.AddField("advanced_resolve", IPResolve    , "Boolean", SettingsStructure);
 
     If Not Login = Undefined Then
         OPI_TypeConversion.GetLine(Login);
