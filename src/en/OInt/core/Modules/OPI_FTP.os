@@ -898,7 +898,7 @@ Function GetConnectionCopy(Val Connection)
         Return Configuration;
     EndIf;
 
-    Configuration = OPI_Tools.JSONToStructure(Configuration["data"]);
+    Configuration = Configuration["data"];
 
     FTPSettings = Configuration["ftp_settings"];
     Proxy       = Configuration["proxy_settings"];

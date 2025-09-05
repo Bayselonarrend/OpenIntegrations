@@ -9274,7 +9274,7 @@ EndFunction
 
 Function Check_GreenAPI_GetMessageQueue(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Array");
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
 
     Return Result;
 
@@ -9333,7 +9333,7 @@ Function Check_GreenAPI_GetIncomingMessageLog(Val Result, Val Option, Parameters
         Message("JSON Error");
     EndTry;
 
-    ExpectsThat(Result).ИмеетТип("Array");
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
 
     Return Result;
 
@@ -11475,13 +11475,33 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value.GetSettings();
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        Value = StrReplace(OPI_Tools.JSONString(Value), Chars.LF, " ");
+        TFN   = GetTempFileName();
+        OPI_Tools.WriteJSONFile(TFN, Value);
+
+        Value = TFN;
 
     ElsIf AddInName = "OPI_FTP" Then
 
         Value = Value.GetConfiguration();
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        Value = StrReplace(OPI_Tools.JSONString(Value), Chars.LF, " ");
+
+        Data          = Value["data"];
+        Configuration = New Structure();
+
+        Configuration.Insert("set", Data["ftp_settings"]);
+
+        If ValueIsFilled(Data["tls_settings"]) Then
+            Configuration.Insert("tls", Data["tls_settings"]);
+        EndIf;
+
+        If ValueIsFilled(Data["proxy_settings"]) Then
+            Configuration.Insert("proxy", Data["proxy_settings"]);
+        EndIf;
+
+        TFN = GetTempFileName();
+        OPI_Tools.WriteJSONFile(TFN, Configuration);
+
+        Value = TFN;
 
     Else
         Raise "Invalid type " + ValeType;

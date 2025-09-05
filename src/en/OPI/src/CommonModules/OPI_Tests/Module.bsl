@@ -13003,7 +13003,7 @@ Procedure Ozon_GetProductsPrices(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey, New Structure);
+    Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey);
 
     // END
 
@@ -18679,8 +18679,7 @@ Procedure GreenAPI_ArchiveChat(FunctionParameters)
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 
-    Result = OPI_GreenAPI.UnarchiveChat(AccessParameters, ChatID); // SKIP
-    Process(Result, "GreenAPI", "ArchiveChat", "Unzip"); // SKIP
+    OPI_GreenAPI.UnarchiveChat(AccessParameters, ChatID); // SKIP
 
     Result = OPI_GreenAPI.ArchiveChat(AccessParameters, ChatID);
 
