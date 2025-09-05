@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПереслатьСообщения ^
-  --access "/tmp/rux1lzue.pvg.json" ^
+  --access "/tmp/bfdsgzfn.b3z.json" ^
   --from "120363410406221140@g.us" ^
   --to "120363410406221140@g.us" ^
-  --msgs "BAE577478EC70475"
+  --msgs "BAE5FFFB5986291D"

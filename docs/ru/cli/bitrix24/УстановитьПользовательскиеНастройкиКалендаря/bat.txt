@@ -2,5 +2,5 @@
 
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --settings "/tmp/olbepflc.inq.json" ^
+  --settings "/tmp/0mm5fsbr.034.json" ^
   --token "***"

@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint dropbox ПолучитьИнформациюОбАккаунте \
   --token "***" \
-  --account "/tmp/phpibcuz.wxh.json"
+  --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"

@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИзменитьИмяГруппы ^
-  --access "/tmp/bslh2byj.3wy.json" ^
-  --group "120363420033964628@g.us" ^
+  --access "/tmp/vqwjvq0q.2rd.json" ^
+  --group "120363403203102220@g.us" ^
   --name "New name"
