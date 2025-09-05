@@ -3,4 +3,4 @@
 oint ozon ОбновитьКоличествоТоваров \
   --clientid "***" \
   --apikey "***" \
-  --stocks "/tmp/3znsluf2.rjk.json"
+  --stocks "/tmp/e50otlwq.xcy.json"

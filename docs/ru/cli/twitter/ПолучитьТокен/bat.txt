@@ -2,4 +2,4 @@
 
 oint twitter ПолучитьТокен ^
   --code "123456" ^
-  --auth "/tmp/ccp3arzx.eo1.json"
+  --auth "/tmp/zrmlxlad.mld.json"

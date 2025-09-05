@@ -1,9 +1,9 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьОпрос ^
-  --access "/tmp/ycshhctp.da1.json" ^
+  --access "/tmp/eyjpfpqj.zei.json" ^
   --chat "120363410406221140@g.us" ^
   --text "Какой ваш любимый цвет?" ^
   --options "['Красный','Желтый','Зеленый']" ^
   --multi "True" ^
-  --quoted "BAE5956482C6516A"
+  --quoted "BAE5594AE9773D3A"

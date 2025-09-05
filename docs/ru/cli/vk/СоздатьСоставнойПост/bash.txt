@@ -2,7 +2,7 @@
 
 oint vk СоздатьСоставнойПост \
   --text "Пост из автотеста" \
-  --objects "['photo657846756_457248339','video-218861756_456240709']" \
+  --objects "['photo657846756_457248345','video-218861756_456240711']" \
   --ad "False" \
   --url "https://github.com/Bayselonarrend/OpenIntegrations" \
-  --auth "/tmp/wpzoh44l.1em.json"
+  --auth "/tmp/2tybvmi4.ytv.json"

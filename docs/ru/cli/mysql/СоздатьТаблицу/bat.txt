@@ -2,6 +2,6 @@
 
 oint mysql СоздатьТаблицу ^
   --table "somename" ^
-  --cols "/tmp/twqlfrfj.rmk.json" ^
+  --cols "/tmp/br1224ib.cfo.json" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/cwcafqvr.rnx.json"
+  --tls "/tmp/sfn52p5p.o0w.json"

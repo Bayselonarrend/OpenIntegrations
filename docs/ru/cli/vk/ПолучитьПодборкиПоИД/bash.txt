@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ПолучитьПодборкиПоИД \
-  --sels "138" \
-  --auth "/tmp/zmq3zk3m.4gh.json"
+  --sels "136" \
+  --auth "/tmp/yrafy3wb.hpf.json"
