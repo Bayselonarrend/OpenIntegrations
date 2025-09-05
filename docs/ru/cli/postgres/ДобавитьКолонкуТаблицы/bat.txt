@@ -5,4 +5,4 @@ oint postgres ДобавитьКолонкуТаблицы ^
   --name "new_field" ^
   --type "TEXT" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls "/tmp/ovdvkyju.i4n.json"
+  --tls "/tmp/gyig3j1z.qyr.json"

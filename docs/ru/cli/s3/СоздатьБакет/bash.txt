@@ -2,5 +2,5 @@
 
 oint s3 СоздатьБакет \
   --name "opi-gpbucket3" \
-  --basic "/tmp/ijkgfdmf.2on.json" \
+  --basic "/tmp/tlzsbhax.kbp.json" \
   --dir "False"

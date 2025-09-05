@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint rcon ВыполнитьКоманду ^
   --exec "list" ^
-  --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent"
+  --conn "/tmp/q3fufzwb.dvf.json"

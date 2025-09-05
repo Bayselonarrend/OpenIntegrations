@@ -1,3 +1,3 @@
 oint sqlite ПолучитьИнформациюОТаблице ^
   --table "test" ^
-  --db "/tmp/4dguqes0.q1t.sqlite"
+  --db "/tmp/t0uoynjw.lre.sqlite"

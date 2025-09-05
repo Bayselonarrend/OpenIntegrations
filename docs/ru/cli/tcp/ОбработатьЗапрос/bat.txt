@@ -3,4 +3,4 @@
 oint tcp ОбработатьЗапрос ^
   --address "tcpbin.com:4243" ^
   --data "Echo this!\n" ^
-  --tls "/tmp/co5fbfwg.faz.json"
+  --tls "/tmp/x2hin2t5.4wj.json"
