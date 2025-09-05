@@ -1,4 +1,4 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ftp ПолучитьКонфигурациюСоединения \
-  --set "/tmp/xazxcu1i.dja.json"
+  --set "/tmp/5f0v1n4z.uj5.json"

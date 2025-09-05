@@ -2,6 +2,6 @@
 
 oint airtable СоздатьПоле ^
   --token "***" ^
-  --base "app9sDoWrS2w7SB30" ^
-  --table "tbl8UlmgOkZ3tlnXe" ^
-  --fielddata "/tmp/vctckgo4.2sp.json"
+  --base "appclCIUBLsOlGEK4" ^
+  --table "tblOTIzhSRQMMKrfI" ^
+  --fielddata "/tmp/abrnfbst.hgo.json"

@@ -3,4 +3,4 @@
 oint vk СделатьРепост \
   --post "2571" \
   --from "-218704372" \
-  --auth "/tmp/wietjaic.r3i.json"
+  --auth "/tmp/s2zwaddd.wma.json"

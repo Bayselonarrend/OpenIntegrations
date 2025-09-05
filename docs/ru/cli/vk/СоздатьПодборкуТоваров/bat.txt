@@ -5,4 +5,4 @@ oint vk СоздатьПодборкуТоваров ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --main "True" ^
   --hidden "False" ^
-  --auth "/tmp/lqbvpjpa.pp5.json"
+  --auth "/tmp/u1dnrv2g.2np.json"

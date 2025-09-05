@@ -3,4 +3,4 @@
 oint ollama ПроверитьBlob ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --digest "yoyoyo" ^
-  --headers "/tmp/ma23lj5t.gyc.json"
+  --headers "/tmp/gnqbjxcp.2xs.json"
