@@ -3,4 +3,4 @@
 oint sqlite ВыполнитьЗапросSQL \
   --sql "SELECT uuid4();" \
   --db "OneScript.StandardLibrary.NativeApi.NativeApiComponent" \
-  --exts "/tmp/jwofmxai.4yt.json"
+  --exts "/tmp/uswc0uuc.ylf.json"
