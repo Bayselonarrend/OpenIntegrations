@@ -2,5 +2,5 @@
 
 oint bitrix24 СоздатьЗадачу ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fields "/tmp/nfmbfuxe.tcn.json" ^
+  --fields "/tmp/y4vc1mn4.xjn.json" ^
   --token "***"
