@@ -2,6 +2,6 @@
 
 oint mssql ГарантироватьТаблицу ^
   --table "test_new" ^
-  --cols "/tmp/nryjmvdl.vjz.json" ^
+  --cols "/tmp/zgx3wwg3.yda.json" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/z2d1214l.wjr.json"
+  --tls "/tmp/p1s5qbkl.qmd.json"

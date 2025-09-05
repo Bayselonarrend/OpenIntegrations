@@ -2,4 +2,4 @@
 
 oint s3 УдалитьТегиБакета ^
   --name "opi-dirbucket3" ^
-  --basic "/tmp/su5s2shn.er4.json"
+  --basic "/tmp/fl5ublsm.3zq.json"

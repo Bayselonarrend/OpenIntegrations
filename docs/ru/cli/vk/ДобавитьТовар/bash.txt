@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ДобавитьТовар \
-  --product "/tmp/j1qz2jw1.pf3.json" \
-  --auth "/tmp/ujixgl4r.apu.json"
+  --product "/tmp/kadvnykb.zai.json" \
+  --auth "/tmp/peinjmso.e14.json"
