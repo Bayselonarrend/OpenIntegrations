@@ -2,5 +2,5 @@
 
 oint gcalendar СоздатьСобытие ^
   --token "***" ^
-  --calendar "1b62810e3fe416dbecb38ffd10f144b4e95d0e6abc82f4ba04cf48b992d41042@group.calendar.google.com" ^
-  --props "/tmp/p5w2ychu.ncz.json"
+  --calendar "c33dcd15faf7347ecca53a031aba423c9faac7f76240d58c51abf8afb3eced8d@group.calendar.google.com" ^
+  --props "/tmp/d4blkjma.w3d.json"

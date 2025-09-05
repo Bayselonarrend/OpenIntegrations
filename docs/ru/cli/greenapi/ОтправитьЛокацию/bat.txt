@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьЛокацию ^
-  --access "/tmp/ghrdvgup.f3t.json" ^
+  --access "/tmp/ni1kvczj.qqo.json" ^
   --chat "120363410406221140@g.us" ^
-  --loc "/tmp/qcaxxetw.201.json" ^
-  --quoted "BAE57A9B2CC16D22"
+  --loc "/tmp/brf03npu.cak.json" ^
+  --quoted "BAE522397ED59B95"

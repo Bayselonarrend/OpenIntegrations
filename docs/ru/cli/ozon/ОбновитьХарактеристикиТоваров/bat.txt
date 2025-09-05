@@ -3,4 +3,4 @@
 oint ozon ОбновитьХарактеристикиТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --items "/tmp/5esbuxxt.nva.json"
+  --items "/tmp/z2av0kpm.tjs.json"

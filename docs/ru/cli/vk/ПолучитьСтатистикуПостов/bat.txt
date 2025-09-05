@@ -2,4 +2,4 @@
 
 oint vk ПолучитьСтатистикуПостов ^
   --posts "['214','215']" ^
-  --auth "/tmp/cepevfoh.grt.json"
+  --auth "/tmp/yoexk5rs.ffa.json"
