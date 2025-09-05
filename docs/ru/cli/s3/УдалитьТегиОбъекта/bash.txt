@@ -2,6 +2,6 @@
 
 oint s3 УдалитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "opi-gpbucket3" \
-  --basic "/tmp/jb3q2ftx.sgi.json" \
-  --dir "False"
+  --bucket "opi-dirbucket3" \
+  --basic "/tmp/4ekg0aud.h2l.json" \
+  --dir "True"

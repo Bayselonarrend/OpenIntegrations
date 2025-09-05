@@ -2,5 +2,5 @@
 
 oint bitrix24 ПолучитьСписокСделок \
   --url "b24-ar17wx.bitrix24.by" \
-  --filter "/tmp/idfogiij.vk1.json" \
+  --filter "/tmp/doinfour.sls.json" \
   --token "***"

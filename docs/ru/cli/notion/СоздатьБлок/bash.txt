@@ -3,4 +3,4 @@
 oint notion СоздатьБлок \
   --token "***" \
   --page "5dd94c34fab04bff986b7511c0779f77" \
-  --block "/tmp/bxrb0o52.nsk.json"
+  --block "/tmp/quwnd43m.yil.json"

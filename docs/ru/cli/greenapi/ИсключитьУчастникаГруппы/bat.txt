@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИсключитьУчастникаГруппы ^
-  --access "/tmp/pajtlxet.ocu.json" ^
-  --group "120363420579645917@g.us" ^
+  --access "/tmp/hc32xqc0.sho.json" ^
+  --group "120363418563993769@g.us" ^
   --user "123123123@c.us"

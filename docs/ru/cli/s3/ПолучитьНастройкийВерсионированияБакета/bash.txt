@@ -2,4 +2,4 @@
 
 oint s3 ПолучитьНастройкийВерсионированияБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/fumcm2an.w0z.json"
+  --basic "/tmp/g32ntcmx.kir.json"

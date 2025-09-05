@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокЗапущенныхМоделей ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --headers "/tmp/o0el2qw5.tef.json"
+  --headers "/tmp/cm1kdauu.onj.json"

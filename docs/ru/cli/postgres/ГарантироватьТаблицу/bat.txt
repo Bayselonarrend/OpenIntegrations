@@ -2,6 +2,6 @@
 
 oint postgres ГарантироватьТаблицу ^
   --table "test_new" ^
-  --cols "/tmp/ooakbe0l.2iy.json" ^
+  --cols "/tmp/itjtry1k.3vi.json" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls "/tmp/cxpievia.jo5.json"
+  --tls "/tmp/rfutp4dx.ksb.json"

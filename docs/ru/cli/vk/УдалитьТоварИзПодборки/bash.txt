@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьТоварИзПодборки \
-  --item "11787175" \
-  --sel "137" \
-  --auth "/tmp/2kybdwed.2i2.json"
+  --item "11788650" \
+  --sel "138" \
+  --auth "/tmp/xzhsddjt.gpp.json"

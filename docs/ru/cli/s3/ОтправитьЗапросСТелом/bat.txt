@@ -2,5 +2,5 @@
 
 oint s3 ОтправитьЗапросСТелом ^
   --method "PUT" ^
-  --basic "/tmp/1nndo2tl.5e2.json" ^
+  --basic "/tmp/4xmfj0z2.wit.json" ^
   --body "C:\test_data\document.docx"

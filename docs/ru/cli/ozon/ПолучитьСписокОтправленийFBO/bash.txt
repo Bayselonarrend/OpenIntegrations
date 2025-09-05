@@ -3,5 +3,5 @@
 oint ozon ПолучитьСписокОтправленийFBO \
   --clientid "***" \
   --apikey "***" \
-  --filter "/tmp/rxvlgkyg.tw2.json" \
-  --with "/tmp/zqtzlmls.22z.json"
+  --filter "/tmp/1wgvuagx.1dm.json" \
+  --with "/tmp/ybnus5qz.gyt.json"
