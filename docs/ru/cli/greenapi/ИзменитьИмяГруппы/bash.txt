@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИзменитьИмяГруппы \
-  --access "/tmp/x3ltc4z4.dxy.json" \
-  --group "120363420579645917@g.us" \
+  --access "/tmp/3l2jw1rn.2r3.json" \
+  --group "120363418563993769@g.us" \
   --name "New name"

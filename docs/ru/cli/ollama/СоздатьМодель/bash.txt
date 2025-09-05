@@ -3,5 +3,5 @@
 oint ollama СоздатьМодель \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "mario" \
-  --settings "/tmp/2dpltduq.003.json" \
-  --headers "/tmp/c4h33ony.mnl.json"
+  --settings "/tmp/hdxy01fo.ymg.json" \
+  --headers "/tmp/q5qckfgm.jmo.json"

@@ -4,4 +4,4 @@ oint ollama ПолучитьОтвет \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "mario" \
   --prompt "How are you?" \
-  --headers "/tmp/3hykjdro.gqh.json"
+  --headers "/tmp/1iep4mhm.fzz.json"

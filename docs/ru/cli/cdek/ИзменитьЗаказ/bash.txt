@@ -2,6 +2,6 @@
 
 oint cdek ИзменитьЗаказ \
   --token "***" \
-  --uuid "8d1f789e-9475-43be-96aa-2eb4e0ce1aaa" \
-  --order "/tmp/s4ooio5s.1u2.json" \
+  --uuid "324075bf-1f2d-4b1a-815c-fc768a72aaa1" \
+  --order "/tmp/ey02f0fr.gwn.json" \
   --testapi "***"

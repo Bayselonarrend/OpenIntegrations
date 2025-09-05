@@ -2,7 +2,7 @@
 
 oint s3 ЗагрузитьОбъект \
   --name "fileChunked.mp3" \
-  --bucket "opi-gpbucket3" \
+  --bucket "opi-dirbucket3" \
   --data "https://hut.openintegrations.dev/test_data/song.mp3" \
-  --basic "/tmp/cjbogt4z.bnl.json" \
-  --dir "False"
+  --basic "/tmp/didclwgi.3cg.json" \
+  --dir "True"

@@ -2,5 +2,5 @@
 
 oint cdek СоздатьЗаявкуНаВызовКурьера ^
   --token "***" ^
-  --intake "/tmp/qlkfvfhu.j05.json" ^
+  --intake "/tmp/maq3px44.qy1.json" ^
   --testapi "***"

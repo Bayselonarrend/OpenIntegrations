@@ -2,5 +2,5 @@
 
 oint metrika ИзменитьСчетчик \
   --token "***" \
-  --counter "104042459" \
-  --fields "/tmp/v5gv25od.cui.json"
+  --counter "104045966" \
+  --fields "/tmp/5afzkooy.5gq.json"

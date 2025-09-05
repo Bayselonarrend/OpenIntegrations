@@ -2,8 +2,8 @@
 
 oint s3 ЗавершитьЗагрузкуЧастями \
   --name "fileChunked.mp3" \
-  --bucket "opi-gpbucket3" \
-  --basic "/tmp/zxiudvsf.brx.json" \
-  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmM5NDU4NGI3LTFjNjQtNGQyNy04ZjdiLWMzMDY2ODEzMGNlYw" \
+  --bucket "opi-dirbucket3" \
+  --basic "/tmp/lr0uyf2s.npq.json" \
+  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmYwYWI3YWIzLWMyODItNDAxYy1iMmU5LThhNDFhNzhiZTM0Zg" \
   --tags "['\"'"566e2d464b39b91eb8b5d89fb9f1a318\"'"','\"'"adb76a9a9ff8226ed08fb6f343102908\"'"']" \
-  --dir "False"
+  --dir "True"

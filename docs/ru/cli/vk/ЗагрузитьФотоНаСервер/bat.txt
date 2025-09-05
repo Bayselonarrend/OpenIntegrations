@@ -2,5 +2,5 @@
 
 oint vk ЗагрузитьФотоНаСервер ^
   --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --auth "/tmp/rr4culms.imi.json" ^
+  --auth "/tmp/boloajbr.2qu.json" ^
   --type "Пост"

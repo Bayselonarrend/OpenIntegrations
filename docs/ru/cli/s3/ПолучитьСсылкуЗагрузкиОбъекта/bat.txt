@@ -3,5 +3,6 @@
 oint s3 ПолучитьСсылкуЗагрузкиОбъекта ^
   --name "pictureU.jpg" ^
   --bucket "newbucket2" ^
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-  --expires "7200"
+  --basic "/tmp/l253kuz1.yet.json" ^
+  --expires "7200" ^
+  --dir "True"

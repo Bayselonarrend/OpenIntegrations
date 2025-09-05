@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ДобавитьУчастникаВГруппу \
-  --access "/tmp/jsgx3rv4.p3v.json" \
-  --group "120363420579645917@g.us" \
+  --access "/tmp/dadvpwwc.taw.json" \
+  --group "120363418563993769@g.us" \
   --user "123123123@c.us"

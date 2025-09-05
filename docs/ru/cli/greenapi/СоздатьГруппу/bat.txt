@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi СоздатьГруппу ^
-  --access "/tmp/vkjuxuyj.e0r.json" ^
+  --access "/tmp/hkhmk4wl.xb1.json" ^
   --name "New group"
