@@ -3,12 +3,5 @@
     AlbumID          = "309910317";
 
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
-    TFN   = GetTempFileName("png");
-
-    CopyFile(Image, TFN);
-
-    Image = New BinaryData(TFN);
 
     Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
-
-    Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
