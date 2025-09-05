@@ -19,7 +19,6 @@
     Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
     Product.Insert("AdditionalPhotos" , ImageArray);
     Product.Insert("MainInGroup"      , True);
-    Product.Insert("GroupNumber"      , Undefined);
     Product.Insert("Width"            , 20);
     Product.Insert("Height"           , 30);
     Product.Insert("Depth"            , 40);

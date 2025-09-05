@@ -3,4 +3,4 @@
 oint ozon ПолучитьОписанияХарактеристикТоваров \
   --clientid "***" \
   --apikey "***" \
-  --filter "/tmp/ylgm2xen.0fq.json"
+  --filter "/tmp/arrs0fxw.ov3.json"

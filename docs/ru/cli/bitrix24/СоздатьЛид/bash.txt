@@ -2,5 +2,5 @@
 
 oint bitrix24 СоздатьЛид \
   --url "b24-ar17wx.bitrix24.by" \
-  --fields "/tmp/d4rjn0xv.eoz.json" \
+  --fields "/tmp/kcvcazcq.tsv.json" \
   --token "***"

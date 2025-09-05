@@ -3,4 +3,4 @@
 oint mssql ПолучитьЗаписи \
   --table "testtable" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/xt1qs2ws.xwi.json"
+  --tls "/tmp/ti0eggvs.i2j.json"

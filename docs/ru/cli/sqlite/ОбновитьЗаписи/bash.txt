@@ -2,6 +2,6 @@
 
 oint sqlite ОбновитьЗаписи \
   --table "test" \
-  --values "/tmp/omhcwmke.30i.json" \
-  --filter "/tmp/34vtssqh.gxc.json" \
-  --db "/tmp/h0ru22mt.ozd.sqlite"
+  --values "/tmp/1g5buji0.g2r.json" \
+  --filter "/tmp/bmblso4j.pna.json" \
+  --db "/tmp/4dguqes0.q1t.sqlite"
