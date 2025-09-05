@@ -360,12 +360,7 @@ impl AddIn {
     }
 
     pub fn get_configurations(&self) -> String {
-
-        match serde_json::to_string_pretty(&self){
-            Ok(s) => json!({"result": true, "data": s}).to_string(),
-            Err(e) => process_error(&e.to_string())
-        }
-
+        json!({"result": true, "data": &self}).to_string()
     }
 
     pub fn is_tls(&self) -> bool {
