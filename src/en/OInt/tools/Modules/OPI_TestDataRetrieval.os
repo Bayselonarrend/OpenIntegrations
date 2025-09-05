@@ -642,7 +642,7 @@ Procedure ProcessTestingResult(Val Result
     LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
 
     SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, LogsMethod, Library, IsVariant);
+    ElementID = CreateTestElement(SetID, Library, Method, Option);
 
     Try
 
@@ -790,7 +790,7 @@ Function CreateLaunchSet(Val Name) Export
 
 EndFunction
 
-Function CreateTestElement(Val Set, Val Name, Val Library, Val IsVariant = False) Export
+Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
 
     Data = GetExistingLaunch();
 
@@ -801,6 +801,14 @@ Function CreateTestElement(Val Set, Val Name, Val Library, Val IsVariant = False
     UUID        = String(New UUID);
     CurrentDate = GetLaunchTime();
 
+    If ValueIsFilled(Option) Then
+        Title      = StrTemplate("%1 (%2)", Method, Option);
+        Identifier = StrTemplate("%1_%2_%3", Library, Method, Option);
+    Else
+        Title      = Method;
+        Identifier = StrTemplate("%1_%2"   , Library, Method);
+    EndIf;
+
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -808,7 +816,7 @@ Function CreateTestElement(Val Set, Val Name, Val Library, Val IsVariant = False
 
     ElementStructure = New Structure;
 
-    ElementStructure.Insert("name"       , Name);
+    ElementStructure.Insert("name"       , Title);
     ElementStructure.Insert("startTime"  , CurrentDate);
     ElementStructure.Insert("uuid"       , UUID);
     ElementStructure.Insert("type"       , "step");
@@ -816,9 +824,7 @@ Function CreateTestElement(Val Set, Val Name, Val Library, Val IsVariant = False
 
     ReportPortal().CreateItem(URL, Token, Project, ElementStructure, Set);
 
-    If Not IsVariant Then
-        Data["items"].Insert(UUID, StrTemplate("%1_%2", Library, Name));
-    EndIf;
+    Data["items"].Insert(UUID, Identifier);
 
     WriteLaunchFile(Data);
 
@@ -855,10 +861,14 @@ Procedure FinishLaunch() Export
 
             For Each Test In AllTests Do
 
-                TestFunctionName = StrTemplate("%1_%2", Test["lib"], Test["name"]);
+                If ValueIsFilled(Test["variant"]) Then
+                    TestFunctionName = StrTemplate("%1_%2_%3", Test["lib"], Test["name"], Test["variant"]);
+                Else
+                    TestFunctionName = StrTemplate("%1_%2"   , Test["lib"], Test["name"]);
+                EndIf;
 
                 If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
-                    WriteMissingTest(Test["lib"], Test["name"]);
+                    WriteMissingTest(Test["lib"], Test["name"], Test["variant"]);
                 EndIf;
 
             EndDo;
@@ -897,7 +907,7 @@ Function GetFullTestList() Export
 
 EndFunction
 
-Procedure WriteMissingTest(Val Library, Val Name);
+Procedure WriteMissingTest(Val Library, Val Method, Val Option);
 
     Data = GetExistingLaunch();
 
@@ -906,7 +916,7 @@ Procedure WriteMissingTest(Val Library, Val Name);
     EndIf;
 
     SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, Name, Library);
+    ElementID = CreateTestElement(SetID, Library, Method, Option);
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -1532,13 +1542,7 @@ EndFunction
 
 Function Check_Telegram_DownloadFile(Val Result, Val Option)
 
-    If TypeOf(Result) = Type("String") Then
-        If StrFind(Result, "\u") > 0 Then
-            Result    = GetBinaryDataFromString(Result);
-        EndIf;
-    EndIf;
-
-    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(TypeOf(Result) = Type("String") Or TypeOf(Result) = Type("BinaryData")).Равно(True);
 
     Return Result;
 
@@ -1881,14 +1885,9 @@ Function Check_VK_SavePictureToAlbum(Val Result, Val Option, Parameters = "", De
     ExpectsThat(Result["response"][0]["text"]).Равно(Description);
     ExpectsThat(Result["response"][0]["album_id"]).Равно(AlbumID);
 
-
-    If Option = "Path" Then
-
-        ImageID = Result["response"][0]["id"];
-        Parameters.Insert("VK_PictureID", ImageID);
-        WriteParameter("VK_PictureID", ImageID);
-
-    EndIf;
+    ImageID = Result["response"][0]["id"];
+    Parameters.Insert("VK_PictureID", ImageID);
+    WriteParameter("VK_PictureID", ImageID);
 
     OPI_Tools.Pause(5);
 
@@ -7810,9 +7809,13 @@ Function Check_S3_GetObject(Val Result, Val Option, Size = "")
 
     If Option = "File" Or Option = "Big file" Then
 
-        Result = New File(Result);
-        ExpectsThat(Result).ИмеетТип("File");
-        ExpectsThat(Result.Exists()).Равно(True);
+        If Not TypeOf(Result) = Type("BinaryData") Then
+
+            Result = New File(Result);
+            ExpectsThat(Result).ИмеетТип("File");
+            ExpectsThat(Result.Exists()).Равно(True);
+
+        EndIf;
 
     Else
         ExpectsThat(Result).ИмеетТип("BinaryData");
@@ -11011,14 +11014,30 @@ Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters
         UseProxy = Parameters["Proxy"];
         FTPS     = Parameters["TLS"];
 
-        ExpectsThat(Result.Property("set")).Равно(True);
+        If TypeOf(Result) = Type("Structure") Then
 
-        If FTPS Then
-            ExpectsThat(Result.Property("tls")).Равно(True);
-        EndIf;
+            ExpectsThat(Result.Property("set")).Равно(True);
 
-        If UseProxy Then
-            ExpectsThat(Result.Property("proxy")).Равно(True);
+            If FTPS Then
+                ExpectsThat(Result.Property("tls")).Равно(True);
+            EndIf;
+
+            If UseProxy Then
+                ExpectsThat(Result.Property("proxy")).Равно(True);
+            EndIf;
+
+        Else
+
+            ExpectsThat(Result["set"] <> Undefined).Равно(True);
+
+            If FTPS Then
+                ExpectsThat(Result["tls"] <> Undefined).Равно(True);
+            EndIf;
+
+            If UseProxy Then
+                ExpectsThat(Result["proxy"] <> Undefined).Равно(True);
+            EndIf;
+
         EndIf;
 
     EndIf;
@@ -11456,13 +11475,13 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value.GetSettings();
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        Value = GetCLIFormedValue(Value, True, AddOptions);
+        Value = StrReplace(OPI_Tools.JSONString(Value), Chars.LF, " ");
 
     ElsIf AddInName = "OPI_FTP" Then
 
         Value = Value.GetConfiguration();
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        Value = GetCLIFormedValue(Value, True, AddOptions);
+        Value = StrReplace(OPI_Tools.JSONString(Value), Chars.LF, " ");
 
     Else
         Raise "Invalid type " + ValeType;
@@ -11928,8 +11947,8 @@ Function СоздатьНаборЗапуска(Val Наименование) Ex
 	Return CreateLaunchSet(Наименование);
 EndFunction
 
-Function СоздатьТестовыйЭлемент(Val Набор, Val Наименование, Val Библиотека, Val ЭтоВариант = False) Export
-	Return CreateTestElement(Набор, Наименование, Библиотека, ЭтоВариант);
+Function СоздатьТестовыйЭлемент(Val Набор, Val Библиотека, Val Метод, Val Вариант) Export
+	Return CreateTestElement(Набор, Библиотека, Метод, Вариант);
 EndFunction
 
 Procedure ЗавершитьЗапуск() Export
