@@ -49,17 +49,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint rcon ВыполнитьКоманду \
               --exec "list" \
-              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent"
+              --conn "/tmp/q3fufzwb.dvf.json"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint rcon ВыполнитьКоманду ^
               --exec "list" ^
-              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent"
+              --conn "/tmp/q3fufzwb.dvf.json"
         ```
     </TabItem>
 </Tabs>
