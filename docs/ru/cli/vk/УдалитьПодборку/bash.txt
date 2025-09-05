@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьПодборку \
-  --sel "138" \
-  --auth "/tmp/byzs5fi0.tt1.json"
+  --sel "136" \
+  --auth "/tmp/ccdb0qqa.q5b.json"

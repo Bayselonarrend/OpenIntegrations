@@ -2,5 +2,5 @@
 
 oint bitrix24 СоздатьПользователя ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fields "/tmp/4sfg1ljq.mel.json" ^
+  --fields "/tmp/l0zeybfq.3gp.json" ^
   --token "***"

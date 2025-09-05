@@ -1,9 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ПолучитьСписокОбъектов ^
-  --url "storage-155.s3hoster.by" ^
-  --access "BRN5RKJE67YCVDZRRQVI" ^
-  --secret "***" ^
-  --region "BTC" ^
   --bucket "opi-gpbucket3" ^
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+  --basic "/tmp/4xwynk15.vfp.json" ^
+  --dir "False"
