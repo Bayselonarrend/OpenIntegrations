@@ -2,5 +2,6 @@
 
 oint s3 ПроверитьДоступностьБакета ^
   --name "opi-dirbucket3" ^
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+  --basic "/tmp/wyufyawq.stc.json" ^
+  --dir "True" ^
   --account "1234"

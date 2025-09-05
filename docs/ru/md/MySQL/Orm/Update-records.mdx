@@ -83,10 +83,11 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint mysql ОбновитьЗаписи \
-              --table "testtable" \
-              --values "{'varchar_field':{'VARCHAR':'Another varchar'}}" \
+              --table "test_data" \
+              --values "/tmp/jxpnfrtg.ilb.json" \
+              --filter "/tmp/bdkdcjsr.y2b.json" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --tls "/tmp/sacd4yhv.4jm.json"
         ```
     </TabItem>
   
@@ -95,10 +96,11 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint mysql ОбновитьЗаписи ^
-              --table "testtable" ^
-              --values "{'varchar_field':{'VARCHAR':'Another varchar'}}" ^
+              --table "test_data" ^
+              --values "/tmp/jxpnfrtg.ilb.json" ^
+              --filter "/tmp/bdkdcjsr.y2b.json" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "{'use_tls':'True','accept_invalid_certs':'True'}"
+              --tls "/tmp/sacd4yhv.4jm.json"
         ```
     </TabItem>
 </Tabs>

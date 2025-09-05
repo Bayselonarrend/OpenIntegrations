@@ -4,4 +4,4 @@ oint telegram ОтправитьМедиагруппу \
   --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --media "/tmp/o2dv0hs2.qxa.json"
+  --media "/tmp/y4zq5vdn.imr.json"

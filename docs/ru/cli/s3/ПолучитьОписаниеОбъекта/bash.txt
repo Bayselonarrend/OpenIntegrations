@@ -3,4 +3,5 @@
 oint s3 ПолучитьОписаниеОбъекта \
   --name "picture.jpg" \
   --bucket "opi-gpbucket3" \
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+  --basic "/tmp/em0i0is0.wzq.json" \
+  --dir "False"

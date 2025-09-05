@@ -100,17 +100,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ПолучитьЗаписи \
               --table "testtable" \
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+              --tls "/tmp/vo4fmws1.2bu.json"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ПолучитьЗаписи ^
               --table "testtable" ^
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+              --tls "/tmp/vo4fmws1.2bu.json"
         ```
     </TabItem>
 </Tabs>

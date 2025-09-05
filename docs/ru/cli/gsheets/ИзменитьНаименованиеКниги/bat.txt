@@ -1,4 +1,4 @@
 oint gsheets ИзменитьНаименованиеКниги ^
   --token "***" ^
-  --spreadsheet "1Umw27h4oN8foy03djazkfE5Rzkq5Jb28Kfc1C0ltaqU" ^
+  --spreadsheet "1OgnBP8QArkw7-hM1vk8PSINtcCZlvseVUEAE4ErqL8c" ^
   --title "Тестовая таблица (изм.)"
