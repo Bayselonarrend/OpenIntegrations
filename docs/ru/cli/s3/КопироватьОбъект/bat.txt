@@ -5,5 +5,5 @@ oint s3 КопироватьОбъект ^
   --sbucket "newbucket2" ^
   --name "new_picture.jpg" ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/inxrza42.mkc.json" ^
+  --basic "/tmp/ljmxgfnx.eaa.json" ^
   --dir "True"

@@ -3,4 +3,4 @@
 oint twitter ЗагрузитьМассивВложений \
   --files "['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg']" \
   --type "tweet_image" \
-  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+  --auth "/tmp/m3xsov2h.prr.json"

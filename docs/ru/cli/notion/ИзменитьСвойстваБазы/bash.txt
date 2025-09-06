@@ -2,7 +2,7 @@
 
 oint notion ИзменитьСвойстваБазы \
   --token "***" \
-  --base "26682aa7-fc4e-81b8-9878-d316f845ac0c" \
-  --props "/tmp/x2g02wqs.4nm.json" \
+  --base "26682aa7-fc4e-81b5-b4bc-e9b63ae39ae3" \
+  --props "/tmp/qflske5n.v3l.json" \
   --title "Тестовый заголовок" \
   --description "Тестовое описание"

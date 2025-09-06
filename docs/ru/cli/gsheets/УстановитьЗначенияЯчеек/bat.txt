@@ -2,6 +2,6 @@
 
 oint gsheets УстановитьЗначенияЯчеек ^
   --token "***" ^
-  --spreadsheet "1ADqbT_TFEhchd9aYlV2maQgRhQeoot6QGd3OV9KLQRs" ^
-  --data "/tmp/2zelmlbh.jkx.json" ^
+  --spreadsheet "1bzlSdbhWF87gX5wkXWWwfM5uBxu2wpDRDbNtQWVAGY8" ^
+  --data "/tmp/crzrey25.byr.json" ^
   --sheetname "Лист2"

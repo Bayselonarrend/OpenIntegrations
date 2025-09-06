@@ -3,4 +3,4 @@
 oint ozon СоздатьОбновитьТовары ^
   --clientid "***" ^
   --apikey "***" ^
-  --items "/tmp/shbdclkh.vfh.json"
+  --items "/tmp/lp4itmwh.yul.json"

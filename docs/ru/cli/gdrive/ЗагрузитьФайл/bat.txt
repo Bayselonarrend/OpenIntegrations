@@ -3,4 +3,4 @@
 oint gdrive ЗагрузитьФайл ^
   --token "***" ^
   --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --props "/tmp/hsxgcplt.nup.json"
+  --props "/tmp/sxr10sj0.rbd.json"

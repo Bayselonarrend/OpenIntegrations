@@ -3,4 +3,4 @@
 oint mssql ОчиститьТаблицу \
   --table "testtable" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/hwm3ubwg.0rr.json"
+  --tls "/tmp/lp4dox0q.imy.json"

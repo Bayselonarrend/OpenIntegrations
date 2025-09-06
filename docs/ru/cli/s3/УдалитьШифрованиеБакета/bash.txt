@@ -2,5 +2,5 @@
 
 oint s3 УдалитьШифрованиеБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/myyqlfy3.cjx.json" \
+  --basic "/tmp/ip0bdg2w.fy2.json" \
   --dir "True"
