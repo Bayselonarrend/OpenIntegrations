@@ -3,6 +3,6 @@
 oint s3 ОтменитьЗагрузкуЧастями ^
   --name "fileChunked.mp3" ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/mdp4mspl.ztt.json" ^
-  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjk4MDA5MmI1LTkwZjUtNDhjNC1hNGExLWI4ZmJiMjE1YzU4ZA" ^
+  --basic "/tmp/soiy0ofa.4vw.json" ^
+  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjFmZmM0OTBhLTdkNmQtNDYzNi1hZjBmLWI0MjM3ZTgxNWExNA" ^
   --dir "True"

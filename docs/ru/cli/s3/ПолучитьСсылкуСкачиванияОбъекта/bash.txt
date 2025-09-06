@@ -3,6 +3,6 @@
 oint s3 ПолучитьСсылкуСкачиванияОбъекта \
   --name "picture.jpg" \
   --bucket "opi-dirbucket3" \
-  --basic "/tmp/03k33ps0.5mh.json" \
+  --basic "/tmp/sknw3xzm.jhd.json" \
   --expires "7200" \
   --dir "True"

@@ -2,6 +2,6 @@
 
 oint s3 ПолучитьСписокВерсийОбъектов ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/tm5zn1uv.dtj.json" ^
+  --basic "/tmp/l1zct2f1.d0f.json" ^
   --prefix "pic" ^
   --dir "True"

@@ -3,4 +3,4 @@
 oint s3 ПолучитьОбъект \
   --name "bigfile.exe" \
   --bucket "newbucket2" \
-  --basic "/tmp/rjrtycrf.xnp.json"
+  --basic "/tmp/ewullzk1.3uv.json"

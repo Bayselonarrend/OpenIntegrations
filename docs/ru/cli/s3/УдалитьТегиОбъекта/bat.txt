@@ -3,5 +3,5 @@
 oint s3 УдалитьТегиОбъекта ^
   --name "picture.jpg" ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/je0cuoe2.q0m.json" ^
+  --basic "/tmp/ndjorpib.u1j.json" ^
   --dir "True"

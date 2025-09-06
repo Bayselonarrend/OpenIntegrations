@@ -1,4 +1,4 @@
 oint ftp ПолучитьСписокОбъектов ^
   --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" ^
-  --path "" ^
+  --path "." ^
   --rcv "True"

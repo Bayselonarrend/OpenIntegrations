@@ -2,5 +2,5 @@
 
 oint sqlite УдалитьЗаписи \
   --table "test" \
-  --filter "/tmp/f1xnve0j.a3g.json" \
-  --db "/tmp/s1ubyxd4.kyj.sqlite"
+  --filter "/tmp/hmtzznju.n1l.json" \
+  --db "/tmp/oi3bzm4c.ehs.sqlite"

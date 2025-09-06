@@ -1,4 +1,4 @@
 oint openai УдалитьФайл \
   --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
-  --id "file-18"
+  --id "file-21"

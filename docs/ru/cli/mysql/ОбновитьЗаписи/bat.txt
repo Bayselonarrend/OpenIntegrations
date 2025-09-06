@@ -2,7 +2,7 @@
 
 oint mysql ОбновитьЗаписи ^
   --table "test_data" ^
-  --values "/tmp/s34pobve.ywv.json" ^
-  --filter "/tmp/3eum51kp.rix.json" ^
+  --values "/tmp/5zqvc55n.jd2.json" ^
+  --filter "/tmp/nm4u22yj.44z.json" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/ejjte0fl.wr4.json"
+  --tls "/tmp/12qaqexg.am2.json"

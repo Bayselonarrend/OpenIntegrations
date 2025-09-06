@@ -2,6 +2,6 @@
 
 oint mysql ГарантироватьТаблицу ^
   --table "test_new" ^
-  --cols "/tmp/gixvkqnp.len.json" ^
+  --cols "/tmp/0z2yliiv.42g.json" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/xawrj5ot.tia.json"
+  --tls "/tmp/4vlkgzsf.2ch.json"

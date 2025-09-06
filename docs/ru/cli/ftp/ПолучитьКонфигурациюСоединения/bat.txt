@@ -1,4 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ftp ПолучитьКонфигурациюСоединения ^
-  --set "/tmp/tibzervy.sio.json"
+  --set "/tmp/cvepcsy0.prx.json" ^
+  --proxy "/tmp/hictyoay.rkz.json" ^
+  --tls "/tmp/4dnh343a.ctd.json"
