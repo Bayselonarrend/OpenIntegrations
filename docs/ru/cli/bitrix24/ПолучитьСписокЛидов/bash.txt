@@ -2,5 +2,5 @@
 
 oint bitrix24 ПолучитьСписокЛидов \
   --url "b24-ar17wx.bitrix24.by" \
-  --filter "/tmp/ctbpabed.1a5.json" \
+  --filter "/tmp/gbpka15g.oue.json" \
   --token "***"

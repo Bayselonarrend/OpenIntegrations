@@ -3,4 +3,4 @@
 oint ollama УдалитьМодель \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "bayselonarrend/tinyllama:latest" \
-  --headers "/tmp/41pufwiv.heg.json"
+  --headers "/tmp/ivkzia3h.r3z.json"

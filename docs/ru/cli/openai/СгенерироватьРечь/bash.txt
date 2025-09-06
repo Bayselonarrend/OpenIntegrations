@@ -5,4 +5,4 @@ oint openai СгенерироватьРечь \
   --token "***" \
   --model "tts-1" \
   --input "Attack ships on fire off the shoulder of Orion bright as magnesium" \
-  --options "/tmp/hwdepkyk.ltj.json"
+  --options "/tmp/2ugedfk5.ouq.json"

@@ -5,4 +5,4 @@ oint slack ОтправитьЭфемерноеСообщение ^
   --channel "C06UFNUTKUL" ^
   --text "Эфимерное сообщение" ^
   --user "U06UABH3APP" ^
-  --blocks "/tmp/nw34eny4.4u3.json"
+  --blocks "/tmp/irg1iacc.vum.json"

@@ -1,4 +1,4 @@
 oint ftp ПолучитьСписокОбъектов ^
   --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" ^
-  --path "Dir1/Dir3/Git-2.50.0-64-bit.exe" ^
+  --path "" ^
   --rcv "True"

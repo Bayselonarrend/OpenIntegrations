@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УстановитьНастройкиИнстанса ^
-  --settings "/tmp/ooslnswx.e2s.json" ^
-  --access "/tmp/ipcj02da.o2n.json"
+  --settings "/tmp/j1nhqwz1.sdu.json" ^
+  --access "/tmp/qnzvivei.zrz.json"

@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьПользователя \
   --url "b24-ar17wx.bitrix24.by" \
-  --userid "2548" \
-  --fields "/tmp/4esktrmd.xgj.json" \
+  --userid "2552" \
+  --fields "/tmp/3smxptfb.cwu.json" \
   --token "***"

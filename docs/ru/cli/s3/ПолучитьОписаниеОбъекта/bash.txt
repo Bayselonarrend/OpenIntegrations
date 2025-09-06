@@ -3,4 +3,4 @@
 oint s3 ПолучитьОписаниеОбъекта \
   --name "pictureU.jpg" \
   --bucket "newbucket2" \
-  --basic "/tmp/c1wx2bnz.qtw.json"
+  --basic "/tmp/gf0cc022.0t2.json"

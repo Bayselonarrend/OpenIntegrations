@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ДобавитьТовар ^
-  --product "/tmp/kadvnykb.zai.json" ^
-  --auth "/tmp/peinjmso.e14.json"
+  --product "/tmp/tobgeiwr.xwo.json" ^
+  --auth "/tmp/msy2bdil.d5r.json"

@@ -3,4 +3,4 @@
 oint vk СоздатьОбсуждение \
   --title "Обсуждаем: какой цвет лучше?" \
   --text "Красный, желтый, синий или какой-то другой?" \
-  --auth "/tmp/yuazobbm.ucp.json"
+  --auth "/tmp/n3udbqj4.srv.json"
