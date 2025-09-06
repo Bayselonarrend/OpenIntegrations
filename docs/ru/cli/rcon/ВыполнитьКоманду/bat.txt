@@ -2,4 +2,4 @@
 
 oint rcon ВыполнитьКоманду ^
   --exec "list" ^
-  --conn "/tmp/0hl1cbmj.fjy.json"
+  --conn "/tmp/ru2uj3do.4n0.json"

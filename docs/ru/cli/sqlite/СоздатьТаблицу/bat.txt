@@ -2,5 +2,5 @@
 
 oint sqlite СоздатьТаблицу ^
   --table "test1" ^
-  --cols "/tmp/gezvvhuq.khu.json" ^
-  --db "/tmp/vgtn0czi.ghh.sqlite"
+  --cols "/tmp/mwr3itjf.xlj.json" ^
+  --db "/tmp/s1ubyxd4.kyj.sqlite"

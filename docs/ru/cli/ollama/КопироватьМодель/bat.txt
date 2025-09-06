@@ -4,4 +4,4 @@ oint ollama КопироватьМодель ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "mario" ^
   --name "mario2" ^
-  --headers "/tmp/nsgj4xtg.5d4.json"
+  --headers "/tmp/xwvqrbbm.yw1.json"

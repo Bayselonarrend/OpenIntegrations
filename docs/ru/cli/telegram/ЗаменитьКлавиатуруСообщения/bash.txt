@@ -3,5 +3,5 @@
 oint telegram ЗаменитьКлавиатуруСообщения \
   --token "***" \
   --chat "461699897" \
-  --message "15957" \
-  --keyboard "/tmp/5r2wvjnt.ida.json"
+  --message "15973" \
+  --keyboard "/tmp/opyyqn4b.gbf.json"

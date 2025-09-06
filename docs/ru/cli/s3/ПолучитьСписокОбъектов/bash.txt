@@ -2,5 +2,5 @@
 
 oint s3 ПолучитьСписокОбъектов \
   --bucket "opi-dirbucket3" \
-  --basic "/tmp/kjzeo3xx.ttz.json" \
+  --basic "/tmp/3o2u004u.sce.json" \
   --dir "True"

@@ -3,4 +3,4 @@
 oint ozon ПривязатьШтрихкоды \
   --clientid "***" \
   --apikey "***" \
-  --barcodes "/tmp/z4s5k4al.cik.json"
+  --barcodes "/tmp/hxt4dnxb.11y.json"

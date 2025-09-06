@@ -2,5 +2,5 @@
 
 oint s3 УстановитьТегиБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/y0dyxdm2.qps.json" \
-  --tagset "/tmp/wkil11wm.lyy.json"
+  --basic "/tmp/t5cdfqtb.3zf.json" \
+  --tagset "/tmp/tongxzpm.2zu.json"

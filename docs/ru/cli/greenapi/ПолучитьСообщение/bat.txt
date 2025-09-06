@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПолучитьСообщение ^
-  --access "/tmp/comr4tiq.vts.json" ^
+  --access "/tmp/kou10djd.lfw.json" ^
   --chat "120363410406221140@g.us" ^
-  --msg "BAE53886AAD785AB"
+  --msg "BAE58E8A399ECFA2"

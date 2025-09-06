@@ -4,4 +4,4 @@ oint mysql УдалитьЗаписи \
   --table "test_data" \
   --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':'False','union':'AND'}]" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "/tmp/swplprr2.eb5.json"
+  --tls "/tmp/mckoibu3.gy3.json"
