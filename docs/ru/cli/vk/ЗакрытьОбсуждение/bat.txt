@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ЗакрытьОбсуждение ^
-  --topic "54094503" ^
+  --topic "54095322" ^
   --remove "False" ^
-  --auth "/tmp/vtornlvy.tul.json"
+  --auth "/tmp/wicqoeh3.mt1.json"

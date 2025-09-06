@@ -2,5 +2,5 @@
 
 oint bitrix24 НайтиПользователей ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --filter "/tmp/0ebbmivh.j3v.json" ^
+  --filter "/tmp/qmlj4aox.ybt.json" ^
   --token "***"

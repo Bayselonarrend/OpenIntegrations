@@ -2,4 +2,4 @@
 
 oint vk СоздатьСвойствоТовара \
   --title "Цвет" \
-  --auth "/tmp/jtarbref.e3y.json"
+  --auth "/tmp/n3gyhpij.tpf.json"

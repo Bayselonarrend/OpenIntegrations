@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СоздатьИсторию ^
-  --picture "/tmp/ttsjg5ey.juh.png" ^
-  --auth "/tmp/khrf31mo.51i.json"
+  --picture "/tmp/r0v5tdzf.m0c.png" ^
+  --auth "/tmp/s25obrrt.55r.json"

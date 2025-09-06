@@ -2,4 +2,4 @@
 
 oint s3 ОтправитьЗапросБезТела ^
   --method "GET" ^
-  --basic "/tmp/ndxsdd5k.22e.json"
+  --basic "/tmp/p23jvlkp.xhd.json"

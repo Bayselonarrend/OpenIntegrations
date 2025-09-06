@@ -3,6 +3,6 @@
 oint s3 УстановитьТегиОбъекта ^
   --name "picture.jpg" ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/qgqdrf40.by4.json" ^
-  --tagset "/tmp/aahs1srq.cak.json" ^
+  --basic "/tmp/i4ejfwfi.55k.json" ^
+  --tagset "/tmp/jmkppkkj.k2z.json" ^
   --dir "True"
