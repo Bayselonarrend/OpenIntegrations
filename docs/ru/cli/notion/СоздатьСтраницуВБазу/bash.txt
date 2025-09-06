@@ -2,5 +2,5 @@
 
 oint notion СоздатьСтраницуВБазу \
   --token "***" \
-  --base "26682aa7-fc4e-81b8-9878-d316f845ac0c" \
-  --data "/tmp/cgjmlprq.pmy.json"
+  --base "26682aa7-fc4e-81b5-b4bc-e9b63ae39ae3" \
+  --data "/tmp/1wnkp5aa.vhj.json"

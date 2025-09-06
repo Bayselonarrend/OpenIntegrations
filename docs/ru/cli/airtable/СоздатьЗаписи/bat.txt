@@ -2,6 +2,6 @@
 
 oint airtable СоздатьЗаписи ^
   --token "***" ^
-  --base "appAtc7mJ21zG0WbD" ^
-  --table "tbl3eSyQB8WGSYzxp" ^
-  --data "/tmp/zqjzvw43.nyn.json"
+  --base "apprziBxr19vhZkcf" ^
+  --table "tblGOhHbNfp0K77xb" ^
+  --data "/tmp/m0davotv.5ps.json"

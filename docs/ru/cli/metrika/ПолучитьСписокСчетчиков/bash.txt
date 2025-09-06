@@ -2,4 +2,4 @@
 
 oint metrika ПолучитьСписокСчетчиков \
   --token "***" \
-  --filter "/tmp/p23ubndo.1ea.json"
+  --filter "/tmp/4l01j3wi.poo.json"

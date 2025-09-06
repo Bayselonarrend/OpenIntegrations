@@ -2,4 +2,4 @@
 
 oint metrika СоздатьСчетчик ^
   --token "***" ^
-  --fields "/tmp/t0ajnik3.akf.json"
+  --fields "/tmp/qry1a4i5.p14.json"

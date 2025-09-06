@@ -3,6 +3,6 @@
 oint bitrix24 СоздатьНовость \
   --url "b24-ar17wx.bitrix24.by" \
   --text "Текст новости" \
-  --files "/tmp/msiawo31.qhx.json" \
+  --files "/tmp/i4jqy15a.11g.json" \
   --title "Заголовок новости" \
   --token "***"

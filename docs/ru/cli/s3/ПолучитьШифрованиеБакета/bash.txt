@@ -2,5 +2,5 @@
 
 oint s3 ПолучитьШифрованиеБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/xodbzjfq.yco.json" \
+  --basic "/tmp/p0rrmink.d5i.json" \
   --dir "True"

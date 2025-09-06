@@ -4,4 +4,4 @@ oint vk СоздатьОпрос ^
   --question "Какой ваш любимый цвет?" ^
   --options "['Красный','Желтый','Зеленый']" ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --auth "/tmp/fhxcxwjj.x1c.json"
+  --auth "/tmp/cxvxqk0a.kgv.json"
