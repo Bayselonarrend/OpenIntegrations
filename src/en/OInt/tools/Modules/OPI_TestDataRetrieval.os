@@ -10988,6 +10988,10 @@ Function Check_FTP_CreateConnection(Val Result, Val Option)
     Result = String(TypeOf(Result));
     ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
 
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
     Return Result;
 
 EndFunction
@@ -10997,13 +11001,17 @@ Function Check_FTP_GetWelcomeMessage(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data"]).Заполнено();
 
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
     Return Result;
 
 EndFunction
 
 Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters = "")
 
-    If Option = "Check" Then
+    If StrFind(Option, "Check") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).Заполнено();
@@ -11048,11 +11056,15 @@ EndFunction
 
 Function Check_FTP_CloseConnection(Val Result, Val Option)
 
-    If Option  = "Openning" Then
+    If StrFind(Option, "Openning") > 0 Then
         Result = String(TypeOf(Result));
         ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11061,7 +11073,7 @@ EndFunction
 
 Function Check_FTP_IsConnector(Val Result, Val Option)
 
-    If Option  = "Openning" Then
+    If StrFind(Option, "Openning") > 0 Then
         Result = String(TypeOf(Result));
         ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
     Else
@@ -11098,21 +11110,21 @@ EndFunction
 
 Function Check_FTP_CreateDirectory(Val Result, Val Option, Primary = False)
 
-    If Option = "Deletion" Then
+    If StrFind(Option, "Deletion") > 0 Then
         Return Result;
     EndIf;
 
-    If Primary Or Option = "Nested" Then
+    If Primary Or StrFind(Option, "Nested") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
 
-    ElsIf Option = "Check 1" Then
+    ElsIf StrFind(Option, "Check 1") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
         ExpectsThat(Result["data"][0]["name"]).Равно("another_one");
 
-    ElsIf Option = "Check 2" Then
+    ElsIf StrFind(Option, "Check 2") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
@@ -11124,6 +11136,10 @@ Function Check_FTP_CreateDirectory(Val Result, Val Option, Primary = False)
 
     EndIf;
 
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
     Return Result;
 
 EndFunction
@@ -11132,8 +11148,12 @@ Function Check_FTP_ListObjects(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Option = "File" Then
+    If StrFind(Option, "File") > 0 Then
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(0);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11144,10 +11164,14 @@ Function Check_FTP_UploadFile(Val Result, Val Option, Size = "")
 
     ExpectsThat(Result["bytes"]).Равно(Size);
 
-   If Not Option = "Size 1" Or Option = "Size 2" Then
+   If Not StrFind(Option, "Size 1") > O Or StrFind(Variant, "Size 2") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
 
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11156,11 +11180,11 @@ EndFunction
 
 Function Check_FTP_DeleteFile(Val Result, Val Option)
 
-    If Option = "Nonexistent" Then
+    If StrFind(Option, "Nonexistent") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(False);
 
-    ElsIf Option = "Check" Then
+    ElsIf StrFind(Option, "Check") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
@@ -11169,6 +11193,10 @@ Function Check_FTP_DeleteFile(Val Result, Val Option)
 
         ExpectsThat(Result["result"]).Равно(True);
 
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11179,6 +11207,10 @@ Function Check_FTP_DeleteDirectory(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
     Return Result;
 
 EndFunction
@@ -11187,8 +11219,12 @@ Function Check_FTP_ClearDirectory(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Option = "Check" Then
+    If StrFind(Option, "Check") > 0 Then
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(0);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11197,10 +11233,14 @@ EndFunction
 
 Function Check_FTP_GetObjectSize(Val Result, Val Option)
 
-    If Option = "Nonexistent" Then
+    If StrFind(Option, "Nonexistent") > 0 Then
         ExpectsThat(Result["result"]).Равно(False);
     Else
         ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11209,26 +11249,31 @@ EndFunction
 
 Function Check_FTP_UpdatePath(Val Result, Val Option)
 
-    If Option = "List" Then
 
-        ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
-        ExpectsThat(Result["data"][0]["path"]).Равно("brand_new_dir");
-        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("brand_new_dir/giant.bin");
-
-    ElsIf Option = "List, back" Then
+    If StrFind(Option, "List, back") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
         ExpectsThat(Result["data"][0]["path"]).Равно("new_dir");
         ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("new_dir/big.bin");
 
-    ElsIf Option = "Check, old" Then
+    ElsIf StrFind(Option, "List") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"][0]["path"]).Равно("brand_new_dir");
+        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("brand_new_dir/giant.bin");
+
+    ElsIf StrFind(Option, "Check, old") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(False);
 
     Else
         ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11237,11 +11282,15 @@ EndFunction
 
 Function Check_FTP_SaveFile(Val Result, Val Option, ResultSize = "", CheckSize = "")
 
-    If Option = "File size" Then
+    If StrFind(Option, "File size") > 0 Then
         ExpectsThat(Result).Равно(ResultSize);
         ExpectsThat(Result).Равно(CheckSize);
     Else
         ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
@@ -11250,12 +11299,16 @@ EndFunction
 
 Function Check_FTP_GetFileData(Val Result, Val Option, CheckSize = "")
 
-    If Option    = "File size" Then
+    If StrFind(Option, "File size") > 0 Then
         ExpectsThat(Result).Равно(CheckSize);
-    ElsIf Option = "Size" Then
+    ElsIf StrFind(Option, "Size") > 0 Then
         ExpectsThat(Result["result"]).Равно(True);
     Else
         ExpectsThat(Result).ИмеетТип("BinaryData");
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
     EndIf;
 
     Return Result;
