@@ -276,16 +276,16 @@ impl FtpClient {
         path: &str,
         reader: &mut R
     ) -> String {
-        let result = match self {
-            FtpClient::Secure(stream) => {
 
-                let mut data_stream = match stream.put_with_stream(path)
+        macro_rules! upload_impl {
+            ($stream:expr, $path:expr, $reader:expr) => {{
+                let mut data_stream = match $stream.put_with_stream($path)
                     .map_err(|e| format!("Data stream error: {}", e)){
                     Ok(stream) => stream,
                     Err(e) => return format_json_error(&e.to_string())
                 };
 
-                let bytes = match copy(reader, &mut data_stream) {
+                let bytes = match copy($reader, &mut data_stream) {
                     Ok(b) => {
                         match wait_for_writable(&mut data_stream, Duration::from_secs(5)){
                             Ok(_) => {},
@@ -296,14 +296,15 @@ impl FtpClient {
                     Err(e) => return format_json_error(format!("Upload error: {}", &e.to_string()))
                 };
 
-                stream.finalize_put_stream(data_stream)
+                $stream.finalize_put_stream(data_stream)
                     .map(|_| bytes)
                     .map_err(|e| format!("Finalize error: {}", e))
-            },
-            FtpClient::Insecure(stream) => {
-                stream.put_file(path, reader)
-                    .map_err(|e| format!("File error: {}", e))
-            }
+            }};
+        }
+
+        let result = match self {
+            FtpClient::Secure(stream) => upload_impl!(stream, path, reader),
+            FtpClient::Insecure(stream) => upload_impl!(stream, path, reader),
         };
 
         match result {

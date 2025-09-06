@@ -138,14 +138,21 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
                 .ok_or_else(|| "Proxy address resolution returned no results".to_string())?
         ).map_err(|e| format!("Failed to connect to HTTP proxy: {}", e))?;
 
-        stream.set_read_timeout(Some(Duration::from_secs(10))).ok();
-        stream.set_write_timeout(Some(Duration::from_secs(10))).ok();
+        // Увеличиваем таймауты
+        stream.set_read_timeout(Some(Duration::from_secs(30))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(30))).ok();
+        stream.set_nodelay(true).ok(); // Отключаем алгоритм Нейгла
 
         let host_port = format!("{}:{}", target_addr.0, target_addr.1);
         let mut request = format!(
-            "CONNECT {} HTTP/1.1\r\nHost: {}\r\nConnection: keep-alive\r\n",
+            "CONNECT {} HTTP/1.1\r\nHost: {}\r\n",
             host_port, host_port
         );
+
+        // Добавляем User-Agent и другие стандартные заголовки
+        request.push_str("User-Agent: rust-ftp-proxy/1.0\r\n");
+        request.push_str("Proxy-Connection: keep-alive\r\n");
+        request.push_str("Connection: keep-alive\r\n");
 
         if let (Some(user), Some(pass)) = (&proxy_settings.login, &proxy_settings.password) {
             let auth = general_purpose::STANDARD.encode(format!("{}:{}", user, pass));
@@ -153,42 +160,91 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
         }
         request.push_str("\r\n");
 
+        // Пишем все данные
         stream.write_all(request.as_bytes())
             .map_err(|e| format!("Failed to send CONNECT request: {}", e))?;
+        stream.flush().map_err(|e| format!("Failed to flush stream: {}", e))?;
 
-        let mut buf = [0u8; 4096];
-        let n = stream.read(&mut buf)
-            .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+        // Читаем ответ полностью
+        let mut response = Vec::new();
+        let mut buf = [0u8; 1024];
+        let mut total_read = 0;
+        let max_response_size = 8192;
 
-        let mut headers = [httparse::EMPTY_HEADER; 16];
-        let mut response = httparse::Response::new(&mut headers);
-        match response.parse(&buf[..n]) {
+        loop {
+            let n = stream.read(&mut buf)
+                .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+
+            if n == 0 {
+                break;
+            }
+
+            response.extend_from_slice(&buf[..n]);
+            total_read += n;
+
+            // Проверяем, есть ли конец заголовков
+            if response.windows(4).any(|window| window == b"\r\n\r\n") {
+                break;
+            }
+
+            if total_read >= max_response_size {
+                return Err("Proxy response too large".to_string());
+            }
+        }
+
+        let response_str = String::from_utf8_lossy(&response);
+
+        // Парсим ответ
+        let mut headers = [httparse::EMPTY_HEADER; 32];
+        let mut resp = httparse::Response::new(&mut headers);
+
+        match resp.parse(&response) {
             Ok(httparse::Status::Complete(_)) => {},
-            Ok(httparse::Status::Partial) => return Err("Incomplete proxy response".to_string()),
+            Ok(httparse::Status::Partial) => {
+                // Пытаемся найти код статуса вручную
+                if let Some(first_line) = response_str.lines().next() {
+                    if let Some(code_str) = first_line.split_whitespace().nth(1) {
+                        if let Ok(code) = code_str.parse::<u16>() {
+                            match code {
+                                200 => return Ok(stream),
+                                407 => return Err("Proxy authentication required (HTTP 407)".to_string()),
+                                500 | 502 | 503 => {
+                                    if attempt < max_retries {
+                                        let delay = Duration::from_millis(500 * attempt as u64);
+                                        std::thread::sleep(delay);
+                                        continue;
+                                    }
+                                }
+                                _ => {}
+                            }
+                        }
+                    }
+                }
+                return Err("Incomplete proxy response".to_string());
+            }
             Err(e) => return Err(format!("Failed to parse proxy response: {:?}", e)),
         }
 
-        let code = response.code.ok_or_else(|| "Missing HTTP status code in proxy response".to_string())?;
+        let code = resp.code.ok_or_else(|| "Missing HTTP status code in proxy response".to_string())?;
         match code {
             200 => return Ok(stream),
             407 => return Err("Proxy authentication required (HTTP 407)".to_string()),
-            500 => {
+            500 | 502 | 503 => {
                 if attempt < max_retries {
-                    std::thread::sleep(Duration::from_millis(200));
+                    let delay = Duration::from_millis(500 * attempt as u64);
+                    std::thread::sleep(delay);
                     continue;
                 } else {
-                    let resp_str = String::from_utf8_lossy(&buf[..n]);
-                    return Err(format!("Proxy error: HTTP 500 after {} retries\nFull response:\n{}", max_retries, resp_str));
+                    return Err(format!("Proxy error: HTTP {} after {} retries", code, max_retries));
                 }
             }
             _ => {
-                let resp_str = String::from_utf8_lossy(&buf[..n]);
-                return Err(format!("Proxy error: HTTP {}\nFull response:\n{}", code, resp_str));
+                return Err(format!("Proxy error: HTTP {}", code));
             }
         }
     }
 
-    Err("Unexpected proxy connection loop exit".to_string())
+    Err("Failed to connect via proxy after all retries".to_string())
 }
 
 
