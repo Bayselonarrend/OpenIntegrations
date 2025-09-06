@@ -4,5 +4,5 @@ oint s3 ЗагрузитьОбъектЦеликом \
   --name "pictureSmall.jpg" \
   --bucket "opi-dirbucket3" \
   --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
-  --basic "/tmp/tubkxmj5.vvp.json" \
+  --basic "/tmp/5fbk4ovg.40z.json" \
   --dir "True"

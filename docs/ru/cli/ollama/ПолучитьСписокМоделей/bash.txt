@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокМоделей \
   --url "https://hut.openintegrations.dev/ollama" \
-  --headers "/tmp/zxur0cni.fv2.json"
+  --headers "/tmp/ay1iuk44.vgf.json"

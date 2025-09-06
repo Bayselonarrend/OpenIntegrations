@@ -4,4 +4,4 @@ oint notion СоздатьБазуДанных ^
   --token "***" ^
   --page "5dd94c34fab04bff986b7511c0779f77" ^
   --title "Тестовый заголовок" ^
-  --props "/tmp/vpvecmwh.qxs.json"
+  --props "/tmp/kjj5bo3j.nnc.json"

@@ -3,5 +3,5 @@
 oint s3 ПолучитьТегиОбъекта \
   --name "picture.jpg" \
   --bucket "opi-dirbucket3" \
-  --basic "/tmp/3umy0jrf.imo.json" \
+  --basic "/tmp/duwi0vog.h3b.json" \
   --dir "True"

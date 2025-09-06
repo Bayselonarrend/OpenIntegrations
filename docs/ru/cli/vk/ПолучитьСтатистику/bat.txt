@@ -3,4 +3,4 @@
 oint vk ПолучитьСтатистику ^
   --datefrom "09/06/2025 00:00:00" ^
   --dateto "09/06/2025 23:59:59" ^
-  --auth "/tmp/punafkfm.3to.json"
+  --auth "/tmp/dh04myed.1qu.json"
