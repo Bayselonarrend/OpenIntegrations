@@ -1,4 +1,4 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПерезапуститьИнстанс ^
-  --access "/tmp/ptalwrbu.v2n.json"
+  --access "/tmp/jdfklzdn.swy.json"

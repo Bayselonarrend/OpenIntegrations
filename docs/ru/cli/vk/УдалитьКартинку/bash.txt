@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьКартинку \
-  --pictureid "457258580" \
-  --auth "/tmp/e35e3qiy.5xg.json"
+  --pictureid "457258599" \
+  --auth "/tmp/t3xietkl.h1t.json"

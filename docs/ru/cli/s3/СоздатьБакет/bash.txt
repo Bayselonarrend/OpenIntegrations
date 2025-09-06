@@ -2,5 +2,5 @@
 
 oint s3 СоздатьБакет \
   --name "opi-dirbucket3" \
-  --basic "/tmp/2tteonwt.o3i.json" \
+  --basic "/tmp/fwux2kdb.sjc.json" \
   --dir "True"

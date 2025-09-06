@@ -2,5 +2,5 @@
 
 oint s3 ПолучитьТегиБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/oqkwcgee.obj.json" \
+  --basic "/tmp/iwlxz0eg.riy.json" \
   --dir "True"

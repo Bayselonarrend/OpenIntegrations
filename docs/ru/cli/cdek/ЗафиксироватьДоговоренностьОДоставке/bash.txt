@@ -2,5 +2,5 @@
 
 oint cdek ЗафиксироватьДоговоренностьОДоставке \
   --token "***" \
-  --appt "/tmp/vofnkqop.a1z.json" \
+  --appt "/tmp/4srndzfv.jic.json" \
   --testapi "***"

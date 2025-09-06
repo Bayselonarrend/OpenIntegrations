@@ -1,4 +1,4 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ПолучитьИнформациюОбАккаунте ^
-  --access "/tmp/npiycq5q.jjo.json"
+  --access "/tmp/hqyzbvdl.kk5.json"

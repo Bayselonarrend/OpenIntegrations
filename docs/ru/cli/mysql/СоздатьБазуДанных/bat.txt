@@ -3,4 +3,4 @@
 oint mysql СоздатьБазуДанных ^
   --base "testbase2" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/bfz04qz1.tiq.json"
+  --tls "/tmp/1auro2cm.njj.json"
