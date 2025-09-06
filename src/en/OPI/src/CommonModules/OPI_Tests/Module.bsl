@@ -21396,6 +21396,8 @@ EndProcedure
 
 Procedure FTP_CreateConnection(FunctionParameters)
 
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
@@ -21433,13 +21435,13 @@ Procedure FTP_CreateConnection(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "CreateConnection", Postfix);
 
 EndProcedure
 
 Procedure FTP_GetWelcomeMessage(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21484,13 +21486,13 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "GetWelcomeMessage", Postfix);
 
 EndProcedure
 
 Procedure FTP_GetConnectionConfiguration(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21529,17 +21531,17 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "GetConnectionConfiguration", Postfix, FunctionParameters);
 
     Check = OPI_FTP.GetWelcomeMessage(Result);
 
-    Process(Check, "FTP", "GetConnectionConfiguration", "Check");
+    Process(Check, "FTP", "GetConnectionConfiguration", "Check, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_CloseConnection(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21576,13 +21578,11 @@ Procedure FTP_CloseConnection(FunctionParameters)
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    Process(Connection, "FTP", "CloseConnection", "Openning"); // SKIP
+    Process(Connection, "FTP", "CloseConnection", "Openning, " + Postfix); // SKIP
 
     Result = OPI_FTP.CloseConnection(Connection);
 
     // END
-
-    Postfix = FunctionParameters["Postfix"];
 
     Process(Result, "FTP", "CloseConnection", Postfix);
 
@@ -21590,6 +21590,8 @@ EndProcedure
 
 Procedure FTP_IsConnector(FunctionParameters)
 
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
     Login    = FunctionParameters["FTP_User"];
@@ -21625,19 +21627,19 @@ Procedure FTP_IsConnector(FunctionParameters)
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    Process(Connection, "FTP", "IsConnector", "Openning"); // SKIP
+    Process(Connection, "FTP", "IsConnector", "Openning, " + Postfix); // SKIP
 
     Result = OPI_FTP.IsConnector(Connection);
 
     // END
-
-    Postfix = FunctionParameters["Postfix"];
 
     Process(Result, "FTP", "IsConnector", Postfix);
 
 EndProcedure
 
 Procedure FTP_GetConnectionSettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21648,13 +21650,13 @@ Procedure FTP_GetConnectionSettings(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "GetConnectionSettings", Postfix);
 
 EndProcedure
 
 Procedure FTP_GetProxySettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
 
@@ -21667,25 +21669,25 @@ Procedure FTP_GetProxySettings(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "GetProxySettings", Postfix);
 
 EndProcedure
 
 Procedure FTP_GetTLSSettings(FunctionParameters)
 
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
     Result = OPI_FTP.GetTLSSettings(True);
 
     // END
-
-    Postfix = FunctionParameters["Postfix"];
 
     Process(Result, "FTP", "GetTLSSettings", Postfix);
 
 EndProcedure
 
 Procedure FTP_CreateDirectory(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21725,7 +21727,7 @@ Procedure FTP_CreateDirectory(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
-        Process(Deletion, "FTP", "CreateDirectory", "Deletion"); // SKIP
+        Process(Deletion, "FTP", "CreateDirectory", "Deletion, " + Postfix); // SKIP
 
         Result = OPI_FTP.CreateDirectory(Connection, "new_dir");
 
@@ -21735,31 +21737,31 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "CreateDirectory", Postfix, True);
 
     Result = OPI_FTP.CreateDirectory(Connection, "new_dir/another_one");
 
-    Process(Result, "FTP", "CreateDirectory", "Nested");
+    Process(Result, "FTP", "CreateDirectory", "Nested, " + Postfix);
 
     Result = OPI_FTP.CreateDirectory(Connection, "second_dir/another_one");
 
-    Process(Result, "FTP", "CreateDirectory", "Double");
+    Process(Result, "FTP", "CreateDirectory", "Double, " + Postfix);
 
     OPI_Tools.Pause(5);
 
     Check = OPI_FTP.ListObjects(Connection, "new_dir", True);
 
-    Process(Check, "FTP", "CreateDirectory", "Check 1");
+    Process(Check, "FTP", "CreateDirectory", "Check 1, " + Postfix);
 
     Check = OPI_FTP.ListObjects(Connection, "", True);
 
-    Process(Check, "FTP", "CreateDirectory", "Check 2");
+    Process(Check, "FTP", "CreateDirectory", "Check 2, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_ListObjects(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21804,17 +21806,17 @@ Procedure FTP_ListObjects(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "ListObjects", Postfix);
 
     Result = OPI_FTP.ListObjects(Connection, "Dir1/Dir3/Git-2.50.0-64-bit.exe", True);
 
-    Process(Result, "FTP", "ListObjects", "File");
+    Process(Result, "FTP", "ListObjects", "File, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_UploadFile(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     ImagePath = "C:\pic.png";
 
@@ -21871,16 +21873,14 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
-    Process(Result , "FTP", "UploadFile", Postfix , ImageDD.Size());
-    Process(Result2, "FTP", "UploadFile", "Binary", ImageDD.Size());
+    Process(Result , "FTP", "UploadFile", Postfix             , ImageDD.Size());
+    Process(Result2, "FTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
 
     Result  = OPI_FTP.GetObjectSize(Connection, "new_dir/pic_from_disk.png");
     Result2 = OPI_FTP.GetObjectSize(Connection, "pic_from_binary.png");
 
-    Process(Result , "FTP", "UploadFile", "Size 1", ImageDD.Size());
-    Process(Result2, "FTP", "UploadFile", "Size 2", ImageDD.Size());
+    Process(Result , "FTP", "UploadFile", "Size 1, " + Postfix, ImageDD.Size());
+    Process(Result2, "FTP", "UploadFile", "Size 2, " + Postfix, ImageDD.Size());
 
     For N = 1 To 7 Do
 
@@ -21888,11 +21888,11 @@ Procedure FTP_UploadFile(FunctionParameters)
         Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
 
         If Not Result["result"] Then
-            Process(Result, "FTP", "UploadFile", "Multiple", ImageDD.Size());
+            Process(Result, "FTP", "UploadFile", "Multiple, " + Postfix, ImageDD.Size());
         EndIf;
 
         If Not Result2["result"] Then
-            Process(Result2, "FTP", "UploadFile", "Multiple, binary", ImageDD.Size());
+            Process(Result2, "FTP", "UploadFile", "Multiple, binary, " + Postfix, ImageDD.Size());
         EndIf;
 
     EndDo;
@@ -21900,7 +21900,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
     Result  = OPI_FTP.UploadFile(Connection, BigData, "new_dir/big.bin");
 
-    Process(Result, "FTP", "UploadFile", "Big", BigData.Size());
+    Process(Result, "FTP", "UploadFile", "Big, " + Postfix, BigData.Size());
 
     Try
         DeleteFiles(TFN);
@@ -21911,6 +21911,8 @@ Procedure FTP_UploadFile(FunctionParameters)
 EndProcedure
 
 Procedure FTP_DeleteFile(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -21955,21 +21957,21 @@ Procedure FTP_DeleteFile(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result , "FTP", "DeleteFile", Postfix);
 
     Result = OPI_FTP.DeleteFile(Connection, "pic_from_binary.png");
 
-    Process(Result , "FTP", "DeleteFile", "Nonexistent");
+    Process(Result , "FTP", "DeleteFile", "Nonexistent, " + Postfix);
 
     Result = OPI_FTP.ListObjects(Connection, "", True);
 
-    Process(Result , "FTP", "DeleteFile", "Check");
+    Process(Result , "FTP", "DeleteFile", "Check, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_DeleteDirectory(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22014,13 +22016,13 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result , "FTP", "DeleteDirectory", Postfix);
 
 EndProcedure
 
 Procedure FTP_ClearDirectory(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22065,17 +22067,17 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result , "FTP", "ClearDirectory", Postfix);
 
     Result = OPI_FTP.ListObjects(Connection, "", True);
 
-    Process(Result , "FTP", "ClearDirectory", "Check");
+    Process(Result , "FTP", "ClearDirectory", "Check, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_GetObjectSize(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22120,17 +22122,17 @@ Procedure FTP_GetObjectSize(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result , "FTP", "GetObjectSize", Postfix);
 
     Result = OPI_FTP.GetObjectSize(Connection, "new_dir/another.bin");
 
-    Process(Result , "FTP", "GetObjectSize", "Nonexistent");
+    Process(Result , "FTP", "GetObjectSize", "Nonexistent, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_UpdatePath(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22175,41 +22177,41 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result , "FTP", "UpdatePath", Postfix);
 
     Result = OPI_FTP.GetObjectSize(Connection, "new_dir/giant.bin");
 
-    Process(Result , "FTP", "UpdatePath", "Check, new");
+    Process(Result , "FTP", "UpdatePath", "Check, new, " + Postfix);
 
     Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
 
-    Process(Result , "FTP", "UpdatePath", "Check, old");
+    Process(Result , "FTP", "UpdatePath", "Check, old, " + Postfix);
 
     Result = OPI_FTP.UpdatePath(Connection, "new_dir", "brand_new_dir");
 
-    Process(Result , "FTP", "UpdatePath", "Directory");
+    Process(Result , "FTP", "UpdatePath", "Directory, " + Postfix);
 
     Result = OPI_FTP.ListObjects(Connection, ".", True);
 
-    Process(Result , "FTP", "UpdatePath", "List");
+    Process(Result , "FTP", "UpdatePath", "List, " + Postfix);
 
     Result = OPI_FTP.UpdatePath(Connection, "brand_new_dir", "new_dir");
 
-    Process(Result , "FTP", "UpdatePath", "Directory, back");
+    Process(Result , "FTP", "UpdatePath", "Directory, back, " + Postfix);
 
     Result = OPI_FTP.UpdatePath(Connection, "new_dir/giant.bin", "new_dir/big.bin");
 
-    Process(Result , "FTP", "UpdatePath", "Back");
+    Process(Result , "FTP", "UpdatePath", "Back, " + Postfix);
 
     Result = OPI_FTP.ListObjects(Connection, ".", True);
 
-    Process(Result , "FTP", "UpdatePath", "List, back");
+    Process(Result , "FTP", "UpdatePath", "List, back, " + Postfix);
 
 EndProcedure
 
 Procedure FTP_SaveFile(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22259,13 +22261,11 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "SaveFile", Postfix);
 
     Size = OPI_FTP.GetObjectSize(Connection, Path);
 
-    Process(Size, "FTP", "SaveFile", "Size");
+    Process(Size, "FTP", "SaveFile", "Size, " + Postfix);
 
     FileObject = New File(FileName);
 
@@ -22273,7 +22273,7 @@ Procedure FTP_SaveFile(FunctionParameters)
     ResultSize = Result["bytes"];
     CheckSize  = Size["bytes"];
 
-    Process(FileSize, "FTP", "SaveFile", "File size", ResultSize, CheckSize);
+    Process(FileSize, "FTP", "SaveFile", "File size, " + Postfix, ResultSize, CheckSize);
 
     Path = "new_dir/pic_from_disk.png";
 
@@ -22282,7 +22282,7 @@ Procedure FTP_SaveFile(FunctionParameters)
         Result = OPI_FTP.SaveFile(Connection, Path, FileName);
 
         If Not Result["result"] Then
-            Process(FileSize, "FTP", "SaveFile", "Multiple");
+            Process(FileSize, "FTP", "SaveFile", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -22296,6 +22296,8 @@ Procedure FTP_SaveFile(FunctionParameters)
 EndProcedure
 
 Procedure FTP_GetFileData(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -22343,18 +22345,16 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     // END
 
-    Postfix = FunctionParameters["Postfix"];
-
     Process(Result, "FTP", "GetFileData", Postfix);
 
     Size = OPI_FTP.GetObjectSize(Connection, Path);
 
-    Process(Size, "FTP", "GetFileData", "Size");
+    Process(Size, "FTP", "GetFileData", "Size, " + Postfix);
 
     FileSize  = Result.Size();
     CheckSize = Size["bytes"];
 
-    Process(FileSize, "FTP", "GetFileData", "File size", CheckSize);
+    Process(FileSize, "FTP", "GetFileData", "File size, " + Postfix, CheckSize);
 
     Path = "new_dir/pic_from_disk.png";
 
@@ -22363,7 +22363,7 @@ Procedure FTP_GetFileData(FunctionParameters)
         Result = OPI_FTP.GetFileData(Connection, Path);
 
         If Not TypeOf(Result) = Type("BinaryData") Then
-            Process(Size, "FTP", "GetFileData", "Multiple");
+            Process(Size, "FTP", "GetFileData", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
