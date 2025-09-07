@@ -11370,13 +11370,17 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
     ElsIf CurrentType = Type("String") Or CurrentType = Type("UUID") Then
 
         Value = OPI_Tools.NumberToString(Value);
-        Value = StrReplace(Value, Chars.LF, " ");
+
+        If Embedded Then
+            Value = StrReplace(Value, Chars.LF, " ");
+        Else
+            Value = StrReplace(Value, Chars.LF, "\n");
+            Cover = True;
+        EndIf;
 
         If OPI_Tools.IsWindows() Then
             Value = StrReplace(Value, "%", "%%");
         EndIf;
-
-        Cover = Not Embedded;
 
     ElsIf CurrentType = Type("Date") Then
 

@@ -1,5 +1,5 @@
 ﻿    Address = "45.79.112.203:4242";
-    Data    = "Echo this!\n";
+    Data    = "Echo this!" + Chars.LF;
 
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
