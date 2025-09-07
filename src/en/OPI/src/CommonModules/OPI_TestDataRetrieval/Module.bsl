@@ -524,44 +524,6 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Procedure WriteLog(Val Result, Val Method, Val Library = "") Export // DEPRECATED
-
-    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
-
-    Try
-        Data = OPI_Tools.JSONString(Result);
-    Except
-        Data = "Not JSON: " + String(Result);
-    EndTry;
-
-    Data = " " + Data;
-
-    Message(Header);
-    Message(Chars.LF);
-    Message(Data);
-    Message(Chars.LF);
-    Message("---------------------------------");
-    Message(Chars.LF);
-
-    If ValueIsFilled(Library) Then
-
-        Try
-            Library = New OpenSSLSecureConnection; // Check to work in 1C
-        Except
-            WriteLogFile(Data, Method, Library);
-        EndTry;
-
-    EndIf;
-
-EndProcedure
-
-Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
-
-    Template = "%1 (CLI, %2)";
-    WriteLog(Result, StrTemplate(Template, Method, Library));
-
-EndProcedure
-
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
 
     If OPI_Tools.IsWindows() Then
@@ -672,10 +634,16 @@ Procedure ProcessTestingResult(Val Result
 
         Text = PrintLog(Result, LogsMethod, Library);
 
-        If Not ValueIsFilled(Option)
-            And Not ?(TypeOf(CheckResult) = Type("String"), CheckResult = "", CheckResult = Undefined) Then
+        If Not ValueIsFilled(Option) Then
 
-            WriteLogFile(CheckResult, Method, Library);
+            ResultString = TypeOf(CheckResult) = Type("String");
+            Overwrite    = Not ?(ResultString, CheckResult = "", CheckResult = Undefined);
+
+            If Overwrite Then
+                WriteLogFile(CheckResult, Method, Library);
+            Else
+                WriteLogFile(Result     , Method, Library, False);
+            EndIf;
 
         EndIf;
 
@@ -1312,7 +1280,6 @@ EndFunction
 #EndRegion
 
 #Region Private
-
 
 #Region Checks
 
@@ -2756,7 +2723,7 @@ Function Check_GoogleWorkspace_GetTokenByCode(Val Result, Val Option)
 
     OPI_Tools.Pause(5);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -9847,7 +9814,6 @@ Function Check_HTTPClient_SetDataType(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    WriteLog(Result, "SetDataType", "HTTPClient");
     ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/markdown");
 
     Return Result;
@@ -11773,13 +11739,7 @@ Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Un
 
     Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
 
-    Try
-        Data = OPI_Tools.JSONString(Result);
-    Except
-        Data = "Not JSON: " + String(Result);
-    EndTry;
-
-    Data = TrimAll(Data);
+    Data = TestResultAsText(Result);
 
     Text = Header + Chars.LF + Chars.LF;
 
@@ -11805,12 +11765,56 @@ Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Un
 
 EndFunction
 
-Procedure WriteLogFile(Val Data, Val Method, Val Library)
+Function LogServiceInformation(Val Text, Val Note, Val Library) Export
+
+    TextTemplate = "
+    |--!!!---------%1----------!!!--
+    |
+    |%2
+    |
+    |%3
+    |
+    |---------------------------------";
+
+    Message(StrTemplate(TextTemplate, Library, Note, Text));
+
+EndFunction
+
+Function TestResultAsText(Val Result)
+
+    Try
+        Data = OPI_Tools.JSONString(Result);
+    Except
+        Data = String(Result);
+    EndTry;
+
+    Data = TrimAll(Data);
+
+    Return Data;
+
+EndFunction
+
+Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
+
+    If Not OPI_Tools.IsOneScript() Then
+        Return;
+    EndIf;
 
     Try
 
         LogPath        = "./docs/en/results";
         LibraryLogPath = LogPath + "/" + Library;
+        FilePath       = LibraryLogPath + "/" + Method + ".log";
+
+        If Not Overwrite Then
+
+            LogObject = New File(FilePath);
+
+            If LogObject.Exists() Then
+                Return;
+            EndIf;
+
+        EndIf;
 
         LogDirectory = New File(LogPath);
 
@@ -11824,10 +11828,10 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
             CreateDirectory(LibraryLogPath);
         EndIf;
 
-        FilePath = LibraryLogPath + "/" + Method + ".log";
+        DataText = TestResultAsText(Data);
 
         LogDocument = New TextDocument;
-        LogDocument.SetText(Data);
+        LogDocument.SetText(DataText);
         LogDocument.Write(FilePath);
 
     Except
