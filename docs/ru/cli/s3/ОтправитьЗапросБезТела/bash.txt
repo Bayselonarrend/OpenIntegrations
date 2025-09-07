@@ -2,4 +2,4 @@
 
 oint s3 ОтправитьЗапросБезТела \
   --method "GET" \
-  --basic "/tmp/zxpm50jc.cwt.json"
+  --basic "/tmp/bwzsgrip.vvh.json"

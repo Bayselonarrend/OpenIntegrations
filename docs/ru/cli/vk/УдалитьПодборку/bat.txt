@@ -2,4 +2,4 @@
 
 oint vk УдалитьПодборку ^
   --sel "137" ^
-  --auth "/tmp/igpidrit.yff.json"
+  --auth "/tmp/fpdoqcey.gc3.json"

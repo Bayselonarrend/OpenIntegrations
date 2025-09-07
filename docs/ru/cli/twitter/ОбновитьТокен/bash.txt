@@ -1,4 +1,4 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint twitter ОбновитьТокен \
-  --auth "/tmp/0j3geshg.vfj.json"
+  --auth "/tmp/utrv4dbi.eti.json"

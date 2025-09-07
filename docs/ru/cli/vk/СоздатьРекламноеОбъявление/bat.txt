@@ -1,9 +1,9 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СоздатьРекламноеОбъявление ^
-  --campaign "1031549012" ^
+  --campaign "1031549721" ^
   --limit "150" ^
   --category "126" ^
-  --post "9399" ^
+  --post "9419" ^
   --cabinet "1607951446" ^
-  --auth "/tmp/0rcs5c3w.xu4.json"
+  --auth "/tmp/n2btbwqw.ebo.json"
