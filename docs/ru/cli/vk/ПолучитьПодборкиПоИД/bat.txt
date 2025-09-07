@@ -2,4 +2,4 @@
 
 oint vk ПолучитьПодборкиПоИД ^
   --sels "137" ^
-  --auth "/tmp/oceruwp2.5lk.json"
+  --auth "/tmp/osgj1sap.xie.json"

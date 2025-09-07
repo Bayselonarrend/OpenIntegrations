@@ -2,4 +2,4 @@
 
 oint neocities ЗагрузитьФайлы \
   --token "***" \
-  --files "/tmp/4vggt2aj.oyv.json"
+  --files "/tmp/ewpkby2j.1oh.json"

@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk НаписатьКомментарий ^
-  --post "9396" ^
+  --post "9416" ^
   --wall "-218861756" ^
   --text "Новый комментарий" ^
-  --auth "/tmp/bfob5k0p.crv.json"
+  --auth "/tmp/ea5gguuh.hdh.json"

@@ -3,6 +3,6 @@
 oint s3 ПолучитьСсылкуЗагрузкиОбъекта ^
   --name "pictureU.jpg" ^
   --bucket "newbucket2" ^
-  --basic "/tmp/1w2nystm.2sw.json" ^
+  --basic "/tmp/khan4qoz.sky.json" ^
   --expires "7200" ^
   --dir "True"

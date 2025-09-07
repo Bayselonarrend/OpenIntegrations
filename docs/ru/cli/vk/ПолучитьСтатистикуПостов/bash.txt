@@ -2,4 +2,4 @@
 
 oint vk ПолучитьСтатистикуПостов \
   --posts "['214','215']" \
-  --auth "/tmp/dot2noew.sqb.json"
+  --auth "/tmp/st4vbbcw.boi.json"
