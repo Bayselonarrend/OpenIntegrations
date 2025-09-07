@@ -19730,7 +19730,7 @@ EndProcedure
 Procedure TCP_ProcessRequest(FunctionParameters)
 
     Address = FunctionParameters["TCP_Address"];
-    Data    = "Echo this!\n";
+    Data    = "Echo this!" + Chars.LF;
 
     Опции = Новый Структура;
     Опции.Вставить("", Address);
