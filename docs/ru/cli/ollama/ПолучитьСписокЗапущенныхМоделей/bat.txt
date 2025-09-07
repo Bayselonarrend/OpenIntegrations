@@ -2,4 +2,4 @@
 
 oint ollama ПолучитьСписокЗапущенныхМоделей ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --headers "/tmp/onvst25m.x0z.json"
+  --headers "/tmp/4iutnldu.vg4.json"

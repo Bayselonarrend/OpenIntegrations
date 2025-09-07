@@ -1,9 +1,9 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьФайлПоURL \
-  --access "/tmp/k0ijj0tr.vj2.json" \
+  --access "/tmp/mdbeuwbn.cug.json" \
   --chat "120363410406221140@g.us" \
   --url "https://hut.openintegrations.dev/test_data/video.mp4" \
   --filename "vid.mp4" \
   --caption "Описание файла" \
-  --quoted "BAE5B9641161DE28"
+  --quoted "BAE56225DFE85AAC"
