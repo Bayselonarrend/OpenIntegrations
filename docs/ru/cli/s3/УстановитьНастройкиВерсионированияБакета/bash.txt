@@ -2,5 +2,5 @@
 
 oint s3 УстановитьНастройкиВерсионированияБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/jiudwz1m.wtb.json" \
+  --basic "/tmp/hjbypvzo.hhp.json" \
   --status "True"
