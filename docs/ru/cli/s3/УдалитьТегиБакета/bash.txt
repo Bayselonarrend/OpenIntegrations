@@ -2,4 +2,4 @@
 
 oint s3 УдалитьТегиБакета \
   --name "opi-dirbucket3" \
-  --basic "/tmp/uub5pfnm.wij.json"
+  --basic "/tmp/5qcki0c0.wxb.json"

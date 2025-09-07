@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi РазархивироватьЧат \
-  --access "/tmp/ztvdie3m.uw2.json" \
+  --access "/tmp/pme0b2k3.ipr.json" \
   --chat "120363410406221140@g.us"

@@ -2,4 +2,4 @@
 
 oint twitter ПолучитьТокен \
   --code "123456" \
-  --auth "/tmp/5mkelbts.aoh.json"
+  --auth "/tmp/f2qmydj2.5ts.json"

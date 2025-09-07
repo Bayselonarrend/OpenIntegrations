@@ -3,4 +3,4 @@
 oint ozon ОбновитьЦеныТоваров \
   --clientid "***" \
   --apikey "***" \
-  --prices "/tmp/2jqo5lzo.w5c.json"
+  --prices "/tmp/povdhcqd.1ks.json"

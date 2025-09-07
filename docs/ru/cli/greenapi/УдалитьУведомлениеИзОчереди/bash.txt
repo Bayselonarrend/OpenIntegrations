@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УдалитьУведомлениеИзОчереди \
-  --access "/tmp/ii2t1nhs.qsn.json" \
+  --access "/tmp/ysher213.1cy.json" \
   --receipt "1"

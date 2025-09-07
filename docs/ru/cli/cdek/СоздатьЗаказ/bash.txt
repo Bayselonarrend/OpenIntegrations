@@ -2,6 +2,6 @@
 
 oint cdek СоздатьЗаказ \
   --token "***" \
-  --order "/tmp/vwbx4o4p.v2g.json" \
+  --order "/tmp/tkqvm12h.ejq.json" \
   --ostore "True" \
   --testapi "***"

@@ -4,4 +4,4 @@ oint mysql УдалитьКолонкуТаблицы ^
   --table "testtable" ^
   --name "new_field" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/ye4cfnqf.z2p.json"
+  --tls "/tmp/lk5m2kde.5xv.json"

@@ -3,5 +3,5 @@
 oint s3 ИнициализироватьЗагрузкуЧастями \
   --name "fileChunked.mp3" \
   --bucket "opi-dirbucket3" \
-  --basic "/tmp/2sywrthw.wss.json" \
+  --basic "/tmp/ejnh4v3v.su0.json" \
   --dir "True"
