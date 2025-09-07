@@ -72,20 +72,16 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ftp УдалитьФайл \
-              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True'}}" \
+              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" \
               --path "pic_from_binary.png"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ftp УдалитьФайл ^
-              --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':'***','read_timeout':'120','write_timeout':'120','advanced_resolve':'True','login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':'True','accept_invalid_certs':'True'}}" ^
+              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" ^
               --path "pic_from_binary.png"
         ```
     </TabItem>
