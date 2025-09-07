@@ -10,12 +10,12 @@ pipeline {
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & yarn build'
                         withCredentials([string(credentialsId: 'neocities-ru', variable: 'TOKEN')]) {
-                            powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsRu/docs/docusaurus/build"'
+                            powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/build"'
                         }
                     }
                     
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsRu/docs/docusaurus/build"'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocsRu/docs/docusaurus/node_modules"'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/build"'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/node_modules"'
                     
             }
         }
