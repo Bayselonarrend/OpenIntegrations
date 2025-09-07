@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УстановитьКартинкуГруппы ^
-  --access "/tmp/xhtbzfo0.lx1.json" ^
-  --group "120363420111805511@g.us" ^
+  --access "/tmp/si5ffu0f.gr5.json" ^
+  --group "120363419286273158@g.us" ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg"

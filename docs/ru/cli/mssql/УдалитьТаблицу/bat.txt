@@ -3,4 +3,4 @@
 oint mssql УдалитьТаблицу ^
   --table "test_data" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/4dyjt4oq.pf1.json"
+  --tls "/tmp/ejcfa52w.4gy.json"

@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk УдалитьВариантСвойстваТовара ^
-  --option "7786" ^
-  --auth "/tmp/0dkwe0wc.rlz.json"
+  --option "7793" ^
+  --auth "/tmp/yptxdn3f.f0m.json"

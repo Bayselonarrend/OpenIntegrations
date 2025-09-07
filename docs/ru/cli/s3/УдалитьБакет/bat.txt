@@ -2,5 +2,5 @@
 
 oint s3 УдалитьБакет ^
   --name "opi-dirbucket3" ^
-  --basic "/tmp/0ags0i1d.fwv.json" ^
+  --basic "/tmp/yqraupli.lqb.json" ^
   --dir "True"

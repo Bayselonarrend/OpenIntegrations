@@ -2,5 +2,5 @@
 
 oint bitrix24 СоздатьЗадачу \
   --url "b24-ar17wx.bitrix24.by" \
-  --fields "/tmp/rcowdcbb.teg.json" \
+  --fields "/tmp/go5m5j30.zrw.json" \
   --token "***"

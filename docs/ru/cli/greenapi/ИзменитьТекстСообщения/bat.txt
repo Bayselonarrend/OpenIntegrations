@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ИзменитьТекстСообщения ^
-  --access "/tmp/z2vxjfmr.ooz.json" ^
+  --access "/tmp/va0hansp.zut.json" ^
   --chat "120363410406221140@g.us" ^
-  --message "BAE58A866CD65CFE" ^
+  --message "BAE50E326E1D9B4D" ^
   --text "Новый текст сообщения"
