@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi ОтправитьТекстовоеСообщение \
-  --access "/tmp/i1wj0tk1.p4c.json" \
+  --access "/tmp/p2qcfmoz.ine.json" \
   --chat "120363410406221140@g.us" \
   --text "Новое сообщение" \
-  --quoted "BAE58A866CD65CFE"
+  --quoted "BAE50E326E1D9B4D"

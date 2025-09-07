@@ -2,5 +2,5 @@
 
 oint cdek ПолучитьСписокОфисов \
   --token "***" \
-  --filter "/tmp/0oedmaf2.gcb.json" \
+  --filter "/tmp/2xe5d2vy.jww.json" \
   --testapi "***"

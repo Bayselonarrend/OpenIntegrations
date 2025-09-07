@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint greenapi УстановитьКартинкуПрофиля \
-  --access "/tmp/htevurs5.ycs.json" \
+  --access "/tmp/twcyj0mv.pey.json" \
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg"

@@ -4,4 +4,4 @@ oint ozon СоздатьЧерновикЗаявкиFBO \
   --clientid "***" \
   --apikey "***" \
   --clusters "2" \
-  --items "/tmp/0njucwhf.p0g.json"
+  --items "/tmp/dzepwtza.ps5.json"

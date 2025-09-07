@@ -3,5 +3,5 @@
 oint s3 УдалитьОбъект ^
   --name "picture.jpg" ^
   --bucket "opi-dirbucket3" ^
-  --basic "/tmp/hc3gq425.cqz.json" ^
+  --basic "/tmp/vwdgyc2a.ryc.json" ^
   --dir "True"

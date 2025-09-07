@@ -3,5 +3,5 @@
 oint ollama СоздатьМодель ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "mario" ^
-  --settings "/tmp/xeo3fce1.wkc.json" ^
-  --headers "/tmp/jevtc2m4.j4m.json"
+  --settings "/tmp/okm5zfcx.fjo.json" ^
+  --headers "/tmp/vluzqrgt.aep.json"

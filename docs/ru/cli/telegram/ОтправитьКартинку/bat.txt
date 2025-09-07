@@ -5,4 +5,4 @@ oint telegram ОтправитьКартинку ^
   --chat "@testsichee" ^
   --text "Строковое значение" ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --keyboard "/tmp/w1qw1qii.ngc.json"
+  --keyboard "/tmp/xgac0vam.c2v.json"
