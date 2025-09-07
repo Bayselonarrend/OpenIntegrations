@@ -196,7 +196,7 @@ li > a.menu__link {
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Ozon a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
 .Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .MSSQL a::before, .AI a:before,
 .Ollama a::before, .Exchange a::before, .HTTP a::before, .OpenAI a::before, .Addons a::before, .Melezh a::before, .CL a::before, .WebUI a::before,
-.Info a::before {
+.Info a::before, .FTP a::before {
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -312,6 +312,10 @@ li > a.menu__link {
 
 .OpenAI > div > a::before{
   content: url(../../static/img/APIs/small/OpenAI.png);
+}
+
+.FTP > div > a::before{
+  content: url(../../static/img/APIs/small/FTP.png);
 }
 
 .Messenger > div > a::before{

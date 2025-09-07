@@ -34,6 +34,7 @@ const iconList = [
   '/img/APIs/SQLite.png',
   '/img/APIs/TCP.png',
   '/img/APIs/VKTeams.png',
+  '/img/APIs/FTP.png',
 ];
 
 const FallingIcons = () => {
