@@ -11164,7 +11164,7 @@ Function Check_FTP_UploadFile(Val Result, Val Option, Size = "")
 
     ExpectsThat(Result["bytes"]).Равно(Size);
 
-   If Not StrFind(Option, "Size 1") > O Or StrFind(Variant, "Size 2") > 0 Then
+   If Not StrFind(Option, "Size 1") > 0 Or StrFind(Variant, "Size 2") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
 
