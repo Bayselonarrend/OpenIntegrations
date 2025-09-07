@@ -2303,7 +2303,7 @@ Procedure SQLL_CommonMethods() Export
     Try
         DeleteFiles(Base);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
 
 EndProcedure
@@ -2351,7 +2351,7 @@ Procedure SQLL_ORM() Export
     Try
         DeleteFiles(Base);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
 
 EndProcedure
@@ -3586,8 +3586,6 @@ Procedure Telegram_SendContact(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendContact (channel)");
-
     Process(Result, "Telegram", "SendContact", "Channel", Name);
 
 EndProcedure
@@ -3955,8 +3953,6 @@ Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
     Process(Result, "Telegram", "ClearThreadPinnedMessagesList", "Main"); // SKIP
 
     // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "Telegram", "ClearThreadPinnedMessagesList");
 
     Process(Result, "Telegram", "ClearThreadPinnedMessagesList");
 
@@ -16465,7 +16461,7 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "ArchiveProducts", Опции);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
+    OPI_TestDataRetrieval.LogServiceInformation(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
     Article = "143210609";
@@ -16524,8 +16520,6 @@ Procedure Ozon_GetCodesUploadStatus(FunctionParameters)
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCodesUploadStatus", Опции);
 
     // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCodesUploadStatus", "Ozon");
 
     If ValueIsFilled(Result["result"]) Then
         While Result["result"]["status"] = "pending" Do
@@ -19870,7 +19864,7 @@ Procedure SQLite_CreateConnection(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
 
 EndProcedure
@@ -19892,7 +19886,7 @@ Procedure SQLite_CloseConnection(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
 
 EndProcedure
@@ -20018,7 +20012,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Database file deletion error", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
     EndTry;
 
 EndProcedure
@@ -20169,7 +20163,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Try
         DeleteFiles(PictureFile);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "SQLite");
     EndTry;
 
 EndProcedure
@@ -20472,7 +20466,7 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting extension file", "SQLite");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting extension file", "SQLite");
     EndTry;
 
 EndProcedure
@@ -20896,7 +20890,7 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     Base = "testbase1";
 
     Deletion = OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString, TLSSettings); // SKIP
-    OPI_TestDataRetrieval.WriteLog(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
+    OPI_TestDataRetrieval.LogServiceInformation(Deletion, "CreateDatabase (deleting)", "PostgreSQL"); // SKIP
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
@@ -25496,7 +25490,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "File deletion error", "HTTPClient");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "File deletion error", "HTTPClient");
     EndTry;
 
 EndProcedure
@@ -26193,7 +26187,7 @@ Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "File deletion error", "HTTPClient");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "File deletion error", "HTTPClient");
     EndTry;
 
 EndProcedure
@@ -28536,7 +28530,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     Try
         DeleteFiles(TFN);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "FTP");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "FTP");
     EndTry;
 
 EndProcedure
@@ -29012,7 +29006,7 @@ Procedure FTP_SaveFile(FunctionParameters)
     Try
         DeleteFiles(FileName);
     Except
-        OPI_TestDataRetrieval.WriteLog(ErrorDescription(), "Error deleting a picture file", "FTP");
+        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "FTP");
     EndTry;
 
 EndProcedure
