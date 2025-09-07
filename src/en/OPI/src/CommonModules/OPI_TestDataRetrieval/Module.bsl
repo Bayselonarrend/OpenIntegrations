@@ -1168,7 +1168,7 @@ Function GetFTPParameterOptions() Export
 
     // FTPS + Socks5
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", "FTPS, Socks5");
+    ParametersStructure.Insert("Postfix", ?(OPI_Tools.IsWindows(), "FTPS, Socks5", ""));
     ParametersStructure.Insert("FTP_IP", TestParametersMain["FTPS_IP"]);
     ParametersStructure.Insert("FTP_Port", TestParametersMain["FTP_Port"]);
     ParametersStructure.Insert("FTP_User", TestParametersMain["FTP_User"]);
