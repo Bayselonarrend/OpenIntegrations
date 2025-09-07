@@ -5440,7 +5440,7 @@
 "СоздатьБазуДанных (TLS": "CreateDatabase (TLS",
 "цена цели по умолчанию": "goal default price",
 "ПустаяСхемаTableSchema": "EmptySchemeTableSchema",
-"0 Или СтрНайти(Вариант": "O Or StrFind(Variant",
+"0 Или СтрНайти(Вариант": "0 Or StrFind(Variant",
 "СтруктураПовторяемости": "RepeatabilityStructure",
 "ЗаписатьJSONМультипарт": "WriteJSONMultipart",
 "ПолучитьСтруктуруТипов": "GetTypesStructure",
