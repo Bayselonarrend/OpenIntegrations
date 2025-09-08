@@ -68,16 +68,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 СоздатьКалендарь \
-              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
-              --fields "{"type":"user","ownerId":"1","name":"Новый календарь","description":"Мой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}"
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{"type":"user","ownerId":"1","name":"Другой календарь","description":"Мой другой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}" \
+              --token ***
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 СоздатьКалендарь ^
-              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
-              --fields "{"type":"user","ownerId":"1","name":"Новый календарь","description":"Мой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}"
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{"type":"user","ownerId":"1","name":"Другой календарь","description":"Мой другой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}" ^
+              --token ***
         ```
     </TabItem>
 </Tabs>
@@ -85,15 +87,15 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 1270,
+ "result": 1276,
  "time": {
-  "start": 1757323797.68281,
-  "finish": 1757323797.73015,
-  "duration": 0.0473361015319824,
-  "processing": 0.0210521221160889,
-  "date_start": "2025-09-08T09:29:57+00:00",
-  "date_finish": "2025-09-08T09:29:57+00:00",
-  "operating_reset_at": 1757324397,
+  "start": 1757339203.22499,
+  "finish": 1757339203.28099,
+  "duration": 0.0559971332550049,
+  "processing": 0.0249769687652588,
+  "date_start": "2025-09-08T13:46:43+00:00",
+  "date_finish": "2025-09-08T13:46:43+00:00",
+  "operating_reset_at": 1757339803,
   "operating": 0
  }
 }

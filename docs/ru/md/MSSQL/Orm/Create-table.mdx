@@ -75,20 +75,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mssql СоздатьТаблицу \
-              --table "\"somename\"" \
-              --cols "\"/tmp/i1h44342.ylm.json\"" \
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls "\"/tmp/5cl22xdx.h32.json\""
+              --table "somename" \
+              --cols "{"tinyint_field":"tinyint","smallint_field":"smallint","int_field":"int","bigint_field":"bigint","float24_field":"float(24)","float53_field":"float(53)","bit_field":"bit","nvarchar_field":"nvarchar(4000)","varbinary_field":"varbinary(max)","uid_field":"uniqueidentifier","numeric_field":"numeric(5,3)","xml_field":"xml","date_field":"date","time_field":"time","dto_field":"datetimeoffset","datetime_field":"datetime","wtf_field":"WTF"}" \
+              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mssql СоздатьТаблицу ^
-              --table "\"somename\"" ^
-              --cols "\"/tmp/i1h44342.ylm.json\"" ^
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls "\"/tmp/5cl22xdx.h32.json\""
+              --table "somename" ^
+              --cols "{"tinyint_field":"tinyint","smallint_field":"smallint","int_field":"int","bigint_field":"bigint","float24_field":"float(24)","float53_field":"float(53)","bit_field":"bit","nvarchar_field":"nvarchar(4000)","varbinary_field":"varbinary(max)","uid_field":"uniqueidentifier","numeric_field":"numeric(5,3)","xml_field":"xml","date_field":"date","time_field":"time","dto_field":"datetimeoffset","datetime_field":"datetime","wtf_field":"WTF"}" ^
+              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

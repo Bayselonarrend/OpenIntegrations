@@ -58,24 +58,24 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint greenapi ОтправитьФайл \
-              --access "\"/tmp/qilt3e1v.3tr.json\"" \
-              --chat "\"120363410406221140@g.us\"" \
-              --file "\"https://hut.openintegrations.dev/test_data/video.mp4\"" \
-              --filename "\"vid.mp4\"" \
-              --caption "\"Описание файла\"" \
-              --quoted "\"BAE51809F55823C1\""
+              --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" \
+              --chat "120363410406221140@g.us" \
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" \
+              --filename "vid.mp4" \
+              --caption "Описание файла" \
+              --quoted "BAE57D905B3A9923"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint greenapi ОтправитьФайл ^
-              --access "\"/tmp/qilt3e1v.3tr.json\"" ^
-              --chat "\"120363410406221140@g.us\"" ^
-              --file "\"https://hut.openintegrations.dev/test_data/video.mp4\"" ^
-              --filename "\"vid.mp4\"" ^
-              --caption "\"Описание файла\"" ^
-              --quoted "\"BAE51809F55823C1\""
+              --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
+              --chat "120363410406221140@g.us" ^
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
+              --filename "vid.mp4" ^
+              --caption "Описание файла" ^
+              --quoted "BAE57D905B3A9923"
         ```
     </TabItem>
 </Tabs>
@@ -83,7 +83,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "BAE51809F55823C1",
- "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/6c4923e6-2a68-49d2-ba4f-221c40f7af42.jpg"
+ "idMessage": "BAE57D905B3A9923",
+ "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/c1c668fd-3cee-4fec-9e2b-1abed51f7ea9.jpg"
 }
 ```

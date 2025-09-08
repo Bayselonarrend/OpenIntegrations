@@ -59,18 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mysql УдалитьТаблицу \
-              --table "\"test_data\"" \
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "\"/tmp/4r331v1p.1ks.json\""
+              --table "test_data" \
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mysql УдалитьТаблицу ^
-              --table "\"test_data\"" ^
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "\"/tmp/4r331v1p.1ks.json\""
+              --table "test_data" ^
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

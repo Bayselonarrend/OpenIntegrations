@@ -72,20 +72,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mysql ГарантироватьТаблицу \
-              --table "\"test_new\"" \
-              --cols "\"/tmp/u5nrp105.wy0.json\"" \
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "\"/tmp/rdjxsbvv.sit.json\""
+              --table "test_new" \
+              --cols "{"smallint_field":"SMALLINT","double_field":"DOUBLE","bigint_field":"BIGINT","custom_field":"TEXT"}" \
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mysql ГарантироватьТаблицу ^
-              --table "\"test_new\"" ^
-              --cols "\"/tmp/u5nrp105.wy0.json\"" ^
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "\"/tmp/rdjxsbvv.sit.json\""
+              --table "test_new" ^
+              --cols "{"smallint_field":"SMALLINT","double_field":"DOUBLE","bigint_field":"BIGINT","custom_field":"TEXT"}" ^
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

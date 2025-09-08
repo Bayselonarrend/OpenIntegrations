@@ -62,24 +62,24 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ИзменитьНовость \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --postid "2932" \
-              --text "\"Новый текст новости\"" \
-              --files "\"/tmp/axnxd2rn.fsr.json\"" \
-              --title "\"Новый заголовок новости\"" \
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" \
+              --postid 2938 \
+              --text "Новый текст новости" \
+              --files "{"1.png":"https://hut.openintegrations.dev/test_data/picture.jpg"}" \
+              --title "Новый заголовок новости" \
+              --token ***
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ИзменитьНовость ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --postid "2932" ^
-              --text "\"Новый текст новости\"" ^
-              --files "\"/tmp/axnxd2rn.fsr.json\"" ^
-              --title "\"Новый заголовок новости\"" ^
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" ^
+              --postid 2938 ^
+              --text "Новый текст новости" ^
+              --files "{"1.png":"https://hut.openintegrations.dev/test_data/picture.jpg"}" ^
+              --title "Новый заголовок новости" ^
+              --token ***
         ```
     </TabItem>
 </Tabs>
@@ -87,16 +87,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2932,
+ "result": 2938,
  "time": {
-  "start": 1757322847.11978,
-  "finish": 1757322849.15036,
-  "duration": 2.03057503700256,
-  "processing": 2.00437498092651,
-  "date_start": "2025-09-08T09:14:07+00:00",
-  "date_finish": "2025-09-08T09:14:09+00:00",
-  "operating_reset_at": 1757323447,
-  "operating": 2.00435495376587
+  "start": 1757338301.74335,
+  "finish": 1757338302.16209,
+  "duration": 0.418745040893555,
+  "processing": 0.389307975769043,
+  "date_start": "2025-09-08T13:31:41+00:00",
+  "date_finish": "2025-09-08T13:31:42+00:00",
+  "operating_reset_at": 1757338901,
+  "operating": 0.389276027679443
  }
 }
 ```

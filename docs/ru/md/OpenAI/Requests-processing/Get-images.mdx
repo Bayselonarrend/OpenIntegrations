@@ -48,25 +48,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint openai ПолучитьКартинки \
               --url "https://bothub.chat/api/v2/openai/" \
-              --token "***" \
+              --token *** \
               --model "dall-e-3" \
-              --descr "/tmp/34mxqfi2.0ba.json"
+              --descr "{"prompt":"Yellow alpaca","n":"1","size":"1024x1024"}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint openai ПолучитьКартинки ^
               --url "https://bothub.chat/api/v2/openai/" ^
-              --token "***" ^
+              --token *** ^
               --model "dall-e-3" ^
-              --descr "/tmp/34mxqfi2.0ba.json"
+              --descr "{"prompt":"Yellow alpaca","n":"1","size":"1024x1024"}"
         ```
     </TabItem>
 </Tabs>
@@ -74,11 +70,11 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "created": 1749756865,
+ "created": 1757341324,
  "data": [
   {
-   "revised_prompt": "Imagine a sunny meadow with lush green grass. In the heart of this vibrant landscape, stands a yellow alpaca with its woolly fur, shining brightly under the sunlight. Its features are comically endearing with a long neck, a small rounded head, and large, expressive eyes. It is peacefully grazing, unperturbed by the world around it, epitomizing the tranquility of the idyllic meadow. The gentle breeze flutters its fur, adding an element of charisma to this adorable creature. The picture is a beautiful blend of vibrant colors, and a sense of calmness.",
-   "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-Dy8ARyqBtu507OGoMBxfUU0S/user-n4L5wc2dF1fH9APAG2dE3Rw9/img-oEeMH1QJWSvtVlmG3yc1KOqx.png?st=2025-06-12T18%3A34%3A25Z&se=2025-06-12T20%3A34%3A25Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=475fd488-6c59-44a5-9aa9-31c4db451bea&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-12T11%3A41%3A33Z&ske=2025-06-13T11%3A41%3A33Z&sks=b&skv=2024-08-04&sig=%2BjegkXiCFSi3l80vNiH1IOij4nQ%2BD%2Bd%2BNitOmxISJ1c%3D"
+   "revised_prompt": "Imagine a scene in the Andean highlands, where the wind gently blows through the vast green pastures. There, standing majestically and filled with calm and charm, is a fluffy yellow alpaca. The alpaca's bright yellow fur illuminates against the contrasting greenery, giving it a warm sunny glow. The alpaca is happily grazing in the field, occasionally looking up to survey its surroundings with its curious eyes. In the distance, a backdrop of lofty mountains reaches up towards the clear blue sky. This is a serene and peaceful moment in nature captured in its purest form.",
+   "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-Z1sOxGLnIDA0uhgEVtD2zHsv/user-hRmPafDy4y8QwOjJ7nKSssCm/img-WeDXIuFcezq0HkgmiXLBMVYY.png?st=2025-09-08T13%3A22%3A04Z&se=2025-09-08T15%3A22%3A04Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=ed3ea2f9-5e38-44be-9a1b-7c1e65e4d54f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-07T18%3A40%3A07Z&ske=2025-09-08T18%3A40%3A07Z&sks=b&skv=2024-08-04&sig=6n2vMwKbZN16fR%2BTdvMQQtxtW1kddV%2BT6R5lzmzalW0%3D"
   }
  ]
 }

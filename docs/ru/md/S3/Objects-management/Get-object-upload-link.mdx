@@ -59,27 +59,27 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint s3 ПолучитьСсылкуЗагрузкиОбъекта \
-              --name "\"pictureU.jpg\"" \
-              --bucket "\"newbucket2\"" \
-              --basic "\"/tmp/dqjcucel.tbu.json\"" \
-              --expires "7200" \
-              --dir "true"
+              --name "pictureU.jpg" \
+              --bucket "newbucket2" \
+              --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" \
+              --expires 7200 \
+              --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint s3 ПолучитьСсылкуЗагрузкиОбъекта ^
-              --name "\"pictureU.jpg\"" ^
-              --bucket "\"newbucket2\"" ^
-              --basic "\"/tmp/dqjcucel.tbu.json\"" ^
-              --expires "7200" ^
-              --dir "true"
+              --name "pictureU.jpg" ^
+              --bucket "newbucket2" ^
+              --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" ^
+              --expires 7200 ^
+              --dir true
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"storage-155.s3hoster.by/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250908%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250908T095242Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=f64e0b209c2ffd12c6b7654b7f5cb68da1444ff0888255f093f07499af7f4c72"
+"storage-155.s3hoster.by/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250908%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250908T140741Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=f318b337ca6f37d062528581b3f006afaa95c3384e505b9afaf367c74bfd6a92"
 ```

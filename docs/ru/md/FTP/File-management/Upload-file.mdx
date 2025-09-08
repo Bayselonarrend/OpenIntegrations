@@ -85,18 +85,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp ЗагрузитьФайл \
-              --conn "\"/tmp/3aq2x3xi.nji\"" \
-              --file "\"/tmp/ly0cdw1e.apo\"" \
-              --path "\"new_dir/big.bin\""
+              --conn "{"set":{"advanced_resolve":true,"domain":"172.33.0.11","login":"bayselonarrend","passive":true,"password":"***","port":"21","read_timeout":"1000","write_timeout":"1000"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true},"proxy":{"login":"proxyuser","password":"***","port":"1080","proxy_type":"socks5","server":"127.0.0.1"}}" \
+              --file "/tmp/mbucabfw.wlr" \
+              --path "new_dir/big.bin"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp ЗагрузитьФайл ^
-              --conn "\"/tmp/3aq2x3xi.nji\"" ^
-              --file "\"/tmp/ly0cdw1e.apo\"" ^
-              --path "\"new_dir/big.bin\""
+              --conn "{"set":{"advanced_resolve":true,"domain":"172.33.0.11","login":"bayselonarrend","passive":true,"password":"***","port":"21","read_timeout":"1000","write_timeout":"1000"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true},"proxy":{"login":"proxyuser","password":"***","port":"1080","proxy_type":"socks5","server":"127.0.0.1"}}" ^
+              --file "/tmp/mbucabfw.wlr" ^
+              --path "new_dir/big.bin"
         ```
     </TabItem>
 </Tabs>
