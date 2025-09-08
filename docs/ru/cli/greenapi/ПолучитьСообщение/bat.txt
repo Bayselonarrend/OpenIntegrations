@@ -1,4 +1,4 @@
 oint greenapi ПолучитьСообщение ^
-  --access "\"/tmp/leyzkbbl.ol1.json\"" ^
-  --chat "\"120363410406221140@g.us\"" ^
-  --msg "\"BAE5EC53535168A6\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
+  --chat "120363410406221140@g.us" ^
+  --msg "BAE54E9AF77D5DB0"

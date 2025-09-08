@@ -1,4 +1,4 @@
 oint bitrix24 НайтиПользователей ^
-  --url "\"b24-ar17wx.bitrix24.by\"" ^
-  --filter "\"/tmp/s0yn3flf.anz.json\"" ^
-  --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --filter "{"UF_DEPARTMENT_NAME":"Битрикс"}" ^
+  --token ***

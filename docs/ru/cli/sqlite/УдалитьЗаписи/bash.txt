@@ -1,4 +1,4 @@
 oint sqlite УдалитьЗаписи \
-  --table "\"test\"" \
-  --filter "\"/tmp/zb3cil1t.iv2.json\"" \
-  --db "\"/tmp/qrghnbz3.tqj.sqlite\""
+  --table "test" \
+  --filter "{"field":"name","type":"=","value":"Vitaly A.","union":"AND","raw":false}" \
+  --db "/tmp/2f0tclaj.1bf.sqlite"

@@ -1,4 +1,4 @@
 oint airtable ПолучитьСписокЗаписей \
-  --token "***" \
-  --base "\"appEQXqRL7ZJaceQM\"" \
-  --table "\"tblpH3f0zuO92wYtC\""
+  --token *** \
+  --base "apppzbIaxu57Dxv0l" \
+  --table "tblXCKRW8RivGSDMu"

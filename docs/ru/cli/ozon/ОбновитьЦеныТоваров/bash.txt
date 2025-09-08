@@ -1,4 +1,4 @@
 oint ozon ОбновитьЦеныТоваров \
-  --clientid "***" \
-  --apikey "***" \
-  --prices "\"/tmp/hcvlqtrr.f01.json\""
+  --clientid *** \
+  --apikey *** \
+  --prices "{"auto_action_enabled":"DISABLED","currency_code":"RUB","min_price":"1300","offer_id":"143210610","old_price":"1400","price":"1300","price_strategy_enabled":"DISABLED","product_id":"2673586529"}"

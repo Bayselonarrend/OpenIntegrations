@@ -1,3 +1,2 @@
 oint slack ПолучитьСписокВнешнихФайлов ^
-  --token *** ^
-  --channel "C06UFNUTKUL"
+  --token ***

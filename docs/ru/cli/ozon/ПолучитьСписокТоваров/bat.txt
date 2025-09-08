@@ -1,4 +1,4 @@
 oint ozon ПолучитьСписокТоваров ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --filter "\"/tmp/lrccdjjs.0wl.json\""
+  --clientid *** ^
+  --apikey *** ^
+  --filter "{"visibility":"ALL","offer_id":["143210609","1432106010"]}"

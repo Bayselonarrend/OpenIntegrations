@@ -1,5 +1,5 @@
 oint greenapi ОтправитьЛокацию \
-  --access "\"/tmp/fehs4ayo.kf0.json\"" \
-  --chat "\"120363410406221140@g.us\"" \
-  --loc "\"/tmp/vcc3a2jq.lfu.json\"" \
-  --quoted "\"BAE5553DC1972D99\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" \
+  --chat "120363410406221140@g.us" \
+  --loc "{"latitude":"53.908522","longitude":"27.574821"}" \
+  --quoted "BAE5707A236FC069"

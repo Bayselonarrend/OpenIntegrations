@@ -1,5 +1,5 @@
 oint openai ПолучитьПредставления ^
   --url "https://hut.openintegrations.dev/localai/" ^
-  --token "***" ^
+  --token *** ^
   --model "text-embedding-ada-002" ^
   --input "What is 1C:Enterprise?"

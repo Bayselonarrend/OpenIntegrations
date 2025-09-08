@@ -1,7 +1,7 @@
 oint greenapi ОтправитьОпрос \
-  --access "\"/tmp/aphdk4yd.5cg.json\"" \
-  --chat "\"120363410406221140@g.us\"" \
-  --text "\"Какой ваш любимый цвет?\"" \
-  --options "\"['Красный','Желтый','Зеленый']\"" \
-  --multi "true" \
-  --quoted "\"BAE5974C5D13170B\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" \
+  --chat "120363410406221140@g.us" \
+  --text "Какой ваш любимый цвет?" \
+  --options "["Красный","Желтый","Зеленый"]" \
+  --multi true \
+  --quoted "BAE5F80FAD2B0138"

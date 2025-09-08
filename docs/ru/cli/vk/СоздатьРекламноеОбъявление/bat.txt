@@ -1,7 +1,7 @@
 oint vk СоздатьРекламноеОбъявление ^
-  --campaign "1031550839" ^
-  --limit "150" ^
-  --category "126" ^
-  --post "9449" ^
-  --cabinet "\"1607951446\"" ^
-  --auth "\"/tmp/4ugm5lhf.lbc.json\""
+  --campaign 1031551681 ^
+  --limit 150 ^
+  --category 126 ^
+  --post 9463 ^
+  --cabinet "1607951446" ^
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

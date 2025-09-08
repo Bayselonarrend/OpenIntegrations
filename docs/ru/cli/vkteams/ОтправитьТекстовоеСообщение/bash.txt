@@ -1,4 +1,7 @@
 oint vkteams ОтправитьТекстовоеСообщение \
   --token *** \
-  --chatid "AoLI0egLWBSLR1Ngn2w" \
-  --text "Текст сообщения"
+  --chatid "689203963@chat.agent" \
+  --text "<b>Полужирный текст сообщения</b>" \
+  --reply "7547648648914418408" \
+  --keyboard *** \
+  --parsemod "HTML"

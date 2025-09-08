@@ -1,5 +1,5 @@
 oint ollama СоздатьМодель ^
-  --url "\"https://hut.openintegrations.dev/ollama\"" ^
-  --model "\"mario\"" ^
-  --settings "\"/tmp/qiwgkzu3.qzf.json\"" ^
+  --url "https://hut.openintegrations.dev/ollama" ^
+  --model "mario" ^
+  --settings "{"from":"tinyllama","system":"You are Mario from Super Mario Bros."}" ^
   --headers {"Authorization":"***"}

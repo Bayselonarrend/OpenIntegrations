@@ -1,3 +1,3 @@
 oint greenapi УдалитьУведомлениеИзОчереди ^
-  --access "\"/tmp/bpybwfle.mvb.json\"" ^
-  --receipt "\"1\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
+  --receipt "1"

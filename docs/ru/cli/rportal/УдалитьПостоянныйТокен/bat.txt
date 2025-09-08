@@ -1,5 +1,5 @@
 oint rportal УдалитьПостоянныйТокен ^
-  --url "\"tests.openintegrations.dev\"" ^
-  --token "***" ^
-  --user "1" ^
-  --id "23"
+  --url "tests.openintegrations.dev" ^
+  --token *** ^
+  --user 1 ^
+  --id 24

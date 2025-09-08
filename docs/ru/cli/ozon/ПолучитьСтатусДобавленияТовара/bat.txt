@@ -1,4 +1,4 @@
 oint ozon ПолучитьСтатусДобавленияТовара ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --taskid "2866354956"
+  --clientid *** ^
+  --apikey *** ^
+  --taskid 2867707254

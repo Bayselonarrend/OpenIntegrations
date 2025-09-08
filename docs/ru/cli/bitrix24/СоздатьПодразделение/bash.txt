@@ -1,4 +1,6 @@
 oint bitrix24 СоздатьПодразделение \
-  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
-  --title "Главное подразделение" \
-  --parentid 1
+  --url "b24-ar17wx.bitrix24.by" \
+  --title "Подчиненное подразделение" \
+  --parentid 2584 \
+  --headid 1 \
+  --token ***

@@ -1,4 +1,4 @@
 oint sqlite ГарантироватьТаблицу \
-  --table "\"test_new\"" \
-  --cols "\"/tmp/u4oqrm2r.bmq.json\"" \
-  --db "\"/tmp/qrghnbz3.tqj.sqlite\""
+  --table "test_new" \
+  --cols "{"id":"INTEGER","code":"INTEGER","name":"TEXT","age":"INTEGER","info":"TEXT"}" \
+  --db "/tmp/2f0tclaj.1bf.sqlite"

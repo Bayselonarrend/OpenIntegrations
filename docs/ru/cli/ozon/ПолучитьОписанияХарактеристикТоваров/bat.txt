@@ -1,4 +1,4 @@
 oint ozon ПолучитьОписанияХарактеристикТоваров ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --filter "\"/tmp/exdbcmco.keu.json\""
+  --clientid *** ^
+  --apikey *** ^
+  --filter "{"visibility":"ALL","offer_id":["143210609"]}"

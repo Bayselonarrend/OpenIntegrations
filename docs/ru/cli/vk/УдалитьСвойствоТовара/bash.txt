@@ -1,3 +1,3 @@
 oint vk УдалитьСвойствоТовара \
-  --prop "\"4196\"" \
-  --auth "\"/tmp/yrkp3eeg.ffi.json\""
+  --prop "4203" \
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

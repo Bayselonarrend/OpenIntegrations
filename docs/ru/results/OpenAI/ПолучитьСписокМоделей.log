@@ -2,6 +2,26 @@
  "object": "list",
  "data": [
   {
+   "id": "whisper-1",
+   "object": "model"
+  },
+  {
+   "id": "stablediffusion",
+   "object": "model"
+  },
+  {
+   "id": "moondream2-20250414",
+   "object": "model"
+  },
+  {
+   "id": "smolvlm-256m-instruct",
+   "object": "model"
+  },
+  {
+   "id": "text-embedding-ada-002",
+   "object": "model"
+  },
+  {
    "id": "gpt-4o",
    "object": "model"
   },
@@ -15,26 +35,6 @@
   },
   {
    "id": "jina-reranker-v1-base-en",
-   "object": "model"
-  },
-  {
-   "id": "moondream2-20250414",
-   "object": "model"
-  },
-  {
-   "id": "text-embedding-ada-002",
-   "object": "model"
-  },
-  {
-   "id": "whisper-1",
-   "object": "model"
-  },
-  {
-   "id": "stablediffusion",
-   "object": "model"
-  },
-  {
-   "id": "smolvlm-256m-instruct",
    "object": "model"
   },
   {

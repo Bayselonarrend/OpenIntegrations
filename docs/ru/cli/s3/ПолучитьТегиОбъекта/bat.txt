@@ -1,5 +1,5 @@
 oint s3 ПолучитьТегиОбъекта ^
-  --name "\"picture.jpg\"" ^
-  --bucket "\"opi-dirbucket3\"" ^
-  --basic "\"/tmp/0tzqy1nm.auh.json\"" ^
-  --dir "true"
+  --name "picture.jpg" ^
+  --bucket "opi-dirbucket3" ^
+  --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" ^
+  --dir true

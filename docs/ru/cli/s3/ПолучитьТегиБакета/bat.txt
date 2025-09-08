@@ -1,4 +1,4 @@
 oint s3 ПолучитьТегиБакета ^
-  --name "\"opi-dirbucket3\"" ^
-  --basic "\"/tmp/ervfg2kc.t1p.json\"" ^
-  --dir "true"
+  --name "opi-dirbucket3" ^
+  --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" ^
+  --dir true

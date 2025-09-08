@@ -1,2 +1,2 @@
 oint sqlite ПолучитьСтруктуруФильтраЗаписей ^
-  --empty "true"
+  --empty true

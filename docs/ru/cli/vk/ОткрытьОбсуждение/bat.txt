@@ -1,3 +1,3 @@
 oint vk ОткрытьОбсуждение ^
-  --topic "54096478" ^
-  --auth "\"/tmp/dsepylqz.kmf.json\""
+  --topic 54096844 ^
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

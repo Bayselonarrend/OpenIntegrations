@@ -1,4 +1,4 @@
 oint greenapi ИзменитьИмяГруппы ^
-  --access "\"/tmp/n4qo4bde.1wx.json\"" ^
-  --group "\"120363419907285192@g.us\"" ^
-  --name "\"New name\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
+  --group "120363419854535276@g.us" ^
+  --name "New name"
