@@ -1,11 +1,11 @@
 ﻿{
  "entity": {
-  "uuid": "9b63e3b6-22e4-4480-bf8e-64a2c40f64e1",
+  "uuid": "e7b47ed7-a08a-4143-ab45-ea66efad0184",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106602943",
-  "number": "d3c7e99b-cc81-4a96-8410-039a2e9debfc",
+  "cdek_number": "1106603131",
+  "number": "35327fdb-d9c1-4572-9175-9b69153b39c3",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -75,16 +75,6 @@
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
     "parameter": "10",
     "sum": 500,
@@ -93,12 +83,22 @@
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001212803",
+    "barcode": "000001213046",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -124,21 +124,21 @@
       "cost": 300
      }
     ],
-    "package_id": "e32f8442-8083-4285-a601-1a82ddd52e03"
+    "package_id": "c295f73d-489e-4fd6-b1f9-381ee9f75e45"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-09-08T13:56:05+00:00",
+    "date_time": "2025-09-08T19:44:53+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-08T13:56:04+00:00",
+    "date_time": "2025-09-08T19:44:52+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -159,9 +159,9 @@
  },
  "requests": [
   {
-   "request_uuid": "b2a6742d-712b-4579-abc1-c11257657989",
+   "request_uuid": "11ded06a-f9d6-4138-ab54-2810857ebbdf",
    "type": "CREATE",
-   "date_time": "2025-09-08T13:56:05+00:00",
+   "date_time": "2025-09-08T19:44:53+00:00",
    "state": "SUCCESSFUL"
   }
  ],

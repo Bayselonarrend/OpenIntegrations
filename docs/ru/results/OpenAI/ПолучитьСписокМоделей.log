@@ -2,22 +2,6 @@
  "object": "list",
  "data": [
   {
-   "id": "whisper-1",
-   "object": "model"
-  },
-  {
-   "id": "stablediffusion",
-   "object": "model"
-  },
-  {
-   "id": "moondream2-20250414",
-   "object": "model"
-  },
-  {
-   "id": "smolvlm-256m-instruct",
-   "object": "model"
-  },
-  {
    "id": "text-embedding-ada-002",
    "object": "model"
   },
@@ -39,6 +23,22 @@
   },
   {
    "id": "gpt-4",
+   "object": "model"
+  },
+  {
+   "id": "whisper-1",
+   "object": "model"
+  },
+  {
+   "id": "stablediffusion",
+   "object": "model"
+  },
+  {
+   "id": "moondream2-20250414",
+   "object": "model"
+  },
+  {
+   "id": "smolvlm-256m-instruct",
    "object": "model"
   },
   {
