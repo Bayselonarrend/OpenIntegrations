@@ -1,4 +1,2 @@
 oint bitrix24 ПолучитьСписокЛидов ^
-  --url "\"b24-ar17wx.bitrix24.by\"" ^
-  --filter "\"/tmp/vaaqg2wx.t1n.json\"" ^
-  --token "***"
+  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"}

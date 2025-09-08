@@ -61,28 +61,24 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint bitrix24 ИзменитьНовость \
-              --url "b24-ar17wx.bitrix24.by" \
-              --postid "2920" \
-              --text "Новый текст новости" \
-              --files "/tmp/4otbrkph.apd.json" \
-              --title "Новый заголовок новости" \
+              --url "\"b24-ar17wx.bitrix24.by\"" \
+              --postid "2932" \
+              --text "\"Новый текст новости\"" \
+              --files "\"/tmp/axnxd2rn.fsr.json\"" \
+              --title "\"Новый заголовок новости\"" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint bitrix24 ИзменитьНовость ^
-              --url "b24-ar17wx.bitrix24.by" ^
-              --postid "2920" ^
-              --text "Новый текст новости" ^
-              --files "/tmp/4otbrkph.apd.json" ^
-              --title "Новый заголовок новости" ^
+              --url "\"b24-ar17wx.bitrix24.by\"" ^
+              --postid "2932" ^
+              --text "\"Новый текст новости\"" ^
+              --files "\"/tmp/axnxd2rn.fsr.json\"" ^
+              --title "\"Новый заголовок новости\"" ^
               --token "***"
         ```
     </TabItem>
@@ -91,16 +87,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 940,
+ "result": 2932,
  "time": {
-  "start": 1728409710.59071,
-  "finish": 1728409710.95996,
-  "duration": 0.369251012802124,
-  "processing": 0.338684797286987,
-  "date_start": "2024-10-08T20:48:30+03:00",
-  "date_finish": "2024-10-08T20:48:30+03:00",
-  "operating_reset_at": 1728410310,
-  "operating": 0.338651895523071
+  "start": 1757322847.11978,
+  "finish": 1757322849.15036,
+  "duration": 2.03057503700256,
+  "processing": 2.00437498092651,
+  "date_start": "2025-09-08T09:14:07+00:00",
+  "date_finish": "2025-09-08T09:14:09+00:00",
+  "operating_reset_at": 1757323447,
+  "operating": 2.00435495376587
  }
 }
 ```

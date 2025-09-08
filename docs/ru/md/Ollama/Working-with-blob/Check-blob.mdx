@@ -48,23 +48,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama ПроверитьBlob \
-              --url "https://hut.openintegrations.dev/ollama" \
-              --digest "yoyoyo" \
-              --headers "/tmp/0sztrr0k.ut5.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" \
+              --digest "\"yoyoyo\"" \
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama ПроверитьBlob ^
-              --url "https://hut.openintegrations.dev/ollama" ^
-              --digest "yoyoyo" ^
-              --headers "/tmp/0sztrr0k.ut5.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" ^
+              --digest "\"yoyoyo\"" ^
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
 </Tabs>

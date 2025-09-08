@@ -51,25 +51,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint airtable СоздатьБазу \
               --token "***" \
-              --ws "wspdf8yl1yZz3PmWZ" \
-              --title "Тестовая база" \
-              --tablesdata "/tmp/kt4qyy1a.fzl.json"
+              --ws "\"wspdf8yl1yZz3PmWZ\"" \
+              --title "\"Тестовая база\"" \
+              --tablesdata "\"/tmp/2jai5vsn.t5f.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint airtable СоздатьБазу ^
               --token "***" ^
-              --ws "wspdf8yl1yZz3PmWZ" ^
-              --title "Тестовая база" ^
-              --tablesdata "/tmp/kt4qyy1a.fzl.json"
+              --ws "\"wspdf8yl1yZz3PmWZ\"" ^
+              --title "\"Тестовая база\"" ^
+              --tablesdata "\"/tmp/2jai5vsn.t5f.json\""
         ```
     </TabItem>
 </Tabs>
@@ -77,30 +73,30 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "appye5JxQD6CEAVQ7",
+ "id": "appEQXqRL7ZJaceQM",
  "tables": [
   {
-   "id": "tblPK7iM6QVCGbral",
+   "id": "tblEp87IlKDFaHZiq",
    "name": "Тестовая таблица",
-   "primaryFieldId": "fldiLeIBGEKLvCGHn",
+   "primaryFieldId": "fldA1umusSTwS7AEI",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fldiLeIBGEKLvCGHn",
+     "id": "fldA1umusSTwS7AEI",
      "name": "Номер"
     },
     {
      "type": "richText",
-     "id": "flduxcmTlD7hCz9ZS",
+     "id": "fld8MKVUKrCN6k8mA",
      "name": "Строковое"
     }
    ],
    "views": [
     {
-     "id": "viw5lk0HjJwqDX1vM",
+     "id": "viw39JGmJyCmIoVnq",
      "name": "Grid view",
      "type": "grid"
     }
