@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk НаписатьСообщение \
-  --text "Сообщение из автотеста" \
-  --user "657846756" \
-  --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" \
-  --keyboard "/tmp/4ynz4wcu.wlm.json" \
-  --auth "/tmp/ieakcb33.ezz.json"
+  --text "\"Сообщение из автотеста\"" \
+  --user "\"657846756\"" \
+  --ct "\"vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg\"" \
+  --keyboard "***" \
+  --auth "\"/tmp/yf5tfcic.ff4.json\""

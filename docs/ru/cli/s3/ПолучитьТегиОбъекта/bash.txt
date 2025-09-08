@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ПолучитьТегиОбъекта \
-  --name "picture.jpg" \
-  --bucket "opi-dirbucket3" \
-  --basic "/tmp/uu5f5n1l.kag.json" \
-  --dir "True"
+  --name "\"picture.jpg\"" \
+  --bucket "\"opi-dirbucket3\"" \
+  --basic "\"/tmp/0tzqy1nm.auh.json\"" \
+  --dir "true"

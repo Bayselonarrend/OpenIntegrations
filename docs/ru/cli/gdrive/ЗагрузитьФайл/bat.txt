@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint gdrive ЗагрузитьФайл ^
   --token "***" ^
-  --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --props "/tmp/hgvug2hw.jhj.json"
+  --file "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+  --props "\"/tmp/03ertydu.s50.json\""

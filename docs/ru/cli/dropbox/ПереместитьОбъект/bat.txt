@@ -1,4 +1,4 @@
 oint dropbox ПереместитьОбъект ^
   --token "***" ^
-  --from "/pic.png" ^
-  --to "/New/pic.png"
+  --from "\"/pic.png\"" ^
+  --to "\"/New/pic.png\""

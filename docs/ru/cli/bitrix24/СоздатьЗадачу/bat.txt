@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 СоздатьЗадачу ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --fields "/tmp/go5m5j30.zrw.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --fields "\"/tmp/aalexaab.zr5.json\"" ^
   --token "***"

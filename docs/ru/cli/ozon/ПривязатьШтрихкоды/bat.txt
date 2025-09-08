@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ПривязатьШтрихкоды ^
   --clientid "***" ^
   --apikey "***" ^
-  --barcodes "/tmp/nx30tt2a.ybu.json"
+  --barcodes "\"/tmp/sl1u0t3d.xxm.json\""

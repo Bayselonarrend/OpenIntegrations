@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql УдалитьЗаписи ^
-  --table "test_data" ^
-  --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':'False','union':'AND'}]" ^
+  --table "\"test_data\"" ^
+  --filter "\"[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'}]\"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/4n0wm32o.1rz.json"
+  --tls "\"/tmp/rgey1i0j.h51.json\""

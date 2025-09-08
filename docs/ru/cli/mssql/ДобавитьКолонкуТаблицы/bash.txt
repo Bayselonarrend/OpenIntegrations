@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ДобавитьКолонкуТаблицы \
-  --table "testtable" \
-  --name "new_field" \
-  --type "bigint" \
+  --table "\"testtable\"" \
+  --name "\"new_field\"" \
+  --type "\"bigint\"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/v2efgm4e.ju4.json"
+  --tls "\"/tmp/4smv5qey.u30.json\""

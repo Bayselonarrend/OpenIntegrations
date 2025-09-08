@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql СоздатьТаблицу \
-  --table "somename" \
-  --cols "/tmp/uaiafmfk.o5i.json" \
+  --table "\"somename\"" \
+  --cols "\"/tmp/i1h44342.ylm.json\"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/i1tfuuqx.arp.json"
+  --tls "\"/tmp/5cl22xdx.h32.json\""

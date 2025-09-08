@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ПолучитьОписанияХарактеристикТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --filter "/tmp/fleop0tg.rpv.json"
+  --filter "\"/tmp/exdbcmco.keu.json\""

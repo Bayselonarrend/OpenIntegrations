@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint notion ИзменитьСвойстваБазы \
   --token "***" \
-  --base "26782aa7-fc4e-81c8-91f8-ee5e86568e2b" \
-  --props "/tmp/fv1ubfnz.sgi.json" \
-  --title "Тестовый заголовок" \
-  --description "Тестовое описание"
+  --base "\"26882aa7-fc4e-812b-a04a-c8ccce3a4ad3\"" \
+  --props "\"/tmp/qsn4bkmz.aq0.json\"" \
+  --title "\"Тестовый заголовок\"" \
+  --description "\"Тестовое описание\""

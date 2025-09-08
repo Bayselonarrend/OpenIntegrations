@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk ЗагрузитьФотоНаСервер ^
-  --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --auth "/tmp/ty3w2uzw.5n0.json" ^
-  --type "Пост"
+  --file "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+  --auth "\"/tmp/hlstg2cx.tgm.json\"" ^
+  --type "\"Пост\""

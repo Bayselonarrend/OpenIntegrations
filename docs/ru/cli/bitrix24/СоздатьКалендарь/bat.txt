@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 СоздатьКалендарь ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --fields "/tmp/knmwrtza.nsx.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --fields "\"/tmp/wimor0u4.vmu.json\"" ^
   --token "***"

@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi АрхивироватьЧат \
-  --access "/tmp/w1ygmiso.geu.json" \
-  --chat "120363410406221140@g.us"
+  --access "\"/tmp/izbo5wg2.x1d.json\"" \
+  --chat "\"120363410406221140@g.us\""

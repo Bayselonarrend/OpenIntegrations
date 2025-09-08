@@ -1,6 +1,6 @@
 oint telegram ОтправитьКонтакт ^
   --token "***" ^
-  --chat "@testsichee" ^
-  --name "Петр" ^
-  --surname "Петров" ^
-  --phone "88005553535"
+  --chat "\"@testsichee\"" ^
+  --name "\"Петр\"" ^
+  --surname "\"Петров\"" ^
+  --phone "\"88005553535\""

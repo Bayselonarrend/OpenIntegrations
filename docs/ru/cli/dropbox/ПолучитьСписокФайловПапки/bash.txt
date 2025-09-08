@@ -1,4 +1,4 @@
 oint dropbox ПолучитьСписокФайловПапки \
   --token "***" \
-  --path "/New" \
-  --detail "True"
+  --path "\"/New\"" \
+  --detail "true"

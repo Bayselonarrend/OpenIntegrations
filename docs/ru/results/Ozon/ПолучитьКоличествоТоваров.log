@@ -1,7 +1,5 @@
-﻿    {
- "result": {
-  "items": [],
-  "total": 0,
-  "last_id": ""
- }
+﻿{
+ "items": [],
+ "total": 0,
+ "cursor": ""
 }

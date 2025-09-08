@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint cdek ПолучитьСписокОфисов \
   --token "***" \
-  --filter "/tmp/2xe5d2vy.jww.json" \
+  --filter "\"/tmp/kzzcc2fj.ae4.json\"" \
   --testapi "***"

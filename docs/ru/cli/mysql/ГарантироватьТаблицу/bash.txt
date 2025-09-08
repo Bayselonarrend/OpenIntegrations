@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql ГарантироватьТаблицу \
-  --table "test_new" \
-  --cols "/tmp/zurv2akv.h24.json" \
+  --table "\"test_new\"" \
+  --cols "\"/tmp/u5nrp105.wy0.json\"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "/tmp/v0fnlqdw.le2.json"
+  --tls "\"/tmp/rdjxsbvv.sit.json\""

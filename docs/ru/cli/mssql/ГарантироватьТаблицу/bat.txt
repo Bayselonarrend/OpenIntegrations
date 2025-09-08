@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ГарантироватьТаблицу ^
-  --table "test_new" ^
-  --cols "/tmp/exfgyijs.iso.json" ^
+  --table "\"test_new\"" ^
+  --cols "\"/tmp/m5zxq0pj.pqe.json\"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/hyfrvcyr.e0d.json"
+  --tls "\"/tmp/2ut0lacw.pd3.json\""
