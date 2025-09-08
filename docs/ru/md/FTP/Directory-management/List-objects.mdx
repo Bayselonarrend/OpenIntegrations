@@ -74,16 +74,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp ПолучитьСписокОбъектов \
-              --conn "\"/tmp/0skhhaov.2xf\"" \
-              --rcv "true"
+              --conn "{"set":{"advanced_resolve":true,"domain":"172.33.0.11","login":"bayselonarrend","passive":true,"password":"***","port":"21","read_timeout":"120","write_timeout":"120"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true},"proxy":{"login":"proxyuser","password":"***","port":"1080","proxy_type":"socks5","server":"127.0.0.1"}}" \
+              --rcv true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp ПолучитьСписокОбъектов ^
-              --conn "\"/tmp/0skhhaov.2xf\"" ^
-              --rcv "true"
+              --conn "{"set":{"advanced_resolve":true,"domain":"172.33.0.11","login":"bayselonarrend","passive":true,"password":"***","port":"21","read_timeout":"120","write_timeout":"120"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true},"proxy":{"login":"proxyuser","password":"***","port":"1080","proxy_type":"socks5","server":"127.0.0.1"}}" ^
+              --rcv true
         ```
     </TabItem>
 </Tabs>
@@ -96,8 +96,8 @@ import TabItem from '@theme/TabItem';
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-sr-x    3 1000     1000         4096 Sep 08 08:28 new_dir",
-   "modified": "2025-09-08T08:28:00+00:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Sep 08 12:32 new_dir",
+   "modified": "2025-09-08T12:32:00+00:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -106,8 +106,8 @@ import TabItem from '@theme/TabItem';
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-sr-x    2 1000     1000         4096 Sep 08 08:28 another_one",
-     "modified": "2025-09-08T08:28:00+00:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Sep 08 12:32 another_one",
+     "modified": "2025-09-08T12:32:00+00:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",

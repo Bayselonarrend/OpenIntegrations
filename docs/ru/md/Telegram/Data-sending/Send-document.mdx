@@ -66,9 +66,10 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint telegram ОтправитьДокумент \
               --token *** \
-              --chat "461699897" \
+              --chat "@testsichee" \
               --text "Строковое значение" \
-              --doc "https://hut.openintegrations.dev/test_data/document.docx"
+              --doc "/tmp/wnrubky4.h1x" \
+              --filename "customname.docx"
         ```
     </TabItem>
   
@@ -76,9 +77,10 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint telegram ОтправитьДокумент ^
               --token *** ^
-              --chat "461699897" ^
+              --chat "@testsichee" ^
               --text "Строковое значение" ^
-              --doc "https://hut.openintegrations.dev/test_data/document.docx"
+              --doc "/tmp/wnrubky4.h1x" ^
+              --filename "customname.docx"
         ```
     </TabItem>
 </Tabs>
@@ -88,7 +90,7 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "result": {
-  "message_id": 16076,
+  "message_id": 16103,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -102,12 +104,12 @@ import TabItem from '@theme/TabItem';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1757318933,
+  "date": 1757333606,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAI-zGi-jxWwEWysicRAylUEM6id42uOAAIOmQACS-_wSdllcb1oy0GaNgQ",
-   "file_unique_id": "AgADDpkAAkvv8Ek",
+   "file_id": "BQACAgIAAxkDAAI-52i-yGZGKjHJ089G--ASPg_GAAF5agAC834AAkvv-EmRv9i8Un5sCzYE",
+   "file_unique_id": "AgAD834AAkvv-Ek",
    "file_size": 24069
   },
   "caption": "Строковое значение"

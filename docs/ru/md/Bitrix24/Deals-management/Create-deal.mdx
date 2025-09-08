@@ -67,18 +67,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 СоздатьСделку \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --fields "\"/tmp/r0x1fawu.bid.json\"" \
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{"TITLE":"Другая сделка","TYPE_ID":"GOODS","STAGE_ID":"NEW","COMPANY_ID":"1","CONTACT_ID":"3","OPENED":"Y","ASSIGNED_BY_ID":"1","PROBABILITY":"30","CURRENCY_ID":"USD","OPPORTUNITY":"5000","CATEGORY_ID":"5","BEGINDATE":"2024-01-01","CLOSEDATE":"2031-01-01"}" \
+              --token ***
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 СоздатьСделку ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --fields "\"/tmp/r0x1fawu.bid.json\"" ^
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{"TITLE":"Другая сделка","TYPE_ID":"GOODS","STAGE_ID":"NEW","COMPANY_ID":"1","CONTACT_ID":"3","OPENED":"Y","ASSIGNED_BY_ID":"1","PROBABILITY":"30","CURRENCY_ID":"USD","OPPORTUNITY":"5000","CATEGORY_ID":"5","BEGINDATE":"2024-01-01","CLOSEDATE":"2031-01-01"}" ^
+              --token ***
         ```
     </TabItem>
 </Tabs>
@@ -86,16 +86,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 4718,
+ "result": 4726,
  "time": {
-  "start": 1757323766.97575,
-  "finish": 1757323767.42618,
-  "duration": 0.450431823730469,
-  "processing": 0.420102119445801,
-  "date_start": "2025-09-08T09:29:26+00:00",
-  "date_finish": "2025-09-08T09:29:27+00:00",
-  "operating_reset_at": 1757324367,
-  "operating": 0.420085191726685
+  "start": 1757339174.72975,
+  "finish": 1757339175.0673,
+  "duration": 0.337548971176147,
+  "processing": 0.311002016067505,
+  "date_start": "2025-09-08T13:46:14+00:00",
+  "date_finish": "2025-09-08T13:46:15+00:00",
+  "operating_reset_at": 1757339774,
+  "operating": 0.310982227325439
  }
 }
 ```

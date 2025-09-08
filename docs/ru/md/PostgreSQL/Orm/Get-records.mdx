@@ -107,18 +107,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres ПолучитьЗаписи \
-              --table "\"testtable\"" \
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-              --tls "\"/tmp/4j2ur11w.igy.json\""
+              --table "testtable" \
+              --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres ПолучитьЗаписи ^
-              --table "\"testtable\"" ^
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-              --tls "\"/tmp/4j2ur11w.igy.json\""
+              --table "testtable" ^
+              --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>
@@ -156,10 +156,10 @@ import TabItem from '@theme/TabItem';
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "08:40:00",
-   "ts_field": "2025-09-08T08:40:00",
-   "tswtz_field": "2025-09-08T03:40:00.169761+00:00",
-   "uuid_field": "fc2ee14a-fbf9-4bc3-826a-14f9e7f38e01",
+   "time_field": "12:59:49",
+   "ts_field": "2025-09-08T12:59:49",
+   "tswtz_field": "2025-09-08T07:59:49.270586+00:00",
+   "uuid_field": "dbb558e0-72cb-48a8-9d2c-19ce1b5d96c8",
    "varchar_field": "Some varchar"
   }
  ],
