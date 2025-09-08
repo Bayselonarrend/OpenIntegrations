@@ -1,6 +1,6 @@
 oint cdek СоздатьПреалерт \
   --token *** \
-  --uuids "9b63e3b6-22e4-4480-bf8e-64a2c40f64e1" \
-  --date "2025-09-09T13:56:37.7207251" \
+  --uuids "e7b47ed7-a08a-4143-ab45-ea66efad0184" \
+  --date "2025-09-09T19:45:24.7965135" \
   --point "NSK27" \
   --testapi ***

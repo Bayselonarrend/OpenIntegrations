@@ -1,3 +1,3 @@
 oint notion ВернутьДочерниеБлоки \
   --token *** \
-  --block "26882aa7-fc4e-81cf-9230-f291ed15054c"
+  --block "26882aa7-fc4e-8151-b167-d0b1d9f038f1"
