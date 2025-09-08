@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ОбновитьХарактеристикиТоваров ^
   --clientid "***" ^
   --apikey "***" ^
-  --items "/tmp/brvlonxs.wpb.json"
+  --items "\"/tmp/f13whfhe.1nd.json\""

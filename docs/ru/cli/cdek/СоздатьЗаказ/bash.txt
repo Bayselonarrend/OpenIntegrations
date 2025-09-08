@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint cdek СоздатьЗаказ \
   --token "***" \
-  --order "/tmp/tkqvm12h.ejq.json" \
-  --ostore "True" \
+  --order "\"/tmp/rxmdmdri.gzl.json\"" \
+  --ostore "true" \
   --testapi "***"

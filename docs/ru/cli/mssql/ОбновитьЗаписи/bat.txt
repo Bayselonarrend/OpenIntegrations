@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ОбновитьЗаписи ^
-  --table "test_data" ^
-  --values "/tmp/h5xssj33.jnt.json" ^
-  --filter "/tmp/1i5zhtbf.qlm.json" ^
+  --table "\"test_data\"" ^
+  --values "\"/tmp/gxzkbh5x.evf.json\"" ^
+  --filter "\"/tmp/hfuehs5e.oyg.json\"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/iplaqh4g.2iu.json"
+  --tls "\"/tmp/sak2mlyn.owe.json\""

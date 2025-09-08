@@ -1,4 +1,2 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint twitter ПолучитьСсылкуАвторизации \
-  --auth "/tmp/ukwnvy1r.kld.json"
+  --auth "\"/tmp/yjlxnd2h.efb.json\""

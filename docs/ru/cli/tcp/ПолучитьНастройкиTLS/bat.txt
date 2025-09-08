@@ -1,2 +1,2 @@
 oint tcp ПолучитьНастройкиTLS ^
-  --trust "True"
+  --trust "true"

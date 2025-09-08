@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 СоздатьЧат \
-  --url "b24-ar17wx.bitrix24.by" \
-  --fields "/tmp/g2iritsh.xhm.json" \
+  --url "\"b24-ar17wx.bitrix24.by\"" \
+  --fields "\"/tmp/s4fmogbd.4bo.json\"" \
   --token "***"

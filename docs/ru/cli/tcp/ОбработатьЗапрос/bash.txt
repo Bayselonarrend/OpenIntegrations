@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint tcp ОбработатьЗапрос \
-  --address "tcpbin.com:4243" \
-  --data "Echo this!\n" \
-  --tls "/tmp/2fphiulp.wuy.json"
+  --address "\"tcpbin.com:4243\"" \
+  --data "\"Echo this!\\n\"" \
+  --tls "\"/tmp/apyiqxfi.odg.json\""

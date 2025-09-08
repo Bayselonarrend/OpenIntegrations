@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 СоздатьНовость \
-  --url "b24-ar17wx.bitrix24.by" \
-  --text "Текст новости" \
-  --files "/tmp/12ssy3nj.uw1.json" \
-  --title "Заголовок новости" \
+  --url "\"b24-ar17wx.bitrix24.by\"" \
+  --text "\"Текст новости\"" \
+  --files "\"/tmp/su0m5e2i.oqg.json\"" \
+  --title "\"Заголовок новости\"" \
   --token "***"

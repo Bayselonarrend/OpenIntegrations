@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ОчиститьТаблицу \
-  --table "testtable" \
+  --table "\"testtable\"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/powfpxyb.eur.json"
+  --tls "\"/tmp/vlxgfzer.1xh.json\""

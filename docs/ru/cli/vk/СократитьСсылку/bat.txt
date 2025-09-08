@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СократитьСсылку ^
-  --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
-  --auth "/tmp/k4ea1dfr.x33.json"
+  --url "\"https://github.com/Bayselonarrend/OpenIntegrations\"" ^
+  --auth "\"/tmp/ajfmgxms.vro.json\""

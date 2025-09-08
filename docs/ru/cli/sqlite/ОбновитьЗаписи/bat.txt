@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ОбновитьЗаписи ^
-  --table "test" ^
-  --values "/tmp/42cs2aav.uxw.json" ^
-  --filter "/tmp/fmez5n0s.p5f.json" ^
-  --db "/tmp/poau1xgn.nve.sqlite"
+  --table "\"test\"" ^
+  --values "\"/tmp/ozad4cvm.k5j.json\"" ^
+  --filter "\"/tmp/zplkz1t5.4y5.json\"" ^
+  --db "\"/tmp/qrghnbz3.tqj.sqlite\""

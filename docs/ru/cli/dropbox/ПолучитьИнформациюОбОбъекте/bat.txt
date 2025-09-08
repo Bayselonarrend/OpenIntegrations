@@ -1,4 +1,4 @@
 oint dropbox ПолучитьИнформациюОбОбъекте ^
   --token "***" ^
-  --path "/New/pic.png" ^
-  --detail "True"
+  --path "\"/New/pic.png\"" ^
+  --detail "true"

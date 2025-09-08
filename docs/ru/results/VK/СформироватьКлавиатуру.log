@@ -1,21 +1,19 @@
-﻿  
-  {
-  "buttons": [
+﻿{
+ "buttons": [
   [
-  {
-  "action": {
-  "type": "text",
-  "label": "Кнопка 1"
-  }
-  },
-  {
-  "action": {
-  "type": "text",
-  "label": "Кнопка 2"
-  }
-  }
+   {
+    "action": {
+     "type": "text",
+     "label": "Button 1"
+    }
+   },
+   {
+    "action": {
+     "type": "text",
+     "label": "Button 2"
+    }
+   }
   ]
-  ],
-  "one_time": false
-  }
-  
+ ],
+ "one_time": false
+}

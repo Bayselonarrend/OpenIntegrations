@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 ИзменитьСделку ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --deal "4694" ^
-  --fields "/tmp/kld3kiri.hgm.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --deal "4718" ^
+  --fields "\"/tmp/ljjsdu1f.1fp.json\"" ^
   --token "***"

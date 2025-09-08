@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ОтправитьКонтакт ^
-  --access "/tmp/txzsjdw3.mec.json" ^
-  --chat "120363410406221140@g.us" ^
-  --contact "/tmp/m40fpk0u.1hg.json" ^
-  --quoted "BAE50683F6321BA0"
+  --access "\"/tmp/snaobufi.la5.json\"" ^
+  --chat "\"120363410406221140@g.us\"" ^
+  --contact "\"/tmp/mittehxf.poh.json\"" ^
+  --quoted "\"BAE506F45FE5448E\""

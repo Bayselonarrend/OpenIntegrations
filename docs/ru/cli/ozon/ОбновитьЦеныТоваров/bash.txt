@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ОбновитьЦеныТоваров \
   --clientid "***" \
   --apikey "***" \
-  --prices "/tmp/povdhcqd.1ks.json"
+  --prices "\"/tmp/hcvlqtrr.f01.json\""

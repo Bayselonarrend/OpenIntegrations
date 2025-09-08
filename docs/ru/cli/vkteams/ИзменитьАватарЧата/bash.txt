@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
-  --chatid "AoLI0egLWBSLR1Ngn2w" \
-  --file "89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 08 00 00 00 08 00 08 02 00 00 00 3D C5 44 67 00 00 00 01 73 52 47 42 00 AE CE 1C E9 00 00 00 04 67 41 4D 41 00 00 B1 8F 0B FC 61 05 00 00…"
+  --chatid "\"AoLI0egLWBSLR1Ngn2w\"" \
+  --file "\"/tmp/f4slabqo.qiv\""

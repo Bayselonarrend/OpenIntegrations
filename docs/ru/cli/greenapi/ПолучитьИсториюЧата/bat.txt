@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ПолучитьИсториюЧата ^
-  --access "/tmp/12bmyqkn.xda.json" ^
-  --chat "120363410406221140@g.us"
+  --access "\"/tmp/afrayyb4.hxe.json\"" ^
+  --chat "\"120363410406221140@g.us\""

@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk ПриостановитьРекламноеОбъявление \
-  --cabinet "1607951446" \
+  --cabinet "\"1607951446\"" \
   --adv "0" \
-  --auth "/tmp/oosjeuyx.jle.json"
+  --auth "\"/tmp/ludqdcbx.44k.json\""

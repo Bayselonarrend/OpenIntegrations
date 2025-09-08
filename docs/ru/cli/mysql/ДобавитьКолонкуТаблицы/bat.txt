@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql ДобавитьКолонкуТаблицы ^
-  --table "testtable" ^
-  --name "new_field" ^
-  --type "MEDIUMTEXT" ^
+  --table "\"testtable\"" ^
+  --name "\"new_field\"" ^
+  --type "\"MEDIUMTEXT\"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/inghe1nm.gng.json"
+  --tls "\"/tmp/pdkiibbc.im0.json\""

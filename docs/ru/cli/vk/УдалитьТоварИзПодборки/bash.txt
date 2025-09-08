@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk УдалитьТоварИзПодборки \
-  --item "11794311" \
-  --sel "137" \
-  --auth "/tmp/gkqqvfav.ejs.json"
+  --item "11796759" \
+  --sel "136" \
+  --auth "\"/tmp/fdhxptew.nci.json\""

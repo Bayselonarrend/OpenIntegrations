@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ollama ЗагрузитьМодельВПамять ^
-  --url "https://hut.openintegrations.dev/ollama" ^
-  --model "tinyllama" ^
+  --url "\"https://hut.openintegrations.dev/ollama\"" ^
+  --model "\"tinyllama\"" ^
   --keep "500" ^
-  --headers "/tmp/20fah00g.tk3.json"
+  --headers {"Authorization":"***"}

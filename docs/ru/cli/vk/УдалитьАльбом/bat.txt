@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk УдалитьАльбом ^
-  --album "309976419" ^
-  --auth "/tmp/wfkj2ezm.kmt.json"
+  --album "309983058" ^
+  --auth "\"/tmp/wnfkeqnf.awn.json\""

@@ -1,5 +1,5 @@
-﻿    {
- "href": "https://cloud-api.yandex.net/v1/disk/operations/520264c4fc3c8e9ae87085c0d12fc77767c13fc7f11582ea5aac37756d3f823f",
+﻿{
  "method": "GET",
+ "href": "https://cloud-api.yandex.net/v1/disk/operations/8ca8ef702c117024c4b3cebeee2083401cbd12dddeb6038aa470de07eea427c9",
  "templated": false
 }

@@ -1,12 +1,12 @@
-﻿    {
+﻿{
  "type": "outgoing",
- "idMessage": "BAE5356B1EF7AC84",
- "timestamp": 1742245229,
+ "idMessage": "BAE5EC53535168A6",
+ "timestamp": 1757325313,
  "typeMessage": "extendedTextMessage",
  "chatId": "120363410406221140@g.us",
- "textMessage": "Новое сообщение",
+ "textMessage": "Новый текст сообщения",
  "extendedTextMessage": {
-  "text": "Новое сообщение",
+  "text": "Новый текст сообщения",
   "description": "",
   "title": "",
   "previewType": "None",
@@ -14,10 +14,10 @@
   "forwardingScore": 0,
   "isForwarded": false
  },
- "statusMessage": "",
+ "statusMessage": "sent",
  "sendByApi": true,
- "deletedMessageId": "BAE5B820765C5750",
- "editedMessageId": "",
- "isEdited": false,
+ "deletedMessageId": "BAE5D2CCFA48CFB2",
+ "editedMessageId": "BAE521342DF21CE8",
+ "isEdited": true,
  "isDeleted": true
 }

@@ -1,16 +1,26 @@
-﻿    {
+﻿{
  "result": {
   "items": [
    {
-    "product_id": 1215208579,
+    "product_id": 2667207757,
     "offer_id": "143210609",
-    "is_fbo_visible": false,
-    "is_fbs_visible": false,
+    "has_fbo_stocks": false,
+    "has_fbs_stocks": false,
     "archived": false,
-    "is_discounted": false
+    "is_discounted": false,
+    "quants": []
+   },
+   {
+    "product_id": 2667207800,
+    "offer_id": "1432106010",
+    "has_fbo_stocks": false,
+    "has_fbs_stocks": false,
+    "archived": false,
+    "is_discounted": false,
+    "quants": []
    }
   ],
-  "total": 1,
-  "last_id": "WzEyMTUyMDg1NzksMTIxNTIwODU3OV0="
+  "total": 2,
+  "last_id": "WzI2NjcyMDc4MDAsMjY2NzIwNzgwMF0="
  }
 }

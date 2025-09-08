@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk УдалитьПост \
-  --post "9412" \
-  --auth "/tmp/hseesxha.hjy.json"
+  --post "\"9442\"" \
+  --auth "\"/tmp/fvlcunvm.pkq.json\""

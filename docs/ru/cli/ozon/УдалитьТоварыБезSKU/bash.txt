@@ -1,4 +1,4 @@
 oint ozon УдалитьТоварыБезSKU \
   --clientid "***" \
   --apikey "***" \
-  --articles "143210609"
+  --articles "\"143210609\""

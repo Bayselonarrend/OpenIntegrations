@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ДобавитьЗаписи \
-  --table "testtable" \
-  --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.123456789123456'},'bit_field':{'BIT':'True'},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/zf3jcz1r.ely'},'uid_field':{'UUID':'16cb1280-15d3-40f6-880b-420d4e1ba79c'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"'"1.0\"'"?> <root>     <element>         <name>Пример</name>         <value>123</value>     </element>     <element>         <name>Тест</name>         <value>456</value>     </element> </root>'},'date_field':{'DATE':'09/07/2025 14:02:43'},'time_field':{'TIME':'09/07/2025 14:02:43'},'dto_field':{'DATETIMEOFFSET':'2025-09-07T14:02:43.2434831+05:00'},'datetime_field':{'DATETIME':'09/07/2025 14:02:43'}}]" \
-  --trn "True" \
+  --table "\"testtable\"" \
+  --rows "\"[{'tinyint_field':{'TINYINT':5},'smallint_field':{'SMALLINT':2000},'int_field':{'INT':200000},'bigint_field':{'BIGINT':20000000000},'float24_field':{'FLOAT24':10.1234567},'float53_field':{'FLOAT53':10.123456789123456},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/5stjctx0.u2s'},'uid_field':{'UUID':'6c43acc4-f5dc-40ca-9ee2-028478424ce9'},'numeric_field':{'NUMERIC':5.333},'xml_field':{'XML':'<?xml version=\\\"'\"1.0\\\"'\"?> <root>     <element>         <name>Пример</name>         <value>123</value>     </element>     <element>         <name>Тест</name>         <value>456</value>     </element> </root>'},'date_field':{'DATE':'2025-09-08T08:48:13.2858026Z'},'time_field':{'TIME':'2025-09-08T08:48:13.2858026Z'},'dto_field':{'DATETIMEOFFSET':'2025-09-08T08:48:13.2858026+05:00'},'datetime_field':{'DATETIME':'2025-09-08T08:48:13.2858026Z'}}]\"" \
+  --trn "true" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/rhemshmi.xna.json"
+  --tls "\"/tmp/5k5ps5dp.cal.json\""

@@ -1,4 +1,2 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ПолучитьСписокБакетов ^
-  --basic "/tmp/ua4tqwhr.2hg.json"
+  --basic "\"/tmp/ncocj1jx.ua4.json\""

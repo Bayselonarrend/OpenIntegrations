@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint rcon ВыполнитьКоманду ^
-  --exec "list" ^
-  --conn "/tmp/0pi5dm4n.ek1.json"
+  --exec "\"list\"" ^
+  --conn "\"/tmp/bkb5l2nk.pel.json\""

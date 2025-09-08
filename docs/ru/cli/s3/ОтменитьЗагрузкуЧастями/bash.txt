@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ОтменитьЗагрузкуЧастями \
-  --name "fileChunked.mp3" \
-  --bucket "opi-dirbucket3" \
-  --basic "/tmp/20zkhiya.nsm.json" \
-  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjA3ZDM3YjFjLTZmMDMtNDcyZC05MjQxLTIzY2M5YTA4ZjcwMA" \
-  --dir "True"
+  --name "\"fileChunked.mp3\"" \
+  --bucket "\"opi-dirbucket3\"" \
+  --basic "\"/tmp/uxjqdsku.zaz.json\"" \
+  --upload "\"MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmI5Y2QxMzg4LTE1YTYtNDY1MS04NDk1LTg5MTg1MWUzMmNiOQ\"" \
+  --dir "true"

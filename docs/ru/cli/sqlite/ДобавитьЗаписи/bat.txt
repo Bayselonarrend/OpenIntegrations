@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ДобавитьЗаписи ^
-  --table "test1" ^
-  --rows "/tmp/x1wcji54.aip.json" ^
-  --db "/tmp/poau1xgn.nve.sqlite"
+  --table "\"test1\"" ^
+  --rows "\"/tmp/mvbchg1i.qiw.json\"" ^
+  --db "\"/tmp/qrghnbz3.tqj.sqlite\""

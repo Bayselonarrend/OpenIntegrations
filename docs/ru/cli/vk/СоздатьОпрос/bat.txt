@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СоздатьОпрос ^
-  --question "Какой ваш любимый цвет?" ^
-  --options "['Красный','Желтый','Зеленый']" ^
-  --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --auth "/tmp/o0xeiw4g.wsp.json"
+  --question "\"Какой ваш любимый цвет?\"" ^
+  --options "\"['Красный','Желтый','Зеленый']\"" ^
+  --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+  --auth "\"/tmp/xaaylk3z.jin.json\""

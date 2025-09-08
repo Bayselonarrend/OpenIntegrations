@@ -1,15 +1,16 @@
-﻿    {
+﻿{
  "args": {},
  "headers": {
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250509/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=6d5f4a98cd8145f92654ec13723ec07c28be655d092c45d5b4678aadcb74d297",
+  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250908/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=0f4a56bdbcb216d21c008b2b86c8ba53e909ccb277d66f1fe8167d3062ea3f80",
+  "Content-Length": "0",
   "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
+  "User-Agent": "1Script v$2.0.0.0",
   "X-Amz-Content-Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "X-Amz-Date": "20250509T195211Z",
-  "X-Amzn-Trace-Id": "Root=1-681e5ceb-4030d82155e27e4a5923309c"
+  "X-Amz-Date": "20250908T100825Z",
+  "X-Amzn-Trace-Id": "Root=1-68beab19-470baf076cce208f2d04fe63"
  },
  "origin": "***",
  "url": "https://httpbin.org/get"

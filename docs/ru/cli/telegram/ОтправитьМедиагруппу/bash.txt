@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint telegram ОтправитьМедиагруппу \
   --token "***" \
-  --chat "@testsichee" \
-  --text "Строковое значение" \
-  --media "/tmp/fyhmebi2.cb5.json"
+  --chat "\"@testsichee\"" \
+  --text "\"Строковое значение\"" \
+  --media "\"/tmp/3fnsue54.3ci.json\""

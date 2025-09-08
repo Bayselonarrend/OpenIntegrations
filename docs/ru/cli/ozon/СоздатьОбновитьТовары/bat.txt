@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon СоздатьОбновитьТовары ^
   --clientid "***" ^
   --apikey "***" ^
-  --items "/tmp/2rdq0si0.idq.json"
+  --items "\"/tmp/s4tksctd.qdq.json\""

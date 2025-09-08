@@ -1,9 +1,7 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 КопироватьОбъект ^
-  --sname "picture.jpg" ^
-  --sbucket "newbucket2" ^
-  --name "new_picture.jpg" ^
-  --bucket "opi-dirbucket3" ^
-  --basic "/tmp/hth5oegt.x3n.json" ^
-  --dir "True"
+  --sname "\"picture.jpg\"" ^
+  --sbucket "\"newbucket2\"" ^
+  --name "\"new_picture.jpg\"" ^
+  --bucket "\"opi-dirbucket3\"" ^
+  --basic "\"/tmp/osl15xux.k3y.json\"" ^
+  --dir "true"

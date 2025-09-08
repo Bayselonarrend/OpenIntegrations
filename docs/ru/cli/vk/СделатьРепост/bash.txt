@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СделатьРепост \
   --post "2571" \
   --from "-218704372" \
-  --auth "/tmp/frm54wxd.5dz.json"
+  --auth "\"/tmp/2d2lhhcl.bgg.json\""

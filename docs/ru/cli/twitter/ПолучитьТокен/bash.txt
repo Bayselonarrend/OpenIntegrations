@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint twitter ПолучитьТокен \
-  --code "123456" \
-  --auth "/tmp/f2qmydj2.5ts.json"
+  --code "\"123456\"" \
+  --auth "\"/tmp/w20zc3no.zyx.json\""

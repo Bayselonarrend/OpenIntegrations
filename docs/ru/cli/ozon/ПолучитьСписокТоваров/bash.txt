@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ПолучитьСписокТоваров \
   --clientid "***" \
   --apikey "***" \
-  --filter "/tmp/n3nlzwyc.e1d.json"
+  --filter "\"/tmp/lrccdjjs.0wl.json\""

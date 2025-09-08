@@ -1,6 +1,6 @@
-﻿    {
+﻿{
  "counter": {
-  "id": 98876516,
+  "id": 104069052,
   "status": "Active",
   "owner_login": "bayselonarrend",
   "code_status": "CS_ERR_UNKNOWN",
@@ -38,28 +38,15 @@
    "ecommerce": 1,
    "alternative_cdn": 1,
    "ecommerce_object": "dataLayer",
-   "ytm": false
+   "ytm": false,
+   "ssr": true
   },
-  "create_time": "2024-11-10T21:51:32+03:00",
+  "create_time": "2025-09-08T09:42:28+00:00",
   "time_zone_name": "Europe/Moscow",
   "time_zone_offset": 180,
   "partner_id": 0,
-  "update_time": "2024-11-10 21:51:33",
-  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=98876516&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"//bs.yandex.ru/informer/98876516/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex.Metrica\"\n         title=\"Yandex.Metrica: data for today (unique users)\"\n        onclick=\"try{Ya.Metrika.informer({i:this,id:98876516,lang:'en'});return false}catch(e){}\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','//mc.webvisor.org/metrika/tag_ww.js', 'ym');\n\n    ym(98876516, 'init', {accurateTrackBounce:true, trackLinks:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/98876516\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
-  "monitoring": {
-   "enable_monitoring": 0,
-   "emails": [],
-   "sms_allowed": 1,
-   "enable_sms": 0,
-   "phones": [],
-   "phone_ids": [],
-   "possible_phones": [
-    "+37544*****91"
-   ],
-   "possible_phone_ids": [
-    598854008
-   ]
-  },
+  "update_time": "2025-09-08 12:42:34",
+  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=104069052&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"https://metrika-informer.com/informer/104069052/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex Metrica\"\n         title=\"Yandex Metrica: data for today (unique users)\"\n        class=\"ym-advanced-informer\" data-cid=\"104069052\" data-lang=\"en\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=104069052', 'ym');\n\n    ym(104069052, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}, accurateTrackBounce:true, trackLinks:true});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/104069052\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
   "filter_robots": 1,
   "currency": 643,
   "currency_code": "RUB",
@@ -76,6 +63,7 @@
    "domain": "openintegrations.dev"
   },
   "gdpr_agreement_accepted": 1,
-  "autogoals_enabled": true
+  "autogoals_enabled": true,
+  "ecommerce_deduplicator_enabled": false
  }
 }

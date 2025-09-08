@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 ПолучитьСписокСделок ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --filter "/tmp/sis1kke5.v1o.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --filter "\"/tmp/k1hhm2sa.ihv.json\"" ^
   --token "***"

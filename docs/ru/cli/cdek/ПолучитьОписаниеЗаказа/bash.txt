@@ -1,2 +1,2 @@
 oint cdek ПолучитьОписаниеЗаказа \
-  --empty "True"
+  --empty "true"
