@@ -1,6 +1,5 @@
 oint telegram ОтправитьДокумент \
-  --token "***" \
-  --chat "\"@testsichee\"" \
-  --text "\"Строковое значение\"" \
-  --doc "\"/tmp/xtrwiwe1.2p1\"" \
-  --filename "\"customname.docx\""
+  --token *** \
+  --chat "461699897" \
+  --text "Строковое значение" \
+  --doc "https://hut.openintegrations.dev/test_data/document.docx"
