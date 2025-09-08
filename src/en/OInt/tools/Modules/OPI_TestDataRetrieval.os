@@ -606,7 +606,7 @@ Procedure ProcessTestingResult(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
-    Result_ = ?(OPI_Tools.ThisIsCollection(), OPI_Tools.CopyCollection(Result), Result);
+    Result_ = ?(OPI_Tools.ThisIsCollection(Result), OPI_Tools.CopyCollection(Result), Result);
 
     IsVariant  = ValueIsFilled(Option);
     LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
