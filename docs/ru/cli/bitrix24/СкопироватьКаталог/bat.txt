@@ -1,4 +1,4 @@
 oint bitrix24 СкопироватьКаталог ^
   --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
-  --folderid 41558 ^
-  --tagetid 41556
+  --folderid 41612 ^
+  --tagetid 41610

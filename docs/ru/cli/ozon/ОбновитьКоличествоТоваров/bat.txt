@@ -1,4 +1,4 @@
 oint ozon ОбновитьКоличествоТоваров ^
   --clientid *** ^
   --apikey *** ^
-  --stocks "{"offer_id":"143210610","product_id":"2673586529","stock":"20","warehouse_id":"1"}"
+  --stocks "{"offer_id":"143210610","product_id":"2674371462","stock":"20","warehouse_id":"1"}"

@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьКаталог \
   --url "b24-ar17wx.bitrix24.by" \
-  --folderid 41554 \
+  --folderid 41608 \
   --token ***

@@ -1,4 +1,4 @@
 oint ozon ПроверитьЗагрузкуИзображенийТоваров \
   --clientid *** \
   --apikey *** \
-  --products 2673586529
+  --products 2674371462

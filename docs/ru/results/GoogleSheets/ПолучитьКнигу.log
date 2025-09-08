@@ -1,5 +1,5 @@
 ﻿{
- "spreadsheetId": "1Z6T0aZ1qTq4rv1Kxq4lixNSyMhp6_ofom6czAYZUX04",
+ "spreadsheetId": "1RnkYmdttUOlnLyPXckhSk9qX8UBdVFNmCczZLzM5q6Q",
  "properties": {
   "title": "Тестовая таблица",
   "locale": "ru_RU",
@@ -134,7 +134,7 @@
  "sheets": [
   {
    "properties": {
-    "sheetId": 1006287133,
+    "sheetId": 403349090,
     "title": "Лист1",
     "index": 0,
     "sheetType": "GRID",
@@ -146,7 +146,7 @@
   },
   {
    "properties": {
-    "sheetId": 413002025,
+    "sheetId": 512690549,
     "title": "Лист2",
     "index": 1,
     "sheetType": "GRID",
@@ -157,5 +157,5 @@
    }
   }
  ],
- "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Z6T0aZ1qTq4rv1Kxq4lixNSyMhp6_ofom6czAYZUX04/edit"
+ "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1RnkYmdttUOlnLyPXckhSk9qX8UBdVFNmCczZLzM5q6Q/edit"
 }
