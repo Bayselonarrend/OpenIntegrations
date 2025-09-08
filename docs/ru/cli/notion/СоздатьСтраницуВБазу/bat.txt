@@ -1,4 +1,4 @@
 oint notion СоздатьСтраницуВБазу ^
-  --token "***" ^
-  --base "\"26882aa7-fc4e-812b-a04a-c8ccce3a4ad3\"" ^
-  --data "\"/tmp/yqxjmghw.v34.json\""
+  --token *** ^
+  --base "26882aa7-fc4e-8146-96ca-ece792806e3c" ^
+  --data "{"Имя":"ООО Вектор","Описание":"Наш первый клиент","Номер":"1","Дата создания":"09/08/2025 13:22:39","Картинка":{"Лого":"https://hut.openintegrations.dev/test_data/picture.jpg"},"Активен":true,"Сайт":"https://vector.ru","Почта":"mail@vector.ru","Телефон":"88005553535","Статус":"Новый"}"

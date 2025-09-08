@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьКалендарь \
-  --url "\"b24-ar17wx.bitrix24.by\"" \
-  --calendar "1270" \
-  --fields "\"/tmp/21qhjiny.wh0.json\"" \
-  --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --calendar 1276 \
+  --fields "{"type":"user","ownerId":"1","name":"Новое имя календаря","description":"Этот календарь был изменен"}" \
+  --token ***

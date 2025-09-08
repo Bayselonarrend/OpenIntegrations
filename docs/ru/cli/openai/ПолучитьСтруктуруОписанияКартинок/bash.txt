@@ -1,4 +1,4 @@
 oint openai ПолучитьСтруктуруОписанияКартинок \
   --prompt "Yellow alpaca" \
-  --amount "1" \
+  --amount 1 \
   --size "1024x1024"

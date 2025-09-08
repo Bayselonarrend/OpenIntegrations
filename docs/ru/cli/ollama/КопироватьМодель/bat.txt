@@ -1,5 +1,5 @@
 oint ollama КопироватьМодель ^
-  --url "\"https://hut.openintegrations.dev/ollama\"" ^
-  --model "\"mario\"" ^
-  --name "\"mario2\"" ^
+  --url "https://hut.openintegrations.dev/ollama" ^
+  --model "mario" ^
+  --name "mario2" ^
   --headers {"Authorization":"***"}

@@ -1,5 +1,5 @@
 oint gsheets УстановитьЗначенияЯчеек \
-  --token "***" \
-  --spreadsheet "\"1qZUtR_SBwoa6R3ZNym4t9NE8-d8-DHll4gaPU9v5zeU\"" \
-  --data "\"/tmp/crorwzfd.2yx.json\"" \
-  --sheetname "\"Лист2\""
+  --token *** \
+  --spreadsheet "1Rg9bL64Oh6ul9TlbfdyOPGPUMlQ497OK3ydlOafEOz8" \
+  --data "{"A1":"Это A1","A2":"Это A2","B2":"Это B2","B3":"Это B3","A3":"Это A3","A4":"Это A4","B1":"Это B1","B4":"Это B4"}" \
+  --sheetname "Лист2"

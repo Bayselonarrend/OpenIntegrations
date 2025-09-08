@@ -1,3 +1,3 @@
 oint metrika ПолучитьСписокСчетчиков \
-  --token "***" \
-  --filter "\"/tmp/ozs25vj4.tlm.json\""
+  --token *** \
+  --filter "{"counter_ids":["104072877"]}"

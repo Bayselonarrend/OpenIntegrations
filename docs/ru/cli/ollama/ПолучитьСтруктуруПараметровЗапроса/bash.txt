@@ -1,2 +1,2 @@
 oint ollama ПолучитьСтруктуруПараметровЗапроса \
-  --empty "true"
+  --empty true

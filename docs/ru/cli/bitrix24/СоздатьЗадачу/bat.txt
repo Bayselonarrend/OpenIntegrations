@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьЗадачу ^
-  --url "\"b24-ar17wx.bitrix24.by\"" ^
-  --fields "\"/tmp/aalexaab.zr5.json\"" ^
-  --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --fields "{"TITLE":"Новая задача","DESCRIPTION":"Новое описание задачи","PRIORITY":"2","DEADLINE":"09/09/2025 13:32:14","RESPONSIBLE_ID":"1"}" ^
+  --token ***

@@ -1,2 +1,2 @@
 oint greenapi ПолучитьНастройкиИнстанса \
-  --access "\"/tmp/fjpcqsna.1ku.json\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}"

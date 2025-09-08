@@ -1,2 +1,4 @@
 oint bitrix24 ПолучитьСписокЛидов \
-  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"}
+  --url "b24-ar17wx.bitrix24.by" \
+  --filter "{"TITLE":"Мегаклиент","HAS_EMAIL":"Y"}" \
+  --token ***

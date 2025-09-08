@@ -1,5 +1,5 @@
 oint sqlite ДобавитьКолонкуТаблицы ^
-  --table "\"test\"" ^
-  --name "\"new_col\"" ^
-  --type "\"TEXT\"" ^
-  --db "\"/tmp/qrghnbz3.tqj.sqlite\""
+  --table "test" ^
+  --name "new_col" ^
+  --type "TEXT" ^
+  --db "/tmp/2f0tclaj.1bf.sqlite"
