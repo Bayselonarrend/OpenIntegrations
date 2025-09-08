@@ -68,18 +68,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 СоздатьКалендарь \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --fields "\"/tmp/wimor0u4.vmu.json\"" \
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
+              --fields "{"type":"user","ownerId":"1","name":"Новый календарь","description":"Мой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 СоздатьКалендарь ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --fields "\"/tmp/wimor0u4.vmu.json\"" ^
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
+              --fields "{"type":"user","ownerId":"1","name":"Новый календарь","description":"Мой новый календарь","color":"#FFFFFF","text_color":"#000000","export":{"ALLOW":"Истина","SET":"all"}}"
         ```
     </TabItem>
 </Tabs>

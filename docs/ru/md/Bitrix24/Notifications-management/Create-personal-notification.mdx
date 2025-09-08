@@ -63,22 +63,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 СоздатьПерсональноеУведомление \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --user "10" \
-              --text "\"Текст сообщения\"" \
-              --tag "\"Новый\"" \
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
+              --user 1 \
+              --text "Текст сообщения" \
+              --blocks "[{"IMAGE":{"NAME":"Картинка1","LINK":"https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg"}},{"FILE":{"NAME":"Файл1.docx","LINK":"https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"}}]"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 СоздатьПерсональноеУведомление ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --user "10" ^
-              --text "\"Текст сообщения\"" ^
-              --tag "\"Новый\"" ^
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
+              --user 1 ^
+              --text "Текст сообщения" ^
+              --blocks "[{"IMAGE":{"NAME":"Картинка1","LINK":"https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg"}},{"FILE":{"NAME":"Файл1.docx","LINK":"https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"}}]"
         ```
     </TabItem>
 </Tabs>

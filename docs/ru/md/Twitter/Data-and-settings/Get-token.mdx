@@ -40,16 +40,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint twitter ПолучитьТокен \
-              --code "\"123456\"" \
-              --auth "\"/tmp/w20zc3no.zyx.json\""
+              --code "123456" \
+              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint twitter ПолучитьТокен ^
-              --code "\"123456\"" ^
-              --auth "\"/tmp/w20zc3no.zyx.json\""
+              --code "123456" ^
+              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
         ```
     </TabItem>
 </Tabs>
