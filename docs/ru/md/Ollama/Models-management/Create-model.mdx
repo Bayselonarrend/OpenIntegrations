@@ -52,25 +52,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama СоздатьМодель \
-              --url "https://hut.openintegrations.dev/ollama" \
-              --model "mario" \
-              --settings "/tmp/okm5zfcx.fjo.json" \
-              --headers "/tmp/vluzqrgt.aep.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" \
+              --model "\"mario\"" \
+              --settings "\"/tmp/qiwgkzu3.qzf.json\"" \
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama СоздатьМодель ^
-              --url "https://hut.openintegrations.dev/ollama" ^
-              --model "mario" ^
-              --settings "/tmp/okm5zfcx.fjo.json" ^
-              --headers "/tmp/vluzqrgt.aep.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" ^
+              --model "\"mario\"" ^
+              --settings "\"/tmp/qiwgkzu3.qzf.json\"" ^
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
 </Tabs>

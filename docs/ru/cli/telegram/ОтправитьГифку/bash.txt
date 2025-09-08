@@ -1,5 +1,5 @@
 oint telegram ОтправитьГифку \
-  --token "***" \
-  --chat "\"@testsichee\"" \
-  --text "\"Строковое значение\"" \
-  --gif "\"/tmp/mnfwmbfj.szo\""
+  --token *** \
+  --chat "461699897" \
+  --text "Строковое значение" \
+  --gif "https://hut.openintegrations.dev/test_data/animation.gif"

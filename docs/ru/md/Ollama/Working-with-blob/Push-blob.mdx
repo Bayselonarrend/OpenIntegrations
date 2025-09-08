@@ -51,23 +51,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama ОтправитьBlob \
-              --url "https://hut.openintegrations.dev/ollama" \
-              --data "FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…" \
-              --headers "/tmp/phpzycfp.v3n.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" \
+              --data "\"/tmp/peb5wuyw.zqr\"" \
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ollama ОтправитьBlob ^
-              --url "https://hut.openintegrations.dev/ollama" ^
-              --data "FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…" ^
-              --headers "/tmp/phpzycfp.v3n.json"
+              --url "\"https://hut.openintegrations.dev/ollama\"" ^
+              --data "\"/tmp/peb5wuyw.zqr\"" ^
+              --headers {"Authorization":"***"}
         ```
     </TabItem>
 </Tabs>
@@ -76,6 +72,6 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "status_code": 201,
- "digest": "3b9693e5af456b847c78d7783a4a10a07165e90aaa06409f837b2b953b3ae35a"
+ "digest": "0c93e7dabf07ec649c9433f24dd44f750fcaa64bd33d6403eaeb5f542e5c3e30"
 }
 ```

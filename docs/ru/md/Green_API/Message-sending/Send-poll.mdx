@@ -58,29 +58,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint greenapi ОтправитьОпрос \
-              --access "/tmp/3gev33pr.di0.json" \
-              --chat "120363410406221140@g.us" \
-              --text "Какой ваш любимый цвет?" \
-              --options "['Красный','Желтый','Зеленый']" \
-              --multi "True" \
-              --quoted "BAE568C776ACDCC5"
+              --access "\"/tmp/aphdk4yd.5cg.json\"" \
+              --chat "\"120363410406221140@g.us\"" \
+              --text "\"Какой ваш любимый цвет?\"" \
+              --options "\"['Красный','Желтый','Зеленый']\"" \
+              --multi "true" \
+              --quoted "\"BAE5974C5D13170B\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint greenapi ОтправитьОпрос ^
-              --access "/tmp/3gev33pr.di0.json" ^
-              --chat "120363410406221140@g.us" ^
-              --text "Какой ваш любимый цвет?" ^
-              --options "['Красный','Желтый','Зеленый']" ^
-              --multi "True" ^
-              --quoted "BAE568C776ACDCC5"
+              --access "\"/tmp/aphdk4yd.5cg.json\"" ^
+              --chat "\"120363410406221140@g.us\"" ^
+              --text "\"Какой ваш любимый цвет?\"" ^
+              --options "\"['Красный','Желтый','Зеленый']\"" ^
+              --multi "true" ^
+              --quoted "\"BAE5974C5D13170B\""
         ```
     </TabItem>
 </Tabs>
@@ -88,6 +84,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "BAE542644B2506C8"
+ "idMessage": "BAE5974C5D13170B"
 }
 ```

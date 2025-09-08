@@ -1,6 +1,6 @@
 oint bitrix24 СоздатьНовость \
-  --url "\"b24-ar17wx.bitrix24.by\"" \
-  --text "\"Текст новости\"" \
-  --files "\"/tmp/su0m5e2i.oqg.json\"" \
-  --title "\"Заголовок новости\"" \
-  --token "***"
+  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
+  --text "Текст новости" \
+  --files "{"1.png":"https://hut.openintegrations.dev/test_data/picture.jpg","2.png":"https://hut.openintegrations.dev/test_data/picture2.jpg"}" \
+  --title "Заголовок новости" \
+  --important true

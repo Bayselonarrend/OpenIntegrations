@@ -54,23 +54,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint twitter СоздатьТвитКартинки \
-              --text "Тестовый твитт4aef5040-c24e-4c58-9ff3-530078c76c06" \
-              --pictures "FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…" \
-              --auth "/tmp/r30nk3zr.yao.json"
+              --text "\"Тестовый твитт73581b7d-dab0-4f0e-874e-65b969b958bf\"" \
+              --pictures "\"/tmp/slo0i1sr.x1y\"" \
+              --auth "\"/tmp/z523xkvq.0xk.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint twitter СоздатьТвитКартинки ^
-              --text "Тестовый твитт4aef5040-c24e-4c58-9ff3-530078c76c06" ^
-              --pictures "FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…" ^
-              --auth "/tmp/r30nk3zr.yao.json"
+              --text "\"Тестовый твитт73581b7d-dab0-4f0e-874e-65b969b958bf\"" ^
+              --pictures "\"/tmp/slo0i1sr.x1y\"" ^
+              --auth "\"/tmp/z523xkvq.0xk.json\""
         ```
     </TabItem>
 </Tabs>
@@ -79,11 +75,11 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "data": {
+  "id": "1964968074005602466",
+  "text": "Тестовый твиттd997c24e-c9b7-4ea4-b3ea-efb84506e982 https://t.co/Rd0mSOAEv1",
   "edit_history_tweet_ids": [
-   "1843702764976603573"
-  ],
-  "text": "Тестовый твитт434c5e75-7284-4ee5-b4ce-ffbc33febd80 https://t.co/4j5KPuRULH",
-  "id": "1843702764976603573"
+   "1964968074005602466"
+  ]
  }
 }
 ```

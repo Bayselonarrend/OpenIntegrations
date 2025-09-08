@@ -1,3 +1,4 @@
 oint vk СоздатьИсторию \
-  --picture "\"/tmp/2gbxaxsp.tsk.png\"" \
-  --auth "\"/tmp/icsjuit4.w0r.json\""
+  --picture "/tmp/vx2jig50.drh" \
+  --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

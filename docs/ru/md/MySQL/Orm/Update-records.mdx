@@ -80,27 +80,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mysql ОбновитьЗаписи \
-              --table "test_data" \
-              --values "/tmp/glrryp3h.4id.json" \
-              --filter "/tmp/hpl1utr4.cuz.json" \
+              --table "\"test_data\"" \
+              --values "\"/tmp/lvtyhjzb.4c5.json\"" \
+              --filter "\"/tmp/t5sefdxk.evd.json\"" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "/tmp/fffeaogh.and.json"
+              --tls "\"/tmp/3w2yht5v.144.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mysql ОбновитьЗаписи ^
-              --table "test_data" ^
-              --values "/tmp/glrryp3h.4id.json" ^
-              --filter "/tmp/hpl1utr4.cuz.json" ^
+              --table "\"test_data\"" ^
+              --values "\"/tmp/lvtyhjzb.4c5.json\"" ^
+              --filter "\"/tmp/t5sefdxk.evd.json\"" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "/tmp/fffeaogh.and.json"
+              --tls "\"/tmp/3w2yht5v.144.json\""
         ```
     </TabItem>
 </Tabs>

@@ -62,22 +62,18 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint bitrix24 СоздатьЗадачу \
-              --url "b24-ar17wx.bitrix24.by" \
-              --fields "/tmp/go5m5j30.zrw.json" \
+              --url "\"b24-ar17wx.bitrix24.by\"" \
+              --fields "\"/tmp/aalexaab.zr5.json\"" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint bitrix24 СоздатьЗадачу ^
-              --url "b24-ar17wx.bitrix24.by" ^
-              --fields "/tmp/go5m5j30.zrw.json" ^
+              --url "\"b24-ar17wx.bitrix24.by\"" ^
+              --fields "\"/tmp/aalexaab.zr5.json\"" ^
               --token "***"
         ```
     </TabItem>
@@ -88,7 +84,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "2378",
+   "id": "7750",
    "parentId": null,
    "title": "Новая задача",
    "description": "Новое описание задачи",
@@ -98,20 +94,22 @@ import TabItem from '@theme/TabItem';
    "notViewed": "N",
    "replicate": "N",
    "stageId": "0",
+   "sprintId": null,
+   "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2024-10-08T20:48:35+03:00",
+   "createdDate": "2025-09-08T09:14:49+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-08T20:48:35+03:00",
+   "changedDate": "2025-09-08T09:14:49+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-08T20:48:35+03:00",
+   "activityDate": "2025-09-08T09:14:49+00:00",
    "dateStart": null,
-   "deadline": "2024-10-09T23:48:00+03:00",
+   "deadline": "2025-09-09T09:14:00+00:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{037d66b0-f11d-4d50-bf02-0491fe52bea7}",
+   "guid": "{e6e5e592-b828-4336-a432-74ea46435a7d}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -126,7 +124,7 @@ import TabItem from '@theme/TabItem';
    "forumTopicId": null,
    "forumId": null,
    "siteId": "s1",
-   "subordinate": "N",
+   "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "1",
@@ -139,7 +137,7 @@ import TabItem from '@theme/TabItem';
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-08T20:48:35+03:00",
+   "statusChangedDate": "2025-09-08T09:14:49+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -184,6 +182,7 @@ import TabItem from '@theme/TabItem';
     "addFavorite": true,
     "deleteFavorite": false,
     "rate": true,
+    "take": false,
     "edit.originator": false,
     "checklist.reorder": true,
     "elapsedtime.add": true,
@@ -209,7 +208,8 @@ import TabItem from '@theme/TabItem';
      "isImportant": false,
      "completedCount": 0,
      "members": [],
-     "attachments": []
+     "attachments": [],
+     "nodeId": null
     },
     "action": [],
     "descendants": []
@@ -218,14 +218,14 @@ import TabItem from '@theme/TabItem';
   }
  },
  "time": {
-  "start": 1728409715.35686,
-  "finish": 1728409715.50661,
-  "duration": 0.149749994277954,
-  "processing": 0.121814012527466,
-  "date_start": "2024-10-08T20:48:35+03:00",
-  "date_finish": "2024-10-08T20:48:35+03:00",
-  "operating_reset_at": 1728410315,
-  "operating": 0.121784925460815
+  "start": 1757322889.62793,
+  "finish": 1757322889.88644,
+  "duration": 0.258507966995239,
+  "processing": 0.228291988372803,
+  "date_start": "2025-09-08T09:14:49+00:00",
+  "date_finish": "2025-09-08T09:14:49+00:00",
+  "operating_reset_at": 1757323489,
+  "operating": 0.228271007537842
  }
 }
 ```
