@@ -77,20 +77,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint openai ПолучитьОтвет \
-              --url "https://hut.openintegrations.dev/localai/" \
+              --url "\"https://hut.openintegrations.dev/localai/\"" \
               --token "***" \
-              --model "moondream2-20250414" \
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-4'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --model "\"moondream2-20250414\"" \
+              --msgs "\"[{'role':'user','content':[{'type':'input_image','file_id':'file-4'},{'type':'input_text','text':'What is in this image?'}]}]\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint openai ПолучитьОтвет ^
-              --url "https://hut.openintegrations.dev/localai/" ^
+              --url "\"https://hut.openintegrations.dev/localai/\"" ^
               --token "***" ^
-              --model "moondream2-20250414" ^
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-4'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --model "\"moondream2-20250414\"" ^
+              --msgs "\"[{'role':'user','content':[{'type':'input_image','file_id':'file-4'},{'type':'input_text','text':'What is in this image?'}]}]\""
         ```
     </TabItem>
 </Tabs>
@@ -98,9 +98,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "created": 1749751723,
+ "created": 1757326180,
  "object": "chat.completion",
- "id": "e51a994a-a3d9-4df8-8fc6-5035fa3f63da",
+ "id": "df85b7ea-a62f-4bf8-a294-0f5103674450",
  "model": "smolvlm-256m-instruct",
  "choices": [
   {
@@ -108,7 +108,7 @@ import TabItem from '@theme/TabItem';
    "finish_reason": "stop",
    "message": {
     "role": "assistant",
-    "content": "2001"
+    "content": "2014"
    }
   }
  ],
