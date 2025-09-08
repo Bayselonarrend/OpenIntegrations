@@ -52,23 +52,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ozon ПолучитьОписанияХарактеристикТоваров \
               --clientid "***" \
               --apikey "***" \
-              --filter "/tmp/fleop0tg.rpv.json"
+              --filter "\"/tmp/exdbcmco.keu.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint ozon ПолучитьОписанияХарактеристикТоваров ^
               --clientid "***" ^
               --apikey "***" ^
-              --filter "/tmp/fleop0tg.rpv.json"
+              --filter "\"/tmp/exdbcmco.keu.json\""
         ```
     </TabItem>
 </Tabs>
@@ -78,9 +74,8 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "id": 1215208579,
+   "id": 2667207757,
    "barcode": "",
-   "category_id": 0,
    "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
    "offer_id": "143210609",
    "height": 250,
@@ -89,24 +84,21 @@ import TabItem from '@theme/TabItem';
    "dimension_unit": "mm",
    "weight": 100,
    "weight_unit": "g",
+   "description_category_id": 17028922,
+   "type_id": 91565,
+   "primary_image": "",
+   "model_info": {
+    "model_id": 0,
+    "count": 0
+   },
    "images": [
-    {
-     "file_name": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
-     "default": false,
-     "index": 1
-    },
-    {
-     "file_name": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
-     "default": false,
-     "index": 2
-    }
+    "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "https://hut.openintegrations.dev/test_data/picture2.jpg"
    ],
-   "image_group_id": "",
-   "images360": [],
    "pdf_list": [],
    "attributes": [
     {
-     "attribute_id": 85,
+     "id": 85,
      "complex_id": 0,
      "values": [
       {
@@ -116,27 +108,27 @@ import TabItem from '@theme/TabItem';
      ]
     },
     {
-     "attribute_id": 10096,
+     "id": 9048,
+     "complex_id": 0,
+     "values": [
+      {
+       "dictionary_value_id": 0,
+       "value": "Комплект защитных плёнок для X3 NFC. Темный хлопок"
+      }
+     ]
+    },
+    {
+     "id": 10096,
      "complex_id": 0,
      "values": [
       {
        "dictionary_value_id": 61576,
-       "value": "красный"
+       "value": "серый"
       }
      ]
     },
     {
-     "attribute_id": 8229,
-     "complex_id": 0,
-     "values": [
-      {
-       "dictionary_value_id": 95911,
-       "value": "Комплект защитных плёнок для X3 NFC. Темный хлопок"
-      }
-     ]
-    },
-    {
-     "attribute_id": 9048,
+     "id": 4180,
      "complex_id": 0,
      "values": [
       {
@@ -146,17 +138,7 @@ import TabItem from '@theme/TabItem';
      ]
     },
     {
-     "attribute_id": 4180,
-     "complex_id": 0,
-     "values": [
-      {
-       "dictionary_value_id": 0,
-       "value": "Комплект защитных плёнок для X3 NFC. Темный хлопок"
-      }
-     ]
-    },
-    {
-     "attribute_id": 9024,
+     "id": 9024,
      "complex_id": 0,
      "values": [
       {
@@ -164,48 +146,52 @@ import TabItem from '@theme/TabItem';
        "value": "143210609"
       }
      ]
-    },
-    {
-     "attribute_id": 20900,
-     "complex_id": 0,
-     "values": [
-      {
-       "dictionary_value_id": 0,
-       "value": "true"
-      }
-     ]
     }
    ],
    "complex_attributes": [
     {
-     "attributes": [
+     "id": 21837,
+     "complex_id": 100001,
+     "values": [
       {
-       "attribute_id": 21837,
-       "complex_id": 100001,
-       "values": [
-        {
-         "dictionary_value_id": 0,
-         "value": "viedo1"
-        }
-       ]
-      },
+       "dictionary_value_id": 0,
+       "value": "viedo1"
+      }
+     ]
+    },
+    {
+     "id": 21841,
+     "complex_id": 100001,
+     "values": [
       {
-       "attribute_id": 21841,
-       "complex_id": 100001,
-       "values": [
-        {
-         "dictionary_value_id": 0,
-         "value": "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/"
-        }
-       ]
+       "dictionary_value_id": 0,
+       "value": "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/"
       }
      ]
     }
    ],
    "color_image": "",
-   "last_id": "",
-   "description_category_id": 17028922,
-   "type_id": 95911
+   "sku": 0,
+   "barcodes": [],
+   "attributes_with_defaults": [
+    10100,
+    11794,
+    22074,
+    22806,
+    23120,
+    23121,
+    23133,
+    23134,
+    23137,
+    23138,
+    23173,
+    23183,
+    23184,
+    23185,
+    23186,
+    23187,
+    23188
+   ]
   }
  ],
  "total": 1,
