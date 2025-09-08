@@ -1,3 +1,4 @@
 oint ozon ПолучитьДеревоКатегорийИТиповТоваров ^
-  --clientid "***" ^
-  --apikey "***"
+  --clientid *** ^
+  --apikey *** ^
+  --lang "EN"
