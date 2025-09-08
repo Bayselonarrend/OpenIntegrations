@@ -59,18 +59,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mysql СоздатьБазуДанных \
-              --base "\"testbase2\"" \
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "\"/tmp/1ejk0ybn.xar.json\""
+              --base "testbase1" \
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mysql СоздатьБазуДанных ^
-              --base "\"testbase2\"" ^
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "\"/tmp/1ejk0ybn.xar.json\""
+              --base "testbase1" ^
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/
         ```
     </TabItem>
 </Tabs>
