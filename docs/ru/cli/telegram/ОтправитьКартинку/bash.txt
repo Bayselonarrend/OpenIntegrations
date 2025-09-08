@@ -1,6 +1,5 @@
 oint telegram ОтправитьКартинку \
-  --token "***" \
-  --chat "\"@testsichee\"" \
-  --text "\"Строковое значение\"" \
-  --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" \
-  --keyboard "***"
+  --token *** \
+  --chat "461699897" \
+  --text "Строковое значение" \
+  --picture "https://hut.openintegrations.dev/test_data/picture.jpg"

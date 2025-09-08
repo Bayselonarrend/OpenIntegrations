@@ -606,6 +606,7 @@ Procedure ProcessTestingResult(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
+    Result_ = ?(OPI_Tools.ThisIsCollection(), OPI_Tools.CopyCollection(Result), Result);
 
     IsVariant  = ValueIsFilled(Option);
     LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
@@ -616,7 +617,7 @@ Procedure ProcessTestingResult(Val Result
     Try
 
         ParameterArray = New Array;
-        ParameterArray.Add("Result");
+        ParameterArray.Add("Result_");
         ParameterArray.Add("Option");
 
         If AddParam1 <> Undefined Then
@@ -11566,6 +11567,8 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     ReplaceStructure = New Map;
     ReplaceStructure.Insert("host.docker.internal", "127.0.0.1");
 
+    Cover = False;
+
     If TypeOf(Value) = Type("String") Then
 
         For Each SecretKey In SecretsArray Do
@@ -11581,6 +11584,17 @@ Function FormOption(Val Name, Val Value, Embedded = False)
         EndDo;
 
         ValueAsString = Value;
+
+        If Not Embedded And StrStartsWith(ValueAsString, """") And StrEndsWith(ValueAsString, """") Then
+
+            ValueAsString = Left(ValueAsString, StrLen(ValueAsString) - 1);
+            ValueAsString = Right(ValueAsString, StrLen(ValueAsString) - 1);
+
+            Cover = True;
+
+        EndIf;
+
+        Value = ValueAsString;
         OPI_TypeConversion.GetCollection(Value);
 
     Else
@@ -11619,12 +11633,15 @@ Function FormOption(Val Name, Val Value, Embedded = False)
         Return Value;
     Else
 
-        Try
-            Value = OPI_Tools.JSONString(Value, , False);
-        Except
-            Value = String(Value);
-        EndTry;
+        If Not TypeOf(Value) = Type("String") Then
+            Try
+                Value        = OPI_Tools.JSONString(Value, , False);
+            Except
+                Value        = String(Value);
+            EndTry;
+        EndIf;
 
+        Value = ?(Cover, StrTemplate("""%1""", Value), Value);
         Return "--" + Name + " " + Value;
 
     EndIf;

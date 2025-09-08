@@ -49,9 +49,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint telegram ПереслатьСообщение \
               --token "***" \
-              --message "20309" \
-              --from "@testsichee" \
-              --to "461699897"
+              --message "\"20372\"" \
+              --from "\"@testsichee\"" \
+              --to "\"461699897\""
         ```
     </TabItem>
   
@@ -59,9 +59,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint telegram ПереслатьСообщение ^
               --token "***" ^
-              --message "20309" ^
-              --from "@testsichee" ^
-              --to "461699897"
+              --message "\"20372\"" ^
+              --from "\"@testsichee\"" ^
+              --to "\"461699897\""
         ```
     </TabItem>
 </Tabs>
@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "result": {
-  "message_id": 8287,
+  "message_id": 16084,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -81,11 +81,11 @@ import TabItem from '@theme/TabItem';
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728408397,
+  "date": 1757319043,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -94,8 +94,8 @@ import TabItem from '@theme/TabItem';
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 9400,
-   "date": 1728408204
+   "message_id": 20372,
+   "date": 1757318778
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -103,9 +103,16 @@ import TabItem from '@theme/TabItem';
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 9400,
-  "forward_date": 1728408204,
-  "text": "Строковое значение"
+  "forward_from_message_id": 20372,
+  "forward_date": 1757318778,
+  "text": "Полужирный текст",
+  "entities": [
+   {
+    "offset": 0,
+    "length": 16,
+    "type": "bold"
+   }
+  ]
  }
 }
 ```

@@ -1,4 +1,4 @@
 oint ozon ПривязатьШтрихкоды ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --barcodes "\"/tmp/sl1u0t3d.xxm.json\""
+  --clientid *** ^
+  --apikey *** ^
+  --barcodes "{"1626044001":"112233"}"

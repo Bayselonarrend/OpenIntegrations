@@ -1,5 +1,5 @@
 oint telegram ОтправитьМедиагруппу ^
-  --token "***" ^
-  --chat "\"@testsichee\"" ^
-  --text "\"Строковое значение\"" ^
-  --media "\"/tmp/3fnsue54.3ci.json\""
+  --token *** ^
+  --chat "461699897" ^
+  --text "Строковое значение" ^
+  --media "{"/tmp/pztq02mw.hns.png":"photo","/tmp/t5abpggz.n5k":"video"}"

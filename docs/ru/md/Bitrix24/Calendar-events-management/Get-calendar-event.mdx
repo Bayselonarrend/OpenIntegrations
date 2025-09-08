@@ -51,8 +51,8 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ПолучитьСобытиеКалендаря \
-              --url "b24-ar17wx.bitrix24.by" \
-              --event "2264" \
+              --url "\"b24-ar17wx.bitrix24.by\"" \
+              --event "2288" \
               --token "***"
         ```
     </TabItem>
@@ -60,8 +60,8 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ПолучитьСобытиеКалендаря ^
-              --url "b24-ar17wx.bitrix24.by" ^
-              --event "2264" ^
+              --url "\"b24-ar17wx.bitrix24.by\"" ^
+              --event "2288" ^
               --token "***"
         ```
     </TabItem>
@@ -71,40 +71,42 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "62",
-  "PARENT_ID": "62",
+  "ID": "2288",
+  "PARENT_ID": "2288",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "Новое событие",
-  "DATE_FROM": "28.01.2025 22:29:00",
-  "DATE_TO": "28.01.2025 23:29:00",
+  "DATE_FROM": "09.09.2025 09:30:00",
+  "DATE_TO": "09.09.2025 10:30:00",
   "ORIGINAL_DATE_FROM": null,
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1738081739",
-  "DATE_TO_TS_UTC": "1740688140",
+  "DATE_FROM_TS_UTC": "1757388608",
+  "DATE_TO_TS_UTC": "1759995000",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "27.01.2025 22:28:59",
-  "TIMESTAMP_X": "27.01.2025 22:28:59",
+  "DATE_CREATE": "08.09.2025 12:30:13",
+  "TIMESTAMP_X": "08.09.2025 12:30:13",
   "DESCRIPTION": "Описание события",
-  "PRIVATE_EVENT": "",
-  "ACCESSIBILITY": "busy",
-  "IMPORTANCE": "high",
+  "PRIVATE_EVENT": "1",
+  "ACCESSIBILITY": "quest",
+  "IMPORTANCE": "normal",
   "IS_MEETING": true,
   "MEETING_STATUS": "H",
   "MEETING_HOST": "1",
   "MEETING": {
    "HOST_NAME": "Антон Титовец",
-   "TEXT": null,
-   "OPEN": false,
    "NOTIFY": true,
    "REINVITE": false,
+   "ALLOW_INVITE": true,
+   "HIDE_GUESTS": true,
+   "MEETING_CREATOR": 1,
+   "LANGUAGE_ID": "ru",
    "MAIL_FROM": false
   },
   "LOCATION": "Офис",
@@ -119,12 +121,12 @@ import TabItem from '@theme/TabItem';
    "FREQ": "DAILY",
    "COUNT": 3,
    "INTERVAL": 10,
-   "UNTIL": "01.01.2038",
-   "~UNTIL": "",
-   "UNTIL_TS": 2145916800
+   "UNTIL": "19.09.2025",
+   "~UNTIL": "19.09.2025",
+   "UNTIL_TS": 1758240000
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20250128T192900Z-165159ccf926f8fd81fef570b48b3c08@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20250909T063000Z-76e8d15481e568ff78ac874f8f186a67@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
@@ -135,29 +137,30 @@ import TabItem from '@theme/TabItem';
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "134",
+  "SECTION_ID": "1270",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Tue Jan 28 2025 22:29:00",
-  "DATE_TO_FORMATTED": "Tue Jan 28 2025 23:29:00",
-  "SECT_ID": "134",
+  "DATE_FROM_FORMATTED": "Tue Sep 09 2025 09:30:00",
+  "DATE_TO_FORMATTED": "Tue Sep 09 2025 10:30:00",
+  "IS_DAYLIGHT_SAVING_TZ": "N",
+  "SECT_ID": "1270",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "62",
+    "entryId": "2288",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "64",
+    "entryId": "2290",
     "status": "Q"
    }
   ],
   "COLLAB_ID": null,
-  "~RRULE_DESCRIPTION": "каждый 10-й день, от 28.01.2025, 3 раз(а)",
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 09.09.2025 до 19.09.2025",
   "attendeesEntityList": [
    {
     "entityId": "user",
@@ -173,13 +176,13 @@ import TabItem from '@theme/TabItem';
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1738006140.14556,
-  "finish": 1738006140.19252,
-  "duration": 0.0469579696655273,
-  "processing": 0.0220499038696289,
-  "date_start": "2025-01-27T22:29:00+03:00",
-  "date_finish": "2025-01-27T22:29:00+03:00",
-  "operating_reset_at": 1738006740,
+  "start": 1757323828.64956,
+  "finish": 1757323828.70633,
+  "duration": 0.056765079498291,
+  "processing": 0.0277619361877441,
+  "date_start": "2025-09-08T09:30:28+00:00",
+  "date_finish": "2025-09-08T09:30:28+00:00",
+  "operating_reset_at": 1757324428,
   "operating": 0
  }
 }

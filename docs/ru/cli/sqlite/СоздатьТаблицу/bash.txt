@@ -1,4 +1,4 @@
 oint sqlite СоздатьТаблицу \
-  --table "\"test1\"" \
-  --cols "\"/tmp/tyxprc4m.0oz.json\"" \
-  --db "\"/tmp/qrghnbz3.tqj.sqlite\""
+  --table "test" \
+  --cols "{"id":"INTEGER PRIMARY KEY","name":"TEXT","age":"INTEGER","salary":"REAL","is_active":"BOOLEAN","created_at":"DATETIME","data":"BLOB"}" \
+  --db "/tmp/r445h0xm.re3.sqlite"

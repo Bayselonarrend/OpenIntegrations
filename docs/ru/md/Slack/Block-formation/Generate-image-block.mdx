@@ -39,16 +39,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint slack СформироватьБлокКартинку \
-              --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
-              --alt "Картинка"
+              --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" \
+              --alt "\"Картинка\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint slack СформироватьБлокКартинку ^
-              --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-              --alt "Картинка"
+              --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+              --alt "\"Картинка\""
         ```
     </TabItem>
 </Tabs>
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "type": "image",
- "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+ "image_url": "https://hut.openintegrations.dev/test_data/picture.jpg",
  "alt_text": "Картинка"
 }
 ```

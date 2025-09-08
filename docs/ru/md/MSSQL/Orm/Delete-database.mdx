@@ -51,16 +51,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mssql УдалитьБазуДанных \
-              --base "testbase2" \
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;"
+              --base "\"testbase2\"" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "\"/tmp/lgqlyyg1.431.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mssql УдалитьБазуДанных ^
-              --base "testbase2" ^
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;"
+              --base "\"testbase2\"" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "\"/tmp/lgqlyyg1.431.json\""
         ```
     </TabItem>
 </Tabs>

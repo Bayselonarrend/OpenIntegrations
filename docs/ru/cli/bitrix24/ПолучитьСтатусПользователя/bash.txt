@@ -1,3 +1,2 @@
 oint bitrix24 ПолучитьСтатусПользователя \
-  --url "\"b24-ar17wx.bitrix24.by\"" \
-  --token "***"
+  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"}
