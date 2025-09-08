@@ -74,22 +74,22 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mssql ОбновитьЗаписи \
-              --table "\"test_data\"" \
-              --values "\"/tmp/gxzkbh5x.evf.json\"" \
-              --filter "\"/tmp/hfuehs5e.oyg.json\"" \
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls "\"/tmp/sak2mlyn.owe.json\""
+              --table "test_data" \
+              --values "{"ip_address":{"VARCHAR":"127.0.0.1"}}" \
+              --filter "{"field":"gender","type":"=","value":{"NVARCHAR":"Male"},"raw":false}" \
+              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mssql ОбновитьЗаписи ^
-              --table "\"test_data\"" ^
-              --values "\"/tmp/gxzkbh5x.evf.json\"" ^
-              --filter "\"/tmp/hfuehs5e.oyg.json\"" ^
-              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls "\"/tmp/sak2mlyn.owe.json\""
+              --table "test_data" ^
+              --values "{"ip_address":{"VARCHAR":"127.0.0.1"}}" ^
+              --filter "{"field":"gender","type":"=","value":{"NVARCHAR":"Male"},"raw":false}" ^
+              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

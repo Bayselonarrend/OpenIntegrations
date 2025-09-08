@@ -101,20 +101,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint s3 ИнициализироватьЗагрузкуЧастями \
-              --name "\"fileChunked.mp3\"" \
-              --bucket "\"opi-dirbucket3\"" \
-              --basic "\"/tmp/cmccxtwr.ogq.json\"" \
-              --dir "true"
+              --name "fileChunked.mp3" \
+              --bucket "opi-dirbucket3" \
+              --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" \
+              --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint s3 ИнициализироватьЗагрузкуЧастями ^
-              --name "\"fileChunked.mp3\"" ^
-              --bucket "\"opi-dirbucket3\"" ^
-              --basic "\"/tmp/cmccxtwr.ogq.json\"" ^
-              --dir "true"
+              --name "fileChunked.mp3" ^
+              --bucket "opi-dirbucket3" ^
+              --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" ^
+              --dir true
         ```
     </TabItem>
 </Tabs>
@@ -127,17 +127,17 @@ import TabItem from '@theme/TabItem';
   "InitiateMultipartUploadResult": {
    "Bucket": "opi-dirbucket3",
    "Key": "fileChunked.mp3",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmJiYzRmMmQ4LTg1NDYtNGUwMi1hODY4LTI1YTQ5ZmE1YzFkOQ"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmZmMzBkZGY1LTdkM2MtNGI4Ny04ODQ1LTU1YzdhNmQ5ZTUyMQ"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 08 Sep 2025 09:49:55 GMT",
+  "Date": "Mon, 08 Sep 2025 14:05:13 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "186345C5DF5A5965",
+  "X-Amz-Request-Id": "186353B43E0B845B",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "326",

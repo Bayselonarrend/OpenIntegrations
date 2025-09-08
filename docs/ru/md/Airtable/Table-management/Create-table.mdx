@@ -56,22 +56,22 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint airtable СоздатьТаблицу \
-              --token "***" \
-              --base "\"appEQXqRL7ZJaceQM\"" \
-              --title "\"Тестовая таблица 2\"" \
-              --fieldsdata "\"[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]\"" \
-              --description "\"Новая таблица\""
+              --token *** \
+              --base "apppzbIaxu57Dxv0l" \
+              --title "Тестовая таблица 2" \
+              --fieldsdata "[{"name":"Номер","type":"number","options":{"precision":"0"}},{"name":"Строковое","type":"richText"},{"name":"Вложение","type":"multipleAttachments"},{"name":"Флажок","type":"checkbox","options":{"icon":"check","color":"yellowBright"}},{"name":"Дата","type":"date","options":{"dateFormat":{"format":"YYYY-MM-DD","name":"iso"}}},{"name":"Телефон","type":"phoneNumber"},{"name":"Почта","type":"email"},{"name":"Ссылка","type":"url"}]" \
+              --description "Новая таблица"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint airtable СоздатьТаблицу ^
-              --token "***" ^
-              --base "\"appEQXqRL7ZJaceQM\"" ^
-              --title "\"Тестовая таблица 2\"" ^
-              --fieldsdata "\"[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]\"" ^
-              --description "\"Новая таблица\""
+              --token *** ^
+              --base "apppzbIaxu57Dxv0l" ^
+              --title "Тестовая таблица 2" ^
+              --fieldsdata "[{"name":"Номер","type":"number","options":{"precision":"0"}},{"name":"Строковое","type":"richText"},{"name":"Вложение","type":"multipleAttachments"},{"name":"Флажок","type":"checkbox","options":{"icon":"check","color":"yellowBright"}},{"name":"Дата","type":"date","options":{"dateFormat":{"format":"YYYY-MM-DD","name":"iso"}}},{"name":"Телефон","type":"phoneNumber"},{"name":"Почта","type":"email"},{"name":"Ссылка","type":"url"}]" ^
+              --description "Новая таблица"
         ```
     </TabItem>
 </Tabs>
@@ -79,22 +79,22 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "tblpH3f0zuO92wYtC",
+ "id": "tblXCKRW8RivGSDMu",
  "name": "Тестовая таблица 2",
  "description": "Новая таблица",
- "primaryFieldId": "fld7KY2rY8dPwgg0z",
+ "primaryFieldId": "fldWGlWPPZcKoA67v",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fld7KY2rY8dPwgg0z",
+   "id": "fldWGlWPPZcKoA67v",
    "name": "Номер"
   },
   {
    "type": "richText",
-   "id": "fld4VxjPSkmSjWLD7",
+   "id": "fldDG4jvjXLoV2zXI",
    "name": "Строковое"
   },
   {
@@ -102,7 +102,7 @@ import TabItem from '@theme/TabItem';
    "options": {
     "isReversed": false
    },
-   "id": "fldMzKZPeBpYxsmdr",
+   "id": "fldR41hAeqNlN5PkN",
    "name": "Вложение"
   },
   {
@@ -111,7 +111,7 @@ import TabItem from '@theme/TabItem';
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldUIDjqmz4i9yUDg",
+   "id": "fldtBiFYjHEKzjWgX",
    "name": "Флажок"
   },
   {
@@ -122,28 +122,28 @@ import TabItem from '@theme/TabItem';
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldWIps1aP0QV3Asg",
+   "id": "fldAafudJeCWdUVKP",
    "name": "Дата"
   },
   {
    "type": "phoneNumber",
-   "id": "fldYUTE9mwHq7Bd54",
+   "id": "fldC5x1K3iZaHJ1hJ",
    "name": "Телефон"
   },
   {
    "type": "email",
-   "id": "fldUbGUatMhbgt0Ol",
+   "id": "fldRgn8eQOnjYHtA3",
    "name": "Почта"
   },
   {
    "type": "url",
-   "id": "fld23kd54vGHRXBdy",
+   "id": "fld4UrEhJprC0hKRm",
    "name": "Ссылка"
   }
  ],
  "views": [
   {
-   "id": "viwnVx974qXxmnWI8",
+   "id": "viwMoI0GUswsoqg6k",
    "name": "Grid view",
    "type": "grid"
   }

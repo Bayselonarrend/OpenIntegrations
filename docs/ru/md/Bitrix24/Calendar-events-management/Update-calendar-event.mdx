@@ -62,20 +62,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ИзменитьСобытиеКалендаря \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --event "2288" \
-              --fields "\"/tmp/3xvif40f.cjd.json\"" \
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" \
+              --event 2296 \
+              --fields "{"ownerId":"1","type":"user","name":"Измененное событие","description":"Новое описание события","importance":"low","private_event":"Y"}" \
+              --token ***
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ИзменитьСобытиеКалендаря ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --event "2288" ^
-              --fields "\"/tmp/3xvif40f.cjd.json\"" ^
-              --token "***"
+              --url "b24-ar17wx.bitrix24.by" ^
+              --event 2296 ^
+              --fields "{"ownerId":"1","type":"user","name":"Измененное событие","description":"Новое описание события","importance":"low","private_event":"Y"}" ^
+              --token ***
         ```
     </TabItem>
 </Tabs>
@@ -83,16 +83,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2288,
+ "result": 2296,
  "time": {
-  "start": 1757323838.84405,
-  "finish": 1757323839.06638,
-  "duration": 0.222331047058105,
-  "processing": 0.191059112548828,
-  "date_start": "2025-09-08T09:30:38+00:00",
-  "date_finish": "2025-09-08T09:30:39+00:00",
-  "operating_reset_at": 1757324438,
-  "operating": 0.191038131713867
+  "start": 1757339242.09678,
+  "finish": 1757339242.35305,
+  "duration": 0.256273031234741,
+  "processing": 0.226794958114624,
+  "date_start": "2025-09-08T13:47:22+00:00",
+  "date_finish": "2025-09-08T13:47:22+00:00",
+  "operating_reset_at": 1757339842,
+  "operating": 0.22675895690918
  }
 }
 ```
