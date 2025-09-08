@@ -1,5 +1,5 @@
 oint airtable СоздатьЗаписи \
-  --token "***" \
-  --base "\"appEQXqRL7ZJaceQM\"" \
-  --table "\"tblpH3f0zuO92wYtC\"" \
-  --data "\"/tmp/cjunitay.n22.json\""
+  --token *** \
+  --base "appEQXqRL7ZJaceQM" \
+  --table "tblpH3f0zuO92wYtC" \
+  --data "[{"Номер":"10","Строковое":"Привет"},{"Номер":"10","Строковое":"Привет"}]"
