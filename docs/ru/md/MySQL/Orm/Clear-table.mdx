@@ -59,18 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mysql ОчиститьТаблицу \
-              --table "\"testtable\"" \
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "\"/tmp/20i2hons.vkb.json\""
+              --table "testtable" \
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mysql ОчиститьТаблицу ^
-              --table "\"testtable\"" ^
-              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "\"/tmp/20i2hons.vkb.json\""
+              --table "testtable" ^
+              --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

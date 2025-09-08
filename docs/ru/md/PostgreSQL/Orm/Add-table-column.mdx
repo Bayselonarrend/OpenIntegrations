@@ -59,22 +59,22 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres ДобавитьКолонкуТаблицы \
-              --table "\"testtable\"" \
-              --name "\"new_field\"" \
-              --type "\"TEXT\"" \
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-              --tls "\"/tmp/l0kef3lu.tdz.json\""
+              --table "testtable" \
+              --name "new_field" \
+              --type "TEXT" \
+              --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ \
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres ДобавитьКолонкуТаблицы ^
-              --table "\"testtable\"" ^
-              --name "\"new_field\"" ^
-              --type "\"TEXT\"" ^
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-              --tls "\"/tmp/l0kef3lu.tdz.json\""
+              --table "testtable" ^
+              --name "new_field" ^
+              --type "TEXT" ^
+              --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ ^
+              --tls "{"use_tls":true,"accept_invalid_certs":true}"
         ```
     </TabItem>
 </Tabs>

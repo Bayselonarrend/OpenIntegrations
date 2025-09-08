@@ -633,7 +633,12 @@ Function CopyCollection(Val Collection) Export
         Collection_ = ?(IsStructure, New Structure, New Map);
 
         For Each CollectionField In Collection Do
-            Collection_.Insert(CollectionField.Key, CollectionField.Value);
+
+            CurrentValue = CollectionField.Value;
+            CurrentValue = ?(ThisIsCollection(CurrentValue), CopyCollection(CurrentValue), CurrentValue);
+
+            Collection_.Insert(CollectionField.Key, CurrentValue);
+
         EndDo;
 
     ElsIf IsArray Then
@@ -641,7 +646,10 @@ Function CopyCollection(Val Collection) Export
         Collection_ = New Array;
 
         For Each CollectionItem In Collection Do
-            Collection_.Add(CollectionItem);
+
+            CurrentValue = ?(ThisIsCollection(CollectionItem), CopyCollection(CollectionItem), CollectionItem);
+            Collection_.Add(CurrentValue);
+
         EndDo;
 
     Else

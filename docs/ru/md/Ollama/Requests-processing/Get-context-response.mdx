@@ -69,10 +69,10 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ollama ПолучитьОтветВКонтексте \
-              --url "\"https://hut.openintegrations.dev/ollama\"" \
-              --model "\"tinyllama\"" \
-              --msgs "\"[{'role':'user','content':'Hello!'}]\"" \
-              --options "\"/tmp/s5j0flwc.kvm.json\"" \
+              --url "https://hut.openintegrations.dev/ollama" \
+              --model "tinyllama" \
+              --msgs "[{"role":"user","content":"Hello!"}]" \
+              --options "{"options":{"seed":"555","temperature":"10"}}" \
               --headers {"Authorization":"***"}
         ```
     </TabItem>
@@ -80,10 +80,10 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ollama ПолучитьОтветВКонтексте ^
-              --url "\"https://hut.openintegrations.dev/ollama\"" ^
-              --model "\"tinyllama\"" ^
-              --msgs "\"[{'role':'user','content':'Hello!'}]\"" ^
-              --options "\"/tmp/s5j0flwc.kvm.json\"" ^
+              --url "https://hut.openintegrations.dev/ollama" ^
+              --model "tinyllama" ^
+              --msgs "[{"role":"user","content":"Hello!"}]" ^
+              --options "{"options":{"seed":"555","temperature":"10"}}" ^
               --headers {"Authorization":"***"}
         ```
     </TabItem>
@@ -93,18 +93,18 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "model": "tinyllama",
- "created_at": "2025-09-08T10:01:42.93703767Z",
+ "created_at": "2025-09-08T14:14:25.147314591Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to specific information about 1c:enterprise. However, according to its official website, 1c:enterprise has been developed and released for public use since the initial development in 2009. The latest version of 1c:enterprise may have undergone minor updates or improvements since then. It's best to check the official website for the most up-to-date information on when the next version was released, including any changes or enhancements made since the initial development."
+  "content": "The first version of 1C:Enterprise was launched in 2009. The product is regularly updated with new features and functionalities, as well as bug fixes and security patches. The latest release was made available to customers on August 23, 2021, with improvements to the platform's scalability and reliability, as well as new customer-centric features, such as a user interface for mobile devices, integration with third-party applications, and a dashboard that provides real-time access to information from multiple sources."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 21003495482,
- "load_duration": 20987555,
- "prompt_eval_count": 181,
- "prompt_eval_duration": 5402744965,
- "eval_count": 111,
- "eval_duration": 15572390622
+ "total_duration": 14273721978,
+ "load_duration": 15900582,
+ "prompt_eval_count": 193,
+ "prompt_eval_duration": 4911115668,
+ "eval_count": 117,
+ "eval_duration": 9333406010
 }
 ```
