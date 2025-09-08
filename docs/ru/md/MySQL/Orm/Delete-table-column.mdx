@@ -60,25 +60,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mysql УдалитьКолонкуТаблицы \
-              --table "testtable" \
-              --name "new_field" \
+              --table "\"testtable\"" \
+              --name "\"new_field\"" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "/tmp/lk5m2kde.5xv.json"
+              --tls "\"/tmp/pgpf015w.qlu.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint mysql УдалитьКолонкуТаблицы ^
-              --table "testtable" ^
-              --name "new_field" ^
+              --table "\"testtable\"" ^
+              --name "\"new_field\"" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "/tmp/lk5m2kde.5xv.json"
+              --tls "\"/tmp/pgpf015w.qlu.json\""
         ```
     </TabItem>
 </Tabs>

@@ -44,25 +44,27 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint rportal УдалитьПостоянныйТокен \
-              --url "tests.openintegrations.dev" \
+              --url "\"tests.openintegrations.dev\"" \
               --token "***" \
               --user "1" \
-              --id "20"
+              --id "23"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint rportal УдалитьПостоянныйТокен ^
-              --url "tests.openintegrations.dev" ^
+              --url "\"tests.openintegrations.dev\"" ^
               --token "***" ^
               --user "1" ^
-              --id "20"
+              --id "23"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-Соответствие
+{
+ "message": "Api key with ID = '23' was successfully deleted."
+}
 ```

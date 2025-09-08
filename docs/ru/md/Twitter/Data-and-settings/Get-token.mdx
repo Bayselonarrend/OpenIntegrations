@@ -39,21 +39,17 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint twitter ПолучитьТокен \
-              --code "123456" \
-              --auth "/tmp/f2qmydj2.5ts.json"
+              --code "\"123456\"" \
+              --auth "\"/tmp/w20zc3no.zyx.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint twitter ПолучитьТокен ^
-              --code "123456" ^
-              --auth "/tmp/f2qmydj2.5ts.json"
+              --code "\"123456\"" ^
+              --auth "\"/tmp/w20zc3no.zyx.json\""
         ```
     </TabItem>
 </Tabs>
@@ -61,7 +57,10 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "error": "invalid_request",
- "error_description": "Value passed for the authorization code was invalid."
-}
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "access_token": "ZG53T21jUTZqc01233pHZUNzSWt4VUltSW4xMVhQd0tLR0NDMUgtZlQ3V3FMOjE3NTczMTg1MTI0MDA6MTowOmF0OjE",
+  "scope": "mute.write tweet.moderate.write block.read follows.read offline.access list.write bookmark.read list.read tweet.write space.read block.write like.write like.read users.read tweet.read bookmark.write mute.read follows.write",
+  "refresh_token": "T21qZGlHenVTNTA1rwgxalNHMERScENOTmIzWlFCdXBUNmwwWHduUUdoUjh6OjE3NTczMTg1MTI0MDA6MTowOnJ0OjE"
+ }
 ```
