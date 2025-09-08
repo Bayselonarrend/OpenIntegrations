@@ -1,1 +1,43 @@
-﻿Соответствие
+﻿    {
+ "ok": true,
+ "file": {
+  "id": "F07RMJNEF32",
+  "created": 1728409464,
+  "timestamp": 1728409464,
+  "name": "megadoc.docx",
+  "title": "Новый файл",
+  "mimetype": "",
+  "filetype": "",
+  "pretty_type": "",
+  "user": "U06UG1CAYH2",
+  "user_team": "T06UD92BS3C",
+  "editable": false,
+  "size": 24069,
+  "mode": "hosted",
+  "is_external": false,
+  "external_type": "",
+  "is_public": false,
+  "public_url_shared": false,
+  "display_as_bot": false,
+  "username": "",
+  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F07RMJNEF32/megadoc.docx",
+  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F07RMJNEF32/download/megadoc.docx",
+  "media_display_type": "unknown",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07RMJNEF32/megadoc.docx",
+  "permalink_public": "https://slack-files.com/T06UD92BS3C-F07RMJNEF32-40bbd2cc47",
+  "favorites": [],
+  "is_starred": false,
+  "shares": {},
+  "channels": [],
+  "groups": [],
+  "ims": [],
+  "has_more_shares": false,
+  "has_rich_preview": false,
+  "file_access": "visible",
+  "comments_count": 0
+ },
+ "comments": [],
+ "response_metadata": {
+  "next_cursor": ""
+ }
+}

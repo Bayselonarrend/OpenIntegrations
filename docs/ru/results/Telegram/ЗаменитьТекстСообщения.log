@@ -1,1 +1,21 @@
-﻿Соответствие
+﻿    {
+ "ok": true,
+ "result": {
+  "message_id": 13755,
+  "sender_chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "date": 1737051864,
+  "edit_date": 1737051870,
+  "text": "Новый текст сообщения"
+ }
+}

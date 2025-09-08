@@ -1,1 +1,40 @@
-﻿Соответствие
+﻿    {
+ "data": [
+  {
+   "bigint_field": 9999999,
+   "bigserial_field": 9999999,
+   "bool_field": true,
+   "bytea_field": {
+    "BYTEA": "/9j/4VTBRX..."
+   },
+   "char_field": "A",
+   "charn_field": "AAA",
+   "date_field": "2025-06-12",
+   "dp_field": 1.0002,
+   "int_field": 100,
+   "ip_field": "127.0.0.1",
+   "json_field": {
+    "key": "ItsKey",
+    "value": 10
+   },
+   "jsonb_field": {
+    "key": "ItsKey",
+    "value": 10
+   },
+   "name_field": "Vitaly",
+   "oid_field": 24576,
+   "oldchar_field": 1,
+   "real_field": 15.1999998092651,
+   "serial_field": 100,
+   "smallint_field": 5,
+   "smallserial_field": 6,
+   "text_field": "Some text",
+   "time_field": "20:33:55",
+   "ts_field": "2025-06-12T20:33:55",
+   "tswtz_field": "2025-06-12T18:33:55.130634+03:00",
+   "uuid_field": "e795ec44-52c2-4cb3-af1c-8e61c8721bb6",
+   "varchar_field": "Some varchar"
+  }
+ ],
+ "result": true
+}

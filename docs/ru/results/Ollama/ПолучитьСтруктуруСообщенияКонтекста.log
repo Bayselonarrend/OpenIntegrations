@@ -1,1 +1,4 @@
-﻿Структура
+﻿    {
+ "role": "user",
+ "content": "Hello!"
+}

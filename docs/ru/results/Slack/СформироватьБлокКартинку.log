@@ -1,1 +1,5 @@
-﻿Соответствие
+﻿    {
+ "type": "image",
+ "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+ "alt_text": "Картинка"
+}
