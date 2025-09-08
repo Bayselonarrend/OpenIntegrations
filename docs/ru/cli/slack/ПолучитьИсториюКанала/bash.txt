@@ -1,3 +1,3 @@
 oint slack ПолучитьИсториюКанала \
   --token *** \
-  --channel "C09E3DCSBNW"
+  --channel "C09DR3F2NNB"

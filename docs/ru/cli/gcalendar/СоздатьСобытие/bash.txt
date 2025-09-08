@@ -1,4 +1,4 @@
 oint gcalendar СоздатьСобытие \
   --token *** \
-  --calendar "d7a97179f34013344c3c10fdbea2039a1b5b5f178b72736a4512a3aa15620d0c@group.calendar.google.com" \
-  --props "{"Описание":"Описание тестового события","Заголовок":"Новое событие","МестоПроведения":"В офисе","ДатаНачала":"09/08/2025 13:17:46","ДатаОкончания":"09/08/2025 14:17:46","МассивURLФайловВложений":{"Картинка1":"https://hut.openintegrations.dev/test_data/picture.jpg","Картинка2":"https://hut.openintegrations.dev/test_data/picture2.jpg"},"ОтправлятьУведомления":true}"
+  --calendar "1e33b9e9590138b4c222b6770b1239f3da43f48eaa4f7d46ce76bed726fcf04a@group.calendar.google.com" \
+  --props "{"Описание":"Описание тестового события","Заголовок":"Новое событие","МестоПроведения":"В офисе","ДатаНачала":"09/08/2025 19:06:49","ДатаОкончания":"09/08/2025 20:06:49","МассивURLФайловВложений":{"Картинка1":"https://hut.openintegrations.dev/test_data/picture.jpg","Картинка2":"https://hut.openintegrations.dev/test_data/picture2.jpg"},"ОтправлятьУведомления":true}"

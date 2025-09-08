@@ -7,7 +7,7 @@
   "Content-Length": "0",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68bee599-148ca37e3cbd8cb35099a861"
+  "X-Amzn-Trace-Id": "Root=1-68bf37f7-11e2ebcc033ca9625639ace1"
  },
  "origin": "***",
  "url": "https://httpbin.org/get"

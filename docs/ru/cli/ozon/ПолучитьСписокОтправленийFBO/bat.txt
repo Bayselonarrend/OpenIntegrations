@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon ПолучитьСписокОтправленийFBO ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --filter "/tmp/oyjhymt1.v0f.json" ^
-  --with "/tmp/fcsxtr5p.mbs.json"
+  --clientid *** ^
+  --apikey *** ^
+  --filter "{"since":"01/01/2023 00:00:00","to":"01/01/2024 00:00:00"}" ^
+  --with "{"analytics_data":true,"financial_data":true}"
