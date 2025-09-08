@@ -65,5 +65,61 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-Соответствие
+{
+ "entity": {
+  "uuid": "72753031-4b12-4b4f-ae6b-388db53199a9",
+  "intake_date": "2024-10-22",
+  "intake_time_from": "10:00",
+  "intake_time_to": "17:00",
+  "name": "Консолидированный груз",
+  "weight": 1000,
+  "length": 10,
+  "width": 10,
+  "height": 10,
+  "comment": "Комментарий курьеру",
+  "sender": {
+   "company": "Компания",
+   "name": "Иванов Иван",
+   "phones": [
+    {
+     "number": "+79589441654"
+    }
+   ],
+   "passport_requirements_satisfied": false
+  },
+  "from_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "kladr_code": "7700000000000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "sub_region": "Москва",
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "ул. Блюхера, 32"
+  },
+  "need_call": false,
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-21T20:42:31+03:00"
+   }
+  ],
+  "contragent_uuid": "ed75ecf4-30ed-4153-afe9-eb80bb512f22"
+ },
+ "requests": [
+  {
+   "request_uuid": "0b726355-bbe5-4b52-9972-c66e4ee3f457",
+   "type": "CREATE",
+   "date_time": "2024-10-21T20:42:31+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

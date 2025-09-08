@@ -64,5 +64,65 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-Массив
+[
+ {
+  "messageID": "BAE5EBEA6D4D06DE",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE58FFB313AA023",
+   "latitude": 53.908522,
+   "longitude": 27.574821
+  }
+ },
+ {
+  "messageID": "BAE5398BAA3A6199",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   }
+  }
+ },
+ {
+  "messageID": "BAE5DF8EADC77DE9",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "BAE5398BAA3A6199"
+  }
+ },
+ {
+  "messagesIDs": [
+   "BAE5D0DE67C63EEF"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "chatIdFrom": "120363410406221140@g.us",
+   "messages": [
+    "BAE5356B1EF7AC84"
+   ]
+  }
+ },
+ {
+  "messageID": "BAE5DFEB55A708EB",
+  "type": "editMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "idMessage": "BAE5356B1EF7AC84",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
 ```

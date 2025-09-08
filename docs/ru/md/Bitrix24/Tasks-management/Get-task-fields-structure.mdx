@@ -64,5 +64,155 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-Соответствие
+{
+ "result": {
+  "fields": {
+   "ID": {
+    "title": "ID",
+    "type": "integer",
+    "primary": true
+   },
+   "PARENT_ID": {
+    "title": "ID базовой задачи",
+    "type": "integer",
+    "default": 0
+   },
+   "TITLE": {
+    "title": "Название",
+    "type": "string",
+    "required": true
+   },
+   "DESCRIPTION": {
+    "title": "Описание",
+    "type": "string"
+   },
+   "MARK": {
+    "title": "Оценка",
+    "type": "enum",
+    "values": {
+     "N": "Отрицательная",
+     "P": "Положительная"
+    },
+    "default": null
+   },
+   "PRIORITY": {
+    "title": "Приоритет",
+    "type": "enum",
+    "values": {
+     "2": "Высокий",
+     "1": "Средний",
+     "0": "Низкий"
+    },
+    "default": 1
+   },
+   "STATUS": {
+    "title": "Статус",
+    "type": "enum",
+    "values": {
+     "2": "Ждёт выполнения",
+     "3": "Выполняется",
+     "4": "Ожидает контроля",
+     "5": "Завершена",
+     "6": "Отложена"
+    },
+    "default": 2
+   },
+   "MULTITASK": {
+    "title": "Множественная задача",
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "NOT_VIEWED": {
+    "title": null,
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "REPLICATE": {
+    "title": "Повторяемая задача",
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "GROUP_ID": {
+    "title": "Проект",
+    "type": "integer",
+    "default": 0
+   },
+   "STAGE_ID": {
+    "title": "Стадия",
+    "type": "integer",
+    "default": 0
+   },
+   "CREATED_BY": {
+    "title": "Постановщик",
+    "type": "integer",
+    "required": true
+   },
+   "CREATED_DATE": {
+    "title": null,
+    "type": "datetime"
+   },
+   "RESPONSIBLE_ID": {
+    "title": "Исполнитель",
+    "type": "integer",
+    "required": true
+   },
+   "ACCOMPLICES": {
+    "title": null,
+    "type": "array"
+   },
+   "AUDITORS": {
+    "title": null,
+    "type": "array"
+   },
+   "CHANGED_BY": {
+    "title": "Изменил",
+    "type": "integer"
+   },
+   "CHANGED_DATE": {
+    "title": "Дата изменения",
+    "type": "datetime"
+   },
+   "STATUS_CHANGED_BY": {
+    "title": "Изменил статус",
+    "type": "integer"
+   },
+   "STATUS_CHANGED_DATE": {
+    "title": "Дата изменения статуса",
+    "type": "datetime"
+   },
+   "CLOSED_BY": {
+    "title": "Закрыл задачу",
+    "type": "integer",
+    "default": null
+   },
+   "CLOSED_DATE": {
+    "title": "Дата закрытия",
+    "type": "datetime",
+    "default": null
+   },
+   "ACTIVITY_DATE": {
+    "title": null,
+    "type": "datetime",
+    "default": null
+   },
+   "DATE_START": {
+    "title": "Дата начала",
+    "type": "datetime",
+    "default": null
+   },
+   "DEADLINE": {
+    "title": "Крайний срок",
+...
 ```

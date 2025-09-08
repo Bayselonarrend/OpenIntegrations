@@ -64,5 +64,155 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-Соответствие
+{
+ "result": {
+  "ID": {
+   "type": "integer",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "ID"
+  },
+  "TITLE": {
+   "type": "string",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Название"
+  },
+  "TYPE_ID": {
+   "type": "crm_status",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "statusType": "DEAL_TYPE",
+   "title": "Тип"
+  },
+  "CATEGORY_ID": {
+   "type": "crm_category",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": true,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Воронка"
+  },
+  "STAGE_ID": {
+   "type": "crm_status",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "statusType": "DEAL_STAGE",
+   "title": "Стадия сделки"
+  },
+  "STAGE_SEMANTIC_ID": {
+   "type": "string",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Группа стадии"
+  },
+  "IS_NEW": {
+   "type": "char",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Новая сделка"
+  },
+  "IS_RECURRING": {
+   "type": "char",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Регулярная сделка"
+  },
+  "IS_RETURN_CUSTOMER": {
+   "type": "char",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Повторная сделка"
+  },
+  "IS_REPEATED_APPROACH": {
+   "type": "char",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Повторное обращение"
+  },
+  "PROBABILITY": {
+   "type": "integer",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Вероятность"
+  },
+  "CURRENCY_ID": {
+   "type": "crm_currency",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Валюта"
+  },
+  "OPPORTUNITY": {
+   "type": "double",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Сумма"
+  },
+  "IS_MANUAL_OPPORTUNITY": {
+   "type": "char",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "IS_MANUAL_OPPORTUNITY"
+  },
+  "TAX_VALUE": {
+   "type": "double",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Ставка налога"
+  },
+  "COMPANY_ID": {
+   "type": "crm_company",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Компания",
+   "settings": {
+    "parentEntityTypeId": 4
+   }
+...
 ```
