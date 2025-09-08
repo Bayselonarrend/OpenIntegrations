@@ -1,2 +1,3 @@
 oint neocities ПолучитьДанныеОСайте ^
-  --token ***
+  --token *** ^
+  --sitename "2athenaeum"

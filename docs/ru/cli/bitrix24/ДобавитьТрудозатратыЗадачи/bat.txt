@@ -1,4 +1,8 @@
 oint bitrix24 ДобавитьТрудозатратыЗадачи ^
-  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
-  --task "7762" ^
-  --amount 3600
+  --url "b24-ar17wx.bitrix24.by" ^
+  --task "7772" ^
+  --amount 7200 ^
+  --user 10 ^
+  --text "Трудозатраты по обработке" ^
+  --date "2025-08-08T13:39:10.8872317" ^
+  --token ***

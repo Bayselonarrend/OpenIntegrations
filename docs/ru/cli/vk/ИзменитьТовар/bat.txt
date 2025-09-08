@@ -1,4 +1,4 @@
 oint vk ИзменитьТовар ^
-  --item "11796759" ^
-  --product "\"/tmp/v0w0hd4y.3ei.json\"" ^
-  --auth "\"/tmp/waktvuqn.qxj.json\""
+  --item 11798504 ^
+  --product "{"Имя":"Тестовый товар измененный"}" ^
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

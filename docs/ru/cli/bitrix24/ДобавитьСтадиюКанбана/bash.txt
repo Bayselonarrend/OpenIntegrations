@@ -1,5 +1,7 @@
 oint bitrix24 ДобавитьСтадиюКанбана \
-  --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
-  --title "Новая стадия" \
+  --url "b24-ar17wx.bitrix24.by" \
+  --title "Новая стадия 2" \
   --color "0026FF" \
-  --prevstage 6
+  --prevstage 2838 \
+  --admin true \
+  --token ***

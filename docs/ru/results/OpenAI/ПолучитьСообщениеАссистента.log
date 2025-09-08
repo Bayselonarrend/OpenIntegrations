@@ -1,4 +1,1 @@
-﻿    {
- "role": "assistant",
- "content": "What is 1C:Enterprise?"
-}
+﻿"{\r\n \"role\": \"assistant\",\r\n \"content\": \"What is 1C:Enterprise?\"\r\n}"

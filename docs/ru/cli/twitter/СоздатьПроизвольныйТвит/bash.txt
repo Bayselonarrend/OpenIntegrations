@@ -1,4 +1,4 @@
 oint twitter СоздатьПроизвольныйТвит \
-  --text "\"Тестовый твитт5e38359d-8868-4df8-b58a-83ba4da597ec\"" \
-  --media "\"['1964968504206962688','1964968515833667584']\"" \
-  --auth "\"/tmp/hnbfd5th.utu.json\""
+  --text "Тестовый твитт00510329-a9d1-4bdd-b9de-8e4ae006a014" \
+  --media "["1965029982020755456","1965029992431075328"]" \
+  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"

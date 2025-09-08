@@ -1,4 +1,4 @@
 oint twitter СоздатьТвитГифки \
-  --text "\"Тестовый твитт56a411d4-3104-452a-9f49-de7e98f9f1d7\"" \
-  --gifs "\"/tmp/qpfjnwwd.pdu\"" \
-  --auth "\"/tmp/00o0yri1.snu.json\""
+  --text "Тестовый твитт1d86c626-22ba-421b-bb47-46213de060cb" \
+  --gifs "/tmp/4re4nwke.nal" \
+  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"

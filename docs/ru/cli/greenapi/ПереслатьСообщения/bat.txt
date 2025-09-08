@@ -1,5 +1,5 @@
 oint greenapi ПереслатьСообщения ^
-  --access "\"/tmp/4eqwilly.ki4.json\"" ^
-  --from "\"120363410406221140@g.us\"" ^
-  --to "\"120363410406221140@g.us\"" ^
-  --msgs "\"BAE5EC53535168A6\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
+  --from "120363410406221140@g.us" ^
+  --to "120363410406221140@g.us" ^
+  --msgs "BAE54E9AF77D5DB0"

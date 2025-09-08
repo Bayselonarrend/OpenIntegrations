@@ -3,4 +3,4 @@ oint postgres СформироватьСтрокуПодключения \
   --db "postgres" \
   --login "bayselonarrend" \
   --pass *** \
-  --port 5432
+  --port 5433

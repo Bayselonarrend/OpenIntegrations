@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 16084,
+  "message_id": 16111,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1757319043,
+  "date": 1757333719,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -24,8 +24,8 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 20372,
-   "date": 1757318778
+   "message_id": 20393,
+   "date": 1757333447
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -33,8 +33,8 @@
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 20372,
-  "forward_date": 1757318778,
+  "forward_from_message_id": 20393,
+  "forward_date": 1757333447,
   "text": "Полужирный текст",
   "entities": [
    {

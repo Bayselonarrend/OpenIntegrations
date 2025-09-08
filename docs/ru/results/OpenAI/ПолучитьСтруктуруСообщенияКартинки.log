@@ -1,9 +1,9 @@
-﻿    {
+﻿{
  "role": "user",
  "content": [
   {
    "type": "input_image",
-   "file_id": "file-22"
+   "file_id": "file-6"
   },
   {
    "type": "input_text",

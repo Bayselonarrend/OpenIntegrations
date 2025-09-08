@@ -1,5 +1,5 @@
 oint s3 УстановитьШифрованиеБакета \
-  --name "\"opi-dirbucket3\"" \
-  --basic "\"/tmp/lgx1wmdz.sze.json\"" \
-  --conf "\"<ServerSideEncryptionConfiguration xmlns=\"'\"http://s3.amazonaws.com/doc/2006-03-01/\"'\">\\n    <Rule>\\n        <ApplyServerSideEncryptionByDefault>\\n            <SSEAlgorithm>AES256</SSEAlgorithm>\\n        </ApplyServerSideEncryptionByDefault>\\n    </Rule>\\n</ServerSideEncryptionConfiguration>\"" \
-  --dir "true"
+  --name "opi-dirbucket3" \
+  --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" \
+  --conf "<ServerSideEncryptionConfiguration xmlns="'"http://s3.amazonaws.com/doc/2006-03-01/"'">\n    <Rule>\n        <ApplyServerSideEncryptionByDefault>\n            <SSEAlgorithm>AES256</SSEAlgorithm>\n        </ApplyServerSideEncryptionByDefault>\n    </Rule>\n</ServerSideEncryptionConfiguration>" \
+  --dir true

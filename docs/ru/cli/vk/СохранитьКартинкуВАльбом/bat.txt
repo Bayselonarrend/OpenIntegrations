@@ -1,5 +1,5 @@
 oint vk СохранитьКартинкуВАльбом ^
-  --album "309983058" ^
-  --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
-  --description "\"Картинка автотест\"" ^
-  --auth "\"/tmp/een5ynrj.cn4.json\""
+  --album 309986321 ^
+  --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+  --description "Картинка автотест" ^
+  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"

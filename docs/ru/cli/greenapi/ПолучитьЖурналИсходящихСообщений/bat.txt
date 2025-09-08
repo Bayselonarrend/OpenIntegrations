@@ -1,2 +1,2 @@
 oint greenapi ПолучитьЖурналИсходящихСообщений ^
-  --access "\"/tmp/2v4uegh2.4fc.json\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}"

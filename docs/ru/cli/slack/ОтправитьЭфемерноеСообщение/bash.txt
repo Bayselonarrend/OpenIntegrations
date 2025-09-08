@@ -1,6 +1,6 @@
 oint slack ОтправитьЭфемерноеСообщение \
-  --token "***" \
-  --channel "\"C06UFNUTKUL\"" \
-  --text "\"Эфимерное сообщение\"" \
-  --user "\"U06UABH3APP\"" \
-  --blocks "\"/tmp/ysydz3dp.vjf.json\""
+  --token *** \
+  --channel "C06UFNUTKUL" \
+  --text "Эфимерное сообщение" \
+  --user "U06UABH3APP" \
+  --blocks "{"type":"image","image_url":"https://hut.openintegrations.dev/test_data/picture.jpg","alt_text":"Картинка"}"

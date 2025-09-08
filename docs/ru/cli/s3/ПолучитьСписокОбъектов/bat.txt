@@ -1,4 +1,4 @@
 oint s3 ПолучитьСписокОбъектов ^
-  --bucket "\"opi-dirbucket3\"" ^
-  --basic "\"/tmp/emdjxr1q.tqa.json\"" ^
-  --dir "true"
+  --bucket "opi-dirbucket3" ^
+  --basic "{"URL":"storage-155.s3hoster.by","AccessKey":"***","SecretKey":"***","Region":"BTC","Service":"s3"}" ^
+  --dir true

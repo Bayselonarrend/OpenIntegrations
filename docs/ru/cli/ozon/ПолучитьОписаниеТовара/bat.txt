@@ -1,4 +1,4 @@
 oint ozon ПолучитьОписаниеТовара ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --offerid "\"143210609\""
+  --clientid *** ^
+  --apikey *** ^
+  --offerid "143210609"

@@ -121,8 +121,8 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "2832": {
-   "ID": "2832",
+  "2838": {
+   "ID": "2838",
    "TITLE": "Новая стадия",
    "SORT": "1100",
    "COLOR": "0026FF",
@@ -133,10 +133,22 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "2834": {
-   "ID": "2834",
+  "2840": {
+   "ID": "2840",
    "TITLE": "Новая стадия 2",
    "SORT": "1200",
+   "COLOR": "0026FF",
+   "SYSTEM_TYPE": "",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
+  "2836": {
+   "ID": "2836",
+   "TITLE": "Новая стадия",
+   "SORT": "1300",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -148,7 +160,7 @@
   "2784": {
    "ID": "2784",
    "TITLE": "Новая стадия",
-   "SORT": "1300",
+   "SORT": "1400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -160,7 +172,7 @@
   "2786": {
    "ID": "2786",
    "TITLE": "Новая стадия 2",
-   "SORT": "1400",
+   "SORT": "1500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -172,7 +184,7 @@
   "2782": {
    "ID": "2782",
    "TITLE": "Новая стадия",
-   "SORT": "1500",
+   "SORT": "1600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -184,7 +196,7 @@
   "2760": {
    "ID": "2760",
    "TITLE": "Новая стадия",
-   "SORT": "1600",
+   "SORT": "1700",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -196,7 +208,7 @@
   "2500": {
    "ID": "2500",
    "TITLE": "New stage",
-   "SORT": "1700",
+   "SORT": "1800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -208,7 +220,7 @@
   "1960": {
    "ID": "1960",
    "TITLE": "Новая стадия",
-   "SORT": "1800",
+   "SORT": "1900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -220,7 +232,7 @@
   "1962": {
    "ID": "1962",
    "TITLE": "Новая стадия 2",
-   "SORT": "1900",
+   "SORT": "2000",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -232,7 +244,7 @@
   "1210": {
    "ID": "1210",
    "TITLE": "Новая стадия",
-   "SORT": "2000",
+   "SORT": "2100",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -244,7 +256,7 @@
   "1212": {
    "ID": "1212",
    "TITLE": "Новая стадия 2",
-   "SORT": "2100",
+   "SORT": "2200",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -256,7 +268,7 @@
   "996": {
    "ID": "996",
    "TITLE": "New stage",
-   "SORT": "2200",
+   "SORT": "2300",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -268,7 +280,7 @@
   "994": {
    "ID": "994",
    "TITLE": "New stage",
-   "SORT": "2300",
+   "SORT": "2400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -280,7 +292,7 @@
   "992": {
    "ID": "992",
    "TITLE": "New stage",
-   "SORT": "2400",
+   "SORT": "2500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -292,7 +304,7 @@
   "720": {
    "ID": "720",
    "TITLE": "Новая стадия",
-   "SORT": "2500",
+   "SORT": "2600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -304,7 +316,7 @@
   "494": {
    "ID": "494",
    "TITLE": "New stage name",
-   "SORT": "2600",
+   "SORT": "2700",
    "COLOR": "000000",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -316,7 +328,7 @@
   "496": {
    "ID": "496",
    "TITLE": "New stage 2",
-   "SORT": "2700",
+   "SORT": "2800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -328,7 +340,7 @@
   "264": {
    "ID": "264",
    "TITLE": "Новая стадия",
-   "SORT": "2800",
+   "SORT": "2900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -340,7 +352,7 @@
   "138": {
    "ID": "138",
    "TITLE": "Новая стадия",
-   "SORT": "2900",
+   "SORT": "3000",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -352,7 +364,7 @@
   "140": {
    "ID": "140",
    "TITLE": "Новая стадия 2",
-   "SORT": "3000",
+   "SORT": "3100",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -364,7 +376,7 @@
   "122": {
    "ID": "122",
    "TITLE": "Новая стадия",
-   "SORT": "3100",
+   "SORT": "3200",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -376,7 +388,7 @@
   "124": {
    "ID": "124",
    "TITLE": "Новая стадия 2",
-   "SORT": "3200",
+   "SORT": "3300",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -388,7 +400,7 @@
   "120": {
    "ID": "120",
    "TITLE": "Новая стадия 2",
-   "SORT": "3300",
+   "SORT": "3400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -400,7 +412,7 @@
   "114": {
    "ID": "114",
    "TITLE": "Новая стадия",
-   "SORT": "3400",
+   "SORT": "3500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -412,7 +424,7 @@
   "116": {
    "ID": "116",
    "TITLE": "Новая стадия 2",
-   "SORT": "3500",
+   "SORT": "3600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -424,7 +436,7 @@
   "112": {
    "ID": "112",
    "TITLE": "Новая стадия 2",
-   "SORT": "3600",
+   "SORT": "3700",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -436,7 +448,7 @@
   "108": {
    "ID": "108",
    "TITLE": "Новая стадия 2",
-   "SORT": "3700",
+   "SORT": "3800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -448,7 +460,7 @@
   "104": {
    "ID": "104",
    "TITLE": "Новая стадия 2",
-   "SORT": "3800",
+   "SORT": "3900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -460,7 +472,7 @@
   "100": {
    "ID": "100",
    "TITLE": "Новая стадия 2",
-   "SORT": "3900",
+   "SORT": "4000",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -472,7 +484,7 @@
   "96": {
    "ID": "96",
    "TITLE": "Новая стадия 2",
-   "SORT": "4000",
+   "SORT": "4100",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -484,7 +496,7 @@
   "90": {
    "ID": "90",
    "TITLE": "Новая стадия",
-   "SORT": "4100",
+   "SORT": "4200",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -496,7 +508,7 @@
   "92": {
    "ID": "92",
    "TITLE": "Новая стадия 2",
-   "SORT": "4200",
+   "SORT": "4300",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -508,7 +520,7 @@
   "74": {
    "ID": "74",
    "TITLE": "Новая стадия",
-   "SORT": "4300",
+   "SORT": "4400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -520,7 +532,7 @@
   "76": {
    "ID": "76",
    "TITLE": "Новая стадия 2",
-   "SORT": "4400",
+   "SORT": "4500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -532,7 +544,7 @@
   "70": {
    "ID": "70",
    "TITLE": "Новая стадия",
-   "SORT": "4500",
+   "SORT": "4600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -544,7 +556,7 @@
   "72": {
    "ID": "72",
    "TITLE": "Новая стадия 2",
-   "SORT": "4600",
+   "SORT": "4700",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -556,7 +568,7 @@
   "66": {
    "ID": "66",
    "TITLE": "Новая стадия",
-   "SORT": "4700",
+   "SORT": "4800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -568,7 +580,7 @@
   "68": {
    "ID": "68",
    "TITLE": "Новая стадия 2",
-   "SORT": "4800",
+   "SORT": "4900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -580,7 +592,7 @@
   "62": {
    "ID": "62",
    "TITLE": "Новая стадия",
-   "SORT": "4900",
+   "SORT": "5000",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -592,7 +604,7 @@
   "64": {
    "ID": "64",
    "TITLE": "Новая стадия 2",
-   "SORT": "5000",
+   "SORT": "5100",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -604,7 +616,7 @@
   "46": {
    "ID": "46",
    "TITLE": "Новая стадия",
-   "SORT": "5100",
+   "SORT": "5200",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -616,7 +628,7 @@
   "48": {
    "ID": "48",
    "TITLE": "Новая стадия 2",
-   "SORT": "5200",
+   "SORT": "5300",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -628,7 +640,7 @@
   "42": {
    "ID": "42",
    "TITLE": "Новая стадия",
-   "SORT": "5300",
+   "SORT": "5400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -640,7 +652,7 @@
   "44": {
    "ID": "44",
    "TITLE": "Новая стадия 2",
-   "SORT": "5400",
+   "SORT": "5500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -652,7 +664,7 @@
   "38": {
    "ID": "38",
    "TITLE": "Новая стадия",
-   "SORT": "5500",
+   "SORT": "5600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -664,7 +676,7 @@
   "40": {
    "ID": "40",
    "TITLE": "Новая стадия 2",
-   "SORT": "5600",
+   "SORT": "5700",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -676,7 +688,7 @@
   "34": {
    "ID": "34",
    "TITLE": "Новая стадия",
-   "SORT": "5700",
+   "SORT": "5800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -688,7 +700,7 @@
   "36": {
    "ID": "36",
    "TITLE": "Новая стадия 2",
-   "SORT": "5800",
+   "SORT": "5900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -700,7 +712,7 @@
   "2": {
    "ID": "2",
    "TITLE": "Не спланированы",
-   "SORT": "5900",
+   "SORT": "6000",
    "COLOR": "00C4FB",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -712,7 +724,7 @@
   "4": {
    "ID": "4",
    "TITLE": "Сделаю на неделе",
-   "SORT": "6000",
+   "SORT": "6100",
    "COLOR": "47D1E2",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -723,13 +735,13 @@
   }
  },
  "time": {
-  "start": 1757323311.90055,
-  "finish": 1757323311.93318,
-  "duration": 0.0326352119445801,
-  "processing": 0.00239706039428711,
-  "date_start": "2025-09-08T09:21:51+00:00",
-  "date_finish": "2025-09-08T09:21:51+00:00",
-  "operating_reset_at": 1757323911,
+  "start": 1757338729.34154,
+  "finish": 1757338729.37826,
+  "duration": 0.0367288589477539,
+  "processing": 0.00188493728637695,
+  "date_start": "2025-09-08T13:38:49+00:00",
+  "date_finish": "2025-09-08T13:38:49+00:00",
+  "operating_reset_at": 1757339329,
   "operating": 0
  }
 }

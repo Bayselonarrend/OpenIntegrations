@@ -1,4 +1,4 @@
 oint ozon ИзменитьАртикулыТоваров \
-  --clientid "***" \
-  --apikey "***" \
-  --offers "\"/tmp/i05ao2ns.thr.json\""
+  --clientid *** \
+  --apikey *** \
+  --offers "{"143210612":"143210609"}"

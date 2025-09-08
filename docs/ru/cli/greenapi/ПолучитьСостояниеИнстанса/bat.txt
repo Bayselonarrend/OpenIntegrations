@@ -1,2 +1,2 @@
 oint greenapi ПолучитьСостояниеИнстанса ^
-  --access "\"/tmp/men5x3jg.yok.json\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}"

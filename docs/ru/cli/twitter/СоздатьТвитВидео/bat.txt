@@ -1,4 +1,4 @@
 oint twitter СоздатьТвитВидео ^
-  --text "\"Тестовый твитт1a082441-d287-4836-b586-370d9d8af484\"" ^
-  --videos "\"/tmp/2ixhl5sl.lu2\"" ^
-  --auth "\"/tmp/yvyv5ir1.inp.json\""
+  --text "Тестовый твиттce66a1ea-1683-4d28-ad14-6c30bbd78c0b" ^
+  --videos "/tmp/vpzu13vj.ofw" ^
+  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
