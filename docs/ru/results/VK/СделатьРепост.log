@@ -1,1 +1,15 @@
-﻿Соответствие
+﻿    {
+ "response": {
+  "success": 1,
+  "post_id": 4540,
+  "reposts_count": 3,
+  "likes_count": 10,
+  "wall_repost_count": 1,
+  "mail_repost_count": 2,
+  "badges": {
+   "type": 11,
+   "id": 2571,
+   "owner_id": -218704372
+  }
+ }
+}

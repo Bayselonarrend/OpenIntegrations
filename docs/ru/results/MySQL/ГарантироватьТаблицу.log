@@ -1,1 +1,6 @@
-﻿Структура
+﻿    {
+ "result": true,
+ "commit": {
+  "result": true
+ }
+}
