@@ -60,24 +60,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ДобавитьСтадиюКанбана \
-              --url "\"b24-ar17wx.bitrix24.by\"" \
-              --title "\"Новая стадия 2\"" \
-              --color "\"0026FF\"" \
-              --prevstage "2832" \
-              --admin "true" \
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} \
+              --title "Новая стадия" \
+              --color "0026FF" \
+              --prevstage 6
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ДобавитьСтадиюКанбана ^
-              --url "\"b24-ar17wx.bitrix24.by\"" ^
-              --title "\"Новая стадия 2\"" ^
-              --color "\"0026FF\"" ^
-              --prevstage "2832" ^
-              --admin "true" ^
-              --token "***"
+              --url {"error":"ERROR_METHOD_NOT_FOUND","error_description":"Method not found!"} ^
+              --title "Новая стадия" ^
+              --color "0026FF" ^
+              --prevstage 6
         ```
     </TabItem>
 </Tabs>
