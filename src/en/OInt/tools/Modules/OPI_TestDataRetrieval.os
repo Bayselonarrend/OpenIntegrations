@@ -544,6 +544,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     LaunchString = Oint + " " + Library + " " + Method;
     AddOptions   = New Structure;
+    WriteOptions = New Structure;
 
     For Each Option In Options Do
 
@@ -559,15 +560,21 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
             + " "
             + CurrentValue;
 
+        WriteOptions.Insert(Option.Key, CurrentValue);
+
     EndDo;
 
     For Each AddOption In AddOptions Do
+
+        CurrentValue = GetCLIFormedValue(AddOption.Value);
 
         LaunchString = LaunchString
             + " --"
             + AddOption.Key
             + " "
-            + GetCLIFormedValue(AddOption.Value);
+            + CurrentValue;
+
+        WriteOptions.Insert(AddOption.Key, CurrentValue);
 
     EndDo;
 
@@ -578,7 +585,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
     Result = ReadCLIResponse(ResultFile);
 
     If Record Then
-        WriteCLICall(Library, Method, Options);
+        WriteCLICall(Library, Method, WriteOptions);
     EndIf;
 
     Try
@@ -10991,6 +10998,7 @@ Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters
         If TypeOf(Result) = Type("Structure") Then
 
             ExpectsThat(Result.Property("set")).Равно(True);
+            Result["set"]["password"] = "***";
 
             If FTPS Then
                 ExpectsThat(Result.Property("tls")).Равно(True);
@@ -10998,11 +11006,13 @@ Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters
 
             If UseProxy Then
                 ExpectsThat(Result.Property("proxy")).Равно(True);
+                Result["proxy"]["password"] = "***";
             EndIf;
 
         Else
 
             ExpectsThat(Result["set"] <> Undefined).Равно(True);
+            Result["set"]["password"] = "***";
 
             If FTPS Then
                 ExpectsThat(Result["tls"] <> Undefined).Равно(True);
@@ -11010,6 +11020,7 @@ Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters
 
             If UseProxy Then
                 ExpectsThat(Result["proxy"] <> Undefined).Равно(True);
+                Result["proxy"]["password"] = "***";
             EndIf;
 
         EndIf;
@@ -11054,6 +11065,8 @@ Function Check_FTP_GetConnectionSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
+    Result["password"] = "***";
+
     Return Result;
 
 EndFunction
@@ -11061,6 +11074,8 @@ EndFunction
 Function Check_FTP_GetProxySettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Result["password"] = "***";
 
     Return Result;
 
@@ -11536,13 +11551,14 @@ EndFunction
 
 // BSLLS:CognitiveComplexity-on
 
-Function FormOption(Val Value, Val Name, Val Embedded = False)
+Function FormOption(Val Name, Val Value, Embedded = False)
 
     SecretsArray = New Array();
     SecretsArray.Add("token");
     SecretsArray.Add("key");
     SecretsArray.Add("secret");
     SecretsArray.Add("pass");
+    SecretsArray.Add("password");
     SecretsArray.Add("client");
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
@@ -11550,15 +11566,7 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
     ReplaceStructure = New Map;
     ReplaceStructure.Insert("host.docker.internal", "127.0.0.1");
 
-    If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
-
-        Value = FormOptionCollection(Value);
-
-    ElsIf TypeOf(Value) = Type("Array") Then
-
-        Value = FormOptionArray(Value, Name);
-
-    Else
+    If TypeOf(Value) = Type("String") Then
 
         For Each SecretKey In SecretsArray Do
 
@@ -11572,39 +11580,54 @@ Function FormOption(Val Value, Val Name, Val Embedded = False)
             Value = StrReplace(Value, ReplaceValue.Key, ReplaceValue.Value);
         EndDo;
 
+        ValueAsString = Value;
+        OPI_TypeConversion.GetCollection(Value);
+
+    Else
+        ValueAsString = "-----------!!!!№№№---------------";
     EndIf;
 
-    If Not Embedded Then
-        Value = "--" + Name + " " + GetCLIFormedValue(Value, False);
+    If TypeOf(Value) = Type("Array") Then
+
+        If String(Value[0]) = ValueAsString Then
+            Value           = ValueAsString;
+        Else
+
+            For N        = 0 To Value.UBound() Do
+                Value[N] = FormOption("", Value[N], True);
+            EndDo;
+
+        EndIf;
+
+    ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
+
+        Value_ = New(TypeOf(Value));
+
+        For Each KeyValue In Value Do
+            Value_.Insert(KeyValue.Key, FormOption(KeyValue.Key, KeyValue.Value, True));
+        EndDo;
+
+        Value = Value_;
+
+    Else
+
+        OPI_TypeConversion.GetLine(Value);
+
     EndIf;
 
-    Return Value;
+    If Embedded Then
+        Return Value;
+    Else
 
-EndFunction
+        Try
+            Value = OPI_Tools.JSONString(Value, , False);
+        Except
+            Value = String(Value);
+        EndTry;
 
-Function FormOptionCollection(Val Value)
+        Return "--" + Name + " " + Value;
 
-    Value_ = ?(TypeOf(Value) = Type("Structure"), New Structure, New Map);
-
-    For Each Element In Value Do
-
-        Value_.Insert(Element.Key, FormOption(Element.Value, Element.Key, True));
-
-    EndDo;
-
-    Return Value_;
-
-EndFunction
-
-Function FormOptionArray(Val Value, Val Name)
-
-    Value_ = New Array;
-
-    For Each Element In Value Do
-        Value_.Add(FormOption(Element, Name, True));
-    EndDo;
-
-    Return Value_;
+    EndIf;
 
 EndFunction
 
@@ -11689,22 +11712,12 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     For Each Option In Options Do
 
-        If TypeOf(Option.Value)     = Type("Structure")
-            Or TypeOf(Option.Value) = Type("Map") Then
-
-                FindJSON = True;
-
-        EndIf;
-
         CurrentOption = Option.Value;
 
-        If CurrentOption <> Undefined Then
+        ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
 
-            ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
-            CurrentOption = FormOption(CurrentOption, Option.Key);
-            OptionsArray.Add(CurrentOption);
-
-        EndIf;
+        CurrentOption = FormOption(Option.Key, CurrentOption);
+        OptionsArray.Add(CurrentOption);
 
     EndDo;
 
@@ -11932,7 +11945,7 @@ Procedure ProcessSecretsMySQLOllama(Val Option, Value)
 
     If Option = "headers" Then
 
-        Value = New Structure("Authorization", "***");
+        Value = OPI_Tools.JSONString(New Structure("Authorization", "***"));
 
     Else
         Return;
