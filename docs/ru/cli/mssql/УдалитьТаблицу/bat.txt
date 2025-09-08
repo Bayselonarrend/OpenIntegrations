@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql УдалитьТаблицу ^
-  --table "test_data" ^
+  --table "\"test_data\"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls "/tmp/ejcfa52w.4gy.json"
+  --tls "\"/tmp/y24vnq1s.jnf.json\""

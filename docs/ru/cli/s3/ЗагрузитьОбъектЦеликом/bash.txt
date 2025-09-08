@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ЗагрузитьОбъектЦеликом \
-  --name "pictureSmall.jpg" \
-  --bucket "opi-dirbucket3" \
-  --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
-  --basic "/tmp/khyp0ze1.lnc.json" \
-  --dir "True"
+  --name "\"pictureSmall.jpg\"" \
+  --bucket "\"opi-dirbucket3\"" \
+  --data "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" \
+  --basic "\"/tmp/a1xoxan3.zgx.json\"" \
+  --dir "true"

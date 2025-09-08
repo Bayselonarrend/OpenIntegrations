@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon СоздатьЧерновикЗаявкиFBO ^
   --clientid "***" ^
   --apikey "***" ^
   --clusters "2" ^
-  --items "/tmp/dzepwtza.ps5.json"
+  --items "\"/tmp/2cdhxynn.pql.json\""

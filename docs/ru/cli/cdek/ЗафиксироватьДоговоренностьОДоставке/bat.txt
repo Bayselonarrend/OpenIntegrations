@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint cdek ЗафиксироватьДоговоренностьОДоставке ^
   --token "***" ^
-  --appt "/tmp/ap2qxyco.ge3.json" ^
+  --appt "\"/tmp/r5mwv5in.h34.json\"" ^
   --testapi "***"

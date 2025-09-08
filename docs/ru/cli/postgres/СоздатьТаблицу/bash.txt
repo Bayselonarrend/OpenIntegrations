@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint postgres СоздатьТаблицу \
-  --table "somename" \
-  --cols "/tmp/scvkaq1s.bpc.json" \
+  --table "\"somename\"" \
+  --cols "\"/tmp/2nw4otrd.hna.json\"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "/tmp/tbl2jepc.5sk.json"
+  --tls "\"/tmp/eg42vikr.l5f.json\""

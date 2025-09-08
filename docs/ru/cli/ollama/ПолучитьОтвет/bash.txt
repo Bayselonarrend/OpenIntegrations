@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint ollama ПолучитьОтвет \
-  --url "https://hut.openintegrations.dev/ollama" \
-  --model "mario" \
-  --prompt "How are you?" \
-  --headers "/tmp/ni5jyuo0.qkw.json"
+  --url "\"https://hut.openintegrations.dev/ollama\"" \
+  --model "\"mario\"" \
+  --prompt "\"How are you?\"" \
+  --headers {"Authorization":"***"}

@@ -1,4 +1,4 @@
-﻿    {
+﻿{
  "args": {},
  "data": "...",
  "files": {},
@@ -10,8 +10,8 @@
   "Content-Length": "2114023",
   "Content-Type": "application/octet-stream",
   "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
-  "X-Amzn-Trace-Id": "Root=1-6824364e-107a21fc1e7d04a5455e4509"
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68beab37-26f08aaa2086f6a874911f24"
  },
  "json": null,
  "origin": "***",

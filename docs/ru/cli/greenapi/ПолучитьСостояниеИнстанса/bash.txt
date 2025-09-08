@@ -1,4 +1,2 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ПолучитьСостояниеИнстанса \
-  --access "/tmp/f3si2kh3.k4v.json"
+  --access "\"/tmp/men5x3jg.yok.json\""

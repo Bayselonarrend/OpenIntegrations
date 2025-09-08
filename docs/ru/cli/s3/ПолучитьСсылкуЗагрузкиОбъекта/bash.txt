@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ПолучитьСсылкуЗагрузкиОбъекта \
-  --name "pictureU.jpg" \
-  --bucket "newbucket2" \
-  --basic "/tmp/khan4qoz.sky.json" \
+  --name "\"pictureU.jpg\"" \
+  --bucket "\"newbucket2\"" \
+  --basic "\"/tmp/dqjcucel.tbu.json\"" \
   --expires "7200" \
-  --dir "True"
+  --dir "true"

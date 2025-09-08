@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint telegram ЗаменитьКлавиатуруСообщения ^
   --token "***" ^
-  --chat "461699897" ^
-  --message "16021" ^
-  --keyboard "/tmp/ymiqx5g0.txt.json"
+  --chat "\"461699897\"" ^
+  --message "\"16069\"" ^
+  --keyboard "***"

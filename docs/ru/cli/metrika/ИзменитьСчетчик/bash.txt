@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint metrika ИзменитьСчетчик \
   --token "***" \
-  --counter "104061424" \
-  --fields "/tmp/qnzxf5a2.xa1.json"
+  --counter "\"104069052\"" \
+  --fields "\"/tmp/uwd44v2h.3qr.json\""

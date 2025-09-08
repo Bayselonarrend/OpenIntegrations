@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint ollama ПолучитьСписокЗапущенныхМоделей \
-  --url "https://hut.openintegrations.dev/ollama" \
-  --headers "/tmp/4iutnldu.vg4.json"
+  --url "\"https://hut.openintegrations.dev/ollama\"" \
+  --headers {"Authorization":"***"}

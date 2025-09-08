@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint openai ПолучитьСписокАссистентов ^
-  --url "https://hut.openintegrations.dev/localai/" ^
+  --url "\"https://hut.openintegrations.dev/localai/\"" ^
   --token "***" ^
   --limit "2" ^
-  --options "/tmp/ir5e2ewa.xcu.json"
+  --options "\"/tmp/x3swqfim.y2x.json\""

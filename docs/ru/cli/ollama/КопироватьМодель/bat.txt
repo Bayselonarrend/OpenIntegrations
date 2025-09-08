@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ollama КопироватьМодель ^
-  --url "https://hut.openintegrations.dev/ollama" ^
-  --model "mario" ^
-  --name "mario2" ^
-  --headers "/tmp/kl1zcvzb.bfp.json"
+  --url "\"https://hut.openintegrations.dev/ollama\"" ^
+  --model "\"mario\"" ^
+  --name "\"mario2\"" ^
+  --headers {"Authorization":"***"}

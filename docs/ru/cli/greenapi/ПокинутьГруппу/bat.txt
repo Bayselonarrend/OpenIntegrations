@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ПокинутьГруппу ^
-  --access "/tmp/xteormwd.u4t.json" ^
-  --group "120363419286273158@g.us"
+  --access "\"/tmp/fn2wxipf.sed.json\"" ^
+  --group "\"120363419907285192@g.us\""

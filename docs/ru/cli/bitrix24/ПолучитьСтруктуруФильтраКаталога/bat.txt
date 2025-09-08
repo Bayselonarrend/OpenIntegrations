@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСтруктуруФильтраКаталога ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --empty "True" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --empty "true" ^
   --token "***"

@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mssql ПолучитьЗаписи \
-  --table "testtable" \
+  --table "\"testtable\"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls "/tmp/ssqiujce.ogd.json"
+  --tls "\"/tmp/i3ikcet3.fce.json\""

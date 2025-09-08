@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint postgres ДобавитьКолонкуТаблицы \
-  --table "testtable" \
-  --name "new_field" \
-  --type "TEXT" \
+  --table "\"testtable\"" \
+  --name "\"new_field\"" \
+  --type "\"TEXT\"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "/tmp/vqfqygak.0tx.json"
+  --tls "\"/tmp/l0kef3lu.tdz.json\""

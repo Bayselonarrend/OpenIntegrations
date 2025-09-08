@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ВыполнитьЗапросSQL ^
-  --sql "SELECT uuid4();" ^
-  --db "OneScript.StandardLibrary.NativeApi.NativeApiComponent" ^
-  --exts "/tmp/2wva3agn.hrh.json"
+  --sql "\"SELECT uuid4();\"" ^
+  --db "\"/tmp/rbdfzunz.ivj.sqlite\"" ^
+  --exts "\"/tmp/ksxlsbf2.fnd.json\""

@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint metrika ПолучитьСписокСчетчиков \
   --token "***" \
-  --filter "/tmp/1qxtx02r.uj4.json"
+  --filter "\"/tmp/ozs25vj4.tlm.json\""

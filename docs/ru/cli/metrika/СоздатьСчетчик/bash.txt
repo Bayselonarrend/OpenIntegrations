@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint metrika СоздатьСчетчик \
   --token "***" \
-  --fields "/tmp/5vp3rrx0.alu.json"
+  --fields "\"/tmp/4khzcz4r.g5i.json\""

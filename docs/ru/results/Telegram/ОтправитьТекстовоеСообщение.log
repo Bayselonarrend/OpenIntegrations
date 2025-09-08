@@ -1,7 +1,7 @@
-﻿    {
+﻿{
  "ok": true,
  "result": {
-  "message_id": 8274,
+  "message_id": 16069,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -11,11 +11,27 @@
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728408204,
-  "text": "Строковое значение"
+  "date": 1757318775,
+  "text": "Строковое значение",
+  "reply_markup": {
+   "inline_keyboard": [
+    [
+     {
+      "text": "Кнопка1",
+      "callback_data": "Кнопка1"
+     }
+    ],
+    [
+     {
+      "text": "Кнопка2",
+      "callback_data": "Кнопка2"
+     }
+    ]
+   ]
+  }
  }
 }

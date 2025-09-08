@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint slack ОтправитьЭфемерноеСообщение ^
   --token "***" ^
-  --channel "C06UFNUTKUL" ^
-  --text "Эфимерное сообщение" ^
-  --user "U06UABH3APP" ^
-  --blocks "/tmp/cxbpidvj.eyr.json"
+  --channel "\"C06UFNUTKUL\"" ^
+  --text "\"Эфимерное сообщение\"" ^
+  --user "\"U06UABH3APP\"" ^
+  --blocks "\"/tmp/ysydz3dp.vjf.json\""

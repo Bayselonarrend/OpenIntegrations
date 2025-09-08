@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint gcalendar СоздатьСобытие \
   --token "***" \
-  --calendar "f1ace000b17ff3c6548344189d1ecfda7efb38ca45bc247125065b6056d96f85@group.calendar.google.com" \
-  --props "/tmp/yfg5k1ax.jrq.json"
+  --calendar "\"87282ec2b68db8322b876e7f144814614005885191a00e17cf3b2f13409ae3d3@group.calendar.google.com\"" \
+  --props "\"/tmp/d4fem0lj.2lx.json\""

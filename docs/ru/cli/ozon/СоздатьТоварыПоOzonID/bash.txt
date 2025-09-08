@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint ozon СоздатьТоварыПоOzonID \
   --clientid "***" \
   --apikey "***" \
-  --items "/tmp/r5gaudsu.11r.json"
+  --items "\"/tmp/r12jyrlj.upv.json\""

@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 ИзменитьСобытиеКалендаря \
-  --url "b24-ar17wx.bitrix24.by" \
-  --event "2264" \
-  --fields "/tmp/zeauus50.kek.json" \
+  --url "\"b24-ar17wx.bitrix24.by\"" \
+  --event "2288" \
+  --fields "\"/tmp/3xvif40f.cjd.json\"" \
   --token "***"

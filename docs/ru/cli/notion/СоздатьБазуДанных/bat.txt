@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint notion СоздатьБазуДанных ^
   --token "***" ^
-  --page "5dd94c34fab04bff986b7511c0779f77" ^
-  --title "Тестовый заголовок" ^
-  --props "/tmp/1fitduve.ivy.json"
+  --page "\"5dd94c34fab04bff986b7511c0779f77\"" ^
+  --title "\"Тестовый заголовок\"" ^
+  --props "\"/tmp/gnte5vah.35m.json\""

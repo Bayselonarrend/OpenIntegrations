@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql УдалитьТаблицу \
-  --table "test_data" \
+  --table "\"test_data\"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "/tmp/sndmkctj.ttl.json"
+  --tls "\"/tmp/4r331v1p.1ks.json\""

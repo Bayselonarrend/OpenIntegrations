@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint telegram ОтправитьКартинку ^
   --token "***" ^
-  --chat "@testsichee" ^
-  --text "Строковое значение" ^
-  --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --keyboard "/tmp/xgac0vam.c2v.json"
+  --chat "\"@testsichee\"" ^
+  --text "\"Строковое значение\"" ^
+  --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+  --keyboard "***"

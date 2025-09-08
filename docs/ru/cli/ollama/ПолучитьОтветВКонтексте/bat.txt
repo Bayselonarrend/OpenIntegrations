@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ollama ПолучитьОтветВКонтексте ^
-  --url "https://hut.openintegrations.dev/ollama" ^
-  --model "tinyllama" ^
-  --msgs "[{'role':'user','content':'Hello!'}]" ^
-  --options "/tmp/4fy1opji.nep.json" ^
-  --headers "/tmp/aoystnlz.1yn.json"
+  --url "\"https://hut.openintegrations.dev/ollama\"" ^
+  --model "\"tinyllama\"" ^
+  --msgs "\"[{'role':'user','content':'Hello!'}]\"" ^
+  --options "\"/tmp/s5j0flwc.kvm.json\"" ^
+  --headers {"Authorization":"***"}

@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk ПолучитьСтатистикуПостов \
-  --posts "['214','215']" \
-  --auth "/tmp/st4vbbcw.boi.json"
+  --posts "\"[214,215]\"" \
+  --auth "\"/tmp/tlqoc0yz.gyt.json\""

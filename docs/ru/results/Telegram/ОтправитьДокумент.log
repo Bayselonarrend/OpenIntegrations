@@ -1,7 +1,7 @@
-﻿    {
+﻿{
  "ok": true,
  "result": {
-  "message_id": 8279,
+  "message_id": 16076,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -11,16 +11,16 @@
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728408314,
+  "date": 1757318933,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAIgV2cFavr7Sbt50mNnaTLorEcjT60bAAKLXQAC_cgwSJNNK5mZj9GxNgQ",
-   "file_unique_id": "AgADi10AAv3IMEg",
+   "file_id": "BQACAgIAAxkDAAI-zGi-jxWwEWysicRAylUEM6id42uOAAIOmQACS-_wSdllcb1oy0GaNgQ",
+   "file_unique_id": "AgADDpkAAkvv8Ek",
    "file_size": 24069
   },
   "caption": "Строковое значение"

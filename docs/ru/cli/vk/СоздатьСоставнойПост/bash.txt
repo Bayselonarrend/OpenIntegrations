@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СоздатьСоставнойПост \
-  --text "Пост из автотеста" \
-  --objects "['photo657846756_457248386','video-218861756_456240723']" \
-  --ad "False" \
-  --url "https://github.com/Bayselonarrend/OpenIntegrations" \
-  --auth "/tmp/iiky3pzi.mbg.json"
+  --text "\"Пост из автотеста\"" \
+  --objects "\"['photo657846756_457248407','video-218861756_456240729']\"" \
+  --ad "false" \
+  --url "\"https://github.com/Bayselonarrend/OpenIntegrations\"" \
+  --auth "\"/tmp/nl0kavjc.n00.json\""

@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ОтозватьПраваАдминистратора \
-  --access "/tmp/txpitxak.toy.json" \
-  --group "120363419286273158@g.us" \
-  --user "123123123@c.us"
+  --access "\"/tmp/tx4dferb.bg4.json\"" \
+  --group "\"120363419907285192@g.us\"" \
+  --user "\"123123123@c.us\""

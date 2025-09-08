@@ -1,30 +1,15 @@
-﻿    {
- "result": {
-  "pictures": [
-   {
-    "product_id": 1215208579,
-    "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
-    "state": "imported",
-    "is_primary": true,
-    "is_360": false,
-    "is_color": false
-   },
-   {
-    "product_id": 1215208579,
-    "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": false
-   },
-   {
-    "product_id": 1215208579,
-    "url": "GREEN",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": true
-   }
-  ]
- }
+﻿{
+ "items": [
+  {
+   "product_id": 2667207757,
+   "primary_photo": [],
+   "photo": [
+    "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "https://hut.openintegrations.dev/test_data/picture2.jpg"
+   ],
+   "color_photo": [],
+   "photo_360": [],
+   "errors": []
+  }
+ ]
 }

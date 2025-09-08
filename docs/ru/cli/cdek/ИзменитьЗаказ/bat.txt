@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint cdek ИзменитьЗаказ ^
   --token "***" ^
-  --uuid "a52a56d1-b897-4f75-958a-457bdd3a68f2" ^
-  --order "/tmp/0bjwxti2.v2o.json" ^
+  --uuid "\"af71f431-c74b-45e1-9466-a0bf4fabaf0f\"" ^
+  --order "\"/tmp/ogdeggup.ugc.json\"" ^
   --testapi "***"

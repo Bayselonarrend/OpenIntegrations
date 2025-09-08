@@ -1,4 +1,2 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ПолучитьУведомление \
-  --access "/tmp/ixdnzj40.dm2.json"
+  --access "\"/tmp/bumbu5ar.ldj.json\""

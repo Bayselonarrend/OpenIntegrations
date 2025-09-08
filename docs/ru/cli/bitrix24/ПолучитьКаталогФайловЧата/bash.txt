@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьКаталогФайловЧата \
-  --url "b24-ar17wx.bitrix24.by" \
-  --chat "2998" \
+  --url "\"b24-ar17wx.bitrix24.by\"" \
+  --chat "3010" \
   --token "***"

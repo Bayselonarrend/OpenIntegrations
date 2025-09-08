@@ -1,4 +1,2 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint ftp ПолучитьПриветственноеСообщение ^
-  --conn "/tmp/p01avmqo.ue1.json"
+  --conn "\"/tmp/cfbaopn0.dd0.json\""

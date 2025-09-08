@@ -1,5 +1,3 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СоздатьСвойствоТовара ^
-  --title "Цвет" ^
-  --auth "/tmp/pajrpfvt.p3v.json"
+  --title "\"Цвет\"" ^
+  --auth "\"/tmp/tbbmevwe.asp.json\""
