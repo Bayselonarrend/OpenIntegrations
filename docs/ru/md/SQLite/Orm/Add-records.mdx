@@ -72,23 +72,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint sqlite ДобавитьЗаписи \
-              --table "test1" \
-              --rows "/tmp/x1wcji54.aip.json" \
-              --db "/tmp/poau1xgn.nve.sqlite"
+              --table "\"test1\"" \
+              --rows "\"/tmp/mvbchg1i.qiw.json\"" \
+              --db "\"/tmp/qrghnbz3.tqj.sqlite\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint sqlite ДобавитьЗаписи ^
-              --table "test1" ^
-              --rows "/tmp/x1wcji54.aip.json" ^
-              --db "/tmp/poau1xgn.nve.sqlite"
+              --table "\"test1\"" ^
+              --rows "\"/tmp/mvbchg1i.qiw.json\"" ^
+              --db "\"/tmp/qrghnbz3.tqj.sqlite\""
         ```
     </TabItem>
 </Tabs>
@@ -96,6 +92,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
+ "commit": {
+  "result": true
+ },
  "result": true,
  "rows": 2,
  "errors": []

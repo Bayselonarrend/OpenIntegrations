@@ -59,16 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres СоздатьБазуДанных \
-              --base "testbase2" \
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --base "\"testbase2\"" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "\"/tmp/q0hvyvqw.qwz.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres СоздатьБазуДанных ^
-              --base "testbase2" ^
-              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+              --base "\"testbase2\"" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "\"/tmp/q0hvyvqw.qwz.json\""
         ```
     </TabItem>
 </Tabs>

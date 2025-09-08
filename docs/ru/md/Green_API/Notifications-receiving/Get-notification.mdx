@@ -48,19 +48,15 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint greenapi ПолучитьУведомление \
-              --access "/tmp/ixdnzj40.dm2.json"
+              --access "\"/tmp/bumbu5ar.ldj.json\""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint greenapi ПолучитьУведомление ^
-              --access "/tmp/ixdnzj40.dm2.json"
+              --access "\"/tmp/bumbu5ar.ldj.json\""
         ```
     </TabItem>
 </Tabs>
@@ -76,19 +72,36 @@ import TabItem from '@theme/TabItem';
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1742209236,
-  "idMessage": "BAE5E9E56D57384A",
+  "timestamp": 1757245412,
+  "idMessage": "BAE5A97E34AD7B23",
   "senderData": {
    "chatId": "120363410406221140@g.us",
-   "chatName": "",
+   "chatName": "Основная тестовая группа",
    "sender": "1234567890@c.us",
    "senderName": "",
    "senderContactName": ""
   },
   "messageData": {
-   "typeMessage": "deletedMessage",
-   "deletedMessageData": {
-    "stanzaId": "BAE5AAD2EA20EEFD"
+   "typeMessage": "quotedMessage",
+   "extendedTextMessageData": {
+    "text": "Новое сообщение",
+    "stanzaId": "BAE558ED2F10F164",
+    "participant": "1234567890@c.us"
+   },
+   "quotedMessage": {
+    "stanzaId": "BAE558ED2F10F164",
+    "participant": "1234567890@c.us",
+    "typeMessage": "extendedTextMessage",
+    "textMessage": "Новое сообщение",
+    "extendedTextMessage": {
+     "text": "Новое сообщение",
+     "description": "",
+     "title": "",
+     "previewType": "None",
+     "jpegThumbnail": "",
+     "forwardingScore": 0,
+     "isForwarded": false
+    }
    }
   }
  }
