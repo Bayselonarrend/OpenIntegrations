@@ -1,1 +1,8 @@
-﻿Соответствие
+﻿    {
+ "spreadsheetId": "1DOVr33ZTV_T3AroyEg7gHrpCYHIpV52K_TmXdgpDwgM",
+ "clearedRanges": [
+  "'Лист2'!B2",
+  "'Лист2'!A3",
+  "'Лист2'!B4"
+ ]
+}

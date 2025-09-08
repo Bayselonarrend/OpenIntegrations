@@ -1,1 +1,4 @@
-﻿AddIn.OPI_FTP.Main
+﻿    {
+ "error": "Connection error: Resource temporarily unavailable (os error 11)",
+ "result": false
+}

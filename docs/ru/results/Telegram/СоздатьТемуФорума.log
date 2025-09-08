@@ -1,1 +1,9 @@
-﻿Соответствие
+﻿    {
+ "ok": true,
+ "result": {
+  "message_thread_id": 5385,
+  "name": "Тестовая тема 6ff88eef-fb83-4761-9cdd-315c7420af44",
+  "icon_color": 7322096,
+  "icon_custom_emoji_id": "5357419403325481346"
+ }
+}
