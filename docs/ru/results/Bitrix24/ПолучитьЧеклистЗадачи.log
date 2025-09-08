@@ -1,1 +1,42 @@
-﻿Соответствие
+﻿    {
+ "result": [
+  {
+   "ID": "1442",
+   "TASK_ID": "2378",
+   "PARENT_ID": 0,
+   "CREATED_BY": "1",
+   "TITLE": "BX_CHECKLIST_1",
+   "SORT_INDEX": "0",
+   "IS_COMPLETE": "N",
+   "IS_IMPORTANT": "N",
+   "TOGGLED_BY": null,
+   "TOGGLED_DATE": "",
+   "MEMBERS": [],
+   "ATTACHMENTS": []
+  },
+  {
+   "ID": "1444",
+   "TASK_ID": "2378",
+   "PARENT_ID": "1442",
+   "CREATED_BY": "1",
+   "TITLE": "Новый текст пункта чек-листа",
+   "SORT_INDEX": "1",
+   "IS_COMPLETE": "N",
+   "IS_IMPORTANT": "N",
+   "TOGGLED_BY": null,
+   "TOGGLED_DATE": "",
+   "MEMBERS": [],
+   "ATTACHMENTS": []
+  }
+ ],
+ "time": {
+  "start": 1728409731.79594,
+  "finish": 1728409731.84521,
+  "duration": 0.0492649078369141,
+  "processing": 0.0217220783233643,
+  "date_start": "2024-10-08T20:48:51+03:00",
+  "date_finish": "2024-10-08T20:48:51+03:00",
+  "operating_reset_at": 1728410331,
+  "operating": 0
+ }
+}

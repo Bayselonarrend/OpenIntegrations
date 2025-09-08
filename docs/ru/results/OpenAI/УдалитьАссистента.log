@@ -1,1 +1,5 @@
-﻿Соответствие
+﻿    {
+ "id": "asst_5",
+ "object": "assistant.deleted",
+ "deleted": true
+}

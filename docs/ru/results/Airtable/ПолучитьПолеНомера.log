@@ -1,1 +1,7 @@
-﻿Структура
+﻿    {
+ "name": "Номер",
+ "type": "number",
+ "options": {
+  "precision": 0
+ }
+}
