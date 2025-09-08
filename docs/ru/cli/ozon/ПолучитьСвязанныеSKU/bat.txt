@@ -1,4 +1,4 @@
 oint ozon ПолучитьСвязанныеSKU ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --sku "1626044001"
+  --clientid *** ^
+  --apikey *** ^
+  --sku 1626044001

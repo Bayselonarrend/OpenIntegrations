@@ -2,7 +2,7 @@
  "result": {
   "items": [
    {
-    "product_id": 2667207757,
+    "product_id": 2673586529,
     "offer_id": "143210609",
     "has_fbo_stocks": false,
     "has_fbs_stocks": false,
@@ -11,7 +11,7 @@
     "quants": []
    },
    {
-    "product_id": 2667207800,
+    "product_id": 2673586550,
     "offer_id": "1432106010",
     "has_fbo_stocks": false,
     "has_fbs_stocks": false,
@@ -21,6 +21,6 @@
    }
   ],
   "total": 2,
-  "last_id": "WzI2NjcyMDc4MDAsMjY2NzIwNzgwMF0="
+  "last_id": "WzI2NzM1ODY1NTAsMjY3MzU4NjU1MF0="
  }
 }

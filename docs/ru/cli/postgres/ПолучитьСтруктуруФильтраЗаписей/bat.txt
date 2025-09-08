@@ -1,2 +1,2 @@
 oint postgres ПолучитьСтруктуруФильтраЗаписей ^
-  --empty "true"
+  --empty true

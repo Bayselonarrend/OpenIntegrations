@@ -1,5 +1,5 @@
 oint twitter СоздатьТвитОпрос ^
-  --text "\"Тестовый твиттa76b8553-bc7b-47a5-90c2-5dc75c1f51b5\"" ^
-  --options "\"['Вариант 1','Вариант 2']\"" ^
-  --duration "60" ^
-  --auth "\"/tmp/wahkzmi0.bfs.json\""
+  --text "Тестовый твитт59e795a8-86b9-4d93-8b57-1f9cb2012dde" ^
+  --options "["Вариант 1","Вариант 2"]" ^
+  --duration 60 ^
+  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"

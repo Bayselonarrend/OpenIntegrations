@@ -1,2 +1,2 @@
 oint greenapi ПолучитьИнформациюОбАккаунте \
-  --access "\"/tmp/o0mxpcfm.12y.json\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}"

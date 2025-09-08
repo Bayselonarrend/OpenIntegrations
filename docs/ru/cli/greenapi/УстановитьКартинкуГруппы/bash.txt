@@ -1,4 +1,4 @@
 oint greenapi УстановитьКартинкуГруппы \
-  --access "\"/tmp/moam40nh.2oc.json\"" \
-  --group "\"120363419907285192@g.us\"" \
-  --picture "\"https://hut.openintegrations.dev/test_data/picture.jpg\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" \
+  --group "120363419854535276@g.us" \
+  --picture "https://hut.openintegrations.dev/test_data/picture.jpg"

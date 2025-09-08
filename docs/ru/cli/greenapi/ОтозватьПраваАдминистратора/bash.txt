@@ -1,4 +1,4 @@
 oint greenapi ОтозватьПраваАдминистратора \
-  --access "\"/tmp/tx4dferb.bg4.json\"" \
-  --group "\"120363419907285192@g.us\"" \
-  --user "\"123123123@c.us\""
+  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" \
+  --group "120363419854535276@g.us" \
+  --user "123123123@c.us"

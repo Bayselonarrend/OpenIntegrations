@@ -1,4 +1,4 @@
 oint metrika ИзменитьСчетчик ^
-  --token "***" ^
-  --counter "\"104069052\"" ^
-  --fields "\"/tmp/uwd44v2h.3qr.json\""
+  --token *** ^
+  --counter "104072877" ^
+  --fields "{"autogoals_enabled":true,"counter_flags":{"collect_first_party_data":false,"measurement_enabled":false,"use_in_benchmarks":false,"direct_allow_use_goals_without_access":false},"favorite":"0","filter_robots":"1"}"

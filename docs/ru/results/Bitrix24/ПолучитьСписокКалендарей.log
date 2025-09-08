@@ -1961,21 +1961,21 @@
    }
   },
   {
-   "ID": "1268",
-   "NAME": "Новое имя календаря",
+   "ID": "1272",
+   "NAME": "Новый календарь",
    "GAPI_CALENDAR_ID": null,
-   "DESCRIPTION": "Этот календарь был изменен",
+   "DESCRIPTION": "Мой новый календарь",
    "COLOR": "#FFFFFF",
    "TEXT_COLOR": "#000000",
    "EXPORT": {
     "ALLOW": true,
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1268&sign=1588f0bd7e8ceb2f4a1fb18bcbfc3517&bx_hit_hash=DB4bOV5l04Rg7QBn1dAZsF0OhBtmd9XS"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1272&sign=c676897bb7fcff4582a3871199c049ef&bx_hit_hash=DB4bOV5l04Rg7QBn1dAZsF0OhBtmd9XS"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-09-08 12:30:00",
-   "TIMESTAMP_X": "2025-09-08 12:30:00",
+   "DATE_CREATE": "2025-09-08 14:48:00",
+   "TIMESTAMP_X": "2025-09-08 14:48:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -1996,7 +1996,7 @@
    }
   },
   {
-   "ID": "1270",
+   "ID": "1274",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2004,13 +2004,48 @@
    "TEXT_COLOR": "#000000",
    "EXPORT": {
     "ALLOW": true,
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1270&sign=897791eae0223e7e724c8ec025d5d884&bx_hit_hash=DB4bOV5l04Rg7QBn1dAZsF0OhBtmd9XS"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1274&sign=90ffb3ad50301124b80f9d3ba581eb50&bx_hit_hash=DB4bOV5l04Rg7QBn1dAZsF0OhBtmd9XS"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-09-08 12:30:00",
-   "TIMESTAMP_X": "2025-09-08 12:30:00",
+   "DATE_CREATE": "2025-09-08 16:47:00",
+   "TIMESTAMP_X": "2025-09-08 16:47:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": null,
+   "PAGE_TOKEN": null,
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "1276",
+   "NAME": "Новое имя календаря",
+   "GAPI_CALENDAR_ID": null,
+   "DESCRIPTION": "Этот календарь был изменен",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1276&sign=ab3c0cc8d1b1b38212525f67f7b918b1&bx_hit_hash=DB4bOV5l04Rg7QBn1dAZsF0OhBtmd9XS"
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2025-09-08 16:47:00",
+   "TIMESTAMP_X": "2025-09-08 16:47:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2032,13 +2067,13 @@
   }
  ],
  "time": {
-  "start": 1757323807.87062,
-  "finish": 1757323807.91001,
-  "duration": 0.0393869876861572,
-  "processing": 0.0109899044036865,
-  "date_start": "2025-09-08T09:30:07+00:00",
-  "date_finish": "2025-09-08T09:30:07+00:00",
-  "operating_reset_at": 1757324407,
+  "start": 1757339212.29022,
+  "finish": 1757339212.3316,
+  "duration": 0.0413820743560791,
+  "processing": 0.0121879577636719,
+  "date_start": "2025-09-08T13:46:52+00:00",
+  "date_finish": "2025-09-08T13:46:52+00:00",
+  "operating_reset_at": 1757339812,
   "operating": 0
  }
 }

@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьСобытиеКалендаря \
-  --url "\"b24-ar17wx.bitrix24.by\"" \
-  --fields "\"/tmp/2vghtv1n.er4.json\"" \
-  --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --fields "{"type":"user","ownerId":"1","from":"09/09/2025 13:46:52","to":"09/09/2025 14:46:52","section":"1276","name":"Новое событие","skip_time":"N","timezone_from":"Europe/Minsk","timezone_to":"Europe/Minsk","description":"Описание события","color":"%23000000>","text_color":"%23FFFFFF","accessibility":"quest","importance":"normal","private_event":"Y","rrule":{"FREQ":"DAILY","COUNT":"3","INTERVAL":"10","BYDAY":["SA","MO"],"UNTIL":"09/19/2025 13:46:52"},"is_meeting":"Y","location":"Офис","remind":[{"type":"day","count":"1"}],"attendees":["1","10"],"host":"1","meeting":{"notify":"Y","reinvite":"Y","allow_invite":"N","hide_guests":"N"}}" \
+  --token ***

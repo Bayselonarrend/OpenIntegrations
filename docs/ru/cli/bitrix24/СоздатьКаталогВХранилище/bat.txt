@@ -1,5 +1,5 @@
 oint bitrix24 СоздатьКаталогВХранилище ^
-  --url "\"b24-ar17wx.bitrix24.by\"" ^
-  --storageid "3" ^
-  --title "\"Новый каталог\"" ^
-  --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --storageid 3 ^
+  --title "Новый каталог" ^
+  --token ***
