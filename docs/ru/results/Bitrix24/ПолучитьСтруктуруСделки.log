@@ -1,4 +1,4 @@
-﻿    {
+﻿{
  "result": {
   "ID": {
    "type": "integer",
@@ -403,7 +403,7 @@
   "LAST_ACTIVITY_TIME": {
    "type": "datetime",
    "isRequired": false,
-   "isReadOnly": true,
+   "isReadOnly": false,
    "isImmutable": false,
    "isMultiple": false,
    "isDynamic": false,
@@ -412,21 +412,30 @@
   "LAST_ACTIVITY_BY": {
    "type": "user",
    "isRequired": false,
-   "isReadOnly": true,
+   "isReadOnly": false,
    "isImmutable": false,
    "isMultiple": false,
    "isDynamic": false,
    "title": "LAST_ACTIVITY_BY"
+  },
+  "LAST_COMMUNICATION_TIME": {
+   "type": "string",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "LAST_COMMUNICATION_TIME"
   }
  },
  "time": {
-  "start": 1728409886.30188,
-  "finish": 1728409886.34004,
-  "duration": 0.0381581783294678,
-  "processing": 0.011552095413208,
-  "date_start": "2024-10-08T20:51:26+03:00",
-  "date_finish": "2024-10-08T20:51:26+03:00",
-  "operating_reset_at": 1728410486,
+  "start": 1757323761.40227,
+  "finish": 1757323761.44574,
+  "duration": 0.0434751510620117,
+  "processing": 0.00797677040100098,
+  "date_start": "2025-09-08T09:29:21+00:00",
+  "date_finish": "2025-09-08T09:29:21+00:00",
+  "operating_reset_at": 1757324361,
   "operating": 0
  }
 }

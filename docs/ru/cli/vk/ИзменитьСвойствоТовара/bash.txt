@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk ИзменитьСвойствоТовара \
-  --title "Цвет (изм.)" \
-  --prop "4192" \
-  --auth "/tmp/zvfjxljg.gzz.json"
+  --title "\"Цвет (изм.)\"" \
+  --prop "\"4196\"" \
+  --auth "\"/tmp/agfasxfs.w3h.json\""

@@ -1,4 +1,4 @@
-﻿    {
+﻿{
  "kind": "drive#file",
  "id": "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM",
  "name": "Тестовая папка",
@@ -12,7 +12,7 @@
  "spaces": [
   "drive"
  ],
- "version": "1",
+ "version": "2",
  "webViewLink": "https://drive.google.com/drive/folders/191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
@@ -43,18 +43,31 @@
  },
  "shared": false,
  "ownedByMe": true,
+ "downloadRestrictions": {
+  "itemDownloadRestriction": {
+   "restrictedForReaders": false,
+   "restrictedForWriters": false
+  },
+  "effectiveDownloadRestrictionWithContext": {
+   "restrictedForReaders": false,
+   "restrictedForWriters": false
+  }
+ },
  "capabilities": {
   "canAcceptOwnership": false,
   "canAddChildren": true,
   "canAddMyDriveParent": false,
   "canChangeCopyRequiresWriterPermission": false,
+  "canChangeItemDownloadRestriction": false,
   "canChangeSecurityUpdateEnabled": false,
   "canChangeViewersCanCopyContent": false,
   "canComment": true,
   "canCopy": false,
   "canDelete": true,
+  "canDisableInheritedPermissions": true,
   "canDownload": true,
   "canEdit": true,
+  "canEnableInheritedPermissions": true,
   "canListChildren": true,
   "canModifyContent": true,
   "canModifyContentRestriction": false,
@@ -87,6 +100,18 @@
    "role": "owner",
    "displayName": "Антон Титовец",
    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+   "permissionDetails": [
+    {
+     "permissionType": "file",
+     "role": "owner",
+     "inherited": false
+    },
+    {
+     "permissionType": "file",
+     "role": "writer",
+     "inherited": true
+    }
+   ],
    "deleted": false,
    "pendingOwner": false
   }
@@ -100,5 +125,6 @@
  "linkShareMetadata": {
   "securityUpdateEligible": false,
   "securityUpdateEnabled": true
- }
+ },
+ "inheritedPermissionsDisabled": false
 }

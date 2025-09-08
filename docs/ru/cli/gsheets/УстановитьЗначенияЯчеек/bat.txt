@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint gsheets УстановитьЗначенияЯчеек ^
   --token "***" ^
-  --spreadsheet "1pHI3vli7_omm7G78AdGSQEomfbPO6KtAY2t1NL05Jgc" ^
-  --data "/tmp/j510suuh.agu.json" ^
-  --sheetname "Лист2"
+  --spreadsheet "\"1qZUtR_SBwoa6R3ZNym4t9NE8-d8-DHll4gaPU9v5zeU\"" ^
+  --data "\"/tmp/crorwzfd.2yx.json\"" ^
+  --sheetname "\"Лист2\""

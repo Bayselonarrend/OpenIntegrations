@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint cdek СоздатьЗаявкуНаВызовКурьера ^
   --token "***" ^
-  --intake "/tmp/kjlq0uqo.tec.json" ^
+  --intake "\"/tmp/d3uahg4t.hig.json\"" ^
   --testapi "***"

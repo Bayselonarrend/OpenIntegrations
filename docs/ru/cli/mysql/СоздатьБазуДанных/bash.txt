@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql СоздатьБазуДанных \
-  --base "testbase2" \
+  --base "\"testbase2\"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "/tmp/uq0krzlp.nld.json"
+  --tls "\"/tmp/1ejk0ybn.xar.json\""

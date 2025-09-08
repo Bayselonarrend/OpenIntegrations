@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql ОчиститьТаблицу ^
-  --table "testtable" ^
+  --table "\"testtable\"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/4edfp5ji.hki.json"
+  --tls "\"/tmp/20i2hons.vkb.json\""

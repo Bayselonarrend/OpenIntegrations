@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint sqlite ГарантироватьТаблицу ^
-  --table "test_new" ^
-  --cols "/tmp/qmkk4jti.edt.json" ^
-  --db "/tmp/poau1xgn.nve.sqlite"
+  --table "\"test_new\"" ^
+  --cols "\"/tmp/u4oqrm2r.bmq.json\"" ^
+  --db "\"/tmp/qrghnbz3.tqj.sqlite\""

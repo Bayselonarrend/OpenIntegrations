@@ -1,6 +1,4 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 СоздатьЛид ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --fields "/tmp/cu45wqgo.hvt.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --fields "\"/tmp/vxrezmh4.tgh.json\"" ^
   --token "***"

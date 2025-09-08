@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint postgres ПолучитьЗаписи \
-  --table "testtable" \
+  --table "\"testtable\"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "/tmp/bf1rj0wl.tbe.json"
+  --tls "\"/tmp/4j2ur11w.igy.json\""

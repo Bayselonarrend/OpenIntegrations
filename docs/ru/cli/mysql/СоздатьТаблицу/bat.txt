@@ -1,7 +1,5 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint mysql СоздатьТаблицу ^
-  --table "somename" ^
-  --cols "/tmp/nlboiwyh.veu.json" ^
+  --table "\"somename\"" ^
+  --cols "\"/tmp/2xuqsiyv.obj.json\"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "/tmp/brkinvic.l44.json"
+  --tls "\"/tmp/3i5gmehd.quq.json\""

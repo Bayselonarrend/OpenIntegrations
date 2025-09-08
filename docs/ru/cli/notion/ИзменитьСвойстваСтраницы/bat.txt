@@ -1,9 +1,7 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint notion ИзменитьСвойстваСтраницы ^
   --token "***" ^
-  --page "26782aa7-fc4e-8187-835b-f8084a93709e" ^
-  --data "/tmp/oo4dlglr.dg4.json" ^
-  --icon "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-  --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" ^
-  --archive "False"
+  --page "\"26882aa7-fc4e-8176-9537-f4263f14b8fb\"" ^
+  --data "\"/tmp/kcnwcl2o.4qd.json\"" ^
+  --icon "\"https://hut.openintegrations.dev/test_data/picture.jpg\"" ^
+  --cover "\"https://hut.openintegrations.dev/test_data/picture2.jpg\"" ^
+  --archive "false"

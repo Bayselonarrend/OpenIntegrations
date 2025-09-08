@@ -1,4 +1,2 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint greenapi ПолучитьЖурналВходящихСообщений \
-  --access "/tmp/azk03zgb.y4z.json"
+  --access "\"/tmp/wb355btv.bt4.json\""

@@ -1,10 +1,8 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint bitrix24 ДобавитьПользовательскоеПолеЗадачи ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --type "string" ^
-  --fieldname "TEXT_FIELD" ^
-  --externalid "BITRIX_TEXT_FIELD" ^
-  --title "Поле для текста" ^
-  --label "/tmp/hwom2n2k.q15.json" ^
+  --url "\"b24-ar17wx.bitrix24.by\"" ^
+  --type "\"string\"" ^
+  --fieldname "\"TEXT_FIELD\"" ^
+  --externalid "\"BITRIX_TEXT_FIELD\"" ^
+  --title "\"Поле для текста\"" ^
+  --label "\"/tmp/qmpbbhrp.muz.json\"" ^
   --token "***"

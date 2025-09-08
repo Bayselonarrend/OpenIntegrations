@@ -1,5 +1,3 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ОтправитьЗапросБезТела \
-  --method "GET" \
-  --basic "/tmp/bwzsgrip.vvh.json"
+  --method "\"GET\"" \
+  --basic "\"/tmp/hyjo4svl.1lo.json\""

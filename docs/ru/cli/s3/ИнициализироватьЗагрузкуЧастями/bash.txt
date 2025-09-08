@@ -1,7 +1,5 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint s3 ИнициализироватьЗагрузкуЧастями \
-  --name "fileChunked.mp3" \
-  --bucket "opi-dirbucket3" \
-  --basic "/tmp/ejnh4v3v.su0.json" \
-  --dir "True"
+  --name "\"fileChunked.mp3\"" \
+  --bucket "\"opi-dirbucket3\"" \
+  --basic "\"/tmp/cmccxtwr.ogq.json\"" \
+  --dir "true"

@@ -1,8 +1,6 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint openai СгенерироватьРечь ^
-  --url "https://hut.openintegrations.dev/localai/" ^
+  --url "\"https://hut.openintegrations.dev/localai/\"" ^
   --token "***" ^
-  --model "tts-1" ^
-  --input "Attack ships on fire off the shoulder of Orion bright as magnesium" ^
-  --options "/tmp/yoe4yhs4.jfg.json"
+  --model "\"tts-1\"" ^
+  --input "\"Attack ships on fire off the shoulder of Orion bright as magnesium\"" ^
+  --options "\"/tmp/oerjhk4o.uo2.json\""

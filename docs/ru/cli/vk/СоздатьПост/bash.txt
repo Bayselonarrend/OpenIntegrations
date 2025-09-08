@@ -1,8 +1,6 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint vk СоздатьПост \
-  --text "Пост из автотеста" \
-  --pictures "/tmp/3w1xuf2c.rfq.png" \
-  --ad "True" \
-  --url "https://github.com/Bayselonarrend/OpenIntegrations" \
-  --auth "/tmp/pgqtkrbl.3bg.json"
+  --text "\"Пост из автотеста\"" \
+  --pictures "\"/tmp/bbhrhaue.y4v.png\"" \
+  --ad "true" \
+  --url "\"https://github.com/Bayselonarrend/OpenIntegrations\"" \
+  --auth "\"/tmp/nio1drcp.ezv.json\""
