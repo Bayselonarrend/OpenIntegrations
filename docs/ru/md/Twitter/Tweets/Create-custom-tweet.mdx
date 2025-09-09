@@ -55,18 +55,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint twitter СоздатьПроизвольныйТвит \
-              --text "Тестовый твиттa77e59ef-9353-4163-97b2-cd934bf986d2" \
-              --media "["1965121494192713728","1965121507232780288"]" \
-              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+              --text "Тестовый твитт80b868a9-08f6-4c10-a150-65e698af48a8" \
+              --media "['1965467887260352512','1965467899713269760']" \
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint twitter СоздатьПроизвольныйТвит ^
-              --text "Тестовый твиттa77e59ef-9353-4163-97b2-cd934bf986d2" ^
-              --media "["1965121494192713728","1965121507232780288"]" ^
-              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+              --text "Тестовый твитт80b868a9-08f6-4c10-a150-65e698af48a8" ^
+              --media "['1965467887260352512','1965467899713269760']" ^
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
 </Tabs>
@@ -74,9 +74,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "text": "Тестовый твитт80b868a9-08f6-4c10-a150-65e698af48a8 https://t.co/Xx2QZpJD7x",
+  "id": "1965467914229748025",
+  "edit_history_tweet_ids": [
+   "1965467914229748025"
+  ]
+ }
 }
 ```

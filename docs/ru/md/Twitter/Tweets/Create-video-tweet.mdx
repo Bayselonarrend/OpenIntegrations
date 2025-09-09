@@ -55,18 +55,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint twitter СоздатьТвитВидео \
-              --text "Тестовый твитт7a75705e-dcbc-4d29-9355-54c66ffe61da" \
-              --videos "/tmp/fvsmgg1a.033" \
-              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+              --text "Тестовый твиттa15af63b-0226-405c-8e4b-38ae6c4d2e51" \
+              --videos "/tmp/i2udmtq0.q2j" \
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint twitter СоздатьТвитВидео ^
-              --text "Тестовый твитт7a75705e-dcbc-4d29-9355-54c66ffe61da" ^
-              --videos "/tmp/fvsmgg1a.033" ^
-              --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+              --text "Тестовый твиттa15af63b-0226-405c-8e4b-38ae6c4d2e51" ^
+              --videos "/tmp/i2udmtq0.q2j" ^
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
 </Tabs>
@@ -74,9 +74,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "edit_history_tweet_ids": [
+   "1965467231480943008"
+  ],
+  "text": "Тестовый твитт013e5ea3-0e7c-4995-b334-6a3ac5f5522a https://t.co/1EW44TOI31",
+  "id": "1965467231480943008"
+ }
 }
 ```
