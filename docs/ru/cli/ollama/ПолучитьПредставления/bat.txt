@@ -1,5 +1,5 @@
 oint ollama ПолучитьПредставления ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
-  --input "["Why is the sky blue?","Why is the grass green?"]" ^
-  --headers {"Authorization":"***"}
+  --input "['Why is the sky blue?','Why is the grass green?']" ^
+  --headers {'Authorization':'***'}

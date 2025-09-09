@@ -17,7 +17,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -40,16 +42,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1471,
+     "min_price": 1588,
      "min_price_currency": "RUB",
-     "price_index_value": 1.08
+     "price_index_value": 1.01
     },
     "ozon_index_data": {
-     "min_price": 1665,
+     "min_price": 1774,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.9
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -74,7 +76,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -97,9 +101,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 539,
+     "min_price": 567,
      "min_price_currency": "RUB",
-     "price_index_value": 1.7
+     "price_index_value": 1.68
     },
     "ozon_index_data": {
      "min_price": 0,
@@ -131,7 +135,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -188,7 +194,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -245,7 +253,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -268,14 +278,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2831,
+     "min_price": 3189,
      "min_price_currency": "RUB",
-     "price_index_value": 0.61
+     "price_index_value": 0.54
     },
     "ozon_index_data": {
-     "min_price": 1917,
+     "min_price": 1952,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.89
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -302,7 +312,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -359,7 +371,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -382,14 +396,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 0,
+     "min_price": 3104,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.52
     },
     "ozon_index_data": {
-     "min_price": 2267,
+     "min_price": 2196,
      "min_price_currency": "RUB",
-     "price_index_value": 0.71
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -416,7 +430,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 134,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -427,7 +443,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1462,
+    "marketing_price": 1465,
     "marketing_seller_price": 1829,
     "min_price": 1646,
     "old_price": 2195,
@@ -439,16 +455,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 929,
+     "min_price": 990,
      "min_price_currency": "RUB",
-     "price_index_value": 1.33
+     "price_index_value": 1.28
     },
     "ozon_index_data": {
-     "min_price": 1593,
+     "min_price": 1586,
      "min_price_currency": "RUB",
      "price_index_value": 0.87
     },
-    "color_index": "RED",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -473,7 +489,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -530,7 +548,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -587,7 +607,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -610,14 +632,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1605,
+     "min_price": 1808,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.71
     },
     "ozon_index_data": {
-     "min_price": 1469,
+     "min_price": 1380,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.93
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -644,7 +666,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -672,9 +696,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2267,
+     "min_price": 2226,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.76
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -701,7 +725,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -724,14 +750,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 473,
+     "min_price": 641,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 492,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -758,7 +784,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -781,14 +809,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 485,
+     "min_price": 490,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.92
     },
     "ozon_index_data": {
-     "min_price": 718,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.63
+     "price_index_value": 0
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -815,7 +843,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 134,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -872,7 +902,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -929,7 +961,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -986,7 +1020,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1043,7 +1079,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1066,9 +1104,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 760,
+     "min_price": 723,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
      "min_price": 0,
@@ -1100,7 +1138,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1157,7 +1197,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1214,7 +1256,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1271,7 +1315,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1328,7 +1374,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1351,16 +1399,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1097,
+     "min_price": 1247,
      "min_price_currency": "RUB",
-     "price_index_value": 1.06
+     "price_index_value": 0.94
     },
     "ozon_index_data": {
-     "min_price": 1475,
+     "min_price": 1479,
      "min_price_currency": "RUB",
      "price_index_value": 0.79
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -1385,7 +1433,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1408,9 +1458,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 466,
+     "min_price": 495,
      "min_price_currency": "RUB",
-     "price_index_value": 1.62
+     "price_index_value": 1.6
     },
     "ozon_index_data": {
      "min_price": 1776,
@@ -1442,7 +1492,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1465,9 +1517,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 308,
+     "min_price": 330,
      "min_price_currency": "RUB",
-     "price_index_value": 1.63
+     "price_index_value": 1.6
     },
     "ozon_index_data": {
      "min_price": 1165,
@@ -1499,7 +1551,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1556,7 +1610,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1613,7 +1669,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1670,7 +1728,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1693,12 +1753,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 594,
+     "min_price": 625,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.86
     },
     "ozon_index_data": {
-     "min_price": 779,
+     "min_price": 776,
      "min_price_currency": "RUB",
      "price_index_value": 0.69
     },
@@ -1727,7 +1787,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1784,7 +1846,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1841,7 +1905,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1898,7 +1964,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1955,7 +2023,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2012,7 +2082,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2069,7 +2141,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2126,7 +2200,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2183,7 +2259,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2206,14 +2284,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 389,
+     "min_price": 421,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 637,
+     "min_price": 541,
      "min_price_currency": "RUB",
-     "price_index_value": 0.55
+     "price_index_value": 0.65
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -2240,7 +2318,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2297,7 +2377,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2354,7 +2436,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2411,7 +2495,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2434,14 +2520,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 405,
+     "min_price": 427,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.74
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 453,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.7
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -2468,7 +2554,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2496,7 +2584,7 @@
      "price_index_value": 1.44
     },
     "ozon_index_data": {
-     "min_price": 355,
+     "min_price": 356,
      "min_price_currency": "RUB",
      "price_index_value": 0.89
     },
@@ -2525,7 +2613,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2582,7 +2672,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2605,14 +2697,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 367,
+     "min_price": 387,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
-     "min_price": 373,
+     "min_price": 377,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -2639,7 +2731,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2696,7 +2790,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2753,7 +2849,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2810,7 +2908,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2867,7 +2967,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2890,12 +2992,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 356,
+     "min_price": 387,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.82
     },
     "ozon_index_data": {
-     "min_price": 1244,
+     "min_price": 1242,
      "min_price_currency": "RUB",
      "price_index_value": 0.25
     },
@@ -2924,7 +3026,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2981,7 +3085,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3004,12 +3110,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 402,
+     "min_price": 424,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.8
     },
     "ozon_index_data": {
-     "min_price": 391,
+     "min_price": 390,
      "min_price_currency": "RUB",
      "price_index_value": 0.87
     },
@@ -3038,7 +3144,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3095,7 +3203,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3152,7 +3262,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3209,7 +3321,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3237,9 +3351,9 @@
      "price_index_value": 1.4
     },
     "ozon_index_data": {
-     "min_price": 451,
+     "min_price": 439,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.79
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -3266,7 +3380,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3323,7 +3439,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3380,7 +3498,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3437,7 +3557,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3460,14 +3582,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 392,
+     "min_price": 414,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 420,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -3494,7 +3616,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3551,7 +3675,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3608,7 +3734,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 224,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3665,7 +3793,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 152,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3722,7 +3852,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 242,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3779,7 +3911,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3802,16 +3936,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1171,
+     "min_price": 1319,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.04
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 1517,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.91
     },
-    "color_index": "RED",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -3836,7 +3970,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3893,7 +4029,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3950,7 +4088,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4007,7 +4147,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4030,12 +4172,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1542,
+     "min_price": 1621,
      "min_price_currency": "RUB",
-     "price_index_value": 0.79
+     "price_index_value": 0.75
     },
     "ozon_index_data": {
-     "min_price": 1721,
+     "min_price": 1720,
      "min_price_currency": "RUB",
      "price_index_value": 0.71
     },
@@ -4064,7 +4206,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4121,7 +4265,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4178,7 +4324,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4201,12 +4349,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1588,
+     "min_price": 1753,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1519,
+     "min_price": 1517,
      "min_price_currency": "RUB",
      "price_index_value": 0.9
     },
@@ -4235,7 +4383,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4258,12 +4408,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 4097,
+     "min_price": 4540,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
-     "min_price": 4534,
+     "min_price": 4526,
      "min_price_currency": "RUB",
      "price_index_value": 0.8
     },
@@ -4292,7 +4442,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4315,12 +4467,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 4399,
+     "min_price": 4444,
      "min_price_currency": "RUB",
      "price_index_value": 0.86
     },
     "ozon_index_data": {
-     "min_price": 4292,
+     "min_price": 4285,
      "min_price_currency": "RUB",
      "price_index_value": 0.89
     },
@@ -4349,7 +4501,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4372,14 +4526,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1959,
+     "min_price": 2008,
      "min_price_currency": "RUB",
-     "price_index_value": 0.65
+     "price_index_value": 0.64
     },
     "ozon_index_data": {
-     "min_price": 2450,
+     "min_price": 1785,
      "min_price_currency": "RUB",
-     "price_index_value": 0.52
+     "price_index_value": 0.72
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -4406,7 +4560,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4429,9 +4585,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1175,
+     "min_price": 1187,
      "min_price_currency": "RUB",
-     "price_index_value": 0.95
+     "price_index_value": 0.94
     },
     "ozon_index_data": {
      "min_price": 1175,
@@ -4463,7 +4619,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4486,14 +4644,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1116,
+     "min_price": 1315,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.75
     },
     "ozon_index_data": {
-     "min_price": 1170,
+     "min_price": 1159,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.86
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -4520,7 +4678,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4577,7 +4737,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4634,7 +4796,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4691,7 +4855,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4714,16 +4880,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 661,
+     "min_price": 610,
      "min_price_currency": "RUB",
-     "price_index_value": 1.27
+     "price_index_value": 1.32
     },
     "ozon_index_data": {
      "min_price": 1070,
      "min_price_currency": "RUB",
      "price_index_value": 0.84
     },
-    "color_index": "YELLOW",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -4748,7 +4914,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4771,14 +4939,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 328,
+     "min_price": 356,
      "min_price_currency": "RUB",
-     "price_index_value": 1.64
+     "price_index_value": 1.61
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 1207,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.76
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -4805,7 +4973,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4828,12 +4998,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 692,
+     "min_price": 780,
      "min_price_currency": "RUB",
-     "price_index_value": 1.25
+     "price_index_value": 1.15
     },
     "ozon_index_data": {
-     "min_price": 1100,
+     "min_price": 1101,
      "min_price_currency": "RUB",
      "price_index_value": 0.84
     },
@@ -4862,7 +5032,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4885,9 +5057,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1812,
+     "min_price": 1945,
      "min_price_currency": "RUB",
-     "price_index_value": 0.98
+     "price_index_value": 0.91
     },
     "ozon_index_data": {
      "min_price": 1953,
@@ -4919,7 +5091,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4976,7 +5150,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4999,9 +5175,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 439,
+     "min_price": 470,
      "min_price_currency": "RUB",
-     "price_index_value": 1.53
+     "price_index_value": 1.5
     },
     "ozon_index_data": {
      "min_price": 1084,
@@ -5033,7 +5209,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5090,7 +5268,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5147,7 +5327,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5170,14 +5352,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 495,
+     "min_price": 523,
      "min_price_currency": "RUB",
-     "price_index_value": 1.63
+     "price_index_value": 1.61
     },
     "ozon_index_data": {
-     "min_price": 2391,
+     "min_price": 1737,
      "min_price_currency": "RUB",
-     "price_index_value": 0.56
+     "price_index_value": 0.78
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -5204,7 +5386,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5261,7 +5445,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5318,7 +5504,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5341,9 +5529,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1665,
+     "min_price": 1877,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
      "min_price": 1858,
@@ -5375,7 +5563,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5398,9 +5588,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1770,
+     "min_price": 1788,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 1.01
     },
     "ozon_index_data": {
      "min_price": 1771,
@@ -5432,7 +5622,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5455,16 +5647,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 903,
+     "min_price": 1017,
      "min_price_currency": "RUB",
-     "price_index_value": 1.32
+     "price_index_value": 1.24
     },
     "ozon_index_data": {
      "min_price": 1622,
      "min_price_currency": "RUB",
      "price_index_value": 0.82
     },
-    "color_index": "RED",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -5489,7 +5681,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5546,7 +5740,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5569,14 +5765,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1003,
+     "min_price": 1140,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.8
     },
     "ozon_index_data": {
-     "min_price": 1337,
+     "min_price": 1255,
      "min_price_currency": "RUB",
-     "price_index_value": 0.68
+     "price_index_value": 0.73
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -5603,7 +5799,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5626,14 +5824,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 470,
+     "min_price": 503,
      "min_price_currency": "RUB",
-     "price_index_value": 1.68
+     "price_index_value": 1.66
     },
     "ozon_index_data": {
-     "min_price": 1653,
+     "min_price": 1608,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.92
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -5660,7 +5858,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5683,14 +5883,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1003,
+     "min_price": 1140,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.77
     },
     "ozon_index_data": {
-     "min_price": 1337,
+     "min_price": 1255,
      "min_price_currency": "RUB",
-     "price_index_value": 0.65
+     "price_index_value": 0.7
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -5717,7 +5917,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5740,9 +5942,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1472,
+     "min_price": 1683,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.65
     },
     "ozon_index_data": {
      "min_price": 1653,
@@ -5774,7 +5976,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5831,7 +6035,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5854,16 +6060,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1457,
+     "min_price": 543,
      "min_price_currency": "RUB",
-     "price_index_value": 0.99
+     "price_index_value": 1.62
     },
     "ozon_index_data": {
      "min_price": 1629,
      "min_price_currency": "RUB",
      "price_index_value": 0.88
     },
-    "color_index": "GREEN",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -5888,7 +6094,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5911,14 +6119,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 465,
+     "min_price": 489,
      "min_price_currency": "RUB",
-     "price_index_value": 1.7
+     "price_index_value": 1.68
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 2514,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.61
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -5945,7 +6153,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6002,7 +6212,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6025,14 +6237,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1517,
+     "min_price": 1532,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.92
     },
     "ozon_index_data": {
-     "min_price": 1298,
+     "min_price": 1307,
      "min_price_currency": "RUB",
-     "price_index_value": 1.08
+     "price_index_value": 1.07
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -6059,7 +6271,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6070,7 +6284,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 800,
+    "marketing_price": 659,
     "marketing_seller_price": 800,
     "min_price": 659,
     "old_price": 878,
@@ -6082,14 +6296,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 558,
+     "min_price": 564,
      "min_price_currency": "RUB",
-     "price_index_value": 1.3
+     "price_index_value": 1.1
     },
     "ozon_index_data": {
      "min_price": 559,
      "min_price_currency": "RUB",
-     "price_index_value": 1.3
+     "price_index_value": 1.1
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -6116,7 +6330,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6139,9 +6355,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 620,
+     "min_price": 704,
      "min_price_currency": "RUB",
-     "price_index_value": 1.46
+     "price_index_value": 1.38
     },
     "ozon_index_data": {
      "min_price": 1564,
@@ -6173,7 +6389,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6196,9 +6414,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1713,
+     "min_price": 1730,
      "min_price_currency": "RUB",
-     "price_index_value": 0.7
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
      "min_price": 1713,
@@ -6230,7 +6448,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6253,14 +6473,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1097,
+     "min_price": 1247,
      "min_price_currency": "RUB",
-     "price_index_value": 0.99
+     "price_index_value": 0.87
     },
     "ozon_index_data": {
-     "min_price": 1437,
+     "min_price": 1441,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.75
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6287,7 +6507,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6344,7 +6566,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6367,9 +6591,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1082,
+     "min_price": 1436,
      "min_price_currency": "RUB",
-     "price_index_value": 1.26
+     "price_index_value": 1.02
     },
     "ozon_index_data": {
      "min_price": 1422,
@@ -6401,7 +6625,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6424,14 +6650,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 392,
+     "min_price": 441,
      "min_price_currency": "RUB",
-     "price_index_value": 1.72
+     "price_index_value": 1.68
     },
     "ozon_index_data": {
-     "min_price": 717,
+     "min_price": 2416,
      "min_price_currency": "RUB",
-     "price_index_value": 1.48
+     "price_index_value": 0.57
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -6458,7 +6684,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6488,14 +6716,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 479,
+     "min_price": 544,
      "min_price_currency": "RUB",
-     "price_index_value": 1.6
+     "price_index_value": 1.55
     },
     "ozon_index_data": {
-     "min_price": 1856,
+     "min_price": 1500,
      "min_price_currency": "RUB",
-     "price_index_value": 0.65
+     "price_index_value": 0.8
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -6522,7 +6750,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6579,7 +6809,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6636,7 +6868,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6693,7 +6927,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6750,7 +6986,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6778,9 +7016,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2814,
+     "min_price": 2772,
      "min_price_currency": "RUB",
-     "price_index_value": 0.58
+     "price_index_value": 0.59
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6807,7 +7045,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6818,7 +7058,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1813,
+    "marketing_price": 1804,
     "marketing_seller_price": 2247,
     "min_price": 2023,
     "old_price": 2697,
@@ -6835,9 +7075,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2583,
+     "min_price": 2635,
      "min_price_currency": "RUB",
-     "price_index_value": 0.66
+     "price_index_value": 0.65
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6864,7 +7104,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6892,7 +7134,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 3031,
+     "min_price": 3017,
      "min_price_currency": "RUB",
      "price_index_value": 0.45
     },
@@ -6921,7 +7163,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6944,14 +7188,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1896,
+     "min_price": 1867,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 0.96
     },
     "ozon_index_data": {
-     "min_price": 1942,
+     "min_price": 1914,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.93
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6978,7 +7222,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7035,7 +7281,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7092,7 +7340,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7103,7 +7353,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1504,
+    "marketing_price": 1506,
     "marketing_seller_price": 1881,
     "min_price": 1693,
     "old_price": 2258,
@@ -7115,14 +7365,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1770,
+     "min_price": 1867,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.76
     },
     "ozon_index_data": {
-     "min_price": 1818,
+     "min_price": 1551,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.92
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7149,7 +7399,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7160,7 +7412,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1378,
+    "marketing_price": 1379,
     "marketing_seller_price": 1725,
     "min_price": 1552,
     "old_price": 2070,
@@ -7177,9 +7429,9 @@
      "price_index_value": 0.77
     },
     "ozon_index_data": {
-     "min_price": 1737,
+     "min_price": 1750,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7206,7 +7458,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7229,14 +7483,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 4377,
+     "min_price": 3049,
      "min_price_currency": "RUB",
-     "price_index_value": 0.37
+     "price_index_value": 0.53
     },
     "ozon_index_data": {
-     "min_price": 2207,
+     "min_price": 2174,
      "min_price_currency": "RUB",
-     "price_index_value": 0.73
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7263,7 +7517,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7274,7 +7530,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1687,
+    "marketing_price": 1678,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -7286,16 +7542,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3828,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.42
+     "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 1381,
+     "min_price": 1384,
      "min_price_currency": "RUB",
      "price_index_value": 1.13
     },
-    "color_index": "YELLOW",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -7320,7 +7576,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7377,7 +7635,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7400,14 +7660,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 962,
+     "min_price": 1026,
      "min_price_currency": "RUB",
-     "price_index_value": 1.07
+     "price_index_value": 1.01
     },
     "ozon_index_data": {
-     "min_price": 993,
+     "min_price": 1014,
      "min_price_currency": "RUB",
-     "price_index_value": 1.04
+     "price_index_value": 1.02
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -7434,7 +7694,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7491,7 +7753,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 33.5
+    "sales_percent_fbs": 33.5,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7548,7 +7812,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7559,7 +7825,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 294,
+    "marketing_price": 295,
     "marketing_seller_price": 334,
     "min_price": 301,
     "old_price": 401,
@@ -7571,9 +7837,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 268,
+     "min_price": 298,
      "min_price_currency": "RUB",
-     "price_index_value": 1.03
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
      "min_price": 223,
@@ -7605,7 +7871,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7628,14 +7896,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2119,
+     "min_price": 2170,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
-     "min_price": 2299,
+     "min_price": 2265,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.77
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7662,7 +7930,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7690,7 +7960,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2583,
+     "min_price": 2560,
      "min_price_currency": "RUB",
      "price_index_value": 0.62
     },
@@ -7719,7 +7989,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7730,7 +8002,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1687,
+    "marketing_price": 1678,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -7742,14 +8014,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1909,
+     "min_price": 1954,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
-     "min_price": 2135,
+     "min_price": 2152,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7776,7 +8048,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7799,14 +8073,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1071,
+     "min_price": 1164,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.88
     },
     "ozon_index_data": {
-     "min_price": 1511,
+     "min_price": 1317,
      "min_price_currency": "RUB",
-     "price_index_value": 0.68
+     "price_index_value": 0.78
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7833,7 +8107,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7856,14 +8132,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1316,
+     "min_price": 1526,
      "min_price_currency": "RUB",
-     "price_index_value": 0.73
+     "price_index_value": 0.63
     },
     "ozon_index_data": {
-     "min_price": 1257,
+     "min_price": 1240,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.77
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7890,7 +8166,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7913,9 +8191,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1181,
+     "min_price": 1247,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
      "min_price": 1307,
@@ -7947,7 +8225,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7970,9 +8250,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 878,
+     "min_price": 1015,
      "min_price_currency": "RUB",
-     "price_index_value": 1.65
+     "price_index_value": 1.59
     },
     "ozon_index_data": {
      "min_price": 3079,
@@ -8004,7 +8284,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8015,7 +8297,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1540,
+    "marketing_price": 1543,
     "marketing_seller_price": 1962,
     "min_price": 1766,
     "old_price": 2354,
@@ -8027,14 +8309,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1569,
+     "min_price": 1830,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.8
     },
     "ozon_index_data": {
-     "min_price": 1936,
+     "min_price": 1974,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8061,7 +8343,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8084,12 +8368,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 645,
+     "min_price": 747,
      "min_price_currency": "RUB",
-     "price_index_value": 1.71
+     "price_index_value": 1.66
     },
     "ozon_index_data": {
-     "min_price": 2321,
+     "min_price": 2326,
      "min_price_currency": "RUB",
      "price_index_value": 0.95
     },
@@ -8118,7 +8402,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8129,7 +8415,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2461,
+    "marketing_price": 2465,
     "marketing_seller_price": 3091,
     "min_price": 2872,
     "old_price": 3829,
@@ -8141,12 +8427,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 645,
+     "min_price": 747,
      "min_price_currency": "RUB",
-     "price_index_value": 1.72
+     "price_index_value": 1.68
     },
     "ozon_index_data": {
-     "min_price": 2959,
+     "min_price": 2967,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -8175,7 +8461,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8198,14 +8486,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 663,
+     "min_price": 767,
      "min_price_currency": "RUB",
-     "price_index_value": 1.75
+     "price_index_value": 1.72
     },
     "ozon_index_data": {
-     "min_price": 3029,
+     "min_price": 3485,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.77
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8232,7 +8520,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8255,14 +8545,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 663,
+     "min_price": 767,
      "min_price_currency": "RUB",
-     "price_index_value": 1.73
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 3029,
+     "min_price": 3485,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.72
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8289,7 +8579,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8312,9 +8604,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 696,
+     "min_price": 757,
      "min_price_currency": "RUB",
-     "price_index_value": 1.76
+     "price_index_value": 1.74
     },
     "ozon_index_data": {
      "min_price": 3079,
@@ -8346,7 +8638,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8369,16 +8663,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 632,
+     "min_price": 717,
      "min_price_currency": "RUB",
-     "price_index_value": 1.09
+     "price_index_value": 0.97
     },
     "ozon_index_data": {
      "min_price": 794,
      "min_price_currency": "RUB",
      "price_index_value": 0.88
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8403,7 +8697,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8426,9 +8722,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1030,
+     "min_price": 1124,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
      "min_price": 1098,
@@ -8460,7 +8756,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8483,14 +8781,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1040,
+     "min_price": 1148,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 941,
+     "min_price": 955,
      "min_price_currency": "RUB",
-     "price_index_value": 1.04
+     "price_index_value": 1.03
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8517,7 +8815,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8528,7 +8828,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 732,
+    "marketing_price": 733,
     "marketing_seller_price": 890,
     "min_price": 828,
     "old_price": 1104,
@@ -8540,14 +8840,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 714,
+     "min_price": 750,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
-     "min_price": 908,
+     "min_price": 904,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.77
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8574,7 +8874,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8597,14 +8899,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1225,
+     "min_price": 1443,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.71
     },
     "ozon_index_data": {
-     "min_price": 1339,
+     "min_price": 1344,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.76
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8631,7 +8933,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8654,16 +8958,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1670,
+     "min_price": 1823,
      "min_price_currency": "RUB",
-     "price_index_value": 1.34
+     "price_index_value": 1.28
     },
     "ozon_index_data": {
      "min_price": 2928,
      "min_price_currency": "RUB",
      "price_index_value": 0.86
     },
-    "color_index": "RED",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8688,7 +8992,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8711,9 +9017,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1216,
+     "min_price": 1228,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
      "min_price": 1216,
@@ -8745,7 +9051,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8768,12 +9076,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1752,
+     "min_price": 1772,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 2147,
+     "min_price": 2150,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -8802,7 +9110,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8832,12 +9142,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1779,
+     "min_price": 2145,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.71
     },
     "ozon_index_data": {
-     "min_price": 2448,
+     "min_price": 2449,
      "min_price_currency": "RUB",
      "price_index_value": 0.62
     },
@@ -8866,7 +9176,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8889,12 +9201,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1754,
+     "min_price": 1772,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 2147,
+     "min_price": 2150,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -8923,7 +9235,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8946,14 +9260,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1071,
+     "min_price": 1182,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.9
     },
     "ozon_index_data": {
-     "min_price": 1511,
+     "min_price": 1317,
      "min_price_currency": "RUB",
-     "price_index_value": 0.71
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8980,7 +9294,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9003,12 +9319,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1225,
+     "min_price": 1443,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.72
     },
     "ozon_index_data": {
-     "min_price": 1370,
+     "min_price": 1371,
      "min_price_currency": "RUB",
      "price_index_value": 0.76
     },
@@ -9037,7 +9353,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9048,7 +9366,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1687,
+    "marketing_price": 1678,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -9060,16 +9378,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1350,
+     "min_price": 1423,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.1
     },
     "ozon_index_data": {
-     "min_price": 1843,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0
     },
-    "color_index": "YELLOW",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9094,7 +9412,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9105,7 +9425,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2519,
+    "marketing_price": 2459,
     "marketing_seller_price": 3031,
     "min_price": 2728,
     "old_price": 3637,
@@ -9122,9 +9442,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2694,
+     "min_price": 2665,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9151,7 +9471,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9174,14 +9496,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2743,
+     "min_price": 1910,
      "min_price_currency": "RUB",
-     "price_index_value": 0.43
+     "price_index_value": 0.62
     },
     "ozon_index_data": {
-     "min_price": 1408,
+     "min_price": 1418,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9208,7 +9530,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9219,7 +9543,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1855,
+    "marketing_price": 1846,
     "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
@@ -9231,14 +9555,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1995,
+     "min_price": 2043,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 2299,
+     "min_price": 2265,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.77
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9265,7 +9589,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 224,
     "sales_percent_fbo": 25.5,
-    "sales_percent_fbs": 27.5
+    "sales_percent_fbs": 27.5,
+    "sales_percent_rfbs": 26,
+    "sales_percent_fbp": 26
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9322,7 +9648,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9333,7 +9661,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1504,
+    "marketing_price": 1507,
     "marketing_seller_price": 1917,
     "min_price": 1816,
     "old_price": 2421,
@@ -9345,12 +9673,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1527,
+     "min_price": 1679,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 1653,
+     "min_price": 1659,
      "min_price_currency": "RUB",
      "price_index_value": 0.86
     },
@@ -9379,7 +9707,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9397,7 +9727,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1665,
+    "marketing_price": 1667,
     "marketing_seller_price": 2119,
     "min_price": 2244,
     "old_price": 2991,
@@ -9409,12 +9739,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2015,
+     "min_price": 2036,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.77
     },
     "ozon_index_data": {
-     "min_price": 2004,
+     "min_price": 2016,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -9443,7 +9773,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9500,7 +9832,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9523,12 +9857,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1712,
+     "min_price": 1782,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.89
     },
     "ozon_index_data": {
-     "min_price": 1943,
+     "min_price": 1951,
      "min_price_currency": "RUB",
      "price_index_value": 0.81
     },
@@ -9557,7 +9891,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9614,7 +9950,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9671,7 +10009,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9728,7 +10068,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9785,7 +10127,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9808,12 +10152,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1737,
+     "min_price": 1808,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 1962,
+     "min_price": 1963,
      "min_price_currency": "RUB",
      "price_index_value": 0.77
     },
@@ -9842,7 +10186,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9865,14 +10211,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1267,
+     "min_price": 1492,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1384,
+     "min_price": 1488,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.78
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9899,7 +10245,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9922,14 +10270,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 4090,
+     "min_price": 4294,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 4251,
+     "min_price": 4667,
      "min_price_currency": "RUB",
-     "price_index_value": 0.79
+     "price_index_value": 0.72
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9956,7 +10304,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9979,16 +10329,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1669,
+     "min_price": 1711,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.84
     },
     "ozon_index_data": {
-     "min_price": 1170,
+     "min_price": 1377,
      "min_price_currency": "RUB",
-     "price_index_value": 1.19
+     "price_index_value": 1.04
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -10013,7 +10363,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10036,12 +10388,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1703,
+     "min_price": 1894,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 1519,
+     "min_price": 1517,
      "min_price_currency": "RUB",
      "price_index_value": 0.86
     },
@@ -10070,7 +10422,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10093,12 +10447,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2091,
+     "min_price": 1993,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.91
     },
     "ozon_index_data": {
-     "min_price": 1519,
+     "min_price": 1517,
      "min_price_currency": "RUB",
      "price_index_value": 1.16
     },
@@ -10127,7 +10481,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10150,9 +10506,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1225,
+     "min_price": 1443,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.77
     },
     "ozon_index_data": {
      "min_price": 1439,
@@ -10184,7 +10540,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10207,14 +10565,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1760,
+     "min_price": 2193,
      "min_price_currency": "RUB",
-     "price_index_value": 1.03
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 2449,
+     "min_price": 2254,
      "min_price_currency": "RUB",
-     "price_index_value": 0.74
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10241,7 +10599,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10264,14 +10624,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 477,
+     "min_price": 679,
      "min_price_currency": "RUB",
-     "price_index_value": 1.01
+     "price_index_value": 0.71
     },
     "ozon_index_data": {
-     "min_price": 539,
+     "min_price": 538,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.9
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10298,7 +10658,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10321,14 +10683,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 703,
+     "min_price": 699,
      "min_price_currency": "RUB",
      "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 487,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.99
+     "price_index_value": 0
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10355,7 +10717,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 24.5,
-    "sales_percent_fbs": 26
+    "sales_percent_fbs": 26,
+    "sales_percent_rfbs": 24,
+    "sales_percent_fbp": 24
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10378,12 +10742,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 518,
+     "min_price": 523,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.88
     },
     "ozon_index_data": {
-     "min_price": 492,
+     "min_price": 493,
      "min_price_currency": "RUB",
      "price_index_value": 0.93
     },
@@ -10412,7 +10776,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10423,7 +10789,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1256,
+    "marketing_price": 1259,
     "marketing_seller_price": 1600,
     "min_price": 1599,
     "old_price": 2132,
@@ -10435,9 +10801,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1191,
+     "min_price": 1253,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
      "min_price": 0,
@@ -10469,7 +10835,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10492,9 +10860,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1780,
+     "min_price": 1376,
      "min_price_currency": "RUB",
-     "price_index_value": 0.54
+     "price_index_value": 0.7
     },
     "ozon_index_data": {
      "min_price": 1538,
@@ -10526,7 +10894,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10537,7 +10907,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1395,
+    "marketing_price": 1397,
     "marketing_seller_price": 1777,
     "min_price": 1599,
     "old_price": 2132,
@@ -10549,12 +10919,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 366,
+     "min_price": 415,
      "min_price_currency": "RUB",
-     "price_index_value": 1.72
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 1219,
+     "min_price": 1216,
      "min_price_currency": "RUB",
      "price_index_value": 1.08
     },
@@ -10583,7 +10953,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10594,7 +10966,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 957,
+    "marketing_price": 958,
     "marketing_seller_price": 1200,
     "min_price": 1200,
     "old_price": 2132,
@@ -10606,14 +10978,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1008,
+     "min_price": 1123,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
-     "min_price": 1250,
+     "min_price": 1241,
      "min_price_currency": "RUB",
-     "price_index_value": 0.72
+     "price_index_value": 0.73
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10640,7 +11012,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10697,7 +11071,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10720,7 +11096,7 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3819,
+     "min_price": 3858,
      "min_price_currency": "RUB",
      "price_index_value": 0.83
     },
@@ -10754,7 +11130,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10777,14 +11155,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1030,
+     "min_price": 1178,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 1098,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10811,7 +11189,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10834,14 +11214,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1235,
+     "min_price": 1302,
      "min_price_currency": "RUB",
-     "price_index_value": 0.74
+     "price_index_value": 0.7
     },
     "ozon_index_data": {
-     "min_price": 1566,
+     "min_price": 1303,
      "min_price_currency": "RUB",
-     "price_index_value": 0.58
+     "price_index_value": 0.7
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10868,7 +11248,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10925,7 +11307,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10982,7 +11366,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11005,12 +11391,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1849,
+     "min_price": 1868,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.75
     },
     "ozon_index_data": {
-     "min_price": 1475,
+     "min_price": 1469,
      "min_price_currency": "RUB",
      "price_index_value": 0.95
     },
@@ -11039,7 +11425,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11062,9 +11450,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1399,
+     "min_price": 1475,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
      "min_price": 1331,
@@ -11096,7 +11484,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11124,11 +11514,11 @@
      "price_index_value": 1.04
     },
     "ozon_index_data": {
-     "min_price": 0,
+     "min_price": 1644,
      "min_price_currency": "RUB",
-     "price_index_value": 0
+     "price_index_value": 0.82
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -11153,7 +11543,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11210,7 +11602,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11233,9 +11627,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1444,
+     "min_price": 1518,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
      "min_price": 1043,
@@ -11267,7 +11661,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11290,12 +11686,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2501,
+     "min_price": 2644,
      "min_price_currency": "RUB",
-     "price_index_value": 0.73
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 2534,
+     "min_price": 2528,
      "min_price_currency": "RUB",
      "price_index_value": 0.72
     },
@@ -11324,7 +11720,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11335,7 +11733,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2388,
+    "marketing_price": 2392,
     "marketing_seller_price": 3000,
     "min_price": 2164,
     "old_price": 3200,
@@ -11352,7 +11750,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2104,
+     "min_price": 2101,
      "min_price_currency": "RUB",
      "price_index_value": 1.07
     },
@@ -11381,7 +11779,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11438,7 +11838,9 @@
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
     "sales_percent_fbo": 27.5,
-    "sales_percent_fbs": 29.5
+    "sales_percent_fbs": 29.5,
+    "sales_percent_rfbs": 27,
+    "sales_percent_fbp": 27
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11466,9 +11868,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 1665,
+     "min_price": 1682,
      "min_price_currency": "RUB",
-     "price_index_value": 1.26
+     "price_index_value": 1.25
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -11477,8 +11879,102 @@
      "price_index_value": 0
     }
    }
+  },
+  {
+   "acquiring": 0,
+   "offer_id": "143210609",
+   "product_id": 2681423820,
+   "volume_weight": 0.1,
+   "commissions": {
+    "fbo_deliv_to_customer_amount": 0,
+    "fbo_direct_flow_trans_max_amount": 0,
+    "fbo_direct_flow_trans_min_amount": 0,
+    "fbo_return_flow_amount": 0,
+    "fbs_deliv_to_customer_amount": 0,
+    "fbs_direct_flow_trans_min_amount": 0,
+    "fbs_direct_flow_trans_max_amount": 0,
+    "fbs_first_mile_max_amount": 0,
+    "fbs_first_mile_min_amount": 0,
+    "fbs_return_flow_amount": 0,
+    "sales_percent_fbo": 0,
+    "sales_percent_fbs": 0,
+    "sales_percent_rfbs": 0,
+    "sales_percent_fbp": 0
+   },
+   "marketing_actions": {
+    "current_period_from": null,
+    "current_period_to": null,
+    "actions": [],
+    "ozon_actions_exist": false
+   },
+   "price": {
+    "auto_action_enabled": false,
+    "currency_code": "RUB",
+    "marketing_price": 0,
+    "marketing_seller_price": 0,
+    "min_price": 0,
+    "old_price": 1300,
+    "price": 1300,
+    "retail_price": 0,
+    "vat": 0.1,
+    "auto_add_to_ozon_actions_list_enabled": true,
+    "net_price": 0
+   },
+   "price_indexes": {
+    "external_index_data": null,
+    "ozon_index_data": null,
+    "color_index": "WITHOUT_INDEX",
+    "self_marketplaces_index_data": null
+   }
+  },
+  {
+   "acquiring": 0,
+   "offer_id": "1432106010",
+   "product_id": 2681423825,
+   "volume_weight": 0.1,
+   "commissions": {
+    "fbo_deliv_to_customer_amount": 0,
+    "fbo_direct_flow_trans_max_amount": 0,
+    "fbo_direct_flow_trans_min_amount": 0,
+    "fbo_return_flow_amount": 0,
+    "fbs_deliv_to_customer_amount": 0,
+    "fbs_direct_flow_trans_min_amount": 0,
+    "fbs_direct_flow_trans_max_amount": 0,
+    "fbs_first_mile_max_amount": 0,
+    "fbs_first_mile_min_amount": 0,
+    "fbs_return_flow_amount": 0,
+    "sales_percent_fbo": 0,
+    "sales_percent_fbs": 0,
+    "sales_percent_rfbs": 0,
+    "sales_percent_fbp": 0
+   },
+   "marketing_actions": {
+    "current_period_from": null,
+    "current_period_to": null,
+    "actions": [],
+    "ozon_actions_exist": false
+   },
+   "price": {
+    "auto_action_enabled": false,
+    "currency_code": "RUB",
+    "marketing_price": 0,
+    "marketing_seller_price": 0,
+    "min_price": 0,
+    "old_price": 1300,
+    "price": 1300,
+    "retail_price": 0,
+    "vat": 0.1,
+    "auto_add_to_ozon_actions_list_enabled": true,
+    "net_price": 0
+   },
+   "price_indexes": {
+    "external_index_data": null,
+    "ozon_index_data": null,
+    "color_index": "WITHOUT_INDEX",
+    "self_marketplaces_index_data": null
+   }
   }
  ],
- "cursor": "WzIyMTU0MzMwNzIsMjIxNTQzMzA3Ml0=",
- "total": 201
+ "cursor": "WzI2ODE0MjM4MjUsMjY4MTQyMzgyNV0=",
+ "total": 203
 }

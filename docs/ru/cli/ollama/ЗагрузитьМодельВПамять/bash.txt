@@ -2,4 +2,4 @@ oint ollama ЗагрузитьМодельВПамять \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "tinyllama" \
   --keep 500 \
-  --headers {"Authorization":"***"}
+  --headers {'Authorization':'***'}

@@ -1,4 +1,4 @@
 oint vk ИзменитьСвойствоТовара ^
   --title "Цвет (изм.)" ^
-  --prop "4204" ^
-  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"
+  --prop "4241" ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -1,4 +1,4 @@
 oint openai УдалитьАссистента \
   --url "https://hut.openintegrations.dev/localai/" \
   --token *** \
-  --id "asst_5"
+  --id "asst_2"

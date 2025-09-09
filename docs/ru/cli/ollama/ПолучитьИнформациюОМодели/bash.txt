@@ -2,4 +2,4 @@ oint ollama ПолучитьИнформациюОМодели \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "mario" \
   --verbose false \
-  --headers {"Authorization":"***"}
+  --headers {'Authorization':'***'}
