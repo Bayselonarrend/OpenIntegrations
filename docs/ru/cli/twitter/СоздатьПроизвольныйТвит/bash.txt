@@ -1,4 +1,4 @@
 oint twitter СоздатьПроизвольныйТвит \
-  --text "Тестовый твиттa77e59ef-9353-4163-97b2-cd934bf986d2" \
-  --media "["1965121494192713728","1965121507232780288"]" \
-  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+  --text "Тестовый твитт80b868a9-08f6-4c10-a150-65e698af48a8" \
+  --media "['1965467887260352512','1965467899713269760']" \
+  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

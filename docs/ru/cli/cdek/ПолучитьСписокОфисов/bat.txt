@@ -1,4 +1,4 @@
 oint cdek ПолучитьСписокОфисов ^
   --token *** ^
-  --filter "{"weight_max":"50","city_code":"270","allowed_cod":true}" ^
+  --filter "{'weight_max':'50','city_code':'270','allowed_cod':true}" ^
   --testapi ***

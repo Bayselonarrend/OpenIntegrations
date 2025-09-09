@@ -1,4 +1,4 @@
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
   --url "b24-ar17wx.bitrix24.by" \
-  --settings "{"view":"month","showDeclined":"Y","collapseOffHours":"N","showCompletedTasks":"N"}" \
+  --settings "{'view':'month','showDeclined':'Y','collapseOffHours':'N','showCompletedTasks':'N'}" \
   --token ***

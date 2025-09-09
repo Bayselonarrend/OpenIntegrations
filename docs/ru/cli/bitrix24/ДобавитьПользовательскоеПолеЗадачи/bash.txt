@@ -4,5 +4,5 @@ oint bitrix24 ДобавитьПользовательскоеПолеЗадач
   --fieldname "TEXT_FIELD" \
   --externalid "BITRIX_TEXT_FIELD" \
   --title "Поле для текста" \
-  --label "{"en":"Some field","ru":"Некоторое поле"}" \
+  --label "{'en':'Some field','ru':'Некоторое поле'}" \
   --token ***

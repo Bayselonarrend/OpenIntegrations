@@ -1,3 +1,3 @@
 oint slack ПолучитьСписокПользователейКанала \
   --token *** \
-  --channel "C09DR3F2NNB"
+  --channel "C09E8LFA64B"
