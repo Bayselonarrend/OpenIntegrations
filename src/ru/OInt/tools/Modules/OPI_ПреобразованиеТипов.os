@@ -97,7 +97,7 @@
 
 КонецПроцедуры
 
-Процедура ПолучитьКоллекцию(Значение) Экспорт
+Процедура ПолучитьКоллекцию(Значение, ПоСети = Истина) Экспорт
 
     Если Значение = Неопределено Тогда
         Возврат;
@@ -132,8 +132,8 @@
                 ЧтениеJSON.Закрыть();
 
 
-            ИначеЕсли СтрНачинаетсяС(СокрЛ(ЗначениеУП), "http://")
-                Или СтрНачинаетсяС(СокрЛ(ЗначениеУП), "https://") Тогда
+            ИначеЕсли ПоСети И (СтрНачинаетсяС(СокрЛ(ЗначениеУП), "http://")
+                Или СтрНачинаетсяС(СокрЛ(ЗначениеУП), "https://")) Тогда
 
                 Значение = OPI_ЗапросыHTTP.Get(ЗначениеУП);
 
@@ -447,8 +447,8 @@ Procedure GetBinaryOrStream(Value) Export
 	ПолучитьДвоичныеИлиПоток(Value);
 EndProcedure
 
-Procedure GetCollection(Value) Export
-	ПолучитьКоллекцию(Value);
+Procedure GetCollection(Value, ByNetwork = True) Export
+	ПолучитьКоллекцию(Value, ByNetwork);
 EndProcedure
 
 Procedure GetKeyValueCollection(Value, Val ErrorText = "The specified value is not a valid collection!") Export

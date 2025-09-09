@@ -97,7 +97,7 @@ Procedure GetBinaryOrStream(Value) Export
 
 EndProcedure
 
-Procedure GetCollection(Value) Export
+Procedure GetCollection(Value, ByNetwork = True) Export
 
     If Value = Undefined Then
         Return;
@@ -132,8 +132,8 @@ Procedure GetCollection(Value) Export
                 JSONReader.Close();
 
 
-            ElsIf StrStartsWith(TrimL(ValueES), "http://")
-                Or StrStartsWith(TrimL(ValueES), "https://") Then
+            ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
+                Or StrStartsWith(TrimL(ValueES), "https://")) Then
 
                 Value = OPI_HTTPRequests.Get(ValueES);
 
@@ -447,8 +447,8 @@ Procedure ПолучитьДвоичныеИлиПоток(Значение) Exp
 	GetBinaryOrStream(Значение);
 EndProcedure
 
-Procedure ПолучитьКоллекцию(Значение) Export
-	GetCollection(Значение);
+Procedure ПолучитьКоллекцию(Значение, ПоСети = True) Export
+	GetCollection(Значение, ПоСети);
 EndProcedure
 
 Procedure ПолучитьКоллекциюКлючИЗначение(Значение, Val СообщениеОшибки = "Указанное значение не является подходящей коллекцией!") Export
