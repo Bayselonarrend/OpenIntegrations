@@ -97,7 +97,7 @@ Procedure GetBinaryOrStream(Value) Export
 
 EndProcedure
 
-Procedure GetCollection(Value) Export
+Procedure GetCollection(Value, ByNetwork = True) Export
 
     If Value = Undefined Then
         Return;
@@ -132,8 +132,8 @@ Procedure GetCollection(Value) Export
                 JSONReader.Close();
 
 
-            ElsIf StrStartsWith(TrimL(ValueES), "http://")
-                Or StrStartsWith(TrimL(ValueES), "https://") Then
+            ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
+                Or StrStartsWith(TrimL(ValueES), "https://")) Then
 
                 Value = OPI_HTTPRequests.Get(ValueES);
 

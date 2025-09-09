@@ -11595,7 +11595,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
         EndIf;
 
         Value = ValueAsString;
-        OPI_TypeConversion.GetCollection(Value);
+        OPI_TypeConversion.GetCollection(Value, False);
 
     Else
         ValueAsString = "-----------!!!!№№№---------------";
@@ -11635,7 +11635,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         If Not TypeOf(Value) = Type("String") Then
             Try
-                Value        = OPI_Tools.JSONString(Value, , False);
+                Value        = OPI_Tools.JSONString(Value, , False, False);
             Except
                 Value        = String(Value);
             EndTry;
