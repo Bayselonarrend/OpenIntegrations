@@ -1,4 +1,4 @@
 oint postgres СоздатьБазуДанных \
   --base "testbase2" \
   --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ \
-  --tls "{"accept_invalid_certs":true,"ca_cert_path":"","use_tls":true}"
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

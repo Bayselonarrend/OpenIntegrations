@@ -1,6 +1,6 @@
 oint mysql ОбновитьЗаписи \
   --table "test_data" \
-  --values "{"ip_address":{"VARCHAR":"127.0.0.1"}}" \
-  --filter "{"field":"gender","type":"=","value":{"VARCHAR":"Male"},"raw":false}" \
+  --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
+  --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" \
   --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ \
-  --tls "{"use_tls":true,"accept_invalid_certs":true}"
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

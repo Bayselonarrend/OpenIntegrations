@@ -1,5 +1,5 @@
 oint sqlite ОбновитьЗаписи ^
   --table "test" ^
-  --values "{"name":"Vitaly A.","salary":"999999"}" ^
-  --filter "{"field":"name","type":"=","value":"Vitaly","union":"AND","raw":false}" ^
-  --db "/tmp/lsvgyvgo.ria.sqlite"
+  --values "{'name':'Vitaly A.','salary':'999999'}" ^
+  --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" ^
+  --db "/tmp/jncyqrdu.amb.sqlite"
