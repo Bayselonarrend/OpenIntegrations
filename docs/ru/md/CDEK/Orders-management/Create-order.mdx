@@ -121,7 +121,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek СоздатьЗаказ \
               --token *** \
-              --order "{"from_location":{"code":"44","city":"Москва","address":"пр. Ленинградский, д.4"},"to_location":{"code":"270","city":"Новосибирск","address":"ул. Блюхера, 32"},"packages":[{"items":[{"payment":{"value":"3000"},"ware_key":"***","name":"Товар","cost":"300","amount":"2","weight":"700","url":"www.item.ru"}],"number":"bar-001","comment":"Упаковка","height":"10","length":"10","weight":"4000","width":"10"}],"recipient":{"phones":[{"number":"+79134637228"}],"name":"Иванов Иван"},"sender":{"name":"Петров Петр"},"services":[{"code":"SECURE_PACKAGE_A2","parameter":"10"}],"number":"efa56256-540c-4e8f-b99c-7746c9bfb3a1","comment":"Новый заказ","tariff_code":"139","delivery_recipient_cost":{"value":"50"},"delivery_recipient_cost_adv":{"sum":"3000","threshold":"200"}}" \
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'36893b6b-5754-4fec-ba89-ff6d49511c44','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
               --ostore true \
               --testapi ***
         ```
@@ -131,7 +131,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek СоздатьЗаказ ^
               --token *** ^
-              --order "{"from_location":{"code":"44","city":"Москва","address":"пр. Ленинградский, д.4"},"to_location":{"code":"270","city":"Новосибирск","address":"ул. Блюхера, 32"},"packages":[{"items":[{"payment":{"value":"3000"},"ware_key":"***","name":"Товар","cost":"300","amount":"2","weight":"700","url":"www.item.ru"}],"number":"bar-001","comment":"Упаковка","height":"10","length":"10","weight":"4000","width":"10"}],"recipient":{"phones":[{"number":"+79134637228"}],"name":"Иванов Иван"},"sender":{"name":"Петров Петр"},"services":[{"code":"SECURE_PACKAGE_A2","parameter":"10"}],"number":"efa56256-540c-4e8f-b99c-7746c9bfb3a1","comment":"Новый заказ","tariff_code":"139","delivery_recipient_cost":{"value":"50"},"delivery_recipient_cost_adv":{"sum":"3000","threshold":"200"}}" ^
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'36893b6b-5754-4fec-ba89-ff6d49511c44','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
               --ostore true ^
               --testapi ***
         ```
@@ -142,13 +142,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "0fb351b3-dc2d-42f6-88b8-d3dcb3932a7f"
+  "uuid": "f05e6af4-2dff-4648-9413-7e6b6dd9d7e6"
  },
  "requests": [
   {
-   "request_uuid": "3cee6186-ddba-424a-96e8-10c9f93d008c",
+   "request_uuid": "de2bf831-f1f7-4bdd-b27b-405839792a5d",
    "type": "CREATE",
-   "date_time": "2025-09-08T19:46:10+00:00",
+   "date_time": "2025-09-09T19:03:41+00:00",
    "state": "ACCEPTED"
   }
  ],
