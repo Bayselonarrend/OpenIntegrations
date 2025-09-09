@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокЛидов ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --filter "{"TITLE":"Мегаклиент","HAS_EMAIL":"Y"}" ^
+  --filter "{'TITLE':'Мегаклиент','HAS_EMAIL':'Y'}" ^
   --token ***

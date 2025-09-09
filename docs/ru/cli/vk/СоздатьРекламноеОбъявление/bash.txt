@@ -1,7 +1,7 @@
 oint vk СоздатьРекламноеОбъявление \
-  --campaign 1031552527 \
+  --campaign 1031554886 \
   --limit 150 \
   --category 126 \
-  --post 9473 \
+  --post 9483 \
   --cabinet "1607951446" \
-  --auth "{"access_token":"***","owner_id":"-218861756","app_id":"51694790","group_id":"218861756"}"
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

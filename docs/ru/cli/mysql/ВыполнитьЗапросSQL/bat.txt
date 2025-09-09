@@ -1,4 +1,4 @@
 oint mysql ВыполнитьЗапросSQL ^
   --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
   --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
-  --tls "{"accept_invalid_certs":true,"ca_cert_path":"","use_tls":true}"
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

@@ -2,4 +2,4 @@ oint airtable СоздатьБазу ^
   --token *** ^
   --ws "wspdf8yl1yZz3PmWZ" ^
   --title "Тестовая база" ^
-  --tablesdata "{"Тестовая таблица":[{"name":"Номер","type":"number","options":{"precision":"0"}},{"name":"Строковое","type":"richText"}]}"
+  --tablesdata "{'Тестовая таблица':[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'}]}"

@@ -1,3 +1,3 @@
 oint twitter СоздатьТекстовыйТвит \
-  --text "Тестовый твитт3845520f-a16b-497b-9b74-14d629e7d423" \
-  --auth "{"redirect_uri":{"result":false,"error":"Missed mandatory argument","exception":{"module":"ActionsProcessor.os}:248:<exec>","row":"4","code":"Ответ = TwitterAuth.ПолучитьТокен( ,  , Параметр_auth);"}},"client_id":"***","client_secret":"***","access_token":"***","refresh_token":"***","oauth_token":"***","oauth_token_secret":"***","oauth_consumer_key":"***","oauth_consumer_secret":"***"}"
+  --text "Тестовый твиттb90b06ed-c61c-4837-8024-731b1da63c91" \
+  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
