@@ -78,18 +78,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp ИзменитьПуть \
-              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" \
-              --old "new_dir/giant.bin" \
-              --new "new_dir/big.bin"
+              --conn "{"set":{"advanced_resolve":true,"domain":"127.0.0.1","login":"bayselonarrend","passive":true,"password":"***","port":"2121","read_timeout":"120","write_timeout":"120"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true}}" \
+              --old "new_dir" \
+              --new "brand_new_dir"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp ИзменитьПуть ^
-              --conn "OneScript.StandardLibrary.NativeApi.NativeApiComponent" ^
-              --old "new_dir/giant.bin" ^
-              --new "new_dir/big.bin"
+              --conn "{"set":{"advanced_resolve":true,"domain":"127.0.0.1","login":"bayselonarrend","passive":true,"password":"***","port":"2121","read_timeout":"120","write_timeout":"120"},"tls":{"accept_invalid_certs":true,"ca_cert_path":null,"use_tls":true}}" ^
+              --old "new_dir" ^
+              --new "brand_new_dir"
         ```
     </TabItem>
 </Tabs>

@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint notion ПолучитьБазуДанных \
               --token *** \
-              --base "26882aa7-fc4e-8146-96ca-ece792806e3c"
+              --base "26882aa7-fc4e-81c5-bff4-d49581cc7dc7"
         ```
     </TabItem>
   
@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint notion ПолучитьБазуДанных ^
               --token *** ^
-              --base "26882aa7-fc4e-8146-96ca-ece792806e3c"
+              --base "26882aa7-fc4e-81c5-bff4-d49581cc7dc7"
         ```
     </TabItem>
 </Tabs>
@@ -58,10 +58,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "26882aa7-fc4e-8146-96ca-ece792806e3c",
+ "id": "26882aa7-fc4e-81c5-bff4-d49581cc7dc7",
  "cover": null,
  "icon": null,
- "created_time": "2025-09-08T13:22:00Z",
+ "created_time": "2025-09-08T19:11:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -70,7 +70,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-09-08T13:22:00Z",
+ "last_edited_time": "2025-09-08T19:11:00Z",
  "title": [
   {
    "type": "text",
@@ -111,50 +111,43 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
-  "Статус": {
-   "id": "%3DbHE",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "ff5bc639-3ead-4bfd-ae5c-51b884ef986d",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "f4a97aa9-ee65-43ac-87ae-5e09e8181973",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "0e802ebc-4f31-4f1c-b1f1-d140a4e7cd3e",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
   "Телефон": {
-   "id": "Am~a",
+   "id": "%3BKM%5D",
    "name": "Телефон",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
   "Дата создания": {
-   "id": "DVR%5B",
+   "id": "%3CkoH",
    "name": "Дата создания",
    "description": null,
    "type": "date",
    "date": {}
   },
+  "Пользователь": {
+   "id": "KX%5EY",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
+  "Активен": {
+   "id": "%5CCqh",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Описание": {
+   "id": "e%3Dyd",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
   "Номер": {
-   "id": "HT%5D%40",
+   "id": "i%60%7Db",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -162,36 +155,43 @@ import TabItem from '@theme/TabItem';
     "format": "number"
    }
   },
-  "Описание": {
-   "id": "K%3BOT",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Пользователь": {
-   "id": "KXDN",
-   "name": "Пользователь",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
-  "Активен": {
-   "id": "LFA%7C",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
   "Картинка": {
-   "id": "ORdF",
+   "id": "opD%7C",
    "name": "Картинка",
    "description": null,
    "type": "files",
    "files": {}
   },
+  "Статус": {
+   "id": "p%7Cwa",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "eb01c8ef-f2c6-4c51-b666-e9a1be9861e2",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "da2356b4-0a55-4af0-b150-2cf0c180efe6",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "0b2eaa97-2dbe-4133-9249-bbf613658760",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
   "Почта": {
-   "id": "kT%7De",
+   "id": "q%7CmK",
    "name": "Почта",
    "description": null,
    "type": "rich_text",
