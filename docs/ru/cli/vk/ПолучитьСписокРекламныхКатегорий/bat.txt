@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокРекламныхКатегорий ^
-  --auth ""/tmp/l2vrxqxi.tgk.json""
+  --auth ""/tmp/15upylau.3c1.json""

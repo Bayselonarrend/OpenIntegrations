@@ -1,5 +1,5 @@
 oint vk ИзменитьВариантСвойстваТовара ^
   --value ""Новое имя варианта"" ^
-  --prop ""4244"" ^
-  --option "7838" ^
-  --auth ""/tmp/njbn42g2.3jk.json""
+  --prop ""4246"" ^
+  --option "7843" ^
+  --auth ""/tmp/bn0rkr01.3os.json""

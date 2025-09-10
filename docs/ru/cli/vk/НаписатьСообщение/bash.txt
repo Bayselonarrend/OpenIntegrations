@@ -2,5 +2,5 @@ oint vk НаписатьСообщение \
   --text ""Сообщение из автотеста"" \
   --user ""657846756"" \
   --ct "***" \
-  --keyboard ""/tmp/ciyt4csf.51w.json"" \
-  --auth ""/tmp/txvrx1yo.jl0.json""
+  --keyboard ""/tmp/zoqye0eh.zn2.json"" \
+  --auth ""/tmp/ofnqvymt.5f2.json""

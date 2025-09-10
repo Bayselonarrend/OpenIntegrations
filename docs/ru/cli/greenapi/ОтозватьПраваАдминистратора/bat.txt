@@ -1,4 +1,4 @@
 oint greenapi ОтозватьПраваАдминистратора ^
-  --access "{"apiUrl":"***","mediaUrl":"https://7105.media.greenapi.com","idInstance":"7105187566","apiTokenInstance":"***"}" ^
-  --group "120363420863161291@g.us" ^
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --group "120363419760936416@g.us" ^
   --user "123123123@c.us"
