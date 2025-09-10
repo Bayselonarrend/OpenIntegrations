@@ -1,4 +1,4 @@
 oint mssql ПолучитьИнформациюОТаблице \
-  --table "test_new" \
-  --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; \
-  --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table ""test_new"" \
+  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+  --tls ""/tmp/y4hiaxmg.bj3.json""

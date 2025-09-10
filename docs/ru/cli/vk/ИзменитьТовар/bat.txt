@@ -1,4 +1,4 @@
 oint vk ИзменитьТовар ^
-  --item "11812231" ^
-  --product ""/tmp/z5ecmym3.x4a.json"" ^
-  --auth ""/tmp/n11xjmet.dyc.json""
+  --item "11814631" ^
+  --product ""/tmp/12tcojai.ehp.json"" ^
+  --auth ""/tmp/kwpflpw5.mxj.json""

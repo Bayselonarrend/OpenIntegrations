@@ -1,3 +1,3 @@
 oint vk ПолучитьПодборкиПоИД ^
-  --sels "138" ^
-  --auth ""/tmp/hfbwjez5.1po.json""
+  --sels "139" ^
+  --auth ""/tmp/w1nqhiix.p04.json""

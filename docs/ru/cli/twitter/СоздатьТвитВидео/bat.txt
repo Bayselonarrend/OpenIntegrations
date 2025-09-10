@@ -1,4 +1,4 @@
 oint twitter СоздатьТвитВидео ^
-  --text "Тестовый твиттbd48c5e1-e51f-41f2-9568-f28c170399b4" ^
-  --videos "/tmp/k0ahjscq.aym" ^
+  --text "Тестовый твитт532ed13f-35a7-4a21-97d8-ce4a3a8f38b4" ^
+  --videos "/tmp/rmg44dms.lry" ^
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

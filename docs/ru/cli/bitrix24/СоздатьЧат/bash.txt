@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьЧат \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --fields ""/tmp/4k0hybwv.qbd.json"" \
+  --fields ""/tmp/xxcgmbot.ipq.json"" \
   --token "***"

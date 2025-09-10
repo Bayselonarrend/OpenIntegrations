@@ -1,4 +1,4 @@
 oint vk СделатьРепост ^
   --post "2571" ^
   --from "-218704372" ^
-  --auth ""/tmp/fgfylmhs.y51.json""
+  --auth ""/tmp/zs2kozae.lcs.json""

@@ -1,5 +1,5 @@
 oint twitter СоздатьТвитОпрос ^
-  --text "Тестовый твиттff73bd25-b2ed-4e79-bcf2-8d1758e0b024" ^
+  --text "Тестовый твитт8396dc5d-460d-4ae9-b0e9-453792147c58" ^
   --options "['Вариант 1','Вариант 2']" ^
   --duration 60 ^
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
