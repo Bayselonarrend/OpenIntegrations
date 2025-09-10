@@ -49,6 +49,80 @@
 
 #Region Internal
 
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+
+    If OPI_Tools.IsWindows() Then
+
+        If OPI_Tools.IsOneScript() Then
+            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Else
+            Oint = """C:\Program Files\OneScript\bin\oint.bat""";
+        EndIf;
+
+    Else
+
+        Oint = "oint";
+
+    EndIf;
+
+    ResultFile = GetTempFileName();
+
+    LaunchString = Oint + " " + Library + " " + Method;
+    AddOptions   = New Structure;
+    WriteOptions = New Structure;
+
+    For Each Option In Options Do
+
+        If Option.Value = Undefined Or String(Option.Value) = "" Then
+            Continue;
+        EndIf;
+
+        CurrentValue = GetCLIFormedValue(Option.Value, , AddOptions);
+
+        LaunchString = LaunchString
+            + " --"
+            + Option.Key
+            + " "
+            + CurrentValue;
+
+        WriteOptions.Insert(Option.Key, CurrentValue);
+
+    EndDo;
+
+    For Each AddOption In AddOptions Do
+
+        CurrentValue = GetCLIFormedValue(AddOption.Value);
+
+        LaunchString = LaunchString
+            + " --"
+            + AddOption.Key
+            + " "
+            + CurrentValue;
+
+        WriteOptions.Insert(AddOption.Key, CurrentValue);
+
+    EndDo;
+
+    // BSLLS:ExternalAppStarting-off
+    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
+    // BSLLS:ExternalAppStarting-on
+
+    Result = ReadCLIResponse(ResultFile);
+
+    If Record Then
+        WriteCLICall(Library, Method, WriteOptions);
+    EndIf;
+
+    Try
+        DeleteFiles(ResultFile);
+    Except
+        Message("Failed to delete the temporary file after the test!");
+    EndTry;
+
+    Return Result;
+
+EndFunction
+
 Function GetTestingSectionMapping() Export
 
     Sections = New Structure;
@@ -524,80 +598,6 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
-
-    If OPI_Tools.IsWindows() Then
-
-        If OPI_Tools.IsOneScript() Then
-            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
-        Else
-            Oint = """C:\Program Files\OneScript\bin\oint.bat""";
-        EndIf;
-
-    Else
-
-        Oint = "oint";
-
-    EndIf;
-
-    ResultFile = GetTempFileName();
-
-    LaunchString = Oint + " " + Library + " " + Method;
-    AddOptions   = New Structure;
-    WriteOptions = New Structure;
-
-    For Each Option In Options Do
-
-        If Option.Value = Undefined Or String(Option.Value) = "" Then
-            Continue;
-        EndIf;
-
-        CurrentValue = GetCLIFormedValue(Option.Value, , AddOptions);
-
-        LaunchString = LaunchString
-            + " --"
-            + Option.Key
-            + " "
-            + CurrentValue;
-
-        WriteOptions.Insert(Option.Key, CurrentValue);
-
-    EndDo;
-
-    For Each AddOption In AddOptions Do
-
-        CurrentValue = GetCLIFormedValue(AddOption.Value);
-
-        LaunchString = LaunchString
-            + " --"
-            + AddOption.Key
-            + " "
-            + CurrentValue;
-
-        WriteOptions.Insert(AddOption.Key, CurrentValue);
-
-    EndDo;
-
-    // BSLLS:ExternalAppStarting-off
-    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
-    // BSLLS:ExternalAppStarting-on
-
-    Result = ReadCLIResponse(ResultFile);
-
-    If Record Then
-        WriteCLICall(Library, Method, WriteOptions);
-    EndIf;
-
-    Try
-        DeleteFiles(ResultFile);
-    Except
-        Message("Failed to delete the temporary file after the test!");
-    EndTry;
-
-    Return Result;
-
-EndFunction
-
 Procedure ProcessTestingResult(Val Result
     , Val Method
     , Val Library
@@ -669,6 +669,21 @@ Procedure ProcessTestingResult(Val Result
         Raise ErrInfo;
 
     EndTry;
+
+EndProcedure
+
+Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
+
+    TextTemplate = "
+    |--!!!---------%1----------!!!--
+    |
+    |%2
+    |
+    |%3
+    |
+    |---------------------------------";
+
+    Message(StrTemplate(TextTemplate, Library, Note, Text));
 
 EndProcedure
 
@@ -880,178 +895,6 @@ Function GetFullTestList() Export
     Else
         Return Tests;
     EndIf;
-
-EndFunction
-
-Procedure WriteMissingTest(Val Library, Val Method, Val Option);
-
-    Data = GetExistingLaunch();
-
-    If Data = Undefined Then
-        Return;
-    EndIf;
-
-    SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, Library, Method, Option);
-
-    Token   = GetParameter("RPortal_Token");
-    Project = GetParameter("RPortal_MainProject");
-    URL     = GetParameter("RPortal_URL");
-
-    CurrentDate = GetLaunchTime();
-
-    ElementStructure = New Structure;
-
-    ElementStructure.Insert("endTime"    , CurrentDate);
-    ElementStructure.Insert("launchUuid" , Data["id"]);
-    ElementStructure.Insert("status"     , "skipped");
-
-    ReportPortal().FinishItem(URL, Token, Project, ElementID, ElementStructure);
-
-EndProcedure
-
-Procedure WriteTestLog(Val Test, Val Text, Val Level)
-
-    Data = GetExistingLaunch();
-
-    If Data = Undefined Then
-        Return;
-    EndIf;
-
-    CurrentDate = GetLaunchTime();
-
-    Token   = GetParameter("RPortal_Token");
-    Project = GetParameter("RPortal_MainProject");
-    URL     = GetParameter("RPortal_URL");
-
-    LogStructure = New Structure;
-    LogStructure.Insert("launchUuid", Data["id"]);
-    LogStructure.Insert("itemUuid"  , Test);
-    LogStructure.Insert("time"      , CurrentDate);
-    LogStructure.Insert("message"   , Text);
-    LogStructure.Insert("level"     , Level);
-
-    ReportPortal().WriteLog(URL, Token, Project, LogStructure);
-
-EndProcedure
-
-Procedure FinishTestElement(Val UUID, Val Status)
-
-    Data = GetExistingLaunch();
-
-    If Data = Undefined Then
-        Return;
-    EndIf;
-
-    Token   = GetParameter("RPortal_Token");
-    Project = GetParameter("RPortal_MainProject");
-    URL     = GetParameter("RPortal_URL");
-
-    CurrentDate = GetLaunchTime();
-
-    ElementStructure = New Structure;
-
-    ElementStructure.Insert("endTime"    , CurrentDate);
-    ElementStructure.Insert("launchUuid" , Data["id"]);
-    ElementStructure.Insert("status"     , Status);
-
-    ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
-
-    FoundTest = Data["items"].Get(UUID);
-
-    If ValueIsFilled(FoundTest) Then
-        Data["tests"].Add(FoundTest);
-    EndIf;
-
-    WriteLaunchFile(Data);
-
-EndProcedure
-
-Procedure WriteLaunchFile(Val Data)
-
-    LaunchFile = GetParameter("RPortal_MainLaunch");
-    OPI_Tools.WriteJSONFile(LaunchFile, Data);
-
-EndProcedure
-
-Procedure CreateLaunchFile(Val UUID)
-
-    TFN = GetTempFileName();
-
-    DataStructure = New Structure;
-    DataStructure.Insert("id"    , UUID);
-    DataStructure.Insert("ended" , False);
-    DataStructure.Insert("suites", New Map);
-    DataStructure.Insert("tests" , New Array);
-    DataStructure.Insert("items" , New Map);
-
-    OPI_Tools.WriteJSONFile(TFN, DataStructure);
-    WriteParameter("RPortal_MainLaunch", TFN);
-
-EndProcedure
-
-Function GetExistingLaunch()
-
-    Data      = ReadLaunchFile();
-    ID        = Data["id"];
-    Completed = Data["ended"];
-
-    If Not ValueIsFilled(ID) Or Completed Then
-        Return Undefined;
-    Else
-        Return Data;
-    EndIf;
-
-EndFunction
-
-Function GetLaunchTime()
-
-    Shift       = ?(OPI_Tools.IsWindows(), 3600 * 3, 0);
-    CurrentDate = OPI_Tools.GetCurrentDate() - Shift;
-
-    Return CurrentDate;
-
-EndFunction
-
-Function ReadLaunchFile()
-
-    LaunchFile = GetParameter("RPortal_MainLaunch");
-
-    LaunchObject = New File(LaunchFile);
-
-    If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
-        Return New Map;
-    EndIf;
-
-    Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
-    Return Data;
-
-EndFunction
-
-Function ReportPortal()
-
-    Try
-
-        //@skip-check property-not-writable
-        OPI_ReportPortal = Undefined;
-
-        CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
-        PathArray        = StrSplit(CurrentDirectory, "/");
-        PathArray.Delete(PathArray.UBound());
-        PathArray.Delete(PathArray.UBound());
-        PathArray.Add("core");
-        PathArray.Add("Modules");
-        PathArray.Add("OPI_ReportPortal.os");
-        AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
-        OPI_ReportPortal = New("ReportPortal");
-
-        Return OPI_ReportPortal;
-
-    Except
-
-        Return OPI_ReportPortal;
-
-    EndTry;
 
 EndFunction
 
@@ -11058,7 +10901,7 @@ Function Check_FTP_ChangeCurrentDirectory(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If StrFind(Option, "Check") Then
+    If StrFind(Option, "Check") And Not IsCLITest() Then
         ExpectsThat(StrEndsWith(Result["path"], Path)).Равно(True);
     EndIf;
 
@@ -11385,6 +11228,184 @@ Function Check_FTP_GetFileData(Val Result, Val Option, CheckSize = "")
 EndFunction
 
 #EndRegion
+
+#Region ReportPortal
+
+Procedure WriteMissingTest(Val Library, Val Method, Val Option)
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    SetID     = CreateLaunchSet(Library);
+    ElementID = CreateTestElement(SetID, Library, Method, Option);
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate = GetLaunchTime();
+
+    ElementStructure = New Structure;
+
+    ElementStructure.Insert("endTime"    , CurrentDate);
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("status"     , "skipped");
+
+    ReportPortal().FinishItem(URL, Token, Project, ElementID, ElementStructure);
+
+EndProcedure
+
+Procedure WriteTestLog(Val Test, Val Text, Val Level)
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    CurrentDate = GetLaunchTime();
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    LogStructure = New Structure;
+    LogStructure.Insert("launchUuid", Data["id"]);
+    LogStructure.Insert("itemUuid"  , Test);
+    LogStructure.Insert("time"      , CurrentDate);
+    LogStructure.Insert("message"   , Text);
+    LogStructure.Insert("level"     , Level);
+
+    ReportPortal().WriteLog(URL, Token, Project, LogStructure);
+
+EndProcedure
+
+Procedure FinishTestElement(Val UUID, Val Status)
+
+    Data = GetExistingLaunch();
+
+    If Data = Undefined Then
+        Return;
+    EndIf;
+
+    Token   = GetParameter("RPortal_Token");
+    Project = GetParameter("RPortal_MainProject");
+    URL     = GetParameter("RPortal_URL");
+
+    CurrentDate = GetLaunchTime();
+
+    ElementStructure = New Structure;
+
+    ElementStructure.Insert("endTime"    , CurrentDate);
+    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("status"     , Status);
+
+    ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
+
+    FoundTest = Data["items"].Get(UUID);
+
+    If ValueIsFilled(FoundTest) Then
+        Data["tests"].Add(FoundTest);
+    EndIf;
+
+    WriteLaunchFile(Data);
+
+EndProcedure
+
+Procedure WriteLaunchFile(Val Data)
+
+    LaunchFile = GetParameter("RPortal_MainLaunch");
+    OPI_Tools.WriteJSONFile(LaunchFile, Data);
+
+EndProcedure
+
+Procedure CreateLaunchFile(Val UUID)
+
+    TFN = GetTempFileName();
+
+    DataStructure = New Structure;
+    DataStructure.Insert("id"    , UUID);
+    DataStructure.Insert("ended" , False);
+    DataStructure.Insert("suites", New Map);
+    DataStructure.Insert("tests" , New Array);
+    DataStructure.Insert("items" , New Map);
+
+    OPI_Tools.WriteJSONFile(TFN, DataStructure);
+    WriteParameter("RPortal_MainLaunch", TFN);
+
+EndProcedure
+
+Function GetExistingLaunch()
+
+    Data      = ReadLaunchFile();
+    ID        = Data["id"];
+    Completed = Data["ended"];
+
+    If Not ValueIsFilled(ID) Or Completed Then
+        Return Undefined;
+    Else
+        Return Data;
+    EndIf;
+
+EndFunction
+
+Function GetLaunchTime()
+
+    Shift       = ?(OPI_Tools.IsWindows(), 3600 * 3, 0);
+    CurrentDate = OPI_Tools.GetCurrentDate() - Shift;
+
+    Return CurrentDate;
+
+EndFunction
+
+Function ReadLaunchFile()
+
+    LaunchFile = GetParameter("RPortal_MainLaunch");
+
+    LaunchObject = New File(LaunchFile);
+
+    If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
+        Return New Map;
+    EndIf;
+
+    Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
+    Return Data;
+
+EndFunction
+
+Function ReportPortal()
+
+    Try
+
+        //@skip-check property-not-writable
+        OPI_ReportPortal = Undefined;
+
+        CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
+        PathArray        = StrSplit(CurrentDirectory, "/");
+        PathArray.Delete(PathArray.UBound());
+        PathArray.Delete(PathArray.UBound());
+        PathArray.Add("core");
+        PathArray.Add("Modules");
+        PathArray.Add("OPI_ReportPortal.os");
+        AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
+        OPI_ReportPortal = New("ReportPortal");
+
+        Return OPI_ReportPortal;
+
+    Except
+
+        Return OPI_ReportPortal;
+
+    EndTry;
+
+EndFunction
+
+#EndRegion
+
+#Region Miscellaneous
 
 Function GetValueFromFile(Parameter, Path)
 
@@ -11775,6 +11796,64 @@ Function ReadCLIResponse(Val ResultFile)
 
 EndFunction
 
+Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Undefined)
+
+    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
+
+    Data = TestResultAsText(Result);
+
+    Text = Header + Chars.LF + Chars.LF;
+
+    If ValueIsFilled(ErrorDescription) Then
+        Text = Text + ErrorDescription
+            + Chars.LF
+            + Chars.LF
+            + "---------------------------------"
+            + Chars.LF
+            + Chars.LF ;
+    EndIf;
+
+    Text = Text
+        + Data
+        + Chars.LF
+        + Chars.LF
+        + "---------------------------------"
+        + Chars.LF;
+
+    Message(Text);
+
+    Return Text;
+
+EndFunction
+
+Function TestResultAsText(Val Result)
+
+    Try
+        Data = OPI_Tools.JSONString(Result);
+    Except
+        Data = String(Result);
+    EndTry;
+
+    Data = TrimAll(Data);
+
+    Return Data;
+
+EndFunction
+
+Function IsCLITest()
+
+    Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+
+    If String(Data) = "1" Then
+        Result      = True;
+    Else
+        Result      = False;
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
 
     NewTest         = ValueTable.Add();
@@ -11859,65 +11938,6 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
-
-Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Undefined)
-
-    Header = String(OPI_Tools.GetCurrentDate()) + " | " + Method;
-
-    Data = TestResultAsText(Result);
-
-    Text = Header + Chars.LF + Chars.LF;
-
-    If ValueIsFilled(ErrorDescription) Then
-        Text = Text + ErrorDescription
-            + Chars.LF
-            + Chars.LF
-            + "---------------------------------"
-            + Chars.LF
-            + Chars.LF ;
-    EndIf;
-
-    Text = Text
-        + Data
-        + Chars.LF
-        + Chars.LF
-        + "---------------------------------"
-        + Chars.LF;
-
-    Message(Text);
-
-    Return Text;
-
-EndFunction
-
-Function LogServiceInformation(Val Text, Val Note, Val Library) Export
-
-    TextTemplate = "
-    |--!!!---------%1----------!!!--
-    |
-    |%2
-    |
-    |%3
-    |
-    |---------------------------------";
-
-    Message(StrTemplate(TextTemplate, Library, Note, Text));
-
-EndFunction
-
-Function TestResultAsText(Val Result)
-
-    Try
-        Data = OPI_Tools.JSONString(Result);
-    Except
-        Data = String(Result);
-    EndTry;
-
-    Data = TrimAll(Data);
-
-    Return Data;
-
-EndFunction
 
 Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
 
@@ -12083,7 +12103,13 @@ EndProcedure
 
 #EndRegion
 
+#EndRegion
+
 #Region Alternate
+
+Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export
+	Return ExecuteTestCLI(Библиотека, Метод, Опции, Записывать);
+EndFunction
 
 Function ПолучитьСоответствиеРазделовТестирования() Export
 	Return GetTestingSectionMapping();
@@ -12145,12 +12171,12 @@ Procedure ЗаписатьПараметр(Параметр, Значение) E
 	WriteParameter(Параметр, Значение);
 EndProcedure
 
-Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export
-	Return ExecuteTestCLI(Библиотека, Метод, Опции, Записывать);
-EndFunction
-
 Procedure ОбработатьРезультатТестирования(Val Результат, Val Метод, Val Библиотека, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
 	ProcessTestingResult(Результат, Метод, Библиотека, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
+EndProcedure
+
+Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export
+	LogServiceInformation(Текст, Примечание, Библиотека);
 EndProcedure
 
 Function СоздатьЗапускReportPortal(Val Платформа = "") Export
@@ -12191,10 +12217,6 @@ EndFunction
 
 Function ПолучитьВариантыПараметровMySQL() Export
 	Return GetMySQLParameterOptions();
-EndFunction
-
-Function ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export
-	Return LogServiceInformation(Текст, Примечание, Библиотека);
 EndFunction
 
 #EndRegion
