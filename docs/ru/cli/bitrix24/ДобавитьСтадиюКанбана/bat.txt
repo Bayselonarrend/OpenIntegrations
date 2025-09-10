@@ -1,7 +1,7 @@
 oint bitrix24 ДобавитьСтадиюКанбана ^
-  --url "b24-ar17wx.bitrix24.by" ^
-  --title "Новая стадия 2" ^
-  --color "0026FF" ^
-  --prevstage 2846 ^
-  --admin true ^
-  --token ***
+  --url ""b24-ar17wx.bitrix24.by"" ^
+  --title ""Новая стадия 2"" ^
+  --color ""0026FF"" ^
+  --prevstage "2850" ^
+  --admin "true" ^
+  --token "***"

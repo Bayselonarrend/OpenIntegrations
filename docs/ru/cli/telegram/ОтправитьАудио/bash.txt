@@ -1,5 +1,5 @@
 oint telegram ОтправитьАудио \
-  --token *** \
+  --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --audio "/tmp/fue2n0xt.2je"
+  --audio "/tmp/2w1uymx5.phl"

@@ -1,4 +1,4 @@
 oint ozon ПолучитьИнформациюОТоварах \
-  --clientid *** \
-  --apikey *** \
+  --clientid "***" \
+  --apikey "***" \
   --offerid "143210609"

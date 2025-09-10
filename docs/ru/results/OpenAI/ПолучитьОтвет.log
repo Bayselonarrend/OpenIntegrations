@@ -1,7 +1,7 @@
 ﻿{
- "created": 1757446129,
+ "created": 1757513999,
  "object": "chat.completion",
- "id": "62a0862e-eaf5-41d2-bd9a-fb0f6b33b2d8",
+ "id": "181f58b0-14af-40a9-85d5-88888cc7f3b4",
  "model": "smolvlm-256m-instruct",
  "choices": [
   {
@@ -9,13 +9,13 @@
    "finish_reason": "stop",
    "message": {
     "role": "assistant",
-    "content": "2019"
+    "content": "0.802725626939212"
    }
   }
  ],
  "usage": {
   "prompt_tokens": 53,
-  "completion_tokens": 5,
-  "total_tokens": 58
+  "completion_tokens": 18,
+  "total_tokens": 71
  }
 }
