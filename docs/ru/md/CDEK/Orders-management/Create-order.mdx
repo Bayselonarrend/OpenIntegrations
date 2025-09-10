@@ -120,20 +120,20 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint cdek СоздатьЗаказ \
-              --token *** \
-              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'36893b6b-5754-4fec-ba89-ff6d49511c44','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
+              --token "***" \
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'68d8d665-0508-48c3-8bbf-c09c281bf8c7','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
               --ostore true \
-              --testapi ***
+              --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint cdek СоздатьЗаказ ^
-              --token *** ^
-              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'36893b6b-5754-4fec-ba89-ff6d49511c44','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
+              --token "***" ^
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'68d8d665-0508-48c3-8bbf-c09c281bf8c7','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
               --ostore true ^
-              --testapi ***
+              --testapi "***"
         ```
     </TabItem>
 </Tabs>
@@ -142,13 +142,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "f05e6af4-2dff-4648-9413-7e6b6dd9d7e6"
+  "uuid": "60446a53-7c67-43fc-9de0-3de3aa4fac32"
  },
  "requests": [
   {
-   "request_uuid": "de2bf831-f1f7-4bdd-b27b-405839792a5d",
+   "request_uuid": "46f7a037-9250-4e83-80f0-721de9c5eb39",
    "type": "CREATE",
-   "date_time": "2025-09-09T19:03:41+00:00",
+   "date_time": "2025-09-10T13:57:23+00:00",
    "state": "ACCEPTED"
   }
  ],
