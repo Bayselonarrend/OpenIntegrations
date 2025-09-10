@@ -10983,6 +10983,93 @@ Function Check_FTP_GetWelcomeMessage(Val Result, Val Option)
 
 EndFunction
 
+Function Check_FTP_GetProtocolFeatureList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).Заполнено();
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_Ping(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_ExecuteCustomCommand(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["status"]).Заполнено();
+    ExpectsThat(Result["data"]).Заполнено();
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_ExecuteArbitraryCommand(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["status"]).Заполнено();
+    ExpectsThat(Result["data"]).Заполнено();
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetCurrentDirectory(Val Result, Val Option, Parameters = "")
+
+    Path = Result["path"];
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Path).Заполнено();
+
+    WriteParameter("FTP_RootPath", Path);
+    OPI_Tools.AddField("FTP_RootPath", Path, "String", Parameters);
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_ChangeCurrentDirectory(Val Result, Val Option, Path = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If StrFind(Option, "Check") Then
+        ExpectsThat(StrEndsWith(Result["path"], Path)).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_FTP_GetConnectionConfiguration(Val Result, Val Option, Parameters = "")
 
     If StrFind(Option, "Check") > 0 Then
@@ -11564,6 +11651,10 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
 
+    ExceptionsList = New ValueList();
+    ExceptionsList.Add("passive");
+    ExceptionsList.Add("keyboard");
+
     ReplaceStructure = New Map;
     ReplaceStructure.Insert("host.docker.internal", "127.0.0.1");
 
@@ -11573,8 +11664,12 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         For Each SecretKey In SecretsArray Do
 
-            If StrFind(Lower(Name), SecretKey) <> 0 Then
+            If StrFind(Lower(Name), SecretKey) <> 0
+                And ExceptionsList.FindByValue(Lower(Name)) = Undefined Then
+
                 Value = "***";
+                Cover = True;
+
             EndIf;
 
         EndDo;
@@ -11892,9 +11987,15 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
         ProcessSecretsMySQLOllama(Option, Value);
 
+    ElsIf Library = "vk" Then
+
+        ProcessSecretsVK(Option, Value);
+
     Else
         Return;
     EndIf;
+
+    Value = StrTemplate("""%1""", Value);
 
 EndProcedure
 
@@ -11966,6 +12067,16 @@ Procedure ProcessSecretsMySQLOllama(Val Option, Value)
 
     Else
         Return;
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessSecretsVK(Val Option, Value)
+
+    If Option = "ct" Then
+
+        Value = "***";
+
     EndIf;
 
 EndProcedure

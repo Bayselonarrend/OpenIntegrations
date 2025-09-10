@@ -1,5 +1,5 @@
 oint openai ПолучитьОтвет ^
   --url "https://hut.openintegrations.dev/localai/" ^
-  --token *** ^
+  --token "***" ^
   --model "moondream2-20250414" ^
   --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-1'},{'type':'input_text','text':'What is in this image?'}]}]"

@@ -4044,6 +4044,11 @@
    "id": "applbIaIibrNCfgWV",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "appyeZWJjF11nuKOK",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }

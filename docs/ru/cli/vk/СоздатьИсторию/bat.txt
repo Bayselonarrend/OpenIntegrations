@@ -1,3 +1,3 @@
 oint vk СоздатьИсторию ^
-  --picture "/tmp/w5dyavgk.oou.png" ^
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --picture ""/tmp/ymc3bf30.ehy.png"" ^
+  --auth ""/tmp/isbjlxjo.q3q.json""

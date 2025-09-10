@@ -1,4 +1,4 @@
 oint ollama ПроверитьBlob \
-  --url "https://hut.openintegrations.dev/ollama" \
-  --digest "yoyoyo" \
-  --headers {'Authorization':'***'}
+  --url ""https://hut.openintegrations.dev/ollama"" \
+  --digest ""yoyoyo"" \
+  --headers "{'Authorization':'***'}"

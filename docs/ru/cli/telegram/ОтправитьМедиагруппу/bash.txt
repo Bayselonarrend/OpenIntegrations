@@ -1,5 +1,5 @@
 oint telegram ОтправитьМедиагруппу \
-  --token *** \
+  --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/2x1yn44u.cgl.docx':'document'}"
+  --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/bcvef0wo.zmn.docx':'document'}"

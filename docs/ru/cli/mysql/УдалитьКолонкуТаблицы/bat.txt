@@ -1,5 +1,5 @@
 oint mysql УдалитьКолонкуТаблицы ^
-  --table "testtable" ^
-  --name "new_field" ^
-  --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
-  --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table ""testtable"" ^
+  --name ""new_field"" ^
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+  --tls ""/tmp/rmwdas1o.vvl.json""

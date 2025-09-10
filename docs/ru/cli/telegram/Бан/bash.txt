@@ -1,4 +1,4 @@
 oint telegram Бан \
-  --token *** \
+  --token "***" \
   --chat "@testsichee" \
   --user "461699897"
