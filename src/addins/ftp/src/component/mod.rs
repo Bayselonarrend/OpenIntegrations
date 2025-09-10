@@ -38,6 +38,11 @@ pub const METHODS: &[&[u16]] = &[
     name!("DownloadToFile"),
     name!("DownloadToBuffer"),
     name!("Ping"),
+    name!("ExecuteCommand"),
+    name!("GetCurrentDirectory"),
+    name!("ChangeCurrentDirectory"),
+    name!("GetFeatures"),
+    name!("ExecuteStandardCommand"),
 ];
 
 // Число параметров функций компоненты
@@ -62,6 +67,11 @@ pub fn get_params_amount(num: usize) -> usize {
         16 => 2,
         17 => 1,
         18 => 0,
+        19 => 1,
+        20 => 0,
+        21 => 1,
+        22 => 0,
+        23 => 1,
         _ => 0,
     }
 }
@@ -211,7 +221,46 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Ok(c) => c.ping(),
                 Err(_) => false
             })
-        }
+        },
+
+        19 => {
+            let command = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.execute_command(&command),
+                Err(e) => e.to_string()
+            })
+        },
+        20 => {
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.get_current_directory(),
+                Err(e) => e.to_string()
+            })
+        },
+
+        21 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.change_current_directory(&path),
+                Err(e) => e.to_string()
+            })
+        },
+
+        22 => {
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.get_features(),
+                Err(e) => e.to_string()
+            })
+        },
+        23 => {
+            let command = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(match &mut obj.get_client(){
+                Ok(c) => c.execute_standard_command(&command),
+                Err(e) => e.to_string()
+            })
+        },
         _ => Box::new(false), // Неверный номер команды
     };
 
