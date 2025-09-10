@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint notion СоздатьБазуДанных \
-              --token *** \
+              --token "***" \
               --page "5dd94c34fab04bff986b7511c0779f77" \
               --title "Тестовый заголовок" \
               --props "{'Имя':'title','Описание':'rich_text','Номер':'number','Дата создания':'date','Картинка':'files','Активен':'checkbox','Сайт':'url','Почта':'email','Телефон':'phone_number','Пользователь':'people','Статус':{'Новый':'green','В работе':'yellow','Удаленный':'red'}}"
@@ -72,7 +72,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint notion СоздатьБазуДанных ^
-              --token *** ^
+              --token "***" ^
               --page "5dd94c34fab04bff986b7511c0779f77" ^
               --title "Тестовый заголовок" ^
               --props "{'Имя':'title','Описание':'rich_text','Номер':'number','Дата создания':'date','Картинка':'files','Активен':'checkbox','Сайт':'url','Почта':'email','Телефон':'phone_number','Пользователь':'people','Статус':{'Новый':'green','В работе':'yellow','Удаленный':'red'}}"
@@ -84,10 +84,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "26982aa7-fc4e-81ba-8f57-cb71c7b0b7b6",
+ "id": "26a82aa7-fc4e-812f-9150-f9777eea1e00",
  "cover": null,
  "icon": null,
- "created_time": "2025-09-09T18:18:00Z",
+ "created_time": "2025-09-10T13:20:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -96,7 +96,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-09-09T18:18:00Z",
+ "last_edited_time": "2025-09-10T13:20:00Z",
  "title": [
   {
    "type": "text",
@@ -119,8 +119,22 @@ import TabItem from '@theme/TabItem';
  "description": [],
  "is_inline": false,
  "properties": {
+  "Картинка": {
+   "id": "%3APGs",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Сайт": {
+   "id": "%3EK~U",
+   "name": "Сайт",
+   "description": null,
+   "type": "url",
+   "url": {}
+  },
   "Номер": {
-   "id": "%3CC%3F%7B",
+   "id": "E%5BC%3B",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -128,89 +142,75 @@ import TabItem from '@theme/TabItem';
     "format": "number"
    }
   },
-  "Активен": {
-   "id": "%3CNg%3E",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Дата создания": {
-   "id": "DmAm",
-   "name": "Дата создания",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Картинка": {
-   "id": "EdVo",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
   "Телефон": {
-   "id": "GrHn",
+   "id": "SL%5DL",
    "name": "Телефон",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
-  "Пользователь": {
-   "id": "%5DO%7D%3E",
-   "name": "Пользователь",
+  "Дата создания": {
+   "id": "V%7Cbe",
+   "name": "Дата создания",
    "description": null,
-   "type": "people",
-   "people": {}
+   "type": "date",
+   "date": {}
   },
   "Почта": {
-   "id": "%5EA%3Ag",
+   "id": "a%7CIl",
    "name": "Почта",
    "description": null,
    "type": "email",
    "email": {}
   },
+  "Пользователь": {
+   "id": "kN%3F%7D",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
+  "Активен": {
+   "id": "pAPv",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
   "Описание": {
-   "id": "%60a%7Bc",
+   "id": "w%7CaI",
    "name": "Описание",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
   },
   "Статус": {
-   "id": "cPJo",
+   "id": "%7D%5Ejl",
    "name": "Статус",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "78310dff-8651-41b3-8628-b4b10e0d0449",
+      "id": "23794d33-c6bf-487e-b8d0-d0f2ccf6e36a",
       "name": "Новый",
       "color": "green",
       "description": null
      },
      {
-      "id": "ba04be3d-459e-4894-86a3-cb3c91d6a0ae",
+      "id": "38155f12-2993-4885-9fe3-d7895c22afd5",
       "name": "В работе",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "2c9940c0-6fc9-4ae9-8eb7-7cf0520821d3",
+      "id": "da263e7e-864e-4254-bf33-dfecb0c1909e",
       "name": "Удаленный",
       "color": "red",
       "description": null
      }
     ]
    }
-  },
-  "Сайт": {
-   "id": "dDQi",
-   "name": "Сайт",
-   "description": null,
-   "type": "url",
-   "url": {}
   },
   "Имя": {
    "id": "title",
@@ -224,10 +224,10 @@ import TabItem from '@theme/TabItem';
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/26982aa7fc4e81ba8f57cb71c7b0b7b6",
+ "url": "https://www.notion.so/26a82aa7fc4e812f9150f9777eea1e00",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "4199ff33-8871-454f-8ba2-00f500a29585"
+ "request_id": "78d085aa-53ab-4cec-8a75-04ceca87c01b"
 }
 ```
