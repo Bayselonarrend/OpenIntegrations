@@ -162,8 +162,138 @@ Function GetWelcomeMessage(Val Connection) Export
 
 EndFunction
 
+// Get protocol feature list
+// Gets a list of FTP protocol features supported by the server
+//
+// Note
+// FTP Command: `FEAT`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetProtocolFeatureList(Val Connection) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+        Result = Connection.GetFeatures();
+        Result = OPI_Tools.JsonToStructure(Result);
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Ping
+// Checks the connection activity and resets the timeout until its automatic closure
+//
+// Note
+// FTP Command: `NOOP`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+//
+// Returns:
+// Boolean - Success of server access
+Function Ping(Val Connection) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+        Result = Connection.Ping();
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Execute custom command
+// Executes a specific (SITE) server command and returns the response
+//
+// Note
+// The result can be returned as text or Base64 binary data in the structure `{"BYTES": <B64 string>}`
+// FTP Command: `SITE`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// CommandText - String - Text of the executed command - cmd
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ExecuteCustomCommand(Val Connection, Val CommandText) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(CommandText);
+
+        Result = Connection.ExecuteCommand(CommandText);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Execute arbitrary command
+// Sends an arbitrary text request to the server for processing
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// CommandText - String - Text of the executed command - cmd
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ExecuteArbitraryCommand(Val Connection, Val CommandText) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(CommandText);
+
+        Result = Connection.ExecuteStandardCommand(CommandText);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 // Get object size
 // Get the size of a file or directory if it exists
+//
+// Note
+// FTP Command: `SIZE`
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
@@ -198,7 +328,8 @@ EndFunction
 // Changes the object's path to the specified one
 //
 // Note
-// The ability to move an object from one directory to another using renaming depends on the server settings
+// The ability to move an object from one directory to another by changing the path depends on the server settings
+// FTP Command: `RNFR + RNTO`
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
@@ -360,6 +491,9 @@ EndFunction
 // List objects
 // Gets information about the contents of a directory at the specified path
 //
+// Note
+// FTP Command: `LIST`
+//
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
 // Path - String - Path to search directory - path
@@ -434,6 +568,9 @@ EndFunction
 // Create directory
 // Creates a directory at the specified path
 //
+// Note
+// FTP Command: `MKD`
+//
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
 // Path - String - Path to new directory - path
@@ -466,6 +603,9 @@ EndFunction
 // Delete directory
 // Deletes an existing directory
 //
+// Note
+// FTP Command: `RMD`
+//
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
 // Path - String - Path to directory to delete - path
@@ -493,12 +633,80 @@ Function ClearDirectory(Val Connection, Val Path) Export
 
 EndFunction
 
+// Get current directory
+// Gets the current directory from which relative paths are calculated
+//
+// Note
+// FTP Command: `PWD`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetCurrentDirectory(Val Connection) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+        Result = Connection.GetCurrentDirectory();
+        Result = OPI_Tools.JsonToStructure(Result);
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Change current directory !NOCLI
+// Changes the current directory from which relative paths are calculated
+//
+// Note
+// FTP Command: `CWD`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to new directory - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ChangeCurrentDirectory(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.ChangeCurrentDirectory(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region FileManagement
 
 // Upload file
 // Uploads a file from disk or binary data to the FTP server
+//
+// Note
+// FTP Command: `STOR`
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
@@ -565,6 +773,9 @@ EndFunction
 // Delete file
 // Delete file from server
 //
+// Note
+// FTP Command: `DELE`
+//
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
 // Path - String - Path to save file on server - path
@@ -596,6 +807,9 @@ EndFunction
 
 // Save file
 // Saves the file from the server to the specified path
+//
+// Note
+// FTP Command: `RETR`
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
@@ -630,6 +844,9 @@ EndFunction
 
 // Get file data !NOCLI
 // Gets file from server as binary data
+//
+// Note
+// FTP Command: `RETR`
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
@@ -928,6 +1145,22 @@ Function ПолучитьПриветственноеСообщение(Val Со
 	Return GetWelcomeMessage(Соединение);
 EndFunction
 
+Function ПолучитьСписокРасширенийПротокола(Val Соединение) Export
+	Return GetProtocolFeatureList(Соединение);
+EndFunction
+
+Function Пинг(Val Соединение) Export
+	Return Ping(Соединение);
+EndFunction
+
+Function ВыполнитьНестандартнуюКоманду(Val Соединение, Val ТекстКоманды) Export
+	Return ExecuteCustomCommand(Соединение, ТекстКоманды);
+EndFunction
+
+Function ВыполнитьПроизвольнуюКоманду(Val Соединение, Val ТекстКоманды) Export
+	Return ExecuteArbitraryCommand(Соединение, ТекстКоманды);
+EndFunction
+
 Function ПолучитьРазмерОбъекта(Val Соединение, Val Путь) Export
 	Return GetObjectSize(Соединение, Путь);
 EndFunction
@@ -966,6 +1199,14 @@ EndFunction
 
 Function ОчиститьДиректорию(Val Соединение, Val Путь) Export
 	Return ClearDirectory(Соединение, Путь);
+EndFunction
+
+Function ПолучитьТекущийКаталог(Val Соединение) Export
+	Return GetCurrentDirectory(Соединение);
+EndFunction
+
+Function ИзменитьТекущийКаталог(Val Соединение, Val Путь) Export
+	Return ChangeCurrentDirectory(Соединение, Путь);
 EndFunction
 
 Function ЗагрузитьФайл(Val Соединение, Val Файл, Val Путь) Export

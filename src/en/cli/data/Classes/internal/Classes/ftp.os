@@ -62,6 +62,70 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetProtocolFeatureList";
+    NewLine.SearchMethod = "GETPROTOCOLFEATURELIST";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Gets a list of FTP protocol features supported by the server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "Ping";
+    NewLine.SearchMethod = "PING";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Checks the connection activity and resets the timeout until its automatic closure";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ExecuteCustomCommand";
+    NewLine.SearchMethod = "EXECUTECUSTOMCOMMAND";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Executes a specific (SITE) server command and returns the response";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ExecuteCustomCommand";
+    NewLine.SearchMethod = "EXECUTECUSTOMCOMMAND";
+    NewLine.Parameter    = "--cmd";
+    NewLine.Description    = "Text of the executed command";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ExecuteArbitraryCommand";
+    NewLine.SearchMethod = "EXECUTEARBITRARYCOMMAND";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Sends an arbitrary text request to the server for processing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "ExecuteArbitraryCommand";
+    NewLine.SearchMethod = "EXECUTEARBITRARYCOMMAND";
+    NewLine.Parameter    = "--cmd";
+    NewLine.Description    = "Text of the executed command";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
     NewLine.Method       = "GetObjectSize";
     NewLine.SearchMethod = "GETOBJECTSIZE";
     NewLine.Parameter    = "--conn";
@@ -356,6 +420,17 @@ Function GetComposition() Export
     NewLine.Parameter    = "--path";
     NewLine.Description    = "Path to the directory to be cleaned";
     NewLine.Region     = "Directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ftp";
+    NewLine.Module      = "OPI_FTP";
+    NewLine.Method       = "GetCurrentDirectory";
+    NewLine.SearchMethod = "GETCURRENTDIRECTORY";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Directory management";
+    NewLine.MethodDescription   = "Gets the current directory from which relative paths are calculated";
 
 
     NewLine = CompositionTable.Add();
