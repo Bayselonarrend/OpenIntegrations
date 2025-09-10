@@ -2998,6 +2998,10 @@ Procedure Process(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined)
 
+    CLITestsMark = 1;
+
+    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+
     OPI_TestDataRetrieval.ProcessTestingResult(Result
         , Method
         , Library

@@ -57,18 +57,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint notion СоздатьСтраницуВБазу \
-              --token *** \
-              --base "26982aa7-fc4e-81ba-8f57-cb71c7b0b7b6" \
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'09/09/2025 18:18:28','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --token "***" \
+              --base "26a82aa7-fc4e-812f-9150-f9777eea1e00" \
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'09/10/2025 13:20:41','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint notion СоздатьСтраницуВБазу ^
-              --token *** ^
-              --base "26982aa7-fc4e-81ba-8f57-cb71c7b0b7b6" ^
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'09/09/2025 18:18:28','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --token "***" ^
+              --base "26a82aa7-fc4e-812f-9150-f9777eea1e00" ^
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'09/10/2025 13:20:41','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
 </Tabs>
@@ -77,9 +77,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "page",
- "id": "26982aa7-fc4e-8197-99ae-c3c9b0b5da28",
- "created_time": "2025-09-09T18:18:00Z",
- "last_edited_time": "2025-09-09T18:18:00Z",
+ "id": "26a82aa7-fc4e-8176-8ecb-cf2ce3828751",
+ "created_time": "2025-09-10T13:20:00Z",
+ "last_edited_time": "2025-09-10T13:20:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -92,32 +92,13 @@ import TabItem from '@theme/TabItem';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "26982aa7-fc4e-81ba-8f57-cb71c7b0b7b6"
+  "database_id": "26a82aa7-fc4e-812f-9150-f9777eea1e00"
  },
  "archived": false,
  "in_trash": false,
  "properties": {
-  "Номер": {
-   "id": "%3CC%3F%7B",
-   "type": "number",
-   "number": 1
-  },
-  "Активен": {
-   "id": "%3CNg%3E",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Дата создания": {
-   "id": "DmAm",
-   "type": "date",
-   "date": {
-    "start": "2025-09-09T06:18:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Картинка": {
-   "id": "EdVo",
+   "id": "%3APGs",
    "type": "files",
    "files": [
     {
@@ -129,18 +110,27 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
+  "Номер": {
+   "id": "E%5BC%3B",
+   "type": "number",
+   "number": 1
+  },
   "Телефон": {
-   "id": "GrHn",
+   "id": "SL%5DL",
    "type": "phone_number",
    "phone_number": "88005553535"
   },
-  "Пользователь": {
-   "id": "%5DO%7D%3E",
-   "type": "people",
-   "people": []
+  "Дата создания": {
+   "id": "V%7Cbe",
+   "type": "date",
+   "date": {
+    "start": "2025-09-10T01:20:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Почта": {
-   "id": "%5EA%3Ag",
+   "id": "a%7CIl",
    "type": "rich_text",
    "rich_text": [
     {
@@ -162,8 +152,18 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
+  "Пользователь": {
+   "id": "kN%3F%7D",
+   "type": "people",
+   "people": []
+  },
+  "Активен": {
+   "id": "pAPv",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Описание": {
-   "id": "%60a%7Bc",
+   "id": "w%7CaI",
    "type": "rich_text",
    "rich_text": [
     {
@@ -186,10 +186,10 @@ import TabItem from '@theme/TabItem';
    ]
   },
   "Статус": {
-   "id": "cPJo",
+   "id": "%7D%5Ejl",
    "type": "select",
    "select": {
-    "id": "78310dff-8651-41b3-8628-b4b10e0d0449",
+    "id": "23794d33-c6bf-487e-b8d0-d0f2ccf6e36a",
     "name": "Новый",
     "color": "green"
    }
@@ -218,8 +218,8 @@ import TabItem from '@theme/TabItem';
    ]
   }
  },
- "url": "https://www.notion.so/26982aa7fc4e819799aec3c9b0b5da28",
+ "url": "https://www.notion.so/26a82aa7fc4e81768ecbcf2ce3828751",
  "public_url": null,
- "request_id": "cc19adfd-1bcd-40ad-8a31-594b0b4389a8"
+ "request_id": "b99f8d46-f8dc-4107-8894-252f3a0d702a"
 }
 ```
