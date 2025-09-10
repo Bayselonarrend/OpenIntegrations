@@ -2881,6 +2881,8 @@ Procedure FT_DirecotryManagement() Export
 
         FTP_ClearDirectory(TestParameters);
         FTP_CreateDirectory(TestParameters);
+        FTP_GetCurrentDirectory(TestParameters);
+        FTP_ChangeCurrentDirectory(TestParameters);
         FTP_ListObjects(TestParameters);
         FTP_DeleteDirectory(TestParameters);
 
@@ -2911,6 +2913,7 @@ Procedure FT_CommonMethods() Export
 
         FTP_CreateConnection(TestParameters);
         FTP_GetWelcomeMessage(TestParameters);
+        FTP_GetProtocolFeatureList(TestParameters);
         FTP_GetConnectionConfiguration(TestParameters);
         FTP_CloseConnection(TestParameters);
         FTP_IsConnector(TestParameters);
@@ -2919,6 +2922,9 @@ Procedure FT_CommonMethods() Export
         FTP_GetTLSSettings(TestParameters);
         FTP_GetObjectSize(TestParameters);
         FTP_UpdatePath(TestParameters);
+        FTP_ExecuteCustomCommand(TestParameters);
+        FTP_ExecuteArbitraryCommand(TestParameters);
+        FTP_Ping(TestParameters);
 
     EndDo;
 
@@ -29093,6 +29099,374 @@ Procedure FTP_GetFileData(FunctionParameters)
         EndIf;
 
     EndDo;
+
+EndProcedure
+
+Procedure FTP_Ping(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.Ping(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "Ping", Postfix);
+
+EndProcedure
+
+Procedure FTP_ExecuteCustomCommand(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        CommandText = "UMASK";
+        Result      = OPI_FTP.ExecuteCustomCommand(Connection, CommandText);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "ExecuteCustomCommand", Postfix);
+
+EndProcedure
+
+Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+
+        CommandText = "PWD";
+        Result      = OPI_FTP.ExecuteArbitraryCommand(Connection, CommandText);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "ExecuteArbitraryCommand", Postfix);
+
+EndProcedure
+
+Procedure FTP_GetCurrentDirectory(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetCurrentDirectory(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "GetCurrentDirectory", Postfix, FunctionParameters);
+
+EndProcedure
+
+Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Path   = "new_dir";
+        Result = OPI_FTP.ChangeCurrentDirectory(Connection, Path);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "ChangeCurrentDirectory", Postfix);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
+
+    Process(Result, "FTP", "ChangeCurrentDirectory", "Check, " + Postfix, Path);
+
+    Path   = FunctionParameters["FTP_RootPath"];
+    Result = OPI_FTP.ChangeCurrentDirectory(Connection, Path);
+
+    Process(Result, "FTP", "ChangeCurrentDirectory", "Back, " + Postfix);
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
+
+    Process(Result, "FTP", "ChangeCurrentDirectory", "Check, back, " + Postfix, Path);
+
+EndProcedure
+
+Procedure FTP_GetProtocolFeatureList(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // FTPS
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    Опции = Новый Структура;
+    Опции.Вставить("", Host);
+    Опции.Вставить("", Port);
+    Опции.Вставить("", Login);
+    Опции.Вставить("", Password);
+
+    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+    If OPI_FTP.IsConnector(Connection) Then
+        Result = OPI_FTP.GetProtocolFeatureList(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "FTP", "GetProtocolFeatureList", Postfix);
 
 EndProcedure
 
