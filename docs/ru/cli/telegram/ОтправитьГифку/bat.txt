@@ -1,5 +1,5 @@
 oint telegram ОтправитьГифку ^
-  --token *** ^
+  --token "***" ^
   --chat "@testsichee" ^
   --text "Строковое значение" ^
-  --gif "/tmp/yhaa350j.rcs"
+  --gif "/tmp/1tvyp2ig.ouj"

@@ -1,5 +1,5 @@
 oint slack ОтправитьЭфемерноеСообщение \
-  --token *** \
+  --token "***" \
   --channel "C06UFNUTKUL" \
   --text "Эфимерное сообщение" \
   --user "U06UABH3APP" \

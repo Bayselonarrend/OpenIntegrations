@@ -1,4 +1,4 @@
 oint dropbox ПолучитьТокен \
-  --appkey *** \
-  --appsecret *** \
+  --appkey "***" \
+  --appsecret "***" \
   --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"

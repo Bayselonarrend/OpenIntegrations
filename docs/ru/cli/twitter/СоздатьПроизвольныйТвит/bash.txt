@@ -1,4 +1,4 @@
 oint twitter СоздатьПроизвольныйТвит \
-  --text "Тестовый твитт80b868a9-08f6-4c10-a150-65e698af48a8" \
-  --media "['1965467887260352512','1965467899713269760']" \
+  --text "Тестовый твитт953991d7-4b68-4e55-b8c3-bbfa4ad3d2d8" \
+  --media "['1965757444119842816','1965757455796727808']" \
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

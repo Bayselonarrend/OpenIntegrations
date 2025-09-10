@@ -3,4 +3,4 @@ oint ftp ПолучитьНастройкиПрокси ^
   --port 1080 ^
   --type "socks5" ^
   --login "proxyuser" ^
-  --pass ***
+  --pass "***"
