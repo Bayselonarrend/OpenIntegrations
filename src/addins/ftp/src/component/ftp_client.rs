@@ -1,7 +1,7 @@
 use std::io::{copy, BufReader, Cursor, ErrorKind, Read, Write};
 use std::net::{SocketAddr, TcpStream};
 use serde_json::json;
-use suppaftp::{FtpError, FtpResult, FtpStream, Mode, RustlsConnector, RustlsFtpStream};
+use suppaftp::{FtpError, FtpResult, FtpStream, Mode, RustlsConnector, RustlsFtpStream, Status};
 use suppaftp::list::File;
 use std::str::FromStr;
 use chrono::{DateTime, Utc};
@@ -10,6 +10,7 @@ use std::string::String;
 use std::time::{Duration, Instant};
 use base64::Engine;
 use base64::engine::general_purpose;
+use suppaftp::types::Response;
 use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
 use crate::component::tls_establish;
 use crate::component::tcp_establish;
@@ -229,7 +230,7 @@ impl FtpClient {
         }
     }
 
-    pub fn execute_custom_command(&mut self, command: &str) -> String {
+    pub fn execute_command(&mut self, command: &str) -> String {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.site(command),
@@ -237,22 +238,20 @@ impl FtpClient {
         };
 
         match result {
-            Ok(r) => {
-                let code = r.status.code();
-                let body = r.body;
+            Ok(r) => process_ftp_response(r),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
 
-                let body_json = match String::from_utf8(body) {
-                    Ok(text) => {
-                        json!(text)
-                    }
-                    Err(original_bytes) => {
-                        let base64 = general_purpose::STANDARD.encode(&original_bytes.into_bytes());
-                        json!({ "BYTES": base64 })
-                    }
-                };
+    pub fn execute_standard_command(&mut self, command: &str) -> String {
 
-                json!({"result": true, "data": body_json, "status": code}).to_string()
-            },
+        let result = match self {
+            FtpClient::Secure(stream) => stream.custom_command(command, all_status_variants().as_slice()),
+            FtpClient::Insecure(stream) => stream.custom_command(command, all_status_variants().as_slice()),
+        };
+
+        match result {
+            Ok(r) => process_ftp_response(r),
             Err(e) => format_json_error(&e.to_string())
         }
     }
@@ -270,6 +269,46 @@ impl FtpClient {
         }
 
     }
+
+    pub fn get_features(&mut self) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.feat(),
+            FtpClient::Insecure(stream) => stream.feat(),
+        };
+
+        match result {
+            Ok(f) => json!({"result": true, "data": f}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+
+    }
+
+    pub fn get_current_directory(&mut self) -> String {
+        let result = match self {
+            FtpClient::Secure(stream) => stream.pwd(),
+            FtpClient::Insecure(stream) => stream.pwd(),
+        };
+
+        match result {
+            Ok(p) => json!({"result": true, "path": p}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    pub fn change_current_directory(&mut self, path: &str) -> String {
+
+        let result = match self {
+            FtpClient::Secure(stream) => stream.cwd(path),
+            FtpClient::Insecure(stream) => stream.cwd(path),
+        };
+
+        match result {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
 
     fn upload_from_reader<R: Read>(
         &mut self,
@@ -345,6 +384,7 @@ impl FtpClient {
             FtpClient::Insecure(stream) => stream.size(path),
         }
     }
+
 }
 
 pub fn configure_ftp_client(
@@ -429,4 +469,76 @@ where
             Err(e) => return Err(format!("Check error: {}", e.to_string())),
         }
     }
+}
+
+pub fn process_ftp_response(response: Response) -> String{
+
+    let code = response.status.code();
+    let body = response.body;
+
+    let body_json = match String::from_utf8(body) {
+        Ok(text) => {
+            json!(text)
+        }
+        Err(original_bytes) => {
+            let base64 = general_purpose::STANDARD.encode(&original_bytes.into_bytes());
+            json!({ "BYTES": base64 })
+        }
+    };
+
+    json!({"result": true, "data": body_json, "status": code}).to_string()
+
+}
+
+pub fn all_status_variants() -> Vec<Status> {
+    use Status::*;
+    vec![
+        RestartMarker,
+        ReadyMinute,
+        AlreadyOpen,
+        AboutToSend,
+        CommandOk,
+        CommandNotImplemented,
+        System,
+        Directory,
+        File,
+        Help,
+        Name,
+        Ready,
+        Closing,
+        DataConnectionOpen,
+        ClosingDataConnection,
+        PassiveMode,
+        LongPassiveMode,
+        ExtendedPassiveMode,
+        LoggedIn,
+        LoggedOut,
+        LogoutAck,
+        AuthOk,
+        RequestedFileActionOk,
+        PathCreated,
+        NeedPassword,
+        LoginNeedAccount,
+        RequestFilePending,
+        NotAvailable,
+        CannotOpenDataConnection,
+        TransferAborted,
+        InvalidCredentials,
+        HostUnavailable,
+        RequestFileActionIgnored,
+        ActionAborted,
+        RequestedActionNotTaken,
+        BadCommand,
+        BadArguments,
+        NotImplemented,
+        BadSequence,
+        NotImplementedParameter,
+        NotLoggedIn,
+        StoringNeedAccount,
+        FileUnavailable,
+        PageTypeUnknown,
+        ExceededStorage,
+        BadFilename,
+        Unknown,
+    ]
 }
