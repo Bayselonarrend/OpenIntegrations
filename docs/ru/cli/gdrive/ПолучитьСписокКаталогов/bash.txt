@@ -1,4 +1,4 @@
 oint gdrive ПолучитьСписокКаталогов \
-  --token *** \
+  --token "***" \
   --querry "Тестовая папка" \
   --depth true

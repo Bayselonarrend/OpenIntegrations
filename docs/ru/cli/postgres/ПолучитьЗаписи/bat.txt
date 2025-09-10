@@ -1,4 +1,4 @@
 oint postgres ПолучитьЗаписи ^
-  --table "testtable" ^
-  --dbc postgresql://bayselonarrend:***@127.0.0.1:5432/ ^
-  --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table ""testtable"" ^
+  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+  --tls ""/tmp/mc45e5oa.xq1.json""
