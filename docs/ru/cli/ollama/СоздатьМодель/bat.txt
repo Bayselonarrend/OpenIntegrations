@@ -1,5 +1,5 @@
 oint ollama СоздатьМодель ^
   --url ""https://hut.openintegrations.dev/ollama"" ^
   --model ""mario"" ^
-  --settings ""/tmp/kmuzx4tw.lyh.json"" ^
+  --settings ""/tmp/vjgkyxrd.cax.json"" ^
   --headers "{'Authorization':'***'}"

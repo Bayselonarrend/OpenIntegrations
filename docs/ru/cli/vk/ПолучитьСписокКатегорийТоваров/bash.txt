@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокКатегорийТоваров \
-  --auth ""/tmp/yl2xra4g.3vp.json""
+  --auth ""/tmp/doqb1sf0.oek.json""

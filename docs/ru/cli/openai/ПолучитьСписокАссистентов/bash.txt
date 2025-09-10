@@ -1,5 +1,5 @@
 oint openai ПолучитьСписокАссистентов \
   --url "https://hut.openintegrations.dev/localai/" \
-  --token *** \
+  --token "***" \
   --limit 2 \
   --options "{'after':'asst_2','order':'desc'}"

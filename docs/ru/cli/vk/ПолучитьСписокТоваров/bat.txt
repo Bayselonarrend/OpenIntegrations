@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокТоваров ^
-  --auth ""/tmp/kol0hvbs.voy.json""
+  --auth ""/tmp/vmekhqel.3ca.json""

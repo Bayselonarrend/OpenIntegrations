@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЛид \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --lead "2382" \
-  --fields ""/tmp/k0yklnck.30n.json"" \
+  --lead "2386" \
+  --fields ""/tmp/ufwplb0t.alt.json"" \
   --token "***"
