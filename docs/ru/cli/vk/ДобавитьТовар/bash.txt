@@ -1,3 +1,3 @@
 oint vk ДобавитьТовар \
-  --product ""/tmp/ojghu0g1.rmq.json"" \
-  --auth ""/tmp/pgdyjvfl.zbc.json""
+  --product ""/tmp/tdatnfud.4zw.json"" \
+  --auth ""/tmp/gtvyjaky.h0a.json""

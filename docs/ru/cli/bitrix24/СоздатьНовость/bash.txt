@@ -1,6 +1,6 @@
 oint bitrix24 СоздатьНовость \
   --url ""b24-ar17wx.bitrix24.by"" \
   --text ""Текст новости"" \
-  --files ""/tmp/l2ugkhfq.des.json"" \
+  --files ""/tmp/i1gv2qnd.dj5.json"" \
   --title ""Заголовок новости"" \
   --token "***"

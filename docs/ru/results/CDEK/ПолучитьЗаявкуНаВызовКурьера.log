@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "ab4f89d7-98ea-4b0f-8d22-23898ab0214b",
-  "cdek_number": "1106604238",
-  "order_uuid": "2889f067-02ba-410b-b0ed-0f7c932e6dbb",
+  "uuid": "1f432c1e-0230-4a43-8d29-77bc264bae5a",
+  "cdek_number": "1106604282",
+  "order_uuid": "89e8ed28-b12d-4a87-92d6-94b4586719c8",
   "intake_date": "2025-09-11",
-  "intake_number": "13309758",
+  "intake_number": "13309759",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -20,6 +20,9 @@
    "phones": [
     {
      "number": "79589441654"
+    },
+    {
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": false
@@ -56,22 +59,22 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2025-09-10T13:57:51+00:00"
+    "date_time": "2025-09-10T18:43:35+00:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-09-10T13:57:51+00:00"
+    "date_time": "2025-09-10T18:43:35+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-10T13:57:51+00:00"
+    "date_time": "2025-09-10T18:43:35+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "1a44c224-8c70-43fb-a54c-61e8c90bfd36",
+    "package_id": "44003897-e561-44d6-81bb-caed10ab45f1",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -82,9 +85,9 @@
  },
  "requests": [
   {
-   "request_uuid": "528cce7b-ab19-4ca6-b5ba-6b92226ce4c8",
+   "request_uuid": "9185eec5-ae5e-4c9b-9462-0a4101ba72d0",
    "type": "CREATE",
-   "date_time": "2025-09-10T13:57:50+00:00",
+   "date_time": "2025-09-10T18:43:31+00:00",
    "state": "SUCCESSFUL"
   }
  ]

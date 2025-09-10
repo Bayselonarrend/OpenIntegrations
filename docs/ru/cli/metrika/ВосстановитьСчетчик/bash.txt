@@ -1,3 +1,3 @@
 oint metrika ВосстановитьСчетчик \
   --token "***" \
-  --counter "104108504"
+  --counter "104111330"

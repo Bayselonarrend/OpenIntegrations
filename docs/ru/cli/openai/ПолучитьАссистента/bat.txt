@@ -1,4 +1,4 @@
 oint openai ПолучитьАссистента ^
   --url "https://hut.openintegrations.dev/localai/" ^
-  --token *** ^
+  --token "***" ^
   --id "asst_2"

@@ -2,6 +2,14 @@
  "object": "list",
  "data": [
   {
+   "id": "stablediffusion",
+   "object": "model"
+  },
+  {
+   "id": "tts-1",
+   "object": "model"
+  },
+  {
    "id": "gpt-4",
    "object": "model"
   },
@@ -10,7 +18,7 @@
    "object": "model"
   },
   {
-   "id": "jina-reranker-v1-base-en",
+   "id": "text-embedding-ada-002",
    "object": "model"
   },
   {
@@ -18,15 +26,7 @@
    "object": "model"
   },
   {
-   "id": "stablediffusion",
-   "object": "model"
-  },
-  {
    "id": "gpt-4o",
-   "object": "model"
-  },
-  {
-   "id": "tts-1",
    "object": "model"
   },
   {
@@ -34,11 +34,11 @@
    "object": "model"
   },
   {
-   "id": "smolvlm-256m-instruct",
+   "id": "jina-reranker-v1-base-en",
    "object": "model"
   },
   {
-   "id": "text-embedding-ada-002",
+   "id": "smolvlm-256m-instruct",
    "object": "model"
   },
   {

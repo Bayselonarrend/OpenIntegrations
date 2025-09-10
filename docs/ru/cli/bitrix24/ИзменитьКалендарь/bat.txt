@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьКалендарь ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --calendar "1288" ^
-  --fields ""/tmp/tlixibdl.hec.json"" ^
+  --calendar "1292" ^
+  --fields ""/tmp/ttb5ovbu.xlf.json"" ^
   --token "***"

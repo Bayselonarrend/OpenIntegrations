@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокЛидов ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --filter ""/tmp/uae1xss5.a11.json"" ^
+  --filter ""/tmp/zok4k20p.yii.json"" ^
   --token "***"

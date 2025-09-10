@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьСобытиеКалендаря ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --event "2320" ^
-  --fields ""/tmp/xmm5vkyv.bdc.json"" ^
+  --event "2328" ^
+  --fields ""/tmp/igwozxgj.ytg.json"" ^
   --token "***"
