@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокЗаказов ^
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --auth ""/tmp/1nqawuv2.mg5.json""
