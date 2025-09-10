@@ -1,4 +1,4 @@
 oint ozon ПолучитьОписанияХарактеристикТоваров \
-  --clientid *** \
-  --apikey *** \
-  --filter "{"visibility":"ALL","offer_id":["143210609"]}"
+  --clientid "***" \
+  --apikey "***" \
+  --filter "{'visibility':'ALL','offer_id':['143210609']}"

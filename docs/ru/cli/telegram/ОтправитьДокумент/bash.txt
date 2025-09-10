@@ -1,6 +1,6 @@
 oint telegram ОтправитьДокумент \
-  --token *** \
+  --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --doc "/tmp/oysh31ni.xcx" \
+  --doc "/tmp/cgz0ggvx.e22" \
   --filename "customname.docx"

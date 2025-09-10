@@ -1,4 +1,4 @@
 oint vk ДобавитьТоварВПодборку \
-  --items 11807486 \
-  --sel 138 \
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --items "11812231" \
+  --sel "138" \
+  --auth ""/tmp/ncrptjc3.1q0.json""
