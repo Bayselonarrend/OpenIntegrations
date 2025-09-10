@@ -1,6 +1,6 @@
 oint ozon ОбновитьИзображенияТовара ^
-  --clientid *** ^
-  --apikey *** ^
-  --productid 2674371462 ^
-  --images "["https://hut.openintegrations.dev/test_data/picture.jpg","https://hut.openintegrations.dev/test_data/picture2.jpg"]" ^
+  --clientid "***" ^
+  --apikey "***" ^
+  --productid 2681423820 ^
+  --images "['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg']" ^
   --color "GREEN"

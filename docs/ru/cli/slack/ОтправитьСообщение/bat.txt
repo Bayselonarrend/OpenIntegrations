@@ -1,4 +1,4 @@
 oint slack ОтправитьСообщение ^
-  --token *** ^
+  --token "***" ^
   --channel "D06UAKK1C6R" ^
   --text "Тест диалог"

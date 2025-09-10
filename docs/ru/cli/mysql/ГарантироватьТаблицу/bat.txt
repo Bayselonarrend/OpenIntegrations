@@ -1,5 +1,5 @@
 oint mysql ГарантироватьТаблицу ^
-  --table "test_new" ^
-  --cols "{'smallint_field':'SMALLINT','double_field':'DOUBLE','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
-  --dbc mysql://bayselonarrend:***@127.0.0.1:3306/ ^
-  --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table ""test_new"" ^
+  --cols ""/tmp/3ieydufm.mnq.json"" ^
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+  --tls ""/tmp/s2mtqliy.xi0.json""

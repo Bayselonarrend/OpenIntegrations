@@ -1,2 +1,2 @@
 oint bitrix24 ПолучитьСтруктуруКалендаря ^
-  --empty true
+  --empty "true"

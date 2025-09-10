@@ -1,3 +1,3 @@
 oint vk УдалитьТовар ^
-  --item 11807486 ^
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --item "11812231" ^
+  --auth ""/tmp/dldr1ylu.hp2.json""

@@ -1,4 +1,4 @@
 oint ozon ПолучитьИнформациюОбУценке \
-  --clientid *** \
-  --apikey *** \
+  --clientid "***" \
+  --apikey "***" \
   --sku 1626044001

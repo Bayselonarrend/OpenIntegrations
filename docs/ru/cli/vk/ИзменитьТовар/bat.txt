@@ -1,4 +1,4 @@
 oint vk ИзменитьТовар ^
-  --item 11807486 ^
-  --product "{'Имя':'Тестовый товар измененный'}" ^
-  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --item "11812231" ^
+  --product ""/tmp/z5ecmym3.x4a.json"" ^
+  --auth ""/tmp/n11xjmet.dyc.json""

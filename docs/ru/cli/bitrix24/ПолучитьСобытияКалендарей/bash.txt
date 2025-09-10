@@ -1,6 +1,6 @@
 oint bitrix24 ПолучитьСобытияКалендарей \
-  --url "b24-ar17wx.bitrix24.by" \
-  --owner 1 \
-  --type "user" \
-  --filter "{'from':'09/10/2025 18:51:03','to':'09/11/2025 18:51:03','section':['1282','1284']}" \
-  --token ***
+  --url ""b24-ar17wx.bitrix24.by"" \
+  --owner "1" \
+  --type ""user"" \
+  --filter ""/tmp/gvrtllnd.tyr.json"" \
+  --token "***"
