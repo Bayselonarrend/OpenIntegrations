@@ -1,4 +1,4 @@
 oint telegram ЗакрытьТемуФорума ^
-  --token *** ^
+  --token "***" ^
   --forum "-1001971186208" ^
-  --topic "11431"
+  --topic "11442"

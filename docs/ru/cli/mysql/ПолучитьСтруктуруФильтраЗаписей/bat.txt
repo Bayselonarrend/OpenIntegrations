@@ -1,2 +1,2 @@
 oint mysql ПолучитьСтруктуруФильтраЗаписей ^
-  --empty true
+  --empty "true"

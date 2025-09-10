@@ -1,2 +1,2 @@
 oint metrika ПолучитьСписокМеток \
-  --token ***
+  --token "***"

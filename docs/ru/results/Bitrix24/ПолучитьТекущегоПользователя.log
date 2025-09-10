@@ -6,12 +6,12 @@
   "NAME": "Антон",
   "LAST_NAME": "Титовец",
   "EMAIL": "no-reply@bitrix24.com",
-  "LAST_LOGIN": "2025-08-18T06:27:10+00:00",
+  "LAST_LOGIN": "2025-09-10T07:50:43+00:00",
   "DATE_REGISTER": "2024-02-10T00:00:00+00:00",
   "TIME_ZONE": "Europe/Moscow",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "09.09.2025 21:45:48",
-  "LAST_ACTIVITY_DATE": "2025-08-18 09:31:11",
+  "TIMESTAMP_X": "10.09.2025 16:43:34",
+  "LAST_ACTIVITY_DATE": "2025-09-10 10:51:58",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
   "PERSONAL_PHOTO": "https://cdn-ru.bitrix24.by/b28528874/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
@@ -19,17 +19,17 @@
   "UF_DEPARTMENT": [
    1,
    638,
-   2594
+   2598
   ]
  },
  "time": {
-  "start": 1757443592.78376,
-  "finish": 1757443592.80908,
-  "duration": 0.0253210067749023,
-  "processing": 0.0027618408203125,
-  "date_start": "2025-09-09T18:46:32+00:00",
-  "date_finish": "2025-09-09T18:46:32+00:00",
-  "operating_reset_at": 1757444192,
+  "start": 1757511839.7781,
+  "finish": 1757511839.81391,
+  "duration": 0.0358037948608398,
+  "processing": 0.00462889671325684,
+  "date_start": "2025-09-10T13:43:59+00:00",
+  "date_finish": "2025-09-10T13:43:59+00:00",
+  "operating_reset_at": 1757512439,
   "operating": 0
  }
 }

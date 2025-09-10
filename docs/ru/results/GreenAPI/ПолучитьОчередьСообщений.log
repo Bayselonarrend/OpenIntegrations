@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "BAE5DCC21B0B4AB5",
+  "messageID": "BAE57EF9AF2F5D99",
   "type": "sendMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -11,46 +11,46 @@
   }
  },
  {
-  "messageID": "BAE55D7641D9AA14",
+  "messageID": "BAE5588763928A8F",
   "type": "sendMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
    "message": "Новое сообщение",
-   "quotedMessageId": "BAE5DCC21B0B4AB5",
+   "quotedMessageId": "BAE57EF9AF2F5D99",
    "linkPreview": true,
    "typingTime": null,
    "typePreview": "small"
   }
  },
  {
-  "messageID": "BAE58588C406DB59",
+  "messageID": "BAE5F4C7D0FB3B11",
   "type": "sendFileByUrl",
   "body": {
    "fileName": "photo.jpg",
    "chatId": "120363410406221140@g.us",
    "caption": "Описание файла",
    "archive": false,
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/862c4104-4f97-4b11-b0e3-11baed0a3025.jpg",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/b0e88f10-ec72-4289-9886-e3de11489350.jpg",
    "typingTime": null,
    "typingType": "composing"
   }
  },
  {
-  "messageID": "BAE5158F05E98537",
+  "messageID": "BAE5E27418056AB0",
   "type": "sendFileByUrl",
   "body": {
    "fileName": "vid.mp4",
    "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE58588C406DB59",
+   "quotedMessageId": "BAE5F4C7D0FB3B11",
    "caption": "Описание файла",
    "archive": false,
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/42dec0b4-4030-468a-a21d-65363c4fd799.mp4",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/f14e1b5f-e2de-4317-aa69-95bc2dd229ee.mp4",
    "typingTime": null,
    "typingType": "composing"
   }
  },
  {
-  "messageID": "BAE537483CC94757",
+  "messageID": "BAE52D19DBC09463",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -62,20 +62,20 @@
   }
  },
  {
-  "messageID": "BAE506F4513E7274",
+  "messageID": "BAE55C91732258AF",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "120363410406221140@g.us",
    "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
    "fileName": "vid.mp4",
    "caption": "Описание файла",
-   "quotedMessageId": "BAE537483CC94757",
+   "quotedMessageId": "BAE52D19DBC09463",
    "typingTime": null,
    "typingType": "composing"
   }
  },
  {
-  "messageID": "BAE5B5FEE72566AF",
+  "messageID": "BAE55C73CFCF4311",
   "type": "sendPoll",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -96,7 +96,7 @@
   }
  },
  {
-  "messageID": "BAE50E8D0F3394C2",
+  "messageID": "BAE5A7F2B4FADB2F",
   "type": "sendPoll",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -113,12 +113,12 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "BAE5B5FEE72566AF",
+   "quotedMessageId": "BAE55C73CFCF4311",
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE533C48B32F538",
+  "messageID": "BAE5B70EC7D36451",
   "type": "sendLocation",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -130,18 +130,18 @@
   }
  },
  {
-  "messageID": "BAE5118BD601968C",
+  "messageID": "BAE513E44719F8DD",
   "type": "sendLocation",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE533C48B32F538",
+   "quotedMessageId": "BAE5B70EC7D36451",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE53B765C8915E8",
+  "messageID": "BAE564BC3BDC2463",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -156,7 +156,7 @@
   }
  },
  {
-  "messageID": "BAE5BA62EC9AB398",
+  "messageID": "BAE5FE05CA49AEFF",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -164,30 +164,30 @@
     "phoneContact": 79001234568,
     "company": "Велосипед"
    },
-   "quotedMessageId": "BAE53B765C8915E8",
+   "quotedMessageId": "BAE564BC3BDC2463",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "BAE5507A8C82E994"
+   "BAE544236D0A3BA4"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "BAE5DCC21B0B4AB5"
+    "BAE57EF9AF2F5D99"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE576B5D785DB01",
+  "messageID": "BAE5A402B9C2A1D0",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE5DCC21B0B4AB5",
+   "idMessage": "BAE57EF9AF2F5D99",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }
