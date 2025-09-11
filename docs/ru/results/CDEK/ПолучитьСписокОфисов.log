@@ -1477,16 +1477,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcaf11cc-c7d9-4f80-b0f9-eb6393db28cc"
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/1f49e563-770d-43b7-863a-2e7aab237cca"
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/9ba140bc-47b5-471d-90ef-cef6a320708e"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3e87c42f-68f0-490d-aba0-747d9ae1f33a"
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcaf11cc-c7d9-4f80-b0f9-eb6393db28cc"
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/1f49e563-770d-43b7-863a-2e7aab237cca"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/32075198-b5f4-4dde-b353-53444e9df2b4"
@@ -1566,19 +1566,19 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/76bdfa32-1544-4eb2-8e4f-76af58b48096"
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/171ae838-036b-4ec5-954e-ebaedf7c7971"
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23088921-8838-4a8a-a268-d5dc1d98e0af"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/8449af3e-5a01-45b9-b04b-a784656b0bf9"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b094e78e-88ae-418f-afd8-66f4179b7b00"
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/76bdfa32-1544-4eb2-8e4f-76af58b48096"
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23088921-8838-4a8a-a268-d5dc1d98e0af"
    }
   ],
   "work_time_list": [
@@ -1743,16 +1743,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/761ebd60-cf4d-4e68-ab17-5254a50bbfb0"
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4d1d9fdf-ea93-4fdf-a4fa-48d610459e14"
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb2120"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d9069726-b35a-441e-9d6d-7ca1f8732a2d"
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d9069726-b35a-441e-9d6d-7ca1f8732a2d"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/761ebd60-cf4d-4e68-ab17-5254a50bbfb0"
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb2120"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b97a5e27-43da-4285-9bbb-d1a66733d152"
@@ -2009,13 +2009,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/096735ed-c289-437f-b093-1dbbcad2e6c4"
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/11f8dba3-1eb5-410b-b893-310ac6007fcf"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/91e3f6cf-ac29-4860-a575-64be946bcccc"
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/096735ed-c289-437f-b093-1dbbcad2e6c4"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/a84cbe99-1e5c-4741-8080-74dc16d59a66"
@@ -2351,13 +2351,13 @@
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fdaa6562-903b-4f9b-8cba-bba004e202bf"
    },
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572df"
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bba5c96-dd38-431f-9516-432cd2e3a958"
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d1d39d64-36de-4410-a31e-9965f58cb3b2"
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572df"
    }
   ],
   "work_time_list": [
@@ -2518,6 +2518,9 @@
   "allowed_cod": true,
   "office_image_list": [
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40e1df55-0a94-4030-b938-a4673b080e99"
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0400dca2-1c56-488d-abc5-2fbe9b21ae10"
    },
    {
@@ -2525,9 +2528,6 @@
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/48365ffa-f79c-4de9-856a-efcecae05a4a"
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40e1df55-0a94-4030-b938-a4673b080e99"
    }
   ],
   "work_time_list": [
