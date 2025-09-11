@@ -1,4 +1,4 @@
 oint twitter СоздатьТвитГифки ^
-  --text "Тестовый твиттcdf82e25-ee75-4bf3-9d5f-93539103435a" ^
-  --gifs "/tmp/elaotbxd.ztm" ^
+  --text "Тестовый твиттef915e91-1307-4d09-afcc-5b1c44287df3" ^
+  --gifs "/tmp/e4nd0fft.gqr" ^
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

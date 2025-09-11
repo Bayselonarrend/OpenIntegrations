@@ -2,4 +2,4 @@ oint telegram ОтправитьВидео \
   --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --video "/tmp/tbalmziz.0y1"
+  --video "/tmp/4ixhe1xo.t52"

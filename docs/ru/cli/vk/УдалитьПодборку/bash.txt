@@ -1,3 +1,3 @@
 oint vk УдалитьПодборку \
-  --sel "139" \
-  --auth ""/tmp/gts2ul0m.21u.json""
+  --sel "138" \
+  --auth ""/tmp/j1rxzndc.odf.json""

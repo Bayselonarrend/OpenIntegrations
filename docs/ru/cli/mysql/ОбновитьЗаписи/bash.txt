@@ -1,6 +1,6 @@
 oint mysql ОбновитьЗаписи \
   --table ""test_data"" \
-  --values ""/tmp/hbwsppcs.wv3.json"" \
-  --filter ""/tmp/auzmerpv.3w3.json"" \
+  --values ""/tmp/z1yjzwdk.unf.json"" \
+  --filter ""/tmp/cbcgyvaw.hja.json"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls ""/tmp/qkza4tvi.xq4.json""
+  --tls ""/tmp/cfyie143.ns2.json""
