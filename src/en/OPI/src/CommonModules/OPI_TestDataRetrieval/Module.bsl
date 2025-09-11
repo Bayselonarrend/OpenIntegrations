@@ -73,7 +73,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     For Each Option In Options Do
 
-        If Option.Value = Undefined Or String(Option.Value) = "" Then
+        If Option.Value = Undefined Then
             Continue;
         EndIf;
 
@@ -10841,7 +10841,11 @@ EndFunction
 
 Function Check_FTP_Ping(Val Result, Val Option)
 
-    ExpectsThat(Result).Равно(True);
+    If IsCLITest() Then
+        ExpectsThat(Result).Равно(Lower("true"));
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
 
     If StrFind(Option, "HTTP") Then
         OPI_Tools.Pause(5);
