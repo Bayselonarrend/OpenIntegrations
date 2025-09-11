@@ -71,6 +71,24 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ftp ВыполнитьПроизвольнуюКоманду \
+              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" \
+              --cmd "PWD"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ftp ВыполнитьПроизвольнуюКоманду ^
+              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
+              --cmd "PWD"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
