@@ -109,18 +109,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mssql ВыполнитьЗапросSQL \
-              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" \
-              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; \
-              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
+              --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls ""/tmp/pketml4s.5nr.json""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mssql ВыполнитьЗапросSQL ^
-              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
-              --dbc Server=127.0.0.1;Database=***;User Id=SA;Password=***; ^
-              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
+              --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls ""/tmp/pketml4s.5nr.json""
         ```
     </TabItem>
 </Tabs>
@@ -131,15 +131,15 @@ import TabItem from '@theme/TabItem';
  "data": [
   {
    "Age": 20,
-   "BirthDate": "2025-09-09",
-   "CreatedAt": "2025-09-09T18:02:19",
+   "BirthDate": "2025-09-10",
+   "CreatedAt": "2025-09-10T17:54:09",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "f560ea1e-5133-49fb-b2b8-bd423ca64c67",
+   "RowGuid": "18cda87a-7d09-4044-945d-1c8aa48fde5d",
    "Salary": 10.3
   }
  ],
