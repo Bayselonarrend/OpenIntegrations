@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
     Соединение = OPI_FTP.ОткрытьСоединение(НастройкиFTP, НастройкиПрокси, НастройкиTLS);
 
     Если OPI_FTP.ЭтоКоннектор(Соединение) Тогда
-        Результат = OPI_FTP.ОчиститьДиректорию(Соединение, "");
+        Результат = OPI_FTP.ОчиститьДиректорию(Соединение, ".");
     Иначе
         Результат = Соединение; // Ошибка соединения
     КонецЕсли;
@@ -73,14 +73,16 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp ОчиститьДиректорию \
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}"
+              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" \
+              --path ""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp ОчиститьДиректорию ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}"
+              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
+              --path ""
         ```
     </TabItem>
 </Tabs>

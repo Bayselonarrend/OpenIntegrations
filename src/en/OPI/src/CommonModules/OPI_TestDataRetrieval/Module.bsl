@@ -73,7 +73,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     For Each Option In Options Do
 
-        If Option.Value = Undefined Then
+        If Option.Value = Undefined Or String(Option.Value) = "" Then
             Continue;
         EndIf;
 
