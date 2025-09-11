@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/oir5hsr4.vlm.bin",
- "result": true
+ "filepath": "/tmp/rrzfwedt.fmb.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

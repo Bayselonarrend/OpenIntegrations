@@ -1,4 +1,3 @@
-oint ftp ИзменитьПуть ^
+oint ftp ВыполнитьПроизвольнуюКоманду ^
   --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
-  --old "new_dir/giant.bin" ^
-  --new "new_dir/big.bin"
+  --cmd "PWD"
