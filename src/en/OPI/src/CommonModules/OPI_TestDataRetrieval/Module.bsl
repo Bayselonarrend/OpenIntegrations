@@ -10842,7 +10842,7 @@ EndFunction
 Function Check_FTP_Ping(Val Result, Val Option)
 
     If IsCLITest() Then
-        ExpectsThat(Result).Равно(Lower("true"));
+        ExpectsThat(Lower(Result)).Равно("true");
     Else
         ExpectsThat(Result).Равно(True);
     EndIf;
