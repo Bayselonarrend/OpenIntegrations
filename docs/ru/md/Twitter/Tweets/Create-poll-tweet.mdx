@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint twitter СоздатьТвитОпрос \
-              --text "Тестовый твитт8396dc5d-460d-4ae9-b0e9-453792147c58" \
+              --text "Тестовый твитт4c1f18fc-55f6-4205-94ec-e5900e02c826" \
               --options "['Вариант 1','Вариант 2']" \
               --duration 60 \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint twitter СоздатьТвитОпрос ^
-              --text "Тестовый твитт8396dc5d-460d-4ae9-b0e9-453792147c58" ^
+              --text "Тестовый твитт4c1f18fc-55f6-4205-94ec-e5900e02c826" ^
               --options "['Вариант 1','Вариант 2']" ^
               --duration 60 ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
@@ -67,9 +67,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "id": "1966101323931136024",
+  "edit_history_tweet_ids": [
+   "1966101323931136024"
+  ],
+  "text": "Тестовый твитт4c1f18fc-55f6-4205-94ec-e5900e02c826"
+ }
 }
 ```

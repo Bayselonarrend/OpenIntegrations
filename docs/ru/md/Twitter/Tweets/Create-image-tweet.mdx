@@ -55,8 +55,8 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint twitter СоздатьТвитКартинки \
-              --text "Тестовый твитт7d4f8dc6-6b12-4c63-8f3b-e296c0d10580" \
-              --pictures "/tmp/g5qaggcw.d1u" \
+              --text "Тестовый твитт8bcfeaab-cfce-4ce7-a2c8-a546cf7837b1" \
+              --pictures "/tmp/jdgox1sc.on5" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -64,8 +64,8 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint twitter СоздатьТвитКартинки ^
-              --text "Тестовый твитт7d4f8dc6-6b12-4c63-8f3b-e296c0d10580" ^
-              --pictures "/tmp/g5qaggcw.d1u" ^
+              --text "Тестовый твитт8bcfeaab-cfce-4ce7-a2c8-a546cf7837b1" ^
+              --pictures "/tmp/jdgox1sc.on5" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -74,9 +74,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "text": "Тестовый твитт0d3a0702-551e-4eca-8e57-ec36dc66a8d3 https://t.co/C88uCC65GL",
+  "id": "1966100935236530457",
+  "edit_history_tweet_ids": [
+   "1966100935236530457"
+  ]
+ }
 }
 ```
