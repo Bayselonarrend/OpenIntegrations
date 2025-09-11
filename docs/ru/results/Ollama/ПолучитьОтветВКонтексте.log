@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-09-11T13:17:10.29974107Z",
+ "created_at": "2025-09-11T18:11:02.974765161Z",
  "message": {
   "role": "assistant",
-  "content": "Yes, the first version of 1C:Enterprise was released on May 28, 2004. The current (as of February 2022) version is 17. It has been releasing new updates and bug fixes for the past several years."
+  "content": "The first version of 1C:Enterprise was released in 2006. However, some updates were made to the software over time, such as bug fixes and performance improvements. In late 2018, 1C Company re-released a new version of the software, which included several major features and improvements compared to the previous release. The latest version, called 1C:Enterprise 12, was released in September 2020, with additional additions such as a CRM platform and improved analytics functionality. It's important to note that each new version of 1C:Enterprise may include new features, improvements, or bug fixes depending on the needs and preferences of the users and the company."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 10772448577,
- "load_duration": 21807869,
- "prompt_eval_count": 198,
- "prompt_eval_duration": 5455344195,
- "eval_count": 62,
- "eval_duration": 5291201318
+ "total_duration": 26978929611,
+ "load_duration": 24962398,
+ "prompt_eval_count": 335,
+ "prompt_eval_duration": 9501510725,
+ "eval_count": 158,
+ "eval_duration": 17446305225
 }
