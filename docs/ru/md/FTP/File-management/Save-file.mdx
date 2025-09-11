@@ -83,18 +83,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp СохранитьФайл \
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" \
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
               --path "new_dir/big.bin" \
-              --file "/tmp/nqrimpnd.pbf.bin"
+              --file "/tmp/v1cxe4uu.gx4.bin"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp СохранитьФайл ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
               --path "new_dir/big.bin" ^
-              --file "/tmp/nqrimpnd.pbf.bin"
+              --file "/tmp/v1cxe4uu.gx4.bin"
         ```
     </TabItem>
 </Tabs>
@@ -103,7 +103,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "bytes": 335944730,
- "filepath": "/tmp/rrzfwedt.fmb.bin",
+ "filepath": "/tmp/v1cxe4uu.gx4.bin",
  "result": true,
  "close_connection": {
   "result": true
