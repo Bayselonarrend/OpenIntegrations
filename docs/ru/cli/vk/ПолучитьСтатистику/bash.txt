@@ -1,4 +1,4 @@
 oint vk ПолучитьСтатистику \
-  --datefrom ""2025-09-10T00:00:00"" \
-  --dateto ""2025-09-10T23:59:59"" \
-  --auth ""/tmp/3e1j1xl3.cpa.json""
+  --datefrom ""2025-09-11T00:00:00"" \
+  --dateto ""2025-09-11T23:59:59"" \
+  --auth ""/tmp/jie4hssl.fqa.json""

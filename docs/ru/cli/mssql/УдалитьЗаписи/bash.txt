@@ -2,4 +2,4 @@ oint mssql УдалитьЗаписи \
   --table ""test_data"" \
   --filter ""[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'}]"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""/tmp/cmyvizpw.1qd.json""
+  --tls ""/tmp/4ehy1g0d.c1z.json""

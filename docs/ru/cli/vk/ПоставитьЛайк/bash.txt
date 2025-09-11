@@ -1,3 +1,3 @@
 oint vk ПоставитьЛайк \
-  --post "9500" \
-  --auth ""/tmp/jdf11gdt.ptm.json""
+  --post "9510" \
+  --auth ""/tmp/1ipdwi0r.5yd.json""
