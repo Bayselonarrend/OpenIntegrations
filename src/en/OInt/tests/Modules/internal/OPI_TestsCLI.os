@@ -28980,7 +28980,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
         Опции = Новый Структура;
         Опции.Вставить("", Connection);
-        Опции.Вставить("", "");
+        Опции.Вставить("", ".");
 
         Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ClearDirectory", Опции);
     Else
@@ -28993,7 +28993,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     Опции = Новый Структура;
     Опции.Вставить("", Connection);
-    Опции.Вставить("", "");
+    Опции.Вставить("", ".");
     Опции.Вставить("", Истина);
 
     Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);

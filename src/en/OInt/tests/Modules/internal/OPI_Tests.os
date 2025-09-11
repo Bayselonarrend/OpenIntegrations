@@ -22064,7 +22064,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.ClearDirectory(Connection, "");
+        Result = OPI_FTP.ClearDirectory(Connection, ".");
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -22073,7 +22073,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     Process(Result , "FTP", "ClearDirectory", Postfix);
 
-    Result = OPI_FTP.ListObjects(Connection, "", True);
+    Result = OPI_FTP.ListObjects(Connection, ".", True);
 
     Process(Result , "FTP", "ClearDirectory", "Check, " + Postfix);
 
