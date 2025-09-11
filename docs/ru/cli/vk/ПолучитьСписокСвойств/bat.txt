@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокСвойств ^
-  --auth ""/tmp/jfovdpdg.rxr.json""
+  --auth ""/tmp/ratyo5a4.t2o.json""

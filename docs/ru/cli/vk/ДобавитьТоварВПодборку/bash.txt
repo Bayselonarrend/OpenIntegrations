@@ -1,4 +1,4 @@
 oint vk ДобавитьТоварВПодборку \
-  --items "11814631" \
-  --sel "139" \
-  --auth ""/tmp/mdrauei4.s2p.json""
+  --items "11818943" \
+  --sel "138" \
+  --auth ""/tmp/4k2ho03w.nzu.json""

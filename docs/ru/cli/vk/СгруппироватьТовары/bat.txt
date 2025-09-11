@@ -1,3 +1,3 @@
 oint vk СгруппироватьТовары ^
-  --items ""[11814655,11814656]"" ^
-  --auth ""/tmp/not24pyd.dog.json""
+  --items ""[11818956,11818958]"" ^
+  --auth ""/tmp/lj3rv1j5.wr0.json""
