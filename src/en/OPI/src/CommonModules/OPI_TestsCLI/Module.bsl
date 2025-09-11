@@ -3000,7 +3000,7 @@ Procedure Process(Val Result
 
     CLITestsMark = 1;
 
-    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Constants.IsCLITests.Set(CLITestsMark);
 
     OPI_TestDataRetrieval.ProcessTestingResult(Result
         , Method
@@ -6434,7 +6434,12 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
         BigFile = FunctionParameters["Big"];
         Description.Insert("Name", "big.rar");
 
-        Result = OPI_GoogleDrive.UploadFile(Token, BigFile, Description);
+    Опции = Новый Структура;
+    Опции.Вставить("", Token);
+    Опции.Вставить("", BigFile);
+    Опции.Вставить("", Description);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "UploadFile", Опции);
 
         Process(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
 
@@ -8832,7 +8837,13 @@ Procedure Dropbox_UploadFile(FunctionParameters)
         BigFile = FunctionParameters["Big"];
 
         Path   = "/giant.tmp";
-        Result = OPI_Dropbox.UploadFile(Token, BigFile, Path, True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Token);
+    Опции.Вставить("", BigFile);
+    Опции.Вставить("", Path);
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "UploadFile", Опции);
 
         Process(Result, "Dropbox", "UploadFile", "Big", Path);
 
@@ -20641,7 +20652,10 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20679,7 +20693,10 @@ Procedure PostgreSQL_CloseConnection(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20716,7 +20733,10 @@ Procedure PostgreSQL_IsConnector(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20758,7 +20778,10 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20892,7 +20915,10 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20967,7 +20993,10 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21069,7 +21098,10 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21127,7 +21159,10 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21214,7 +21249,10 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21317,7 +21355,10 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21385,7 +21426,10 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21469,7 +21513,10 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21536,7 +21583,10 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21625,7 +21675,10 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21681,7 +21734,10 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21758,7 +21814,10 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21814,7 +21873,10 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21868,7 +21930,10 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21976,7 +22041,10 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22013,7 +22081,10 @@ Procedure MySQL_CloseConnection(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22050,7 +22121,10 @@ Procedure MySQL_IsConnector(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22092,7 +22166,10 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22211,7 +22288,10 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22287,7 +22367,10 @@ Procedure MySQL_CreateTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22382,7 +22465,10 @@ Procedure MySQL_AddRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22461,7 +22547,10 @@ Procedure MySQL_GetRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22564,7 +22653,10 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22642,7 +22734,10 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22725,7 +22820,10 @@ Procedure MySQL_DeleteTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22792,7 +22890,10 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22873,7 +22974,10 @@ Procedure MySQL_ClearTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22961,7 +23065,10 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23019,7 +23126,10 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23079,7 +23189,10 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23137,7 +23250,10 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -27954,12 +28070,22 @@ Procedure FTP_CreateConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28005,18 +28131,31 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetWelcomeMessage(Connection);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetWelcomeMessage", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28062,12 +28201,22 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Опции = Новый Структура;
@@ -28125,12 +28274,22 @@ Procedure FTP_CloseConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28180,12 +28339,22 @@ Procedure FTP_IsConnector(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28299,12 +28468,22 @@ Procedure FTP_CreateDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28314,7 +28493,11 @@ Procedure FTP_CreateDirectory(FunctionParameters)
         Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
         Process(Deletion, "FTP", "CreateDirectory", "Deletion, " + Postfix); // SKIP
 
-        Result = OPI_FTP.CreateDirectory(Connection, "new_dir");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -28397,18 +28580,33 @@ Procedure FTP_ListObjects(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.ListObjects(Connection, "", True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "");
+    Опции.Вставить("", Истина);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28474,20 +28672,40 @@ Procedure FTP_UploadFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
-        Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", Image);
+    Опции.Вставить("", "new_dir/pic_from_disk.png");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", ImageDD);
+    Опции.Вставить("", "pic_from_binary.png");
+
+    Result2 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -28580,18 +28798,32 @@ Procedure FTP_DeleteFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.DeleteFile(Connection, "pic_from_binary.png");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "pic_from_binary.png");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteFile", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28654,18 +28886,32 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.DeleteDirectory(Connection, "new_dir/another_one");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/another_one");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteDirectory", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28711,18 +28957,32 @@ Procedure FTP_ClearDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.ClearDirectory(Connection, "");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ClearDirectory", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28777,18 +29037,32 @@ Procedure FTP_GetObjectSize(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/big.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28842,18 +29116,33 @@ Procedure FTP_UpdatePath(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.UpdatePath(Connection, "new_dir/big.bin", "new_dir/giant.bin");
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", "new_dir/big.bin");
+    Опции.Вставить("", "new_dir/giant.bin");
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28960,12 +29249,22 @@ Procedure FTP_SaveFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28975,7 +29274,12 @@ Procedure FTP_SaveFile(FunctionParameters)
         Path     = "new_dir/big.bin";
         FileName = GetTempFileName("bin");
 
-        Result = OPI_FTP.SaveFile(Connection, Path, FileName);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", Path);
+    Опции.Вставить("", FileName);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "SaveFile", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -29056,12 +29360,22 @@ Procedure FTP_GetFileData(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29141,18 +29455,31 @@ Procedure FTP_Ping(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.Ping(Connection);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "Ping", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29198,12 +29525,22 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29211,7 +29548,11 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         CommandText = "UMASK";
-        Result      = OPI_FTP.ExecuteCustomCommand(Connection, CommandText);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", CommandText);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ExecuteCustomCommand", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -29258,12 +29599,22 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29271,7 +29622,11 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         CommandText = "PWD";
-        Result      = OPI_FTP.ExecuteArbitraryCommand(Connection, CommandText);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+    Опции.Вставить("", CommandText);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ExecuteArbitraryCommand", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -29318,18 +29673,31 @@ Procedure FTP_GetCurrentDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetCurrentDirectory(Connection);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29375,12 +29743,22 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29452,18 +29830,31 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Опции = Новый Структура;
+    Опции.Вставить("", ProxyAddress);
+    Опции.Вставить("", ProxyPort);
+    Опции.Вставить("", ProxyType);
+    Опции.Вставить("", ProxyLogin);
+    Опции.Вставить("", ProxyPassword);
+
+    ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    Опции = Новый Структура;
+    Опции.Вставить("", Истина);
+
+    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetProtocolFeatureList(Connection);
+    Опции = Новый Структура;
+    Опции.Вставить("", Connection);
+
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProtocolFeatureList", Опции);
     Else
         Result = Connection; // Error of connection
     EndIf;
