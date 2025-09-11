@@ -1,6 +1,6 @@
 oint vk СоздатьСоставнойПост \
   --text ""Пост из автотеста"" \
-  --objects ""['photo657846756_457248444','video-218861756_456240741']"" \
+  --objects ""['photo657846756_457248451','video-218861756_456240743']"" \
   --ad "false" \
   --url ""https://github.com/Bayselonarrend/OpenIntegrations"" \
-  --auth ""/tmp/45r4kvsm.syz.json""
+  --auth ""/tmp/4lhthjru.bxg.json""

@@ -1,4 +1,4 @@
 oint vk ЗакрытьОбсуждение \
-  --topic "54100757" \
+  --topic "54102123" \
   --remove "false" \
-  --auth ""/tmp/0yrhsltg.xoo.json""
+  --auth ""/tmp/s5rclwcy.bmr.json""

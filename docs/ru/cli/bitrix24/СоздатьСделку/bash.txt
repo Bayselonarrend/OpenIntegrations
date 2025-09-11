@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьСделку \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --fields ""/tmp/aqyotk2o.1et.json"" \
+  --fields ""/tmp/fvuqo3jg.gf1.json"" \
   --token "***"

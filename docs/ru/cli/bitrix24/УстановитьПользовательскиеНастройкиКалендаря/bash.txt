@@ -1,4 +1,4 @@
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --settings ""/tmp/wxmyqnf4.1rh.json"" \
+  --settings ""/tmp/rmgxujyk.rfx.json"" \
   --token "***"

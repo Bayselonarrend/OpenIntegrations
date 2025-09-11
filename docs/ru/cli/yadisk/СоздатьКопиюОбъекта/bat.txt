@@ -1,5 +1,5 @@
 oint yadisk СоздатьКопиюОбъекта ^
   --token "***" ^
-  --from "/8cbd3b57-e90d-4481-94b5-be3b68bd626a.png" ^
-  --to "/eab2b182-187c-457c-9697-f10b7600d212.png" ^
+  --from "/128dc5e3-5d62-472b-8bfe-bd62f45513cb.png" ^
+  --to "/d1d91e4d-7f81-40c6-9dea-c770e409abb8.png" ^
   --rewrite true

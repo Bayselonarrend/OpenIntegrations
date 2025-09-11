@@ -1,4 +1,4 @@
 oint mssql СоздатьБазуДанных ^
   --base ""testbase2"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls ""/tmp/mmkzd3v5.5ox.json""
+  --tls ""/tmp/qzp4kh4f.jms.json""

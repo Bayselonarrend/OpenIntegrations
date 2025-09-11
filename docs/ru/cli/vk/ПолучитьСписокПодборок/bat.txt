@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокПодборок ^
-  --auth ""/tmp/iwfqclc4.h2m.json""
+  --auth ""/tmp/ijwtqzuz.5oc.json""
