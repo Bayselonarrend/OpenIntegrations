@@ -205,7 +205,7 @@ EndFunction
 // Boolean - Success of server access
 Function Ping(Val Connection) Export
 
-    CloseConnection = CheckCreateConnection(Connection);
+    CheckCreateConnection(Connection);
 
     If Not IsConnector(Connection) Then
         Return Connection;
@@ -213,9 +213,7 @@ Function Ping(Val Connection) Export
         Result = Connection.Ping();
     EndIf;
 
-    If CloseConnection Then
-        Result.Insert("close_connection", CloseConnection(Connection));
-    EndIf;
+    CloseConnection(Connection);
 
     Return Result;
 
