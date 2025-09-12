@@ -62,4 +62,30 @@ By default, the body data is used in the signature calculation if it was set usi
 
 
 
-
+```json title="Result"
+{
+ "args": {},
+ "data": "",
+ "files": {
+  "file1": "..."
+ },
+ "form": {
+  "field1": "Text",
+  "field2": "10"
+ },
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1757693057\",oauth_nonce=\"1757693057\",oauth_version=\"1.0\",oauth_signature=AOMmaeWOCXi2SsbWYiFbNEgOQTk%2FQukM24HAQBo6c8Y%3D",
+  "Content-Length": "2114372",
+  "Content-Type": "multipart/form-data; boundary=c93fc2439d5849b5a7e15dbd6aecb625",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68c45291-0f334cf52e37045426423f47"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}
+```

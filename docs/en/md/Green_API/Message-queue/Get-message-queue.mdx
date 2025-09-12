@@ -66,14 +66,153 @@ Method at API documentation: [ShowMessagesQueue](https://green-api.com/docs/api/
 ```json title="Result"
 [
  {
-  "messageID": "BAE58D3A8D0E8319",
-  "type": "editMessage",
+  "messageID": "BAE5B9C2B49E8378",
+  "type": "sendMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE56825B1C0FC63",
-   "message": "New message text",
-   "linkPreview": true
+   "message": "New message",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
   }
- }
-]
+ },
+ {
+  "messageID": "BAE53B77522E48A9",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "New message",
+   "quotedMessageId": "BAE5B9C2B49E8378",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "BAE56F22A1089BAC",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "photo.jpg",
+   "chatId": "120363410406221140@g.us",
+   "caption": "File description",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/dcaaad1e-6185-4beb-81ab-0d2940760118.jpg",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE599BBA6CBC9CA",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "vid.mp4",
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE56F22A1089BAC",
+   "caption": "File description",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/d689e56b-f44d-49bd-81ee-3a6960bb7ce4.mp4",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE540A3024371E9",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "File description",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE55F4D006B2708",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "File description",
+   "quotedMessageId": "BAE540A3024371E9",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE53F069534A286",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5DAA37B4A4562",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "What's your favorite color?",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "BAE53F069534A286",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5D30C26CC6814",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Victory Square, Minsk",
+   "nameLocation": "Victory sq.",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5EB9F3449F7D0",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE5D30C26CC6814",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE55927F0298DA5",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "firstName": "Artem",
+...
 ```

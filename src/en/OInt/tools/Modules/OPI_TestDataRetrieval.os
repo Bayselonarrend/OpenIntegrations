@@ -1535,7 +1535,7 @@ Function Check_Telegram_DeleteForumTopic(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Telegram_ClearPinnedMessagesList(Val Result, Val Option)
+Function Check_Telegram_ClearTopicPinnedMessagesList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
@@ -1568,7 +1568,7 @@ Function Check_Telegram_ShowMainForumTopic(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Check_Telegram_EditMainForumTopicName(Val Result, Val Option)
+Function Check_Telegram_EditMainForumTopicName(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
@@ -2007,7 +2007,7 @@ Function Check_VK_DeleteProduct(Val Result, Val Option)
 
 EndFunction
 
-Function Check_VK_DeleteCollection(Val Result, Val Option)
+Function Check_VK_DeleteSelection(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
@@ -4275,7 +4275,7 @@ Function Check_Dropbox_DownloadFolder(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Dropbox_GetFolderFileList(Val Result, Val Option)
+Function Check_Dropbox_GetListOfFolderFiles(Val Result, Val Option)
 
     ExpectsThat(Result["entries"]).ИмеетТип("Array");
 
