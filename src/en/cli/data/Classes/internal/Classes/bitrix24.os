@@ -3758,8 +3758,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "MakeCopyFile";
-    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Method       = "MakeFileCopy";
+    NewLine.SearchMethod = "MAKEFILECOPY";
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "File management";
@@ -3769,8 +3769,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "MakeCopyFile";
-    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Method       = "MakeFileCopy";
+    NewLine.SearchMethod = "MAKEFILECOPY";
     NewLine.Parameter    = "--fileid";
     NewLine.Description    = "Original file ID";
     NewLine.Region     = "File management";
@@ -3779,8 +3779,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "MakeCopyFile";
-    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Method       = "MakeFileCopy";
+    NewLine.SearchMethod = "MAKEFILECOPY";
     NewLine.Parameter    = "--folderid";
     NewLine.Description    = "ID of copy destination folder";
     NewLine.Region     = "File management";
@@ -3789,8 +3789,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "MakeCopyFile";
-    NewLine.SearchMethod = "MAKECOPYFILE";
+    NewLine.Method       = "MakeFileCopy";
+    NewLine.SearchMethod = "MAKEFILECOPY";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Region     = "File management";
