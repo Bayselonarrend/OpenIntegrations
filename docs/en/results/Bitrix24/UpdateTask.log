@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "7846",
+   "id": "7856",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-09-12T16:37:00+00:00",
+   "createdDate": "2025-09-12T20:01:30+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-09-12T16:37:05+00:00",
+   "changedDate": "2025-09-12T20:01:34+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-09-12T16:37:00+00:00",
+   "activityDate": "2025-09-12T20:01:30+00:00",
    "dateStart": null,
-   "deadline": "2025-09-13T16:36:00+00:00",
-   "startDatePlan": "2025-09-12T16:37:00+00:00",
+   "deadline": "2025-09-13T20:01:00+00:00",
+   "startDatePlan": "2025-09-12T20:01:30+00:00",
    "endDatePlan": "2025-09-12T21:00:00+00:00",
-   "guid": "{d3dc5b79-b563-4007-8c69-f1bb21f19bed}",
+   "guid": "{a0e724d9-316c-4603-8f8e-f773b4378b66}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -54,7 +54,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-09-12T16:37:05+00:00",
+   "statusChangedDate": "2025-09-12T20:01:34+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -135,13 +135,13 @@
   }
  },
  "time": {
-  "start": 1757695025.0029,
-  "finish": 1757695025.21068,
-  "duration": 0.207780122756958,
-  "processing": 0.18087911605835,
-  "date_start": "2025-09-12T16:37:05+00:00",
-  "date_finish": "2025-09-12T16:37:05+00:00",
-  "operating_reset_at": 1757695625,
-  "operating": 0.180859088897705
+  "start": 1757707294.82824,
+  "finish": 1757707295.02559,
+  "duration": 0.197351932525635,
+  "processing": 0.168147802352905,
+  "date_start": "2025-09-12T20:01:34+00:00",
+  "date_finish": "2025-09-12T20:01:35+00:00",
+  "operating_reset_at": 1757707894,
+  "operating": 0.168130874633789
  }
 }
