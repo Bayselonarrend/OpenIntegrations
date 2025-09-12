@@ -1520,7 +1520,7 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_MoveFileToFolder(TestParameters);
     Bitrix24_MakeFolderCopy(TestParameters);
     Bitrix24_UploadFileToFolder(TestParameters);
-    Bitrix24_MakeCopyFile(TestParameters);
+    Bitrix24_MakeFileCopy(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
@@ -10856,7 +10856,7 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix24_MakeCopyFile(FunctionParameters)
+Procedure Bitrix24_MakeFileCopy(FunctionParameters)
 
     FolderID = FunctionParameters["Bitrix24_HookFolderID"];
     FileID   = FunctionParameters["Bitrix24_FileID"];
@@ -10868,9 +10868,9 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
     Options.Insert("", FileID);
     Options.Insert("", FolderID);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 
-    Process(Result, "Bitrix24", "MakeCopyFile", "Hook"); // SKIP
+    Process(Result, "Bitrix24", "MakeFileCopy", "Hook"); // SKIP
 
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
@@ -10883,11 +10883,11 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
     Options.Insert("", FolderID);
     Options.Insert("", Token);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 
     // END
 
-    Process(Result, "Bitrix24", "MakeCopyFile");
+    Process(Result, "Bitrix24", "MakeFileCopy");
 
 EndProcedure
 

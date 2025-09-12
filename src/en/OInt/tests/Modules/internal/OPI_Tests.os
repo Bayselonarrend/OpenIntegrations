@@ -1519,7 +1519,7 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_MoveFileToFolder(TestParameters);
     Bitrix24_MakeFolderCopy(TestParameters);
     Bitrix24_UploadFileToFolder(TestParameters);
-    Bitrix24_MakeCopyFile(TestParameters);
+    Bitrix24_MakeFileCopy(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
@@ -8734,27 +8734,27 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix24_MakeCopyFile(FunctionParameters)
+Procedure Bitrix24_MakeFileCopy(FunctionParameters)
 
     FolderID = FunctionParameters["Bitrix24_HookFolderID"];
     FileID   = FunctionParameters["Bitrix24_FileID"];
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID);
+    Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID);
 
-    Process(Result, "Bitrix24", "MakeCopyFile", "Hook"); // SKIP
+    Process(Result, "Bitrix24", "MakeFileCopy", "Hook"); // SKIP
 
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID, Token);
+    Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID, Token);
 
     // END
 
-    Process(Result, "Bitrix24", "MakeCopyFile");
+    Process(Result, "Bitrix24", "MakeFileCopy");
 
 EndProcedure
 

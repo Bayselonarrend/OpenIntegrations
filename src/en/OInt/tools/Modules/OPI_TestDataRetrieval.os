@@ -4931,7 +4931,7 @@ Function Check_Bitrix24_UploadFileToFolder(Val Result, Val Option, URL = "", Tok
 
 EndFunction
 
-Function Check_Bitrix24_MakeCopyFile(Val Result, Val Option)
+Function Check_Bitrix24_MakeFileCopy(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["ID"]).Заполнено();
