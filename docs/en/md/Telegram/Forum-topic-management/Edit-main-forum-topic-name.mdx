@@ -33,11 +33,11 @@ Method at API documentation: [editGeneralForumTopic](https://core.telegram.org/b
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-  Title = "New main thread name " + String(New UUID);
-  Token = "6129457865:AAFyzNYOAFbu...";
-  Chat = "-1001971186208";
-  
-  Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
+    Title = "New main topic name " + String(New UUID);
+    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
+
+    Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
 ```
  
 

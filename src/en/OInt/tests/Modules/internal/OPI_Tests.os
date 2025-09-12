@@ -327,7 +327,7 @@ Procedure TelegramAPI_CreateDeleteForumTopic() Export
     Telegram_EditForumTopic(TestParameters);
     Telegram_CloseForumTopic(TestParameters);
     Telegram_OpenForumTopic(TestParameters);
-    Telegram_ClearPinnedMessagesList(TestParameters);
+    Telegram_ClearTopicPinnedMessagesList(TestParameters);
     Telegram_DeleteForumTopic(TestParameters);
 
 EndProcedure
@@ -349,7 +349,7 @@ Procedure TelegramAPI_ChangeMainTopicName() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-    Check_Telegram_EditMainForumTopicName(TestParameters);
+    Telegram_EditMainForumTopicName(TestParameters);
 
 EndProcedure
 
@@ -541,7 +541,7 @@ Procedure VKAPI_CreateProductSelection() Export
     VK_AddProductToCollection(TestParameters);
     VK_RemoveProductFromSelection(TestParameters);
     VK_DeleteProduct(TestParameters);
-    VK_DeleteCollection(TestParameters);
+    VK_DeleteSelection(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -1324,7 +1324,7 @@ Procedure DropboxAPI_GetFolderFileList() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
 
-    Dropbox_GetFolderFileList(TestParameters);
+    Dropbox_GetListOfFolderFiles(TestParameters);
 
 EndProcedure
 
@@ -3641,7 +3641,7 @@ Procedure Telegram_DeleteForumTopic(FunctionParameters)
 
 EndProcedure
 
-Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
+Procedure Telegram_ClearTopicPinnedMessagesList(FunctionParameters)
 
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
@@ -3683,7 +3683,7 @@ Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
 EndProcedure
 
-Procedure Check_Telegram_EditMainForumTopicName(FunctionParameters)
+Procedure Telegram_EditMainForumTopicName(FunctionParameters)
 
     Title = "New main topic name " + String(New UUID);
     Token = FunctionParameters["Telegram_Token"];
@@ -4349,7 +4349,7 @@ Procedure VK_DeleteProduct(FunctionParameters)
 
 EndProcedure
 
-Procedure VK_DeleteCollection(FunctionParameters)
+Procedure VK_DeleteSelection(FunctionParameters)
 
     Parameters = GetVKParameters();
 
@@ -7439,7 +7439,7 @@ Procedure Dropbox_DownloadFolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Dropbox_GetFolderFileList(FunctionParameters)
+Procedure Dropbox_GetListOfFolderFiles(FunctionParameters)
 
     Path  = "/New";
     Token = FunctionParameters["Dropbox_Token"];
