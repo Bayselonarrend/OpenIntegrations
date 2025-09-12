@@ -11543,7 +11543,7 @@
 
             //@skip-check missing-temporary-file-deletion
             ИВФ   = ПолучитьИмяВременногоФайла("json");
-            
+
             // BSLLS:MissingTemporaryFileDeletion-on
 
             OPI_Инструменты.ЗаписатьJSONФайл(ИВФ, Значение);
