@@ -10,6 +10,7 @@
 "Awaiting.What(":"Ожидаем.Что(",
 "Awaiting = TypeOf(Module) = ":"Ожидаем = TypeOf(Module) = ",
 ".HasType(":".ИмеетТип(",
+".IsType(":".ИмеетТип(",
 ".Equal(":".Равно(",
 ".Filled(":".Заполнено(",
 ".Empty(": ".НеЗаполнено(",
