@@ -362,8 +362,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "CreateDirectory";
-    NewLine.SearchMethod = "CREATEDIRECTORY";
+    NewLine.Method       = "CreateNewDirectory";
+    NewLine.SearchMethod = "CREATENEWDIRECTORY";
     NewLine.Parameter    = "--conn";
     NewLine.Description    = "Existing connection or connection configuration";
     NewLine.Region     = "Directory management";
@@ -373,8 +373,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ftp";
     NewLine.Module      = "OPI_FTP";
-    NewLine.Method       = "CreateDirectory";
-    NewLine.SearchMethod = "CREATEDIRECTORY";
+    NewLine.Method       = "CreateNewDirectory";
+    NewLine.SearchMethod = "CREATENEWDIRECTORY";
     NewLine.Parameter    = "--path";
     NewLine.Description    = "Path to new directory";
     NewLine.Region     = "Directory management";
