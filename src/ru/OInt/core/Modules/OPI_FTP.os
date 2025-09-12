@@ -535,7 +535,7 @@
 
 КонецФункции
 
-// Создать директорию
+// Создать новую директорию
 // Создает директорию по указанному пути
 //
 // Примечание:
@@ -547,7 +547,7 @@
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
-Функция СоздатьДиректорию(Знач Соединение, Знач Путь) Экспорт
+Функция СоздатьНовуюДиректорию(Знач Соединение, Знач Путь) Экспорт
 
     ЗакрыватьСоединение = ПроверитьСоздатьСоединение(Соединение);
 
@@ -1203,8 +1203,8 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 	Return ПолучитьСписокОбъектов(Connection, Path, Recursively);
 EndFunction
 
-Function CreateDirectory(Val Connection, Val Path) Export
-	Return СоздатьДиректорию(Connection, Path);
+Function CreateNewDirectory(Val Connection, Val Path) Export
+	Return СоздатьНовуюДиректорию(Connection, Path);
 EndFunction
 
 Function DeleteDirectory(Val Connection, Val Path) Export
