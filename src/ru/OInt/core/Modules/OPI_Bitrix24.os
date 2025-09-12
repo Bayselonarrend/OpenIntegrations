@@ -5629,7 +5629,7 @@ Function RestoreFile(Val URL, Val FileID, Val Token = "") Export
 	Return ВосстановитьФайл(URL, FileID, Token);
 EndFunction
 
-Function MakeCopyFile(Val URL, Val FileID, Val FolderID, Val Token = "") Export
+Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export
 	Return СкопироватьФайл(URL, FileID, FolderID, Token);
 EndFunction
 
