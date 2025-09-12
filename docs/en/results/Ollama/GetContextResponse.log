@@ -1,16 +1,16 @@
-﻿ {
+﻿{
  "model": "tinyllama",
- "created_at": "2025-05-01T06:46:43.0816524Z",
+ "created_at": "2025-09-12T16:59:21.534228955Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise has been around since 2004. The first release, which is called Version 3, was released in 2005, and it brought some significant changes to the system that have remained constant through the years. The latest version, 6, was released in 2019 and is still in active development. Some of the most notable features in recent versions include:\n\n- Improved interface for users, with a more modern design and streamlined navigation\n- Enhanced reporting functionality to provide more detailed insights into business performance and key areas for improvement\n- Integration with popular accounting software such as Xero and Sage\n- Support for multilingual environments, with options for French, German, Spanish, Italian, Japanese, and Korean.\n\nOverall, 1C:Enterprise has remained a reliable and stable ERP solution for businesses for many years, and new updates and features are released regularly to keep the system up to date and relevant in today's market."
+  "content": "The first version of 1C:Enterprise was released in 1985. However, the current version is ongoing development and has been updated several times since then with new features and enhancements added over time. The latest version available is 2020.3, which was released on January 1, 2021."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 48411004700,
- "load_duration": 14000500,
- "prompt_eval_count": 194,
- "prompt_eval_duration": 13206002400,
- "eval_count": 216,
- "eval_duration": 35186999300
+ "total_duration": 9651851389,
+ "load_duration": 19363668,
+ "prompt_eval_count": 172,
+ "prompt_eval_duration": 3371165987,
+ "eval_count": 75,
+ "eval_duration": 6256189764
 }

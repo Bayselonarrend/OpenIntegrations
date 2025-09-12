@@ -1,0 +1,27 @@
+﻿{
+ "args": {},
+ "data": "{\r\n \"Field1\": 10,\r\n \"Field2\": \"Text\",\r\n \"Field3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Content-Length": "81",
+  "Content-Type": "application/json; charset=utf-8",
+  "Host": "httpbin.org",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68c4524e-0736f4a0249d54cf2e9c6b8c"
+ },
+ "json": {
+  "Field1": 10,
+  "Field2": "Text",
+  "Field3": [
+   "A",
+   "B",
+   "C"
+  ]
+ },
+ "origin": "***",
+ "url": "https://httpbin.org/post"
+}

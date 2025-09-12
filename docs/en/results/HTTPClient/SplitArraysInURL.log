@@ -1,1 +1,1 @@
-﻿ "No separation: /page?arrayfield=[val1,val2,val3];\nSeparation: /page?arrayfield=val1&arrayfield=val2&arrayfield=val3\nSeparation (php): /page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3"
+﻿"No separation: /page?arrayfield=[val1,val2,val3];\nSeparation: /page?arrayfield=val1&arrayfield=val2&arrayfield=val3\nSeparation (php): /page?arrayfield[]=val1&arrayfield[]=val2&arrayfield[]=val3"

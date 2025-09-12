@@ -1,9 +1,8 @@
-﻿ {
+﻿{
  "kind": "drive#file",
- "id": "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy",
- "name": "TestFolder",
+ "id": "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
+ "name": "Test folder",
  "mimeType": "application/vnd.google-apps.folder",
- "description": "",
  "starred": false,
  "trashed": false,
  "explicitlyTrashed": false,
@@ -14,14 +13,15 @@
   "drive"
  ],
  "version": "1",
- "webViewLink": "https://drive.google.com/drive/folders/1Q3vl7hcmdeJvd86jC84pdGKW5772apUy",
+ "webViewLink": "https://drive.google.com/drive/folders/11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
  "thumbnailVersion": "0",
- "viewedByMe": false,
- "createdTime": "2024-06-03T07:24:06.147Z",
- "modifiedTime": "2024-06-03T07:24:06.147Z",
- "modifiedByMeTime": "2024-06-03T07:24:06.147Z",
+ "viewedByMe": true,
+ "viewedByMeTime": "2025-01-09T19:05:16.432Z",
+ "createdTime": "2025-01-09T19:05:16.432Z",
+ "modifiedTime": "2025-01-09T19:05:20.704Z",
+ "modifiedByMeTime": "2025-01-09T19:05:20.704Z",
  "modifiedByMe": true,
  "owners": [
   {
@@ -43,18 +43,31 @@
  },
  "shared": false,
  "ownedByMe": true,
+ "downloadRestrictions": {
+  "itemDownloadRestriction": {
+   "restrictedForReaders": false,
+   "restrictedForWriters": false
+  },
+  "effectiveDownloadRestrictionWithContext": {
+   "restrictedForReaders": false,
+   "restrictedForWriters": false
+  }
+ },
  "capabilities": {
   "canAcceptOwnership": false,
   "canAddChildren": true,
   "canAddMyDriveParent": false,
   "canChangeCopyRequiresWriterPermission": false,
+  "canChangeItemDownloadRestriction": false,
   "canChangeSecurityUpdateEnabled": false,
   "canChangeViewersCanCopyContent": false,
   "canComment": true,
   "canCopy": false,
   "canDelete": true,
+  "canDisableInheritedPermissions": true,
   "canDownload": true,
   "canEdit": true,
+  "canEnableInheritedPermissions": true,
   "canListChildren": true,
   "canModifyContent": true,
   "canModifyContentRestriction": false,
@@ -87,6 +100,18 @@
    "role": "owner",
    "displayName": "Антон Титовец",
    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+   "permissionDetails": [
+    {
+     "permissionType": "file",
+     "role": "owner",
+     "inherited": false
+    },
+    {
+     "permissionType": "file",
+     "role": "writer",
+     "inherited": true
+    }
+   ],
    "deleted": false,
    "pendingOwner": false
   }
@@ -96,9 +121,10 @@
  ],
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",
- "isAppAuthorized": true,
+ "isAppAuthorized": false,
  "linkShareMetadata": {
   "securityUpdateEligible": false,
   "securityUpdateEnabled": true
- }
+ },
+ "inheritedPermissionsDisabled": false
 }

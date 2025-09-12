@@ -1,7 +1,7 @@
-﻿ {
+﻿{
  "ok": true,
  "result": {
-  "message_id": 8315,
+  "message_id": 16254,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -11,11 +11,11 @@
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728453470,
+  "date": 1757691983,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -24,8 +24,8 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 9440,
-   "date": 1728453289
+   "message_id": 20577,
+   "date": 1757691775
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -33,8 +33,15 @@
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 9440,
-  "forward_date": 1728453289,
-  "text": "Строковое значение"
+  "forward_from_message_id": 20577,
+  "forward_date": 1757691775,
+  "text": "Bold text",
+  "entities": [
+   {
+    "offset": 0,
+    "length": 9,
+    "type": "bold"
+   }
+  ]
  }
 }

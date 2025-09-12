@@ -1,9 +1,9 @@
-﻿ {
+﻿{
  "ok": true,
  "file": {
-  "id": "F07QYP172FP",
-  "created": 1728454531,
-  "timestamp": 1728454531,
+  "id": "F09EZM2BLUS",
+  "created": 1757694733,
+  "timestamp": 1757694733,
   "name": "NewFile",
   "title": "NewFile",
   "mimetype": "application/vnd.slack-remote",
@@ -20,9 +20,11 @@
   "public_url_shared": false,
   "display_as_bot": false,
   "username": "",
-  "url_private": "https://slack.com/api/files.remote.add",
+  "external_id": "f2065cf7-ac97-47db-a37c-65508661339f",
+  "external_url": "https://hut.openintegrations.dev/test_data/document.docx",
+  "url_private": "https://hut.openintegrations.dev/test_data/document.docx",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QYP172FP/newfile",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F09EZM2BLUS/newfile",
   "comments_count": 0,
   "is_starred": false,
   "shares": {},
@@ -30,8 +32,7 @@
   "groups": [],
   "ims": [],
   "has_more_shares": false,
-  "external_id": "3a61913c-c2ce-412b-a4b4-6875373db31a",
-  "external_url": "https://slack.com/api/files.remote.add",
+  "app_id": "A06TYNH45RV",
   "has_rich_preview": false,
   "file_access": "visible"
  }

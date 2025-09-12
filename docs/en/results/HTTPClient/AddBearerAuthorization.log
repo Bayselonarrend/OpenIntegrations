@@ -1,13 +1,14 @@
-﻿ {
+﻿{
  "args": {},
  "headers": {
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
   "Authorization": "Bearer 123123",
+  "Content-Length": "0",
   "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
-  "X-Amzn-Trace-Id": "Root=1-682cd6ec-50dd82f526c707e106598284"
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68c452d7-7787149f01cef9925f11fa3c"
  },
  "origin": "***",
  "url": "https://httpbin.org/get"

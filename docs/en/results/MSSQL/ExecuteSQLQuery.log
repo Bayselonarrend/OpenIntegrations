@@ -1,16 +1,16 @@
-﻿ {
+﻿{
  "data": [
   {
    "Age": 20,
-   "BirthDate": "2025-07-14",
-   "CreatedAt": "2025-07-14T11:12:52",
+   "BirthDate": "2025-09-12",
+   "CreatedAt": "2025-09-12T16:20:37",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "35c4b71e-4095-4209-9594-0bcc03934e4f",
+   "RowGuid": "736647f3-8834-427f-89b8-1c1c1a7077f8",
    "Salary": 10.3
   }
  ],

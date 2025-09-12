@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "ID": "<task identifier>",
  "PARENT_ID": "<parent task identifier>",
  "GROUP_ID": "<workgroup identifier>",

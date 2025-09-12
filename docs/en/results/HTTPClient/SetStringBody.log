@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "args": {},
  "data": "Hello world!",
  "files": {},
@@ -10,8 +10,8 @@
   "Content-Length": "12",
   "Content-Type": "text/plain; charset=Windows-1251",
   "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
-  "X-Amzn-Trace-Id": "Root=1-682cd69f-40db5e0c114034d733729fc5"
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68c45243-43adf0d00f57a50f57e4da59"
  },
  "json": null,
  "origin": "***",
