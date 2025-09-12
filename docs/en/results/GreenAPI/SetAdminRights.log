@@ -1,3 +1,4 @@
-﻿ {
- "setGroupAdmin": true
+﻿{
+ "setGroupAdmin": true,
+ "error": "participant not found"
 }

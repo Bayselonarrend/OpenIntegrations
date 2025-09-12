@@ -14,7 +14,7 @@
      },
      {
       "Name": "opi-dirbucket3",
-      "CreationDate": "2025-09-12T16:49:33.927Z"
+      "CreationDate": "2025-09-12T20:14:27.637Z"
      },
      {
       "Name": "opi-newbucket2",
@@ -26,12 +26,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 12 Sep 2025 16:49:35 GMT",
+  "Date": "Fri, 12 Sep 2025 20:14:30 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "186496FEDC20F8E9",
+  "X-Amz-Request-Id": "1864A22D64B70028",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "562",
