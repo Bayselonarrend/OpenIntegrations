@@ -11387,10 +11387,10 @@
     Попытка
 
         // BSLLS:CommonModuleAssign-off
-        //      
+        //
         //@skip-check property-not-writable
         OPI_ReportPortal = Неопределено;
-        
+
         // BSLLS:CommonModuleAssign-on
 
         // !OInt ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");

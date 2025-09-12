@@ -519,35 +519,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 
         ObjectList = Result["data"];
 
-        For Each Object In ObjectList Do
-
-            ObjectName = Object["name"];
-
-            If ValueIsFilled(Path) Then
-                ObjectPath = StrTemplate("%1/%2", Path, ObjectName);
-            Else
-                ObjectPath = ObjectName;
-            EndIf;
-
-            Object.Insert("path", ObjectPath);
-
-            If Recursively Then
-                If Object["is_directory"] Then
-
-                    ResultSubdirectory = ListObjects(Connection, ObjectPath, True);
-
-                    If Not ResultSubdirectory["result"] Then
-                        Subfolders = ResultSubdirectory;
-                    Else
-                        Subfolders = ResultSubdirectory["data"];
-                    EndIf;
-
-                    Object.Insert("objects", Subfolders);
-
-                EndIf;
-            EndIf;
-
-        EndDo;
+        ProcessObjectList(ObjectList, Path, Connection, Recursively);
 
         Result = New Map;
         Result.Insert("result", True);
@@ -740,8 +712,13 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
 
             If OPI_AddIns.FileTransferRequired() Then
 
+                // BSLLS:MissingTemporaryFileDeletion-off
+
                 //@skip-check missing-temporary-file-deletion
                 TFN = GetTempFileName();
+
+                // BSLLS:MissingTemporaryFileDeletion-on
+
                 File.Write(TFN);
 
                 Result = ProcessingConnection.UploadFile(TFN, Path);
@@ -864,8 +841,13 @@ Function GetFileData(Val Connection, Val Path) Export
 
         If OPI_AddIns.FileTransferRequired() Then
 
+            // BSLLS:MissingTemporaryFileDeletion-off
+
             //@skip-check missing-temporary-file-deletion
             TFN = GetTempFileName();
+
+            // BSLLS:MissingTemporaryFileDeletion-on
+
             Result = Connection.DownloadToFile(Path, TFN);
             Result = OPI_Tools.JsonToStructure(Result);
 
@@ -1122,5 +1104,39 @@ Function GetConnectionCopy(Val Connection)
     Return CreateConnection(FTPSettings, Proxy, TLS);
 
 EndFunction
+
+Procedure ProcessObjectList(ObjectList, Val Path, Val Connection, Val Recursively)
+
+    For Each Object In ObjectList Do
+
+        ObjectName = Object["name"];
+
+        If ValueIsFilled(Path) Then
+            ObjectPath = StrTemplate("%1/%2", Path, ObjectName);
+        Else
+            ObjectPath = ObjectName;
+        EndIf;
+
+        Object.Insert("path", ObjectPath);
+
+        If Recursively Then
+            If Object["is_directory"] Then
+
+                ResultSubdirectory = ListObjects(Connection, ObjectPath, True);
+
+                If Not ResultSubdirectory["result"] Then
+                    Subfolders = ResultSubdirectory;
+                Else
+                    Subfolders = ResultSubdirectory["data"];
+                EndIf;
+
+                Object.Insert("objects", Subfolders);
+
+            EndIf;
+        EndIf;
+
+    EndDo;
+
+EndProcedure
 
 #EndRegion
