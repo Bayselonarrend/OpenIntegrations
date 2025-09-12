@@ -1230,7 +1230,7 @@ Function Check_Telegram_FormKeyboardFromButtonArray(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Telegram_SendPicture(Val Result, Val Option, Parameters = "", Text = "")
+Function Check_Telegram_SendImage(Val Result, Val Option, Parameters = "", Text = "")
 
     ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
@@ -1406,7 +1406,7 @@ Function Check_Telegram_Unban(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Telegram_CreateInviteLink(Val Result, Val Option, Title = "", UnixExpiration = "")
+Function Check_Telegram_CreateInvitationLink(Val Result, Val Option, Title = "", UnixExpiration = "")
 
     Result_ = "result";
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -1568,7 +1568,7 @@ Function Check_Telegram_ShowMainForumTopic(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Telegram_ChangeMainTopicName(Val Result, Val Option)
+Function Check_Check_Telegram_EditMainForumTopicName(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
@@ -1703,7 +1703,7 @@ Function Check_VK_CreateAlbum(Val Result, Val Option, Parameters = "", Descripti
 
 EndFunction
 
-Function Check_VK_SavePictureToAlbum(Val Result, Val Option, Parameters = "", Description = "", AlbumID = "")
+Function Check_VK_SaveImageToAlbum(Val Result, Val Option, Parameters = "", Description = "", AlbumID = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"][0]["text"]).Равно(Description);
@@ -1790,7 +1790,7 @@ Function Check_VK_OpenDiscussion(Val Result, Val Option)
 
 EndFunction
 
-Function Check_VK_PostToDiscussion(Val Result, Val Option)
+Function Check_VK_WriteInDiscussion(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
@@ -1859,7 +1859,7 @@ Function Check_VK_GetPostStatistics(Val Result, Val Option)
 
 EndFunction
 
-Function Check_VK_CreateAdCampaign(Val Result, Val Option, Parameters = "")
+Function Check_VK_CreateAdvertisingCampaign(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
 
@@ -1985,7 +1985,7 @@ Function Check_VK_AddProductToCollection(Val Result, Val Option)
 
 EndFunction
 
-Function Check_VK_RemoveProductFromCollection(Val Result, Val Option)
+Function Check_VK_RemoveProductFromSelection(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
@@ -2218,7 +2218,7 @@ Function Check_VK_GetProductDescription(Val Result, Val Option)
 
 EndFunction
 
-Function Check_YandexDisk_GetDiskInfo(Val Result, Val Option)
+Function Check_YandexDisk_GetDiskInformation(Val Result, Val Option)
 
     Map_ = "Map";
 
@@ -4139,7 +4139,7 @@ Function Check_Dropbox_GetToken(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Dropbox_UpdateToken(Val Result, Val Option)
+Function Check_Dropbox_RefreshToken(Val Result, Val Option)
 
     Token = Result["access_token"];
 
@@ -6617,7 +6617,7 @@ EndFunction
 Function Check_Ozon_UpdateProductImages(Val Result, Val Option)
 
     // TODO: Return check later
-    // ExpectsThat(Result["result"]["pictures"]).IsType("Array").Заполнено();
+    // ExpectsThat(Result["result"]["pictures"]).ИмеетТип("Array").Заполнено();
 
     Return Undefined;
 
@@ -6873,7 +6873,7 @@ EndFunction
 
 Function Check_Ozon_GetFBOTimeslots(Val Result, Val Option)
 
-    // ExpectsThat(Result["drop_off_warehouse_timeslots"]).IsType("Array");
+    // ExpectsThat(Result["drop_off_warehouse_timeslots"]).ИмеетТип("Array");
     Return Undefined;
 
 EndFunction
@@ -6960,7 +6960,7 @@ EndFunction
 Function Check_CDEK_CreateOrder(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -6999,7 +6999,7 @@ EndFunction
 Function Check_CDEK_UpdateOrder(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7012,7 +7012,7 @@ EndFunction
 Function Check_CDEK_DeleteOrder(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7025,7 +7025,7 @@ EndFunction
 Function Check_CDEK_CreateCustomerRefund(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7038,7 +7038,7 @@ EndFunction
 Function Check_CDEK_CreateRefusal(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7059,7 +7059,7 @@ EndFunction
 Function Check_CDEK_CreateCourierInvitation(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7076,7 +7076,7 @@ EndFunction
 Function Check_CDEK_GetCourierInvitation(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7089,7 +7089,7 @@ EndFunction
 Function Check_CDEK_DeleteCourierInvitation(Val Result, Val Option)
 
     // ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    // ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    // ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     // Status = Result["requests"][0]["state"];
 
@@ -7102,7 +7102,7 @@ EndFunction
 Function Check_CDEK_CreateReceipt(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7128,7 +7128,7 @@ EndFunction
 Function Check_CDEK_CreateBarcode(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7170,7 +7170,7 @@ EndFunction
 Function Check_CDEK_RegisterDeliveryAppointment(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7195,7 +7195,7 @@ EndFunction
 Function Check_CDEK_CreatePrealert(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["entity"]["uuid"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 
@@ -7212,7 +7212,7 @@ EndFunction
 Function Check_CDEK_GetPrealert(Val Result, Val Option)
 
     ExpectsThat(Result["entity"]["shipment_point"]).Заполнено();
-    ExpectsThat(Result["requests"]).IsType("Array").Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
 
     Status = Result["requests"][0]["state"];
 

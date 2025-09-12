@@ -137,7 +137,7 @@ Procedure TelegramAPI_SendImage() Export
     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
 
-    Telegram_SendPicture(TestParameters);
+    Telegram_SendImage(TestParameters);
     Telegram_ReplaceMessageCaption(TestParameters);
     Telegram_DownloadFile(TestParameters);
 
@@ -280,7 +280,7 @@ Procedure TelegramAPI_CreateInvitationLink() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
 
-    Telegram_CreateInviteLink(TestParameters);
+    Telegram_CreateInvitationLink(TestParameters);
 
 EndProcedure
 
@@ -350,7 +350,7 @@ Procedure TelegramAPI_ChangeMainTopicName() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-    Telegram_ChangeMainTopicName(TestParameters);
+    Check_Telegram_EditMainForumTopicName(TestParameters);
 
 EndProcedure
 
@@ -403,7 +403,7 @@ Procedure VKAPI_SaveDeleteImage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     VK_CreateAlbum(TestParameters);
-    VK_SavePictureToAlbum(TestParameters);
+    VK_SaveImageToAlbum(TestParameters);
     VK_DeleteImage(TestParameters);
     VK_DeleteAlbum(TestParameters);
     VK_UploadPhotoToServer(TestParameters);
@@ -427,7 +427,7 @@ Procedure VKAPI_DiscussionMethods() Export
     VK_CreateDiscussion(TestParameters);
     VK_CloseDiscussion(TestParameters);
     VK_OpenDiscussion(TestParameters);
-    VK_PostToDiscussion(TestParameters);
+    VK_WriteInDiscussion(TestParameters);
 
     OPI_VK.CloseDiscussion(TestParameters["VK_ConvID"], True, Parameters);
 
@@ -493,7 +493,7 @@ Procedure VKAPI_CreateAdCampaign() Export
     OPI_TestDataRetrieval.ParameterToCollection("VK_AdsCabinetID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VK_PostID"      , TestParameters);
 
-    VK_CreateAdCampaign(TestParameters);
+    VK_CreateAdvertisingCampaign(TestParameters);
     VK_CreateAd(TestParameters);
     VK_PauseAdvertising(TestParameters);
     VK_GetAdvertisingCategoryList(TestParameters);
@@ -540,7 +540,7 @@ Procedure VKAPI_CreateProductSelection() Export
     VK_AddProduct(TestParameters);
     VK_EditProduct(TestParameters);
     VK_AddProductToCollection(TestParameters);
-    VK_RemoveProductFromCollection(TestParameters);
+    VK_RemoveProductFromSelection(TestParameters);
     VK_DeleteProduct(TestParameters);
     VK_DeleteCollection(TestParameters);
 
@@ -623,7 +623,7 @@ Procedure YDisk_GetDiskInfo() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
 
-    YandexDisk_GetDiskInfo(TestParameters);
+    YandexDisk_GetDiskInformation(TestParameters);
 
 EndProcedure
 
@@ -1287,7 +1287,7 @@ Procedure DropboxAPI_GetUpdateToken() Export
 
     OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Refresh", TestParameters);
 
-    Dropbox_UpdateToken(TestParameters);
+    Dropbox_RefreshToken(TestParameters);
 
 EndProcedure
 
@@ -3175,7 +3175,7 @@ Procedure Telegram_FormKeyboardFromButtonArray(FunctionParameters)
 
 EndProcedure
 
-Procedure Telegram_SendPicture(FunctionParameters)
+Procedure Telegram_SendImage(FunctionParameters)
 
     Token     = FunctionParameters["Telegram_Token"];
     ChatID    = FunctionParameters["Telegram_ChatID"];
@@ -3730,7 +3730,7 @@ Procedure Telegram_Unban(FunctionParameters)
 
 EndProcedure
 
-Procedure Telegram_CreateInviteLink(FunctionParameters)
+Procedure Telegram_CreateInvitationLink(FunctionParameters)
 
     Token       = FunctionParameters["Telegram_Token"];
     ChannelID   = FunctionParameters["Telegram_ChannelID"];
@@ -3838,11 +3838,11 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
     Options.Insert("", Name);
     Options.Insert("", Icon);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateForumThread", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateForumTopic", Options);
 
     // END
 
-    Process(Result, "Telegram", "CreateForumThread", , FunctionParameters, Name, Icon);
+    Process(Result, "Telegram", "CreateForumTopic", , FunctionParameters, Name, Icon);
 
     ChatTopic = Chat + "*" + FunctionParameters["Telegram_TopicID"];
     Text      = FunctionParameters["String"];
@@ -3854,7 +3854,7 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    Process(Result, "Telegram", "CreateForumThread", "Message", FunctionParameters, Text);
+    Process(Result, "Telegram", "CreateForumTopic", "Message", FunctionParameters, Text);
 
 EndProcedure
 
@@ -3887,22 +3887,22 @@ Procedure Telegram_CloseForumTopic(FunctionParameters)
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
-    OPI_Telegram.OpenForumThread(Token, Chat); // SKIP
+    OPI_Telegram.OpenForumTopic(Token, Chat); // SKIP
 
-    Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
+    Result = OPI_Telegram.CloseForumTopic(Token, Chat); // Closes main topic
 
-    Process(Result, "Telegram", "CloseForumThread", "Main"); // SKIP
+    Process(Result, "Telegram", "CloseForumTopic", "Main"); // SKIP
 
     Options = New Structure;
     Options.Insert("", Token);
     Options.Insert("", Chat);
     Options.Insert("", Topic);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumThread", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumTopic", Options);
 
     // END
 
-    Process(Result, "Telegram", "CloseForumThread");
+    Process(Result, "Telegram", "CloseForumTopic");
 
 EndProcedure
 
@@ -3912,20 +3912,20 @@ Procedure Telegram_OpenForumTopic(FunctionParameters)
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
-    Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
+    Result = OPI_Telegram.OpenForumTopic(Token, Chat); // Opens main topic
 
-    Process(Result, "Telegram", "OpenForumThread", "Main"); // SKIP
+    Process(Result, "Telegram", "OpenForumTopic", "Main"); // SKIP
 
     Options = New Structure;
     Options.Insert("", Token);
     Options.Insert("", Chat);
     Options.Insert("", Topic);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumThread", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumTopic", Options);
 
     // END
 
-    Process(Result, "Telegram", "OpenForumThread");
+    Process(Result, "Telegram", "OpenForumTopic");
 
 EndProcedure
 
@@ -3958,13 +3958,13 @@ Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
     Options.Insert("", Token);
     Options.Insert("", Chat);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearThreadPinnedMessagesList", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearTopicPinnedMessagesList", Options);
 
-    Process(Result, "Telegram", "ClearThreadPinnedMessagesList", "Main"); // SKIP
+    Process(Result, "Telegram", "ClearTopicPinnedMessagesList", "Main"); // SKIP
 
     // END
 
-    Process(Result, "Telegram", "ClearThreadPinnedMessagesList");
+    Process(Result, "Telegram", "ClearTopicPinnedMessagesList");
 
 EndProcedure
 
@@ -4002,9 +4002,9 @@ Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
 EndProcedure
 
-Procedure Telegram_ChangeMainTopicName(FunctionParameters)
+Procedure Check_Telegram_EditMainForumTopicName(FunctionParameters)
 
-    Title = "New main thread name " + String(New UUID);
+    Title = "New main topic name " + String(New UUID);
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
 
@@ -4329,7 +4329,7 @@ Procedure VK_CreateAlbum(FunctionParameters)
 
 EndProcedure
 
-Procedure VK_SavePictureToAlbum(FunctionParameters)
+Procedure VK_SaveImageToAlbum(FunctionParameters)
 
     Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
@@ -4470,7 +4470,7 @@ Procedure VK_OpenDiscussion(FunctionParameters)
 
 EndProcedure
 
-Procedure VK_PostToDiscussion(FunctionParameters)
+Procedure VK_WriteInDiscussion(FunctionParameters)
 
     Parameters   = GetVKParameters();
     DiscussionID = FunctionParameters["VK_ConvID"];
@@ -4587,7 +4587,7 @@ Procedure VK_GetPostStatistics(FunctionParameters)
 
 EndProcedure
 
-Procedure VK_CreateAdCampaign(FunctionParameters)
+Procedure VK_CreateAdvertisingCampaign(FunctionParameters)
 
     Parameters = GetVKParameters();
 
@@ -4861,7 +4861,7 @@ Procedure VK_AddProductToCollection(FunctionParameters)
 
 EndProcedure
 
-Procedure VK_RemoveProductFromCollection(FunctionParameters)
+Procedure VK_RemoveProductFromSelection(FunctionParameters)
 
     Parameters = GetVKParameters();
 
@@ -5281,7 +5281,7 @@ EndProcedure
 
 #Region YandexDisk
 
-Procedure YandexDisk_GetDiskInfo(FunctionParameters)
+Procedure YandexDisk_GetDiskInformation(FunctionParameters)
 
     Token  = FunctionParameters["YandexDisk_Token"];
     Options = New Structure;
@@ -8756,7 +8756,7 @@ Procedure Dropbox_GetToken(FunctionParameters)
 
 EndProcedure
 
-Procedure Dropbox_UpdateToken(FunctionParameters)
+Procedure Dropbox_RefreshToken(FunctionParameters)
 
     AppKey       = FunctionParameters["Dropbox_Appkey"];
     AppSecret    = FunctionParameters["Dropbox_Appsecret"];
@@ -10284,11 +10284,11 @@ Procedure Bitrix24_GetAppStorage(FunctionParameters)
     Options.Insert("", URL);
     Options.Insert("", Token);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppSotrage", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppStorage", Options);
 
     // END
 
-    Process(Result, "Bitrix24", "GetAppSotrage", , FunctionParameters);
+    Process(Result, "Bitrix24", "GetAppStorage", , FunctionParameters);
 
 EndProcedure
 
