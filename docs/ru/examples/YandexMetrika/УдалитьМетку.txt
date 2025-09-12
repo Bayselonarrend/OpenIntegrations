@@ -1,4 +1,4 @@
 ﻿    Токен   = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    IDМетки = "319506";
+    IDМетки = "319766";
 
     Результат = OPI_YandexMetrika.УдалитьМетку(Токен, IDМетки);

@@ -2935,8 +2935,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "GetAppSotrage";
-    NewLine.SearchMethod = "GETAPPSOTRAGE";
+    NewLine.Method       = "GetAppStorage";
+    NewLine.SearchMethod = "GETAPPSTORAGE";
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Storages management";
@@ -2946,8 +2946,8 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "bitrix24";
     NewLine.Module      = "OPI_Bitrix24";
-    NewLine.Method       = "GetAppSotrage";
-    NewLine.SearchMethod = "GETAPPSOTRAGE";
+    NewLine.Method       = "GetAppStorage";
+    NewLine.SearchMethod = "GETAPPSTORAGE";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Region     = "Storages management";

@@ -1175,39 +1175,39 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CreateForumThread";
-    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Method       = "CreateForumTopic";
+    NewLine.SearchMethod = "CREATEFORUMTOPIC";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Creates a new thread in the group with theme functionality enabled";
+    NewLine.MethodDescription   = "Creates a new topic in the group with theme functionality enabled";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CreateForumThread";
-    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Method       = "CreateForumTopic";
+    NewLine.SearchMethod = "CREATEFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread creation chat ID";
+    NewLine.Description    = "Topic creation chat ID";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CreateForumThread";
-    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Method       = "CreateForumTopic";
+    NewLine.SearchMethod = "CREATEFORUMTOPIC";
     NewLine.Parameter    = "--title";
-    NewLine.Description    = "Thread title";
+    NewLine.Description    = "Topic title";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CreateForumThread";
-    NewLine.SearchMethod = "CREATEFORUMTHREAD";
+    NewLine.Method       = "CreateForumTopic";
+    NewLine.SearchMethod = "CREATEFORUMTOPIC";
     NewLine.Parameter    = "--icon";
     NewLine.Description    = "See GetAvatarIconList (optional, def. val. - Empty value)";
     NewLine.Region     = "Forum topic management";
@@ -1221,7 +1221,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Creates a new thread in the group with theme functionality enabled";
+    NewLine.MethodDescription   = "Creates a new topic in the group with theme functionality enabled";
 
 
     NewLine = CompositionTable.Add();
@@ -1230,7 +1230,7 @@ Function GetComposition() Export
     NewLine.Method       = "EditForumTopic";
     NewLine.SearchMethod = "EDITFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread creation chat ID";
+    NewLine.Description    = "Topic creation chat ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1240,7 +1240,7 @@ Function GetComposition() Export
     NewLine.Method       = "EditForumTopic";
     NewLine.SearchMethod = "EDITFORUMTOPIC";
     NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Thread ID";
+    NewLine.Description    = "Topic ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1267,62 +1267,62 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CloseForumThread";
-    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Method       = "CloseForumTopic";
+    NewLine.SearchMethod = "CLOSEFORUMTOPIC";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Closes the thread for new messages";
+    NewLine.MethodDescription   = "Closes the topic for new messages";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CloseForumThread";
-    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Method       = "CloseForumTopic";
+    NewLine.SearchMethod = "CLOSEFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "CloseForumThread";
-    NewLine.SearchMethod = "CLOSEFORUMTHREAD";
+    NewLine.Method       = "CloseForumTopic";
+    NewLine.SearchMethod = "CLOSEFORUMTOPIC";
     NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Thread ID (optional, def. val. - Empty value)";
+    NewLine.Description    = "Topic ID (optional, def. val. - Empty value)";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "OpenForumThread";
-    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Method       = "OpenForumTopic";
+    NewLine.SearchMethod = "OPENFORUMTOPIC";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Reopens a previously closed forum thread";
+    NewLine.MethodDescription   = "Reopens a previously closed forum topic";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "OpenForumThread";
-    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Method       = "OpenForumTopic";
+    NewLine.SearchMethod = "OPENFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "OpenForumThread";
-    NewLine.SearchMethod = "OPENFORUMTHREAD";
+    NewLine.Method       = "OpenForumTopic";
+    NewLine.SearchMethod = "OPENFORUMTOPIC";
     NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Thread ID (optional, def. val. - Empty value)";
+    NewLine.Description    = "Topic ID (optional, def. val. - Empty value)";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1334,7 +1334,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Deletes a forum thread";
+    NewLine.MethodDescription   = "Deletes a forum topic";
 
 
     NewLine = CompositionTable.Add();
@@ -1343,7 +1343,7 @@ Function GetComposition() Export
     NewLine.Method       = "DeleteForumTopic";
     NewLine.SearchMethod = "DELETEFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1353,7 +1353,7 @@ Function GetComposition() Export
     NewLine.Method       = "DeleteForumTopic";
     NewLine.SearchMethod = "DELETEFORUMTOPIC";
     NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Thread ID";
+    NewLine.Description    = "Topic ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1365,7 +1365,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Hides the main forum thread";
+    NewLine.MethodDescription   = "Hides the main forum topic";
 
 
     NewLine = CompositionTable.Add();
@@ -1374,7 +1374,7 @@ Function GetComposition() Export
     NewLine.Method       = "HideMainForumTopic";
     NewLine.SearchMethod = "HIDEMAINFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1386,7 +1386,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Shows a previously hidden main forum thread";
+    NewLine.MethodDescription   = "Shows a previously hidden main forum topic";
 
 
     NewLine = CompositionTable.Add();
@@ -1395,7 +1395,7 @@ Function GetComposition() Export
     NewLine.Method       = "ShowMainForumTopic";
     NewLine.SearchMethod = "SHOWMAINFORUMTOPIC";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1407,7 +1407,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Edits the name of the main forum thread";
+    NewLine.MethodDescription   = "Edits the name of the main forum topic";
 
 
     NewLine = CompositionTable.Add();
@@ -1416,7 +1416,7 @@ Function GetComposition() Export
     NewLine.Method       = "EditMainForumTopicName";
     NewLine.SearchMethod = "EDITMAINFORUMTOPICNAME";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
@@ -1426,38 +1426,38 @@ Function GetComposition() Export
     NewLine.Method       = "EditMainForumTopicName";
     NewLine.SearchMethod = "EDITMAINFORUMTOPICNAME";
     NewLine.Parameter    = "--title";
-    NewLine.Description    = "New main thread name";
+    NewLine.Description    = "New main topic name";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "ClearThreadPinnedMessagesList";
-    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Method       = "ClearTopicPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTOPICPINNEDMESSAGESLIST";
     NewLine.Parameter    = "--token";
     NewLine.Description    = "Token";
     NewLine.Region     = "Forum topic management";
-    NewLine.MethodDescription   = "Clears the list of pinned messages in the forum thread";
+    NewLine.MethodDescription   = "Clears the list of pinned messages in the forum topic";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "ClearThreadPinnedMessagesList";
-    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Method       = "ClearTopicPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTOPICPINNEDMESSAGESLIST";
     NewLine.Parameter    = "--forum";
-    NewLine.Description    = "Thread chat ID";
+    NewLine.Description    = "Topic chat ID";
     NewLine.Region     = "Forum topic management";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "telegram";
     NewLine.Module      = "OPI_Telegram";
-    NewLine.Method       = "ClearThreadPinnedMessagesList";
-    NewLine.SearchMethod = "CLEARTHREADPINNEDMESSAGESLIST";
+    NewLine.Method       = "ClearTopicPinnedMessagesList";
+    NewLine.SearchMethod = "CLEARTOPICPINNEDMESSAGESLIST";
     NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Thread ID. Main if not filled (optional, def. val. - Empty value)";
+    NewLine.Description    = "Topic ID. Main if not filled (optional, def. val. - Empty value)";
     NewLine.Region     = "Forum topic management";
 
     Return CompositionTable;

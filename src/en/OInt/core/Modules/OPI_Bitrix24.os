@@ -2175,7 +2175,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetAppSotrage(Val URL, Val Token = "") Export
+Function GetAppStorage(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "disk.storage.getforapp");
     Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters);
@@ -5538,7 +5538,7 @@ Function ПолучитьСписокХранилищ(Val URL, Val Токен = 
 EndFunction
 
 Function ПолучитьХранилищеПриложения(Val URL, Val Токен = "") Export
-	Return GetAppSotrage(URL, Токен);
+	Return GetAppStorage(URL, Токен);
 EndFunction
 
 Function ПолучитьХранилище(Val URL, Val IDХранилища, Val Токен = "") Export

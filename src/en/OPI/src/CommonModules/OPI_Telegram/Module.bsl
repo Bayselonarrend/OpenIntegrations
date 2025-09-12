@@ -1091,36 +1091,36 @@ Function GetAvatarIconList(Val Token) Export
 
 EndFunction
 
-// Create forum thread
-// Creates a new thread in the group with theme functionality enabled
+// Create forum topic
+// Creates a new topic in the group with theme functionality enabled
 //
 // Note
 // Method at API documentation: [createForumTopic](@core.telegram.org/bots/api#createforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread creation chat ID - forum
-// Title - String - Thread title - title
+// ChatID - String, Number - Topic creation chat ID - forum
+// Title - String - Topic title - title
 // IconID - String - See GetAvatarIconList - icon
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export
+Function CreateForumTopic(Val Token, Val ChatID, Val Title, Val IconID = "") Export
 
     Return ForumTopicManagement(Token, ChatID, Title, IconID);
 
 EndFunction
 
-// Edit forum thread
-// Creates a new thread in the group with theme functionality enabled
+// Edit forum topic
+// Creates a new topic in the group with theme functionality enabled
 //
 // Note
 // Method at API documentation: [editForumTopic](@core.telegram.org/bots/api#editforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread creation chat ID - forum
-// ThreadID - String, Number - Thread ID - topic
+// ChatID - String, Number - Topic creation chat ID - forum
+// TopicID - String, Number - Topic ID - topic
 // Title - String - New title - title
 // IconID - String - See GetAvatarIconList - icon
 //
@@ -1128,79 +1128,79 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Telegram
 Function EditForumTopic(Val Token
     , Val ChatID
-    , Val ThreadID
+    , Val TopicID
     , Val Title = Undefined
     , Val IconID = Undefined) Export
 
-    Return ForumTopicManagement(Token, ChatID, Title, IconID, ThreadID);
+    Return ForumTopicManagement(Token, ChatID, Title, IconID, TopicID);
 EndFunction
 
-// Close forum thread
-// Closes the thread for new messages
+// Close forum topic
+// Closes the topic for new messages
 //
 // Note
 // Method at API documentation: [closeForumTopic](@core.telegram.org/bots/api#closeforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
-// ThreadID - String, Number - Thread ID - topic
+// ChatID - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
+Function CloseForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
 
-    Return ManageForumThreadState(Token, ChatID, 2, ThreadID);
+    Return ManageForumTopicState(Token, ChatID, 2, TopicID);
 
 EndFunction
 
-// Open forum thread
-// Reopens a previously closed forum thread
+// Open forum topic
+// Reopens a previously closed forum topic
 //
 // Note
 // Method at API documentation: [reopenForumTopic](@core.telegram.org/bots/api#reopenforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
-// ThreadID - String, Number - Thread ID - topic
+// ChatID - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
+Function OpenForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
 
-    Return ManageForumThreadState(Token, ChatID, 1, ThreadID);
+    Return ManageForumTopicState(Token, ChatID, 1, TopicID);
 
 EndFunction
 
-// Delete forum thread
-// Deletes a forum thread
+// Delete forum topic
+// Deletes a forum topic
 //
 // Note
 // Method at API documentation: [deleteForumTopic](@core.telegram.org/bots/api#deleteforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
-// ThreadID - String, Number - Thread ID - topic
+// ChatID - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export
+Function DeleteForumTopic(Val Token, Val ChatID, Val TopicID) Export
 
-    Return ManageForumThreadState(Token, ChatID, 3, ThreadID);
+    Return ManageForumTopicState(Token, ChatID, 3, TopicID);
 
 EndFunction
 
-// Hide main forum thread
-// Hides the main forum thread
+// Hide main forum topic
+// Hides the main forum topic
 //
 // Note
 // Method at API documentation: [hideGeneralForumTopic](@core.telegram.org/bots/api#hidegeneralforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
+// ChatID - String, Number - Topic chat ID - forum
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1210,15 +1210,15 @@ Function HideMainForumTopic(Val Token, Val ChatID) Export
 
 EndFunction
 
-// Show main forum thread
-// Shows a previously hidden main forum thread
+// Show main forum topic
+// Shows a previously hidden main forum topic
 //
 // Note
 // Method at API documentation: [unhideGeneralForumTopic](@core.telegram.org/bots/api#unhidegeneralforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
+// ChatID - String, Number - Topic chat ID - forum
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1228,16 +1228,16 @@ Function ShowMainForumTopic(Val Token, Val ChatID) Export
 
 EndFunction
 
-// Edit main forum thread name
-// Edits the name of the main forum thread
+// Edit main forum topic name
+// Edits the name of the main forum topic
 //
 // Note
 // Method at API documentation: [editGeneralForumTopic](@core.telegram.org/bots/api#editgeneralforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
-// Title - String - New main thread name - title
+// ChatID - String, Number - Topic chat ID - forum
+// Title - String - New main topic name - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1257,30 +1257,30 @@ Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
 
 EndFunction
 
-// Clear thread's pinned messages list
-// Clears the list of pinned messages in the forum thread
+// Clear topics pinned messages list
+// Clears the list of pinned messages in the forum topic
 //
 // Note
 // Method at API documentation: [unpinAllForumTopicMessages](@core.telegram.org/bots/api#unpinallforumtopicmessages)
 //
 // Parameters:
 // Token - String - Token - token
-// ChatID - String, Number - Thread chat ID - forum
-// ThreadID - String, Number - Thread ID. Main if not filled - topic
+// ChatID - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID. Main if not filled - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
-Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export
+Function ClearTopicPinnedMessagesList(Val Token, Val ChatID, Val TopicID = "") Export
 
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
-    OPI_TypeConversion.GetLine(ThreadID);
+    OPI_TypeConversion.GetLine(TopicID);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("chat_id"          , ChatID  , "String", Parameters);
-    OPI_Tools.AddField("message_thread_id", ThreadID, "String", Parameters);
+    OPI_Tools.AddField("chat_id"          , ChatID , "String", Parameters);
+    OPI_Tools.AddField("message_thread_id", TopicID, "String", Parameters);
 
-    If ValueIsFilled(ThreadID) Then
+    If ValueIsFilled(TopicID) Then
         Method = "/unpinAllForumTopicMessages";
     Else
         Method = "/unpinAllGeneralForumTopicMessages";
@@ -1343,20 +1343,20 @@ EndFunction
 
 Function ForumTopicManagement(Val Token
     , Val ChatID
-    , Val Title    = Undefined
-    , Val IconID   = Undefined
-    , Val ThreadID = "")
+    , Val Title   = Undefined
+    , Val IconID  = Undefined
+    , Val TopicID = "")
 
     String_ = "String";
     OPI_TypeConversion.GetLine(Token);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("name"                , Title    , String_ , Parameters);
-    OPI_Tools.AddField("chat_id"             , ChatID   , "Number", Parameters);
-    OPI_Tools.AddField("icon_custom_emoji_id", IconID   , String_ , Parameters);
-    OPI_Tools.AddField("message_thread_id"   , ThreadID , "Number", Parameters);
+    OPI_Tools.AddField("name"                , Title   , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"             , ChatID  , "Number", Parameters);
+    OPI_Tools.AddField("icon_custom_emoji_id", IconID  , String_ , Parameters);
+    OPI_Tools.AddField("message_thread_id"   , TopicID , "Number", Parameters);
 
-    If ValueIsFilled(ThreadID) Then
+    If ValueIsFilled(TopicID) Then
         Method = "/editForumTopic";
     Else
         Method = "/createForumTopic";
@@ -1368,11 +1368,11 @@ Function ForumTopicManagement(Val Token
 
 EndFunction
 
-Function ManageForumThreadState(Val Token, Val ChatID, Val Status, Val ThreadID = "")
+Function ManageForumTopicState(Val Token, Val ChatID, Val Status, Val TopicID = "")
 
     OPI_TypeConversion.GetLine(Token);
 
-    If ValueIsFilled(ThreadID) Then
+    If ValueIsFilled(TopicID) Then
         Forum = "Forum";
     Else
         Forum = "GeneralForum";
@@ -1381,8 +1381,8 @@ Function ManageForumThreadState(Val Token, Val ChatID, Val Status, Val ThreadID 
     Method = DetermineForumManagementMethod(Status, Forum);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("chat_id"          , ChatID  , "Number", Parameters);
-    OPI_Tools.AddField("message_thread_id", ThreadID, "Number", Parameters);
+    OPI_Tools.AddField("chat_id"          , ChatID , "Number", Parameters);
+    OPI_Tools.AddField("message_thread_id", TopicID, "Number", Parameters);
 
     URL      = "api.telegram.org/bot" + Token + Method;
     Response = OPI_HTTPRequests.Get(URL, Parameters);
@@ -1555,15 +1555,15 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
 
     If ChatArray.Count() > 1 Then
 
-        ChatID   = ChatArray[0];
-        ThreadID = ChatArray[1];
+        ChatID  = ChatArray[0];
+        TopicID = ChatArray[1];
 
-        OPI_TypeConversion.GetNumber(ThreadID);
-        Parameters.Insert("message_thread_id", ThreadID);
+        OPI_TypeConversion.GetNumber(TopicID);
+        Parameters.Insert("message_thread_id", TopicID);
 
     EndIf;
 
-    OPI_TypeConversion.GetNumber(ThreadID);
+    OPI_TypeConversion.GetNumber(TopicID);
     Parameters.Insert("chat_id", ChatID);
 
 EndProcedure

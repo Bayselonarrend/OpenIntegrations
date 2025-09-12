@@ -5537,7 +5537,7 @@ Function GetStoragesList(Val URL, Val Token = "") Export
 	Return ПолучитьСписокХранилищ(URL, Token);
 EndFunction
 
-Function GetAppSotrage(Val URL, Val Token = "") Export
+Function GetAppStorage(Val URL, Val Token = "") Export
 	Return ПолучитьХранилищеПриложения(URL, Token);
 EndFunction
 

@@ -1,7 +1,7 @@
-﻿    Token = "ya29.A0AS3H6NzZhuWUBt5SK1krSUXDl1PlvawSraabkJU9I1Cd9GMbnXV194GtRveLkzC4TFqpg8CjFqwe1CqV-EEU-3BxUGa8srNcXC58Ie1LQOpjFZeSJWCMv7jAn...";
-    Event = "aqp1j1k4c2o12k0e8k4nuf0ins";
+﻿    Token = "ya29.a0AS3H6NwrH32o3TZZmc3e_ByEcGAt2XTmAPcv99GD_9QwcQfnRxKuI-SiaY_8supYx1k4moGVpqwHhRCIfTJiGob3aJdVZrAGlzpNd-xICMBDGVrfB-eNxg-2l...";
+    Event = "p1nv1htte6uk6ob0kj75q4sb40";
 
-    SourceCalendar = "c471ac0ea20babce954abfb75d89bd18fdca8fd13f0c7784be7c83e87a816700@group.calendar.google.com";
+    SourceCalendar = "26de68e8bc4f521c9666060f8176578fd33aca850e0250d4e095b555368e529d@group.calendar.google.com";
     TargetCalendar = "bayselonarrend@gmail.com";
 
     Result = OPI_GoogleCalendar.MoveEvent(Token, SourceCalendar, TargetCalendar, Event);
