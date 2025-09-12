@@ -185,9 +185,14 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
     Else
 
+        // BSLLS:UnusedLocalVariable-off
+
         //@skip-check module-unused-local-variable
         ConnectionType = AddInConnectionType.NoIsolated;
         //@skip-check server-execution-safe-mode
+
+        // BSLLS:UnusedLocalVariable-on
+
         Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
 
     EndIf;

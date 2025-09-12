@@ -1625,8 +1625,7 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
             Raise StrTemplate("JSON parameter array validation error: %1", ErrInfo);
         EndTry;
 
-        JSONWriter = Undefined;
-        Adding     = Connector.SetParamsFromFile(QueryKey, TFN);
+        Adding = Connector.SetParamsFromFile(QueryKey, TFN);
 
         OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query parameters file after execution");
 

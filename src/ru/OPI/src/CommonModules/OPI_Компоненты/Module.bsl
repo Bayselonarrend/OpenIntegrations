@@ -186,13 +186,13 @@
     Иначе
 
         // BSLLS:UnusedLocalVariable-off
-             
+
         //@skip-check module-unused-local-variable
         ТипПодключения = ТипПодключенияВнешнейКомпоненты.НеИзолированно;
         //@skip-check server-execution-safe-mode
-        
+
         // BSLLS:UnusedLocalVariable-on
-        
+
         Результат = Вычислить("ПодключитьВнешнююКомпоненту(ИмяМакета, ИмяКомпоненты, ТипВнешнейКомпоненты.Native, ТипПодключения)");
 
     КонецЕсли;
