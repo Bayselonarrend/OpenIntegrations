@@ -36,7 +36,9 @@
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:UnusedLocalMethod-off
-// BSLLS:MissingTemporaryFileDeletion-on
+// BSLLS:MissingTemporaryFileDeletion-off
+// BSLLS:MethodSize-off
+// BSLLS:IfElseIfEndsWithElse-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -608,7 +610,9 @@ Procedure ProcessTestingResult(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
+    // BSLLS:UnusedLocalVariable-off
     Result_ = ?(OPI_Tools.ThisIsCollection(Result), OPI_Tools.CopyCollection(Result), Result);
+    // BSLLS:UnusedLocalVariable-on
 
     IsVariant  = ValueIsFilled(Option);
     LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
@@ -4309,8 +4313,6 @@ EndFunction
 
 Function Check_Dropbox_GetTagList(Val Result, Val Option, Parameters = "", PathsArray = "")
 
-    Token = Parameters["Dropbox_Token"];
-
     ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
     ExpectsThat(Result["paths_to_tags"].Count()).Равно(PathsArray.Count());
 
@@ -5926,7 +5928,7 @@ Function Check_Bitrix24_UpdateCalendar(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    Return Result
+    Return Result;
 
 EndFunction
 
